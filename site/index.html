@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contas do Poder</title>
+<meta name="description" content="Quanto ganha e quanto custa cada deputado federal e senador, com números oficiais da Câmara e do Senado. Um projeto Contas do Brasil.">
+<!-- Endereço público do site, usado nos links de compartilhamento. Vazio = não mostra link. -->
+<meta name="endereco-do-site" content="https://contasdopoder.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+<!--INICIO-CORPO-->
+<div class="faixa" aria-hidden="true"></div>
+<div class="pagina">
+  <header class="cabecalho">
+    <a class="logo" href="#" aria-label="Contas do Poder, início">
+      <span class="logo__icone" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30"><rect x="13" y="4" width="2.6" height="16" rx="1"/><rect x="16.4" y="4" width="2.6" height="16" rx="1"/><path d="M4.5 21A4.5 3.6 0 0 1 13.5 21Z"/><path d="M18.5 17.2A4.5 3.4 0 0 0 27.5 17.2Z"/><rect x="3" y="21" width="26" height="1.8" rx=".9"/><rect x="1.5" y="24.6" width="29" height="1.8" rx=".9"/></svg>
+      </span>
+      <span class="logo__nome">Contas do Poder</span>
+    </a>
+  </header>
+
+  <section class="abertura">
+    <h1>Quanto ganha e quanto custa quem te representa?</h1>
+    <p class="lide">Salário, auxílios e gastos do mandato de todos os deputados federais e senadores, comparados com os colegas e com o salário mínimo. Números oficiais da Câmara e do Senado.</p>
+    <div class="acoes">
+      <button type="button" class="botao" id="abrir-guia">Descobrir os meus representantes</button>
+      <button type="button" class="link-botao" data-ir="resumo">Compartilhar</button>
+    </div>
+    <div class="chips" id="chips-info"></div>
+  </section>
+
+  <section class="escolha" aria-labelledby="rotulo-escolha">
+    <p class="rotulo" id="rotulo-escolha">Escolha um deputado ou senador</p>
+    <div class="escolha__linha">
+      <div class="busca-caixa">
+        <label class="visualmente-oculto" for="busca">Nome, partido ou estado</label>
+        <input id="busca" type="search" placeholder="Nome, partido ou estado" autocomplete="off" aria-controls="sugestoes">
+        <div class="sugestoes" id="sugestoes" hidden></div>
+      </div>
+      <div>
+        <label class="visualmente-oculto" for="estado">Estado</label>
+        <select id="estado"></select>
+      </div>
+    </div>
+    <div id="lista-estado"></div>
+    <nav class="secoes" id="secoes" aria-label="Ir para a seção"></nav>
+  </section>
+
+  <main id="app" tabindex="-1">
+    <p class="carregando">Carregando os números oficiais…</p>
+  </main>
+
+  <section class="bloco" id="entenda" aria-labelledby="t-entenda">
+    <p class="rotulo">Entenda</p>
+    <h2 id="t-entenda">O que é cada número</h2>
+    <div class="grade-cartoes grade-cartoes--2">
+      <article class="cartao">
+        <h3>Deputado(a) federal</h3>
+        <p class="discreto">Representa a população do seu estado na Câmara dos Deputados. Estados com mais gente elegem mais deputados: de 8 a 70.</p>
+        <dl class="ficha">
+          <dt>Quantos são</dt><dd>513</dd>
+          <dt>Mandato</dt><dd>4 anos</dd>
+          <dt>Salário bruto</dt><dd class="num">R$ 46.366,19</dd>
+          <dt>Para assessores</dt><dd>até <span class="num">R$ 165.806,07</span> por mês</dd>
+        </dl>
+      </article>
+      <article class="cartao">
+        <h3>Senador(a)</h3>
+        <p class="discreto">Representa o estado no Senado Federal. Todo estado tem 3 senadores, não importa o tamanho.</p>
+        <dl class="ficha">
+          <dt>Quantos são</dt><dd>81</dd>
+          <dt>Mandato</dt><dd>8 anos</dd>
+          <dt>Salário bruto</dt><dd class="num">R$ 46.366,19</dd>
+          <dt>Para assessores</dt><dd>pagos direto pela folha do Senado</dd>
+        </dl>
+      </article>
+    </div>
+    <div class="acordeao">
+      <details><summary>Salário (subsídio)</summary><p>Valor bruto mensal fixado em lei, antes do imposto de renda e da previdência. Desde fevereiro de 2025 é de R$ 46.366,19, o mesmo valor do teto do funcionalismo. Pode ser menor em meses com faltas ou licença.</p></details>
+      <details><summary>13º salário</summary><p>Pago em duas parcelas, como para qualquer trabalhador.</p></details>
+      <details><summary>Cota parlamentar</summary><p>Dinheiro mensal para despesas do mandato: passagens, escritório no estado, combustível, divulgação e outras. É reembolsado mediante nota fiscal. Na Câmara, o limite vai de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens até Brasília. O que não é usado num mês acumula para os meses seguintes do mesmo ano.</p></details>
+      <details><summary>Assessores do gabinete</summary><p>Na Câmara, cada deputado tem até R$ 165.806,07 por mês (a verba de gabinete) para pagar até 25 secretários parlamentares. No Senado, os assessores são pagos direto pela folha; o custo por senador é uma estimativa nossa.</p></details>
+      <details><summary>Auxílio-moradia e imóvel funcional</summary><p>Quem não mora num dos apartamentos funcionais em Brasília pode receber auxílio-moradia: R$ 4.253 por mês na Câmara e R$ 5.500 no Senado.</p></details>
+      <details><summary>Ajuda de custo e diárias</summary><p>A ajuda de custo é um salário extra pago no começo e no fim do mandato. As diárias são pagas em viagens oficiais, para cobrir hospedagem e alimentação.</p></details>
+      <details><summary>Como calculamos</summary>
+        <ul class="lista">
+          <li><strong>Ganha</strong> é o que vai para a pessoa: salário, 13º, auxílios e ajuda de custo, sempre em valor bruto.</li>
+          <li><strong>Custa</strong> é o que o mandato gasta de dinheiro público: cota parlamentar, assessores, diárias e outros gastos. Esse dinheiro não vai para o bolso do parlamentar.</li>
+          <li>A <strong>média por mês</strong> de "ganha" usa os meses com salário; a de "custa", os meses com gastos. Assim, uma licença não distorce a conta.</li>
+          <li><strong>Salários mínimos</strong>: R$ 1.320 (2023), R$ 1.412 (2024), R$ 1.518 (2025) e R$ 1.621 (2026).</li>
+          <li>Conferimos com os sites oficiais: a cota do Senado bate ao centavo em todas as 324 comparações; a da Câmara, em 37 de 40 casos de uma amostra.</li>
+        </ul>
+      </details>
+      <details><summary>O que ainda falta</summary><ul class="lista" id="pendencias"></ul></details>
+    </div>
+  </section>
+
+  <section class="bloco" id="fontes" aria-labelledby="t-fontes">
+    <h2 id="t-fontes">Fontes dos dados</h2>
+    <p class="discreto">Todos os números vêm de dados públicos oficiais. Clique numa fonte para ver a origem.</p>
+    <div class="grade-cartoes grade-cartoes--4">
+      <a class="cartao fonte" href="https://dadosabertos.camara.leg.br/swagger/api.html" target="_blank" rel="noopener"><span class="rotulo">Câmara dos Deputados</span><strong>Dados abertos</strong><span>Lista, partido, estado e dados pessoais dos deputados.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://www.camara.leg.br/transparencia/gastos-parlamentares/" target="_blank" rel="noopener"><span class="rotulo">Câmara dos Deputados</span><strong>Gastos parlamentares</strong><span>Salário, verba de gabinete e auxílio-moradia de cada deputado.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://www.camara.leg.br/cota-parlamentar/" target="_blank" rel="noopener"><span class="rotulo">Câmara dos Deputados</span><strong>Cota parlamentar</strong><span>Cada nota fiscal reembolsada pela cota, desde 2008.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://legis.senado.leg.br/dadosabertos/docs/" target="_blank" rel="noopener"><span class="rotulo">Senado Federal</span><strong>Dados abertos legislativos</strong><span>Senadores, mandatos e períodos de exercício.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html" target="_blank" rel="noopener"><span class="rotulo">Senado Federal</span><strong>Folha de pagamento</strong><span>Salário, 13º, auxílios e diárias, mês a mês; base da estimativa dos assessores.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://www6g.senado.leg.br/transparencia/sen/" target="_blank" rel="noopener"><span class="rotulo">Senado Federal</span><strong>Cota e recursos utilizados</strong><span>Cota parlamentar (CEAPS), passagens, correios e moradia de cada senador.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <div class="cartao fonte"><span class="rotulo">Tabela própria</span><strong>Salário mínimo</strong><span>Valor de cada ano, usado para converter os valores em salários mínimos.</span></div>
+      <a class="cartao fonte" href="https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar" target="_blank" rel="noopener"><span class="rotulo">Tabela própria</span><strong>Limite da cota por estado</strong><span>Valores atuais publicados pela Câmara.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+    </div>
+  </section>
+
+  <footer class="rodape">
+    <p class="rodape__autoria">Criado por <a href="https://laloux.me" target="_blank" rel="noopener">Jean-François Laloux</a> · Um projeto <a href="https://contasdobrasil.com" target="_blank" rel="noopener">Contas do Brasil</a></p>
+    <p>Dados públicos da Câmara dos Deputados e do Senado Federal. Protótipo: confira os valores na fonte antes de tirar conclusões.</p>
+    <p>As tabelas geradas aqui podem ser reutilizadas sob a licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">CC BY 4.0</a>, citando "Contas do Poder" e as fontes originais.</p>
+    <p id="gerado-em"></p>
+  </footer>
+</div>
+
+<dialog class="guia" id="guia" aria-labelledby="guia-titulo">
+  <div class="guia__corpo" id="guia-corpo"></div>
+</dialog>
+
+<script src="app.js"></script>
+<!--FIM-CORPO-->
+</body>
+</html>

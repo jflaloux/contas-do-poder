@@ -1,0 +1,10 @@
+# Cache das páginas e arquivos baixados (pode ser recriado a qualquer momento)
+dados/cache/
+__pycache__/
+*.pyc
+.venv/
+.DS_Store
+
+# Intermediários que os robôs recriam
+dados/brutos/
+dados/processados/lancamentos.csv

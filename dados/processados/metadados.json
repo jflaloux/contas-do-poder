@@ -1,0 +1,80 @@
+{
+ "gerado_em": "2026-09-29T04:46:43",
+ "legislatura": 57,
+ "periodo": "02/2023 até hoje",
+ "salario_minimo": {
+  "2023": 1320.0,
+  "2024": 1412.0,
+  "2025": 1518.0,
+  "2026": 1621.0
+ },
+ "categorias": {
+  "salario": {
+   "grupo": "ganha",
+   "nome": "Salário (subsídio bruto)"
+  },
+  "decimo_terceiro": {
+   "grupo": "ganha",
+   "nome": "13º salário"
+  },
+  "auxilio_moradia": {
+   "grupo": "ganha",
+   "nome": "Auxílio-moradia"
+  },
+  "auxilios": {
+   "grupo": "ganha",
+   "nome": "Auxílios (inclui auxílio-moradia)"
+  },
+  "ajuda_de_custo": {
+   "grupo": "ganha",
+   "nome": "Ajuda de custo e outras verbas indenizatórias"
+  },
+  "outros_rendimentos": {
+   "grupo": "ganha",
+   "nome": "Outros pagamentos"
+  },
+  "cota_parlamentar": {
+   "grupo": "custa",
+   "nome": "Cota parlamentar"
+  },
+  "assessores_gabinete": {
+   "grupo": "custa",
+   "nome": "Assessores do gabinete"
+  },
+  "diarias": {
+   "grupo": "custa",
+   "nome": "Diárias de viagens oficiais"
+  },
+  "outros_gastos_mandato": {
+   "grupo": "custa",
+   "nome": "Outros gastos do mandato"
+  }
+ },
+ "fontes_por_lancamento": {
+  "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
+  "camara_remuneracao": "https://www.camara.leg.br/deputados/{id}/remuneracao?ano={ano}",
+  "camara_verba_gabinete": "https://www.camara.leg.br/deputados/{id}/verba-gabinete?ano={ano}",
+  "camara_cota": "https://www.camara.leg.br/cota-parlamentar/consulta-cota-parlamentar?ideDeputado={id}&dataInicio=01{ano}&dataFim=12{ano}",
+  "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
+  "senado_folha": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/{ano}/{mes}/csv",
+  "senado_transparencia": "https://www6g.senado.leg.br/transparencia/sen/{id}/?ano={ano}"
+ },
+ "fontes": {
+  "camara_api": "https://dadosabertos.camara.leg.br/swagger/api.html",
+  "camara_cota": "https://www.camara.leg.br/cotas/",
+  "camara_paginas": "https://www.camara.leg.br/deputados/{id}/remuneracao e /verba-gabinete",
+  "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
+  "senado_legis": "https://legis.senado.leg.br/dadosabertos/docs/",
+  "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html"
+ },
+ "pendencias": [
+  "Câmara: 13º salário e ajuda de custo dos deputados ainda não coletados (no Senado já estão).",
+  "Câmara: diárias de viagens oficiais (missão oficial) ainda não coletadas.",
+  "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
+  "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
+  "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
+  "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",
+  "Câmara: desde ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) não aparecem nos arquivos de dados abertos. Completamos com a diferença para o total mensal do site oficial, sem detalhe por tipo.",
+  "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos."
+ ]
+}
