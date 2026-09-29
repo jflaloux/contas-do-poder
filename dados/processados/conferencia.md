@@ -1,4 +1,4 @@
-# Conferência dos dados — 29/09/2026 05:11
+# Conferência dos dados — 29/09/2026 18:15
 
 ## 1. Cobertura
 
