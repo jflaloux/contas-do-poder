@@ -316,3 +316,46 @@ def executar():
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
+    _municipios()
+
+
+# ---------------------------------------------------------------- câmaras municipais
+SUBSIDIO_DEPUTADO_FEDERAL = 46366.19  # o deputado estadual ganha no máximo 75% disso (Constituição, art. 27)
+# teto do salário do vereador (Constituição, art. 29, VI): % do salário do deputado estadual, pela população
+FAIXAS_TETO = [(10_000, 0.20), (50_000, 0.30), (100_000, 0.40), (300_000, 0.50), (500_000, 0.60), (float("inf"), 0.75)]
+
+
+def _municipios():
+    """site/dados/municipios.json (todas as cidades) e site/dados/vereadores/UF.json (nomes, lidos sob demanda).
+    municipios.json -> m: [[cod_ibge, nome, uf, populacao, capital, vereadores, custo_anual, ano_do_custo], ...]"""
+    pasta = RAIZ / "dados" / "municipios"
+    if not (pasta / "municipios.csv").exists():
+        return
+    mu = pd.read_csv(pasta / "municipios.csv")
+    mu = mu[mu.uf != "DF"]  # Brasília não tem câmara municipal
+    custo = pd.read_csv(pasta / "camaras_custo.csv") if (pasta / "camaras_custo.csv").exists() else pd.DataFrame(columns=["cod_ibge", "ano", "legislativa", "controle_externo"])
+    custo = custo[custo.legislativa.notna()].copy()
+    custo["custo"] = custo.legislativa - custo.controle_externo.fillna(0)
+    custo = custo[custo.custo > 0].sort_values("ano").groupby("cod_ibge").tail(1).set_index("cod_ibge")
+    ver = pd.read_csv(pasta / "vereadores.csv") if (pasta / "vereadores.csv").exists() else None
+    n_ver = ver.groupby("cod_ibge").size() if ver is not None else pd.Series(dtype=int)
+    linhas = []
+    for r in mu.itertuples():
+        c = custo.loc[r.cod_ibge] if r.cod_ibge in custo.index else None
+        linhas.append([int(r.cod_ibge), r.nome, r.uf, int(r.populacao or 0), int(r.capital), int(n_ver.get(r.cod_ibge, 0)),
+                       _r(c.custo) if c is not None else None, int(c.ano) if c is not None else None])
+    saida = RAIZ / "site" / "dados" / "municipios.json"
+    saida.write_text(json.dumps({
+        "meta": {"teto_deputado_estadual": round(SUBSIDIO_DEPUTADO_FEDERAL * 0.75, 2), "faixas_teto": [[f if f != float("inf") else None, pct] for f, pct in FAIXAS_TETO],
+                 "fonte_custo": "Tesouro Nacional (Siconfi), Declaração de Contas Anuais, função Legislativa, despesas liquidadas",
+                 "fonte_vereadores": "TSE, eleitos em 2024"},
+        "m": linhas}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    if ver is not None:
+        pasta_v = RAIZ / "site" / "dados" / "vereadores"
+        pasta_v.mkdir(parents=True, exist_ok=True)
+        uf_de = dict(zip(mu.cod_ibge, mu.uf))
+        ver["uf"] = ver.cod_ibge.map(uf_de)
+        for uf, g in ver[ver.uf.notna()].groupby("uf"):
+            por = {str(c): [[n.title(), pt, gn] for n, pt, gn in zip(gg.nome_urna, gg.partido, gg.genero)] for c, gg in g.groupby("cod_ibge")}
+            (pasta_v / f"{uf}.json").write_text(json.dumps(por, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    log(f"Site: câmaras municipais — {len(linhas)} cidades, {saida.stat().st_size / 1e3:.0f} KB")

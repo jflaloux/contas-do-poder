@@ -69,6 +69,9 @@ Cada número tem link para a fonte oficial.
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
 - [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
 - [ ] TCU; governadores e prefeitos das capitais (só salário); presidentes de estatais — depois
+- [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
+- [ ] Vereadores, passo 2: salário de cada vereador nas 27 capitais — Claude
+- [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 
 ## Fase 3 — Testes e confiabilidade
 

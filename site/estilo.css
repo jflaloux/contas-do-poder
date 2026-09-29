@@ -391,3 +391,10 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .faixa-cargo--e { fill: var(--accent); background: var(--accent); }
 .faixa-cargo--d, .faixa-cargo--s { fill: var(--hi); background: var(--hi); }
 .chave--faixa { height: 5px !important; border-radius: 2px; }
+
+/* câmaras municipais */
+.avatar--cidade { background: var(--accent-soft); color: var(--accent); display: inline-grid; place-items: center; }
+.cidade__corpo { padding: 18px 22px 22px; display: grid; gap: 14px; }
+.cidade__corpo h3 { margin: 6px 0 0; }
+.pessoa-chip--fixo { cursor: default; }
+.pessoa-chip--fixo:hover { border-color: var(--line); }

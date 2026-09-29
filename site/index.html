@@ -49,7 +49,7 @@
 
   <section class="abertura">
     <h1>Quanto ganha e quanto custa quem te representa?</h1>
-    <p class="lide">O custo de cada deputado federal e senador (salário, auxílios e despesas pagas com dinheiro público) e, à parte, quanto custa a equipe do gabinete. Agora também o presidente, o vice e os ministros. Comparado com os colegas e com o salário mínimo. Números oficiais da Câmara, do Senado e do Portal da Transparência.</p>
+    <p class="lide">O custo de cada deputado federal e senador (salário, auxílios e despesas pagas com dinheiro público) e, à parte, quanto custa a equipe do gabinete. Agora também o presidente, o vice, os ministros e a Câmara Municipal da sua cidade. Comparado com os colegas e com o salário mínimo. Números oficiais da Câmara, do Senado e do Portal da Transparência.</p>
     <div class="acoes">
       <button type="button" class="botao" id="abrir-guia">Descobrir os meus representantes</button>
       <button type="button" class="link-botao" data-ir="resumo">Compartilhar</button>
@@ -58,7 +58,7 @@
   </section>
 
   <section class="escolha" aria-labelledby="rotulo-escolha">
-    <p class="rotulo" id="rotulo-escolha">Escolha um deputado, senador ou ministro</p>
+    <p class="rotulo" id="rotulo-escolha">Escolha um deputado, senador, ministro ou a sua cidade</p>
     <div class="escolha__linha">
       <div class="busca-caixa">
         <label class="visualmente-oculto" for="busca">Nome, partido ou estado</label>
@@ -110,6 +110,7 @@
       <details><summary>Equipe do gabinete</summary><p>É o dinheiro que paga as pessoas que trabalham para o parlamentar; não vai para o bolso dele, por isso aparece separado. Na Câmara, cada deputado tem até R$ 165.806,07 por mês (a verba de gabinete) para pagar até 25 secretários parlamentares; contamos quem trabalhou em cada mês. No Senado, os assessores comissionados são pagos direto pela folha; o custo e o número de pessoas por senador são uma estimativa nossa, feita a partir da folha de pagamento.</p></details>
       <details><summary>Auxílio-moradia e imóvel funcional</summary><p>Quem não mora num dos apartamentos funcionais em Brasília pode receber auxílio-moradia: R$ 4.253 por mês na Câmara e R$ 5.500 no Senado.</p></details>
       <details><summary>Governo federal: presidente, vice e ministros</summary><p>Os dados vêm do Portal da Transparência. Vai para o bolso: o salário (R$ 46.366,19 por mês em 2025, o mesmo dos parlamentares), o 13º, as férias e os <strong>jetons</strong>, pagos a quem participa de conselhos de estatais e de outras entidades. Gastos do cargo: as viagens oficiais (diárias e passagens compradas). Ministros não têm cota parlamentar nem verba de gabinete. Voos em aviões da FAB e no avião presidencial não têm custo publicado, por isso o presidente aparece praticamente só com o salário. Os jetons de Itaipu, que é binacional, não aparecem no Portal. Ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; nesses meses, usamos o valor pago pela Câmara ou pelo Senado. O Portal publica os salários com uns 2 meses de atraso.</p></details>
+      <details><summary>Câmaras municipais e vereadores</summary><p>São 5.568 câmaras e cerca de 58 mil vereadores. O salário de cada vereador é definido por lei da própria Câmara e publicado só no portal de cada uma, sem uma fonte nacional. Por isso mostramos, para todas as cidades: quanto a Câmara gastou no ano (tudo: vereadores, servidores, prédio, contratos), segundo as contas que a prefeitura entrega ao Tesouro Nacional (Siconfi, função Legislativa, despesas liquidadas); esse gasto por mês, por habitante e dividido pelos vereadores; os vereadores eleitos em 2024 (TSE); e o teto do salário do vereador, que a Constituição (art. 29) fixa entre 20% e 75% do salário do deputado estadual, conforme a população.</p></details>
       <details><summary>Ajuda de custo e diárias</summary><p>A ajuda de custo é um salário extra pago no começo e no fim do mandato. As diárias são pagas em viagens oficiais, para cobrir hospedagem e alimentação.</p></details>
       <details><summary>Como calculamos</summary>
         <ul class="lista">
@@ -139,6 +140,8 @@
       <a class="cartao fonte" href="https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html" target="_blank" rel="noopener"><span class="rotulo">Senado Federal</span><strong>Folha de pagamento</strong><span>Salário, 13º, auxílios e diárias, mês a mês; base da estimativa dos assessores.</span><span class="fonte__link">abrir a fonte ↗</span></a>
       <a class="cartao fonte" href="https://www6g.senado.leg.br/transparencia/sen/" target="_blank" rel="noopener"><span class="rotulo">Senado Federal</span><strong>Cota e recursos utilizados</strong><span>Cota parlamentar (CEAPS), passagens, correios e moradia de cada senador.</span><span class="fonte__link">abrir a fonte ↗</span></a>
       <a class="cartao fonte" href="https://portaldatransparencia.gov.br/download-de-dados" target="_blank" rel="noopener"><span class="rotulo">Governo federal (CGU)</span><strong>Portal da Transparência</strong><span>Salário, jetons e viagens oficiais do presidente, do vice e dos ministros.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://apidatalake.tesouro.gov.br/docs/siconfi/" target="_blank" rel="noopener"><span class="rotulo">Tesouro Nacional</span><strong>Siconfi</strong><span>Quanto cada Câmara Municipal gastou no ano e a população de cada cidade.</span><span class="fonte__link">abrir a fonte ↗</span></a>
+      <a class="cartao fonte" href="https://dadosabertos.tse.jus.br/dataset/candidatos-2024" target="_blank" rel="noopener"><span class="rotulo">Tribunal Superior Eleitoral</span><strong>Candidatos 2024</strong><span>Vereadores eleitos em cada cidade, com partido.</span><span class="fonte__link">abrir a fonte ↗</span></a>
       <div class="cartao fonte"><span class="rotulo">Tabela própria</span><strong>Salário mínimo</strong><span>Valor de cada ano, usado para converter os valores em salários mínimos.</span></div>
       <a class="cartao fonte" href="https://www2.camara.leg.br/comunicacao/assessoria-de-imprensa/guia-para-jornalistas/cota-parlamentar" target="_blank" rel="noopener"><span class="rotulo">Tabela própria</span><strong>Limite da cota por estado</strong><span>Valores atuais publicados pela Câmara.</span><span class="fonte__link">abrir a fonte ↗</span></a>
     </div>

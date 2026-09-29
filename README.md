@@ -124,6 +124,26 @@ vezes: entra tudo do Congresso (salário, cota, equipe) e, do governo, só o que
 viagens, outros pagamentos), porque o salário dos meses como ministro já foi pago pelo Congresso. A faixa
 embaixo do gráfico mês a mês mostra o cargo de cada mês. Nos rankings, cada cargo aparece no seu grupo.
 
+## Câmaras municipais (vereadores), passo 1
+
+Robô `coleta/municipios.py`, para as 5.568 câmaras:
+
+- **Custo da Câmara**: Declaração de Contas Anuais (Siconfi, Tesouro Nacional), função "01 - Legislativa" menos
+  "01.032 - Controle Externo" (tribunal de contas do município, só em SP e no Rio), despesas liquidadas. Uma
+  consulta por cidade; os resultados ficam em `dados/municipios/camaras_custo.csv` (vai para o Git) e o robô só
+  consulta as que faltam. Cidade que não entregou é tentada de novo depois de 30 dias; sem o ano mais recente,
+  vale o anterior.
+- **Vereadores eleitos em 2024**: arquivo de candidatos do TSE (código do TSE ligado ao do IBGE pelo nome da
+  cidade; 13 nomes escritos diferente estão numa tabela no código). Suplentes que assumiram depois ainda não
+  aparecem.
+- **Teto do salário do vereador**: Constituição, art. 29, VI (20% a 75% do salário do deputado estadual, que é
+  no máximo 75% do federal), pela população.
+- **Valor suspeito**: custo por habitante abaixo de 30% da mediana das cidades do mesmo tamanho (46 cidades).
+  Provavelmente parte do gasto foi informada em outra função; a cidade aparece com aviso e fica fora das
+  comparações.
+- O salário de cada vereador ainda não tem fonte nacional. Próximos passos: capitais (um robô por câmara) e os
+  estados cujo tribunal de contas publica a folha.
+
 ## Compartilhamento e medição
 
 - **Imagem para compartilhar**: no fim da página de cada parlamentar, o site mostra uma imagem 1080×1350 (4:5,

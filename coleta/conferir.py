@@ -30,6 +30,16 @@ def _cota_oficial_camara(id_, ano):
     return pares.get("Gasto"), pares.get("Não utilizado")
 
 
+def _cidades_com_custo():
+    arq = RAIZ / "site" / "dados" / "municipios.json"
+    return sum(1 for m in json.load(open(arq, encoding="utf-8"))["m"] if m[6]) if arq.exists() else 0
+
+
+def _vereadores_no_site():
+    arq = RAIZ / "site" / "dados" / "municipios.json"
+    return sum(m[5] for m in json.load(open(arq, encoding="utf-8"))["m"]) if arq.exists() else 0
+
+
 def executar():
     random.seed(42)
     rel = [f"# Conferência dos dados — {datetime.now():%d/%m/%Y %H:%M}", ""]
@@ -154,6 +164,8 @@ def executar():
     com_salario_e = lanc[(lanc.casa == "exe") & (lanc.grupo == "ganha") & (lanc.ano * 100 + lanc.mes == ult_e)].id_politico.nunique()
     checagens = [
         (f"Governo federal: no cargo em {ult_e % 100:02d}/{ult_e // 100}", len(no_cargo_e), 30),
+        ("Câmaras municipais com custo no arquivo do site", _cidades_com_custo(), 5000),
+        ("Vereadores eleitos no arquivo do site", _vereadores_no_site(), 55000),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),

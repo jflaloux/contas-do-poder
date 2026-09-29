@@ -57,7 +57,7 @@
 
   // ================================================================== estado
   const S = {
-    D: null, porId: new Map(), sel: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
+    D: null, porId: new Map(), sel: null, cidade: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
     rank: { casa: null, metrica: "custo", periodo: null, uf: "", noCargo: true, completo: false },
   };
   let observadores = [];
@@ -204,14 +204,18 @@
     }).map((p) => (p.j && S.porId.get(p.j)) || p).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
   }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
-  function ligarBusca(input, caixa, aoEscolher, filtro) {
+  function ligarBusca(input, caixa, aoEscolher, filtro, comCidades) {
     let itens = [], ativo = -1;
     const fechar = () => { caixa.hidden = true; ativo = -1; };
     const marcar = () => [...caixa.children].forEach((b, i) => b.setAttribute("aria-selected", String(i === ativo)));
     input.addEventListener("input", () => {
-      itens = encontrar(input.value, filtro).slice(0, 8);
+      const pol = encontrar(input.value, filtro).slice(0, comCidades ? 6 : 8);
+      const cid = comCidades ? encontrarCidades(input.value) : [];
+      itens = [...pol, ...cid];
       caixa.textContent = "";
-      itens.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
+      cid.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao sugestao--cidade", role: "option", onclick: () => { fechar(); input.value = ""; irParaCidade(c, "busca"); } },
+        iconeCidade(avatarCidade("p")), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
+      pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
       if (input.value.trim().length >= 2 && !itens.length) caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px" }, "Ninguém encontrado. Confira a grafia."));
       caixa.hidden = !caixa.children.length;
@@ -221,7 +225,10 @@
       if (caixa.hidden) return;
       if (e.key === "ArrowDown") { ativo = Math.min(itens.length - 1, ativo + 1); marcar(); e.preventDefault(); }
       else if (e.key === "ArrowUp") { ativo = Math.max(0, ativo - 1); marcar(); e.preventDefault(); }
-      else if (e.key === "Enter" && itens.length) { const p = itens[Math.max(0, ativo)]; fechar(); input.value = ""; aoEscolher(p); e.preventDefault(); }
+      else if (e.key === "Enter" && itens.length) {
+        const botoes = [...caixa.querySelectorAll("button")];
+        (botoes[Math.max(0, ativo)] || botoes[0]).click(); e.preventDefault();
+      }
       else if (e.key === "Escape") fechar();
     });
     document.addEventListener("click", (e) => { if (!caixa.contains(e.target) && e.target !== input) fechar(); });
@@ -889,6 +896,159 @@
           h("p", { class: "nota" }, `A imagem e o texto mostram o período escolhido no contracheque (${nomePeriodo(k, true)}). Dados abertos oficiais ${fonteDados(p)}.`))));
   }
 
+  // ================================================================== câmaras municipais (vereadores)
+  // Carregado à parte (dados/municipios.json), para não pesar a primeira visita.
+  const CID = { m: null, meta: null, porId: new Map(), ver: {}, carregando: null };
+  function carregarCidades() {
+    if (!CID.carregando) {
+      CID.carregando = fetch("dados/municipios.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }).then((d) => {
+        CID.meta = d.meta;
+        CID.m = d.m.map(([cod, n, uf, pop, cap, nv, custo, ano]) => ({ cod, id: `cid-${cod}`, n, uf, pop, cap, nv, custo, ano }));
+        CID.m.forEach((c) => CID.porId.set(c.id, c));
+        // mediana do custo por habitante em cada faixa de população; valor muito abaixo dela é suspeito
+        // (parte do gasto da Câmara deve ter sido informada em outra função nas contas da prefeitura)
+        CID.med = CID.meta.faixas_teto.map((_, i) => mediana(CID.m.filter((c) => c.custo > 0 && c.pop > 0 && faixaDe(c.pop) === i).map(porHabMes)));
+        CID.m.forEach((c) => { c.suspeito = c.custo > 0 && c.pop > 0 && porHabMes(c) < 0.3 * CID.med[faixaDe(c.pop)]; });
+        return CID;
+      });
+    }
+    return CID.carregando;
+  }
+  const carregarVereadores = (uf) => (CID.ver[uf] = CID.ver[uf] || fetch(`dados/vereadores/${uf}.json`).then((r) => r.json()));
+  const reaisC = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }).replace(/ /g, " ");
+  const temCusto = (c) => c.custo > 0 && c.pop > 0 && !c.suspeito;
+  const porHabMes = (c) => c.custo / c.pop / 12;
+  const faixaDe = (pop) => CID.meta.faixas_teto.findIndex(([lim]) => lim === null || pop <= lim);
+  const tetoVereador = (pop) => CID.meta.faixas_teto[faixaDe(pop)][1] * CID.meta.teto_deputado_estadual;
+  function nomeFaixa(i) {
+    const f = CID.meta.faixas_teto, ant = i ? f[i - 1][0] : 0, lim = f[i][0];
+    return lim === null ? `mais de ${num(ant, 0)} habitantes` : i === 0 ? `até ${num(lim, 0)} habitantes` : `entre ${num(ant + 1, 0)} e ${num(lim, 0)} habitantes`;
+  }
+  function encontrarCidades(q, n = 4) {
+    if (!CID.m) return [];
+    const t = semAcento(q).trim();
+    if (t.length < 3) return [];
+    return CID.m.filter((c) => semAcento(`${c.n} ${c.uf}`).includes(t) || semAcento(`${c.n} ${ESTADOS[c.uf]}`).includes(t))
+      .sort((a, b) => (semAcento(a.n).startsWith(t) ? 0 : 1) - (semAcento(b.n).startsWith(t) ? 0 : 1) || b.pop - a.pop).slice(0, n);
+  }
+  function avatarCidade(tam) {
+    const lado = tam === "g" ? 34 : 18;
+    const svg = s("svg", { viewBox: "0 0 24 24", width: lado, height: lado });
+    svg.append(s("path", { fill: "currentColor", d: "M12 2 2 7v2h20V7L12 2Zm-7 9v7h3v-7H5Zm5.5 0v7h3v-7h-3ZM16 11v7h3v-7h-3ZM2 20v2h20v-2H2Z" }));
+    return h("span", { class: `avatar avatar--${tam} avatar--cidade`, "aria-hidden": "true" }, svg);
+  }
+  const iconeCidade = (el) => el;
+  const irParaCidade = (c, origem) => { S.origem = origem; location.hash = c.id; };
+  function textoCidade(c) {
+    const link = endereco() ? `${endereco()}#${c.id}` : "";
+    return [
+      `*Câmara Municipal de ${c.n} (${c.uf})*`,
+      temCusto(c) ? `Custa *${compacto(c.custo / 12)} por mês* (${reaisC(porHabMes(c))} por habitante, por mês), com ${c.nv} vereadores.` : `${c.nv} vereadores.`,
+      `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês.`,
+      "",
+      "Dados abertos oficiais do Tesouro Nacional e do TSE.",
+      `Veja a da sua cidade: ${link || "Contas do Poder"}`,
+    ].join("\n");
+  }
+  function secCidade(c) {
+    const tem = temCusto(c) || c.suspeito;
+    const faixa = faixaDe(c.pop);
+    const mesmos = CID.m.filter((x) => temCusto(x) && faixaDe(x.pop) === faixa);
+    const med = mediana(mesmos.map(porHabMes));
+    const pct = temCusto(c) && mesmos.length > 1 ? Math.round((mesmos.filter((x) => porHabMes(x) < porHabMes(c)).length / (mesmos.length - 1)) * 100) : null;
+    const doEstado = CID.m.filter((x) => x.uf === c.uf && temCusto(x)).sort((a, b) => porHabMes(b) - porHabMes(a));
+    const posUF = doEstado.findIndex((x) => x.cod === c.cod);
+    const teto = tetoVereador(c.pop);
+    const lista = h("div", { class: "vereadores" }, h("p", { class: "discreto pequeno" }, "Carregando os vereadores…"));
+    carregarVereadores(c.uf).then((d) => {
+      const vs = d[String(c.cod)] || [];
+      lista.textContent = "";
+      if (!vs.length) { lista.append(h("p", { class: "discreto pequeno" }, "Sem a lista de eleitos do TSE para esta cidade.")); return; }
+      const partidos = {};
+      vs.forEach(([, pt]) => { partidos[pt] = (partidos[pt] || 0) + 1; });
+      const mulheres = vs.filter(([, , g]) => g === "F").length;
+      add(lista,
+        h("p", { class: "discreto pequeno" }, `${Object.entries(partidos).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([pt, n]) => `${pt} ${n}`).join(" · ")} — ${mulheres} ${mulheres === 1 ? "mulher" : "mulheres"} de ${vs.length}.`),
+        h("div", { class: "lista-estado__grupo" }, vs.map(([nome, pt]) => h("span", { class: "pessoa-chip pessoa-chip--fixo" }, nome, h("small", null, pt)))));
+    }, () => { lista.textContent = "Não foi possível carregar os vereadores."; });
+    const caixa = h("div", { class: "grafico" });
+    if (tem && mesmos.length > 5) requestAnimationFrame(() => graficoPontos(caixa, c.id, mesmos.map((x) => ({ id: x.id, n: x.n, sub: x.uf, v: porHabMes(x) })), reaisC));
+    const texto = textoCidade(c);
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    return h("article", { class: "cartao conta", id: "cidade" },
+      h("div", { class: "conta__topo" }, iconeCidade(avatarCidade("g")),
+        h("div", null,
+          h("p", { class: "rotulo" }, "Câmara Municipal"),
+          h("h2", null, `${c.n} (${c.uf})`),
+          h("div", { class: "conta__sub" }, h("span", null, `${num(c.pop, 0)} habitantes · ${c.nv} vereadores${c.cap ? " · capital" : ""}`))),
+        null),
+      h("div", { class: "cidade__corpo" },
+        tem ? h("div", { class: "estatisticas" },
+          estatistica("Custo da Câmara por mês", compacto(c.custo / 12), `${compacto(c.custo)} em ${c.ano}`),
+          estatistica("Por habitante", reaisC(porHabMes(c)), `por mês (${reais(c.custo / c.pop)} por ano)`),
+          estatistica("Dividido pelos vereadores", compacto(c.custo / 12 / Math.max(1, c.nv)), "por vereador, por mês")) :
+          h("p", { class: "aviso" }, "Esta cidade não informou ao Tesouro Nacional quanto a Câmara gastou (ou informou de um jeito que não separa a Câmara)."),
+        c.suspeito ? h("p", { class: "aviso" }, `Atenção: este valor é muito menor que o das cidades do mesmo tamanho (mediana de ${reaisC(med)} por habitante, por mês). É provável que parte do gasto da Câmara tenha sido informada em outra função nas contas da prefeitura. Por isso esta cidade fica fora das comparações.`) : null,
+        tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara de ${c.n} custa mais que ${pct}% das ${mesmos.length} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
+        tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
+        tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
+        h("div", { class: "estatisticas" },
+          estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
+        h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. O salário de verdade é definido pela própria Câmara e ainda não tem uma fonte nacional: por enquanto mostramos o teto.`),
+        h("h3", null, `Os ${c.nv} vereadores eleitos em 2024`), lista,
+        h("div", { class: "acoes" },
+          h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => evento("compartilhar", { metodo: "whatsapp", conteudo: "cidade", cidade: c.n }) }, "Mandar no WhatsApp"),
+          h("button", { type: "button", class: "botao botao--leve", onclick: () => { evento("compartilhar", { metodo: "copiar_texto", conteudo: "cidade" }); copiarTexto(texto, retorno, "Texto copiado. É só colar."); } }, "Copiar texto")),
+        retorno,
+        h("ul", { class: "lista nota" },
+          h("li", null, `Custo da Câmara: tudo o que ela gastou em ${c.ano || "no ano"} (salários de vereadores e servidores, prédio, contratos), segundo as contas que a prefeitura entregou ao Tesouro Nacional (Siconfi, função Legislativa). Não é o salário de cada vereador.`),
+          h("li", null, "Vereadores: eleitos em 2024, segundo o TSE. Quem assumiu depois (suplentes) ainda não aparece."))));
+  }
+  // Seção da página inicial (e embaixo da página de uma cidade): procurar a cidade e as mais caras do estado
+  function secCamaras(atual) {
+    const sec = h("section", { class: "bloco", id: "cidades" });
+    const corpo = h("div", { style: "display:grid;gap:12px" }, h("p", { class: "discreto" }, "Carregando as câmaras…"));
+    let uf = atual ? atual.uf : S.ufLista || "SP";
+    const input = h("input", { type: "search", id: "busca-cidade", placeholder: "Sua cidade. Ex.: Campinas", autocomplete: "off" });
+    const sug = h("div", { class: "sugestoes", hidden: true });
+    input.addEventListener("input", () => {
+      sug.textContent = "";
+      encontrarCidades(input.value, 8).forEach((c) => sug.append(h("button", { type: "button", class: "sugestao", onclick: () => irParaCidade(c, "busca_cidade") },
+        iconeCidade(avatarCidade("p")), h("span", null, `${c.n} (${c.uf})`, h("small", null, `${num(c.pop, 0)} habitantes · ${c.nv} vereadores`)))));
+      sug.hidden = !sug.children.length;
+    });
+    const desenhar = () => {
+      corpo.textContent = "";
+      const todas = CID.m.filter(temCusto);
+      const total = todas.reduce((a, c) => a + c.custo, 0), pop = todas.reduce((a, c) => a + c.pop, 0);
+      const doEstado = todas.filter((c) => c.uf === uf).sort((a, b) => porHabMes(b) - porHabMes(a));
+      const max = Math.max(...doEstado.map(porHabMes), 0.01);
+      const linha = (c, pos) => h("a", { class: `rank${atual && c.cod === atual.cod ? " rank--eu" : ""}`, href: `#${c.id}`, onclick: () => { S.origem = "ranking_cidades"; } },
+        h("span", { class: "rank__pos" }, `${pos}º`),
+        h("span", { class: "rank__nome" }, c.n, " ", h("small", null, `${num(c.pop, 0)} hab.`)),
+        h("span", { class: "rank__valor" }, reaisC(porHabMes(c))),
+        h("span", { class: "barra__trilho" }, h("span", { class: "barra__fill", style: `width:${Math.max(0.5, (porHabMes(c) / max) * 100)}%` })));
+      const n = Math.min(10, Math.ceil(doEstado.length / 2));
+      add(corpo,
+        h("div", { class: "estatisticas" },
+          estatistica("Todas as câmaras do Brasil", `${compacto(total / 12)} por mês`, `${num(todas.length, 0)} cidades com dados`),
+          estatistica("Por habitante", reaisC(total / pop / 12), "por mês, em média no Brasil"),
+          estatistica("Vereadores", num(CID.m.reduce((a, c) => a + c.nv, 0), 0), "eleitos em 2024")),
+        h("div", { class: "filtros" }, h("div", { class: "campo" }, h("label", { for: "uf-cidades" }, "Estado"), seletorUF("uf-cidades", uf, (v) => { uf = v || "SP"; evento("ver_estado_cidades", { uf }); desenhar(); }, "Escolha o estado"))),
+        doEstado.length ? h("div", { class: "duas-colunas" },
+          h("article", { class: "cartao" }, h("h3", null, `Mais caras por habitante em ${ESTADOS[uf]}`), h("div", { class: "rank-lista" }, doEstado.slice(0, n).map((c, i) => linha(c, i + 1)))),
+          h("article", { class: "cartao" }, h("h3", null, "Mais baratas por habitante"), h("div", { class: "rank-lista" }, doEstado.slice(-n).reverse().map((c, i) => linha(c, doEstado.length - i))))) : null,
+        h("p", { class: "nota" }, "Custo da Câmara por habitante, por mês. Cidades pequenas costumam custar mais por habitante, porque toda câmara tem pelo menos 9 vereadores e uma estrutura mínima."));
+    };
+    carregarCidades().then(desenhar, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
+    add(sec, h("p", { class: "rotulo" }, "Vereadores"),
+      h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
+      h("p", { class: "discreto" }, "As 5.568 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário."),
+      h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-cidade" }, "Procurar cidade"), input, sug),
+      corpo);
+    return sec;
+  }
+
   // ================================================================== seções gerais
   const pastaCurta = (g) => (/^Presidente/.test(g) ? "Presidente" : /^Vice/.test(g) ? "Vice-presidente"
     : /^Advogad/.test(g) ? "Advocacia-Geral da União" : g.replace(/^Ministr[oa](-chefe)?\s+(d[aoe]s?|de)\s+/, ""));
@@ -1039,7 +1199,7 @@
       h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
-    ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); });
+    ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); }, null, true);
     $("#abrir-guia").addEventListener("click", abrirGuia);
     document.querySelectorAll("[data-ir]").forEach((b) => b.addEventListener("click", () => irPara(b.dataset.ir)));
     const pend = $("#pendencias");
@@ -1059,7 +1219,7 @@
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -1082,7 +1242,9 @@
         h("div", { class: "guia__outros" },
           h("p", null, h("strong", null, "Ou veja quem não depende do estado")),
           h("button", { type: "button", class: "guia__opcao", onclick: passoGoverno },
-            h("span", null, h("strong", null, "Governo federal"), h("small", null, "Presidente, vice e ministros")), h("span", { "aria-hidden": "true" }, "→"))),
+            h("span", null, h("strong", null, "Governo federal"), h("small", null, "Presidente, vice e ministros")), h("span", { "aria-hidden": "true" }, "→")),
+          h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: "cidades" }); fechar(); if (location.hash === "#cidades") irPara("cidades"); else location.hash = "cidades"; } },
+            h("span", null, h("strong", null, "Câmara da sua cidade"), h("small", null, "Vereadores e quanto custa a Câmara")), h("span", { "aria-hidden": "true" }, "→"))),
         h("div", { class: "guia__rodape" }, h("button", { type: "button", class: "link-botao", onclick: () => { evento("guia", { etapa: "pulou" }); fechar(); } }, "Pular e ver o painel")));
     };
     // quem não é eleito por estado: presidente, vice e ministros (depois, outros grupos)
@@ -1153,7 +1315,13 @@
   function lerEndereco() {
     const bruto = decodeURIComponent(location.hash.slice(1));
     const [base, per] = bruto.split("~");
+    if (base && base.startsWith("cid-")) {
+      if (S.cidade !== base) evento("ver_cidade", { cidade: base, origem: S.origem || (S.carregado ? "navegacao" : "link") });
+      S.origem = null; S.sel = null; S.cidade = base;
+      return null;
+    }
     if (base && S.porId.has(base)) {
+      S.cidade = null;
       const p = S.porId.get(base);
       if (S.sel !== base) {
         S.outro = null; S.rank.completo = false;
@@ -1165,6 +1333,8 @@
       S.periodo = periodos(p).includes(per) ? per : periodoPadrao(p);
       return null;
     }
+    // "#" (logo) ou uma seção que só existe na página inicial: volta para a página inicial
+    if (!base || ["tipico", "governo", "cidades"].includes(base)) { S.sel = null; S.cidade = null; }
     return base || null; // pode ser o nome de uma seção
   }
   function render(rolar) {
@@ -1172,6 +1342,20 @@
     const app = $("#app");
     app.textContent = "";
     const p = S.sel ? S.porId.get(S.sel) : null;
+    if (S.cidade) {
+      document.title = "Câmara Municipal · Contas do Poder";
+      const espera = h("p", { class: "discreto" }, "Carregando a câmara…");
+      app.append(espera);
+      carregarCidades().then(() => {
+        const c = CID.porId.get(S.cidade);
+        if (!c) { espera.textContent = "Cidade não encontrada."; return; }
+        document.title = `Câmara de ${c.n} · Contas do Poder`;
+        espera.replaceWith(secCidade(c), secCamaras(c));
+        navSecoes(["cidade", "cidades", "entenda", "fontes"]);
+        if (rolar) irPara("cidade");
+      }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
+      return;
+    }
     if (p) {
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
@@ -1181,8 +1365,8 @@
       if (rolar) irPara("contracheque");
     } else {
       document.title = "Contas do Poder";
-      app.append(...[secTipicos(), secGoverno(), secRanking(null, null), secResumoGeral()].filter(Boolean));
-      navSecoes(["tipico", "governo", "ranking", "resumo", "entenda", "fontes"]);
+      app.append(...[secTipicos(), secGoverno(), secCamaras(null), secRanking(null, null), secResumoGeral()].filter(Boolean));
+      navSecoes(["tipico", "governo", "cidades", "ranking", "resumo", "entenda", "fontes"]);
     }
   }
   window.addEventListener("hashchange", () => { const secao = lerEndereco(); render(!secao); if (secao) irPara(secao); });
@@ -1195,7 +1379,8 @@
       montarCabecalho();
       const secao = lerEndereco();
       S.carregado = true;
-      render(!!S.sel);
+      render(!!S.sel || !!S.cidade);
+      carregarCidades().catch(() => {});
       if (secao) irPara(secao);
     })
     .catch((e) => {
