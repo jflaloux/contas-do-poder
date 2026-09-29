@@ -13,16 +13,18 @@ Formato (chaves curtas para o arquivo ficar pequeno):
           pm = soma de pessoas-mês da equipe; mp = meses com equipe contada; pu = pessoas no último mês
      t: série mensal [[aaaamm, ganha, custa, equipe, pessoas, rateado], ...]
         rateado = parte do mês que veio de um valor anual dividido pelos meses (aproximação)
-     ct: {"2025": [[índice_do_tipo, valor], ...], ..., "leg": [...]}   (top 6 tipos da cota, total do período;
-         o site divide pelos meses para mostrar a média por mês)
+     dt: {"2025": {"cota_parlamentar": [[índice_do_tipo, valor], ...], "viagens_oficiais": [...], ...}, ..., "leg": {...}}
+         detalhe de algumas categorias (até 8 tipos cada, total do período; o site divide pelos meses)
+     nv: {"2025": viagens, ...} (só governo: número de viagens oficiais no período)
      im: imóvel funcional
 """
 import json
+import re
 from datetime import datetime
 
 import pandas as pd
 
-from .config import PROCESSADOS, RAIZ
+from .config import BRUTOS, PROCESSADOS, RAIZ
 from .util import ler_json, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "dados.json"
@@ -64,6 +66,34 @@ def tipo_simples(descricao):
     return descricao.strip().capitalize()
 
 
+def _empresa(texto):
+    """'Jetons: SERVICO SOCIAL DO COMERCIO - SESC' -> 'Servico Social do Comercio (SESC)'."""
+    t = texto.replace("Jetons: ", "").strip()
+    sigla = ""
+    if " - " in t and len(t.rsplit(" - ", 1)[1]) <= 8:
+        t, sigla = t.rsplit(" - ", 1)
+    pequenas = {"de", "da", "do", "das", "dos", "e", "em", "a", "o"}
+    palavras = []
+    for k, w in enumerate(t.split()):
+        if "." in w or (w.isupper() and len(w) <= 2 and w.lower() not in pequenas):
+            palavras.append(w)  # S.A., BB...
+        elif k and w.lower() in pequenas:
+            palavras.append(w.lower())
+        else:
+            palavras.append(w.capitalize())
+    nome = " ".join(palavras)
+    return f"{nome} ({sigla})" if sigla else nome
+
+
+# categorias com detalhe por tipo -> como transformar a descrição do lançamento no nome do tipo
+DETALHE = {
+    "cota_parlamentar": tipo_simples,
+    "outros_gastos_mandato": lambda d: re.sub(r"\s*\(ATC[^)]*\)", "", d.split(" (R$")[0]).strip(),
+    "viagens_oficiais": lambda d: d.split(" (")[0].strip(),
+    "jetons": _empresa,
+}
+
+
 def _r(v):
     return int(round(float(v)))
 
@@ -74,12 +104,18 @@ def executar():
     lanc = pd.read_csv(PROCESSADOS / "lancamentos.csv.gz")
     equipe = pd.read_csv(PROCESSADOS / "equipe.csv")
 
-    cota = lanc[lanc.categoria == "cota_parlamentar"].copy()
-    cota["descricao"] = cota["descricao"].map(tipo_simples)
-    tipos = sorted(cota["descricao"].unique())
+    # detalhe por tipo de algumas categorias (o que aparece ao abrir cada linha do contracheque)
+    det = lanc[lanc.categoria.isin(DETALHE)].copy()
+    det["tipo"] = [DETALHE[c](d) for c, d in zip(det.categoria, det.descricao)]
+    tipos = sorted(det["tipo"].unique())
     idx_tipo = {t: i for i, t in enumerate(tipos)}
-    cota_ano = cota.groupby(["id_politico", "ano", "descricao"])["valor"].sum()
-    cota_leg = cota.groupby(["id_politico", "descricao"])["valor"].sum()
+    det_ano = det.groupby(["id_politico", "ano", "categoria", "tipo"])["valor"].sum()
+    det_leg = det.groupby(["id_politico", "categoria", "tipo"])["valor"].sum()
+    det_ids = set(det_ano.index.get_level_values(0))
+    # número de viagens do governo federal, só nos meses no cargo
+    viagens = pd.read_csv(BRUTOS / "executivo_viagens.csv") if (BRUTOS / "executivo_viagens.csv").exists() else None
+    creditos = ler_json(FOTOS / "creditos.json").get("fotos", {}) if (FOTOS / "creditos.json").exists() else {}
+    no_cargo = {p["id"]: set(p.get("meses_no_cargo") or []) for p in politicos if p["casa"] == "executivo"}
 
     # Valores por mês e grupo; cada média usa os seus próprios meses
     # (ex.: deputado licenciado não recebe salário, mas o gabinete continua gastando).
@@ -139,22 +175,41 @@ def executar():
         serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas), _r(r.rateado)]
                  for r in mm.sort_values(["ano", "mes"]).itertuples()]
 
-        ct = {}
-        for ano in anos:
-            if (pid, ano) in cota_ano.index.droplevel(2):
-                s_ = cota_ano.loc[pid, ano].sort_values(ascending=False).head(6)
-                ct[str(ano)] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
-        if pid in cota_leg.index.get_level_values(0):
-            s_ = cota_leg.loc[pid].sort_values(ascending=False).head(6)
-            ct["leg"] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
+        dt = {}
+        if pid in det_ids:
+            def por_categoria(serie):
+                saida = {}
+                for cat, g in serie.groupby(level=0):
+                    g = g.droplevel(0).sort_values(ascending=False)
+                    itens = [[idx_tipo[t], _r(v)] for t, v in g.head(8).items() if abs(v) >= 1]
+                    if itens:
+                        saida[cat] = itens
+                return saida
+            por_ano = det_ano.loc[pid]
+            for ano in anos:
+                if ano in por_ano.index.get_level_values(0):
+                    dt[str(ano)] = por_categoria(por_ano.loc[ano])
+            dt["leg"] = por_categoria(det_leg.loc[pid])
+        nv = {}
+        if exe and viagens is not None:
+            v = viagens[(viagens.id_portal == int(pid.split("-")[1]))]
+            v = v[(v.ano * 100 + v.mes).isin(no_cargo.get(pid, set()))]
+            nv = {str(a): int(n) for a, n in v.groupby("ano")["viagens"].sum().items()}
+            if nv:
+                nv["leg"] = sum(nv.values())
 
         item = {"id": pid, "k": {"camara": "d", "senado": "s", "executivo": "e"}[p["casa"]], "n": p["nome"], "nc": p.get("nome_civil"),
                 "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"),
                 "f": f"fotos/{pid}.webp" if (FOTOS / f"{pid}.webp").exists() else p.get("foto"),
                 "x": 1 if p.get("em_exercicio") else 0, "o": p.get("pagina_oficial"),
-                "per": per, "t": serie, "ct": ct}
+                "per": per, "t": serie, "dt": dt}
+        if nv:
+            item["nv"] = nv
         if exe:
             item["tp"] = {"presidente": "pr", "vice": "vp"}.get(p.get("tipo"), "mi")
+            credito = creditos.get(pid)
+            if credito and item["f"] and item["f"].startswith("fotos/"):
+                item["fc"] = {"a": credito.get("autor"), "l": credito.get("licenca"), "u": credito.get("pagina")}
             if p.get("quarentena"):
                 item["q"] = [p["quarentena"]["meses"], _r(p["quarentena"]["total"])]
         if p.get("relacionado"):
@@ -176,7 +231,7 @@ def executar():
             "salario_minimo": {str(k): v for k, v in meta["salario_minimo"].items()},
             "categorias": meta["categorias"],
             "rateio": meta["rateio"],
-            "tipos_cota": tipos,
+            "tipos": tipos,
             "limites_cota_camara": limites,
             "pendencias": meta["pendencias"],
             "fontes": meta["fontes"],

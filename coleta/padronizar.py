@@ -371,13 +371,14 @@ def _executivo(politicos_congresso, lanc_congresso):
                     L.append(_linha(pid, x.ano, x.mes, cat, desc, valor, "portal_remuneracao"))
         for x in jet[jet.id_portal == p["id"]].itertuples():
             if (x.ano, x.mes) in chave_meses and x.valor:
-                L.append(_linha(pid, x.ano, x.mes, "jetons", f"Jetons: {x.empresa.title()}", x.valor, "portal_jetons"))
+                L.append(_linha(pid, x.ano, x.mes, "jetons", f"Jetons: {x.empresa}", x.valor, "portal_jetons"))
         for x in via[via.id_portal == p["id"]].itertuples():
-            valor = x.diarias + x.passagens + x.outros - x.devolucao
-            if (x.ano, x.mes) in chave_meses and valor >= 0.01:
-                L.append(_linha(pid, x.ano, x.mes, "viagens_oficiais",
-                                f"{x.viagens} {'viagem' if x.viagens == 1 else 'viagens'} (diárias R$ {x.diarias:,.2f}, passagens R$ {x.passagens:,.2f})"
-                                .replace(",", "X").replace(".", ",").replace("X", "."), valor, "portal_viagens"))
+            if (x.ano, x.mes) not in chave_meses:
+                continue
+            for valor, desc in ((x.passagens, "Passagens"), (x.diarias - x.devolucao, "Diárias (já sem as devoluções)"),
+                                (x.outros, "Outros gastos de viagem")):
+                if abs(valor) >= 0.01:
+                    L.append(_linha(pid, x.ano, x.mes, "viagens_oficiais", desc, valor, "portal_viagens"))
         # quem é deputado ou senador licenciado pode receber o salário pelo Congresso
         if par is not None and len(ganha_congresso):
             g = ganha_congresso[ganha_congresso.id_politico == par["id"]]

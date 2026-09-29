@@ -5,16 +5,30 @@ Câmara não deixa outro endereço usar as fotos dele num canvas (CORS). De queb
 mais rápido e não depende do site oficial para mostrar as fotos.
 
 Só baixa as fotos que ainda não existem. Se uma foto falhar, o site usa o endereço oficial.
+
+Governo federal: ministro que é deputado ou senador usa a foto oficial do Congresso. Os outros não têm
+foto em dados abertos; buscamos no Wikidata/Wikimedia Commons, só com licença livre (CC BY, CC BY-SA,
+CC0 ou domínio público) e com o crédito do autor guardado em site/fotos/creditos.json (o site mostra).
+Para não pegar a foto errada: a pessoa no Wikidata precisa ser brasileira e ter ocupado um cargo de
+ministro, presidente ou vice; e a foto precisa ser um retrato (mais alta que larga).
 """
+import json
+import re
+import time
 from concurrent.futures import ThreadPoolExecutor
 from io import BytesIO
 
 from PIL import Image
 
 from .config import PARALELO, PROCESSADOS, RAIZ
-from .util import TempoEsgotado, baixar, ler_json, log
+from .util import TempoEsgotado, baixar, ler_json, log, salvar_json
 
 PASTA = RAIZ / "site" / "fotos"
+CREDITOS = PASTA / "creditos.json"
+WIKIDATA = "https://www.wikidata.org/w/api.php"
+COMMONS = "https://commons.wikimedia.org/w/api.php"
+CARGO_OK = re.compile(r"minist|presid|advogad|attorney general|chefe", re.I)
+LICENCA_OK = re.compile(r"^(cc[ -]by|cc0|public domain|dom[ií]nio p[uú]blico|pd)", re.I)
 TAMANHO = (240, 320)  # retrato 3:4
 
 
@@ -52,7 +66,7 @@ def _uma(p):
         if origem and origem.exists():
             destino.write_bytes(origem.read_bytes())
             return "nova"
-        return "sem foto"
+        return "sem foto"  # tenta o Wikimedia Commons depois (_governo_commons)
     for url in _enderecos(p):
         if not url:
             continue
@@ -71,10 +85,118 @@ def _uma(p):
     return "falhou"
 
 
+_ua = {"User-Agent": "ContasDoPoder/0.1 (https://contasdopoder.com; projeto civico de transparencia)"}
+_rotulos = {}
+
+
+class WikimediaLimitou(Exception):
+    """A Wikimedia pediu para ir mais devagar (HTTP 429)."""
+
+
+def _api(url, **params):
+    """Consulta à Wikimedia, no máximo ~1 por segundo; 429 = espera o que ela pedir e tenta de novo uma vez."""
+    import requests
+    for tentativa in range(2):
+        time.sleep(1.1)
+        r = requests.get(url, params={**params, "format": "json"}, headers=_ua, timeout=60)
+        if r.status_code == 429:
+            if tentativa:
+                raise WikimediaLimitou()
+            time.sleep(min(120, int(r.headers.get("Retry-After", "30") or 30)))
+            continue
+        r.raise_for_status()
+        return r.json()
+
+
+def _nomes_cargos(ids):
+    faltam = [i for i in ids if i not in _rotulos]
+    for k in range(0, len(faltam), 50):
+        ents = _api(WIKIDATA, action="wbgetentities", ids="|".join(faltam[k:k + 50]), props="labels", languages="pt|en")["entities"]
+        for qid, e in ents.items():
+            _rotulos[qid] = [l["value"] for l in e.get("labels", {}).values()]
+    return [n for i in ids for n in _rotulos.get(i, [])]
+
+
+def _wikidata(p):
+    """(QID, arquivo da foto) de quem ocupou cargo de ministro/presidente/vice, ou None."""
+    for nome in dict.fromkeys(n for n in (p.get("nome_civil"), p["nome"]) if n):
+        ids = [x["id"] for x in _api(WIKIDATA, action="wbsearchentities", search=nome, language="pt", limit=5, type="item").get("search", [])]
+        if not ids:
+            continue
+        ents = _api(WIKIDATA, action="wbgetentities", ids="|".join(ids), props="claims")["entities"]
+        valor = lambda c: c.get("mainsnak", {}).get("datavalue", {}).get("value")
+        for qid in ids:
+            c = ents.get(qid, {}).get("claims", {})
+            humano = any((valor(v) or {}).get("id") == "Q5" for v in c.get("P31", []))
+            brasil = any((valor(v) or {}).get("id") == "Q155" for v in c.get("P27", []))
+            fotos = [valor(v) for v in c.get("P18", []) if valor(v)]
+            cargos = [(valor(v) or {}).get("id") for v in c.get("P39", []) if valor(v)]
+            if humano and brasil and fotos and cargos and any(CARGO_OK.search(n) for n in _nomes_cargos(cargos[:50])):
+                return qid, fotos[-1]  # a mais recente costuma ser a última
+    return None
+
+
+def _commons(arquivo):
+    paginas = _api(COMMONS, action="query", titles=f"File:{arquivo}", prop="imageinfo",
+                   iiprop="url|size|extmetadata", iiurlwidth=480)["query"]["pages"]
+    info = next(iter(paginas.values())).get("imageinfo", [{}])[0]
+    meta = info.get("extmetadata", {})
+    texto = lambda k: re.sub(r"<[^>]+>", "", meta.get(k, {}).get("value", "")).strip()
+    return {"url": info.get("thumburl") or info.get("url"), "largura": info.get("width", 0), "altura": info.get("height", 0),
+            "autor": re.sub(r"\s+", " ", texto("Artist"))[:80], "licenca": texto("LicenseShortName"),
+            "url_licenca": texto("LicenseUrl"), "pagina": info.get("descriptionurl")}
+
+
+def _governo_commons(politicos):
+    """Fotos do Wikimedia Commons para quem é do governo e ainda não tem foto.
+    Quem não tem foto aceitável só é procurado de novo depois de 30 dias."""
+    dados = ler_json(CREDITOS) if CREDITOS.exists() else {}
+    creditos, tentou = dados.setdefault("fotos", {}), dados.setdefault("procurado_em", {})
+    hoje = time.strftime("%Y-%m-%d")
+    novas = 0
+    try:
+        for p in politicos:
+            destino = PASTA / f"{p['id']}.webp"
+            if p["casa"] != "executivo" or destino.exists():
+                continue
+            if tentou.get(p["id"], "0000") > time.strftime("%Y-%m-%d", time.localtime(time.time() - 30 * 86400)):
+                continue
+            tentou[p["id"]] = hoje
+            try:
+                achou = _wikidata(p)
+                if not achou:
+                    continue
+                qid, arquivo = achou
+                f = _commons(arquivo)
+                if not f["url"] or not LICENCA_OK.search(f["licenca"] or "") or f["altura"] < 0.95 * f["largura"]:
+                    continue  # sem licença livre ou não é um retrato
+                time.sleep(1.1)
+                import requests
+                r = requests.get(f["url"], headers=_ua, timeout=60)
+                r.raise_for_status()
+                destino.write_bytes(_ajustar(r.content))
+                creditos[p["id"]] = {"wikidata": qid, "arquivo": arquivo, **{k: f[k] for k in ("autor", "licenca", "url_licenca", "pagina")}}
+                novas += 1
+            except (TempoEsgotado, WikimediaLimitou):
+                del tentou[p["id"]]
+                raise
+            except Exception as e:  # noqa: BLE001 — foto é opcional
+                log(f"  foto de {p['nome']}: {e}")
+            finally:
+                salvar_json(CREDITOS, dados)
+    except WikimediaLimitou:
+        log("  A Wikimedia pediu para ir mais devagar; o resto das fotos fica para a próxima vez.")
+    salvar_json(CREDITOS, dados)
+    return novas
+
+
 def coletar():
     politicos = ler_json(PROCESSADOS / "politicos.json")
     PASTA.mkdir(parents=True, exist_ok=True)
     with ThreadPoolExecutor(PARALELO) as ex:
         res = list(ex.map(_uma, politicos))
+    if res.count("sem foto"):
+        log(f"Fotos: Wikimedia Commons para o governo federal: {_governo_commons(politicos)} novas")
+        res = ["sem foto" if p["casa"] == "executivo" and not (PASTA / f"{p['id']}.webp").exists() else "ok" for p in politicos]
     log(f"Fotos: {res.count('nova')} novas, {res.count('já tinha')} já existiam, {res.count('falhou')} falharam, "
         f"{res.count('sem foto')} do governo sem foto oficial disponível")

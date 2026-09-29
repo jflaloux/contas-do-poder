@@ -348,3 +348,32 @@ td.num { font-family: var(--mono); }
   .compartilhar-img__quadro { justify-self: center; }
 }
 @media (prefers-reduced-motion: reduce) { .compartilhar-img__quadro.carregando { animation: none; } }
+
+/* linhas do contracheque que abrem o detalhe por tipo */
+.item-abre { border-bottom: 1px solid var(--line-2); }
+.item-abre > summary { list-style: none; cursor: pointer; border-bottom: 0; }
+.item-abre > summary::-webkit-details-marker { display: none; }
+.item-abre > summary:hover .item__nome { color: var(--accent); }
+.item__abre { margin-left: 10px; font-size: .75rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.item__abre::after { content: " ▾"; }
+.item-abre[open] .item__abre::after { content: " ▴"; }
+.subitens { padding: 0 22px 14px 36px; display: grid; gap: 6px; }
+.subitem { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.4em; gap: 10px; align-items: baseline; font-size: .88rem; color: var(--ink-2); }
+.subitem .num { font-family: var(--mono); color: var(--ink); white-space: nowrap; }
+.subitem__pct { text-align: right; font-family: var(--mono); font-size: .8rem; color: var(--ink-3); }
+.subitens__nota { margin: 2px 0 0; font-size: .8rem; color: var(--ink-3); }
+.barras + .barras { margin-top: 14px; }
+
+/* guia: grupos que não dependem do estado */
+.guia__outros { display: grid; gap: 8px; margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line-2); }
+.guia__outros p { margin: 0; }
+.guia__opcao { display: flex; justify-content: space-between; align-items: center; gap: 12px; text-align: left; width: 100%;
+  padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); color: var(--ink); cursor: pointer; font: inherit; }
+.guia__opcao:hover { border-color: var(--accent); background: var(--accent-soft); }
+.guia__opcao small { display: block; color: var(--ink-3); font-size: .85rem; }
+
+/* Safari: esconde o botão de preencher contato/senha nos campos de busca (não serve para nada aqui) */
+input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-button {
+  visibility: hidden; display: none !important; pointer-events: none; width: 0; margin: 0;
+}
+.credito a { color: inherit; }

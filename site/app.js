@@ -190,8 +190,13 @@
   function encontrar(q, filtro) {
     const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
     if (!termos.length) return [];
-    return S.D.p.filter((p) => (!filtro || filtro(p)) && termos.every((t) => buscaTexto(p).includes(t)))
-      .sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
+    const achados = S.D.p.filter((p) => (!filtro || filtro(p)) && termos.every((t) => buscaTexto(p).includes(t)));
+    const ids = new Set(achados.map((p) => p.id));
+    // mesma pessoa em dois cargos (ex.: deputado licenciado que é ministro): mostra só uma vez, o cargo atual
+    return achados.filter((p) => {
+      const o = p.rel && ids.has(p.rel) ? S.porId.get(p.rel) : null;
+      return !o || (p.x && !o.x) || (!!p.x === !!o.x && p.k === "e");
+    }).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
   }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
   function ligarBusca(input, caixa, aoEscolher, filtro) {
@@ -202,7 +207,7 @@
       itens = encontrar(input.value, filtro).slice(0, 8);
       caixa.textContent = "";
       itens.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
-        avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}`)))));
+        avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
       if (input.value.trim().length >= 2 && !itens.length) caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px" }, "Ninguém encontrado. Confira a grafia."));
       caixa.hidden = !caixa.children.length;
       ativo = -1;
@@ -307,49 +312,70 @@
     aoRedimensionar(caixa, desenhar); desenhar();
   }
   const linhaDica = (cor, valor, texto) => h("div", null, h("span", { class: "traco", style: `background:var(--${cor})` }), h("strong", null, valor), ` ${texto}`);
-  function graficoColegas(caixa, eu, pares) {
+  // dica ao lado do ponteiro (não em cima do ponto)
+  function dicaPerto(caixa, d, ev) {
+    const rc = caixa.getBoundingClientRect();
+    const x = ev.clientX - rc.left, y = ev.clientY - rc.top;
+    const dw = d.offsetWidth || 160, dh = d.offsetHeight || 40;
+    let left = x + 16;
+    if (left + dw > caixa.clientWidth - 4) left = x - dw - 16;
+    d.style.left = `${Math.max(4, left)}px`;
+    d.style.top = `${Math.max(-dh / 2, y - dh / 2)}px`;
+  }
+  // Pontos: cada colega é um ponto na horizontal (valor); a pessoa escolhida aparece destacada.
+  // pares: [{id, n, sub, v}]; clicar num ponto abre a página daquela pessoa.
+  function graficoPontos(caixa, euId, pares, fmt) {
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
+      if (!pares.length) return;
       const W = Math.max(260, caixa.clientWidth), H = 150;
       const m = { t: 30, r: 14, b: 26, l: 14 };
       const iw = W - m.l - m.r, ih = H - m.t - m.b;
       const { ticks, topo } = escala(Math.max(...pares.map((p) => p.v)), 4);
       const x = (v) => m.l + (v / topo) * iw;
-      const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Onde fica entre os colegas" });
+      const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Onde cada um fica" });
       for (const t of ticks) {
         svg.append(s("line", { class: "grade", x1: x(t), x2: x(t), y1: m.t - 6, y2: H - m.b }));
         const tx = s("text", { x: x(t), y: H - 8, "text-anchor": t === 0 ? "start" : t === topo ? "end" : "middle" });
-        tx.textContent = t === 0 ? "R$ 0" : compacto(t); svg.append(tx);
+        tx.textContent = t === 0 ? "0" : fmt === reais ? compacto(t) : num(t, 0); svg.append(tx);
       }
       const pos = pares.map((p) => ({ ...p, cx: x(p.v), cy: m.t + 6 + ((hashNum(p.id) % 1000) / 1000) * (ih - 12) }));
-      for (const p of pos) if (p.id !== eu.id) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: 3.5 }));
-      const meu = pos.find((p) => p.id === eu.id);
+      for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: 3.5 }));
+      const meu = pos.find((p) => p.id === euId);
       if (meu) {
         svg.append(s("line", { class: "guia-linha", x1: meu.cx, x2: meu.cx, y1: 16, y2: meu.cy - 6 }));
         svg.append(s("circle", { class: "ponto--eu", cx: meu.cx, cy: meu.cy, r: 6.5 }));
         const tx = s("text", { class: "forte", x: meu.cx, y: 12, "text-anchor": meu.cx < W * 0.2 ? "start" : meu.cx > W * 0.8 ? "end" : "middle" });
-        tx.textContent = `${eu.n}: ${compacto(meu.v)}`; svg.append(tx);
+        tx.textContent = `${meu.n}: ${fmt === reais ? compacto(meu.v) : fmt(meu.v)}`; svg.append(tx);
       }
       const destaque = s("circle", { class: "ponto--ativo", r: 5, cx: 0, cy: 0, visibility: "hidden" });
       svg.append(destaque);
       const d = dica(caixa);
-      svg.addEventListener("pointermove", (ev) => {
+      let atual = null;
+      const achar = (ev) => {
         const r = svg.getBoundingClientRect();
         const px = (ev.clientX - r.left) * (W / r.width), py = (ev.clientY - r.top) * (H / r.height);
         let melhor = null, dist = Infinity;
         for (const p of pos) { const dd = (p.cx - px) ** 2 + (p.cy - py) ** 2; if (dd < dist) { dist = dd; melhor = p; } }
-        if (!melhor || dist > 900) { d.hidden = true; destaque.setAttribute("visibility", "hidden"); return; }
-        destaque.setAttribute("cx", melhor.cx); destaque.setAttribute("cy", melhor.cy); destaque.setAttribute("visibility", "visible");
+        return dist <= 900 ? melhor : null;
+      };
+      const mostrar = (ev) => {
+        atual = achar(ev);
+        if (!atual) { d.hidden = true; destaque.setAttribute("visibility", "hidden"); svg.style.cursor = ""; return; }
+        destaque.setAttribute("cx", atual.cx); destaque.setAttribute("cy", atual.cy); destaque.setAttribute("visibility", "visible");
+        svg.style.cursor = "pointer";
         d.hidden = false; d.textContent = "";
-        d.append(h("div", null, h("strong", null, reais(melhor.v)), " por mês"), h("div", null, `${melhor.n} (${melhor.pt}-${melhor.uf})`));
-        posicionarDica(caixa, d, melhor.cx + 12, melhor.cy + 14);
-      });
+        d.append(h("div", null, h("strong", null, fmt(atual.v)), fmt === reais ? " por mês" : ""), h("div", null, `${atual.n} (${atual.sub})`));
+        dicaPerto(caixa, d, ev);
+      };
+      svg.addEventListener("pointermove", mostrar);
+      svg.addEventListener("pointerdown", mostrar);
+      svg.addEventListener("click", (ev) => { const p = achar(ev); if (p && p.id !== euId) { S.origem = "grafico"; location.hash = p.id; } });
       svg.addEventListener("pointerleave", () => { d.hidden = true; destaque.setAttribute("visibility", "hidden"); });
       caixa.prepend(svg);
     };
     aoRedimensionar(caixa, desenhar); desenhar();
   }
-
   // ================================================================== compartilhar
   const endereco = () => (($('meta[name="endereco-do-site"]') || {}).content || "").replace(/#.*$/, "");
   const dominio = () => endereco().replace(/^https?:\/\//, "").replace(/\/$/, "") || "contasdopoder.com";
@@ -408,68 +434,89 @@
     g.fillStyle = C.fundo; g.fillRect(0, 0, W, H);
     g.fillStyle = C.marca; g.fillRect(0, 0, W * 0.72, 12); g.fillStyle = C.hi; g.fillRect(W * 0.72, 0, W * 0.28, 12);
     // marca
-    g.fillStyle = C.marca; caixa(M, 60, 72, 72, 16); g.fill();
+    g.fillStyle = C.marca; caixa(M, 52, 64, 64, 14); g.fill();
     const svg = $(".logo__icone svg");
     if (svg) {
       const logo = await carregarImagem("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.outerHTML.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" ')));
-      if (logo) g.drawImage(logo, M + 12, 72, 48, 48);
+      if (logo) g.drawImage(logo, M + 11, 63, 42, 42);
     }
-    g.textBaseline = "middle"; g.fillStyle = C.ink; g.font = `700 38px ${DISP}`; g.fillText("Contas do Poder", M + 90, 97);
+    g.textBaseline = "middle"; g.fillStyle = C.ink; g.font = `700 36px ${DISP}`; g.fillText("Contas do Poder", M + 82, 85);
     g.textBaseline = "alphabetic";
     // foto e nome
-    const fy = 176, fw = 180, fh = 240;
+    const fy = 148, fw = 150, fh = 200;
     const foto = p.f && p.f.startsWith("fotos/") ? await carregarImagem(p.f) : null;
-    g.save(); caixa(M, fy, fw, fh, 22); g.clip();
+    g.save(); caixa(M, fy, fw, fh, 20); g.clip();
     if (foto) g.drawImage(foto, M, fy, fw, fh);
-    else { g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh); g.fillStyle = C.ink2; g.font = `700 76px ${DISP}`; g.textAlign = "center"; g.fillText(iniciais(p.n), M + fw / 2, fy + fh / 2 + 26); g.textAlign = "left"; }
+    else { g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh); g.fillStyle = C.ink2; g.font = `700 64px ${DISP}`; g.textAlign = "center"; g.fillText(iniciais(p.n), M + fw / 2, fy + fh / 2 + 22); g.textAlign = "left"; }
     g.restore();
-    const tx = M + fw + 36, tmax = W - M - tx, grande = p.n.length <= 22;
-    g.fillStyle = C.ink2; g.font = `600 26px ${BODY}`; g.fillText(p.k === "e" ? "CONTRACHEQUE DO CARGO" : "CONTRACHEQUE DO MANDATO", tx, fy + 30);
-    g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 64 : 54}px ${DISP}`;
-    let y = quebra(p.n, tx, fy + 98, tmax, grande ? 70 : 60, 3);
-    g.fillStyle = C.ink2; g.font = `500 32px ${BODY}`; y = quebra(`${p.g} · ${partidoUF(p)}`, tx, y + 2, tmax, 40, p.k === "e" ? 3 : 2);
+    const tx = M + fw + 32, tmax = W - M - tx, grande = p.n.length <= 22;
+    g.fillStyle = C.ink2; g.font = `600 24px ${BODY}`; g.fillText(p.k === "e" ? "CONTRACHEQUE DO CARGO" : "CONTRACHEQUE DO MANDATO", tx, fy + 28);
+    g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 58 : 50}px ${DISP}`;
+    let y = quebra(p.n, tx, fy + 88, tmax, grande ? 62 : 54, 3);
+    g.fillStyle = C.ink2; g.font = `500 30px ${BODY}`; y = quebra(`${p.g} · ${partidoUF(p)}`, tx, y + 2, tmax, 38, p.k === "e" ? 3 : 2);
     // custo dele
-    y = Math.max(y + 34, fy + fh + 76);
-    g.fillStyle = C.ink2; g.font = `600 30px ${BODY}`; g.fillText(`CUSTO DELE POR MÊS · ${nomePeriodo(k, true).toUpperCase()}`, M, y);
-    comMes(reais(r.tm), M - 8, y + 128, `500 124px ${MONO}`, 40, "#ffffff");
-    g.fillStyle = C.ink2; g.font = `500 30px ${BODY}`; g.fillText(`o que vai para o bolso + os ${gastosNome(p).toLowerCase()}`, M, y + 180);
-    y += 212;
+    y = Math.max(y + 30, fy + fh + 62);
+    g.fillStyle = C.ink2; g.font = `600 28px ${BODY}`; g.fillText(`CUSTO DELE POR MÊS · ${nomePeriodo(k, true).toUpperCase()}`, M, y);
+    comMes(reais(r.tm), M - 6, y + 118, `500 112px ${MONO}`, 36, "#ffffff");
+    y += 140;
     if (pos) {
       const selo = pos.pct >= 50 ? `Custa mais que ${pos.pct}% dos ${plural(p.k)}` : `Custa menos que ${100 - pos.pct}% dos ${plural(p.k)}`;
-      g.font = `700 34px ${BODY}`; const larg = g.measureText(selo).width;
-      g.fillStyle = C.hi; caixa(M, y, larg + 52, 64, 32); g.fill();
-      g.fillStyle = "#2a0714"; g.fillText(selo, M + 26, y + 44);
-      y += 98;
-    } else y += 10;
+      g.font = `700 32px ${BODY}`; const larg = g.measureText(selo).width;
+      g.fillStyle = C.hi; caixa(M, y, larg + 48, 58, 29); g.fill();
+      g.fillStyle = "#2a0714"; g.fillText(selo, M + 24, y + 40);
+      y += 78;
+    } else y += 4;
     // as duas partes do custo dele
-    const tw = (W - 2 * M - 24) / 2, th = 170;
+    const tw = (W - 2 * M - 24) / 2, th = 160;
     const bloco = (x, cor, rotulo, valor, detalhe) => {
       g.fillStyle = C.cartao; caixa(x, y, tw, th, 20); g.fill();
-      bolinha(cor, x + 34, y + 42);
-      g.fillStyle = C.ink2; g.font = `700 25px ${BODY}`; g.fillText(rotulo, x + 56, y + 51);
-      comMes(valor, x + 24, y + 114, `500 56px ${MONO}`, 26, "#ffffff");
-      g.fillStyle = C.ink2; g.font = `400 25px ${BODY}`; g.fillText(detalhe, x + 24, y + 150);
+      bolinha(cor, x + 34, y + 38);
+      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText(rotulo, x + 56, y + 47);
+      comMes(valor, x + 24, y + 106, `500 54px ${MONO}`, 25, "#ffffff");
+      g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`; g.fillText(detalhe, x + 24, y + 142);
     };
     bloco(M, C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`);
     bloco(M + tw + 24, C.custa, gastosNome(p).toUpperCase(), reais(r.cm), gastosDetalhe(p));
-    y += th + 20;
+    y += th + 18;
+    // onde mais gasta: os 3 maiores tipos de gasto, por mês
+    const maiores = maioresGastos(p, k, 3);
+    if (maiores.length) {
+      g.fillStyle = C.ink2; g.font = `700 22px ${BODY}`; g.fillText(`${gastosNome(p).toUpperCase()}: ONDE MAIS GASTA`, M, y + 26);
+      y += 26;
+      for (const [t, v] of maiores) {
+        y += 40;
+        bolinha(C.custa, M + 8, y - 8);
+        g.fillStyle = "#e4e1f3"; g.font = `500 26px ${BODY}`;
+        let nome = t.replace(/\*$/, "");
+        while (g.measureText(nome).width > W - 2 * M - 260 && nome.length > 10) nome = nome.slice(0, -2);
+        g.fillText(nome === t.replace(/\*$/, "") ? nome : `${nome.trim()}…`, M + 28, y);
+        g.font = `500 26px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
+        g.font = `500 30px ${MONO}`; const wV = g.measureText(reais(v)).width;
+        comMes(reais(v), W - M - wMes - wV, y, `500 30px ${MONO}`, 22, "#ffffff");
+      }
+      y += 26;
+    }
     // equipe: à parte (borda tracejada, fora da soma)
     if (r.em) {
-      const eh = 120;
+      const eh = 110;
       g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
-      bolinha(C.equipe, M + 34, y + 44);
-      g.fillStyle = C.ink2; g.font = `700 25px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 53);
-      g.fillStyle = C.ink2; g.font = `400 26px ${BODY}`;
-      g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${p.k === "s" ? " (estimativa)" : ""}`, M + 24, y + 96);
-      g.font = `500 26px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
-      g.font = `500 52px ${MONO}`; const wValor = g.measureText(reais(r.em)).width;
-      comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 72, `500 52px ${MONO}`, 26, "#ffffff");
+      bolinha(C.equipe, M + 34, y + 40);
+      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 49);
+      g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`;
+      g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${p.k === "s" ? " (estimativa)" : ""}`, M + 24, y + 88);
+      g.font = `500 24px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
+      g.font = `500 48px ${MONO}`; const wValor = g.measureText(reais(r.em)).width;
+      comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${MONO}`, 24, "#ffffff");
       y += eh;
     }
     const aviso = p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
       : p.tp === "pr" ? "O avião presidencial e a estrutura da Presidência não entram na conta."
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
-    if (aviso) { g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`; g.fillText(aviso, M, y + 36); }
+    if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
+    if (p.fc && foto) {
+      g.fillStyle = "rgba(196,191,224,.7)"; g.font = `400 16px ${BODY}`;
+      direita(`Foto: ${(p.fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${p.fc.l}), Wikimedia Commons`, W - M, H - 190);
+    }
     // rodapé: onde ver mais e de onde vêm os dados
     const ry = H - 176;
     g.fillStyle = C.marca; g.fillRect(0, ry, W, H - ry);
@@ -512,7 +559,7 @@
   // ================================================================== seções com parlamentar escolhido
   function secContracheque(p, k) {
     const r = resumo(p, k), C = colegas(p.k, k), pos = posicao(p, k);
-    const trocar = (novo) => { evento("trocar_periodo", { periodo: novo === "leg" ? "mandato" : novo, casa: casaTxt(p) }); S.periodo = novo; history.replaceState(null, "", `#${p.id}${novo !== periodoPadrao(p) ? "~" + novo : ""}`); render(false); };
+    const trocar = (novo) => { evento("trocar_periodo", { periodo: novo === "leg" ? "mandato" : novo, casa: casaTxt(p) }); S.periodo = novo; S.rank.periodo = novo; history.replaceState(null, "", `#${p.id}${novo !== periodoPadrao(p) ? "~" + novo : ""}`); render(false); };
     const card = h("article", { class: "cartao conta", id: "contracheque" });
     add(card, h("div", { class: "conta__topo" },
       avatar(p, "g"),
@@ -542,6 +589,7 @@
           : "Ministros não têm cota parlamentar nem verba de gabinete. Entram o salário, os jetons de conselhos e as viagens oficiais (diárias e passagens). Voos da FAB não têm custo publicado."),
           h("p", { class: "nota" }, `O Portal da Transparência publica os salários com uns 2 meses de atraso: dados até ${MESES[(ate % 100) - 1]}/${Math.floor(ate / 100)}.`));
       }
+      if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})`), ", via Wikimedia Commons."));
       if (p.q) add(lado, h("p", { class: "nota" }, `Depois de deixar o cargo, recebeu mais ${reais(p.q[1])} em ${p.q[0]} ${p.q[0] === 1 ? "mês" : "meses"} (acertos da saída e quarentena). Esse valor não entra nas médias.`));
       if (p.rel && S.porId.get(p.rel)) add(lado, h("p", { class: "nota" },
         p.k === "e" ? `Também é ${nomeRel(p.rel)}. Nos meses como ministro, o salário pode ter sido pago pelo Congresso: aparece aqui. ` : "Também foi do governo federal. ",
@@ -552,10 +600,19 @@
     else {
       const txtMed = `mediana dos ${plural(p.k)}`;
       const rateados = Object.keys(r.cats).filter((c) => meta().rateio[c]);
-      const linhas = (ordem) => ordem.filter((c) => r.cats[c]).map((c) => h("div", { class: "item" },
-        h("span", { class: "item__nome" }, nomeCat(c)),
-        h("span", { class: "item__valor" }, `${meta().rateio[c] ? "≈ " : ""}${reais(porMes(r, c))}`),
-        seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`)));
+      const linhas = (ordem) => ordem.filter((c) => r.cats[c]).map((c) => {
+        const valor = h("span", { class: "item__valor" }, `${meta().rateio[c] ? "≈ " : ""}${reais(porMes(r, c))}`);
+        const selo = seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`);
+        const det = detalheCat(p, k, c);
+        if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c)), valor, selo);
+        const vpm = c === "viagens_oficiais" ? viagensPorMes(p, k) : null;
+        return h("details", { class: "item-abre", ontoggle: (e) => { if (e.target.open) evento("abrir_detalhe", { categoria: c, casa: casaTxt(p) }); } },
+          h("summary", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c), h("span", { class: "item__abre" }, "detalhe")), valor, selo),
+          h("div", { class: "subitens" },
+            det.linhas.map(([t, v]) => h("div", { class: "subitem" }, h("span", null, t), h("span", { class: "num" }, reais(v / det.div)), h("span", { class: "subitem__pct" }, pctTxt(v, det.total)))),
+            vpm ? h("p", { class: "subitens__nota" }, `${num(vpm, vpm < 10 ? 1 : 0)} viagens por mês, em média.`) : null,
+            c === "cota_parlamentar" && det.linhas.some(([t]) => t.endsWith("*")) ? h("p", { class: "subitens__nota" }, "* Sem detalhe nos dados abertos desde ago/2025.") : null));
+      });
       const titulo = (texto, tipo) => h("div", { class: "grupo-titulo" }, h("span", { class: `chave chave--${tipo}` }), h("span", { class: "rotulo" }, texto));
       add(valores,
         titulo("Vai para o bolso", "ganha"), linhas(ORDEM_GANHA),
@@ -639,60 +696,77 @@
       (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]));
     return card;
   }
-  function secColegas(p, k) {
-    const C = colegas(p.k, k), pos = posicao(p, k), r = resumo(p, k);
-    if (!pos || C.n < 6) return null;
-    const caixa = h("div", { class: "grafico" });
-    const card = h("article", { class: "cartao", id: "colegas" },
-      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Comparado com os colegas"),
-        h("p", { class: "pequeno discreto" }, `Custo dele por mês (bolso + despesas), sem a equipe. Cada ponto é um dos ${C.n} ${plural(p.k)} com pelo menos 3 meses ${p.k === "e" ? "no cargo" : "de mandato"} ${nomePeriodo(k, false)}.`))),
-      h("div", { class: "estatisticas" },
-        estatistica("Custo dele por mês", reais(r.tm), `Mediana: ${reais(C.tm)}`),
-        estatistica("Vai para o bolso", reais(r.gm), `Mediana: ${reais(C.gm)}`),
-        estatistica("Posição", `${pos.pos}º`, `de ${pos.n} ${plural(p.k)}`)),
-      caixa);
-    const pares = C.lista.map((x) => ({ id: x.p.id, n: x.p.n, pt: x.p.pt, uf: x.p.uf, v: x.r.tm }));
-    requestAnimationFrame(() => graficoColegas(caixa, p, pares));
-    return card;
-  }
-  // Cota por tipo, em média por mês: o total de cada tipo no período dividido pelos mesmos meses
-  // usados no contracheque. Assim as barras somam a cota por mês que aparece lá em cima.
-  function secCota(p, k) {
-    const ct = p.ct[k] || [];
+  // ---------------------------------------------------------------- detalhe dos gastos por tipo
+  const divisorCat = (r, cat) => (ORDEM_GANHA.includes(cat) ? r.mg : ORDEM_EQUIPE.includes(cat) ? r.me : r.mc);
+  // [[nome do tipo, total no período], ...] de uma categoria, com "Outros tipos" para o que sobra
+  function detalheCat(p, k, cat) {
     const r = resumo(p, k);
-    if (!ct.length || !r || !r.mc) return null;
-    const total = r.cats.cota_parlamentar || 0;
-    if (total < 1) return null;
-    const linhas = ct.map(([i, v]) => [meta().tipos_cota[i], v]);
+    const d = (p.dt && p.dt[k] && p.dt[k][cat]) || [];
+    if (!r || !d.length) return null;
+    const total = r.cats[cat] || 0;
+    const linhas = d.map(([i, v]) => [meta().tipos[i], v]);
     const resto = total - linhas.reduce((a, [, v]) => a + v, 0);
-    if (resto / total >= 0.005) linhas.push(["Outros tipos", resto]);
-    const max = Math.max(...linhas.map(([, v]) => v));
-    const porMesCota = total / r.mc;
-    const notas = [
-      `Média por mês: o total de cada tipo ${nomePeriodo(k, false)} (${compacto(total)} ao todo) dividido por ${r.mc} ${r.mc === 1 ? "mês" : "meses"}. É uma aproximação: os gastos mudam muito de um mês para outro (uma passagem cara num mês, nada no outro).`];
-    if (linhas.some(([t]) => t.endsWith("*"))) notas.push("* Desde agosto de 2025, a Câmara deixou de publicar nos dados abertos as passagens compradas pelo próprio sistema. Usamos o total do site oficial, que não tem o detalhe por tipo.");
-    if (p.k === "d" && k === anoAtual() && meta().limites_cota_camara[p.uf]) {
-      const lim = meta().limites_cota_camara[p.uf];
-      notas.push(`Isso é ${num((porMesCota / lim) * 100, 0)}% do limite de ${reais(lim)} por mês para ${ESTADOS[p.uf]}.`);
+    if (total && resto > 0 && resto / total >= 0.005) linhas.push(["Outros tipos", resto]);
+    return { total, linhas, div: divisorCat(r, cat) || 1 };
+  }
+  const pctTxt = (v, total) => { const x = total ? (v / total) * 100 : 0; return x < 1 ? "<1%" : `${num(x, 0)}%`; };
+  const viagensPorMes = (p, k) => { const r = resumo(p, k); return p.nv && p.nv[k] && r ? p.nv[k] / r.m : null; };
+  // os maiores tipos de gasto por mês (para a imagem): [[nome, valor por mês], ...]
+  function maioresGastos(p, k, n) {
+    const itens = [];
+    for (const c of ORDEM_CUSTA) {
+      const det = detalheCat(p, k, c);
+      if (det) det.linhas.forEach(([t, v]) => { if (t !== "Outros tipos") itens.push([t, v / det.div]); });
     }
+    return itens.sort((a, b) => b[1] - a[1]).slice(0, n);
+  }
+  function secCota(p, k) {
+    const r = resumo(p, k);
+    if (!r) return null;
+    const grupos = (p.k === "e"
+      ? [["viagens_oficiais", "Viagens oficiais", ""], ["jetons", "Jetons, por conselho", "barra__fill--ganha"]]
+      : [["cota_parlamentar", "Cota parlamentar", ""], ["outros_gastos_mandato", "Outros gastos do mandato", ""]])
+      .map(([cat, titulo, cls]) => ({ cat, titulo, cls, det: detalheCat(p, k, cat) })).filter((g) => g.det && g.det.total >= 1);
+    if (!grupos.length) return null;
+    const notas = [`Média por mês: o total de cada tipo ${nomePeriodo(k, false)} dividido pelos meses. É uma aproximação: os gastos mudam muito de um mês para outro (uma passagem cara num mês, nada no outro).`];
+    const estat = [];
+    for (const g of grupos) {
+      if (g.cat === "cota_parlamentar") {
+        estat.push(estatistica("Cota por mês", reais(g.det.total / g.det.div), "em média"));
+        if (g.det.linhas.some(([t]) => t.endsWith("*"))) notas.push("* Desde agosto de 2025, a Câmara deixou de publicar nos dados abertos as passagens compradas pelo próprio sistema. Usamos o total do site oficial, que não tem o detalhe por tipo.");
+        if (p.k === "d" && k === anoAtual() && meta().limites_cota_camara[p.uf]) {
+          const lim = meta().limites_cota_camara[p.uf];
+          notas.push(`A cota por mês é ${num((g.det.total / g.det.div / lim) * 100, 0)}% do limite de ${reais(lim)} por mês para ${ESTADOS[p.uf]}.`);
+        }
+      }
+      if (g.cat === "outros_gastos_mandato") notas.push("Outros gastos do mandato: o Senado informa por ano; dividimos pelos meses com salário.");
+      if (g.cat === "viagens_oficiais") {
+        estat.push(estatistica("Viagens por mês", reais(g.det.total / g.det.div), "diárias e passagens, em média"));
+        const vpm = viagensPorMes(p, k);
+        if (vpm) estat.push(estatistica("Número de viagens", num(vpm, vpm < 10 ? 1 : 0), `por mês (${p.nv[k]} ${nomePeriodo(k, false)})`));
+        notas.push("Voos em aviões da FAB não têm custo publicado: entram só as passagens compradas e as diárias.");
+      }
+      if (g.cat === "jetons") estat.push(estatistica("Jetons por mês", reais(g.det.total / g.det.div), "vão para o bolso"));
+    }
+    const titulo = p.k === "e" ? "Viagens e jetons, por mês" : grupos.length > 1 ? "Para onde vão os gastos do mandato, por mês" : "Para onde vai a cota parlamentar, por mês";
+    const sub = p.k === "e" ? `Quanto vai para cada tipo por mês, em média, ${nomePeriodo(k, false)}.`
+      : `Passagens, combustível, alimentação, escritório e outras despesas reembolsadas. Média por mês ${nomePeriodo(k, false)}.`;
     return h("article", { class: "cartao", id: "cota" },
-      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Para onde vai a cota parlamentar, por mês"),
-        h("p", { class: "pequeno discreto" }, `Passagens, combustível, alimentação, escritório e outras despesas reembolsadas. Média por mês ${nomePeriodo(k, false)}.`))),
-      h("div", { class: "estatisticas" },
-        estatistica("Cota por mês", reais(porMesCota), "em média; as barras dividem esse valor por tipo de gasto")),
-      h("div", { class: "barras" },
-        h("div", { class: "barras__cabeca" }, h("span", null, "Tipo de gasto"), h("span", null, "Por mês · % da cota")),
-        linhas.map(([t, v]) => {
-          const pct = (v / total) * 100;
-          return barra(t, `${reais(v / r.mc)}/mês · ${pct < 1 ? "<1" : num(pct, 0)}%`, v / max);
-        })),
+      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, titulo), h("p", { class: "pequeno discreto" }, sub))),
+      h("div", { class: "estatisticas" }, estat),
+      grupos.map((g) => {
+        const max = Math.max(...g.det.linhas.map(([, v]) => v));
+        return h("div", { class: "barras" },
+          h("div", { class: "barras__cabeca" }, h("span", null, g.titulo), h("span", null, "Por mês · %")),
+          g.det.linhas.map(([t, v]) => barra(t, `${reais(v / g.det.div)}/mês · ${pctTxt(v, g.det.total)}`, v / max, g.cls)));
+      }),
       notas.map((n) => h("p", { class: "nota" }, n)));
   }
   function secComparar(p, k) {
     const card = h("article", { class: "cartao", id: "comparar" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Comparar com outro parlamentar"),
         h("p", { class: "pequeno discreto" }, "Da Câmara ou do Senado. No mesmo período, quanto o outro custa a mais ou a menos por mês."))));
-    const input = h("input", { type: "search", id: "busca-comparar", placeholder: "Nome, partido ou estado", autocomplete: "off" });
+    const input = h("input", { type: "search", id: "busca-comparar", placeholder: "Quem? Ex.: Haddad, PT ou Bahia", autocomplete: "off" });
     const sug = h("div", { class: "sugestoes", hidden: true });
     add(card, h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-comparar" }, "Comparar com"), input, sug));
     ligarBusca(input, sug, (q) => { evento("comparar", { parlamentar: p.n, outro: q.n }); S.outro = q.id; render(false); irPara("comparar"); }, (q) => q.id !== p.id);
@@ -833,10 +907,11 @@
   const metricaVale = (m, casa) => !METRICAS[m].casas || METRICAS[m].casas.includes(casa);
   const nomeMetrica = (m, casa) => (casa === "e" && METRICAS[m].nomeE) || METRICAS[m].nome;
   const nomeGrupo = (casa) => ({ d: "deputados", s: "senadores", e: "governo" })[casa];
-  function secRanking(p) {
+  // Colegas e ranking numa seção só: filtros, posição, gráfico de pontos e os maiores/menores.
+  function secRanking(p, k) {
     const R = S.rank;
     if (!R.casa) R.casa = p ? p.k : "d";
-    if (!R.periodo) R.periodo = "2025";
+    if (!R.periodo) R.periodo = (p && k) || "2025";
     if (!METRICAS[R.metrica] || !metricaVale(R.metrica, R.casa)) R.metrica = "custo";
     const sec = h("section", { class: "bloco", id: "ranking" });
     const corpo = h("div", { style: "display:grid;gap:12px" });
@@ -844,27 +919,36 @@
       corpo.textContent = "";
       const M = METRICAS[R.metrica];
       const minimo = R.periodo === "leg" ? 6 : 3;
-      const lista = S.D.p.filter((q) => q.k === R.casa && (!R.uf || R.casa === "e" || q.uf === R.uf) && (!R.noCargo || q.x))
+      const lista = S.D.p.filter((q) => q.k === R.casa && (!R.uf || R.casa === "e" || q.uf === R.uf) && (!R.noCargo || q.x || (p && q.id === p.id)))
         .map((q) => { const r = resumo(q, R.periodo); return r && r.m >= minimo ? { p: q, v: M.v(r) } : null; })
         .filter((x) => x && x.v > 0).sort((a, b) => b.v - a.v);
       const max = Math.max(1, ...lista.map((x) => x.v));
+      const sub = (q) => (q.k === "e" ? pastaCurta(q.g) : partidoUF(q));
       const linha = (x, pos) => h("a", { class: `rank${p && x.p.id === p.id ? " rank--eu" : ""}`, href: `#${x.p.id}${R.periodo !== periodoPadrao(x.p) ? "~" + R.periodo : ""}`, onclick: () => { S.origem = "ranking"; } },
         h("span", { class: "rank__pos" }, `${pos}º`),
-        h("span", { class: "rank__nome" }, x.p.n, " ", h("small", null, x.p.k === "e" ? pastaCurta(x.p.g) : partidoUF(x.p))),
+        h("span", { class: "rank__nome" }, x.p.n, " ", h("small", null, sub(x.p))),
         h("span", { class: "rank__valor" }, M.fmt(x.v)),
         h("span", { class: "barra__trilho" }, h("span", { class: `barra__fill ${M.cls}`, style: `width:${Math.max(0.5, (x.v / max) * 100)}%` })));
       const n = Math.min(10, Math.ceil(lista.length / 2));
       const topo = lista.slice(0, n), fim = lista.slice(-n).reverse();
       const eu = p ? lista.findIndex((x) => x.p.id === p.id) : -1;
+      const med = mediana(lista.map((x) => x.v));
+      const grupo = R.casa === "e" ? "no governo federal" : plural(R.casa);
+      const caixa = h("div", { class: "grafico" });
       add(corpo,
-        h("p", { class: "discreto pequeno" }, `${lista.length} ${R.casa === "e" ? "no governo federal" : plural(R.casa)} · ${nomeMetrica(R.metrica, R.casa).toLowerCase()} · ${nomePeriodo(R.periodo, false)}${R.uf ? ` · ${ESTADOS[R.uf]}` : ""}`),
-        eu >= 0 ? h("p", { class: "destaque", style: "margin:0" }, `${p.n} está em ${eu + 1}º lugar de ${lista.length}.`) : null,
-        h("div", { class: "duas-colunas" },
+        eu >= 0 ? h("div", { class: "estatisticas" },
+          estatistica(nomeMetrica(R.metrica, R.casa), M.fmt(lista[eu].v), med !== null ? `Mediana: ${M.fmt(med)}` : null),
+          estatistica("Posição", `${eu + 1}º`, `de ${lista.length} ${grupo}`)) : null,
+        p && eu < 0 ? h("p", { class: "discreto pequeno" }, `${p.n} não entra nesta lista (menos de ${minimo} meses ${R.casa === "e" ? "no cargo" : "de mandato"} no período, valor zero ou outro grupo).`) : null,
+        lista.length ? h("div", null,
+          h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é um dos ${lista.length} ${grupo === plural(R.casa) ? grupo : "integrantes do governo"} · ${nomeMetrica(R.metrica, R.casa).toLowerCase()} · ${nomePeriodo(R.periodo, false)}${R.uf && R.casa !== "e" ? ` · ${ESTADOS[R.uf]}` : ""}. Passe o mouse ou toque num ponto para ver quem é.`),
+          caixa) : h("p", { class: "discreto" }, "Ninguém com dados neste filtro."),
+        lista.length ? h("div", { class: "duas-colunas" },
           h("article", { class: "cartao" }, h("h3", null, "Os maiores"), h("div", { class: "rank-lista" }, topo.map((x, i) => linha(x, i + 1)))),
-          h("article", { class: "cartao" }, h("h3", null, "Os menores"), h("div", { class: "rank-lista" }, fim.map((x, i) => linha(x, lista.length - i))))),
+          h("article", { class: "cartao" }, h("h3", null, "Os menores"), h("div", { class: "rank-lista" }, fim.map((x, i) => linha(x, lista.length - i))))) : null,
         R.completo
           ? h("article", { class: "cartao" }, h("h3", null, "Lista completa"), h("div", { class: "rank-lista" }, lista.map((x, i) => linha(x, i + 1))))
-          : h("div", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { R.completo = true; evento("ranking_completo", { casa: nomeGrupo(R.casa), metrica: R.metrica }); desenhar(); } }, `Ver a lista completa (${lista.length})`)),
+          : lista.length > 2 * n ? h("div", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { R.completo = true; evento("ranking_completo", { casa: nomeGrupo(R.casa), metrica: R.metrica }); desenhar(); } }, `Ver a lista completa (${lista.length})`)) : null,
         h("ul", { class: "lista nota" },
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
@@ -872,19 +956,21 @@
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,
           R.periodo === anoAtual() ? h("li", null, R.casa === "e" ? "Período ainda aberto: o Portal publica os salários com uns 2 meses de atraso." : "Período ainda aberto: os últimos meses podem receber notas da cota.") : null,
           h("li", null, `Só entra quem teve pelo menos ${minimo} meses ${R.casa === "e" ? "no cargo" : "de mandato"} no período.`)));
+      if (lista.length) requestAnimationFrame(() => graficoPontos(caixa, p ? p.id : null, lista.map((x) => ({ id: x.p.id, n: x.p.n, sub: sub(x.p), v: x.v })), M.fmt));
     };
     const medir = () => evento("ranking", { casa: nomeGrupo(R.casa), metrica: R.metrica, periodo: R.periodo === "leg" ? "mandato" : R.periodo, uf: R.uf || "todos" });
     const filtros = h("div", { class: "filtros" },
       h("div", { class: "campo" }, h("span", { class: "rotulo" }, "Quem"),
         pilulas([["d", "Deputados"], ["s", "Senadores"], ["e", "Governo"]], R.casa, (v) => { R.casa = v; R.completo = false; if (!metricaVale(R.metrica, v)) R.metrica = "custo"; medir(); render(false); irPara("ranking"); }, "Quem", "grupo-pilulas")),
-      h("div", { class: "campo" }, h("label", { for: "metrica" }, "Ordenar por"),
+      h("div", { class: "campo" }, h("label", { for: "metrica" }, "Comparar por"),
         h("select", { id: "metrica", onchange: (e) => { R.metrica = e.target.value; medir(); desenhar(); } },
           Object.keys(METRICAS).filter((v) => metricaVale(v, R.casa)).map((v) => h("option", { value: v, selected: v === R.metrica }, nomeMetrica(v, R.casa))))),
       h("div", { class: "campo" }, h("label", { for: "periodo-rank" }, "Período"),
         h("select", { id: "periodo-rank", onchange: (e) => { R.periodo = e.target.value; medir(); desenhar(); } },
           [...meta().anos, "leg"].map((v) => h("option", { value: v, selected: v === R.periodo }, nomePeriodo(v, true))))),
       R.casa === "e" ? null : h("div", { class: "campo" }, h("label", { for: "uf-rank" }, "Estado"), seletorUF("uf-rank", R.uf, (v) => { R.uf = v; medir(); desenhar(); })));
-    add(sec, h("p", { class: "rotulo" }, "Ranking"), h("h2", null, "Quem custa mais e quem custa menos"), filtros,
+    add(sec, h("p", { class: "rotulo" }, p ? "Colegas e ranking" : "Ranking"),
+      h("h2", null, p ? `${p.n} comparado com os colegas` : "Quem custa mais e quem custa menos"), filtros,
       h("label", { class: "pequeno discreto", style: "display:inline-flex;gap:8px;align-items:center" },
         h("input", { type: "checkbox", id: "no-cargo-rank", checked: R.noCargo, onchange: (e) => { R.noCargo = e.target.checked; desenhar(); } }), "Só quem está no cargo hoje"),
       corpo);
@@ -939,7 +1025,7 @@
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", colegas: "Comparado com os colegas", cota: "Para onde vai a cota", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -959,7 +1045,40 @@
         h("p", { class: "discreto" }, "Cada estado elege 3 senadores e de 8 a 70 deputados federais. Escolha o seu estado para ver quem são e quanto cada um ganha e custa."),
         h("p", null, h("strong", null, "Em qual estado você vota?")),
         h("div", { class: "ufs" }, UFS.map((u) => h("button", { type: "button", title: ESTADOS[u], onclick: () => passo2(u) }, u))),
+        h("div", { class: "guia__outros" },
+          h("p", null, h("strong", null, "Ou veja quem não depende do estado")),
+          h("button", { type: "button", class: "guia__opcao", onclick: passoGoverno },
+            h("span", null, h("strong", null, "Governo federal"), h("small", null, "Presidente, vice e ministros")), h("span", { "aria-hidden": "true" }, "→"))),
         h("div", { class: "guia__rodape" }, h("button", { type: "button", class: "link-botao", onclick: () => { evento("guia", { etapa: "pulou" }); fechar(); } }, "Pular e ver o painel")));
+    };
+    // quem não é eleito por estado: presidente, vice e ministros (depois, outros grupos)
+    const passoGoverno = () => {
+      evento("guia", { etapa: "governo" });
+      corpo.textContent = "";
+      const ordem = { pr: 0, vp: 1, mi: 2 };
+      const pessoas = S.D.p.filter((p) => p.k === "e" && p.x).sort((a, b) => ordem[a.tp] - ordem[b.tp] || a.n.localeCompare(b.n, "pt-BR"));
+      const lista = h("div", { class: "guia__lista" });
+      const pintar = (q) => {
+        lista.textContent = "";
+        const itens = pessoas.filter((p) => !q || buscaTexto(p).includes(semAcento(q)));
+        for (const [grupo, titulo] of [[["pr", "vp"], "Presidente e vice"], [["mi"], "Ministros"]]) {
+          const g = itens.filter((p) => grupo.includes(p.tp));
+          if (!g.length) continue;
+          lista.append(h("p", { class: "rotulo", style: "margin-top:8px" }, `${titulo} (${g.length})`));
+          g.forEach((p) => lista.append(h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.origem = "guia"; escolher(p.id); } },
+            avatar(p, "p"), h("span", null, p.n, h("small", null, p.g)))));
+        }
+        if (!lista.children.length) lista.append(h("p", { class: "discreto pequeno" }, "Ninguém encontrado."));
+      };
+      add(corpo, topo(2),
+        h("h2", { id: "guia-titulo" }, "Governo federal"),
+        h("p", { class: "discreto" }, "Presidente, vice e ministros no cargo hoje. Toque num nome para ver quanto ganha e quanto custa."),
+        h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou ministério", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
+        lista,
+        h("div", { class: "guia__rodape" },
+          h("button", { type: "button", class: "link-botao", onclick: passo1 }, "← Voltar"),
+          h("button", { type: "button", class: "link-botao", onclick: () => { fechar(); irPara("governo"); } }, "Ver todos na página")));
+      pintar("");
     };
     const passo2 = (uf) => {
       evento("guia", { etapa: "estado", uf });
@@ -1004,6 +1123,7 @@
       const p = S.porId.get(base);
       if (S.sel !== base) {
         S.outro = null; S.rank.completo = false;
+        Object.assign(S.rank, { casa: null, periodo: null, uf: "", metrica: "custo" });
         evento("ver_parlamentar", { parlamentar: p.n, casa: casaTxt(p), uf: p.uf, partido: p.pt || "", origem: S.origem || (S.carregado ? "navegacao" : "link") });
       }
       S.origem = null;
@@ -1021,12 +1141,12 @@
     if (p) {
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
-      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secColegas(p, k), secCota(p, k), secComparar(p, k), secRanking(p), secResumo(p, k)].filter(Boolean));
-      navSecoes(["contracheque", "mes-a-mes", "equipe", "colegas", "cota", "comparar", "ranking", "resumo", "entenda", "fontes"]);
+      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secCota(p, k), secRanking(p, k), secComparar(p, k), secResumo(p, k)].filter(Boolean));
+      navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque");
     } else {
       document.title = "Contas do Poder";
-      app.append(...[secTipicos(), secGoverno(), secRanking(null), secResumoGeral()].filter(Boolean));
+      app.append(...[secTipicos(), secGoverno(), secRanking(null, null), secResumoGeral()].filter(Boolean));
       navSecoes(["tipico", "governo", "ranking", "resumo", "entenda", "fontes"]);
     }
   }

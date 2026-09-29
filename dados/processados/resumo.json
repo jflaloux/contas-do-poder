@@ -85776,11 +85776,11 @@
    "meses_com_despesas": 24,
    "meses_com_equipe": 0,
    "ganha": 1912779.86,
-   "despesas": 284265.65,
+   "despesas": 283815.65,
    "equipe": 0.0,
    "ganha_por_mes": 50336.31,
-   "despesas_por_mes": 11844.4,
-   "custo_dele_por_mes": 62180.71,
+   "despesas_por_mes": 11825.65,
+   "custo_dele_por_mes": 62161.96,
    "equipe_por_mes": null,
    "pessoas_na_equipe_media": null,
    "media_por_pessoa_por_mes": null,
@@ -85789,7 +85789,7 @@
     "decimo_terceiro": 141325.08,
     "outros_rendimentos": 45580.28,
     "salario": 1689378.32,
-    "viagens_oficiais": 284265.65
+    "viagens_oficiais": 283815.65
    },
    "cota_por_tipo": {}
   },
@@ -85864,11 +85864,11 @@
     "meses_com_despesas": 1,
     "meses_com_equipe": 0,
     "ganha": 371511.81,
-    "despesas": 35993.2,
+    "despesas": 35543.2,
     "equipe": 0.0,
     "ganha_por_mes": 53073.12,
-    "despesas_por_mes": 35993.2,
-    "custo_dele_por_mes": 89066.32,
+    "despesas_por_mes": 35543.2,
+    "custo_dele_por_mes": 88616.32,
     "equipe_por_mes": null,
     "pessoas_na_equipe_media": null,
     "media_por_pessoa_por_mes": null,
@@ -85877,7 +85877,7 @@
      "decimo_terceiro": 23183.09,
      "outros_rendimentos": 15455.39,
      "salario": 324563.33,
-     "viagens_oficiais": 35993.2
+     "viagens_oficiais": 35543.2
     },
     "salarios_minimos_ganha_por_mes": 32.7
    }
@@ -86621,7 +86621,7 @@
    "meses_com_despesas": 35,
    "meses_com_equipe": 0,
    "ganha": 1842198.35,
-   "despesas": 753352.3,
+   "despesas": 753352.29,
    "equipe": 0.0,
    "ganha_por_mes": 49789.14,
    "despesas_por_mes": 21524.35,
@@ -86634,7 +86634,7 @@
     "decimo_terceiro": 132025.63,
     "outros_rendimentos": 49169.5,
     "salario": 1628316.22,
-    "viagens_oficiais": 753352.3
+    "viagens_oficiais": 753352.29
    },
    "cota_por_tipo": {}
   },
@@ -86644,7 +86644,7 @@
     "meses_com_despesas": 8,
     "meses_com_equipe": 0,
     "ganha": 501933.84,
-    "despesas": 76776.87,
+    "despesas": 76776.86,
     "equipe": 0.0,
     "ganha_por_mes": 45630.35,
     "despesas_por_mes": 9597.11,
@@ -86656,7 +86656,7 @@
      "ajuda_de_custo": 6838.0,
      "decimo_terceiro": 41650.92,
      "salario": 453444.92,
-     "viagens_oficiais": 76776.87
+     "viagens_oficiais": 76776.86
     },
     "salarios_minimos_ganha_por_mes": 34.6
    },

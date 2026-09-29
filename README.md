@@ -125,6 +125,9 @@ Robô `coleta/executivo.py`, com os arquivos de download do Portal da Transparê
   ficam ao lado. As fotos ficam no próprio site (`site/fotos/`) porque o site da Câmara não deixa outro
   endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
+- **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do
+  Wikimedia Commons (via Wikidata), só com licença livre e só retratos; o crédito fica em
+  `site/fotos/creditos.json` e aparece no contracheque e na imagem. Quem não tem foto aparece com as iniciais.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
   baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar`, `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
