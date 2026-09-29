@@ -5,8 +5,11 @@ Formato (chaves curtas para o arquivo ficar pequeno):
   p: lista de políticos, cada um com
      id, k ("d" deputado / "s" senador), n (nome), nc (nome civil), g (cargo), pt (partido), uf,
      f (foto), x (em exercício), o (página oficial),
-     per: {"2023": [meses, ganha, custa, {categoria: valor}, meses_com_ganha, meses_com_custa], ..., "leg": [...]}
-     t: série mensal [[aaaamm, ganha, custa], ...]
+     per: {"2023": {m, mg, mc, me, g, c, e, pm, mp, pu, cats}, ..., "leg": {...}}
+          m = meses com algum valor; mg/mc/me = meses com ganha/custa/equipe;
+          g/c/e = totais de ganha, custa (despesas dele) e equipe;
+          pm = soma de pessoas-mês da equipe; mp = meses com equipe contada; pu = pessoas no último mês
+     t: série mensal [[aaaamm, ganha, custa, equipe, pessoas], ...]
      ct: {"2025": [[índice_do_tipo, valor], ...], ..., "leg": [...]}   (top 6 tipos da cota)
      im: imóvel funcional
 """
@@ -64,70 +67,74 @@ def executar():
     politicos = ler_json(PROCESSADOS / "politicos.json")
     meta = ler_json(PROCESSADOS / "metadados.json")
     lanc = pd.read_csv(PROCESSADOS / "lancamentos.csv.gz")
-    lanc["periodo"] = lanc["ano"].astype(str)
+    equipe = pd.read_csv(PROCESSADOS / "equipe.csv")
 
     cota = lanc[lanc.categoria == "cota_parlamentar"].copy()
     cota["descricao"] = cota["descricao"].map(tipo_simples)
     tipos = sorted(cota["descricao"].unique())
     idx_tipo = {t: i for i, t in enumerate(tipos)}
-
-    por_ano = lanc.groupby(["id_politico", "ano", "grupo"])["valor"].sum()
-    cat_ano = lanc.groupby(["id_politico", "ano", "categoria"])["valor"].sum()
-    por_leg = lanc.groupby(["id_politico", "grupo"])["valor"].sum()
-    cat_leg = lanc.groupby(["id_politico", "categoria"])["valor"].sum()
-
-    mensal = (lanc[lanc.mes.notna()].groupby(["id_politico", "ano", "mes", "grupo"])["valor"].sum()
-              .unstack("grupo").fillna(0.0))
-    # Meses com pagamento de cada grupo: as médias de "ganha" e de "custa" usam cada uma o seu número de meses
-    # (ex.: deputado licenciado não recebe salário, mas o gabinete continua gastando).
-    mm = mensal.reset_index()
-    for grupo in ("ganha", "custa"):
-        if grupo not in mm:
-            mm[grupo] = 0.0
-    mm["tem_g"] = mm["ganha"] > 0
-    mm["tem_c"] = mm["custa"] > 0
-    mm["tem"] = mm["tem_g"] | mm["tem_c"]
-    meses_g_ano = mm[mm.tem_g].groupby(["id_politico", "ano"]).size()
-    meses_c_ano = mm[mm.tem_c].groupby(["id_politico", "ano"]).size()
-    meses_ano_any = mm[mm.tem].groupby(["id_politico", "ano"]).size()
-    meses_g_leg = mm[mm.tem_g].groupby("id_politico").size()
-    meses_c_leg = mm[mm.tem_c].groupby("id_politico").size()
-    meses_leg_any = mm[mm.tem].groupby("id_politico").size()
     cota_ano = cota.groupby(["id_politico", "ano", "descricao"])["valor"].sum()
     cota_leg = cota.groupby(["id_politico", "descricao"])["valor"].sum()
 
-    anos = sorted(lanc["ano"].unique())
+    # Valores por mês e grupo; cada média usa os seus próprios meses
+    # (ex.: deputado licenciado não recebe salário, mas o gabinete continua gastando).
+    mensal = (lanc[lanc.mes.notna()].groupby(["id_politico", "ano", "mes", "grupo"])["valor"].sum()
+              .unstack("grupo").fillna(0.0).reset_index())
+    for g in ("ganha", "custa", "equipe"):
+        if g not in mensal:
+            mensal[g] = 0.0
+    mensal = mensal.merge(equipe[["id_politico", "ano", "mes", "pessoas"]], on=["id_politico", "ano", "mes"], how="left")
+    mensal["pessoas"] = mensal["pessoas"].fillna(0).astype(int)
+    totais = lanc.groupby(["id_politico", "ano", "grupo"])["valor"].sum()
+    cats = lanc.groupby(["id_politico", "ano", "categoria"])["valor"].sum()
+
+    def bloco(pid, mm, anos):
+        """Resumo de um período: meses, totais por grupo, pessoas da equipe e categorias."""
+        g = sum(totais.get((pid, a, "ganha"), 0.0) for a in anos)
+        c = sum(totais.get((pid, a, "custa"), 0.0) for a in anos)
+        e = sum(totais.get((pid, a, "equipe"), 0.0) for a in anos)
+        # média por pessoa: só meses que têm o custo da equipe E a contagem de pessoas
+        com_equipe = mm[(mm.pessoas > 0) & (mm.equipe > 0)].sort_values(["ano", "mes"])
+        com_pessoas = mm[mm.pessoas > 0].sort_values(["ano", "mes"])
+        cat = {}
+        for a in anos:
+            if (pid, a) in cats_idx:
+                for k, v in cats.loc[pid, a].items():
+                    cat[k] = cat.get(k, 0.0) + v
+        return {
+            "m": int(((mm.ganha > 0) | (mm.custa > 0) | (mm.equipe > 0)).sum()),
+            "mg": int((mm.ganha > 0).sum()), "mc": int((mm.custa > 0).sum()), "me": int((mm.equipe > 0).sum()),
+            "g": _r(g), "c": _r(c), "e": _r(e),
+            "pm": int(com_equipe.pessoas.sum()), "mp": int(len(com_equipe)),
+            "pu": int(com_pessoas.pessoas.iloc[-1]) if len(com_pessoas) else 0,
+            "ep": _r(com_equipe.equipe.sum()),
+            "cats": {k: _r(v) for k, v in cat.items() if abs(v) >= 1},
+        }
+
+    cats_idx = set(cats.index.droplevel(2))
+    anos = sorted(int(a) for a in lanc["ano"].unique())
+    por_pol = {pid: mm for pid, mm in mensal.groupby("id_politico")}
     saida = []
     for p in politicos:
         pid = p["id"]
+        mm = por_pol.get(pid, mensal.iloc[0:0])
         per = {}
         for ano in anos:
-            m = int(meses_ano_any.get((pid, ano), 0))
-            g = por_ano.get((pid, ano, "ganha"), 0.0)
-            c = por_ano.get((pid, ano, "custa"), 0.0)
-            if m == 0 and g == 0 and c == 0:
-                continue
-            cats = {k: _r(v) for k, v in cat_ano.loc[pid, ano].items()} if (pid, ano) in cat_ano.index.droplevel(2) else {}
-            per[str(ano)] = [m, _r(g), _r(c), {k: v for k, v in cats.items() if v},
-                             int(meses_g_ano.get((pid, ano), 0)), int(meses_c_ano.get((pid, ano), 0))]
-        cats_leg = {k: _r(v) for k, v in cat_leg.loc[pid].items()} if pid in cat_leg.index.get_level_values(0) else {}
-        per["leg"] = [int(meses_leg_any.get(pid, 0)), _r(por_leg.get((pid, "ganha"), 0.0)),
-                      _r(por_leg.get((pid, "custa"), 0.0)), {k: v for k, v in cats_leg.items() if v},
-                      int(meses_g_leg.get(pid, 0)), int(meses_c_leg.get(pid, 0))]
-
-        serie = []
-        if pid in mensal.index.get_level_values(0):
-            for (ano, mes), r in mensal.loc[pid].iterrows():
-                serie.append([int(ano) * 100 + int(mes), _r(r.get("ganha", 0.0)), _r(r.get("custa", 0.0))])
+            b = bloco(pid, mm[mm.ano == ano], [ano])
+            if b["m"] or b["g"] or b["c"] or b["e"]:
+                per[str(ano)] = b
+        per["leg"] = bloco(pid, mm, anos)
+        serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas)]
+                 for r in mm.sort_values(["ano", "mes"]).itertuples()]
 
         ct = {}
         for ano in anos:
             if (pid, ano) in cota_ano.index.droplevel(2):
-                s = cota_ano.loc[pid, ano].sort_values(ascending=False).head(6)
-                ct[str(ano)] = [[idx_tipo[d], _r(v)] for d, v in s.items() if v >= 1]
+                s_ = cota_ano.loc[pid, ano].sort_values(ascending=False).head(6)
+                ct[str(ano)] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
         if pid in cota_leg.index.get_level_values(0):
-            s = cota_leg.loc[pid].sort_values(ascending=False).head(6)
-            ct["leg"] = [[idx_tipo[d], _r(v)] for d, v in s.items() if v >= 1]
+            s_ = cota_leg.loc[pid].sort_values(ascending=False).head(6)
+            ct["leg"] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
 
         item = {"id": pid, "k": "d" if p["casa"] == "camara" else "s", "n": p["nome"], "nc": p.get("nome_civil"),
                 "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"), "f": p.get("foto"),

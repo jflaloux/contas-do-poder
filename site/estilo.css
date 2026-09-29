@@ -16,7 +16,8 @@
   --hi-soft: #fde6ee;
   --hi-ink: #7a1a40;
   --ganha: #2a78d6;        /* dado: vai para a pessoa */
-  --custa: #eb6834;        /* dado: gastos do mandato */
+  --custa: #eb6834;        /* dado: despesas dele */
+  --equipe: #1baf7a;       /* dado: equipe do gabinete (vai para outras pessoas) */
   --ponto: rgba(25, 22, 47, .26);
   --bom: #0b7a0b;
   --ruim: #c02f2f;
@@ -38,7 +39,7 @@
     --bg: #100e1c; --paper: #1a1729; --ink: #f2f0fb; --ink-2: #bdb8d4; --ink-3: #9a95b3; --line: #2f2b45; --line-2: #25213a;
     --accent: #a898ff; --accent-2: #c2b7ff; --accent-soft: #28224a; --on-accent: #120f2a;
     --hi: #ff6f9f; --hi-soft: #3a1a29; --hi-ink: #ffc2d6;
-    --ganha: #3987e5; --custa: #d95926; --ponto: rgba(242, 240, 251, .28); --bom: #5fd35f; --ruim: #ff8a8a; --zap: #2bb567;
+    --ganha: #3987e5; --custa: #d95926; --equipe: #199e70; --ponto: rgba(242, 240, 251, .28); --bom: #5fd35f; --ruim: #ff8a8a; --zap: #2bb567;
     --escuro: #221d42; --escuro-ink: #f2f0fb; --escuro-ink-2: #c4bfe0; --escuro-line: #3f3868;
     --sombra: 0 1px 2px rgba(0, 0, 0, .5);
     color-scheme: dark;
@@ -48,7 +49,7 @@
   --bg: #100e1c; --paper: #1a1729; --ink: #f2f0fb; --ink-2: #bdb8d4; --ink-3: #9a95b3; --line: #2f2b45; --line-2: #25213a;
   --accent: #a898ff; --accent-2: #c2b7ff; --accent-soft: #28224a; --on-accent: #120f2a;
   --hi: #ff6f9f; --hi-soft: #3a1a29; --hi-ink: #ffc2d6;
-  --ganha: #3987e5; --custa: #d95926; --ponto: rgba(242, 240, 251, .28); --bom: #5fd35f; --ruim: #ff8a8a; --zap: #2bb567;
+  --ganha: #3987e5; --custa: #d95926; --equipe: #199e70; --ponto: rgba(242, 240, 251, .28); --bom: #5fd35f; --ruim: #ff8a8a; --zap: #2bb567;
   --escuro: #221d42; --escuro-ink: #f2f0fb; --escuro-ink-2: #c4bfe0; --escuro-line: #3f3868;
   --sombra: 0 1px 2px rgba(0, 0, 0, .5);
   color-scheme: dark;
@@ -187,6 +188,8 @@ a.fonte:hover { border-color: var(--accent); }
 .chave { width: 10px; height: 10px; border-radius: 3px; flex: none; display: inline-block; }
 .chave--ganha { background: var(--ganha); }
 .chave--custa { background: var(--custa); }
+.chave--equipe { background: var(--equipe); }
+.equipe-resumo { margin-top: 14px; border-top: 1px dashed var(--line); padding-bottom: 4px; }
 .selo-comp { font-family: var(--mono); font-size: .76rem; border: 1.5px solid currentColor; border-radius: 999px; padding: 0 7px; line-height: 1.5; }
 .selo-comp--acima { color: var(--ruim); }
 .selo-comp--abaixo { color: var(--bom); }
@@ -225,6 +228,7 @@ a.fonte:hover { border-color: var(--accent); }
 .grafico .base { stroke: var(--line); stroke-width: 1; }
 .seg-ganha { fill: var(--ganha); }
 .seg-custa { fill: var(--custa); }
+.seg-equipe { fill: var(--equipe); }
 .alvo { fill: transparent; cursor: crosshair; }
 .coluna.ativa .seg-ganha, .coluna.ativa .seg-custa { filter: brightness(1.12); }
 .ponto { fill: var(--ponto); }
@@ -256,6 +260,7 @@ td.num { font-family: var(--mono); }
 .barra__fill { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--custa); min-width: 2px; }
 .barra__fill--ganha { background: var(--ganha); }
 .barra__fill--neutra { background: var(--ink-2); }
+.barra__fill--equipe { background: var(--equipe); }
 
 /* comparar */
 .comp-tabela td:nth-child(4) { font-family: var(--mono); }

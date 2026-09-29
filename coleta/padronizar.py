@@ -3,12 +3,16 @@
 Saídas em dados/processados/:
 - politicos.json    — quem é quem (um registro por político)
 - lancamentos.csv.gz — uma linha por político · ano · mês · grupo · categoria · descrição · valor
+- equipe.csv        — quantas pessoas trabalharam no gabinete em cada mês
 - resumo.json       — totais prontos para o site (por político, por ano e na legislatura)
 - metadados.json    — data da coleta, fontes, regras e pendências conhecidas
 
 Grupos:
-- "ganha": o que vai para a pessoa (salário, 13º, auxílios, ajuda de custo)
-- "custa": despesas do mandato pagas com dinheiro público (cota, gabinete, diárias, passagens...)
+- "ganha": o que vai para o bolso do parlamentar (salário, 13º, auxílios, ajuda de custo)
+- "custa": despesas dele pagas com dinheiro público (cota: passagens, combustível, alimentação,
+           escritório, divulgação...; diárias; outros gastos do mandato)
+  -> "ganha" + "custa" = o custo do parlamentar
+- "equipe": salários das pessoas que trabalham no gabinete (dinheiro que vai para outras pessoas)
 """
 from datetime import datetime
 
@@ -27,11 +31,12 @@ CATEGORIAS = {
     "auxilios": ("ganha", "Auxílios (inclui auxílio-moradia)"),
     "ajuda_de_custo": ("ganha", "Ajuda de custo e outras verbas indenizatórias"),
     "outros_rendimentos": ("ganha", "Outros pagamentos"),
-    # grupo "custa"
+    # grupo "custa" (despesas do próprio parlamentar)
     "cota_parlamentar": ("custa", "Cota parlamentar"),
-    "assessores_gabinete": ("custa", "Assessores do gabinete"),
     "diarias": ("custa", "Diárias de viagens oficiais"),
     "outros_gastos_mandato": ("custa", "Outros gastos do mandato"),
+    # grupo "equipe" (vai para outras pessoas)
+    "assessores_gabinete": ("equipe", "Equipe do gabinete"),
 }
 
 
@@ -185,46 +190,72 @@ def _senado():
     return politicos, L, liquido
 
 
+# ---------------------------------------------------------------- tamanho da equipe
+def _equipe(ids):
+    """Pessoas no gabinete por mês. Câmara: secretários parlamentares (pagos pela verba de gabinete);
+    CNE aparece à parte. Senado: comissionados do gabinete e escritórios encontrados na folha (estimativa)."""
+    partes = []
+    arq = BRUTOS / "camara_pessoal.csv"
+    if arq.exists():
+        c = pd.read_csv(arq)
+        c["id_politico"] = "dep-" + c["id_deputado"].astype(str)
+        partes.append(c.rename(columns={"secretarios": "pessoas"})[["id_politico", "ano", "mes", "pessoas", "cne"]])
+    s_ = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
+    s_["id_politico"] = "sen-" + s_["id_senador"].astype(str)
+    s_["cne"] = 0
+    partes.append(s_[["id_politico", "ano", "mes", "pessoas", "cne"]])
+    eq = _na_legislatura(pd.concat(partes, ignore_index=True))
+    eq = eq[eq["id_politico"].isin(ids) & ((eq["pessoas"] > 0) | (eq["cne"] > 0))]
+    return eq.sort_values(["id_politico", "ano", "mes"])
+
+
 # ---------------------------------------------------------------- resumo
-def _resumo(politicos, lanc):
+def _resumo(politicos, lanc, equipe):
     df = pd.DataFrame(lanc)
     limites = pd.read_csv(REFERENCIA / "limites_cota_camara.csv").set_index("uf")["limite_mensal"].to_dict()
+    mensal = (df[df.mes.notna()].groupby(["id_politico", "ano", "mes", "grupo"])["valor"].sum().unstack("grupo").fillna(0.0))
+    for g in ("ganha", "custa", "equipe"):
+        if g not in mensal:
+            mensal[g] = 0.0
+    mensal = mensal.reset_index()
     saida = {}
+
+    def bloco(d, mm, eq, ano=None):
+        g = round(d.loc[d.grupo == "ganha", "valor"].sum(), 2)
+        c = round(d.loc[d.grupo == "custa", "valor"].sum(), 2)
+        e = round(d.loc[d.grupo == "equipe", "valor"].sum(), 2)
+        mg, mc, me = int((mm.ganha > 0).sum()), int((mm.custa > 0).sum()), int((mm.equipe > 0).sum())
+        meses_e = mm[mm.equipe > 0][["ano", "mes"]]
+        eq_ok = eq.merge(meses_e, on=["ano", "mes"])          # meses com custo e com contagem de pessoas
+        pessoa_meses = int(eq_ok["pessoas"].sum())
+        e_ok = float(mm.merge(eq_ok[["ano", "mes"]], on=["ano", "mes"]).equipe.sum())
+        out = {
+            "meses_com_salario": mg, "meses_com_despesas": mc, "meses_com_equipe": me,
+            "ganha": g, "despesas": c, "equipe": e,
+            "ganha_por_mes": round(g / mg, 2) if mg else None,
+            "despesas_por_mes": round(c / mc, 2) if mc else None,
+            "custo_dele_por_mes": round((g / mg if mg else 0) + (c / mc if mc else 0), 2),
+            "equipe_por_mes": round(e / me, 2) if me else None,
+            "pessoas_na_equipe_media": round(pessoa_meses / len(eq_ok), 1) if len(eq_ok) else None,
+            "media_por_pessoa_por_mes": round(e_ok / pessoa_meses, 2) if pessoa_meses else None,
+            "categorias": {k: round(v, 2) for k, v in d.groupby("categoria")["valor"].sum().items()},
+        }
+        if ano:
+            out["salarios_minimos_ganha_por_mes"] = round(g / mg / SALARIO_MINIMO[ano], 1) if mg else None
+        return out
+
     for p in politicos:
-        d = df[df["id_politico"] == p["id"]]
-        sal = d[d["categoria"] == "salario"]
-        meses = sal[sal["valor"] > 0][["ano", "mes"]].drop_duplicates()
-        n_meses = len(meses)
-        por_ano = {}
-        for ano, da in d.groupby("ano"):
-            m = int((meses["ano"] == ano).sum())
-            por_ano[str(int(ano))] = {
-                "meses_de_mandato": m,
-                "ganha": round(da.loc[da.grupo == "ganha", "valor"].sum(), 2),
-                "custa": round(da.loc[da.grupo == "custa", "valor"].sum(), 2),
-                "categorias": {k: round(v, 2) for k, v in da.groupby("categoria")["valor"].sum().items()},
-                "salarios_minimos_por_mes": (round(da.loc[da.grupo == "ganha", "valor"].sum() / m / SALARIO_MINIMO[int(ano)], 1)
-                                             if m else None),
-            }
-        ganha = round(d.loc[d.grupo == "ganha", "valor"].sum(), 2)
-        custa = round(d.loc[d.grupo == "custa", "valor"].sum(), 2)
+        pid = p["id"]
+        d, mm, eq = df[df.id_politico == pid], mensal[mensal.id_politico == pid], equipe[equipe.id_politico == pid]
+        por_ano = {str(int(a)): bloco(d[d.ano == a], mm[mm.ano == a], eq[eq.ano == a], int(a)) for a in sorted(d.ano.unique())}
         cota_por_tipo = (d[d.categoria == "cota_parlamentar"].groupby("descricao")["valor"].sum()
                          .sort_values(ascending=False).round(2))
-        item = {
-            "meses_de_mandato": n_meses,
-            "legislatura": {
-                "ganha": ganha, "custa": custa, "total": round(ganha + custa, 2),
-                "categorias": {k: round(v, 2) for k, v in d.groupby("categoria")["valor"].sum().items()},
-                "media_mensal_ganha": round(ganha / n_meses, 2) if n_meses else None,
-                "media_mensal_custa": round(custa / n_meses, 2) if n_meses else None,
-                "media_mensal_total": round((ganha + custa) / n_meses, 2) if n_meses else None,
-                "cota_por_tipo": cota_por_tipo.head(12).to_dict(),
-            },
-            "por_ano": por_ano,
-        }
+        leg = bloco(d, mm, eq)
+        leg["cota_por_tipo"] = cota_por_tipo.head(12).to_dict()
+        item = {"legislatura": leg, "por_ano": por_ano}
         if p["casa"] == "camara" and p.get("uf") in limites:
             item["limite_mensal_cota_atual"] = limites[p["uf"]]
-        saida[p["id"]] = item
+        saida[pid] = item
     return saida
 
 
@@ -246,13 +277,20 @@ def executar():
     pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"], na_position="last") \
         .to_csv(PROCESSADOS / "lancamentos.csv.gz", index=False)
     pd.DataFrame(liquido).to_csv(PROCESSADOS / "senado_salario_liquido.csv", index=False)
-    salvar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc))
+    equipe = _equipe(ids)
+    equipe.to_csv(PROCESSADOS / "equipe.csv", index=False)
+    salvar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe))
     salvar_json(PROCESSADOS / "metadados.json", {
         "gerado_em": datetime.now().isoformat(timespec="seconds"),
         "legislatura": LEGISLATURA,
         "periodo": f"{INICIO_LEGISLATURA[1]:02d}/{INICIO_LEGISLATURA[0]} até hoje",
         "salario_minimo": SALARIO_MINIMO,
         "categorias": {k: {"grupo": g, "nome": n} for k, (g, n) in CATEGORIAS.items()},
+        "grupos": {
+            "ganha": "Vai para o bolso do parlamentar: salário, 13º, auxílios, ajuda de custo.",
+            "custa": "Despesas do próprio parlamentar pagas com dinheiro público: cota, diárias, outros gastos.",
+            "equipe": "Salários das pessoas que trabalham no gabinete.",
+        },
         "fontes_por_lancamento": {
             "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
             "camara_remuneracao": "https://www.camara.leg.br/deputados/{id}/remuneracao?ano={ano}",

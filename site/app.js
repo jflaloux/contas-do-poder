@@ -47,7 +47,8 @@
   const ESTADOS = { AC: "Acre", AL: "Alagoas", AM: "Amazonas", AP: "Amapá", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MG: "Minas Gerais", MS: "Mato Grosso do Sul", MT: "Mato Grosso", PA: "Pará", PB: "Paraíba", PE: "Pernambuco", PI: "Piauí", PR: "Paraná", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RO: "Rondônia", RR: "Roraima", RS: "Rio Grande do Sul", SC: "Santa Catarina", SE: "Sergipe", SP: "São Paulo", TO: "Tocantins" };
   const UFS = Object.keys(ESTADOS);
   const ORDEM_GANHA = ["salario", "decimo_terceiro", "auxilio_moradia", "auxilios", "ajuda_de_custo", "outros_rendimentos"];
-  const ORDEM_CUSTA = ["assessores_gabinete", "cota_parlamentar", "diarias", "outros_gastos_mandato"];
+  const ORDEM_CUSTA = ["cota_parlamentar", "diarias", "outros_gastos_mandato"];
+  const ORDEM_EQUIPE = ["assessores_gabinete"];
   function iniciais(nome) {
     const p = nome.replace(/^(Dr|Dra|Delegad[oa]|Coronel|Capitão|Pastor[a]?|Sargento|Professor[a]?|Missionário|General|Cabo|Major|Tenente)\.?\s+/i, "").split(/\s+/);
     return ((p[0] || "")[0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
@@ -57,7 +58,7 @@
   // ================================================================== estado
   const S = {
     D: null, porId: new Map(), sel: null, periodo: null, outro: null, ufLista: "",
-    rank: { casa: null, metrica: "total", periodo: null, uf: "", noCargo: true, completo: false },
+    rank: { casa: null, metrica: "custo", periodo: null, uf: "", noCargo: true, completo: false },
   };
   let observadores = [];
 
@@ -71,29 +72,38 @@
     if (k === "2023") return curto ? "2023" : "em 2023 (desde fevereiro)";
     return curto ? k : `em ${k}`;
   }
-  const periodos = (p) => [...meta().anos.filter((a) => p.per[a] && p.per[a][0] > 0), "leg"];
+  const periodos = (p) => [...meta().anos.filter((a) => p.per[a] && p.per[a].m > 0), "leg"];
+  // Resumo de um período. "Custo dele" = o que vai para o bolso (ganha) + as despesas dele (custa).
+  // A equipe do gabinete (dinheiro que vai para outras pessoas) fica separada.
   function resumo(p, k) {
     const r = p && p.per[k];
-    if (!r || !r[0]) return null;
-    const [m, g, c, cats] = r;
-    const mg = r[4] || m, mc = r[5] || m;
-    const gm = mg ? g / mg : 0, cm = mc ? c / mc : 0;
-    return { m, mg, mc, g, c, cats, gm, cm, tm: gm + cm };
+    if (!r || !r.m) return null;
+    const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, em = r.me ? r.e / r.me : 0;
+    return {
+      m: r.m, mg: r.mg, mc: r.mc, me: r.me, g: r.g, c: r.c, e: r.e, cats: r.cats,
+      gm, cm, em, tm: gm + cm,
+      pessoas: r.mp ? r.pm / r.mp : 0, pessoasHoje: r.pu, porPessoa: r.pm ? (r.ep ?? r.e) / r.pm : 0,
+    };
   }
-  const porMes = (r, cat) => (r.cats[cat] || 0) / (ORDEM_GANHA.includes(cat) ? r.mg : r.mc);
+  function porMes(r, cat) {
+    const div = ORDEM_GANHA.includes(cat) ? r.mg : ORDEM_EQUIPE.includes(cat) ? r.me : r.mc;
+    return div ? (r.cats[cat] || 0) / div : 0;
+  }
+  // em salários mínimos de cada ano (o salário mínimo muda todo ano)
   function emSalariosMinimos(p, k, campo) {
     const anos = k === "leg" ? meta().anos : [k];
-    let soma = 0, meses = 0;
-    for (const a of anos) {
-      const r = p.per[a];
-      if (!r || !r[0]) continue;
-      soma += (campo === "g" ? r[1] : r[2]) / meta().salario_minimo[a];
-      meses += campo === "g" ? (r[4] || r[0]) : (r[5] || r[0]);
-    }
-    return meses ? soma / meses : 0;
+    const um = (chave, meses) => {
+      let soma = 0, n = 0;
+      for (const a of anos) { const r = p.per[a]; if (!r || !r[meses]) continue; soma += r[chave] / meta().salario_minimo[a]; n += r[meses]; }
+      return n ? soma / n : 0;
+    };
+    if (campo === "g") return um("g", "mg");
+    if (campo === "c") return um("c", "mc");
+    if (campo === "e") return um("e", "me");
+    return um("g", "mg") + um("c", "mc"); // custo dele
   }
   function periodoPadrao(p) {
-    if (p.per["2025"] && p.per["2025"][0] >= 1) return "2025";
+    if (p.per["2025"] && p.per["2025"].m >= 1) return "2025";
     const anos = periodos(p).filter((k) => k !== "leg");
     return anos.length ? anos[anos.length - 1] : "leg";
   }
@@ -111,8 +121,13 @@
     if (cacheMed.has(chave)) return cacheMed.get(chave);
     const lista = S.D.p.filter((p) => p.k === casa).map((p) => ({ p, r: resumo(p, k) })).filter((x) => x.r && x.r.m >= 3);
     const rs = lista.map((x) => x.r);
-    const out = { lista, n: rs.length, gm: mediana(rs.map((r) => r.gm)), cm: mediana(rs.map((r) => r.cm)), tm: mediana(rs.map((r) => r.tm)), cat: {} };
-    for (const c of [...ORDEM_GANHA, ...ORDEM_CUSTA]) out.cat[c] = mediana(rs.map((r) => porMes(r, c)));
+    const comEquipe = rs.filter((r) => r.me > 0);
+    const out = {
+      lista, n: rs.length, gm: mediana(rs.map((r) => r.gm)), cm: mediana(rs.map((r) => r.cm)), tm: mediana(rs.map((r) => r.tm)),
+      em: mediana(comEquipe.map((r) => r.em)), pessoas: mediana(comEquipe.filter((r) => r.pessoas).map((r) => r.pessoas)),
+      porPessoa: mediana(comEquipe.filter((r) => r.porPessoa).map((r) => r.porPessoa)), cat: {},
+    };
+    for (const c of [...ORDEM_GANHA, ...ORDEM_CUSTA, ...ORDEM_EQUIPE]) out.cat[c] = mediana(rs.map((r) => porMes(r, c)));
     cacheMed.set(chave, out);
     return out;
   }
@@ -223,15 +238,17 @@
     const ro = new ResizeObserver(() => { const w = caixa.clientWidth; if (Math.abs(w - largura) > 8) { largura = w; desenhar(); } });
     ro.observe(caixa); observadores.push(ro);
   }
-  function graficoMensal(caixa, pontos) {
+  // Colunas mês a mês, empilhando as séries dadas (de baixo para cima)
+  function graficoColunas(caixa, pontos, series, linhasDica) {
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
       const W = Math.max(260, caixa.clientWidth), H = 240;
       const m = { t: 10, r: 4, b: 28, l: 62 };
       const iw = W - m.l - m.r, ih = H - m.t - m.b;
-      const { ticks, topo } = escala(Math.max(1, ...pontos.map((p) => p.g + p.c)), 4);
+      const soma = (p) => series.reduce((acc, se) => acc + (p[se.k] || 0), 0);
+      const { ticks, topo } = escala(Math.max(1, ...pontos.map(soma)), 4);
       const y = (v) => m.t + ih - (v / topo) * ih;
-      const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Quanto ganha e quanto custa, mês a mês" });
+      const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Valores mês a mês" });
       for (const t of ticks) {
         svg.append(s("line", { class: t === 0 ? "base" : "grade", x1: m.l, x2: W - m.r, y1: y(t), y2: y(t) }));
         const tx = s("text", { x: m.l - 8, y: y(t) + 4, "text-anchor": "end" }); tx.textContent = t === 0 ? "0" : compacto(t); svg.append(tx);
@@ -243,22 +260,26 @@
       pontos.forEach((p, i) => {
         const cx = m.l + banda * i + banda / 2, x = cx - bw / 2;
         const g = s("g", { class: "coluna" });
-        const yG = y(p.g), altG = y(0) - yG, yT = y(p.g + p.c), altC = yG - yT - (p.g > 0 ? 2 : 0);
-        if (p.c > 0 && altC > 0.5) {
-          g.append(s("rect", { class: "seg-ganha", x, y: yG, width: bw, height: Math.max(0, altG) }));
-          g.append(s("path", { class: "seg-custa", d: colunaArredondada(x, yT, bw, altC, 4) }));
-        } else g.append(s("path", { class: "seg-ganha", d: colunaArredondada(x, yG, bw, altG, 4) }));
+        const ativos = series.filter((se) => (p[se.k] || 0) > 0);
+        let base = 0;
+        ativos.forEach((se, j) => {
+          const v = p[se.k];
+          const yTopo = y(base + v), yBase = y(base) - (j > 0 ? 2 : 0);
+          const alt = yBase - yTopo;
+          if (alt > 0.3) {
+            if (j === ativos.length - 1) g.append(s("path", { class: se.cls, d: colunaArredondada(x, yTopo, bw, alt, 4) }));
+            else g.append(s("rect", { class: se.cls, x, y: yTopo, width: bw, height: alt }));
+          }
+          base += v;
+        });
         g.append(s("rect", { class: "alvo", x: m.l + banda * i, y: m.t, width: banda, height: ih }));
         const mostrar = () => {
           svg.querySelectorAll(".coluna.ativa").forEach((c) => c.classList.remove("ativa"));
           g.classList.add("ativa");
           d.hidden = false; d.textContent = "";
           const mes = p.aaaamm % 100, ano = Math.floor(p.aaaamm / 100);
-          d.append(h("div", null, `${MESES[mes - 1]}/${ano}`),
-            h("div", null, h("span", { class: "traco", style: "background:var(--ganha)" }), h("strong", null, reais(p.g)), " ganha"),
-            h("div", null, h("span", { class: "traco", style: "background:var(--custa)" }), h("strong", null, reais(p.c)), " custa"),
-            h("div", null, "Total ", h("strong", null, reais(p.g + p.c))));
-          posicionarDica(caixa, d, cx + 12, yT + 14);
+          d.append(h("div", null, `${MESES[mes - 1]}/${ano}`), linhasDica(p));
+          posicionarDica(caixa, d, cx + 12, y(soma(p)) + 14);
         };
         g.addEventListener("pointerenter", mostrar); g.addEventListener("pointerdown", mostrar);
         svg.append(g);
@@ -276,6 +297,7 @@
     };
     aoRedimensionar(caixa, desenhar); desenhar();
   }
+  const linhaDica = (cor, valor, texto) => h("div", null, h("span", { class: "traco", style: `background:var(--${cor})` }), h("strong", null, valor), ` ${texto}`);
   function graficoColegas(caixa, eu, pares) {
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
@@ -321,14 +343,17 @@
 
   // ================================================================== compartilhar
   const endereco = () => (($('meta[name="endereco-do-site"]') || {}).content || "").replace(/#.*$/, "");
+  const dominio = () => endereco().replace(/^https?:\/\//, "").replace(/\/$/, "") || "contasdopoder.com";
+  const pessoasTxt = (n) => `${num(n, n < 10 && n % 1 ? 1 : 0)} ${Math.round(n) === 1 ? "pessoa" : "pessoas"}`;
   function textoCompartilhar(p, k) {
     const r = resumo(p, k), pos = posicao(p, k);
     const link = endereco() ? `${endereco()}#${p.id}${k !== periodoPadrao(p) ? "~" + k : ""}` : "";
     return [
       `*${p.n}* (${p.g}, ${partidoUF(p)}) ${nomePeriodo(k, false)}:`,
-      `Ganha em média *${reais(r.gm)} por mês* (${sm(emSalariosMinimos(p, k, "g"))} salários mínimos)`,
-      `O mandato custa *${reais(r.cm)} por mês* em dinheiro público`,
-      pos ? `Somando tudo, fica acima de ${pos.pct}% dos ${plural(p.k)}` : null,
+      `Custo dele: *${reais(r.tm)} por mês* (salário, auxílios e despesas pagas com dinheiro público)`,
+      `Só o que vai para o bolso: ${reais(r.gm)} por mês (${sm(emSalariosMinimos(p, k, "g"))} salários mínimos)`,
+      r.em ? `Equipe do gabinete: ${pessoasTxt(r.pessoas)}, ${reais(r.em)} por mês` : null,
+      pos ? `O custo dele fica acima de ${pos.pct}% dos ${plural(p.k)}` : null,
       "",
       `Quanto custa quem te representa? ${link || "Contas do Poder"}`,
     ].filter((x) => x !== null).join("\n");
@@ -346,7 +371,7 @@
       }
     };
     const link = endereco() ? `${endereco()}#${p.id}` : "";
-    painel.append(h("div", { class: "acoes" },
+    add(painel, h("div", { class: "acoes" },
       h("button", { type: "button", class: "botao botao--leve", onclick: () => copiar(texto, "Texto copiado. É só colar.") }, "Copiar o texto"),
       link ? h("button", { type: "button", class: "botao botao--leve", onclick: () => copiar(link, "Link copiado.") }, "Copiar o link") : null), retorno);
     return h("div", { class: "compartilhar" },
@@ -374,62 +399,97 @@
     if (r) {
       add(lado, h("div", { class: "estatisticas" },
         estatistica("Meses de mandato", String(r.m), nomePeriodo(k, false)),
-        estatistica("Em salários mínimos", sm(emSalariosMinimos(p, k, "g")), "é o que ganha por mês")));
+        estatistica("Vai para o bolso", sm(emSalariosMinimos(p, k, "g")), "salários mínimos por mês")));
       if (p.im) {
         const anos = k === "leg" ? Object.keys(p.im) : [k];
         const frases = anos.filter((a) => p.im[a]).map((a) => p.k === "d" ? `${a}: apartamento funcional por ${p.im[a]} dias` : `${a}: ${p.im[a] === "Utilizou" ? "usou" : "não usou"} imóvel funcional`);
         if (frases.length) add(lado, h("div", { class: "estatistica" }, h("span", { class: "rotulo" }, "Moradia em Brasília"), frases.map((f) => h("span", { class: "pequeno" }, f))));
       }
-      if (r.mg < r.m) add(lado, h("p", { class: "nota" }, `Em ${r.m - r.mg} ${r.m - r.mg === 1 ? "mês" : "meses"} não houve salário (licença, por exemplo), mas o gabinete continuou gastando. Cada média usa os seus próprios meses.`));
-      add(lado, h("p", { class: "aviso" }, p.k === "d"
-        ? "Ainda faltam o 13º, a ajuda de custo e as diárias dos deputados. O valor real que recebem é um pouco maior."
-        : "O custo dos assessores do Senado é uma estimativa feita a partir da folha de pagamento."));
+      if (r.mg < r.m) add(lado, h("p", { class: "nota" }, `Em ${r.m - r.mg} ${r.m - r.mg === 1 ? "mês" : "meses"} não houve salário (licença, por exemplo), mas o gabinete continuou funcionando. Cada média usa os seus próprios meses.`));
+      if (p.k === "d") add(lado, h("p", { class: "aviso" }, "Ainda faltam o 13º, a ajuda de custo e as diárias dos deputados. O valor real que recebem é um pouco maior."));
     }
     const valores = h("div", { class: "conta__valores" }, h("p", { class: "passo", style: "padding:20px 22px 0" }, "2. Quanto isso dá por mês"));
     if (!r) add(valores, h("p", { class: "discreto", style: "padding:16px 22px" }, "Sem pagamentos registrados neste período."));
     else {
       const txtMed = `mediana dos ${plural(p.k)}`;
-      const grupo = (titulo, tipo, ordem) => [
-        h("div", { class: "grupo-titulo" }, h("span", { class: `chave chave--${tipo}` }), h("span", { class: "rotulo" }, titulo)),
-        ordem.filter((c) => r.cats[c]).map((c) => h("div", { class: "item" },
-          h("span", { class: "item__nome" }, nomeCat(c), p.k === "s" && c === "assessores_gabinete" ? [" ", h("span", { class: "etiqueta etiqueta--estimativa" }, "estimativa")] : null),
-          h("span", { class: "item__valor" }, reais(porMes(r, c))),
-          seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`)))];
-      add(valores, 
-        grupo("Vai para a pessoa", "ganha", ORDEM_GANHA),
-        h("div", { class: "item" }, h("strong", null, "Ganha por mês"), h("strong", { class: "item__valor" }, reais(r.gm)), seloComp(r.gm, C.gm, `vs. ${txtMed}`)),
-        grupo("Gastos do mandato", "custa", ORDEM_CUSTA),
-        h("div", { class: "item" }, h("strong", null, "Custa por mês"), h("strong", { class: "item__valor" }, reais(r.cm)), seloComp(r.cm, C.cm, `vs. ${txtMed}`)),
+      const linhas = (ordem) => ordem.filter((c) => r.cats[c]).map((c) => h("div", { class: "item" },
+        h("span", { class: "item__nome" }, nomeCat(c)),
+        h("span", { class: "item__valor" }, reais(porMes(r, c))),
+        seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`)));
+      const titulo = (texto, tipo) => h("div", { class: "grupo-titulo" }, h("span", { class: `chave chave--${tipo}` }), h("span", { class: "rotulo" }, texto));
+      add(valores,
+        titulo("Vai para o bolso", "ganha"), linhas(ORDEM_GANHA),
+        titulo("Despesas dele pagas com dinheiro público", "custa"), linhas(ORDEM_CUSTA),
         h("div", { class: "total" },
-          h("strong", null, "Ganha + custa por mês"),
+          h("strong", null, "Custo dele por mês"),
           h("span", { class: "total__valor" }, reais(r.tm)),
-          h("span", { class: "item__detalhe" }, `${sm(r.tm / meta().salario_minimo[k === "leg" ? anoAtual() : k])} salários mínimos · total ${nomePeriodo(k, false)}: ${reais(r.g + r.c)}`),
+          h("span", { class: "item__detalhe" }, `${reais(r.gm)} para o bolso + ${reais(r.cm)} em despesas · ${sm(emSalariosMinimos(p, k, "t"))} salários mínimos`),
           seloComp(r.tm, C.tm, `vs. ${txtMed}`)),
-        pos ? h("p", { class: "destaque" }, `Somando o que ganha e o que o mandato custa, fica acima de ${pos.pct}% dos ${plural(p.k)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}).`) : null,
+        pos ? h("p", { class: "destaque" }, `O custo dele fica acima de ${pos.pct}% dos ${plural(p.k)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}).`) : null,
+        r.em ? h("div", { class: "equipe-resumo" },
+          titulo("À parte: equipe do gabinete (vai para outras pessoas)", "equipe"),
+          h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
+            estatistica("Custo da equipe", reais(r.em), "por mês"),
+            estatistica("Pessoas", num(r.pessoas, r.pessoas < 10 ? 1 : 0), r.pessoasHoje ? `em média; ${r.pessoasHoje} no último mês` : "em média"),
+            estatistica("Por pessoa", r.porPessoa ? reais(r.porPessoa) : "—", "por mês, em média")),
+          h("p", { class: "nota", style: "padding:8px 22px 0" }, p.k === "d"
+            ? "Secretários parlamentares pagos pela verba de gabinete. Não inclui cargos de natureza especial, pagos pela Câmara quando o deputado tem cargo de liderança."
+            : "Assessores comissionados do gabinete e dos escritórios nos estados. Estimativa feita a partir da folha de pagamento do Senado."),
+          h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver a equipe mês a mês")) : null,
         botoesCompartilhar(p, k));
     }
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
     return card;
   }
-  function secMensal(p, k) {
+  function pontosDoPeriodo(p, k) {
     const ano = k === "leg" ? null : Number(k);
-    const pontos = p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2] }));
+    return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4] }));
+  }
+  const nomeMes = (q) => `${MESES[(q.aaaamm % 100) - 1]}/${Math.floor(q.aaaamm / 100)}`;
+  function tabela(cabecalho, linhas) {
+    return h("details", { class: "tabela" }, h("summary", null, "Ver os valores em tabela"),
+      h("div", { class: "rolagem" }, h("table", null,
+        h("thead", null, h("tr", null, cabecalho.map((c) => h("th", null, c)))),
+        h("tbody", null, linhas.map((l) => h("tr", null, l.map((v, i) => h("td", { class: i ? "num" : null }, v))))))));
+  }
+  function secMensal(p, k) {
+    const pontos = pontosDoPeriodo(p, k).filter((q) => q.g || q.c);
     if (!pontos.length) return null;
     const caixa = h("div", { class: "grafico" });
     const card = h("article", { class: "cartao", id: "mes-a-mes" },
-      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Mês a mês"),
-        h("p", { class: "pequeno discreto" }, `Quanto ${p.n} recebeu e quanto o mandato gastou em cada mês, ${nomePeriodo(k, false).replace(/^em /, "")}.`))),
-      h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Ganha"), h("span", null, h("span", { class: "chave chave--custa" }), "Custa")),
+      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Custo dele mês a mês"),
+        h("p", { class: "pequeno discreto" }, `O que foi para o bolso e as despesas dele em cada mês, ${nomePeriodo(k, false).replace(/^em /, "")}. A equipe do gabinete aparece à parte.`))),
+      h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Vai para o bolso"), h("span", null, h("span", { class: "chave chave--custa" }), "Despesas dele")),
       caixa,
-      h("details", { class: "tabela" }, h("summary", null, "Ver os valores em tabela"),
-        h("div", { class: "rolagem" }, h("table", null,
-          h("thead", null, h("tr", null, h("th", null, "Mês"), h("th", null, "Ganha"), h("th", null, "Custa"), h("th", null, "Total"))),
-          h("tbody", null, pontos.map((q) => h("tr", null, h("td", null, `${MESES[(q.aaaamm % 100) - 1]}/${Math.floor(q.aaaamm / 100)}`),
-            h("td", { class: "num" }, reais(q.g)), h("td", { class: "num" }, reais(q.c)), h("td", { class: "num" }, reais(q.g + q.c)))))))),
+      tabela(["Mês", "Bolso", "Despesas", "Custo dele"], pontos.map((q) => [nomeMes(q), reais(q.g), reais(q.c), reais(q.g + q.c)])),
       h("p", { class: "nota" }, p.k === "d"
         ? "O auxílio-moradia da Câmara é informado por ano: entra nas médias, mas não no gráfico. Os 3 últimos meses ainda podem receber notas da cota."
         : "Passagens, correios e outros gastos do Senado são informados por ano: entram nas médias, mas não no gráfico."));
-    requestAnimationFrame(() => graficoMensal(caixa, pontos));
+    requestAnimationFrame(() => graficoColunas(caixa, pontos,
+      [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
+      (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), linhaDica("custa", reais(q.c), "em despesas"), h("div", null, "Custo dele ", h("strong", null, reais(q.g + q.c)))]));
+    return card;
+  }
+  function secEquipe(p, k) {
+    const r = resumo(p, k);
+    const pontos = pontosDoPeriodo(p, k).filter((q) => q.e);
+    if (!r || !r.em || !pontos.length) return null;
+    const C = colegas(p.k, k);
+    const caixa = h("div", { class: "grafico" });
+    const card = h("article", { class: "cartao", id: "equipe" },
+      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Equipe do gabinete"),
+        h("p", { class: "pequeno discreto" }, `Dinheiro público que paga as pessoas que trabalham para ${p.n}. Não vai para o bolso dele.`))),
+      h("div", { class: "estatisticas" },
+        estatistica("Custo da equipe por mês", reais(r.em), C.em ? `Mediana: ${reais(C.em)}` : null),
+        estatistica("Pessoas", num(r.pessoas, r.pessoas < 10 ? 1 : 0), C.pessoas ? `Mediana: ${num(C.pessoas, 0)}` : null),
+        estatistica("Média por pessoa", r.porPessoa ? reais(r.porPessoa) : "—", C.porPessoa ? `Mediana: ${reais(C.porPessoa)}` : null)),
+      caixa,
+      tabela(["Mês", "Custo da equipe", "Pessoas", "Por pessoa"], pontos.map((q) => [nomeMes(q), reais(q.e), q.pes ? String(q.pes) : "—", q.pes ? reais(q.e / q.pes) : "—"])),
+      h("p", { class: "nota" }, p.k === "d"
+        ? "Na Câmara, cada deputado tem até R$ 165.806,07 por mês para pagar até 25 secretários parlamentares. Contamos quem trabalhou no gabinete em cada mês, mesmo que só parte dele."
+        : "No Senado, os assessores são pagos direto pela folha. Ligamos a folha à lotação de cada comissionado: é uma estimativa, mais precisa nos meses recentes."));
+    requestAnimationFrame(() => graficoColunas(caixa, pontos, [{ k: "e", cls: "seg-equipe" }],
+      (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]));
     return card;
   }
   function secColegas(p, k) {
@@ -438,10 +498,10 @@
     const caixa = h("div", { class: "grafico" });
     const card = h("article", { class: "cartao", id: "colegas" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Comparado com os colegas"),
-        h("p", { class: "pequeno discreto" }, `Cada ponto é um dos ${C.n} ${plural(p.k)} com pelo menos 3 meses de mandato ${nomePeriodo(k, false)}. Valores por mês, somando o que ganha e o que custa.`))),
+        h("p", { class: "pequeno discreto" }, `Custo dele por mês (bolso + despesas), sem a equipe. Cada ponto é um dos ${C.n} ${plural(p.k)} com pelo menos 3 meses de mandato ${nomePeriodo(k, false)}.`))),
       h("div", { class: "estatisticas" },
-        estatistica("Ganha por mês", reais(r.gm), `Mediana: ${reais(C.gm)}`),
-        estatistica("Custa por mês", reais(r.cm), `Mediana: ${reais(C.cm)}`),
+        estatistica("Custo dele por mês", reais(r.tm), `Mediana: ${reais(C.tm)}`),
+        estatistica("Vai para o bolso", reais(r.gm), `Mediana: ${reais(C.gm)}`),
         estatistica("Posição", `${pos.pos}º`, `de ${pos.n} ${plural(p.k)}`)),
       caixa);
     const pares = C.lista.map((x) => ({ id: x.p.id, n: x.p.n, pt: x.p.pt, uf: x.p.uf, v: x.r.tm }));
@@ -454,20 +514,20 @@
     const r = resumo(p, k), max = ct[0][1];
     const notas = [];
     if (ct.some(([i]) => meta().tipos_cota[i].endsWith("*"))) notas.push("* Desde agosto de 2025, a Câmara deixou de publicar nos dados abertos as passagens compradas pelo próprio sistema. Usamos o total do site oficial, que não tem o detalhe por tipo.");
-    if (p.k === "d" && k === anoAtual() && meta().limites_cota_camara[p.uf] && r) {
+    if (p.k === "d" && k === anoAtual() && meta().limites_cota_camara[p.uf] && r && r.mc) {
       const usado = (r.cats.cota_parlamentar || 0) / (meta().limites_cota_camara[p.uf] * r.mc);
       notas.push(`Usou ${num(usado * 100, 0)}% do limite da cota em ${k} (limite de ${reais(meta().limites_cota_camara[p.uf])} por mês para ${ESTADOS[p.uf]}).`);
     }
     return h("article", { class: "cartao", id: "cota" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Para onde vai a cota parlamentar"),
-        h("p", { class: "pequeno discreto" }, `Os maiores gastos, somados ${nomePeriodo(k, false).replace(/^em /, "em ")}.`))),
+        h("p", { class: "pequeno discreto" }, `Passagens, combustível, alimentação, escritório e outras despesas reembolsadas, somadas ${nomePeriodo(k, false)}.`))),
       h("div", { class: "barras" }, ct.map(([i, v]) => barra(meta().tipos_cota[i], reais(v), v / max))),
       notas.map((n) => h("p", { class: "nota" }, n)));
   }
   function secComparar(p, k) {
     const card = h("article", { class: "cartao", id: "comparar" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Comparar com outro parlamentar"),
-        h("p", { class: "pequeno discreto" }, "Da Câmara ou do Senado. No mesmo período, quanto o outro ganha e custa a mais ou a menos por mês."))));
+        h("p", { class: "pequeno discreto" }, "Da Câmara ou do Senado. No mesmo período, quanto o outro custa a mais ou a menos por mês."))));
     const input = h("input", { type: "search", id: "busca-comparar", placeholder: "Nome, partido ou estado", autocomplete: "off" });
     const sug = h("div", { class: "sugestoes", hidden: true });
     add(card, h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-comparar" }, "Comparar com"), input, sug));
@@ -477,19 +537,22 @@
       const r1 = resumo(p, k), r2 = resumo(o, k);
       if (!r2) add(card, h("p", { class: "discreto" }, `${o.n} não tem mandato ${nomePeriodo(k, false)}. Escolha outro período acima.`));
       else if (r1) {
-        const linhas = [["Ganha por mês", (r) => r.gm], ["Salário", (r) => porMes(r, "salario")], ["Custa por mês", (r) => r.cm],
-          ["Assessores", (r) => porMes(r, "assessores_gabinete")], ["Cota parlamentar", (r) => porMes(r, "cota_parlamentar")], ["Ganha + custa por mês", (r) => r.tm]];
+        const linhas = [
+          ["Vai para o bolso", (r) => r.gm, reais], ["Despesas dele", (r) => r.cm, reais], ["Custo dele por mês", (r) => r.tm, reais],
+          ["Cota parlamentar", (r) => porMes(r, "cota_parlamentar"), reais],
+          ["Equipe do gabinete", (r) => r.em, reais], ["Pessoas na equipe", (r) => r.pessoas, (v) => num(v, 0)], ["Por pessoa da equipe", (r) => r.porPessoa, reais]];
         add(card, h("div", { class: "rolagem" }, h("table", { class: "comp-tabela" },
           h("thead", null, h("tr", null, h("th", null, nomePeriodo(k, true)), h("th", null, p.n), h("th", null, o.n), h("th", null, "Diferença"))),
-          h("tbody", null, linhas.map(([nome, f]) => {
+          h("tbody", null, linhas.map(([nome, f, fmt]) => {
             const a = f(r1), b = f(r2), dif = b - a, pct = a ? Math.round((dif / a) * 100) : null;
-            return h("tr", null, h("td", null, nome), h("td", { class: "num" }, reais(a)), h("td", { class: "num" }, reais(b)),
-              h("td", { class: Math.abs(dif) < 1 ? "" : dif > 0 ? "dif-mais" : "dif-menos" }, Math.abs(dif) < 1 ? "igual" : `${dif > 0 ? "+" : "−"}${reais(Math.abs(dif))}${pct !== null ? ` (${pct > 0 ? "+" : ""}${pct}%)` : ""}`));
+            const igual = fmt === reais ? Math.abs(dif) < 1 : Math.abs(dif) < 0.5;
+            return h("tr", null, h("td", null, nome), h("td", { class: "num" }, fmt(a)), h("td", { class: "num" }, fmt(b)),
+              h("td", { class: igual ? "" : dif > 0 ? "dif-mais" : "dif-menos" }, igual ? "igual" : `${dif > 0 ? "+" : "−"}${fmt(Math.abs(dif))}${pct !== null ? ` (${pct > 0 ? "+" : ""}${pct}%)` : ""}`));
           })))),
           h("div", { class: "acoes" },
             h("a", { href: `#${o.id}`, class: "pequeno" }, `Ver o contracheque de ${o.n}`),
             h("button", { type: "button", class: "link-botao pequeno", onclick: () => { S.outro = null; render(false); irPara("comparar"); } }, "Tirar da comparação")),
-          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "O custo dos assessores do Senado é uma estimativa. Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null);
+          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa. Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null);
       }
     }
     return card;
@@ -497,19 +560,18 @@
   function secResumo(p, k) {
     const r = resumo(p, k);
     if (!r) return null;
-    const pos = posicao(p, k), ct = (p.ct[k] || [])[0];
-    const dominio = endereco().replace(/^https?:\/\//, "").replace(/\/$/, "") || "contasdopoder.com";
+    const pos = posicao(p, k);
     return h("section", { class: "bloco", id: "resumo" },
       h("div", { class: "resumo" },
         h("p", { class: "rotulo" }, "Resumo para compartilhar"),
         h("h2", null, `${p.n}, ${nomePeriodo(k, false).replace(/^em /, "")}`),
         h("p", { style: "color:var(--escuro-ink-2)" }, `${p.g} · ${partidoUF(p)}`),
         h("div", { class: "resumo__grade" },
-          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Ganha por mês"), h("span", { class: "estatistica__valor" }, reais(r.gm)), h("span", null, `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`)),
-          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "O mandato custa por mês"), h("span", { class: "estatistica__valor" }, reais(r.cm)), h("span", null, `${sm(emSalariosMinimos(p, k, "c"))} salários mínimos`)),
-          pos ? h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Entre os colegas"), h("span", { class: "estatistica__valor" }, `${pos.pos}º de ${pos.n}`), h("span", null, `acima de ${pos.pct}% dos ${plural(p.k)}`)) : null,
-          ct ? h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Maior gasto da cota"), h("span", { class: "estatistica__valor" }, compacto(ct[1])), h("span", null, meta().tipos_cota[ct[0]])) : null),
-        h("p", { class: "resumo__cta" }, `Quanto custa quem te representa? ${dominio}`),
+          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Custo dele por mês"), h("span", { class: "estatistica__valor" }, reais(r.tm)), h("span", null, "salário, auxílios e despesas")),
+          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Vai para o bolso"), h("span", { class: "estatistica__valor" }, reais(r.gm)), h("span", null, `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos por mês`)),
+          r.em ? h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Equipe do gabinete"), h("span", { class: "estatistica__valor" }, compacto(r.em)), h("span", null, `por mês, ${pessoasTxt(r.pessoas)}`)) : null,
+          pos ? h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Entre os colegas"), h("span", { class: "estatistica__valor" }, `${pos.pos}º de ${pos.n}`), h("span", null, `custo acima de ${pos.pct}% dos ${plural(p.k)}`)) : null),
+        h("p", { class: "resumo__cta" }, `Quanto custa quem te representa? ${dominio()}`),
         h("p", { class: "resumo__fonte" }, "Dados oficiais: Câmara dos Deputados e Senado Federal. Valores brutos, média por mês de mandato.")),
       botoesCompartilhar(p, k));
   }
@@ -521,28 +583,34 @@
       return h("article", { class: "cartao" },
         h("div", { class: "cartao__cabeca" }, h("h3", null, titulo), h("span", { class: "rotulo" }, "Mediana de 2025")),
         h("div", { class: "estatisticas" },
-          estatistica("Ganha por mês", compacto(C.gm), `${sm(C.gm / sm25)} salários mínimos`),
-          estatistica("Custa por mês", compacto(C.cm), `${sm(C.cm / sm25)} salários mínimos`)),
-        casa === "s" ? h("p", { class: "nota" }, h("span", { class: "etiqueta etiqueta--estimativa" }, "estimativa"), " O custo dos assessores do Senado é estimado.") : null);
+          estatistica("Custo dele por mês", compacto(C.tm), `${sm(C.tm / sm25)} salários mínimos`),
+          estatistica("Vai para o bolso", compacto(C.gm), `${sm(C.gm / sm25)} salários mínimos`)),
+        h("div", { class: "estatisticas" },
+          estatistica("Equipe do gabinete", compacto(C.em), "por mês"),
+          estatistica("Pessoas na equipe", num(C.pessoas || 0, 0), `${reais(C.porPessoa || 0)} por pessoa`)),
+        casa === "s" ? h("p", { class: "nota" }, h("span", { class: "etiqueta etiqueta--estimativa" }, "estimativa"), " A equipe do Senado é estimada a partir da folha de pagamento.") : null);
     };
     return h("section", { class: "bloco", id: "tipico" },
       h("p", { class: "rotulo" }, "Para começar"),
       h("h2", null, "Um parlamentar típico"),
       h("div", { class: "grade-cartoes grade-cartoes--2" }, bloco("d", "Deputado federal"), bloco("s", "Senador")),
-      h("p", { class: "nota" }, "Ganha: salário, 13º e auxílios, em valor bruto. Custa: cota parlamentar, assessores e outros gastos do mandato. Esse dinheiro não vai para o bolso do parlamentar, mas é dinheiro público."),
+      h("p", { class: "nota" }, "Custo dele: o que vai para o bolso (salário, 13º e auxílios, em valor bruto) mais as despesas dele pagas com dinheiro público (cota parlamentar, diárias e outros gastos). A equipe do gabinete fica à parte, porque é dinheiro que paga outras pessoas."),
       h("div", { class: "acoes" }, h("button", { type: "button", class: "botao", onclick: abrirGuia }, "Descobrir os meus representantes")));
   }
   const METRICAS = {
-    total: { nome: "Ganha + custa por mês", v: (r) => r.tm, cls: "barra__fill--neutra" },
-    ganha: { nome: "Ganha por mês", v: (r) => r.gm, cls: "barra__fill--ganha" },
-    custa: { nome: "Custa por mês", v: (r) => r.cm, cls: "" },
-    cota: { nome: "Cota parlamentar por mês", v: (r) => porMes(r, "cota_parlamentar"), cls: "" },
-    assessores: { nome: "Assessores por mês", v: (r) => porMes(r, "assessores_gabinete"), cls: "" },
+    custo: { nome: "Custo dele por mês", v: (r) => r.tm, cls: "barra__fill--neutra", fmt: reais },
+    ganha: { nome: "Vai para o bolso por mês", v: (r) => r.gm, cls: "barra__fill--ganha", fmt: reais },
+    despesas: { nome: "Despesas dele por mês", v: (r) => r.cm, cls: "", fmt: reais },
+    cota: { nome: "Cota parlamentar por mês", v: (r) => porMes(r, "cota_parlamentar"), cls: "", fmt: reais },
+    equipe: { nome: "Equipe do gabinete por mês", v: (r) => r.em, cls: "barra__fill--equipe", fmt: reais },
+    pessoas: { nome: "Pessoas na equipe", v: (r) => r.pessoas, cls: "barra__fill--equipe", fmt: (v) => num(v, 0) },
+    porPessoa: { nome: "Custo por pessoa da equipe", v: (r) => r.porPessoa, cls: "barra__fill--equipe", fmt: reais },
   };
   function secRanking(p) {
     const R = S.rank;
     if (!R.casa) R.casa = p ? p.k : "d";
     if (!R.periodo) R.periodo = "2025";
+    if (!METRICAS[R.metrica]) R.metrica = "custo";
     const sec = h("section", { class: "bloco", id: "ranking" });
     const corpo = h("div", { style: "display:grid;gap:12px" });
     const desenhar = () => {
@@ -551,29 +619,29 @@
       const minimo = R.periodo === "leg" ? 6 : 3;
       const lista = S.D.p.filter((q) => q.k === R.casa && (!R.uf || q.uf === R.uf) && (!R.noCargo || q.x))
         .map((q) => { const r = resumo(q, R.periodo); return r && r.m >= minimo ? { p: q, v: M.v(r) } : null; })
-        .filter(Boolean).sort((a, b) => b.v - a.v);
+        .filter((x) => x && x.v > 0).sort((a, b) => b.v - a.v);
       const max = Math.max(1, ...lista.map((x) => x.v));
       const linha = (x, pos) => h("a", { class: `rank${p && x.p.id === p.id ? " rank--eu" : ""}`, href: `#${x.p.id}${R.periodo !== periodoPadrao(x.p) ? "~" + R.periodo : ""}` },
         h("span", { class: "rank__pos" }, `${pos}º`),
         h("span", { class: "rank__nome" }, x.p.n, " ", h("small", null, partidoUF(x.p))),
-        h("span", { class: "rank__valor" }, reais(x.v)),
+        h("span", { class: "rank__valor" }, M.fmt(x.v)),
         h("span", { class: "barra__trilho" }, h("span", { class: `barra__fill ${M.cls}`, style: `width:${Math.max(0.5, (x.v / max) * 100)}%` })));
       const n = Math.min(10, Math.ceil(lista.length / 2));
       const topo = lista.slice(0, n), fim = lista.slice(-n).reverse();
       const eu = p ? lista.findIndex((x) => x.p.id === p.id) : -1;
-      add(corpo, 
+      add(corpo,
         h("p", { class: "discreto pequeno" }, `${lista.length} ${plural(R.casa)} · ${M.nome.toLowerCase()} · ${nomePeriodo(R.periodo, false)}${R.uf ? ` · ${ESTADOS[R.uf]}` : ""}`),
         eu >= 0 ? h("p", { class: "destaque", style: "margin:0" }, `${p.n} está em ${eu + 1}º lugar de ${lista.length}.`) : null,
         h("div", { class: "duas-colunas" },
-          h("article", { class: "cartao" }, h("h3", null, "Quem mais gasta"), h("div", { class: "rank-lista" }, topo.map((x, i) => linha(x, i + 1)))),
-          h("article", { class: "cartao" }, h("h3", null, "Quem menos gasta"), h("div", { class: "rank-lista" }, fim.map((x, i) => linha(x, lista.length - i))))),
+          h("article", { class: "cartao" }, h("h3", null, "Os maiores"), h("div", { class: "rank-lista" }, topo.map((x, i) => linha(x, i + 1)))),
+          h("article", { class: "cartao" }, h("h3", null, "Os menores"), h("div", { class: "rank-lista" }, fim.map((x, i) => linha(x, lista.length - i))))),
         R.completo
           ? h("article", { class: "cartao" }, h("h3", null, "Lista completa"), h("div", { class: "rank-lista" }, lista.map((x, i) => linha(x, i + 1))))
           : h("div", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { R.completo = true; desenhar(); } }, `Ver a lista completa (${lista.length})`)),
         h("ul", { class: "lista nota" },
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
-          R.casa === "s" && ["total", "custa", "assessores"].includes(R.metrica) ? h("li", null, "O custo dos assessores do Senado é uma estimativa.") : null,
-          R.casa === "d" && ["total", "ganha"].includes(R.metrica) ? h("li", null, "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null,
+          R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
+          R.casa === "d" && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null,
           R.periodo === anoAtual() ? h("li", null, "Período ainda aberto: os últimos meses podem receber notas da cota.") : null,
           h("li", null, `Só entra quem teve pelo menos ${minimo} meses de mandato no período.`)));
     };
@@ -587,7 +655,7 @@
         h("select", { id: "periodo-rank", onchange: (e) => { R.periodo = e.target.value; desenhar(); } },
           [...meta().anos, "leg"].map((v) => h("option", { value: v, selected: v === R.periodo }, nomePeriodo(v, true))))),
       h("div", { class: "campo" }, h("label", { for: "uf-rank" }, "Estado"), seletorUF("uf-rank", R.uf, (v) => { R.uf = v; desenhar(); })));
-    add(sec, h("p", { class: "rotulo" }, "Ranking"), h("h2", null, "Quem mais gasta e quem menos gasta"), filtros,
+    add(sec, h("p", { class: "rotulo" }, "Ranking"), h("h2", null, "Quem custa mais e quem custa menos"), filtros,
       h("label", { class: "pequeno discreto", style: "display:inline-flex;gap:8px;align-items:center" },
         h("input", { type: "checkbox", id: "no-cargo-rank", checked: R.noCargo, onchange: (e) => { R.noCargo = e.target.checked; desenhar(); } }), "Só quem está no cargo hoje"),
       corpo);
@@ -596,16 +664,15 @@
   }
   function secResumoGeral() {
     const Cd = colegas("d", "2025"), Cs = colegas("s", "2025");
-    const dominio = endereco().replace(/^https?:\/\//, "").replace(/\/$/, "") || "contasdopoder.com";
-    const texto = `*Contas do Poder*\nUm deputado federal típico ganha ${reais(Cd.gm)} por mês, e o mandato custa ${reais(Cd.cm)} por mês em dinheiro público (mediana de 2025).\nUm senador típico: ${reais(Cs.gm)} e ${reais(Cs.cm)}.\n\nQuanto custa quem te representa? ${endereco() || "Contas do Poder"}`;
+    const texto = `*Contas do Poder*\nUm deputado federal típico custa ${reais(Cd.tm)} por mês (salário, auxílios e despesas), sem contar a equipe de ${num(Cd.pessoas || 0, 0)} pessoas no gabinete (${reais(Cd.em)} por mês). Mediana de 2025.\nUm senador típico: ${reais(Cs.tm)} por mês.\n\nQuanto custa quem te representa? ${endereco() || "Contas do Poder"}`;
     return h("section", { class: "bloco", id: "resumo" },
       h("div", { class: "resumo" },
         h("p", { class: "rotulo" }, "Resumo para compartilhar"),
         h("h2", null, "Quanto custa um parlamentar em 2025"),
         h("div", { class: "resumo__grade" },
-          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Deputado federal"), h("span", { class: "estatistica__valor" }, compacto(Cd.gm + Cd.cm)), h("span", null, "por mês, somando o que ganha e o que custa")),
-          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Senador"), h("span", { class: "estatistica__valor" }, compacto(Cs.gm + Cs.cm)), h("span", null, "por mês (assessores estimados)"))),
-        h("p", { class: "resumo__cta" }, `Quanto custa quem te representa? ${dominio}`),
+          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Deputado federal"), h("span", { class: "estatistica__valor" }, compacto(Cd.tm)), h("span", null, `por mês, sem a equipe de ${num(Cd.pessoas || 0, 0)} pessoas`)),
+          h("div", { class: "resumo__item" }, h("span", { class: "rotulo" }, "Senador"), h("span", { class: "estatistica__valor" }, compacto(Cs.tm)), h("span", null, "por mês, sem a equipe"))),
+        h("p", { class: "resumo__cta" }, `Quanto custa quem te representa? ${dominio()}`),
         h("p", { class: "resumo__fonte" }, "Dados oficiais: Câmara dos Deputados e Senado Federal. Mediana de 2025.")),
       h("div", { class: "compartilhar", style: "padding-inline:0" }, h("div", { class: "acoes" },
         h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener" }, "Mandar no WhatsApp"))));
@@ -643,7 +710,7 @@
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", colegas: "Comparado com os colegas", cota: "Para onde vai a cota", comparar: "Comparar", tipico: "Parlamentar típico", ranking: "Ranking", resumo: "Resumo para compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", colegas: "Comparado com os colegas", cota: "Para onde vai a cota", comparar: "Comparar", tipico: "Parlamentar típico", ranking: "Ranking", resumo: "Resumo para compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -719,8 +786,8 @@
     if (p) {
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
-      app.append(...[secContracheque(p, k), secMensal(p, k), secColegas(p, k), secCota(p, k), secComparar(p, k), secRanking(p), secResumo(p, k)].filter(Boolean));
-      navSecoes(["contracheque", "mes-a-mes", "colegas", "cota", "comparar", "ranking", "resumo", "entenda", "fontes"]);
+      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secColegas(p, k), secCota(p, k), secComparar(p, k), secRanking(p), secResumo(p, k)].filter(Boolean));
+      navSecoes(["contracheque", "mes-a-mes", "equipe", "colegas", "cota", "comparar", "ranking", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque");
     } else {
       document.title = "Contas do Poder";

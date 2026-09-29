@@ -66,16 +66,21 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 - `politicos.json` — um registro por político: nome, cargo, partido, estado, foto, se está em exercício, link oficial.
 - `lancamentos.csv.gz` — (compactado) uma linha por **político · ano · mês · grupo · categoria · descrição · valor · fonte**.
   A coluna `fonte` é um código; o endereço completo está em `metadados.json` → `fontes_por_lancamento`.
+- `equipe.csv` — quantas pessoas trabalharam no gabinete em cada mês.
 - `resumo.json` — totais prontos: por ano, na legislatura e média mensal, separados em "ganha" e "custa".
 - `metadados.json` — data da coleta, categorias, salário mínimo de cada ano, fontes e **pendências conhecidas**.
 - `conferencia.md` — resultado da última conferência com os sites oficiais.
 
-### Ganha × custa
+### Como o dinheiro é dividido
 
-- **Ganha** (vai para a pessoa): salário, 13º, auxílio-moradia e outros auxílios, ajuda de custo.
-- **Custa** (despesas do mandato): cota parlamentar, assessores do gabinete, diárias, passagens e outros gastos.
-
-A verba de gabinete paga assessores. Ela **não** vai para o bolso do parlamentar, por isso fica em "custa".
+- **Vai para o bolso** (grupo `ganha`): salário, 13º, auxílios e ajuda de custo.
+- **Despesas dele** (grupo `custa`): o que o parlamentar gasta com dinheiro público no próprio mandato:
+  cota parlamentar (passagens, combustível, alimentação, escritório, divulgação...), diárias e outros gastos.
+- **Custo dele** = vai para o bolso + despesas dele.
+- **Equipe do gabinete** (grupo `equipe`): salários das pessoas que trabalham no gabinete. É dinheiro que vai
+  para outras pessoas, por isso fica separado, com o número de pessoas (`equipe.csv`) e a média por pessoa.
+  Na Câmara contamos os secretários parlamentares de cada mês; no Senado, os comissionados encontrados na
+  folha de pagamento (estimativa).
 
 ## O que já foi conferido
 

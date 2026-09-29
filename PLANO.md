@@ -13,7 +13,8 @@ Cada número tem link para a fonte oficial.
 
 ## Princípios
 
-1. Separar "ganha" (vai para o bolso) de "custa" (mandato, assessores, despesas).
+1. Separar o custo do parlamentar (o que vai para o bolso + as despesas dele) da equipe do gabinete
+   (dinheiro que vai para outras pessoas, com número de pessoas e média por pessoa).
 2. Toda cifra com fonte e data da última atualização.
 3. Linguagem neutra: mostrar fatos, sem adjetivos.
 4. Comparações justas: a cota é comparada em % do limite de cada estado.

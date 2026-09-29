@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-29T18:15:29",
+ "gerado_em": "2026-09-29T06:25:16",
  "legislatura": 57,
  "periodo": "02/2023 até hoje",
  "salario_minimo": {
@@ -37,10 +37,6 @@
    "grupo": "custa",
    "nome": "Cota parlamentar"
   },
-  "assessores_gabinete": {
-   "grupo": "custa",
-   "nome": "Assessores do gabinete"
-  },
   "diarias": {
    "grupo": "custa",
    "nome": "Diárias de viagens oficiais"
@@ -48,7 +44,16 @@
   "outros_gastos_mandato": {
    "grupo": "custa",
    "nome": "Outros gastos do mandato"
+  },
+  "assessores_gabinete": {
+   "grupo": "equipe",
+   "nome": "Equipe do gabinete"
   }
+ },
+ "grupos": {
+  "ganha": "Vai para o bolso do parlamentar: salário, 13º, auxílios, ajuda de custo.",
+  "custa": "Despesas do próprio parlamentar pagas com dinheiro público: cota, diárias, outros gastos.",
+  "equipe": "Salários das pessoas que trabalham no gabinete."
  },
  "fontes_por_lancamento": {
   "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",

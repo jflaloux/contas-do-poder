@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contas do Poder</title>
-<meta name="description" content="Quanto ganha e quanto custa cada deputado federal e senador, com números oficiais da Câmara e do Senado. Um projeto Contas do Brasil.">
+<meta name="description" content="Quanto custa cada deputado federal e senador, e quanto custa a equipe do gabinete, com números oficiais da Câmara e do Senado. Um projeto Contas do Brasil.">
 <!-- Endereço público do site, usado nos links de compartilhamento. Vazio = não mostra link. -->
 <meta name="endereco-do-site" content="https://contasdopoder.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +27,7 @@
 
   <section class="abertura">
     <h1>Quanto ganha e quanto custa quem te representa?</h1>
-    <p class="lide">Salário, auxílios e gastos do mandato de todos os deputados federais e senadores, comparados com os colegas e com o salário mínimo. Números oficiais da Câmara e do Senado.</p>
+    <p class="lide">O custo de cada deputado federal e senador (salário, auxílios e despesas pagas com dinheiro público) e, à parte, quanto custa a equipe do gabinete. Comparado com os colegas e com o salário mínimo. Números oficiais da Câmara e do Senado.</p>
     <div class="acoes">
       <button type="button" class="botao" id="abrir-guia">Descobrir os meus representantes</button>
       <button type="button" class="link-botao" data-ir="resumo">Compartilhar</button>
@@ -67,7 +67,7 @@
           <dt>Quantos são</dt><dd>513</dd>
           <dt>Mandato</dt><dd>4 anos</dd>
           <dt>Salário bruto</dt><dd class="num">R$ 46.366,19</dd>
-          <dt>Para assessores</dt><dd>até <span class="num">R$ 165.806,07</span> por mês</dd>
+          <dt>Equipe do gabinete</dt><dd>até <span class="num">R$ 165.806,07</span> por mês, até 25 pessoas</dd>
         </dl>
       </article>
       <article class="cartao">
@@ -77,7 +77,7 @@
           <dt>Quantos são</dt><dd>81</dd>
           <dt>Mandato</dt><dd>8 anos</dd>
           <dt>Salário bruto</dt><dd class="num">R$ 46.366,19</dd>
-          <dt>Para assessores</dt><dd>pagos direto pela folha do Senado</dd>
+          <dt>Equipe do gabinete</dt><dd>paga direto pela folha do Senado</dd>
         </dl>
       </article>
     </div>
@@ -85,14 +85,16 @@
       <details><summary>Salário (subsídio)</summary><p>Valor bruto mensal fixado em lei, antes do imposto de renda e da previdência. Desde fevereiro de 2025 é de R$ 46.366,19, o mesmo valor do teto do funcionalismo. Pode ser menor em meses com faltas ou licença.</p></details>
       <details><summary>13º salário</summary><p>Pago em duas parcelas, como para qualquer trabalhador.</p></details>
       <details><summary>Cota parlamentar</summary><p>Dinheiro mensal para despesas do mandato: passagens, escritório no estado, combustível, divulgação e outras. É reembolsado mediante nota fiscal. Na Câmara, o limite vai de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens até Brasília. O que não é usado num mês acumula para os meses seguintes do mesmo ano.</p></details>
-      <details><summary>Assessores do gabinete</summary><p>Na Câmara, cada deputado tem até R$ 165.806,07 por mês (a verba de gabinete) para pagar até 25 secretários parlamentares. No Senado, os assessores são pagos direto pela folha; o custo por senador é uma estimativa nossa.</p></details>
+      <details><summary>Equipe do gabinete</summary><p>É o dinheiro que paga as pessoas que trabalham para o parlamentar; não vai para o bolso dele, por isso aparece separado. Na Câmara, cada deputado tem até R$ 165.806,07 por mês (a verba de gabinete) para pagar até 25 secretários parlamentares; contamos quem trabalhou em cada mês. No Senado, os assessores comissionados são pagos direto pela folha; o custo e o número de pessoas por senador são uma estimativa nossa, feita a partir da folha de pagamento.</p></details>
       <details><summary>Auxílio-moradia e imóvel funcional</summary><p>Quem não mora num dos apartamentos funcionais em Brasília pode receber auxílio-moradia: R$ 4.253 por mês na Câmara e R$ 5.500 no Senado.</p></details>
       <details><summary>Ajuda de custo e diárias</summary><p>A ajuda de custo é um salário extra pago no começo e no fim do mandato. As diárias são pagas em viagens oficiais, para cobrir hospedagem e alimentação.</p></details>
       <details><summary>Como calculamos</summary>
         <ul class="lista">
-          <li><strong>Ganha</strong> é o que vai para a pessoa: salário, 13º, auxílios e ajuda de custo, sempre em valor bruto.</li>
-          <li><strong>Custa</strong> é o que o mandato gasta de dinheiro público: cota parlamentar, assessores, diárias e outros gastos. Esse dinheiro não vai para o bolso do parlamentar.</li>
-          <li>A <strong>média por mês</strong> de "ganha" usa os meses com salário; a de "custa", os meses com gastos. Assim, uma licença não distorce a conta.</li>
+          <li><strong>Vai para o bolso</strong>: salário, 13º, auxílios e ajuda de custo, sempre em valor bruto.</li>
+          <li><strong>Despesas dele</strong>: o que o parlamentar gasta com dinheiro público no próprio mandato, como passagens, combustível, alimentação, escritório no estado e divulgação (a cota parlamentar), além de diárias e outros gastos.</li>
+          <li><strong>Custo dele</strong> = vai para o bolso + despesas dele.</li>
+          <li><strong>Equipe do gabinete</strong> fica à parte: é dinheiro que paga outras pessoas. Mostramos quanto custa por mês, quantas pessoas são e a média por pessoa.</li>
+          <li>Cada <strong>média por mês</strong> usa os seus próprios meses (com salário, com despesas, com equipe). Assim, uma licença não distorce a conta.</li>
           <li><strong>Salários mínimos</strong>: R$ 1.320 (2023), R$ 1.412 (2024), R$ 1.518 (2025) e R$ 1.621 (2026).</li>
           <li>Conferimos com os sites oficiais: a cota do Senado bate ao centavo em todas as 324 comparações; a da Câmara, em 37 de 40 casos de uma amostra.</li>
         </ul>

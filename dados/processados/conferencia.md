@@ -1,4 +1,4 @@
-# Conferência dos dados — 29/09/2026 18:15
+# Conferência dos dados — 29/09/2026 06:26
 
 ## 1. Cobertura
 
@@ -92,6 +92,7 @@ Casos: 8. Podem ser acertos de meses anteriores; confira na página oficial.
 | Cota da Câmara nos últimos 12 meses (R$ milhões) | 269 | 150 | OK |
 | Cota do Senado nos últimos 12 meses (R$ milhões) | 38 | 15 | OK |
 | Parlamentares no arquivo do site | 753 | 700 | OK |
+| Deputados com a equipe contada em 07/2026 | 513 | 450 | OK |
 
 ---
 **Total de alertas: 3**

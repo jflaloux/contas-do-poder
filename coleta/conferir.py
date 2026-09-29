@@ -142,6 +142,8 @@ def executar():
     janela = (chave > ano_f * 12 + mes_f - 12) & (chave <= ano_f * 12 + mes_f)
     def cota_12m(casa):
         return lanc[janela & (lanc.casa == casa) & (lanc.categoria == "cota_parlamentar")].valor.sum()
+    eq = pd.read_csv(PROCESSADOS / "equipe.csv")
+    n_equipe_dep = eq[(eq.id_politico.str.startswith("dep")) & (eq.ano == ano_f) & (eq.mes == mes_f) & (eq.pessoas > 0)].id_politico.nunique()
     with open(RAIZ / "site" / "dados" / "dados.json", encoding="utf-8") as f:
         n_site = len(json.load(f)["p"])
     checagens = [
@@ -152,6 +154,7 @@ def executar():
         ("Cota da Câmara nos últimos 12 meses (R$ milhões)", round(cota_12m("dep") / 1e6), 150),
         ("Cota do Senado nos últimos 12 meses (R$ milhões)", round(cota_12m("sen") / 1e6), 15),
         ("Parlamentares no arquivo do site", n_site, 700),
+        (f"Deputados com a equipe contada em {mes_f:02d}/{ano_f}", n_equipe_dep, 450),
     ]
     rel += ["## 7. Sanidade (trava a publicação automática)", "", "| Checagem | Valor | Mínimo | |", "|---|---:|---:|---|"]
     for nome, valor, minimo in checagens:
