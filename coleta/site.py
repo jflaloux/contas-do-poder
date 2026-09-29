@@ -6,6 +6,10 @@ Formato (chaves curtas para o arquivo ficar pequeno):
      id, k ("d" deputado / "s" senador / "e" governo federal), n (nome), nc (nome civil), g (cargo), pt (partido), uf,
      tp (só governo: "pr" presidente, "vp" vice, "mi" ministro), rel (id do mesmo político no outro cargo, se houver),
      q (só governo: [meses, total] recebido depois de deixar o cargo, fora das médias),
+     j (quem tem dois cargos: id do registro "tudo junto"),
+  Registros "tudo junto" (k "j", id "jun-..."): somam os dois cargos sem contar nada duas vezes, com
+     cg: [{id, g, x, de, ate, ex}] os cargos (ex = meses exercendo) e tr: [[aaaamm_inicio, aaaamm_fim, "e"|"d"|"s"], ...]
+     o cargo de cada mês.
      f (foto: "fotos/{id}.webp" no próprio site, ou o endereço oficial se não baixou), x (em exercício), o (página oficial),
      per: {"2023": {m, mg, mc, me, g, c, e, pm, mp, pu, cats}, ..., "leg": {...}}
           m = meses com algum valor; mg/mc/me = meses com ganha/custa/equipe;
@@ -94,6 +98,47 @@ DETALHE = {
 }
 
 
+def _mes_seguinte(aaaamm):
+    a, m = divmod(aaaamm, 100)
+    return a * 100 + m + 1 if m < 12 else (a + 1) * 100 + 1
+
+
+def _item_junto(j, per, serie, dt, nv, mm):
+    """Registro 'tudo junto' de quem tem dois cargos: cargos, cargo de cada mês e os totais somados."""
+    e, par = j["exe"], j["par"]
+    k_par = "d" if par["casa"] == "camara" else "s"
+    meses_min = set(e.get("meses_no_cargo") or [])
+    ultimo_portal = e.get("ultimo_mes_publicado") or 0
+    ainda_ministro = bool(e.get("em_exercicio"))  # o Portal atrasa ~2 meses: quem estava no cargo segue no cargo
+    ativos = {int(r.ano) * 100 + int(r.mes) for r in mm.itertuples() if r.ganha > 0 or r.custa > 0 or r.equipe > 0}
+    exercendo = sorted(int(r.ano) * 100 + int(r.mes) for r in mm.itertuples() if (r.custa > 0 or r.equipe > 0)
+                       and int(r.ano) * 100 + int(r.mes) not in meses_min
+                       and not (ainda_ministro and int(r.ano) * 100 + int(r.mes) > ultimo_portal))
+    faixas = []
+    for m in sorted(ativos | meses_min):
+        c = "e" if m in meses_min or (ainda_ministro and m > ultimo_portal) else k_par
+        if faixas and faixas[-1][2] == c and _mes_seguinte(faixas[-1][1]) == m:
+            faixas[-1][1] = m
+        else:
+            faixas.append([m, m, c])
+    cargo_par = par["cargo"][0].lower() + par["cargo"][1:]
+    foto_exe = FOTOS / f"{e['id']}.webp"
+    return {
+        "id": j["id"], "k": "j", "n": e["nome"], "nc": e.get("nome_civil"),
+        "g": f"{e['cargo']} e {cargo_par}", "pt": par.get("partido"), "uf": par.get("uf"),
+        "f": f"fotos/{e['id']}.webp" if foto_exe.exists() else par.get("foto"),
+        "x": 1 if (e.get("em_exercicio") or par.get("em_exercicio")) else 0, "o": e.get("pagina_oficial"),
+        "per": per, "t": serie, "dt": dt, **({"nv": nv} if nv else {}),
+        "tr": faixas,
+        "cg": [
+            {"id": e["id"], "g": e["cargo"], "x": 1 if e.get("em_exercicio") else 0,
+             "de": min(meses_min) if meses_min else None, "ate": max(meses_min) if meses_min else None, "ex": len(meses_min)},
+            {"id": par["id"], "g": par["cargo"], "x": 1 if par.get("em_exercicio") else 0,
+             "de": exercendo[0] if exercendo else None, "ate": exercendo[-1] if exercendo else None, "ex": len(exercendo)},
+        ],
+    }
+
+
 def _r(v):
     return int(round(float(v)))
 
@@ -103,6 +148,27 @@ def executar():
     meta = ler_json(PROCESSADOS / "metadados.json")
     lanc = pd.read_csv(PROCESSADOS / "lancamentos.csv.gz")
     equipe = pd.read_csv(PROCESSADOS / "equipe.csv")
+
+    # Quem tem dois cargos (ministro que é deputado ou senador): um registro "tudo junto" que soma os dois sem
+    # contar nada duas vezes. Entra tudo do Congresso e, do governo, só o que vem do Portal da Transparência
+    # (o salário que o Congresso pagou nos meses como ministro já está do lado do Congresso).
+    por_id = {p["id"]: p for p in politicos}
+    juntos, extra_l, extra_e = [], [], []
+    for e in politicos:
+        par = por_id.get(e.get("relacionado")) if e["casa"] == "executivo" else None
+        if not par:
+            continue
+        jid = "jun-" + e["id"].split("-")[1]
+        extra_l.append(lanc[lanc.id_politico == par["id"]].assign(id_politico=jid))
+        extra_l.append(lanc[(lanc.id_politico == e["id"]) & lanc.fonte.str.startswith("portal_")].assign(id_politico=jid))
+        extra_e.append(equipe[equipe.id_politico == par["id"]].assign(id_politico=jid))
+        juntos.append({"id": jid, "casa": "junto", "nome": e["nome"], "exe": e, "par": par})
+    if juntos:
+        lanc = pd.concat([lanc, *extra_l], ignore_index=True)
+        equipe = pd.concat([equipe, *extra_e], ignore_index=True)
+    junto_de = {}
+    for j in juntos:
+        junto_de[j["exe"]["id"]] = junto_de[j["par"]["id"]] = j["id"]
 
     # detalhe por tipo de algumas categorias (o que aparece ao abrir cada linha do contracheque)
     det = lanc[lanc.categoria.isin(DETALHE)].copy()
@@ -116,6 +182,8 @@ def executar():
     viagens = pd.read_csv(BRUTOS / "executivo_viagens.csv") if (BRUTOS / "executivo_viagens.csv").exists() else None
     creditos = ler_json(FOTOS / "creditos.json").get("fotos", {}) if (FOTOS / "creditos.json").exists() else {}
     no_cargo = {p["id"]: set(p.get("meses_no_cargo") or []) for p in politicos if p["casa"] == "executivo"}
+    for j in juntos:
+        no_cargo[j["id"]] = no_cargo.get(j["exe"]["id"], set())
 
     # Valores por mês e grupo; cada média usa os seus próprios meses
     # (ex.: deputado licenciado não recebe salário, mas o gabinete continua gastando).
@@ -133,7 +201,7 @@ def executar():
     totais = lanc.groupby(["id_politico", "ano", "grupo"])["valor"].sum()
     cats = lanc.groupby(["id_politico", "ano", "categoria"])["valor"].sum()
 
-    def bloco(pid, mm, anos, exe=False):
+    def bloco(pid, mm, anos, exe=False, forcar=None):
         """Resumo de um período: meses, totais por grupo, pessoas da equipe e categorias.
         Governo federal: as viagens não acontecem todo mês, então a média dos gastos usa todos os meses no cargo."""
         g = sum(totais.get((pid, a, "ganha"), 0.0) for a in anos)
@@ -150,7 +218,8 @@ def executar():
         m = int(((mm.ganha > 0) | (mm.custa > 0) | (mm.equipe > 0)).sum())
         return {
             "m": m,
-            "mg": int((mm.ganha > 0).sum()), "mc": m if exe else int((mm.custa > 0).sum()), "me": int((mm.equipe > 0).sum()),
+            "mg": int((mm.ganha > 0).sum()), "me": int((mm.equipe > 0).sum()),
+            "mc": m if exe else int(((mm.custa > 0) | (mm.ano * 100 + mm.mes).isin(forcar or set())).sum()),
             "g": _r(g), "c": _r(c), "e": _r(e),
             "pm": int(com_equipe.pessoas.sum()), "mp": int(len(com_equipe)),
             "pu": int(com_pessoas.pessoas.iloc[-1]) if len(com_pessoas) else 0,
@@ -162,16 +231,17 @@ def executar():
     anos = sorted(int(a) for a in lanc["ano"].unique())
     por_pol = {pid: mm for pid, mm in mensal.groupby("id_politico")}
     saida = []
-    for p in politicos:
+    for p in politicos + juntos:
         pid = p["id"]
         mm = por_pol.get(pid, mensal.iloc[0:0])
         exe = p["casa"] == "executivo"
+        forcar = no_cargo.get(pid) if p["casa"] == "junto" else None  # meses como ministro contam para a média dos gastos
         per = {}
         for ano in anos:
-            b = bloco(pid, mm[mm.ano == ano], [ano], exe)
+            b = bloco(pid, mm[mm.ano == ano], [ano], exe, forcar)
             if b["m"] or b["g"] or b["c"] or b["e"]:
                 per[str(ano)] = b
-        per["leg"] = bloco(pid, mm, anos, exe)
+        per["leg"] = bloco(pid, mm, anos, exe, forcar)
         serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas), _r(r.rateado)]
                  for r in mm.sort_values(["ano", "mes"]).itertuples()]
 
@@ -191,13 +261,16 @@ def executar():
                     dt[str(ano)] = por_categoria(por_ano.loc[ano])
             dt["leg"] = por_categoria(det_leg.loc[pid])
         nv = {}
-        if exe and viagens is not None:
+        if (exe or p["casa"] == "junto") and viagens is not None:
             v = viagens[(viagens.id_portal == int(pid.split("-")[1]))]
             v = v[(v.ano * 100 + v.mes).isin(no_cargo.get(pid, set()))]
             nv = {str(a): int(n) for a, n in v.groupby("ano")["viagens"].sum().items()}
             if nv:
                 nv["leg"] = sum(nv.values())
 
+        if p["casa"] == "junto":
+            saida.append(_item_junto(p, per, serie, dt, nv, mm))
+            continue
         item = {"id": pid, "k": {"camara": "d", "senado": "s", "executivo": "e"}[p["casa"]], "n": p["nome"], "nc": p.get("nome_civil"),
                 "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"),
                 "f": f"fotos/{pid}.webp" if (FOTOS / f"{pid}.webp").exists() else p.get("foto"),
@@ -214,6 +287,8 @@ def executar():
                 item["q"] = [p["quarentena"]["meses"], _r(p["quarentena"]["total"])]
         if p.get("relacionado"):
             item["rel"] = p["relacionado"]
+        if pid in junto_de:
+            item["j"] = junto_de[pid]
         if p["casa"] == "camara" and p.get("imovel_funcional_dias"):
             item["im"] = p["imovel_funcional_dias"]
         if p["casa"] == "senado" and p.get("imovel_funcional"):

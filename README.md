@@ -116,6 +116,14 @@ Robô `coleta/executivo.py`, com os arquivos de download do Portal da Transparê
   para de baixar (não tenta contornar) e usa o que já tem; continua na semana seguinte.
 - O Portal publica os salários com uns 2 meses de atraso. O arquivo de dezembro de 2024 veio sem os salários.
 
+### Quem tem dois cargos
+
+Ministro que é deputado ou senador tem três páginas, com uma escolha no topo: **Tudo junto**, o cargo no
+governo e o cargo no Congresso. O "tudo junto" (`jun-...` em `dados.json`) soma os dois sem contar nada duas
+vezes: entra tudo do Congresso (salário, cota, equipe) e, do governo, só o que vem do Portal (jetons,
+viagens, outros pagamentos), porque o salário dos meses como ministro já foi pago pelo Congresso. A faixa
+embaixo do gráfico mês a mês mostra o cargo de cada mês. Nos rankings, cada cargo aparece no seu grupo.
+
 ## Compartilhamento e medição
 
 - **Imagem para compartilhar**: no fim da página de cada parlamentar, o site mostra uma imagem 1080×1350 (4:5,

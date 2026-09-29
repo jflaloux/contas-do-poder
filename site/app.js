@@ -64,7 +64,7 @@
 
   // ================================================================== Google Analytics (só se o gtag estiver carregado)
   const evento = (nome, params = {}) => { try { if (typeof gtag === "function") gtag("event", nome, params); } catch (e) { /* segue sem medir */ } };
-  const casaTxt = (p) => (p.k === "d" ? "deputado" : "senador");
+  const casaTxt = (p) => ({ d: "deputado", s: "senador", e: "governo", j: "dois cargos" })[p.k];
 
   // ================================================================== contas
   const meta = () => S.D.meta;
@@ -114,9 +114,13 @@
   const nomeCat = (k) => (meta().categorias[k] || { nome: k }).nome;
   const plural = (casa) => ({ d: "deputados", s: "senadores", e: "ministros" })[casa];
   // governo federal: "cargo" em vez de "mandato", viagens em vez de cota
-  const gastosNome = (p) => (p.k === "e" ? "Gastos do cargo" : "Gastos do mandato");
-  const gastosDetalhe = (p) => (p.k === "e" ? "viagens oficiais" : "cota parlamentar e outros");
-  const fonteDados = (p) => (p.k === "e" ? "do Portal da Transparência" : "da Câmara e do Senado");
+  const gastosNome = (p) => ({ e: "Gastos do cargo", j: "Gastos dos cargos" })[p.k] || "Gastos do mandato";
+  const gastosDetalhe = (p) => ({ e: "viagens oficiais", j: "cota, viagens e outros" })[p.k] || "cota parlamentar e outros";
+  const fonteDados = (p) => ({ e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" })[p.k] || "da Câmara e do Senado";
+  // "tudo junto" (dois cargos): a casa do cargo no Congresso, para os avisos de deputado/senador
+  const casaBase = (p) => (p.k === "j" ? (S.porId.get(p.cg[1].id) || {}).k : p.k);
+  const fmtMes = (m) => (m ? `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}` : "");
+  const cargoNoMes = (p, aaaamm) => { const f = (p.tr || []).find(([a, b]) => aaaamm >= a && aaaamm <= b); return f ? f[2] : null; };
   const nomeRel = (id) => { const q = S.porId.get(id); return q ? q.g.toLowerCase() : ""; };
   function mediana(xs) {
     const a = xs.filter((x) => x !== null && !isNaN(x)).sort((x, y) => x - y);
@@ -126,6 +130,7 @@
   }
   const cacheMed = new Map();
   function colegas(casa, k) {
+    if (casa === "j") return { lista: [], n: 0, gm: null, cm: null, tm: null, em: null, pessoas: null, porPessoa: null, cat: {} };
     const chave = casa + k;
     if (cacheMed.has(chave)) return cacheMed.get(chave);
     const lista = S.D.p.filter((p) => p.k === casa && (casa !== "e" || p.tp === "mi")).map((p) => ({ p, r: resumo(p, k) })).filter((x) => x.r && x.r.m >= 3);
@@ -190,13 +195,13 @@
   function encontrar(q, filtro) {
     const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
     if (!termos.length) return [];
-    const achados = S.D.p.filter((p) => (!filtro || filtro(p)) && termos.every((t) => buscaTexto(p).includes(t)));
+    const achados = S.D.p.filter((p) => p.k !== "j" && (!filtro || filtro(p)) && termos.every((t) => buscaTexto(p).includes(t)));
     const ids = new Set(achados.map((p) => p.id));
     // mesma pessoa em dois cargos (ex.: deputado licenciado que é ministro): mostra só uma vez, o cargo atual
     return achados.filter((p) => {
       const o = p.rel && ids.has(p.rel) ? S.porId.get(p.rel) : null;
       return !o || (p.x && !o.x) || (!!p.x === !!o.x && p.k === "e");
-    }).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
+    }).map((p) => (p.j && S.porId.get(p.j)) || p).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
   }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
   function ligarBusca(input, caixa, aoEscolher, filtro) {
@@ -253,7 +258,7 @@
     ro.observe(caixa); observadores.push(ro);
   }
   // Colunas mês a mês, empilhando as séries dadas (de baixo para cima)
-  function graficoColunas(caixa, pontos, series, linhasDica) {
+  function graficoColunas(caixa, pontos, series, linhasDica, faixa) {
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
       const W = Math.max(260, caixa.clientWidth), H = 240;
@@ -286,6 +291,8 @@
           }
           base += v;
         });
+        const fx = faixa ? faixa(p) : null;
+        if (fx) svg.append(s("rect", { class: `faixa-cargo faixa-cargo--${fx}`, x: m.l + banda * i, y: m.t + ih + 3, width: banda + 0.5, height: 5 }));
         g.append(s("rect", { class: "alvo", x: m.l + banda * i, y: m.t, width: banda, height: ih }));
         const mostrar = () => {
           svg.querySelectorAll(".coluna.ativa").forEach((c) => c.classList.remove("ativa"));
@@ -450,10 +457,10 @@
     else { g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh); g.fillStyle = C.ink2; g.font = `700 64px ${DISP}`; g.textAlign = "center"; g.fillText(iniciais(p.n), M + fw / 2, fy + fh / 2 + 22); g.textAlign = "left"; }
     g.restore();
     const tx = M + fw + 32, tmax = W - M - tx, grande = p.n.length <= 22;
-    g.fillStyle = C.ink2; g.font = `600 24px ${BODY}`; g.fillText(p.k === "e" ? "CONTRACHEQUE DO CARGO" : "CONTRACHEQUE DO MANDATO", tx, fy + 28);
+    g.fillStyle = C.ink2; g.font = `600 24px ${BODY}`; g.fillText({ e: "CONTRACHEQUE DO CARGO", j: "DOIS CARGOS, SOMADOS" }[p.k] || "CONTRACHEQUE DO MANDATO", tx, fy + 28);
     g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 58 : 50}px ${DISP}`;
     let y = quebra(p.n, tx, fy + 88, tmax, grande ? 62 : 54, 3);
-    g.fillStyle = C.ink2; g.font = `500 30px ${BODY}`; y = quebra(`${p.g} · ${partidoUF(p)}`, tx, y + 2, tmax, 38, p.k === "e" ? 3 : 2);
+    g.fillStyle = C.ink2; g.font = `500 30px ${BODY}`; y = quebra(`${p.g} · ${partidoUF(p)}`, tx, y + 2, tmax, 38, p.k === "e" || p.k === "j" ? 3 : 2);
     // custo dele
     y = Math.max(y + 30, fy + fh + 62);
     g.fillStyle = C.ink2; g.font = `600 28px ${BODY}`; g.fillText(`CUSTO DELE POR MÊS · ${nomePeriodo(k, true).toUpperCase()}`, M, y);
@@ -503,13 +510,14 @@
       bolinha(C.equipe, M + 34, y + 40);
       g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 49);
       g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`;
-      g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${p.k === "s" ? " (estimativa)" : ""}`, M + 24, y + 88);
+      g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${casaBase(p) === "s" ? " (estimativa)" : ""}`, M + 24, y + 88);
       g.font = `500 24px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
       g.font = `500 48px ${MONO}`; const wValor = g.measureText(reais(r.em)).width;
       comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${MONO}`, 24, "#ffffff");
       y += eh;
     }
-    const aviso = p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
+    const aviso = p.k === "j" ? "Soma dos dois cargos, sem contar o salário duas vezes."
+      : p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
       : p.tp === "pr" ? "O avião presidencial e a estrutura da Presidência não entram na conta."
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
     if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
@@ -557,6 +565,25 @@
   }
 
   // ================================================================== seções com parlamentar escolhido
+  // Quem tem dois cargos: mostra os cargos e deixa escolher "tudo junto" ou cada um separado
+  function barraCargos(p, k) {
+    const j = p.k === "j" ? p : p.j ? S.porId.get(p.j) : null;
+    if (!j) return null;
+    const exe = j.cg[0], par = j.cg[1];
+    const sub = (c) => {
+      if (c === exe) return c.x ? `no cargo desde ${fmtMes(c.de)}` : `de ${fmtMes(c.de)} a ${fmtMes(c.ate)}`;
+      const estado = c.x ? "no cargo hoje" : exe.x ? "licenciado: está no ministério" : "fora do cargo hoje";
+      return c.ex ? `${estado} · exerceu o mandato ${c.ex} ${c.ex === 1 ? "mês" : "meses"} desde 2023` : estado;
+    };
+    const opcoes = [[j.id, "Tudo junto", "os dois cargos somados"], [exe.id, exe.g, sub(exe)], [par.id, par.g, sub(par)]];
+    const alvo = (id) => { const q = S.porId.get(id); return `#${id}${q && k !== periodoPadrao(q) && periodos(q).includes(k) ? "~" + k : ""}`; };
+    return h("nav", { class: "cargos", "aria-label": "Cargos desta pessoa" },
+      h("p", { class: "rotulo" }, `${j.n} tem dois cargos. Veja juntos ou separados:`),
+      h("div", { class: "cargos__lista" }, opcoes.map(([id, titulo, texto]) => h("a", {
+        class: "cargo-opcao", href: alvo(id), "aria-current": id === p.id ? "page" : null,
+        onclick: () => { S.origem = "cargos"; evento("trocar_cargo", { para: id.split("-")[0], parlamentar: j.n }); },
+      }, h("strong", null, titulo), h("small", null, texto)))));
+  }
   function secContracheque(p, k) {
     const r = resumo(p, k), C = colegas(p.k, k), pos = posicao(p, k);
     const trocar = (novo) => { evento("trocar_periodo", { periodo: novo === "leg" ? "mandato" : novo, casa: casaTxt(p) }); S.periodo = novo; S.rank.periodo = novo; history.replaceState(null, "", `#${p.id}${novo !== periodoPadrao(p) ? "~" + novo : ""}`); render(false); };
@@ -564,7 +591,7 @@
     add(card, h("div", { class: "conta__topo" },
       avatar(p, "g"),
       h("div", null,
-        h("p", { class: "rotulo" }, p.k === "e" ? "Contracheque do cargo" : "Contracheque do mandato"),
+        h("p", { class: "rotulo" }, { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados" }[p.k] || "Contracheque do mandato"),
         h("h2", null, p.n),
         h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
       h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno" }, "Página oficial ↗")));
@@ -573,15 +600,16 @@
       pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período"));
     if (r) {
       add(lado, h("div", { class: "estatisticas" },
-        estatistica(p.k === "e" ? "Meses no cargo" : "Meses de mandato", String(r.m), nomePeriodo(k, false)),
+        estatistica({ e: "Meses no cargo", j: "Meses nos dois cargos" }[p.k] || "Meses de mandato", String(r.m), nomePeriodo(k, false)),
         estatistica("Vai para o bolso", sm(emSalariosMinimos(p, k, "g")), "salários mínimos por mês")));
       if (p.im) {
         const anos = k === "leg" ? Object.keys(p.im) : [k];
         const frases = anos.filter((a) => p.im[a]).map((a) => p.k === "d" ? `${a}: apartamento funcional por ${p.im[a]} dias` : `${a}: ${p.im[a] === "Utilizou" ? "usou" : "não usou"} imóvel funcional`);
         if (frases.length) add(lado, h("div", { class: "estatistica" }, h("span", { class: "rotulo" }, "Moradia em Brasília"), frases.map((f) => h("span", { class: "pequeno" }, f))));
       }
-      if (r.mg < r.m && p.k !== "e") add(lado, h("p", { class: "nota" }, `Em ${r.m - r.mg} ${r.m - r.mg === 1 ? "mês" : "meses"} não houve salário (licença, por exemplo), mas o gabinete continuou funcionando. Cada média usa os seus próprios meses.`));
-      if (p.k === "d") add(lado, h("p", { class: "aviso" }, "Ainda faltam o 13º, a ajuda de custo e as diárias dos deputados. O valor real que recebem é um pouco maior."));
+      if (r.mg < r.m && p.k !== "e" && p.k !== "j") add(lado, h("p", { class: "nota" }, `Em ${r.m - r.mg} ${r.m - r.mg === 1 ? "mês" : "meses"} não houve salário (licença, por exemplo), mas o gabinete continuou funcionando. Cada média usa os seus próprios meses.`));
+      if (p.k === "j") add(lado, h("p", { class: "aviso" }, "Somamos os dois cargos sem contar nada duas vezes: o salário entra uma vez (nos meses como ministro, quem paga é o Congresso); a cota e a equipe do gabinete só nos meses exercendo o mandato; viagens e jetons só nos meses como ministro."));
+      if (casaBase(p) === "d") add(lado, h("p", { class: "aviso" }, "Ainda faltam o 13º, a ajuda de custo e as diárias dos deputados. O valor real que recebem é um pouco maior."));
       if (p.k === "e") {
         const ate = meta().ultimo_mes_executivo;
         add(lado, h("p", { class: "aviso" }, p.tp === "pr"
@@ -591,10 +619,12 @@
       }
       if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})`), ", via Wikimedia Commons."));
       if (p.q) add(lado, h("p", { class: "nota" }, `Depois de deixar o cargo, recebeu mais ${reais(p.q[1])} em ${p.q[0]} ${p.q[0] === 1 ? "mês" : "meses"} (acertos da saída e quarentena). Esse valor não entra nas médias.`));
-      if (p.rel && S.porId.get(p.rel)) add(lado, h("p", { class: "nota" },
+      if (p.rel && !p.j && S.porId.get(p.rel)) add(lado, h("p", { class: "nota" },
         p.k === "e" ? `Também é ${nomeRel(p.rel)}. Nos meses como ministro, o salário pode ter sido pago pelo Congresso: aparece aqui. ` : "Também foi do governo federal. ",
         h("a", { href: `#${p.rel}` }, p.k === "e" ? "Ver o contracheque no Congresso" : `Ver o contracheque como ${nomeRel(p.rel)}`)));
     }
+    const cargos = barraCargos(p, k);
+    if (cargos) card.append(cargos);
     const valores = h("div", { class: "conta__valores" }, h("p", { class: "passo", style: "padding:20px 22px 0" }, "2. Quanto isso dá por mês"));
     if (!r) add(valores, h("p", { class: "discreto", style: "padding:16px 22px" }, "Sem pagamentos registrados neste período."));
     else {
@@ -631,7 +661,7 @@
             estatistica("Custo da equipe", reais(r.em), "por mês"),
             estatistica("Pessoas", num(r.pessoas, r.pessoas < 10 ? 1 : 0), r.pessoasHoje ? `em média; ${r.pessoasHoje} no último mês` : "em média"),
             estatistica("Por pessoa", r.porPessoa ? reais(r.porPessoa) : "—", "por mês, em média")),
-          h("p", { class: "nota", style: "padding:8px 22px 0" }, p.k === "d"
+          h("p", { class: "nota", style: "padding:8px 22px 0" }, casaBase(p) === "d"
             ? "Secretários parlamentares pagos pela verba de gabinete. Não inclui cargos de natureza especial, pagos pela Câmara quando o deputado tem cargo de liderança."
             : "Assessores comissionados do gabinete e dos escritórios nos estados. Estimativa feita a partir da folha de pagamento do Senado."),
           h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver a equipe mês a mês")) : null,
@@ -658,20 +688,24 @@
     const card = h("article", { class: "cartao", id: "mes-a-mes" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Custo dele mês a mês"),
         h("p", { class: "pequeno discreto" }, `O que foi para o bolso e os ${gastosNome(p).toLowerCase()} em cada mês, ${nomePeriodo(k, false).replace(/^em /, "")}. A equipe do gabinete aparece à parte.`))),
-      h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Vai para o bolso"), h("span", null, h("span", { class: "chave chave--custa" }), gastosNome(p))),
+      h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Vai para o bolso"), h("span", null, h("span", { class: "chave chave--custa" }), gastosNome(p)),
+        p.k === "j" ? p.cg.map((c) => h("span", null, h("span", { class: `chave chave--faixa faixa-cargo--${S.porId.get(c.id) ? S.porId.get(c.id).k : "e"}` }), `Mês como ${c.g.split(/[ -]/)[0].toLowerCase()}`)) : null),
       caixa,
       tabela(["Mês", "Bolso", gastosNome(p), "Custo dele"], pontos.map((q) => [nomeMes(q), reais(q.g), reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`])),
       h("ul", { class: "lista nota" },
-        pontos.some((q) => q.ra) ? h("li", null, p.k === "d"
+        pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
           ? "≈ O auxílio-moradia é informado por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado."
           : "≈ Passagens, correios e outros gastos do Senado são informados por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado.") : null,
-        p.k !== "d" ? h("li", null, "Os meses mais altos costumam ter o 13º salário, pago de uma vez.") : null,
+        casaBase(p) !== "d" || p.k === "j" ? h("li", null, "Os meses mais altos costumam ter o 13º salário, pago de uma vez.") : null,
+        p.k === "j" ? h("li", null, "A faixa embaixo das colunas mostra em qual cargo a pessoa estava em cada mês.") : null,
         p.k === "e" ? h("li", null, "As viagens entram no mês em que começaram. Os salários saem no Portal com uns 2 meses de atraso.")
           : h("li", null, "Os 3 últimos meses ainda podem receber notas da cota.")));
     requestAnimationFrame(() => graficoColunas(caixa, pontos,
       [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
       (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`), h("div", null, "Custo dele ", h("strong", null, reais(q.g + q.c))),
-        q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null]));
+        q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null,
+        p.k === "j" && cargoNoMes(p, q.aaaamm) ? h("div", { class: "pequeno" }, cargoNoMes(p, q.aaaamm) === "e" ? "Neste mês: ministro" : "Neste mês: no Congresso") : null],
+      p.k === "j" ? (q) => cargoNoMes(p, q.aaaamm) : null));
     return card;
   }
   function secEquipe(p, k) {
@@ -689,7 +723,7 @@
         estatistica("Média por pessoa", r.porPessoa ? reais(r.porPessoa) : "—", C.porPessoa ? `Mediana: ${reais(C.porPessoa)}` : null)),
       caixa,
       tabela(["Mês", "Custo da equipe", "Pessoas", "Por pessoa"], pontos.map((q) => [nomeMes(q), reais(q.e), q.pes ? String(q.pes) : "—", q.pes ? reais(q.e / q.pes) : "—"])),
-      h("p", { class: "nota" }, p.k === "d"
+      h("p", { class: "nota" }, casaBase(p) === "d"
         ? "Na Câmara, cada deputado tem até R$ 165.806,07 por mês para pagar até 25 secretários parlamentares. Contamos quem trabalhou no gabinete em cada mês, mesmo que só parte dele."
         : "No Senado, os assessores são pagos direto pela folha. Ligamos a folha à lotação de cada comissionado: é uma estimativa, mais precisa nos meses recentes."));
     requestAnimationFrame(() => graficoColunas(caixa, pontos, [{ k: "e", cls: "seg-equipe" }],
@@ -723,9 +757,9 @@
   function secCota(p, k) {
     const r = resumo(p, k);
     if (!r) return null;
-    const grupos = (p.k === "e"
-      ? [["viagens_oficiais", "Viagens oficiais", ""], ["jetons", "Jetons, por conselho", "barra__fill--ganha"]]
-      : [["cota_parlamentar", "Cota parlamentar", ""], ["outros_gastos_mandato", "Outros gastos do mandato", ""]])
+    const G_E = [["viagens_oficiais", "Viagens oficiais (como ministro)", ""], ["jetons", "Jetons, por conselho", "barra__fill--ganha"]];
+    const G_P = [["cota_parlamentar", "Cota parlamentar", ""], ["outros_gastos_mandato", "Outros gastos do mandato", ""]];
+    const grupos = (p.k === "e" ? G_E : p.k === "j" ? [...G_P, ...G_E] : G_P)
       .map(([cat, titulo, cls]) => ({ cat, titulo, cls, det: detalheCat(p, k, cat) })).filter((g) => g.det && g.det.total >= 1);
     if (!grupos.length) return null;
     const notas = [`Média por mês: o total de cada tipo ${nomePeriodo(k, false)} dividido pelos meses. É uma aproximação: os gastos mudam muito de um mês para outro (uma passagem cara num mês, nada no outro).`];
@@ -748,7 +782,7 @@
       }
       if (g.cat === "jetons") estat.push(estatistica("Jetons por mês", reais(g.det.total / g.det.div), "vão para o bolso"));
     }
-    const titulo = p.k === "e" ? "Viagens e jetons, por mês" : grupos.length > 1 ? "Para onde vão os gastos do mandato, por mês" : "Para onde vai a cota parlamentar, por mês";
+    const titulo = p.k === "e" ? "Viagens e jetons, por mês" : p.k === "j" ? "Para onde vão os gastos dos cargos, por mês" : grupos.length > 1 ? "Para onde vão os gastos do mandato, por mês" : "Para onde vai a cota parlamentar, por mês";
     const sub = p.k === "e" ? `Quanto vai para cada tipo por mês, em média, ${nomePeriodo(k, false)}.`
       : `Passagens, combustível, alimentação, escritório e outras despesas reembolsadas. Média por mês ${nomePeriodo(k, false)}.`;
     return h("article", { class: "cartao", id: "cota" },
@@ -908,7 +942,7 @@
   const nomeMetrica = (m, casa) => (casa === "e" && METRICAS[m].nomeE) || METRICAS[m].nome;
   const nomeGrupo = (casa) => ({ d: "deputados", s: "senadores", e: "governo" })[casa];
   // Colegas e ranking numa seção só: filtros, posição, gráfico de pontos e os maiores/menores.
-  function secRanking(p, k) {
+  function secRanking(p, k, comoCargo) {
     const R = S.rank;
     if (!R.casa) R.casa = p ? p.k : "d";
     if (!R.periodo) R.periodo = (p && k) || "2025";
@@ -970,7 +1004,7 @@
           [...meta().anos, "leg"].map((v) => h("option", { value: v, selected: v === R.periodo }, nomePeriodo(v, true))))),
       R.casa === "e" ? null : h("div", { class: "campo" }, h("label", { for: "uf-rank" }, "Estado"), seletorUF("uf-rank", R.uf, (v) => { R.uf = v; medir(); desenhar(); })));
     add(sec, h("p", { class: "rotulo" }, p ? "Colegas e ranking" : "Ranking"),
-      h("h2", null, p ? `${p.n} comparado com os colegas` : "Quem custa mais e quem custa menos"), filtros,
+      h("h2", null, p ? `${p.n} comparado com os colegas${comoCargo ? `, como ${p.g.charAt(0).toLowerCase()}${p.g.slice(1)}` : ""}` : "Quem custa mais e quem custa menos"), filtros,
       h("label", { class: "pequeno discreto", style: "display:inline-flex;gap:8px;align-items:center" },
         h("input", { type: "checkbox", id: "no-cargo-rank", checked: R.noCargo, onchange: (e) => { R.noCargo = e.target.checked; desenhar(); } }), "Só quem está no cargo hoje"),
       corpo);
@@ -1000,7 +1034,7 @@
     chips.textContent = "";
     chips.append(
       h("span", { class: "chip" }, "Dados até ", h("strong", null, `${MESES[mesAtual() - 1]}/${anoAtual()}`)),
-      h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && p.k !== "e").length), " parlamentares e ", h("strong", null, D.p.filter((p) => p.x && p.k === "e").length), " no governo federal, no cargo"),
+      h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length), " parlamentares e ", h("strong", null, D.p.filter((p) => p.x && p.k === "e").length), " no governo federal, no cargo"),
       h("span", { class: "chip" }, "Salário bruto: ", h("strong", null, "R$ 46.366,19")),
       h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
     const sel = $("#estado");
@@ -1141,7 +1175,8 @@
     if (p) {
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
-      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secCota(p, k), secRanking(p, k), secComparar(p, k), secResumo(p, k)].filter(Boolean));
+      const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
+      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k)].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque");
     } else {

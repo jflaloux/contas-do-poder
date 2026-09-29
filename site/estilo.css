@@ -377,3 +377,17 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
   visibility: hidden; display: none !important; pointer-events: none; width: 0; margin: 0;
 }
 .credito a { color: inherit; }
+
+/* quem tem dois cargos */
+.cargos { padding: 12px 22px 14px; border-bottom: 1px solid var(--line-2); display: grid; gap: 8px; background: var(--bg); }
+.cargos .rotulo { margin: 0; }
+.cargos__lista { display: flex; flex-wrap: wrap; gap: 8px; }
+.cargo-opcao { display: grid; gap: 2px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper);
+  color: var(--ink); text-decoration: none; max-width: 100%; }
+.cargo-opcao strong { font-size: .92rem; }
+.cargo-opcao small { font-size: .78rem; color: var(--ink-3); }
+.cargo-opcao:hover { border-color: var(--accent); }
+.cargo-opcao[aria-current="page"] { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.faixa-cargo--e { fill: var(--accent); background: var(--accent); }
+.faixa-cargo--d, .faixa-cargo--s { fill: var(--hi); background: var(--hi); }
+.chave--faixa { height: 5px !important; border-radius: 2px; }
