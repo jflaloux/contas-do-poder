@@ -40,6 +40,18 @@ def _vereadores_no_site():
     return sum(m[5] for m in json.load(open(arq, encoding="utf-8"))["m"]) if arq.exists() else 0
 
 
+def _vereadores_sp():
+    """(no cargo, com gastos do gabinete no mês retrasado) no site/dados/camaras.json."""
+    arq = RAIZ / "site" / "dados" / "camaras.json"
+    if not arq.exists():
+        return 0, 0
+    d = json.load(open(arq, encoding="utf-8"))
+    ult = d["meta"]["cidades"]["3550308"]["ultimo_mes"]
+    retrasado = ult - 1 if ult % 100 > 1 else ult - 89
+    ps = [p for p in d["p"] if p.get("cid") == 3550308]
+    return sum(p["x"] for p in ps), sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
+
+
 def executar():
     random.seed(42)
     rel = [f"# Conferência dos dados — {datetime.now():%d/%m/%Y %H:%M}", ""]
@@ -166,6 +178,8 @@ def executar():
         (f"Governo federal: no cargo em {ult_e % 100:02d}/{ult_e // 100}", len(no_cargo_e), 30),
         ("Câmaras municipais com custo no arquivo do site", _cidades_com_custo(), 5000),
         ("Vereadores eleitos no arquivo do site", _vereadores_no_site(), 55000),
+        ("Vereadores de São Paulo no cargo (camaras.json)", _vereadores_sp()[0], 50),
+        ("Vereadores de São Paulo com gastos do gabinete no mês retrasado", _vereadores_sp()[1], 40),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),

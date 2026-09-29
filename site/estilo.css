@@ -409,3 +409,27 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .problemas { padding: 14px 16px; }
 .problemas summary { cursor: pointer; }
 .problemas .lista-estado__grupo { margin-top: 10px; }
+
+/* chamada para a cidade com vereador por vereador (São Paulo) */
+.destaque-cidade { text-decoration: none; color: var(--ink); gap: 6px; max-width: 520px; border: 1.5px solid var(--accent); background: linear-gradient(135deg, var(--accent-soft), var(--paper) 70%); }
+.destaque-cidade .etiqueta { justify-self: start; background: var(--hi); color: #fff; }
+.destaque-cidade strong { font-family: var(--display); font-size: 1.15rem; }
+.destaque-cidade:hover { border-color: var(--accent-2); }
+
+/* dois cargos: valor de cada visão e a conta lado a lado */
+.cargo-opcao__valor { font-family: var(--mono); font-size: .9rem; color: var(--ink); }
+.conta-cargos { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.conta-cargos summary { cursor: pointer; font-weight: 600; font-size: .92rem; color: var(--accent); }
+.conta-cargos[open] summary { margin-bottom: 8px; }
+.conta-cargos p { margin: 8px 0 0; color: var(--ink-2); max-width: 760px; }
+.conta-cargos__tabela th:not(:first-child), .conta-cargos__tabela td.num { text-align: right; }
+.conta-cargos__total td { font-weight: 700; border-top: 1.5px solid var(--line); }
+a.pessoa-chip { text-decoration: none; }
+a.pessoa-chip:hover { border-color: var(--accent); }
+.cargos { grid-template-columns: minmax(0, 1fr); }
+.conta-cargos { min-width: 0; }
+@media (max-width: 560px) {
+  .cargo-opcao { flex: 1 1 100%; }
+  .conta-cargos__tabela { font-size: .85rem; }
+  .conta-cargos__tabela td, .conta-cargos__tabela th { padding: 6px 8px; }
+}

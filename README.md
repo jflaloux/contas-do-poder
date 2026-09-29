@@ -123,6 +123,8 @@ governo e o cargo no Congresso. O "tudo junto" (`jun-...` em `dados.json`) soma 
 vezes: entra tudo do Congresso (salário, cota, equipe) e, do governo, só o que vem do Portal (jetons,
 viagens, outros pagamentos), porque o salário dos meses como ministro já foi pago pelo Congresso. A faixa
 embaixo do gráfico mês a mês mostra o cargo de cada mês. Nos rankings, cada cargo aparece no seu grupo.
+Cada opção mostra o custo dele por mês no período escolhido, e o quadro "Por que “tudo junto” não é a soma dos
+dois?" põe as três visões lado a lado, linha por linha (o salário aparece nas duas colunas, mas entra uma vez).
 
 ## Câmaras municipais (vereadores), passo 1
 
@@ -143,6 +145,31 @@ Robô `coleta/municipios.py`, para as 5.568 câmaras:
   comparações.
 - O salário de cada vereador ainda não tem fonte nacional. Próximos passos: capitais (um robô por câmara) e os
   estados cujo tribunal de contas publica a folha.
+
+## Vereadores de São Paulo (capital), passo 2
+
+Robô `coleta/vereadores_sp.py` (`python3 coletar.py vereadores_sp`). Cada vereador da capital tem página própria
+(`#ver-3550308-{código}`), como os deputados: contracheque, mês a mês, detalhe dos gastos, equipe, colegas e
+ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308`) lista os 55, com link.
+
+- **Quem ocupa cada gabinete** (titulares e suplentes, com datas): SPLegis, `OcupacaoGabineteJSON`. Partido do
+  mandato: `VereadoresCMSPJSON`. Nome de urna, nome completo e gênero: TSE (guardado em
+  `dados/municipios/sp/candidatos_tse.csv`, só eleitos e suplentes, sem CPF). Quem ficou menos de 15 dias no
+  cargo e já saiu não ganha página.
+- **Vai para o bolso**: o subsídio, igual para todos (R$ 24.754,79 em jan/2025; R$ 26.080,98 desde fev/2025),
+  proporcional aos dias no cargo. A Câmara só mostra o contracheque com CPF: 13º e descontos ficam de fora.
+- **Gastos do mandato**: a verba do gabinete (Auxílio-Encargos Gerais de Gabinete), nota por nota, do SisGV
+  (`ObterDebitoVereadorJSON`, SOAP), e o crédito mensal (`ObterCreditoVereadorJSON`); o saldo que sobra em
+  dezembro volta para a Câmara. Tipos de despesa com nomes curtos e os 8 maiores fornecedores; CPF de pessoa
+  física (aluguel de imóvel) fica mascarado e o nome não aparece no site. Os 4 últimos meses são baixados de novo
+  toda semana, porque ainda recebem notas. O último mês é o último fechado.
+- **Equipe**: pessoas e cargos de cada gabinete, pela lista de funcionários da Câmara (retrato do mês mais
+  recente). O custo da equipe não é publicado sem CPF.
+- **Fotos**: oficiais, do site da Câmara (que declara o banco de imagens livre para uso), com crédito.
+- Saída: `dados/municipios/sp/*.csv` (vai para o Git) e `site/dados/camaras.json`, que o site junta à lista de
+  políticos ao abrir (se o arquivo faltar, o site segue sem os vereadores). Conferência: 55 no cargo e verba
+  usada dentro do crédito do ano. Em 2025, a verba usada de cada um confere com o crédito menos o saldo devolvido
+  em dezembro (57 de 59 vereadores com diferença de até R$ 2; os outros 2, menos de R$ 500).
 
 ## Compartilhamento e medição
 

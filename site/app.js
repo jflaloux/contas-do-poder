@@ -44,10 +44,11 @@
   const sm = (v) => (v >= 10 ? num(v, 0) : num(v, 1));
   const semAcento = (t) => (t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
+  const MESES_LONGOS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
   const ESTADOS = { AC: "Acre", AL: "Alagoas", AM: "Amazonas", AP: "Amapá", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MG: "Minas Gerais", MS: "Mato Grosso do Sul", MT: "Mato Grosso", PA: "Pará", PB: "Paraíba", PE: "Pernambuco", PI: "Piauí", PR: "Paraná", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RO: "Rondônia", RR: "Roraima", RS: "Rio Grande do Sul", SC: "Santa Catarina", SE: "Sergipe", SP: "São Paulo", TO: "Tocantins" };
   const UFS = Object.keys(ESTADOS);
   const ORDEM_GANHA = ["salario", "decimo_terceiro", "jetons", "auxilio_moradia", "auxilios", "ajuda_de_custo", "outros_rendimentos"];
-  const ORDEM_CUSTA = ["cota_parlamentar", "diarias", "outros_gastos_mandato", "viagens_oficiais"];
+  const ORDEM_CUSTA = ["cota_parlamentar", "diarias", "outros_gastos_mandato", "viagens_oficiais", "verba_gabinete"];
   const ORDEM_EQUIPE = ["assessores_gabinete"];
   function iniciais(nome) {
     const p = nome.replace(/^(Dr|Dra|Delegad[oa]|Coronel|Capitão|Pastor[a]?|Sargento|Professor[a]?|Missionário|General|Cabo|Major|Tenente)\.?\s+/i, "").split(/\s+/);
@@ -64,16 +65,43 @@
 
   // ================================================================== Google Analytics (só se o gtag estiver carregado)
   const evento = (nome, params = {}) => { try { if (typeof gtag === "function") gtag("event", nome, params); } catch (e) { /* segue sem medir */ } };
-  const casaTxt = (p) => ({ d: "deputado", s: "senador", e: "governo", j: "dois cargos" })[p.k];
+  const casaTxt = (p) => ({ d: "deputado", s: "senador", e: "governo", j: "dois cargos", v: "vereador" })[p.k];
+
+  // ================================================================== câmaras com vereador por vereador (dados/camaras.json; hoje só São Paulo)
+  const CAM = { cidades: {} };
+  const camaraDe = (cod) => CAM.cidades[String(cod)] || null;
+  const camaraSP = () => camaraDe(3550308);
+  // junta os vereadores à lista de políticos; os tipos de gasto vêm numa lista própria, então os índices mudam
+  function juntarCamaras(D, CD) {
+    if (!CD || !CD.p) return;
+    const desloc = D.meta.tipos.length;
+    D.meta.tipos.push(...CD.meta.tipos);
+    Object.assign(D.meta.categorias, CD.meta.categorias);
+    CAM.cidades = CD.meta.cidades || {};
+    for (const p of CD.p) {
+      for (const k of Object.keys(p.dt || {})) for (const c of Object.keys(p.dt[k])) p.dt[k][c] = p.dt[k][c].map(([i, v]) => [i + desloc, v]);
+      D.p.push(p);
+    }
+  }
 
   // ================================================================== contas
   const meta = () => S.D.meta;
   const anoAtual = () => String(Math.floor(meta().ultimo_mes / 100));
   const mesAtual = () => meta().ultimo_mes % 100;
-  function nomePeriodo(k, curto) {
-    if (k === "leg") return curto ? "Mandato todo" : `de fev/2023 a ${MESES[mesAtual() - 1]}/${anoAtual()}`;
-    if (k === anoAtual()) return curto ? `${k} (até ${MESES[mesAtual() - 1]})` : `em ${k} (até ${MESES[mesAtual() - 1]})`;
-    if (k === "2023") return curto ? "2023" : "em 2023 (desde fevereiro)";
+  // primeiro e último mês com dados de cada grupo (vereadores de SP: mandato desde jan/2025, dados até o último mês fechado)
+  function limitesGrupo(g) {
+    const c = g === "v" ? camaraSP() : null;
+    return c ? [c.inicio, c.ultimo_mes] : [202302, meta().ultimo_mes];
+  }
+  const anosGrupo = (g) => { const [ini, fim] = limitesGrupo(g); return meta().anos.filter((a) => a >= String(Math.floor(ini / 100)) && a <= String(Math.floor(fim / 100))); };
+  // g = grupo ("d", "s", "e", "j", "v"); sem g, vale o de quem está escolhido na página
+  function nomePeriodo(k, curto, g) {
+    if (g === undefined) { const q = S.sel && S.porId.get(S.sel); g = q ? q.k : null; }
+    const [ini, fim] = limitesGrupo(g);
+    const aIni = String(Math.floor(ini / 100)), mIni = ini % 100, aFim = String(Math.floor(fim / 100)), mFim = fim % 100;
+    if (k === "leg") return curto ? "Mandato todo" : `de ${MESES[mIni - 1]}/${aIni} a ${MESES[mFim - 1]}/${aFim}`;
+    if (k === aFim) return curto ? `${k} (até ${MESES[mFim - 1]})` : `em ${k} (até ${MESES[mFim - 1]})`;
+    if (k === aIni && mIni > 1) return curto ? k : `em ${k} (desde ${MESES_LONGOS[mIni - 1]})`;
     return curto ? k : `em ${k}`;
   }
   const periodos = (p) => [...meta().anos.filter((a) => p.per[a] && p.per[a].m > 0), "leg"];
@@ -112,11 +140,11 @@
     return anos.length ? anos[anos.length - 1] : "leg";
   }
   const nomeCat = (k) => (meta().categorias[k] || { nome: k }).nome;
-  const plural = (casa) => ({ d: "deputados", s: "senadores", e: "ministros" })[casa];
+  const plural = (casa) => ({ d: "deputados", s: "senadores", e: "ministros", v: "vereadores de São Paulo" })[casa];
   // governo federal: "cargo" em vez de "mandato", viagens em vez de cota
   const gastosNome = (p) => ({ e: "Gastos do cargo", j: "Gastos dos cargos" })[p.k] || "Gastos do mandato";
-  const gastosDetalhe = (p) => ({ e: "viagens oficiais", j: "cota, viagens e outros" })[p.k] || "cota parlamentar e outros";
-  const fonteDados = (p) => ({ e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" })[p.k] || "da Câmara e do Senado";
+  const gastosDetalhe = (p) => ({ e: "viagens oficiais", j: "cota, viagens e outros", v: "verba do gabinete" })[p.k] || "cota parlamentar e outros";
+  const fonteDados = (p) => ({ e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência", v: "da Câmara Municipal de São Paulo" })[p.k] || "da Câmara e do Senado";
   // "tudo junto" (dois cargos): a casa do cargo no Congresso, para os avisos de deputado/senador
   const casaBase = (p) => (p.k === "j" ? (S.porId.get(p.cg[1].id) || {}).k : p.k);
   const fmtMes = (m) => (m ? `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}` : "");
@@ -164,7 +192,8 @@
     }
     return d;
   }
-  const partidoUF = (p) => (p.k === "e" ? (p.pt ? `${p.pt} · governo federal` : "Governo federal") : `${p.pt || "sem partido"}-${p.uf}`);
+  const partidoUF = (p) => (p.k === "e" ? (p.pt ? `${p.pt} · governo federal` : "Governo federal")
+    : p.k === "v" ? `${p.pt || "sem partido"} · cidade de São Paulo` : `${p.pt || "sem partido"}-${p.uf}`);
   const etiquetaCargo = (p) => (p.x ? h("span", { class: "etiqueta" }, "No cargo") : h("span", { class: "etiqueta etiqueta--fora" }, "Fora do cargo hoje"));
   function pilulas(opcoes, atual, aoEscolher, rotulo, classe) {
     return h("div", { class: classe || "pilulas", role: "group", "aria-label": rotulo },
@@ -405,10 +434,11 @@
       r.cats.jetons ? `  (inclui ${reais(porMes(r, "jetons"))} por mês de jetons de conselhos)` : null,
       `• ${gastosNome(p)}: ${reais(r.cm)} por mês (${gastosDetalhe(p)})`,
       r.em ? `À parte, a equipe do gabinete: ${pessoasTxt(r.pessoas)}, ${reais(r.em)} por mês` : null,
+      p.k === "v" && p.eq ? `À parte, a equipe do gabinete: ${pessoasTxt(p.eq.n)} (a Câmara não publica o custo)` : null,
       pos ? `O custo dele fica acima de ${pos.pct}% dos ${plural(p.k)}` : null,
       "",
       `Tudo com dados abertos oficiais ${fonteDados(p)}.`,
-      `Veja também o seu deputado, os senadores e os ministros: ${link || "Contas do Poder"}`,
+      `${p.k === "v" ? "Veja também os outros vereadores, os deputados e os senadores" : "Veja também o seu deputado, os senadores e os ministros"}: ${link || "Contas do Poder"}`,
     ].filter((x) => x !== null).join("\n");
   }
 
@@ -522,20 +552,28 @@
       g.font = `500 48px ${MONO}`; const wValor = g.measureText(reais(r.em)).width;
       comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${MONO}`, 24, "#ffffff");
       y += eh;
+    } else if (p.k === "v" && p.eq) {
+      const eh = 92;
+      g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
+      bolinha(C.equipe, M + 34, y + 46);
+      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 55);
+      g.fillStyle = "#ffffff"; g.font = `500 30px ${MONO}`; direita(pessoasTxt(p.eq.n), W - M - 24, y + 57);
+      y += eh;
     }
-    const aviso = p.k === "j" ? "Soma dos dois cargos, sem contar o salário duas vezes."
+    const aviso = p.k === "v" ? "Salário igual para todos. O custo da equipe do gabinete não é publicado."
+      : p.k === "j" ? "Soma dos dois cargos, sem contar o salário duas vezes."
       : p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
       : p.tp === "pr" ? "O avião presidencial e a estrutura da Presidência não entram na conta."
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
     if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
     if (p.fc && foto) {
       g.fillStyle = "rgba(196,191,224,.7)"; g.font = `400 16px ${BODY}`;
-      direita(`Foto: ${(p.fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${p.fc.l}), Wikimedia Commons`, W - M, H - 190);
+      direita(p.fc.l ? `Foto: ${(p.fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${p.fc.l}), Wikimedia Commons` : `Foto: ${p.fc.a}`, W - M, H - 190);
     }
     // rodapé: onde ver mais e de onde vêm os dados
     const ry = H - 176;
     g.fillStyle = C.marca; g.fillRect(0, ry, W, H - ry);
-    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `700 24px ${BODY}`; g.fillText("VEJA TAMBÉM O SEU DEPUTADO, OS SENADORES E OS MINISTROS EM", M, ry + 46);
+    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `700 24px ${BODY}`; g.fillText(p.k === "v" ? "VEJA TAMBÉM OS OUTROS VEREADORES, DEPUTADOS E SENADORES EM" : "VEJA TAMBÉM O SEU DEPUTADO, OS SENADORES E OS MINISTROS EM", M, ry + 46);
     g.fillStyle = "#ffc2d6"; g.font = `800 58px ${DISP}`; g.fillText(dominio(), M, ry + 106);
     g.fillStyle = "rgba(255,255,255,.85)"; g.font = `500 26px ${BODY}`; g.fillText(`Tudo com dados abertos oficiais ${fonteDados(p)}`, M, ry + 150);
     return await new Promise((ok) => cv.toBlob(ok, "image/png"));
@@ -582,14 +620,73 @@
       const estado = c.x ? "no cargo hoje" : exe.x ? "licenciado: está no ministério" : "fora do cargo hoje";
       return c.ex ? `${estado} · exerceu o mandato ${c.ex} ${c.ex === 1 ? "mês" : "meses"} desde 2023` : estado;
     };
-    const opcoes = [[j.id, "Tudo junto", "os dois cargos somados"], [exe.id, exe.g, sub(exe)], [par.id, par.g, sub(par)]];
+    // custo dele por mês de cada visão, no período escolhido
+    const custo = (id) => { const q = S.porId.get(id); const r = q && resumo(q, k); return r ? `${reais(r.tm)}/mês` : `sem dados ${nomePeriodo(k, false)}`; };
+    const opcoes = [[j.id, "Tudo junto", "os dois cargos, sem contar nada duas vezes"], [exe.id, exe.g, sub(exe)], [par.id, par.g, sub(par)]];
     const alvo = (id) => { const q = S.porId.get(id); return `#${id}${q && k !== periodoPadrao(q) && periodos(q).includes(k) ? "~" + k : ""}`; };
     return h("nav", { class: "cargos", "aria-label": "Cargos desta pessoa" },
-      h("p", { class: "rotulo" }, `${j.n} tem dois cargos. Veja juntos ou separados:`),
+      h("p", { class: "rotulo" }, `${j.n} tem dois cargos. Veja juntos ou separados (custo dele ${nomePeriodo(k, false)}):`),
       h("div", { class: "cargos__lista" }, opcoes.map(([id, titulo, texto]) => h("a", {
         class: "cargo-opcao", href: alvo(id), "aria-current": id === p.id ? "page" : null,
         onclick: () => { S.origem = "cargos"; evento("trocar_cargo", { para: id.split("-")[0], parlamentar: j.n }); },
-      }, h("strong", null, titulo), h("small", null, texto)))));
+      }, h("strong", null, titulo), h("span", { class: "cargo-opcao__valor" }, custo(id)), h("small", null, texto)))),
+      contaDosCargos(j, k, p.k === "j"));
+  }
+  const maiuscula = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+  // Quantos meses de um período a pessoa passou em cada cargo (j.tr: [[de, até, "e" | "d" | "s"]])
+  const proxMes = (m) => (m % 100 === 12 ? (Math.floor(m / 100) + 1) * 100 + 1 : m + 1);
+  function mesesPorCargo(j, k) {
+    const n = { e: 0, par: 0 };
+    for (const [a, b, c] of j.tr || []) for (let m = a; m <= b; m = proxMes(m)) if (k === "leg" || Math.floor(m / 100) === Number(k)) n[c === "e" ? "e" : "par"]++;
+    return n;
+  }
+  // "Por que tudo junto não é a soma?": as três visões lado a lado, linha por linha, e a explicação
+  function contaDosCargos(j, k, aberto) {
+    const [exe, par] = j.cg.map((c) => S.porId.get(c.id));
+    const cols = [[exe, j.cg[0].g], [par, j.cg[1].g], [j, "Tudo junto"]].map(([q, nome]) => ({ nome, r: q ? resumo(q, k) : null }));
+    if (!cols[2].r) return null;
+    const cats = [...ORDEM_GANHA, ...ORDEM_CUSTA].filter((c) => cols.some((x) => x.r && x.r.cats[c]));
+    const val = (x, f) => (x.r && f(x.r) >= 0.5 ? reais(f(x.r)) : "—");
+    const linhas = [
+      ...cats.map((c) => [nomeCat(c).replace(/ \(.*\)$/, ""), (r) => porMes(r, c)]),
+      ["Custo dele por mês", (r) => r.tm, true],
+      ...(cols.some((x) => x.r && x.r.em) ? [["À parte: equipe do gabinete", (r) => r.em]] : []),
+    ];
+    const n = mesesPorCargo(j, k);
+    const cargoPar = j.cg[1].g.toLowerCase(), casaPar = S.porId.get(j.cg[1].id) && S.porId.get(j.cg[1].id).k === "s" ? "o Senado" : "a Câmara";
+    const salEx = cols[0].r ? porMes(cols[0].r, "salario") : 0, salPar = cols[1].r ? porMes(cols[1].r, "salario") : 0;
+    const mesmoSalario = salEx > 0 && salPar > 0 && Math.abs(salEx - salPar) / salPar < 0.03;
+    const expl = [];
+    if (n.par === 0) expl.push(`${maiuscula(nomePeriodo(k, false))}, ${j.n} passou os ${n.e} meses no ministério, licenciado do mandato de ${cargoPar}.`);
+    else if (n.e === 0) expl.push(`${maiuscula(nomePeriodo(k, false))}, ${j.n} passou os ${n.par} meses exercendo o mandato de ${cargoPar}, fora do ministério.`);
+    else expl.push(`${maiuscula(nomePeriodo(k, false))}, foram ${n.e} ${n.e === 1 ? "mês" : "meses"} no ministério e ${n.par} ${n.par === 1 ? "mês" : "meses"} exercendo o mandato de ${cargoPar}.`);
+    if (mesmoSalario) expl.push(`O salário é um só: no ministério, quem pagou foi ${casaPar} (o parlamentar licenciado pode escolher o salário do mandato). Por isso ele aparece nas duas colunas, mas entra uma vez só em “tudo junto”.`);
+    else expl.push("O salário entra uma vez por mês, de quem pagou naquele mês.");
+    if (n.par === 0 && cols[1].r && cols[1].r.e) expl.push(`${casaPar === "a Câmara" ? "A Câmara" : "O Senado"} ainda registrou ${reais(cols[1].r.e)} com a equipe do gabinete dele no período, mesmo licenciado; como toda equipe, fica à parte, fora do custo dele.`);
+    expl.push(n.par === 0 ? "Sem exercer o mandato, não houve cota parlamentar. Por isso o custo dele em “tudo junto” fica igual ao do ministro."
+      : "Cota e equipe do gabinete vêm dos meses no mandato; jetons e viagens, dos meses no ministério. Cada coluna é a média dos seus próprios meses, por isso “tudo junto” não é a soma das outras duas.");
+    return h("details", { class: "conta-cargos", open: aberto || null, ontoggle: (e) => { if (e.target.open) evento("abrir_detalhe", { categoria: "dois_cargos", casa: "dois cargos" }); } },
+      h("summary", null, "Por que “tudo junto” não é a soma dos dois?"),
+      h("div", { class: "rolagem" }, h("table", { class: "comp-tabela conta-cargos__tabela" },
+        h("thead", null, h("tr", null, h("th", null, `Por mês, ${nomePeriodo(k, false).replace(/^em /, "")}`), cols.map((x) => h("th", null, x.nome)))),
+        h("tbody", null, linhas.map(([nome, f, forte]) => h("tr", { class: forte ? "conta-cargos__total" : null }, h("td", null, nome), cols.map((x) => h("td", { class: "num" }, val(x, f)))))))),
+      h("p", { class: "pequeno" }, expl.join(" ")));
+  }
+  // vereador: períodos no gabinete (suplente, licença), a data da equipe e o limite da verba
+  const dataTxt = (s) => `${s.slice(6, 8)}/${s.slice(4, 6)}/${s.slice(0, 4)}`;
+  function ocupacaoTxt(p) {
+    const oc = p.oc || [], c = camaraDe(p.cid);
+    if (!oc.length || !c || (oc.length === 1 && oc[0][0] <= `${c.inicio}01` && !oc[0][1])) return null;
+    return oc.map(([a, b]) => (b ? (a === b ? `em ${dataTxt(a)}` : `de ${dataTxt(a)} a ${dataTxt(b)}`) : `desde ${dataTxt(a)}`)).join("; ");
+  }
+  const mesEquipe = (c) => { const [m, a] = ((c && c.equipe_em) || "").split("/"); return Number(a) * 100 + Number(m); };
+  function limiteVerba(p, k) {
+    const anos = k === "leg" ? Object.keys(p.vb || {}) : [k];
+    return anos.reduce((a, x) => a + ((p.vb || {})[x] ? p.vb[x][0] : 0), 0);
+  }
+  function sobraVerba(p, k) {
+    const anos = k === "leg" ? Object.keys(p.vb || {}) : [k];
+    return anos.map((a) => [a, (p.vb || {})[a] ? p.vb[a][1] : 0]).filter(([, v]) => v > 0);
   }
   function secContracheque(p, k) {
     const r = resumo(p, k), C = colegas(p.k, k), pos = posicao(p, k);
@@ -624,7 +721,15 @@
           : "Ministros não têm cota parlamentar nem verba de gabinete. Entram o salário, os jetons de conselhos e as viagens oficiais (diárias e passagens). Voos da FAB não têm custo publicado."),
           h("p", { class: "nota" }, `O Portal da Transparência publica os salários com uns 2 meses de atraso: dados até ${MESES[(ate % 100) - 1]}/${Math.floor(ate / 100)}.`));
       }
-      if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})`), ", via Wikimedia Commons."));
+      if (p.k === "v") {
+        const c = camaraDe(p.cid), sub = c.subsidio, oc = ocupacaoTxt(p);
+        const [ultimo, primeiro] = [sub[sub.length - 1], sub[0]];
+        add(lado,
+          oc ? h("p", { class: "nota" }, `${p.sup ? "Suplente. " : ""}No cargo ${oc} (gabinete ${p.gab}). O salário conta só os dias no cargo.`) : null,
+          h("p", { class: "aviso" }, `O salário é o mesmo para todos os vereadores de São Paulo: ${reaisC(ultimo[1])} por mês desde ${fmtMes(ultimo[0])}${sub.length > 1 ? ` (${reaisC(primeiro[1])} em ${fmtMes(primeiro[0])})` : ""}. A Câmara só mostra o contracheque de cada um para quem informa um CPF, por isso descontos, 13º e outros pagamentos não aparecem aqui.`),
+          h("p", { class: "nota" }, `Dados da Câmara Municipal de São Paulo até ${fmtMes(c.ultimo_mes)}.`));
+      }
+      if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, p.fc.l ? `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})` : p.fc.a), p.fc.l ? ", via Wikimedia Commons." : "."));
       if (p.q) add(lado, h("p", { class: "nota" }, `Depois de deixar o cargo, recebeu mais ${reais(p.q[1])} em ${p.q[0]} ${p.q[0] === 1 ? "mês" : "meses"} (acertos da saída e quarentena). Esse valor não entra nas médias.`));
       if (p.rel && !p.j && S.porId.get(p.rel)) add(lado, h("p", { class: "nota" },
         p.k === "e" ? `Também é ${nomeRel(p.rel)}. Nos meses como ministro, o salário pode ter sido pago pelo Congresso: aparece aqui. ` : "Também foi do governo federal. ",
@@ -672,6 +777,12 @@
             ? "Secretários parlamentares pagos pela verba de gabinete. Não inclui cargos de natureza especial, pagos pela Câmara quando o deputado tem cargo de liderança."
             : "Assessores comissionados do gabinete e dos escritórios nos estados. Estimativa feita a partir da folha de pagamento do Senado."),
           h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver a equipe mês a mês")) : null,
+        !r.em && p.k === "v" && p.eq ? h("div", { class: "equipe-resumo" },
+          titulo("À parte: equipe do gabinete (vai para outras pessoas)", "equipe"),
+          h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
+            estatistica("Pessoas", String(p.eq.n), `em ${fmtMes(mesEquipe(camaraDe(p.cid)))}`),
+            estatistica("Custo da equipe", "não publicado", "a Câmara só mostra os salários com CPF")),
+          h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver os cargos da equipe")) : null,
         botoesCompartilhar(p, k));
     }
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
@@ -703,9 +814,11 @@
         pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
           ? "≈ O auxílio-moradia é informado por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado."
           : "≈ Passagens, correios e outros gastos do Senado são informados por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado.") : null,
-        casaBase(p) !== "d" || p.k === "j" ? h("li", null, "Os meses mais altos costumam ter o 13º salário, pago de uma vez.") : null,
+        (casaBase(p) !== "d" && p.k !== "v") || p.k === "j" ? h("li", null, "Os meses mais altos costumam ter o 13º salário, pago de uma vez.") : null,
+        p.k === "v" && ocupacaoTxt(p) ? h("li", null, "Mês com salário menor: o vereador ficou só parte do mês no cargo.") : null,
         p.k === "j" ? h("li", null, "A faixa embaixo das colunas mostra em qual cargo a pessoa estava em cada mês.") : null,
         p.k === "e" ? h("li", null, "As viagens entram no mês em que começaram. Os salários saem no Portal com uns 2 meses de atraso.")
+          : p.k === "v" ? h("li", null, "A verba do gabinete entra no mês da nota. O que não é usado num mês pode ser usado nos meses seguintes do mesmo ano, então há meses acima da média. Os últimos meses ainda podem receber notas.")
           : h("li", null, "Os 3 últimos meses ainda podem receber notas da cota.")));
     requestAnimationFrame(() => graficoColunas(caixa, pontos,
       [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
@@ -737,6 +850,22 @@
       (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]));
     return card;
   }
+  // Vereador: a Câmara publica quem trabalha em cada gabinete (retrato do mês), mas não os salários sem CPF
+  function secEquipeVereador(p) {
+    if (!p.eq) return null;
+    const c = camaraDe(p.cid);
+    const med = mediana(S.D.p.filter((q) => q.k === "v" && q.eq).map((q) => q.eq.n));
+    const max = Math.max(...p.eq.c.map(([, n]) => n));
+    return h("article", { class: "cartao", id: "equipe" },
+      h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Equipe do gabinete"),
+        h("p", { class: "pequeno discreto" }, `Quem trabalha para ${p.n}, em ${fmtMes(mesEquipe(c))}. É pago com dinheiro público, mas não vai para o bolso dele.`))),
+      h("div", { class: "estatisticas" },
+        estatistica("Pessoas", String(p.eq.n), med ? `Mediana dos vereadores: ${num(med, 0)}` : null),
+        estatistica("Custo da equipe", "não publicado", "a Câmara só mostra os salários para quem informa um CPF")),
+      h("div", { class: "barras" }, h("div", { class: "barras__cabeca" }, h("span", null, "Cargo"), h("span", null, "Pessoas")),
+        p.eq.c.map(([cargo, n]) => barra(cargo, String(n), n / max, "barra__fill--equipe"))),
+      h("p", { class: "nota" }, "Cargos de confiança, escolhidos pelo vereador. “Servidor cedido” é funcionário de outro órgão público emprestado à Câmara. A lista é da Câmara, atualizada todo mês; mostramos o mês mais recente."));
+  }
   // ---------------------------------------------------------------- detalhe dos gastos por tipo
   const divisorCat = (r, cat) => (ORDEM_GANHA.includes(cat) ? r.mg : ORDEM_EQUIPE.includes(cat) ? r.me : r.mc);
   // [[nome do tipo, total no período], ...] de uma categoria, com "Outros tipos" para o que sobra
@@ -744,11 +873,12 @@
     const r = resumo(p, k);
     const d = (p.dt && p.dt[k] && p.dt[k][cat]) || [];
     if (!r || !d.length) return null;
-    const total = r.cats[cat] || 0;
+    const base = cat === "fornecedores" ? "verba_gabinete" : cat; // fornecedores: a mesma verba, dividida por quem recebeu
+    const total = r.cats[base] || 0;
     const linhas = d.map(([i, v]) => [meta().tipos[i], v]);
     const resto = total - linhas.reduce((a, [, v]) => a + v, 0);
-    if (total && resto > 0 && resto / total >= 0.005) linhas.push(["Outros tipos", resto]);
-    return { total, linhas, div: divisorCat(r, cat) || 1 };
+    if (total && resto > 0 && resto / total >= 0.005) linhas.push([cat === "fornecedores" ? "Outros fornecedores" : "Outros tipos", resto]);
+    return { total, linhas, div: divisorCat(r, base) || 1 };
   }
   const pctTxt = (v, total) => { const x = total ? (v / total) * 100 : 0; return x < 1 ? "<1%" : `${num(x, 0)}%`; };
   const viagensPorMes = (p, k) => { const r = resumo(p, k); return p.nv && p.nv[k] && r ? p.nv[k] / r.m : null; };
@@ -766,7 +896,8 @@
     if (!r) return null;
     const G_E = [["viagens_oficiais", "Viagens oficiais (como ministro)", ""], ["jetons", "Jetons, por conselho", "barra__fill--ganha"]];
     const G_P = [["cota_parlamentar", "Cota parlamentar", ""], ["outros_gastos_mandato", "Outros gastos do mandato", ""]];
-    const grupos = (p.k === "e" ? G_E : p.k === "j" ? [...G_P, ...G_E] : G_P)
+    const G_V = [["verba_gabinete", "Por tipo de despesa", ""], ["fornecedores", "Para quem foi o dinheiro (maiores fornecedores)", ""]];
+    const grupos = (p.k === "e" ? G_E : p.k === "j" ? [...G_P, ...G_E] : p.k === "v" ? G_V : G_P)
       .map(([cat, titulo, cls]) => ({ cat, titulo, cls, det: detalheCat(p, k, cat) })).filter((g) => g.det && g.det.total >= 1);
     if (!grupos.length) return null;
     const notas = [`Média por mês: o total de cada tipo ${nomePeriodo(k, false)} dividido pelos meses. É uma aproximação: os gastos mudam muito de um mês para outro (uma passagem cara num mês, nada no outro).`];
@@ -788,9 +919,22 @@
         notas.push("Voos em aviões da FAB não têm custo publicado: entram só as passagens compradas e as diárias.");
       }
       if (g.cat === "jetons") estat.push(estatistica("Jetons por mês", reais(g.det.total / g.det.div), "vão para o bolso"));
+      if (g.cat === "verba_gabinete") {
+        const c = camaraDe(p.cid), lim = limiteVerba(p, k);
+        estat.push(estatistica("Verba usada por mês", reais(g.det.total / g.det.div), "em média"));
+        if (lim) estat.push(estatistica("Do limite", `${num((g.det.total / lim) * 100, 0)}%`, `usou ${reais(g.det.total)} de ${reais(lim)} ${nomePeriodo(k, false)}`));
+        const vm = Object.entries(c.verba_mes || {}).map(([a, v]) => `${reais(v)} em ${a}`).join(" e ");
+        notas.push(`Cada vereador pode gastar até ${vm} por mês (o Auxílio-Encargos Gerais de Gabinete), com nota fiscal. O que não é usado num mês fica para os meses seguintes; o que sobra no fim do ano volta para a Câmara.`);
+        const sobra = sobraVerba(p, k);
+        if (sobra.length) notas.push(sobra.map(([a, v]) => `Em ${a}, sobraram ${reais(v)} da verba de ${p.n}, que voltaram para a Câmara.`).join(" "));
+        notas.push("Carros, correios e cópias podem vir de contratos da própria Câmara, descontados da verba do vereador.");
+      }
+      if (g.cat === "fornecedores" && g.det.linhas.some(([t]) => t.startsWith("Pessoa física"))) notas.push("Pessoa física: aluguel de imóvel pago a uma pessoa. O nome está nos dados da Câmara; aqui não mostramos.");
     }
-    const titulo = p.k === "e" ? "Viagens e jetons, por mês" : p.k === "j" ? "Para onde vão os gastos dos cargos, por mês" : grupos.length > 1 ? "Para onde vão os gastos do mandato, por mês" : "Para onde vai a cota parlamentar, por mês";
+    const titulo = p.k === "e" ? "Viagens e jetons, por mês" : p.k === "j" ? "Para onde vão os gastos dos cargos, por mês" : p.k === "v" ? "Para onde vai a verba do gabinete, por mês"
+      : grupos.length > 1 ? "Para onde vão os gastos do mandato, por mês" : "Para onde vai a cota parlamentar, por mês";
     const sub = p.k === "e" ? `Quanto vai para cada tipo por mês, em média, ${nomePeriodo(k, false)}.`
+      : p.k === "v" ? `Redes sociais, material gráfico, carros, escritório e outras despesas do gabinete, pagas com nota fiscal. Média por mês ${nomePeriodo(k, false)}.`
       : `Passagens, combustível, alimentação, escritório e outras despesas reembolsadas. Média por mês ${nomePeriodo(k, false)}.`;
     return h("article", { class: "cartao", id: "cota" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, titulo), h("p", { class: "pequeno discreto" }, sub))),
@@ -806,7 +950,7 @@
   function secComparar(p, k) {
     const card = h("article", { class: "cartao", id: "comparar" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h3", null, "Comparar com outro parlamentar"),
-        h("p", { class: "pequeno discreto" }, "Da Câmara ou do Senado. No mesmo período, quanto o outro custa a mais ou a menos por mês."))));
+        h("p", { class: "pequeno discreto" }, `${camaraSP() ? "Deputado, senador, ministro ou vereador de São Paulo" : "Da Câmara, do Senado ou do governo federal"}. No mesmo período, quanto o outro custa a mais ou a menos por mês.`))));
     const input = h("input", { type: "search", id: "busca-comparar", placeholder: "Quem? Ex.: Haddad, PT ou Bahia", autocomplete: "off" });
     const sug = h("div", { class: "sugestoes", hidden: true });
     add(card, h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-comparar" }, "Comparar com"), input, sug));
@@ -818,11 +962,11 @@
       else if (r1) {
         const linhas = [
           ["Vai para o bolso", (r) => r.gm, reais], ["Gastos do mandato ou do cargo", (r) => r.cm, reais], ["Jetons", (r) => porMes(r, "jetons"), reais], ["Custo dele por mês", (r) => r.tm, reais],
-          ["Cota parlamentar", (r) => porMes(r, "cota_parlamentar"), reais],
+          ["Cota parlamentar", (r) => porMes(r, "cota_parlamentar"), reais], ["Verba do gabinete (vereador)", (r) => porMes(r, "verba_gabinete"), reais],
           ["Equipe do gabinete", (r) => r.em, reais], ["Pessoas na equipe", (r) => r.pessoas, (v) => num(v, 0)], ["Por pessoa da equipe", (r) => r.porPessoa, reais]];
         add(card, h("div", { class: "rolagem" }, h("table", { class: "comp-tabela" },
           h("thead", null, h("tr", null, h("th", null, nomePeriodo(k, true)), h("th", null, p.n), h("th", null, o.n), h("th", null, "Diferença"))),
-          h("tbody", null, linhas.map(([nome, f, fmt]) => {
+          h("tbody", null, linhas.filter(([, f]) => f(r1) || f(r2)).map(([nome, f, fmt]) => {
             const a = f(r1), b = f(r2), dif = b - a, pct = a ? Math.round((dif / a) * 100) : null;
             const igual = fmt === reais ? Math.abs(dif) < 1 : Math.abs(dif) < 0.5;
             return h("tr", null, h("td", null, nome), h("td", { class: "num" }, fmt(a)), h("td", { class: "num" }, fmt(b)),
@@ -994,8 +1138,34 @@
       `Veja a da sua cidade: ${link || "Contas do Poder"}`,
     ].join("\n");
   }
+  // Cidade com os dados de cada vereador (hoje, São Paulo): salário de verdade e a lista com link para cada um
+  function vereadoresDaCidade(c) {
+    const cam = camaraDe(c.cod);
+    if (!cam) return null;
+    const todos = S.D.p.filter((q) => q.k === "v" && q.cid === c.cod);
+    const agora = todos.filter((q) => q.x).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
+    const sairam = todos.filter((q) => !q.x).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
+    const C = colegas("v", "2025");
+    const sub = cam.subsidio[cam.subsidio.length - 1];
+    const chip = (q) => h("a", { class: "pessoa-chip", href: `#${q.id}`, onclick: () => { S.origem = "cidade"; } },
+      avatar(q, "p"), q.n, h("small", null, `${q.pt || "sem partido"}${q.sup ? " · suplente" : ""}`));
+    const partidos = {};
+    agora.forEach((q) => { partidos[q.pt] = (partidos[q.pt] || 0) + 1; });
+    const mulheres = agora.filter((q) => q.g === "Vereadora").length;
+    return [
+      h("div", { class: "estatisticas" },
+        estatistica("Salário de cada vereador", reaisC(sub[1]), `por mês desde ${fmtMes(sub[0])}, o máximo que a Constituição permite`),
+        C.n ? estatistica("Custo típico de um vereador", reais(C.tm), "por mês em 2025: salário + verba do gabinete (mediana)") : null,
+        C.n ? estatistica("Verba do gabinete usada", reais(C.cm), `por mês em 2025 (mediana), de até ${reais(cam.verba_mes["2025"] || 0)}`) : null),
+      h("h3", null, `Os ${agora.length} vereadores no cargo, um a um`),
+      h("p", { class: "discreto pequeno" }, `${Object.entries(partidos).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([pt, n]) => `${pt} ${n}`).join(" · ")} — ${mulheres} ${mulheres === 1 ? "mulher" : "mulheres"} de ${agora.length}. Toque num nome para ver o salário, a verba do gabinete mês a mês e a equipe.`),
+      h("div", { class: "lista-estado__grupo" }, agora.map(chip)),
+      sairam.length ? h("details", { class: "problemas" }, h("summary", null, `Quem ocupou um gabinete e saiu (${sairam.length})`), h("div", { class: "lista-estado__grupo" }, sairam.map(chip))) : null,
+    ];
+  }
   function secCidade(c) {
     const tem = temCusto(c) || c.suspeito;
+    const detalhe = vereadoresDaCidade(c);
     const prob = problemaCidade(c);
     if (prob) evento("ver_problema_cidade", { cidade: c.n, uf: c.uf, problema: prob.tipo });
     const faixa = faixaDe(c.pop);
@@ -1006,7 +1176,7 @@
     const posUF = doEstado.findIndex((x) => x.cod === c.cod);
     const teto = tetoVereador(c.pop);
     const lista = h("div", { class: "vereadores" }, h("p", { class: "discreto pequeno" }, "Carregando os vereadores…"));
-    carregarVereadores(c.uf).then((d) => {
+    if (!detalhe) carregarVereadores(c.uf).then((d) => {
       const vs = d[String(c.cod)] || [];
       lista.textContent = "";
       if (!vs.length) { lista.append(h("p", { class: "discreto pequeno" }, "Sem a lista de eleitos do TSE para esta cidade.")); return; }
@@ -1040,17 +1210,29 @@
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara de ${c.n} custa mais que ${pct}% das ${mesmos.length} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
-        h("div", { class: "estatisticas" },
+        detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
         h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. O salário de verdade é definido pela própria Câmara e ainda não tem uma fonte nacional: por enquanto mostramos o teto.`),
-        h("h3", null, `Os ${c.nv} vereadores eleitos em 2024`), lista,
+        h("h3", null, `Os ${c.nv} vereadores eleitos em 2024`), lista],
         h("div", { class: "acoes" },
           h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => evento("compartilhar", { metodo: "whatsapp", conteudo: "cidade", cidade: c.n }) }, "Mandar no WhatsApp"),
           h("button", { type: "button", class: "botao botao--leve", onclick: () => { evento("compartilhar", { metodo: "copiar_texto", conteudo: "cidade" }); copiarTexto(texto, retorno, "Texto copiado. É só colar."); } }, "Copiar texto")),
         retorno,
         h("ul", { class: "lista nota" },
           h("li", null, `Custo da Câmara: tudo o que ela gastou em ${c.ano || "no ano"} (salários de vereadores e servidores, prédio, contratos), segundo as contas que a prefeitura entregou ao Tesouro Nacional (Siconfi, função Legislativa). Não é o salário de cada vereador.`),
-          h("li", null, "Vereadores: eleitos em 2024, segundo o TSE. Quem assumiu depois (suplentes) ainda não aparece."))));
+          detalhe ? h("li", null, "Vereadores: quem ocupa cada gabinete hoje, com os suplentes que assumiram, segundo a própria Câmara. Salário, verba do gabinete e equipe de cada um vêm dos dados abertos da Câmara Municipal.")
+            : h("li", null, "Vereadores: eleitos em 2024, segundo o TSE. Quem assumiu depois (suplentes) ainda não aparece."))));
+  }
+  // chamada para a cidade com vereador por vereador
+  function destaqueSP() {
+    const cam = camaraSP();
+    if (!cam) return null;
+    const n = S.D.p.filter((q) => q.k === "v" && q.x).length;
+    return h("a", { class: "cartao destaque-cidade", href: "#cid-3550308", onclick: () => { S.origem = "destaque_sp"; } },
+      h("span", { class: "etiqueta" }, "Novo"),
+      h("strong", null, `São Paulo: os ${n} vereadores, um a um`),
+      h("span", { class: "pequeno discreto" }, "Salário, verba do gabinete mês a mês (com os fornecedores) e a equipe de cada vereador da capital."),
+      h("span", { class: "fonte__link" }, "Ver os vereadores de São Paulo →"));
   }
   // Seção da página inicial (e embaixo da página de uma cidade): procurar a cidade e as mais caras do estado
   function secCamaras(atual) {
@@ -1100,8 +1282,9 @@
     carregarCidades().then(desenhar, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
     add(sec, h("p", { class: "rotulo" }, "Vereadores"),
       h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
-      h("p", { class: "discreto" }, "As 5.568 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário."),
+      h("p", { class: "discreto" }, `As 5.568 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${camaraSP() ? ". Em São Paulo, já dá para ver cada vereador" : ""}.`),
       h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-cidade" }, "Procurar cidade"), input, sug),
+      !atual || atual.cod !== 3550308 ? destaqueSP() : null,
       corpo);
     return sec;
   }
@@ -1148,7 +1331,7 @@
   const METRICAS = {
     custo: { nome: "Custo dele por mês", v: (r) => r.tm, cls: "barra__fill--neutra", fmt: reais },
     ganha: { nome: "Vai para o bolso por mês", v: (r) => r.gm, cls: "barra__fill--ganha", fmt: reais },
-    despesas: { nome: "Gastos do mandato por mês", nomeE: "Gastos do cargo (viagens) por mês", v: (r) => r.cm, cls: "", fmt: reais },
+    despesas: { nome: "Gastos do mandato por mês", nomeE: "Gastos do cargo (viagens) por mês", nomeV: "Verba do gabinete usada por mês", v: (r) => r.cm, cls: "", fmt: reais },
     jetons: { nome: "Jetons por mês", v: (r) => porMes(r, "jetons"), cls: "barra__fill--ganha", fmt: reais, casas: ["e"] },
     cota: { nome: "Cota parlamentar por mês", v: (r) => porMes(r, "cota_parlamentar"), cls: "", fmt: reais, casas: ["d", "s"] },
     equipe: { nome: "Equipe do gabinete por mês", v: (r) => r.em, cls: "barra__fill--equipe", fmt: reais, casas: ["d", "s"] },
@@ -1156,25 +1339,29 @@
     porPessoa: { nome: "Custo por pessoa da equipe", v: (r) => r.porPessoa, cls: "barra__fill--equipe", fmt: reais, casas: ["d", "s"] },
   };
   const metricaVale = (m, casa) => !METRICAS[m].casas || METRICAS[m].casas.includes(casa);
-  const nomeMetrica = (m, casa) => (casa === "e" && METRICAS[m].nomeE) || METRICAS[m].nome;
-  const nomeGrupo = (casa) => ({ d: "deputados", s: "senadores", e: "governo" })[casa];
+  const nomeMetrica = (m, casa) => (casa === "e" && METRICAS[m].nomeE) || (casa === "v" && METRICAS[m].nomeV) || METRICAS[m].nome;
+  const nomeGrupo = (casa) => ({ d: "deputados", s: "senadores", e: "governo", v: "vereadores_sp" })[casa];
   // Colegas e ranking numa seção só: filtros, posição, gráfico de pontos e os maiores/menores.
   function secRanking(p, k, comoCargo) {
     const R = S.rank;
     if (!R.casa) R.casa = p ? p.k : "d";
     if (!R.periodo) R.periodo = (p && k) || "2025";
     if (!METRICAS[R.metrica] || !metricaVale(R.metrica, R.casa)) R.metrica = "custo";
+    if (R.casa === "v" && !camaraSP()) R.casa = "d";
+    const periodosOk = () => { if (![...anosGrupo(R.casa), "leg"].includes(R.periodo)) R.periodo = anosGrupo(R.casa).includes("2025") ? "2025" : anosGrupo(R.casa)[0]; };
+    periodosOk();
+    const semUF = () => R.casa === "e" || R.casa === "v";
     const sec = h("section", { class: "bloco", id: "ranking" });
     const corpo = h("div", { style: "display:grid;gap:12px" });
     const desenhar = () => {
       corpo.textContent = "";
       const M = METRICAS[R.metrica];
       const minimo = R.periodo === "leg" ? 6 : 3;
-      const lista = S.D.p.filter((q) => q.k === R.casa && (!R.uf || R.casa === "e" || q.uf === R.uf) && (!R.noCargo || q.x || (p && q.id === p.id)))
+      const lista = S.D.p.filter((q) => q.k === R.casa && (!R.uf || semUF() || q.uf === R.uf) && (!R.noCargo || q.x || (p && q.id === p.id)))
         .map((q) => { const r = resumo(q, R.periodo); return r && r.m >= minimo ? { p: q, v: M.v(r) } : null; })
         .filter((x) => x && x.v > 0).sort((a, b) => b.v - a.v);
       const max = Math.max(1, ...lista.map((x) => x.v));
-      const sub = (q) => (q.k === "e" ? pastaCurta(q.g) : partidoUF(q));
+      const sub = (q) => (q.k === "e" ? pastaCurta(q.g) : q.k === "v" ? q.pt || "sem partido" : partidoUF(q));
       const linha = (x, pos) => h("a", { class: `rank${p && x.p.id === p.id ? " rank--eu" : ""}`, href: `#${x.p.id}${R.periodo !== periodoPadrao(x.p) ? "~" + R.periodo : ""}`, onclick: () => { S.origem = "ranking"; } },
         h("span", { class: "rank__pos" }, `${pos}º`),
         h("span", { class: "rank__nome" }, x.p.n, " ", h("small", null, sub(x.p))),
@@ -1192,7 +1379,7 @@
           estatistica("Posição", `${eu + 1}º`, `de ${lista.length} ${grupo}`)) : null,
         p && eu < 0 ? h("p", { class: "discreto pequeno" }, `${p.n} não entra nesta lista (menos de ${minimo} meses ${R.casa === "e" ? "no cargo" : "de mandato"} no período, valor zero ou outro grupo).`) : null,
         lista.length ? h("div", null,
-          h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é um dos ${lista.length} ${grupo === plural(R.casa) ? grupo : "integrantes do governo"} · ${nomeMetrica(R.metrica, R.casa).toLowerCase()} · ${nomePeriodo(R.periodo, false)}${R.uf && R.casa !== "e" ? ` · ${ESTADOS[R.uf]}` : ""}. Passe o mouse ou toque num ponto para ver quem é.`),
+          h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é um dos ${lista.length} ${grupo === plural(R.casa) ? grupo : "integrantes do governo"} · ${nomeMetrica(R.metrica, R.casa).toLowerCase()} · ${nomePeriodo(R.periodo, false, R.casa)}${R.uf && !semUF() ? ` · ${ESTADOS[R.uf]}` : ""}. Passe o mouse ou toque num ponto para ver quem é.`),
           caixa) : h("p", { class: "discreto" }, "Ninguém com dados neste filtro."),
         lista.length ? h("div", { class: "duas-colunas" },
           h("article", { class: "cartao" }, h("h3", null, "Os maiores"), h("div", { class: "rank-lista" }, topo.map((x, i) => linha(x, i + 1)))),
@@ -1205,21 +1392,22 @@
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
           R.casa === "d" && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null,
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,
-          R.periodo === anoAtual() ? h("li", null, R.casa === "e" ? "Período ainda aberto: o Portal publica os salários com uns 2 meses de atraso." : "Período ainda aberto: os últimos meses podem receber notas da cota.") : null,
+          R.casa === "v" ? h("li", null, "Vereadores da cidade de São Paulo: o salário é o mesmo para todos; o que muda é quanto cada um usa da verba do gabinete. Suplentes entram pelos meses em que ocuparam o gabinete.") : null,
+          R.periodo === anoAtual() ? h("li", null, R.casa === "e" ? "Período ainda aberto: o Portal publica os salários com uns 2 meses de atraso." : "Período ainda aberto: os últimos meses ainda podem receber notas.") : null,
           h("li", null, `Só entra quem teve pelo menos ${minimo} meses ${R.casa === "e" ? "no cargo" : "de mandato"} no período.`)));
       if (lista.length) requestAnimationFrame(() => graficoPontos(caixa, p ? p.id : null, lista.map((x) => ({ id: x.p.id, n: x.p.n, sub: sub(x.p), v: x.v })), M.fmt));
     };
     const medir = () => evento("ranking", { casa: nomeGrupo(R.casa), metrica: R.metrica, periodo: R.periodo === "leg" ? "mandato" : R.periodo, uf: R.uf || "todos" });
     const filtros = h("div", { class: "filtros" },
       h("div", { class: "campo" }, h("span", { class: "rotulo" }, "Quem"),
-        pilulas([["d", "Deputados"], ["s", "Senadores"], ["e", "Governo"]], R.casa, (v) => { R.casa = v; R.completo = false; if (!metricaVale(R.metrica, v)) R.metrica = "custo"; medir(); render(false); irPara("ranking"); }, "Quem", "grupo-pilulas")),
+        pilulas([["d", "Deputados"], ["s", "Senadores"], ["e", "Governo"], ...(camaraSP() ? [["v", "Vereadores SP"]] : [])], R.casa, (v) => { R.casa = v; R.completo = false; if (!metricaVale(R.metrica, v)) R.metrica = "custo"; periodosOk(); medir(); render(false); irPara("ranking"); }, "Quem", "grupo-pilulas")),
       h("div", { class: "campo" }, h("label", { for: "metrica" }, "Comparar por"),
         h("select", { id: "metrica", onchange: (e) => { R.metrica = e.target.value; medir(); desenhar(); } },
           Object.keys(METRICAS).filter((v) => metricaVale(v, R.casa)).map((v) => h("option", { value: v, selected: v === R.metrica }, nomeMetrica(v, R.casa))))),
       h("div", { class: "campo" }, h("label", { for: "periodo-rank" }, "Período"),
         h("select", { id: "periodo-rank", onchange: (e) => { R.periodo = e.target.value; medir(); desenhar(); } },
-          [...meta().anos, "leg"].map((v) => h("option", { value: v, selected: v === R.periodo }, nomePeriodo(v, true))))),
-      R.casa === "e" ? null : h("div", { class: "campo" }, h("label", { for: "uf-rank" }, "Estado"), seletorUF("uf-rank", R.uf, (v) => { R.uf = v; medir(); desenhar(); })));
+          [...anosGrupo(R.casa), "leg"].map((v) => h("option", { value: v, selected: v === R.periodo }, nomePeriodo(v, true, R.casa))))),
+      semUF() ? null : h("div", { class: "campo" }, h("label", { for: "uf-rank" }, "Estado"), seletorUF("uf-rank", R.uf, (v) => { R.uf = v; medir(); desenhar(); })));
     add(sec, h("p", { class: "rotulo" }, p ? "Colegas e ranking" : "Ranking"),
       h("h2", null, p ? `${p.n} comparado com os colegas${comoCargo ? `, como ${p.g.charAt(0).toLowerCase()}${p.g.slice(1)}` : ""}` : "Quem custa mais e quem custa menos"), filtros,
       h("label", { class: "pequeno discreto", style: "display:inline-flex;gap:8px;align-items:center" },
@@ -1249,9 +1437,10 @@
     const D = S.D, noCargo = D.p.filter((p) => p.x).length;
     const chips = $("#chips-info");
     chips.textContent = "";
-    chips.append(
+    add(chips,
       h("span", { class: "chip" }, "Dados até ", h("strong", null, `${MESES[mesAtual() - 1]}/${anoAtual()}`)),
       h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length), " parlamentares e ", h("strong", null, D.p.filter((p) => p.x && p.k === "e").length), " no governo federal, no cargo"),
+      camaraSP() ? h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && p.k === "v").length), " vereadores de São Paulo") : null,
       h("span", { class: "chip" }, "Salário bruto: ", h("strong", null, "R$ 46.366,19")),
       h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
     const sel = $("#estado");
@@ -1352,6 +1541,8 @@
       add(corpo, topo(2),
         h("h2", { id: "guia-titulo" }, `Seus representantes: ${ESTADOS[uf]}`),
         h("p", { class: "discreto" }, "Toque num nome para ver o contracheque do mandato."),
+        uf === "SP" && camaraSP() ? h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: "vereadores_sp" }); fechar(); S.origem = "guia"; location.hash = "cid-3550308"; } },
+          h("span", null, h("strong", null, "Mora na cidade de São Paulo?"), h("small", null, "Veja também os 55 vereadores da capital, um a um")), h("span", { "aria-hidden": "true" }, "→")) : null,
         h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou partido", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
         lista,
         h("div", { class: "guia__rodape" },
@@ -1373,7 +1564,11 @@
     const bruto = decodeURIComponent(location.hash.slice(1));
     const [base, per] = bruto.split("~");
     if (base && base.startsWith("cid-")) {
-      if (S.cidade !== base) evento("ver_cidade", { cidade: base, origem: S.origem || (S.carregado ? "navegacao" : "link") });
+      if (S.cidade !== base) {
+        evento("ver_cidade", { cidade: base, origem: S.origem || (S.carregado ? "navegacao" : "link") });
+        // cidade com vereador por vereador: o ranking embaixo começa pelos vereadores dela
+        if (camaraDe(base.slice(4))) Object.assign(S.rank, { casa: "v", periodo: "2025", uf: "", metrica: "custo", completo: false });
+      }
       S.origem = null; S.sel = null; S.cidade = base;
       return null;
     }
@@ -1407,8 +1602,8 @@
         const c = CID.porId.get(S.cidade);
         if (!c) { espera.textContent = "Cidade não encontrada."; return; }
         document.title = `Câmara de ${c.n} · Contas do Poder`;
-        espera.replaceWith(secCidade(c), secCamaras(c));
-        navSecoes(["cidade", "cidades", "entenda", "fontes"]);
+        espera.replaceWith(...[secCidade(c), camaraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c)].filter(Boolean));
+        navSecoes(["cidade", "ranking", "cidades", "entenda", "fontes"]);
         if (rolar) irPara("cidade");
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
       return;
@@ -1417,7 +1612,7 @@
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
-      app.append(...[secContracheque(p, k), secMensal(p, k), secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k)].filter(Boolean));
+      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k)].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque");
     } else {
@@ -1428,9 +1623,13 @@
   }
   window.addEventListener("hashchange", () => { const secao = lerEndereco(); render(!secao); if (secao) irPara(secao); });
 
-  fetch("dados/dados.json")
-    .then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-    .then((D) => {
+  // dados.json (Congresso e governo) e camaras.json (vereador por vereador); se o segundo falhar, o site segue sem ele
+  Promise.all([
+    fetch("dados/dados.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }),
+    fetch("dados/camaras.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
+  ])
+    .then(([D, camaras]) => {
+      juntarCamaras(D, camaras);
       S.D = D;
       D.p.forEach((p) => S.porId.set(p.id, p));
       montarCabecalho();

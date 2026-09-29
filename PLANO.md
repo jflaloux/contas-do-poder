@@ -70,7 +70,9 @@ Cada número tem link para a fonte oficial.
 - [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
 - [ ] TCU; governadores e prefeitos das capitais (só salário); presidentes de estatais — depois
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
-- [ ] Vereadores, passo 2: salário de cada vereador nas 27 capitais — Claude
+- [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
+- [ ] Vereadores, passo 2b: as outras 26 capitais (Rio, BH, Salvador, Fortaleza...) — Claude
+- [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 
 ## Fase 3 — Testes e confiabilidade
