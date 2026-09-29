@@ -166,6 +166,19 @@ def executar():
     if juntos:
         lanc = pd.concat([lanc, *extra_l], ignore_index=True)
         equipe = pd.concat([equipe, *extra_e], ignore_index=True)
+        # Na página só de deputado/senador, sai o salário dos meses como ministro: ele já está na página de ministro
+        # (pago pelo Congresso, porque o licenciado pode escolher o salário do mandato) e não pode aparecer duas
+        # vezes. Assim ministro + parlamentar = tudo junto. O "tudo junto" já foi montado acima, com tudo.
+        am = lanc.ano * 100 + lanc.mes.fillna(0)
+        tirar = pd.Series(False, index=lanc.index)
+        for j in juntos:
+            copiado = (lanc.id_politico == j["exe"]["id"]) & (lanc.grupo == "ganha") & ~lanc.fonte.str.startswith("portal_")
+            meses = set(am[copiado])
+            if meses:
+                tirar |= (lanc.id_politico == j["par"]["id"]) & (lanc.grupo == "ganha") & ~lanc.rateado.astype(bool) & am.isin(meses)
+        if tirar.any():
+            log(f"Site: {int(tirar.sum())} lançamentos de salário dos meses como ministro saem da página de deputado/senador")
+            lanc = lanc[~tirar]
     junto_de = {}
     for j in juntos:
         junto_de[j["exe"]["id"]] = junto_de[j["par"]["id"]] = j["id"]

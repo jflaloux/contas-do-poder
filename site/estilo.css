@@ -433,3 +433,4 @@ a.pessoa-chip:hover { border-color: var(--accent); }
   .conta-cargos__tabela { font-size: .85rem; }
   .conta-cargos__tabela td, .conta-cargos__tabela th { padding: 6px 8px; }
 }
+.conta-cargos__extra td { color: var(--ink-2); font-size: .92em; }

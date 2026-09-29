@@ -123,8 +123,10 @@ governo e o cargo no Congresso. O "tudo junto" (`jun-...` em `dados.json`) soma 
 vezes: entra tudo do Congresso (salário, cota, equipe) e, do governo, só o que vem do Portal (jetons,
 viagens, outros pagamentos), porque o salário dos meses como ministro já foi pago pelo Congresso. A faixa
 embaixo do gráfico mês a mês mostra o cargo de cada mês. Nos rankings, cada cargo aparece no seu grupo.
-Cada opção mostra o custo dele por mês no período escolhido, e o quadro "Por que “tudo junto” não é a soma dos
-dois?" põe as três visões lado a lado, linha por linha (o salário aparece nas duas colunas, mas entra uma vez).
+Cada cargo separado só tem o que a pessoa recebeu naquele cargo: o salário que o Congresso pagou nos meses como
+ministro fica só na página de ministro (sai da página de deputado/senador, em `coleta/site.py`). Assim
+ministro + parlamentar = tudo junto. Cada opção mostra o custo dele por mês, e o quadro "Como a conta fecha" põe
+as três visões lado a lado em totais do período, com os meses de cada cargo.
 
 ## Câmaras municipais (vereadores), passo 1
 
@@ -150,7 +152,7 @@ Robô `coleta/municipios.py`, para as 5.568 câmaras:
 
 Robô `coleta/vereadores_sp.py` (`python3 coletar.py vereadores_sp`). Cada vereador da capital tem página própria
 (`#ver-3550308-{código}`), como os deputados: contracheque, mês a mês, detalhe dos gastos, equipe, colegas e
-ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308`) lista os 55, com link.
+ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308`) lista os 55, com link, e também a Prefeitura.
 
 - **Quem ocupa cada gabinete** (titulares e suplentes, com datas): SPLegis, `OcupacaoGabineteJSON`. Partido do
   mandato: `VereadoresCMSPJSON`. Nome de urna, nome completo e gênero: TSE (guardado em
@@ -170,6 +172,26 @@ ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308
   políticos ao abrir (se o arquivo faltar, o site segue sem os vereadores). Conferência: 55 no cargo e verba
   usada dentro do crédito do ano. Em 2025, a verba usada de cada um confere com o crédito menos o saldo devolvido
   em dezembro (57 de 59 vereadores com diferença de até R$ 2; os outros 2, menos de R$ 500).
+
+## Prefeitura de São Paulo
+
+Robô `coleta/prefeitura_sp.py` (`python3 coletar.py prefeitura_sp`): prefeito, vice, secretários municipais e
+subprefeitos, mês a mês desde jan/2025, pela folha que a Prefeitura publica no Portal de Dados Abertos
+("Histórico de Remuneração dos Servidores Ativos", um CSV de ~21 MB por mês, com o nome de cada servidor).
+
+- O robô só baixa o mês que ainda não processou ou que a Prefeitura publicou de novo (guarda o arquivo usado em
+  `dados/municipios/sp/prefeitura_arquivos.csv`) e só guarda as linhas desses cargos
+  (`dados/municipios/sp/prefeitura_remuneracao.csv`). Alguns meses vieram em outro formato (vírgula como
+  separador, números no formato americano, página de código do DOS, ou só planilha): o robô lê todos.
+- **Vai para o bolso** = remuneração bruta (remuneração do mês + "demais elementos": 13º, férias, auxílio-refeição,
+  atrasados). Os acertos do mês da saída (acima do normal da pessoa, a partir de R$ 3 mil) ficam à parte e fora
+  das médias. Não há gastos por pessoa publicados.
+- Secretário que aparece só como "GABINETE DO SECRETARIO": tabela no código (conferida no site da Prefeitura),
+  senão a secretaria dele em outro mês, senão um palpite pelo endereço (o robô avisa no log).
+- Servidor cedido (exceções 2 e 3 da folha: o salário vem do órgão de origem) aparece com aviso e fica fora das
+  comparações. Nomes de urna e partido do prefeito e do vice: TSE. Vereador de SP com o mesmo nome completo: as
+  duas páginas ficam ligadas. Fotos: Wikimedia Commons (licença livre); quem é vereador usa a foto da Câmara.
+- Saída: `site/dados/prefeituras.json`, que o site junta à lista de políticos (tipo `p`).
 
 ## Compartilhamento e medição
 

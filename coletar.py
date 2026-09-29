@@ -6,11 +6,12 @@ Uso:
     python3 coletar.py executivo       # presidente, vice e ministros (Portal da Transparência)
     python3 coletar.py municipios      # câmaras municipais: custo (Tesouro) e vereadores eleitos (TSE)
     python3 coletar.py vereadores_sp   # São Paulo (capital): cada vereador, com salário, verba do gabinete e equipe
+    python3 coletar.py prefeitura_sp   # São Paulo (capital): prefeito, vice, secretários e subprefeitos, mês a mês
     python3 coletar.py padronizar      # junta tudo na base unificada
     python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
-    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores_sp + padronizar + fotos + site
+    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores_sp + prefeitura_sp + padronizar + fotos + site
 
     --tempo-max 160   para parar sozinho depois de 160 s (rode de novo para continuar)
     --max-alertas 8   (com "conferir") termina com erro se a conferência passar desse número;
@@ -19,7 +20,7 @@ Uso:
 import argparse
 import sys
 
-from coleta import camara, conferir, executivo, fotos, municipios, padronizar, senado, site, vereadores_sp
+from coleta import camara, conferir, executivo, fotos, municipios, padronizar, prefeitura_sp, senado, site, vereadores_sp
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -29,6 +30,7 @@ ETAPAS = {
     "executivo": executivo.coletar,
     "municipios": municipios.coletar,
     "vereadores_sp": vereadores_sp.coletar,
+    "prefeitura_sp": prefeitura_sp.coletar,
     "padronizar": padronizar.executar,
     "fotos": fotos.coletar,
     "conferir": conferir.executar,
@@ -47,7 +49,7 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = ["camara", "senado", "executivo", "municipios", "vereadores_sp", "padronizar", "fotos", "site"] if args.etapa == "tudo" else [args.etapa]
+    etapas = ["camara", "senado", "executivo", "municipios", "vereadores_sp", "prefeitura_sp", "padronizar", "fotos", "site"] if args.etapa == "tudo" else [args.etapa]
     try:
         for etapa in etapas:
             resultado = ETAPAS[etapa]()

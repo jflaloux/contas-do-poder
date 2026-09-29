@@ -71,6 +71,7 @@ Cada número tem link para a fonte oficial.
 - [ ] TCU; governadores e prefeitos das capitais (só salário); presidentes de estatais — depois
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
+- [x] Prefeitura de São Paulo: prefeito, vice, secretários e subprefeitos, mês a mês (folha nos dados abertos) — Claude
 - [ ] Vereadores, passo 2b: as outras 26 capitais (Rio, BH, Salvador, Fortaleza...) — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude

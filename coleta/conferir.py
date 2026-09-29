@@ -52,6 +52,15 @@ def _vereadores_sp():
     return sum(p["x"] for p in ps), sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
 
 
+def _prefeitura_sp():
+    """(prefeito no último mês, secretários no último mês) no site/dados/prefeituras.json."""
+    arq = RAIZ / "site" / "dados" / "prefeituras.json"
+    if not arq.exists():
+        return 0, 0
+    ps = [p for p in json.load(open(arq, encoding="utf-8"))["p"] if p["x"]]
+    return sum(1 for p in ps if p["tp"] == "pr"), sum(1 for p in ps if p["tp"] == "se")
+
+
 def executar():
     random.seed(42)
     rel = [f"# Conferência dos dados — {datetime.now():%d/%m/%Y %H:%M}", ""]
@@ -180,6 +189,8 @@ def executar():
         ("Vereadores eleitos no arquivo do site", _vereadores_no_site(), 55000),
         ("Vereadores de São Paulo no cargo (camaras.json)", _vereadores_sp()[0], 50),
         ("Vereadores de São Paulo com gastos do gabinete no mês retrasado", _vereadores_sp()[1], 40),
+        ("Prefeitura de São Paulo: prefeito na folha do último mês", _prefeitura_sp()[0], 1),
+        ("Prefeitura de São Paulo: secretários na folha do último mês", _prefeitura_sp()[1], 15),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),
