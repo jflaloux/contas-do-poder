@@ -398,3 +398,14 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .cidade__corpo h3 { margin: 6px 0 0; }
 .pessoa-chip--fixo { cursor: default; }
 .pessoa-chip--fixo:hover { border-color: var(--line); }
+
+/* cidade com dados errados: aviso e convite para pedir a correção */
+.aviso--forte { border-left: 4px solid var(--hi); }
+.cobrar { border: 1px solid var(--line); border-radius: var(--raio); padding: 16px 18px; display: grid; gap: 10px; background: var(--bg); }
+.cobrar h3 { margin: 0; }
+.cobrar p, .cobrar ol { margin: 0; }
+.cobrar__msg { width: 100%; font: inherit; font-size: .9rem; line-height: 1.45; padding: 10px 12px; border: 1px solid var(--line);
+  border-radius: 10px; background: var(--paper); color: var(--ink); resize: vertical; }
+.problemas { padding: 14px 16px; }
+.problemas summary { cursor: pointer; }
+.problemas .lista-estado__grupo { margin-top: 10px; }

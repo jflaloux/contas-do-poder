@@ -939,6 +939,50 @@
   }
   const iconeCidade = (el) => el;
   const irParaCidade = (c, origem) => { S.origem = origem; location.hash = c.id; };
+  // O que há de errado com os dados de uma cidade (null = nada)
+  const anoRecente = () => Math.max(...CID.m.map((c) => c.ano || 0));
+  function problemaCidade(c) {
+    if (!(c.custo > 0)) return { tipo: "sem", curto: "sem o gasto da Câmara" };
+    if (c.suspeito) return { tipo: "suspeito", curto: "valor muito baixo" };
+    if (c.ano && c.ano < anoRecente()) return { tipo: "antigo", curto: `contas de ${anoRecente()} não entregues` };
+    return null;
+  }
+  // Tribunal de contas que fiscaliza as prefeituras (BA, GO e PA têm um só para os municípios)
+  const tribunal = (uf) => (["BA", "GO", "PA"].includes(uf) ? `Tribunal de Contas dos Municípios do Estado de ${ESTADOS[uf]}` : `Tribunal de Contas do Estado de ${ESTADOS[uf]}`);
+  const busca = (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`;
+  function cobrarCidade(c, prob, med) {
+    const ano = anoRecente();
+    const oQue = prob.tipo === "sem"
+      ? `não aparece o gasto da Câmara Municipal (a função 01 – Legislativa está vazia ou zerada, ou a declaração de ${ano} não foi entregue)`
+      : prob.tipo === "suspeito"
+        ? `o gasto da Câmara Municipal em ${c.ano} aparece como ${reais(c.custo)}, ou ${reaisC(porHabMes(c))} por habitante por mês, muito abaixo das cidades do mesmo tamanho (mediana de ${reaisC(med)}). Parece que parte do gasto foi informada em outra função`
+        : `ainda não aparece a declaração de ${ano} (a mais recente é a de ${c.ano})`;
+    const msg = [
+      `Olá. Sou morador(a) de ${c.n} (${c.uf}).`,
+      `Nas contas anuais que a Prefeitura envia ao Tesouro Nacional (Declaração de Contas Anuais, no Siconfi), ${oQue}.`,
+      prob.tipo === "antigo" ? `Peço que a declaração de ${ano} seja entregue, como manda a Lei de Responsabilidade Fiscal.`
+        : "Peço que verifiquem e, se for o caso, corrijam (retifiquem) a declaração, para que o gasto da Câmara Municipal apareça na função 01 – Legislativa.",
+      `Com base na Lei de Acesso à Informação (Lei nº 12.527/2011), peço também o valor total gasto pela Câmara Municipal em ${ano}.`,
+      "Obrigado(a).",
+    ].join("\n\n");
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    const medir = (acao) => evento("cobrar_cidade", { acao, cidade: c.n, uf: c.uf, problema: prob.tipo });
+    const link = (texto, q, acao) => h("a", { class: "botao botao--leve", href: busca(q), target: "_blank", rel: "noopener", onclick: () => medir(acao) }, texto);
+    return h("div", { class: "cobrar" },
+      h("h3", null, `Mora em ${c.n}? Ajude a corrigir`),
+      h("p", null, `Quem envia essas contas ao Tesouro Nacional é a Prefeitura de ${c.n} (setor de contabilidade), pelo Siconfi, até 30 de abril de cada ano. Qualquer pessoa pode pedir a correção.`),
+      h("ol", { class: "lista" },
+        h("li", null, "Copie a mensagem abaixo."),
+        h("li", null, "Mande para a ouvidoria ou o e-SIC (pedido de acesso à informação) da Prefeitura. Vale mandar também para a Câmara Municipal."),
+        h("li", null, `Se não responderem em 20 dias (o prazo da Lei de Acesso à Informação), procure o ${tribunal(c.uf)}.`)),
+      h("textarea", { class: "cobrar__msg", readonly: true, rows: 12, "aria-label": "Mensagem para a prefeitura" }, msg),
+      h("div", { class: "acoes" },
+        h("button", { type: "button", class: "botao", onclick: () => { medir("copiar"); copiarTexto(msg, retorno, "Mensagem copiada. Agora é só colar no formulário da ouvidoria ou no e-mail."); } }, "Copiar a mensagem"),
+        link("Achar a ouvidoria da Prefeitura", `ouvidoria e-SIC prefeitura de ${c.n} ${c.uf}`, "buscar_prefeitura"),
+        link("Achar a Câmara Municipal", `Câmara Municipal de ${c.n} ${c.uf} ouvidoria`, "buscar_camara"),
+        link("Achar o tribunal de contas", `${tribunal(c.uf)} ouvidoria`, "buscar_tribunal")),
+      retorno);
+  }
   function textoCidade(c) {
     const link = endereco() ? `${endereco()}#${c.id}` : "";
     return [
@@ -952,6 +996,8 @@
   }
   function secCidade(c) {
     const tem = temCusto(c) || c.suspeito;
+    const prob = problemaCidade(c);
+    if (prob) evento("ver_problema_cidade", { cidade: c.n, uf: c.uf, problema: prob.tipo });
     const faixa = faixaDe(c.pop);
     const mesmos = CID.m.filter((x) => temCusto(x) && faixaDe(x.pop) === faixa);
     const med = mediana(mesmos.map(porHabMes));
@@ -987,8 +1033,10 @@
           estatistica("Custo da Câmara por mês", compacto(c.custo / 12), `${compacto(c.custo)} em ${c.ano}`),
           estatistica("Por habitante", reaisC(porHabMes(c)), `por mês (${reais(c.custo / c.pop)} por ano)`),
           estatistica("Dividido pelos vereadores", compacto(c.custo / 12 / Math.max(1, c.nv)), "por vereador, por mês")) :
-          h("p", { class: "aviso" }, "Esta cidade não informou ao Tesouro Nacional quanto a Câmara gastou (ou informou de um jeito que não separa a Câmara)."),
-        c.suspeito ? h("p", { class: "aviso" }, `Atenção: este valor é muito menor que o das cidades do mesmo tamanho (mediana de ${reaisC(med)} por habitante, por mês). É provável que parte do gasto da Câmara tenha sido informada em outra função nas contas da prefeitura. Por isso esta cidade fica fora das comparações.`) : null,
+          h("p", { class: "aviso aviso--forte" }, h("strong", null, "A Prefeitura não informou corretamente o gasto da Câmara. "), `Nas contas que ${c.n} enviou ao Tesouro Nacional, o gasto da Câmara Municipal não aparece (está vazio ou zerado, ou a declaração não foi entregue). Por isso não dá para mostrar quanto a Câmara custa.`),
+        c.suspeito ? h("p", { class: "aviso aviso--forte" }, h("strong", null, "Este valor parece errado. "), `É muito menor que o das cidades do mesmo tamanho (mediana de ${reaisC(med)} por habitante, por mês). Provavelmente a Prefeitura informou parte do gasto da Câmara em outra função nas contas enviadas ao Tesouro Nacional. Por isso esta cidade fica fora das comparações.`) : null,
+        prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
+        prob ? cobrarCidade(c, prob, med) : null,
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara de ${c.n} custa mais que ${pct}% das ${mesmos.length} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
@@ -1038,7 +1086,16 @@
         doEstado.length ? h("div", { class: "duas-colunas" },
           h("article", { class: "cartao" }, h("h3", null, `Mais caras por habitante em ${ESTADOS[uf]}`), h("div", { class: "rank-lista" }, doEstado.slice(0, n).map((c, i) => linha(c, i + 1)))),
           h("article", { class: "cartao" }, h("h3", null, "Mais baratas por habitante"), h("div", { class: "rank-lista" }, doEstado.slice(-n).reverse().map((c, i) => linha(c, doEstado.length - i))))) : null,
-        h("p", { class: "nota" }, "Custo da Câmara por habitante, por mês. Cidades pequenas costumam custar mais por habitante, porque toda câmara tem pelo menos 9 vereadores e uma estrutura mínima."));
+        h("p", { class: "nota" }, "Custo da Câmara por habitante, por mês. Cidades pequenas costumam custar mais por habitante, porque toda câmara tem pelo menos 9 vereadores e uma estrutura mínima."),
+        (() => {
+          const comProblema = CID.m.filter((c) => c.uf === uf && problemaCidade(c)).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
+          const noBrasil = CID.m.filter((c) => problemaCidade(c)).length;
+          if (!comProblema.length) return h("p", { class: "nota" }, `Todas as cidades de ${ESTADOS[uf]} informaram o gasto da Câmara. No Brasil, ${num(noBrasil, 0)} cidades têm dados faltando ou estranhos.`);
+          return h("details", { class: "cartao problemas" },
+            h("summary", null, h("strong", null, `${comProblema.length} ${comProblema.length === 1 ? "cidade" : "cidades"} de ${ESTADOS[uf]} com dados faltando ou estranhos`),
+              h("span", { class: "pequeno discreto" }, ` · ${num(noBrasil, 0)} no Brasil. A sua está aqui? Veja como pedir a correção.`)),
+            h("div", { class: "lista-estado__grupo" }, comProblema.map((c) => h("a", { class: "pessoa-chip", href: `#${c.id}`, onclick: () => { S.origem = "lista_problemas"; } }, c.n, h("small", null, problemaCidade(c).curto)))));
+        })());
     };
     carregarCidades().then(desenhar, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
     add(sec, h("p", { class: "rotulo" }, "Vereadores"),
