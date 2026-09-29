@@ -8,7 +8,9 @@ from datetime import datetime
 
 import pandas as pd
 
-from .config import BRUTOS, CACHE, HOJE, PROCESSADOS
+import json
+
+from .config import BRUTOS, CACHE, PROCESSADOS, RAIZ, ULTIMO_MES
 from .util import baixar, ler_json, log, numero_br
 
 SITE = "https://www.camara.leg.br"
@@ -98,10 +100,10 @@ def executar():
     m = re.search(r"auxílio-moradia:\s*R\$\s*([\d\.,]+)", texto)
     oficial = numero_br(m.group(1)) if m else None
     mor = pd.read_csv(BRUTOS / "camara_moradia.csv")
-    nossa = round(mor[mor.ano == HOJE.year].auxilio_moradia.sum(), 2)
+    nossa = round(mor[mor.ano == ULTIMO_MES[0]].auxilio_moradia.sum(), 2)
     ok = oficial is not None and abs(nossa - oficial) < 1
     rel += ["## 4. Auxílio-moradia da Câmara no ano (todos os deputados)", "",
-            f"- Nossa soma {HOJE.year}: R$ {nossa:,.2f}", f"- Página oficial: R$ {oficial:,.2f}" if oficial else "- Página oficial: não encontrado",
+            f"- Nossa soma {ULTIMO_MES[0]}: R$ {nossa:,.2f}", f"- Página oficial: R$ {oficial:,.2f}" if oficial else "- Página oficial: não encontrado",
             f"- **{'OK' if ok else 'DIFERENTE'}**", ""]
     problemas += 0 if ok else 1
 
@@ -119,7 +121,7 @@ def executar():
     pessoal = pd.read_csv(BRUTOS / "senado_pessoal.csv")
     gab = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
     ultimo = gab[(gab.ano * 100 + gab.mes) == (gab.ano * 100 + gab.mes).max()]
-    api = pessoal[pessoal.ano == HOJE.year].groupby("id_senador").quantidade.sum()
+    api = pessoal[pessoal.ano == ULTIMO_MES[0]].groupby("id_senador").quantidade.sum()
     cmp = ultimo.set_index("id_senador").join(api.rename("api")).dropna()
     cmp["dif"] = cmp.pessoas - cmp.api
     rel += ["## 6. Senado: assessores encontrados na folha × quantidade informada pela API", "",
@@ -127,6 +129,38 @@ def executar():
             f"- Diferença mediana: {cmp.dif.median():.0f} pessoa(s); casos com diferença > 5: {(cmp.dif.abs() > 5).sum()}",
             "- Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).", ""]
 
+    # 7. Sanidade: se algo grande quebrou (uma fonte fora do ar, um site que mudou de layout),
+    #    estes números despencam. Cada falha soma 10 alertas e trava a publicação automática.
+    # Usa o mês retrasado: no começo do mês, a folha do mês anterior pode ainda não ter saído.
+    k = ULTIMO_MES[0] * 12 + (ULTIMO_MES[1] - 1) - 2
+    ano_f, mes_f = k // 12, k % 12 + 1
+    lanc["casa"] = lanc.id_politico.str[:3]
+    def quantos(casa, cat):
+        f = lanc[(lanc.casa == casa) & (lanc.categoria == cat) & (lanc.ano == ano_f) & (lanc.mes == mes_f) & (lanc.valor > 0)]
+        return f.id_politico.nunique()
+    chave = lanc.ano * 12 + lanc.mes.fillna(0)
+    janela = (chave > ano_f * 12 + mes_f - 12) & (chave <= ano_f * 12 + mes_f)
+    def cota_12m(casa):
+        return lanc[janela & (lanc.casa == casa) & (lanc.categoria == "cota_parlamentar")].valor.sum()
+    with open(RAIZ / "site" / "dados" / "dados.json", encoding="utf-8") as f:
+        n_site = len(json.load(f)["p"])
+    checagens = [
+        (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
+        (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),
+        (f"Senadores com salário em {mes_f:02d}/{ano_f}", quantos("sen", "salario"), 75),
+        (f"Senadores com assessores em {mes_f:02d}/{ano_f}", quantos("sen", "assessores_gabinete"), 60),
+        ("Cota da Câmara nos últimos 12 meses (R$ milhões)", round(cota_12m("dep") / 1e6), 150),
+        ("Cota do Senado nos últimos 12 meses (R$ milhões)", round(cota_12m("sen") / 1e6), 15),
+        ("Parlamentares no arquivo do site", n_site, 700),
+    ]
+    rel += ["## 7. Sanidade (trava a publicação automática)", "", "| Checagem | Valor | Mínimo | |", "|---|---:|---:|---|"]
+    for nome, valor, minimo in checagens:
+        ok = valor >= minimo
+        problemas += 0 if ok else 10
+        rel.append(f"| {nome} | {valor} | {minimo} | {'OK' if ok else 'FALHOU'} |")
+    rel.append("")
+
     rel += ["---", f"**Total de alertas: {problemas}**"]
     (PROCESSADOS / "conferencia.md").write_text("\n".join(rel), encoding="utf-8")
     log(f"Conferência pronta: dados/processados/conferencia.md — {problemas} alerta(s)")
+    return problemas

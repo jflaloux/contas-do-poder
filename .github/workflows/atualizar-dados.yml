@@ -1,0 +1,80 @@
+# Robô de atualização do Contas do Poder.
+# Toda semana ele baixa os dados oficiais da Câmara e do Senado, monta a base, confere com os
+# sites oficiais e, se estiver tudo certo, salva os números novos neste repositório.
+# O Cloudflare Pages publica o site sozinho a cada mudança no repositório.
+# Se uma fonte estiver fora do ar ou a conferência falhar, nada é salvo: o site anterior
+# continua no ar e o GitHub manda um e-mail avisando.
+
+name: Atualizar dados
+
+on:
+  schedule:
+    # Toda terça-feira às 8h17 de Brasília (11h17 UTC).
+    # Semanal, e não mensal, porque o GitHub apaga o cache de downloads que fica 7 dias sem uso.
+    - cron: "17 11 * * 2"
+  workflow_dispatch: # botão "Run workflow", para rodar na hora
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualizar-dados
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Instalar as dependências
+        run: pip install -r requirements.txt
+
+      - name: Recuperar os downloads da semana passada
+        uses: actions/cache/restore@v4
+        with:
+          path: dados/cache
+          key: downloads-${{ github.run_id }}
+          restore-keys: downloads-
+
+      - name: Coletar os dados e montar a base
+        run: python coletar.py tudo
+
+      - name: Guardar os downloads para a próxima vez
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: dados/cache
+          key: downloads-${{ github.run_id }}
+
+      - name: Conferir com os sites oficiais (trava se algo estiver errado)
+        run: python coletar.py conferir --max-alertas 8
+
+      - name: Salvar os números novos no repositório
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dados/processados site/dados
+          if git diff --cached --quiet; then
+            echo "Nada mudou desde a última atualização."
+          else
+            git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Guardar o relatório da conferência
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: conferencia
+          path: dados/processados/conferencia.md
+          if-no-files-found: ignore

@@ -17,7 +17,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-from .config import ANOS, BRUTOS, CACHE, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO
+from .config import ANOS, BRUTOS, CACHE, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES
 from .util import TempoEsgotado, baixar, cache_valido, ler_json, log, numero_br, salvar_json
 
 API = "https://dadosabertos.camara.leg.br/api/v2"
@@ -191,7 +191,7 @@ def cota_site(lista):
 # ---------------------------------------------------------------- moradia
 def _periodo(ano):
     ini = f"{INICIO_LEGISLATURA[1]:02d}/{ano}" if ano == INICIO_LEGISLATURA[0] else f"01/{ano}"
-    fim = f"{HOJE.month:02d}/{ano}" if ano == HOJE.year else f"12/{ano}"
+    fim = f"{ULTIMO_MES[1]:02d}/{ano}" if ano == ULTIMO_MES[0] else f"12/{ano}"
     return ini, fim
 
 

@@ -17,6 +17,27 @@ A primeira coleta faz alguns milhares de consultas e leva uns 20–30 minutos. T
 `dados/cache/`, então as próximas execuções só baixam o que mudou. Para rodar em partes, use
 `--tempo-max 150`: o robô para sozinho e continua de onde parou na próxima vez.
 
+## Atualização automática
+
+O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda terça-feira às 8h17**
+(horário de Brasília). Também dá para rodar na hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
+
+1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior).
+2. Monta a base e o arquivo do site.
+3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`).
+4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site.
+
+Se uma fonte estiver fora do ar ou a conferência falhar, **nada é salvo**: o site anterior continua no ar
+e o GitHub manda um e-mail. O relatório da conferência fica anexado em cada execução.
+
+A legislatura atual termina em janeiro de 2027. A partir de fevereiro de 2027 o robô para com um aviso
+até `coleta/config.py` ser atualizado para a nova legislatura.
+
+## Publicação (Cloudflare Pages)
+
+Projeto do Cloudflare Pages conectado a este repositório, sem comando de build e com `site` como pasta
+de saída. Cada mudança no repositório publica o site automaticamente.
+
 ## Ver o site no seu computador
 
 ```bash

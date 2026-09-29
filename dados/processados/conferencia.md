@@ -1,4 +1,4 @@
-# Conferência dos dados — 29/09/2026 04:46
+# Conferência dos dados — 29/09/2026 05:11
 
 ## 1. Cobertura
 
@@ -80,6 +80,18 @@ Casos: 8. Podem ser acertos de meses anteriores; confira na página oficial.
 - Senadores comparados: 81
 - Diferença mediana: -3 pessoa(s); casos com diferença > 5: 34
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
+
+## 7. Sanidade (trava a publicação automática)
+
+| Checagem | Valor | Mínimo | |
+|---|---:|---:|---|
+| Deputados com salário em 07/2026 | 529 | 480 | OK |
+| Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
+| Senadores com salário em 07/2026 | 82 | 75 | OK |
+| Senadores com assessores em 07/2026 | 80 | 60 | OK |
+| Cota da Câmara nos últimos 12 meses (R$ milhões) | 269 | 150 | OK |
+| Cota do Senado nos últimos 12 meses (R$ milhões) | 38 | 15 | OK |
+| Parlamentares no arquivo do site | 753 | 700 | OK |
 
 ---
 **Total de alertas: 3**

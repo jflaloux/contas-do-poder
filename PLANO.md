@@ -71,8 +71,10 @@ Cada número tem link para a fonte oficial.
 ## Fase 4 — Lançamento
 
 - [ ] Registrar contasdopoder.com e contasdopoder.com.br — Você
-- [ ] Hospedagem gratuita (ex.: Cloudflare Pages) — você cria a conta, Claude configura
-- [ ] Atualização automática mensal dos dados, com alerta se um robô quebrar — Claude
+- [x] Código no GitHub (público): jflaloux/contas-do-poder — Você e Claude
+- [x] Atualização automática semanal (GitHub Actions), com trava se a conferência falhar — Claude
+- [ ] Primeira execução no GitHub: ver se os sites do governo aceitam os servidores do GitHub — Você (botão "Run workflow")
+- [ ] Cloudflare Pages conectado ao repositório (pasta `site`) e domínio contasdopoder.com — Você
 - [ ] Divulgação: jornalistas de dados, perfis de transparência, grupos — Você
 
 ## Tecnologia
