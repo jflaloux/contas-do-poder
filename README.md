@@ -9,7 +9,7 @@ Este repositório tem os robôs que coletam os dados oficiais, a base unificada 
 
 ```bash
 pip3 install -r requirements.txt
-python3 coletar.py tudo          # Câmara + Senado + base unificada
+python3 coletar.py tudo          # Câmara + Senado + base unificada + fotos + arquivo do site
 python3 coletar.py conferir      # compara nossos números com os sites oficiais
 ```
 
@@ -46,7 +46,7 @@ python3 -m http.server 8000 -d site   # depois abra http://localhost:8000
 ```
 
 O site é estático (HTML, CSS e JavaScript, sem instalar nada): `site/index.html`, `site/estilo.css`,
-`site/app.js` e os dados em `site/dados/dados.json`. Dá para hospedar de graça em qualquer serviço de
+`site/app.js`, os dados em `site/dados/dados.json` e as fotos em `site/fotos/`. Dá para hospedar de graça em qualquer serviço de
 site estático. Para os links de compartilhamento apontarem para o endereço certo, preencha
 `<meta name="endereco-do-site">` no `index.html` quando o site tiver domínio.
 
@@ -54,8 +54,8 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 
 | Pasta | O que tem |
 |---|---|
-| `site/` | O site (protótipo) |
-| `coleta/` | Código dos robôs (`camara.py`, `senado.py`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
+| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `fotos.py`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
 | `dados/cache/` | Arquivos baixados. Pode apagar a qualquer momento (não vai para o Git) |
 | `dados/brutos/` | Dados de cada fonte, já limpos |
 | `dados/processados/` | Base usada pelo site |
@@ -64,8 +64,9 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 ## A base (`dados/processados/`)
 
 - `politicos.json` — um registro por político: nome, cargo, partido, estado, foto, se está em exercício, link oficial.
-- `lancamentos.csv.gz` — (compactado) uma linha por **político · ano · mês · grupo · categoria · descrição · valor · fonte**.
+- `lancamentos.csv.gz` — (compactado) uma linha por **político · ano · mês · grupo · categoria · descrição · valor · fonte · rateado**.
   A coluna `fonte` é um código; o endereço completo está em `metadados.json` → `fontes_por_lancamento`.
+  `rateado=True` marca os valores que a fonte só informa por ano e que dividimos pelos meses (veja abaixo).
 - `equipe.csv` — quantas pessoas trabalharam no gabinete em cada mês.
 - `resumo.json` — totais prontos: por ano, na legislatura e média mensal, separados em "ganha" e "custa".
 - `metadados.json` — data da coleta, categorias, salário mínimo de cada ano, fontes e **pendências conhecidas**.
@@ -81,6 +82,28 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
   para outras pessoas, por isso fica separado, com o número de pessoas (`equipe.csv`) e a média por pessoa.
   Na Câmara contamos os secretários parlamentares de cada mês; no Senado, os comissionados encontrados na
   folha de pagamento (estimativa).
+
+### Tudo por mês
+
+Para dar para comparar, o site mostra tudo **por mês**:
+
+- Cada média usa os seus próprios meses (com salário, com despesas, com equipe), para uma licença não distorcer a conta.
+- Alguns valores só são informados **por ano**: o auxílio-moradia da Câmara e as passagens, correios e outros
+  gastos do Senado. Dividimos o total do ano igualmente pelos meses em que o parlamentar recebeu salário
+  naquele ano. O total do ano continua exato; o valor de cada mês é uma aproximação (marcado com ≈ no site).
+- A cota por tipo (passagens, aluguel de carros, combustível...) aparece como média por mês: o total de cada
+  tipo no período dividido pelos mesmos meses da cota no contracheque, com a parte (%) de cada tipo.
+  Exemplo: cota de R$ 38.920 por mês, dos quais R$ 12.798 (33%) com aluguel de carros.
+
+## Compartilhamento e medição
+
+- **Imagem para o status**: o site desenha no navegador uma imagem 1080×1920 (status do WhatsApp, stories)
+  com a foto, o custo dele por mês, a posição entre os colegas e a equipe. Por isso as fotos ficam no próprio
+  site (`site/fotos/`): o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
+- **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
+- **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
+  ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, imagem, copiar_texto,
+  copiar_link, mais_opcoes), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
 
 ## O que já foi conferido
 

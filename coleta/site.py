@@ -4,13 +4,15 @@ Formato (chaves curtas para o arquivo ficar pequeno):
   meta: informações gerais, categorias, tipos de despesa da cota, salário mínimo, pendências
   p: lista de políticos, cada um com
      id, k ("d" deputado / "s" senador), n (nome), nc (nome civil), g (cargo), pt (partido), uf,
-     f (foto), x (em exercício), o (página oficial),
+     f (foto: "fotos/{id}.webp" no próprio site, ou o endereço oficial se não baixou), x (em exercício), o (página oficial),
      per: {"2023": {m, mg, mc, me, g, c, e, pm, mp, pu, cats}, ..., "leg": {...}}
           m = meses com algum valor; mg/mc/me = meses com ganha/custa/equipe;
           g/c/e = totais de ganha, custa (despesas dele) e equipe;
           pm = soma de pessoas-mês da equipe; mp = meses com equipe contada; pu = pessoas no último mês
-     t: série mensal [[aaaamm, ganha, custa, equipe, pessoas], ...]
-     ct: {"2025": [[índice_do_tipo, valor], ...], ..., "leg": [...]}   (top 6 tipos da cota)
+     t: série mensal [[aaaamm, ganha, custa, equipe, pessoas, rateado], ...]
+        rateado = parte do mês que veio de um valor anual dividido pelos meses (aproximação)
+     ct: {"2025": [[índice_do_tipo, valor], ...], ..., "leg": [...]}   (top 6 tipos da cota, total do período;
+         o site divide pelos meses para mostrar a média por mês)
      im: imóvel funcional
 """
 import json
@@ -22,6 +24,7 @@ from .config import PROCESSADOS, RAIZ
 from .util import ler_json, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "dados.json"
+FOTOS = RAIZ / "site" / "fotos"
 
 
 # Nomes curtos e em linguagem simples para os tipos de despesa da cota (Câmara e Senado usam nomes diferentes)
@@ -85,6 +88,10 @@ def executar():
             mensal[g] = 0.0
     mensal = mensal.merge(equipe[["id_politico", "ano", "mes", "pessoas"]], on=["id_politico", "ano", "mes"], how="left")
     mensal["pessoas"] = mensal["pessoas"].fillna(0).astype(int)
+    rateado = (lanc[lanc.rateado].groupby(["id_politico", "ano", "mes"])["valor"].sum()
+               .rename("rateado").reset_index())
+    mensal = mensal.merge(rateado, on=["id_politico", "ano", "mes"], how="left")
+    mensal["rateado"] = mensal["rateado"].fillna(0.0)
     totais = lanc.groupby(["id_politico", "ano", "grupo"])["valor"].sum()
     cats = lanc.groupby(["id_politico", "ano", "categoria"])["valor"].sum()
 
@@ -124,7 +131,7 @@ def executar():
             if b["m"] or b["g"] or b["c"] or b["e"]:
                 per[str(ano)] = b
         per["leg"] = bloco(pid, mm, anos)
-        serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas)]
+        serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas), _r(r.rateado)]
                  for r in mm.sort_values(["ano", "mes"]).itertuples()]
 
         ct = {}
@@ -137,7 +144,8 @@ def executar():
             ct["leg"] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
 
         item = {"id": pid, "k": "d" if p["casa"] == "camara" else "s", "n": p["nome"], "nc": p.get("nome_civil"),
-                "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"), "f": p.get("foto"),
+                "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"),
+                "f": f"fotos/{pid}.webp" if (FOTOS / f"{pid}.webp").exists() else p.get("foto"),
                 "x": 1 if p.get("em_exercicio") else 0, "o": p.get("pagina_oficial"),
                 "per": per, "t": serie, "ct": ct}
         if p["casa"] == "camara" and p.get("imovel_funcional_dias"):
@@ -155,6 +163,7 @@ def executar():
             "ultimo_mes": int(lanc[lanc.mes.notna()].eval("ano*100+mes").max()),
             "salario_minimo": {str(k): v for k, v in meta["salario_minimo"].items()},
             "categorias": meta["categorias"],
+            "rateio": meta["rateio"],
             "tipos_cota": tipos,
             "limites_cota_camara": limites,
             "pendencias": meta["pendencias"],

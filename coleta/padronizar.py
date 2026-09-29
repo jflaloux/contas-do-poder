@@ -2,7 +2,7 @@
 
 Saídas em dados/processados/:
 - politicos.json    — quem é quem (um registro por político)
-- lancamentos.csv.gz — uma linha por político · ano · mês · grupo · categoria · descrição · valor
+- lancamentos.csv.gz — uma linha por político · ano · mês · grupo · categoria · descrição · valor · rateado
 - equipe.csv        — quantas pessoas trabalharam no gabinete em cada mês
 - resumo.json       — totais prontos para o site (por político, por ano e na legislatura)
 - metadados.json    — data da coleta, fontes, regras e pendências conhecidas
@@ -13,12 +13,16 @@ Grupos:
            escritório, divulgação...; diárias; outros gastos do mandato)
   -> "ganha" + "custa" = o custo do parlamentar
 - "equipe": salários das pessoas que trabalham no gabinete (dinheiro que vai para outras pessoas)
+
+Tudo por mês: alguns valores só são informados por ano (auxílio-moradia da Câmara; passagens, correios e
+outros gastos do Senado). Dividimos o total do ano igualmente pelos meses em que o parlamentar recebeu
+salário naquele ano. É uma aproximação: essas linhas ficam com rateado=True e a descrição diz o total do ano.
 """
 from datetime import datetime
 
 import pandas as pd
 
-from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA
+from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA, ULTIMO_MES
 from .util import ler_json, log, salvar_json
 
 SALARIO_MINIMO = {2023: 1320.00, 2024: 1412.00, 2025: 1518.00, 2026: 1621.00}
@@ -49,7 +53,46 @@ def _linha(id_, ano, mes, categoria, descricao, valor, fonte):
     grupo, _ = CATEGORIAS[categoria]
     return {"id_politico": id_, "ano": int(ano), "mes": (int(mes) if pd.notna(mes) else None),
             "grupo": grupo, "categoria": categoria, "descricao": descricao,
-            "valor": round(float(valor), 2), "fonte": fonte}
+            "valor": round(float(valor), 2), "fonte": fonte, "rateado": False}
+
+
+def _ratear_anuais(L):
+    """Transforma cada valor anual (mes=None) em valores mensais.
+
+    O total do ano é dividido igualmente pelos meses em que o parlamentar recebeu salário naquele ano;
+    se não houver nenhum, pelos meses com algum valor; em último caso, pelos meses do ano dentro da
+    legislatura. Os centavos que sobram vão para o último mês, para o total do ano continuar exato.
+    """
+    inicio = INICIO_LEGISLATURA[0] * 100 + INICIO_LEGISLATURA[1]
+    fim = ULTIMO_MES[0] * 100 + ULTIMO_MES[1]
+    com_salario, com_algo = {}, {}
+    for l in L:
+        if l["mes"] is None:
+            continue
+        chave = (l["id_politico"], l["ano"])
+        com_algo.setdefault(chave, set()).add(l["mes"])
+        if l["categoria"] == "salario" and l["valor"] > 0:
+            com_salario.setdefault(chave, set()).add(l["mes"])
+    saida, sem_mes = [], 0
+    for l in L:
+        if l["mes"] is not None:
+            saida.append(l)
+            continue
+        chave = (l["id_politico"], l["ano"])
+        meses = sorted(com_salario.get(chave) or com_algo.get(chave) or ())
+        if not meses:
+            sem_mes += 1
+            meses = [m for m in range(1, 13) if inicio <= l["ano"] * 100 + m <= fim]
+        n = len(meses)
+        parte = round(l["valor"] / n, 2)
+        total = f"{l['valor']:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+        descricao = f"{l['descricao']} (R$ {total} no ano, dividido por {n} {'mês' if n == 1 else 'meses'})"
+        for i, m in enumerate(meses):
+            v = parte if i < n - 1 else round(l["valor"] - parte * (n - 1), 2)
+            saida.append(dict(l, mes=m, valor=v, rateado=True, descricao=descricao))
+    if sem_mes:
+        log(f"  {sem_mes} valores anuais sem nenhum mês de referência: divididos pelos meses do ano")
+    return saida
 
 
 # ---------------------------------------------------------------- Câmara
@@ -92,7 +135,7 @@ def _camara():
     mor = pd.read_csv(BRUTOS / "camara_moradia.csv")
     for r in mor.itertuples():
         if r.id_deputado in pid and r.auxilio_moradia:
-            L.append(_linha(pid[r.id_deputado], r.ano, None, "auxilio_moradia", "Auxílio-moradia recebido no ano",
+            L.append(_linha(pid[r.id_deputado], r.ano, None, "auxilio_moradia", "Auxílio-moradia",
                             r.auxilio_moradia, "camara_moradia"))
 
     dias_imovel = {(pid[r.id_deputado], int(r.ano)): int(r.dias_imovel_funcional)
@@ -264,7 +307,7 @@ def executar():
     pc, lc = _camara()
     ps, ls, liquido = _senado()
     politicos = pc + ps
-    lanc = lc + ls
+    lanc = _ratear_anuais(lc + ls)
 
     # Deixa de fora quem não tem nenhum pagamento na legislatura (ex.: suplente que só aparece na lista)
     com_dados = {l["id_politico"] for l in lanc}
@@ -274,7 +317,7 @@ def executar():
 
     PROCESSADOS.mkdir(parents=True, exist_ok=True)
     salvar_json(PROCESSADOS / "politicos.json", politicos)
-    pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"], na_position="last") \
+    pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"]) \
         .to_csv(PROCESSADOS / "lancamentos.csv.gz", index=False)
     pd.DataFrame(liquido).to_csv(PROCESSADOS / "senado_salario_liquido.csv", index=False)
     equipe = _equipe(ids)
@@ -290,6 +333,12 @@ def executar():
             "ganha": "Vai para o bolso do parlamentar: salário, 13º, auxílios, ajuda de custo.",
             "custa": "Despesas do próprio parlamentar pagas com dinheiro público: cota, diárias, outros gastos.",
             "equipe": "Salários das pessoas que trabalham no gabinete.",
+        },
+        "rateio": {
+            "regra": "Valores informados só por ano são divididos igualmente pelos meses em que o parlamentar "
+                     "recebeu salário naquele ano (coluna rateado=True em lancamentos.csv.gz). É uma aproximação.",
+            "auxilio_moradia": "A Câmara informa o auxílio-moradia de cada deputado por ano.",
+            "outros_gastos_mandato": "O Senado informa passagens, correios e outros gastos do mandato por ano.",
         },
         "fontes_por_lancamento": {
             "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
@@ -316,6 +365,9 @@ def executar():
             "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada "
             "servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
             "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",
+            "Auxílio-moradia (Câmara) e outros gastos do mandato (Senado) são informados por ano e divididos "
+            "igualmente pelos meses com salário: o valor de cada mês é aproximado. Em 2023, o total do ano pode incluir "
+            "janeiro, que ainda era da legislatura anterior.",
             "Câmara: desde ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) não aparecem nos arquivos de "
             "dados abertos. Completamos com a diferença para o total mensal do site oficial, sem detalhe por tipo.",
             "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos.",

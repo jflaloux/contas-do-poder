@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-29T06:25:16",
+ "gerado_em": "2026-09-29T06:48:22",
  "legislatura": 57,
  "periodo": "02/2023 até hoje",
  "salario_minimo": {
@@ -55,6 +55,11 @@
   "custa": "Despesas do próprio parlamentar pagas com dinheiro público: cota, diárias, outros gastos.",
   "equipe": "Salários das pessoas que trabalham no gabinete."
  },
+ "rateio": {
+  "regra": "Valores informados só por ano são divididos igualmente pelos meses em que o parlamentar recebeu salário naquele ano (coluna rateado=True em lancamentos.csv.gz). É uma aproximação.",
+  "auxilio_moradia": "A Câmara informa o auxílio-moradia de cada deputado por ano.",
+  "outros_gastos_mandato": "O Senado informa passagens, correios e outros gastos do mandato por ano."
+ },
  "fontes_por_lancamento": {
   "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
   "camara_remuneracao": "https://www.camara.leg.br/deputados/{id}/remuneracao?ano={ano}",
@@ -79,6 +84,7 @@
   "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
   "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
   "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",
+  "Auxílio-moradia (Câmara) e outros gastos do mandato (Senado) são informados por ano e divididos igualmente pelos meses com salário: o valor de cada mês é aproximado. Em 2023, o total do ano pode incluir janeiro, que ainda era da legislatura anterior.",
   "Câmara: desde ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) não aparecem nos arquivos de dados abertos. Completamos com a diferença para o total mensal do site oficial, sem detalhe por tipo.",
   "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos."
  ]

@@ -256,6 +256,7 @@ td.num { font-family: var(--mono); }
 .barra { display: grid; gap: 4px; }
 .barra__topo { display: flex; justify-content: space-between; gap: 12px; font-size: .92rem; }
 .barra__topo span:first-child { min-width: 0; }
+.barra__topo .num { white-space: nowrap; }
 .barra__trilho { height: 8px; background: var(--line-2); border-radius: 0 4px 4px 0; }
 .barra__fill { display: block; height: 100%; border-radius: 0 4px 4px 0; background: var(--custa); min-width: 2px; }
 .barra__fill--ganha { background: var(--ganha); }

@@ -1,0 +1,11 @@
+# Regras de cache e segurança do Cloudflare Pages
+
+# página, código e dados mudam a cada atualização: o navegador sempre confere se há versão nova
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# fotos dos parlamentares quase nunca mudam
+/fotos/*
+  Cache-Control: public, max-age=2592000

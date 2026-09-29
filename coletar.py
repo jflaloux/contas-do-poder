@@ -4,9 +4,10 @@ Uso:
     python3 coletar.py camara          # só a Câmara
     python3 coletar.py senado          # só o Senado
     python3 coletar.py padronizar      # junta tudo na base unificada
+    python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
-    python3 coletar.py tudo            # camara + senado + padronizar + site
+    python3 coletar.py tudo            # camara + senado + padronizar + fotos + site
 
     --tempo-max 160   para parar sozinho depois de 160 s (rode de novo para continuar)
     --max-alertas 8   (com "conferir") termina com erro se a conferência passar desse número;
@@ -15,7 +16,7 @@ Uso:
 import argparse
 import sys
 
-from coleta import camara, conferir, padronizar, senado, site
+from coleta import camara, conferir, fotos, padronizar, senado, site
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -23,6 +24,7 @@ ETAPAS = {
     "camara": camara.coletar,
     "senado": senado.coletar,
     "padronizar": padronizar.executar,
+    "fotos": fotos.coletar,
     "conferir": conferir.executar,
     "site": site.executar,
 }
@@ -39,7 +41,7 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = ["camara", "senado", "padronizar", "site"] if args.etapa == "tudo" else [args.etapa]
+    etapas = ["camara", "senado", "padronizar", "fotos", "site"] if args.etapa == "tudo" else [args.etapa]
     try:
         for etapa in etapas:
             resultado = ETAPAS[etapa]()

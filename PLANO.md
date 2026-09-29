@@ -59,8 +59,11 @@ Cada número tem link para a fonte oficial.
 - [ ] Você navegar pelo protótipo e anotar o que confunde ou falta — Você
 - [x] Nome: Contas do Poder, um projeto Contas do Brasil — Você
 - [x] Navegação no estilo do Contas do Brasil, com cores próprias (índigo e framboesa) — Claude
+- [x] Tudo por mês: valores anuais divididos pelos meses (com aviso ≈) e cota por tipo em R$ por mês e % — Claude
+- [x] Imagem para o status do WhatsApp com a foto do parlamentar (como no Contas do Brasil) — Claude
+- [x] Guardar as fotos no próprio site (`site/fotos/`) — Claude
+- [x] Google Analytics com eventos e prévia do link (`og.png`) — Claude
 - [ ] Página própria por político para a prévia do link no WhatsApp (foto, nome, valor) — Claude
-- [ ] Guardar as fotos no próprio site (hoje vêm dos sites da Câmara e do Senado) — Claude
 
 ## Fase 3 — Testes e confiabilidade
 
