@@ -81758,5 +81758,5711 @@
     "salarios_minimos_ganha_por_mes": 30.2
    }
   }
+ },
+ "exe-2458750": {
+  "legislatura": {
+   "meses_com_salario": 42,
+   "meses_com_despesas": 39,
+   "meses_com_equipe": 0,
+   "ganha": 2976049.58,
+   "despesas": 1533015.11,
+   "equipe": 0.0,
+   "ganha_por_mes": 70858.32,
+   "despesas_por_mes": 39308.08,
+   "custo_dele_por_mes": 110166.4,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4365.92,
+    "jetons": 1035787.8,
+    "outros_rendimentos": 85834.06,
+    "salario": 1850061.8,
+    "viagens_oficiais": 1533015.11
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 9,
+    "meses_com_equipe": 0,
+    "ganha": 572290.84,
+    "despesas": 53899.52,
+    "equipe": 0.0,
+    "ganha_por_mes": 52026.44,
+    "despesas_por_mes": 5988.84,
+    "custo_dele_por_mes": 58015.28,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4365.92,
+     "jetons": 114480.0,
+     "salario": 453444.92,
+     "viagens_oficiais": 53899.52
+    },
+    "salarios_minimos_ganha_por_mes": 39.4
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 869184.64,
+    "despesas": 175818.17,
+    "equipe": 0.0,
+    "ganha_por_mes": 72432.05,
+    "despesas_por_mes": 14651.51,
+    "custo_dele_por_mes": 87083.57,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "jetons": 343440.0,
+     "salario": 525744.64,
+     "viagens_oficiais": 175818.17
+    },
+    "salarios_minimos_ganha_por_mes": 51.3
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 990385.51,
+    "despesas": 604283.65,
+    "equipe": 0.0,
+    "ganha_por_mes": 82532.13,
+    "despesas_por_mes": 54934.88,
+    "custo_dele_por_mes": 137467.0,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "jetons": 350514.84,
+     "outros_rendimentos": 85834.06,
+     "salario": 554036.61,
+     "viagens_oficiais": 604283.65
+    },
+    "salarios_minimos_ganha_por_mes": 54.4
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 544188.59,
+    "despesas": 699013.77,
+    "equipe": 0.0,
+    "ganha_por_mes": 77741.23,
+    "despesas_por_mes": 99859.11,
+    "custo_dele_por_mes": 177600.34,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "jetons": 227352.96,
+     "salario": 316835.63,
+     "viagens_oficiais": 699013.77
+    },
+    "salarios_minimos_ganha_por_mes": 48.0
+   }
+  }
+ },
+ "exe-688218": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 39,
+   "meses_com_equipe": 0,
+   "ganha": 2241829.6,
+   "despesas": 1199703.45,
+   "equipe": 0.0,
+   "ganha_por_mes": 54678.77,
+   "despesas_por_mes": 30761.63,
+   "custo_dele_por_mes": 85440.4,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 37472.0,
+    "decimo_terceiro": 155208.72,
+    "outros_rendimentos": 235367.9,
+    "salario": 1813780.98,
+    "viagens_oficiais": 1199703.45
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 591183.62,
+    "despesas": 334981.92,
+    "equipe": 0.0,
+    "ganha_por_mes": 53743.97,
+    "despesas_por_mes": 33498.19,
+    "custo_dele_por_mes": 87242.16,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 89249.78,
+     "salario": 453444.92,
+     "viagens_oficiais": 334981.92
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 635458.62,
+    "despesas": 293102.12,
+    "equipe": 0.0,
+    "ganha_por_mes": 57768.97,
+    "despesas_por_mes": 24425.18,
+    "custo_dele_por_mes": 82194.14,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 99739.98,
+     "salario": 481736.12,
+     "viagens_oficiais": 293102.12
+    },
+    "salarios_minimos_ganha_por_mes": 40.9
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 643675.55,
+    "despesas": 386825.34,
+    "equipe": 0.0,
+    "ganha_por_mes": 53639.63,
+    "despesas_por_mes": 38682.53,
+    "custo_dele_por_mes": 92322.16,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 30922.75,
+     "salario": 554036.61,
+     "viagens_oficiais": 386825.34
+    },
+    "salarios_minimos_ganha_por_mes": 35.3
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 371511.81,
+    "despesas": 184794.07,
+    "equipe": 0.0,
+    "ganha_por_mes": 53073.12,
+    "despesas_por_mes": 26399.15,
+    "custo_dele_por_mes": 79472.27,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 15455.39,
+     "salario": 324563.33,
+     "viagens_oficiais": 184794.07
+    },
+    "salarios_minimos_ganha_por_mes": 32.7
+   }
+  }
+ },
+ "exe-574148": {
+  "legislatura": {
+   "meses_com_salario": 8,
+   "meses_com_despesas": 8,
+   "meses_com_equipe": 0,
+   "ganha": 447094.03,
+   "despesas": 118689.99,
+   "equipe": 0.0,
+   "ganha_por_mes": 55886.75,
+   "despesas_por_mes": 14836.25,
+   "custo_dele_por_mes": 70723.0,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 36601.16,
+    "decimo_terceiro": 45121.83,
+    "outros_rendimentos": 61869.44,
+    "salario": 303501.6,
+    "viagens_oficiais": 118689.99
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 447094.03,
+    "despesas": 118689.99,
+    "equipe": 0.0,
+    "ganha_por_mes": 55886.75,
+    "despesas_por_mes": 14836.25,
+    "custo_dele_por_mes": 70723.0,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 36601.16,
+     "decimo_terceiro": 45121.83,
+     "outros_rendimentos": 61869.44,
+     "salario": 303501.6,
+     "viagens_oficiais": 118689.99
+    },
+    "salarios_minimos_ganha_por_mes": 42.3
+   }
+  }
+ },
+ "exe-1810792": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 41,
+   "meses_com_equipe": 0,
+   "ganha": 2298047.66,
+   "despesas": 1234672.64,
+   "equipe": 0.0,
+   "ganha_por_mes": 56049.94,
+   "despesas_por_mes": 30113.97,
+   "custo_dele_por_mes": 86163.91,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 16263.6,
+    "decimo_terceiro": 150369.88,
+    "outros_rendimentos": 321936.32,
+    "salario": 1809477.86,
+    "viagens_oficiais": 1234672.64
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 582725.88,
+    "despesas": 190883.51,
+    "equipe": 0.0,
+    "ganha_por_mes": 52975.08,
+    "despesas_por_mes": 17353.05,
+    "custo_dele_por_mes": 70328.13,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 41650.93,
+     "outros_rendimentos": 87629.92,
+     "salario": 453445.03,
+     "viagens_oficiais": 190883.51
+    },
+    "salarios_minimos_ganha_por_mes": 40.1
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 620235.0,
+    "despesas": 190527.95,
+    "equipe": 0.0,
+    "ganha_por_mes": 56385.0,
+    "despesas_por_mes": 17320.72,
+    "custo_dele_por_mes": 73705.72,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 44008.53,
+     "outros_rendimentos": 94490.24,
+     "salario": 481736.23,
+     "viagens_oficiais": 190527.95
+    },
+    "salarios_minimos_ganha_por_mes": 39.9
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 688578.96,
+    "despesas": 472258.25,
+    "equipe": 0.0,
+    "ganha_por_mes": 57381.58,
+    "despesas_por_mes": 39354.85,
+    "custo_dele_por_mes": 96736.43,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 46366.2,
+     "outros_rendimentos": 92479.56,
+     "salario": 549733.2,
+     "viagens_oficiais": 472258.25
+    },
+    "salarios_minimos_ganha_por_mes": 37.8
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 406507.82,
+    "despesas": 381002.93,
+    "equipe": 0.0,
+    "ganha_por_mes": 58072.55,
+    "despesas_por_mes": 54428.99,
+    "custo_dele_por_mes": 112501.54,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 16263.6,
+     "decimo_terceiro": 18344.22,
+     "outros_rendimentos": 47336.6,
+     "salario": 324563.4,
+     "viagens_oficiais": 381002.93
+    },
+    "salarios_minimos_ganha_por_mes": 35.8
+   }
+  }
+ },
+ "exe-215400": {
+  "legislatura": {
+   "meses_com_salario": 29,
+   "meses_com_despesas": 29,
+   "meses_com_equipe": 0,
+   "ganha": 1297466.39,
+   "despesas": 1532042.39,
+   "equipe": 0.0,
+   "ganha_por_mes": 44740.22,
+   "despesas_por_mes": 52829.05,
+   "custo_dele_por_mes": 97569.27,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 1297466.39,
+    "viagens_oficiais": 1532042.39
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 124952.76,
+    "despesas": 109929.73,
+    "equipe": 0.0,
+    "ganha_por_mes": 41650.92,
+    "despesas_por_mes": 36643.24,
+    "custo_dele_por_mes": 78294.16,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 124952.76,
+     "viagens_oficiais": 109929.73
+    },
+    "salarios_minimos_ganha_por_mes": 31.6
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 563073.92,
+    "equipe": 0.0,
+    "ganha_por_mes": 43812.05,
+    "despesas_por_mes": 46922.83,
+    "custo_dele_por_mes": 90734.88,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 525744.64,
+     "viagens_oficiais": 563073.92
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   },
+   "2025": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 507670.42,
+    "despesas": 641282.6,
+    "equipe": 0.0,
+    "ganha_por_mes": 46151.86,
+    "despesas_por_mes": 58298.42,
+    "custo_dele_por_mes": 104450.27,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 507670.42,
+     "viagens_oficiais": 641282.6
+    },
+    "salarios_minimos_ganha_por_mes": 30.4
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 217756.14,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 72585.38,
+    "custo_dele_por_mes": 118951.57,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57,
+     "viagens_oficiais": 217756.14
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-2082680": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 37,
+   "meses_com_equipe": 0,
+   "ganha": 2144020.22,
+   "despesas": 843495.04,
+   "equipe": 0.0,
+   "ganha_por_mes": 57946.49,
+   "despesas_por_mes": 22797.16,
+   "custo_dele_por_mes": 80743.66,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 47848.8,
+    "decimo_terceiro": 132025.63,
+    "outros_rendimentos": 335829.57,
+    "salario": 1628316.22,
+    "viagens_oficiais": 843495.04
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 577479.1,
+    "despesas": 236144.52,
+    "equipe": 0.0,
+    "ganha_por_mes": 52498.1,
+    "despesas_por_mes": 21467.68,
+    "custo_dele_por_mes": 73965.78,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 10048.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 72335.26,
+     "salario": 453444.92,
+     "viagens_oficiais": 236144.52
+    },
+    "salarios_minimos_ganha_por_mes": 39.8
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 639351.06,
+    "despesas": 323844.62,
+    "equipe": 0.0,
+    "ganha_por_mes": 58122.82,
+    "despesas_por_mes": 29440.42,
+    "custo_dele_por_mes": 87563.24,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 14652.3,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 98954.12,
+     "salario": 481736.12,
+     "viagens_oficiais": 323844.62
+    },
+    "salarios_minimos_ganha_por_mes": 41.2
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 748611.79,
+    "despesas": 222282.4,
+    "equipe": 0.0,
+    "ganha_por_mes": 62384.32,
+    "despesas_por_mes": 18523.53,
+    "custo_dele_por_mes": 80907.85,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 18168.8,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 130040.19,
+     "salario": 554036.61,
+     "viagens_oficiais": 222282.4
+    },
+    "salarios_minimos_ganha_por_mes": 41.1
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 178578.27,
+    "despesas": 61223.5,
+    "equipe": 0.0,
+    "ganha_por_mes": 59526.09,
+    "despesas_por_mes": 20407.83,
+    "custo_dele_por_mes": 79933.92,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4979.7,
+     "outros_rendimentos": 34500.0,
+     "salario": 139098.57,
+     "viagens_oficiais": 61223.5
+    },
+    "salarios_minimos_ganha_por_mes": 36.7
+   }
+  }
+ },
+ "exe-2275732": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 189383.39,
+   "despesas": 158778.1,
+   "equipe": 0.0,
+   "ganha_por_mes": 47345.85,
+   "despesas_por_mes": 39694.52,
+   "custo_dele_por_mes": 87040.37,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "jetons": 8612.25,
+    "salario": 175986.14,
+    "viagens_oficiais": 158778.1
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 189383.39,
+    "despesas": 158778.1,
+    "equipe": 0.0,
+    "ganha_por_mes": 47345.85,
+    "despesas_por_mes": 39694.52,
+    "custo_dele_por_mes": 87040.37,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "jetons": 8612.25,
+     "salario": 175986.14,
+     "viagens_oficiais": 158778.1
+    },
+    "salarios_minimos_ganha_por_mes": 29.2
+   }
+  }
+ },
+ "exe-1547434": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 42,
+   "meses_com_equipe": 0,
+   "ganha": 2217417.69,
+   "despesas": 842450.13,
+   "equipe": 0.0,
+   "ganha_por_mes": 54083.36,
+   "despesas_por_mes": 20058.34,
+   "custo_dele_por_mes": 74141.69,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 37472.0,
+    "decimo_terceiro": 142818.75,
+    "outros_rendimentos": 371735.31,
+    "salario": 1665391.63,
+    "viagens_oficiais": 842450.13
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 554156.96,
+    "despesas": 92909.1,
+    "equipe": 0.0,
+    "ganha_por_mes": 50377.91,
+    "despesas_por_mes": 8446.28,
+    "custo_dele_por_mes": 58824.19,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 38110.93,
+     "outros_rendimentos": 94703.0,
+     "salario": 414505.03,
+     "viagens_oficiais": 92909.1
+    },
+    "salarios_minimos_ganha_por_mes": 38.2
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 591428.26,
+    "despesas": 290566.08,
+    "equipe": 0.0,
+    "ganha_por_mes": 53766.21,
+    "despesas_por_mes": 24213.84,
+    "custo_dele_por_mes": 77980.05,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 40468.53,
+     "outros_rendimentos": 98189.5,
+     "salario": 442796.23,
+     "viagens_oficiais": 290566.08
+    },
+    "salarios_minimos_ganha_por_mes": 38.1
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 687037.08,
+    "despesas": 264679.79,
+    "equipe": 0.0,
+    "ganha_por_mes": 57253.09,
+    "despesas_por_mes": 22056.65,
+    "custo_dele_por_mes": 79309.74,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 42826.2,
+     "outros_rendimentos": 123553.91,
+     "salario": 508306.97,
+     "viagens_oficiais": 264679.79
+    },
+    "salarios_minimos_ganha_por_mes": 37.7
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 384795.39,
+    "despesas": 194295.16,
+    "equipe": 0.0,
+    "ganha_por_mes": 54970.77,
+    "despesas_por_mes": 27756.45,
+    "custo_dele_por_mes": 82727.22,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 21413.09,
+     "outros_rendimentos": 55288.9,
+     "salario": 299783.4,
+     "viagens_oficiais": 194295.16
+    },
+    "salarios_minimos_ganha_por_mes": 33.9
+   }
+  }
+ },
+ "exe-1693709": {
+  "legislatura": {
+   "meses_com_salario": 26,
+   "meses_com_despesas": 27,
+   "meses_com_equipe": 0,
+   "ganha": 1387925.32,
+   "despesas": 629151.33,
+   "equipe": 0.0,
+   "ganha_por_mes": 53381.74,
+   "despesas_por_mes": 23301.9,
+   "custo_dele_por_mes": 76683.64,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 24350.01,
+    "decimo_terceiro": 85659.44,
+    "outros_rendimentos": 159627.74,
+    "salario": 1118288.13,
+    "viagens_oficiais": 629151.33
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 560777.99,
+    "despesas": 176846.76,
+    "equipe": 0.0,
+    "ganha_por_mes": 50979.82,
+    "despesas_por_mes": 16076.98,
+    "custo_dele_por_mes": 67056.8,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8213.91,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 57468.24,
+     "salario": 453444.92,
+     "viagens_oficiais": 176846.76
+    },
+    "salarios_minimos_ganha_por_mes": 38.6
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 615816.87,
+    "despesas": 296643.57,
+    "equipe": 0.0,
+    "ganha_por_mes": 55983.35,
+    "despesas_por_mes": 24720.3,
+    "custo_dele_por_mes": 80703.65,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 11602.73,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 78469.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 296643.57
+    },
+    "salarios_minimos_ganha_por_mes": 39.6
+   },
+   "2025": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 211330.46,
+    "despesas": 155661.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 52832.62,
+    "despesas_por_mes": 38915.25,
+    "custo_dele_por_mes": 91747.86,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4533.37,
+     "outros_rendimentos": 23690.0,
+     "salario": 183107.09,
+     "viagens_oficiais": 155661.0
+    },
+    "salarios_minimos_ganha_por_mes": 34.8
+   }
+  }
+ },
+ "exe-299246": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 2,
+   "meses_com_equipe": 0,
+   "ganha": 216779.32,
+   "despesas": 50160.24,
+   "equipe": 0.0,
+   "ganha_por_mes": 54194.83,
+   "despesas_por_mes": 25080.12,
+   "custo_dele_por_mes": 79274.95,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 20683.83,
+    "outros_rendimentos": 5845.69,
+    "salario": 185464.8,
+    "viagens_oficiais": 50160.24
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 216779.32,
+    "despesas": 50160.24,
+    "equipe": 0.0,
+    "ganha_por_mes": 54194.83,
+    "despesas_por_mes": 25080.12,
+    "custo_dele_por_mes": 79274.95,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 20683.83,
+     "outros_rendimentos": 5845.69,
+     "salario": 185464.8,
+     "viagens_oficiais": 50160.24
+    },
+    "salarios_minimos_ganha_por_mes": 33.4
+   }
+  }
+ },
+ "exe-1317896": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 38,
+   "meses_com_equipe": 0,
+   "ganha": 1792028.92,
+   "despesas": 1354736.9,
+   "equipe": 0.0,
+   "ganha_por_mes": 47158.66,
+   "despesas_por_mes": 35650.97,
+   "custo_dele_por_mes": 82809.63,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 43834.72,
+    "decimo_terceiro": -86327.24,
+    "jetons": 43268.92,
+    "salario": 1791252.52,
+    "viagens_oficiais": 1354736.9
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 640688.92,
+    "despesas": 280251.85,
+    "equipe": 0.0,
+    "ganha_por_mes": 58244.45,
+    "despesas_por_mes": 25477.44,
+    "custo_dele_por_mes": 83721.89,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 43834.72,
+     "decimo_terceiro": -18787.42,
+     "jetons": 43268.92,
+     "salario": 572372.7,
+     "viagens_oficiais": 280251.85
+    },
+    "salarios_minimos_ganha_por_mes": 44.1
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 499993.54,
+    "despesas": 363873.56,
+    "equipe": 0.0,
+    "ganha_por_mes": 41666.13,
+    "despesas_por_mes": 30322.8,
+    "custo_dele_por_mes": 71988.92,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": -25751.1,
+     "salario": 525744.64,
+     "viagens_oficiais": 363873.56
+    },
+    "salarios_minimos_ganha_por_mes": 29.5
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 526854.08,
+    "despesas": 492765.47,
+    "equipe": 0.0,
+    "ganha_por_mes": 43904.51,
+    "despesas_por_mes": 41063.79,
+    "custo_dele_por_mes": 84968.3,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": -27182.53,
+     "salario": 554036.61,
+     "viagens_oficiais": 492765.47
+    },
+    "salarios_minimos_ganha_por_mes": 28.9
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 124492.38,
+    "despesas": 217846.02,
+    "equipe": 0.0,
+    "ganha_por_mes": 41497.46,
+    "despesas_por_mes": 72615.34,
+    "custo_dele_por_mes": 114112.8,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": -14606.19,
+     "salario": 139098.57,
+     "viagens_oficiais": 217846.02
+    },
+    "salarios_minimos_ganha_por_mes": 25.6
+   }
+  }
+ },
+ "exe-1979646": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 38,
+   "meses_com_equipe": 0,
+   "ganha": 1771955.08,
+   "despesas": 1462253.32,
+   "equipe": 0.0,
+   "ganha_por_mes": 46630.4,
+   "despesas_por_mes": 38480.35,
+   "custo_dele_por_mes": 85110.75,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "decimo_terceiro": 99630.34,
+    "salario": 1672324.74,
+    "viagens_oficiais": 1462253.32
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 484924.39,
+    "despesas": 585959.68,
+    "equipe": 0.0,
+    "ganha_por_mes": 44084.04,
+    "despesas_por_mes": 53269.06,
+    "custo_dele_por_mes": 97353.1,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 31479.47,
+     "salario": 453444.92,
+     "viagens_oficiais": 585959.68
+    },
+    "salarios_minimos_ganha_por_mes": 33.4
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 558953.17,
+    "despesas": 377451.57,
+    "equipe": 0.0,
+    "ganha_por_mes": 46579.43,
+    "despesas_por_mes": 31454.3,
+    "custo_dele_por_mes": 78033.73,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 33208.53,
+     "salario": 525744.64,
+     "viagens_oficiais": 377451.57
+    },
+    "salarios_minimos_ganha_por_mes": 33.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 588978.95,
+    "despesas": 369311.06,
+    "equipe": 0.0,
+    "ganha_por_mes": 49081.58,
+    "despesas_por_mes": 30775.92,
+    "custo_dele_por_mes": 79857.5,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 34942.34,
+     "salario": 554036.61,
+     "viagens_oficiais": 369311.06
+    },
+    "salarios_minimos_ganha_por_mes": 32.3
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 129531.01,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 43177.0,
+    "custo_dele_por_mes": 89543.19,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57,
+     "viagens_oficiais": 129531.01
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-2133228": {
+  "legislatura": {
+   "meses_com_salario": 26,
+   "meses_com_despesas": 26,
+   "meses_com_equipe": 0,
+   "ganha": 1427859.22,
+   "despesas": 437780.49,
+   "equipe": 0.0,
+   "ganha_por_mes": 54917.66,
+   "despesas_por_mes": 16837.71,
+   "custo_dele_por_mes": 71755.37,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 20832.81,
+    "decimo_terceiro": 85659.44,
+    "outros_rendimentos": 203078.84,
+    "salario": 1118288.13,
+    "viagens_oficiais": 437780.49
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 576864.22,
+    "despesas": 108567.03,
+    "equipe": 0.0,
+    "ganha_por_mes": 52442.2,
+    "despesas_por_mes": 9869.73,
+    "custo_dele_por_mes": 62311.93,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6858.81,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 74909.57,
+     "salario": 453444.92,
+     "viagens_oficiais": 108567.03
+    },
+    "salarios_minimos_ganha_por_mes": 39.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 632888.14,
+    "despesas": 269417.88,
+    "equipe": 0.0,
+    "ganha_por_mes": 57535.29,
+    "despesas_por_mes": 24492.53,
+    "custo_dele_por_mes": 82027.82,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 97169.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 269417.88
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   },
+   "2025": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 218106.86,
+    "despesas": 59795.58,
+    "equipe": 0.0,
+    "ganha_por_mes": 54526.72,
+    "despesas_por_mes": 14948.9,
+    "custo_dele_por_mes": 69475.61,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4000.0,
+     "outros_rendimentos": 30999.77,
+     "salario": 183107.09,
+     "viagens_oficiais": 59795.58
+    },
+    "salarios_minimos_ganha_por_mes": 35.9
+   }
+  }
+ },
+ "exe-2684170": {
+  "legislatura": {
+   "meses_com_salario": 28,
+   "meses_com_despesas": 28,
+   "meses_com_equipe": 0,
+   "ganha": 1251568.06,
+   "despesas": 2084847.65,
+   "equipe": 0.0,
+   "ganha_por_mes": 44698.86,
+   "despesas_por_mes": 74458.84,
+   "custo_dele_por_mes": 119157.7,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 1251568.06,
+    "viagens_oficiais": 2084847.65
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 5,
+    "meses_com_despesas": 5,
+    "meses_com_equipe": 0,
+    "ganha": 208254.6,
+    "despesas": 397971.05,
+    "equipe": 0.0,
+    "ganha_por_mes": 41650.92,
+    "despesas_por_mes": 79594.21,
+    "custo_dele_por_mes": 121245.13,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 208254.6,
+     "viagens_oficiais": 397971.05
+    },
+    "salarios_minimos_ganha_por_mes": 31.6
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 848411.08,
+    "equipe": 0.0,
+    "ganha_por_mes": 43812.05,
+    "despesas_por_mes": 70700.92,
+    "custo_dele_por_mes": 114512.98,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 525744.64,
+     "viagens_oficiais": 848411.08
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   },
+   "2025": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 517568.82,
+    "despesas": 838465.52,
+    "equipe": 0.0,
+    "ganha_por_mes": 47051.71,
+    "despesas_por_mes": 76224.14,
+    "custo_dele_por_mes": 123275.85,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 517568.82,
+     "viagens_oficiais": 838465.52
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   }
+  }
+ },
+ "exe-3482346": {
+  "legislatura": {
+   "meses_com_salario": 5,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 203539.4,
+   "despesas": 98055.38,
+   "equipe": 0.0,
+   "ganha_por_mes": 40707.88,
+   "despesas_por_mes": 24513.84,
+   "custo_dele_por_mes": 65221.72,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 203539.4,
+    "viagens_oficiais": 98055.38
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 5,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 203539.4,
+    "despesas": 98055.38,
+    "equipe": 0.0,
+    "ganha_por_mes": 40707.88,
+    "despesas_por_mes": 24513.84,
+    "custo_dele_por_mes": 65221.72,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 203539.4,
+     "viagens_oficiais": 98055.38
+    },
+    "salarios_minimos_ganha_por_mes": 30.8
+   }
+  }
+ },
+ "exe-96103": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 236196.69,
+   "despesas": 345418.49,
+   "equipe": 0.0,
+   "ganha_por_mes": 59049.17,
+   "despesas_por_mes": 86354.62,
+   "custo_dele_por_mes": 145403.79,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 22763.84,
+    "salario": 185464.76,
+    "viagens_oficiais": 345418.49
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 236196.69,
+    "despesas": 345418.49,
+    "equipe": 0.0,
+    "ganha_por_mes": 59049.17,
+    "despesas_por_mes": 86354.62,
+    "custo_dele_por_mes": 145403.79,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 22763.84,
+     "salario": 185464.76,
+     "viagens_oficiais": 345418.49
+    },
+    "salarios_minimos_ganha_por_mes": 36.4
+   }
+  }
+ },
+ "exe-3857363": {
+  "legislatura": {
+   "meses_com_salario": 22,
+   "meses_com_despesas": 12,
+   "meses_com_equipe": 0,
+   "ganha": 1118608.53,
+   "despesas": 151219.26,
+   "equipe": 0.0,
+   "ganha_por_mes": 50845.84,
+   "despesas_por_mes": 12601.61,
+   "custo_dele_por_mes": 63447.45,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 22324.0,
+    "decimo_terceiro": 86707.33,
+    "outros_rendimentos": 15455.39,
+    "salario": 994121.81,
+    "viagens_oficiais": 151219.26
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2024": {
+    "meses_com_salario": 10,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 490400.34,
+    "despesas": 44094.07,
+    "equipe": 0.0,
+    "ganha_por_mes": 49040.03,
+    "despesas_por_mes": 7349.01,
+    "custo_dele_por_mes": 56389.05,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 40341.14,
+     "salario": 440085.2,
+     "viagens_oficiais": 44094.07
+    },
+    "salarios_minimos_ganha_por_mes": 34.7
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 628208.19,
+    "despesas": 107125.19,
+    "equipe": 0.0,
+    "ganha_por_mes": 52350.68,
+    "despesas_por_mes": 17854.2,
+    "custo_dele_por_mes": 70204.88,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 15455.39,
+     "salario": 554036.61,
+     "viagens_oficiais": 107125.19
+    },
+    "salarios_minimos_ganha_por_mes": 34.5
+   }
+  }
+ },
+ "exe-3534935": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 41,
+   "meses_com_equipe": 0,
+   "ganha": 2401093.55,
+   "despesas": 1022325.43,
+   "equipe": 0.0,
+   "ganha_por_mes": 58563.26,
+   "despesas_por_mes": 24934.77,
+   "custo_dele_por_mes": 83498.02,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 37569.78,
+    "decimo_terceiro": 155208.76,
+    "outros_rendimentos": 399703.6,
+    "salario": 1808611.41,
+    "viagens_oficiais": 1022325.43
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 608697.33,
+    "despesas": 241592.39,
+    "equipe": 0.0,
+    "ganha_por_mes": 55336.12,
+    "despesas_por_mes": 21962.94,
+    "custo_dele_por_mes": 77299.07,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6935.78,
+     "decimo_terceiro": 41650.93,
+     "outros_rendimentos": 107484.94,
+     "salario": 452625.68,
+     "viagens_oficiais": 241592.39
+    },
+    "salarios_minimos_ganha_por_mes": 41.9
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 635458.65,
+    "despesas": 127497.35,
+    "equipe": 0.0,
+    "ganha_por_mes": 57768.97,
+    "despesas_por_mes": 11590.67,
+    "custo_dele_por_mes": 69359.64,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.53,
+     "outros_rendimentos": 99739.89,
+     "salario": 481736.23,
+     "viagens_oficiais": 127497.35
+    },
+    "salarios_minimos_ganha_por_mes": 40.9
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 712974.52,
+    "despesas": 224830.27,
+    "equipe": 0.0,
+    "ganha_por_mes": 59414.54,
+    "despesas_por_mes": 18735.86,
+    "custo_dele_por_mes": 78150.4,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.2,
+     "outros_rendimentos": 104572.26,
+     "salario": 549686.06,
+     "viagens_oficiais": 224830.27
+    },
+    "salarios_minimos_ganha_por_mes": 39.1
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 443963.05,
+    "despesas": 428405.42,
+    "equipe": 0.0,
+    "ganha_por_mes": 63423.29,
+    "despesas_por_mes": 61200.77,
+    "custo_dele_por_mes": 124624.07,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.1,
+     "outros_rendimentos": 87906.51,
+     "salario": 324563.44,
+     "viagens_oficiais": 428405.42
+    },
+    "salarios_minimos_ganha_por_mes": 39.1
+   }
+  }
+ },
+ "exe-1123135": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 263674.27,
+   "despesas": 110620.89,
+   "equipe": 0.0,
+   "ganha_por_mes": 65918.57,
+   "despesas_por_mes": 27655.22,
+   "custo_dele_por_mes": 93573.79,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 5363.84,
+    "decimo_terceiro": 23183.1,
+    "jetons": 34207.1,
+    "outros_rendimentos": 15455.39,
+    "salario": 185464.84,
+    "viagens_oficiais": 110620.89
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 263674.27,
+    "despesas": 110620.89,
+    "equipe": 0.0,
+    "ganha_por_mes": 65918.57,
+    "despesas_por_mes": 27655.22,
+    "custo_dele_por_mes": 93573.79,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 5363.84,
+     "decimo_terceiro": 23183.1,
+     "jetons": 34207.1,
+     "outros_rendimentos": 15455.39,
+     "salario": 185464.84,
+     "viagens_oficiais": 110620.89
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   }
+  }
+ },
+ "exe-194827": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 23,
+   "meses_com_equipe": 0,
+   "ganha": 1415442.89,
+   "despesas": 254729.97,
+   "equipe": 0.0,
+   "ganha_por_mes": 38255.21,
+   "despesas_por_mes": 11075.22,
+   "custo_dele_por_mes": 49330.43,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "decimo_terceiro": 80712.98,
+    "outros_rendimentos": 338188.3,
+    "salario": 996541.61,
+    "viagens_oficiais": 254729.97
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 396130.59,
+    "despesas": 189580.69,
+    "equipe": 0.0,
+    "ganha_por_mes": 36011.87,
+    "despesas_por_mes": 18958.07,
+    "custo_dele_por_mes": 54969.94,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 24990.55,
+     "outros_rendimentos": 100487.67,
+     "salario": 270652.37,
+     "viagens_oficiais": 189580.69
+    },
+    "salarios_minimos_ganha_por_mes": 27.3
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 398712.71,
+    "despesas": 37200.12,
+    "equipe": 0.0,
+    "ganha_por_mes": 36246.61,
+    "despesas_por_mes": 5314.3,
+    "custo_dele_por_mes": 41560.91,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 26405.11,
+     "outros_rendimentos": 83265.95,
+     "salario": 289041.65,
+     "viagens_oficiais": 37200.12
+    },
+    "salarios_minimos_ganha_por_mes": 25.7
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 5,
+    "meses_com_equipe": 0,
+    "ganha": 500404.27,
+    "despesas": 27605.83,
+    "equipe": 0.0,
+    "ganha_por_mes": 41700.36,
+    "despesas_por_mes": 5521.17,
+    "custo_dele_por_mes": 47221.52,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 29317.32,
+     "outros_rendimentos": 122191.32,
+     "salario": 348895.63,
+     "viagens_oficiais": 27605.83
+    },
+    "salarios_minimos_ganha_por_mes": 27.5
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 120195.32,
+    "despesas": 343.33,
+    "equipe": 0.0,
+    "ganha_por_mes": 40065.11,
+    "despesas_por_mes": 343.33,
+    "custo_dele_por_mes": 40408.44,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "outros_rendimentos": 32243.36,
+     "salario": 87951.96,
+     "viagens_oficiais": 343.33
+    },
+    "salarios_minimos_ganha_por_mes": 24.7
+   }
+  }
+ },
+ "exe-593253": {
+  "legislatura": {
+   "meses_com_salario": 12,
+   "meses_com_despesas": 12,
+   "meses_com_equipe": 0,
+   "ganha": 656991.2,
+   "despesas": 102873.25,
+   "equipe": 0.0,
+   "ganha_por_mes": 54749.27,
+   "despesas_por_mes": 8572.77,
+   "custo_dele_por_mes": 63322.04,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 43659.24,
+    "decimo_terceiro": 31698.28,
+    "jetons": 86537.84,
+    "salario": 495095.84,
+    "viagens_oficiais": 102873.25
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 593705.82,
+    "despesas": 99501.69,
+    "equipe": 0.0,
+    "ganha_por_mes": 53973.26,
+    "despesas_por_mes": 9045.61,
+    "custo_dele_por_mes": 63018.86,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 43659.24,
+     "decimo_terceiro": 31698.28,
+     "jetons": 64903.38,
+     "salario": 453444.92,
+     "viagens_oficiais": 99501.69
+    },
+    "salarios_minimos_ganha_por_mes": 40.9
+   },
+   "2024": {
+    "meses_com_salario": 1,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 63285.38,
+    "despesas": 3371.56,
+    "equipe": 0.0,
+    "ganha_por_mes": 63285.38,
+    "despesas_por_mes": 3371.56,
+    "custo_dele_por_mes": 66656.94,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "jetons": 21634.46,
+     "salario": 41650.92,
+     "viagens_oficiais": 3371.56
+    },
+    "salarios_minimos_ganha_por_mes": 44.8
+   }
+  }
+ },
+ "exe-1656328": {
+  "legislatura": {
+   "meses_com_salario": 1,
+   "meses_com_despesas": 1,
+   "meses_com_equipe": 0,
+   "ganha": 59598.14,
+   "despesas": 21035.79,
+   "equipe": 0.0,
+   "ganha_por_mes": 59598.14,
+   "despesas_por_mes": 21035.79,
+   "custo_dele_por_mes": 80633.93,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 2184.27,
+    "jetons": 19021.56,
+    "outros_rendimentos": 6000.0,
+    "salario": 32392.31,
+    "viagens_oficiais": 21035.79
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 1,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 59598.14,
+    "despesas": 21035.79,
+    "equipe": 0.0,
+    "ganha_por_mes": 59598.14,
+    "despesas_por_mes": 21035.79,
+    "custo_dele_por_mes": 80633.93,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 2184.27,
+     "jetons": 19021.56,
+     "outros_rendimentos": 6000.0,
+     "salario": 32392.31,
+     "viagens_oficiais": 21035.79
+    },
+    "salarios_minimos_ganha_por_mes": 36.8
+   }
+  }
+ },
+ "exe-3447356": {
+  "legislatura": {
+   "meses_com_salario": 15,
+   "meses_com_despesas": 15,
+   "meses_com_equipe": 0,
+   "ganha": 934215.87,
+   "despesas": 815323.72,
+   "equipe": 0.0,
+   "ganha_por_mes": 62281.06,
+   "despesas_por_mes": 54354.91,
+   "custo_dele_por_mes": 116635.97,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 20311.77,
+    "decimo_terceiro": 54093.88,
+    "outros_rendimentos": 164317.37,
+    "salario": 695492.85,
+    "viagens_oficiais": 815323.72
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 497018.6,
+    "despesas": 326303.78,
+    "equipe": 0.0,
+    "ganha_por_mes": 62127.32,
+    "despesas_por_mes": 40787.97,
+    "custo_dele_por_mes": 102915.3,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12001.77,
+     "decimo_terceiro": 30910.79,
+     "outros_rendimentos": 83176.52,
+     "salario": 370929.52,
+     "viagens_oficiais": 326303.78
+    },
+    "salarios_minimos_ganha_por_mes": 40.9
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 437197.27,
+    "despesas": 489019.94,
+    "equipe": 0.0,
+    "ganha_por_mes": 62456.75,
+    "despesas_por_mes": 69859.99,
+    "custo_dele_por_mes": 132316.74,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 81140.85,
+     "salario": 324563.33,
+     "viagens_oficiais": 489019.94
+    },
+    "salarios_minimos_ganha_por_mes": 38.5
+   }
+  }
+ },
+ "exe-767332": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 200095.18,
+   "despesas": 150107.53,
+   "equipe": 0.0,
+   "ganha_por_mes": 50023.8,
+   "despesas_por_mes": 37526.88,
+   "custo_dele_por_mes": 87550.68,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 5093.09,
+    "decimo_terceiro": 15455.39,
+    "outros_rendimentos": 25996.0,
+    "salario": 153550.7,
+    "viagens_oficiais": 150107.53
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 200095.18,
+    "despesas": 150107.53,
+    "equipe": 0.0,
+    "ganha_por_mes": 50023.8,
+    "despesas_por_mes": 37526.88,
+    "custo_dele_por_mes": 87550.68,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 5093.09,
+     "decimo_terceiro": 15455.39,
+     "outros_rendimentos": 25996.0,
+     "salario": 153550.7,
+     "viagens_oficiais": 150107.53
+    },
+    "salarios_minimos_ganha_por_mes": 30.9
+   }
+  }
+ },
+ "exe-559168": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 12,
+   "meses_com_equipe": 0,
+   "ganha": 1968989.7,
+   "despesas": 90273.44,
+   "equipe": 0.0,
+   "ganha_por_mes": 48024.14,
+   "despesas_por_mes": 7522.79,
+   "custo_dele_por_mes": 55546.93,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "decimo_terceiro": 155208.72,
+    "salario": 1813780.98,
+    "viagens_oficiais": 90273.44
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 495095.84,
+    "despesas": 14136.4,
+    "equipe": 0.0,
+    "ganha_por_mes": 45008.71,
+    "despesas_por_mes": 7068.2,
+    "custo_dele_por_mes": 52076.91,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 41650.92,
+     "salario": 453444.92,
+     "viagens_oficiais": 14136.4
+    },
+    "salarios_minimos_ganha_por_mes": 34.1
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 5,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 54373.36,
+    "equipe": 0.0,
+    "ganha_por_mes": 47794.97,
+    "despesas_por_mes": 10874.67,
+    "custo_dele_por_mes": 58669.64,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 44008.52,
+     "salario": 481736.12,
+     "viagens_oficiais": 54373.36
+    },
+    "salarios_minimos_ganha_por_mes": 33.8
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 5,
+    "meses_com_equipe": 0,
+    "ganha": 600402.8,
+    "despesas": 21763.68,
+    "equipe": 0.0,
+    "ganha_por_mes": 50033.57,
+    "despesas_por_mes": 4352.74,
+    "custo_dele_por_mes": 54386.3,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 46366.19,
+     "salario": 554036.61,
+     "viagens_oficiais": 21763.68
+    },
+    "salarios_minimos_ganha_por_mes": 33.0
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 347746.42,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 49678.06,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 49678.06,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 23183.09,
+     "salario": 324563.33
+    },
+    "salarios_minimos_ganha_por_mes": 30.6
+   }
+  }
+ },
+ "exe-2304266": {
+  "legislatura": {
+   "meses_com_salario": 14,
+   "meses_com_despesas": 9,
+   "meses_com_equipe": 0,
+   "ganha": 716100.02,
+   "despesas": 149316.97,
+   "equipe": 0.0,
+   "ganha_por_mes": 51150.0,
+   "despesas_por_mes": 16590.77,
+   "custo_dele_por_mes": 67740.78,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "outros_rendimentos": 66973.36,
+    "salario": 649126.66,
+    "viagens_oficiais": 149316.97
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 10,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 463661.9,
+    "despesas": 104581.44,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 17430.24,
+    "custo_dele_por_mes": 63796.43,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 463661.9,
+     "viagens_oficiais": 104581.44
+    },
+    "salarios_minimos_ganha_por_mes": 30.5
+   },
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 252438.12,
+    "despesas": 44735.53,
+    "equipe": 0.0,
+    "ganha_por_mes": 63109.53,
+    "despesas_por_mes": 14911.84,
+    "custo_dele_por_mes": 78021.37,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "outros_rendimentos": 66973.36,
+     "salario": 185464.76,
+     "viagens_oficiais": 44735.53
+    },
+    "salarios_minimos_ganha_por_mes": 38.9
+   }
+  }
+ },
+ "exe-4154185": {
+  "legislatura": {
+   "meses_com_salario": 9,
+   "meses_com_despesas": 9,
+   "meses_com_equipe": 0,
+   "ganha": 503929.04,
+   "despesas": 235041.12,
+   "equipe": 0.0,
+   "ganha_por_mes": 55992.12,
+   "despesas_por_mes": 26115.68,
+   "custo_dele_por_mes": 82107.8,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "outros_rendimentos": 86633.33,
+    "salario": 417295.71,
+    "viagens_oficiais": 235041.12
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 2,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 98865.71,
+    "despesas": 40627.48,
+    "equipe": 0.0,
+    "ganha_por_mes": 49432.86,
+    "despesas_por_mes": 20313.74,
+    "custo_dele_por_mes": 69746.6,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "outros_rendimentos": 6133.33,
+     "salario": 92732.38,
+     "viagens_oficiais": 40627.48
+    },
+    "salarios_minimos_ganha_por_mes": 32.6
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 405063.33,
+    "despesas": 194413.64,
+    "equipe": 0.0,
+    "ganha_por_mes": 57866.19,
+    "despesas_por_mes": 27773.38,
+    "custo_dele_por_mes": 85639.57,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "outros_rendimentos": 80500.0,
+     "salario": 324563.33,
+     "viagens_oficiais": 194413.64
+    },
+    "salarios_minimos_ganha_por_mes": 35.7
+   }
+  }
+ },
+ "exe-4162993": {
+  "legislatura": {
+   "meses_com_salario": 7,
+   "meses_com_despesas": 7,
+   "meses_com_equipe": 0,
+   "ganha": 371013.02,
+   "despesas": 316924.73,
+   "equipe": 0.0,
+   "ganha_por_mes": 53001.86,
+   "despesas_por_mes": 45274.96,
+   "custo_dele_por_mes": 98276.82,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 9805.45,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 13461.15,
+    "salario": 324563.33,
+    "viagens_oficiais": 316924.73
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 371013.02,
+    "despesas": 316924.73,
+    "equipe": 0.0,
+    "ganha_por_mes": 53001.86,
+    "despesas_por_mes": 45274.96,
+    "custo_dele_por_mes": 98276.82,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9805.45,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 13461.15,
+     "salario": 324563.33,
+     "viagens_oficiais": 316924.73
+    },
+    "salarios_minimos_ganha_por_mes": 32.7
+   }
+  }
+ },
+ "exe-999653": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 36,
+   "meses_com_equipe": 0,
+   "ganha": 2066677.85,
+   "despesas": 963962.29,
+   "equipe": 0.0,
+   "ganha_por_mes": 55856.16,
+   "despesas_por_mes": 26776.73,
+   "custo_dele_por_mes": 82632.89,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 32687.0,
+    "decimo_terceiro": 132025.63,
+    "outros_rendimentos": 273649.0,
+    "salario": 1628316.22,
+    "viagens_oficiais": 963962.29
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 548335.92,
+    "despesas": 249582.24,
+    "equipe": 0.0,
+    "ganha_por_mes": 49848.72,
+    "despesas_por_mes": 24958.22,
+    "custo_dele_por_mes": 74806.94,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 46402.08,
+     "salario": 453444.92,
+     "viagens_oficiais": 249582.24
+    },
+    "salarios_minimos_ganha_por_mes": 37.8
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 596790.22,
+    "despesas": 331585.37,
+    "equipe": 0.0,
+    "ganha_por_mes": 54253.66,
+    "despesas_por_mes": 27632.11,
+    "custo_dele_por_mes": 81885.77,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 61071.58,
+     "salario": 481736.12,
+     "viagens_oficiais": 331585.37
+    },
+    "salarios_minimos_ganha_por_mes": 38.4
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 744153.52,
+    "despesas": 317670.89,
+    "equipe": 0.0,
+    "ganha_por_mes": 62012.79,
+    "despesas_por_mes": 28879.17,
+    "custo_dele_por_mes": 90891.97,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 131400.72,
+     "salario": 554036.61,
+     "viagens_oficiais": 317670.89
+    },
+    "salarios_minimos_ganha_por_mes": 40.9
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 177398.19,
+    "despesas": 65123.79,
+    "equipe": 0.0,
+    "ganha_por_mes": 59132.73,
+    "despesas_por_mes": 21707.93,
+    "custo_dele_por_mes": 80840.66,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 34774.62,
+     "salario": 139098.57,
+     "viagens_oficiais": 65123.79
+    },
+    "salarios_minimos_ganha_por_mes": 36.5
+   }
+  }
+ },
+ "exe-1079045": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 229533.25,
+   "despesas": 168851.0,
+   "equipe": 0.0,
+   "ganha_por_mes": 57383.31,
+   "despesas_por_mes": 42212.75,
+   "custo_dele_por_mes": 99596.06,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 16100.36,
+    "salario": 185464.8,
+    "viagens_oficiais": 168851.0
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 229533.25,
+    "despesas": 168851.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 57383.31,
+    "despesas_por_mes": 42212.75,
+    "custo_dele_por_mes": 99596.06,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 16100.36,
+     "salario": 185464.8,
+     "viagens_oficiais": 168851.0
+    },
+    "salarios_minimos_ganha_por_mes": 35.4
+   }
+  }
+ },
+ "exe-1198450": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 224385.05,
+   "despesas": 207966.28,
+   "equipe": 0.0,
+   "ganha_por_mes": 56096.26,
+   "despesas_por_mes": 51991.57,
+   "custo_dele_por_mes": 108087.83,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 10952.2,
+    "salario": 185464.76,
+    "viagens_oficiais": 207966.28
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 224385.05,
+    "despesas": 207966.28,
+    "equipe": 0.0,
+    "ganha_por_mes": 56096.26,
+    "despesas_por_mes": 51991.57,
+    "custo_dele_por_mes": 108087.83,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 10952.2,
+     "salario": 185464.76,
+     "viagens_oficiais": 207966.28
+    },
+    "salarios_minimos_ganha_por_mes": 34.6
+   }
+  }
+ },
+ "exe-3741863": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 40,
+   "meses_com_equipe": 0,
+   "ganha": 1535673.28,
+   "despesas": 860764.55,
+   "equipe": 0.0,
+   "ganha_por_mes": 37455.45,
+   "despesas_por_mes": 21519.11,
+   "custo_dele_por_mes": 58974.56,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 71681.04,
+    "decimo_terceiro": 132535.54,
+    "outros_rendimentos": 79693.58,
+    "salario": 1251763.12,
+    "viagens_oficiais": 860764.55
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 386651.3,
+    "despesas": 218859.43,
+    "equipe": 0.0,
+    "ganha_por_mes": 35150.12,
+    "despesas_por_mes": 19896.31,
+    "custo_dele_por_mes": 55046.43,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 14923.68,
+     "decimo_terceiro": 29440.42,
+     "outros_rendimentos": 23803.98,
+     "salario": 318483.22,
+     "viagens_oficiais": 218859.43
+    },
+    "salarios_minimos_ganha_por_mes": 26.6
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 373761.03,
+    "despesas": 383914.04,
+    "equipe": 0.0,
+    "ganha_por_mes": 33978.28,
+    "despesas_por_mes": 31992.84,
+    "custo_dele_por_mes": 65971.11,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 19786.18,
+     "decimo_terceiro": 29935.29,
+     "salario": 324039.56,
+     "viagens_oficiais": 383914.04
+    },
+    "salarios_minimos_ganha_por_mes": 24.1
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 459638.76,
+    "despesas": 206940.13,
+    "equipe": 0.0,
+    "ganha_por_mes": 38303.23,
+    "despesas_por_mes": 18812.74,
+    "custo_dele_por_mes": 57115.97,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 24109.76,
+     "decimo_terceiro": 32264.76,
+     "outros_rendimentos": 28626.23,
+     "salario": 374638.01,
+     "viagens_oficiais": 206940.13
+    },
+    "salarios_minimos_ganha_por_mes": 25.2
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 315622.19,
+    "despesas": 51050.95,
+    "equipe": 0.0,
+    "ganha_por_mes": 45088.88,
+    "despesas_por_mes": 8508.49,
+    "custo_dele_por_mes": 53597.38,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12861.42,
+     "decimo_terceiro": 40895.07,
+     "outros_rendimentos": 27263.37,
+     "salario": 234602.33,
+     "viagens_oficiais": 51050.95
+    },
+    "salarios_minimos_ganha_por_mes": 27.8
+   }
+  }
+ },
+ "exe-2416911": {
+  "legislatura": {
+   "meses_com_salario": 27,
+   "meses_com_despesas": 26,
+   "meses_com_equipe": 0,
+   "ganha": 1162296.65,
+   "despesas": 1027034.59,
+   "equipe": 0.0,
+   "ganha_por_mes": 43048.02,
+   "despesas_por_mes": 39501.33,
+   "custo_dele_por_mes": 82549.35,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 1162296.65,
+    "viagens_oficiais": 1027034.59
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 453444.92,
+    "despesas": 492865.17,
+    "equipe": 0.0,
+    "ganha_por_mes": 41222.27,
+    "despesas_por_mes": 44805.92,
+    "custo_dele_por_mes": 86028.19,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 453444.92,
+     "viagens_oficiais": 492865.17
+    },
+    "salarios_minimos_ganha_por_mes": 31.2
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 341235.37,
+    "equipe": 0.0,
+    "ganha_por_mes": 43812.05,
+    "despesas_por_mes": 31021.4,
+    "custo_dele_por_mes": 74833.45,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 525744.64,
+     "viagens_oficiais": 341235.37
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   },
+   "2025": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 183107.09,
+    "despesas": 192934.05,
+    "equipe": 0.0,
+    "ganha_por_mes": 45776.77,
+    "despesas_por_mes": 48233.51,
+    "custo_dele_por_mes": 94010.28,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 183107.09,
+     "viagens_oficiais": 192934.05
+    },
+    "salarios_minimos_ganha_por_mes": 30.2
+   }
+  }
+ },
+ "exe-2415765": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 41,
+   "meses_com_equipe": 0,
+   "ganha": 2008385.95,
+   "despesas": 516208.09,
+   "equipe": 0.0,
+   "ganha_por_mes": 48985.02,
+   "despesas_por_mes": 12590.44,
+   "custo_dele_por_mes": 61575.46,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 9271.36,
+    "decimo_terceiro": 155208.72,
+    "outros_rendimentos": 30124.89,
+    "salario": 1813780.98,
+    "viagens_oficiais": 516208.09
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 495095.84,
+    "despesas": 80582.08,
+    "equipe": 0.0,
+    "ganha_por_mes": 45008.71,
+    "despesas_por_mes": 7325.64,
+    "custo_dele_por_mes": 52334.36,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 41650.92,
+     "salario": 453444.92,
+     "viagens_oficiais": 80582.08
+    },
+    "salarios_minimos_ganha_por_mes": 34.1
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 540414.14,
+    "despesas": 123390.35,
+    "equipe": 0.0,
+    "ganha_por_mes": 49128.56,
+    "despesas_por_mes": 10282.53,
+    "custo_dele_por_mes": 59411.09,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 14669.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 123390.35
+    },
+    "salarios_minimos_ganha_por_mes": 34.8
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 600402.8,
+    "despesas": 140894.18,
+    "equipe": 0.0,
+    "ganha_por_mes": 50033.57,
+    "despesas_por_mes": 12808.56,
+    "custo_dele_por_mes": 62842.13,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 46366.19,
+     "salario": 554036.61,
+     "viagens_oficiais": 140894.18
+    },
+    "salarios_minimos_ganha_por_mes": 33.0
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 372473.17,
+    "despesas": 171341.48,
+    "equipe": 0.0,
+    "ganha_por_mes": 53210.45,
+    "despesas_por_mes": 24477.35,
+    "custo_dele_por_mes": 77687.81,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9271.36,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 15455.39,
+     "salario": 324563.33,
+     "viagens_oficiais": 171341.48
+    },
+    "salarios_minimos_ganha_por_mes": 32.8
+   }
+  }
+ },
+ "exe-4253827": {
+  "legislatura": {
+   "meses_com_salario": 3,
+   "meses_com_despesas": 0,
+   "meses_com_equipe": 0,
+   "ganha": 139098.57,
+   "despesas": 0.0,
+   "equipe": 0.0,
+   "ganha_por_mes": 46366.19,
+   "despesas_por_mes": null,
+   "custo_dele_por_mes": 46366.19,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 139098.57
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 46366.19,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-2400786": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 38,
+   "meses_com_equipe": 0,
+   "ganha": 1815903.1,
+   "despesas": 769158.11,
+   "equipe": 0.0,
+   "ganha_por_mes": 47786.92,
+   "despesas_por_mes": 20241.0,
+   "custo_dele_por_mes": 68027.93,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 43659.24,
+    "decimo_terceiro": 99919.12,
+    "salario": 1672324.74,
+    "viagens_oficiais": 769158.11
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 529185.24,
+    "despesas": 176226.77,
+    "equipe": 0.0,
+    "ganha_por_mes": 48107.75,
+    "despesas_por_mes": 16020.62,
+    "custo_dele_por_mes": 64128.36,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 43659.24,
+     "decimo_terceiro": 32081.08,
+     "salario": 453444.92,
+     "viagens_oficiais": 176226.77
+    },
+    "salarios_minimos_ganha_por_mes": 36.4
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 558796.76,
+    "despesas": 282811.26,
+    "equipe": 0.0,
+    "ganha_por_mes": 46566.4,
+    "despesas_por_mes": 23567.6,
+    "custo_dele_por_mes": 70134.0,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 33052.12,
+     "salario": 525744.64,
+     "viagens_oficiais": 282811.26
+    },
+    "salarios_minimos_ganha_por_mes": 33.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 588822.53,
+    "despesas": 261688.95,
+    "equipe": 0.0,
+    "ganha_por_mes": 49068.54,
+    "despesas_por_mes": 21807.41,
+    "custo_dele_por_mes": 70875.96,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 34785.92,
+     "salario": 554036.61,
+     "viagens_oficiais": 261688.95
+    },
+    "salarios_minimos_ganha_por_mes": 32.3
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 48431.13,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 16143.71,
+    "custo_dele_por_mes": 62509.9,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57,
+     "viagens_oficiais": 48431.13
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-3035730": {
+  "legislatura": {
+   "meses_com_salario": 42,
+   "meses_com_despesas": 42,
+   "meses_com_equipe": 0,
+   "ganha": 2008650.03,
+   "despesas": 1675155.05,
+   "equipe": 0.0,
+   "ganha_por_mes": 47825.0,
+   "despesas_por_mes": 39884.64,
+   "custo_dele_por_mes": 87709.64,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 43700.87,
+    "decimo_terceiro": 107159.66,
+    "salario": 1857789.5,
+    "viagens_oficiais": 1675155.05
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 524532.27,
+    "despesas": 264095.7,
+    "equipe": 0.0,
+    "ganha_por_mes": 47684.75,
+    "despesas_por_mes": 24008.7,
+    "custo_dele_por_mes": 71693.45,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 43700.87,
+     "decimo_terceiro": 27386.48,
+     "salario": 453444.92,
+     "viagens_oficiais": 264095.7
+    },
+    "salarios_minimos_ganha_por_mes": 36.1
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 553320.9,
+    "despesas": 592642.38,
+    "equipe": 0.0,
+    "ganha_por_mes": 46110.08,
+    "despesas_por_mes": 49386.86,
+    "custo_dele_por_mes": 95496.94,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 27576.26,
+     "salario": 525744.64,
+     "viagens_oficiais": 592642.38
+    },
+    "salarios_minimos_ganha_por_mes": 32.7
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 583050.44,
+    "despesas": 527764.93,
+    "equipe": 0.0,
+    "ganha_por_mes": 48587.54,
+    "despesas_por_mes": 43980.41,
+    "custo_dele_por_mes": 92567.95,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 29013.83,
+     "salario": 554036.61,
+     "viagens_oficiais": 527764.93
+    },
+    "salarios_minimos_ganha_por_mes": 32.0
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 347746.42,
+    "despesas": 290652.04,
+    "equipe": 0.0,
+    "ganha_por_mes": 49678.06,
+    "despesas_por_mes": 41521.72,
+    "custo_dele_por_mes": 91199.78,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 23183.09,
+     "salario": 324563.33,
+     "viagens_oficiais": 290652.04
+    },
+    "salarios_minimos_ganha_por_mes": 30.6
+   }
+  }
+ },
+ "exe-3933204": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 3,
+   "meses_com_equipe": 0,
+   "ganha": 174711.72,
+   "despesas": 5845.63,
+   "equipe": 0.0,
+   "ganha_por_mes": 43677.93,
+   "despesas_por_mes": 1948.54,
+   "custo_dele_por_mes": 45626.47,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4545.45,
+    "decimo_terceiro": 14669.5,
+    "salario": 155496.77,
+    "viagens_oficiais": 5845.63
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2024": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 174711.72,
+    "despesas": 5845.63,
+    "equipe": 0.0,
+    "ganha_por_mes": 43677.93,
+    "despesas_por_mes": 1948.54,
+    "custo_dele_por_mes": 45626.47,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4545.45,
+     "decimo_terceiro": 14669.5,
+     "salario": 155496.77,
+     "viagens_oficiais": 5845.63
+    },
+    "salarios_minimos_ganha_por_mes": 30.9
+   }
+  }
+ },
+ "exe-1506628": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 215830.29,
+   "despesas": 96199.5,
+   "equipe": 0.0,
+   "ganha_por_mes": 53957.57,
+   "despesas_por_mes": 24049.88,
+   "custo_dele_por_mes": 78007.45,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 6069.28,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 1113.12,
+    "salario": 185464.8,
+    "viagens_oficiais": 96199.5
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 215830.29,
+    "despesas": 96199.5,
+    "equipe": 0.0,
+    "ganha_por_mes": 53957.57,
+    "despesas_por_mes": 24049.88,
+    "custo_dele_por_mes": 78007.45,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6069.28,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 1113.12,
+     "salario": 185464.8,
+     "viagens_oficiais": 96199.5
+    },
+    "salarios_minimos_ganha_por_mes": 33.3
+   }
+  }
+ },
+ "exe-1570631": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 41,
+   "meses_com_equipe": 0,
+   "ganha": 2423859.2,
+   "despesas": 1795207.53,
+   "equipe": 0.0,
+   "ganha_por_mes": 59118.52,
+   "despesas_por_mes": 43785.55,
+   "custo_dele_por_mes": 102904.07,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 37472.0,
+    "decimo_terceiro": 155208.72,
+    "outros_rendimentos": 417397.5,
+    "salario": 1813780.98,
+    "viagens_oficiais": 1795207.53
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 602424.08,
+    "despesas": 476328.97,
+    "equipe": 0.0,
+    "ganha_por_mes": 54765.83,
+    "despesas_por_mes": 43302.63,
+    "custo_dele_por_mes": 98068.46,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 100490.24,
+     "salario": 453444.92,
+     "viagens_oficiais": 476328.97
+    },
+    "salarios_minimos_ganha_por_mes": 41.5
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 620789.09,
+    "despesas": 372617.49,
+    "equipe": 0.0,
+    "ganha_por_mes": 56435.37,
+    "despesas_por_mes": 31051.46,
+    "custo_dele_por_mes": 87486.83,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 85070.45,
+     "salario": 481736.12,
+     "viagens_oficiais": 372617.49
+    },
+    "salarios_minimos_ganha_por_mes": 40.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 763448.83,
+    "despesas": 608684.09,
+    "equipe": 0.0,
+    "ganha_por_mes": 63620.74,
+    "despesas_por_mes": 50723.67,
+    "custo_dele_por_mes": 114344.41,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 150696.03,
+     "salario": 554036.61,
+     "viagens_oficiais": 608684.09
+    },
+    "salarios_minimos_ganha_por_mes": 41.9
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 437197.2,
+    "despesas": 337576.98,
+    "equipe": 0.0,
+    "ganha_por_mes": 62456.74,
+    "despesas_por_mes": 56262.83,
+    "custo_dele_por_mes": 118719.57,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 81140.78,
+     "salario": 324563.33,
+     "viagens_oficiais": 337576.98
+    },
+    "salarios_minimos_ganha_por_mes": 38.5
+   }
+  }
+ },
+ "exe-1965666": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 234428.53,
+   "despesas": 189566.84,
+   "equipe": 0.0,
+   "ganha_por_mes": 58607.13,
+   "despesas_por_mes": 47391.71,
+   "custo_dele_por_mes": 105998.84,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 20995.68,
+    "salario": 185464.76,
+    "viagens_oficiais": 189566.84
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 234428.53,
+    "despesas": 189566.84,
+    "equipe": 0.0,
+    "ganha_por_mes": 58607.13,
+    "despesas_por_mes": 47391.71,
+    "custo_dele_por_mes": 105998.84,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 20995.68,
+     "salario": 185464.76,
+     "viagens_oficiais": 189566.84
+    },
+    "salarios_minimos_ganha_por_mes": 36.2
+   }
+  }
+ },
+ "exe-3116237": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 1,
+   "meses_com_equipe": 0,
+   "ganha": 1973195.7,
+   "despesas": 3004.65,
+   "equipe": 0.0,
+   "ganha_por_mes": 48126.72,
+   "despesas_por_mes": 3004.65,
+   "custo_dele_por_mes": 51131.37,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4206.0,
+    "decimo_terceiro": 155208.72,
+    "salario": 1813780.98,
+    "viagens_oficiais": 3004.65
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 499301.84,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 45391.08,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 45391.08,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4206.0,
+     "decimo_terceiro": 41650.92,
+     "salario": 453444.92
+    },
+    "salarios_minimos_ganha_por_mes": 34.4
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 47794.97,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 47794.97,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 44008.52,
+     "salario": 481736.12
+    },
+    "salarios_minimos_ganha_por_mes": 33.8
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 600402.8,
+    "despesas": 3004.65,
+    "equipe": 0.0,
+    "ganha_por_mes": 50033.57,
+    "despesas_por_mes": 3004.65,
+    "custo_dele_por_mes": 53038.22,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 46366.19,
+     "salario": 554036.61,
+     "viagens_oficiais": 3004.65
+    },
+    "salarios_minimos_ganha_por_mes": 33.0
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 347746.42,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 49678.06,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 49678.06,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "decimo_terceiro": 23183.09,
+     "salario": 324563.33
+    },
+    "salarios_minimos_ganha_por_mes": 30.6
+   }
+  }
+ },
+ "exe-1041155": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 39,
+   "meses_com_equipe": 0,
+   "ganha": 2398394.01,
+   "despesas": 771844.67,
+   "equipe": 0.0,
+   "ganha_por_mes": 58497.41,
+   "despesas_por_mes": 19790.89,
+   "custo_dele_por_mes": 78288.3,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 35999.92,
+    "decimo_terceiro": 147873.96,
+    "outros_rendimentos": 403830.23,
+    "salario": 1810689.9,
+    "viagens_oficiais": 771844.67
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 576250.19,
+    "despesas": 278608.7,
+    "equipe": 0.0,
+    "ganha_por_mes": 52386.38,
+    "despesas_por_mes": 34826.09,
+    "custo_dele_por_mes": 87212.47,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4365.92,
+     "decimo_terceiro": 38180.01,
+     "outros_rendimentos": 80259.34,
+     "salario": 453444.92,
+     "viagens_oficiais": 278608.7
+    },
+    "salarios_minimos_ganha_por_mes": 39.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 640234.14,
+    "despesas": 112922.02,
+    "equipe": 0.0,
+    "ganha_por_mes": 58203.1,
+    "despesas_por_mes": 9410.17,
+    "custo_dele_por_mes": 67613.27,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 104515.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 112922.02
+    },
+    "salarios_minimos_ganha_por_mes": 41.2
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 732697.87,
+    "despesas": 241768.21,
+    "equipe": 0.0,
+    "ganha_por_mes": 61058.16,
+    "despesas_por_mes": 20147.35,
+    "custo_dele_por_mes": 81205.51,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 13350.0,
+     "decimo_terceiro": 42502.34,
+     "outros_rendimentos": 125900.0,
+     "salario": 550945.53,
+     "viagens_oficiais": 241768.21
+    },
+    "salarios_minimos_ganha_por_mes": 40.2
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 449211.81,
+    "despesas": 138545.74,
+    "equipe": 0.0,
+    "ganha_por_mes": 64173.12,
+    "despesas_por_mes": 19792.25,
+    "custo_dele_por_mes": 83965.36,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 93155.39,
+     "salario": 324563.33,
+     "viagens_oficiais": 138545.74
+    },
+    "salarios_minimos_ganha_por_mes": 39.6
+   }
+  }
+ },
+ "exe-1457456": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 38,
+   "meses_com_equipe": 0,
+   "ganha": 1672324.74,
+   "despesas": 1558315.48,
+   "equipe": 0.0,
+   "ganha_por_mes": 44008.55,
+   "despesas_por_mes": 41008.3,
+   "custo_dele_por_mes": 85016.85,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 1672324.74,
+    "viagens_oficiais": 1558315.48
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 453444.92,
+    "despesas": 390341.33,
+    "equipe": 0.0,
+    "ganha_por_mes": 41222.27,
+    "despesas_por_mes": 35485.58,
+    "custo_dele_por_mes": 76707.84,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 453444.92,
+     "viagens_oficiais": 390341.33
+    },
+    "salarios_minimos_ganha_por_mes": 31.2
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 486107.36,
+    "equipe": 0.0,
+    "ganha_por_mes": 43812.05,
+    "despesas_por_mes": 40508.95,
+    "custo_dele_por_mes": 84321.0,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 525744.64,
+     "viagens_oficiais": 486107.36
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 554036.61,
+    "despesas": 525685.8,
+    "equipe": 0.0,
+    "ganha_por_mes": 46169.72,
+    "despesas_por_mes": 43807.15,
+    "custo_dele_por_mes": 89976.87,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 554036.61,
+     "viagens_oficiais": 525685.8
+    },
+    "salarios_minimos_ganha_por_mes": 30.4
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 156180.99,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 52060.33,
+    "custo_dele_por_mes": 98426.52,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57,
+     "viagens_oficiais": 156180.99
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-1050424": {
+  "legislatura": {
+   "meses_com_salario": 18,
+   "meses_com_despesas": 19,
+   "meses_com_equipe": 0,
+   "ganha": 957448.65,
+   "despesas": 551421.72,
+   "equipe": 0.0,
+   "ganha_por_mes": 53191.59,
+   "despesas_por_mes": 29022.2,
+   "custo_dele_por_mes": 82213.79,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 19511.36,
+    "decimo_terceiro": 53518.04,
+    "outros_rendimentos": 184596.19,
+    "salario": 699823.06,
+    "viagens_oficiais": 551421.72
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2024": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 149843.6,
+    "despesas": 120613.25,
+    "equipe": 0.0,
+    "ganha_por_mes": 49947.87,
+    "despesas_por_mes": 30153.31,
+    "custo_dele_por_mes": 80101.18,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3636.36,
+     "decimo_terceiro": 14669.51,
+     "outros_rendimentos": 14181.68,
+     "salario": 117356.05,
+     "viagens_oficiais": 120613.25
+    },
+    "salarios_minimos_ganha_por_mes": 35.4
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 655455.46,
+    "despesas": 373192.65,
+    "equipe": 0.0,
+    "ganha_por_mes": 54621.29,
+    "despesas_por_mes": 31099.39,
+    "custo_dele_por_mes": 85720.68,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 38848.53,
+     "outros_rendimentos": 138335.51,
+     "salario": 465921.42,
+     "viagens_oficiais": 373192.65
+    },
+    "salarios_minimos_ganha_por_mes": 36.0
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 152149.59,
+    "despesas": 57615.82,
+    "equipe": 0.0,
+    "ganha_por_mes": 50716.53,
+    "despesas_por_mes": 19205.27,
+    "custo_dele_por_mes": 69921.8,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 32079.0,
+     "salario": 116545.59,
+     "viagens_oficiais": 57615.82
+    },
+    "salarios_minimos_ganha_por_mes": 31.3
+   }
+  }
+ },
+ "exe-797817": {
+  "legislatura": {
+   "meses_com_salario": 15,
+   "meses_com_despesas": 15,
+   "meses_com_equipe": 0,
+   "ganha": 893973.66,
+   "despesas": 1171410.87,
+   "equipe": 0.0,
+   "ganha_por_mes": 59598.24,
+   "despesas_por_mes": 78094.06,
+   "custo_dele_por_mes": 137692.3,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 17569.09,
+    "decimo_terceiro": 54093.88,
+    "outros_rendimentos": 133000.0,
+    "salario": 689310.69,
+    "viagens_oficiais": 1171410.87
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 471417.24,
+    "despesas": 628557.24,
+    "equipe": 0.0,
+    "ganha_por_mes": 58927.16,
+    "despesas_por_mes": 78569.66,
+    "custo_dele_por_mes": 137496.81,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9259.09,
+     "decimo_terceiro": 30910.79,
+     "outros_rendimentos": 66500.0,
+     "salario": 364747.36,
+     "viagens_oficiais": 628557.24
+    },
+    "salarios_minimos_ganha_por_mes": 38.8
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 422556.42,
+    "despesas": 542853.63,
+    "equipe": 0.0,
+    "ganha_por_mes": 60365.2,
+    "despesas_por_mes": 77550.52,
+    "custo_dele_por_mes": 137915.72,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 66500.0,
+     "salario": 324563.33,
+     "viagens_oficiais": 542853.63
+    },
+    "salarios_minimos_ganha_por_mes": 37.2
+   }
+  }
+ },
+ "exe-3170974": {
+  "legislatura": {
+   "meses_com_salario": 33,
+   "meses_com_despesas": 30,
+   "meses_com_equipe": 0,
+   "ganha": 1962631.01,
+   "despesas": 536695.27,
+   "equipe": 0.0,
+   "ganha_por_mes": 59473.67,
+   "despesas_por_mes": 17889.84,
+   "custo_dele_por_mes": 77363.51,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 26812.0,
+    "decimo_terceiro": 108842.53,
+    "jetons": 389420.28,
+    "outros_rendimentos": 41070.93,
+    "salario": 1396485.27,
+    "viagens_oficiais": 536695.27
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 9,
+    "meses_com_equipe": 0,
+    "ganha": 528335.27,
+    "despesas": 108996.52,
+    "equipe": 0.0,
+    "ganha_por_mes": 48030.48,
+    "despesas_por_mes": 12110.72,
+    "custo_dele_por_mes": 60141.2,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 26401.43,
+     "salario": 453444.92,
+     "viagens_oficiais": 108996.52
+    },
+    "salarios_minimos_ganha_por_mes": 36.4
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 723463.82,
+    "despesas": 197749.33,
+    "equipe": 0.0,
+    "ganha_por_mes": 60288.65,
+    "despesas_por_mes": 17977.21,
+    "custo_dele_por_mes": 78265.86,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "jetons": 173075.68,
+     "outros_rendimentos": 14669.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 197749.33
+    },
+    "salarios_minimos_ganha_por_mes": 42.7
+   },
+   "2025": {
+    "meses_com_salario": 10,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 710831.92,
+    "despesas": 229949.42,
+    "equipe": 0.0,
+    "ganha_por_mes": 71083.19,
+    "despesas_por_mes": 22994.94,
+    "custo_dele_por_mes": 94078.13,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 10000.0,
+     "decimo_terceiro": 23183.09,
+     "jetons": 216344.6,
+     "salario": 461304.23,
+     "viagens_oficiais": 229949.42
+    },
+    "salarios_minimos_ganha_por_mes": 46.8
+   }
+  }
+ },
+ "exe-791886": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 212469.72,
+   "despesas": 142990.52,
+   "equipe": 0.0,
+   "ganha_por_mes": 53117.43,
+   "despesas_por_mes": 35747.63,
+   "custo_dele_por_mes": 88865.06,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 2127.95,
+    "salario": 182373.68,
+    "viagens_oficiais": 142990.52
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 212469.72,
+    "despesas": 142990.52,
+    "equipe": 0.0,
+    "ganha_por_mes": 53117.43,
+    "despesas_por_mes": 35747.63,
+    "custo_dele_por_mes": 88865.06,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 2127.95,
+     "salario": 182373.68,
+     "viagens_oficiais": 142990.52
+    },
+    "salarios_minimos_ganha_por_mes": 32.8
+   }
+  }
+ },
+ "exe-1493342": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 36,
+   "meses_com_equipe": 0,
+   "ganha": 2082334.44,
+   "despesas": 862005.57,
+   "equipe": 0.0,
+   "ganha_por_mes": 56279.31,
+   "despesas_por_mes": 23944.6,
+   "custo_dele_por_mes": 80223.91,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 70457.75,
+    "decimo_terceiro": 152851.09,
+    "outros_rendimentos": 230709.39,
+    "salario": 1628316.21,
+    "viagens_oficiais": 862005.57
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 9,
+    "meses_com_equipe": 0,
+    "ganha": 614324.04,
+    "despesas": 147018.91,
+    "equipe": 0.0,
+    "ganha_por_mes": 55847.64,
+    "despesas_por_mes": 16335.43,
+    "custo_dele_por_mes": 72183.07,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 44608.75,
+     "decimo_terceiro": 62476.38,
+     "outros_rendimentos": 53794.0,
+     "salario": 453444.91,
+     "viagens_oficiais": 147018.91
+    },
+    "salarios_minimos_ganha_por_mes": 42.3
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 601718.64,
+    "despesas": 396665.58,
+    "equipe": 0.0,
+    "ganha_por_mes": 54701.69,
+    "despesas_por_mes": 33055.47,
+    "custo_dele_por_mes": 87757.16,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 66000.0,
+     "salario": 481736.12,
+     "viagens_oficiais": 396665.58
+    },
+    "salarios_minimos_ganha_por_mes": 38.7
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 704258.19,
+    "despesas": 242821.65,
+    "equipe": 0.0,
+    "ganha_por_mes": 58688.18,
+    "despesas_por_mes": 20235.14,
+    "custo_dele_por_mes": 78923.32,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 91505.39,
+     "salario": 554036.61,
+     "viagens_oficiais": 242821.65
+    },
+    "salarios_minimos_ganha_por_mes": 38.7
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 162033.57,
+    "despesas": 75499.43,
+    "equipe": 0.0,
+    "ganha_por_mes": 54011.19,
+    "despesas_por_mes": 25166.48,
+    "custo_dele_por_mes": 79177.67,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 19410.0,
+     "salario": 139098.57,
+     "viagens_oficiais": 75499.43
+    },
+    "salarios_minimos_ganha_por_mes": 33.3
+   }
+  }
+ },
+ "exe-1158715": {
+  "legislatura": {
+   "meses_com_salario": 3,
+   "meses_com_despesas": 3,
+   "meses_com_equipe": 0,
+   "ganha": 121811.56,
+   "despesas": 10983.88,
+   "equipe": 0.0,
+   "ganha_por_mes": 40603.85,
+   "despesas_por_mes": 3661.29,
+   "custo_dele_por_mes": 44265.15,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 1574.0,
+    "salario": 120237.56,
+    "viagens_oficiais": 10983.88
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 121811.56,
+    "despesas": 10983.88,
+    "equipe": 0.0,
+    "ganha_por_mes": 40603.85,
+    "despesas_por_mes": 3661.29,
+    "custo_dele_por_mes": 44265.15,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 1574.0,
+     "salario": 120237.56,
+     "viagens_oficiais": 10983.88
+    },
+    "salarios_minimos_ganha_por_mes": 30.8
+   }
+  }
+ },
+ "exe-2318094": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 24,
+   "meses_com_equipe": 0,
+   "ganha": 1912779.86,
+   "despesas": 284265.65,
+   "equipe": 0.0,
+   "ganha_por_mes": 50336.31,
+   "despesas_por_mes": 11844.4,
+   "custo_dele_por_mes": 62180.71,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 36496.18,
+    "decimo_terceiro": 141325.08,
+    "outros_rendimentos": 45580.28,
+    "salario": 1689378.32,
+    "viagens_oficiais": 284265.65
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 362671.72,
+    "despesas": 6533.01,
+    "equipe": 0.0,
+    "ganha_por_mes": 45333.96,
+    "despesas_por_mes": 1633.25,
+    "custo_dele_por_mes": 46967.22,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 5862.18,
+     "decimo_terceiro": 27767.28,
+     "salario": 329042.26,
+     "viagens_oficiais": 6533.01
+    },
+    "salarios_minimos_ganha_por_mes": 34.3
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 550388.14,
+    "despesas": 74300.74,
+    "equipe": 0.0,
+    "ganha_por_mes": 50035.29,
+    "despesas_por_mes": 7430.07,
+    "custo_dele_por_mes": 57465.36,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 14669.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 74300.74
+    },
+    "salarios_minimos_ganha_por_mes": 35.4
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 9,
+    "meses_com_equipe": 0,
+    "ganha": 628208.19,
+    "despesas": 167438.7,
+    "equipe": 0.0,
+    "ganha_por_mes": 52350.68,
+    "despesas_por_mes": 18604.3,
+    "custo_dele_por_mes": 70954.98,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 15455.39,
+     "salario": 554036.61,
+     "viagens_oficiais": 167438.7
+    },
+    "salarios_minimos_ganha_por_mes": 34.5
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 371511.81,
+    "despesas": 35993.2,
+    "equipe": 0.0,
+    "ganha_por_mes": 53073.12,
+    "despesas_por_mes": 35993.2,
+    "custo_dele_por_mes": 89066.32,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 15455.39,
+     "salario": 324563.33,
+     "viagens_oficiais": 35993.2
+    },
+    "salarios_minimos_ganha_por_mes": 32.7
+   }
+  }
+ },
+ "exe-3659914": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 0,
+   "meses_com_equipe": 0,
+   "ganha": 2492977.96,
+   "despesas": 0.0,
+   "equipe": 0.0,
+   "ganha_por_mes": 60804.34,
+   "despesas_por_mes": null,
+   "custo_dele_por_mes": 60804.34,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 43333.54,
+    "decimo_terceiro": 155208.72,
+    "jetons": 68816.88,
+    "outros_rendimentos": 411837.84,
+    "salario": 1813780.98
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 590998.2,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 53727.11,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 53727.11,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 7915.52,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 87986.84,
+     "salario": 453444.92
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 636301.49,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 57845.59,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 57845.59,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 11602.73,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 98954.12,
+     "salario": 481736.12
+    },
+    "salarios_minimos_ganha_por_mes": 41.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 748367.65,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 62363.97,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 62363.97,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 14289.56,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 133675.29,
+     "salario": 554036.61
+    },
+    "salarios_minimos_ganha_por_mes": 41.1
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 517310.62,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 73901.52,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 73901.52,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9525.73,
+     "decimo_terceiro": 23183.09,
+     "jetons": 68816.88,
+     "outros_rendimentos": 91221.59,
+     "salario": 324563.33
+    },
+    "salarios_minimos_ganha_por_mes": 45.6
+   }
+  }
+ },
+ "exe-2104535": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 34,
+   "meses_com_equipe": 0,
+   "ganha": 1910711.3,
+   "despesas": 867162.28,
+   "equipe": 0.0,
+   "ganha_por_mes": 50281.88,
+   "despesas_por_mes": 25504.77,
+   "custo_dele_por_mes": 75786.65,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 29872.92,
+    "decimo_terceiro": 3274.44,
+    "outros_rendimentos": 205239.2,
+    "salario": 1672324.74,
+    "viagens_oficiais": 867162.28
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 502875.28,
+    "despesas": 215397.85,
+    "equipe": 0.0,
+    "ganha_por_mes": 45715.93,
+    "despesas_por_mes": 19581.62,
+    "custo_dele_por_mes": 65297.56,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4365.92,
+     "decimo_terceiro": 3274.44,
+     "outros_rendimentos": 41790.0,
+     "salario": 453444.92,
+     "viagens_oficiais": 215397.85
+    },
+    "salarios_minimos_ganha_por_mes": 34.6
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 603696.64,
+    "despesas": 285232.18,
+    "equipe": 0.0,
+    "ganha_por_mes": 50308.05,
+    "despesas_por_mes": 28523.22,
+    "custo_dele_por_mes": 78831.27,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9632.0,
+     "outros_rendimentos": 68320.0,
+     "salario": 525744.64,
+     "viagens_oficiais": 285232.18
+    },
+    "salarios_minimos_ganha_por_mes": 35.6
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 640639.41,
+    "despesas": 309875.16,
+    "equipe": 0.0,
+    "ganha_por_mes": 53386.62,
+    "despesas_por_mes": 28170.47,
+    "custo_dele_por_mes": 81557.09,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "outros_rendimentos": 74252.8,
+     "salario": 554036.61,
+     "viagens_oficiais": 309875.16
+    },
+    "salarios_minimos_ganha_por_mes": 35.2
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 163499.97,
+    "despesas": 56657.09,
+    "equipe": 0.0,
+    "ganha_por_mes": 54499.99,
+    "despesas_por_mes": 28328.54,
+    "custo_dele_por_mes": 82828.54,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 20876.4,
+     "salario": 139098.57,
+     "viagens_oficiais": 56657.09
+    },
+    "salarios_minimos_ganha_por_mes": 33.6
+   }
+  }
+ },
+ "exe-404488": {
+  "legislatura": {
+   "meses_com_salario": 38,
+   "meses_com_despesas": 40,
+   "meses_com_equipe": 0,
+   "ganha": 2356662.69,
+   "despesas": 3262739.48,
+   "equipe": 0.0,
+   "ganha_por_mes": 62017.44,
+   "despesas_por_mes": 81568.49,
+   "custo_dele_por_mes": 143585.93,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 34472.0,
+    "decimo_terceiro": 181241.8,
+    "outros_rendimentos": 466266.25,
+    "salario": 1674682.64,
+    "viagens_oficiais": 3262739.48
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 658302.21,
+    "despesas": 1326761.29,
+    "equipe": 0.0,
+    "ganha_por_mes": 59845.66,
+    "despesas_por_mes": 120614.66,
+    "custo_dele_por_mes": 180460.32,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 67033.05,
+     "outros_rendimentos": 130986.13,
+     "salario": 453445.03,
+     "viagens_oficiais": 1326761.29
+    },
+    "salarios_minimos_ganha_por_mes": 45.3
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 689636.23,
+    "despesas": 826462.82,
+    "equipe": 0.0,
+    "ganha_por_mes": 62694.2,
+    "despesas_por_mes": 75132.98,
+    "custo_dele_por_mes": 137827.19,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 48523.32,
+     "outros_rendimentos": 149402.68,
+     "salario": 481736.23,
+     "viagens_oficiais": 826462.82
+    },
+    "salarios_minimos_ganha_por_mes": 44.4
+   },
+   "2025": {
+    "meses_com_salario": 9,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 602013.1,
+    "despesas": 772506.48,
+    "equipe": 0.0,
+    "ganha_por_mes": 66890.34,
+    "despesas_por_mes": 64375.54,
+    "custo_dele_por_mes": 131265.88,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9350.0,
+     "decimo_terceiro": 42502.34,
+     "outros_rendimentos": 135222.71,
+     "salario": 414938.05,
+     "viagens_oficiais": 772506.48
+    },
+    "salarios_minimos_ganha_por_mes": 44.1
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 406711.15,
+    "despesas": 337008.89,
+    "equipe": 0.0,
+    "ganha_por_mes": 58101.59,
+    "despesas_por_mes": 56168.15,
+    "custo_dele_por_mes": 114269.74,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 50654.73,
+     "salario": 324563.33,
+     "viagens_oficiais": 337008.89
+    },
+    "salarios_minimos_ganha_por_mes": 35.8
+   }
+  }
+ },
+ "exe-2009207": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 237349.61,
+   "despesas": 20888.55,
+   "equipe": 0.0,
+   "ganha_por_mes": 59337.4,
+   "despesas_por_mes": 5222.14,
+   "custo_dele_por_mes": 64559.54,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 6246.68,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 22936.64,
+    "salario": 184983.2,
+    "viagens_oficiais": 20888.55
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 237349.61,
+    "despesas": 20888.55,
+    "equipe": 0.0,
+    "ganha_por_mes": 59337.4,
+    "despesas_por_mes": 5222.14,
+    "custo_dele_por_mes": 64559.54,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6246.68,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 22936.64,
+     "salario": 184983.2,
+     "viagens_oficiais": 20888.55
+    },
+    "salarios_minimos_ganha_por_mes": 36.6
+   }
+  }
+ },
+ "exe-1725847": {
+  "legislatura": {
+   "meses_com_salario": 24,
+   "meses_com_despesas": 25,
+   "meses_com_equipe": 0,
+   "ganha": 1485086.22,
+   "despesas": 1080193.61,
+   "equipe": 0.0,
+   "ganha_por_mes": 61878.59,
+   "despesas_por_mes": 43207.74,
+   "custo_dele_por_mes": 105086.34,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 22131.62,
+    "decimo_terceiro": 155464.76,
+    "outros_rendimentos": 281933.74,
+    "salario": 1025556.1,
+    "viagens_oficiais": 1080193.61
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 676061.53,
+    "despesas": 551987.4,
+    "equipe": 0.0,
+    "ganha_por_mes": 61460.14,
+    "despesas_por_mes": 50180.67,
+    "custo_dele_por_mes": 111640.81,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8205.63,
+     "decimo_terceiro": 87114.29,
+     "outros_rendimentos": 127296.58,
+     "salario": 453445.03,
+     "viagens_oficiais": 551987.4
+    },
+    "salarios_minimos_ganha_por_mes": 46.6
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 695577.23,
+    "despesas": 490188.05,
+    "equipe": 0.0,
+    "ganha_por_mes": 63234.29,
+    "despesas_por_mes": 40849.0,
+    "custo_dele_por_mes": 104083.3,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 11602.73,
+     "decimo_terceiro": 68350.47,
+     "outros_rendimentos": 133887.7,
+     "salario": 481736.33,
+     "viagens_oficiais": 490188.05
+    },
+    "salarios_minimos_ganha_por_mes": 44.8
+   },
+   "2025": {
+    "meses_com_salario": 2,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 113447.46,
+    "despesas": 38018.16,
+    "equipe": 0.0,
+    "ganha_por_mes": 56723.73,
+    "despesas_por_mes": 19009.08,
+    "custo_dele_por_mes": 75732.81,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 2323.26,
+     "outros_rendimentos": 20749.46,
+     "salario": 90374.74,
+     "viagens_oficiais": 38018.16
+    },
+    "salarios_minimos_ganha_por_mes": 37.4
+   }
+  }
+ },
+ "exe-3699144": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 218174.61,
+   "despesas": 88485.23,
+   "equipe": 0.0,
+   "ganha_por_mes": 54543.65,
+   "despesas_por_mes": 22121.31,
+   "custo_dele_por_mes": 76664.96,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 8031.08,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 1495.68,
+    "salario": 185464.76,
+    "viagens_oficiais": 88485.23
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 218174.61,
+    "despesas": 88485.23,
+    "equipe": 0.0,
+    "ganha_por_mes": 54543.65,
+    "despesas_por_mes": 22121.31,
+    "custo_dele_por_mes": 76664.96,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8031.08,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 1495.68,
+     "salario": 185464.76,
+     "viagens_oficiais": 88485.23
+    },
+    "salarios_minimos_ganha_por_mes": 33.6
+   }
+  }
+ },
+ "exe-3317179": {
+  "legislatura": {
+   "meses_com_salario": 3,
+   "meses_com_despesas": 3,
+   "meses_com_equipe": 0,
+   "ganha": 200271.64,
+   "despesas": 51494.66,
+   "equipe": 0.0,
+   "ganha_por_mes": 66757.21,
+   "despesas_por_mes": 17164.89,
+   "custo_dele_por_mes": 83922.1,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 5147.27,
+    "decimo_terceiro": 15455.39,
+    "outros_rendimentos": 40570.41,
+    "salario": 139098.57,
+    "viagens_oficiais": 51494.66
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 200271.64,
+    "despesas": 51494.66,
+    "equipe": 0.0,
+    "ganha_por_mes": 66757.21,
+    "despesas_por_mes": 17164.89,
+    "custo_dele_por_mes": 83922.1,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 5147.27,
+     "decimo_terceiro": 15455.39,
+     "outros_rendimentos": 40570.41,
+     "salario": 139098.57,
+     "viagens_oficiais": 51494.66
+    },
+    "salarios_minimos_ganha_por_mes": 41.2
+   }
+  }
+ },
+ "exe-1017321": {
+  "legislatura": {
+   "meses_com_salario": 23,
+   "meses_com_despesas": 21,
+   "meses_com_equipe": 0,
+   "ganha": 998224.99,
+   "despesas": 193134.31,
+   "equipe": 0.0,
+   "ganha_por_mes": 43401.09,
+   "despesas_por_mes": 9196.87,
+   "custo_dele_por_mes": 52597.96,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4365.92,
+    "outros_rendimentos": 14669.51,
+    "salario": 979189.56,
+    "viagens_oficiais": 193134.31
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 457810.84,
+    "despesas": 123435.72,
+    "equipe": 0.0,
+    "ganha_por_mes": 41619.17,
+    "despesas_por_mes": 11221.43,
+    "custo_dele_por_mes": 52840.6,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4365.92,
+     "salario": 453444.92,
+     "viagens_oficiais": 123435.72
+    },
+    "salarios_minimos_ganha_por_mes": 31.5
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 540414.15,
+    "despesas": 69698.59,
+    "equipe": 0.0,
+    "ganha_por_mes": 45034.51,
+    "despesas_por_mes": 6969.86,
+    "custo_dele_por_mes": 52004.37,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "outros_rendimentos": 14669.51,
+     "salario": 525744.64,
+     "viagens_oficiais": 69698.59
+    },
+    "salarios_minimos_ganha_por_mes": 31.9
+   }
+  }
+ },
+ "exe-3660362": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 2,
+   "meses_com_equipe": 0,
+   "ganha": 231528.53,
+   "despesas": 22732.41,
+   "equipe": 0.0,
+   "ganha_por_mes": 57882.13,
+   "despesas_por_mes": 11366.2,
+   "custo_dele_por_mes": 69248.34,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 18095.68,
+    "salario": 185464.76,
+    "viagens_oficiais": 22732.41
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 2,
+    "meses_com_equipe": 0,
+    "ganha": 231528.53,
+    "despesas": 22732.41,
+    "equipe": 0.0,
+    "ganha_por_mes": 57882.13,
+    "despesas_por_mes": 11366.2,
+    "custo_dele_por_mes": 69248.34,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 18095.68,
+     "salario": 185464.76,
+     "viagens_oficiais": 22732.41
+    },
+    "salarios_minimos_ganha_por_mes": 35.7
+   }
+  }
+ },
+ "exe-1096103": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 214928.53,
+   "despesas": 140888.71,
+   "equipe": 0.0,
+   "ganha_por_mes": 53732.13,
+   "despesas_por_mes": 35222.18,
+   "custo_dele_por_mes": 88954.31,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 1495.68,
+    "salario": 185464.76,
+    "viagens_oficiais": 140888.71
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 214928.53,
+    "despesas": 140888.71,
+    "equipe": 0.0,
+    "ganha_por_mes": 53732.13,
+    "despesas_por_mes": 35222.18,
+    "custo_dele_por_mes": 88954.31,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 1495.68,
+     "salario": 185464.76,
+     "viagens_oficiais": 140888.71
+    },
+    "salarios_minimos_ganha_por_mes": 33.1
+   }
+  }
+ },
+ "exe-2511344": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 35,
+   "meses_com_equipe": 0,
+   "ganha": 1842198.35,
+   "despesas": 753352.3,
+   "equipe": 0.0,
+   "ganha_por_mes": 49789.14,
+   "despesas_por_mes": 21524.35,
+   "custo_dele_por_mes": 71313.5,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 32687.0,
+    "decimo_terceiro": 132025.63,
+    "outros_rendimentos": 49169.5,
+    "salario": 1628316.22,
+    "viagens_oficiais": 753352.3
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 501933.84,
+    "despesas": 76776.87,
+    "equipe": 0.0,
+    "ganha_por_mes": 45630.35,
+    "despesas_por_mes": 9597.11,
+    "custo_dele_por_mes": 55227.46,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "salario": 453444.92,
+     "viagens_oficiais": 76776.87
+    },
+    "salarios_minimos_ganha_por_mes": 34.6
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 550388.14,
+    "despesas": 315695.31,
+    "equipe": 0.0,
+    "ganha_por_mes": 50035.29,
+    "despesas_por_mes": 26307.94,
+    "custo_dele_por_mes": 76343.23,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 14669.5,
+     "salario": 481736.12,
+     "viagens_oficiais": 315695.31
+    },
+    "salarios_minimos_ganha_por_mes": 35.4
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 612752.8,
+    "despesas": 331616.02,
+    "equipe": 0.0,
+    "ganha_por_mes": 51062.73,
+    "despesas_por_mes": 27634.67,
+    "custo_dele_por_mes": 78697.4,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "salario": 554036.61,
+     "viagens_oficiais": 331616.02
+    },
+    "salarios_minimos_ganha_por_mes": 33.6
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 177123.57,
+    "despesas": 29264.1,
+    "equipe": 0.0,
+    "ganha_por_mes": 59041.19,
+    "despesas_por_mes": 9754.7,
+    "custo_dele_por_mes": 68795.89,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 34500.0,
+     "salario": 139098.57,
+     "viagens_oficiais": 29264.1
+    },
+    "salarios_minimos_ganha_por_mes": 36.4
+   }
+  }
+ },
+ "exe-4000583": {
+  "legislatura": {
+   "meses_com_salario": 19,
+   "meses_com_despesas": 19,
+   "meses_com_equipe": 0,
+   "ganha": 1147431.57,
+   "despesas": 301386.88,
+   "equipe": 0.0,
+   "ganha_por_mes": 60391.14,
+   "despesas_por_mes": 15862.47,
+   "custo_dele_por_mes": 76253.6,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 21296.36,
+    "decimo_terceiro": 69549.28,
+    "outros_rendimentos": 197056.35,
+    "salario": 859529.58,
+    "viagens_oficiais": 301386.88
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 721825.85,
+    "despesas": 175571.17,
+    "equipe": 0.0,
+    "ganha_por_mes": 60152.15,
+    "despesas_por_mes": 14630.93,
+    "custo_dele_por_mes": 74783.09,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12986.36,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 127507.05,
+     "salario": 534966.25,
+     "viagens_oficiais": 175571.17
+    },
+    "salarios_minimos_ganha_por_mes": 39.6
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 425605.72,
+    "despesas": 125815.71,
+    "equipe": 0.0,
+    "ganha_por_mes": 60800.82,
+    "despesas_por_mes": 17973.67,
+    "custo_dele_por_mes": 78774.49,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 69549.3,
+     "salario": 324563.33,
+     "viagens_oficiais": 125815.71
+    },
+    "salarios_minimos_ganha_por_mes": 37.5
+   }
+  }
+ },
+ "exe-905489": {
+  "legislatura": {
+   "meses_com_salario": 19,
+   "meses_com_despesas": 19,
+   "meses_com_equipe": 0,
+   "ganha": 1035780.56,
+   "despesas": 629614.16,
+   "equipe": 0.0,
+   "ganha_por_mes": 54514.77,
+   "despesas_por_mes": 33137.59,
+   "custo_dele_por_mes": 87652.35,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 16743.4,
+    "decimo_terceiro": 63655.18,
+    "outros_rendimentos": 152226.5,
+    "salario": 803155.48,
+    "viagens_oficiais": 629614.16
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 579490.84,
+    "despesas": 323537.94,
+    "equipe": 0.0,
+    "ganha_por_mes": 52680.99,
+    "despesas_por_mes": 29412.54,
+    "custo_dele_por_mes": 82093.53,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 77557.0,
+     "salario": 453444.92,
+     "viagens_oficiais": 323537.94
+    },
+    "salarios_minimos_ganha_por_mes": 39.9
+   },
+   "2024": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 456289.72,
+    "despesas": 306076.22,
+    "equipe": 0.0,
+    "ganha_por_mes": 57036.22,
+    "despesas_por_mes": 38259.53,
+    "custo_dele_por_mes": 95295.74,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9905.4,
+     "decimo_terceiro": 22004.26,
+     "outros_rendimentos": 74669.5,
+     "salario": 349710.56,
+     "viagens_oficiais": 306076.22
+    },
+    "salarios_minimos_ganha_por_mes": 40.4
+   }
+  }
+ },
+ "exe-1152749": {
+  "legislatura": {
+   "meses_com_salario": 30,
+   "meses_com_despesas": 30,
+   "meses_com_equipe": 0,
+   "ganha": 1343832.58,
+   "despesas": 884031.52,
+   "equipe": 0.0,
+   "ganha_por_mes": 44794.42,
+   "despesas_por_mes": 29467.72,
+   "custo_dele_por_mes": 74262.14,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "salario": 1343832.58,
+    "viagens_oficiais": 884031.52
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 124952.76,
+    "despesas": 151645.61,
+    "equipe": 0.0,
+    "ganha_por_mes": 41650.92,
+    "despesas_por_mes": 50548.54,
+    "custo_dele_por_mes": 92199.46,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 124952.76,
+     "viagens_oficiais": 151645.61
+    },
+    "salarios_minimos_ganha_por_mes": 31.6
+   },
+   "2024": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 525744.64,
+    "despesas": 302857.43,
+    "equipe": 0.0,
+    "ganha_por_mes": 43812.05,
+    "despesas_por_mes": 25238.12,
+    "custo_dele_por_mes": 69050.17,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 525744.64,
+     "viagens_oficiais": 302857.43
+    },
+    "salarios_minimos_ganha_por_mes": 31.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 554036.61,
+    "despesas": 366464.87,
+    "equipe": 0.0,
+    "ganha_por_mes": 46169.72,
+    "despesas_por_mes": 30538.74,
+    "custo_dele_por_mes": 76708.46,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 554036.61,
+     "viagens_oficiais": 366464.87
+    },
+    "salarios_minimos_ganha_por_mes": 30.4
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 3,
+    "meses_com_equipe": 0,
+    "ganha": 139098.57,
+    "despesas": 63063.61,
+    "equipe": 0.0,
+    "ganha_por_mes": 46366.19,
+    "despesas_por_mes": 21021.2,
+    "custo_dele_por_mes": 67387.39,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "salario": 139098.57,
+     "viagens_oficiais": 63063.61
+    },
+    "salarios_minimos_ganha_por_mes": 28.6
+   }
+  }
+ },
+ "exe-634301": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 0,
+   "meses_com_equipe": 0,
+   "ganha": 2178629.04,
+   "despesas": 0.0,
+   "equipe": 0.0,
+   "ganha_por_mes": 58881.87,
+   "despesas_por_mes": null,
+   "custo_dele_por_mes": 58881.87,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 32687.0,
+    "decimo_terceiro": 132025.63,
+    "outros_rendimentos": 385600.19,
+    "salario": 1628316.22
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 591183.62,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 53743.97,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 53743.97,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 89249.78,
+     "salario": 453444.92
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 643192.3,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 58472.03,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 58472.03,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 107473.66,
+     "salario": 481736.12
+    },
+    "salarios_minimos_ganha_por_mes": 41.4
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 766854.9,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 63904.58,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 63904.58,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 154102.1,
+     "salario": 554036.61
+    },
+    "salarios_minimos_ganha_por_mes": 42.1
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 0,
+    "meses_com_equipe": 0,
+    "ganha": 177398.22,
+    "despesas": 0.0,
+    "equipe": 0.0,
+    "ganha_por_mes": 59132.74,
+    "despesas_por_mes": null,
+    "custo_dele_por_mes": 59132.74,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 34774.65,
+     "salario": 139098.57
+    },
+    "salarios_minimos_ganha_por_mes": 36.5
+   }
+  }
+ },
+ "exe-189396": {
+  "legislatura": {
+   "meses_com_salario": 37,
+   "meses_com_despesas": 34,
+   "meses_com_equipe": 0,
+   "ganha": 2109976.53,
+   "despesas": 1000744.6,
+   "equipe": 0.0,
+   "ganha_por_mes": 57026.39,
+   "despesas_por_mes": 29433.66,
+   "custo_dele_por_mes": 86460.06,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 37510.92,
+    "decimo_terceiro": 128554.72,
+    "outros_rendimentos": 316904.45,
+    "salario": 1627006.44,
+    "viagens_oficiais": 1000744.6
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 10,
+    "meses_com_equipe": 0,
+    "ganha": 581971.11,
+    "despesas": 246593.2,
+    "equipe": 0.0,
+    "ganha_por_mes": 52906.46,
+    "despesas_por_mes": 24659.32,
+    "custo_dele_por_mes": 77565.78,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 11661.92,
+     "decimo_terceiro": 38180.01,
+     "outros_rendimentos": 79994.04,
+     "salario": 452135.14,
+     "viagens_oficiais": 246593.2
+    },
+    "salarios_minimos_ganha_por_mes": 40.1
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 620789.12,
+    "despesas": 453193.9,
+    "equipe": 0.0,
+    "ganha_por_mes": 56435.37,
+    "despesas_por_mes": 37766.16,
+    "custo_dele_por_mes": 94201.53,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9974.0,
+     "decimo_terceiro": 44008.52,
+     "outros_rendimentos": 85070.48,
+     "salario": 481736.12,
+     "viagens_oficiais": 453193.9
+    },
+    "salarios_minimos_ganha_por_mes": 40.0
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 733826.21,
+    "despesas": 295401.81,
+    "equipe": 0.0,
+    "ganha_por_mes": 61152.18,
+    "despesas_por_mes": 26854.71,
+    "custo_dele_por_mes": 88006.89,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 12350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 121073.41,
+     "salario": 554036.61,
+     "viagens_oficiais": 295401.81
+    },
+    "salarios_minimos_ganha_por_mes": 40.3
+   },
+   "2026": {
+    "meses_com_salario": 3,
+    "meses_com_despesas": 1,
+    "meses_com_equipe": 0,
+    "ganha": 173390.09,
+    "despesas": 5555.69,
+    "equipe": 0.0,
+    "ganha_por_mes": 57796.7,
+    "despesas_por_mes": 5555.69,
+    "custo_dele_por_mes": 63352.39,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 3525.0,
+     "outros_rendimentos": 30766.52,
+     "salario": 139098.57,
+     "viagens_oficiais": 5555.69
+    },
+    "salarios_minimos_ganha_por_mes": 35.7
+   }
+  }
+ },
+ "exe-3854511": {
+  "legislatura": {
+   "meses_com_salario": 4,
+   "meses_com_despesas": 4,
+   "meses_com_equipe": 0,
+   "ganha": 266018.21,
+   "despesas": 53738.06,
+   "equipe": 0.0,
+   "ganha_por_mes": 66504.55,
+   "despesas_por_mes": 13434.52,
+   "custo_dele_por_mes": 79939.07,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 4785.0,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 52585.36,
+    "salario": 185464.76,
+    "viagens_oficiais": 53738.06
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 4,
+    "meses_com_despesas": 4,
+    "meses_com_equipe": 0,
+    "ganha": 266018.21,
+    "despesas": 53738.06,
+    "equipe": 0.0,
+    "ganha_por_mes": 66504.55,
+    "despesas_por_mes": 13434.52,
+    "custo_dele_por_mes": 79939.07,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 4785.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 52585.36,
+     "salario": 185464.76,
+     "viagens_oficiais": 53738.06
+    },
+    "salarios_minimos_ganha_por_mes": 41.0
+   }
+  }
+ },
+ "exe-1078915": {
+  "legislatura": {
+   "meses_com_salario": 41,
+   "meses_com_despesas": 39,
+   "meses_com_equipe": 0,
+   "ganha": 2467375.78,
+   "despesas": 1180431.29,
+   "equipe": 0.0,
+   "ganha_por_mes": 60179.9,
+   "despesas_por_mes": 30267.47,
+   "custo_dele_por_mes": 90447.37,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 40574.83,
+    "decimo_terceiro": 199217.27,
+    "outros_rendimentos": 413802.7,
+    "salario": 1813780.98,
+    "viagens_oficiais": 1180431.29
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2023": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 591183.3,
+    "despesas": 373190.96,
+    "equipe": 0.0,
+    "ganha_por_mes": 53743.94,
+    "despesas_por_mes": 33926.45,
+    "custo_dele_por_mes": 87670.39,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 6838.0,
+     "decimo_terceiro": 41650.92,
+     "outros_rendimentos": 89249.46,
+     "salario": 453444.92,
+     "viagens_oficiais": 373190.96
+    },
+    "salarios_minimos_ganha_por_mes": 40.7
+   },
+   "2024": {
+    "meses_com_salario": 11,
+    "meses_com_despesas": 12,
+    "meses_com_equipe": 0,
+    "ganha": 655850.47,
+    "despesas": 335420.77,
+    "equipe": 0.0,
+    "ganha_por_mes": 59622.77,
+    "despesas_por_mes": 27951.73,
+    "custo_dele_por_mes": 87574.5,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 10326.25,
+     "decimo_terceiro": 64833.98,
+     "outros_rendimentos": 98954.12,
+     "salario": 481736.12,
+     "viagens_oficiais": 335420.77
+    },
+    "salarios_minimos_ganha_por_mes": 42.2
+   },
+   "2025": {
+    "meses_com_salario": 12,
+    "meses_com_despesas": 11,
+    "meses_com_equipe": 0,
+    "ganha": 807137.3,
+    "despesas": 341308.23,
+    "equipe": 0.0,
+    "ganha_por_mes": 67261.44,
+    "despesas_por_mes": 31028.02,
+    "custo_dele_por_mes": 98289.46,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 14040.8,
+     "decimo_terceiro": 92732.37,
+     "outros_rendimentos": 146327.52,
+     "salario": 554036.61,
+     "viagens_oficiais": 341308.23
+    },
+    "salarios_minimos_ganha_por_mes": 44.3
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 5,
+    "meses_com_equipe": 0,
+    "ganha": 413204.71,
+    "despesas": 130511.33,
+    "equipe": 0.0,
+    "ganha_por_mes": 59029.24,
+    "despesas_por_mes": 26102.27,
+    "custo_dele_por_mes": 85131.51,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 9369.78,
+     "outros_rendimentos": 79271.6,
+     "salario": 324563.33,
+     "viagens_oficiais": 130511.33
+    },
+    "salarios_minimos_ganha_por_mes": 36.4
+   }
+  }
+ },
+ "exe-2961013": {
+  "legislatura": {
+   "meses_com_salario": 7,
+   "meses_com_despesas": 6,
+   "meses_com_equipe": 0,
+   "ganha": 306275.37,
+   "despesas": 159377.06,
+   "equipe": 0.0,
+   "ganha_por_mes": 43753.62,
+   "despesas_por_mes": 26562.84,
+   "custo_dele_por_mes": 70316.47,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 8950.9,
+    "decimo_terceiro": 23183.09,
+    "outros_rendimentos": 63250.0,
+    "salario": 210891.38,
+    "viagens_oficiais": 159377.06
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 6,
+    "meses_com_equipe": 0,
+    "ganha": 306275.37,
+    "despesas": 159377.06,
+    "equipe": 0.0,
+    "ganha_por_mes": 43753.62,
+    "despesas_por_mes": 26562.84,
+    "custo_dele_por_mes": 70316.47,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8950.9,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 63250.0,
+     "salario": 210891.38,
+     "viagens_oficiais": 159377.06
+    },
+    "salarios_minimos_ganha_por_mes": 27.0
+   }
+  }
+ },
+ "exe-526346": {
+  "legislatura": {
+   "meses_com_salario": 15,
+   "meses_com_despesas": 15,
+   "meses_com_equipe": 0,
+   "ganha": 947805.66,
+   "despesas": 505002.67,
+   "equipe": 0.0,
+   "ganha_por_mes": 63187.04,
+   "despesas_por_mes": 33666.84,
+   "custo_dele_por_mes": 96853.89,
+   "equipe_por_mes": null,
+   "pessoas_na_equipe_media": null,
+   "media_por_pessoa_por_mes": null,
+   "categorias": {
+    "ajuda_de_custo": 16660.0,
+    "decimo_terceiro": 69549.28,
+    "outros_rendimentos": 166830.63,
+    "salario": 694765.75,
+    "viagens_oficiais": 505002.67
+   },
+   "cota_por_tipo": {}
+  },
+  "por_ano": {
+   "2025": {
+    "meses_com_salario": 8,
+    "meses_com_despesas": 8,
+    "meses_com_equipe": 0,
+    "ganha": 506744.55,
+    "despesas": 280084.82,
+    "equipe": 0.0,
+    "ganha_por_mes": 63343.07,
+    "despesas_por_mes": 35010.6,
+    "custo_dele_por_mes": 98353.67,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8350.0,
+     "decimo_terceiro": 46366.19,
+     "outros_rendimentos": 81825.94,
+     "salario": 370202.42,
+     "viagens_oficiais": 280084.82
+    },
+    "salarios_minimos_ganha_por_mes": 41.7
+   },
+   "2026": {
+    "meses_com_salario": 7,
+    "meses_com_despesas": 7,
+    "meses_com_equipe": 0,
+    "ganha": 441061.11,
+    "despesas": 224917.85,
+    "equipe": 0.0,
+    "ganha_por_mes": 63008.73,
+    "despesas_por_mes": 32131.12,
+    "custo_dele_por_mes": 95139.85,
+    "equipe_por_mes": null,
+    "pessoas_na_equipe_media": null,
+    "media_por_pessoa_por_mes": null,
+    "categorias": {
+     "ajuda_de_custo": 8310.0,
+     "decimo_terceiro": 23183.09,
+     "outros_rendimentos": 85004.69,
+     "salario": 324563.33,
+     "viagens_oficiais": 224917.85
+    },
+    "salarios_minimos_ganha_por_mes": 38.9
+   }
+  }
  }
 }

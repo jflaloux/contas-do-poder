@@ -3,7 +3,9 @@
 Formato (chaves curtas para o arquivo ficar pequeno):
   meta: informações gerais, categorias, tipos de despesa da cota, salário mínimo, pendências
   p: lista de políticos, cada um com
-     id, k ("d" deputado / "s" senador), n (nome), nc (nome civil), g (cargo), pt (partido), uf,
+     id, k ("d" deputado / "s" senador / "e" governo federal), n (nome), nc (nome civil), g (cargo), pt (partido), uf,
+     tp (só governo: "pr" presidente, "vp" vice, "mi" ministro), rel (id do mesmo político no outro cargo, se houver),
+     q (só governo: [meses, total] recebido depois de deixar o cargo, fora das médias),
      f (foto: "fotos/{id}.webp" no próprio site, ou o endereço oficial se não baixou), x (em exercício), o (página oficial),
      per: {"2023": {m, mg, mc, me, g, c, e, pm, mp, pu, cats}, ..., "leg": {...}}
           m = meses com algum valor; mg/mc/me = meses com ganha/custa/equipe;
@@ -95,8 +97,9 @@ def executar():
     totais = lanc.groupby(["id_politico", "ano", "grupo"])["valor"].sum()
     cats = lanc.groupby(["id_politico", "ano", "categoria"])["valor"].sum()
 
-    def bloco(pid, mm, anos):
-        """Resumo de um período: meses, totais por grupo, pessoas da equipe e categorias."""
+    def bloco(pid, mm, anos, exe=False):
+        """Resumo de um período: meses, totais por grupo, pessoas da equipe e categorias.
+        Governo federal: as viagens não acontecem todo mês, então a média dos gastos usa todos os meses no cargo."""
         g = sum(totais.get((pid, a, "ganha"), 0.0) for a in anos)
         c = sum(totais.get((pid, a, "custa"), 0.0) for a in anos)
         e = sum(totais.get((pid, a, "equipe"), 0.0) for a in anos)
@@ -108,9 +111,10 @@ def executar():
             if (pid, a) in cats_idx:
                 for k, v in cats.loc[pid, a].items():
                     cat[k] = cat.get(k, 0.0) + v
+        m = int(((mm.ganha > 0) | (mm.custa > 0) | (mm.equipe > 0)).sum())
         return {
-            "m": int(((mm.ganha > 0) | (mm.custa > 0) | (mm.equipe > 0)).sum()),
-            "mg": int((mm.ganha > 0).sum()), "mc": int((mm.custa > 0).sum()), "me": int((mm.equipe > 0).sum()),
+            "m": m,
+            "mg": int((mm.ganha > 0).sum()), "mc": m if exe else int((mm.custa > 0).sum()), "me": int((mm.equipe > 0).sum()),
             "g": _r(g), "c": _r(c), "e": _r(e),
             "pm": int(com_equipe.pessoas.sum()), "mp": int(len(com_equipe)),
             "pu": int(com_pessoas.pessoas.iloc[-1]) if len(com_pessoas) else 0,
@@ -125,12 +129,13 @@ def executar():
     for p in politicos:
         pid = p["id"]
         mm = por_pol.get(pid, mensal.iloc[0:0])
+        exe = p["casa"] == "executivo"
         per = {}
         for ano in anos:
-            b = bloco(pid, mm[mm.ano == ano], [ano])
+            b = bloco(pid, mm[mm.ano == ano], [ano], exe)
             if b["m"] or b["g"] or b["c"] or b["e"]:
                 per[str(ano)] = b
-        per["leg"] = bloco(pid, mm, anos)
+        per["leg"] = bloco(pid, mm, anos, exe)
         serie = [[int(r.ano) * 100 + int(r.mes), _r(r.ganha), _r(r.custa), _r(r.equipe), int(r.pessoas), _r(r.rateado)]
                  for r in mm.sort_values(["ano", "mes"]).itertuples()]
 
@@ -143,11 +148,17 @@ def executar():
             s_ = cota_leg.loc[pid].sort_values(ascending=False).head(6)
             ct["leg"] = [[idx_tipo[d], _r(v)] for d, v in s_.items() if v >= 1]
 
-        item = {"id": pid, "k": "d" if p["casa"] == "camara" else "s", "n": p["nome"], "nc": p.get("nome_civil"),
+        item = {"id": pid, "k": {"camara": "d", "senado": "s", "executivo": "e"}[p["casa"]], "n": p["nome"], "nc": p.get("nome_civil"),
                 "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"),
                 "f": f"fotos/{pid}.webp" if (FOTOS / f"{pid}.webp").exists() else p.get("foto"),
                 "x": 1 if p.get("em_exercicio") else 0, "o": p.get("pagina_oficial"),
                 "per": per, "t": serie, "ct": ct}
+        if exe:
+            item["tp"] = {"presidente": "pr", "vice": "vp"}.get(p.get("tipo"), "mi")
+            if p.get("quarentena"):
+                item["q"] = [p["quarentena"]["meses"], _r(p["quarentena"]["total"])]
+        if p.get("relacionado"):
+            item["rel"] = p["relacionado"]
         if p["casa"] == "camara" and p.get("imovel_funcional_dias"):
             item["im"] = p["imovel_funcional_dias"]
         if p["casa"] == "senado" and p.get("imovel_funcional"):
@@ -161,6 +172,7 @@ def executar():
             "atualizado": datetime.fromisoformat(meta["gerado_em"]).strftime("%d/%m/%Y"),
             "anos": [str(a) for a in anos],
             "ultimo_mes": int(lanc[lanc.mes.notna()].eval("ano*100+mes").max()),
+            "ultimo_mes_executivo": max((p.get("ultimo_mes_publicado") or 0) for p in politicos),
             "salario_minimo": {str(k): v for k, v in meta["salario_minimo"].items()},
             "categorias": meta["categorias"],
             "rateio": meta["rateio"],

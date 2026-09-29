@@ -42,7 +42,8 @@ def executar():
     # 1. Cobertura
     rel += ["## 1. Cobertura", "",
             f"- Deputados na base: {len(deps)} (em exercício hoje: {sum(p['em_exercicio'] for p in deps)} de 513)",
-            f"- Senadores na base: {len(sens)} (em exercício hoje: {sum(p['em_exercicio'] for p in sens)} de 81)", ""]
+            f"- Senadores na base: {len(sens)} (em exercício hoje: {sum(p['em_exercicio'] for p in sens)} de 81)",
+            f"- Governo federal na base: {sum(p['casa'] == 'executivo' for p in politicos)} (presidente, vice e ministros desde 2023)", ""]
     if sum(p["em_exercicio"] for p in deps) != 513 or sum(p["em_exercicio"] for p in sens) != 81:
         problemas += 1
         rel.append("**ATENÇÃO: número de parlamentares em exercício diferente do esperado.**\n")
@@ -146,7 +147,14 @@ def executar():
     n_equipe_dep = eq[(eq.id_politico.str.startswith("dep")) & (eq.ano == ano_f) & (eq.mes == mes_f) & (eq.pessoas > 0)].id_politico.nunique()
     with open(RAIZ / "site" / "dados" / "dados.json", encoding="utf-8") as f:
         n_site = len(json.load(f)["p"])
+    # governo federal: último mês publicado pelo Portal da Transparência
+    exe = [p for p in politicos if p["casa"] == "executivo"]
+    ult_e = max((p.get("ultimo_mes_publicado") or 0) for p in exe) if exe else 0
+    no_cargo_e = [p["id"] for p in exe if ult_e in p.get("meses_no_cargo", [])]
+    com_salario_e = lanc[(lanc.casa == "exe") & (lanc.grupo == "ganha") & (lanc.ano * 100 + lanc.mes == ult_e)].id_politico.nunique()
     checagens = [
+        (f"Governo federal: no cargo em {ult_e % 100:02d}/{ult_e // 100}", len(no_cargo_e), 30),
+        (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),
         (f"Senadores com salário em {mes_f:02d}/{ano_f}", quantos("sen", "salario"), 75),

@@ -64,6 +64,10 @@ Cada número tem link para a fonte oficial.
 - [x] Guardar as fotos no próprio site (`site/fotos/`) — Claude
 - [x] Google Analytics com eventos e prévia do link (`og.png`) — Claude
 - [ ] Página própria por político para a prévia do link no WhatsApp (foto, nome, valor) — Claude
+- [x] Governo federal: presidente, vice e ministros (salário, jetons, viagens) — Claude
+- [ ] Fotos oficiais dos ministros que não são parlamentares (hoje aparecem as iniciais) — Claude
+- [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
+- [ ] TCU; governadores e prefeitos das capitais (só salário); presidentes de estatais — depois
 
 ## Fase 3 — Testes e confiabilidade
 

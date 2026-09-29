@@ -145,6 +145,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent); box-shad
 .cartao[id] { scroll-margin-top: 16px; }
 .grade-cartoes { display: grid; gap: 12px; }
 .grade-cartoes--2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
+.grade-cartoes--3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
 .grade-cartoes--4 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); }
 .ficha { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0; font-size: .92rem; }
 .ficha dt { color: var(--ink-2); }

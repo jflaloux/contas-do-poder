@@ -1,6 +1,7 @@
 # Contas do Poder
 
-Quanto ganha e quanto custa cada deputado federal e senador, com números oficiais da Câmara e do Senado.
+Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, com números oficiais
+da Câmara, do Senado e do Portal da Transparência.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me).
 
 Este repositório tem os robôs que coletam os dados oficiais, a base unificada e o site.
@@ -9,7 +10,7 @@ Este repositório tem os robôs que coletam os dados oficiais, a base unificada 
 
 ```bash
 pip3 install -r requirements.txt
-python3 coletar.py tudo          # Câmara + Senado + base unificada + fotos + arquivo do site
+python3 coletar.py tudo          # Câmara + Senado + governo federal + base unificada + fotos + arquivo do site
 python3 coletar.py conferir      # compara nossos números com os sites oficiais
 ```
 
@@ -55,11 +56,12 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 | Pasta | O que tem |
 |---|---|
 | `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
-| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `fotos.py`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `dados/portal_transparencia/` | Linhas do presidente, do vice e dos ministros tiradas dos arquivos do Portal (vai para o Git, para o robô só baixar os meses novos) |
 | `dados/cache/` | Arquivos baixados. Pode apagar a qualquer momento (não vai para o Git) |
 | `dados/brutos/` | Dados de cada fonte, já limpos |
 | `dados/processados/` | Base usada pelo site |
-| `dados/referencia/` | Tabelas fixas (limites da cota por estado) e suas fontes |
+| `dados/referencia/` | Tabelas fixas (limites da cota por estado; nome conhecido e sexo dos ministros em `executivo.csv`) |
 
 ## A base (`dados/processados/`)
 
@@ -94,6 +96,25 @@ Para dar para comparar, o site mostra tudo **por mês**:
 - A cota por tipo (passagens, aluguel de carros, combustível...) aparece como média por mês: o total de cada
   tipo no período dividido pelos mesmos meses da cota no contracheque, com a parte (%) de cada tipo.
   Exemplo: cota de R$ 38.920 por mês, dos quais R$ 12.798 (33%) com aluguel de carros.
+
+## Governo federal (presidente, vice e ministros)
+
+Robô `coleta/executivo.py`, com os arquivos de download do Portal da Transparência (CGU):
+
+- **Quem**: cadastro mensal de servidores (cargos "Presidente da República", "Vice-Presidente da República" e
+  "Ministro de Estado"). Só entra quem foi nomeado a partir de 01/01/2023.
+- **Vai para o bolso**: remuneração mensal (salário já com o abate-teto, 13º, férias, outras remunerações
+  eventuais e verbas indenizatórias) e **jetons** (conselhos de estatais e do Sistema S). O 13º aparece no
+  Portal como adiantamento e, no fim do ano, inteiro; contamos uma vez só.
+- **Gastos do cargo**: viagens a serviço (diárias + passagens + outros gastos − devoluções), no mês em que a
+  viagem começou. Voos da FAB e do avião presidencial não têm custo publicado.
+- **Ministro que é deputado ou senador licenciado** (ligação pelo nome civil): nos meses no cargo, entra o
+  salário pago pela Câmara ou pelo Senado. As duas páginas têm link uma para a outra.
+- **Depois de sair**: quem deixa o cargo pode receber por até 6 meses ("quarentena") e continua no cadastro.
+  Esses meses não contam como meses no cargo; o valor fica registrado à parte (`quarentena` em `politicos.json`).
+- **Educação com o Portal**: no máximo um download a cada 30 s. Se o Portal pedir verificação humana, o robô
+  para de baixar (não tenta contornar) e usa o que já tem; continua na semana seguinte.
+- O Portal publica os salários com uns 2 meses de atraso. O arquivo de dezembro de 2024 veio sem os salários.
 
 ## Compartilhamento e medição
 

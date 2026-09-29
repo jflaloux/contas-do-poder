@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-09-29T06:48:22",
+ "gerado_em": "2026-09-29T08:04:54",
  "legislatura": 57,
  "periodo": "02/2023 até hoje",
  "salario_minimo": {
@@ -33,6 +33,10 @@
    "grupo": "ganha",
    "nome": "Outros pagamentos"
   },
+  "jetons": {
+   "grupo": "ganha",
+   "nome": "Jetons (conselhos de estatais e outros)"
+  },
   "cota_parlamentar": {
    "grupo": "custa",
    "nome": "Cota parlamentar"
@@ -44,6 +48,10 @@
   "outros_gastos_mandato": {
    "grupo": "custa",
    "nome": "Outros gastos do mandato"
+  },
+  "viagens_oficiais": {
+   "grupo": "custa",
+   "nome": "Viagens oficiais (diárias e passagens)"
   },
   "assessores_gabinete": {
    "grupo": "equipe",
@@ -67,7 +75,10 @@
   "camara_cota": "https://www.camara.leg.br/cota-parlamentar/consulta-cota-parlamentar?ideDeputado={id}&dataInicio=01{ano}&dataFim=12{ano}",
   "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
   "senado_folha": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/{ano}/{mes}/csv",
-  "senado_transparencia": "https://www6g.senado.leg.br/transparencia/sen/{id}/?ano={ano}"
+  "senado_transparencia": "https://www6g.senado.leg.br/transparencia/sen/{id}/?ano={ano}",
+  "portal_remuneracao": "https://portaldatransparencia.gov.br/servidores/{id}",
+  "portal_jetons": "https://portaldatransparencia.gov.br/download-de-dados/servidores ({ano}{mes}_Honorarios_Jetons)",
+  "portal_viagens": "https://portaldatransparencia.gov.br/viagens/consulta"
  },
  "fontes": {
   "camara_api": "https://dadosabertos.camara.leg.br/swagger/api.html",
@@ -75,7 +86,8 @@
   "camara_paginas": "https://www.camara.leg.br/deputados/{id}/remuneracao e /verba-gabinete",
   "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
   "senado_legis": "https://legis.senado.leg.br/dadosabertos/docs/",
-  "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html"
+  "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
+  "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados"
  },
  "pendencias": [
   "Câmara: 13º salário e ajuda de custo dos deputados ainda não coletados (no Senado já estão).",
@@ -86,6 +98,11 @@
   "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",
   "Auxílio-moradia (Câmara) e outros gastos do mandato (Senado) são informados por ano e divididos igualmente pelos meses com salário: o valor de cada mês é aproximado. Em 2023, o total do ano pode incluir janeiro, que ainda era da legislatura anterior.",
   "Câmara: desde ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) não aparecem nos arquivos de dados abertos. Completamos com a diferença para o total mensal do site oficial, sem detalhe por tipo.",
-  "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos."
+  "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos.",
+  "Governo federal: o Portal da Transparência publica os salários com cerca de 2 meses de atraso.",
+  "Governo federal: o arquivo de salários de dezembro de 2024 do Portal veio incompleto; esse mês fica sem salário.",
+  "Governo federal: viagens em aviões da FAB e do avião presidencial não têm custo publicado; entram só diárias e passagens compradas. Por isso o presidente aparece praticamente só com o salário.",
+  "Governo federal: ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; nesses meses usamos o salário pago pela Câmara ou pelo Senado.",
+  "Governo federal: ex-ministros podem receber até 6 meses de 'quarentena' depois de sair; esses meses ainda não são separados dos meses no cargo."
  ]
 }

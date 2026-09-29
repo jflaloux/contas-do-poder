@@ -1,9 +1,10 @@
-# Conferência dos dados — 29/09/2026 06:26
+# Conferência dos dados — 29/09/2026 08:02
 
 ## 1. Cobertura
 
 - Deputados na base: 648 (em exercício hoje: 513 de 513)
 - Senadores na base: 105 (em exercício hoje: 81 de 81)
+- Governo federal na base: 71 (presidente, vice e ministros desde 2023)
 
 ## 2. Cota parlamentar da Câmara: nossa soma × página oficial do deputado
 
@@ -64,9 +65,10 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 
 ## 5. Salários mensais acima do subsídio (revisar à mão)
 
-Casos: 8. Podem ser acertos de meses anteriores; confira na página oficial.
+Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 
 - Fernando Farias — 04/2024: R$ 121,402.81
+- Celso Sabino — 08/2025: R$ 71,112.19
 - Celso Sabino — 08/2025: R$ 71,112.19
 - Efraim Filho — 12/2024: R$ 65,127.37
 - Ana Paula Lobato — 03/2024: R$ 57,666.34
@@ -74,6 +76,12 @@ Casos: 8. Podem ser acertos de meses anteriores; confira na página oficial.
 - Josenildo — 09/2025: R$ 56,559.03
 - Dorinaldo Malafaia — 06/2026: R$ 50,642.02
 - Delegado Éder Mauro — 01/2026: R$ 47,354.26
+- Fernanda Machiaveli — 06/2026: R$ 46,366.21
+- Esther Dweck — 04/2026: R$ 46,366.21
+- Esther Dweck — 05/2026: R$ 46,366.21
+- Esther Dweck — 06/2026: R$ 46,366.21
+- Esther Dweck — 07/2026: R$ 46,366.21
+- Fernanda Machiaveli — 05/2026: R$ 46,366.21
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
@@ -85,13 +93,15 @@ Casos: 8. Podem ser acertos de meses anteriores; confira na página oficial.
 
 | Checagem | Valor | Mínimo | |
 |---|---:|---:|---|
+| Governo federal: no cargo em 07/2026 | 40 | 30 | OK |
+| Governo federal: com salário em 07/2026 | 40 | 25 | OK |
 | Deputados com salário em 07/2026 | 529 | 480 | OK |
 | Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
 | Senadores com salário em 07/2026 | 82 | 75 | OK |
 | Senadores com assessores em 07/2026 | 80 | 60 | OK |
 | Cota da Câmara nos últimos 12 meses (R$ milhões) | 269 | 150 | OK |
 | Cota do Senado nos últimos 12 meses (R$ milhões) | 38 | 15 | OK |
-| Parlamentares no arquivo do site | 753 | 700 | OK |
+| Parlamentares no arquivo do site | 824 | 700 | OK |
 | Deputados com a equipe contada em 07/2026 | 513 | 450 | OK |
 
 ---

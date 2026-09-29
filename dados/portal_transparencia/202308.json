@@ -1,0 +1,767 @@
+{
+ "ano": 2023,
+ "mes": 8,
+ "pessoas": {
+  "2458750": {
+   "nome": "ALEXANDRE ROCHA SANTOS PADILHA",
+   "cpf": "***.926.798-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "SECRETARIA DE RELACOES INSTITUCIONAIS",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "688218": {
+   "nome": "ALEXANDRE SILVEIRA DE OLIVEIRA",
+   "cpf": "***.224.996-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "32000",
+     "orgao": "Ministério de Minas e Energia",
+     "uorg": "MINISTERIO DE MINAS E ENERGIA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 658.0
+   }
+  },
+  "574148": {
+   "nome": "ANA BEATRIZ MOSER",
+   "cpf": "***.684.439-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "55000",
+     "orgao": "Ministério do Desenvolvimento Social",
+     "uorg": "MINISTERIO DO ESPORTE",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "1810792": {
+   "nome": "ANDRE CARLOS ALVES DE PAULA FILHO",
+   "cpf": "***.484.854-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "13200",
+     "orgao": "MINISTERIO DA PESCA E AQUICULTURA",
+     "uorg": "MINISTERIO DA PESCA E AQUICULTURA",
+     "nomeacao": "01/02/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 49494.63,
+    "abate_teto": -7843.7,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7256.4,
+    "indenizatorias": 0.0
+   }
+  },
+  "2082680": {
+   "nome": "ANIELLE FRANCISCO DA SILVA",
+   "cpf": "***.381.567-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "81000",
+     "orgao": "Ministério da Mulher, Família e Direitos Humanos",
+     "uorg": "MINISTERIO DA IGUALDADE RACIAL",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 979.0
+   }
+  },
+  "1547434": {
+   "nome": "ANTONIO WALDEZ GOES DA SILVA",
+   "cpf": "***.175.552-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40100",
+     "orgao": "MIN DA INTEG E DO DESENV REGIONAL",
+     "uorg": "MIN DA INTEG E DO DESENV REGIONAL",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 44223.05,
+    "abate_teto": -6112.12,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7700.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "1693709": {
+   "nome": "APARECIDA GONCALVES",
+   "cpf": "***.535.871-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "81000",
+     "orgao": "Ministério da Mulher, Família e Direitos Humanos",
+     "uorg": "MINISTERIO DAS MULHERES",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 11600.0,
+    "indenizatorias": 782.33
+   }
+  },
+  "1317896": {
+   "nome": "CAMILO SOBREIRA DE SANTANA",
+   "cpf": "***.585.273-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "15000",
+     "orgao": "Ministério da Educação",
+     "uorg": "MINISTERIO DA EDUCACAO",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": null,
+   "jetons": [
+    {
+     "empresa": "SERVICO NACIONAL DE APRENDIZAGEM COMERCIAL - SENAC",
+     "valor": 21634.46
+    }
+   ]
+  },
+  "1979646": {
+   "nome": "CARLOS HENRIQUE BAQUETA FAVARO",
+   "cpf": "***.183.119-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "13000",
+     "orgao": "Ministério da Agricultura, Pecuária e Abastecimento",
+     "uorg": "MINISTERIO DA AGRICULTURA E PECUARIA",
+     "nomeacao": "02/01/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "2133228": {
+   "nome": "CARLOS ROBERTO LUPI",
+   "cpf": "***.259.097-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "33000",
+     "orgao": "MINISTERIO DO TRABALHO E PREVIDENCIA",
+     "uorg": "MINISTERIO DA PREVIDENCIA SOCIAL",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7500.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "2684170": {
+   "nome": "CELSO SABINO DE OLIVEIRA",
+   "cpf": "***.921.272-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "54000",
+     "orgao": "Ministério do Turismo",
+     "uorg": "MINISTERIO DO TURISMO",
+     "nomeacao": "14/07/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "3534935": {
+   "nome": "ESTHER DWECK",
+   "cpf": "***.525.207-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "17500",
+     "orgao": "MIN GESTAO E INOV EM SERV PUBLICOS",
+     "uorg": "MIN GESTAO E INOV EM SERV PUBLICOS",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 43799.15,
+    "abate_teto": -2148.22,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.67,
+    "indenizatorias": 658.0
+   }
+  },
+  "194827": {
+   "nome": "FERNANDO HADDAD",
+   "cpf": "***.331.178-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "17000",
+     "orgao": "Ministério da Economia",
+     "uorg": "MINISTERIO DA FAZENDA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 24990.55,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7333.68,
+    "indenizatorias": 0.0
+   }
+  },
+  "593253": {
+   "nome": "FLAVIO DINO DE CASTRO E COSTA",
+   "cpf": "***.156.313-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20000",
+     "orgao": "Ministério da Justiça e Segurança Pública",
+     "uorg": "MINIST. DA JUSTICA E SEGURANCA PUBLICA",
+     "nomeacao": "03/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "559168": {
+   "nome": "GERALDO JOSE RODRIGUES ALCKMIN FILHO",
+   "cpf": "***.149.068-**",
+   "cargos": [
+    {
+     "cargo": "vice",
+     "cod_orgao": "20102",
+     "orgao": "Vice Presidência da República",
+     "uorg": "VICE-PRESIDENCIA DA REPUBLICA",
+     "nomeacao": "01/01/2023"
+    },
+    {
+     "cargo": "ministro",
+     "cod_orgao": "17400",
+     "orgao": "MIN DESENVOLV IND COMERCIO E SERVICOS",
+     "uorg": "MIN DESENVOLV IND COMERCIO E SERVICOS",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 0.0
+   }
+  },
+  "999653": {
+   "nome": "JADER FONTENELLE BARBALHO FILHO",
+   "cpf": "***.624.102-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40200",
+     "orgao": "MINISTERIO DAS CIDADES",
+     "uorg": "MINISTERIO DAS CIDADES",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 15467.36,
+    "indenizatorias": 658.0
+   }
+  },
+  "3741863": {
+   "nome": "JORGE RODRIGO ARAUJO MESSIAS",
+   "cpf": "***.288.073-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40106",
+     "orgao": "Advocacia-Geral da União",
+     "uorg": "ADVOCACIA-GERAL DA UNIAO",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 71411.95,
+    "abate_teto": -41859.2,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 3100.88
+   }
+  },
+  "2416911": {
+   "nome": "JOSE JUSCELINO DOS SANTOS REZENDE FILHO",
+   "cpf": "***.902.113-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "41100",
+     "orgao": "MINISTERIO DAS COMUNICACOES",
+     "uorg": "MINISTERIO DAS COMUNICACOES",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "2415765": {
+   "nome": "JOSE MUCIO MONTEIRO FILHO",
+   "cpf": "***.590.894-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40105",
+     "orgao": "Ministério da Defesa",
+     "uorg": "MINISTERIO DA DEFESA",
+     "nomeacao": "02/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 0.0
+   }
+  },
+  "2400786": {
+   "nome": "JOSE RENAN VASCONCELOS CALHEIROS FILHO",
+   "cpf": "***.147.721-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "49000",
+     "orgao": "Ministério da Infraestrutura",
+     "uorg": "MINISTERIO DOS TRANSPORTES",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "3035730": {
+   "nome": "JOSE WELLINGTON BARROSO DE ARAUJO DIAS",
+   "cpf": "***.556.633-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "55000",
+     "orgao": "Ministério do Desenvolvimento Social",
+     "uorg": "MIN DO DESENV E ASSIS SOC FAM COMB FOME",
+     "nomeacao": "03/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "1570631": {
+   "nome": "LUCIANA BARBOSA DE OLIVEIRA SANTOS",
+   "cpf": "***.199.794-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40108",
+     "orgao": "Ministério da Ciência, Tecnologia, Inovações e Comunicações",
+     "uorg": "MINIST DA CIENCIA TEC E INOVACAO",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.67,
+    "indenizatorias": 658.0
+   }
+  },
+  "3116237": {
+   "nome": "LUIZ INACIO LULA DA SILVA",
+   "cpf": "***.680.938-**",
+   "cargos": [
+    {
+     "cargo": "presidente",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "GAB PESSOAL PRESIDENTE REPUBLICA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "1041155": {
+   "nome": "LUIZ MARINHO",
+   "cpf": "***.848.518-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "33000",
+     "orgao": "MINISTERIO DO TRABALHO E PREVIDENCIA",
+     "uorg": "MINISTERIO DO TRABALHO E EMPREGO",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7450.0,
+    "indenizatorias": 0.0
+   }
+  },
+  "1457456": {
+   "nome": "LUIZ PAULO TEIXEIRA FERREIRA",
+   "cpf": "***.413.698-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "13100",
+     "orgao": "MIN DO DESENV AGR E AGRIC FAMILIAR",
+     "uorg": "MIN DO DESENV AGR E AGRIC FAMILIAR",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "3170974": {
+   "nome": "MARCIO COSTA MACEDO",
+   "cpf": "***.258.705-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "SECRETARIA-GERAL/PR",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "1493342": {
+   "nome": "MARCIO LUIZ FRANCA GOMES",
+   "cpf": "***.510.688-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "49000",
+     "orgao": "Ministério da Infraestrutura",
+     "uorg": "MINISTERIO DE PORTOS E AEROPORTOS",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 6000.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "2318094": {
+   "nome": "MARCOS ANTONIO AMARO DOS SANTOS",
+   "cpf": "***.218.347-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "GABINETE DE SEGURANCA INSTITUCIONAL/PR",
+     "nomeacao": "04/05/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "3659914": {
+   "nome": "MARGARETH MENEZES DA PURIFICACAO",
+   "cpf": "***.612.865-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "54100",
+     "orgao": "MINISTERIO DA CULTURA",
+     "uorg": "MINISTERIO DA CULTURA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 782.33
+   }
+  },
+  "2104535": {
+   "nome": "MARIA OSMARINA MARINA DA SILVA VAZ DE LIMA",
+   "cpf": "***.807.612-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "40111",
+     "orgao": "Ministério do Meio Ambiente",
+     "uorg": "MINISTERIO DO MEIO AMBIENTE",
+     "nomeacao": "03/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "404488": {
+   "nome": "MAURO LUIZ IECKER VIEIRA",
+   "cpf": "***.501.297-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "35000",
+     "orgao": "Ministério das Relações Exteriores",
+     "uorg": "MINISTERIO DAS RELACOES EXTERIORES",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 54823.49,
+    "abate_teto": -13172.56,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 12290.34,
+    "indenizatorias": 658.0
+   }
+  },
+  "1725847": {
+   "nome": "NISIA VERONICA TRINDADE LIMA",
+   "cpf": "***.005.407-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "25000",
+     "orgao": "Ministério da Saúde",
+     "uorg": "MINISTERIO DA SAUDE",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 64228.7,
+    "abate_teto": -22577.77,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 10416.56,
+    "indenizatorias": 782.33
+   }
+  },
+  "1017321": {
+   "nome": "PAULO ROBERTO SEVERO PIMENTA",
+   "cpf": "***.449.240-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "SECRETARIA DE COMUNICACAO SOCIAL",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": null
+  },
+  "2511344": {
+   "nome": "RUI COSTA DOS SANTOS",
+   "cpf": "***.909.975-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "20101",
+     "orgao": "Presidência da República",
+     "uorg": "CASA CIVIL DA PRESIDENCIA DA REPUBLICA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "905489": {
+   "nome": "SILVIO LUIZ DE ALMEIDA",
+   "cpf": "***.915.758-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "81000",
+     "orgao": "Ministério da Mulher, Família e Direitos Humanos",
+     "uorg": "MIN DOS DIR HUM E DA CIDADANIA",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 0.0,
+    "indenizatorias": 658.0
+   }
+  },
+  "634301": {
+   "nome": "SIMONE NASSAR TEBET ROCHA",
+   "cpf": "***.995.617-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "17300",
+     "orgao": "MINISTERIO DO PLANEJAMENTO E ORCAMENTO",
+     "uorg": "MINISTERIO DO PLANEJAMENTO E ORCAMENTO",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 658.0
+   }
+  },
+  "189396": {
+   "nome": "SONIA BONE DE SOUSA SILVA SANTOS",
+   "cpf": "***.121.626-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "17200",
+     "orgao": "MINISTERIO DOS POVOS INDIGENAS",
+     "uorg": "MINISTERIO DOS POVOS INDIGENAS",
+     "nomeacao": "02/02/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 658.0
+   }
+  },
+  "1078915": {
+   "nome": "VINICIUS MARQUES DE CARVALHO",
+   "cpf": "***.495.708-**",
+   "cargos": [
+    {
+     "cargo": "ministro",
+     "cod_orgao": "59000",
+     "orgao": "Controladoria-Geral da União",
+     "uorg": "CONTROLADORIA-GERAL DA UNIAO",
+     "nomeacao": "01/01/2023"
+    }
+   ],
+   "remuneracao": {
+    "bruta": 41650.92,
+    "abate_teto": 0.0,
+    "natalina": 0.0,
+    "abate_natalina": 0.0,
+    "ferias": 0.0,
+    "eventuais": 7733.68,
+    "indenizatorias": 658.0
+   }
+  }
+ }
+}

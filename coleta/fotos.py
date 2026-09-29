@@ -46,6 +46,13 @@ def _uma(p):
     destino = PASTA / f"{p['id']}.webp"
     if destino.exists():
         return "já tinha"
+    if p["casa"] == "executivo":
+        # ministro que é deputado ou senador: usa a foto oficial do Congresso
+        origem = PASTA / f"{p['relacionado']}.webp" if p.get("relacionado") else None
+        if origem and origem.exists():
+            destino.write_bytes(origem.read_bytes())
+            return "nova"
+        return "sem foto"
     for url in _enderecos(p):
         if not url:
             continue
@@ -69,4 +76,5 @@ def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     with ThreadPoolExecutor(PARALELO) as ex:
         res = list(ex.map(_uma, politicos))
-    log(f"Fotos: {res.count('nova')} novas, {res.count('já tinha')} já existiam, {res.count('falhou')} sem foto")
+    log(f"Fotos: {res.count('nova')} novas, {res.count('já tinha')} já existiam, {res.count('falhou')} falharam, "
+        f"{res.count('sem foto')} do governo sem foto oficial disponível")

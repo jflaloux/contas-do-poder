@@ -23,7 +23,7 @@ from datetime import datetime
 import pandas as pd
 
 from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA, ULTIMO_MES
-from .util import ler_json, log, salvar_json
+from .util import ler_json, log, normalizar_nome, salvar_json
 
 SALARIO_MINIMO = {2023: 1320.00, 2024: 1412.00, 2025: 1518.00, 2026: 1621.00}
 
@@ -35,10 +35,12 @@ CATEGORIAS = {
     "auxilios": ("ganha", "Auxílios (inclui auxílio-moradia)"),
     "ajuda_de_custo": ("ganha", "Ajuda de custo e outras verbas indenizatórias"),
     "outros_rendimentos": ("ganha", "Outros pagamentos"),
+    "jetons": ("ganha", "Jetons (conselhos de estatais e outros)"),
     # grupo "custa" (despesas do próprio parlamentar)
     "cota_parlamentar": ("custa", "Cota parlamentar"),
     "diarias": ("custa", "Diárias de viagens oficiais"),
     "outros_gastos_mandato": ("custa", "Outros gastos do mandato"),
+    "viagens_oficiais": ("custa", "Viagens oficiais (diárias e passagens)"),
     # grupo "equipe" (vai para outras pessoas)
     "assessores_gabinete": ("equipe", "Equipe do gabinete"),
 }
@@ -233,6 +235,182 @@ def _senado():
     return politicos, L, liquido
 
 
+# ---------------------------------------------------------------- Executivo (presidente, vice, ministros)
+# Nome da pasta a partir do órgão (ou da unidade, para os ministérios dentro da Presidência).
+# Ordem importa: o primeiro trecho encontrado vence.
+PASTAS = [
+    ("CASA CIVIL", "-chefe da Casa Civil"), ("RELACOES INSTITUCIONAIS", "-chefe da Secretaria de Relações Institucionais"),
+    ("SECRETARIA-GERAL", "-chefe da Secretaria-Geral da Presidência"), ("SECRETARIA GERAL", "-chefe da Secretaria-Geral da Presidência"),
+    ("COMUNICACAO SOCIAL", "-chefe da Secretaria de Comunicação Social"), ("SEGURANCA INSTITUCIONAL", "-chefe do Gabinete de Segurança Institucional"),
+    ("ADVOCACIA-GERAL", "@Advogado-Geral da União"), ("CONTROLADORIA", " da Controladoria-Geral da União"),
+    ("FAZENDA", " da Fazenda"), ("PLANEJAMENTO", " do Planejamento e Orçamento"), ("GESTAO E INOV", " da Gestão e da Inovação em Serviços Públicos"),
+    ("SAUDE", " da Saúde"), ("EDUCACAO", " da Educação"), ("DEFESA", " da Defesa"), ("JUSTICA", " da Justiça e Segurança Pública"),
+    ("RELACOES EXTERIORES", " das Relações Exteriores"), ("MEIO AMBIENTE", " do Meio Ambiente e Mudança do Clima"),
+    ("MINAS E ENERGIA", " de Minas e Energia"), ("TURISMO", " do Turismo"), ("ESPORTE", " do Esporte"),
+    ("MULHER", " das Mulheres"), ("IGUALDADE RACIAL", " da Igualdade Racial"), ("POVOS INDIGENAS", " dos Povos Indígenas"),
+    ("DIR HUM", " dos Direitos Humanos e da Cidadania"), ("DIREITOS HUMANOS", " dos Direitos Humanos e da Cidadania"),
+    ("TRABALHO", " do Trabalho e Emprego"), ("PREVIDENCIA", " da Previdência Social"), ("CIDADES", " das Cidades"),
+    ("INTEG", " da Integração e do Desenvolvimento Regional"), ("DESENVOLVIMENTO REGIONAL", " da Integração e do Desenvolvimento Regional"),
+    ("TRANSPORTES", " dos Transportes"), ("PORTOS", " de Portos e Aeroportos"),
+    ("CIENCIA", " da Ciência, Tecnologia e Inovação"), ("COMUNICACOES", " das Comunicações"), ("DESENV AGR", " do Desenvolvimento Agrário e Agricultura Familiar"),
+    ("DESENVOLVIMENTO AGRARIO", " do Desenvolvimento Agrário e Agricultura Familiar"), ("PESCA", " da Pesca e Aquicultura"),
+    ("AGRICULTURA", " da Agricultura e Pecuária"), ("IND COMERCIO", " do Desenvolvimento, Indústria, Comércio e Serviços"),
+    ("INDUSTRIA", " do Desenvolvimento, Indústria, Comércio e Serviços"), ("EMPREEND", " do Empreendedorismo, da Microempresa e da Empresa de Pequeno Porte"),
+    ("ASSIS SOCI", " do Desenvolvimento e Assistência Social, Família e Combate à Fome"),
+    ("DESENVOLVIMENTO SOCIAL", " do Desenvolvimento e Assistência Social, Família e Combate à Fome"),
+    ("CULTURA", " da Cultura"),  # por último: "AGRICULTURA" e "AQUICULTURA" também contêm "CULTURA"
+]
+INICIO_GOVERNO = 20230101  # só entra quem foi nomeado neste governo (ex-ministros do governo anterior ficam de fora)
+
+
+def _nome_cargo(c, feminino):
+    """'ministro' + órgão -> 'Ministra da Saúde'; presidente e vice pelo nome do cargo."""
+    if c["cargo"] == "presidente":
+        return "Presidenta da República" if feminino else "Presidente da República"
+    if c["cargo"] == "vice":
+        return "Vice-presidente da República"
+    alvo = normalizar_nome(f"{c.get('uorg') or ''} {c.get('orgao') or ''}")
+    for trecho, sufixo in PASTAS:
+        if trecho in alvo:
+            if sufixo.startswith("@"):
+                return sufixo[1:].replace("Advogado", "Advogada") if feminino else sufixo[1:]
+            return ("Ministra" if feminino else "Ministro") + sufixo
+    return ("Ministra" if feminino else "Ministro") + " de Estado"
+
+
+def _executivo(politicos_congresso, lanc_congresso):
+    arq = BRUTOS / "executivo_pessoas.json"
+    if not arq.exists():
+        log("  Executivo: sem dados (rode `coletar.py executivo`)")
+        return [], []
+    pessoas = ler_json(arq)
+    cargos = pd.read_csv(BRUTOS / "executivo_cargos.csv", dtype={"id_portal": str})
+    rem = pd.read_csv(BRUTOS / "executivo_remuneracao.csv", dtype={"id_portal": str})
+    # 13º: o Portal mostra o adiantamento (em geral em junho) e, no fim do ano, o 13º inteiro (o adiantamento
+    # é descontado à parte). Para não contar duas vezes, o último pagamento do ano fica só com a diferença.
+    rem = rem.sort_values(["id_portal", "ano", "mes"]).reset_index(drop=True)
+    for (_, _), g in rem[rem.natalina > 0].groupby(["id_portal", "ano"]):
+        if len(g) < 2:
+            continue
+        antes, ultimo_i = g.natalina.iloc[:-1].sum(), g.index[-1]
+        if rem.at[ultimo_i, "natalina"] >= 1.5 * antes:
+            rem.at[ultimo_i, "natalina"] = round(rem.at[ultimo_i, "natalina"] - antes, 2)
+    jet = pd.read_csv(BRUTOS / "executivo_jetons.csv", dtype={"id_portal": str})
+    via = pd.read_csv(BRUTOS / "executivo_viagens.csv", dtype={"id_portal": str})
+    ref = pd.read_csv(REFERENCIA / "executivo.csv").set_index("nome_no_portal").to_dict("index")
+
+    # só cargos deste governo: data de nomeação a partir de 01/01/2023
+    nomeacao = pd.to_datetime(cargos["nomeacao"], format="%d/%m/%Y", errors="coerce")
+    cargos = cargos[(nomeacao.dt.year * 10000 + nomeacao.dt.month * 100 + nomeacao.dt.day) >= INICIO_GOVERNO]
+    cargos = _na_legislatura(cargos)
+
+    # ligação com o Congresso (ministro que é deputado ou senador licenciado), pelo nome civil
+    congresso = {}
+    for p in politicos_congresso:
+        for n in (p.get("nome_civil"), p.get("nome")):
+            if n:
+                congresso.setdefault(normalizar_nome(n), p)
+    ganha_congresso = lanc_congresso[(lanc_congresso.grupo == "ganha") & (~lanc_congresso.rateado)] if len(lanc_congresso) else lanc_congresso
+
+    # Depois de sair: quem deixa o cargo pode receber por até 6 meses ("quarentena") e segue no cadastro
+    # como "ministro de Estado". Nesses meses, outra pessoa nomeada depois ocupa a mesma pasta. Só olhamos
+    # os últimos meses de cada um (os primeiros meses de 2023 têm nomes de órgãos antigos e confundiriam).
+    cargos = cargos.assign(data=nomeacao.reindex(cargos.index),
+                           pasta=[_nome_cargo(c, False) for c in cargos.to_dict("records")])
+    mi = cargos[cargos.cargo == "ministro"]
+    ult_nomeacao = mi.groupby(["pasta", "ano", "mes"])["data"].max()
+    fora = set()
+    for _, g in mi.groupby("id_portal"):
+        minha = g["data"].max()
+        meses_p = sorted(set(zip(g.ano, g.mes)))
+        for a, m in reversed(meses_p[-7:]):  # até 6 meses de quarentena + o mês da troca
+            linhas = g[(g.ano == a) & (g.mes == m)]
+            if all(ult_nomeacao.get((r.pasta, a, m), r.data) > minha for r in linhas.itertuples()):
+                fora |= set(linhas.index)
+            else:
+                break
+    no_cargo = cargos[~cargos.index.isin(fora)]
+    quarentena = cargos[cargos.index.isin(fora)]
+
+    politicos, L, sem_nome = [], [], []
+    ultimo = max(p["ultimo_mes_publicado"] for p in pessoas)
+    for p in pessoas:
+        cc = no_cargo[no_cargo.id_portal == p["id"]]
+        if cc.empty:
+            continue
+        pid = f"exe-{p['id']}"
+        chave_meses = {(int(a), int(m)) for a, m in zip(cc.ano, cc.mes)}
+        qq = quarentena[quarentena.id_portal == p["id"]]
+        meses_q = {(int(a), int(m)) for a, m in zip(qq.ano, qq.mes)} - chave_meses
+        rem_q = rem[(rem.id_portal == p["id"]) & [(a, m) in meses_q for a, m in zip(rem.ano, rem.mes)]]
+        total_q = float((rem_q.bruta + rem_q.abate_teto + rem_q.natalina + rem_q.abate_natalina + rem_q.ferias + rem_q.eventuais).sum())
+        nn = normalizar_nome(p["nome"])
+        par = congresso.get(nn)
+        r = ref.get(nn)
+        if r:
+            nome, sexo = r["nome"], r["sexo"]
+        elif par:
+            nome, sexo = par["nome"], par.get("sexo")
+        else:
+            partes = p["nome"].title().split()
+            nome, sexo = f"{partes[0]} {partes[-1]}", ("F" if partes[0].endswith("a") else "M")
+            sem_nome.append(p["nome"])
+        feminino = sexo == "F"
+        # salário e outros pagamentos (Portal)
+        for x in rem[rem.id_portal == p["id"]].itertuples():
+            if (x.ano, x.mes) not in chave_meses:
+                continue
+            for valor, cat, desc in (
+                (x.bruta + x.abate_teto, "salario", "Salário (remuneração básica bruta, já com o abate-teto)"),
+                (x.natalina + x.abate_natalina, "decimo_terceiro", "13º salário (gratificação natalina)"),
+                (x.ferias, "outros_rendimentos", "Adicional de férias"),
+                (x.eventuais, "outros_rendimentos", "Outras remunerações eventuais"),
+                (x.indenizatorias, "ajuda_de_custo", "Verbas indenizatórias"),
+            ):
+                if abs(valor) >= 0.01:
+                    L.append(_linha(pid, x.ano, x.mes, cat, desc, valor, "portal_remuneracao"))
+        for x in jet[jet.id_portal == p["id"]].itertuples():
+            if (x.ano, x.mes) in chave_meses and x.valor:
+                L.append(_linha(pid, x.ano, x.mes, "jetons", f"Jetons: {x.empresa.title()}", x.valor, "portal_jetons"))
+        for x in via[via.id_portal == p["id"]].itertuples():
+            valor = x.diarias + x.passagens + x.outros - x.devolucao
+            if (x.ano, x.mes) in chave_meses and valor >= 0.01:
+                L.append(_linha(pid, x.ano, x.mes, "viagens_oficiais",
+                                f"{x.viagens} {'viagem' if x.viagens == 1 else 'viagens'} (diárias R$ {x.diarias:,.2f}, passagens R$ {x.passagens:,.2f})"
+                                .replace(",", "X").replace(".", ",").replace("X", "."), valor, "portal_viagens"))
+        # quem é deputado ou senador licenciado pode receber o salário pelo Congresso
+        if par is not None and len(ganha_congresso):
+            g = ganha_congresso[ganha_congresso.id_politico == par["id"]]
+            casa = "Câmara" if par["casa"] == "camara" else "Senado"
+            for x in g.itertuples():
+                if (int(x.ano), int(x.mes)) in chave_meses:
+                    L.append(_linha(pid, x.ano, x.mes, x.categoria, f"{x.descricao} — pago pelo {casa}", x.valor, x.fonte))
+        ultimo_cargo = cc[(cc.ano * 100 + cc.mes) == (cc.ano * 100 + cc.mes).max()]
+        tipos = set(ultimo_cargo.cargo)
+        nomes_cargo = [_nome_cargo(c, feminino) for c in ultimo_cargo.to_dict("records")]
+        if "vice" in tipos and len(nomes_cargo) > 1:
+            outro = next(n for n, c in zip(nomes_cargo, ultimo_cargo.cargo) if c != "vice")
+            cargo = f"Vice-presidente e {outro[0].lower()}{outro[1:]}"
+        else:
+            cargo = nomes_cargo[0]
+        politicos.append({
+            "id": pid, "casa": "executivo",
+            "tipo": "presidente" if "presidente" in tipos else "vice" if "vice" in tipos else "ministro",
+            "cargo": cargo, "nome": nome, "nome_civil": p["nome"].title(), "sexo": sexo,
+            "partido": par.get("partido") if par else None, "uf": None, "foto": None,
+            "em_exercicio": (ultimo // 100, ultimo % 100) in chave_meses,
+            "pagina_oficial": f"https://portaldatransparencia.gov.br/servidores/{p['id']}",
+            "meses_no_cargo": [a * 100 + m for a, m in sorted(chave_meses)],
+            "relacionado": par["id"] if par is not None else None,
+            "ultimo_mes_publicado": ultimo,
+            "quarentena": {"meses": len(rem_q), "total": round(total_q, 2)} if total_q >= 1 else None,
+        })
+    if sem_nome:
+        log(f"  Executivo: {len(sem_nome)} nomes sem apelido conhecido (complete dados/referencia/executivo.csv): {', '.join(sem_nome)}")
+    log(f"  Executivo: {len(politicos)} pessoas, {len(L)} lançamentos")
+    return politicos, L
+
+
 # ---------------------------------------------------------------- tamanho da equipe
 def _equipe(ids):
     """Pessoas no gabinete por mês. Câmara: secretários parlamentares (pagos pela verba de gabinete);
@@ -306,8 +484,16 @@ def executar():
     log("Padronizando...")
     pc, lc = _camara()
     ps, ls, liquido = _senado()
-    politicos = pc + ps
     lanc = _ratear_anuais(lc + ls)
+    pe, le = _executivo(pc + ps, pd.DataFrame(lanc))
+    # ligação de volta: deputado/senador que foi ministro
+    for e in pe:
+        if e["relacionado"]:
+            for p in pc + ps:
+                if p["id"] == e["relacionado"]:
+                    p["relacionado"] = e["id"]
+    politicos = pc + ps + pe
+    lanc = lanc + le
 
     # Deixa de fora quem não tem nenhum pagamento na legislatura (ex.: suplente que só aparece na lista)
     com_dados = {l["id_politico"] for l in lanc}
@@ -348,6 +534,9 @@ def executar():
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
             "senado_folha": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/{ano}/{mes}/csv",
             "senado_transparencia": "https://www6g.senado.leg.br/transparencia/sen/{id}/?ano={ano}",
+            "portal_remuneracao": "https://portaldatransparencia.gov.br/servidores/{id}",
+            "portal_jetons": "https://portaldatransparencia.gov.br/download-de-dados/servidores ({ano}{mes}_Honorarios_Jetons)",
+            "portal_viagens": "https://portaldatransparencia.gov.br/viagens/consulta",
         },
         "fontes": {
             "camara_api": "https://dadosabertos.camara.leg.br/swagger/api.html",
@@ -356,6 +545,7 @@ def executar():
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
             "senado_legis": "https://legis.senado.leg.br/dadosabertos/docs/",
             "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
+            "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados",
         },
         "pendencias": [
             "Câmara: 13º salário e ajuda de custo dos deputados ainda não coletados (no Senado já estão).",
@@ -371,8 +561,17 @@ def executar():
             "Câmara: desde ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) não aparecem nos arquivos de "
             "dados abertos. Completamos com a diferença para o total mensal do site oficial, sem detalhe por tipo.",
             "Câmara 2023–2024: em ~2% dos meses a soma dos arquivos fica um pouco ACIMA do total do site; mantivemos os arquivos.",
+            "Governo federal: o Portal da Transparência publica os salários com cerca de 2 meses de atraso.",
+            "Governo federal: o arquivo de salários de dezembro de 2024 do Portal veio incompleto; esse mês fica sem salário.",
+            "Governo federal: viagens em aviões da FAB e do avião presidencial não têm custo publicado; entram só "
+            "diárias e passagens compradas. Por isso o presidente aparece praticamente só com o salário.",
+            "Governo federal: ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; "
+            "nesses meses usamos o salário pago pela Câmara ou pelo Senado.",
+            "Governo federal: ex-ministros podem receber até 6 meses de 'quarentena' depois de sair; esses meses ainda "
+            "não são separados dos meses no cargo.",
         ],
     })
     n_dep = sum(p["casa"] == "camara" for p in politicos)
     n_sen = sum(p["casa"] == "senado" for p in politicos)
-    log(f"Base pronta: {n_dep} deputados, {n_sen} senadores, {len(lanc)} lançamentos.")
+    n_exe = sum(p["casa"] == "executivo" for p in politicos)
+    log(f"Base pronta: {n_dep} deputados, {n_sen} senadores, {n_exe} do governo federal, {len(lanc)} lançamentos.")
