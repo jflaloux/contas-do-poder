@@ -16,7 +16,7 @@
   --hi-soft: #fde6ee;
   --hi-ink: #7a1a40;
   --ganha: #2a78d6;        /* dado: vai para a pessoa */
-  --custa: #eb6834;        /* dado: despesas dele */
+  --custa: #eb6834;        /* dado: gastos do mandato */
   --equipe: #1baf7a;       /* dado: equipe do gabinete (vai para outras pessoas) */
   --ponto: rgba(25, 22, 47, .26);
   --bom: #0b7a0b;
@@ -253,6 +253,7 @@ td.num { font-family: var(--mono); }
 
 /* barras */
 .barras { display: grid; gap: 11px; }
+.barras__cabeca { display: flex; justify-content: space-between; gap: 12px; font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--line-2); padding-bottom: 6px; }
 .barra { display: grid; gap: 4px; }
 .barra__topo { display: flex; justify-content: space-between; gap: 12px; font-size: .92rem; }
 .barra__topo span:first-child { min-width: 0; }
@@ -328,3 +329,21 @@ td.num { font-family: var(--mono); }
 .guia__rodape { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .9rem; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+
+/* resumo para compartilhar: a imagem e as ações */
+.compartilhar-img { display: grid; gap: 24px; grid-template-columns: minmax(0, 340px) minmax(0, 1fr); align-items: start; margin-top: 16px; }
+.compartilhar-img__quadro { width: 100%; max-width: 340px; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden; background: #17142e; box-shadow: var(--sombra); }
+.compartilhar-img__quadro.carregando { animation: piscar 1.1s ease-in-out infinite alternate; }
+@keyframes piscar { from { opacity: .55; } to { opacity: .9; } }
+.compartilhar-img__previa { display: block; width: 100%; height: auto; }
+.compartilhar-img__lado { display: grid; gap: 14px; align-content: start; }
+.compartilhar-img__opcao { padding: 18px 20px; display: grid; gap: 10px; }
+.compartilhar-img__opcao h3 { margin: 0; }
+.compartilhar-img__retorno { min-height: 1.3em; margin: 0; font-size: .9rem; color: var(--ink-2); }
+.compartilhar-img__retorno textarea { display: block; width: 100%; margin-top: 6px; font: inherit; }
+.botao:disabled { opacity: .55; cursor: progress; }
+@media (max-width: 720px) {
+  .compartilhar-img { grid-template-columns: minmax(0, 1fr); }
+  .compartilhar-img__quadro { justify-self: center; }
+}
+@media (prefers-reduced-motion: reduce) { .compartilhar-img__quadro.carregando { animation: none; } }

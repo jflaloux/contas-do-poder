@@ -75,9 +75,9 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 ### Como o dinheiro é dividido
 
 - **Vai para o bolso** (grupo `ganha`): salário, 13º, auxílios e ajuda de custo.
-- **Despesas dele** (grupo `custa`): o que o parlamentar gasta com dinheiro público no próprio mandato:
+- **Gastos do mandato** (grupo `custa`): o que o parlamentar gasta com dinheiro público no próprio mandato:
   cota parlamentar (passagens, combustível, alimentação, escritório, divulgação...), diárias e outros gastos.
-- **Custo dele** = vai para o bolso + despesas dele.
+- **Custo dele** = vai para o bolso + gastos do mandato.
 - **Equipe do gabinete** (grupo `equipe`): salários das pessoas que trabalham no gabinete. É dinheiro que vai
   para outras pessoas, por isso fica separado, com o número de pessoas (`equipe.csv`) e a média por pessoa.
   Na Câmara contamos os secretários parlamentares de cada mês; no Senado, os comissionados encontrados na
@@ -97,13 +97,16 @@ Para dar para comparar, o site mostra tudo **por mês**:
 
 ## Compartilhamento e medição
 
-- **Imagem para o status**: o site desenha no navegador uma imagem 1080×1920 (status do WhatsApp, stories)
-  com a foto, o custo dele por mês, a posição entre os colegas e a equipe. Por isso as fotos ficam no próprio
-  site (`site/fotos/`): o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
+- **Imagem para compartilhar**: no fim da página de cada parlamentar, o site mostra uma imagem 1080×1350 (4:5,
+  aparece inteira no WhatsApp e no Telegram e serve para status e stories) com a foto, o custo dele por mês,
+  a posição entre os colegas e a equipe. Botões: **Copiar imagem** (para colar em qualquer conversa),
+  **Enviar imagem…** (abre o menu do celular: WhatsApp, Telegram...) e **Baixar imagem**. O texto e o link
+  ficam ao lado. As fotos ficam no próprio site (`site/fotos/`) porque o site da Câmara não deixa outro
+  endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
-  ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, imagem, copiar_texto,
-  copiar_link, mais_opcoes), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
+  ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
+  baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar`, `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
 
 ## O que já foi conferido
 
