@@ -8,7 +8,8 @@
     "cargo": "gov",
     "de": "2023-01-01",
     "ate": "2026-04-02",
-    "obs": "Renunciou para disputar a eleição"
+    "obs": "Renunciou para disputar a eleição",
+    "folha_nome": "GLADSON DE LIMA CAMELI"
    },
    {
     "nome": "Mailza Assis",
@@ -17,7 +18,8 @@
     "de": "2023-01-01",
     "ate": "2026-04-02",
     "civil": "Mailza Assis da Silva",
-    "fem": true
+    "fem": true,
+    "folha_nome": "MAILZA ASSIS"
    },
    {
     "nome": "Mailza Assis",
@@ -26,7 +28,8 @@
     "de": "2026-04-02",
     "ate": null,
     "civil": "Mailza Assis da Silva",
-    "fem": true
+    "fem": true,
+    "folha_nome": "MAILZA ASSIS"
    }
   ],
   "subsidio": [
@@ -402,7 +405,8 @@
     "de": "2023-01-01",
     "ate": "2026-03-30",
     "obs": "Renunciou para disputar a eleição",
-    "civil": "Ibaneis Rocha Barros Júnior"
+    "civil": "Ibaneis Rocha Barros Júnior",
+    "folha_nome": "IBANEIS ROCHA BARROS JUNIOR"
    },
    {
     "nome": "Celina Leão",
@@ -411,7 +415,8 @@
     "de": "2023-01-01",
     "ate": "2026-03-30",
     "civil": "Celina Leão Hizim Ferreira",
-    "fem": true
+    "fem": true,
+    "folha_nome": "CELINA LEAO HIZIM FERREIRA"
    },
    {
     "nome": "Celina Leão",
@@ -420,7 +425,8 @@
     "de": "2026-03-30",
     "ate": null,
     "civil": "Celina Leão Hizim Ferreira",
-    "fem": true
+    "fem": true,
+    "folha_nome": "CELINA LEAO HIZIM FERREIRA"
    }
   ],
   "subsidio": [
@@ -459,8 +465,8 @@
    }
   },
   "notas": [
-   "Conferido na folha do Distrito Federal: além do subsídio, R$ 640 por mês de benefícios; o 13º e o terço de férias também são pagos.",
-   "Em março de 2026, na saída, Ibaneis Rocha recebeu R$ 171.333,41 brutos, com as verbas rescisórias."
+   "Na folha do Distrito Federal, além do subsídio, há R$ 640 por mês de benefícios; o 13º e o terço de férias também são pagos.",
+   "Em março de 2026, o mês da saída, a folha mostra R$ 171.333,41 brutos para Ibaneis Rocha, com as verbas rescisórias, dos quais R$ 30.010,12 foram descontados no mesmo mês como \"reposição de pagamento a maior\". No mês a mês, aparecem R$ 141.323,29, já sem essa reposição."
   ]
  },
  {
@@ -761,7 +767,8 @@
    }
   },
   "notas": [
-   "Conferido na folha de Minas Gerais (dados abertos, publicada até mar/2026): em março de 2026, Romeu Zema recebeu o subsídio proporcional aos 22 dias no cargo."
+   "Conferido na folha de Minas Gerais (dados abertos, publicada até março de 2026). Em março de 2026, Romeu Zema recebeu o subsídio proporcional aos 22 dias no cargo.",
+   "Em dezembro de 2025, a folha de Minas mostra dois pagamentos de 13º para o governador (duas linhas de R$ 41.845,48) e para o vice (duas de R$ 37.660,94). A folha não explica; mostramos como está publicado."
   ]
  },
  {
@@ -1034,7 +1041,8 @@
    }
   },
   "notas": [
-   "A lei de 2022 fixou aumentos anuais até 2026; os valores conferem com a folha do Estado. Em março de 2026, na saída, João Azevêdo recebeu R$ 81.742,69 brutos."
+   "A lei de 2022 fixou aumentos anuais até 2026; os valores conferem com a folha do Estado. Em março de 2026, na saída, João Azevêdo recebeu R$ 81.742,69 brutos.",
+   "A folha publicada mostra o mesmo valor para João Azevêdo em fevereiro e em março de 2026 (R$ 81.742,69, com R$ 46.710,11 de pagamentos variáveis, sem descrição). Pode ser o acerto da saída dele, repetido nos dois meses; a folha não explica."
   ]
  },
  {
@@ -1046,7 +1054,8 @@
     "cargo": "gov",
     "de": "2023-01-01",
     "ate": null,
-    "fem": true
+    "fem": true,
+    "folha_nome": "RAQUEL TEIXEIRA LYRA LUCENA"
    },
    {
     "nome": "Priscila Krause",
@@ -1109,13 +1118,13 @@
    }
   },
   "notas": [
-   "Raquel Lyra não recebe o subsídio de governadora: optou pelo salário de procuradora do Estado, o cargo de carreira dela. Em agosto de 2026, foram R$ 60.931,44 brutos, já com o desconto do teto (folha do Estado)."
+   "Raquel Lyra não recebe o subsídio de governadora: optou pelo salário de procuradora do Estado, o cargo de carreira dela. Na folha de agosto de 2026, são R$ 50.776,20 de remuneração, cortados para R$ 46.366,19 pelo teto, mais R$ 10.155,24 numa segunda linha, sem descrição e sem imposto descontado: R$ 56.521,43 no mês, já sem o corte do teto."
   ],
   "recebe": {
    "texto": "Raquel Lyra recebe como procuradora do Estado, e não o subsídio de governadora",
+   "curto": "recebe como procuradora do Estado",
    "mes": "2026-08",
-   "bruto": 60931.44,
-   "curto": "recebe como procuradora do Estado"
+   "bruto": 60931.44
   }
  },
  {
@@ -1187,14 +1196,16 @@
     "cargo": "gov",
     "de": "2023-01-01",
     "ate": null,
-    "civil": "Carlos Roberto Massa Júnior"
+    "civil": "Carlos Roberto Massa Júnior",
+    "folha_nome": "CARLOS ROBERTO MASSA JUNIOR"
    },
    {
     "nome": "Darci Piana",
     "partido": "PSD",
     "cargo": "vice",
     "de": "2023-01-01",
-    "ate": null
+    "ate": null,
+    "folha_nome": "DARCI PIANA"
    }
   ],
   "subsidio": [
@@ -1426,7 +1437,8 @@
     "de": "2023-01-01",
     "ate": "2026-03-27",
     "obs": "Renunciou para disputar a eleição",
-    "civil": "Antonio Oliverio Garcia de Almeida"
+    "civil": "Antonio Oliverio Garcia de Almeida",
+    "folha_nome": "ANTONIO OLIVERIO GARCIA DE ALMEIDA"
    },
    {
     "nome": "Edilson Damião",
@@ -1434,7 +1446,8 @@
     "cargo": "vice",
     "de": "2023-01-01",
     "ate": "2026-03-27",
-    "civil": "Edilson Damião Lima"
+    "civil": "Edilson Damião Lima",
+    "folha_nome": "EDILSON DAMIAO LIMA"
    },
    {
     "nome": "Edilson Damião",
@@ -1443,7 +1456,8 @@
     "de": "2026-03-27",
     "ate": "2026-04-30",
     "obs": "Deixou o cargo quando o TSE cassou a chapa eleita em 2022",
-    "civil": "Edilson Damião Lima"
+    "civil": "Edilson Damião Lima",
+    "folha_nome": "EDILSON DAMIAO LIMA"
    },
    {
     "nome": "Soldado Sampaio",
@@ -1452,7 +1466,8 @@
     "de": "2026-04-30",
     "ate": null,
     "obs": "Presidente da Assembleia, governador interino. A eleição suplementar de 21/06/2026 foi vencida por Arthur Henrique (PL), mas o resultado está parado na Justiça (o TSE aguarda o STF), e Sampaio segue no cargo",
-    "civil": "Francisco dos Santos Sampaio"
+    "civil": "Francisco dos Santos Sampaio",
+    "folha_nome": "FRANCISCO DOS SANTOS SAMPAIO"
    }
   ],
   "subsidio": [

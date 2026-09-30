@@ -64,7 +64,7 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 |---|---|
 | `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
 | `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`, `municipios.py`, `governadores.py`, `vereadores/`, `prefeituras/`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
-| `dados/governadores/` | O salário de cada governador e vice, com a fonte de cada valor (mantido à mão) |
+| `dados/governadores/` | O salário de cada governador e vice, com a fonte de cada valor (mantido à mão), e em `folha/` o mês a mês pela folha de cada estado |
 | `dados/municipios/` | Cidades, custo das câmaras, vereadores eleitos e, por capital, as linhas das folhas da Câmara e da Prefeitura |
 | `dados/portal_transparencia/` | Linhas do presidente, do vice e dos ministros tiradas dos arquivos do Portal (vai para o Git, para o robô só baixar os meses novos) |
 | `dados/cache/` | Arquivos baixados. Pode apagar a qualquer momento (não vai para o Git) |
@@ -263,8 +263,36 @@ valor; se algo estiver errado, a etapa falha), escolhe o valor em vigor e gera `
 As fotos do governador e do vice vêm do Wikimedia Commons (licença livre, com crédito).
 
 **Para atualizar**: quando sair uma lei nova, acrescente uma linha em `subsidio`; quando mudar o governador, feche a
-linha dele em `ocupantes` (`ate`) e abra outra. Próximo passo: o mês a mês pela folha, nos estados em que ela é
-aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC e SP).
+linha dele em `ocupantes` (`ate`) e abra outra (com `folha_nome`, o nome como aparece na folha, nos estados em que a
+busca é pelo nome).
+
+### Governadores mês a mês (folhas dos estados)
+
+Robôs em `coleta/folhas_estaduais/`, um por estado, rodados pela etapa `governadores`: o que o governador, o vice e
+quem governou interinamente receberam em cada mês desde jan/2025, pela folha de pagamento com o nome de cada servidor.
+Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os meses que faltam e os últimos de novo).
+
+| UF | Fonte | Como |
+|---|---|---|
+| AC | Portal de Transparência, "Servidores" | Busca pelo nome e detalhamento de cada folha (normal, adiantamento do 13º, rescisão), com as rubricas |
+| DF | Portal da Transparência do DF | API por nome e mês (subsídio, benefícios, verbas eventuais, reposições) |
+| ES | Dados abertos, "Portal da Transparência - Pessoal" | CSV mensal de 85-195 MB, uma linha por rubrica, lido aos poucos |
+| MG | Dados abertos, "Remuneração dos servidores ativos" | CSV mensal de ~130 MB (dois leiautes), com 13º, férias, jetons e abate-teto |
+| PB | Dados abertos (API da Codata) | Por órgão e mês: parte fixa e parte variável |
+| PE | Dados abertos, "Remuneração de servidores" | CSV mensal; a governadora é achada pelo nome (recebe como procuradora) |
+| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses) |
+| RO | API do Portal da Transparência | Por cargo e mês, com as rubricas; o 13º numa folha à parte |
+| RR | API do Portal da Transparência | Por nome e mês, com os lançamentos |
+| SC | Dados abertos, "Remuneração dos servidores" | CSV mensal só com o bruto; o Estado só mantém os meses recentes |
+| SP | Portal da Transparência, "Remuneração" | Arquivo do mês e série histórica (.rar, lida com `libarchive-c`) |
+
+- Guardamos só o que a pessoa recebe (salário, 13º, férias, auxílios, outros, bruto) e o abate-teto. Nada de CPF
+  (nem mascarado) e nada de descontos pessoais.
+- No site: recebido = bruto menos o abate-teto. Quando dezembro traz o 13º inteiro e o adiantamento já foi pago no
+  meio do ano, o adiantamento sai de dezembro (senão o 13º conta duas vezes). O mês da saída, com os acertos (férias
+  não tiradas, 13º proporcional), é marcado e fica fora da média.
+- Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
+  fora do ar no período eleitoral).
 
 ## Compartilhamento e medição
 
@@ -298,7 +326,8 @@ Veja `metadados.json` → `pendencias`. As principais:
    comissionado, pelo nome).
 3. **Câmara:** ainda faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão).
    Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
-4. **Governadores:** só o salário do cargo, sem o mês a mês; em AL, AP, GO, MA, RJ e SE o valor ainda é o da imprensa.
+4. **Governadores:** o mês a mês pela folha em 11 estados; nos outros, só o salário do cargo. Em AL, AP, GO, MA, RJ e
+   SE, o valor do cargo ainda é o da imprensa.
 5. **Prefeituras:** Belo Horizonte (portal bloqueia robôs), Curitiba e as outras capitais ainda não foram feitas.
 6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
    afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).

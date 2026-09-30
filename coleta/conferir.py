@@ -79,12 +79,12 @@ def _prefeituras():
 
 
 def _governadores():
-    """(estados no arquivo do site, estados com o valor da lei ou conferido na folha)."""
+    """(estados no arquivo do site, estados com o valor da lei ou conferido na folha, estados com o mês a mês)."""
     arq = RAIZ / "site" / "dados" / "governadores.json"
     if not arq.exists():
-        return 0, 0
+        return 0, 0, 0
     es = json.load(open(arq, encoding="utf-8"))["e"]
-    return len(es), sum(1 for e in es if e["v"][2] in ("lei", "folha", "tabela"))
+    return len(es), sum(1 for e in es if e["v"][2] in ("lei", "folha", "tabela")), sum(1 for e in es if e.get("m"))
 
 
 def executar():
@@ -221,6 +221,7 @@ def executar():
             (f"Prefeitura {n}: secretários na folha do último mês", se, int(maximo * 0.6)))],
         ("Governadores no arquivo do site", _governadores()[0], 27),
         ("Governadores com o valor da lei, da folha ou da tabela oficial", _governadores()[1], 18),
+        ("Estados com o mês a mês do governador pela folha", _governadores()[2], 10),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),

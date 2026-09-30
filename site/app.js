@@ -1524,7 +1524,8 @@
       const linha = (e, i) => h("a", { class: `rank${atual && e.uf === atual.uf ? " rank--eu" : ""}`, href: `#gov-${e.uf}`, onclick: () => { S.origem = "ranking_governadores"; } },
         h("span", { class: "rank__pos" }, `${i + 1}º`),
         h("span", { class: "rank__nome" }, ESTADOS[e.uf], " ", h("small", null, campo === "v" ? `${e.gov.n}${partidoTxt(e.gov)}${e.gov.ex ? ", em exercício" : ""}` : e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : "cargo vago hoje"), " ", seloConf(e[campo][2]),
-          e.recebe && campo === "v" ? h("small", { class: "rank__obs" }, ` · ${e.recebe.curto}${e.recebe.bruto ? ` (${reais(e.recebe.bruto)})` : ""}`) : null),
+          e.recebe && campo === "v" ? h("small", { class: "rank__obs" }, ` · ${e.recebe.curto}${e.recebe.bruto ? ` (${reais(e.recebe.bruto)})` : ""}`) : null,
+          e.m ? h("small", { class: "rank__mes" }, " · mês a mês") : null),
         h("span", { class: "rank__valor" }, reaisC(e[campo][0])),
         h("span", { class: "barra__trilho" }, h("span", { class: "barra__fill barra__fill--ganha", style: `width:${Math.max(0.5, (e[campo][0] / max) * 100)}%` })));
       add(corpo,
@@ -1544,7 +1545,73 @@
       h("p", { class: "rotulo" }, "Governadores"),
       h("h2", null, atual ? "Os 27 governadores" : "Quanto ganha cada governador"),
       h("p", { class: "discreto" }, "O salário (subsídio) do governador e do vice é fixado por lei em cada estado, pela Assembleia Legislativa, e não há uma fonte nacional com todos. Juntamos, estado por estado, a lei, a tabela oficial ou a folha de pagamento do Estado e, só quando não há outra, a imprensa, e mostramos de onde veio cada valor. Toque num estado para ver quem governa, a lei, a história do valor e se dá para conferir na folha."),
+      GOV.e.some((e) => e.m) ? h("p", { class: "discreto" }, `Em ${GOV.e.filter((e) => e.m).length} estados (${listaE(GOV.e.filter((e) => e.m).map((e) => ESTADOS[e.uf]))}), a folha de pagamento abre para o nosso robô, e a página mostra também quanto o governador e o vice receberam de fato em cada mês, com 13º, férias e acertos de saída (marcados com "mês a mês").`) : null,
       corpo);
+  }
+  // mês a mês pela folha do Estado: e.m = [[aaaamm, tp, índice em e.oc, recebido, salário, 13º, férias, auxílios, outros, abate-teto, marca]]
+  const PARTES_GOV = [[4, "Salário"], [5, "13º"], [6, "Férias"], [7, "Auxílios"], [8, "Outros"]];
+  function blocoMensalGov(e) {
+    if (!e.m || !e.m.length) return null;
+    const temVice = e.m.some((x) => x[1] === "vice");
+    let tp = "gov";
+    const corpo = h("div", { style: "display:grid;gap:12px;grid-template-columns:minmax(0,1fr)" });
+    const nomeOc = (i) => (i == null || !e.oc[i] ? "—" : e.oc[i].n);
+    const desenhar = () => {
+      corpo.textContent = "";
+      const ls = e.m.filter((x) => x[1] === tp);
+      if (!ls.length) return;
+      const meses = [...new Set(ls.map((x) => x[0]))].sort((a, b) => a - b);
+      // uma coluna por mês (no mês da troca, duas pessoas: somadas na coluna, separadas na dica e na tabela)
+      const pontos = meses.map((am) => {
+        const xs = ls.filter((x) => x[0] === am);
+        const sal = xs.reduce((a, x) => a + (x[4] != null ? Math.min(x[4], x[3]) : x[3]), 0);
+        const tot = xs.reduce((a, x) => a + x[3], 0);
+        return { aaaamm: am, s: sal, x: Math.max(0, tot - sal), xs, i: xs[xs.length - 1][2] };
+      });
+      const pessoas = [...new Set(pontos.map((p) => p.i))];
+      const cor = (i) => (pessoas.indexOf(i) % 2 ? "d" : "e");
+      const normais = pontos.filter((p) => !p.xs.some((x) => x[10].includes("s")));
+      const ult12 = normais.slice(-12);
+      const ano = String(Math.floor(meses[meses.length - 1] / 100) - 1);
+      const doAno = pontos.filter((p) => String(Math.floor(p.aaaamm / 100)) === ano);
+      const totAno = doAno.reduce((a, p) => a + p.s + p.x, 0), extraAno = doAno.reduce((a, p) => a + p.x, 0);
+      const ultimo = pontos[pontos.length - 1];
+      const caixa = h("div", { class: "grafico" });
+      const colunas = [4, 5, 6, 7, 8, 9].filter((k) => ls.some((x) => x[k]));
+      const dinheiro = (v) => (v == null ? "—" : reaisC(v));
+      add(corpo,
+        temVice ? pilulas([["gov", "Governador"], ["vice", "Vice-governador"]], tp, (v) => { tp = v; evento("ver_governador_mes", { uf: e.uf, cargo: v }); desenhar(); }, "Cargo") : null,
+        h("div", { class: "estatisticas" },
+          estatistica(`Recebeu em ${fmtMes(ultimo.aaaamm)}`, reaisC(ultimo.s + ultimo.x), ultimo.xs.map((x) => nomeOc(x[2])).join(" e ")),
+          ult12.length >= 3 ? estatistica("Média por mês", reais(ult12.reduce((a, p) => a + p.s + p.x, 0) / ult12.length), `nos últimos ${ult12.length} meses na folha${normais.length < pontos.length ? ", sem os acertos de saída" : ""}`) : null,
+          doAno.length === 12 ? estatistica(`Recebeu em ${ano}`, compacto(totAno), extraAno > 1 ? `${reais(extraAno)} além do salário (13º, férias e outros)` : "só o salário") : null),
+        h("div", { class: "legenda" },
+          h("span", null, h("span", { class: "chave chave--ganha" }), "Salário (subsídio)"), h("span", null, h("span", { class: "chave chave--extra" }), "13º, férias, auxílios e outros"),
+          pessoas.length > 1 ? pessoas.map((i) => h("span", null, h("span", { class: `chave chave--faixa faixa-cargo--${cor(i)}` }), nomeOc(i))) : null),
+        caixa,
+        h("details", { class: "tabela" }, h("summary", null, "Ver os valores em tabela"),
+          h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" },
+            h("thead", null, h("tr", null, ["Mês", "Quem", "Recebeu", ...colunas.map((k) => (k === 9 ? "Abate-teto" : PARTES_GOV.find(([c]) => c === k)[1]))].map((c) => h("th", null, c)))),
+            h("tbody", null, ls.slice().reverse().map((x) => h("tr", null, h("td", null, fmtMes(x[0])),
+              h("td", null, nomeOc(x[2]), x[10].includes("s") ? h("small", { class: "tabela-gov__obs" }, "mês da saída, com os acertos") : null,
+                x[10].includes("a") ? h("small", { class: "tabela-gov__obs" }, "13º já sem o adiantamento pago antes") : null),
+              h("td", { class: "num" }, h("strong", null, reaisC(x[3]))), ...colunas.map((k) => h("td", { class: "num" }, k === 9 ? (x[9] ? `− ${reaisC(x[9])}` : "—") : dinheiro(x[k]))))))))),
+        h("ul", { class: "lista nota" },
+          h("li", null, "Recebeu = o bruto do mês na folha do Estado, já sem o abate-teto, antes do imposto de renda e da previdência. Descontos pessoais não entram."),
+          h("li", null, e.mf.nota),
+          ls.some((x) => x[10].includes("s")) ? h("li", null, "Quem deixa o cargo recebe no último mês os acertos: férias não tiradas (às vezes de vários anos) e o 13º proporcional. Esse mês fica fora da média.") : null,
+          ls.some((x) => x[10].includes("a")) ? h("li", null, "Parte do 13º é paga adiantada no meio do ano, e a folha de dezembro traz o 13º inteiro e desconta o adiantamento. Aqui, dezembro já aparece sem o adiantamento, para o 13º não contar duas vezes.") : null,
+          h("li", null, "Fonte: ", h("a", { href: e.mf.u, target: "_blank", rel: "noopener" }, `folha de pagamento ${deUF(e.uf)}`), `, mês a mês desde ${fmtMes(e.m[0][0])}. O robô confere toda semana.`)));
+      requestAnimationFrame(() => graficoColunas(caixa, pontos, [{ k: "s", cls: "seg-ganha" }, { k: "x", cls: "seg-extra" }],
+        (p) => [...p.xs.map((x) => h("div", null, h("strong", null, nomeOc(x[2])), `: ${reaisC(x[3])}`, x[10].includes("s") ? " (saída, com os acertos)" : "")),
+          ...PARTES_GOV.filter(([k]) => p.xs.some((x) => x[k])).map(([k, n]) => h("div", { class: "pequeno" }, `${n}: ${reaisC(p.xs.reduce((a, x) => a + (x[k] || 0), 0))}`)),
+          p.xs.some((x) => x[9]) ? h("div", { class: "pequeno" }, `Abate-teto: − ${reaisC(p.xs.reduce((a, x) => a + (x[9] || 0), 0))}`) : null],
+        pessoas.length > 1 ? (p) => cor(p.i) : null));
+    };
+    desenhar();
+    return [h("h3", null, "Quanto recebeu, mês a mês"),
+      h("p", { class: "discreto pequeno", style: "margin:0" }, `Pela folha de pagamento ${deUF(e.uf)}, com o nome de cada servidor: o que ${govFem(e) ? "a governadora" : "o governador"} e o vice receberam de fato em cada mês, com 13º, férias e acertos.`),
+      corpo];
   }
   // página de um estado: #gov-SP
   function secGovernador(e) {
@@ -1582,6 +1649,7 @@
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
           h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte ↗"))),
+        blocoMensalGov(e),
         h("h3", null, "Quem governou desde 2023"),
         h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" },
           h("thead", null, h("tr", null, ["Quem", "Cargo", "De", "Até"].map((c) => h("th", null, c)))),
@@ -1595,8 +1663,8 @@
         sec.length ? h("details", { class: "tabela" }, h("summary", null, "Secretários de Estado"), h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" }, h("tbody", null, sec.map(linhaHist))))) : null,
         h("p", { class: "nota" }, "\"Desde\" é o mês em que o valor passou a valer. Quando a fonte é só a imprensa, é o mês a que o valor se refere."),
         h("h3", null, "Dá para conferir na folha de pagamento?"),
-        h("p", { style: "margin:0" }, FOLHA_GOV[e.folha.s]),
-        e.folha.c ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
+        h("p", { style: "margin:0" }, e.m ? "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê toda semana: veja o mês a mês acima." : FOLHA_GOV[e.folha.s]),
+        e.folha.c && !e.m ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
         e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)} ↗`)) : null,
         e.notas.length ? h("h3", null, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),

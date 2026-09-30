@@ -448,3 +448,10 @@ a.pessoa-chip:hover { border-color: var(--accent); }
 .tabela-gov td { white-space: normal; vertical-align: top; }
 .tabela-gov__obs { display: block; color: var(--ink-2); font-size: .82rem; margin-top: 2px; max-width: 46ch; }
 .tabela-gov td.num, .tabela-gov td:nth-child(3), .tabela-gov td:nth-child(4) { white-space: nowrap; }
+.seg-extra { fill: var(--ganha); opacity: .42; }
+.chave--extra { background: var(--ganha); opacity: .42; }
+.coluna.ativa .seg-extra { opacity: .6; }
+.rank__mes { color: var(--ganha) !important; font-weight: 600 !important; }
+/* tabelas largas dentro dos cartões rolam sozinhas, sem alargar a página */
+.cidade__corpo { grid-template-columns: minmax(0, 1fr); }
+.cidade__corpo > *, .cidade__corpo > div > * { min-width: 0; }

@@ -108,6 +108,103 @@ def _fotos(estados, baixar):
                 o["fc"] = {"a": c.get("autor"), "l": c.get("licenca"), "u": c.get("pagina")}
 
 
+# ---------------------------------------------------------------- mês a mês, pela folha do Estado (coleta/folhas_estaduais)
+def _tokens(nome):
+    return {w for w in normalizar_nome(nome or "").split() if len(w) > 2 and w not in ("DOS", "DAS", "DE", "DA", "DO")}
+
+
+def _quem(e, tp, aaaamm, nome_folha):
+    """Ocupante (do arquivo curado) de uma linha da folha: o do mesmo cargo naquele mês (ou vizinho), com o nome mais
+    parecido. Devolve o índice em e["ocupantes"] ou None."""
+    cargos = ("gov", "exercicio") if tp == "gov" else ("vice",)
+    tok = _tokens(nome_folha)
+    melhor = None
+    for folga in (0, 1):
+        for i, o in enumerate(e["ocupantes"]):
+            if o["cargo"] not in cargos:
+                continue
+            de = _mes(o["de"])
+            ate = _mes(o["ate"]) if o.get("ate") else 999912
+            if not (_menos(de, folga) <= aaaamm <= _mais(ate, folga)):
+                continue
+            nota = len(tok & (_tokens(o.get("folha_nome")) | _tokens(o.get("civil")) | _tokens(o["nome"])))
+            if melhor is None or nota > melhor[0]:
+                melhor = (nota, i)
+        if melhor and melhor[0] > 0:
+            return melhor[1]
+    return melhor[1] if melhor else None
+
+
+def _menos(am, n):
+    a, m = divmod(am, 100)
+    for _ in range(n):
+        a, m = (a - 1, 12) if m == 1 else (a, m - 1)
+    return a * 100 + m
+
+
+def _mais(am, n):
+    a, m = divmod(am, 100)
+    for _ in range(n):
+        a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+    return a * 100 + m
+
+
+def _serie(e):
+    """Linhas do site para o estado: [aaaamm, tp, índice do ocupante, recebido, salário, 13º, férias, auxílios, outros,
+    abate-teto, marca] (parte que a folha não separa = None; marca: "s" = mês da saída, com os acertos; "a" = o 13º
+    de dezembro já sem o adiantamento pago antes). Recebido = bruto menos o abate-teto."""
+    import pandas as pd
+    from .folhas_estaduais import comum as FC
+    arq = FC.arquivo(e["uf"])
+    if not arq.exists():
+        return None
+    df = pd.read_csv(arq)
+    if not len(df):
+        return None
+    partes = ["salario", "decimo", "ferias", "beneficios", "outros"]
+    # uma linha por pessoa, cargo e mês (algumas folhas trazem mais de uma: folha normal e a do 13º, por exemplo)
+    df["redutor"] = df.redutor.fillna(0)
+    agg = {k: (lambda s: None if s.isna().all() else float(s.fillna(0).sum())) for k in partes}
+    g = df.groupby(["aaaamm", "tp", "nome"], as_index=False).agg({**agg, "redutor": "sum", "bruto": "sum"})
+    linhas = []
+    for r in g.itertuples(index=False):
+        i = _quem(e, r.tp, int(r.aaaamm), r.nome)
+        linhas.append({"am": int(r.aaaamm), "tp": r.tp, "i": i, "nome": r.nome, **{k: getattr(r, k) for k in partes},
+                       "redutor": float(r.redutor), "bruto": float(r.bruto), "marca": ""})
+    # 13º: quando dezembro traz o 13º inteiro e parte dele já tinha sido paga antes no ano (o adiantamento), a folha
+    # desconta o adiantamento em dezembro; tiramos também aqui, para o 13º não contar duas vezes
+    por_pessoa = {}
+    for l in linhas:
+        por_pessoa.setdefault((l["i"], l["nome"]), []).append(l)
+    for ls in por_pessoa.values():
+        salarios = sorted(l["salario"] for l in ls if l["salario"])
+        mediana = salarios[len(salarios) // 2] if salarios else 0
+        for ano in {l["am"] // 100 for l in ls}:
+            do_ano = sorted((l for l in ls if l["am"] // 100 == ano and l["decimo"]), key=lambda l: l["am"])
+            if len(do_ano) < 2 or not mediana:
+                continue
+            ultimo = max(do_ano, key=lambda l: l["decimo"])
+            antes = sum(l["decimo"] for l in do_ano if l["am"] < ultimo["am"])
+            if antes and ultimo["decimo"] >= 0.9 * mediana and antes <= ultimo["decimo"] + 1:
+                ultimo["decimo"] -= antes
+                ultimo["bruto"] -= antes
+                ultimo["marca"] += "a"
+        # mês da saída: o último mês no cargo, com o valor bem acima do normal (férias não tiradas, 13º proporcional)
+        for tp in {l["tp"] for l in ls}:
+            do_cargo = sorted((l for l in ls if l["tp"] == tp), key=lambda l: l["am"])
+            o = e["ocupantes"][do_cargo[-1]["i"]] if do_cargo[-1]["i"] is not None else None
+            if not o or not o.get("ate"):
+                continue
+            valores = sorted(l["bruto"] - l["redutor"] for l in do_cargo)
+            normal = valores[len(valores) // 2]
+            for l in do_cargo[-2:]:
+                if l["am"] >= _menos(_mes(o["ate"]), 0) and l["bruto"] - l["redutor"] > 1.5 * normal:
+                    l["marca"] += "s"
+    r2 = lambda v: None if v is None else round(v, 2)
+    return [[l["am"], l["tp"], l["i"], r2(l["bruto"] - l["redutor"]), *[r2(l[k]) for k in partes], r2(l["redutor"]), l["marca"]]
+            for l in sorted(linhas, key=lambda l: (l["am"], l["tp"] != "gov", l["i"] if l["i"] is not None else 99))]
+
+
 def executar(baixar_fotos=True):
     estados = json.loads(ARQUIVO.read_text(encoding="utf-8"))
     erros = _conferir(estados)
@@ -118,6 +215,8 @@ def executar(baixar_fotos=True):
     saida = []
     for e in sorted(estados, key=lambda x: x["uf"]):
         uf = e["uf"]
+        # a mesma ordem no site ("oc") e nas linhas da folha ("m", que apontam para o ocupante pelo índice)
+        e = {**e, "ocupantes": sorted(e["ocupantes"], key=lambda o: (o["de"], {"gov": 0, "exercicio": 0, "vice": 1}[o["cargo"]]))}
         chefe = next(o for o in e["ocupantes"] if o["cargo"] in ("gov", "exercicio") and not o.get("ate"))
         vice = next((o for o in e["ocupantes"] if o["cargo"] == "vice" and not o.get("ate")), None)
         pessoa = lambda o: {"id": f"gov-{uf.lower()}-{_slug(o['nome'])}", "n": o["nome"], "nc": o.get("civil"), "pt": o.get("partido"), "de": o["de"],
@@ -138,11 +237,16 @@ def executar(baixar_fotos=True):
                   for x in sorted(e["subsidio"], key=lambda x: (x["desde"], x["cargo"]))],
             "oc": [{"n": o["nome"], "pt": o.get("partido"), "c": o["cargo"], "de": o["de"], "ate": o.get("ate"), **({"fem": 1} if o.get("fem") else {}),
                     **({"obs": o["obs"]} if o.get("obs") else {})}
-                   for o in sorted(e["ocupantes"], key=lambda o: (o["de"], {"gov": 0, "exercicio": 0, "vice": 1}[o["cargo"]]))],
+                   for o in e["ocupantes"]],
             "folha": {"s": e["folha"]["situacao"], "u": e["folha"].get("url"), **({"c": e["folha"]["conferido"]} if e["folha"].get("conferido") else {})},
             **({"recebe": e["recebe"]} if e.get("recebe") else {}),
             "notas": e.get("notas") or [],
         })
+        m = _serie(e)
+        if m:
+            from .folhas_estaduais import ESTADOS, NOTAS
+            saida[-1]["m"] = m
+            saida[-1]["mf"] = {"u": ESTADOS[uf].FONTE, "nota": NOTAS.get(uf, "")}
     _fotos([x for x in saida], baixar_fotos)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "mes": agora,
                       "fonte": "https://github.com/jflaloux/contas-do-poder/blob/main/dados/governadores/governadores.json"},
@@ -159,4 +263,6 @@ def executar(baixar_fotos=True):
 
 
 def coletar():
+    from . import folhas_estaduais
+    folhas_estaduais.coletar()  # o mês a mês pela folha dos estados em que ela abre
     executar(baixar_fotos=True)

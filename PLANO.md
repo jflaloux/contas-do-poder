@@ -78,7 +78,9 @@ Cada número tem link para a fonte oficial.
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
 - [ ] Prefeituras, próximas: Curitiba (a exportação da folha dá erro), Natal, João Pessoa, Salvador, Rio, Campo Grande, Macapá. Belo Horizonte: o portal bloqueia robôs (WAF), não contornamos; só se a Prefeitura liberar ou publicar os dados abertos — Claude
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
-- [ ] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
+- [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
+- [x] Logo novo (prédio público cujas colunas são um gráfico de barras), favicon e prévia do link; rodapé sem nome, com fontes oficiais, código aberto e contato — Claude
+- [ ] E-mail contato@contasdopoder.com (Cloudflare Email Routing) — Jean-François
 - [ ] Governadores: achar as leis que faltam (AL, AP, GO, MA, RJ, SE só pela imprensa) — Claude, com ajuda de quem estiver no Brasil (portais bloqueiam o exterior)
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
