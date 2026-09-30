@@ -140,6 +140,24 @@
     const div = ORDEM_GANHA.includes(cat) ? r.mg : ORDEM_EQUIPE.includes(cat) ? r.me : r.mc;
     return div ? (r.cats[cat] || 0) / div : 0;
   }
+  // parte (%) de quem trabalha no Brasil que ganha menos que x salários mínimos por mês (PNAD Contínua do IBGE, em
+  // meta().renda.grade: pares [x, %]). Interpola em linha reta entre os pontos, o que dá um valor um pouco menor que o real
+  // (a curva é côncava); arredonda para baixo e para em 99,9%, porque a pesquisa capta mal as rendas mais altas.
+  function acimaDeQuemTrabalha(x) {
+    const R = meta().renda, g = R && R.grade;
+    if (!g || !(x > 0)) return null;
+    let v = g[g.length - 1][1];
+    if (x <= g[0][0]) v = (g[0][1] * x) / g[0][0];
+    else for (let i = 1; i < g.length; i++) if (x <= g[i][0]) { const [x0, y0] = g[i - 1], [x1, y1] = g[i]; v = y0 + ((y1 - y0) * (x - x0)) / (x1 - x0); break; }
+    return Math.min(99.9, Math.floor(v * 10) / 10);
+  }
+  const pctPop = (v) => `${num(v, v >= 99 || v % 1 ? 1 : 0)}%`;
+  const TXT_POP = "dos brasileiros que trabalham";
+  const frasePop = (xsm, antes) => { const v = acimaDeQuemTrabalha(xsm); return v === null ? "" : `${antes}${pctPop(v)} ${TXT_POP}`; };
+  function estatisticaPop(xsm) {
+    const v = acimaDeQuemTrabalha(xsm);
+    return v === null ? null : estatistica("Ganha mais que", pctPop(v), h("span", null, `${TXT_POP} `, h("a", { href: "#entenda", class: "pequeno", onclick: (ev) => { ev.preventDefault(); evento("como_renda"); const d = document.getElementById("entenda-renda"); if (d) { d.open = true; d.scrollIntoView({ block: "center" }); } } }, "(como?)")));
+  }
   // em salários mínimos de cada ano (o salário mínimo muda todo ano)
   function emSalariosMinimos(p, k, campo) {
     const anos = k === "leg" ? meta().anos : [k];
@@ -202,18 +220,36 @@
     cacheMed.set(chave, out);
     return out;
   }
-  // "O custo dele fica acima de 57% dos ..."; no topo e no fim, "o maior" / "o menor"
-  const fraseposicao = (p, pos) => (p.k === "p"
-    ? (pos.pos === 1 ? `É quem mais recebe entre os ${plural(grupo(p))}` : pos.pos === pos.n ? `É quem menos recebe entre os ${plural(grupo(p))}` : `Recebe mais que ${pos.pct}% dos ${plural(grupo(p))}`)
-    : pos.pos === 1 ? `É o maior custo entre os ${plural(grupo(p))}` : pos.pos === pos.n ? `É o menor custo entre os ${plural(grupo(p))}`
-    : `O custo dele fica acima de ${pos.pct}% dos ${plural(grupo(p))}`);
+  // "Custa menos que 57% dos deputados" (verde) ou "Custa mais que 57%" (vermelho); no topo e no fim, "o maior" / "o menor"
+  const acimaDaMediana = (pos) => pos.pctMais < 50;
+  const fraseposicao = (p, pos) => {
+    const g = plural(grupo(p)), verbo = p.k === "p" ? "Recebe" : "Custa";
+    if (pos.pos === 1) return p.k === "p" ? `É quem mais recebe entre os ${g}` : `É o maior custo entre os ${g}`;
+    if (pos.pos === pos.n) return p.k === "p" ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
+    return acimaDaMediana(pos) ? `${verbo} mais que ${pos.pct}% dos ${g}` : `${verbo} menos que ${pos.pctMais}% dos ${g}`;
+  };
+  // faixa dos colegas (em quartos) e a régua com o lugar da pessoa, do que menos custa ao que mais custa
+  function blocoPosicao(p, k, pos) {
+    const lado = pos.pos === 1 || acimaDaMediana(pos) ? "acima" : "abaixo";
+    const lugar = pos.n > 1 ? (1 - (pos.pos - 1) / (pos.n - 1)) * 100 : 50;
+    const quarto = Math.min(3, Math.floor(lugar / 25));
+    const verbo = p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
+    const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
+    return h("div", { class: `destaque destaque--${lado}` },
+      h("p", { style: "margin:0" }, `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}): ${faixa}.`),
+      h("div", { class: "regua", role: "img", "aria-label": `Posição entre os ${plural(grupo(p))}: ${faixa}` },
+        h("div", { class: "regua__trilho" }, [0, 1, 2, 3].map((i) => h("span", { class: `regua__quarto${i === quarto ? " regua__quarto--eu" : ""}` })),
+          h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
+        h("div", { class: "regua__legenda" }, h("span", null, `← ${verbo[0]}`), h("span", null, "mediana"), h("span", null, `${verbo[1]} →`))));
+  }
   function posicao(p, k) {
     const C = colegas(grupo(p), k);
     const eu = C.lista.find((x) => x.p.id === p.id);
     if (!eu) return null;
     const acima = C.lista.filter((x) => x.r.tm > eu.r.tm).length;
     const abaixo = C.lista.filter((x) => x.r.tm < eu.r.tm).length;
-    return { pos: acima + 1, n: C.n, pct: Math.round((abaixo / Math.max(1, C.n - 1)) * 100) };
+    // arredonda para baixo: o 3º de 555 "custa mais que 99%", nunca "mais que 100%"
+    return { pos: acima + 1, n: C.n, pct: Math.floor((abaixo / Math.max(1, C.n - 1)) * 100), pctMais: Math.floor((acima / Math.max(1, C.n - 1)) * 100) };
   }
 
   // ================================================================== peças
@@ -273,6 +309,19 @@
     return GOV.e.filter((e) => { const t = semAcento(`${e.gov.n} ${e.gov.nc || ""} ${ESTADOS[e.uf]} governador governadora`); return termos.every((x) => t.includes(x)); }).slice(0, 2);
   }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
+  // o que as pessoas procuram e não acham: manda o termo 1,5 s depois de parar de digitar, uma vez por termo. Não manda
+  // nada que pareça e-mail ou número de documento (só nomes de políticos, cidades, cargos...)
+  let buscaTimer = null;
+  const buscasMedidas = new Set();
+  function medirBuscaVazia(valor) {
+    clearTimeout(buscaTimer);
+    buscaTimer = setTimeout(() => {
+      const termo = semAcento(valor.trim()).toLowerCase().slice(0, 50);
+      if (termo.length < 3 || buscasMedidas.has(termo) || /@|\d{3}/.test(termo)) return;
+      buscasMedidas.add(termo);
+      evento("busca_sem_resultado", { termo });
+    }, 1500);
+  }
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades) {
     let itens = [], ativo = -1;
     const fechar = () => { caixa.hidden = true; ativo = -1; };
@@ -289,7 +338,10 @@
         iconeCidade(avatarCidade("p")), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
       pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
-      if (input.value.trim().length >= 2 && !itens.length) caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px" }, "Ninguém encontrado. Confira a grafia."));
+      if (input.value.trim().length >= 2 && !itens.length) {
+        caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px" }, "Ninguém encontrado. Confira a grafia."));
+        medirBuscaVazia(input.value);
+      }
       caixa.hidden = !caixa.children.length;
       ativo = -1;
     });
@@ -479,7 +531,7 @@
     return [
       `*${p.n}* (${p.g}, ${partidoUF(p)}) ${nomePeriodo(k, false)}:`,
       `${p.k === "p" ? "Recebe" : "Custo dele"}: *${reais(r.tm)} por mês*`,
-      `• Vai para o bolso: ${reais(r.gm)} por mês (${sm(emSalariosMinimos(p, k, "g"))} salários mínimos)`,
+      `• Vai para o bolso: ${reais(r.gm)} por mês (${sm(emSalariosMinimos(p, k, "g"))} salários mínimos${frasePop(emSalariosMinimos(p, k, "g"), ", mais que ")})`,
       r.cats.jetons ? `  (inclui ${reais(porMes(r, "jetons"))} por mês de jetons de conselhos)` : null,
       p.k === "p" ? `• ${gastosNome(p)}: não publicados por pessoa` : `• ${gastosNome(p)}: ${reais(r.cm)} por mês (${gastosDetalhe(p)})`,
       r.em ? `À parte, a equipe do gabinete: ${pessoasTxt(r.pessoas)}, ${reais(r.em)} por mês` : null,
@@ -553,9 +605,9 @@
     comMes(reais(r.tm), M - 6, y + 118, `500 112px ${MONO}`, 36, "#ffffff");
     y += 140;
     if (pos) {
-      const selo = p.k === "p" ? (pos.pos === 1 ? `Quem mais recebe na Prefeitura` : pos.pct >= 50 ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${100 - pos.pct}% da Prefeitura`)
+      const selo = p.k === "p" ? (pos.pos === 1 ? `Quem mais recebe na Prefeitura` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
         : pos.pos === 1 ? `O maior custo entre os ${plural(p.k)}` : pos.pos === pos.n ? `O menor custo entre os ${plural(p.k)}`
-        : pos.pct >= 50 ? `Custa mais que ${pos.pct}% dos ${plural(p.k)}` : `Custa menos que ${100 - pos.pct}% dos ${plural(p.k)}`;
+        : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${plural(p.k)}` : `Custa menos que ${pos.pctMais}% dos ${plural(p.k)}`;
       g.font = `700 32px ${BODY}`; const larg = g.measureText(selo).width;
       g.fillStyle = C.hi; caixa(M, y, larg + 48, 58, 29); g.fill();
       g.fillStyle = "#2a0714"; g.fillText(selo, M + 24, y + 40);
@@ -794,7 +846,8 @@
       add(lado, h("div", { class: "estatisticas" },
         jj ? estatistica("Meses exercendo o mandato", String(mesesPorCargo(jj, k).par), nomePeriodo(k, false))
           : estatistica({ e: "Meses no cargo", j: "Meses nos dois cargos", p: "Meses no cargo" }[p.k] || "Meses de mandato", String(r.m), nomePeriodo(k, false)),
-        estatistica("Vai para o bolso", sm(emSalariosMinimos(p, k, "g")), "salários mínimos por mês")));
+        estatistica("Vai para o bolso", sm(emSalariosMinimos(p, k, "g")), "salários mínimos por mês"),
+        estatisticaPop(emSalariosMinimos(p, k, "g"))));
       if (p.im) {
         const anos = k === "leg" ? Object.keys(p.im) : [k];
         const frases = anos.filter((a) => p.im[a]).map((a) => p.k === "d" ? `${a}: apartamento funcional por ${p.im[a]} dias` : `${a}: ${p.im[a] === "Utilizou" ? "usou" : "não usou"} imóvel funcional`);
@@ -877,7 +930,7 @@
           h("span", { class: "total__valor" }, reais(r.tm)),
           h("span", { class: "item__detalhe" }, p.k === "p" ? `tudo para o bolso · ${sm(emSalariosMinimos(p, k, "t"))} salários mínimos` : `${reais(r.gm)} para o bolso + ${reais(r.cm)} em ${gastosNome(p).toLowerCase()} · ${sm(emSalariosMinimos(p, k, "t"))} salários mínimos`),
           seloComp(r.tm, C.tm, `vs. ${txtMed}`)),
-        pos ? h("p", { class: "destaque" }, `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}).`) : null,
+        pos ? blocoPosicao(p, k, pos) : null,
         r.em ? h("div", { class: "equipe-resumo" },
           titulo("À parte: equipe do gabinete (vai para outras pessoas)", "equipe"),
           h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
@@ -1505,7 +1558,7 @@
     const p = posGov(e), link = endereco() ? `${endereco()}#gov-${e.uf}` : "";
     return [
       `*${tituloGov(e)} ${deUF(e.uf)}: ${e.gov.n}*`,
-      `Salário (subsídio) do cargo: *${reaisC(e.v[0])} por mês*, bruto. É o ${p.pos}º maior entre os 27 estados.`,
+      `Salário (subsídio) do cargo: *${reaisC(e.v[0])} por mês*, bruto${frasePop(e.v[0] / (meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()]), ", mais que ")}. É o ${p.pos}º maior entre os 27 estados.`,
       e.recebe ? e.recebe.texto + (e.recebe.bruto ? ` (${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}).` : ".") : null,
       "",
       `Fonte: ${e.v[3].split(";")[0]}.`,
@@ -1640,6 +1693,7 @@
           estatistica(`Salário ${fem ? "da governadora" : "do governador"}`, reaisC(e.v[0]), `por mês, bruto, ${e.v[2] === "imprensa" ? `valor de ${fmtMes(e.v[1])}` : `desde ${fmtMes(e.v[1])}`}`),
           estatistica(e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador", e.vv ? reaisC(e.vv[0]) : "—", e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : `cargo vago hoje${e.vv ? " (valor do cargo)" : ""}`),
           estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
+          estatisticaPop(e.v[0] / sm),
           e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null),
         e.recebe ? h("p", { class: "aviso aviso--forte" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
@@ -1785,7 +1839,7 @@
     const medir = () => evento("ranking", { casa: nomeGrupo(G()), metrica: R.metrica, periodo: R.periodo === "leg" ? "mandato" : R.periodo, uf: R.uf || "todos" });
     const trocouGrupo = () => { R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = "custo"; periodosOk(); medir(); render(false); irPara("ranking"); };
     const filtros = h("div", { class: "filtros" },
-      h("div", { class: "campo" }, h("span", { class: "rotulo" }, "Quem"),
+      h("div", { class: "campo campo--quem" }, h("span", { class: "rotulo" }, "Quem"),
         pilulas([["d", "Deputados"], ["s", "Senadores"], ["e", "Governo"], ...(cidadesCamara().length ? [["v", "Vereadores"]] : []), ...(cidadesPrefeitura().length ? [["p", "Prefeituras"]] : [])], R.casa, (v) => {
           R.casa = v;
           if ((v === "v" || v === "p") && !cidadesDo(v).some((c) => c.cod === R.cid)) R.cid = cidadesDo(v)[0].cod;
@@ -1837,7 +1891,6 @@
         cidadesCamara().length === 1 ? ` vereadores ${deCid(cidadesCamara()[0].cod)}` : [" vereadores em ", h("strong", null, cidadesCamara().length), " capitais"],
         cidadesPrefeitura().length ? [" e ", h("strong", null, D.p.filter((p) => p.x && p.k === "p").length), cidadesPrefeitura().length === 1 ? " na Prefeitura" : " nas prefeituras"] : null) : null,
       GOV.e.length ? h("span", { class: "chip" }, h("strong", null, GOV.e.length), " governadores") : null,
-      h("span", { class: "chip" }, "Salário bruto: ", h("strong", null, "R$ 46.366,19")),
       h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
@@ -1846,6 +1899,29 @@
     document.querySelectorAll("[data-ir]").forEach((b) => b.addEventListener("click", () => irPara(b.dataset.ir)));
     const pend = $("#pendencias");
     D.meta.pendencias.forEach((t) => pend.append(h("li", null, t)));
+    // cliques em links para fora (fontes oficiais, GitHub, e-mail de contato) e temas do "Entenda" abertos
+    document.addEventListener("click", (ev) => {
+      const a = ev.target.closest && ev.target.closest("a[href]");
+      if (!a) return;
+      const href = a.getAttribute("href"), onde = a.closest("footer") ? "rodape" : (a.closest("[id]") || {}).id || "";
+      if (href.startsWith("mailto:")) { evento("contato", { onde }); return; }
+      if (!/^https?:/.test(href) || a.href.startsWith(location.origin)) return;
+      let dominio = ""; try { dominio = new URL(a.href).hostname.replace(/^www\./, ""); } catch (e) { /* link estranho */ }
+      if (dominio === "wa.me") return; // já medido como "compartilhar"
+      evento(dominio === "github.com" ? "abrir_github" : "abrir_fonte", { dominio, onde });
+    });
+    const ent = $("#entenda");
+    if (ent) ent.addEventListener("toggle", (ev) => {
+      const s = ev.target.open && ev.target.querySelector("summary");
+      if (s) evento("abrir_entenda", { tema: s.textContent.trim().slice(0, 60) });
+    }, true);
+    const rn = $("#renda-numeros"), R = D.meta.renda;
+    if (rn && R) {
+      const tri = (t) => t.replace("/", " trimestre de ");
+      add(rn, `São cerca de ${num(R.pessoas / 1e6, 0)} milhões de pessoas (do ${tri(R.trimestres[R.trimestres.length - 1])} ao ${tri(R.trimestres[0])}). `,
+        `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
+        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte: IBGE ↗"));
+    }
     $("#gerado-em").textContent = `Gerado em ${D.meta.atualizado}.`;
   }
   function listaEstado() {

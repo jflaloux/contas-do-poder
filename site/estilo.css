@@ -455,3 +455,23 @@ a.pessoa-chip:hover { border-color: var(--accent); }
 /* tabelas largas dentro dos cartões rolam sozinhas, sem alargar a página */
 .cidade__corpo { grid-template-columns: minmax(0, 1fr); }
 .cidade__corpo > *, .cidade__corpo > div > * { min-width: 0; }
+/* selects com a mesma altura e o mesmo desenho dos campos de busca (o padrão do sistema fica menor no Mac) */
+select {
+  -webkit-appearance: none; appearance: none; cursor: pointer; padding-right: 38px; line-height: 1.5;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%236f6b88' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+input[type="search"] { line-height: 1.5; }
+.escolha__linha { align-items: stretch; }
+/* ranking: o "Quem" numa linha só, em cima dos outros filtros */
+.filtros .campo--quem { grid-column: 1 / -1; }
+/* posição entre os colegas: verde abaixo da mediana, vermelho acima, com a régua dos quatro quartos */
+.destaque--abaixo { background: color-mix(in srgb, var(--bom) 12%, var(--paper)); color: color-mix(in srgb, var(--bom) 70%, var(--ink)); }
+.destaque--acima { background: color-mix(in srgb, var(--ruim) 11%, var(--paper)); color: color-mix(in srgb, var(--ruim) 72%, var(--ink)); }
+.regua { margin-top: 10px; display: grid; gap: 4px; max-width: 420px; }
+.regua__trilho { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; height: 10px; }
+.regua__quarto { border-radius: 3px; background: currentColor; opacity: .18; }
+.regua__quarto--eu { opacity: .55; }
+.regua__marca { position: absolute; top: 50%; width: 14px; height: 14px; border-radius: 50%; background: currentColor; border: 2px solid var(--paper);
+  transform: translate(-50%, -50%); box-shadow: 0 0 0 1px currentColor; }
+.regua__legenda { display: flex; justify-content: space-between; font-size: .75rem; font-weight: 500; opacity: .85; }

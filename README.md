@@ -326,8 +326,8 @@ Veja `metadados.json` → `pendencias`. As principais:
    comissionado, pelo nome).
 3. **Câmara:** ainda faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão).
    Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
-4. **Governadores:** o mês a mês pela folha em 11 estados; nos outros, só o salário do cargo. Em AL, AP, GO, MA, RJ e
-   SE, o valor do cargo ainda é o da imprensa.
+4. **Governadores:** o mês a mês pela folha em 12 estados; nos outros, só o salário do cargo. Em AL, AP, GO, MA e RJ,
+   o valor do cargo ainda é o da imprensa.
 5. **Prefeituras:** Belo Horizonte (portal bloqueia robôs), Curitiba e as outras capitais ainda não foram feitas.
 6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
    afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).
@@ -345,6 +345,10 @@ Veja `metadados.json` → `pendencias`. As principais:
   [Recife](https://dados.recife.pe.gov.br/dataset/servidores), [Fortaleza](https://dados.fortaleza.ce.gov.br/dataset/servidores),
   [Vitória](https://dadosabertos.vitoria.es.gov.br/) e
   [Porto Alegre](https://portaltransparenciapmpa.procempa.com.br/portalpmpa/fpRemuneracaoPesquisa.do?viaMenu=true).
+- Renda de quem trabalha no Brasil ("ganha mais que X% dos brasileiros que trabalham"): microdados dos 4 trimestres
+  mais recentes da [PNAD Contínua do IBGE](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?t=microdados)
+  (rendimento mensal habitual de todos os trabalhos, pessoas ocupadas com renda, em salários mínimos de cada ano);
+  o cálculo está em `coleta/renda.py` e o resultado em `dados/referencia/renda_trabalho.json`.
 
 ## Licença
 

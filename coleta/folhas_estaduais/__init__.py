@@ -6,9 +6,9 @@ abertos do Estado): `coletar()` grava dados/governadores/folha/<uf>.csv (vai par
 que já estava gravado. O resto (o salário fixado em lei, quem ocupa o cargo) está em dados/governadores/governadores.json.
 """
 from ..util import TempoEsgotado, log
-from . import ac, df, es, mg, pb, pe, pr, ro, rr, sc, sp
+from . import ac, df, es, mg, pb, pe, pr, ro, rr, sc, se, sp
 
-ESTADOS = {m.UF: m for m in (ac, df, es, mg, pb, pe, pr, ro, rr, sc, sp)}
+ESTADOS = {m.UF: m for m in (ac, df, es, mg, pb, pe, pr, ro, rr, sc, se, sp)}
 # o que a folha de cada estado mostra (vai para a página do estado)
 NOTAS = {
     "AC": "A folha do Acre separa cada rubrica (subsídio, auxílio-alimentação, 13º, férias) e cada tipo de folha (normal, adiantamento do 13º, rescisão).",
@@ -21,6 +21,7 @@ NOTAS = {
     "RO": "A folha de Rondônia traz cada rubrica, e o 13º vem numa folha à parte.",
     "RR": "A folha de Roraima traz cada lançamento (subsídio, parcelas do 13º, férias).",
     "SC": "A folha de Santa Catarina dá só o valor bruto do mês, sem as partes. O Estado só mantém publicados os meses mais recentes: a série começa em julho de 2026.",
+    "SE": "A consulta de Sergipe mostra o contracheque de cada mês, com o subsídio; o 13º e as férias não aparecem nela.",
     "SP": "A folha de São Paulo separa a remuneração do mês e, numa coluna só, as férias e o 13º (que entram em \"outros\"). O Estado publica a série histórica com alguns meses de atraso.",
 }
 

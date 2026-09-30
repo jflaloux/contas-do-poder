@@ -317,6 +317,7 @@ def executar():
             "ultimo_mes": int(lanc[lanc.mes.notna()].eval("ano*100+mes").max()),
             "ultimo_mes_executivo": max((p.get("ultimo_mes_publicado") or 0) for p in politicos),
             "salario_minimo": {str(k): v for k, v in meta["salario_minimo"].items()},
+            "renda": _renda(),
             "categorias": meta["categorias"],
             "rateio": meta["rateio"],
             "tipos": tipos,
@@ -330,6 +331,16 @@ def executar():
     SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
     _municipios()
+
+
+def _renda():
+    """Distribuição da renda do trabalho no Brasil (PNAD Contínua), para o "ganha mais que X% dos brasileiros que
+    trabalham" (coleta/renda.py). None se ainda não foi calculada."""
+    a = RAIZ / "dados" / "referencia" / "renda_trabalho.json"
+    if not a.exists():
+        return None
+    d = json.loads(a.read_text(encoding="utf-8"))
+    return {k: d[k] for k in ("fonte", "url", "trimestres", "pessoas", "mediana_sm", "p99_sm", "grade")}
 
 
 # ---------------------------------------------------------------- câmaras municipais
