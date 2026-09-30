@@ -52,8 +52,10 @@ def _vereadores_capitais():
         retrasado = ult - 1 if ult % 100 > 1 else ult - 89
         ps = [p for p in d["p"] if str(p.get("cid")) == cod]
         com_gasto = sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
-        if str(retrasado // 100) in (c.get("verba_fora") or []):
-            com_gasto = None  # a verba desse ano ficou de fora de propósito (o site da Câmara está com erro, e o site avisa)
+        if str(retrasado // 100) in (c.get("verba_fora") or []) or c.get("conferir_gastos") is False:
+            # a verba desse ano ficou de fora de propósito (o site da Câmara está com erro, e o site avisa), ou a cidade
+            # tem gasto miúdo e irregular (Belo Horizonte) ou publicado com atraso de meses (combustível no Rio)
+            com_gasto = None
         saida.append((c["n"], c.get("vagas") or 0, sum(p["x"] for p in ps), com_gasto))
     return saida
 

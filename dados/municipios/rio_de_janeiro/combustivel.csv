@@ -1,0 +1,780 @@
+ano,mes,nome,litros,valor
+2025,1,Átila Nunes,1000.0,5910.0
+2025,2,Átila Nunes,1000.0,5909.98
+2025,3,Átila Nunes,1000.0,5909.36
+2025,4,Átila Nunes,1000.0,5910.0
+2025,5,Átila Nunes,1000.0,6170.0
+2025,6,Átila Nunes,1000.0,6150.0
+2025,7,Átila Nunes,1000.0,6066.07
+2025,8,Átila Nunes,1000.0,6000.0
+2025,9,Átila Nunes,1000.0,5986.61
+2025,10,Átila Nunes,1000.0,5959.07
+2025,11,Átila Nunes,1000.0,6000.0
+2025,12,Átila Nunes,1000.0,6020.0
+2025,1,Carlo Caiado,,5910.0
+2025,2,Carlo Caiado,,3742.71
+2025,3,Carlo Caiado,,4271.19
+2025,4,Carlo Caiado,,5381.89
+2025,5,Carlo Caiado,,4646.88
+2025,6,Carlo Caiado,,4708.98
+2025,7,Carlo Caiado,,4637.58
+2025,8,Carlo Caiado,,4789.61
+2025,9,Carlo Caiado,,4759.67
+2025,10,Carlo Caiado,,4562.56
+2025,11,Carlo Caiado,,4799.48
+2025,12,Carlo Caiado,,4611.2
+2025,1,Carlos Bolsonaro,1000.0,5910.0
+2025,2,Carlos Bolsonaro,1000.0,5071.36
+2025,3,Carlos Bolsonaro,1000.0,5308.63
+2025,4,Carlos Bolsonaro,1000.0,5909.29
+2025,5,Carlos Bolsonaro,1000.0,5785.84
+2025,6,Carlos Bolsonaro,1000.0,6142.9
+2025,7,Carlos Bolsonaro,1000.0,5688.67
+2025,8,Carlos Bolsonaro,1000.0,5941.42
+2025,9,Carlos Bolsonaro,1000.0,5949.24
+2025,10,Carlos Bolsonaro,1000.0,5959.09
+2025,11,Carlos Bolsonaro,1000.0,5999.22
+2025,12,Carlos Bolsonaro,1000.0,6004.73
+2025,1,César Maia,800.0,5910.0
+2025,2,César Maia,800.0,2364.85
+2025,3,César Maia,800.0,2291.26
+2025,4,César Maia,800.0,3056.68
+2025,5,César Maia,800.0,3924.22
+2025,6,César Maia,800.0,4724.91
+2025,7,César Maia,800.0,3730.38
+2025,8,César Maia,800.0,4689.9
+2025,9,César Maia,800.0,5329.77
+2025,10,César Maia,800.0,5955.03
+2025,11,César Maia,800.0,5997.98
+2025,12,César Maia,800.0,4933.16
+2025,1,Deangeles Percy,1000.0,5910.0
+2025,2,Deangeles Percy,1000.0,6010.0
+2025,3,Deangeles Percy,1000.0,2491.56
+2025,4,Deangeles Percy,1000.0,5905.91
+2025,5,Deangeles Percy,1000.0,5639.37
+2025,6,Deangeles Percy,1000.0,6146.47
+2025,7,Deangeles Percy,1000.0,5647.51
+2025,8,Deangeles Percy,1000.0,5900.47
+2025,9,Deangeles Percy,1000.0,5993.58
+2025,10,Deangeles Percy,1000.0,5954.92
+2025,11,Deangeles Percy,1000.0,5998.07
+2025,12,Deangeles Percy,1000.0,6010.32
+2025,1,Diego Faro,1000.0,5910.0
+2025,2,Diego Faro,1000.0,6010.0
+2025,3,Diego Faro,1000.0,425.66
+2025,4,Diego Faro,1000.0,5833.2
+2025,5,Diego Faro,1000.0,6169.62
+2025,6,Diego Faro,1000.0,6150.0
+2025,7,Diego Faro,1000.0,6079.37
+2025,8,Diego Faro,1000.0,6000.0
+2025,9,Diego Faro,1000.0,5988.21
+2025,10,Diego Faro,1000.0,5960.0
+2025,11,Diego Faro,1000.0,5999.27
+2025,12,Diego Faro,1000.0,6019.59
+2025,1,Dr. Gilberto,1000.0,5910.0
+2025,2,Dr. Gilberto,1000.0,6010.0
+2025,3,Dr. Gilberto,1000.0,5910.0
+2025,4,Dr. Gilberto,1000.0,5909.11
+2025,5,Dr. Gilberto,1000.0,6170.0
+2025,6,Dr. Gilberto,1000.0,6150.0
+2025,7,Dr. Gilberto,1000.0,6079.26
+2025,8,Dr. Gilberto,1000.0,6000.0
+2025,9,Dr. Gilberto,1000.0,5999.96
+2025,10,Dr. Gilberto,1000.0,5959.17
+2025,11,Dr. Gilberto,1000.0,5999.97
+2025,12,Dr. Gilberto,1000.0,6020.0
+2025,1,Dr. Rogério Amorim,1000.0,5910.0
+2025,2,Dr. Rogério Amorim,1000.0,6010.0
+2025,3,Dr. Rogério Amorim,1000.0,2614.98
+2025,4,Dr. Rogério Amorim,1000.0,5914.98
+2025,5,Dr. Rogério Amorim,1000.0,820.0
+2025,6,Dr. Rogério Amorim,1000.0,2425.47
+2025,7,Dr. Rogério Amorim,1000.0,2514.09
+2025,8,Dr. Rogério Amorim,1000.0,2958.67
+2025,9,Dr. Rogério Amorim,1000.0,2759.59
+2025,10,Dr. Rogério Amorim,1000.0,2687.56
+2025,11,Dr. Rogério Amorim,1000.0,545.73
+2025,12,Dr. Rogério Amorim,1000.0,0.0
+2025,1,Fabio Silva,1000.0,5910.0
+2025,2,Fabio Silva,1000.0,6010.0
+2025,3,Fabio Silva,1000.0,5999.42
+2025,4,Fabio Silva,1000.0,5896.02
+2025,5,Fabio Silva,1000.0,6150.38
+2025,6,Fabio Silva,1000.0,6149.66
+2025,7,Fabio Silva,1000.0,6079.84
+2025,8,Fabio Silva,1000.0,6000.0
+2025,9,Fabio Silva,1000.0,5950.62
+2025,10,Fabio Silva,1000.0,5958.43
+2025,11,Fabio Silva,1000.0,5999.59
+2025,12,Fabio Silva,1000.0,6019.53
+2025,1,Felipe Boró,1000.0,5910.0
+2025,2,Felipe Boró,1000.0,6010.0
+2025,3,Felipe Boró,1000.0,5910.0
+2025,4,Felipe Boró,1000.0,6170.0
+2025,5,Felipe Boró,1000.0,6010.98
+2025,6,Felipe Boró,1000.0,5804.43
+2025,7,Felipe Boró,1000.0,5988.3
+2025,8,Felipe Boró,1000.0,6000.0
+2025,9,Felipe Boró,1000.0,6000.0
+2025,10,Felipe Boró,1000.0,5959.09
+2025,11,Felipe Boró,1000.0,5997.21
+2025,12,Felipe Boró,1000.0,6017.16
+2025,1,Felipe Michel,1000.0,5910.0
+2025,1,Felipe Pires,1000.0,5910.0
+2025,2,Felipe Pires,1000.0,6010.0
+2025,3,Felipe Pires,1000.0,2272.22
+2025,4,Felipe Pires,1000.0,5909.21
+2025,5,Felipe Pires,1000.0,6169.4
+2025,6,Felipe Pires,1000.0,5873.35
+2025,7,Felipe Pires,1000.0,6079.52
+2025,8,Felipe Pires,1000.0,6000.0
+2025,9,Felipe Pires,1000.0,5999.92
+2025,10,Felipe Pires,1000.0,5959.76
+2025,11,Felipe Pires,1000.0,5979.52
+2025,12,Felipe Pires,1000.0,6019.66
+2025,1,Fernando Armelau,1000.0,5910.0
+2025,2,Fernando Armelau,1000.0,6010.0
+2025,3,Fernando Armelau,1000.0,2653.98
+2025,4,Fernando Armelau,1000.0,1522.18
+2025,5,Fernando Armelau,1000.0,2415.43
+2025,6,Fernando Armelau,1000.0,2365.89
+2025,7,Fernando Armelau,1000.0,2852.44
+2025,8,Fernando Armelau,1000.0,3779.78
+2025,9,Fernando Armelau,1000.0,4017.54
+2025,10,Fernando Armelau,1000.0,3160.65
+2025,11,Fernando Armelau,1000.0,4660.92
+2025,12,Fernando Armelau,1000.0,3255.3
+2025,1,Flavio Pato,1000.0,5910.0
+2025,2,Flavio Pato,1000.0,6010.0
+2025,3,Flavio Pato,1000.0,5910.0
+2025,4,Flavio Pato,1000.0,5910.0
+2025,5,Flavio Pato,1000.0,6053.0
+2025,6,Flavio Pato,1000.0,3081.84
+2025,7,Flavio Pato,1000.0,1868.03
+2025,8,Flavio Pato,1000.0,2808.72
+2025,9,Flavio Pato,1000.0,2922.38
+2025,10,Flavio Pato,1000.0,4644.52
+2025,11,Flavio Pato,1000.0,3988.39
+2025,12,Flavio Pato,1000.0,4384.45
+2025,1,Flavio Valle,1000.0,5910.0
+2025,2,Flavio Valle,1000.0,6010.0
+2025,3,Flavio Valle,1000.0,5320.0
+2025,4,Flavio Valle,1000.0,5910.0
+2025,5,Flavio Valle,1000.0,6059.74
+2025,6,Flavio Valle,1000.0,5439.71
+2025,7,Flavio Valle,1000.0,5690.57
+2025,8,Flavio Valle,1000.0,6000.0
+2025,9,Flavio Valle,1000.0,5524.63
+2025,10,Flavio Valle,1000.0,5618.64
+2025,11,Flavio Valle,1000.0,5741.5
+2025,12,Flavio Valle,1000.0,5440.46
+2025,1,Gigi Castilho,1000.0,5910.0
+2025,2,Gigi Castilho,1000.0,6010.0
+2025,3,Gigi Castilho,1000.0,203.17
+2025,4,Gigi Castilho,1000.0,5790.53
+2025,5,Gigi Castilho,1000.0,4724.47
+2025,6,Gigi Castilho,1000.0,5738.78
+2025,7,Gigi Castilho,1000.0,5965.5
+2025,8,Gigi Castilho,1000.0,5926.88
+2025,9,Gigi Castilho,1000.0,5891.58
+2025,10,Gigi Castilho,1000.0,5953.64
+2025,11,Gigi Castilho,1000.0,5966.96
+2025,12,Gigi Castilho,1000.0,6006.94
+2025,1,Helena Vieira,1000.0,5910.0
+2025,2,Helena Vieira,1000.0,6010.0
+2025,3,Helena Vieira,1000.0,345.58
+2025,4,Helena Vieira,1000.0,2482.12
+2025,5,Helena Vieira,1000.0,2831.6
+2025,6,Helena Vieira,1000.0,3239.72
+2025,7,Helena Vieira,1000.0,3492.49
+2025,8,Helena Vieira,1000.0,3259.85
+2025,9,Helena Vieira,1000.0,3443.07
+2025,10,Helena Vieira,1000.0,4741.11
+2025,11,Helena Vieira,1000.0,5195.79
+2025,12,Helena Vieira,1000.0,5511.18
+2025,1,Inaldo Silva,1000.0,5910.0
+2025,2,Inaldo Silva,1000.0,5625.97
+2025,3,Inaldo Silva,1000.0,4609.18
+2025,4,Inaldo Silva,1000.0,4887.68
+2025,5,Inaldo Silva,1000.0,5920.23
+2025,6,Inaldo Silva,1000.0,5935.54
+2025,7,Inaldo Silva,1000.0,5894.58
+2025,8,Inaldo Silva,1000.0,6000.0
+2025,9,Inaldo Silva,1000.0,5786.38
+2025,10,Inaldo Silva,1000.0,5952.83
+2025,11,Inaldo Silva,1000.0,5972.44
+2025,12,Inaldo Silva,1000.0,6020.0
+2025,1,Jair da M. Gomes,,5910.0
+2025,2,Jair da M. Gomes,,6010.0
+2025,3,Jair da M. Gomes,,5910.0
+2025,4,Jair da M. Gomes,,5910.0
+2025,5,Jair da M. Gomes,,6170.0
+2025,6,Jair da M. Gomes,,6150.0
+2025,7,Jair da M. Gomes,,6080.0
+2025,8,Jair da M. Gomes,,6000.0
+2025,9,Jair da M. Gomes,,6000.0
+2025,10,Jair da M. Gomes,,5960.0
+2025,11,Jair da M. Gomes,,6000.0
+2025,12,Jair da M. Gomes,,6020.0
+2025,1,Jorge Canella,1000.0,5910.0
+2025,2,Jorge Canella,1000.0,6010.0
+2025,3,Jorge Canella,1000.0,1645.54
+2025,4,Jorge Canella,1000.0,1609.53
+2025,5,Jorge Canella,1000.0,1907.79
+2025,6,Jorge Canella,1000.0,2029.35
+2025,7,Jorge Canella,1000.0,1469.24
+2025,8,Jorge Canella,1000.0,1505.28
+2025,9,Jorge Canella,1000.0,2741.42
+2025,10,Jorge Canella,1000.0,1542.72
+2025,11,Jorge Canella,1000.0,1587.73
+2025,12,Jorge Canella,1000.0,1932.56
+2025,1,Jorge Felippe,1000.0,5910.0
+2025,2,Jorge Felippe,1000.0,1761.67
+2025,3,Jorge Felippe,1000.0,1207.91
+2025,4,Jorge Felippe,1000.0,2099.86
+2025,5,Jorge Felippe,1000.0,1724.33
+2025,6,Jorge Felippe,1000.0,2105.13
+2025,7,Jorge Felippe,1000.0,603.43
+2025,8,Jorge Felippe,1000.0,2673.88
+2025,9,Jorge Felippe,1000.0,2618.49
+2025,10,Jorge Felippe,1000.0,3250.93
+2025,11,Jorge Felippe,1000.0,2483.6
+2025,12,Jorge Felippe,1000.0,3525.31
+2025,1,Junior da Lucinha,1000.0,5910.0
+2025,2,Junior da Lucinha,1000.0,6010.0
+2025,3,Junior da Lucinha,1000.0,5910.0
+2025,4,Junior da Lucinha,1000.0,5910.0
+2025,5,Junior da Lucinha,1000.0,6170.0
+2025,6,Junior da Lucinha,1000.0,6150.0
+2025,7,Junior da Lucinha,1000.0,6080.0
+2025,8,Junior da Lucinha,1000.0,6000.0
+2025,9,Junior da Lucinha,1000.0,6000.0
+2025,10,Junior da Lucinha,1000.0,5959.99
+2025,11,Junior da Lucinha,1000.0,5997.94
+2025,12,Junior da Lucinha,1000.0,6017.12
+2025,1,Leniel Borel,,5910.0
+2025,2,Leniel Borel,,6010.0
+2025,3,Leniel Borel,,564.86
+2025,4,Leniel Borel,,4023.29
+2025,5,Leniel Borel,,3785.03
+2025,6,Leniel Borel,,3850.15
+2025,7,Leniel Borel,,3252.58
+2025,8,Leniel Borel,,6000.0
+2025,9,Leniel Borel,,5846.2
+2025,10,Leniel Borel,,5941.92
+2025,11,Leniel Borel,,6000.0
+2025,12,Leniel Borel,,6020.0
+2025,1,Leonel de Esquerda,1000.0,5910.0
+2025,2,Leonel de Esquerda,1000.0,6010.0
+2025,3,Leonel de Esquerda,1000.0,271.21
+2025,4,Leonel de Esquerda,1000.0,5246.76
+2025,5,Leonel de Esquerda,1000.0,5534.18
+2025,6,Leonel de Esquerda,1000.0,5194.94
+2025,7,Leonel de Esquerda,1000.0,5657.72
+2025,8,Leonel de Esquerda,1000.0,5765.87
+2025,9,Leonel de Esquerda,1000.0,5962.49
+2025,10,Leonel de Esquerda,1000.0,5960.0
+2025,11,Leonel de Esquerda,1000.0,5951.3
+2025,12,Leonel de Esquerda,1000.0,5441.04
+2025,1,Luciana Novaes,1000.0,5910.0
+2025,2,Luciana Novaes,1000.0,1701.77
+2025,3,Luciana Novaes,1000.0,3122.43
+2025,4,Luciana Novaes,1000.0,5291.62
+2025,5,Luciana Novaes,1000.0,5362.64
+2025,6,Luciana Novaes,1000.0,5897.63
+2025,7,Luciana Novaes,1000.0,5780.38
+2025,8,Luciana Novaes,1000.0,5799.47
+2025,9,Luciana Novaes,1000.0,5763.28
+2025,10,Luciana Novaes,1000.0,5815.85
+2025,11,Luciana Novaes,1000.0,5502.7
+2025,12,Luciana Novaes,1000.0,5921.21
+2025,1,Luiz Ramos Filho,1000.0,5910.0
+2025,1,Maira do MST,,5910.0
+2025,2,Maira do MST,,6010.0
+2025,3,Maira do MST,,649.98
+2025,4,Maira do MST,,5105.4
+2025,5,Maira do MST,,5994.78
+2025,6,Maira do MST,,5238.22
+2025,7,Maira do MST,,4817.45
+2025,8,Maira do MST,,4376.82
+2025,9,Maira do MST,,5995.2
+2025,10,Maira do MST,,5959.57
+2025,11,Maira do MST,,5722.84
+2025,12,Maira do MST,,5435.01
+2025,1,Marcelo Diniz,1000.0,5910.0
+2025,2,Marcelo Diniz,1000.0,5877.29
+2025,3,Marcelo Diniz,1000.0,5534.98
+2025,4,Marcelo Diniz,1000.0,5750.16
+2025,5,Marcelo Diniz,1000.0,6169.25
+2025,6,Marcelo Diniz,1000.0,6110.61
+2025,7,Marcelo Diniz,1000.0,5611.54
+2025,8,Marcelo Diniz,1000.0,5811.35
+2025,9,Marcelo Diniz,1000.0,5999.81
+2025,10,Marcelo Diniz,1000.0,5356.33
+2025,11,Marcelo Diniz,1000.0,5786.09
+2025,12,Marcelo Diniz,1000.0,5636.49
+2025,1,Márcio Ribeiro,1000.0,5910.0
+2025,2,Márcio Ribeiro,1000.0,5872.69
+2025,3,Márcio Ribeiro,1000.0,4845.25
+2025,4,Márcio Ribeiro,1000.0,5909.99
+2025,5,Márcio Ribeiro,1000.0,6169.74
+2025,6,Márcio Ribeiro,1000.0,6135.63
+2025,7,Márcio Ribeiro,1000.0,6078.18
+2025,8,Márcio Ribeiro,1000.0,5899.32
+2025,9,Márcio Ribeiro,1000.0,5685.68
+2025,10,Márcio Ribeiro,1000.0,5907.85
+2025,11,Márcio Ribeiro,1000.0,5797.02
+2025,12,Márcio Ribeiro,1000.0,5795.21
+2025,1,Márcio Santos,1000.0,5910.0
+2025,3,Márcio Santos,1000.0,5910.0
+2025,1,Marcos Dias,,5910.0
+2025,2,Marcos Dias,,6010.0
+2025,3,Marcos Dias,,6007.89
+2025,4,Marcos Dias,,5909.18
+2025,5,Marcos Dias,,6169.38
+2025,6,Marcos Dias,,6150.0
+2025,7,Marcos Dias,,6043.02
+2025,8,Marcos Dias,,6000.0
+2025,9,Marcos Dias,,6000.0
+2025,10,Marcos Dias,,5960.0
+2025,11,Marcos Dias,,6000.0
+2025,12,Marcos Dias,,6020.0
+2025,1,Mônica Benício,1000.0,5910.0
+2025,2,Mônica Benício,1000.0,334.92
+2025,3,Mônica Benício,1000.0,1141.49
+2025,4,Mônica Benício,1000.0,2523.49
+2025,5,Mônica Benício,1000.0,2036.74
+2025,6,Mônica Benício,1000.0,2150.52
+2025,7,Mônica Benício,1000.0,1780.75
+2025,8,Mônica Benício,1000.0,2197.23
+2025,9,Mônica Benício,1000.0,3592.75
+2025,10,Mônica Benício,1000.0,2201.96
+2025,11,Mônica Benício,1000.0,2343.01
+2025,12,Mônica Benício,1000.0,1422.62
+2025,1,Niquinho,1000.0,5910.0
+2025,2,Niquinho,1000.0,6010.0
+2025,3,Niquinho,1000.0,364.2
+2025,4,Niquinho,1000.0,3604.57
+2025,5,Niquinho,1000.0,2179.99
+2025,6,Niquinho,1000.0,4567.35
+2025,7,Niquinho,1000.0,3066.1
+2025,8,Niquinho,1000.0,3208.64
+2025,9,Niquinho,1000.0,3373.87
+2025,10,Niquinho,1000.0,3900.12
+2025,11,Niquinho,1000.0,3973.27
+2025,12,Niquinho,1000.0,3275.76
+2025,1,Paulo Messina,1000.0,5910.0
+2025,2,Paulo Messina,1000.0,6010.0
+2025,3,Paulo Messina,1000.0,4046.94
+2025,4,Paulo Messina,1000.0,5909.82
+2025,5,Paulo Messina,1000.0,6169.08
+2025,6,Paulo Messina,1000.0,6149.22
+2025,7,Paulo Messina,1000.0,5543.36
+2025,8,Paulo Messina,1000.0,6000.0
+2025,9,Paulo Messina,1000.0,5998.41
+2025,10,Paulo Messina,1000.0,5959.25
+2025,11,Paulo Messina,1000.0,5999.55
+2025,12,Paulo Messina,1000.0,6019.64
+2025,1,Poubel,,5910.0
+2025,2,Poubel,,6010.0
+2025,3,Poubel,,1013.03
+2025,4,Poubel,,5806.72
+2025,5,Poubel,,5954.62
+2025,6,Poubel,,5422.38
+2025,7,Poubel,,5389.02
+2025,8,Poubel,,5832.54
+2025,9,Poubel,,5979.24
+2025,10,Poubel,,5801.82
+2025,11,Poubel,,6000.0
+2025,12,Poubel,,5974.21
+2025,1,Rafael Aloísio Freitas,1000.0,5910.0
+2025,2,Rafael Aloísio Freitas,1000.0,5909.93
+2025,3,Rafael Aloísio Freitas,1000.0,5495.41
+2025,4,Rafael Aloísio Freitas,1000.0,5909.63
+2025,5,Rafael Aloísio Freitas,1000.0,6164.21
+2025,6,Rafael Aloísio Freitas,1000.0,6140.89
+2025,7,Rafael Aloísio Freitas,1000.0,6069.25
+2025,8,Rafael Aloísio Freitas,1000.0,6000.0
+2025,9,Rafael Aloísio Freitas,1000.0,5999.4
+2025,10,Rafael Aloísio Freitas,1000.0,5954.31
+2025,11,Rafael Aloísio Freitas,1000.0,5999.47
+2025,12,Rafael Aloísio Freitas,1000.0,6019.08
+2025,1,Rafael Saltie,,5910.0
+2025,2,Rafael Saltie,,6010.0
+2025,3,Rafael Saltie,,709.28
+2025,4,Rafael Saltie,,5215.0
+2025,5,Rafael Saltie,,5306.88
+2025,6,Rafael Saltie,,6146.06
+2025,7,Rafael Saltie,,6072.76
+2025,8,Rafael Saltie,,4967.64
+2025,9,Rafael Saltie,,5686.87
+2025,10,Rafael Saltie,,5875.56
+2025,11,Rafael Saltie,,5999.06
+2025,12,Rafael Saltie,,6015.29
+2025,1,Renato Moura,,5910.0
+2025,2,Renato Moura,,5853.56
+2025,3,Renato Moura,,5902.44
+2025,4,Renato Moura,,5901.95
+2025,5,Renato Moura,,6160.67
+2025,6,Renato Moura,,6142.68
+2025,7,Renato Moura,,5300.29
+2025,8,Renato Moura,,5896.51
+2025,9,Renato Moura,,5974.9
+2025,10,Renato Moura,,5650.28
+2025,11,Renato Moura,,5999.31
+2025,12,Renato Moura,,6016.57
+2025,1,Rick Azevedo,1000.0,5910.0
+2025,2,Rick Azevedo,1000.0,6010.0
+2025,3,Rick Azevedo,1000.0,3275.23
+2025,4,Rick Azevedo,1000.0,650.55
+2025,5,Rick Azevedo,1000.0,1494.19
+2025,6,Rick Azevedo,1000.0,1279.16
+2025,7,Rick Azevedo,1000.0,2358.6
+2025,8,Rick Azevedo,1000.0,747.86
+2025,9,Rick Azevedo,1000.0,1666.81
+2025,10,Rick Azevedo,1000.0,1607.09
+2025,11,Rick Azevedo,1000.0,1506.37
+2025,12,Rick Azevedo,1000.0,1146.45
+2025,1,Rocal,1000.0,5910.0
+2025,2,Rocal,1000.0,6010.0
+2025,3,Rocal,1000.0,495.76
+2025,4,Rocal,1000.0,1075.02
+2025,5,Rocal,1000.0,873.64
+2025,6,Rocal,1000.0,1685.55
+2025,7,Rocal,1000.0,1998.13
+2025,8,Rocal,1000.0,5461.04
+2025,9,Rocal,1000.0,3141.25
+2025,10,Rocal,1000.0,1625.68
+2025,11,Rocal,1000.0,3310.77
+2025,12,Rocal,1000.0,3037.83
+2025,1,Rodrigo Vizeu,,5910.0
+2025,2,Rodrigo Vizeu,,6010.0
+2025,3,Rodrigo Vizeu,,1607.48
+2025,4,Rodrigo Vizeu,,4393.26
+2025,5,Rodrigo Vizeu,,3318.64
+2025,6,Rodrigo Vizeu,,3739.93
+2025,7,Rodrigo Vizeu,,4966.0
+2025,8,Rodrigo Vizeu,,5679.27
+2025,9,Rodrigo Vizeu,,5999.61
+2025,10,Rodrigo Vizeu,,5158.04
+2025,11,Rodrigo Vizeu,,5591.38
+2025,12,Rodrigo Vizeu,,5683.12
+2025,1,Rosa Fernandes,1000.0,5910.0
+2025,2,Rosa Fernandes,1000.0,5845.35
+2025,3,Rosa Fernandes,1000.0,5710.0
+2025,4,Rosa Fernandes,1000.0,5450.23
+2025,5,Rosa Fernandes,1000.0,5916.8
+2025,6,Rosa Fernandes,1000.0,6114.98
+2025,7,Rosa Fernandes,1000.0,5570.04
+2025,8,Rosa Fernandes,1000.0,5757.43
+2025,9,Rosa Fernandes,1000.0,5959.04
+2025,10,Rosa Fernandes,1000.0,5955.92
+2025,11,Rosa Fernandes,1000.0,5989.82
+2025,12,Rosa Fernandes,1000.0,5993.94
+2025,1,Salvino Oliveira,,5910.0
+2025,2,Salvino Oliveira,,6010.0
+2025,3,Salvino Oliveira,,3625.71
+2025,4,Salvino Oliveira,,5789.0
+2025,5,Salvino Oliveira,,6169.97
+2025,6,Salvino Oliveira,,4811.5
+2025,7,Salvino Oliveira,,4445.76
+2025,8,Salvino Oliveira,,4960.62
+2025,9,Salvino Oliveira,,5884.66
+2025,10,Salvino Oliveira,,5763.0
+2025,11,Salvino Oliveira,,5999.61
+2025,12,Salvino Oliveira,,5634.4
+2025,1,Talita Galhardo,,5910.0
+2025,2,Talita Galhardo,,6010.0
+2025,3,Talita Galhardo,,1690.43
+2025,4,Talita Galhardo,,5761.88
+2025,5,Talita Galhardo,,5923.09
+2025,6,Talita Galhardo,,6089.72
+2025,7,Talita Galhardo,,5466.51
+2025,8,Talita Galhardo,,5593.14
+2025,9,Talita Galhardo,,6000.0
+2025,10,Talita Galhardo,,5960.0
+2025,11,Talita Galhardo,,5896.39
+2025,12,Talita Galhardo,,5730.01
+2025,1,Tainá de Paula,,5910.0
+2025,1,Tânia Bastos,1000.0,5910.0
+2025,2,Tânia Bastos,1000.0,3684.48
+2025,3,Tânia Bastos,1000.0,5909.52
+2025,4,Tânia Bastos,1000.0,5762.89
+2025,5,Tânia Bastos,1000.0,4636.48
+2025,6,Tânia Bastos,1000.0,4747.04
+2025,7,Tânia Bastos,1000.0,5408.36
+2025,8,Tânia Bastos,1000.0,5768.33
+2025,9,Tânia Bastos,1000.0,5663.14
+2025,10,Tânia Bastos,1000.0,5942.19
+2025,11,Tânia Bastos,1000.0,5995.76
+2025,12,Tânia Bastos,1000.0,6019.96
+2025,1,Thaís Ferreira,1000.0,5910.0
+2025,2,Thaís Ferreira,1000.0,3992.0
+2025,3,Thaís Ferreira,1000.0,2053.54
+2025,4,Thaís Ferreira,1000.0,3533.7
+2025,5,Thaís Ferreira,1000.0,4318.99
+2025,6,Thaís Ferreira,1000.0,4523.3
+2025,7,Thaís Ferreira,1000.0,2793.92
+2025,8,Thaís Ferreira,1000.0,4467.52
+2025,9,Thaís Ferreira,1000.0,5339.61
+2025,10,Thaís Ferreira,1000.0,4761.25
+2025,11,Thaís Ferreira,1000.0,5587.35
+2025,12,Thaís Ferreira,1000.0,3289.33
+2025,1,Vera Lins,1000.0,5910.0
+2025,2,Vera Lins,1000.0,5766.0
+2025,3,Vera Lins,1000.0,5850.0
+2025,4,Vera Lins,1000.0,5908.0
+2025,5,Vera Lins,1000.0,6150.0
+2025,6,Vera Lins,1000.0,6141.0
+2025,7,Vera Lins,1000.0,6080.0
+2025,8,Vera Lins,1000.0,6000.0
+2025,9,Vera Lins,1000.0,5995.0
+2025,10,Vera Lins,1000.0,5950.0
+2025,11,Vera Lins,1000.0,5900.0
+2025,12,Vera Lins,1000.0,5731.0
+2025,1,Vítor Hugo,1000.0,5910.0
+2025,2,Vítor Hugo,1000.0,5909.51
+2025,3,Vítor Hugo,1000.0,4220.67
+2025,4,Vítor Hugo,1000.0,5906.49
+2025,5,Vítor Hugo,1000.0,6169.65
+2025,6,Vítor Hugo,1000.0,6148.16
+2025,7,Vítor Hugo,1000.0,6079.34
+2025,8,Vítor Hugo,1000.0,6000.0
+2025,9,Vítor Hugo,1000.0,5996.39
+2025,10,Vítor Hugo,1000.0,5688.39
+2025,11,Vítor Hugo,1000.0,5999.84
+2025,12,Vítor Hugo,1000.0,5974.87
+2025,1,Wagner Tavares,,5910.0
+2025,2,Wagner Tavares,,6010.0
+2025,3,Wagner Tavares,,727.43
+2025,4,Wagner Tavares,,2905.73
+2025,5,Wagner Tavares,,3403.2
+2025,6,Wagner Tavares,,4289.42
+2025,7,Wagner Tavares,,3609.89
+2025,8,Wagner Tavares,,4698.94
+2025,9,Wagner Tavares,,4711.91
+2025,10,Wagner Tavares,,4689.18
+2025,11,Wagner Tavares,,5404.51
+2025,12,Wagner Tavares,,4882.01
+2025,1,Wellington Dias,1000.0,5910.0
+2025,2,Wellington Dias,1000.0,5909.85
+2025,3,Wellington Dias,1000.0,5910.0
+2025,4,Wellington Dias,1000.0,5910.0
+2025,5,Wellington Dias,1000.0,5910.0
+2025,6,Wellington Dias,1000.0,6150.0
+2025,7,Wellington Dias,1000.0,6080.0
+2025,8,Wellington Dias,1000.0,6000.0
+2025,9,Wellington Dias,1000.0,6000.0
+2025,10,Wellington Dias,1000.0,5960.0
+2025,11,Wellington Dias,1000.0,6000.0
+2025,12,Wellington Dias,1000.0,6000.0
+2025,1,Willian Coelho,1000.0,5910.0
+2025,2,Willian Coelho,1000.0,5599.97
+2025,3,Willian Coelho,1000.0,5909.4
+2025,4,Willian Coelho,1000.0,5705.85
+2025,5,Willian Coelho,1000.0,6169.09
+2025,6,Willian Coelho,1000.0,6150.0
+2025,7,Willian Coelho,1000.0,6079.08
+2025,8,Willian Coelho,1000.0,6000.0
+2025,9,Willian Coelho,1000.0,5999.22
+2025,10,Willian Coelho,1000.0,4735.88
+2025,11,Willian Coelho,1000.0,5998.57
+2025,12,Willian Coelho,1000.0,6020.0
+2025,1,William Siri,1000.0,5910.0
+2025,2,William Siri,1000.0,5596.03
+2025,3,William Siri,1000.0,3166.27
+2025,4,William Siri,1000.0,4698.42
+2025,5,William Siri,1000.0,5320.71
+2025,6,William Siri,1000.0,5979.5
+2025,7,William Siri,1000.0,5760.37
+2025,8,William Siri,1000.0,5478.29
+2025,9,William Siri,1000.0,5999.82
+2025,10,William Siri,1000.0,5957.16
+2025,11,William Siri,1000.0,5998.5
+2025,12,William Siri,1000.0,6016.21
+2025,1,Zico,1000.0,5910.0
+2025,2,Zico,1000.0,6010.0
+2025,3,Zico,1000.0,5910.0
+2025,4,Zico,1000.0,5910.0
+2025,5,Zico,1000.0,6170.0
+2025,6,Zico,1000.0,6150.0
+2025,7,Zico,1000.0,6080.0
+2025,8,Zico,1000.0,6000.0
+2025,9,Zico,1000.0,6000.0
+2025,10,Zico,1000.0,5960.0
+2025,11,Zico,1000.0,6000.0
+2025,12,Zico,1000.0,6020.0
+2026,1,Alana Passos,,975.07
+2026,2,Alana Passos,,1345.0
+2026,3,Alana Passos,,1558.45
+2026,1,Átila Nunes,1000.0,6020.0
+2026,2,Átila Nunes,1000.0,6019.8
+2026,3,Átila Nunes,1000.0,6159.55
+2026,1,Carlo Caiado,,4378.39
+2026,2,Carlo Caiado,,3737.57
+2026,3,Carlo Caiado,,4830.21
+2026,1,Carlos Bolsonaro,1000.0,5964.44
+2026,2,Carlos Bolsonaro,1000.0,0.0
+2026,3,Carlos Bolsonaro,1000.0,0.0
+2026,1,César Maia,800.0,4878.29
+2026,2,César Maia,800.0,3140.25
+2026,3,César Maia,800.0,3020.78
+2026,1,Deangeles Percy,1000.0,5974.5
+2026,2,Deangeles Percy,1000.0,6019.8
+2026,3,Deangeles Percy,1000.0,6160.0
+2026,1,Diego Faro,1000.0,6019.93
+2026,2,Diego Faro,1000.0,6020.0
+2026,3,Diego Faro,1000.0,5945.82
+2026,1,Dr. Gilberto,1000.0,6019.77
+2026,2,Dr. Gilberto,1000.0,6019.64
+2026,3,Dr. Gilberto,1000.0,6160.0
+2026,1,Dr. Rogério Amorim,1000.0,345.2
+2026,2,Dr. Rogério Amorim,1000.0,270.11
+2026,3,Dr. Rogério Amorim,1000.0,250.0
+2026,1,Fabio Silva,1000.0,6019.29
+2026,2,Fabio Silva,1000.0,6019.39
+2026,3,Fabio Silva,1000.0,6155.6
+2026,1,Felipe Boró,1000.0,6016.87
+2026,2,Felipe Boró,1000.0,5958.09
+2026,3,Felipe Boró,1000.0,6152.67
+2026,1,Felipe Michel,1000.0,0.0
+2026,2,Felipe Michel,1000.0,0.0
+2026,3,Felipe Michel,1000.0,0.0
+2026,1,Felipe Pires,1000.0,6019.86
+2026,2,Felipe Pires,1000.0,6018.0
+2026,3,Felipe Pires,1000.0,6159.22
+2026,1,Fernando Armelau,1000.0,4169.02
+2026,2,Fernando Armelau,1000.0,3727.0
+2026,3,Fernando Armelau,1000.0,3545.71
+2026,1,Flavio Pato,1000.0,3355.47
+2026,2,Flavio Pato,1000.0,5102.08
+2026,3,Flavio Pato,1000.0,4980.96
+2026,1,Flavio Valle,1000.0,4480.14
+2026,2,Flavio Valle,1000.0,4424.45
+2026,3,Flavio Valle,1000.0,4530.58
+2026,1,Gigi Castilho,1000.0,5784.71
+2026,2,Gigi Castilho,1000.0,5929.08
+2026,3,Gigi Castilho,1000.0,6155.41
+2026,1,Helena Vieira,1000.0,5826.31
+2026,2,Helena Vieira,1000.0,2610.51
+2026,3,Helena Vieira,1000.0,3640.33
+2026,1,Inaldo Silva,1000.0,6016.73
+2026,2,Inaldo Silva,1000.0,2358.23
+2026,3,Inaldo Silva,1000.0,5800.77
+2026,1,Jair da M. Gomes,,6020.0
+2026,2,Jair da M. Gomes,,6020.0
+2026,3,Jair da M. Gomes,,6160.0
+2026,1,Joyce Trindade,,0.0
+2026,2,Joyce Trindade,,0.0
+2026,3,Joyce Trindade,,0.0
+2026,1,Jorge Canella,1000.0,1826.14
+2026,2,Jorge Canella,1000.0,1974.07
+2026,3,Jorge Canella,1000.0,1907.8
+2026,1,Jorge Felippe,1000.0,1882.33
+2026,2,Jorge Felippe,1000.0,2065.52
+2026,3,Jorge Felippe,1000.0,2271.82
+2026,1,Junior da Lucinha,1000.0,6020.0
+2026,2,Junior da Lucinha,1000.0,6020.0
+2026,3,Junior da Lucinha,1000.0,6160.0
+2026,1,Leniel Borel,,4539.25
+2026,2,Leniel Borel,,4380.93
+2026,3,Leniel Borel,,5592.53
+2026,1,Leonel de Esquerda,1000.0,6020.0
+2026,2,Leonel de Esquerda,1000.0,6018.72
+2026,3,Leonel de Esquerda,1000.0,6159.4
+2026,1,Luciana Novaes,1000.0,5973.67
+2026,2,Luciana Novaes,1000.0,6019.18
+2026,3,Luciana Novaes,1000.0,5690.52
+2026,1,Luiz Ramos Filho,1000.0,3010.0
+2026,2,Luiz Ramos Filho,1000.0,4020.0
+2026,3,Luiz Ramos Filho,1000.0,3762.62
+2026,1,Maira do MST,,5823.44
+2026,2,Maira do MST,,5189.58
+2026,3,Maira do MST,,5562.89
+2026,1,Marcelo Diniz,1000.0,5840.42
+2026,2,Marcelo Diniz,1000.0,5096.09
+2026,3,Marcelo Diniz,1000.0,5607.29
+2026,1,Márcio Ribeiro,1000.0,5967.34
+2026,2,Márcio Ribeiro,1000.0,6000.51
+2026,3,Márcio Ribeiro,1000.0,6159.2
+2026,1,Márcio Santos,1000.0,0.0
+2026,2,Márcio Santos,1000.0,0.0
+2026,3,Márcio Santos,1000.0,0.0
+2026,1,Marcos Dias,,6020.0
+2026,2,Marcos Dias,,6020.0
+2026,3,Marcos Dias,,6160.0
+2026,1,Mônica Benício,1000.0,1699.37
+2026,2,Mônica Benício,1000.0,300.0
+2026,3,Mônica Benício,1000.0,1385.85
+2026,1,Niquinho,1000.0,3455.29
+2026,2,Niquinho,1000.0,2358.23
+2026,3,Niquinho,1000.0,3899.73
+2026,1,Paulo Messina,1000.0,6019.91
+2026,2,Paulo Messina,1000.0,6019.37
+2026,3,Paulo Messina,1000.0,6160.0
+2026,1,Pedro Duarte,0.0,0.0
+2026,2,Pedro Duarte,0.0,0.0
+2026,3,Pedro Duarte,0.0,0.0
+2026,1,Poubel,,6019.62
+2026,2,Poubel,,6019.8
+2026,3,Poubel,,6159.02
+2026,1,Rafael Aloísio Freitas,1000.0,6019.02
+2026,2,Rafael Aloísio Freitas,1000.0,4419.86
+2026,3,Rafael Aloísio Freitas,1000.0,6159.59
+2026,1,Rafael Saltie,,5970.27
+2026,2,Rafael Saltie,,3895.91
+2026,3,Rafael Saltie,,6090.69
+2026,1,Renato Moura,,6019.7
+2026,2,Renato Moura,,6017.72
+2026,3,Renato Moura,,6157.66
+2026,1,Rick Azevedo,1000.0,1156.3
+2026,2,Rick Azevedo,1000.0,655.04
+2026,3,Rick Azevedo,1000.0,562.97
+2026,1,Rocal,1000.0,2094.57
+2026,2,Rocal,1000.0,5904.21
+2026,3,Rocal,1000.0,0.0
+2026,1,Rodrigo Vizeu,,5687.66
+2026,2,Rodrigo Vizeu,,6014.54
+2026,3,Rodrigo Vizeu,,4841.59
+2026,1,Rosa Fernandes,1000.0,3877.63
+2026,2,Rosa Fernandes,1000.0,4407.99
+2026,3,Rosa Fernandes,1000.0,4938.02
+2026,1,Salvino Oliveira,,5516.19
+2026,2,Salvino Oliveira,,6018.71
+2026,3,Salvino Oliveira,,6159.84
+2026,1,Talita Galhardo,,1610.48
+2026,2,Talita Galhardo,,893.72
+2026,3,Talita Galhardo,,1567.11
+2026,1,Tainá de Paula,,0.0
+2026,2,Tainá de Paula,,0.0
+2026,3,Tainá de Paula,,0.0
+2026,1,Tânia Bastos,1000.0,5956.87
+2026,2,Tânia Bastos,1000.0,6019.18
+2026,3,Tânia Bastos,1000.0,6159.38
+2026,1,Tatiana Roque,,0.0
+2026,2,Tatiana Roque,,0.0
+2026,3,Tatiana Roque,,0.0
+2026,1,Thaís Ferreira,1000.0,3359.12
+2026,2,Thaís Ferreira,1000.0,1031.27
+2026,3,Thaís Ferreira,1000.0,2070.57
+2026,1,Vera Lins,1000.0,6000.0
+2026,2,Vera Lins,1000.0,6020.0
+2026,3,Vera Lins,1000.0,6160.0
+2026,1,Vítor Hugo,1000.0,5997.92
+2026,2,Vítor Hugo,1000.0,6005.52
+2026,3,Vítor Hugo,1000.0,6149.02
+2026,1,Wagner Tavares,,4850.27
+2026,2,Wagner Tavares,,5196.25
+2026,3,Wagner Tavares,,5427.68
+2026,1,Wellington Dias,1000.0,6000.0
+2026,2,Wellington Dias,1000.0,6000.0
+2026,3,Wellington Dias,1000.0,6160.0
+2026,1,Willian Coelho,1000.0,6011.89
+2026,2,Willian Coelho,1000.0,6019.23
+2026,3,Willian Coelho,1000.0,6159.46
+2026,1,William Siri,1000.0,6019.21
+2026,2,William Siri,1000.0,6000.0
+2026,3,William Siri,1000.0,4256.91
+2026,1,Zico,1000.0,6020.0
+2026,2,Zico,1000.0,6020.0
+2026,3,Zico,1000.0,6160.0

@@ -225,21 +225,27 @@
   }
   // "Custa menos que 57% dos deputados" (verde) ou "Custa mais que 57%" (vermelho); no topo e no fim, "o maior" / "o menor"
   const acimaDaMediana = (pos) => pos.pctMais < 50;
+  // metade ou mais dos colegas com exatamente o mesmo valor (por exemplo, quando só entra o subsídio, igual para todos):
+  // "mais que X%" enganaria, porque o lugar no ranking vira sorteio entre os empatados
+  const empatado = (pos) => pos.n > 2 && pos.iguais >= (pos.n - 1) / 2;
   const fraseposicao = (p, pos) => {
     const g = plural(grupo(p)), verbo = p.k === "p" ? "Recebe" : "Custa";
+    if (empatado(pos)) return `${verbo} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${g}`;
     if (pos.pos === 1) return p.k === "p" ? `É quem mais recebe entre os ${g}` : `É o maior custo entre os ${g}`;
     if (pos.pos === pos.n) return p.k === "p" ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
     return acimaDaMediana(pos) ? `${verbo} mais que ${pos.pct}% dos ${g}` : `${verbo} menos que ${pos.pctMais}% dos ${g}`;
   };
   // faixa dos colegas (em quartos) e a régua com o lugar da pessoa, do que menos custa ao que mais custa
   function blocoPosicao(p, k, pos) {
-    const lado = pos.pos === 1 || acimaDaMediana(pos) ? "acima" : "abaixo";
-    const lugar = pos.n > 1 ? (1 - (pos.pos - 1) / (pos.n - 1)) * 100 : 50;
+    const igual = empatado(pos);
+    const lado = igual ? "igual" : pos.pos === 1 || acimaDaMediana(pos) ? "acima" : "abaixo";
+    // no empate, a marca fica no meio do grupo dos empatados
+    const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
     const quarto = Math.min(3, Math.floor(lugar / 25));
     const verbo = p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
     const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
     return h("div", { class: `destaque destaque--${lado}` },
-      h("p", { style: "margin:0" }, `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}): ${faixa}.`),
+      h("p", { style: "margin:0" }, igual ? `${fraseposicao(p, pos)} ${nomePeriodo(k, false)}.` : `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}): ${faixa}.`),
       h("div", { class: "regua", role: "img", "aria-label": `Posição entre os ${plural(grupo(p))}: ${faixa}` },
         h("div", { class: "regua__trilho" }, [0, 1, 2, 3].map((i) => h("span", { class: `regua__quarto${i === quarto ? " regua__quarto--eu" : ""}` })),
           h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
@@ -252,7 +258,8 @@
     const acima = C.lista.filter((x) => x.r.tm > eu.r.tm).length;
     const abaixo = C.lista.filter((x) => x.r.tm < eu.r.tm).length;
     // arredonda para baixo: o 3º de 555 "custa mais que 99%", nunca "mais que 100%"
-    return { pos: acima + 1, n: C.n, pct: Math.floor((abaixo / Math.max(1, C.n - 1)) * 100), pctMais: Math.floor((acima / Math.max(1, C.n - 1)) * 100) };
+    const iguais = Math.max(0, C.n - 1 - acima - abaixo);
+    return { pos: acima + 1, n: C.n, pct: Math.floor((abaixo / Math.max(1, C.n - 1)) * 100), pctMais: Math.floor((acima / Math.max(1, C.n - 1)) * 100), iguais };
   }
 
   // ================================================================== peças
@@ -551,7 +558,7 @@
   function avisoVereador(p) {
     const c = cidadeDe(p) || {};
     return [c.subsidio_folha ? "Salário pela folha de pagamento da Câmara." : "Salário igual para todos.",
-      c.equipe_custo ? null : p.eq ? "O custo da equipe do gabinete não é publicado." : "A equipe de cada gabinete não é publicada."].filter(Boolean).join(" ");
+      c.equipe_custo ? null : c.equipe_aviso || (p.eq ? "O custo da equipe do gabinete não é publicado." : "A equipe de cada gabinete não é publicada.")].filter(Boolean).join(" ");
   }
   function textoCompartilhar(p, k) {
     const r = resumo(p, k), pos = posicao(p, k);
@@ -633,12 +640,13 @@
     comMes(reais(r.tm), M - 6, y + 118, `500 112px ${MONO}`, 36, "#ffffff");
     y += 140;
     if (pos) {
-      const selo = p.k === "p" ? (pos.pos === 1 ? `Quem mais recebe na Prefeitura` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
-        : pos.pos === 1 ? `O maior custo entre os ${plural(p.k)}` : pos.pos === pos.n ? `O menor custo entre os ${plural(p.k)}`
-        : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${plural(p.k)}` : `Custa menos que ${pos.pctMais}% dos ${plural(p.k)}`;
+      const selo = empatado(pos) ? `${p.k === "p" ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${plural(grupo(p))}`
+        : p.k === "p" ? (pos.pos === 1 ? `Quem mais recebe na Prefeitura` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
+        : pos.pos === 1 ? `O maior custo entre os ${plural(grupo(p))}` : pos.pos === pos.n ? `O menor custo entre os ${plural(grupo(p))}`
+        : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${plural(grupo(p))}` : `Custa menos que ${pos.pctMais}% dos ${plural(grupo(p))}`;
       // a frase e a régua dos quatro quartos, como na página: verde abaixo da mediana, rosa acima
-      const acima = pos.pos === 1 || acimaDaMediana(pos), cor = acima ? C.hi : "#6fdcae";
-      const lugar = pos.n > 1 ? (1 - (pos.pos - 1) / (pos.n - 1)) * 100 : 50, quarto = Math.min(3, Math.floor(lugar / 25));
+      const igual = empatado(pos), acima = pos.pos === 1 || acimaDaMediana(pos), cor = igual ? "#c4bfe0" : acima ? C.hi : "#6fdcae";
+      const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50, quarto = Math.min(3, Math.floor(lugar / 25));
       const larg = W - 2 * M;
       let tam = 34; g.font = `700 ${tam}px ${BODY}`;
       while (g.measureText(selo).width > larg && tam > 24) { tam -= 2; g.font = `700 ${tam}px ${BODY}`; }
@@ -670,7 +678,11 @@
       g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`; g.fillText(detalhe, x + 24, y + 142);
     };
     bloco(M, C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`);
-    bloco(M + tw + 24, C.custa, gastosNome(p).toUpperCase(), p.k === "p" ? null : reais(r.cm), p.k === "p" ? "carro oficial, viagens, equipe" : gastosDetalhe(p));
+    // vereador de Câmara que não publica a verba (ou publicou incompleta, e ela ficou de fora): "não publicados", não R$ 0
+    const cid = p.k === "v" ? cidadeDe(p) || {} : {};
+    const semVerba = p.k === "v" && (!cid.verba_nome || (cid.verba_fora || []).some((a) => k === "leg" || a === k));
+    bloco(M + tw + 24, C.custa, gastosNome(p).toUpperCase(), p.k === "p" || semVerba ? null : reais(r.cm),
+      p.k === "p" ? "carro oficial, viagens, equipe" : semVerba ? (cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p));
     y += th + 18;
     // onde mais gasta: os 3 maiores tipos de gasto, por mês (menos, se não couber: a equipe e o aviso vêm embaixo, e o
     // rodapé começa em H - 176)

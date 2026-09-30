@@ -287,7 +287,8 @@ class Tipos:
         return self.idx[nome]
 
 
-_SIGLAS = {"UNIAO BRASIL": "UNIÃO", "UNIAO": "UNIÃO", "PODEMOS": "PODE", "REP": "REPUBLICANOS", "PROGRESSISTAS": "PP",
+# (nome próprio: o _SIGLAS lá de cima é das empresas, e um nome igual aqui o sobrescrevia)
+_PARTIDOS = {"PC DO B": "PCdoB", "PCDOB": "PCdoB", "UNIAO BRASIL": "UNIÃO", "UNIAO": "UNIÃO", "PODEMOS": "PODE", "REP": "REPUBLICANOS", "PROGRESSISTAS": "PP",
            "PARTIDO DOS TRABALHADORES": "PT", "PARTIDO LIBERAL": "PL", "MOVIMENTO DEMOCRATICO BRASILEIRO": "MDB",
            "PARTIDO SOCIALISTA BRASILEIRO": "PSB", "PARTIDO SOCIAL DEMOCRATICO": "PSD", "PARTIDO VERDE": "PV",
            "REDE SUSTENTABILIDADE": "REDE", "PARTIDO NOVO": "NOVO", "PCDOB": "PCdoB", "PARTIDO COMUNISTA DO BRASIL": "PCdoB"}
@@ -298,7 +299,7 @@ def sigla(partido):
     t = re.sub(r"\s+", " ", str(partido or "")).strip()
     if not t or t.lower() in ("nan", "none"):
         return None
-    return _SIGLAS.get(normalizar_nome(t), t.upper())
+    return _PARTIDOS.get(normalizar_nome(t), t.upper())
 
 
 def _r(v):
@@ -461,11 +462,11 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
     meta = {
         "n": cfg["n"], "uf": cfg["uf"], "casa": cfg["casa"], "vagas": cfg.get("vagas") or sum(p["x"] for p in pessoas),
         "inicio": cfg["inicio"], "ultimo_mes": ate, "anos": [str(a) for a in anos],
-        "subsidio": subsidio, "subsidio_folha": bool(len(ganha)), "salario_nota": cfg.get("salario_nota"),
+        "subsidio": subsidio, "subsidio_folha": cfg.get("subsidio_folha", bool(len(ganha))), "salario_nota": cfg.get("salario_nota"),
         "verba_nome": cfg.get("verba_nome"), "verba_mes": cfg.get("verba_mes") or {}, "verba_regra": cfg.get("verba_regra"),
         "verba_notas": cfg.get("verba_notas") or [], "verba_por_nota": bool(len(despesas)) and bool(despesas.fornecedor.fillna("").astype(str).str.strip().ne("").any()),
         "equipe_em": cfg.get("equipe_em") or "", "equipe_custo": bool(len(equipe)) and bool(pd.to_numeric(equipe.custo, errors="coerce").fillna(0).gt(0).any()),
-        "equipe_nota": cfg.get("equipe_nota"), "notas": cfg.get("notas") or [], "fontes": cfg.get("fontes") or {},
+        "equipe_nota": cfg.get("equipe_nota"), "equipe_aviso": cfg.get("equipe_aviso"), "conferir_gastos": cfg.get("conferir_gastos", True), "notas": cfg.get("notas") or [], "fontes": cfg.get("fontes") or {},
         "verba_fora": cfg.get("verba_fora") or [],  # anos em que a verba ficou de fora (fonte com erro)
     }
     return meta, pessoas

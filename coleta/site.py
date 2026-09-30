@@ -144,11 +144,97 @@ def _r(v):
     return int(round(float(v)))
 
 
+HISTORICO = RAIZ / "dados" / "referencia" / "camara_historico.json"
+API_CAMARA = "https://dadosabertos.camara.leg.br/api/v2"
+
+
+def _em_exercicio(id_num, legislatura):
+    """Meses (AAAAMM) em que o deputado estava em exercício na legislatura, pelo histórico da Câmara (posse, licença,
+    afastamento, reassunção...). O histórico fica guardado em dados/referencia/camara_historico.json."""
+    from .config import LEGISLATURA
+    from .util import baixar, salvar_json
+    guardado = ler_json(HISTORICO) if HISTORICO.exists() else {}
+    if str(id_num) not in guardado:
+        try:
+            d = baixar(f"{API_CAMARA}/deputados/{id_num}/historico", headers={"Accept": "application/json"}).json()["dados"]
+        except Exception as e:  # noqa: BLE001 — sem o histórico, fica tudo como está
+            log(f"Site: histórico do deputado {id_num} indisponível ({e})")
+            return None
+        guardado[str(id_num)] = [[x["dataHora"][:10], x.get("idLegislatura"), x.get("situacao")] for x in d]
+        HISTORICO.parent.mkdir(parents=True, exist_ok=True)
+        salvar_json(HISTORICO, guardado)
+    evs = sorted((dt, sit) for dt, leg, sit in guardado[str(id_num)] if leg == (legislatura or LEGISLATURA) and sit)
+    meses, dentro, desde = set(), False, None
+    fim = int(datetime.now().strftime("%Y%m"))
+
+    def marcar(de, ate):
+        a, m = divmod(de, 100)
+        while a * 100 + m <= ate:
+            meses.add(a * 100 + m)
+            a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+    for dt, sit in evs:
+        am = int(dt[:4] + dt[5:7])
+        if sit == "Exercício" and not dentro:
+            dentro, desde = True, am
+        elif sit != "Exercício" and dentro:
+            marcar(desde, am)  # o mês da saída ainda conta
+            dentro = False
+    if dentro:
+        marcar(desde, fim)
+    return meses
+
+
+def _sem_pagamento_fora_do_mandato(lanc):
+    """Tira o "salário" de meses em que o deputado não estava no mandato.
+
+    A página de remuneração de cada deputado no site da Câmara mostra, como "salário do deputado", também o que é pago
+    a ex-deputados que ainda não tinham assumido (suplentes): valores de 1/7 a 1/4 do subsídio, que parecem ser a
+    aposentadoria do plano de previdência dos parlamentares. Marcelo Nilo, por exemplo, recebia R$ 6.623,74 por mês
+    até tomar posse como suplente, em abril de 2026. Só olhamos quem tem meses assim (pagamento menor que 40% do
+    subsídio, sem cota nem equipe no mês) e, pelo histórico oficial da Câmara, tiramos o salário dos meses em que a
+    pessoa não estava em exercício."""
+    dep = lanc[lanc.id_politico.str.startswith("dep-")]
+    sal = dep[dep.categoria == "salario"].groupby(["id_politico", "ano", "mes"]).valor.sum()
+    outros = dep[dep.categoria != "salario"].groupby(["id_politico", "ano", "mes"]).valor.sum()
+    pouco = 0.4 * SUBSIDIO_DEPUTADO_FEDERAL
+    suspeitos = sorted({i for (i, a, m), v in sal.items() if 0 < v < pouco and not outros.get((i, a, m), 0)})
+    tirar = pd.Series(False, index=lanc.index)
+    am = lanc.ano * 100 + lanc.mes.fillna(0).astype(int)
+    extra = []
+    for pid in suspeitos:
+        meses = _em_exercicio(pid.split("-")[1], None)
+        if meses is None:
+            continue
+        # só os meses fora do exercício com pagamento pequeno: licenciado que optou pelo salário do mandato (um
+        # secretário de Estado, por exemplo) recebe o subsídio cheio, e isso continua na conta
+        chave = pd.Series(list(zip(lanc.id_politico, lanc.ano, lanc.mes)), index=lanc.index)
+        pequeno = chave.map(lambda k: sal.get(k, 0) < pouco)
+        fora = (lanc.id_politico == pid) & (lanc.categoria == "salario") & ~am.isin(meses) & pequeno
+        if fora.any():
+            log(f"Site: {pid}: {int(fora.sum())} meses de pagamento fora do exercício do mandato saem da conta "
+                f"(R$ {lanc[fora].valor.sum():,.2f})")
+        tirar |= fora
+        # o que é informado por ano e foi dividido pelos meses com salário (auxílio-moradia, marcado "rateado") também
+        # sai desses meses e é redividido pelos meses que ficam, no mesmo ano
+        meses_fora = set(am[fora])
+        rat = (lanc.id_politico == pid) & lanc.rateado.fillna(False).astype(bool) & am.isin(meses_fora)
+        for ano, g in lanc[rat].groupby("ano"):
+            ficam = sorted(set(am[(lanc.id_politico == pid) & (lanc.categoria == "salario") & (lanc.ano == ano) & ~am.isin(meses_fora)]))
+            if ficam:
+                por_cat = g.groupby(["grupo", "categoria", "descricao", "fonte"], dropna=False).valor.sum()
+                for (grupo_, cat, desc, fonte), total in por_cat.items():
+                    extra.append(pd.DataFrame([{"id_politico": pid, "ano": ano, "mes": m % 100, "grupo": grupo_, "categoria": cat,
+                                                "descricao": desc, "valor": total / len(ficam), "fonte": fonte, "rateado": True} for m in ficam]))
+        tirar |= rat
+    return pd.concat([lanc[~tirar], *extra], ignore_index=True) if extra else lanc[~tirar]
+
+
 def executar():
     politicos = ler_json(PROCESSADOS / "politicos.json")
     meta = ler_json(PROCESSADOS / "metadados.json")
     lanc = pd.read_csv(PROCESSADOS / "lancamentos.csv.gz")
     equipe = pd.read_csv(PROCESSADOS / "equipe.csv")
+    lanc = _sem_pagamento_fora_do_mandato(lanc)
 
     # Quem tem dois cargos (ministro que é deputado ou senador): um registro "tudo junto" que soma os dois sem
     # contar nada duas vezes. Entra tudo do Congresso e, do governo, só o que vem do Portal da Transparência

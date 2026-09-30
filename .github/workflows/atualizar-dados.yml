@@ -36,7 +36,9 @@ jobs:
           cache: pip
 
       - name: Instalar as dependências
-        run: pip install -r requirements.txt
+        run: |
+          sudo apt-get install -y poppler-utils  # pdftotext, para as folhas em PDF da Câmara de Maceió
+          pip install -r requirements.txt
 
       - name: Recuperar os downloads da semana passada
         uses: actions/cache/restore@v4

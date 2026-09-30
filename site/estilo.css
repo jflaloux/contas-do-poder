@@ -468,6 +468,7 @@ input[type="search"] { line-height: 1.5; }
 .filtros .campo--quem { grid-column: 1 / -1; }
 /* posição entre os colegas: verde abaixo da mediana, vermelho acima, com a régua dos quatro quartos */
 .destaque--abaixo { background: color-mix(in srgb, var(--bom) 12%, var(--paper)); color: color-mix(in srgb, var(--bom) 70%, var(--ink)); }
+.destaque--igual { background: var(--paper-2, var(--paper)); color: var(--ink); border: 1px solid var(--line); }
 .destaque--acima { background: color-mix(in srgb, var(--ruim) 11%, var(--paper)); color: color-mix(in srgb, var(--ruim) 72%, var(--ink)); }
 .regua { margin-top: 10px; display: grid; gap: 4px; max-width: 420px; }
 .regua__trilho { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3px; height: 10px; }
@@ -476,3 +477,12 @@ input[type="search"] { line-height: 1.5; }
 .regua__marca { position: absolute; top: 50%; width: 14px; height: 14px; border-radius: 50%; background: currentColor; border: 2px solid var(--paper);
   transform: translate(-50%, -50%); box-shadow: 0 0 0 1px currentColor; }
 .regua__legenda { display: flex; justify-content: space-between; font-size: .75rem; font-weight: 500; opacity: .85; }
+
+/* fontes: 4 cartões e a lista completa escondida */
+.fontes-lista { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.fontes-lista summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.fontes-lista[open] summary { margin-bottom: 4px; }
+.fontes-lista__corpo { columns: 2 22rem; column-gap: 28px; }
+.fontes-lista__corpo h3 { font-size: .95rem; margin: 12px 0 4px; break-after: avoid; }
+.fontes-lista__corpo .lista { margin: 0; font-size: .88rem; }
+.fontes-lista__corpo li { break-inside: avoid; }

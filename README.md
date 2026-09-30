@@ -4,8 +4,8 @@
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
 da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
-estado), a Câmara Municipal de cada cidade, cada vereador de seis capitais (São Paulo, Fortaleza, Goiânia, Manaus,
-Natal e Recife) e o prefeito, o vice e os secretários de cinco capitais (São Paulo, Recife, Fortaleza, Vitória e
+estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
+Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de cinco capitais (São Paulo, Recife, Fortaleza, Vitória e
 Porto Alegre).
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas

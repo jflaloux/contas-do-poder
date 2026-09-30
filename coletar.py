@@ -5,7 +5,8 @@ Uso:
     python3 coletar.py senado          # só o Senado
     python3 coletar.py executivo       # presidente, vice e ministros (Portal da Transparência)
     python3 coletar.py municipios      # câmaras municipais: custo (Tesouro) e vereadores eleitos (TSE)
-    python3 coletar.py vereadores      # capitais (São Paulo, Fortaleza, Goiânia, Manaus, Natal, Recife): cada vereador,
+    python3 coletar.py vereadores      # capitais (São Paulo, Rio, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre,
+                                       # Recife, São Luís): cada vereador,
                                        # com salário, verba do gabinete e equipe (vereadores_sp é o nome antigo)
     python3 coletar.py prefeituras     # São Paulo, Recife, Fortaleza, Vitória e Porto Alegre: prefeito, vice e secretários
                                        # (e subprefeitos, em SP), mês a mês, pela folha (prefeitura_sp é o nome antigo)
