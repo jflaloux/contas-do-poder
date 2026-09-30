@@ -28,15 +28,13 @@ import re
 import time
 import xml.etree.ElementTree as ET
 import zipfile
-from calendar import monthrange
 from collections import Counter
-from datetime import date, datetime
 
 import pandas as pd
 
-from .config import CACHE, DADOS, HOJE, RAIZ
-from .fotos import _ajustar
-from .util import TempoEsgotado, _sessao, baixar, cache_valido, log, normalizar_nome, verificar_prazo
+from ..config import CACHE, DADOS, HOJE, RAIZ
+from ..fotos import _ajustar
+from ..util import TempoEsgotado, _sessao, baixar, cache_valido, log, normalizar_nome, verificar_prazo
 
 COD_IBGE = 3550308
 LEGISLATURA = 19               # 2025–2028
@@ -365,165 +363,51 @@ def _empresa(nome):
     return " ".join(_SIGLAS.get(w.lower(), w.lower() if w.lower() in _MINUSCULAS and i else w.capitalize()) for i, w in enumerate(nome.split())) or "Sem nome"
 
 
-# ---------------------------------------------------------------- site/dados/camaras.json
-def _subsidio(ano, mes):
-    valor = 0
-    for (a, m), v in SUBSIDIO:
-        if (ano, mes) >= (a, m):
-            valor = v
-    return valor
+# ---------------------------------------------------------------- tabelas no formato comum
+CFG = {
+    "cod": COD_IBGE, "n": "São Paulo", "uf": "SP", "casa": "Câmara Municipal de São Paulo", "vagas": 55,
+    "inicio": INICIO[0] * 100 + INICIO[1], "subsidio": [[a * 100 + m, v] for (a, m), v in SUBSIDIO],
+    "verba_nome": "Auxílio-Encargos Gerais de Gabinete",
+    "verba_regra": "O que não é usado num mês fica para os meses seguintes; o que sobra no fim do ano volta para a Câmara.",
+    "verba_notas": ["Carros, correios e cópias podem vir de contratos da própria Câmara, descontados da verba do vereador."],
+    "salario_nota": "A Câmara só mostra o contracheque de cada um para quem informa um CPF, por isso descontos, 13º e outros pagamentos não aparecem aqui.",
+    "equipe_nota": "Cargos de confiança, escolhidos pelo vereador. A Câmara só mostra os salários para quem informa um CPF.",
+    "credito_foto": "Câmara Municipal de São Paulo", "pagina": f"{SITE_CMSP}/vereadores/membros/",
+    "fontes": {"gastos": CONTAS, "gabinetes": f"{SPLEGIS}/OcupacaoGabineteJSON", "funcionarios": FUNCIONARIOS,
+               "verba": f"{SITE_CMSP}/transparencia/custos-de-mandato/",
+               "subsidio": "https://www.gazetasp.com.br/politica/vereadores-de-sao-paulo-aprovam-reajuste-salarial-para-mais-de-r-26/1146396"},
+}
 
 
-def _dias(ocup, ano, mes):
-    """Dias no cargo naquele mês, somando as ocupações do gabinete (inclusive nas pontas)."""
-    ini_mes, fim_mes = date(ano, mes, 1), date(ano, mes, monthrange(ano, mes)[1])
-    total = 0
-    for ini, fim in ocup:
-        a, b = max(ini, ini_mes), min(fim or date(9999, 1, 1), fim_mes)
-        if b >= a:
-            total += (b - a).days + 1
-    return min(total, monthrange(ano, mes)[1])
-
-
-def _r(v):
-    return int(round(v))
-
-
-def site(gab, ver, desp, verba, eq, ate):
-    tipos, idx = [], {}
-
-    def tipo(nome):
-        if nome not in idx:
-            idx[nome] = len(tipos)
-            tipos.append(nome)
-        return idx[nome]
-
-    meses = list(_meses(ate))
-    anos = sorted({a for a, _ in meses})
-    desp = desp[[(a, m) <= ate for a, m in zip(desp.ano, desp.mes)]].copy()
-    desp["tipo"] = desp.despesa.map(tipo_curto)
-    desp["aaaamm"] = desp.ano * 100 + desp.mes
-    verba = verba[[(a, m) <= ate for a, m in zip(verba.ano, verba.mes)]]
-    data_eq = eq.data.iloc[0] if len(eq) else ""
-    pessoas_gab = eq.groupby("gabinete").pessoas.sum().to_dict() if len(eq) else {}
-    cargos_gab = {g: [[_cargo(c), int(n)] for c, n in sorted(zip(gg.cargo, gg.pessoas), key=lambda x: (-x[1], x[0]))] for g, gg in eq.groupby("gabinete")} if len(eq) else {}
-    info = {r.codigo: r for r in ver.itertuples()}
-    pessoas = []
-    for cod, g in gab.groupby("codigo"):
-        r = info.get(cod)
-        if r is None:
-            continue
-        ocup = [(date.fromisoformat(i), date.fromisoformat(f) if f else None) for i, f in zip(g.inicio, g.fim.fillna(""))]
-        no_cargo = any(f is None or f >= HOJE for _, f in ocup)
-        gab_atual = int(g.sort_values("inicio").gabinete.iloc[-1])
-        dias_total = sum(_dias(ocup, a, m) for a, m in meses)
-        if dias_total < 15 and not no_cargo:
-            continue  # assumiu só por poucos dias (para uma votação, por exemplo): fica fora da lista
-        d = desp[desp.vereador == r.nome_cmsp]
-        vb = verba[verba.vereador == r.nome_cmsp]
-        serie = []
-        for a, m in meses:
-            dias = _dias(ocup, a, m)
-            ganha = _subsidio(a, m) * dias / monthrange(a, m)[1]
-            custa = d[(d.ano == a) & (d.mes == m)].valor.sum()
-            if dias or abs(custa) >= 0.5:
-                serie.append((a * 100 + m, ganha, custa, dias))
-        if not serie:
-            continue
-
-        def bloco(filtro):
-            s = [x for x in serie if filtro(x[0])]
-            if not s:
-                return None
-            m = sum(1 for x in s if x[3])
-            mc = sum(1 for x in s if x[3] or abs(x[2]) >= 0.5)
-            g_, c_ = sum(x[1] for x in s), sum(x[2] for x in s)
-            cats = {k: _r(v) for k, v in (("salario", g_), ("verba_gabinete", c_)) if _r(v)}
-            return {"m": m, "mg": m, "mc": mc, "me": 0, "g": _r(g_), "c": _r(c_), "e": 0, "pm": 0, "mp": 0, "pu": 0, "ep": 0, "cats": cats}
-
-        def detalhe(filtro):
-            dd = d[[filtro(x) for x in d.aaaamm]]
-            if not len(dd):
-                return None
-            por_tipo = dd.groupby("tipo").valor.sum().sort_values(ascending=False)
-            forn = dd.assign(chave=[re.sub(r"\D", "", c) or f"?{f}" for c, f in zip(dd.cnpj_cpf.fillna(""), dd.fornecedor)])
-            nomes = {}
-            for ch, gg in forn.groupby("chave"):
-                pf = gg.cnpj_cpf.iloc[0].startswith("***")
-                nomes[ch] = "Pessoa física (aluguel de imóvel)" if pf else _empresa(gg.fornecedor.mode().iloc[0])
-            por_forn = forn.assign(nome=forn.chave.map(nomes)).groupby("nome").valor.sum().sort_values(ascending=False)
-            return {"verba_gabinete": [[tipo(t), _r(v)] for t, v in por_tipo.items() if _r(v) > 0][:8],
-                    "fornecedores": [[tipo(t), _r(v)] for t, v in por_forn.items() if _r(v) > 0][:8]}
-
-        filtros = {str(a): (lambda x, a=a: x // 100 == a) for a in anos}
-        filtros["leg"] = lambda x: True
-        per, dt = {}, {}
-        for k, f in filtros.items():
-            b = bloco(f)
-            if b:
-                per[k] = b
-                det = detalhe(f)
-                if det:
-                    dt[k] = det
-        credito = {str(a): _r(vb[(vb.ano == a) & (vb.movimento == "credito")].valor.sum()) for a in anos}
-        devolvido = {str(a): _r(-vb[(vb.ano == a) & (vb.movimento == "saldo_devolvido")].valor.sum()) for a in anos}
-        n_eq = int(pessoas_gab.get(gab_atual, 0)) if no_cargo else 0
-        pessoas.append({
-            "id": f"ver-{COD_IBGE}-{cod}", "k": "v", "cid": COD_IBGE, "n": r.nome, "nc": r.nome_civil or r.nome_cmsp,
-            "g": "Vereadora" if r.genero == "F" else "Vereador", "pt": r.partido, "uf": "SP",
-            "f": f"fotos/ver-{COD_IBGE}-{cod}.webp" if (FOTOS / f"ver-{COD_IBGE}-{cod}.webp").exists() else None,
-            "fc": {"a": "Câmara Municipal de São Paulo", "u": r.pagina or f"{SITE_CMSP}/vereadores/membros/"} if (FOTOS / f"ver-{COD_IBGE}-{cod}.webp").exists() else None,
-            "x": 1 if no_cargo else 0, "o": r.pagina or CONTAS, "gab": gab_atual, "sup": 1 if r.eleito == "suplente" else 0,
-            "oc": [[i.strftime("%Y%m%d"), f.strftime("%Y%m%d") if f else None] for i, f in sorted(ocup)],
-            "per": per,
-            "t": [[am, _r(gg), _r(cc), 0, 0, 0] for am, gg, cc, _ in serie],
-            "dt": dt,
-            "vb": {a: [credito[a], devolvido[a]] for a in credito if credito[a] or devolvido[a]},
-            "eq": {"n": n_eq, "c": cargos_gab.get(gab_atual, [])} if n_eq else None,
-        })
-    pessoas.sort(key=lambda p: normalizar_nome(p["n"]))
-    dados = {
-        "meta": {
-            "gerado_em": datetime.now().isoformat(timespec="seconds"),
-            "tipos": tipos,
-            "categorias": {"verba_gabinete": {"grupo": "custa", "nome": "Verba do gabinete (auxílio-encargos)"}},
-            "cidades": {str(COD_IBGE): {
-                "n": "São Paulo", "uf": "SP", "casa": "Câmara Municipal de São Paulo", "vagas": int(gab.gabinete.nunique()),
-                "inicio": INICIO[0] * 100 + INICIO[1], "ultimo_mes": ate[0] * 100 + ate[1], "anos": [str(a) for a in anos],
-                "subsidio": [[a * 100 + m, v] for (a, m), v in SUBSIDIO],
-                "verba_mes": {str(a): round(float(verba[(verba.ano == a) & (verba.movimento == "credito")].groupby("vereador").valor.sum().max() / sum(1 for x in meses if x[0] == a)), 2) for a in anos},
-                "equipe_em": data_eq,
-                "fontes": {"gastos": CONTAS, "gabinetes": f"{SPLEGIS}/OcupacaoGabineteJSON", "funcionarios": FUNCIONARIOS,
-                           "verba": f"{SITE_CMSP}/transparencia/custos-de-mandato/",
-                           "subsidio": "https://www.gazetasp.com.br/politica/vereadores-de-sao-paulo-aprovam-reajuste-salarial-para-mais-de-r-26/1146396"},
-            }},
-        },
-        "p": pessoas,
-    }
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(pessoas)} vereadores de SP, {sum(p['x'] for p in pessoas)} no cargo)")
-    return dados
-
-
-def conferir(dados):
-    """Alertas simples: quantos no cargo, e se a verba usada cabe no limite do ano."""
-    alertas = []
-    ps = dados["p"]
-    no_cargo = sum(p["x"] for p in ps)
-    if no_cargo != 55:
-        alertas.append(f"Vereadores de SP no cargo: {no_cargo} (esperado 55)")
-    sem_foto = [p["n"] for p in ps if p["x"] and not p["f"]]
-    if sem_foto:
-        alertas.append(f"Vereadores de SP sem foto: {', '.join(sem_foto)}")
-    for p in ps:
-        for ano, (cred, _) in p["vb"].items():
-            usado = p["per"].get(ano, {}).get("c", 0)
-            if cred and usado > cred * 1.02:
-                alertas.append(f"{p['n']}: gastou {usado} em {ano}, acima do crédito de {cred}")
-    for a in alertas:
-        log("  ALERTA", a)
-    return alertas
+def montar(tipos):
+    """Lê o que está em dados/municipios/sp/ e devolve (meta, pessoas) pelo formato comum."""
+    from . import comum
+    if not (PASTA / "gabinetes.csv").exists():
+        return None
+    ate = comum.ultimo_mes_fechado()
+    gab = pd.read_csv(PASTA / "gabinetes.csv", dtype={"fim": str}).fillna({"fim": ""})
+    ver = pd.read_csv(PASTA / "vereadores.csv").fillna("")
+    desp = pd.read_csv(PASTA / "despesas.csv", dtype={"cnpj_cpf": str}).fillna({"cnpj_cpf": "", "fornecedor": "", "despesa": ""})
+    verba = pd.read_csv(PASTA / "verba.csv")
+    eq = pd.read_csv(PASTA / "equipe.csv", dtype={"data": str}) if (PASTA / "equipe.csv").exists() else pd.DataFrame(columns=["data", "gabinete", "cargo", "pessoas"])
+    codigo_de = {normalizar_nome(n): int(c) for c, n in zip(gab.codigo, gab.vereador)}
+    desp = desp.assign(codigo=desp.vereador.map(lambda n: codigo_de.get(normalizar_nome(n))), tipo=desp.despesa.map(comum.tipo_curto))
+    desp = desp[desp.codigo.notna()].astype({"codigo": int})
+    verba = verba.assign(codigo=verba.vereador.map(lambda n: codigo_de.get(normalizar_nome(n))))
+    verba = verba[verba.codigo.notna()]
+    anual = verba.assign(credito=verba.valor.where(verba.movimento == "credito", 0), devolvido=-verba.valor.where(verba.movimento == "saldo_devolvido", 0))
+    anual = anual[anual.ano * 100 + anual.mes <= ate].groupby(["ano", "codigo"])[["credito", "devolvido"]].sum().reset_index()
+    # equipe: retrato do mês mais recente, pelo número do gabinete -> quem ocupa hoje
+    atuais = gab[gab.fim == ""].groupby("gabinete").codigo.last().to_dict()
+    cargos = pd.DataFrame([{"codigo": atuais[g], "cargo": _cargo(c), "pessoas": int(n)} for g, c, n in zip(eq.gabinete, eq.cargo, eq.pessoas) if g in atuais])
+    cfg = dict(CFG, ultimo_mes=ate, equipe_em=eq.data.iloc[0] if len(eq) else "")
+    creditos = anual[anual.credito > 0]
+    cfg["verba_mes"] = {str(int(a)): round(float(g.credito.max()) / sum(1 for x in comum.meses(cfg["inicio"], ate) if x[0] == a), 2) for a, g in creditos.groupby("ano")}
+    ver2 = pd.DataFrame({"codigo": ver.codigo, "nome": ver.nome, "nome_civil": ver.nome_civil.where(ver.nome_civil != "", ver.nome_cmsp),
+                         "partido": ver.partido, "genero": ver.genero, "eleito": ver.eleito, "pagina": ver.pagina})
+    mand = pd.DataFrame({"codigo": gab.codigo, "inicio": gab.inicio, "fim": gab.fim, "gabinete": gab.gabinete})
+    return comum.montar(cfg, tipos, ver2, mand, despesas=desp[["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"]],
+                        verba=anual, cargos=cargos if len(cargos) else None)
 
 
 def coletar():
@@ -531,20 +415,5 @@ def coletar():
     gab = gabinetes()
     ver = vereadores(gab)
     fotos(ver)
-    desp, verba = gastos(ate)
-    eq = equipe()
-    dados = site(gab, ver, desp, verba, eq, ate)
-    conferir(dados)
-
-
-def executar_site():
-    """Só remonta site/dados/camaras.json com o que já está em dados/municipios/sp/ (sem baixar nada)."""
-    if not (PASTA / "gabinetes.csv").exists():
-        return
-    ate = ultimo_mes()
-    gab = pd.read_csv(PASTA / "gabinetes.csv", dtype={"fim": str}).fillna({"fim": ""})
-    ver = pd.read_csv(PASTA / "vereadores.csv").fillna("")
-    desp = pd.read_csv(PASTA / "despesas.csv", dtype={"cnpj_cpf": str}).fillna({"cnpj_cpf": "", "fornecedor": "", "despesa": ""})
-    verba = pd.read_csv(PASTA / "verba.csv")
-    eq = pd.read_csv(PASTA / "equipe.csv", dtype={"data": str}) if (PASTA / "equipe.csv").exists() else pd.DataFrame(columns=["data", "gabinete", "cargo", "pessoas"])
-    site(gab, ver, desp, verba, eq, ate)
+    gastos(ate)
+    equipe()

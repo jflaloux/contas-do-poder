@@ -3,8 +3,8 @@
 **Site: [contasdopoder.com](https://contasdopoder.com)**
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
-da Câmara, do Senado e do Portal da Transparência. E também a Câmara Municipal de cada cidade, cada vereador e a
-Prefeitura de São Paulo.
+da Câmara, do Senado e do Portal da Transparência. E também a Câmara Municipal de cada cidade, cada vereador de
+seis capitais (São Paulo, Fortaleza, Goiânia, Manaus, Natal e Recife) e a Prefeitura de São Paulo.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -153,9 +153,38 @@ Robô `coleta/municipios.py`, para as 5.568 câmaras:
 - O salário de cada vereador ainda não tem fonte nacional. Próximos passos: capitais (um robô por câmara) e os
   estados cujo tribunal de contas publica a folha.
 
-## Vereadores de São Paulo (capital), passo 2
+## Vereadores das capitais, passo 2
 
-Robô `coleta/vereadores_sp.py` (`python3 coletar.py vereadores_sp`). Cada vereador da capital tem página própria
+Robô `coleta/vereadores/` (`python3 coletar.py vereadores`; `vereadores_sp` é o nome antigo e faz o mesmo). Um
+arquivo por cidade (`sp.py`, `fortaleza.py`, `goiania.py`, `manaus.py`, `natal.py`, `recife.py`): `coletar()` baixa
+os dados abertos da Câmara e grava em `dados/municipios/<cidade>/` (vai para o Git); `montar()` entrega tudo no
+formato comum (`comum.py`), e o robô junta as cidades em `site/dados/camaras.json`. Uma cidade que falhar não
+derruba as outras: o site segue com o que já estava gravado. Vereador só se compara com vereador da mesma cidade
+(o grupo do ranking é o tipo mais o código IBGE, como `v2611606`). O que cada Câmara publica é diferente:
+
+| Cidade | Quem estava no cargo | Vai para o bolso | Verba do gabinete | Equipe |
+|---|---|---|---|---|
+| São Paulo | SPLegis (gabinetes, com datas) | subsídio, pelos dias no cargo | nota por nota (SisGV) | pessoas e cargos |
+| Fortaleza | folha mensal (API da Câmara) + SAPL | subsídio do mês, pela folha | SDP, nota por nota | não ligada ao gabinete |
+| Goiânia | folha mensal (NúcleoGov) | folha bruta (subsídio + 1/3, 13º, férias) | CEAP, por tipo | pessoas, cargos e custo |
+| Manaus | folha mensal + SAPL | subsídio, pela folha | CEAP, nota por nota | pessoas, cargos e custo |
+| Natal | lista mensal da cota (29 por mês) + SAPL | subsídio fixado (R$ 26 mil) | cota, nota por nota | não publicada |
+| Recife | folha mensal (CSV) + e-Processo | folha bruta (subsídio, 13º, 1/3 de férias) | Verba Indenizatória, por tipo | pessoas, cargos e custo |
+
+- Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
+  abreviações e erros de digitação (`comum.semelhanca`).
+- O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.
+- SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
+  em Fortaleza, no máximo 6 fotos por semana.
+- Recife: em ago/2026 a folha traz também R$ 18.980 (o salário da legislatura passada) a vereadores e
+  ex-vereadores daquela legislatura; não entram. A página da verba de alguns vereadores dá erro no site da
+  Câmara: o site avisa e mostra a verba zerada nesse período.
+- Goiânia: a folha mensal paga um terço a mais que o subsídio, sem nome para essa parcela; mostramos o subsídio
+  como salário e o terço como "outros pagamentos".
+
+### São Paulo
+
+Cada vereador da capital tem página própria
 (`#ver-3550308-{código}`), como os deputados: contracheque, mês a mês, detalhe dos gastos, equipe, colegas e
 ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308`) lista os 55, com link, e também a Prefeitura.
 

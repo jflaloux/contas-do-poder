@@ -1,0 +1,496 @@
+ano,mes,token,nome,tipo,apresentado,valor
+2025,1,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,1,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,2,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,9240.0,9240.0
+2025,2,2,Aderaldo Pinto,Material de expediente,241.7,241.7
+2025,2,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,6000.0
+2025,2,2,Aderaldo Pinto,Serviços gráficos e cópias,400.0,400.0
+2025,3,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,3,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,4,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,9900.0,9802.22
+2025,4,2,Aderaldo Pinto,Material de expediente,259.6,257.04
+2025,4,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5940.74
+2025,5,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,5,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,6,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,9900.0,9805.2
+2025,6,2,Aderaldo Pinto,Material de expediente,254.7,252.26
+2025,6,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5942.54
+2025,7,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,7,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,8,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,8,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,9,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,9900.0,9827.52
+2025,9,2,Aderaldo Pinto,Material de expediente,218.0,216.4
+2025,9,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5956.07
+2025,10,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,10,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,11,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,9900.0,9703.68
+2025,11,2,Aderaldo Pinto,Material de expediente,423.7,415.3
+2025,11,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5881.02
+2025,12,2,Aderaldo Pinto,Locomoção - Locação de Automóvel,10230.0,10085.03
+2025,12,2,Aderaldo Pinto,"Locação de móveis e equipamentos, aquisição ou locação de software",6000.0,5914.97
+2025,1,53,Agora é Rubem,Locomoção - Locação de Automóvel,6000.0,6000.0
+2025,1,53,Agora é Rubem,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,2,53,Agora é Rubem,Locomoção - Locação de Automóvel,6000.0,5936.79
+2025,2,53,Agora é Rubem,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,7915.72
+2025,2,53,Agora é Rubem,Serviços gráficos e cópias,2170.36,2147.49
+2025,3,53,Agora é Rubem,Locomoção - Locação de Automóvel,6000.0,6000.0
+2025,3,53,Agora é Rubem,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,3,53,Agora é Rubem,Serviços gráficos e cópias,1987.6,1987.6
+2025,4,53,Agora é Rubem,Locomoção - Locação de Automóvel,6000.0,6000.0
+2025,4,53,Agora é Rubem,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,4,53,Agora é Rubem,Serviços gráficos e cópias,1993.8,1993.8
+2025,5,53,Agora é Rubem,Locomoção - Locação de Automóvel,6000.0,6000.0
+2025,5,53,Agora é Rubem,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,6,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,7,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,8,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,9,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,10,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,11,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,12,53,Agora é Rubem,Locomoção - Locação de Automóvel,16000.0,16000.0
+2025,1,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8787.4
+2025,1,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,6989.97
+2025,1,16,Alcides Teixeira,Material de expediente,222.95,222.63
+2025,2,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8797.42
+2025,2,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,6997.94
+2025,2,16,Alcides Teixeira,Material de expediente,204.7,204.64
+2025,3,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,3,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,7000.0
+2025,3,16,Alcides Teixeira,Material de expediente,194.3,194.3
+2025,4,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8792.04
+2025,4,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,6993.67
+2025,4,16,Alcides Teixeira,Material de expediente,214.49,214.3
+2025,5,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,5,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,7000.0
+2025,5,16,Alcides Teixeira,Material de expediente,198.98,198.98
+2025,6,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,6,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,7000.0
+2025,6,16,Alcides Teixeira,Material de expediente,185.6,185.6
+2025,7,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8795.55
+2025,7,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,6996.46
+2025,7,16,Alcides Teixeira,Material de expediente,208.1,207.99
+2025,8,16,Alcides Teixeira,Locomoção - Locação de Automóvel,8800.0,8794.5
+2025,8,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7000.0,6995.63
+2025,8,16,Alcides Teixeira,Material de expediente,210.0,209.87
+2025,9,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",16000.0,16000.0
+2025,10,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",16000.0,16000.0
+2025,11,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",16000.0,16000.0
+2025,12,16,Alcides Teixeira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",16000.0,16000.0
+2025,1,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7975.08
+2025,1,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,1,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,2,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,8000.0
+2025,2,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,5000.0
+2025,2,52,Alef Collins,Serviços gráficos e cópias,3000.0,3000.0
+2025,3,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,8000.0
+2025,3,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,5000.0
+2025,3,52,Alef Collins,Serviços gráficos e cópias,3000.0,3000.0
+2025,4,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7975.08
+2025,4,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,4,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,5,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7975.08
+2025,5,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,5,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,6,52,Alef Collins,Despesas relacionadas ao Escritório (internet e telefone),203.21,200.63
+2025,6,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7898.42
+2025,6,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4936.51
+2025,6,52,Alef Collins,Serviços gráficos e cópias,2800.0,2764.45
+2025,7,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,8000.0
+2025,7,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,5000.0
+2025,7,52,Alef Collins,Serviços gráficos e cópias,2800.0,2800.0
+2025,8,52,Alef Collins,Peças e acessórios de veículos,8000.0,7975.08
+2025,8,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,8,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,9,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7975.08
+2025,9,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,9,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,10,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,8000.0
+2025,10,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,5000.0
+2025,10,52,Alef Collins,Serviços gráficos e cópias,2950.0,2950.0
+2025,11,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,7975.08
+2025,11,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,4984.42
+2025,11,52,Alef Collins,Serviços gráficos e cópias,3050.0,3040.5
+2025,12,52,Alef Collins,Locomoção - Locação de Automóvel,8000.0,8000.0
+2025,12,52,Alef Collins,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",5000.0,5000.0
+2025,12,52,Alef Collins,Serviços gráficos e cópias,3000.0,3000.0
+2025,1,50,Carlos Muniz,Locomoção - Locação de Automóvel,16523.0,16000.0
+2025,2,50,Carlos Muniz,Locomoção - Locação de Automóvel,14938.0,14938.0
+2025,3,50,Carlos Muniz,Locomoção - Locação de Automóvel,16523.0,16000.0
+2025,4,50,Carlos Muniz,Locomoção - Locação de Automóvel,16005.0,16000.0
+2025,5,50,Carlos Muniz,Aluguel de Escritório,5216.0,4969.25
+2025,5,50,Carlos Muniz,Locomoção - Locação de Automóvel,11578.5,11030.75
+2025,6,50,Carlos Muniz,Aluguel de Escritório,5216.0,5180.08
+2025,6,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),945.51,939.0
+2025,6,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),154.62,153.56
+2025,6,50,Carlos Muniz,Locomoção - Locação de Automóvel,9600.0,9533.89
+2025,6,50,Carlos Muniz,Material de expediente,194.82,193.48
+2025,7,50,Carlos Muniz,Aluguel de Escritório,5216.0,5204.29
+2025,7,50,Carlos Muniz,Locomoção - Locação de Automóvel,9920.0,9897.73
+2025,7,50,Carlos Muniz,Material de expediente,400.0,399.1
+2025,7,50,Carlos Muniz,Serviços gráficos e cópias,500.0,498.88
+2025,8,50,Carlos Muniz,Aluguel de Escritório,5216.0,5211.12
+2025,8,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),623.75,623.17
+2025,8,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),163.78,163.63
+2025,8,50,Carlos Muniz,Locomoção - Locação de Automóvel,9920.0,9910.71
+2025,8,50,Carlos Muniz,Material de expediente,91.46,91.37
+2025,9,50,Carlos Muniz,Aluguel de Escritório,5216.0,5216.0
+2025,9,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),553.51,553.51
+2025,9,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),163.44,163.44
+2025,9,50,Carlos Muniz,Locomoção - Locação de Automóvel,9600.0,9600.0
+2025,9,50,Carlos Muniz,Material de expediente,333.58,333.58
+2025,10,50,Carlos Muniz,Aluguel de Escritório,5533.0,5368.55
+2025,10,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),878.04,851.94
+2025,10,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),159.06,154.33
+2025,10,50,Carlos Muniz,Locomoção - Locação de Automóvel,9920.0,9625.17
+2025,11,50,Carlos Muniz,Aluguel de Escritório,5500.0,5496.2
+2025,11,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),691.31,690.83
+2025,11,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),163.78,163.67
+2025,11,50,Carlos Muniz,Locomoção - Locação de Automóvel,9600.0,9593.37
+2025,11,50,Carlos Muniz,Material de expediente,55.96,55.92
+2025,12,50,Carlos Muniz,Aluguel de Escritório,5500.0,5300.08
+2025,12,50,Carlos Muniz,Despesas relacionadas ao Escritório (CELPE),1019.73,982.66
+2025,12,50,Carlos Muniz,Despesas relacionadas ao Escritório (internet e telefone),163.78,157.83
+2025,12,50,Carlos Muniz,Locomoção - Locação de Automóvel,9920.0,9559.42
+2025,1,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",14000.0,14000.0
+2025,1,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",310.0,310.0
+2025,2,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,2,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,3,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,3,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,4,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,4,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,5,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,5,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,6,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,6,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,7,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,7,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,8,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,8,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,9,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,9,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,10,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,10,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,11,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,11,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,12,22,Chico Kiko,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,12,22,Chico Kiko,"Locação de móveis e equipamentos, aquisição ou locação de software",8000.0,8000.0
+2025,1,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3500.0,3500.0
+2025,1,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,2,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3500.0,3500.0
+2025,2,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,3,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3500.0,3500.0
+2025,3,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",11500.0,11500.0
+2025,4,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3700.0,3700.0
+2025,4,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,4,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,5,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3700.0,3700.0
+2025,5,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,5,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,6,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3700.0,3700.0
+2025,6,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,6,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,7,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3700.0,3700.0
+2025,7,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,7,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,8,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3800.0,3800.0
+2025,8,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,8,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,9,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3800.0,3800.0
+2025,9,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,9,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,10,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3800.0,3800.0
+2025,10,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,10,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,11,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3800.0,3800.0
+2025,11,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,11,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,12,12,Cida Pedrosa,Locomoção - Locação de Automóvel,3800.0,3800.0
+2025,12,12,Cida Pedrosa,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7500.0,7500.0
+2025,12,12,Cida Pedrosa,"Locação de móveis e equipamentos, aquisição ou locação de software",4700.0,4700.0
+2025,1,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,2,45,Davi Muniz,Locomoção - Locação de Automóvel,14840.0,14840.0
+2025,3,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,4,45,Davi Muniz,Locomoção - Locação de Automóvel,15900.0,15900.0
+2025,5,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,6,45,Davi Muniz,Locomoção - Locação de Automóvel,15900.0,15900.0
+2025,7,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,8,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,9,45,Davi Muniz,Locomoção - Locação de Automóvel,15900.0,15900.0
+2025,10,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,11,45,Davi Muniz,Locomoção - Locação de Automóvel,15900.0,15900.0
+2025,12,45,Davi Muniz,Locomoção - Locação de Automóvel,16430.0,16000.0
+2025,1,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,2,58,Eduardo Mota,Locomoção - Locação de Automóvel,14653.24,14653.24
+2025,3,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,4,58,Eduardo Mota,Locomoção - Locação de Automóvel,15699.9,15699.9
+2025,5,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,6,58,Eduardo Mota,Locomoção - Locação de Automóvel,15699.9,15699.9
+2025,7,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,8,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,9,58,Eduardo Mota,Locomoção - Locação de Automóvel,15699.9,15699.9
+2025,10,58,Eduardo Mota,Locomoção - Locação de Automóvel,16223.23,16000.0
+2025,11,58,Eduardo Mota,Locomoção - Locação de Automóvel,15859.8,15859.8
+2025,12,58,Eduardo Mota,Locomoção - Locação de Automóvel,16388.46,16000.0
+2025,1,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,2,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,3,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,4,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,5,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,6,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,7,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,8,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,9,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,10,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,11,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,12,56,Eduardo Moura,Locomoção - Locação de Automóvel,15500.0,15500.0
+2025,1,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,1,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,2,10,Eriberto Rafael,Locomoção - Locação de Automóvel,10453.24,9063.55
+2025,2,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6936.45
+2025,3,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,3,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,4,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11199.9,9333.3
+2025,4,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6666.7
+2025,5,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,5,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,6,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11199.9,9333.3
+2025,6,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6666.7
+2025,7,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,7,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,8,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,8,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,9,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11199.9,9333.3
+2025,9,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6666.7
+2025,10,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,10,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,11,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11199.9,9333.3
+2025,11,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6666.7
+2025,12,10,Eriberto Rafael,Locomoção - Locação de Automóvel,11573.23,9460.46
+2025,12,10,Eriberto Rafael,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,6539.54
+2025,1,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,1,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,2,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,2,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,3,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,3,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,4,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,4,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,5,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,5,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,6,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,6,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,7,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,7,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,8,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,8,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,9,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,9,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,10,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,10,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,11,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,11,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,12,26,Fabiano Ferraz,Locomoção - Locação de Automóvel,7700.0,7700.0
+2025,12,26,Fabiano Ferraz,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",8000.0,8000.0
+2025,1,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,1,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",2400.0,2400.0
+2025,2,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,2,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",4600.0,4600.0
+2025,3,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,3,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",4600.0,4600.0
+2025,4,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,4,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",4600.0,4600.0
+2025,5,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,5,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",4600.0,4600.0
+2025,6,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8585.37
+2025,6,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7600.0,7414.63
+2025,7,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8585.37
+2025,7,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7600.0,7414.63
+2025,8,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8585.37
+2025,8,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",7600.0,7414.63
+2025,9,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,9,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6000.0,6000.0
+2025,10,1,Felipe Alecrim,Locomoção - Locação de Automóvel,8800.0,8800.0
+2025,10,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6000.0,6000.0
+2025,11,1,Felipe Alecrim,Locomoção - Locação de Automóvel,9900.0,9900.0
+2025,11,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6000.0,6000.0
+2025,12,1,Felipe Alecrim,Locomoção - Locação de Automóvel,9900.0,9900.0
+2025,12,1,Felipe Alecrim,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6000.0,6000.0
+2025,1,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,2,34,Felipe Francismar,Locomoção - Locação de Automóvel,14420.0,14420.0
+2025,3,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,4,34,Felipe Francismar,Locomoção - Locação de Automóvel,15450.0,15450.0
+2025,5,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,6,34,Felipe Francismar,Locomoção - Locação de Automóvel,15450.0,15450.0
+2025,7,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,8,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,9,34,Felipe Francismar,Locomoção - Locação de Automóvel,15450.0,15450.0
+2025,10,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,11,34,Felipe Francismar,Locomoção - Locação de Automóvel,15450.0,15450.0
+2025,12,34,Felipe Francismar,Locomoção - Locação de Automóvel,15965.0,15965.0
+2025,1,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,2,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,14560.0,14231.34
+2025,2,57,Flávia de Nadegi,Material de expediente,1809.5,1768.66
+2025,3,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,4,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,15600.0,15600.0
+2025,5,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,6,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,15600.0,15600.0
+2025,7,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,8,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,9,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,15600.0,15600.0
+2025,10,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,11,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,15600.0,15600.0
+2025,12,57,Flávia de Nadegi,Locomoção - Locação de Automóvel,16120.0,16000.0
+2025,1,27,Fred Ferreira,Locomoção - Locação de Automóvel,5629.1,5629.1
+2025,1,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,2,27,Fred Ferreira,"Locomoção - Passagens, Hospedagens e Transporte",9500.0,9500.0
+2025,2,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,3,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,3,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,4,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,4,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,5,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,5,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,6,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,6,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,7,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,7,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,8,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,8,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,9,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,9,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,10,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,10,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,11,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,11,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,12,27,Fred Ferreira,Locomoção - Locação de Automóvel,9500.0,9500.0
+2025,12,27,Fred Ferreira,"Serviços de Consultoria, Assessoria, Pesquisas e Trabalhos técnicos",6500.0,6500.0
+2025,1,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,1,41,Gilberto Alves,Serviços gráficos e cópias,2650.0,2650.0
+2025,2,41,Gilberto Alves,Locomoção - Locação de Automóvel,11200.0,11200.0
+2025,2,41,Gilberto Alves,Serviços gráficos e cópias,2690.0,2690.0
+2025,3,41,Gilberto Alves,Locomoção - Locação de Automóvel,12400.0,12400.0
+2025,3,41,Gilberto Alves,Serviços gráficos e cópias,3014.0,3014.0
+2025,4,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,4,41,Gilberto Alves,Serviços gráficos e cópias,3430.0,3430.0
+2025,5,41,Gilberto Alves,Locomoção - Locação de Automóvel,12400.0,12400.0
+2025,5,41,Gilberto Alves,Serviços gráficos e cópias,2860.0,2860.0
+2025,6,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,6,41,Gilberto Alves,Serviços gráficos e cópias,3390.0,3390.0
+2025,7,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,7,41,Gilberto Alves,Serviços gráficos e cópias,3425.0,3425.0
+2025,8,41,Gilberto Alves,Locomoção - Locação de Automóvel,12400.0,12400.0
+2025,9,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,9,41,Gilberto Alves,Serviços gráficos e cópias,2610.0,2610.0
+2025,10,41,Gilberto Alves,Locomoção - Locação de Automóvel,12400.0,12400.0
+2025,10,41,Gilberto Alves,Serviços gráficos e cópias,3430.0,3430.0
+2025,11,41,Gilberto Alves,Locomoção - Locação de Automóvel,12000.0,12000.0
+2025,11,41,Gilberto Alves,Serviços gráficos e cópias,1700.0,1700.0
+2025,12,41,Gilberto Alves,Locomoção - Locação de Automóvel,12400.0,12400.0
+2025,12,41,Gilberto Alves,Serviços gráficos e cópias,2300.0,2300.0
+2025,1,59,Gilson Machado Filho,Aluguel de Escritório,6300.0,6300.0
+2025,1,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,9700.0,9700.0
+2025,2,59,Gilson Machado Filho,Aluguel de Escritório,6300.0,6184.05
+2025,2,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,10000.0,9815.95
+2025,3,59,Gilson Machado Filho,Aluguel de Escritório,6300.0,6184.05
+2025,3,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,10000.0,9815.95
+2025,4,59,Gilson Machado Filho,Aluguel de Escritório,6300.0,6184.05
+2025,4,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,10000.0,9815.95
+2025,5,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,10099.28
+2025,5,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,4500.0,4412.31
+2025,5,59,Gilson Machado Filho,"Locação de móveis e equipamentos, aquisição ou locação de software",1518.0,1488.42
+2025,6,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,10099.28
+2025,6,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,4500.0,4412.31
+2025,6,59,Gilson Machado Filho,"Locação de móveis e equipamentos, aquisição ou locação de software",1518.0,1488.42
+2025,7,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,8757.57
+2025,7,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,5951.75
+2025,7,59,Gilson Machado Filho,"Locação de móveis e equipamentos, aquisição ou locação de software",1518.0,1290.68
+2025,8,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,9526.01
+2025,8,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,6473.99
+2025,9,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,9526.01
+2025,9,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,6473.99
+2025,10,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,9526.01
+2025,10,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,6473.99
+2025,11,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,9526.01
+2025,11,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,6473.99
+2025,12,59,Gilson Machado Filho,Aluguel de Escritório,10300.0,9526.01
+2025,12,59,Gilson Machado Filho,Locomoção - Locação de Automóvel,7000.0,6473.99
+2025,1,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,2,5,Helio Guabiraba,Locomoção - Locação de Automóvel,14746.2,14746.2
+2025,3,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,4,5,Helio Guabiraba,Locomoção - Locação de Automóvel,15799.5,15799.5
+2025,5,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,6,5,Helio Guabiraba,Locomoção - Locação de Automóvel,15799.5,15799.5
+2025,7,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,8,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,9,5,Helio Guabiraba,Locomoção - Locação de Automóvel,15799.5,15799.5
+2025,10,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,11,5,Helio Guabiraba,Locomoção - Locação de Automóvel,15799.5,15799.5
+2025,12,5,Helio Guabiraba,Locomoção - Locação de Automóvel,16326.15,16000.0
+2025,1,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,6000.0
+2025,1,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,2240.0,2240.0
+2025,1,60,Jô Cavalcanti,Material de expediente,206.5,206.5
+2025,2,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,6000.0
+2025,2,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8600.0
+2025,3,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,6000.0
+2025,3,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),165.26,165.26
+2025,3,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),138.1,138.1
+2025,3,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8600.0
+2025,4,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5998.84
+2025,4,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (CELPE),117.03,117.01
+2025,4,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),165.26,165.23
+2025,4,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),327.74,327.68
+2025,4,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8598.34
+2025,5,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5997.16
+2025,5,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),181.76,181.67
+2025,5,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),331.96,331.8
+2025,5,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8595.93
+2025,6,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5997.34
+2025,6,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (CELPE),80.12,80.08
+2025,6,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),181.76,181.68
+2025,6,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),331.53,331.38
+2025,6,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8596.19
+2025,7,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5997.16
+2025,7,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),181.76,181.67
+2025,7,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),338.39,338.23
+2025,7,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8595.93
+2025,8,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5997.32
+2025,8,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),181.76,181.68
+2025,8,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),337.63,337.48
+2025,8,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8596.15
+2025,9,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5997.42
+2025,9,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (CELPE),559.3,559.06
+2025,9,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),181.76,181.68
+2025,9,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),337.98,337.83
+2025,9,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8596.3
+2025,10,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5807.62
+2025,10,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8324.26
+2025,10,60,Jô Cavalcanti,Serviços gráficos e cópias,1930.0,1868.12
+2025,11,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,5970.4
+2025,11,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),367.15,365.34
+2025,11,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),338.17,336.5
+2025,11,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8557.58
+2025,11,60,Jô Cavalcanti,Serviços gráficos e cópias,774.0,770.18
+2025,12,60,Jô Cavalcanti,Aluguel de Escritório,6000.0,6000.0
+2025,12,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (CELPE),363.72,363.72
+2025,12,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (COMPESA),254.67,254.67
+2025,12,60,Jô Cavalcanti,Despesas relacionadas ao Escritório (internet e telefone),330.14,330.14
+2025,12,60,Jô Cavalcanti,Locomoção - Locação de Automóvel,8600.0,8600.0
+2025,1,15,Júnior Bocão,Locomoção - Locação de Automóvel,9036.5,9036.5
+2025,1,15,Júnior Bocão,Material de expediente,1143.56,1143.56
+2025,1,15,Júnior Bocão,Serviços gráficos e cópias,3240.0,3240.0
+2025,2,15,Júnior Bocão,Locomoção - Locação de Automóvel,13524.0,13524.0
+2025,3,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,4,15,Júnior Bocão,Locomoção - Locação de Automóvel,14490.0,14490.0
+2025,4,15,Júnior Bocão,Material de expediente,178.6,178.6
+2025,5,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,6,15,Júnior Bocão,Locomoção - Locação de Automóvel,14490.0,14490.0
+2025,7,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,7,15,Júnior Bocão,Material de expediente,165.6,165.6
+2025,8,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,9,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14490.0
+2025,10,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,11,15,Júnior Bocão,Locomoção - Locação de Automóvel,14490.0,14490.0
+2025,12,15,Júnior Bocão,Locomoção - Locação de Automóvel,14973.0,14973.0
+2025,12,15,Júnior Bocão,Material de expediente,133.45,133.45

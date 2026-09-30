@@ -72,7 +72,11 @@ Cada número tem link para a fonte oficial.
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
 - [x] Prefeitura de São Paulo: prefeito, vice, secretários e subprefeitos, mês a mês (folha nos dados abertos) — Claude
-- [ ] Vereadores, passo 2b: as outras 26 capitais (Rio, BH, Salvador, Fortaleza...) — Claude
+- [x] Vereadores, passo 2b: Fortaleza, Goiânia, Manaus, Natal e Recife, vereador por vereador (robô comum a várias cidades) — Claude
+- [ ] Vereadores, passo 2c: as outras capitais. Parciais: Belo Horizonte, Curitiba, Salvador, João Pessoa, Porto Velho, Rio Branco, Palmas, Maceió. Bloqueiam acesso de fora do Brasil (o robô do GitHub roda nos EUA): Porto Alegre, Vitória, Cuiabá, Distrito Federal, São Luís. Muito difíceis: Rio, Florianópolis, Campo Grande, Teresina (a folha mostra CPF), Aracaju, Boa Vista, Belém, Macapá — Claude
+- [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
+- [ ] Prefeituras das capitais com folha aberta: Fortaleza, Recife, Belo Horizonte, Natal, Vitória, Curitiba, Porto Alegre, Distrito Federal — Claude
+- [ ] Governadores: subsídio de cada estado pela lei, com fonte; depois a folha mensal onde for aberta — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 

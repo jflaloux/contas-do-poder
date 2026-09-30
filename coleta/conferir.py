@@ -40,16 +40,22 @@ def _vereadores_no_site():
     return sum(m[5] for m in json.load(open(arq, encoding="utf-8"))["m"]) if arq.exists() else 0
 
 
-def _vereadores_sp():
-    """(no cargo, com gastos do gabinete no mês retrasado) no site/dados/camaras.json."""
+def _vereadores_capitais():
+    """Por cidade do site/dados/camaras.json: (nome, cadeiras, no cargo, com gastos do gabinete no mês retrasado)."""
     arq = RAIZ / "site" / "dados" / "camaras.json"
     if not arq.exists():
-        return 0, 0
+        return []
     d = json.load(open(arq, encoding="utf-8"))
-    ult = d["meta"]["cidades"]["3550308"]["ultimo_mes"]
-    retrasado = ult - 1 if ult % 100 > 1 else ult - 89
-    ps = [p for p in d["p"] if p.get("cid") == 3550308]
-    return sum(p["x"] for p in ps), sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
+    saida = []
+    for cod, c in d["meta"]["cidades"].items():
+        ult = c["ultimo_mes"]
+        retrasado = ult - 1 if ult % 100 > 1 else ult - 89
+        ps = [p for p in d["p"] if str(p.get("cid")) == cod]
+        com_gasto = sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
+        if str(retrasado // 100) in (c.get("verba_fora") or []):
+            com_gasto = None  # a verba desse ano ficou de fora de propósito (o site da Câmara está com erro, e o site avisa)
+        saida.append((c["n"], c.get("vagas") or 0, sum(p["x"] for p in ps), com_gasto))
+    return saida
 
 
 def _prefeitura_sp():
@@ -187,8 +193,9 @@ def executar():
         (f"Governo federal: no cargo em {ult_e % 100:02d}/{ult_e // 100}", len(no_cargo_e), 30),
         ("Câmaras municipais com custo no arquivo do site", _cidades_com_custo(), 5000),
         ("Vereadores eleitos no arquivo do site", _vereadores_no_site(), 55000),
-        ("Vereadores de São Paulo no cargo (camaras.json)", _vereadores_sp()[0], 50),
-        ("Vereadores de São Paulo com gastos do gabinete no mês retrasado", _vereadores_sp()[1], 40),
+        *[c for n, vagas, no_cargo, com_gasto in _vereadores_capitais() for c in (
+            (f"Vereadores de {n} no cargo (camaras.json)", no_cargo, int(vagas * 0.85)),
+            *([(f"Vereadores de {n} com gastos do gabinete no mês retrasado", com_gasto, int(vagas * 0.6))] if com_gasto is not None else []))],
         ("Prefeitura de São Paulo: prefeito na folha do último mês", _prefeitura_sp()[0], 1),
         ("Prefeitura de São Paulo: secretários na folha do último mês", _prefeitura_sp()[1], 15),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),

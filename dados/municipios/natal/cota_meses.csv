@@ -1,0 +1,552 @@
+ano,mes,id_cota,nome
+2025,1,55,Aldo Clemente
+2025,1,67,Anne Lagartixa
+2025,1,57,Brisa Bracchi
+2025,1,53,Camila Araújo
+2025,1,17,Chagas Catarino
+2025,1,68,Claudio Custódio
+2025,1,83,Cleiton da Policlinica
+2025,1,70,Daniel Santiago
+2025,1,63,Daniel Valença
+2025,1,69,Daniell Rendall
+2025,1,56,Eribaldo Medeiros
+2025,1,29,Eriko Jácome
+2025,1,71,Fúlvio Saulo
+2025,1,58,Herberth Sena
+2025,1,72,Irapoã Nóbrega
+2025,1,73,João Batista Torres
+2025,1,15,Kleber Fernandes
+2025,1,82,Leo Souza
+2025,1,51,Luciano Nascimento
+2025,1,75,Matheus Faustino
+2025,1,76,Pedro Henrique
+2025,1,21,Preto Aquino
+2025,1,30,Robson Carvalho
+2025,1,77,Samanda Alves
+2025,1,78,Subtenente Eliabe
+2025,1,79,Tarcio de Eudiane
+2025,1,49,Tércio Tinoco
+2025,1,81,Thabatta Pimenta
+2025,1,80,Tony Henrique
+2025,2,55,Aldo Clemente
+2025,2,67,Anne Lagartixa
+2025,2,57,Brisa Bracchi
+2025,2,53,Camila Araújo
+2025,2,17,Chagas Catarino
+2025,2,68,Claudio Custódio
+2025,2,83,Cleiton da Policlinica
+2025,2,70,Daniel Santiago
+2025,2,63,Daniel Valença
+2025,2,69,Daniell Rendall
+2025,2,56,Eribaldo Medeiros
+2025,2,29,Eriko Jácome
+2025,2,71,Fúlvio Saulo
+2025,2,58,Herberth Sena
+2025,2,72,Irapoã Nóbrega
+2025,2,73,João Batista Torres
+2025,2,15,Kleber Fernandes
+2025,2,82,Leo Souza
+2025,2,51,Luciano Nascimento
+2025,2,75,Matheus Faustino
+2025,2,76,Pedro Henrique
+2025,2,21,Preto Aquino
+2025,2,30,Robson Carvalho
+2025,2,77,Samanda Alves
+2025,2,78,Subtenente Eliabe
+2025,2,79,Tarcio de Eudiane
+2025,2,49,Tércio Tinoco
+2025,2,81,Thabatta Pimenta
+2025,2,80,Tony Henrique
+2025,3,55,Aldo Clemente
+2025,3,67,Anne Lagartixa
+2025,3,57,Brisa Bracchi
+2025,3,53,Camila Araújo
+2025,3,17,Chagas Catarino
+2025,3,68,Claudio Custódio
+2025,3,83,Cleiton da Policlinica
+2025,3,70,Daniel Santiago
+2025,3,63,Daniel Valença
+2025,3,69,Daniell Rendall
+2025,3,56,Eribaldo Medeiros
+2025,3,29,Eriko Jácome
+2025,3,71,Fúlvio Saulo
+2025,3,58,Herberth Sena
+2025,3,72,Irapoã Nóbrega
+2025,3,73,João Batista Torres
+2025,3,15,Kleber Fernandes
+2025,3,82,Leo Souza
+2025,3,51,Luciano Nascimento
+2025,3,75,Matheus Faustino
+2025,3,76,Pedro Henrique
+2025,3,21,Preto Aquino
+2025,3,30,Robson Carvalho
+2025,3,77,Samanda Alves
+2025,3,78,Subtenente Eliabe
+2025,3,79,Tarcio de Eudiane
+2025,3,49,Tércio Tinoco
+2025,3,81,Thabatta Pimenta
+2025,3,80,Tony Henrique
+2025,4,55,Aldo Clemente
+2025,4,67,Anne Lagartixa
+2025,4,57,Brisa Bracchi
+2025,4,53,Camila Araújo
+2025,4,17,Chagas Catarino
+2025,4,68,Claudio Custódio
+2025,4,83,Cleiton da Policlinica
+2025,4,70,Daniel Santiago
+2025,4,63,Daniel Valença
+2025,4,69,Daniell Rendall
+2025,4,56,Eribaldo Medeiros
+2025,4,29,Eriko Jácome
+2025,4,71,Fúlvio Saulo
+2025,4,58,Herberth Sena
+2025,4,72,Irapoã Nóbrega
+2025,4,73,João Batista Torres
+2025,4,15,Kleber Fernandes
+2025,4,82,Leo Souza
+2025,4,51,Luciano Nascimento
+2025,4,75,Matheus Faustino
+2025,4,76,Pedro Henrique
+2025,4,21,Preto Aquino
+2025,4,30,Robson Carvalho
+2025,4,77,Samanda Alves
+2025,4,78,Subtenente Eliabe
+2025,4,79,Tarcio de Eudiane
+2025,4,49,Tércio Tinoco
+2025,4,81,Thabatta Pimenta
+2025,4,80,Tony Henrique
+2025,5,55,Aldo Clemente
+2025,5,67,Anne Lagartixa
+2025,5,57,Brisa Bracchi
+2025,5,53,Camila Araújo
+2025,5,17,Chagas Catarino
+2025,5,68,Claudio Custódio
+2025,5,83,Cleiton da Policlinica
+2025,5,70,Daniel Santiago
+2025,5,63,Daniel Valença
+2025,5,69,Daniell Rendall
+2025,5,56,Eribaldo Medeiros
+2025,5,29,Eriko Jácome
+2025,5,71,Fúlvio Saulo
+2025,5,58,Herberth Sena
+2025,5,72,Irapoã Nóbrega
+2025,5,73,João Batista Torres
+2025,5,15,Kleber Fernandes
+2025,5,82,Leo Souza
+2025,5,51,Luciano Nascimento
+2025,5,75,Matheus Faustino
+2025,5,76,Pedro Henrique
+2025,5,21,Preto Aquino
+2025,5,30,Robson Carvalho
+2025,5,77,Samanda Alves
+2025,5,78,Subtenente Eliabe
+2025,5,79,Tarcio de Eudiane
+2025,5,49,Tércio Tinoco
+2025,5,81,Thabatta Pimenta
+2025,5,80,Tony Henrique
+2025,6,55,Aldo Clemente
+2025,6,67,Anne Lagartixa
+2025,6,57,Brisa Bracchi
+2025,6,53,Camila Araújo
+2025,6,17,Chagas Catarino
+2025,6,68,Claudio Custódio
+2025,6,83,Cleiton da Policlinica
+2025,6,70,Daniel Santiago
+2025,6,63,Daniel Valença
+2025,6,69,Daniell Rendall
+2025,6,56,Eribaldo Medeiros
+2025,6,29,Eriko Jácome
+2025,6,71,Fúlvio Saulo
+2025,6,58,Herberth Sena
+2025,6,72,Irapoã Nóbrega
+2025,6,73,João Batista Torres
+2025,6,15,Kleber Fernandes
+2025,6,82,Leo Souza
+2025,6,51,Luciano Nascimento
+2025,6,75,Matheus Faustino
+2025,6,76,Pedro Henrique
+2025,6,21,Preto Aquino
+2025,6,30,Robson Carvalho
+2025,6,77,Samanda Alves
+2025,6,78,Subtenente Eliabe
+2025,6,79,Tarcio de Eudiane
+2025,6,49,Tércio Tinoco
+2025,6,81,Thabatta Pimenta
+2025,6,80,Tony Henrique
+2025,7,55,Aldo Clemente
+2025,7,67,Anne Lagartixa
+2025,7,57,Brisa Bracchi
+2025,7,53,Camila Araújo
+2025,7,17,Chagas Catarino
+2025,7,68,Claudio Custódio
+2025,7,83,Cleiton da Policlinica
+2025,7,70,Daniel Santiago
+2025,7,63,Daniel Valença
+2025,7,69,Daniell Rendall
+2025,7,56,Eribaldo Medeiros
+2025,7,29,Eriko Jácome
+2025,7,71,Fúlvio Saulo
+2025,7,58,Herberth Sena
+2025,7,72,Irapoã Nóbrega
+2025,7,73,João Batista Torres
+2025,7,15,Kleber Fernandes
+2025,7,82,Leo Souza
+2025,7,51,Luciano Nascimento
+2025,7,75,Matheus Faustino
+2025,7,76,Pedro Henrique
+2025,7,21,Preto Aquino
+2025,7,30,Robson Carvalho
+2025,7,77,Samanda Alves
+2025,7,78,Subtenente Eliabe
+2025,7,79,Tarcio de Eudiane
+2025,7,49,Tércio Tinoco
+2025,7,81,Thabatta Pimenta
+2025,7,80,Tony Henrique
+2025,8,55,Aldo Clemente
+2025,8,67,Anne Lagartixa
+2025,8,57,Brisa Bracchi
+2025,8,53,Camila Araújo
+2025,8,17,Chagas Catarino
+2025,8,68,Claudio Custódio
+2025,8,83,Cleiton da Policlinica
+2025,8,70,Daniel Santiago
+2025,8,63,Daniel Valença
+2025,8,69,Daniell Rendall
+2025,8,56,Eribaldo Medeiros
+2025,8,29,Eriko Jácome
+2025,8,71,Fúlvio Saulo
+2025,8,58,Herberth Sena
+2025,8,72,Irapoã Nóbrega
+2025,8,73,João Batista Torres
+2025,8,15,Kleber Fernandes
+2025,8,82,Leo Souza
+2025,8,51,Luciano Nascimento
+2025,8,75,Matheus Faustino
+2025,8,76,Pedro Henrique
+2025,8,21,Preto Aquino
+2025,8,30,Robson Carvalho
+2025,8,77,Samanda Alves
+2025,8,78,Subtenente Eliabe
+2025,8,79,Tarcio de Eudiane
+2025,8,49,Tércio Tinoco
+2025,8,81,Thabatta Pimenta
+2025,8,80,Tony Henrique
+2025,9,55,Aldo Clemente
+2025,9,67,Anne Lagartixa
+2025,9,57,Brisa Bracchi
+2025,9,53,Camila Araújo
+2025,9,17,Chagas Catarino
+2025,9,68,Claudio Custódio
+2025,9,83,Cleiton da Policlinica
+2025,9,70,Daniel Santiago
+2025,9,63,Daniel Valença
+2025,9,69,Daniell Rendall
+2025,9,56,Eribaldo Medeiros
+2025,9,29,Eriko Jácome
+2025,9,71,Fúlvio Saulo
+2025,9,58,Herberth Sena
+2025,9,72,Irapoã Nóbrega
+2025,9,73,João Batista Torres
+2025,9,15,Kleber Fernandes
+2025,9,82,Leo Souza
+2025,9,51,Luciano Nascimento
+2025,9,75,Matheus Faustino
+2025,9,76,Pedro Henrique
+2025,9,21,Preto Aquino
+2025,9,30,Robson Carvalho
+2025,9,77,Samanda Alves
+2025,9,78,Subtenente Eliabe
+2025,9,79,Tarcio de Eudiane
+2025,9,49,Tércio Tinoco
+2025,9,81,Thabatta Pimenta
+2025,9,80,Tony Henrique
+2025,10,55,Aldo Clemente
+2025,10,67,Anne Lagartixa
+2025,10,57,Brisa Bracchi
+2025,10,53,Camila Araújo
+2025,10,17,Chagas Catarino
+2025,10,68,Claudio Custódio
+2025,10,83,Cleiton da Policlinica
+2025,10,70,Daniel Santiago
+2025,10,63,Daniel Valença
+2025,10,69,Daniell Rendall
+2025,10,56,Eribaldo Medeiros
+2025,10,29,Eriko Jácome
+2025,10,71,Fúlvio Saulo
+2025,10,58,Herberth Sena
+2025,10,72,Irapoã Nóbrega
+2025,10,73,João Batista Torres
+2025,10,15,Kleber Fernandes
+2025,10,82,Leo Souza
+2025,10,51,Luciano Nascimento
+2025,10,75,Matheus Faustino
+2025,10,76,Pedro Henrique
+2025,10,21,Preto Aquino
+2025,10,30,Robson Carvalho
+2025,10,77,Samanda Alves
+2025,10,78,Subtenente Eliabe
+2025,10,79,Tarcio de Eudiane
+2025,10,49,Tércio Tinoco
+2025,10,81,Thabatta Pimenta
+2025,10,80,Tony Henrique
+2025,11,55,Aldo Clemente
+2025,11,67,Anne Lagartixa
+2025,11,57,Brisa Bracchi
+2025,11,53,Camila Araújo
+2025,11,17,Chagas Catarino
+2025,11,68,Claudio Custódio
+2025,11,83,Cleiton da Policlinica
+2025,11,70,Daniel Santiago
+2025,11,63,Daniel Valença
+2025,11,69,Daniell Rendall
+2025,11,56,Eribaldo Medeiros
+2025,11,29,Eriko Jácome
+2025,11,71,Fúlvio Saulo
+2025,11,58,Herberth Sena
+2025,11,72,Irapoã Nóbrega
+2025,11,73,João Batista Torres
+2025,11,15,Kleber Fernandes
+2025,11,82,Leo Souza
+2025,11,51,Luciano Nascimento
+2025,11,75,Matheus Faustino
+2025,11,76,Pedro Henrique
+2025,11,21,Preto Aquino
+2025,11,30,Robson Carvalho
+2025,11,77,Samanda Alves
+2025,11,78,Subtenente Eliabe
+2025,11,79,Tarcio de Eudiane
+2025,11,49,Tércio Tinoco
+2025,11,81,Thabatta Pimenta
+2025,11,80,Tony Henrique
+2025,12,55,Aldo Clemente
+2025,12,67,Anne Lagartixa
+2025,12,57,Brisa Bracchi
+2025,12,53,Camila Araújo
+2025,12,17,Chagas Catarino
+2025,12,68,Claudio Custódio
+2025,12,83,Cleiton da Policlinica
+2025,12,70,Daniel Santiago
+2025,12,63,Daniel Valença
+2025,12,69,Daniell Rendall
+2025,12,56,Eribaldo Medeiros
+2025,12,29,Eriko Jácome
+2025,12,71,Fúlvio Saulo
+2025,12,58,Herberth Sena
+2025,12,72,Irapoã Nóbrega
+2025,12,73,João Batista Torres
+2025,12,15,Kleber Fernandes
+2025,12,82,Leo Souza
+2025,12,51,Luciano Nascimento
+2025,12,75,Matheus Faustino
+2025,12,76,Pedro Henrique
+2025,12,21,Preto Aquino
+2025,12,30,Robson Carvalho
+2025,12,77,Samanda Alves
+2025,12,78,Subtenente Eliabe
+2025,12,79,Tarcio de Eudiane
+2025,12,49,Tércio Tinoco
+2025,12,81,Thabatta Pimenta
+2025,12,80,Tony Henrique
+2026,1,55,Aldo Clemente
+2026,1,67,Anne Lagartixa
+2026,1,57,Brisa Bracchi
+2026,1,53,Camila Araújo
+2026,1,17,Chagas Catarino
+2026,1,68,Claudio Custódio
+2026,1,83,Cleiton da Policlinica
+2026,1,70,Daniel Santiago
+2026,1,63,Daniel Valença
+2026,1,69,Daniell Rendall
+2026,1,56,Eribaldo Medeiros
+2026,1,29,Eriko Jácome
+2026,1,71,Fúlvio Saulo
+2026,1,58,Herberth Sena
+2026,1,72,Irapoã Nóbrega
+2026,1,73,João Batista Torres
+2026,1,15,Kleber Fernandes
+2026,1,82,Leo Souza
+2026,1,51,Luciano Nascimento
+2026,1,75,Matheus Faustino
+2026,1,76,Pedro Henrique
+2026,1,21,Preto Aquino
+2026,1,30,Robson Carvalho
+2026,1,77,Samanda Alves
+2026,1,78,Subtenente Eliabe
+2026,1,79,Tarcio de Eudiane
+2026,1,49,Tércio Tinoco
+2026,1,81,Thabatta Pimenta
+2026,1,80,Tony Henrique
+2026,2,55,Aldo Clemente
+2026,2,67,Anne Lagartixa
+2026,2,57,Brisa Bracchi
+2026,2,53,Camila Araújo
+2026,2,17,Chagas Catarino
+2026,2,68,Claudio Custódio
+2026,2,83,Cleiton da Policlinica
+2026,2,70,Daniel Santiago
+2026,2,63,Daniel Valença
+2026,2,69,Daniell Rendall
+2026,2,56,Eribaldo Medeiros
+2026,2,29,Eriko Jácome
+2026,2,71,Fúlvio Saulo
+2026,2,58,Herberth Sena
+2026,2,72,Irapoã Nóbrega
+2026,2,73,João Batista Torres
+2026,2,15,Kleber Fernandes
+2026,2,82,Leo Souza
+2026,2,51,Luciano Nascimento
+2026,2,75,Matheus Faustino
+2026,2,76,Pedro Henrique
+2026,2,21,Preto Aquino
+2026,2,30,Robson Carvalho
+2026,2,77,Samanda Alves
+2026,2,78,Subtenente Eliabe
+2026,2,79,Tarcio de Eudiane
+2026,2,49,Tércio Tinoco
+2026,2,81,Thabatta Pimenta
+2026,2,80,Tony Henrique
+2026,3,55,Aldo Clemente
+2026,3,67,Anne Lagartixa
+2026,3,57,Brisa Bracchi
+2026,3,53,Camila Araújo
+2026,3,17,Chagas Catarino
+2026,3,68,Claudio Custódio
+2026,3,83,Cleiton da Policlinica
+2026,3,70,Daniel Santiago
+2026,3,63,Daniel Valença
+2026,3,69,Daniell Rendall
+2026,3,56,Eribaldo Medeiros
+2026,3,29,Eriko Jácome
+2026,3,71,Fúlvio Saulo
+2026,3,58,Herberth Sena
+2026,3,72,Irapoã Nóbrega
+2026,3,73,João Batista Torres
+2026,3,15,Kleber Fernandes
+2026,3,82,Leo Souza
+2026,3,51,Luciano Nascimento
+2026,3,75,Matheus Faustino
+2026,3,76,Pedro Henrique
+2026,3,21,Preto Aquino
+2026,3,30,Robson Carvalho
+2026,3,77,Samanda Alves
+2026,3,78,Subtenente Eliabe
+2026,3,79,Tarcio de Eudiane
+2026,3,49,Tércio Tinoco
+2026,3,81,Thabatta Pimenta
+2026,3,80,Tony Henrique
+2026,4,55,Aldo Clemente
+2026,4,67,Anne Lagartixa
+2026,4,57,Brisa Bracchi
+2026,4,53,Camila Araújo
+2026,4,68,Claudio Custódio
+2026,4,83,Cleiton da Policlinica
+2026,4,70,Daniel Santiago
+2026,4,63,Daniel Valença
+2026,4,69,Daniell Rendall
+2026,4,56,Eribaldo Medeiros
+2026,4,29,Eriko Jácome
+2026,4,71,Fúlvio Saulo
+2026,4,58,Herberth Sena
+2026,4,72,Irapoã Nóbrega
+2026,4,73,João Batista Torres
+2026,4,15,Kleber Fernandes
+2026,4,82,Leo Souza
+2026,4,51,Luciano Nascimento
+2026,4,75,Matheus Faustino
+2026,4,32,Nina Souza
+2026,4,76,Pedro Henrique
+2026,4,21,Preto Aquino
+2026,4,30,Robson Carvalho
+2026,4,77,Samanda Alves
+2026,4,78,Subtenente Eliabe
+2026,4,79,Tarcio de Eudiane
+2026,4,49,Tércio Tinoco
+2026,4,81,Thabatta Pimenta
+2026,4,80,Tony Henrique
+2026,5,55,Aldo Clemente
+2026,5,67,Anne Lagartixa
+2026,5,57,Brisa Bracchi
+2026,5,53,Camila Araújo
+2026,5,68,Claudio Custódio
+2026,5,83,Cleiton da Policlinica
+2026,5,70,Daniel Santiago
+2026,5,63,Daniel Valença
+2026,5,69,Daniell Rendall
+2026,5,56,Eribaldo Medeiros
+2026,5,29,Eriko Jácome
+2026,5,71,Fúlvio Saulo
+2026,5,58,Herberth Sena
+2026,5,72,Irapoã Nóbrega
+2026,5,73,João Batista Torres
+2026,5,15,Kleber Fernandes
+2026,5,82,Leo Souza
+2026,5,51,Luciano Nascimento
+2026,5,75,Matheus Faustino
+2026,5,32,Nina Souza
+2026,5,76,Pedro Henrique
+2026,5,21,Preto Aquino
+2026,5,30,Robson Carvalho
+2026,5,77,Samanda Alves
+2026,5,78,Subtenente Eliabe
+2026,5,79,Tarcio de Eudiane
+2026,5,49,Tércio Tinoco
+2026,5,81,Thabatta Pimenta
+2026,5,80,Tony Henrique
+2026,6,55,Aldo Clemente
+2026,6,67,Anne Lagartixa
+2026,6,57,Brisa Bracchi
+2026,6,53,Camila Araújo
+2026,6,68,Claudio Custódio
+2026,6,83,Cleiton da Policlinica
+2026,6,70,Daniel Santiago
+2026,6,63,Daniel Valença
+2026,6,69,Daniell Rendall
+2026,6,56,Eribaldo Medeiros
+2026,6,29,Eriko Jácome
+2026,6,71,Fúlvio Saulo
+2026,6,58,Herberth Sena
+2026,6,72,Irapoã Nóbrega
+2026,6,73,João Batista Torres
+2026,6,15,Kleber Fernandes
+2026,6,82,Leo Souza
+2026,6,51,Luciano Nascimento
+2026,6,75,Matheus Faustino
+2026,6,32,Nina Souza
+2026,6,76,Pedro Henrique
+2026,6,21,Preto Aquino
+2026,6,30,Robson Carvalho
+2026,6,77,Samanda Alves
+2026,6,78,Subtenente Eliabe
+2026,6,79,Tarcio de Eudiane
+2026,6,49,Tércio Tinoco
+2026,6,81,Thabatta Pimenta
+2026,6,80,Tony Henrique
+2026,7,55,Aldo Clemente
+2026,7,67,Anne Lagartixa
+2026,7,57,Brisa Bracchi
+2026,7,53,Camila Araújo
+2026,7,68,Claudio Custódio
+2026,7,83,Cleiton da Policlinica
+2026,7,70,Daniel Santiago
+2026,7,63,Daniel Valença
+2026,7,69,Daniell Rendall
+2026,7,56,Eribaldo Medeiros
+2026,7,29,Eriko Jácome
+2026,7,71,Fúlvio Saulo
+2026,7,58,Herberth Sena
+2026,7,72,Irapoã Nóbrega
+2026,7,73,João Batista Torres
+2026,7,15,Kleber Fernandes
+2026,7,82,Leo Souza
+2026,7,51,Luciano Nascimento
+2026,7,75,Matheus Faustino
+2026,7,32,Nina Souza
+2026,7,76,Pedro Henrique
+2026,7,21,Preto Aquino
+2026,7,30,Robson Carvalho
+2026,7,77,Samanda Alves
+2026,7,78,Subtenente Eliabe
+2026,7,79,Tarcio de Eudiane
+2026,7,49,Tércio Tinoco
+2026,7,81,Thabatta Pimenta
+2026,7,80,Tony Henrique
