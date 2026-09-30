@@ -3,8 +3,10 @@
 **Site: [contasdopoder.com](https://contasdopoder.com)**
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
-da Câmara, do Senado e do Portal da Transparência. E também a Câmara Municipal de cada cidade, cada vereador de
-seis capitais (São Paulo, Fortaleza, Goiânia, Manaus, Natal e Recife) e a Prefeitura de São Paulo.
+da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
+estado), a Câmara Municipal de cada cidade, cada vereador de seis capitais (São Paulo, Fortaleza, Goiânia, Manaus,
+Natal e Recife) e o prefeito, o vice e os secretários de cinco capitais (São Paulo, Recife, Fortaleza, Vitória e
+Porto Alegre).
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -15,7 +17,7 @@ Este repositório tem os robôs que coletam os dados oficiais, a base unificada 
 
 ```bash
 pip3 install -r requirements.txt
-python3 coletar.py tudo          # Câmara + Senado + governo federal + base unificada + fotos + arquivo do site
+python3 coletar.py tudo          # Câmara + Senado + governo federal + câmaras + prefeituras + governadores + fotos + site
 python3 coletar.py conferir      # compara nossos números com os sites oficiais
 ```
 
@@ -61,7 +63,9 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 | Pasta | O que tem |
 |---|---|
 | `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
-| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`, `municipios.py`, `governadores.py`, `vereadores/`, `prefeituras/`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `dados/governadores/` | O salário de cada governador e vice, com a fonte de cada valor (mantido à mão) |
+| `dados/municipios/` | Cidades, custo das câmaras, vereadores eleitos e, por capital, as linhas das folhas da Câmara e da Prefeitura |
 | `dados/portal_transparencia/` | Linhas do presidente, do vice e dos ministros tiradas dos arquivos do Portal (vai para o Git, para o robô só baixar os meses novos) |
 | `dados/cache/` | Arquivos baixados. Pode apagar a qualquer momento (não vai para o Git) |
 | `dados/brutos/` | Dados de cada fonte, já limpos |
@@ -207,25 +211,60 @@ ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308
   usada dentro do crédito do ano. Em 2025, a verba usada de cada um confere com o crédito menos o saldo devolvido
   em dezembro (57 de 59 vereadores com diferença de até R$ 2; os outros 2, menos de R$ 500).
 
-## Prefeitura de São Paulo
+## Prefeituras das capitais
 
-Robô `coleta/prefeitura_sp.py` (`python3 coletar.py prefeitura_sp`): prefeito, vice, secretários municipais e
-subprefeitos, mês a mês desde jan/2025, pela folha que a Prefeitura publica no Portal de Dados Abertos
-("Histórico de Remuneração dos Servidores Ativos", um CSV de ~21 MB por mês, com o nome de cada servidor).
+Robôs em `coleta/prefeituras/` (`python3 coletar.py prefeituras`; `prefeitura_sp` é o nome antigo): prefeito, vice e
+secretários municipais (e os subprefeitos, em São Paulo), mês a mês desde jan/2025, pela folha de pagamento que cada
+Prefeitura publica com o nome de cada servidor. Cada cidade é um módulo com `coletar()` (baixa a folha e guarda só
+as linhas desses cargos em `dados/municipios/<cidade>/prefeitura_remuneracao.csv`, que vai para o Git) e `montar()`
+(transforma em linhas comuns: mês, cargo, nome, pasta, salário, 13º, outros, bruto, "cedido"). O `comum.py` faz o
+resto para todas: junta a mesma pessoa escrita de jeitos diferentes, acha o nome de urna e o partido do prefeito e
+do vice (TSE), liga quem também é vereador da cidade à página de vereador, separa os acertos do mês da saída e busca
+as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava gravado.
 
-- O robô só baixa o mês que ainda não processou ou que a Prefeitura publicou de novo (guarda o arquivo usado em
-  `dados/municipios/sp/prefeitura_arquivos.csv`) e só guarda as linhas desses cargos
-  (`dados/municipios/sp/prefeitura_remuneracao.csv`). Alguns meses vieram em outro formato (vírgula como
-  separador, números no formato americano, página de código do DOS, ou só planilha): o robô lê todos.
-- **Vai para o bolso** = remuneração bruta (remuneração do mês + "demais elementos": 13º, férias, auxílio-refeição,
-  atrasados). Os acertos do mês da saída (acima do normal da pessoa, a partir de R$ 3 mil) ficam à parte e fora
-  das médias. Não há gastos por pessoa publicados.
-- Secretário que aparece só como "GABINETE DO SECRETARIO": tabela no código (conferida no site da Prefeitura),
-  senão a secretaria dele em outro mês, senão um palpite pelo endereço (o robô avisa no log).
-- Servidor cedido (exceções 2 e 3 da folha: o salário vem do órgão de origem) aparece com aviso e fica fora das
-  comparações. Nomes de urna e partido do prefeito e do vice: TSE. Vereador de SP com o mesmo nome completo: as
-  duas páginas ficam ligadas. Fotos: Wikimedia Commons (licença livre); quem é vereador usa a foto da Câmara.
-- Saída: `site/dados/prefeituras.json`, que o site junta à lista de políticos (tipo `p`).
+| Cidade | Fonte | O que a folha dá |
+|---|---|---|
+| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês) | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
+| Recife | Dados Abertos do Recife, "Servidores e salários" (CKAN, uma tabela por ano, filtrada pela função) | Proventos, férias e 13º ("natalina"). R$ 0 no mês = recebe de outro órgão |
+| Fortaleza | Dados Abertos de Fortaleza, `relacao_AAAAMM.csv` (~24 MB por mês) | Só o total dos proventos: o que passa do normal da pessoa vira "outros". Menos de 30% do normal do cargo = recebe de outro órgão |
+| Vitória | Dados Abertos de Vitória, conjunto "Pessoal" (API do portal, uma tabela por mês) | Só a remuneração bruta total. Quadro "cedido por outros órgãos" = recebe de outro órgão |
+| Porto Alegre | Portal Transparência (Procempa), "Remuneração dos servidores": a pesquisa do mês e o CSV da pesquisa, como o botão do site | Remuneração básica, abate-teto, 13º (folha "natalina" de dezembro), férias, eventuais e jetons |
+
+- **Vai para o bolso** = remuneração bruta da folha. Os acertos do mês da saída (acima do normal da pessoa, a partir
+  de R$ 3 mil) ficam à parte e fora das médias. As prefeituras não publicam gastos por pessoa.
+- **Pasta**: a folha diz o órgão de lotação, que nem sempre é a pasta. Siglas viram nomes por tabelas no código de
+  cada cidade (conferidas nos sites das prefeituras e na imprensa); o que não se sabe fica como está. Em Fortaleza,
+  os secretários regionais aparecem todos lotados na Secretaria de Governo (a Secretaria da Gestão Regional foi
+  extinta em 2025): o site diz "secretário municipal, lotado na Secretaria Municipal de Governo".
+- Vice que também é secretário (Recife, Fortaleza) aparece com um cargo só ("Vice-prefeito e secretário de ...").
+- Nada de CPF: quando a fonte traz o CPF mascarado, ele não é guardado.
+- **Belo Horizonte** publica a folha nominal, mas o portal bloqueia acessos automáticos (WAF): não tentamos
+  contornar. **Curitiba** e as outras capitais ficam para depois.
+- Saída: `site/dados/prefeituras.json`, que o site junta à lista de políticos (tipo `p`), com as notas de cada cidade.
+
+## Governadores
+
+Robô `coleta/governadores.py` (`python3 coletar.py governadores`). Não há fonte nacional: o salário (subsídio) do
+governador e do vice é fixado por lei em cada estado, e cada Estado publica a folha do seu jeito. A base é um arquivo
+mantido à mão, `dados/governadores/governadores.json`, montado estado por estado, com o link de cada valor:
+
+- `subsidio`: uma linha por valor (cargo `gov`, `vice` ou `sec`, mês em que passou a valer, valor bruto, norma,
+  link e **confiança**: `lei`, `folha` = conferido na folha do Estado, `tabela` = tabela oficial de remuneração,
+  `calculado` = conta nossa a partir da lei, `imprensa` = só a imprensa).
+- `ocupantes`: quem foi governador, vice ou governador em exercício desde 2023, com datas, partido e observações
+  (em 2026, 11 governadores deixaram o cargo para disputar a eleição; o Rio e Roraima têm governadores interinos).
+- `folha`: se a folha nominal do Estado abriu para o nosso robô (`aberta`, `painel` Power BI, `token`, `bloqueada`,
+  `suspensa` pelo período eleitoral) e o que ela mostrou; `recebe`: quem recebe outra coisa no lugar do subsídio
+  (a governadora de Pernambuco recebe como procuradora do Estado).
+- `notas`: o que precisa ser explicado.
+
+O robô confere o arquivo (27 estados, um governador no cargo por estado, valores e datas plausíveis, link em cada
+valor; se algo estiver errado, a etapa falha), escolhe o valor em vigor e gera `site/dados/governadores.json`.
+As fotos do governador e do vice vêm do Wikimedia Commons (licença livre, com crédito).
+
+**Para atualizar**: quando sair uma lei nova, acrescente uma linha em `subsidio`; quando mudar o governador, feche a
+linha dele em `ocupantes` (`ate`) e abra outra. Próximo passo: o mês a mês pela folha, nos estados em que ela é
+aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC e SP).
 
 ## Compartilhamento e medição
 
@@ -259,6 +298,10 @@ Veja `metadados.json` → `pendencias`. As principais:
    comissionado, pelo nome).
 3. **Câmara:** ainda faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão).
    Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
+4. **Governadores:** só o salário do cargo, sem o mês a mês; em AL, AP, GO, MA, RJ e SE o valor ainda é o da imprensa.
+5. **Prefeituras:** Belo Horizonte (portal bloqueia robôs), Curitiba e as outras capitais ainda não foram feitas.
+6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
+   afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).
 
 ## Fontes
 
@@ -267,6 +310,12 @@ Veja `metadados.json` → `pendencias`. As principais:
   [moradia](https://www.camara.leg.br/moradia/detalhamento).
 - Senado: [dados abertos legislativos](https://legis.senado.leg.br/dadosabertos/docs/) e
   [administrativos](https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html).
+- Governadores: leis e decretos legislativos das assembleias, diários oficiais, folhas de pagamento e tabelas
+  oficiais dos estados (o link de cada valor está em `dados/governadores/governadores.json`).
+- Prefeituras: [São Paulo](https://dados.prefeitura.sp.gov.br/dataset/remuneracao-servidores-prefeitura-de-sao-paulo),
+  [Recife](https://dados.recife.pe.gov.br/dataset/servidores), [Fortaleza](https://dados.fortaleza.ce.gov.br/dataset/servidores),
+  [Vitória](https://dadosabertos.vitoria.es.gov.br/) e
+  [Porto Alegre](https://portaltransparenciapmpa.procempa.com.br/portalpmpa/fpRemuneracaoPesquisa.do?viaMenu=true).
 
 ## Licença
 

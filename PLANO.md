@@ -68,15 +68,18 @@ Cada número tem link para a fonte oficial.
 - [x] Fotos do governo federal: Congresso ou Wikimedia Commons com crédito (45 de 71; o resto com iniciais) — Claude
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
 - [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
-- [ ] TCU; governadores e prefeitos das capitais (só salário); presidentes de estatais — depois
+- [ ] TCU; presidentes de estatais — depois
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
 - [x] Prefeitura de São Paulo: prefeito, vice, secretários e subprefeitos, mês a mês (folha nos dados abertos) — Claude
 - [x] Vereadores, passo 2b: Fortaleza, Goiânia, Manaus, Natal e Recife, vereador por vereador (robô comum a várias cidades) — Claude
 - [ ] Vereadores, passo 2c: as outras capitais. Parciais: Belo Horizonte, Curitiba, Salvador, João Pessoa, Porto Velho, Rio Branco, Palmas, Maceió. Bloqueiam acesso de fora do Brasil (o robô do GitHub roda nos EUA): Porto Alegre, Vitória, Cuiabá, Distrito Federal, São Luís. Muito difíceis: Rio, Florianópolis, Campo Grande, Teresina (a folha mostra CPF), Aracaju, Boa Vista, Belém, Macapá — Claude
 - [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
-- [ ] Prefeituras das capitais com folha aberta: Fortaleza, Recife, Belo Horizonte, Natal, Vitória, Curitiba, Porto Alegre, Distrito Federal — Claude
-- [ ] Governadores: subsídio de cada estado pela lei, com fonte; depois a folha mensal onde for aberta — Claude
+- [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
+- [ ] Prefeituras, próximas: Curitiba (a exportação da folha dá erro), Natal, João Pessoa, Salvador, Rio, Campo Grande, Macapá. Belo Horizonte: o portal bloqueia robôs (WAF), não contornamos; só se a Prefeitura liberar ou publicar os dados abertos — Claude
+- [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
+- [ ] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
+- [ ] Governadores: achar as leis que faltam (AL, AP, GO, MA, RJ, SE só pela imprensa) — Claude, com ajuda de quem estiver no Brasil (portais bloqueiam o exterior)
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 

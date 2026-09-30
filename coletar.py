@@ -7,12 +7,15 @@ Uso:
     python3 coletar.py municipios      # câmaras municipais: custo (Tesouro) e vereadores eleitos (TSE)
     python3 coletar.py vereadores      # capitais (São Paulo, Fortaleza, Goiânia, Manaus, Natal, Recife): cada vereador,
                                        # com salário, verba do gabinete e equipe (vereadores_sp é o nome antigo)
-    python3 coletar.py prefeitura_sp   # São Paulo (capital): prefeito, vice, secretários e subprefeitos, mês a mês
+    python3 coletar.py prefeituras     # São Paulo, Recife, Fortaleza, Vitória e Porto Alegre: prefeito, vice e secretários
+                                       # (e subprefeitos, em SP), mês a mês, pela folha (prefeitura_sp é o nome antigo)
+    python3 coletar.py governadores    # os 27 governadores e vices: salário pela lei (dados/governadores/governadores.json)
     python3 coletar.py padronizar      # junta tudo na base unificada
     python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
-    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeitura_sp + padronizar + fotos + site
+    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores
+                                       # + padronizar + fotos + site
 
     --tempo-max 160   para parar sozinho depois de 160 s (rode de novo para continuar)
     --max-alertas 8   (com "conferir") termina com erro se a conferência passar desse número;
@@ -21,7 +24,7 @@ Uso:
 import argparse
 import sys
 
-from coleta import camara, conferir, executivo, fotos, municipios, padronizar, prefeitura_sp, senado, site, vereadores
+from coleta import camara, conferir, executivo, fotos, governadores, municipios, padronizar, prefeituras, senado, site, vereadores
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -32,7 +35,9 @@ ETAPAS = {
     "municipios": municipios.coletar,
     "vereadores": vereadores.coletar,
     "vereadores_sp": vereadores.coletar,  # nome antigo (quando só havia São Paulo)
-    "prefeitura_sp": prefeitura_sp.coletar,
+    "prefeituras": prefeituras.coletar,
+    "prefeitura_sp": prefeituras.coletar,  # nome antigo (quando só havia São Paulo)
+    "governadores": governadores.coletar,
     "padronizar": padronizar.executar,
     "fotos": fotos.coletar,
     "conferir": conferir.executar,
@@ -41,7 +46,7 @@ ETAPAS = {
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Coleta de dados públicos sobre políticos federais")
+    ap = argparse.ArgumentParser(description="Coleta de dados públicos sobre políticos (federais, governadores, prefeituras e câmaras)")
     ap.add_argument("etapa", choices=[*ETAPAS, "tudo"])
     ap.add_argument("--tempo-max", type=int, default=0, help="segundos (0 = sem limite)")
     ap.add_argument("--max-alertas", type=int, default=None, help="com 'conferir': erro se passar deste número")
@@ -51,7 +56,8 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = ["camara", "senado", "executivo", "municipios", "vereadores", "prefeitura_sp", "padronizar", "fotos", "site"] if args.etapa == "tudo" else [args.etapa]
+    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "padronizar", "fotos", "site"]
+              if args.etapa == "tudo" else [args.etapa])
     try:
         for etapa in etapas:
             resultado = ETAPAS[etapa]()

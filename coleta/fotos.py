@@ -138,7 +138,7 @@ def _wikidata(p):
 
 def _commons(arquivo):
     paginas = _api(COMMONS, action="query", titles=f"File:{arquivo}", prop="imageinfo",
-                   iiprop="url|size|extmetadata", iiurlwidth=480)["query"]["pages"]
+                   iiprop="url|size|extmetadata", iiurlwidth=330)["query"]["pages"]  # 330 px: um dos tamanhos padrão da Wikimedia
     info = next(iter(paginas.values())).get("imageinfo", [{}])[0]
     meta = info.get("extmetadata", {})
     texto = lambda k: re.sub(r"<[^>]+>", "", meta.get(k, {}).get("value", "")).strip()
@@ -147,13 +147,14 @@ def _commons(arquivo):
             "url_licenca": texto("LicenseUrl"), "pagina": info.get("descriptionurl")}
 
 
-def _governo_commons(politicos):
+def _governo_commons(politicos, limite=None):
     """Fotos do Wikimedia Commons para quem é do governo e ainda não tem foto.
-    Quem não tem foto aceitável só é procurado de novo depois de 30 dias."""
+    Quem não tem foto aceitável só é procurado de novo depois de 30 dias. limite: no máximo tantas buscas por vez
+    (cada busca leva uns 15 s, por causa do ritmo que a Wikimedia pede; o resto fica para a próxima semana)."""
     dados = ler_json(CREDITOS) if CREDITOS.exists() else {}
     creditos, tentou = dados.setdefault("fotos", {}), dados.setdefault("procurado_em", {})
     hoje = time.strftime("%Y-%m-%d")
-    novas = 0
+    novas = buscas = 0
     try:
         for p in politicos:
             destino = PASTA / f"{p['id']}.webp"
@@ -161,6 +162,9 @@ def _governo_commons(politicos):
                 continue
             if tentou.get(p["id"], "0000") > time.strftime("%Y-%m-%d", time.localtime(time.time() - 30 * 86400)):
                 continue
+            if limite is not None and buscas >= limite:
+                break
+            buscas += 1
             tentou[p["id"]] = hoje
             try:
                 achou = _wikidata(p)
@@ -173,6 +177,8 @@ def _governo_commons(politicos):
                 time.sleep(1.1)
                 import requests
                 r = requests.get(f["url"], headers=_ua, timeout=60)
+                if r.status_code == 429:  # a Wikimedia pediu para ir mais devagar: tenta de novo na próxima vez
+                    raise WikimediaLimitou()
                 r.raise_for_status()
                 destino.write_bytes(_ajustar(r.content))
                 creditos[p["id"]] = {"wikidata": qid, "arquivo": arquivo, **{k: f[k] for k in ("autor", "licenca", "url_licenca", "pagina")}}

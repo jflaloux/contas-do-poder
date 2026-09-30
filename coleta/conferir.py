@@ -58,13 +58,33 @@ def _vereadores_capitais():
     return saida
 
 
-def _prefeitura_sp():
-    """(prefeito no último mês, secretários no último mês) no site/dados/prefeituras.json."""
+def _prefeituras():
+    """Por cidade do site/dados/prefeituras.json: ("do Recife", prefeito no último mês, secretários no último mês, máximo de
+    secretários num mês desde 2025)."""
     arq = RAIZ / "site" / "dados" / "prefeituras.json"
     if not arq.exists():
+        return []
+    d = json.load(open(arq, encoding="utf-8"))
+    saida = []
+    for cod, c in d["meta"]["cidades"].items():
+        ps = [p for p in d["p"] if str(p["cid"]) == cod]
+        por_mes = {}
+        for p in ps:
+            if p["tp"] == "se":
+                for t in p["t"]:
+                    por_mes[t[0]] = por_mes.get(t[0], 0) + 1
+        saida.append((c.get("de") or f"de {c['n']}", sum(1 for p in ps if p["x"] and p["tp"] == "pr"), sum(1 for p in ps if p["x"] and p["tp"] == "se"),
+                      max(por_mes.values()) if por_mes else 0))
+    return saida
+
+
+def _governadores():
+    """(estados no arquivo do site, estados com o valor da lei ou conferido na folha)."""
+    arq = RAIZ / "site" / "dados" / "governadores.json"
+    if not arq.exists():
         return 0, 0
-    ps = [p for p in json.load(open(arq, encoding="utf-8"))["p"] if p["x"]]
-    return sum(1 for p in ps if p["tp"] == "pr"), sum(1 for p in ps if p["tp"] == "se")
+    es = json.load(open(arq, encoding="utf-8"))["e"]
+    return len(es), sum(1 for e in es if e["v"][2] in ("lei", "folha", "tabela"))
 
 
 def executar():
@@ -196,8 +216,11 @@ def executar():
         *[c for n, vagas, no_cargo, com_gasto in _vereadores_capitais() for c in (
             (f"Vereadores de {n} no cargo (camaras.json)", no_cargo, int(vagas * 0.85)),
             *([(f"Vereadores de {n} com gastos do gabinete no mês retrasado", com_gasto, int(vagas * 0.6))] if com_gasto is not None else []))],
-        ("Prefeitura de São Paulo: prefeito na folha do último mês", _prefeitura_sp()[0], 1),
-        ("Prefeitura de São Paulo: secretários na folha do último mês", _prefeitura_sp()[1], 15),
+        *[c for n, pr, se, maximo in _prefeituras() for c in (
+            (f"Prefeitura {n}: prefeito na folha do último mês", pr, 1),
+            (f"Prefeitura {n}: secretários na folha do último mês", se, int(maximo * 0.6)))],
+        ("Governadores no arquivo do site", _governadores()[0], 27),
+        ("Governadores com o valor da lei, da folha ou da tabela oficial", _governadores()[1], 18),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
         (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),

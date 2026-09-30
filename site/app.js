@@ -58,7 +58,7 @@
 
   // ================================================================== estado
   const S = {
-    D: null, porId: new Map(), sel: null, cidade: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
+    D: null, porId: new Map(), sel: null, cidade: null, gov: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
     rank: { casa: null, metrica: "custo", periodo: null, uf: "", noCargo: true, completo: false },
   };
   let observadores = [];
@@ -171,7 +171,9 @@
   const fonteDados = (p) => (p.k === "v" ? `da ${(cidadeDe(p) || {}).casa || "Câmara Municipal"}` : p.k === "p" ? `da Prefeitura ${deCid(p.cid)}`
     : { e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" }[p.k] || "da Câmara e do Senado");
   // Prefeitura: nome curto do cargo ("Educação", "Subprefeitura Lapa", "Prefeito")
-  const pastaCurtaP = (q) => ({ pr: "Prefeito", vp: "Vice-prefeito" })[q.tp] || (q.tp === "sb" ? `Subprefeitura ${q.pa}` : (q.pa || "").replace(/^Secretaria (Municipal |Especial )?(d[aoe]s? |de )?/, ""));
+  const pastaCurtaP = (q) => ({ pr: q.g.startsWith("Prefeita") ? "Prefeita" : "Prefeito", vp: q.g.startsWith("Vice-prefeita") ? "Vice-prefeita" : "Vice-prefeito" })[q.tp]
+    || (q.tp === "sb" ? `Subprefeitura ${q.pa}` : /^Secretaria \(/.test(q.pa || "") ? (q.pa || "").replace(/^Secretaria \((.*)\)$/, "$1")
+      : `${q.lot ? "lotação: " : ""}${(q.pa || "").replace(/^Secretaria (Municipal |Especial |Mun )?(d[aoe]s? |de )?/, "")}`);
   // "tudo junto" (dois cargos): a casa do cargo no Congresso, para os avisos de deputado/senador
   const casaBase = (p) => (p.k === "j" ? (S.porId.get(p.cg[1].id) || {}).k : p.k);
   const fmtMes = (m) => (m ? `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}` : "");
@@ -264,6 +266,12 @@
       return !o || (p.x && !o.x) || (!!p.x === !!o.x && (p.k === "e" || p.k === "p"));
     }).map((p) => (p.j && S.porId.get(p.j)) || p).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
   }
+  // governador pelo nome dele (ou do vice) ou pelo nome do estado
+  function encontrarGov(q) {
+    const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
+    if (!termos.length || semAcento(q).trim().length < 3) return [];
+    return GOV.e.filter((e) => { const t = semAcento(`${e.gov.n} ${e.gov.nc || ""} ${ESTADOS[e.uf]} governador governadora`); return termos.every((x) => t.includes(x)); }).slice(0, 2);
+  }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades) {
     let itens = [], ativo = -1;
@@ -272,8 +280,11 @@
     input.addEventListener("input", () => {
       const pol = encontrar(input.value, filtro).slice(0, comCidades ? 6 : 8);
       const cid = comCidades ? encontrarCidades(input.value) : [];
-      itens = [...pol, ...cid];
+      const govs = comCidades ? encontrarGov(input.value) : [];
+      itens = [...govs, ...pol, ...cid];
       caixa.textContent = "";
+      govs.forEach((e) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; S.origem = "busca"; location.hash = `gov-${e.uf}`; } },
+        avatar({ n: e.gov.n, f: e.gov.f }, "p"), h("span", null, e.gov.n, h("small", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")}`)))));
       cid.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao sugestao--cidade", role: "option", onclick: () => { fechar(); input.value = ""; irParaCidade(c, "busca"); } },
         iconeCidade(avatarCidade("p")), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
       pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
@@ -804,8 +815,11 @@
         const c = prefeituraDe(p.cid);
         add(lado,
           h("p", { class: "nota" }, cargosTxt(p)),
-          p.ced ? h("p", { class: "aviso aviso--forte" }, h("strong", null, "O salário é pago por outro órgão. "), `${p.n} é servidor cedido: em ${p.ced} ${p.ced === 1 ? "mês" : "meses"}, a folha da Prefeitura mostra só uma parte do que ele recebe. Por isso fica fora das comparações.`) : null,
+          p.ced ? h("p", { class: "aviso aviso--forte" }, h("strong", null, "Parte do salário (ou todo ele) vem de outro órgão. "),
+            `Em ${p.ced} ${p.ced === 1 ? "mês" : "meses"}, a Prefeitura pagou a ${p.n} só uma parte do que o cargo paga, ou nada: ${p.rel ? "como vereador licenciado, pode continuar recebendo pela Câmara" : "quem é servidor de outro órgão costuma continuar recebendo o salário de lá"}. Por isso fica fora das comparações.`) : null,
           h("p", { class: "aviso" }, "A Prefeitura publica quanto cada servidor recebe, mês a mês, com o nome. Não publica os gastos por pessoa (carro oficial, viagens, equipe): aqui entra só o que vai para o bolso."),
+          c.salario_nota ? h("p", { class: "nota" }, c.salario_nota) : null,
+          (c.notas || []).map((n) => h("p", { class: "nota" }, n)),
           h("p", { class: "nota" }, `Dados da Prefeitura ${deCid(p.cid)} até ${fmtMes(c.ultimo_mes)}.`));
       }
       if (p.k === "v") {
@@ -1358,24 +1372,32 @@
       h("p", { class: "discreto" }, `Pela folha de pagamento que a Prefeitura publica todo mês, com o nome de cada um. Valores brutos de ${fmtMes(pref.ultimo_mes)}.`),
       h("article", { class: "cartao" },
         h("div", { class: "estatisticas" },
-          ultimoValor("pr") ? estatistica("Prefeito", reais(ultimoValor("pr")), `em ${fmtMes(pref.ultimo_mes)}`) : null,
+          ultimoValor("pr") ? estatistica(agora.find((x) => x.tp === "pr").g.startsWith("Prefeita") ? "Prefeita" : "Prefeito", reais(ultimoValor("pr")), `em ${fmtMes(pref.ultimo_mes)}`) : null,
           tipico("se") ? estatistica("Secretário municipal", reais(tipico("se")), "típico (mediana)") : null,
           tipico("sb") ? estatistica("Subprefeito", reais(tipico("sb")), "típico (mediana)") : null),
         grupo("Prefeito e vice", ["pr", "vp"]), grupo("Secretários", ["se"]), grupo("Subprefeitos", ["sb"]),
         sairam.length ? h("details", { class: "problemas" }, h("summary", null, `Quem passou pela Prefeitura desde 2025 e saiu (${sairam.length})`), h("div", { class: "lista-estado__grupo" }, sairam.map(chip))) : null,
-        h("p", { class: "nota" }, "Só o que cada um recebe: a Prefeitura não publica os gastos por pessoa (carro oficial, viagens, equipe). Quem tem decisão judicial para não aparecer na folha não aparece aqui.")));
+        h("p", { class: "nota" }, "Só o que cada um recebe: a Prefeitura não publica os gastos por pessoa (carro oficial, viagens, equipe). Quem tem decisão judicial para não aparecer na folha não aparece aqui."),
+        pref.salario_nota ? h("p", { class: "nota" }, pref.salario_nota) : null,
+        (pref.notas || []).map((n) => h("p", { class: "nota" }, n)),
+        h("p", { class: "nota" }, "Fonte: ", h("a", { href: pref.fonte, target: "_blank", rel: "noopener" }, "folha de pagamento publicada pela Prefeitura"), ".")));
   }
-  // chamada para as capitais com vereador por vereador
+  // chamada para as capitais com vereador por vereador ou com a Prefeitura
   function destaqueCapitais(atual) {
-    const cs = cidadesCamara().filter((c) => !atual || c.cod !== atual.cod);
+    const cods = [...new Set([...cidadesCamara(), ...cidadesPrefeitura()].map((c) => c.cod))];
+    const cs = cods.map((cod) => ({ ...(camaraDe(cod) || prefeituraDe(cod)), cod })).filter((c) => !atual || c.cod !== atual.cod)
+      .sort((a, b) => (b.cod === SP) - (a.cod === SP) || a.n.localeCompare(b.n, "pt"));
     if (!cs.length) return null;
     const n = S.D.p.filter((q) => q.k === "v" && q.x).length;
     return h("div", { class: "cartao destaque-cidade" },
       h("span", { class: "etiqueta" }, "Novo"),
-      h("strong", null, `Vereador por vereador em ${cidadesCamara().length} capitais: ${n} vereadores, um a um`),
-      h("span", { class: "pequeno discreto" }, `Salário, verba do gabinete mês a mês e, onde a Câmara publica, a equipe de cada gabinete${cidadesPrefeitura().length ? `. E, ${cidadesPrefeitura().length === 1 ? `em ${cidadesPrefeitura()[0].n}` : "nas prefeituras com dados"}, quanto recebem o prefeito e os secretários` : ""}.`),
+      h("strong", null, "Capitais, pessoa por pessoa"),
+      h("span", { class: "pequeno discreto" }, [
+        cidadesCamara().length ? `${n} vereadores em ${cidadesCamara().length} capitais: salário, verba do gabinete mês a mês e, onde a Câmara publica, a equipe de cada gabinete.` : null,
+        cidadesPrefeitura().length ? `O prefeito, o vice e os secretários ${cidadesPrefeitura().length === 1 ? deCid(cidadesPrefeitura()[0].cod) : `de ${listaE(cidadesPrefeitura().map((c) => c.n))}`}: quanto cada um recebe, mês a mês.` : null,
+      ].filter(Boolean).join(" ")),
       h("div", { class: "lista-estado__grupo" }, cs.map((c) => h("a", { class: "pessoa-chip", href: `#cid-${c.cod}`, onclick: () => { S.origem = "destaque_capitais"; } },
-        c.n, h("small", null, `${c.uf} · ${S.D.p.filter((q) => q.k === "v" && q.x && q.cid === c.cod).length} vereadores`)))));
+        c.n, h("small", null, [c.uf, camaraDe(c.cod) ? `${S.D.p.filter((q) => q.k === "v" && q.x && q.cid === c.cod).length} vereadores` : null, prefeituraDe(c.cod) ? "Prefeitura" : null].filter(Boolean).join(" · "))))));
   }
   // Seção da página inicial (e embaixo da página de uma cidade): procurar a cidade e as mais caras do estado
   function secCamaras(atual) {
@@ -1447,6 +1469,146 @@
       h("h2", null, "Presidente, vice e ministros"),
       h("p", { class: "discreto" }, `Toque num nome para ver quanto ganha e quanto custa por mês. Dados do Portal da Transparência até ${MESES[(ate % 100) - 1]}/${Math.floor(ate / 100)}.`),
       h("div", { class: "lista-estado" }, h("div", { class: "lista-estado__grupo" }, atuais.map(chip))));
+  }
+  // ================================================================== governadores (dados/governadores.json)
+  // O salário de governador e de vice é fixado por lei em cada estado; o arquivo traz, para cada um, o valor em vigor,
+  // a história, quem ocupa o cargo e se a folha do Estado deu para conferir.
+  const GOV = { e: [], porUF: {}, meta: null };
+  const ART_UF = { AC: "o", AP: "o", AM: "o", BA: "a", CE: "o", DF: "o", ES: "o", MA: "o", MT: "o", MS: "o", PA: "o", PB: "a", PR: "o", PI: "o", RJ: "o", RN: "o", RS: "o", TO: "o" };
+  const deUF = (uf) => (ART_UF[uf] ? `d${ART_UF[uf]} ${ESTADOS[uf]}` : `de ${ESTADOS[uf]}`);
+  const emUF = (uf) => (ART_UF[uf] ? `n${ART_UF[uf]} ${ESTADOS[uf]}` : `em ${ESTADOS[uf]}`);
+  const CONF = {
+    lei: ["Lei", "O valor está no texto da lei (ou do decreto legislativo) que fixa o subsídio."],
+    folha: ["Conferido na folha", "O valor foi conferido na folha de pagamento do Estado, com o nome de quem recebe."],
+    tabela: ["Tabela oficial", "O valor está na tabela oficial de remuneração dos cargos do Estado; não achamos o texto da lei."],
+    calculado: ["Cálculo nosso", "Calculamos a partir da lei (um reajuste em porcentagem, ou uma porcentagem do subsídio do governador); ainda não conferimos na folha."],
+    imprensa: ["Só pela imprensa", "Não achamos a lei nem conseguimos abrir a folha: é o valor informado pela imprensa. Pode estar desatualizado."],
+  };
+  const FOLHA_GOV = {
+    aberta: "O Estado publica a folha de pagamento com o nome de cada servidor, e nós a conferimos.",
+    painel: "O Estado publica a folha com o nome de cada servidor, mas dentro de um painel (Power BI), sem arquivo para baixar. Ainda não conferimos por lá; você pode consultar pelo nome.",
+    token: "O Estado publica a folha com o nome de cada servidor, mas os dados só saem pela página do portal (a consulta automática pede uma chave). Ainda não conferimos; você pode consultar pelo nome.",
+    bloqueada: "O Estado publica a folha com o nome de cada servidor, mas o portal não abriu para o nosso robô (bloqueia acessos automáticos ou vindos de fora do Brasil, ou pede um cadastro). Você pode consultar pelo nome no portal.",
+    suspensa: "O portal da transparência do Estado está fora do ar durante o período eleitoral (Decreto estadual nº 24.400/2026). Voltamos a tentar depois da eleição.",
+    nao_testada: "O Estado publica a folha com o nome de cada servidor no portal; ainda não a conferimos.",
+  };
+  const fmtData = (s) => (s ? `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}` : "");
+  const mesTxt = (s) => (s ? fmtMes(Number(s.slice(0, 4)) * 100 + Number(s.slice(5, 7))) : "");
+  const govFem = (e) => !!e.gov.fem;
+  const tituloGov = (e) => (e.gov.ex ? (govFem(e) ? "Governadora em exercício" : "Governador em exercício") : govFem(e) ? "Governadora" : "Governador");
+  const seloConf = (c) => h("span", { class: `etiqueta conf conf--${c}`, title: CONF[c][1] }, CONF[c][0]);
+  const partidoTxt = (o) => (o.pt ? ` (${o.pt})` : "");
+  const rankingGov = (campo) => GOV.e.filter((e) => e[campo]).slice().sort((a, b) => b[campo][0] - a[campo][0] || a.uf.localeCompare(b.uf));
+  const posGov = (e, campo = "v") => { const r = rankingGov(campo); return { pos: r.filter((x) => x[campo][0] > e[campo][0]).length + 1, n: r.length }; };
+  const tituloCase = (t) => (t || "").toLowerCase().replace(/(^|\s)(\S)/g, (m, a, b) => a + b.toUpperCase()).replace(/\s(De|Da|Do|Das|Dos|E)\s/g, (m) => m.toLowerCase());
+  function textoGov(e) {
+    const p = posGov(e), link = endereco() ? `${endereco()}#gov-${e.uf}` : "";
+    return [
+      `*${tituloGov(e)} ${deUF(e.uf)}: ${e.gov.n}*`,
+      `Salário (subsídio) do cargo: *${reaisC(e.v[0])} por mês*, bruto. É o ${p.pos}º maior entre os 27 estados.`,
+      e.recebe ? e.recebe.texto + (e.recebe.bruto ? ` (${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}).` : ".") : null,
+      "",
+      `Fonte: ${e.v[3].split(";")[0]}.`,
+      `Veja o do seu estado: ${link || "Contas do Poder"}`,
+    ].filter((x) => x !== null).join("\n");
+  }
+  // lista dos 27, do maior salário para o menor (na página inicial e embaixo da página de um estado)
+  function secGovernadores(atual) {
+    if (!GOV.e.length) return null;
+    let campo = "v";
+    const corpo = h("div", { style: "display:grid;gap:12px" });
+    const desenhar = () => {
+      corpo.textContent = "";
+      const r = rankingGov(campo), max = r[0][campo][0];
+      const valores = r.map((e) => e[campo][0]), med = mediana(valores);
+      const linha = (e, i) => h("a", { class: `rank${atual && e.uf === atual.uf ? " rank--eu" : ""}`, href: `#gov-${e.uf}`, onclick: () => { S.origem = "ranking_governadores"; } },
+        h("span", { class: "rank__pos" }, `${i + 1}º`),
+        h("span", { class: "rank__nome" }, ESTADOS[e.uf], " ", h("small", null, campo === "v" ? `${e.gov.n}${partidoTxt(e.gov)}${e.gov.ex ? ", em exercício" : ""}` : e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : "cargo vago hoje"), " ", seloConf(e[campo][2]),
+          e.recebe && campo === "v" ? h("small", { class: "rank__obs" }, ` · ${e.recebe.curto}${e.recebe.bruto ? ` (${reais(e.recebe.bruto)})` : ""}`) : null),
+        h("span", { class: "rank__valor" }, reaisC(e[campo][0])),
+        h("span", { class: "barra__trilho" }, h("span", { class: "barra__fill barra__fill--ganha", style: `width:${Math.max(0.5, (e[campo][0] / max) * 100)}%` })));
+      add(corpo,
+        h("div", { class: "estatisticas" },
+          estatistica("Maior", reais(r[0][campo][0]), `${ESTADOS[r[0].uf]}`),
+          estatistica("Mediana dos estados", reais(med), `metade ganha mais, metade menos`),
+          estatistica("Menor", reais(r[r.length - 1][campo][0]), `${ESTADOS[r[r.length - 1].uf]}`),
+          estatistica("Presidente da República", "R$ 46.366", "por mês, o teto do funcionalismo")),
+        pilulas([["v", "Governador"], ["vv", "Vice-governador"]], campo, (v) => { campo = v; evento("ver_governadores", { cargo: v }); desenhar(); }, "Cargo"),
+        h("article", { class: "cartao" }, h("div", { class: "rank-lista" }, r.map(linha))),
+        h("p", { class: "nota" }, "Salário bruto do cargo por mês (o subsídio em vigor hoje), antes do imposto e da previdência. É o valor fixado para o cargo, não necessariamente o que a pessoa recebe: quem é servidor de carreira pode optar pelo salário do cargo de origem (como a governadora de Pernambuco, procuradora do Estado), e o governador em exercício do Rio, desembargador, provavelmente continua recebendo pelo Tribunal de Justiça."),
+        h("p", { class: "nota" }, "De onde vem cada valor: ", ...Object.keys(CONF).map((c) => h("span", { style: "display:inline-block;margin:2px 8px 2px 0" }, seloConf(c), " ", CONF[c][1].split(";")[0].replace(/\.$/, ""), ". "))),
+        campo === "vv" ? h("p", { class: "nota" }, `Estados sem vice hoje (o vice virou governador ou o cargo ficou vago) aparecem com o valor do cargo, se a lei o fixa. Em ${listaE(GOV.e.filter((e) => !e.vv).map((e) => ESTADOS[e.uf]))}, não achamos o valor do vice.`) : null);
+    };
+    desenhar();
+    return h("section", { class: "bloco", id: "governadores" },
+      h("p", { class: "rotulo" }, "Governadores"),
+      h("h2", null, atual ? "Os 27 governadores" : "Quanto ganha cada governador"),
+      h("p", { class: "discreto" }, "O salário (subsídio) do governador e do vice é fixado por lei em cada estado, pela Assembleia Legislativa, e não há uma fonte nacional com todos. Juntamos, estado por estado, a lei, a tabela oficial ou a folha de pagamento do Estado e, só quando não há outra, a imprensa, e mostramos de onde veio cada valor. Toque num estado para ver quem governa, a lei, a história do valor e se dá para conferir na folha."),
+      corpo);
+  }
+  // página de um estado: #gov-SP
+  function secGovernador(e) {
+    const p = posGov(e), med = mediana(GOV.e.map((x) => x.v[0]));
+    const sm = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
+    const fem = govFem(e), R = rankingGov("v"), maior = R[0], menor = R[R.length - 1];
+    const texto = textoGov(e);
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    const cargoTxt = (c, f) => ({ gov: f ? "Governadora" : "Governador", vice: f ? "Vice-governadora" : "Vice-governador", exercicio: f ? "Governadora em exercício" : "Governador em exercício", sec: "Secretário de Estado" })[c];
+    const lado = (o) => o ? h("span", null, `${o.n}${partidoTxt(o)}`) : null;
+    const hist = e.h.filter((x) => x[0] !== "sec");
+    const sec = e.h.filter((x) => x[0] === "sec");
+    const linhaHist = (x) => h("tr", null,
+      h("td", null, fmtMes(x[1])), h("td", null, cargoTxt(x[0])), h("td", { class: "num" }, reaisC(x[2])), h("td", null, seloConf(x[3])),
+      h("td", { style: "white-space:normal;min-width:16rem" }, x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, "fonte ↗")));
+    const foto = e.gov.fc ? h("p", { class: "nota credito" }, "Foto: ", h("a", { href: e.gov.fc.u, target: "_blank", rel: "noopener" }, e.gov.fc.l ? `${(e.gov.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${e.gov.fc.l})` : e.gov.fc.a), e.gov.fc.l ? ", via Wikimedia Commons." : ".") : null;
+    return h("article", { class: "cartao conta", id: "governador" },
+      h("div", { class: "conta__topo" }, avatar({ n: e.gov.n, f: e.gov.f }, "g"),
+        h("div", null,
+          h("p", { class: "rotulo" }, `Governo ${deUF(e.uf)}`),
+          h("h2", null, e.gov.n),
+          h("div", { class: "conta__sub" }, h("span", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")} · desde ${fmtData(e.gov.de)}`))),
+        null),
+      h("div", { class: "cidade__corpo" },
+        h("div", { class: "estatisticas" },
+          estatistica(`Salário ${fem ? "da governadora" : "do governador"}`, reaisC(e.v[0]), `por mês, bruto, ${e.v[2] === "imprensa" ? `valor de ${fmtMes(e.v[1])}` : `desde ${fmtMes(e.v[1])}`}`),
+          estatistica(e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador", e.vv ? reaisC(e.vv[0]) : "—", e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : `cargo vago hoje${e.vv ? " (valor do cargo)" : ""}`),
+          estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
+          e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null),
+        e.recebe ? h("p", { class: "aviso aviso--forte" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
+          e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
+        h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}.`
+          : p.pos === p.n ? `É o menor salário de governador do país. A mediana dos 27 estados é ${reais(med)}.`
+            : `É o ${p.pos}º maior salário de governador entre os 27 estados. A mediana é ${reais(med)}; o maior é o ${deUF(maior.uf)} (${reais(maior.v[0])}) e o menor, o ${deUF(menor.uf)} (${reais(menor.v[0])}).`),
+        h("div", { class: "fonte-gov" },
+          h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
+          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte ↗"))),
+        h("h3", null, "Quem governou desde 2023"),
+        h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" },
+          h("thead", null, h("tr", null, ["Quem", "Cargo", "De", "Até"].map((c) => h("th", null, c)))),
+          h("tbody", null, e.oc.map((o) => h("tr", null,
+            h("td", { style: "min-width:11rem" }, h("strong", null, o.n), o.pt ? ` (${o.pt})` : "", o.obs ? h("small", { class: "tabela-gov__obs" }, o.obs) : null),
+            h("td", null, cargoTxt(o.c, o.fem)), h("td", null, fmtData(o.de)), h("td", null, o.ate ? fmtData(o.ate) : "hoje")))))),
+        h("h3", null, "O salário ao longo do tempo"),
+        h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" },
+          h("thead", null, h("tr", null, ["Desde", "Cargo", "Valor por mês", "Origem", "Lei ou fonte"].map((c) => h("th", null, c)))),
+          h("tbody", null, hist.map(linhaHist)))),
+        sec.length ? h("details", { class: "tabela" }, h("summary", null, "Secretários de Estado"), h("div", { class: "rolagem" }, h("table", { class: "tabela-gov" }, h("tbody", null, sec.map(linhaHist))))) : null,
+        h("p", { class: "nota" }, "\"Desde\" é o mês em que o valor passou a valer. Quando a fonte é só a imprensa, é o mês a que o valor se refere."),
+        h("h3", null, "Dá para conferir na folha de pagamento?"),
+        h("p", { style: "margin:0" }, FOLHA_GOV[e.folha.s]),
+        e.folha.c ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
+        e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)} ↗`)) : null,
+        e.notas.length ? h("h3", null, "O que mais saber") : null,
+        e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
+        h("div", { class: "acoes" },
+          h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => evento("compartilhar", { metodo: "whatsapp", conteudo: "governador", uf: e.uf }) }, "Mandar no WhatsApp"),
+          h("button", { type: "button", class: "botao botao--leve", onclick: () => { evento("compartilhar", { metodo: "copiar_texto", conteudo: "governador" }); copiarTexto(texto, retorno, "Texto copiado. É só colar."); } }, "Copiar texto")),
+        retorno,
+        h("ul", { class: "lista nota" },
+          h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não aparecem por pessoa."),
+          h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),
+          h("li", null, "Nenhum governador pode ganhar mais que um ministro do STF (R$ 46.366,19 em 2025 e 2026).")),
+        foto));
   }
   function secTipicos() {
     const bloco = (casa, titulo) => {
@@ -1606,6 +1768,7 @@
       cidadesCamara().length ? h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && p.k === "v").length),
         cidadesCamara().length === 1 ? ` vereadores ${deCid(cidadesCamara()[0].cod)}` : [" vereadores em ", h("strong", null, cidadesCamara().length), " capitais"],
         cidadesPrefeitura().length ? [" e ", h("strong", null, D.p.filter((p) => p.x && p.k === "p").length), cidadesPrefeitura().length === 1 ? " na Prefeitura" : " nas prefeituras"] : null) : null,
+      GOV.e.length ? h("span", { class: "chip" }, h("strong", null, GOV.e.length), " governadores") : null,
       h("span", { class: "chip" }, "Salário bruto: ", h("strong", null, "R$ 46.366,19")),
       h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
     const sel = $("#estado");
@@ -1624,13 +1787,16 @@
     const doEstado = S.D.p.filter((p) => p.uf === S.ufLista && p.x).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
     const chip = (p) => h("button", { type: "button", class: "pessoa-chip", onclick: () => { S.origem = "estado"; escolher(p.id); } }, avatar(p, "p"), p.n, h("small", null, p.pt));
     const sen = doEstado.filter((p) => p.k === "s"), dep = doEstado.filter((p) => p.k === "d");
+    const g = GOV.porUF[S.ufLista];
     add(caixa, h("div", { class: "lista-estado" },
+      g ? h("div", { class: "lista-estado__grupo" }, h("a", { class: "pessoa-chip", href: `#gov-${g.uf}`, onclick: () => { S.origem = "estado"; } },
+        avatar({ n: g.gov.n, f: g.gov.f }, "p"), g.gov.n, h("small", null, `${tituloGov(g)} · ${reais(g.v[0])} por mês`))) : null,
       h("p", { class: "rotulo" }, `${ESTADOS[S.ufLista]}: ${sen.length} senadores e ${dep.length} deputados federais no cargo`),
       h("div", { class: "lista-estado__grupo" }, sen.map(chip)),
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -1647,7 +1813,7 @@
       corpo.textContent = "";
       add(corpo, topo(1),
         h("h2", { id: "guia-titulo" }, "Quem te representa em Brasília?"),
-        h("p", { class: "discreto" }, "Cada estado elege 3 senadores e de 8 a 70 deputados federais. Escolha o seu estado para ver quem são e quanto cada um ganha e custa."),
+        h("p", { class: "discreto" }, "Cada estado elege um governador, 3 senadores e de 8 a 70 deputados federais. Escolha o seu estado para ver quem são e quanto cada um ganha e custa."),
         h("p", null, h("strong", null, "Em qual estado você vota?")),
         h("div", { class: "ufs" }, UFS.map((u) => h("button", { type: "button", title: ESTADOS[u], onclick: () => passo2(u) }, u))),
         h("div", { class: "guia__outros" },
@@ -1706,8 +1872,14 @@
       add(corpo, topo(2),
         h("h2", { id: "guia-titulo" }, `Seus representantes: ${ESTADOS[uf]}`),
         h("p", { class: "discreto" }, "Toque num nome para ver o contracheque do mandato."),
-        cidadesCamara().filter((c) => c.uf === uf).map((c) => h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: `vereadores_${c.cod}` }); fechar(); S.origem = "guia"; location.hash = `cid-${c.cod}`; } },
-          h("span", null, h("strong", null, `Mora ${c.cod === 2611606 ? "no" : "em"} ${c.n}?`), h("small", null, `Veja também os ${S.D.p.filter((q) => q.k === "v" && q.x && q.cid === c.cod).length} vereadores${prefeituraDe(c.cod) ? " e a Prefeitura" : ""} da capital, um a um`)), h("span", { "aria-hidden": "true" }, "→"))),
+        GOV.porUF[uf] ? (() => { const g = GOV.porUF[uf]; return h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: `governador_${uf}` }); fechar(); S.origem = "guia"; location.hash = `gov-${uf}`; } },
+          h("span", null, h("strong", null, `${tituloGov(g)}: ${g.gov.n}`), h("small", null, `Salário de ${reais(g.v[0])} por mês. Veja a lei e quem governou desde 2023`)), h("span", { "aria-hidden": "true" }, "→")); })() : null,
+        [...new Set([...cidadesCamara(), ...cidadesPrefeitura()].filter((c) => c.uf === uf).map((c) => c.cod))].map((cod) => {
+          const c = { ...(camaraDe(cod) || prefeituraDe(cod)), cod };
+          const partes = [camaraDe(cod) ? `os ${S.D.p.filter((q) => q.k === "v" && q.x && q.cid === cod).length} vereadores` : null, prefeituraDe(cod) ? "a Prefeitura" : null].filter(Boolean);
+          return h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: `capital_${cod}` }); fechar(); S.origem = "guia"; location.hash = `cid-${cod}`; } },
+            h("span", null, h("strong", null, `Mora ${COM_ARTIGO.has(cod) ? "no" : "em"} ${c.n}?`), h("small", null, `Veja também ${listaE(partes)} da capital, um a um`)), h("span", { "aria-hidden": "true" }, "→"));
+        }),
         h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou partido", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
         lista,
         h("div", { class: "guia__rodape" },
@@ -1733,10 +1905,18 @@
         evento("ver_cidade", { cidade: base, origem: S.origem || (S.carregado ? "navegacao" : "link") });
         // cidade com vereador por vereador: o ranking embaixo começa pelos vereadores dela
         if (camaraDe(base.slice(4))) Object.assign(S.rank, { casa: "v", cid: +base.slice(4), periodo: "2025", uf: "", metrica: "custo", completo: false });
+        else if (prefeituraDe(base.slice(4))) Object.assign(S.rank, { casa: "p", cid: +base.slice(4), periodo: "2025", uf: "", metrica: "custo", completo: false });
       }
-      S.origem = null; S.sel = null; S.cidade = base;
+      S.origem = null; S.sel = null; S.gov = null; S.cidade = base;
       return null;
     }
+    if (base && base.startsWith("gov-") && GOV.porUF[base.slice(4).toUpperCase()]) {
+      const uf = base.slice(4).toUpperCase();
+      if (S.gov !== uf) evento("ver_governador", { uf, origem: S.origem || (S.carregado ? "navegacao" : "link") });
+      S.origem = null; S.sel = null; S.cidade = null; S.gov = uf;
+      return null;
+    }
+    S.gov = null;
     if (base && S.porId.has(base)) {
       S.cidade = null;
       const p = S.porId.get(base);
@@ -1751,7 +1931,7 @@
       return null;
     }
     // "#" (logo) ou uma seção que só existe na página inicial: volta para a página inicial
-    if (!base || ["tipico", "governo", "cidades"].includes(base)) { S.sel = null; S.cidade = null; }
+    if (!base || ["tipico", "governo", "governadores", "cidades"].includes(base)) { S.sel = null; S.cidade = null; }
     return base || null; // pode ser o nome de uma seção
   }
   function render(rolar) {
@@ -1759,6 +1939,14 @@
     const app = $("#app");
     app.textContent = "";
     const p = S.sel ? S.porId.get(S.sel) : null;
+    if (S.gov) {
+      const e = GOV.porUF[S.gov];
+      document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
+      app.append(secGovernador(e), secGovernadores(e));
+      navSecoes(["governador", "governadores", "entenda", "fontes"]);
+      if (rolar) irPara("governador");
+      return;
+    }
     if (S.cidade) {
       document.title = "Câmara Municipal · Contas do Poder";
       const espera = h("p", { class: "discreto" }, "Carregando a câmara…");
@@ -1767,7 +1955,7 @@
         const c = CID.porId.get(S.cidade);
         if (!c) { espera.textContent = "Cidade não encontrada."; return; }
         document.title = `Câmara de ${c.n} · Contas do Poder`;
-        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c)].filter(Boolean));
+        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c)].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
         if (rolar) irPara("cidade");
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
@@ -1782,19 +1970,22 @@
       if (rolar) irPara("contracheque");
     } else {
       document.title = "Contas do Poder";
-      app.append(...[secTipicos(), secGoverno(), secCamaras(null), secRanking(null, null), secResumoGeral()].filter(Boolean));
-      navSecoes(["tipico", "governo", "cidades", "ranking", "resumo", "entenda", "fontes"]);
+      app.append(...[secTipicos(), secGoverno(), secGovernadores(null), secCamaras(null), secRanking(null, null), secResumoGeral()].filter(Boolean));
+      navSecoes(["tipico", "governo", "governadores", "cidades", "ranking", "resumo", "entenda", "fontes"]);
     }
   }
   window.addEventListener("hashchange", () => { const secao = lerEndereco(); render(!secao); if (secao) irPara(secao); });
 
-  // dados.json (Congresso e governo) e camaras.json (vereador por vereador); se o segundo falhar, o site segue sem ele
+  // dados.json (Congresso e governo), camaras.json (vereador por vereador), prefeituras.json e governadores.json;
+  // se um dos três últimos falhar, o site segue sem ele
   Promise.all([
     fetch("dados/dados.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); }),
     fetch("dados/camaras.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
     fetch("dados/prefeituras.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
+    fetch("dados/governadores.json").then((r) => (r.ok ? r.json() : null)).catch(() => null),
   ])
-    .then(([D, camaras, prefeituras]) => {
+    .then(([D, camaras, prefeituras, governadores]) => {
+      if (governadores) { GOV.meta = governadores.meta; GOV.e = governadores.e; GOV.e.forEach((e) => { GOV.porUF[e.uf] = e; }); }
       juntarMunicipal(D, camaras, "cidades");
       juntarMunicipal(D, prefeituras, "prefeituras");
       S.D = D;

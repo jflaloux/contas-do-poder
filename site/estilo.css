@@ -434,3 +434,17 @@ a.pessoa-chip:hover { border-color: var(--accent); }
   .conta-cargos__tabela td, .conta-cargos__tabela th { padding: 6px 8px; }
 }
 .conta-cargos__extra td { color: var(--ink-2); font-size: .92em; }
+
+/* governadores: de onde vem cada valor */
+.conf { font-weight: 600; vertical-align: 1px; }
+.conf--lei, .conf--folha { background: var(--accent-soft); color: var(--accent); }
+.conf--tabela { background: var(--line-2); color: var(--ink-2); }
+.conf--calculado, .conf--imprensa { background: var(--hi-soft); color: var(--hi-ink); }
+.rank__nome .conf { font-size: .66rem; }
+.rank__obs { color: var(--hi-ink) !important; }
+.fonte-gov { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; gap: 6px; background: var(--bg); }
+.tabela-gov td, .tabela-gov th { text-align: left; }
+.tabela-gov td.num { text-align: right; }
+.tabela-gov td { white-space: normal; vertical-align: top; }
+.tabela-gov__obs { display: block; color: var(--ink-2); font-size: .82rem; margin-top: 2px; max-width: 46ch; }
+.tabela-gov td.num, .tabela-gov td:nth-child(3), .tabela-gov td:nth-child(4) { white-space: nowrap; }
