@@ -289,7 +289,18 @@
       h("option", { value: "", selected: !atual }, primeiro || "Todos os estados"),
       UFS.map((u) => h("option", { value: u, selected: u === atual }, `${ESTADOS[u]} (${u})`)));
   }
-  const irPara = (id) => { const e = document.getElementById(id); if (e) e.scrollIntoView({ block: "start" }); };
+  // rola até a seção. Dentro da mesma página, com animação; ao abrir outra página (político, cidade, estado), de uma
+  // vez: a animação longa (de lá de baixo da página inicial até o topo) era interrompida por um resto de rolagem do
+  // trackpad ou pelo conteúdo que ainda carregava, e a pessoa ficava no pé da página nova
+  const irPara = (id, deUmaVez) => {
+    const e = document.getElementById(id);
+    if (!e) return;
+    if (!deUmaVez) { e.scrollIntoView({ block: "start" }); return; }
+    const raiz = document.documentElement, antes = raiz.style.scrollBehavior;
+    raiz.style.scrollBehavior = "auto";
+    e.scrollIntoView({ block: "start" });
+    raiz.style.scrollBehavior = antes;
+  };
   const buscaTexto = (p) => p._b || (p._b = semAcento(`${p.n} ${p.nc || ""} ${p.pt || ""} ${p.uf} ${ESTADOS[p.uf] || ""} ${p.g}`));
   function encontrar(q, filtro) {
     const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
@@ -2097,7 +2108,7 @@
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
       app.append(secGovernador(e), secGovernadores(e));
       navSecoes(["governador", "governadores", "entenda", "fontes"]);
-      if (rolar) irPara("governador");
+      if (rolar) irPara("governador", true);
       return;
     }
     if (S.cidade) {
@@ -2110,7 +2121,7 @@
         document.title = `Câmara de ${c.n} · Contas do Poder`;
         espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c)].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
-        if (rolar) irPara("cidade");
+        if (rolar) irPara("cidade", true);
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
       return;
     }
@@ -2120,7 +2131,7 @@
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
       app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k)].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
-      if (rolar) irPara("contracheque");
+      if (rolar) irPara("contracheque", true);
     } else {
       document.title = "Contas do Poder";
       app.append(...[secTipicos(), secGoverno(), secGovernadores(null), secCamaras(null), secRanking(null, null), secResumoGeral()].filter(Boolean));
