@@ -1,8 +1,13 @@
 # Contas do Poder
 
-Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, com números oficiais
-da Câmara, do Senado e do Portal da Transparência.
-Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me).
+**Site: [contasdopoder.com](https://contasdopoder.com)**
+
+Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
+da Câmara, do Senado e do Portal da Transparência. E também a Câmara Municipal de cada cidade, cada vereador e a
+Prefeitura de São Paulo.
+Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
+([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
+nas issues.
 
 Este repositório tem os robôs que coletam os dados oficiais, a base unificada e o site.
 
