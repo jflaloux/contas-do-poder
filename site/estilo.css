@@ -423,6 +423,7 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .conta-cargos[open] summary { margin-bottom: 8px; }
 .conta-cargos p { margin: 8px 0 0; color: var(--ink-2); max-width: 760px; }
 .conta-cargos__tabela th:not(:first-child), .conta-cargos__tabela td.num { text-align: right; }
+.conta-cargos__tabela td.num { white-space: nowrap; }
 .conta-cargos__total td { font-weight: 700; border-top: 1.5px solid var(--line); }
 a.pessoa-chip { text-decoration: none; }
 a.pessoa-chip:hover { border-color: var(--accent); }

@@ -727,7 +727,15 @@
     };
     // custo dele por mês de cada visão, no período escolhido
     const custo = (id) => { const q = S.porId.get(id); const r = q && resumo(q, k); return r ? `${reais(r.tm)}/mês` : `sem dados ${nomePeriodo(k, false)}`; };
-    const opcoes = [[j.id, "Tudo junto", "os dois cargos, sem contar nada duas vezes"], [exe.id, exe.g, sub(exe)], [par.id, par.g, sub(par)]];
+    // quantos meses entram em cada média: os cargos costumam ser um depois do outro, então "tudo junto" é a média de
+    // todos os meses (fica entre os dois valores), e não a soma; a soma, em totais do período, está em "Como a conta fecha"
+    const nMeses = (id) => { const q = S.porId.get(id); const r = q && resumo(q, k); return r ? r.m : 0; };
+    const mesesTxt = (n) => `${n} ${n === 1 ? "mês" : "meses"}`;
+    const comMeses = (id, onde, texto) => (nMeses(id) ? `${mesesTxt(nMeses(id))} ${onde} · ${texto}` : texto);
+    const opcoes = [
+      [j.id, "Tudo junto", nMeses(j.id) ? `média dos ${mesesTxt(nMeses(j.id))} nos dois cargos, sem contar nada duas vezes` : "os dois cargos, sem contar nada duas vezes"],
+      [exe.id, exe.g, comMeses(exe.id, "no ministério", sub(exe))],
+      [par.id, par.g, comMeses(par.id, "no mandato", sub(par))]];
     const alvo = (id) => { const q = S.porId.get(id); return `#${id}${q && k !== periodoPadrao(q) && periodos(q).includes(k) ? "~" + k : ""}`; };
     return h("nav", { class: "cargos", "aria-label": "Cargos desta pessoa" },
       h("p", { class: "rotulo" }, `${j.n} tem dois cargos. Veja juntos ou separados (custo dele ${nomePeriodo(k, false)}):`),
@@ -751,7 +759,8 @@
   // ministro fica no ministro, e não aparece de novo no deputado/senador.
   function contaDosCargos(j, k, aberto) {
     const [exe, par] = j.cg.map((c) => S.porId.get(c.id));
-    const cols = [[exe, j.cg[0].g], [par, j.cg[1].g], [j, "Tudo junto"]].map(([q, nome]) => ({ nome, r: q ? resumo(q, k) : null }));
+    // cabeçalho curto (o nome completo de cada cargo já está nos cartões de cima), para caber no celular
+    const cols = [[exe, "No ministério", j.cg[0].g], [par, "No mandato", j.cg[1].g], [j, "Tudo junto", "os dois cargos"]].map(([q, nome, longo]) => ({ nome, longo, r: q ? resumo(q, k) : null }));
     if (!cols[2].r) return null;
     const cats = [...ORDEM_GANHA, ...ORDEM_CUSTA].filter((c) => cols.some((x) => x.r && x.r.cats[c]));
     const total = (x, f) => (x.r && Math.abs(f(x.r)) >= 0.5 ? reais(f(x.r)) : "R$ 0");
@@ -780,7 +789,7 @@
     return h("details", { class: "conta-cargos", open: aberto || null, ontoggle: (e) => { if (e.target.open) evento("abrir_detalhe", { categoria: "dois_cargos", casa: "dois cargos" }); } },
       h("summary", null, "Como a conta fecha: cada cargo e a soma"),
       h("div", { class: "rolagem" }, h("table", { class: "comp-tabela conta-cargos__tabela" },
-        h("thead", null, h("tr", null, h("th", null, `Total ${nomePeriodo(k, false).replace(/^em /, "em ")}`), cols.map((x) => h("th", null, x.nome)))),
+        h("thead", null, h("tr", null, h("th", null, `Total ${nomePeriodo(k, false).replace(/^em /, "em ")}`), cols.map((x) => h("th", { title: x.longo }, x.nome)))),
         h("tbody", null, linhas.map(([nome, f, tipo]) => h("tr", { class: tipo === "total" ? "conta-cargos__total" : tipo ? "conta-cargos__extra" : null },
           h("td", null, nome), cols.map((x) => h("td", { class: "num" }, celula(x, f, tipo)))))))),
       h("p", { class: "pequeno" }, expl.join(" ")));
