@@ -10,7 +10,7 @@ Uso:
     python3 coletar.py prefeituras     # São Paulo, Recife, Fortaleza, Vitória e Porto Alegre: prefeito, vice e secretários
                                        # (e subprefeitos, em SP), mês a mês, pela folha (prefeitura_sp é o nome antigo)
     python3 coletar.py governadores    # os 27 governadores e vices: salário pela lei (dados/governadores/governadores.json)
-                                       # e, em 12 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
+                                       # e, em 24 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
     python3 coletar.py renda           # distribuição da renda de quem trabalha (PNAD Contínua do IBGE), para o "ganha
                                        # mais que X% dos brasileiros que trabalham"; só baixa (~900 MB) quando sai um
                                        # trimestre novo

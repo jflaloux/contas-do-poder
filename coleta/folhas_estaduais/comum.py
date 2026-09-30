@@ -37,7 +37,8 @@ def ler(uf):
 def gravar(uf, linhas, meses_feitos):
     """Troca, no arquivo do estado, os meses processados agora pelas linhas novas."""
     velhas = ler(uf)
-    novas = pd.DataFrame(linhas, columns=COLUNAS)
+    # a mesma pessoa pode aparecer duas vezes na lista de ocupantes (a vice que vira governadora): linhas iguais contam uma vez
+    novas = pd.DataFrame(linhas, columns=COLUNAS).drop_duplicates()
     if len(velhas):
         velhas = velhas[~velhas.aaaamm.isin(set(meses_feitos))]
     df = pd.concat([velhas, novas], ignore_index=True) if len(velhas) else novas
@@ -144,10 +145,10 @@ def avisar(uf, texto):
     log(f"  Folha {uf}: {texto}")
 
 
-def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600):
+def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600, colunas=None):
     """Lê um CSV grande aos poucos, sem guardar, e devolve (cabeçalho, [linhas que têm alguma das chaves]) como dicionários.
     As chaves (sem acento) são procuradas nos bytes da linha, em maiúsculas, antes de ler as colunas: é o que deixa ler
-    arquivos de 100-200 MB sem gastar memória."""
+    arquivos de 100-200 MB sem gastar memória. `colunas`: nomes das colunas, para arquivo sem linha de cabeçalho."""
     import csv
     import time
     from ..util import TempoEsgotado, _sessao, verificar_prazo
@@ -156,7 +157,7 @@ def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600):
     for tentativa in range(3):
         verificar_prazo()
         try:
-            achadas, cab = [], None
+            achadas, cab = [], (list(colunas) if colunas else None)
             with _sessao().get(url, stream=True, timeout=timeout) as r:
                 r.raise_for_status()
                 for i, bruta in enumerate(r.iter_lines(chunk_size=1 << 20)):

@@ -338,8 +338,9 @@ Veja `metadados.json` → `pendencias`. As principais:
    comissionado, pelo nome).
 3. **Câmara:** ainda faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão).
    Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
-4. **Governadores:** o mês a mês pela folha em 12 estados; nos outros, só o salário do cargo. Em AL, AP, GO, MA e RJ,
-   o valor do cargo ainda é o da imprensa.
+4. **Governadores:** o mês a mês pela folha em 24 estados. Faltam o Amapá e o Mato Grosso (a consulta pede CAPTCHA,
+   que não contornamos) e o Tocantins (o portal só funciona clicando na página). No Pará, a consulta pública deixou de
+   mostrar a governadora e o vice a partir de abril de 2026.
 5. **Prefeituras:** Belo Horizonte (portal bloqueia robôs), Curitiba e as outras capitais ainda não foram feitas.
 6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
    afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).

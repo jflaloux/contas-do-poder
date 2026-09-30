@@ -32,7 +32,7 @@ ARQUIVO = DADOS / "governadores" / "governadores.json"
 SAIDA = RAIZ / "site" / "dados" / "governadores.json"
 FOTOS = RAIZ / "site" / "fotos"
 CONFIANCAS = {"lei", "folha", "tabela", "calculado", "imprensa"}
-SITUACOES = {"aberta", "painel", "token", "bloqueada", "suspensa", "nao_testada"}
+SITUACOES = {"aberta", "painel", "token", "bloqueada", "suspensa", "nao_testada", "captcha", "navegador"}
 UFS = {"AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN",
        "RO", "RR", "RS", "SC", "SE", "SP", "TO"}
 
