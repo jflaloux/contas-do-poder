@@ -486,3 +486,11 @@ input[type="search"] { line-height: 1.5; }
 .fontes-lista__corpo h3 { font-size: .95rem; margin: 12px 0 4px; break-after: avoid; }
 .fontes-lista__corpo .lista { margin: 0; font-size: .88rem; }
 .fontes-lista__corpo li { break-inside: avoid; }
+/* "Encontrou um erro?" no fim de cada página e a lista de correções (/correcoes) */
+.erro-aviso { border-style: dashed; }
+.erro-aviso h2 { margin: 0; font-size: 1.15rem; }
+.erro-aviso p { margin: 0; }
+.correcoes { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.correcao h3 { margin: 0; font-size: 1.05rem; }
+.correcao p { margin: 0; max-width: 760px; }
+.correcao__paginas { color: var(--ink-2); }

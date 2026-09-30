@@ -134,6 +134,30 @@ for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto))]);
 }
 
+// ------------------------------------------------------------------ correções (/correcoes, de site/dados/correcoes.json)
+const COR = ler("correcoes.json", null);
+if (COR) {
+  const link = (ref) => {
+    const g = /^governador\/([a-z]{2})$/.exec(ref);
+    if (g) return `<a href="/${ref}">${esc(`Governo ${deUF(g[1].toUpperCase())}`)}</a>`;
+    const p = porId.get(ref);
+    return p && END.p[ref] ? `<a href="/${esc(END.p[ref])}">${esc(p.n)}</a>` : null;
+  };
+  const dataBR = (d) => d.split("-").reverse().join("/");
+  const lista = (COR.c || []).map((c, i) => ({ ...c, i })).sort((a, b) => b.data.localeCompare(a.data) || a.i - b.i);
+  const itens = lista.map((c) => {
+    const links = (c.paginas || []).map(link).filter(Boolean);
+    return `<li class="cartao correcao"><p class="rotulo">${esc(dataBR(c.data))}${c.aviso ? ` · avisado por ${esc(c.aviso)}` : ""}</p>`
+      + `<h3>${esc(c.titulo)}</h3>${(c.texto || []).map((t) => `<p>${esc(t)}</p>`).join("")}`
+      + (links.length ? `<p class="correcao__paginas pequeno">${links.length === 1 ? "Página corrigida" : `Páginas corrigidas (${links.length})`}: ${links.join(", ")}</p>` : "")
+      + "</li>";
+  });
+  const corpo = `<section class="bloco" id="correcoes"><p class="rotulo">Transparência do site</p><h2>Correções</h2><p class="discreto">${esc(COR.intro || "")}</p>`
+    + `<ol class="correcoes">${itens.join("")}</ol></section>`;
+  const texto = `Os erros do site que já corrigimos: o que estava errado, o que mudou e quais páginas foram afetadas. ${lista.length} ${lista.length === 1 ? "correção" : "correções"} até agora.`;
+  paginas.push(["correcoes", pagina("correcoes", "Correções | Contas do Poder", texto, corpo)]);
+}
+
 // ------------------------------------------------------------------ grava
 // cópia simples, arquivo por arquivo (o fs.cpSync do Node 22 falha em algumas pastas montadas, como as de máquinas virtuais)
 function copiar(de, para) {

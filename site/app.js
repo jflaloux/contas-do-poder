@@ -61,7 +61,7 @@
 
   // ================================================================== estado
   const S = {
-    D: null, porId: new Map(), sel: null, cidade: null, gov: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
+    D: null, porId: new Map(), sel: null, cidade: null, gov: null, extra: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
     rank: { casa: null, metrica: "custo", periodo: null, uf: "", noCargo: true, completo: false },
   };
   let observadores = [];
@@ -1982,7 +1982,7 @@
       const a = ev.target.closest && ev.target.closest("a[href]");
       if (!a) return;
       const href = a.getAttribute("href"), onde = a.closest("footer") ? "rodape" : (a.closest("[id]") || {}).id || "";
-      if (href.startsWith("mailto:")) { evento("contato", { onde }); return; }
+      if (href.startsWith("mailto:")) { evento(a.dataset.evento || "contato", { onde }); return; }
       if (!/^https?:/.test(href) || a.href.startsWith(location.origin)) return;
       let dominio = ""; try { dominio = new URL(a.href).hostname.replace(/^www\./, ""); } catch (e) { /* link estranho */ }
       if (dominio === "wa.me") return; // já medido como "compartilhar"
@@ -2018,7 +2018,7 @@
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -2148,7 +2148,7 @@
     if (modo === "voltar" && location.pathname + location.search === ultimoLocal) { if (secao) irPara(secao); return; } // só o # mudou
     lerEndereco();
     ultimoLocal = location.pathname + location.search;
-    const pagina = !!(S.sel || S.cidade || S.gov);
+    const pagina = !!(S.sel || S.cidade || S.gov || S.extra);
     render(modo !== "voltar" && !secao && pagina);
     if (secao) irPara(secao, modo !== "mesma"); // numa página nova, sem animação (ver irPara)
     else if ((modo === "nova" || modo === "mesma") && !pagina) irParaTopo();
@@ -2174,6 +2174,8 @@
     const q = new URLSearchParams(location.search).get("periodo");
     const per = q === "mandato" ? "leg" : q;
     S.naoAchada = false;
+    const extraAntes = S.extra;
+    S.extra = null;
     // cidade: /cidade/sao-paulo-sp (ou /cid-3550308, quando a lista de cidades ainda não tinha chegado)
     const mc = caminho.match(/^cidade\/(.+)$/) || caminho.match(/^(cid-\d+)$/);
     if (mc) {
@@ -2182,6 +2184,12 @@
       return;
     }
     S.cidadeVista = null;
+    // páginas do site que não são de um político: /correcoes
+    if (caminho === "correcoes") {
+      if (extraAntes !== caminho) evento("ver_correcoes", { origem: S.origem || (S.carregado ? "navegacao" : "link") });
+      S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
+      return;
+    }
     const mg = caminho.match(/^governador\/([a-z]{2})$/);
     if (mg && GOV.porUF[mg[1].toUpperCase()]) {
       const uf = mg[1].toUpperCase();
@@ -2216,15 +2224,79 @@
     const l = $('link[rel="canonical"]');
     if (l && endereco()) l.href = `${origem()}${S.naoAchada ? "/" : location.pathname}`;
   }
+  // ------------------------------------------------------------------ "Encontrou um erro?" e a lista de correções
+  // No fim de cada página: um e-mail já com o endereço da página. O que for corrigido entra em dados/correcoes.json
+  // (editado à mão) e aparece em /correcoes.
+  const CONTATO = "contato@contasdopoder.com";
+  function blocoErro(nome) {
+    const url = `${origem() || location.origin}${location.pathname}${location.search}`;
+    const corpo = `Página: ${url}\n\nO que parece errado (qual número, de qual mês):\n\n\nOnde está o valor certo (link da fonte, se tiver):\n\n`;
+    const mailto = `mailto:${CONTATO}?subject=${encodeURIComponent(`Erro no Contas do Poder: ${nome}`)}&body=${encodeURIComponent(corpo)}`;
+    return h("section", { class: "bloco", id: "erro", "aria-labelledby": "t-erro" },
+      h("div", { class: "cartao erro-aviso" },
+        h("h2", { id: "t-erro" }, "Encontrou um erro nesta página?"),
+        h("p", { class: "discreto" }, "Avise a gente. Conferimos na fonte oficial, corrigimos e registramos o que mudou na ", h("a", { href: "/correcoes" }, "lista de correções"), "."),
+        h("div", { class: "acoes" }, h("a", { class: "botao botao--leve", href: mailto, "data-evento": "reportar_erro" }, "Avisar por e-mail")),
+        h("p", { class: "discreto pequeno" }, "Ou escreva para ", h("a", { href: mailto, "data-evento": "reportar_erro" }, CONTATO),
+          ", com o link da página. Se o valor estiver errado na própria fonte, quem corrige é o órgão que publicou: fale com a ouvidoria dele ou faça um pedido pela Lei de Acesso à Informação.")));
+  }
+  let correcoes = null;
+  function carregarCorrecoes() {
+    if (!correcoes) {
+      correcoes = fetch("/dados/correcoes.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+      correcoes.catch(() => { correcoes = null; }); // se falhar, tenta de novo na próxima vez
+    }
+    return correcoes;
+  }
+  // cada página corrigida: o id de um político ("dep-204558") ou um endereço ("governador/al")
+  function linkCorrigido(ref) {
+    const g = /^governador\/([a-z]{2})$/.exec(ref);
+    if (g) return GOV.porUF[g[1].toUpperCase()] ? h("a", { href: urlGov(g[1]) }, `Governo ${deUF(g[1].toUpperCase())}`) : null;
+    const p = S.porId.get(ref);
+    return p ? h("a", { href: urlDe(ref) }, p.n) : null;
+  }
+  function secCorrecoes(C) {
+    const itens = (C.c || []).map((c, i) => ({ ...c, i })).sort((a, b) => b.data.localeCompare(a.data) || a.i - b.i);
+    const dataBR = (d) => d.split("-").reverse().join("/");
+    return h("section", { class: "bloco", id: "correcoes", "aria-labelledby": "t-correcoes" },
+      h("p", { class: "rotulo" }, "Transparência do site"),
+      h("h2", { id: "t-correcoes" }, "Correções"),
+      h("p", { class: "discreto" }, C.intro || ""),
+      itens.length ? h("ol", { class: "correcoes" }, itens.map((c) => {
+        const links = (c.paginas || []).map(linkCorrigido).filter(Boolean);
+        return h("li", { class: "cartao correcao" },
+          h("p", { class: "rotulo" }, h("time", { datetime: c.data }, dataBR(c.data)), c.aviso ? ` · avisado por ${c.aviso}` : ""),
+          h("h3", null, c.titulo),
+          (c.texto || []).map((t) => h("p", null, t)),
+          links.length ? h("p", { class: "correcao__paginas pequeno" }, `${links.length === 1 ? "Página corrigida" : `Páginas corrigidas (${links.length})`}: `,
+            links.map((a, i) => [i ? ", " : "", a])) : null);
+      })) : h("p", null, "Nenhuma correção até agora."),
+      h("p", { class: "discreto pequeno" }, "Viu outro erro? Use o \"Encontrou um erro?\" no fim da página do político ou escreva para ",
+        h("a", { href: `mailto:${CONTATO}?subject=${encodeURIComponent("Erro no Contas do Poder")}`, "data-evento": "reportar_erro" }, CONTATO), "."));
+  }
+
   function render(rolar) {
     observadores.forEach((o) => o.disconnect()); observadores = [];
     const app = $("#app");
     app.textContent = "";
     const p = S.sel ? S.porId.get(S.sel) : null;
+    if (S.extra === "correcoes") {
+      document.title = "Correções · Contas do Poder";
+      const espera = h("p", { class: "discreto" }, "Carregando as correções…");
+      app.append(espera);
+      navSecoes(["entenda", "fontes"]);
+      carregarCorrecoes().then((C) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        espera.replaceWith(secCorrecoes(C));
+        navSecoes(["correcoes", "entenda", "fontes"]);
+        if (rolar) irPara("correcoes", true);
+      }, () => { espera.textContent = "Não foi possível carregar as correções."; });
+      return;
+    }
     if (S.gov) {
       const e = GOV.porUF[S.gov];
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
-      app.append(secGovernador(e), secGovernadores(e));
+      app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`));
       navSecoes(["governador", "governadores", "entenda", "fontes"]);
       if (rolar) irPara("governador", true);
       return;
@@ -2240,7 +2312,7 @@
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c)].filter(Boolean));
+        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`)].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
         if (rolar) irPara("cidade", true);
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
@@ -2250,7 +2322,7 @@
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
-      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k)].filter(Boolean));
+      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n)].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque", true);
     } else {

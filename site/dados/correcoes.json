@@ -1,0 +1,39 @@
+{
+  "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
+  "c": [
+    {
+      "data": "2026-09-30",
+      "titulo": "Deputados que assumiram como suplentes: meses fora do mandato contados como salário",
+      "texto": [
+        "A página de remuneração de cada deputado, no site da Câmara, também lista pagamentos de meses em que a pessoa não estava no mandato: valores de 1/7 a 1/4 do salário de deputado, que parecem ser a aposentadoria de ex-parlamentar. O site contava esses meses como salário do mandato, e a média por mês saía mais baixa que a real. Marcelo Nilo, por exemplo, recebia R$ 6.623,74 por mês até tomar posse como suplente, em abril de 2026.",
+        "Agora, pelo histórico oficial de cada deputado na Câmara (posse, licença, afastamento), só entram os meses em que ele estava em exercício."
+      ],
+      "aviso": "um leitor, no Reddit",
+      "paginas": ["dep-204558", "dep-160561", "dep-220577", "dep-221339", "dep-220587", "dep-220531", "dep-235620", "dep-208297", "dep-220600", "dep-141480", "dep-229939", "dep-220627", "dep-220580", "dep-213274", "dep-220579", "dep-220575", "dep-230177"]
+    },
+    {
+      "data": "2026-09-30",
+      "titulo": "Alagoas e Goiás: salário do governador desatualizado",
+      "texto": [
+        "Os valores vinham de uma reportagem, com reajustes e datas errados. Conferimos na folha de pagamento de cada Estado.",
+        "Em Alagoas, o salário do governador é de R$ 40.080,75 desde agosto de 2026; o site mostrava R$ 32.323,19, valor que valia desde junho de 2025. Em Goiás, o valor atual estava certo (R$ 33.428,12), mas vale desde maio de 2026, e o reajuste de maio de 2025 (R$ 32.062,27) não aparecia. Nos dois estados, o salário do vice também passou a vir da folha."
+      ],
+      "paginas": ["governador/al", "governador/go"]
+    },
+    {
+      "data": "2026-09-30",
+      "titulo": "Posição entre os colegas: empates e arredondamento",
+      "texto": [
+        "Quando quase todos os colegas custam o mesmo (numa câmara em que todos recebem o mesmo salário e não há verba publicada, por exemplo), a frase podia dizer \"custa mais que 7%\", como se houvesse uma diferença. Agora diz quantos custam o mesmo (\"custa o mesmo que X dos outros Y\").",
+        "O percentual também passou a ser arredondado para baixo: quem estava entre os mais caros de um grupo grande podia aparecer como \"custa mais que 100%\"."
+      ]
+    },
+    {
+      "data": "2026-09-30",
+      "titulo": "Imagem para compartilhar de vereadores: cidade errada",
+      "texto": [
+        "Na imagem para compartilhar de vereadores de fora de São Paulo, a frase da posição falava em \"vereadores de São Paulo\", embora a comparação fosse com os colegas da própria cidade."
+      ]
+    }
+  ]
+}

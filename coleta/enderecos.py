@@ -25,7 +25,7 @@ from .util import log
 ARQ = RAIZ / "site" / "dados" / "enderecos.json"
 FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json")]
 # primeiros pedaços de endereço que não podem ser nome de político (pastas e rotas do site)
-RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking"}
+RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes"}
 # quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, prefeituras, câmaras
 PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "p": 4, "v": 5}
 

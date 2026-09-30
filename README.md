@@ -321,6 +321,16 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
   baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar`, `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
+  Também `reportar_erro` (clique no "Encontrou um erro?") e `ver_correcoes`.
+
+## Erros e correções
+
+- No fim de cada página (político, governador, cidade), o bloco **"Encontrou um erro?"** abre um e-mail para
+  contato@contasdopoder.com já com o endereço da página.
+- O que for corrigido entra, à mão, em `site/dados/correcoes.json` e aparece em
+  [contasdopoder.com/correcoes](https://contasdopoder.com/correcoes): a data, o que estava errado, o que mudou e as
+  páginas afetadas (`paginas`: o id do político, como `dep-204558`, ou `governador/al`). `publicacao/gerar.mjs` monta
+  a página pronta.
 
 ## O que já foi conferido
 
