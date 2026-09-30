@@ -11,3 +11,6 @@ dados/processados/lancamentos.csv
 
 # O que o Cloudflare Pages publica (node publicacao/gerar.mjs recria a partir de site/)
 publicar/
+
+# Notas pessoais (imprensa, decisões): ficam só no computador
+NOTAS-PRIVADAS.md

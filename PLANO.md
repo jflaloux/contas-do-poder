@@ -63,7 +63,7 @@ Cada número tem link para a fonte oficial.
 - [x] Imagem para o status do WhatsApp com a foto do parlamentar (como no Contas do Brasil) — Claude
 - [x] Guardar as fotos no próprio site (`site/fotos/`) — Claude
 - [x] Google Analytics com eventos e prévia do link (`og.png`) — Claude
-- [ ] Página própria por político para a prévia do link no WhatsApp (foto, nome, valor) — Claude
+- [x] Página própria por político, estado e cidade (endereço fixo, título, descrição e resumo para o Google e o WhatsApp) — Claude
 - [x] Governo federal: presidente, vice e ministros (salário, jetons, viagens) — Claude
 - [x] Fotos do governo federal: Congresso ou Wikimedia Commons com crédito (45 de 71; o resto com iniciais) — Claude
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
@@ -73,17 +73,18 @@ Cada número tem link para a fonte oficial.
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
 - [x] Prefeitura de São Paulo: prefeito, vice, secretários e subprefeitos, mês a mês (folha nos dados abertos) — Claude
 - [x] Vereadores, passo 2b: Fortaleza, Goiânia, Manaus, Natal e Recife, vereador por vereador (robô comum a várias cidades) — Claude
-- [x] Vereadores, passo 2c: Rio de Janeiro, Belo Horizonte, Porto Alegre, Maceió e São Luís — Claude
+- [x] Vereadores, passo 2c: Rio de Janeiro, Belo Horizonte, Porto Alegre, Maceió e São Luís (robôs rodam no Mac, no Brasil) — Claude
 - [ ] Vereadores, passo 2d: Curitiba, Teresina, João Pessoa, Boa Vista, Palmas e Aracaju (dados parciais). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
-- [ ] Vereadores, passo 2c: as outras capitais. Parciais: Belo Horizonte, Curitiba, Salvador, João Pessoa, Porto Velho, Rio Branco, Palmas, Maceió. Bloqueiam acesso de fora do Brasil (o robô do GitHub roda nos EUA): Porto Alegre, Vitória, Cuiabá, Distrito Federal, São Luís. Muito difíceis: Rio, Florianópolis, Campo Grande, Teresina (a folha mostra CPF), Aracaju, Boa Vista, Belém, Macapá — Claude
 - [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
 - [ ] Prefeituras, próximas: Curitiba (a exportação da folha dá erro), Natal, João Pessoa, Salvador, Rio, Campo Grande, Macapá. Belo Horizonte: o portal bloqueia robôs (WAF), não contornamos; só se a Prefeitura liberar ou publicar os dados abertos — Claude
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
 - [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
+- [x] Governadores, v3: folha mês a mês em 24 estados (+ AL, AM, BA, CE, GO, MA, MS, PA, PI, RJ, RN, RS, SE). AP e MT pedem CAPTCHA (não contornamos); TO só funciona clicando — Claude
+- [ ] Governadores: completar os meses do RN (limite de consultas) — Claude
 - [x] Logo novo (prédio público cujas colunas são um gráfico de barras), favicon e prévia do link; rodapé sem nome, com fontes oficiais, código aberto e contato — Claude
-- [ ] E-mail contato@contasdopoder.com (Cloudflare Email Routing) — Jean-François
-- [ ] Governadores: achar as leis que faltam (AL, AP, GO, MA, RJ, SE só pela imprensa) — Claude, com ajuda de quem estiver no Brasil (portais bloqueiam o exterior)
+- [x] E-mail contato@contasdopoder.com (Cloudflare Email Routing; envio pelo Gmail como contato@) — Jean-François
+- [ ] Governadores: achar o número das leis que faltam (AL, GO, MA e RJ já conferidos na folha; AP pela tabela oficial) — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 
@@ -92,16 +93,17 @@ Cada número tem link para a fonte oficial.
 - [ ] Página "Como calculamos" — Claude rascunha, você revisa
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você
 - [ ] Uma conversa com advogado (linguagem, LGPD) — Você
-- [ ] Canal para pedir correção de dados — Claude
+- [x] Canal para pedir correção de dados: "Encontrou um erro?" em cada página e a lista pública em /correcoes — Claude
 
 ## Fase 4 — Lançamento
 
-- [ ] Registrar contasdopoder.com e contasdopoder.com.br — Você
+- [x] Registrar contasdopoder.com — Você
+- [ ] Registrar contasdopoder.com.br — Você
 - [x] Código no GitHub (público): jflaloux/contas-do-poder — Você e Claude
 - [x] Atualização automática semanal (GitHub Actions), com trava se a conferência falhar — Claude
 - [ ] Primeira execução no GitHub: ver se os sites do governo aceitam os servidores do GitHub — Você (botão "Run workflow")
-- [ ] Cloudflare Pages conectado ao repositório (pasta `site`) e domínio contasdopoder.com — Você
-- [ ] Divulgação: jornalistas de dados, perfis de transparência, grupos — Você
+- [x] Cloudflare Pages conectado ao repositório (build `node publicacao/gerar.mjs`, pasta `publicar`) e domínio contasdopoder.com — Você
+- [ ] Divulgação: Reddit (r/brdev) e primeiros e-mails a jornalistas e organizações em 30/09; o resto depois da eleição — Você
 
 ## Tecnologia
 
