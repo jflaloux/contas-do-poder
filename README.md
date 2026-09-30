@@ -43,14 +43,26 @@ até `coleta/config.py` ser atualizado para a nova legislatura.
 
 ## Publicação (Cloudflare Pages)
 
-Projeto do Cloudflare Pages conectado a este repositório, sem comando de build e com `site` como pasta
-de saída. Cada mudança no repositório publica o site automaticamente.
+Projeto do Cloudflare Pages conectado a este repositório, com o comando de build `node publicacao/gerar.mjs`
+e `publicar` como pasta de saída. Cada mudança no repositório publica o site automaticamente.
+
+**Endereços.** Cada político, estado e cidade tem o seu endereço: `contasdopoder.com/guilherme-boulos`,
+`/governador/sp`, `/cidade/sao-paulo-sp` (o período vai em `?periodo=2025` ou `?periodo=mandato`). O endereço de
+cada político fica guardado em `site/dados/enderecos.json` e não muda depois de criado (quem tem dois cargos fica
+com o nome, e cada cargo com `/nome/ministro`, `/nome/deputado`); se mudar, o antigo redireciona para o novo. Os links
+antigos, com `#` (`/#dep-220639`), continuam funcionando: o site leva para o endereço novo.
+
+`publicacao/gerar.mjs` (sem dependências) copia `site/` para `publicar/` e cria uma página HTML pronta para cada
+endereço, com título, descrição e prévia de link próprios e um resumo em texto, para o Google e para as prévias do
+WhatsApp, que não rodam JavaScript. Também gera o `sitemap.xml` e o `_redirects`. Depois de carregar, a página
+funciona como antes: o `app.js` desenha tudo e troca de página sem recarregar.
 
 ## Ver o site no seu computador
 
 ```bash
-python3 coletar.py site               # gera site/dados/dados.json a partir da base
-python3 -m http.server 8000 -d site   # depois abra http://localhost:8000
+python3 coletar.py site       # gera site/dados/ a partir da base
+node publicacao/gerar.mjs     # monta publicar/, como o Cloudflare Pages
+node publicacao/servir.mjs    # depois abra http://localhost:8000
 ```
 
 O site é estático (HTML, CSS e JavaScript, sem instalar nada): `site/index.html`, `site/estilo.css`,

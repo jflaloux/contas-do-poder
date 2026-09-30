@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://contasdopoder.com/sitemap.xml

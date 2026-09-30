@@ -28,6 +28,7 @@ from datetime import datetime
 
 import pandas as pd
 
+from . import enderecos
 from .config import BRUTOS, PROCESSADOS, RAIZ
 from .util import ler_json, log, normalizar_nome
 
@@ -331,6 +332,7 @@ def executar():
     SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
     _municipios()
+    enderecos.executar()  # o endereço de cada página (contasdopoder.com/nome), depois de todos os arquivos prontos
 
 
 def _renda():

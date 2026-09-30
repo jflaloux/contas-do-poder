@@ -8,3 +8,6 @@ __pycache__/
 # Intermediários que os robôs recriam
 dados/brutos/
 dados/processados/lancamentos.csv
+
+# O que o Cloudflare Pages publica (node publicacao/gerar.mjs recria a partir de site/)
+publicar/
