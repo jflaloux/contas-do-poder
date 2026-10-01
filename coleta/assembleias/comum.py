@@ -136,6 +136,87 @@ def codigo_de(nome, tse_info):
     return zlib.crc32(normalizar_nome(nome).encode())
 
 
+FOTOS_TSE = "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/fotos/foto_cand2022_{uf}_div.zip"
+FOTOS_TSE_PAGINA = "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+
+
+class _ZipRemoto(io.RawIOBase):
+    """Arquivo remoto lido por pedaços (HTTP Range): o zip de fotos do TSE tem dezenas de MB e só precisamos de algumas."""
+
+    def __init__(self, sessao, url):
+        self.s, self.url, self.pos = sessao, url, 0
+        r = sessao.get(url, headers={"Range": "bytes=0-0"}, timeout=60)
+        r.raise_for_status()
+        self.tam = int(r.headers["content-range"].split("/")[1])
+
+    def seekable(self):
+        return True
+
+    def readable(self):
+        return True
+
+    def tell(self):
+        return self.pos
+
+    def seek(self, off, whence=0):
+        self.pos = off if whence == 0 else (self.pos + off if whence == 1 else self.tam + off)
+        return self.pos
+
+    def readinto(self, buf):
+        if self.pos >= self.tam or not len(buf):
+            return 0
+        fim = min(self.pos + len(buf), self.tam) - 1
+        r = self.s.get(self.url, headers={"Range": f"bytes={self.pos}-{fim}"}, timeout=120)
+        r.raise_for_status()
+        b = r.content
+        buf[:len(b)] = b
+        self.pos += len(b)
+        return len(b)
+
+
+def _fotos_tse(pessoas):
+    """Foto da candidatura de 2022 no TSE (Portal de Dados Abertos do TSE, licença Creative Commons Atribuição) para quem
+    ainda não tem foto. Só quando o nome civil do deputado é exatamente o de um candidato eleito ou suplente da UF."""
+    from .. import fotos as F
+    from ..util import _sessao
+    dados = F.ler_json(F.CREDITOS) if F.CREDITOS.exists() else {}
+    creditos = dados.setdefault("fotos", {})
+    novas = 0
+    por_uf = {}
+    for p in pessoas:
+        if not (F.PASTA / f"{p['id']}.webp").exists():
+            por_uf.setdefault(p["uf"], []).append(p)
+    for uf, ps in por_uf.items():
+        civis = {}
+        for v in tse_2022(uf).values():
+            civis.setdefault(normalizar_nome(v["nome"]), []).append(v)
+        alvo = {}
+        for p in ps:
+            c = civis.get(normalizar_nome(p.get("nc") or ""), [])
+            if len(c) == 1:
+                alvo[p["id"]] = c[0]["sq"]
+        if not alvo:
+            continue
+        try:
+            z = zipfile.ZipFile(io.BufferedReader(_ZipRemoto(_sessao(), FOTOS_TSE.format(uf=uf)), buffer_size=1 << 16))
+            nomes = {re.sub(r"\D", "", n): n for n in z.namelist() if n.lower().endswith((".jpg", ".jpeg", ".png"))}
+            for pid, sq in alvo.items():
+                arquivo = nomes.get(sq)
+                if not arquivo:
+                    continue
+                (F.PASTA / f"{pid}.webp").write_bytes(F._ajustar(z.read(arquivo)))
+                creditos[pid] = {"arquivo": arquivo, "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+                                 "licenca": "CC BY", "url_licenca": "http://www.opendefinition.org/licenses/cc-by", "pagina": FOTOS_TSE_PAGINA}
+                novas += 1
+        except TempoEsgotado:
+            raise
+        except Exception as e:  # noqa: BLE001 — foto é opcional
+            log(f"  fotos do TSE ({uf}): {e}")
+        finally:
+            F.salvar_json(F.CREDITOS, dados)
+    return novas
+
+
 def _fotos(pessoas):
     """Fotos com licença livre no Wikimedia Commons (as mesmas regras do governo federal e das prefeituras)."""
     from .. import fotos as F
@@ -152,6 +233,9 @@ def escrever(resultados, tipos, baixar_fotos=True):
     todas = [p for _, ps in resultados for p in ps]
     if baixar_fotos and todas:
         try:
+            novas = _fotos_tse([p for p in todas if p["x"]])
+            if novas:
+                log(f"  {novas} fotos novas de deputados estaduais (candidatura de 2022 no TSE)")
             novas = _fotos(todas)
             if novas:
                 log(f"  {novas} fotos novas de deputados estaduais (Wikimedia Commons)")
