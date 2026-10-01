@@ -163,6 +163,12 @@ p { margin: 0; }
 }
 .abertura h1 { font-size: clamp(2.9rem, 10vw, 5rem); line-height: .95; max-width: 7.25em; }
 .abertura h1 .realce, .abertura #titulo-abertura .realce { color: var(--banda-ganha); }
+@media (min-width: 900px) {
+  /* no computador, o título em duas linhas ("Quanto ganha e quanto custa" / "quem te representa?") na largura toda, em
+     vez de três linhas numa coluna estreita com um vazio ao lado; a primeira linha tem 10,6 vezes a altura da letra */
+  .abertura h1 { max-width: none; font-size: min(5.75rem, calc((100vw - 48px) / 10.9)); }
+  .abertura h1 .realce { display: block; }
+}
 .lide { font-size: 1.12rem; color: var(--ink-2); max-width: 35em; }
 .abertura .lide { color: var(--banda-ink-2); }
 .abertura .botao { background: var(--banda-ganha); color: #08161f; font-weight: 700; }
