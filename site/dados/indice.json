@@ -2,7 +2,7 @@
  "meta": {
   "titulo": "Índice de acesso aos salários dos governadores",
   "pergunta": "Dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês?",
-  "conferido_em": "2026-09-30",
+  "conferido_em": "2026-10-01",
   "como": [
    "Duas dimensões, de 0 a 1: completude (o que a fonte mostra) e facilidade (como dá para obter). Cada uma é a média dos seus critérios; o índice é a média harmônica das duas, então uma fonte completa que é difícil de usar, ou fácil de usar que mostra pouco, não tem nota alta.",
    "Cada nota tem a prova: o que a folha de pagamento do Estado mostra e o que o nosso robô conseguiu ler. Estado com algum critério ainda a conferir fica sem índice.",
@@ -232,30 +232,30 @@
   {
    "uf": "AP",
    "nome": "Amapá",
-   "indice": null,
-   "completude": null,
-   "facilidade": null,
+   "indice": 0.643,
+   "completude": 0.9,
+   "facilidade": 0.5,
    "fonte": "https://transparencia.ap.gov.br/consulta/3/41/pessoa/folha-por-servidor",
    "criterios": {
     "nome": {
-     "v": null,
-     "prova": "A conferir: a consulta pede CAPTCHA"
+     "v": 1,
+     "prova": "Nome completo"
     },
     "cargo": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Cargo (\"GOVERNADOR\"), órgão e lotação"
     },
     "no_cargo_hoje": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Governador e vice aparecem no último mês (ago/2026), com o cargo"
     },
     "partes": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 0.4,
+     "prova": "O 13º vem em folha separada; o resto só aparece como salário base, valor do cargo e \"outros valores\" (o governador recebe os R$ 33.000 em \"outros valores\")"
     },
     "historico": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Busca por mês; a lista de anos vai até 1999"
     },
     "lei": {
      "v": 1,
@@ -263,8 +263,8 @@
      "link": "https://transparencia.ap.gov.br/relatorios/tabelavalores.xlsx"
     },
     "formato": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "A página baixa a consulta em CSV ou XLS"
     },
     "acesso": {
      "v": 0.5,
@@ -279,14 +279,7 @@
      "prova": "Só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil); a cadeia do certificado HTTPS está incompleta"
     }
    },
-   "a_conferir": [
-    "nome",
-    "cargo",
-    "no_cargo_hoje",
-    "partes",
-    "historico",
-    "formato"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "BA",
@@ -751,7 +744,7 @@
     },
     "robos_exterior": {
      "v": null,
-     "prova": "A conferir"
+     "prova": "A conferir: a consulta não abriu em 01/10/2026 (tempo esgotado, também de dentro do Brasil)"
     }
    },
    "a_conferir": [
@@ -1443,30 +1436,30 @@
   {
    "uf": "TO",
    "nome": "Tocantins",
-   "indice": null,
-   "completude": null,
-   "facilidade": null,
+   "indice": 0.743,
+   "completude": 0.917,
+   "facilidade": 0.625,
    "fonte": "https://transparencia.to.gov.br/#!servidores",
    "criterios": {
     "nome": {
-     "v": null,
-     "prova": "A conferir: a consulta só funciona clicando na página"
+     "v": 1,
+     "prova": "Nome completo"
     },
     "cargo": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 0.5,
+     "prova": "O campo Cargo fica vazio; o vínculo diz \"agente político\" e o setor \"Secretaria Particular do Governador\" (o vice: \"Gabinete do Vice-Governador\")"
     },
     "no_cargo_hoje": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Governador e vice aparecem no último mês (ago/2026)"
     },
     "partes": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Cada rubrica no detalhe (subsídio e descontos, por código)"
     },
     "historico": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Busca por mês, desde 2016, com o 13º"
     },
     "lei": {
      "v": 1,
@@ -1474,8 +1467,8 @@
      "link": "https://al.to.leg.br/arquivo/74832"
     },
     "formato": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "A página exporta a consulta em CSV (também Excel, TXT, PDF e RTF)"
     },
     "acesso": {
      "v": 0,
@@ -1490,14 +1483,7 @@
      "prova": "Sem robots.txt; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
     }
    },
-   "a_conferir": [
-    "nome",
-    "cargo",
-    "no_cargo_hoje",
-    "partes",
-    "historico",
-    "formato"
-   ]
+   "a_conferir": []
   }
  ]
 }

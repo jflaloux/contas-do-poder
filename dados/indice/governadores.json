@@ -1,6 +1,6 @@
 {
  "_sobre": "Índice de acesso aos salários dos governadores: como cada Estado mostra o que o governador e o vice recebem. Mantido à mão, estado por estado, com a prova de cada nota (o que a folha mostra e o que o nosso robô consegue). Nota None = a conferir. O critério 'lei' é calculado de dados/governadores/governadores.json. Ver coleta/indice.py.",
- "conferido_em": "2026-09-30",
+ "conferido_em": "2026-10-01",
  "estados": {
   "AC": {
    "nome": [
@@ -118,28 +118,28 @@
   },
   "AP": {
    "nome": [
-    null,
-    "A conferir: a consulta pede CAPTCHA"
+    1,
+    "Nome completo"
    ],
    "cargo": [
-    null,
-    "A conferir"
+    1,
+    "Cargo (\"GOVERNADOR\"), órgão e lotação"
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir"
+    1,
+    "Governador e vice aparecem no último mês (ago/2026), com o cargo"
    ],
    "partes": [
-    null,
-    "A conferir"
+    0.4,
+    "O 13º vem em folha separada; o resto só aparece como salário base, valor do cargo e \"outros valores\" (o governador recebe os R$ 33.000 em \"outros valores\")"
    ],
    "historico": [
-    null,
-    "A conferir"
+    1,
+    "Busca por mês; a lista de anos vai até 1999"
    ],
    "formato": [
-    null,
-    "A conferir"
+    1,
+    "A página baixa a consulta em CSV ou XLS"
    ],
    "acesso": [
     0.5,
@@ -493,7 +493,7 @@
    ],
    "robos_exterior": [
     null,
-    "A conferir"
+    "A conferir: a consulta não abriu em 01/10/2026 (tempo esgotado, também de dentro do Brasil)"
    ]
   },
   "PA": {
@@ -992,28 +992,28 @@
   },
   "TO": {
    "nome": [
-    null,
-    "A conferir: a consulta só funciona clicando na página"
+    1,
+    "Nome completo"
    ],
    "cargo": [
-    null,
-    "A conferir"
+    0.5,
+    "O campo Cargo fica vazio; o vínculo diz \"agente político\" e o setor \"Secretaria Particular do Governador\" (o vice: \"Gabinete do Vice-Governador\")"
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir"
+    1,
+    "Governador e vice aparecem no último mês (ago/2026)"
    ],
    "partes": [
-    null,
-    "A conferir"
+    1,
+    "Cada rubrica no detalhe (subsídio e descontos, por código)"
    ],
    "historico": [
-    null,
-    "A conferir"
+    1,
+    "Busca por mês, desde 2016, com o 13º"
    ],
    "formato": [
-    null,
-    "A conferir"
+    1,
+    "A página exporta a consulta em CSV (também Excel, TXT, PDF e RTF)"
    ],
    "acesso": [
     0,
