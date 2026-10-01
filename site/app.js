@@ -251,10 +251,17 @@
           h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
         h("div", { class: "regua__legenda" }, h("span", null, `← ${verbo[0]}`), h("span", null, "mediana"), h("span", null, `${verbo[1]} →`))));
   }
+  // grupo pequeno (menos de 5 com dados, como a Prefeitura do Rio, com só o prefeito e o vice): sem mediana nem
+  // posição, porque "1º de 2: entre os 25% que mais recebem" não diz nada
+  const POUCOS = 5;
+  function colegasDe(p, k) {
+    const C = p.ced ? null : colegas(grupo(p), k);
+    return C && C.n >= POUCOS ? C : { cat: {}, tm: null, n: C ? C.n : 0 };
+  }
   function posicao(p, k) {
     const C = colegas(grupo(p), k);
     const eu = C.lista.find((x) => x.p.id === p.id);
-    if (!eu) return null;
+    if (!eu || C.n < POUCOS) return null;
     const acima = C.lista.filter((x) => x.r.tm > eu.r.tm).length;
     const abaixo = C.lista.filter((x) => x.r.tm < eu.r.tm).length;
     // arredonda para baixo: o 3º de 555 "custa mais que 99%", nunca "mais que 100%"
@@ -1273,7 +1280,7 @@
     return h("div", { class: "conta__resumo" }, principal, pos ? h("div", { class: "conta__resumo-lado" }, blocoPosicao(p, k, pos)) : null);
   }
   function secContracheque(p, k) {
-    const r = resumo(p, k), C = p.ced ? { cat: {}, tm: null } : colegas(grupo(p), k), pos = posicao(p, k);
+    const r = resumo(p, k), C = colegasDe(p, k), pos = posicao(p, k);
     const jj = (p.k === "d" || p.k === "s") && p.j ? S.porId.get(p.j) : null; // deputado/senador que também foi ministro
     const trocar = (novo) => { evento("trocar_periodo", { periodo: novo === "leg" ? "mandato" : novo, casa: casaTxt(p) }); S.periodo = novo; S.rank.periodo = novo; trocarEndereco(urlPessoa(p, novo)); render(); };
     const card = h("article", { class: "cartao conta", id: "contracheque" });
@@ -2812,7 +2819,7 @@
   }
   // enquanto o detalhe não chega: o topo do contracheque (nome, período, custo por mês e posição), que só usa a lista
   function previaPessoa(p) {
-    const k = S.periodo || periodoPadrao(p), r = resumo(p, k), C = p.ced ? { cat: {}, tm: null } : colegas(grupo(p), k);
+    const k = S.periodo || periodoPadrao(p), r = resumo(p, k), C = colegasDe(p, k);
     return h("article", { class: "cartao conta", id: "previa" },
       h("div", { class: "conta__topo" }, avatar(p, "g"),
         h("div", null, h("p", { class: "rotulo" }, "Contracheque"), h("h1", { class: "conta__nome" }, p.n),
