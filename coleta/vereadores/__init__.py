@@ -5,9 +5,9 @@ dados/municipios/<cidade>/ (vai para o Git), e `montar(tipos)` devolve (meta, pe
 (ver comum.py). Uma cidade que falhar não derruba as outras: o site continua com o que já estava gravado.
 """
 from ..util import TempoEsgotado, log
-from . import aracaju, belo_horizonte, comum, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, rio_de_janeiro, sao_luis, sp
+from . import aracaju, belo_horizonte, boa_vista, comum, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, rio_de_janeiro, sao_luis, sp
 
-CIDADES = [sp, rio_de_janeiro, belo_horizonte, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, sao_luis, aracaju]
+CIDADES = [sp, rio_de_janeiro, belo_horizonte, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, sao_luis, aracaju, boa_vista]
 
 
 def coletar():

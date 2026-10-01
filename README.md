@@ -4,8 +4,8 @@
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
 da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
-estado), a Câmara Municipal de cada cidade, cada vereador de doze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
-Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife, São Luís e Aracaju) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
+estado), a Câmara Municipal de cada cidade, cada vereador de treze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
+Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
 São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul, Rondônia, Tocantins, Sergipe,
 Espírito Santo, Rio Grande do Sul e Amapá.
@@ -197,13 +197,13 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 | Natal | lista mensal da cota (29 por mês) + SAPL | subsídio fixado (R$ 26 mil) | cota, nota por nota | não publicada |
 | Recife | folha mensal (CSV) + e-Processo | folha bruta (subsídio, 13º, 1/3 de férias) | Verba Indenizatória, por tipo | pessoas, cargos e custo |
 | Aracaju | folha mensal (planilha; o PDF quando a planilha vem vazia) | valor bruto da folha | VAEP em PDF de imagem: ainda fora | lotação genérica ("gabinete de vereador"): não ligada ao gabinete |
+| Boa Vista | quadro mensal da verba de cada vereador (PDF) | subsídio fixado (R$ 20.864,78, Resolução 253/2023) | verba indenizatória, por tipo (o total é o "total pago" do quadro) | não publicada |
 
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
 - O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.
 - Teresina e João Pessoa: o robots.txt das Câmaras proíbe robôs em todo o site (conferido em 01/10/2026): ficam de fora
   sem uma exceção. Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
-  Boa Vista: SAPL com 60 s entre pedidos e a página de parlamentares e gabinetes, ainda a fazer.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.
 - Fotos: as da Câmara Municipal; quem está no cargo sem foto da Câmara recebe a foto da candidatura de 2024 no TSE
