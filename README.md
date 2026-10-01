@@ -314,6 +314,24 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
   fora do ar no período eleitoral).
 
+## Índice de acesso aos salários dos governadores
+
+`python3 coletar.py indice` (também roda no `tudo`) gera `site/dados/indice.json`: para cada Estado, uma nota de 0 a 1
+para a pergunta "dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês?", no molde do
+[Índice de Transparência do DadosJusBr](https://dadosjusbr.org/indice).
+
+- **Completude** (o que a fonte mostra): nome, cargo, quem está no cargo hoje, partes do pagamento (subsídio, 13º, férias,
+  auxílios, abate-teto), histórico de 12 meses e a lei do salário.
+- **Facilidade** (como dá para obter): formato aberto, acesso (arquivo ou API documentada, API da página, só páginas,
+  só painel, só clicando), sem barreiras (CAPTCHA, login, CPF) e aberto a robôs e a quem está fora do Brasil.
+- Cada dimensão é a média dos seus critérios; o índice é a média harmônica das duas.
+
+As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` (mantido à mão: o que a folha mostra e o
+que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA). A nota da lei vem de
+`dados/governadores/governadores.json`. Estado com algum critério `null` (a conferir) fica sem índice: em 30/09/2026,
+Amapá e Mato Grosso (CAPTCHA) e Tocantins (só clicando). O índice mede só o acesso ao salário do governador e do vice,
+não a transparência do Estado como um todo.
+
 ## Robôs e robots.txt
 
 Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do

@@ -12,6 +12,7 @@ Uso:
                                        # (e subprefeitos, em SP), mês a mês, pela folha (prefeitura_sp é o nome antigo)
     python3 coletar.py governadores    # os 27 governadores e vices: salário pela lei (dados/governadores/governadores.json)
                                        # e, em 24 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
+    python3 coletar.py indice          # índice de acesso aos salários dos governadores (dados/indice/), em site/dados/indice.json
     python3 coletar.py renda           # distribuição da renda de quem trabalha (PNAD Contínua do IBGE), para o "ganha
                                        # mais que X% dos brasileiros que trabalham"; só baixa (~900 MB) quando sai um
                                        # trimestre novo
@@ -19,7 +20,7 @@ Uso:
     python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
-    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores
+    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + indice
                                        # + renda + padronizar + fotos + site
 
     --tempo-max 160   para parar sozinho depois de 160 s (rode de novo para continuar)
@@ -29,7 +30,7 @@ Uso:
 import argparse
 import sys
 
-from coleta import camara, conferir, executivo, fotos, governadores, municipios, padronizar, prefeituras, renda, senado, site, vereadores
+from coleta import camara, conferir, executivo, fotos, governadores, indice, municipios, padronizar, prefeituras, renda, senado, site, vereadores
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -43,6 +44,7 @@ ETAPAS = {
     "prefeituras": prefeituras.coletar,
     "prefeitura_sp": prefeituras.coletar,  # nome antigo (quando só havia São Paulo)
     "governadores": governadores.coletar,
+    "indice": indice.executar,
     "renda": renda.executar,
     "padronizar": padronizar.executar,
     "fotos": fotos.coletar,
@@ -62,7 +64,7 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "renda", "padronizar", "fotos", "site"]
+    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "indice", "renda", "padronizar", "fotos", "site"]
               if args.etapa == "tudo" else [args.etapa])
     try:
         for etapa in etapas:

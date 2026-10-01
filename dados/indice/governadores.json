@@ -1,0 +1,1032 @@
+{
+ "_sobre": "Índice de acesso aos salários dos governadores: como cada Estado mostra o que o governador e o vice recebem. Mantido à mão, estado por estado, com a prova de cada nota (o que a folha mostra e o que o nosso robô consegue). Nota None = a conferir. O critério 'lei' é calculado de dados/governadores/governadores.json. Ver coleta/indice.py.",
+ "conferido_em": "2026-09-30",
+ "estados": {
+  "AC": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e folha (normal, 13º, rescisão)"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Governadora e vice aparecem no último mês"
+   ],
+   "partes": [
+    1,
+    "Cada rubrica (subsídio, auxílio-alimentação, 13º, férias) e cada tipo de folha"
+   ],
+   "historico": [
+    1,
+    "Busca por mês, com os meses anteriores"
+   ],
+   "formato": [
+    1,
+    "Respostas em JSON"
+   ],
+   "acesso": [
+    0.75,
+    "Formulário da página com token de segurança; sem API documentada"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "AL": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo (o governador recebe pela comissão)"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.8,
+    "Remuneração base, comissão, benefícios, verbas eventuais e abate-teto; 13º em folha própria; férias junto com as eventuais"
+   ],
+   "historico": [
+    1,
+    "Histórico do ano por pessoa"
+   ],
+   "formato": [
+    1,
+    "API pública documentada (JSON)"
+   ],
+   "acesso": [
+    1,
+    "API documentada: transparencia.al.gov.br/portal/api"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "AM": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e função"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.2,
+    "Só o total bruto e o desconto do teto; não separa salário, 13º e férias"
+   ],
+   "historico": [
+    1,
+    "Busca pelo ano, com todos os meses"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "AP": {
+   "nome": [
+    null,
+    "A conferir: a consulta pede CAPTCHA"
+   ],
+   "cargo": [
+    null,
+    "A conferir"
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir"
+   ],
+   "partes": [
+    null,
+    "A conferir"
+   ],
+   "historico": [
+    null,
+    "A conferir"
+   ],
+   "formato": [
+    null,
+    "A conferir"
+   ],
+   "acesso": [
+    0.5,
+    "Consulta na página, uma pessoa por vez"
+   ],
+   "sem_barreira": [
+    0,
+    "A consulta pede CAPTCHA"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil); a cadeia do certificado HTTPS está incompleta"
+   ]
+  },
+  "BA": {
+   "nome": [
+    0.5,
+    "Nome mascarado (\"JERONIMO R*** S***\")"
+   ],
+   "cargo": [
+    1,
+    "Cargo em comissão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.6,
+    "Valor bruto, 13º, férias, outras verbas temporárias e estorno do teto"
+   ],
+   "historico": [
+    1,
+    "Painel com os meses anteriores"
+   ],
+   "formato": [
+    0,
+    "Painel Power BI, sem arquivo para baixar"
+   ],
+   "acesso": [
+    0.25,
+    "Só pelo painel (lido com a chave anônima que a página entrega)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "CE": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.2,
+    "Salário bruto e abatimento do teto; não separa 13º e férias"
+   ],
+   "historico": [
+    1,
+    "Um arquivo por mês"
+   ],
+   "formato": [
+    1,
+    "CSV mensal (sem linha de cabeçalho; as colunas seguem o XLSX do mesmo mês)"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite os arquivos (proíbe as páginas de consulta); só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "DF": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.4,
+    "Subsídio, benefícios e verbas eventuais (13º e férias juntos)"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa (pede um identificador qualquer no cabeçalho), sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "ES": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e função"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês (o vice está vago desde abril de 2026)"
+   ],
+   "partes": [
+    1,
+    "Cada rubrica (subsídio, 13º, férias, auxílios), uma linha por rubrica"
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais desde 2009"
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "GO": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo (\"Governador - DSE-1\")"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês (o vice está vago desde abril de 2026)"
+   ],
+   "partes": [
+    0.8,
+    "Provento do mês, 13º, férias e corte do teto"
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais e ZIP dos anos fechados"
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite os arquivos (pede 10 s entre pedidos); abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "MA": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo, por matrícula"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.6,
+    "Subsídio, férias, adiantamento do 13º e outros proventos"
+   ],
+   "historico": [
+    1,
+    "Histórico do ano, uma coluna por mês"
+   ],
+   "formato": [
+    0.5,
+    "Páginas HTML, sem arquivo para baixar"
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas de consulta"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "MG": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo em comissão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês publicado"
+   ],
+   "partes": [
+    0.8,
+    "Remuneração, 13º, férias, jetons e abate-teto"
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais desde 2012"
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos (o leiaute mudou em fevereiro de 2026)"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "MS": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.2,
+    "Só a remuneração fixa e a eventual, sem as rubricas"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa (com uma chave anônima que o portal entrega), sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "MT": {
+   "nome": [
+    null,
+    "A conferir: a consulta pede CAPTCHA"
+   ],
+   "cargo": [
+    null,
+    "A conferir"
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir"
+   ],
+   "partes": [
+    null,
+    "A conferir"
+   ],
+   "historico": [
+    null,
+    "A conferir"
+   ],
+   "formato": [
+    null,
+    "A conferir"
+   ],
+   "acesso": [
+    0.5,
+    "Consulta na página, uma pessoa por vez"
+   ],
+   "sem_barreira": [
+    0,
+    "A consulta pede CAPTCHA"
+   ],
+   "robos_exterior": [
+    null,
+    "A conferir"
+   ]
+  },
+  "PA": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Vínculo (\"MANDATO ELETIVO\")"
+   ],
+   "no_cargo_hoje": [
+    0,
+    "Desde abril de 2026, a consulta não mostra mais ninguém em mandato eletivo: nem a governadora, nem o vice"
+   ],
+   "partes": [
+    1,
+    "As rubricas do mês (vantagens)"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "PB": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo, por órgão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.2,
+    "Só a parte fixa (o subsídio) e uma parte variável sem descrição; o 13º não aparece"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    1,
+    "API de dados abertos da Codata"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt na API; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "PE": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e função (a governadora aparece como procuradora do Estado, o cargo pelo qual recebe)"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.8,
+    "Remuneração, férias, 13º, outras vantagens e desconto do teto"
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais desde 2012"
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "PI": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.4,
+    "Remuneração básica, variável (o subsídio) e eventual (férias e adiantamento do 13º juntos); folha do 13º à parte"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    1,
+    "API REST documentada (api.transparencia.pi.gov.br/docs)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "PR": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.4,
+    "Vencimento, gratificações, retroativos, auxílios; férias e 13º numa coluna só; abate-teto junto com devoluções"
+   ],
+   "historico": [
+    1,
+    "Os 20 meses mais recentes"
+   ],
+   "formato": [
+    0.5,
+    "Páginas HTML, sem arquivo para baixar"
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas de busca e de detalhes"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt não permite robôs em /pte; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "RJ": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo, por matrícula"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Mostra quem recebe pelo Estado; o governador em exercício (presidente do TJ) é pago pelo Tribunal"
+   ],
+   "partes": [
+    0.6,
+    "Folha mensal, adiantamento do 13º e 13º; abate-teto entre os descontos"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação (a busca pelo nome passa de 60 s)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "RN": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.4,
+    "Remuneração do mês, outras remunerações e redutor do teto; não mostra 13º nem férias"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON (a exportação em CSV responde \"muitos pedidos\" mesmo com pausas)"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação; uma consulta a cada 10 s"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "RO": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    1,
+    "Cada rubrica; 13º em folha própria"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    1,
+    "API documentada (Swagger)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "RR": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    1,
+    "Cada lançamento (subsídio, parcelas do 13º, férias)"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "RS": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e vínculo"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    1,
+    "Rubricas (subsídio, 1/3 de férias, 13º, vale-refeição)"
+   ],
+   "historico": [
+    1,
+    "Painel com 36 meses; arquivos mensais"
+   ],
+   "formato": [
+    1,
+    "Arquivos mensais em dados abertos, além do painel Power BI"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt do endereço dos arquivos (arquivostransparencia.sefaz.rs.gov.br) não permite robôs; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "SC": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e órgão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0,
+    "Só o valor bruto do mês, sem as partes"
+   ],
+   "historico": [
+    0,
+    "O Estado só mantém publicados os meses mais recentes (em set/2026, desde jul/2026)"
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "SE": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo, por órgão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês"
+   ],
+   "partes": [
+    0.2,
+    "O contracheque do mês mostra o subsídio; 13º e férias não aparecem na consulta"
+   ],
+   "historico": [
+    1,
+    "Busca por mês"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a própria página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt na API; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "SP": {
+   "nome": [
+    1,
+    "Nome completo"
+   ],
+   "cargo": [
+    1,
+    "Cargo e órgão"
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Aparecem no último mês publicado"
+   ],
+   "partes": [
+    0.2,
+    "Remuneração do mês e, numa coluna só, férias e 13º"
+   ],
+   "historico": [
+    1,
+    "Série histórica mensal"
+   ],
+   "formato": [
+    0.75,
+    "CSV do mês atual; a série histórica vem em .rar (formato proprietário)"
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  },
+  "TO": {
+   "nome": [
+    null,
+    "A conferir: a consulta só funciona clicando na página"
+   ],
+   "cargo": [
+    null,
+    "A conferir"
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir"
+   ],
+   "partes": [
+    null,
+    "A conferir"
+   ],
+   "historico": [
+    null,
+    "A conferir"
+   ],
+   "formato": [
+    null,
+    "A conferir"
+   ],
+   "acesso": [
+    0,
+    "Só funciona clicando na página (o robô não consegue)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+   ]
+  }
+ }
+}
