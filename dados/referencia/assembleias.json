@@ -142,7 +142,7 @@
     "conferir": "R$ 2 acima de 75% do federal; conferir no DOE"
    },
    "barreiras": "Nenhuma (mês com dois dígitos no CSV).",
-   "observacoes": "Folha com bruto, 13º e teto; filtro 'DEPUTADOS'.",
+   "observacoes": "Folha com bruto, 13º e teto; filtro 'DEPUTADOS'. Robô feito (coleta/assembleias/ce.py): folha e VDP.",
    "abriu_de_fora": true
   },
   "DF": {
@@ -210,7 +210,7 @@
     "url": "https://legisla.casacivil.go.gov.br/api/v2/pesquisa/legislacoes/106697/pdf"
    },
    "barreiras": "A tela de detalhe da remuneração pede nome e CPF de quem consulta (não usar); a lista que a página carrega já traz os valores.",
-   "observacoes": "Bom candidato: verba, folha e equipe em JSON.",
+   "observacoes": "Bom candidato: verba, folha e equipe em JSON. Robô feito (coleta/assembleias/go.py).",
    "abriu_de_fora": true
   },
   "MA": {
@@ -279,7 +279,7 @@
     "url": "https://www.transparencia.al.ms.gov.br/uploads/ac633cbeae1cad5ef3590fd62b32d828.pdf"
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "Melhor CSV de verba. A folha mostra 'Plano de Assistência Médico-Social' de R$ 13.425,82 por mês.",
+   "observacoes": "Melhor CSV de verba. A folha mostra 'Plano de Assistência Médico-Social' de R$ 13.425,82 por mês. Robô feito (coleta/assembleias/ms.py).",
    "abriu_de_fora": true
   },
   "MT": {
@@ -384,7 +384,7 @@
     "url": "https://legis.alepe.pe.gov.br/texto.aspx?tiponorma=1&numero=18138&complemento=0&ano=2023&tipo=&url="
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "Bom candidato: lista em API de dados abertos, verba nota a nota, equipe por gabinete.",
+   "observacoes": "Bom candidato: lista em API de dados abertos, verba nota a nota, equipe por gabinete. Robô feito (coleta/assembleias/pe.py).",
    "abriu_de_fora": true
   },
   "PI": {
@@ -470,7 +470,7 @@
     "ato": "Lei 11.074/2025",
     "url": "https://transparencia.alerj.rj.gov.br/section/report/62"
    },
-   "barreiras": "DOCIGP só funciona com JavaScript (a API JSON responde).",
+   "barreiras": "O robots.txt de docigp.alerj.rj.gov.br diz Disallow: / (conferido em 01/10/2026): a verba fica de fora sem uma exceção. A folha e a equipe saem em PDF.",
    "observacoes": "Bom candidato: verba nota a nota com CNPJ.",
    "abriu_de_fora": true
   },
@@ -598,7 +598,7 @@
     "url": "https://leis.alesc.sc.gov.br/ato-normativo/21961"
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "Bom candidato: CSV de verba.",
+   "observacoes": "Bom candidato: CSV de verba. Robô feito (coleta/assembleias/sc.py).",
    "abriu_de_fora": true
   },
   "SE": {

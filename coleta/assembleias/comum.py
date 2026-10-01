@@ -60,12 +60,13 @@ def achar(nome, tse):
     n = normalizar_nome(nome)
     if n in tse:
         return tse[n]
-    achados = [v for k, v in tse.items() if compativel(n, k) or compativel(n, normalizar_nome(v["nome"]))]
+    achados = list({(v.get("sq") or v.get("mat") or v["nome"]): v for k, v in tse.items() if compativel(n, k) or compativel(n, normalizar_nome(v["nome"]))}.values())
     if len(achados) == 1:
         return achados[0]
     p = set(_palavras(nome))
     if len(p) == 1:  # um nome só ("Hashioka", "Cel. David"): vale se só um eleito tem essa palavra no nome
-        unico = [v for v in tse.values() if v["eleito"] == "eleito" and p & (set(_palavras(v["urna"])) | set(_palavras(v["nome"])))]
+        unico = list({(v.get("sq") or v.get("mat") or v["nome"]): v for v in tse.values()
+                      if v["eleito"] == "eleito" and p & (set(_palavras(v["urna"])) | set(_palavras(v["nome"])))}.values())
         return unico[0] if len(unico) == 1 else None
     if len(p) < 2:
         return None
@@ -76,7 +77,7 @@ def achar(nome, tse):
             melhor.setdefault(comuns, []).append(v)
     if not melhor:
         return None
-    topo = melhor[max(melhor)]
+    topo = list({(v.get("sq") or v.get("mat") or v["nome"]): v for v in melhor[max(melhor)]}.values())  # a mesma pessoa por dois nomes conta uma vez
     eleitos = [v for v in topo if v["eleito"] == "eleito"]
     return topo[0] if len(topo) == 1 else (eleitos[0] if len(eleitos) == 1 else None)
 
