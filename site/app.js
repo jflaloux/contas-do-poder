@@ -942,7 +942,7 @@
     } else y += 4;
     y = cartoesImagem(t, y, [
       [C.custa, "POR HABITANTE", reaisC(porHabMes(c)), cp.med ? `mediana: ${reaisC(cp.med)}` : "por mês"],
-      [C.regua, "POR VEREADOR", compacto(c.custo / 12 / Math.max(1, c.nv)), `dividido pelos ${c.nv} vereadores`]]);
+      [C.regua, "CÂMARA POR VEREADOR", compacto(c.custo / 12 / Math.max(1, c.nv)), `o gasto todo ÷ ${c.nv}; não é o salário`]]);
     y = linhasImagem(t, y, sub ? "SALÁRIO DE CADA VEREADOR" : "SALÁRIO DE UM VEREADOR DAQUI", [sub ? [`desde ${fmtMes(sub[0])}`, reaisC(sub[1])] : ["no máximo, pela Constituição (art. 29)", reais(tetoVereador(c.pop))]], 40, C.ganha);
     rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos do Tesouro Nacional (Siconfi)${sub ? ", do TSE e da Câmara Municipal" : " e do TSE"}`);
     return t.png();
@@ -1864,7 +1864,7 @@
         tem ? h("div", { class: "estatisticas" },
           estatistica("Custo da Câmara por mês", compacto(c.custo / 12), `${compacto(c.custo)} em ${c.ano}`),
           estatistica("Por habitante", reaisC(porHabMes(c)), `por mês (${reais(c.custo / c.pop)} por ano)`),
-          estatistica("Dividido pelos vereadores", compacto(c.custo / 12 / Math.max(1, c.nv)), "por vereador, por mês")) :
+          estatistica("Custo da Câmara por vereador", compacto(c.custo / 12 / Math.max(1, c.nv)), `por mês: todo o gasto da Câmara dividido pelos ${c.nv} vereadores (não é o salário)`)) :
           h("p", { class: "aviso aviso--forte" }, h("strong", null, "A Prefeitura não informou corretamente o gasto da Câmara. "), `Nas contas que ${c.n} enviou ao Tesouro Nacional, o gasto da Câmara Municipal não aparece (está vazio ou zerado, ou a declaração não foi entregue). Por isso não dá para mostrar quanto a Câmara custa.`),
         c.suspeito ? h("p", { class: "aviso aviso--forte" }, h("strong", null, "Este valor parece errado. "), `É muito menor que o das cidades do mesmo tamanho (mediana de ${reaisC(med)} por habitante, por mês). Provavelmente a Prefeitura informou parte do gasto da Câmara em outra função nas contas enviadas ao Tesouro Nacional. Por isso esta cidade fica fora das comparações.`) : null,
         prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
