@@ -275,9 +275,9 @@ def _menos_meses(am, n):
 
 
 def _mascarar(doc):
-    """CPF de pessoa física (aluguel de imóvel) fica mascarado, como no Portal da Transparência."""
-    d = re.sub(r"\D", "", doc or "")
-    return f"***.{d[3:6]}.{d[6:9]}-**" if len(d) == 11 else (doc or "").strip()
+    """Só o CNPJ fica; o CPF de pessoa física (aluguel de imóvel) não é guardado, nem mascarado (ver comum.mascarar)."""
+    from .comum import mascarar
+    return mascarar(doc)
 
 
 def gastos(ate):

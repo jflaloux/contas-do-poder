@@ -108,9 +108,12 @@ def empresa(nome):
 
 
 def mascarar(doc):
-    """CPF de pessoa física fica mascarado, como no Portal da Transparência; CNPJ fica como está."""
+    """Só o CNPJ (empresa) é guardado, como está; o CPF de quem é pessoa física não é guardado, nem mascarado (regra do
+    projeto): vira "". Um CPF que já chega mascarado da fonte também sai."""
     d = re.sub(r"\D", "", doc or "")
-    return f"***.{d[3:6]}.{d[6:9]}-**" if len(d) == 11 else (doc or "").strip()
+    if len(d) == 11 or "*" in (doc or "") or len(d) in (6, 7, 8, 9):
+        return ""
+    return (doc or "").strip()
 
 
 # Nomes curtos dos tipos de gasto, iguais em todas as cidades (a ordem importa: o primeiro que bater vale)

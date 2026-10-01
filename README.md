@@ -399,8 +399,8 @@ fonte do Estado, com as mesmas duas dimensões:
 As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` e `dados/indice/assembleias.json` (mantidas
 à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA, e os
 sites que só abrem do Brasil, pelo Chrome no Brasil). A nota da lei do governador vem de
-`dados/governadores/governadores.json`. Em 01/10/2026: 26 estados com índice geral; só o Mato Grosso a conferir (a folha
-do governador pede CAPTCHA). O índice mede o acesso aos dados dessas duas fontes, não a transparência do Estado como um
+`dados/governadores/governadores.json`. Em 01/10/2026, os 27 estados têm índice geral. A folha do Mato Grosso pede
+CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. O índice mede o acesso aos dados dessas duas fontes, não a transparência do Estado como um
 todo, e é uma nota da fonte, não de quem está no cargo.
 
 A página `/indice` lê `site/dados/indice_transparencia.json` (`secIndice` no `site/app.js`; a versão em HTML para o
@@ -410,8 +410,10 @@ em cada um, o índice de cada bloco com a completude e a facilidade em barras; e
 posição e aparecem em ordem alfabética. Ao abrir um estado, cada bloco com os seus critérios (nota, prova, link quando
 há e como a nota é dada; os nomes e o "como pontua" vêm de `meta.blocos`, não do `app.js`), o link da fonte oficial e,
 no bloco do governo, a página do governador; no bloco da Assembleia, o link para a lista dos deputados estaduais entra
-junto com essa lista no site. O método (`meta.como`) fica na própria página. O arquivo antigo, `site/dados/indice.json`
-(só o bloco do governo), não é mais usado pelo site. Há link para o índice no cabeçalho do site, na lista dos
+junto com essa lista no site. O método (`meta.como`) fica na própria página. No site, a página `/indice` (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
+`publicacao/gerar.mjs`) lê `indice_transparencia.json`: os estados do maior índice para o menor, com os dois blocos; ao
+abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada. O arquivo leva os valores
+com 6 casas: o site arredonda só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
 ## Robôs e robots.txt

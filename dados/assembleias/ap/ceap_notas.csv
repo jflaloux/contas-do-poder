@@ -19,7 +19,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0002-59,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,281,300.01
 2025,1,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0005-00,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,349,200.0
 2025,1,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,4,12000.0
-2025,1,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,1,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,1,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,434,4100.0
 2025,1,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,285,14200.0
 2025,1,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,225,5100.0
@@ -29,7 +29,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,44,Serviços de Publicidade Legal,41.891.827/0001-10,K. T. M. de Souza Ltda,136,15000.0
 2025,1,45,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3025,5091.13
 2025,1,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,1,17000.0
-2025,1,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,1,5000.0
+2025,1,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,1,5000.0
 2025,1,45,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,2602030,511.88
 2025,1,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,22,17500.0
 2025,1,54,Locação de Imóveis,01.549.402/0001-02,CAPITAL IMÓVEIS,217823,2800.0
@@ -38,7 +38,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,54,Serviços de Publicidade Legal,42.888.907/0001-89,G M BATISTA MOREIRA-ME,65,10000.0
 2025,1,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1215,19500.0
 2025,1,55,Locação de Bens Móveis de Outras Naturezas e Intangíveis,38.367.655/0001-75,MD EMPREENDIMENTOS LTDA,1,9500.0
-2025,1,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,1,7980.0
+2025,1,55,Locação de Imóveis,,JORGE DE JESUS RECIO,1,7980.0
 2025,1,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,972.06
 2025,1,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,147,18800.0
 2025,1,57,Locação de Imóveis,24.554.442/0001-48,JULES RICARTE NEGOCIOS IMOBILIARIOS,S/N,11000.0
@@ -53,8 +53,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,9984,1890.05
 2025,1,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,434,1081.92
 2025,1,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,001,17500.0
-2025,1,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,1,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,1,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,1,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,1,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,16,15000.0
 2025,1,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6763,5400.0
 2025,1,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,18,8000.0
@@ -65,7 +65,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,13737,6000.0
 2025,1,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,301,10000.0
 2025,1,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,302,10000.0
-2025,1,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
+2025,1,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
 2025,1,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,59,15000.0
 2025,1,64,Combustíveis e Lubrificantes Automotivos,08.580.311/0002-60,AEROPOSTO COMBUSTIVEIS AUTOMOTIVOS LTDA,372,7000.0
 2025,1,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,45,11500.0
@@ -90,7 +90,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0062-77,LOCALIZA RENT A CAR S/A,706144,988.34
 2025,1,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,190598,7815.7
 2025,1,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,190842,1823.66
-2025,1,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,1,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,1,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,1,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,31,3971.0
 2025,1,67,Material de Copa e Cozinha,23.069.198/0003-27,M A SILVA E SILVA LTDA,19783,216.0
@@ -102,7 +102,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,14,15000.0
 2025,1,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,56,6000.0
 2025,1,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,172,13050.0
-2025,1,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,01,6000.0
+2025,1,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,01,6000.0
 2025,1,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,4,15000.0
 2025,1,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,46,15000.0
 2025,1,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,439,400.0
@@ -135,12 +135,12 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,1,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,3,18500.0
 2025,1,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2049,6948.0
 2025,1,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,1,20000.0
-2025,1,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,2,6500.0
+2025,1,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,2,6500.0
 2025,1,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),01,12000.0
 2025,1,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,224,450.0
 2025,1,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,457,150.0
 2025,1,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,3,12000.0
-2025,1,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,1,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,1,75,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,1151403,104.9
 2025,1,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,9108878,129.9
 2025,1,75,"Serviço de Áudio, Vídeo e Foto",12.027.493/0001-32,SEE IN BOX MIDIA INDOOR TEC E MARKETING LTDA EPP,2220,1180.0
@@ -171,7 +171,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0005-00,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,360,200.0
 2025,2,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0033-02,SALOMÃO ALCOLUMBRE & CIA LTDA,115,200.0
 2025,2,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,20,12000.0
-2025,2,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,2,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,2,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,438,4800.0
 2025,2,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,292,14900.0
 2025,2,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,231,5100.0
@@ -185,7 +185,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,45,Gêneros de Alimentação,22.417.106/0001-28,RESTAURANTE PEIXARIA CARAVELLAS LTDA - ME,47,138.0
 2025,2,45,Hospedagens,34.928.705/0001-95,RAMALHO PALACE HOTEL LTDA,118,380.0
 2025,2,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,2,17000.0
-2025,2,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,2,5000.0
+2025,2,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,2,5000.0
 2025,2,45,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,160641455,359.09
 2025,2,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,23,17500.0
 2025,2,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0002-49,REAL PETROLEO LTDA,4874,3500.0
@@ -196,7 +196,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,3,2500.0
 2025,2,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1255,19500.0
 2025,2,55,Locação de Bens Móveis de Outras Naturezas e Intangíveis,38.367.655/0001-75,MD EMPREENDIMENTOS LTDA,2,9500.0
-2025,2,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,2,7980.0
+2025,2,55,Locação de Imóveis,,JORGE DE JESUS RECIO,2,7980.0
 2025,2,55,Outros Serviços de Terceiros - Pessoa Jurídica,05.995.766/0001-77,PREFEITURA MUNICIPAL DE MACAPA,11554530,1470.24
 2025,2,55,Serviço de Processamento de Dados,02.558.157/0001-62,TELEFONICA BRASIL S/A,721375478,670.0
 2025,2,55,Serviço de Processamento de Dados,02.558.157/0001-62,TELEFONICA BRASIL S/A,703525380,704.11
@@ -215,8 +215,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,4918,450.02
 2025,2,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3062,3133.1
 2025,2,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,2,17500.0
-2025,2,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,2,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,2,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,2,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,2,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,17,15000.0
 2025,2,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6806,5400.0
 2025,2,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,153667,1500.74
@@ -229,7 +229,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,13841,6000.0
 2025,2,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,308,10000.0
 2025,2,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,309,10000.0
-2025,2,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
+2025,2,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
 2025,2,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,60,15000.0
 2025,2,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,46,11500.0
 2025,2,64,Serviços de Publicidade Legal,35.062.860/0001-34,D.DA.S.VALES EIRELLI,233,26950.0
@@ -256,7 +256,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0015-50,LOCALIZA RENT A CAR S/A SP,1519607,4945.94
 2025,2,67,Locação de Bens Móveis e Intangíveis,05.997.820/0001-13,FAUSTO AUGUSTO DOS SANTOS & CIA,13478,64.5
 2025,2,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
-2025,2,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,2,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,2,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,32,3971.0
 2025,2,67,Material de Expediente,14.574.404/0001-01,AMAFLAN COM E DISTRIBUIDORA LTDA,33382,355.0
 2025,2,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1270,647.03
@@ -267,7 +267,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,15,15000.0
 2025,2,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,61,6000.0
 2025,2,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,179,13050.0
-2025,2,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,2,6000.0
+2025,2,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,2,6000.0
 2025,2,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,6,15000.0
 2025,2,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,49,15000.0
 2025,2,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,441,300.0
@@ -300,14 +300,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,2,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,7,18500.0
 2025,2,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2074,6980.0
 2025,2,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,2,19000.0
-2025,2,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,5,6500.0
+2025,2,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,5,6500.0
 2025,2,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),9,12000.0
 2025,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,243,300.0
 2025,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,242,431.0
 2025,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,241,338.0
 2025,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,256,400.0
 2025,2,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,15,12000.0
-2025,2,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,2,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,2,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1247,1422.95
 2025,2,75,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1081.59
 2025,2,75,Serviços de Publicidade Legal,39.327.180/0001-56,GIRASSOL COMUNICAÇÃO E MÍDIA LTDA,226,1600.0
@@ -344,7 +344,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,1690,200.01
 2025,3,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0033-02,SALOMÃO ALCOLUMBRE & CIA LTDA,117,100.0
 2025,3,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,32,12000.0
-2025,3,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,3,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,3,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,446,5400.0
 2025,3,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,296,15400.0
 2025,3,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,240,5100.0
@@ -354,7 +354,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,44,Serviços de Publicidade Legal,41.891.827/0001-10,K. T. M. de Souza Ltda,142,15000.0
 2025,3,45,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3082,5488.52
 2025,3,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,3,17000.0
-2025,3,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,3,5000.0
+2025,3,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,3,5000.0
 2025,3,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,213.81
 2025,3,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,24,17500.0
 2025,3,54,Locação de Imóveis,01.549.402/0001-02,CAPITAL IMÓVEIS,217825,2800.0
@@ -364,7 +364,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,4,2500.0
 2025,3,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1289,19500.0
 2025,3,55,Locação de Bens Móveis de Outras Naturezas e Intangíveis,38.367.655/0001-75,MD EMPREENDIMENTOS LTDA,3,9500.0
-2025,3,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,3,7980.0
+2025,3,55,Locação de Imóveis,,JORGE DE JESUS RECIO,3,7980.0
 2025,3,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,639.4
 2025,3,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,158,18800.0
 2025,3,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,30,12000.0
@@ -379,8 +379,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,34791,802.24
 2025,3,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3086,2729.65
 2025,3,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,3,17500.0
-2025,3,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,3,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,3,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,3,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,3,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,18,15000.0
 2025,3,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6847,5900.0
 2025,3,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,20,8000.0
@@ -391,7 +391,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,13958,6000.0
 2025,3,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,317,10000.0
 2025,3,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,316,10000.0
-2025,3,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
+2025,3,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,1800.0
 2025,3,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,61,15000.0
 2025,3,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,123,3000.0
 2025,3,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,47,11500.0
@@ -414,7 +414,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,67,Gêneros de Alimentação,23.069.198/0003-27,M A SILVA E SILVA LTDA,20019,144.55
 2025,3,67,Gêneros de Alimentação,23.069.198/0003-27,M A SILVA E SILVA LTDA,20020,216.0
 2025,3,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,18371,5897.68
-2025,3,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,3,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,3,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,3,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,34,3971.0
 2025,3,67,Serviço Gráficos e Editoriais,02.747.184/0001-83,r.m.r. DE ALMEIDA - ME,3273,5250.0
@@ -426,7 +426,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,16,20000.0
 2025,3,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,66,6000.0
 2025,3,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,183,13050.0
-2025,3,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,3,6000.0
+2025,3,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,3,6000.0
 2025,3,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,9,15000.0
 2025,3,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,51,15000.0
 2025,3,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,477,1240.99
@@ -460,14 +460,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,3,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,10,18500.0
 2025,3,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2090,6975.5
 2025,3,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,3,19000.0
-2025,3,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,10,6500.0
+2025,3,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,10,6500.0
 2025,3,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),19,12000.0
 2025,3,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,522,450.0
 2025,3,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,520,450.0
 2025,3,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,521,200.0
 2025,3,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,172181,684.88
 2025,3,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,29,12000.0
-2025,3,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,3,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,3,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1283,570.0
 2025,3,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,172180,487.17
 2025,3,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,001151403,104.9
@@ -504,7 +504,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0010-69,AUTOMOTO - AUTOMOVEIS DO AMAPA LTDA,365,300.04
 2025,4,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0005-00,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,377,300.0
 2025,4,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,38,12000.0
-2025,4,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,4,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,4,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,456,5800.0
 2025,4,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,300,14900.0
 2025,4,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,246,5100.0
@@ -517,7 +517,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,45,Gêneros de Alimentação,10.313.244/0001-88,EUDILENE RODRIGUES,35,221.0
 2025,4,45,Hospedagens,05.747.429/0001-60,HOTEL BELLO CENTRO,72,835.0
 2025,4,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,04,17000.0
-2025,4,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,04,5000.0
+2025,4,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,04,5000.0
 2025,4,45,Material de Expediente,06.120.924/0001-08,CAVALCANTE & LAGES LTDA,71748,205.1
 2025,4,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,2730824,373.91
 2025,4,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,25,17500.0
@@ -527,7 +527,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,671,3000.0
 2025,4,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,5,2500.0
 2025,4,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1324,19500.0
-2025,4,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,4,7980.0
+2025,4,55,Locação de Imóveis,,JORGE DE JESUS RECIO,4,7980.0
 2025,4,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,007761831,1165.08
 2025,4,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,163,18800.0
 2025,4,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,37,12000.0
@@ -542,8 +542,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,10385,488.48
 2025,4,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3101,4089.95
 2025,4,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,004,17500.0
-2025,4,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,4,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,4,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,4,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,4,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,19,15000.0
 2025,4,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6882,5900.0
 2025,4,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,156839,1964.92
@@ -556,7 +556,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14094,6000.0
 2025,4,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,328,10000.0
 2025,4,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,327,10000.0
-2025,4,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,4,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,4,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,62,15000.0
 2025,4,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,144,2000.0
 2025,4,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,48,11500.0
@@ -581,7 +581,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,67,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,517,124.96
 2025,4,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,19114,803.07
 2025,4,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,19330,9640.8
-2025,4,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,4,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,4,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,4,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,36,3971.0
 2025,4,67,Material de Expediente,05.965.179/0001-35,DF CARTUCHOS COMERCIO DE INFORMATICA LTDA-ME,20189,450.0
@@ -594,7 +594,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,17,20000.0
 2025,4,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,70,6000.0
 2025,4,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,192,13050.0
-2025,4,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,4,6000.0
+2025,4,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,4,6000.0
 2025,4,69,Serviços de Publicidade Legal,40.970.880/0001-43,I DOS S RODRIGUES,299,37000.0
 2025,4,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,12,15000.0
 2025,4,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,52,15000.0
@@ -632,7 +632,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,13,18500.0
 2025,4,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2106,6775.0
 2025,4,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,4,19000.0
-2025,4,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,15,6500.0
+2025,4,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,15,6500.0
 2025,4,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),26,12000.0
 2025,4,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,336,400.0
 2025,4,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,330,400.0
@@ -641,7 +641,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,4,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,550,400.0
 2025,4,75,Gêneros de Alimentação,23.069.198/0009-12,M. A. SILVA E SILVA LTDA,1180,636.24
 2025,4,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,34,12000.0
-2025,4,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,4,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,4,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1316,943.15
 2025,4,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,104.26
 2025,4,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,129.9
@@ -675,7 +675,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0033-02,SALOMÃO ALCOLUMBRE & CIA LTDA,123,100.0
 2025,5,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0016-01,SALOMÃO ALCOLUMBRE & CIA LTDA,2120,290.04
 2025,5,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,47,12000.0
-2025,5,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,5,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,5,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,466,4500.0
 2025,5,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,304,15400.0
 2025,5,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,251,5100.0
@@ -689,7 +689,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,45,Gêneros de Alimentação,40.892.746/0001-71,J.C. CAMBRAIA LTDA,002,874.0
 2025,5,45,Hospedagens,05.747.429/0001-60,HOTEL BELLO CENTRO,96,1604.0
 2025,5,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,05,17000.0
-2025,5,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,05,5000.0
+2025,5,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,05,5000.0
 2025,5,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,2333828,349.79
 2025,5,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,26,17500.0
 2025,5,54,Locação de Imóveis,01.549.402/0001-02,CAPITAL IMÓVEIS,229575,3036.0
@@ -698,7 +698,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,683,3000.0
 2025,5,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,6,2500.0
 2025,5,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1360,19500.0
-2025,5,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,5,7980.0
+2025,5,55,Locação de Imóveis,,JORGE DE JESUS RECIO,5,7980.0
 2025,5,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,8066551,1006.21
 2025,5,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,171,18800.0
 2025,5,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,44,12000.0
@@ -717,8 +717,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3124,1060.5
 2025,5,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,559,500.0
 2025,5,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,5,17500.0
-2025,5,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,5,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,5,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,5,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,5,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,20,15000.0
 2025,5,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6923,6300.0
 2025,5,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,22,8000.0
@@ -730,7 +730,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14219,6000.0
 2025,5,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,340,10000.0
 2025,5,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,341,10000.0
-2025,5,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,5,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,5,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,´63,15000.0
 2025,5,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,159,2000.0
 2025,5,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,49,11500.0
@@ -766,7 +766,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,194776,5446.84
 2025,5,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0062-77,LOCALIZA RENT A CAR S/A,737265,1260.44
 2025,5,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
-2025,5,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,5,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,5,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,38,3971.0
 2025,5,67,Material de Copa e Cozinha,06.057.223/0554-05,SENDAS DISTRIBUIDORA S/A LJ325,32463,637.28
 2025,5,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,8341829,611.06
@@ -777,7 +777,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,19,20000.0
 2025,5,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,73,6000.0
 2025,5,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,204,13050.0
-2025,5,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,5,6000.0
+2025,5,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,5,6000.0
 2025,5,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,15,15000.0
 2025,5,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,53,15000.0
 2025,5,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,537,578.41
@@ -809,14 +809,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,5,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,16,18500.0
 2025,5,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2123,6982.5
 2025,5,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,5,19000.0
-2025,5,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,22,6500.0
+2025,5,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,22,6500.0
 2025,5,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),32,12000.0
 2025,5,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,577,250.0
 2025,5,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,576,350.03
 2025,5,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,578,450.0
 2025,5,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,175184,650.85
 2025,5,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,46,12000.0
-2025,5,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,5,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,5,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1368,617.62
 2025,5,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,175183,679.98
 2025,5,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,104.9
@@ -850,7 +850,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0033-02,SALOMÃO ALCOLUMBRE & CIA LTDA,124,290.0
 2025,6,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0016-01,SALOMÃO ALCOLUMBRE & CIA LTDA,2196,290.04
 2025,6,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,57,12000.0
-2025,6,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,6,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,6,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,469,5700.0
 2025,6,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,307,14800.0
 2025,6,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,258,5100.0
@@ -863,7 +863,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,45,Gêneros de Alimentação,10.313.244/0001-88,EUDILENE RODRIGUES,36,1514.0
 2025,6,45,Hospedagens,22.437.205/0001-71,D CIRQUEIRA RODRIGUES,321,1564.0
 2025,6,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.567.718/0001-89,MARQUISE CONSTRUCOES E SERVICOS LTDA,6,17000.0
-2025,6,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,6,5000.0
+2025,6,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,6,5000.0
 2025,6,45,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,S/N,349.79
 2025,6,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,27,17500.0
 2025,6,54,Locação de Imóveis,01.549.402/0001-02,CAPITAL IMÓVEIS,229576,3036.0
@@ -871,7 +871,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,692,3000.0
 2025,6,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,7,2500.0
 2025,6,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1398,19500.0
-2025,6,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,6,7980.0
+2025,6,55,Locação de Imóveis,,JORGE DE JESUS RECIO,6,7980.0
 2025,6,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,8407365,1376.21
 2025,6,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,179,18800.0
 2025,6,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,55,12000.0
@@ -887,8 +887,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0005-09,POSTO DE COMBUSTIVÉL JARDINS EIRELI,3836,944.05
 2025,6,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3142,1340.03
 2025,6,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,6,17500.0
-2025,6,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,s/n,2000.0
-2025,6,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,6,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,s/n,2000.0
+2025,6,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,6,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,21,15000.0
 2025,6,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,6966,6100.0
 2025,6,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,160767,1995.37
@@ -901,7 +901,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14344,6000.0
 2025,6,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,358,10000.0
 2025,6,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,359,10000.0
-2025,6,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,6,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,6,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,65,15000.0
 2025,6,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,172,2000.0
 2025,6,64,Locação de Bens Móveis de Outras Naturezas e Intangíveis,40.204.611/0001-76,CLV LTDA,50,11500.0
@@ -930,7 +930,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,20195,3905.12
 2025,6,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,20242,1086.57
 2025,6,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
-2025,6,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,6,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,6,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,39,3971.0
 2025,6,67,Serviço Gráficos e Editoriais,02.747.184/0001-83,r.m.r. DE ALMEIDA - ME,3391,5880.0
 2025,6,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,494.03
@@ -940,7 +940,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,20,20000.0
 2025,6,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,74,6000.0
 2025,6,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,214,13050.0
-2025,6,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,6,6000.0
+2025,6,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,6,6000.0
 2025,6,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,19,15000.0
 2025,6,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,54,15000.0
 2025,6,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,574,300.0
@@ -971,7 +971,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,21,23900.0
 2025,6,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2146,6986.0
 2025,6,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,6,19000.0
-2025,6,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,21,6500.0
+2025,6,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,21,6500.0
 2025,6,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),39,12000.0
 2025,6,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,408,350.0
 2025,6,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,607,400.0
@@ -979,7 +979,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,6,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,605,450.0
 2025,6,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,604,400.0
 2025,6,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,52,12000.0
-2025,6,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,6,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,6,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1395,994.1
 2025,6,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,104.22
 2025,6,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,129.9
@@ -1006,7 +1006,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,40,Locação de Software,38.014.466/0001-19,M&M EMPREENDIMENTOS E SOLUÇÕES LTDA,101,7200.0
 2025,7,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0026-75,SALOMAO ALCOLUMBRE & CIA LTDA,554,415.0
 2025,7,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,65,12000.0
-2025,7,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,7,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,7,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,481,4800.0
 2025,7,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,318,14800.0
 2025,7,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,265,5100.0
@@ -1019,7 +1019,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,45,Gêneros de Alimentação,40.892.746/0001-71,J.C. CAMBRAIA LTDA,32,429.0
 2025,7,45,Hospedagens,05.747.429/0001-60,HOTEL BELLO CENTRO,157,227.0
 2025,7,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,1,17000.0
-2025,7,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,S/N,5000.0
+2025,7,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,S/N,5000.0
 2025,7,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,370.03
 2025,7,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,28,17500.0
 2025,7,54,Locação de Imóveis,01.549.402/0001-02,CAPITAL IMÓVEIS,229577,3036.0
@@ -1027,7 +1027,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,703,3000.0
 2025,7,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,8,2500.0
 2025,7,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1417,19500.0
-2025,7,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,7,7980.0
+2025,7,55,Locação de Imóveis,,JORGE DE JESUS RECIO,7,7980.0
 2025,7,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1013.18
 2025,7,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,185,18800.0
 2025,7,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,63,12000.0
@@ -1043,8 +1043,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,11005,1350.0
 2025,7,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3153,2780.07
 2025,7,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,0007/2025,17500.0
-2025,7,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,7,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,7,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,7,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,7,59,Material de Consumo,49.919.841/0001-96,POSTO GOLL CORA DE CARVALHO LTDA,224,400.0
 2025,7,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,22,15000.0
 2025,7,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7016,6100.0
@@ -1059,7 +1059,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14447,6000.0
 2025,7,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,371,10000.0
 2025,7,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,370,10000.0
-2025,7,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,7,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,7,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,008072558,603.98
 2025,7,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,008380017,167.39
 2025,7,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,008719068,1227.37
@@ -1088,7 +1088,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.892.281/0001-16,A R L EMPREENDIMENTO LTDA,1374,12000.0
 2025,7,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,196481,8103.26
 2025,7,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
-2025,7,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,7,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,7,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,40,3971.0
 2025,7,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,609.15
 2025,7,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1520,1517.35
@@ -1097,7 +1097,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,21,20000.0
 2025,7,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,76,6000.0
 2025,7,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,224,13050.0
-2025,7,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,7,6000.0
+2025,7,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,7,6000.0
 2025,7,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,24,15000.0
 2025,7,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,55,15000.0
 2025,7,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,669,1050.0
@@ -1123,7 +1123,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,25,23900.0
 2025,7,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2160,6813.5
 2025,7,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,7,19000.0
-2025,7,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,25,6500.0
+2025,7,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,25,6500.0
 2025,7,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),47,12000.0
 2025,7,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,439,437.0
 2025,7,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,438,400.0
@@ -1131,7 +1131,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,7,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,644,390.89
 2025,7,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,177996,757.55
 2025,7,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,067,12000.0
-2025,7,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,7,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,7,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1445,804.9
 2025,7,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,177995,778.21
 2025,7,75,Material de Expediente,28.491.434/0001-50,DARKLE R ARAUJO ME,6893,647.75
@@ -1164,7 +1164,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,42,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14556,435.01
 2025,8,42,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,4968,400.0
 2025,8,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,76,12000.0
-2025,8,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,8,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,8,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,495,5400.0
 2025,8,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,323,14300.0
 2025,8,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,270,5100.0
@@ -1177,7 +1177,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,45,Gêneros de Alimentação,16.896.023/0001-66,CARLOS AUGUSTO RODRIGUES,537,146.0
 2025,8,45,Hospedagens,05.747.429/0001-60,HOTEL BELLO CENTRO,181,837.0
 2025,8,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,2,17000.0
-2025,8,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,8,5000.0
+2025,8,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,8,5000.0
 2025,8,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,381.48
 2025,8,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,29,17500.0
 2025,8,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0001-68,REAL PETROLEO LTDA,27762,5000.0
@@ -1187,7 +1187,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,714,3000.0
 2025,8,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,9,2500.0
 2025,8,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1467,19500.0
-2025,8,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,008,7980.0
+2025,8,55,Locação de Imóveis,,JORGE DE JESUS RECIO,008,7980.0
 2025,8,55,Outros Serviços de Terceiros - Pessoa Jurídica,48.923.590/0001-50,T.G GAMA LTDA,196,40800.0
 2025,8,55,Outros Serviços de Terceiros - Pessoa Jurídica,02.558.157/0001-62,TELEFONICA BRASIL S/A,S/N,702.42
 2025,8,55,"Serviço de Áudio, Vídeo e Foto",48.923.590/0001-50,T.G GAMA LTDA,194,41250.0
@@ -1207,8 +1207,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,4965,407.36
 2025,8,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0043-43,POSTO ICCAR LTDA,1340,3260.04
 2025,8,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,8,17500.0
-2025,8,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,8,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,8,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,8,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,8,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,23,15000.0
 2025,8,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7054,6400.0
 2025,8,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,164405,1460.46
@@ -1221,7 +1221,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14549,6000.0
 2025,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,388,10000.0
 2025,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,389,10000.0
-2025,8,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,8,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,8,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9052863,1099.1
 2025,8,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,67,15000.0
 2025,8,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,175,2000.0
@@ -1252,7 +1252,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,67,Combustíveis e Lubrificantes Automotivos,20.488.504/0002-90,W DA R CIRQUEIRA (POSTO CIRQUEIRA),533,707.64
 2025,8,67,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,740,848.69
 2025,8,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.892.281/0001-16,A R L EMPREENDIMENTO LTDA,1378,12000.0
-2025,8,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,8,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,8,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,8,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,42,3971.0
 2025,8,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9328631,438.62
@@ -1266,7 +1266,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,22,20000.0
 2025,8,68,Serviços de Publicidade Legal,23.992.303/0001-33,JEAN AUGUSTO NEVES DE MELO 65709594253 - BAMBAM NEWS,79,6000.0
 2025,8,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,234,13050.0
-2025,8,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,8,6000.0
+2025,8,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,8,6000.0
 2025,8,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,28,15000.0
 2025,8,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,56,15000.0
 2025,8,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,724,900.0
@@ -1303,13 +1303,13 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,8,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,29,23900.0
 2025,8,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2178,6995.5
 2025,8,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,8,19000.0
-2025,8,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,28,6500.0
+2025,8,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,28,6500.0
 2025,8,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),52,12000.0
 2025,8,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,673,450.0
 2025,8,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,676,400.0
 2025,8,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,672,200.0
 2025,8,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,68,12000.0
-2025,8,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2500.0
+2025,8,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2500.0
 2025,8,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1476,874.05
 2025,8,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,115.28
 2025,8,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,129.9
@@ -1342,7 +1342,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2299,420.05
 2025,9,42,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14574,429.95
 2025,9,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,082,12000.0
-2025,9,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,9,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,9,42,Outros Serviços de Terceiros - Pessoa Jurídica,32.756.633/0001-10,K. D. DA SILVA GOES,327,14800.0
 2025,9,42,Outros Serviços de Terceiros - Pessoa Jurídica,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,500,5750.0
 2025,9,42,Outros Serviços de Terceiros - Pessoa Jurídica,22.209.187/0001-70,VN & FW LTDA-ME,279,5100.0
@@ -1354,7 +1354,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,45,Gêneros de Alimentação,10.313.244/0001-88,EUDILENE RODRIGUES,58,792.0
 2025,9,45,Hospedagens,22.437.205/0001-71,D CIRQUEIRA RODRIGUES,335,1100.0
 2025,9,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,3,17000.0
-2025,9,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,9,5000.0
+2025,9,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,9,5000.0
 2025,9,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,2996314,392.34
 2025,9,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,30,17500.0
 2025,9,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0004-00,REAL PETROLEO III,11480,5000.0
@@ -1366,7 +1366,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,723,3000.0
 2025,9,54,Serviços de Publicidade Legal,56.423.663/0001-73,SAMIRA CRISTINA SILVA DIAS,10,2500.0
 2025,9,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1497,19500.0
-2025,9,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,9,7980.0
+2025,9,55,Locação de Imóveis,,JORGE DE JESUS RECIO,9,7980.0
 2025,9,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9340379,707.49
 2025,9,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,206,18800.0
 2025,9,57,"Aparelhos, Equipamentos e Mquinas para uso em Escritrrrio",14.511.612/0001-53,M DE N M SILVA ME,S/N,3500.0
@@ -1381,8 +1381,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,11463,1000.89
 2025,9,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3202,2718.04
 2025,9,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,9,17500.0
-2025,9,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,9,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,9,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,9,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,9,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,24,15000.0
 2025,9,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7103,7000.0
 2025,9,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,166296,1487.44
@@ -1395,7 +1395,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14658,6000.0
 2025,9,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,398,10000.0
 2025,9,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,399,10000.0
-2025,9,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,9,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,9,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9368347,1174.22
 2025,9,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,69,15000.0
 2025,9,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,75,2000.0
@@ -1421,7 +1421,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,67,Gêneros de Alimentação,06.057.223/0393-88,SENDAS DISTRIBUIDORA S/A,125652,219.97
 2025,9,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.892.281/0001-16,A R L EMPREENDIMENTO LTDA,1384,12000.0
 2025,9,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,198232,8066.35
-2025,9,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,9,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,9,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,9,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,43,3971.0
 2025,9,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1636,2695.33
@@ -1429,7 +1429,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,68,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2319,320.0
 2025,9,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,23,20000.0
 2025,9,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,244,13050.0
-2025,9,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,9,6000.0
+2025,9,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,9,6000.0
 2025,9,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,32,15000.0
 2025,9,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,57,15000.0
 2025,9,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,785,743.06
@@ -1460,7 +1460,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,31,23900.0
 2025,9,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2194,6938.0
 2025,9,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,9,19000.0
-2025,9,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,32,6500.0
+2025,9,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,32,6500.0
 2025,9,74,Locação de Software,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,130,7000.0
 2025,9,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),56,12000.0
 2025,9,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,690,450.0
@@ -1468,7 +1468,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,9,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,704,450.21
 2025,9,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,181243,499.36
 2025,9,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,79,12000.0
-2025,9,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2025,9,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2025,9,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1528,715.15
 2025,9,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,181244,407.45
 2025,9,75,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,S/N,115.28
@@ -1499,7 +1499,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,42,Combustíveis e Lubrificantes Automotivos,14.008.376/0001-57,FORTE PETROLEO LTDA,823,435.01
 2025,10,42,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14777,443.82
 2025,10,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,92,12000.0
-2025,10,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,10,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,10,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,506,5600.0
 2025,10,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,334,14500.0
 2025,10,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,282,5100.0
@@ -1509,7 +1509,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,44,Serviços de Publicidade Legal,41.891.827/0001-10,K. T. M. de Souza Ltda,168,15000.0
 2025,10,45,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3217,5468.11
 2025,10,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,4,17000.0
-2025,10,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,10,5000.0
+2025,10,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,10,5000.0
 2025,10,45,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,S/N,381.48
 2025,10,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,31,17500.0
 2025,10,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0001-68,REAL PETROLEO LTDA,28142,5000.0
@@ -1518,7 +1518,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,3772,4000.0
 2025,10,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,732,3000.0
 2025,10,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1539,19500.0
-2025,10,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,10,8558.0
+2025,10,55,Locação de Imóveis,,JORGE DE JESUS RECIO,10,8558.0
 2025,10,55,Outros Serviços de Terceiros - Pessoa Jurídica,02.747.184/0001-83,r.m.r. DE ALMEIDA - ME,3587,18000.0
 2025,10,55,Outros Serviços de Terceiros - Pessoa Jurídica,48.923.590/0001-50,T.G GAMA LTDA,217,46300.0
 2025,10,55,Serviço de Telecomunicações,02.558.157/0006-77,TELEFONICA BRASIL S. A.,S/N,702.22
@@ -1533,8 +1533,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,57,Serviços de Água e Esgoto,44.109.598/0001-27,CSA EQUATORIAL,10,85.82
 2025,10,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3216,5925.14
 2025,10,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,10,17500.0
-2025,10,59,Locação de Imóveis,***.572.402-**,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
-2025,10,59,Locação de Imóveis,***.083.772-**,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
+2025,10,59,Locação de Imóveis,,ANA CLAUDIA RIBEIRO DA SILVA,S/N,2000.0
+2025,10,59,Locação de Imóveis,,JOÃO JAIRO DOS SANTOS ROCHA,S/N,5000.0
 2025,10,59,Serviços de Publicidade Legal,23.071.327/0001-50,R. N COMERCIO E SERVICOS LTDA,25,15000.0
 2025,10,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7156,6800.0
 2025,10,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,167958,1515.94
@@ -1547,7 +1547,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14789,6000.0
 2025,10,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,412,10000.0
 2025,10,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,411,10000.0
-2025,10,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,10,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,10,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9672433,1104.41
 2025,10,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,70,15000.0
 2025,10,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,105,4000.0
@@ -1570,7 +1570,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,67,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,901,1104.39
 2025,10,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.892.281/0001-16,A R L EMPREENDIMENTO LTDA,1390,12000.0
 2025,10,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,199078,8066.35
-2025,10,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,10,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,10,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
 2025,10,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,44,3971.0
 2025,10,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1681,1550.0
@@ -1609,7 +1609,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,35,23900.0
 2025,10,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2207,6837.75
 2025,10,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,11,19000.0
-2025,10,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,37,6500.0
+2025,10,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,37,6500.0
 2025,10,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),60,12000.0
 2025,10,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,498,370.0
 2025,10,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,728,444.98
@@ -1617,7 +1617,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,10,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,760,300.0
 2025,10,75,Combustíveis e Lubrificantes para Outras Finalidades,12.027.493/0001-32,SEE IN BOX MIDIA INDOOR TEC E MARKETING LTDA EPP,2853,1180.0
 2025,10,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,85,12000.0
-2025,10,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2025,10,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2025,10,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1567,608.6
 2025,10,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,115.28
 2025,10,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,130.0
@@ -1644,7 +1644,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,38,Serviços de Publicidade Legal,45.622.223/0001-29,F.M DE SOUZALTDA-ME,73,31000.0
 2025,11,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2483,425.92
 2025,11,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,98,12000.0
-2025,11,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,11,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,11,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,518,5800.0
 2025,11,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,341,14900.0
 2025,11,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,289,5100.0
@@ -1655,7 +1655,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,45,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3232,4796.56
 2025,11,45,Gêneros de Alimentação,04.697.384/0001-02,J. BENEDITO MAOREIRA-EPP PLUTÃO LANCHES,63,367.16
 2025,11,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,5,17000.0
-2025,11,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,11,5000.0
+2025,11,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,11,5000.0
 2025,11,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,1223684,381.48
 2025,11,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,32,17500.0
 2025,11,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0004-00,REAL PETROLEO III,11844,5000.0
@@ -1664,7 +1664,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,3850,4000.0
 2025,11,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,740,3000.0
 2025,11,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1589,19500.0
-2025,11,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,11,8700.0
+2025,11,55,Locação de Imóveis,,JORGE DE JESUS RECIO,11,8700.0
 2025,11,55,Serviço Gráficos e Editoriais,02.747.184/0001-83,r.m.r. DE ALMEIDA - ME,3635,22500.0
 2025,11,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,9993080,1346.71
 2025,11,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,221,46300.0
@@ -1680,7 +1680,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,5120,477.59
 2025,11,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,962,775.0
 2025,11,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,11,23500.0
-2025,11,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2025,11,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2025,11,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7200,5800.0
 2025,11,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,169309,1497.89
 2025,11,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,28,8000.0
@@ -1693,7 +1693,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,14950,6000.0
 2025,11,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,427,10000.0
 2025,11,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,426,10000.0
-2025,11,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,11,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,11,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,10318852,1001.13
 2025,11,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,1000908691,1418.48
 2025,11,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,71,15000.0
@@ -1718,14 +1718,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,23545,1145.66
 2025,11,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,199878,14699.33
 2025,11,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10000.0
-2025,11,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,11,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,11,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,45,4368.0
 2025,11,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,3251.26
 2025,11,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1717,1684.63
 2025,11,68,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2494,1033.0
 2025,11,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,25,27500.0
 2025,11,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,262,13050.0
-2025,11,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,S/N,6000.0
+2025,11,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,S/N,6000.0
 2025,11,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,38,15000.0
 2025,11,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,36,15000.0
 2025,11,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,59,15000.0
@@ -1754,14 +1754,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,11,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,39,23900.0
 2025,11,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2226,6973.25
 2025,11,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,13,19000.0
-2025,11,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,38,6500.0
+2025,11,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,38,6500.0
 2025,11,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),66,12000.0
 2025,11,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,522,400.0
 2025,11,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,792,300.0
 2025,11,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,793,350.0
 2025,11,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,790,400.0
 2025,11,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,94,12000.0
-2025,11,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2025,11,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2025,11,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1622,708.4
 2025,11,75,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,130.0
 2025,11,75,Serviço de Telecomunicações,40.432.544/0240-89,CLARO S.A,S/N,115.28
@@ -1810,7 +1810,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,40,Serviços de Seleção e Treinamento,35.841.368/0001-67,RUAN DHONHE RODRIGUES DA SILVA,43,7000.0
 2025,12,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2540,420.06
 2025,12,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,105,12000.0
-2025,12,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2025,12,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2025,12,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,525,5650.0
 2025,12,42,Serviço Gráficos e Editoriais,22.209.187/0001-70,VN & FW LTDA-ME,293,5100.0
 2025,12,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,349,15700.0
@@ -1822,7 +1822,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,45,Combustíveis e Lubrificantes Automotivos,02.280.133/0043-43,POSTO ICCAR LTDA,1452,250.0
 2025,12,45,Hospedagens,05.747.429/0001-60,HOTEL BELLO CENTRO,240,1619.0
 2025,12,45,Locação de Bens Móveis de Outras Naturezas e Intangíveis,08.950.536/0001-80,R G P BAGOT,6,17000.0
-2025,12,45,Locação de Imóveis,***.966.962-**,MARIA NEUMA DA SILVA AMANAJAS,12,5000.0
+2025,12,45,Locação de Imóveis,,MARIA NEUMA DA SILVA AMANAJAS,12,5000.0
 2025,12,45,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,1223684,381.48
 2025,12,45,Serviços de Publicidade Legal,53.573.756/0001-96,J.L.C. DOS SANTOS,33,17500.0
 2025,12,54,Combustíveis e Lubrificantes Automotivos,09.405.430/0005-91,REAL PETROLEO LTDA,3465,5000.0
@@ -1832,7 +1832,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,54,Serviços de Publicidade Legal,42.888.907/0001-89,G M BATISTA MOREIRA-ME,79,16000.0
 2025,12,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,744,3000.0
 2025,12,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1611,19500.0
-2025,12,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,12,8700.0
+2025,12,55,Locação de Imóveis,,JORGE DE JESUS RECIO,12,8700.0
 2025,12,55,Serviço de Processamento de Dados,02.558.157/0001-62,TELEFONICA BRASIL S/A,S/N,702.45
 2025,12,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1071.59
 2025,12,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,227,35600.0
@@ -1852,7 +1852,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0002-90,W DA R CIRQUEIRA (POSTO CIRQUEIRA),654,391.77
 2025,12,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,1022,180.0
 2025,12,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,12,23500.0
-2025,12,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2025,12,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2025,12,61,Aquisição de Softwares de Aplicação,63.830.819/0001-04,DANRLEY ALVES MAIA,1,140.0
 2025,12,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7229,7000.0
 2025,12,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,170328,1684.85
@@ -1864,7 +1864,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15050,6000.0
 2025,12,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,439,10000.0
 2025,12,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,438,10000.0
-2025,12,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2025,12,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2025,12,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,10618156,836.57
 2025,12,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,72,15000.0
 2025,12,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,196,2000.0
@@ -1889,7 +1889,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,24171,7484.55
 2025,12,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/1165-36,LOCALIZA RENT A CAR S/A,23825,1522.52
 2025,12,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10470.0
-2025,12,67,Locação de Imóveis,***.841.633-**,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
+2025,12,67,Locação de Imóveis,,TACIANE NOGUEIRA SÁ DE ALMEIDA,S/N,6000.0
 2025,12,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,47,4368.0
 2025,12,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,010288984,432.53
 2025,12,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1750,1070.15
@@ -1897,7 +1897,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,68,Serviço Gráficos e Editoriais,02.747.184/0001-83,r.m.r. DE ALMEIDA - ME,3676,21900.0
 2025,12,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,26,30000.0
 2025,12,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,273,13050.0
-2025,12,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,12,6000.0
+2025,12,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,12,6000.0
 2025,12,69,Serviços de Publicidade Legal,40.970.880/0001-43,I DOS S RODRIGUES,303,27000.0
 2025,12,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,45,15000.0
 2025,12,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,60,15000.0
@@ -1929,7 +1929,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,44,23900.0
 2025,12,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2238,6967.75
 2025,12,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,5,19000.0
-2025,12,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,39,6500.0
+2025,12,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,39,6500.0
 2025,12,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),72,12000.0
 2025,12,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,543,300.0
 2025,12,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,840,200.0
@@ -1938,7 +1938,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2025,12,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,829,360.0
 2025,12,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,184.693,956.21
 2025,12,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,100,12000.0
-2025,12,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2025,12,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2025,12,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,184.692,929.58
 2025,12,75,Material de Expediente,28.491.434/0001-50,DARKLE R ARAUJO ME,7285,430.0
 2025,12,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,1151403,115.28
@@ -1966,7 +1966,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2678,440.09
 2026,1,42,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15144,290.04
 2026,1,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,7,12000.0
-2026,1,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
+2026,1,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3000.0
 2026,1,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,536,5400.0
 2026,1,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,353,14800.0
 2026,1,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,297,5100.0
@@ -1987,7 +1987,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,3970,4000.0
 2026,1,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,757,3000.0
 2026,1,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1664,19500.0
-2026,1,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,1,8700.0
+2026,1,55,Locação de Imóveis,,JORGE DE JESUS RECIO,1,8700.0
 2026,1,55,Serviço de Processamento de Dados,02.558.157/0001-62,TELEFONICA BRASIL S/A,918077177,700.63
 2026,1,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,232,21400.0
 2026,1,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,10,12000.0
@@ -2002,7 +2002,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,12229,1130.04
 2026,1,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0005-09,POSTO DE COMBUSTIVÉL JARDINS EIRELI,4943,550.0
 2026,1,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,1,23500.0
-2026,1,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,1,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,1,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7289,5800.0
 2026,1,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,172151,1460.75
 2026,1,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,30,8000.0
@@ -2019,7 +2019,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,57,1500.0
 2026,1,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,47,15000.0
 2026,1,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,27,15000.0
-2026,1,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,1,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,1,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,10,25000.0
 2026,1,67,Combustíveis e Lubrificantes Automotivos,12.607.854/0001-10,AUTO POSTO LAGOA EIRELLI,1559,1093.87
 2026,1,67,Combustíveis e Lubrificantes Automotivos,20.488.504/0002-90,W DA R CIRQUEIRA (POSTO CIRQUEIRA),698,382.06
@@ -2032,7 +2032,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,67,Locação de Máquinas e Equipamentos,45.868.587/0001-93,YURI DE LIMA JAIME 01464209260 - MY PRODUCOES,48,4368.0
 2026,1,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1821,1082.08
 2026,1,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,27,30000.0
-2026,1,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,1,6000.0
+2026,1,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,1,6000.0
 2026,1,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,48,15000.0
 2026,1,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,61,15000.0
 2026,1,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,1107,449.66
@@ -2062,7 +2062,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,1,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,47,23900.0
 2026,1,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2259,6978.8
 2026,1,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,4,19000.0
-2026,1,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,1,6500.0
+2026,1,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,1,6500.0
 2026,1,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),76,12000.0
 2026,1,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,918,400.0
 2026,1,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,919,258.58
@@ -2116,7 +2116,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,4009,4000.0
 2026,2,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,766,3000.0
 2026,2,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1692,19500.0
-2026,2,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,002,8700.0
+2026,2,55,Locação de Imóveis,,JORGE DE JESUS RECIO,002,8700.0
 2026,2,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,010970565,1585.42
 2026,2,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,236,22412.5
 2026,2,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,19,12000.0
@@ -2131,15 +2131,15 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0005-09,POSTO DE COMBUSTIVÉL JARDINS EIRELI,5047,400.02
 2026,2,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,5250,450.0
 2026,2,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,02,23500.0
-2026,2,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,2,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,2,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7340,6500.0
 2026,2,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,31,8000.0
 2026,2,61,Locação de Imóveis,08.505.672/0001-60,EC. TECNOLOGIA E SOLUÇÃO LTDA - ME,655,8000.0
 2026,2,61,Locação de Máquinas e Equipamentos,08.505.672/0001-60,EC. TECNOLOGIA E SOLUÇÃO LTDA - ME,654,2600.0
 2026,2,61,Serviços de Publicidade Legal,46.220.030/0001-04,5 EM 1 REPRESENTAÇÕES LTDA,134,16500.0
 2026,2,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15181,6000.0
-2026,2,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
-2026,2,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,2,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,2,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,2,62,Serviço de Processamento de Dados,53.420.564/0021-93,OI FIBRA,S/N,160.0
 2026,2,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,972.12
 2026,2,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,714.03
@@ -2154,7 +2154,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,63,1500.0
 2026,2,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,48,15000.0
 2026,2,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,003,15000.0
-2026,2,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,2,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,2,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,11,25000.0
 2026,2,67,Combustíveis e Lubrificantes Automotivos,28.740.476/0001-88,AUTO POSTO BONARETTO II LTDA,874,3275.94
 2026,2,67,Combustíveis e Lubrificantes Automotivos,12.607.854/0001-10,AUTO POSTO LAGOA EIRELLI,1590,740.1
@@ -2171,7 +2171,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,33,30000.0
 2026,2,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,298,13050.0
 2026,2,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,308,13050.0
-2026,2,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,02,6000.0
+2026,2,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,02,6000.0
 2026,2,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,51,15000.0
 2026,2,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,62,15000.0
 2026,2,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,1176,458.0
@@ -2201,7 +2201,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,50,23900.0
 2026,2,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2292,6949.0
 2026,2,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,004,19000.0
-2026,2,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,004,6500.0
+2026,2,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,004,6500.0
 2026,2,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),87,12000.0
 2026,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,617,400.0
 2026,2,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,618,300.0
@@ -2209,7 +2209,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,2,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,984,205.0
 2026,2,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,985,260.1
 2026,2,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,16,12000.0
-2026,2,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2026,2,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2026,2,75,Serviços de Publicidade Legal,29.852.232/0001-50,I FLEXA NUNES FILHO,177,23080.0
 2026,2,75,Serviços de Publicidade Legal,23.087.097/0001-17,SITE BLOG DE ROCHA LTDA,227,1600.0
 2026,2,75,Serviços de Água e Esgoto,44.109.598/0001-27,CSA EQUATORIAL,G10-000.001,87.71
@@ -2228,8 +2228,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,2810,420.0
 2026,3,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0026-75,SALOMAO ALCOLUMBRE & CIA LTDA,702,475.06
 2026,3,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,31,12000.0
-2026,3,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
-2026,3,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,3,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,3,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,3,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,554,6200.0
 2026,3,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,366,15300.0
 2026,3,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,312,5100.0
@@ -2253,7 +2253,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,4055,4000.0
 2026,3,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,786,3000.0
 2026,3,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1725,19500.0
-2026,3,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,3,8700.0
+2026,3,55,Locação de Imóveis,,JORGE DE JESUS RECIO,3,8700.0
 2026,3,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,011282254,1858.3
 2026,3,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,248,34765.0
 2026,3,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,246,24750.0
@@ -2269,7 +2269,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,12656,667.35
 2026,3,59,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3294,2777.26
 2026,3,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,3,23500.0
-2026,3,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,3,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,3,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7391,5800.0
 2026,3,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,173859,1499.2
 2026,3,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,32,8000.0
@@ -2281,7 +2281,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15378,6000.0
 2026,3,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,467,10000.0
 2026,3,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,468,10000.0
-2026,3,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,3,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,3,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,11602563,919.88
 2026,3,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,73,15000.0
 2026,3,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,74,15000.0
@@ -2297,14 +2297,14 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,68,1500.0
 2026,3,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,49,15000.0
 2026,3,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,5,15000.0
-2026,3,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,3,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,3,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,14,25000.0
 2026,3,67,Locação de Bens Móveis de Outras Naturezas e Intangíveis,16.670.085/0340-50,LOCALIZA RENT A CAR S/A,202643,7741.78
 2026,3,67,Locação de Imóveis,44.277.520/0001-11,IZA MIRANDA IMOVEIS LTDA,S/N,10470.0
 2026,3,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,11656263,1719.28
 2026,3,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,34,30000.0
 2026,3,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,319,13050.0
-2026,3,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,3,6000.0
+2026,3,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,3,6000.0
 2026,3,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,56,15000.0
 2026,3,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,63,15000.0
 2026,3,70,Combustíveis e Lubrificantes Automotivos,20.488.504/0001-00,W DA R CIRQUEIRA EPP,1264,1500.0
@@ -2335,7 +2335,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,57,23900.0
 2026,3,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2304,6945.5
 2026,3,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,7,19000.0
-2026,3,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,5,6500.0
+2026,3,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,5,6500.0
 2026,3,74,Serviços de Publicidade Legal,38.592.413/0001-85,LEANDRO RICARDO SOUZA DE LIMA (4K DIGITAL),91,12000.0
 2026,3,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,627,400.0
 2026,3,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,633,400.0
@@ -2344,7 +2344,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,3,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,1061,250.0
 2026,3,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,188413,1391.86
 2026,3,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,32,12000.0
-2026,3,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2026,3,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2026,3,75,Locação de Máquinas e Equipamentos,10.857.422/0001-31,R & R SANTOS LTDA -ME,1748,674.45
 2026,3,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,188412,719.14
 2026,3,75,Serviço de Processamento de Dados,40.432.544/0240-89,CLARO S.A,S/N,117.75
@@ -2381,7 +2381,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,42,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,384,500.02
 2026,4,42,Combustíveis e Lubrificantes Automotivos,02.280.133/0034-52,POSTO ICCAR LTDA,3303,520.01
 2026,4,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,40,12000.0
-2026,4,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,4,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,4,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,562,5800.0
 2026,4,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,374,14900.0
 2026,4,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,316,5100.0
@@ -2406,7 +2406,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,4107,4000.0
 2026,4,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,800,3000.0
 2026,4,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1752,19500.0
-2026,4,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,4,9230.0
+2026,4,55,Locação de Imóveis,,JORGE DE JESUS RECIO,4,9230.0
 2026,4,55,Locação de Imóveis,05.995.766/0001-77,PREFEITURA MUNICIPAL DE MACAPA,s/n,1870.46
 2026,4,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,s/n,1169.93
 2026,4,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,255,20800.0
@@ -2424,7 +2424,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0005-09,POSTO DE COMBUSTIVÉL JARDINS EIRELI,5298,548.72
 2026,4,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,5359,500.07
 2026,4,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,4,23500.0
-2026,4,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,4,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,4,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7452,6400.0
 2026,4,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,175675,1574.34
 2026,4,61,Locação de Bens Móveis de Outras Naturezas e Intangíveis,41.053.725/0001-25,CSX COMERCIO E SERVICOS,33,8000.0
@@ -2436,7 +2436,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,477,10000.0
 2026,4,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,480,10000.0
 2026,4,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,479,10000.0
-2026,4,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,4,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,4,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,011953164,1110.09
 2026,4,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,76,15000.0
 2026,4,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,75,15000.0
@@ -2451,7 +2451,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,72,1500.0
 2026,4,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,50,15000.0
 2026,4,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,7,15000.0
-2026,4,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,s/n,5420.0
+2026,4,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,s/n,5420.0
 2026,4,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,16,25000.0
 2026,4,67,Combustíveis e Lubrificantes Automotivos,48.589.784/0001-61,AUTO POSTO SAO CRISTOVAO LTDA,156,8500.04
 2026,4,67,Gêneros de Alimentação,06.057.223/0554-05,SENDAS DISTRIBUIDORA S/A LJ325,52006,141.11
@@ -2463,7 +2463,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,67,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,12006357,460.85
 2026,4,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,35,30000.0
 2026,4,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,329,13050.0
-2026,4,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,4,6000.0
+2026,4,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,4,6000.0
 2026,4,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,59,15000.0
 2026,4,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,66,15000.0
 2026,4,70,Combustíveis e Lubrificantes Automotivos,49.373.068/0005-39,ECOPOSTOS LUBRIFICANTES E PNEUS LTDA,87,1350.8
@@ -2496,7 +2496,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,4,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,60,23900.0
 2026,4,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2324,6938.5
 2026,4,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,9,19000.0
-2026,4,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,8,6500.0
+2026,4,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,8,6500.0
 2026,4,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,679,270.0
 2026,4,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,700,300.0
 2026,4,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,1123,400.0
@@ -2539,7 +2539,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,5,42,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,388,500.0
 2026,5,42,Combustíveis e Lubrificantes Automotivos,03.281.737/0001-18,J.C.S FARIAS - ME,1877,480.01
 2026,5,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,49,12000.0
-2026,5,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,5,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,5,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,572,5600.0
 2026,5,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,379,14600.0
 2026,5,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,321,5100.0
@@ -2562,7 +2562,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,5,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,4169,4000.0
 2026,5,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,809,3000.0
 2026,5,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1796,19500.0
-2026,5,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,5,9250.0
+2026,5,55,Locação de Imóveis,,JORGE DE JESUS RECIO,5,9250.0
 2026,5,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1939.06
 2026,5,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,263,19300.0
 2026,5,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,47,12000.0
@@ -2577,7 +2577,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,5,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0008-51,POSTO DE COMBUSTIVEIS JARDINS EIRELI CEL,2894,200.0
 2026,5,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,38771,491.07
 2026,5,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,5,23500.0
-2026,5,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,5,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,5,59,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1362.89
 2026,5,61,Combustíveis e Lubrificantes Automotivos,03.199.834/0001-66,AUTO POSTO TERCEIRO MILENIO LTDA - EPP,7507,6800.0
 2026,5,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,177435,1420.55
@@ -2606,12 +2606,12 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,5,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,75,1500.0
 2026,5,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,51,15000.0
 2026,5,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,9,15000.0
-2026,5,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,5,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,5,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,18,25000.0
 2026,5,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,1909,1822.09
 2026,5,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,38,30000.0
 2026,5,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,343,13050.0
-2026,5,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,5,6000.0
+2026,5,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,5,6000.0
 2026,5,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,65,15000.0
 2026,5,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,69,15000.0
 2026,5,70,Combustíveis e Lubrificantes Automotivos,49.373.068/0005-39,ECOPOSTOS LUBRIFICANTES E PNEUS LTDA,168,800.0
@@ -2650,7 +2650,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,5,73,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,64,23900.0
 2026,5,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2340,9967.5
 2026,5,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,12,19000.0
-2026,5,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,9,6500.0
+2026,5,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,9,6500.0
 2026,5,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,738,308.46
 2026,5,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,720,250.0
 2026,5,75,Combustíveis e Lubrificantes Automotivos,10.522.077/0015-80,POSTO DE COMBUSTIVEIS JARDINS EIRELI RN,1188,400.0
@@ -2691,7 +2691,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,40,Locação de Software,38.014.466/0001-19,M&M EMPREENDIMENTOS E SOLUÇÕES LTDA,139,9200.0
 2026,6,40,Serviços de Publicidade Legal,54.380.239/0001-63,A W R DE S SOARES,42,15000.0
 2026,6,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,61,12000.0
-2026,6,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,6,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,6,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,578,7500.0
 2026,6,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,387,15300.0
 2026,6,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,322,5100.0
@@ -2714,7 +2714,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,54,Serviços de Publicidade Legal,02.401.125/0001-59,DIARIO COMUNICAÇÕES LTDA - ME,4208,4000.0
 2026,6,54,Serviços de Publicidade Legal,18.827.227/0001-70,S NAFES M DA SILVA JUNIOR- EPP,820,3000.0
 2026,6,54,Vigilância ostensiva,22.236.185/0001-70,DIMIVIG VIGILÂNCIA E SEGURANÇA PATRIMONIAL LTDA - ME,1831,19500.0
-2026,6,55,Locação de Imóveis,***.732.342-**,JORGE DE JESUS RECIO,6,9250.0
+2026,6,55,Locação de Imóveis,,JORGE DE JESUS RECIO,6,9250.0
 2026,6,55,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,12330428,2825.79
 2026,6,55,Serviços de Publicidade Legal,48.923.590/0001-50,T.G GAMA LTDA,270,18800.0
 2026,6,57,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,63,12000.0
@@ -2729,7 +2729,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39109,789.07
 2026,6,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0003-47,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,13341,347.96
 2026,6,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,006/2026,23500.0
-2026,6,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,6,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,6,59,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,S/N,1633.05
 2026,6,61,Combustíveis e Lubrificantes Automotivos,64.999.595/0001-13,AUTO POSTO RV LTDA,24,6900.0
 2026,6,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,179130,1660.72
@@ -2740,8 +2740,8 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,61,Serviços de Publicidade Legal,46.220.030/0001-04,5 EM 1 REPRESENTAÇÕES LTDA,182,16500.0
 2026,6,61,Serviços de Publicidade Legal,08.505.672/0001-60,EC. TECNOLOGIA E SOLUÇÃO LTDA - ME,697,2600.0
 2026,6,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15699,6000.0
-2026,6,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
-2026,6,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,6,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,6,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,6,62,Serviços de Publicidade Legal,26.981.190/0001-69,PHILIPPE SHMITHY CALLINS GOMES SAMPAIO 00598945202,81,15000.0
 2026,6,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,457,2000.0
 2026,6,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,458,2000.0
@@ -2754,13 +2754,13 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,78,1500.0
 2026,6,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,52,15000.0
 2026,6,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,11,15000.0
-2026,6,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,6,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,6,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,20,25000.0
 2026,6,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,2031,1986.95
 2026,6,68,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,3078,2270.0
 2026,6,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,39,30000.0
 2026,6,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,352,13050.0
-2026,6,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,6,6000.0
+2026,6,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,6,6000.0
 2026,6,69,Serviços de Publicidade Legal,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,68,15000.0
 2026,6,69,Serviços de Publicidade Legal,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,76,15000.0
 2026,6,70,Combustíveis e Lubrificantes Automotivos,49.373.068/0005-39,ECOPOSTOS LUBRIFICANTES E PNEUS LTDA,242,1820.12
@@ -2792,7 +2792,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,6,71,Serviços de Publicidade Legal,39.327.180/0001-56,GIRASSOL COMUNICAÇÃO E MÍDIA LTDA,342,5000.0
 2026,6,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2355,9974.0
 2026,6,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,16,19000.0
-2026,6,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,10,6500.0
+2026,6,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,10,6500.0
 2026,6,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,767,400.0
 2026,6,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,756,400.0
 2026,6,75,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,755,250.0
@@ -2847,7 +2847,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,7,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,3310,450.05
 2026,7,42,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,3312,450.06
 2026,7,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,67,12000.0
-2026,7,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,7,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,7,42,Serviço Gráficos e Editoriais,12.238.090/0001-32,M.D. PRESTADORA DE SERVIÇOS EIRELI,584,5800.0
 2026,7,42,Serviços de Publicidade Legal,32.756.633/0001-10,K. D. DA SILVA GOES,393,15800.0
 2026,7,42,Serviços de Publicidade Legal,22.209.187/0001-70,VN & FW LTDA-ME,326,5100.0
@@ -2885,7 +2885,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,7,59,Combustíveis e Lubrificantes Automotivos,47.541.680/0001-14,POSTO GOLL PADRE JULIO LTDA,5558,318.53
 2026,7,59,Combustíveis e Lubrificantes Automotivos,20.488.504/0002-90,W DA R CIRQUEIRA (POSTO CIRQUEIRA),940,465.05
 2026,7,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,7,23500.0
-2026,7,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,7,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,7,59,Serviço de Processamento de Dados,07.656.757/0001-87,VOCE TELECOMUNICA??ES LTDA,S/N,192.59
 2026,7,59,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,13014974,1733.06
 2026,7,61,Combustíveis e Lubrificantes Automotivos,64.999.595/0001-13,AUTO POSTO RV LTDA,74,6200.0
@@ -2900,7 +2900,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,7,62,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15793,6000.0
 2026,7,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,506,10000.0
 2026,7,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,507,10000.0
-2026,7,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,7,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,7,62,Serviço de Processamento de Dados,53.420.564/0001-40,CLIENT CO SERVICOS DE REDE NORDESTE S.A.,23410764,160.0
 2026,7,62,Serviço de Processamento de Dados,53.420.564/0001-40,CLIENT CO SERVICOS DE REDE NORDESTE S.A.,24466057,160.0
 2026,7,62,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,12638303,1028.23
@@ -2917,12 +2917,12 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,7,65,Serviços de Publicidade Legal,58.744.132/0001-08,EKA COMUNICAÇÃO KAREN THAIS PEDROSO CAPIBERIBE,79,1500.0
 2026,7,65,Serviços de Publicidade Legal,37.181.958/0001-36,REGIANE DE NAZARE MONTEIRO CORDEIRO 60516348272,53,15000.0
 2026,7,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,14,15000.0
-2026,7,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,7,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,7,66,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,21,25000.0
 2026,7,68,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39412,2209.98
 2026,7,68,Serviços de Publicidade Legal,54.074.683/0001-50,HYPE GESTAO E MARKETING LTDA,43,30000.0
 2026,7,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,362,13050.0
-2026,7,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,07,6000.0
+2026,7,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,07,6000.0
 2026,7,69,Outros Serviços de Terceiros - Pessoa Jurídica,58.450.817/0001-41,J. BATISTA DOS SANTOS SB. NOGUEIRA,70,15000.0
 2026,7,69,Outros Serviços de Terceiros - Pessoa Jurídica,22.218.175/0001-02,ROTA 16 CRIACAO LTDA,78,15000.0
 2026,7,70,Combustíveis e Lubrificantes Automotivos,49.373.068/0005-39,ECOPOSTOS LUBRIFICANTES E PNEUS LTDA,332,1150.0
@@ -2958,11 +2958,11 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,7,71,Serviços de Publicidade Legal,39.327.180/0001-56,GIRASSOL COMUNICAÇÃO E MÍDIA LTDA,347,5000.0
 2026,7,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2378,9500.0
 2026,7,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,19,19000.0
-2026,7,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,11,6500.0
+2026,7,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,11,6500.0
 2026,7,74,Serviços de Publicidade Legal,61.414.091/0001-04,CRIAE MARKETING DIGITAL LTDA,23,12000.0
 2026,7,75,Gêneros de Alimentação,75.315.333/0159-98,ATACADAO S. A.,192344,1359.74
 2026,7,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,66,12000.0
-2026,7,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2026,7,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2026,7,75,Material de Copa e Cozinha,75.315.333/0159-98,ATACADAO S. A.,192343,755.32
 2026,7,75,Serviço de Processamento de Dados,40.432.544/0001-47,CLARO S.A,S/N,122.9
 2026,7,75,Serviço de Processamento de Dados,53.420.564/0001-40,CLIENT CO SERVICOS DE REDE NORDESTE S.A.,24830121,130.0
@@ -3000,7 +3000,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,42,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,571,480.0
 2026,8,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0026-75,SALOMAO ALCOLUMBRE & CIA LTDA,897,300.12
 2026,8,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,82,12000.0
-2026,8,42,Locação de Imóveis,***.643.922-**,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,8,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,8,44,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15905,7500.0
 2026,8,44,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.978.138/0001-41,DISTRIBUIDORA GUIMARÃES,8,12000.0
 2026,8,44,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.978.138/0001-41,DISTRIBUIDORA GUIMARÃES,1,12000.0
@@ -3025,7 +3025,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0007-70,POSTO DE COMBUSTIVEIS JARDINS EIRELI,7481,520.06
 2026,8,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39716,347.34
 2026,8,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,8,23500.0
-2026,8,59,Locação de Imóveis,***.092.262-**,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,8,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,8,59,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,13337742,1762.56
 2026,8,61,Combustíveis e Lubrificantes Automotivos,64.999.595/0001-13,AUTO POSTO RV LTDA,120,3900.0
 2026,8,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,182066,1496.56
@@ -3040,7 +3040,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,520,10000.0
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,517,10000.0
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,518,10000.0
-2026,8,62,Locação de Imóveis,***.905.482-**,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,8,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,8,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,578,2000.0
 2026,8,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,577,2000.0
 2026,8,64,Gêneros de Alimentação,23.069.198/0001-65,M A SILVA E SILVA LTDA,252915,1984.91
@@ -3049,7 +3049,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,65,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.320.845/0001-88,MACPLAN CONSTRUCOES E COMERCIO LTDA EPP,34,17000.0
 2026,8,65,Locação de Software,35.841.368/0001-67,RUAN DHONHE RODRIGUES DA SILVA,54,5000.0
 2026,8,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,18,15000.0
-2026,8,66,Locação de Imóveis,***.549.718-**,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,8,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,8,66,Locação de Software,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,171,7000.0
 2026,8,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,2213,1505.16
 2026,8,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,2214,2537.33
@@ -3057,7 +3057,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,68,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,3477,495.0
 2026,8,68,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39720,1300.0
 2026,8,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,372,13050.0
-2026,8,69,Locação de Imóveis,***.908.342-**,MAICON WILLIAN TAVARES SOARES,8,6000.0
+2026,8,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,8,6000.0
 2026,8,69,Locação de Software,38.014.466/0001-19,M&M EMPREENDIMENTOS E SOLUÇÕES LTDA,4,12000.0
 2026,8,71,Combustíveis e Lubrificantes Automotivos,02.924.411/0001-07,AUTO POSTO MACHADO LTDA,7154,730.42
 2026,8,71,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,846,445.0
@@ -3077,9 +3077,9 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,71,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,13281769,419.6
 2026,8,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2391,9994.9
 2026,8,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,22,19000.0
-2026,8,74,Locação de Bens Móveis e Intangíveis,***.949.332-**,JOSÉ MAX LACERDA FERREIRA,12,6500.0
+2026,8,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,12,6500.0
 2026,8,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,79,12000.0
-2026,8,75,Locação de Imóveis,***.177.702-**,KARINNY RAMADA DE MELO,S/N,2630.0
+2026,8,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
 2026,8,76,Combustíveis e Lubrificantes Automotivos,09.405.430/0003-20,REAL L PETROLEO II,12450,4799.49
 2026,8,76,Locação de Bens Móveis de Outras Naturezas e Intangíveis,21.496.223/0001-61,AMAZZON CAR LTDA-ME,73,11000.0
 2026,8,76,Locação de Bens Móveis de Outras Naturezas e Intangíveis,21.496.223/0001-61,AMAZZON CAR LTDA-ME,72,8000.0

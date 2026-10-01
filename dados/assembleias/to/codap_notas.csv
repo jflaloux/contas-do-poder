@@ -44,7 +44,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,1,30/01/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,12000.0,0
 2025,1,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,2,30/01/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-0.69,1
-2025,1,Eduardo Fortes,EDUARDO FORTES,O,REC,1,10/01/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,1,Eduardo Fortes,EDUARDO FORTES,O,REC,1,10/01/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,12,14/01/2025,RBA - Recycle Brasil Ambiental Ltda,18.475.704/0001-86,6500.0,0
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,4,14/01/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,NF-e,11148,15/01/2025,Auto Posto Sol Nascente Ltda,14.595.639/0001-71,6033.0,0
@@ -56,7 +56,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,102,21/01/2025,Emerson dos Santos Marques,26.715.773/0001-48,1990.0,0
 2025,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,2,21/01/2025,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,960.0,0
 2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,1112,03/01/2025,Associação dos Proprietários e Locatários,20.278.765/0001-03,743.97,0
-2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9596,10/01/2025,Vilma Maria Martins da Silva,***.628.726-**,3890.06,0
+2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9596,10/01/2025,Vilma Maria Martins da Silva,,3890.06,0
 2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,73904,17/01/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,2273.82,0
 2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,6577,20/01/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,3473.87,0
 2025,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,6,27/01/2025,WL Locadora de Veículos – Eireli,32.680.992/0001-31,4000.0,0
@@ -106,7 +106,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Jair Farias,JAIR FARIAS,O,NFS-e,699,20/01/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
 2025,1,Jair Farias,JAIR FARIAS,O,NFS-e,73,20/01/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,1,Jair Farias,JAIR FARIAS,O,NFS-e,10,22/01/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
-2025,1,Jair Farias,JAIR FARIAS,O,REC,0,22/01/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,1,Jair Farias,JAIR FARIAS,O,REC,0,22/01/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,1,Jair Farias,JAIR FARIAS,O,NFS-e,3,23/01/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2025,1,Jair Farias,JAIR FARIAS,O,NF-e,20130,23/01/2025,Posto Pantanal Ltda,07.111.045/0001-82,7012.9,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,NF,010896226,06/01/2025,Energisa Tocantins Distribuidora de Energia S/A,25.086.034/0001-71,405.63,0
@@ -114,7 +114,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Jorge Frederico,JORGE FREDERICO,O,REC,1,13/01/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,REC,2,13/01/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,REC,3,13/01/2025,P L Alves de Sousa - ME,34.589.621/0001-74,4680.0,0
-2025,1,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/01/2025,Teotonio Marques de Queiroz,***.856.006-**,2100.0,0
+2025,1,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/01/2025,Teotonio Marques de Queiroz,,2100.0,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,NFS-e,2,20/01/2025,F. G. O. Silva,38.137.634/0001-63,500.0,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,NFS-e,3,22/01/2025,Emilio e Alves Assessoria e Consultoria Ltda – ME,02.696.703/0001-21,12000.0,0
 2025,1,Jorge Frederico,JORGE FREDERICO,O,NF-e,770,22/01/2025,Ipanema Comércio de Derivados de Petróleo Ltda,21.304.358/0001-88,5800.0,0
@@ -130,7 +130,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,6,24/01/2025,Premium Assessoria e Consultoria em Gestão Pública Ltda - ME,04.877.439/0001-58,5000.0,0
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,235186,24/01/2025,Suprema Combustíveis Ltda,24.188.975/0001-55,100.0,0
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4249,24/01/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,293.51,0
-2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,27/01/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,27/01/2025,Maria Castorina Medeiros,,2518.0,0
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,4,27/01/2025,Porta Nova Comunicação Visual Ltda,32.839.947/0001-87,2000.0,0
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,745,28/01/2025,Gráfica e Editora Santo Expedito Ltda,09.015.122/0001-26,3600.0,0
 2025,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,236575,28/01/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,150.0,0
@@ -151,7 +151,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Léo Barbosa,LÉO BARBOSA,O,NFS-e,2,28/01/2025,Rodrigues & Putencio Ltda,07.161.964/0001-60,2000.0,0
 2025,1,Léo Barbosa,LÉO BARBOSA,O,NFS-e,38,28/01/2025,Sandoval A. Fontoura Junior Sociedade Individual de Advocacia,26.557.281/0001-71,13000.0,0
 2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-1105.17,1
-2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/01/2025,Josely Sobreira da Silva,***.731.704-**,1750.0,0
+2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/01/2025,Josely Sobreira da Silva,,1750.0,0
 2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF,11213942,13/01/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,241.48,0
 2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,FAT,57032730,13/01/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,72.1,0
 2025,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,1,22/01/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5800.0,0
@@ -179,7 +179,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,62,28/01/2025,Hiago Fritz Rodrigues de Oliveira,44.815.308/0001-60,4500.0,0
 2025,1,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,3,28/01/2025,Manzano Sociedade Individual de Advocacia - Eireli,20.591.738/0001-88,10000.0,0
 2025,1,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,74403,29/01/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7832.0,0
-2025,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,10,24/01/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,10,24/01/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,1,27/01/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,1,27/01/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
 2025,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2380,27/01/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,10845.41,0
@@ -198,7 +198,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,17,22/01/2025,Felix Roman Dalis Castillo,35.521.626/0001-28,6700.0,0
 2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,2,28/01/2025,Expertie Assessoria e Capacitação Ltda,06.309.532/0001-91,10000.0,0
 2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,29788,28/01/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,14050.0,0
-2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,29/01/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,29/01/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,9,29/01/2025,Locadora de Veículos Araguaia Ltda - ME,01.419.973/0001-22,3500.0,0
 2025,1,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,1,29/01/2025,Gilberto Tomaz Sociedade Individual de Advocacia,27.932.427/0001-84,15000.0,0
 2025,1,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,73545,08/01/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,200.0,0
@@ -361,7 +361,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NFS-e,21,24/02/2025,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,5000.0,0
 2025,2,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NFS-e,5,26/02/2025,Leidiane Galdino - Sociedade Individual de Advocacia,23.974.906/0001-02,14000.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,9,04/02/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,2,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/02/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,2,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/02/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6,17/02/2025,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,360.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,22,17/02/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,108,17/02/2025,Emerson dos Santos Marques,26.715.773/0001-48,6000.0,0
@@ -371,7 +371,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,13,18/02/2025,RBA - Recycle Brasil Ambiental Ltda,18.475.704/0001-86,6500.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,4,19/02/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
 2025,2,Eduardo Fortes,EDUARDO FORTES,O,NF-e,16971,21/02/2025,MJ Lima de Assis,05.087.673/0001-44,2986.87,0
-2025,2,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9604,11/02/2025,Vilma Maria Martins da Silva,***.628.726-**,3890.0,0
+2025,2,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9604,11/02/2025,Vilma Maria Martins da Silva,,3890.0,0
 2025,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,6754,17/02/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7355.4,0
 2025,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,18,19/02/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
 2025,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,27,19/02/2025,Precisa Cliping Ltda,26.481.555/0001-96,1380.0,0
@@ -429,7 +429,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Jair Farias,JAIR FARIAS,O,NFS-e,10,17/02/2025,Rede Jovem News Ltda,48.886.000/0001-67,1500.0,0
 2025,2,Jair Farias,JAIR FARIAS,O,NF,114458884,18/02/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,704.52,0
 2025,2,Jair Farias,JAIR FARIAS,O,NFC-e,155969,19/02/2025,Petro Petróleo 71 Comércio de Combustíveis Ltda,50.766.414/0001-02,390.02,0
-2025,2,Jair Farias,JAIR FARIAS,O,REC,2,20/02/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,2,Jair Farias,JAIR FARIAS,O,REC,2,20/02/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,2,Jair Farias,JAIR FARIAS,O,NFS-e,720,24/02/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
 2025,2,Jair Farias,JAIR FARIAS,O,NFS-e,29,24/02/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2025,2,Jair Farias,JAIR FARIAS,O,NFS-e,76,24/02/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
@@ -439,7 +439,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Jorge Frederico,JORGE FREDERICO,O,REC,02,10/02/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,2,Jorge Frederico,JORGE FREDERICO,O,REC,02,10/02/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,2,Jorge Frederico,JORGE FREDERICO,O,FAT,2346579,14/02/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2025,2,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/02/2025,Teotonio Marques de Queiroz,***.856.006-**,2500.0,0
+2025,2,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/02/2025,Teotonio Marques de Queiroz,,2500.0,0
 2025,2,Jorge Frederico,JORGE FREDERICO,O,NF,11409354,17/02/2025,Energisa Tocantins Distribuidora de Energia S/A,25.086.034/0001-71,45.45,0
 2025,2,Jorge Frederico,JORGE FREDERICO,O,FAT,57504827,17/02/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,110.46,0
 2025,2,Jorge Frederico,JORGE FREDERICO,O,NF-e,280,23/01/2025,Difer Distribuidora Ltda,03.955.560/0001-98,2700.08,0
@@ -464,7 +464,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4340,22/02/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,348.28,0
 2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,10,24/02/2025,A. Ferreira Lopes Ltda,27.052.896/0001-09,9000.0,0
 2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,10,24/02/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,13000.0,0
-2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/02/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/02/2025,Maria Castorina Medeiros,,2518.0,0
 2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,36,26/02/2025,Jaqueline Vieira Moraes,42.561.595/0001-02,8000.0,0
 2025,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,5,26/02/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,2,Léo Barbosa,LÉO BARBOSA,O,NFS-e,40,17/02/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
@@ -483,7 +483,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Léo Barbosa,LÉO BARBOSA,O,NF-e,75690,26/02/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5665.44,0
 2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,1105.17,1
 2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFC-e,16530,04/02/2025,Churrascaria Palmas Ltda,48.981.584/0001-50,199.18,0
-2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/02/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/02/2025,Josely Sobreira da Silva,,2200.0,0
 2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF,11745217,11/02/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,389.19,0
 2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,22,24/02/2025,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,2000.0,0
 2025,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,12635,25/02/2025,Conde & Dell Aringa – Desenvolvimento de Softwares Ltda–EPP,09.613.772/0001-73,400.0,0
@@ -510,14 +510,14 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2409,21/02/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,10578.98,0
 2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,9,24/02/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,2,24/02/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
-2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,11,24/02/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,11,24/02/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,2,25/02/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF,11319232,05/02/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,355.7,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,FAT,57334492,05/02/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,50.22,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2238,05/02/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,1741.88,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2241,07/02/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,626.27,0
-2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/01/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
-2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/02/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/01/2025,José Arley de Jesus Sousa,,3000.0,0
+2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/02/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2248,12/02/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,1013.17,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,39,17/02/2025,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
 2025,2,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,5,19/02/2025,Ianowich Advogados Associados S/S,18.238.910/0001-72,18000.0,0
@@ -538,7 +538,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,4,25/02/2025,Expertie Assessoria e Capacitação Ltda,06.309.532/0001-91,10000.0,0
 2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,30148,25/02/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,10080.73,0
 2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,3,26/02/2025,Innove Serviços Ltda,23.868.933/0001-09,2600.0,0
-2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,28/02/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,28/02/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,2,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF,11342740,30/01/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,100.64,0
 2025,2,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,74666,03/02/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,250.0,0
 2025,2,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,2679,04/02/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,424.45,0
@@ -707,7 +707,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NFS-e,37,26/03/2025,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,5000.0,0
 2025,3,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NFS-e,8,26/03/2025,Leidiane Galdino - Sociedade Individual de Advocacia,23.974.906/0001-02,14000.0,0
 2025,3,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NF-e,12098,26/03/2025,Premium Com.de Derivados de Petróleo Ltda,09.217.206/0001-42,9000.0,0
-2025,3,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/03/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,3,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/03/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,17,11/03/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NF-e,11245,11/03/2025,Auto Posto Sol Nascente Ltda,14.595.639/0001-71,6570.0,0
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,32,13/03/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
@@ -716,7 +716,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6,21/03/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,118,21/03/2025,Emerson dos Santos Marques,26.715.773/0001-48,5000.0,0
 2025,3,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17107,21/03/2025,MJ Lima de Assis,05.087.673/0001-44,6968.41,0
-2025,3,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9611,11/03/2025,Vilma Maria Martins da Silva,***.628.726-**,3890.06,0
+2025,3,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,9611,11/03/2025,Vilma Maria Martins da Silva,,3890.06,0
 2025,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,6944,17/03/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,590.07,0
 2025,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,6943,17/03/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,5311.44,0
 2025,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,76617,18/03/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,2876.26,0
@@ -773,7 +773,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Jair Farias,JAIR FARIAS,O,NFC-e,566186,12/03/2025,Posto Pantanal Ltda,07.111.045/0001-62,435.0,0
 2025,3,Jair Farias,JAIR FARIAS,O,NFC-e,130805,15/03/2025,Posto Pantanal Ltda,02.930.356/0001-50,270.06,0
 2025,3,Jair Farias,JAIR FARIAS,O,NFS-e,17,17/03/2025,Rede Jovem News Ltda,48.886.000/0001-67,1500.0,0
-2025,3,Jair Farias,JAIR FARIAS,O,REC,3,20/03/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,3,Jair Farias,JAIR FARIAS,O,REC,3,20/03/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,3,Jair Farias,JAIR FARIAS,O,NFS-e,79,21/03/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,3,Jair Farias,JAIR FARIAS,O,NFS-e,64,21/03/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
 2025,3,Jair Farias,JAIR FARIAS,O,NF,11970666,24/03/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,813.41,0
@@ -785,7 +785,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Jair Farias,JAIR FARIAS,O,NFS-e,742,26/03/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
 2025,3,Jair Farias,JAIR FARIAS,O,NFS-e,32,26/03/2025,Maria Elizia Dias Brito,58.687.642/0001-90,2000.0,0
 2025,3,Jorge Frederico,JORGE FREDERICO,O,FAT,2432357,14/03/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2025,3,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/03/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,3,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/03/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,3,Jorge Frederico,JORGE FREDERICO,O,REC,3,20/03/2025,P L Alves de Sousa - ME,34.589.621/0001-74,4680.0,0
 2025,3,Jorge Frederico,JORGE FREDERICO,O,REC,3,20/03/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,3,Jorge Frederico,JORGE FREDERICO,O,REC,3,20/03/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
@@ -805,7 +805,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,827285,18/03/2025,Furukawa Combustíveis Participações Eireli,21.423.549/0001-69,200.0,0
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4427,20/03/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,310.0,0
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,15,21/03/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,13000.0,0
-2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/03/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/03/2025,Maria Castorina Medeiros,,2518.0,0
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,14,24/03/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,64608,24/03/2025,Posto Alianz Cidade,31.919.702/0001-05,400.29,0
 2025,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,3406,24/03/2025,Petro Petroleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,149.98,0
@@ -837,7 +837,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Léo Barbosa,LÉO BARBOSA,O,NFS-e,31,26/03/2025,RR10 Produções Ltda,40.692.103/0001-84,1200.0,0
 2025,3,Léo Barbosa,LÉO BARBOSA,O,NF-e,27323,26/03/2025,Lanches e Companhia Ltda,06.926.204/0001-34,82.46,0
 2025,3,Léo Barbosa,LÉO BARBOSA,O,NF-e,76975,26/03/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,6818.84,0
-2025,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/03/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/03/2025,Josely Sobreira da Silva,,2200.0,0
 2025,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF,12269226,18/03/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,408.8,0
 2025,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,3,24/03/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2025,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,12677,24/03/2025,Conde & Dell Aringa – Desenvolvimento de Softwares Ltda–EPP,09.613.772/0001-73,400.0,0
@@ -867,7 +867,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,132689,26/03/2025,Souza e Vital Ltda,38.154.506/0001-28,225.0,0
 2025,3,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,22,27/03/2025,A Ferreira Lopes Ltda,27.052.896/0001-09,7500.0,0
 2025,3,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,77219,31/03/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,6894.8,0
-2025,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,12,24/03/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,12,24/03/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,20,26/03/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4236,26/03/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1000.0,0
 2025,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2453,26/03/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,9749.47,0
@@ -876,7 +876,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,321,01/04/2025,Difer Distribuidora Ltda,03.955.560/0001-98,489.14,0
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,2866321,02/03/2025,Starlink Brazil Serviços de Internet Ltda,40.154.884/0001-53,390.32,0
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,9263921,03/02/2025,Starlink Brazil Serviços de Internet Ltda,40.154.884/0001-53,585.47,0
-2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/03/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/03/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,307,12/03/2025,Difer Distribuidora Ltda,03.955.560/0001-99,625.34,0
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2295,13/03/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,924.16,0
 2025,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,308,13/03/2025,Difer Distribuidora Ltda,03.955.560/0002-00,650.0,0
@@ -902,7 +902,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,30548,26/03/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,8713.25,0
 2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,2,27/03/2025,Marimar Aiala de Souza,59.304.662/0001-06,5500.0,0
 2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,6,27/03/2025,Expertie Assessoria e Capacitação Ltda,06.309.532/0001-91,10000.0,0
-2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,27/03/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,27/03/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,2736,27/03/2025,Leobas e Leobas Ltda,15.735.091/0001-80,279.82,0
 2025,3,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,2735,27/03/2025,Leobas e Leobas Ltda,15.735.091/0001-80,279.82,0
 2025,3,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NFS-e,5184,01/01/2025,Tecnegócios Soluções em Informática Ltda,11.521.613/0001-90,499.0,0
@@ -1089,7 +1089,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,43,25/04/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,12000.0,0
 2025,4,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,44,25/04/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,4,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NF-e,12342,25/04/2025,Premium Com.de Derivados de Petróleo Ltda,09.217.206/0001-42,9000.01,0
-2025,4,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/04/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,4,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/04/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,47,17/04/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,5683,21/04/2025,Tecnonegócios Soluções em Informática Ltda,11.521.613/0001-90,649.0,0
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NF-e,78059,21/04/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,3231.53,0
@@ -1098,7 +1098,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,8,22/04/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,503,22/04/2025,|Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2025,4,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17241,22/04/2025,MJ Lima de Assis,05.087.673/0001-44,9306.0,0
-2025,4,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11554,10/04/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,4,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11554,10/04/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,193,22/04/2025,Criativo 16 Comunicação e Arte Ltda,38.357.921/0001-89,2000.0,0
 2025,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,41,22/04/2025,T1 Conteúdos na Internet Ltda,05.841.131/0001-15,1500.0,0
 2025,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,51,22/04/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
@@ -1156,7 +1156,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,82,22/04/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,58,22/04/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,84,22/04/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
-2025,4,Jair Farias,JAIR FARIAS,O,REC,4,22/04/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,4,Jair Farias,JAIR FARIAS,O,REC,4,22/04/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,53,22/04/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,749,23/04/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
 2025,4,Jair Farias,JAIR FARIAS,O,NFS-e,79,23/04/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
@@ -1168,7 +1168,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Jorge Frederico,JORGE FREDERICO,O,REC,04,15/04/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,4,Jorge Frederico,JORGE FREDERICO,O,REC,04,15/04/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,4,Jorge Frederico,JORGE FREDERICO,O,FAT,1051909,15/04/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2025,4,Jorge Frederico,JORGE FREDERICO,O,REC,04,15/04/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,4,Jorge Frederico,JORGE FREDERICO,O,REC,04,15/04/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,4,Jorge Frederico,JORGE FREDERICO,O,NF,12469834,22/04/2025,Energisa Tocantins Distribuidora de Energia S/A,25.086.034/0001-71,351.44,0
 2025,4,Jorge Frederico,JORGE FREDERICO,O,FAT,58507940,22/04/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,218.04,0
 2025,4,Jorge Frederico,JORGE FREDERICO,O,NF-e,1211,22/04/2025,Ipanema Comércio de Derivados de Petróleo Ltda,21.304.358/0001-88,6100.0,0
@@ -1193,7 +1193,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,271544,23/04/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,100.0,0
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,11579,23/04/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.0,0
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4526,23/04/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,410.14,0
-2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/04/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/04/2025,Maria Castorina Medeiros,,2518.0,0
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,28074,24/04/2025,Posto Pedro Afonso Com. Var. de Combustíveis Ltda,18.949.190/0001-53,430.37,0
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5984,24/04/2025,Petroshop – Comércio de Combustíveis Ltda – ME,13.716.765/0001-74,300.0,0
 2025,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,20561,24/04/2025,Posto de Combustíveis Dois Irmãos Ltda,24.744.436/0001-53,511.73,0
@@ -1216,7 +1216,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Léo Barbosa,LÉO BARBOSA,O,NFS-e,10,25/04/2025,Aruana Construtora e Editora Ltda,25.138.687/0001-57,2000.0,0
 2025,4,Léo Barbosa,LÉO BARBOSA,O,NFS-e,54,25/04/2025,RR10 Produções Ltda,40.692.103/0001-84,1200.0,0
 2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,73,03/04/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
-2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/04/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/04/2025,Josely Sobreira da Silva,,2200.0,0
 2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,88,22/04/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,12720,23/04/2025,Conde & Dell Aringa – Desenvolvimento de Softwares Ltda–EPP,09.613.772/0001-73,400.0,0
 2025,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,5,24/04/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
@@ -1248,7 +1248,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,14,30/04/2025,Aruana Construtora e Editora Ltda,25.138.687/0001-57,4500.0,0
 2025,4,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,78529,30/04/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5976.04,0
 2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2494,22/04/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,9715.78,0
-2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,1,23/04/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,1,23/04/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4319,23/04/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,994.96,0
 2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,30,24/04/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,6,24/04/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
@@ -1259,7 +1259,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,FAT,58344525,07/04/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,73.54,0
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,325,09/04/2025,Difer Distribuidora Ltda,03.955.560/0001-98,552.46,0
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,326,10/04/2025,Difer Distribuidora Ltda,03.955.560/0001-98,490.26,0
-2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/04/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,0,10/04/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF,11860590,18/03/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,489.97,0
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,FAT,57838813,18/03/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,70.9,0
 2025,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,12,22/04/2025,Ianowich Advogados Associados S/S,18.238.910/0001-72,18000.0,0
@@ -1281,7 +1281,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,4,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,7,28/04/2025,Expertie Assessoria e Capacitação Ltda,06.309.532/0001-91,10000.0,0
 2025,4,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,30954,28/04/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,8444.08,0
 2025,4,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,2938,29/04/2025,Leobas e Leobas Ltda,15.735.091/0001-80,280.71,0
-2025,4,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/04/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,4,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/04/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,4,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,,,,,,-17.46,1
 2025,4,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,2215,02/04/2025,Petro Petróleo 41 Comércio de Combustíveis Ltda,50.772.769/0001-04,340.0,0
 2025,4,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,11198,03/04/2025,Suprema Combustíveis Ltda,24.188.975/0001-54,300.03,0
@@ -1482,7 +1482,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,16,22/05/2025,RBA - Recycle Brasil Ambiental Ltda,18.475.704/0001-86,6500.0,0
 2025,5,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,133,26/05/2025,Emerson dos Santos Marques,26.715.773/0001-48,2000.0,0
 2025,5,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17376,26/05/2025,MJ Lima de Assis,05.087.673/0001-44,4399.0,0
-2025,5,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11555,12/05/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,5,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11555,12/05/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,5,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,79392,19/05/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5210.92,0
 2025,5,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,7319,19/05/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7951.74,0
 2025,5,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,91,21/05/2025,Precisa Cliping Ltda,26.481.555/0001-96,1380.0,0
@@ -1532,7 +1532,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Jair Farias,JAIR FARIAS,O,NF,13036828,19/05/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,829.49,0
 2025,5,Jair Farias,JAIR FARIAS,O,FAT,25001906,19/05/2025,Serviço Autônomo de Água e Esgoto,00.766.725/0001-96,48.89,0
 2025,5,Jair Farias,JAIR FARIAS,O,NFC-e,22139,19/05/2025,Luar Combustíveis e Serviços Ltda,52.194.581/0001-43,341.83,0
-2025,5,Jair Farias,JAIR FARIAS,O,REC,0,20/05/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,5,Jair Farias,JAIR FARIAS,O,REC,0,20/05/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,5,Jair Farias,JAIR FARIAS,O,NFS-e,109,21/05/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2025,5,Jair Farias,JAIR FARIAS,O,NFS-e,87,21/05/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,5,Jair Farias,JAIR FARIAS,O,NFS-e,115,21/05/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
@@ -1545,7 +1545,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Jorge Frederico,JORGE FREDERICO,O,NF,12993458,15/05/2025,Energisa Tocantins Distribuidora de Energia S/A,25.086.034/0001-71,501.15,0
 2025,5,Jorge Frederico,JORGE FREDERICO,O,FAT,12644308,15/05/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,5,Jorge Frederico,JORGE FREDERICO,O,FAT,59030523,15/05/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,130.83,0
-2025,5,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/05/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,5,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/05/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,5,Jorge Frederico,JORGE FREDERICO,O,REC,6,20/05/2025,P L Alves de Sousa - ME,34.589.621/0001-74,4680.0,0
 2025,5,Jorge Frederico,JORGE FREDERICO,O,REC,7,20/05/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,5,Jorge Frederico,JORGE FREDERICO,O,REC,8,20/05/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
@@ -1576,7 +1576,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,20675,22/05/2025,Posto de Combustíveis Dois Irmãos Ltda,24.744.436/0001-53,449.77,0
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4623,22/05/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,333.06,0
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,26,23/05/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/05/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/05/2025,Maria Castorina Medeiros,,2518.0,0
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,7167,23/05/2025,Posto Milena Palmas Ltda,34.620.793/0001-63,250.0,0
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,8160,23/05/2025,Posto Milena Palmas Ltda,34.620.793/0001-63,209.91,0
 2025,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,26537,23/05/2025,Auto Posto Santa Terezinha Ltda,33.562.638/0001-75,391.79,0
@@ -1593,7 +1593,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Léo Barbosa,LÉO BARBOSA,O,FAT,759005394,26/05/2025,Telefonica Brasil S/A,02.558.157/0001-62,549.63,0
 2025,5,Léo Barbosa,LÉO BARBOSA,O,NFS-e,16,26/05/2025,Aruana Construtora e Editora Ltda,25.138.687/0001-57,2000.0,0
 2025,5,Léo Barbosa,LÉO BARBOSA,O,NF-e,79681,26/05/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7114.25,0
-2025,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/05/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/05/2025,Josely Sobreira da Silva,,2200.0,0
 2025,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,134057,08/05/2025,Souza e Vital Ltda,38.154.506/0001-28,2440.69,0
 2025,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,6,22/05/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2025,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,116,22/05/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
@@ -1630,7 +1630,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,79776,29/05/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7605.19,0
 2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,37,26/05/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,17,26/05/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
-2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,2,26/05/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,2,26/05/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4435,26/05/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,999.55,0
 2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2549,26/05/2055,Ecoposto Petromax Ltda,21.875.861/0002-74,9690.74,0
 2025,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,9,27/05/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
@@ -1638,7 +1638,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4329,01/05/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,3460.6,0
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,340,05/05/2025,Difer Distribuidora Ltda,03.955.560/0001-98,422.92,0
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,343,06/05/2025,Difer Distribuidora Ltda,03.955.560/0001-98,493.58,0
-2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF,12909033,12/05/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,477.64,0
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,FAT,58837172,12/05/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,87.43,0
 2025,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,344,14/05/2025,Difer Distribuidora Ltda,03.955.560/0001-98,491.26,0
@@ -1659,7 +1659,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,5,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,134688,27/05/2025,Souza e Vital Ltda,38.154.506/0001-28,329.62,0
 2025,5,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,31317,27/05/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,8489.58,0
 2025,5,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,144,28/05/2025,Occur Comunicação e Tecnologia – ME Ltda,13.306.192/0001-00,1000.0,0
-2025,5,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/05/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,5,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/05/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,5,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,4068,03/05/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,300.0,0
 2025,5,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,4102,06/05/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,393.72,0
 2025,5,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,11858,07/05/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.06,0
@@ -1805,7 +1805,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4108,09/06/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,267.56,0
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,1936,10/06/2025,Balbino Serviços de Comunicação Multimidia Ltda,10.561.685/0001-07,100.0,0
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4128,12/06/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,288.0,0
-2025,6,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/06/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,6,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/06/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,60,16/06/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,324,17/06/2025,Logar Link Ltda,46.936.790/0001-12,1000.0,0
 2025,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4150,17/06/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,456.65,0
@@ -1854,7 +1854,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,46,28/06/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-0.5,1
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,34,06/06/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,6,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/06/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,6,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/06/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,72,16/06/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,507,18/06/2025,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NF-e,38614,20/06/2025,Auto Posto de Combustíveis Serra do Carmo Ltda,03.438.594/0002-96,1787.91,0
@@ -1863,7 +1863,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,12,23/06/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,5817,23/06/2025,Tecnonegocios Soluções em Informática Ltda,11.521.613/0001-90,649.0,0
 2025,6,Eduardo Fortes,EDUARDO FORTES,O,NF-e,11438,23/06/2025,Auto Posto Sol Nascente Ltda,14.595.639/0001-71,3751.0,0
-2025,6,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11556,10/06/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,6,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11556,10/06/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,80579,16/06/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5833.71,0
 2025,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,7657,16/06/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7106.18,0
 2025,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,121,23/06/2025,Precisa Cliping Ltda,26.481.555/0001-96,1380.0,0
@@ -1914,7 +1914,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Jair Farias,JAIR FARIAS,O,NFC-e,67218,15/06/2025,Petro Petróleo 75 Comercio de Combustiveis Ltda,50.749.743/0001-37,288.04,0
 2025,6,Jair Farias,JAIR FARIAS,O,NFC-e,155850,18/06/2025,Auto Posto G2 Ltda,14.417.662/0001-76,370.1,0
 2025,6,Jair Farias,JAIR FARIAS,O,NFS-e,5307,20/06/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
-2025,6,Jair Farias,JAIR FARIAS,O,REC,6,20/06/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,6,Jair Farias,JAIR FARIAS,O,REC,6,20/06/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,6,Jair Farias,JAIR FARIAS,O,NF,13668969,20/06/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,871.65,0
 2025,6,Jair Farias,JAIR FARIAS,O,FAT,250017750,20/06/2025,Serviço Autônomo de Água e Esgoto,00.766.725/0001-96,59.8,0
 2025,6,Jair Farias,JAIR FARIAS,O,NFS-e,60,23/06/2025,Maria Elizia Dias Brito,58.687.642/0001-90,2000.0,0
@@ -1925,7 +1925,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Jair Farias,JAIR FARIAS,O,NFS-e,14,23/06/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
 2025,6,Jair Farias,JAIR FARIAS,O,NF-e,20859,23/06/2025,Posto Pantanal Ltda,07.111.045/0001-82,5438.9,0
 2025,6,Jair Farias,JAIR FARIAS,O,NFS-e,88,24/06/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
-2025,6,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/06/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,6,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/06/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,6,Jorge Frederico,JORGE FREDERICO,O,FAT,1112439,16/06/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,6,Jorge Frederico,JORGE FREDERICO,O,REC,8,23/06/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,6,Jorge Frederico,JORGE FREDERICO,O,REC,9,23/06/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
@@ -1953,7 +1953,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4689,18/06/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,404.28,0
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,616930,22/06/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,280.0,0
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,41,23/06/2025,A. Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
-2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/06/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/06/2025,Maria Castorina Medeiros,,2518.0,0
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4692,23/06/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,433.5,0
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,73,24/06/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,8461,24/06/2025,Petroshop – Comércio de Combustíveis Ltda – ME,13.716.765/0001-74,200.0,0
@@ -1977,7 +1977,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Léo Barbosa,LÉO BARBOSA,O,NF-e,80927,25/06/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,6472.94,0
 2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-429.42,1
 2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,18,01/06/2025,Edivan Reis Batista,58.752.231/0001-31,400.0,0
-2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/06/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/06/2025,Josely Sobreira da Silva,,2200.0,0
 2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,8,18/06/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,142,23/06/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,12804,23/06/2025,Conde & Dell Aringa – Desenvolvimento de Softwares Ltda–EPP,09.613.772/0001-73,400.0,0
@@ -2023,9 +2023,9 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,45,24/06/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,10,24/06/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2025,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,18,25/06/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
-2025,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,3,25/06/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,3,25/06/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4,03/06/2025,Portal do Sul Cozinha Industrial Lta – ME,19.709.159/0001-08,655.6,0
-2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,479,12/06/2025,Pioneiro Combustíveis Ltda,84.010.040/0056-88,2726.4,0
 2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,138,23/06/2025,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
 2025,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,19,23/06/2025,Ianowich Advogados Associados S/S,18.238.910/0001-72,18000.0,0
@@ -2042,7 +2042,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,3270,23/06/2025,Leobas e Leobas & Cia Ltda,15.735.091/0001-80,464.44,0
 2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,22,23/08/2025,Felix Roman Dalis Castillo,35.521.626/0001-28,6700.0,0
 2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,212,24/06/2025,Locadora de Veículos Araguaia Ltda - ME,01.419.973/0001-22,3500.0,0
-2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,26/06/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,26/06/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,6,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,31723,26/06/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,9397.09,0
 2025,6,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,14539,01/06/2025,Super Posto Lider Ltda,09.535.198/0001-82,400.0,0
 2025,6,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,33989,02/06/2025,Auto Posto Shalom Ltda,42.604.304/0001-08,324.39,0
@@ -2193,7 +2193,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4301,10/07/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,243.55,0
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,358,14/07/2025,Logar Link Ltda,46.936.790/0001-12,1000.0,0
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,74,17/07/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
-2025,7,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/07/2028,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,7,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/07/2028,Gisele Mota Santos Almeida,,1500.0,0
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,7,21/07/2025,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4342,21/07/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,314.12,0
 2025,7,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,20,22/07/2025,Lukas Ramos Franco,55.311.126/0001-79,1500.0,0
@@ -2257,7 +2257,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,50,29/07/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,7,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-0.15,1
 2025,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,36,01/07/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,7,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/07/2025,Alexandra Rita Malaquias Santos,***.179.188-**,1610.0,0
+2025,7,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/07/2025,Alexandra Rita Malaquias Santos,,1610.0,0
 2025,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,86,14/07/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,33,22/07/2025,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,900.0,0
 2025,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,14,22/07/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
@@ -2269,7 +2269,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,170,01/08/2025,VJI Aluguel de Máquinas e Equipamentos,40.760.672/0001-10,2900.0,0
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,140,07/07/2025,Precisa Cliping Ltda,26.481.555/0001-96,1380.0,0
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,1112,08/07/2025,Associação dos Proprietários e Locatários,20.278.765/0001-03,442.0,0
-2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11557,10/07/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11557,10/07/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,81888,17/07/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5698.36,0
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,87,22/07/2025,T1 Conteúdos na Internet Ltda,05.841.131/0001-15,1500.0,0
 2025,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,123,22/07/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
@@ -2310,7 +2310,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Jair Farias,JAIR FARIAS,O,NFS-e,176,22/07/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2025,7,Jair Farias,JAIR FARIAS,O,NFS-e,97,22/07/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,7,Jair Farias,JAIR FARIAS,O,NFS-e,105,22/07/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
-2025,7,Jair Farias,JAIR FARIAS,O,REC,7,22/07/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,7,Jair Farias,JAIR FARIAS,O,REC,7,22/07/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,7,Jair Farias,JAIR FARIAS,O,NF,14075799,22/07/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,999.72,0
 2025,7,Jair Farias,JAIR FARIAS,O,FAT,250021597,22/07/2025,Serviço Autônomo de Água e Esgoto,00.766.725/0001-96,67.25,0
 2025,7,Jair Farias,JAIR FARIAS,O,NFS-e,15,22/07/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
@@ -2319,7 +2319,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Jorge Frederico,JORGE FREDERICO,O,NF,14033936,15/07/2025,Energisa Tocantins Distribuidora de Energia S/A,25.086.034/0001-71,406.34,0
 2025,7,Jorge Frederico,JORGE FREDERICO,O,FAT,1143490,15/07/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,7,Jorge Frederico,JORGE FREDERICO,O,FAT,60039808,15/07/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,105.36,0
-2025,7,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/07/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,7,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/07/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,7,Jorge Frederico,JORGE FREDERICO,O,REC,11,18/07/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,7,Jorge Frederico,JORGE FREDERICO,O,REC,12,18/07/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,7,Jorge Frederico,JORGE FREDERICO,O,NFS-e,17,23/07/2025,F. G. O. Silva,38.137.634/0001-63,500.0,0
@@ -2347,7 +2347,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4778,22/07/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,310.1,0
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,91,23/07/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,37,23/07/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/07/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,23/07/2025,Maria Castorina Medeiros,,2518.0,0
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4779,23/07/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,407.32,0
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4781,24/07/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,300.03,0
 2025,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,442,28/07/2025,Auto Posto Perequete Palmas Ltda,56.102.541/0001-85,457.76,0
@@ -2367,7 +2367,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Léo Barbosa,LÉO BARBOSA,O,FAT,797732839,26/06/2025,Telefonica Brasil S/A,02.558.157/0001-62,617.43,0
 2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,429.42,1
 2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,22,01/07/2025,Edivan Reis Batista,58.752.231/0001-31,400.0,0
-2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/07/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/07/2025,Josely Sobreira da Silva,,2200.0,0
 2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,11,14/07/2025,Larissa Cunha Silva,53.635.577/0001-36,536.0,0
 2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,166,21/07/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,90,23/07/2025,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,2000.0,0
@@ -2414,7 +2414,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,23,21/07/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
 2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,65,21/07/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,500.0,0
 2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4677,21/07/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1000.19,0
-2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,4,22/07/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,4,22/07/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,11,22/07/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2025,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2635,22/07/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,9344.4,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,8,01/07/2025,Portal do Sul Cozinha Industrial Lta – ME,19.709.159/0001-08,868.1,0
@@ -2423,7 +2423,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,163548,14/05/2025,Mercato Comércio e Produção Alimentos Ltda,45.912.174/0001-69,701.3,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,165,21/07/2025,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,21,25/07/2025,Ianowich Advogados Associados S/S,18.238.910/0001-72,18000.0,0
-2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,31/07/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,31/07/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,19896,31/07/2025,Aeroporto WR Eireli EPP,09.492.660/0001-01,2659.5,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,19895,31/07/2025,Aeroporto WR Eireli EPP,09.492.660/0001-01,1620.0,0
 2025,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,37405,31/07/2025,Star Com.de Combustível Ltda,02.588.773/0001-66,9220.0,0
@@ -2433,7 +2433,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,262,28/07/2025,Locadora de Veículos Araguaia Ltda - ME,01.419.973/0001-22,3500.0,0
 2025,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,232,28/07/2025,Occur Comunicação e Tecnologia – ME Ltda,13.306.192/0001-00,1000.0,0
 2025,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,32079,29/07/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,9470.37,0
-2025,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/07/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/07/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,7,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NFS-e,387,01/07/2025,Priscila Ferreira Lobo – ME,07.203.705/0001-55,700.0,0
 2025,7,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,81236,01/07/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,100.0,0
 2025,7,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,164,02/07/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,376.47,0
@@ -2581,7 +2581,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NFC-e,5475,11/08/2025,Tins Mania,49.176.322/0001-85,331.28,0
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4459,11/08/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-99,250.0,0
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,393,13/08/2025,Logar Link Ltda,46.936.790/0001-12,1000.0,0
-2025,8,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/08/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,8,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/08/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,84,19/08/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,2025,19/08/2025,Balbino Serviços de Comunicação Multimidia Ltda,10.561.685/0001-07,100.0,0
 2025,8,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,43,20/08/2025,C S Pereira Cardoso - ME,27.778.207/0001-48,2000.0,0
@@ -2631,7 +2631,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,53,28/08/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,,,,,,249.38,1
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,40,01/08/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,8,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/08/2025,Alexandra Rita Malachias Santos,***.179.188-**,1610.0,0
+2025,8,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/08/2025,Alexandra Rita Malachias Santos,,1610.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,96,13/08/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,16,18/08/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17635,18/08/2025,MJ Lima de Assis,05.087.673/0001-44,7450.0,0
@@ -2640,7 +2640,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,511,22/08/2025,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,3,22/08/2025,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
 2025,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,5991,23/08/2025,Tecnonegocios Soluções em Informática Ltda,11.521.613/0001-90,649.0,0
-2025,8,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11558,11/08/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,8,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11558,11/08/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,5548,18/08/2025,Serra Geral Hotel e Turismo Ltda,03.164.306/0001-71,1800.0,0
 2025,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,35,19/08/2025,WL Locadora de Veículos – Eireli,32.680.992/0001-31,5000.0,0
 2025,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,83339,19/08/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,4244.98,0
@@ -2701,13 +2701,13 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,192,20/08/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,782,21/08/2025,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,101,22/08/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
-2025,8,Jair Farias,JAIR FARIAS,O,REC,8,22/08/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,8,Jair Farias,JAIR FARIAS,O,REC,8,22/08/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,14,22/08/2025,Manoel Farias Vidal,59.586.550/0001-87,2000.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,17,22/08/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,9,25/08/2025,Lorena Vitória Dias Brito,62.021.021/0001-40,2000.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFS-e,124,25/08/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2025,8,Jair Farias,JAIR FARIAS,O,NFC-e,21253,25/08/2025,Posto Pantanal Ltda,07.111.045/0001-82,6200.32,0
-2025,8,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/08/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,8,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/08/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,8,Jorge Frederico,JORGE FREDERICO,O,NF,14550603,18/08/2025,Energisa Tocantins – Distribuidora de Energia A/A,25.086.034/0001-71,595.02,0
 2025,8,Jorge Frederico,JORGE FREDERICO,O,FAT,1174687,18/08/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,8,Jorge Frederico,JORGE FREDERICO,O,FAT,60540957,18/08/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,102.75,0
@@ -2744,7 +2744,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,8754,22/08/2025,Posto Milena Palmas Ltda,34.620.793/0001-63,200.0,0
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,4862,22/08/2025,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,353.4,0
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,43,25/08/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/08/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/08/2025,Maria Castorina Medeiros,,2518.0,0
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,329222,25/08/2025,Postos Araguaia,24.188.975/0001-53,200.0,0
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1151,25/08/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,196.09,0
 2025,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1159,25/08/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.0,0
@@ -2763,7 +2763,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Léo Barbosa,LÉO BARBOSA,O,NF-e,83608,25/08/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7332.8,0
 2025,8,Léo Barbosa,LÉO BARBOSA,O,NFS-e,78,26/08/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,800.0,0
 2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-4952.4,1
-2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/08/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/08/2025,Josely Sobreira da Silva,,2200.0,0
 2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,137083,12/08/2025,Souza e Vital Ltda,38.154.506/0001-28,931.8,0
 2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,190,20/08/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,8,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,12885,22/08/2025,Conde & Dell Aringa – Desenvolvimento de Softwares Ltda–EPP,09.613.772/0001-73,400.0,0
@@ -2805,10 +2805,10 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,84917,25/08/2025,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,2311.77,0
 2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4816,25/08/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1201.14,0
 2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,24,26/08/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
-2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,5,26/08/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,5,26/08/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,12,26/08/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2025,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2707,26/08/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,7245.2,0
-2025,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/08/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/08/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,167879,11/06/2025,Mercato Comércio e Produção Alimentos Ltda,45.912.174/0001-69,1235.41,0
 2025,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,62438,14/08/2025,Chaves e Nunes Ltda,06.248.569/0001-57,1420.1,0
 2025,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,411,19/08/2025,Difer Distribuidora Ltda,03.955.560/0001-98,1785.11,0
@@ -2829,7 +2829,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,32454,25/08/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,9650.42,0
 2025,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,307,26/08/2025,Locadora de Veículos Araguaia Ltda - ME,01.419.973/0001-22,3500.0,0
 2025,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,18,28/08/2025,Apice Led Ltda,57.535.857/0001-23,15000.0,0
-2025,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/08/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,31/08/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,8,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,691,01/08/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.0,0
 2025,8,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,27039,02/08/2025,Sonho Meu Com.de Comb.e Der. Petr. Ltda,04.764.511/0001-30,300.0,0
 2025,8,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,5468,03/08/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,199.99,0
@@ -2961,7 +2961,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,98,19/09/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,138303,20/09/2025,Souza e Vital Ltda,38.154.506/0001-28,282.23,0
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,66,22/09/2025,A. Ferreira Lopes Ltda,27.052.896/0001-09,7800.0,0
-2025,9,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,22/09/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,9,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,22/09/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,48,22/09/2025,C S Pereira Cardoso - ME,27.778.207/0001-48,2000.0,0
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,9,22/09/2025,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2025,9,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,4,23/09/2025,José Muller Costa Araújo,57.887.258/0001-79,1518.0,0
@@ -3014,7 +3014,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,56,28/09/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,6000.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,,,,,,415.25,1
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,49,02/09/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,9,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/09/2025,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2025,9,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/09/2025,Marcelia Gomes dos Santos,,1450.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,115,15/09/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17711,16/09/2025,MJ Lima de Assis,05.087.673/0001-44,7250.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,19,22/09/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
@@ -3023,7 +3023,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NF-e,11612,22/09/2025,Auto Posto Sol Nascente Ltda,14.595.639/0001-71,3880.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6057,23/09/2025,Tecnonegocios Soluções em Informática Ltda,11.521.613/0001-90,649.0,0
 2025,9,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,4,23/09/2025,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
-2025,9,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,90,16/09/2025,Cássia Martins da Silva,***.131.606-**,4218.2,0
+2025,9,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,90,16/09/2025,Cássia Martins da Silva,,4218.2,0
 2025,9,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,168,22/09/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
 2025,9,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,84991,23/09/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7650.47,0
 2025,9,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,9020,23/09/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,5643.18,0
@@ -3084,11 +3084,11 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Jair Farias,JAIR FARIAS,O,NFS-e,18,22/09/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
 2025,9,Jair Farias,JAIR FARIAS,O,NF-e,21457,22/09/2025,Posto Pantanal Ltda,07.111.045/0001-82,6706.21,0
 2025,9,Jair Farias,JAIR FARIAS,O,NFS-e,138,23/09/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
-2025,9,Jair Farias,JAIR FARIAS,O,REC,9,23/09/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,9,Jair Farias,JAIR FARIAS,O,REC,9,23/09/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,NF,15073319,15/09/2025,Energisa Tocantins – Distribuidora de Energia A/A,25.086.034/0001-71,497.09,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,FAT,2867209,15/09/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,FAT,61109239,15/09/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,308.13,0
-2025,9,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/09/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,9,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/09/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,REC,9,22/09/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,REC,9,22/09/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,9,Jorge Frederico,JORGE FREDERICO,O,NFS-e,23,22/09/2025,F. G. O. Silva,38.137.634/0001-63,500.0,0
@@ -3113,7 +3113,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,67,23/09/2025,A. Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
 2025,9,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,21179,23/09/2025,Posto de Combutíveis Dois Irmão Ltda,24.744.436/0001-53,343.48,0
 2025,9,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,48,24/09/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,9,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/09/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,9,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/09/2025,Maria Castorina Medeiros,,2518.0,0
 2025,9,Léo Barbosa,LÉO BARBOSA,O,NFS-e,211,15/09/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,9,Léo Barbosa,LÉO BARBOSA,O,NFS-e,239,22/09/2025,Jornal Folha do Jalapão Ltda,07.838.475/0001-09,5000.0,0
 2025,9,Léo Barbosa,LÉO BARBOSA,O,NFS-e,89,22/09/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,800.0,0
@@ -3128,7 +3128,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Léo Barbosa,LÉO BARBOSA,O,NF-e,84977,23/09/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,8350.8,0
 2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,4500.49,1
 2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,33,01/09/2025,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
-2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/09/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/09/2025,Josely Sobreira da Silva,,2200.0,0
 2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,137752,04/09/2025,Souza e Vital Ltda,38.154.506/0001-28,2596.92,0
 2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,2,22/09/2025,Wemerson Lopes Trindade,61.669.948/0001-29,2500.0,0
 2025,9,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,14,23/09/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
@@ -3159,7 +3159,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,71,29/09/2025,A Ferreira Lopes Ltda,27.052.896/0001-09,7500.0,0
 2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,85515,23/09/2025,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,1178.0,0
 2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,75,24/09/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
-2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,6,24/09/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,6,24/09/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,90,24/09/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,500.0,0
 2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,4934,24/09/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,999.44,0
 2025,9,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2783,24/09/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,8265.52,0
@@ -3168,7 +3168,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4536,04/09/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,3010.0,0
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4547,08/09/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,4058.8,0
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2482,10/09/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,483.98,0
-2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/09/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/09/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,209,15/09/2025,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2498,23/09/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,1245.05,0
 2025,9,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,37686,23/09/2025,Star Com.de Combustível Ltda,02.588.773/0001-66,5716.63,0
@@ -3184,7 +3184,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,9,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,12,25/09/2025,Marimar Aiala de Souza,59.304.662/0001-06,5500.0,0
 2025,9,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,32885,25/09/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,9037.52,0
 2025,9,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,44,29/09/2025,Apice Led Ltda,57.535.857/0001-23,15000.0,0
-2025,9,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/09/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,9,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/09/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,9,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,84043,02/09/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,357.33,0
 2025,9,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,6009,03/09/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,199.94,0
 2025,9,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,34687,03/09/2025,Auto Posto Sahalom Ltda,42.604.304/0001-08,330.12,0
@@ -3324,7 +3324,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,109,15/10/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,49,16/10/2025,Luz Rocha Performance e Resultados Ltda,40.886.548/0001-03,1500.0,0
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4849,16/10/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,383.0,0
-2025,10,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,17/10/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,10,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,17/10/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,2095,17/10/2025,Balbino Serviços de Comunicação Multimidia Ltda,10.561.685/0001-07,100.0,0
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,52,21/10/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,9500.0,0
 2025,10,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,10,21/10/2025,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
@@ -3373,7 +3373,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Deputado Gipão,ALDAIR COSTA GIPÃO,O,REC,59,23/10/2025,J D Locações e Serviços e Variedades Ltda,43.499.451/0001-28,12000.0,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-0.16,1
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,54,01/10/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,10,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/10/2025,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2025,10,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/10/2025,Marcelia Gomes dos Santos,,1450.0,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,128,13/10/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17779,13/10/2025,MJ Lima de Assis,05.087.673/0001-44,6890.0,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,50,14/10/2025,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,770.0,0
@@ -3382,7 +3382,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NF-e,38915,20/10/2025,Auto Posto de Combustíveis Serra do Carmo Ltda,03.438.594/0002-96,3645.57,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,515,21/10/2025,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2025,10,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17805,21/10/2025,MJ Lima de Assis,05.087.673/0001-44,3342.0,0
-2025,10,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11700,10/10/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,10,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11700,10/10/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,10,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,9402,17/10/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,5550.62,0
 2025,10,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,86262,20/10/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7475.13,0
 2025,10,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,123,21/10/2025,T1 Conteúdos na Internet Ltda,05.841.131/0001-15,1500.0,0
@@ -3434,7 +3434,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,288,16/10/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,109,21/10/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,247,21/10/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
-2025,10,Jair Farias,JAIR FARIAS,O,REC,10,21/10/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,10,Jair Farias,JAIR FARIAS,O,REC,10,21/10/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,10,Jair Farias,JAIR FARIAS,O,NF,15610063,21/10/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,1342.45,0
 2025,10,Jair Farias,JAIR FARIAS,O,FAT,250033175,21/10/2025,Serviço Autônomo de Água e Esgoto,00.766.725/0001-96,66.43,0
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,19,21/10/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
@@ -3443,7 +3443,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Jair Farias,JAIR FARIAS,O,NF-e,21669,23/10/2023,Posto Pantanal Ltda,07.111.045/0001-82,5410.18,0
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,21,24/10/2025,Lorena Vitória Dias Brito,62.021.021/0001-40,2000.0,0
 2025,10,Jair Farias,JAIR FARIAS,O,NFS-e,153,24/10/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
-2025,10,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/10/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,10,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/10/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,10,Jorge Frederico,JORGE FREDERICO,O,NF,15588604,20/10/2025,Energisa Tocantins – Distribuidora de Energia A/A,25.086.034/0001-71,499.43,0
 2025,10,Jorge Frederico,JORGE FREDERICO,O,FAT,2934251,20/10/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,10,Jorge Frederico,JORGE FREDERICO,O,REC,15,23/10/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
@@ -3475,7 +3475,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,75,23/10/2025,A. Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,2531,23/10/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,150.0,0
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,361598,23/10/2025,Postos Araguaia,24.188.975/0001-53,200.0,0
-2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/10/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/10/2025,Maria Castorina Medeiros,,2518.0,0
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5089,24/10/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,412.3,0
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,2593,27/10/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.0,0
 2025,10,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,6953,27/10/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,560.52,0
@@ -3491,7 +3491,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Léo Barbosa,LÉO BARBOSA,O,NFS-e,39,22/10/2025,Aruana Construtora e Editora Ltda,25.138.687/0001-57,2000.0,0
 2025,10,Léo Barbosa,LÉO BARBOSA,O,NF-e,86366,22/10/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7892.64,0
 2025,10,Léo Barbosa,LÉO BARBOSA,O,NFS-e,98,23/10/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,800.0,0
-2025,10,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,,404/10/2025 Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,10,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,,404/10/2025 Josely Sobreira da Silva,,2200.0,0
 2025,10,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-3854.0,1
 2025,10,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,36,01/09/2025,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
 2025,10,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,214,03/10/2025,Luciano Junio Gonçalves,43.297.750/0001-80,6600.0,0
@@ -3535,10 +3535,10 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,14,27/10/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,5252,27/10/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1310.86,0
 2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,2859,27/10/2025,Ecoposto Petromax Ltda,21.875.861/0002-74,9040.06,0
-2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,7,28/10/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,7,28/10/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,10,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,26,29/10/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
 2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,3667,01/10/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,2526.5,0
-2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/10/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/10/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,181,13/10/2025,Viagens Johnson Ltda – ME,25.019.266/0001-07,15144.0,0
 2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4591,13/10/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,2862.0,0
 2025,10,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,18,14/10/2025,Portal do Sul Cozinha Industrial Ltda – ME,17.709.159/0001-08,252.4,0
@@ -3566,7 +3566,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,10,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,33290,21/10/2025,Posto DSL Combustíveis Ltda,13.684.523/0001-46,8463.97,0
 2025,10,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,75614,24/10/2025,Auto Posto Cometa Ltda,11.696.367/0001-08,297.01,0
 2025,10,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,14,28/10/2025,Heloisa Riberiro Romualdo – Sociedade Individual de Advocacia,46.541.286/0001-13,10000.0,0
-2025,10,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,29/10/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,10,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,29/10/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,10,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,6483,01/10/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,299.66,0
 2025,10,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,23983,01/10/2025,Janaina Comércio de Combustíveis Ltda,03.364.777/0001-23,300.0,0
 2025,10,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,85380,01/10/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,200.0,0
@@ -3702,7 +3702,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,4950,04/11/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,302.28,0
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,9189802,192197,07/11/2025,Starlink Brasil Serviços de Internet Ltda,40.154.884/0001-53,576.0,0
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,501,11/11/2025,Logar Link Ltda,46.936.790/0001-12,1000.0,0
-2025,11,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/11/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,11,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/11/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,121,18/11/2025,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,NFC-e,7647,18/11/2025,Churrascaria Beletini Ltda,57.925.832/0001-36,184.45,0
 2025,11,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,80,19/11/2025,A. Ferreira Lopes Ltda,27.052.896/0001-09,7800.0,0
@@ -3765,7 +3765,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NF-e,14018,25/11/2025,Premium Com.de Derivados de Petróleo Ltda,09.217.206/0001-42,9300.0,0
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,,,,,,7.65,1
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,64,06/11/2025,BR 153 Imagem Ltda – EPP,07.197.496/0001-84,10000.0,0
-2025,11,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/11/2025,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2025,11,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/11/2025,Marcelia Gomes dos Santos,,1450.0,0
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,149,11/11/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17867,11/11/2025,MJ Lima de Assis,05.087.673/0001-44,7245.0,0
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,29,17/11/2025,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
@@ -3774,7 +3774,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,517,24/11/2025,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2025,11,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6,24/11/2025,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
 2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,,,,,,4000.0,1
-2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11701,04/11/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11701,04/11/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,87404,13/11/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,8538.63,0
 2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,9645,13/11/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,3505.05,0
 2025,11,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,27379,24/11/2025,Lanches e Companhia Ltda,06.926.204/0001-34,3653.51,0
@@ -3831,13 +3831,13 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Jair Farias,JAIR FARIAS,O,NFS-e,176,19/11/2025,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2025,11,Jair Farias,JAIR FARIAS,O,NF,16162654,19/11/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,1233.5,0
 2025,11,Jair Farias,JAIR FARIAS,O,NF-e,21852,19/11/2025,Posto Pantanal Ltda,07.111.045/0001-82,4306.32,0
-2025,11,Jair Farias,JAIR FARIAS,O,REC,11,21/11/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,11,Jair Farias,JAIR FARIAS,O,REC,11,21/11/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,11,Jair Farias,JAIR FARIAS,O,NFC-e,40953,23/11/2025,Auto Posto Rio Araguaia I G3 Comércio de Combustíveis Ltda,01.575.816/0001-06,607.11,0
 2025,11,Jair Farias,JAIR FARIAS,O,NFC-e,89683,23/11/2025,Rede de Postos Marajó Brasilândia Ltda,56.025.210/0001-99,187.14,0
 2025,11,Jair Farias,JAIR FARIAS,O,NFS-e,274,24/11/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
 2025,11,Jair Farias,JAIR FARIAS,O,NFS-e,260,24/11/2025,Gráica e Editora Copacabana Ltda,06.023.116/0001-22,28000.0,0
 2025,11,Jair Farias,JAIR FARIAS,O,NFS-e,36,25/11/2025,Iara Silva de Sousa Sociedade Individual de Advocacia,26.770.122/0001-50,12000.0,0
-2025,11,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/11/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,11,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/11/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,11,Jorge Frederico,JORGE FREDERICO,O,FAT,3004525,17/11/2025,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2025,11,Jorge Frederico,JORGE FREDERICO,O,REC,17,21/11/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2025,11,Jorge Frederico,JORGE FREDERICO,O,REC,18,21/11/2025,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
@@ -3870,7 +3870,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,21464,22/11/2025,Postos de Combustíveis Dois Irmãos Ltda,24.744.436/0001-53,369.83,0
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,164,24/11/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,58,25/11/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/11/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/11/2025,Maria Castorina Medeiros,,2518.0,0
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5222,25/11/2025,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,340.02,0
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,13445,26/11/2025,gráfica e Editora Santo Expedito Ltda,09.015.122/0001-26,9410.0,0
 2025,11,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,3252,26/11/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,400.0,0
@@ -3893,7 +3893,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,4305.91,1
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,45,01/11/2025,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,139797,06/11/2025,Souza e Vital Ltda,38.154.506/0001-28,2276.25,0
-2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,14/11/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,14/11/2025,Josely Sobreira da Silva,,2200.0,0
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,151,21/11/2025,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,2000.0,0
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,272,24/11/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,11,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,4,25/11/2025,Wemerson Lopes Trindade,61.669.948/0001-29,2500.0,0
@@ -3927,7 +3927,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,480643,28/11/2025,Rede de Postos Marajó Tocantins Ltda,26.638.338/0001-67,352.84,0
 2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,96,24/11/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,27,24/11/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
-2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,8,24/11/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,8,24/11/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,5192,24/11/2025,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1155.89,0
 2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,110,25/11/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,500.0,0
 2025,11,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,15,25/11/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
@@ -3937,7 +3937,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2559,06/11/2025,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,381.09,0
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,2,06/11/2025,In Print Gráfica e Editora Ltda,37.053.509/0001-02,40000.0,0
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,23,07/11/2025,Portal do Sul Cozinha Industrial Ltda – ME,17.709.159/0001-08,437.49,0
-2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/11/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/11/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,26,12/11/2025,Portal do Sul Cozinha Industrial Ltda – ME,17.709.159/0001-08,898.0,0
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,416,14/11/2025,Thiago Borges Sociedade Individual de Advocacia,29.369.075/0001-26,18000.0,0
 2025,11,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,38060,19/11/2025,Star Com.de Combustível Ltda,02.588.773/0001-66,10430.0,0
@@ -4088,7 +4088,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5138,09/12/2025,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,414.08,0
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,62,10/12/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,9500.0,0
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,85,10/12/2025,A. Ferreira Lopes Ltda,27.052.896/0001-09,7800.0,0
-2025,12,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,10/12/2025,Gisele Mota Santos Almeida,***.424.901-**,1500.0,0
+2025,12,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,10/12/2025,Gisele Mota Santos Almeida,,1500.0,0
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,63,10/12/2025,C S Pereira Cardoso - ME,27.778.207/0001-48,2000.0,0
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,12,10/12/2025,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2025,12,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,2135,10/12/2025,Balbino Serviços de Comunicação Multimidia Ltda,10.561.685/0001-07,100.0,0
@@ -4123,7 +4123,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NF-e,14216,15/12/2025,Premium Com.de Derivados de Petróleo Ltda,09.217.206/0001-42,9000.59,0
 2025,12,Deputado Gipão,ALDAIR COSTA GIPÃO,O,NFS-e,9,16/12/2025,Aline Fernandes Morais Sociedade Individual de Advocacia,60.475.687/0001-43,14000.0,0
 2025,12,Eduardo Fortes,EDUARDO FORTES,O,,,,,,59.37,1
-2025,12,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/12/2025,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2025,12,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/12/2025,Marcelia Gomes dos Santos,,1450.0,0
 2025,12,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,162,12/12/2025,Data System Informática Ltda,04.808.450/0001-66,2000.0,0
 2025,12,Eduardo Fortes,EDUARDO FORTES,O,NF-e,17955,12/12/2025,MJ Lima de Assis,05.087.673/0001-44,6300.0,0
 2025,12,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,64,15/12/2025,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,1000.0,0
@@ -4138,7 +4138,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,187,09/12/2025,VJI Aluguel de Máquinas e Equipamentos,40.760.672/0001-10,2900.0,0
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,235,09/12/2025,Portal CT Comunicação Ltda,09.617.148/0001-44,2000.0,0
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,109,09/12/2025,"D.M. Comunicação, Marketing e Assessoria Empresarial Ltda – M",27.583.023/0001-22,1000.0,0
-2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11702,10/12/2025,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11702,10/12/2025,Vilma Maria Martins da Silva,,4218.2,0
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,88661,10/12/2025,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7676.39,0
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,9808,10/12/2025,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,5299.98,0
 2025,12,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,27382,11/12/2025,Lanches e Companhia Ltda,06.926.204/0001-34,3317.26,0
@@ -4181,7 +4181,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,25,03/12/2025,Manoel Farias Vidal,59.586.550/0001-87,2000.0,0
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,354,10/12/2025,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,115,10/12/2025,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
-2025,12,Jair Farias,JAIR FARIAS,O,REC,12,10/12/2025,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2025,12,Jair Farias,JAIR FARIAS,O,REC,12,10/12/2025,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,22,10/12/2025,Vinícios Alves de Carvalho,41.175.683/0001-03,1800.0,0
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,300,11/12/2025,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
 2025,12,Jair Farias,JAIR FARIAS,O,NFS-e,38,11/12/2025,Iara Silva de Sousa Sociedade Individual de Advocacia,26.770.122/0001-50,12000.0,0
@@ -4197,7 +4197,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NFS-e,67,02/12/2025,Sigma Assessoria e Consultoria Ltda,02.696.703/0001-21,12000.0,0
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NFS-e,30,02/12/2025,F. G. O. Silva,38.137.634/0001-63,500.0,0
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NFS-e,5,02/12/2025,S V P da Costa,37.253.289/0001-60,1500.0,0
-2025,12,Jorge Frederico,JORGE FREDERICO,O,REC,0,02/12/2025,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2025,12,Jorge Frederico,JORGE FREDERICO,O,REC,0,02/12/2025,Teotonio Marques de Queiroz,,2800.0,0
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NF-e,2257,02/12/2025,Ipanema Comércio de Derivados de Petróleo Ltda,21.304.358/0001-88,6300.0,0
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NFS-e,82,03/12/2025,A F Guimarães Agencia de Notícias e Edições de Jornais Diários,30.789.470/0001-47,9000.0,0
 2025,12,Jorge Frederico,JORGE FREDERICO,O,NF-e,29351,03/12/2025,Ribeiro Comércio Varejista de Combustíveis Ltda,09.473.531/0001-76,6363.48,0
@@ -4212,7 +4212,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF,15184-38,13/12/2025,Starlink Brazil Serviços de Internet Ltda,40.154.884/0001-53,576.0,0
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,187,15/12/2025,Nesher Contabilidade Pública e Consultoria Municipal Ltda,57.023.511/0001-46,12000.0,0
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,63,15/12/2025,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
-2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,15/12/2025,Maria Castorina Medeiros,***.793.411-**,2518.0,0
+2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,15/12/2025,Maria Castorina Medeiros,,2518.0,0
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,14475,16/12/2025,Gráfica e Editora Santo Expedito Ltda,09.015.122/0001-26,9935.0,0
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1095,16/12/2025,Auto Posto Perequete Palmas Ltda,56.102.541/0001-85,101.71,0
 2025,12,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,3745,16/12/2025,Suprema Combustíveis Ltda,24.188.975/0001-53,200.71,0
@@ -4234,7 +4234,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Léo Barbosa,LÉO BARBOSA,O,NFS-e,597,27/11/2025,Gonçalves & Borges,07.813.730/0001-50,80.0,0
 2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-7739.89,1
 2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,51,01/12/2025,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
-2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/12/2025,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/12/2025,Josely Sobreira da Silva,,2200.0,0
 2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,298,11/12/2025,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,91,12/12/2025,Tocantins Propaganda Ltda,49.755.298/0001-39,8500.0,0
 2025,12,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,19,17/12/2025,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
@@ -4268,7 +4268,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,,,,,,-4.79,1
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,131,10/12/2025,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,28,15/12/2025,Tocantins Empreendimentos Ltda,51.229.796/0001-90,13200.0,0
-2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,9,15/12/2025,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,9,15/12/2025,Delziran Pereira Barbosa,,1850.0,0
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,119,15/12/2025,Marcello Leonardi Bezerra,28.017.278/0001-90,500.0,0
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,16,15/12/2025,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2025,12,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,87280,15/12/2025,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,1213.62,0
@@ -4282,7 +4282,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,15512604,08/10/2025,Energisa Tocantins – Distribuidora de Energia Elétrica S/A,25.086.034/0001-71,108.11,0
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,FAT,61473628,08/10/2025,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,40.91,0
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,419,09/12/2025,Thiago Borges Sociedade Individual de Advocacia,29.369.075/0001-26,18000.0,0
-2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/12/2025,José Arley de Jesus Sousa,***.873.351-**,3000.0,0
+2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/12/2025,José Arley de Jesus Sousa,,3000.0,0
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,520,10/12/2025,Difer Distribuidora Ltda,03.955.560/0001-98,549.64,0
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4665,10/12/2025,Mactra Comércio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,1723.6,0
 2025,12,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,302,11/12/2025,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
@@ -4294,7 +4294,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,28,01/12/2025,Felix Roman Dalis Castillo,35.521.626/0001-28,6700.0,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,443,01/12/2025,Occur Comunicação e Tecnologia – ME Ltda,13.306.192/0001-00,1000.0,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,359,01/12/2025,Naglya V de Matos Ltda,48.953.857/0001-52,3000.0,0
-2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,01/12/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,01/12/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,487,02/12/2025,Locadora de Veículos Araguaia Ltda - ME,01.419.973/0001-22,3500.0,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,59,02/12/2025,Zeeng Tecnologia Ltda,27.248.225/0001-18,750.0,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,17,02/12/2025,Marimar Aiala de Souza,59.304.662/0001-06,5500.0,0
@@ -4303,7 +4303,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,FAT,6055553,13/11/2025,Claro S/A,66.970.229/0136-50,571.62,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,16032421,17/11/2025,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,146.94,0
 2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,466,25/11/2025,Vera e Borges Ltda – ME,11.604.145/0001-18,5650.0,0
-2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/11/2025,Maria Marli Machado de Souza,***.646.481-**,1300.0,0
+2025,12,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,0,30/11/2025,Maria Marli Machado de Souza,,1300.0,0
 2025,12,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,7492,01/12/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,200.25,0
 2025,12,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,8645,02/12/2025,Mactra Comercio de Combustíveis e Lubrificantes Ltda,01.630.610/0012-94,3589.76,0
 2025,12,Professora Janad Valcari,JANAD MARQUES DE FREITAS VALCARI,O,NF-e,7566,05/12/2025,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,409.8,0
@@ -4407,7 +4407,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5294,13/01/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,258.32,0
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5311,16/01/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,417.75,0
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,2,19/01/2026,A. Ferreira Lopes Ltda,27.052.896/0001-09,7800.0,0
-2026,1,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,19/01/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,1,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,19/01/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,8,19/01/2026,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,1,20/01/2026,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2026,1,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,12,21/01/2026,Elber Almeida Martins,61.338.400/0001-04,1500.0,0
@@ -4474,7 +4474,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,317,22/01/2026,Distribuidora de Petróleo Tocantins Ltda,05.417.882/0001-09,5871.0,0
 2026,1,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,95,26/01/2026,Gabriel Pereira da Silva,48.074.329/0001-23,5450.0,0
 2026,1,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,14,26/01/2026,Jonatas Neles Rodrigues da Silva,33.457.312/0001-88,1500.0,0
-2026,1,Eduardo Fortes,EDUARDO FORTES,O,REC,0,12/01/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,1,Eduardo Fortes,EDUARDO FORTES,O,REC,0,12/01/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18038,14/01/2026,MJ Lima de Assis,05.087.673/0001-44,6500.0,0
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,2,15/01/2025,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,8,16/01/2026,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
@@ -4483,7 +4483,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,4,22/01/2026,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,2000.0,0
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,5,22/01/2026,JP de Souza Carvalho – ME Ltda,22.707.440/0001-16,8500.0,0
 2026,1,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18057,22/01/2026,MJ Lima de Assis,05.087.673/0001-44,7080.0,0
-2026,1,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11703,22/01/2026,Vilma Maria Martins da Silva,***.628.726-**,4655.47,0
+2026,1,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11703,22/01/2026,Vilma Maria Martins da Silva,,4655.47,0
 2026,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,10043,23/01/2026,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7024.08,0
 2026,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,3,26/01/2026,WL Locadora de Veículos – Eireli,32.680.992/0001-31,6000.0,0
 2026,1,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,1,27/01/2026,Interativo Político Ltda,04.633.451/4001-84,2000.0,0
@@ -4533,7 +4533,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Jair Farias,JAIR FARIAS,O,NFC-e,3287,17/01/2026,A F Cella,04.231.285/0001-22,429.53,0
 2026,1,Jair Farias,JAIR FARIAS,O,NFS-e,17,19/01/2026,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
 2026,1,Jair Farias,JAIR FARIAS,O,NFS-e,119,20/01/2026,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
-2026,1,Jair Farias,JAIR FARIAS,O,REC,1,20/01/2026,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,1,Jair Farias,JAIR FARIAS,O,REC,1,20/01/2026,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,1,Jair Farias,JAIR FARIAS,O,NFS-e,29,21/01/2026,Manoel Farias Vidal,59.586.550/0001-87,2000.0,0
 2026,1,Jair Farias,JAIR FARIAS,O,NFC-e,441449,21/01/2026,Petro Petróleo 71 Comércio de Combustíveis Ltda,50.766.414/0001-02,320.05,0
 2026,1,Jair Farias,JAIR FARIAS,O,NFS-e,10,22/01/2026,Martins e Sá Ltda,31.084.876/0001-97,99.99,0
@@ -4546,7 +4546,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Jair Farias,JAIR FARIAS,O,NF-e,22260,26/01/2026,Posto Pantanal Ltda,07.111.045/0001-82,2827.55,0
 2026,1,Jorge Frederico,JORGE FREDERICO,O,NF,017154726,14/01/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,364.15,0
 2026,1,Jorge Frederico,JORGE FREDERICO,O,NFS-e,49,14/01/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2026,1,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/01/2026,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2026,1,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/01/2026,Teotonio Marques de Queiroz,,2800.0,0
 2026,1,Jorge Frederico,JORGE FREDERICO,O,REC,01,16/01/2026,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2026,1,Jorge Frederico,JORGE FREDERICO,O,NF-e,29422,26/01/2026,Ribeiro Comércio Varejista de Combustíveis Ltda,09.473.531/0001-76,6169.26,0
 2026,1,Jorge Frederico,JORGE FREDERICO,O,NF-e,2477,26/01/2026,Ipanema Comércio de Derivados de Petróleo Ltda,21.304.358/0001-88,5700.0,0
@@ -4561,7 +4561,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,2,22/01/2026,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,8340,23/01/2026,Petro Petróleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,257.14,0
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5392,23/01/2026,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,488.18,0
-2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,26/01/2026,Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,26/01/2026,Maria Castorina Medeiros,,2621.0,0
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,3,26/01/2026,Gráfica e Editora Santo Expedito Ltda,09.015.122/0001-26,12000.0,0
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,3,26/01/2026,A Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
 2026,1,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,9941,26/01/2026,Posto Milena Palmas Ltda,34.620.793/0001-63,389.34,0
@@ -4591,7 +4591,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,-1002.03,1
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,75,01/01/2026,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,6,01/01/2026,Wemerson Lopes Trindade,61.669.948/0001-29,2500.0,0
-2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/01/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/01/2026,Josely Sobreira da Silva,,2200.0,0
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,15,19/01/2026,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,1,20/01/2026,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2026,1,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,8,20/01/2026,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,2000.0,0
@@ -4620,7 +4620,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,1,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,2,28/01/2026,Aruana Construtora e Editora Ltda,25.138.687/0001-57,4500.0,0
 2026,1,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,90567,29/01/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7740.0,0
 2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,4,26/01/2026,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
-2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,10,26/01/2026,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,10,26/01/2026,Delziran Pereira Barbosa,,1850.0,0
 2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,10,26/01/2026,Marcello Leonardi Bezerra,28.017.278/0001-90,500.0,0
 2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,1,26/01/2026,J C Matos Marketing e Publicidade Ltda,38.444.988/0001-50,5000.0,0
 2026,1,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,88156,26/01/2026,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,1996.59,0
@@ -4758,7 +4758,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5480,16/02/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,288.74,0
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5486,17/02/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,311.01,0
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,16,18/02/2026,A G T Comunicações - Eireli - ME,15.457.860/0001-26,7000.0,0
-2026,2,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,19/02/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,2,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,19/02/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,16,19/02/2026,C S Pereira Cardoso - ME,27.778.207/0001-48,2000.0,0
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,2,19/02/2026,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2026,2,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5495,19/02/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,300.0,0
@@ -4814,7 +4814,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,61,23/02/2026,Helayne Santos Barros,32.047.220/0001-67,5500.0,0
 2026,2,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,27395,24/02/2026,Lanches e Companhia Ltda,06.926.204/0001-34,355.95,0
 2026,2,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,91885,24/02/2026,Comercial de Combustiveis Casa Tua Ltda,34.309.267/0001-87,6970.0,0
-2026,2,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/02/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,2,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/02/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,11,12/02/2026,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18129,12/02/2026,MJ Lima de Assis,05.087.673/0001-44,6350.48,0
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,11,13/02/2026,Evolução Contábil Ltda,10.807.569/0001-17,6000.0,0
@@ -4824,7 +4824,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18150,20/02/2026,MJ Lima de Assis,05.087.673/0001-44,4735.0,0
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,66,23/02/2026,Marcio Ribeiro da Rocha,46.246.103/0001-37,5250.0,0
 2026,2,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,67,23/02/2026,Marcio Ribeiro da Rocha,46.246.103/0001-37,5250.0,0
-2026,2,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11704,10/02/2026,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2026,2,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11704,10/02/2026,Vilma Maria Martins da Silva,,4218.2,0
 2026,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,3,21/02/2026,"Bottos, de Paula & Amaral Sociedade de Advogados S/S",17.409.613/0001-80,9000.0,0
 2026,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,4,23/02/2026,VJI Aluguel de Máquinas e Equipamentos,40.760.672/0001-10,2900.0,0
 2026,2,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,190,23/02/2026,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7389.18,0
@@ -4882,7 +4882,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Jair Farias,JAIR FARIAS,O,NFC-e,166896,19/02/2026,Bipe Brasil Comércio de Derivados de Petróleo Ltda,17.247.237/0001-74,400.03,0
 2026,2,Jair Farias,JAIR FARIAS,O,NFS-e,32,20/02/2026,Manoel Farias Vidal,59.586.550/0001-87,2000.0,0
 2026,2,Jair Farias,JAIR FARIAS,O,NFS-e,39,20/02/2026,Raka Comunicções Ltda,24.789.098/0001-76,1000.0,0
-2026,2,Jair Farias,JAIR FARIAS,O,REC,2,20/02/2026,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,2,Jair Farias,JAIR FARIAS,O,REC,2,20/02/2026,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,2,Jair Farias,JAIR FARIAS,O,NF,17699057,21/02/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,843.41,0
 2026,2,Jair Farias,JAIR FARIAS,O,NFC-e,2016240,22/02/2026,Posto 89 Ltda,00.800.262/0001-47,290.0,0
 2026,2,Jair Farias,JAIR FARIAS,O,NFC-e,1836372,23/02/2026,Souza e Vital Ltda,38.154.506/0001-28,335.01,0
@@ -4892,7 +4892,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Jair Farias,JAIR FARIAS,O,NFS-e,24,25/02/2026,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2026,2,Jair Farias,JAIR FARIAS,O,NF-e,22393,25/02/2026,Posto Pantanal Ltda,07.111.045/0001-82,5811.36,0
 2026,2,Jorge Frederico,JORGE FREDERICO,O,NFS-e,97383,02/02/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2026,2,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/02/2026,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2026,2,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/02/2026,Teotonio Marques de Queiroz,,2800.0,0
 2026,2,Jorge Frederico,JORGE FREDERICO,O,REC,2,19/02/2026,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2026,2,Jorge Frederico,JORGE FREDERICO,O,NFS-e,8,23/02/2023,Sigma Assessoria e Consultoria Ltda,02.696.703/0001-21,12000.0,0
 2026,2,Jorge Frederico,JORGE FREDERICO,O,NF,17661316,23/02/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,98.94,0
@@ -4917,7 +4917,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,10,23/02/2026,A Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
 2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,13,23/02/2026,Maranata Instituto de Gestão Pública Ltda,50.006.227/0001-12,12000.0,0
 2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,42931,23/02/2026,Petro – Postos de Abastecimento Ltda,33.404.914/0001-77,415.29,0
-2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,,REC,24/02/2026,24/02/2026 Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,,REC,24/02/2026,24/02/2026 Maria Castorina Medeiros,,2621.0,0
 2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5364,25/02/2026,Suprema Combustíveis Ltda,24.188.975/0001-53,300.0,0
 2026,2,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,9,28/02/2026,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
 2026,2,Léo Barbosa,LÉO BARBOSA,O,,,,,,150.89,1
@@ -4936,7 +4936,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Léo Barbosa,LÉO BARBOSA,O,NFS-e,27396,24/02/2026,Lanches e Companhia Ltda,06.926.204/0001-34,981.24,0
 2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,,,,,,1002.03,1
 2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,82,01/02/2026,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
-2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/02/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/02/2026,Josely Sobreira da Silva,,2200.0,0
 2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,1523,12/02/2026,Churrascaria Palmas Ltda,48.981.584/0001-50,1700.0,0
 2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,19,20/02/2026,"AF Consultoria, Negócios e Comunicação Ltda",13.020.403/0001-44,2000.0,0
 2026,2,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,6,20/02/2026,T A Sousa Ltda,45.019.918/0001-10,800.0,0
@@ -4978,7 +4978,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,83,01/02/2026,Edivan Reis Batista,58.752.231/0001-31,400.0,0
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,13,23/02/2026,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,34,23/02/2026,Ascend Gestão e Administração Ltda,63.992.471/0001-43,13200.0,0
-2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,11,23/02/2026,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,11,23/02/2026,Delziran Pereira Barbosa,,1850.0,0
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,18,23/02/2026,Marcello Leonardi Bezerra,28.017.278/0001-90,400.0,0
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,150,23/02/2026,Edsom Comunicações Ltda,29.809.660/0001-08,400.0,0
 2026,2,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,5644,23/02/2026,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1415.68,0
@@ -5126,7 +5126,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,642,11/03/2026,Logar Link Ltda,46.936.790/0001-12,1000.0,0
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,146722,13/03/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,516.12,0
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5664,14/03/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,310.8,0
-2026,3,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/03/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,3,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/03/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,25,16/03/2026,C S Pereira Cardoso - ME,27.778.207/0001-48,2000.0,0
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,510555,16/03/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,350.08,0
 2026,3,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5678,17/03/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,391.19,0
@@ -5206,7 +5206,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,93391,23/03/2026,Comercial de Combustiveis Casa Tua Ltda,34.309.267/0001-87,2933.63,0
 2026,3,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,5,24/03/2026,Lucas de Castro Vieira,33.439.810/0001-06,8630.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-42.26,1
-2026,3,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/03/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,3,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/03/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,19,16/03/2026,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18217,16/03/2026,MJ Lima de Assis,05.087.673/0001-44,7500.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,10,18/03/2026,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
@@ -5214,7 +5214,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,23,20/03/2026,Evolução Contábil Ltda,10.807.569/0001-17,9000.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18221,20/03/2026,MJ Lima de Assis,05.087.673/0001-44,8000.0,0
 2026,3,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,526,23/03/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,9000.0,0
-2026,3,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11705,10/03/2026,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2026,3,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11705,10/03/2026,Vilma Maria Martins da Silva,,4218.2,0
 2026,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,93082,16/03/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5566.18,0
 2026,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,306,16/03/2026,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7021.67,0
 2026,3,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,41,24/03/2026,Wagner Pereira Feitosa Filho,40.481.325/0001-58,1500.0,0
@@ -5289,13 +5289,13 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Jair Farias,JAIR FARIAS,O,NFS-e,36,20/03/2026,Manoel Farias Vidal,59.586.550/0001-87,2000.0,0
 2026,3,Jair Farias,JAIR FARIAS,O,NFS-e,53,20/03/2026,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2026,3,Jair Farias,JAIR FARIAS,O,NFS-e,125,20/03/2026,Angela Maria Ribeiro Carvalho,19.753.733/0001-25,2000.0,0
-2026,3,Jair Farias,JAIR FARIAS,O,REC,3,20/03/2026,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,3,Jair Farias,JAIR FARIAS,O,REC,3,20/03/2026,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,3,Jair Farias,JAIR FARIAS,O,NF,18201301,20/03/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,900.77,0
 2026,3,Jair Farias,JAIR FARIAS,O,NFC-e,1364763,22/03/2026,Minas Petro Comércio de Derivados de Petróleo Ltda,12.635.825/0001-61,376.89,0
 2026,3,Jair Farias,JAIR FARIAS,O,NFS-e,38,23/03/2026,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2026,3,Jair Farias,JAIR FARIAS,O,NF-e,56,24/03/2026,Portal do Sul Cozinha Induatrial Ltda – ME,19.709.159/0001-08,683.72,0
 2026,3,Jorge Frederico,JORGE FREDERICO,O,NFS-e,2502,06/03/2026,Roselene Vieira da Silva – ME,06.991.268/0001-19,626.0,0
-2026,3,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/03/2026,Teotonio Marques de Queiroz,***.856.006-**,2800.0,0
+2026,3,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/03/2026,Teotonio Marques de Queiroz,,2800.0,0
 2026,3,Jorge Frederico,JORGE FREDERICO,O,NF,18165879,16/03/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,226.58,0
 2026,3,Jorge Frederico,JORGE FREDERICO,O,NFS-e,130108,16/03/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2026,3,Jorge Frederico,JORGE FREDERICO,O,,FAT,16/03/2026,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,183.51,0
@@ -5330,7 +5330,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,14,24/03/2026,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
 2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,10484,24/03/2026,Posto Milena Palmas Ltda,34.620.793/0001-63,300.0,0
 2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5555,24/03/2026,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,394.03,0
-2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/03/2026,Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/03/2026,Maria Castorina Medeiros,,2621.0,0
 2026,3,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5557,25/03/2026,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,461.01,0
 2026,3,Léo Barbosa,LÉO BARBOSA,O,NFS-e,482269,16/03/2026,Melia Brasil Administração Hoteleira e Comercial Ltda,62.413.877/0041-59,1871.7,0
 2026,3,Léo Barbosa,LÉO BARBOSA,O,NFS-e,57,17/03/2026,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
@@ -5348,7 +5348,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Léo Barbosa,LÉO BARBOSA,O,FAT,961043981,26/03/2026,Telefônica Brasil S/A,02.558.157/0001-62,549.99,0
 2026,3,Léo Barbosa,LÉO BARBOSA,O,NFS-e,27401,26/03/2026,Lanches e Companhia Ltda,06.926.204/0001-34,3000.99,0
 2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,8,01/03/2026,Wemerson Lopes Trindade,61.669.948/0001-29,2500.0,0
-2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/03/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,05/03/2026,Josely Sobreira da Silva,,2200.0,0
 2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,56,17/03/2026,Raka Comunicações Ltda,24.789.098/0001-76,1500.0,0
 2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,6,23/03/2026,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2026,3,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,89,24/03/2026,Edivan Reis Batbista,58.752.231/0001-31,400.0,0
@@ -5386,7 +5386,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,93809,30/03/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,5757.99,0
 2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,86,01/03/2026,Edivan Reis Batista,58.752.231/0001-31,400.0,0
 2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,25,23/03/2026,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
-2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,12,23/03/2026,Delziran Pereira Barbosa,***.398.877-**,1850.0,0
+2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,12,23/03/2026,Delziran Pereira Barbosa,,1850.0,0
 2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,377,23/03/2026,Edsom Comunicações Ltda,29.809.660/0001-08,400.0,0
 2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,5785,23/03/2026,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1000.0,0
 2026,3,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,48,24/03/2026,Ascend Gestão e Administração Ltda,63.992.471/0001-43,13200.0,0
@@ -5401,7 +5401,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,44295,06/03/2026,Cabana do Lago Restaurante Ltda,02.053.343/0001-41,362.5,0
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,53,10/03/2026,Portal do Sul Cozinha Industrial Ltda – ME,19.709.159/0001-08,445.55,0
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,44365,11/03/2026,Cabana do Lago Restaurante Ltda,02.053.343/0001-40,850.0,0
-2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,12/03/2026,Fábio Costa Cunha,***.096.711-**,3800.0,0
+2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,12/03/2026,Fábio Costa Cunha,,3800.0,0
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,60,17/03/2026,Raka Comunicações Ltda,24.789.098/0001-76,1000.0,0
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2726,17/03/2026,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,1066.0,0
 2026,3,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,211662,24/03/2026,Mercatto Comércio e Produção Alimentos Ltda,45.912.174/0001-69,479.7,0
@@ -5564,7 +5564,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NF,5133310,07/04/2026,Starlink Brasil Serviços de Internet Ltda,40.154.884/0001-53,576.0,0
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,517257,08/04/2026,Rede de Postos Marajó Tocantins Ltda,26.638.338/0001-67,389.49,0
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,5824,13/04/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,345.57,0
-2026,4,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/04/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,4,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,16/04/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,312083,17/04/2026,Rede de Postos Toca da Onça – Transbr Ltda,00.298.737/0001-32,206.7,0
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,357548,18/04/2026,Posto 89 Ltda,00.800.292/0001-47,436.39,0
 2026,4,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,4,20/04/2026,Andrea Gonzales Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
@@ -5628,14 +5628,14 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,4,23/04/2026,Nova Opção Contabilidade Ltda – ME,09.270.047/0001-40,3000.0,0
 2026,4,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,11,23/04/2026,Paraíso Agência de Viagens e Transporte Ltda,06.926.204/0001-34,10300.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,29,13/04/2026,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
-2026,4,Eduardo Fortes,EDUARDO FORTES,O,REC,0,13/04/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,4,Eduardo Fortes,EDUARDO FORTES,O,REC,0,13/04/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18286,13/04/2026,MJ Lima de Assis,05.087.673/0001-44,8000.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,34,20/04/2026,Evolução Contábil Ltda,10.807.569/0001-17,9000.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18303,20/04/2026,MJ Lima de Assis,05.087.673/0001-44,7450.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6624,23/04/2026,Tecnonegócios Soluções em Informática Ltda,11.521.613/0001-90,649.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,11,23/04/2026,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
 2026,4,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,528,24/04/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,15000.0,0
-2026,4,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,51-8,10/04/2026,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2026,4,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,51-8,10/04/2026,Vilma Maria Martins da Silva,,4218.2,0
 2026,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,16,24/04/2026,WL Locadora de Veículos – Eireli,32.680.992/0001-31,6000.0,0
 2026,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,546,24/04/2026,Ferreira Neto Comércio Varejista de Com. Eireli,25.298.246/0001-12,7701.59,0
 2026,4,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,27411,27/04/2026,Lanches e Companhia Ltda,06.926.204/0001-34,3500.01,0
@@ -5697,7 +5697,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Jair Farias,JAIR FARIAS,O,NFS-e,1006,16/04/2026,Martins e Sá Ltda,310.848.765/0001-97,99.99,0
 2026,4,Jair Farias,JAIR FARIAS,O,NF,18714592,16/04/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,1037.24,0
 2026,4,Jair Farias,JAIR FARIAS,O,NF-e,625,17/04/2026,Difer Distribuidora Ltda,03.955.560/0001-98,880.06,0
-2026,4,Jair Farias,JAIR FARIAS,O,REC,4,20/04/2026,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,4,Jair Farias,JAIR FARIAS,O,REC,4,20/04/2026,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,4,Jair Farias,JAIR FARIAS,O,NFS-e,58,23/04/2026,Dias & Pereira Prestação de Serviços Ltda - ME,10.528.028/0001-50,8000.0,0
 2026,4,Jair Farias,JAIR FARIAS,O,NFS-e,3248,24/04/2026,Neves & Neves Ltda – EPP,08.839.364/0001-71,1650.0,0
 2026,4,Jair Farias,JAIR FARIAS,O,NFC-e,240014,24/04/2026,Ipanema Comércio de Derivados de Petróleo Ltda,21.304.358/0001-88,231.79,0
@@ -5706,7 +5706,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Jair Farias,JAIR FARIAS,O,NF-e,22657,28/04/2026,Posto Pantanal Ltda – ME,07.111.045/0001-82,5307.58,0
 2026,4,Jorge Frederico,JORGE FREDERICO,O,FAT,64748160,03/04/2026,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,137.91,0
 2026,4,Jorge Frederico,JORGE FREDERICO,O,NFS-e,162854,15/04/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
-2026,4,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/04/2026,Teotonio Marques de Queiroz,***.856.006-**,3080.0,0
+2026,4,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/04/2026,Teotonio Marques de Queiroz,,3080.0,0
 2026,4,Jorge Frederico,JORGE FREDERICO,O,NF,18688203,23/04/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,263.13,0
 2026,4,Jorge Frederico,JORGE FREDERICO,O,REC,1,27/04/2026,P L Alves de Sousa - ME,34.589.621/0001-74,5660.0,0
 2026,4,Jorge Frederico,JORGE FREDERICO,O,NFS-e,19,27/04/2026,Sigma Assessoria e Consultoria Ltda,02.696.703/0001-21,12000.0,0
@@ -5747,7 +5747,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,6847,23/04/2026,Suprema Combustíveis Ltda,24.188.975/0001-53,251.7,0
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,39825,23/04/2026,Petroshop – Comércio de Combustíveis Ltda – ME,13.716.765/0001-76,530.05,0
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,136317,23/04/2026,Petro Petróleo 75 Comércio de Combustíveis Ltda,50.749.743/0001-37,100.0,0
-2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/04/2026,Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/04/2026,Maria Castorina Medeiros,,2621.0,0
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,125350,27/04/2026,Suprema Combustíveis Ltda,24.188.975/0001-53,184.25,0
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1453,27/04/2026,Auto Posto Premium,41.073.001/0001-43,516.24,0
 2026,4,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5643,27/04/2026,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,500.04,0
@@ -5769,7 +5769,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Léo Barbosa,LÉO BARBOSA,O,NFS-e,27413,27/04/2026,Lanches e Companhia Ltda,06.926.204/0001-34,3826.2,0
 2026,4,Léo Barbosa,LÉO BARBOSA,O,NF-e,70942,27/04/2026,Posto do Lago Comércio de Cxombustíveis Ltda,16.846.429/0001-34,400.0,0
 2026,4,Léo Barbosa,LÉO BARBOSA,O,NF-e,95363,27/04/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,9551.27,0
-2026,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/04/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/04/2026,Josely Sobreira da Silva,,2200.0,0
 2026,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFC-e,134478,14/04/2026,Restaurante Dom Vergilio Ltda,05.980.541/0001-47,1360.03,0
 2026,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,7,23/04/2026,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2026,4,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,101,24/04/2026,Honórios Contabilidade Ltda – ME,19.580.815/0001-15,7000.0,0
@@ -5802,7 +5802,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,36,28/04/2026,Visão Serviços de Locação Ltda,02.799.436/0001-18,18000.0,0
 2026,4,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFC-e,741,29/04/2026,Churrascaria Sarandi Ltda,47.626.534/0001-91,1250.83,0
 2026,4,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,95440,29/04/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7532.94,0
-2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,1,27/04/2026,Delziran Pereira Barbosa,***.398.877-**,1900.0,0
+2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,1,27/04/2026,Delziran Pereira Barbosa,,1900.0,0
 2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,5964,27/04/2026,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1091.97,0
 2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,37,28/04/2026,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
 2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,68,28/04/2026,Ascend Gestão e Administração Ltda,63.992.471/0001-43,14000.0,0
@@ -5811,7 +5811,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,90340,28/04/2026,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,4219.1,0
 2026,4,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,3323,28/04/2026,Ecoposto Petromax Ltda,21.875.861/0002-74,10062.57,0
 2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,615,07/04/2026,Difer Distribuidora Ltda,03.955.560/0001-98,815.96,0
-2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/04/2026,Fábio Costa Cunha,***.096.711-**,3800.0,0
+2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/04/2026,Fábio Costa Cunha,,3800.0,0
 2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4806,20/04/2026,Mactra Comercio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,2808.0,0
 2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,75437,22/04/2026,E Rossi Ltda,33.206.772/0001-33,567.0,0
 2026,4,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,633,28/04/2026,Difer Distribuidora Ltda,03.955.560/0001-98,1453.53,0
@@ -5954,7 +5954,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6058,16/05/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,501.01,0
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6054,16/05/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,300.0,0
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,359040,17/05/2026,Posto 89 Ltda,00.800.292/0001-47,257.07,0
-2026,5,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/05/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,5,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,18/05/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,217,18/05/2026,Balbino Serviços de Comunicação Multimidia Ltda,10.561.685/0001-07,100.0,0
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,143441,18/05/2026,Rede de Postos Marajó Cariri 2 Ltda,29.764.547/0001-45,356.49,0
 2026,5,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6064,18/05/2026,Auto Posto de Combustíveis Entre Serras Ltda,06.281.441/0001-95,374.0,0
@@ -6028,7 +6028,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,96765,21/05/2026,Comercial de Combustiveis Casa Tua Ltda,34.309.267/0001-87,6414.61,0
 2026,5,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-492.26,1
 2026,5,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,38,11/05/2026,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
-2026,5,Eduardo Fortes,EDUARDO FORTES,O,REC,0,11/05/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,5,Eduardo Fortes,EDUARDO FORTES,O,REC,0,11/05/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,5,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18360,13/05/2026,MJ Lima de Assis,05.087.673/0001-44,9400.0,0
 2026,5,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,45,20/05/2026,Evolução Contábil Ltda,10.807.569/0001-17,9000.0,0
 2026,5,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,12,21/05/2026,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
@@ -6090,7 +6090,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Jair Farias,JAIR FARIAS,O,NFC-e,938696,15/05/2026,Rede K Combustíveis Ltda,26.333.693/0001-28,298.76,0
 2026,5,Jair Farias,JAIR FARIAS,O,NFC-e,214225,17/05/2026,Auto Posto Tocantins de Guaraí Ltda,02.930.356/0001-50,411.68,0
 2026,5,Jair Farias,JAIR FARIAS,O,NFC-e,219131,18/05/2026,Petro Petroleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,200.03,0
-2026,5,Jair Farias,JAIR FARIAS,O,REC,5,20/05/2026,Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,5,Jair Farias,JAIR FARIAS,O,REC,5,20/05/2026,Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,5,Jair Farias,JAIR FARIAS,O,NFC-e,525777,20/05/2026,Petro Petroleo 71 Comércio de Combustíveis Ltda,50.766.414/0001-02,420.02,0
 2026,5,Jair Farias,JAIR FARIAS,O,NFS-e,119,21/05/2026,MM Aluguel de Máquinas e Equipamentos Ltda,25.166.775/0001-62,12000.0,0
 2026,5,Jair Farias,JAIR FARIAS,O,FAT,200017805,22/05/2026,Serviço Autonomo de Água e Esgoto,00.766.725/0001-95,60.44,0
@@ -6104,7 +6104,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Jair Farias,JAIR FARIAS,O,NFS-e,26,26/05/2026,Preserv Monitoramento e Locação Ltda,17.427.068/0001-54,10500.0,0
 2026,5,Jair Farias,JAIR FARIAS,O,NFS-e,2600000000016,28/05/2026,Seta Instituto de Pesquisa Ltda,10.786.981/0001-44,11820.0,0
 2026,5,Jorge Frederico,JORGE FREDERICO,O,NF-e,88,06/05/2026,Donna Vitória Restaurante Churrscaria e Pizzaria,19.291.243/0001-54,372.73,0
-2026,5,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/05/2026,Teotonio Marques de Queiroz,***.856.006-**,3080.0,0
+2026,5,Jorge Frederico,JORGE FREDERICO,O,REC,0,15/05/2026,Teotonio Marques de Queiroz,,3080.0,0
 2026,5,Jorge Frederico,JORGE FREDERICO,O,NF,19200761,21/05/2026,Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,398.01,0
 2026,5,Jorge Frederico,JORGE FREDERICO,O,NFS-e,3485183,21/05/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2026,5,Jorge Frederico,JORGE FREDERICO,O,FAT,65312103,21/05/2026,BRK Ambiental – Companhia de Saneamento do Tocantins,25.089.509/0001-83,130.85,0
@@ -6145,7 +6145,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,4171,24/05/2026,Comercial Varejista de Combustível Posto Jalapão Ltda,20.196.328/0001-32,496.06,0
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,33,25/05/2026,A Ferreira Lopes – ME Ltda,27.052.896/0001-09,9000.0,0
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5707,25/05/2026,Figueiredo e Barros Ltda – EPP,18.009.619/0001-22,529.2,0
-2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,26/05/2026,Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,26/05/2026,Maria Castorina Medeiros,,2621.0,0
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,24,26/05/2026,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFS-e,51,26/05/2026,Maranata Instituto de Gestão Pública Ltda,50.006.227/0001-12,12000.0,0
 2026,5,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,7694,26/05/2026,Suprema Combustíveis Ltda,24.188.975/0001-53,304.39,0
@@ -6161,7 +6161,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Léo Barbosa,LÉO BARBOSA,O,FAT,1007125671,25/05/2026,Telefônica Brasil S/A,02.558.157/0001-62,963.96,0
 2026,5,Léo Barbosa,LÉO BARBOSA,O,NF-e,96977,25/05/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,9819.16,0
 2026,5,Léo Barbosa,LÉO BARBOSA,O,NFS-e,28,26/05/2026,José A R Matos,37.421.336/0001-38,6000.0,0
-2026,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/05/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/05/2026,Josely Sobreira da Silva,,2200.0,0
 2026,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,1105,25/05/2026,Parlanet Web e Tecnologia Ltda,31.602.730/0001-96,400.0,0
 2026,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,10,25/05/2026,"Feliciano, Lima e Amoury Sociedade de Advogados",27.307.752/0001-56,15000.0,0
 2026,5,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,146055,25/05/2026,1 – Souza e Vital Comércio de Combustíveis Ltda,38.154.506/0001-28,8782.51,0
@@ -6195,14 +6195,14 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,5,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,30,29/05/2026,Manzano Sociedade Individual de Advocacia – Eireli,20.591.738/0001-88,10000.0,0
 2026,5,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,97180,29/05/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7870.0,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,47,18/05/2026,Leandro Gomes de Melo - Sociedade Individual de Advocacia,41.745.347/0001-40,14400.0,0
-2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,2,25/05/2026,Delziran Pereira Barbosa,***.398.877-**,1900.0,0
+2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,2,25/05/2026,Delziran Pereira Barbosa,,1900.0,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,6116,25/05/2026,Posto Serra Dourada Comércio de Combustível,04.874.758/0001-00,1213.22,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,87,27/05/2026,Ascend Gestão e Administração Ltda,63.992.471/0001-43,14000.0,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,206,27/05/2026,WR Viagens Ltda,50.181.398/0001-88,3352.0,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,27422,27/05/2026,Lanches e Companhia Ltda,06.926.204/0001-34,2561.2,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,91003,27/05/2026,Medeiros Comércio Varejista de Combustíveis Ltda,03.775.225/0001-08,4169.88,0
 2026,5,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,3387,27/05/2026,Ecoposto Petromax Ltda,21.875.861/0002-74,9917.56,0
-2026,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2026,Fábio Costa Cunha,***.096.711-**,3800.0,0
+2026,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/05/2026,Fábio Costa Cunha,,3800.0,0
 2026,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,4059,16/05/2026,Casa do Chambari Ltda,31.545.911/0001-28,864.83,0
 2026,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4850,18/05/2026,Mactra Comercio de Combustíveis e Lubrificantes Ltda,01.630.610/0008-08,4181.4,0
 2026,5,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,69,19/05/2026,Posrtal do Sul Cozinha Industrial Ltda – ME,01.970.915/9000-08,1132.23,0
@@ -6358,7 +6358,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,360108,06/06/2026,Posto 89 Ltda,00.800.292/0001-47,266.98,0
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF,7472543,07/06/2026,Starlink Brazil Servicos de Internet Ltda,40.154.884/0001-53,576.0,0
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6209,08/06/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,460.08,0
-2026,6,Amélio Cayres,AMÉLIO CAYRES,O,REC,60901,09/06/2026,Nildevan F S Sousa,***.552.661-**,750.0,0
+2026,6,Amélio Cayres,AMÉLIO CAYRES,O,REC,60901,09/06/2026,Nildevan F S Sousa,,750.0,0
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6259,18/06/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,431.27,0
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6268,19/06/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,314.57,0
 2026,6,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6278,20/06/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,340.99,0
@@ -6422,7 +6422,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NFS-e,13,22/06/2026,Suraia Vilela – Sociedade Individual de Advocacia,52.205.362/0001-12,5000.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,,,,,,-292.26,1
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,58,03/06/2026,Evolução Contábil Ltda,10.807.569/0001-17,10000.0,0
-2026,6,Eduardo Fortes,EDUARDO FORTES,O,RECIBO,------,11/06/2026,Marcelia Gomes dos Santos,***.474.561-**,1450.0,0
+2026,6,Eduardo Fortes,EDUARDO FORTES,O,RECIBO,------,11/06/2026,Marcelia Gomes dos Santos,,1450.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,13,16/06/2026,Lucirei Carneiro Costa,60.969.340/0001-57,5200.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,51,16/06/2026,Data System Informática Ltda,04.808.450/0001-66,2400.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18449,17/06/2026,MJ Lima de Assis,05.087.673/0001-44,8650.0,0
@@ -6431,7 +6431,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NF,533,23/06/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,8,24/06/2026,Mauricio Luiz Sociedade Individual de Advocacia,57.219.862/0001-27,10000.0,0
 2026,6,Eduardo Fortes,EDUARDO FORTES,O,NF,7086245,28/05/2026,Starlink Brazil Serviços de Internet Ltda,40.154.884/0001-53,576.0,0
-2026,6,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11723,06/05/2026,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2026,6,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11723,06/05/2026,Vilma Maria Martins da Silva,,4218.2,0
 2026,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,28,30/06/2026,Wl Locadora De Veiculos - Eireli,32.680.992/0001-31,6000.0,0
 2026,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,29,30/06/2026,Wl Locadora De Veiculos - Eireli,32.680.992/0001-31,10000.0,0
 2026,6,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,27430,30/06/2026,Lanches e Companhia Ltda,06.926.204/0001-34,5009.2,0
@@ -6476,7 +6476,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Ivory de Lira,IVORY DE LIRA,O,NF-e,600349,16/06/2026,Super Posto Portal de Palmas Ltda,15.499.984/0001-74,545.0,0
 2026,6,Ivory de Lira,IVORY DE LIRA,O,NF-e,600350,16/06/2026,Super Posto Portal de Palmas Ltda,15.499.984/0001-74,1105.9,0
 2026,6,Ivory de Lira,IVORY DE LIRA,O,NF-e,600432,16/06/2026,Super Posto Portal de Palmas Ltda,15.499.984/0001-74,1485.43,0
-2026,6,Jair Farias,JAIR FARIAS,O,REC,6,,22.06.2026 Welitania Araújo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,6,Jair Farias,JAIR FARIAS,O,REC,6,,22.06.2026 Welitania Araújo de Sousa Mendonça,,1800.0,0
 2026,6,Jair Farias,JAIR FARIAS,O,NF,19737234,,21.05.2026 Energisa Tocantins – Distribuidora de Energia S/A,25.086.034/0001-71,1088.86,0
 2026,6,Jair Farias,JAIR FARIAS,O,FAT,260021642,,20.06.2026 Saae – Serviço Autonomo de Água e Esgoto,00.766.725/0001-95,58.74,0
 2026,6,Jair Farias,JAIR FARIAS,O,NF-e,2874,,24.06.2026 Martins e Sá Ltda,31.084.876/0001-97,99.99,0
@@ -6497,7 +6497,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Jair Farias,JAIR FARIAS,O,NFC-e,108799,,11.06.2026 Auto Posto G2 Ltda,14.417.662/0001-76,528.13,0
 2026,6,Jair Farias,JAIR FARIAS,O,NFC-e,529145,,08.06.2026 Silvado de Sousa Comercio de Combustiveis Ltda,26.919.416/0001-00,595.66,0
 2026,6,Jorge Frederico,JORGE FREDERICO,O,NF,19724591,06/06/2026,Distribuidora de Energia S.A,25.086.034/0001-71,481.73,0
-2026,6,Jorge Frederico,JORGE FREDERICO,O,,REC,15/06/2026,Teotonio Marques de Queiroz,***.856.006-**,3080.0,0
+2026,6,Jorge Frederico,JORGE FREDERICO,O,,REC,15/06/2026,Teotonio Marques de Queiroz,,3080.0,0
 2026,6,Jorge Frederico,JORGE FREDERICO,O,FAT,3566613,15/06/2026,Aranet Comunicação Ltda,09.503.823/0001-04,100.0,0
 2026,6,Jorge Frederico,JORGE FREDERICO,O,FAT,65833070,18/06/2026,BRK Ambiental Tocantins S.A,25.089.509/0001-83,195.03,0
 2026,6,Jorge Frederico,JORGE FREDERICO,O,REC,6,26/06/2026,P L A de Sousa Ltda,34.589.621/0001-74,5660.0,0
@@ -6539,7 +6539,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,11185,24/06/2026,Petro Petroleo 12 Comércio de Combustíveis Ltda,50.748.950/0001-77,493.81,0
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,46581,24/06/2026,Petroshop – Comércio de Combustíveis Ltda – ME,13.716.765/0001-74,200.0,0
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,11377,24/06/2026,Posto Milena Palmas Ltda,34.620.793/0001-63,300.0,0
-2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/06/2026,Maria Castorina Medeiros,***.793.411-**,2621.0,0
+2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/06/2026,Maria Castorina Medeiros,,2621.0,0
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,29,25/06/2026,Josanilton Gualberto Silva Sociedade de Advocacia,30.068.005/0001-17,15000.0,0
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,69,25/06/2026,Maranata Instituto de Gestão Pública Ltda,50.006.227/0001-12,12000.0,0
 2026,6,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5798,25/06/2026,Figueiredo e Barros Ltda - EPP,18.009.619/0001-22,618.54,0
@@ -6555,7 +6555,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Léo Barbosa,LÉO BARBOSA,O,NFS-e,23,24/06/2026,Milhomem & Cardoso Ltda ME,06.163.271/0001-44,8000.0,0
 2026,6,Léo Barbosa,LÉO BARBOSA,O,NF-e,27428,24/06/2026,Lanches e Companhia Ltda,06.926.204/0001-34,4056.25,0
 2026,6,Léo Barbosa,LÉO BARBOSA,O,NF-e,98673,24/06/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,11405.32,0
-2026,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/06/2026,Josely Sobreira da Silva,***.731.704-**,2200.0,0
+2026,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,04/06/2026,Josely Sobreira da Silva,,2200.0,0
 2026,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,154,23/06/2026,Honorios Contabilidade Ltda Me,19.580.815/0001-15,7000.0,0
 2026,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,534,24/06/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,10000.0,0
 2026,6,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,2693,24/06/2026,Dom Virgilio Pizza Express Ltda,196.701.110/0001-33,6943.12,0
@@ -6604,7 +6604,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,53774,29/06/2026,Vital e Vital,16.578.789/0001-00,300.0,0
 2026,6,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,98897,30/06/2026,Comércio de Combustível Casa Tua.,34.309.267/0001-87,4471.61,0
 2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,59,,25.06.2026 Leandro Gomes de Melo - Soc. Ind. de Adv.,41.745.347/0001-40,14400.0,0
-2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,3,,25.06.2026 Delziran Pereira Barbosa,***.398.877-**,1900.0,0
+2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,3,,25.06.2026 Delziran Pereira Barbosa,,1900.0,0
 2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,112,,25.06.2026 Ascend Gestão e Administração Ltda,63.992.471/0001-43,14000.0,0
 2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,238,,25.06.2026 Wr Viagens Ltda,50.181.398/0001-88,2919.73,0
 2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,27429,,26.06.2026 Lanches e Companhia Ltda,06.926.204/0001-34,2851.54,0
@@ -6613,7 +6613,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,6,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,91800,,26.06.2026 Medeiros Com. Varej. de Combustível Ltda,03.775.225/0001-08,3647.49,0
 2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,4870,01/06/2026,Mactra Comercio de Combustiveis e Lubrificantes Ltda,01.630.610/0008-08,4485.2,0
 2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFC-e,31284,03/06/2026,Corolline de Freitas Texeira Isac - Eireli,09.630.885/0001-87,561.55,0
-2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/06/2026,Fabio Costa Cunha,***.096.711-**,3800.0,0
+2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/06/2026,Fabio Costa Cunha,,3800.0,0
 2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF,2850,11/06/2026,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,490.12,0
 2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,2858,16/06/2026,Churrascaria Portal do Sul Ltda,04.140.445/0001-28,508.79,0
 2026,6,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,6,26/06/2026,Jackson Macedo de Brito – Sociedade Individual de Advocacia,49.222.231/0001-39,18000.0,0
@@ -6765,7 +6765,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6352,02/07/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,449.81,0
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,361602,04/07/2026,Posto 89 Ltda,00.800.292/0001-47,430.22,0
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF,8763043,06/07/2026,Starlink Brazil Servicos de Internet Ltda,40.154.884/0001-53,619.0,0
-2026,7,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,07/07/2026,Nildevan Francisco Sales Sousa,***.552.661-**,750.0,0
+2026,7,Amélio Cayres,AMÉLIO CAYRES,O,REC,0,07/07/2026,Nildevan Francisco Sales Sousa,,750.0,0
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,109267,07/07/2026,Rede de Posto Toca da Onça Araguaina Cidade Ltda,06.333.164/0001-17,421.47,0
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,168630,09/07/2026,Rede de Postos Marajo Wanderlandia Ltda,49.962.487/0001-82,344.39,0
 2026,7,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,86869,12/07/2026,Rede de Postos Marajo Brasilandia Ltda,56.025.210/0001-99,397.02,0
@@ -6846,7 +6846,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,99933,21/07/2026,Comercial de Combustiveis Casa Tua Ltda,34.309.267/0001-87,4190.49,0
 2026,7,Dr Danilo Alencar,DR. DANILO ALENCAR DE ANDRADE,O,NF-e,888,21/07/2026,Distribuidora de Petroleo Tocantins Ltda,05.417.882/0001-49,11000.0,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,65,10/07/2026,Data System Informatica Ltda,04.808.450/0001-66,2400.0,0
-2026,7,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/07/2026,Marcelia Gomes Dos Santos,***.474.561-**,1450.0,0
+2026,7,Eduardo Fortes,EDUARDO FORTES,O,REC,0,10/07/2026,Marcelia Gomes Dos Santos,,1450.0,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18503,10/07/2026,MJ Lima de Assis,05.087.673/0001-44,10000.05,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,72,13/07/2026,Evolução Contábil Ltda,10.807.569/0001-17,10000.0,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6825,15/07/2026,Tecnegocios Soluções em Informatica Ltda,11.521.613/0001-90,649.0,0
@@ -6855,7 +6855,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,536,17/07/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NF-e,18504,17/07/2026,MJ Lima de Assis,05.087.673/0001-44,5400.0,0
 2026,7,Eduardo Fortes,EDUARDO FORTES,O,NF,8338116,28/06/2026,Starlink Brazil Servicos de Internet Ltda,40.154.884/0001-53,619.0,0
-2026,7,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11726,29/06/2026,VILMA MARIA MARTINS DA SILVA,***.628.726-**,4218.2,0
+2026,7,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11726,29/06/2026,VILMA MARIA MARTINS DA SILVA,,4218.2,0
 2026,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFC-e,21590,29/07/2026,REST CHURRA TEMAK GRAN PORTO LTDA,44.529.171/0001-88,678.57,0
 2026,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,32,31/07/2026,WL LOCADORA DE VEICULOS - EIRELI,32.680.992/0001-31,6000.0,0
 2026,7,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,33,31/07/2026,WL LOCADORA DE VEICULOS - EIRELI,32.680.992/0001-31,11000.0,0
@@ -6902,7 +6902,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Jair Farias,JAIR FARIAS,O,NFC-e,1653,08/07/2026,E Rossi Ltda,33.206.772/0001-33,600.0,0
 2026,7,Jair Farias,JAIR FARIAS,O,NFC-e,976964,09/07/2026,Nova Petro Combustiveis e Participações Ltda,21.423.549/0001-69,358.56,0
 2026,7,Jair Farias,JAIR FARIAS,O,NFC-e,73205,11/07/2026,Auto Posto G2 Ltda,14.417.662/0001-76,300.0,0
-2026,7,Jair Farias,JAIR FARIAS,O,REC,7,21/07/2026,Welitania Araujo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,7,Jair Farias,JAIR FARIAS,O,REC,7,21/07/2026,Welitania Araujo de Sousa Mendonça,,1800.0,0
 2026,7,Jair Farias,JAIR FARIAS,O,NF,2882,23/07/2026,Martins e Sá Ltda 31.084.876/0001 97,,99.99,0
 2026,7,Jair Farias,JAIR FARIAS,O,NFS-e,191,24/07/2026,MM Aluguel de Maquinas e Equipamentos Ltda 25.166.775/0001 62,,12000.0,0
 2026,7,Jair Farias,JAIR FARIAS,O,NF,12,24/07/2026,Helio Onorio - Sociedade Individual de Advocacia 32.921.688/0001 39,,12000.0,0
@@ -6943,7 +6943,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,43,23/07/2026,A. Ferreira Lopes – ME LTDA,27.052.896/0001-09,9000.0,0
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1670,23/07/2026,Auto Posto Premium,34.620.793/0001-63,470.0,0
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,132489,23/07/2026,Auto Posto Buriti,24.188.975/0001-53,150.0,0
-2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,34,24/07/2026,Josanilton Gualberto Silva Soc. de Advocacia,***.793.411-**,15000.0,0
+2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,34,24/07/2026,Josanilton Gualberto Silva Soc. de Advocacia,,15000.0,0
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,24/07/2026,Maria Castorina Mendes,30.068.005/0001-17,2621.0,0
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5861,24/07/2026,Figueredo e Barros LTDA - EPP,24.744.436/0001-53,637.61,0
 2026,7,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,5863,27/07/2026,Figueredo e Barros LTDA - EPP,82.991.582/0002-38,614.25,0
@@ -6959,7 +6959,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Léo Barbosa,LÉO BARBOSA,O,NFS-e,32,23/07/2026,Milhomem & Cardoso Ltda,06.163.271/0001-44,8000.0,0
 2026,7,Léo Barbosa,LÉO BARBOSA,O,NF-e,100044,23/07/2026,Comercial de Combustiveis Casa Tua Ltda,34.309.267/0001-87,10894.68,0
 2026,7,Léo Barbosa,LÉO BARBOSA,O,NFS-e,1695,28/06/2026,Inova Hotel Ltda,09.586.105/0001-49,590.0,0
-2026,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/07/2026,JOSELY SOBREIRA DA SILVA,***.731.704-**,2200.0,0
+2026,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,REC,0,06/07/2026,JOSELY SOBREIRA DA SILVA,,2200.0,0
 2026,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF-e,147522,08/07/2026,SOUZA E VITAL COMERCIO DE COMBUSTIVEIS LTDA,38.154.506/0001-28,3074.22,0
 2026,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NFS-e,158,14/07/2026,HONORIOS CONTABILIDADE LTDA ME,19.580.815/0001-15,7000.0,0
 2026,7,Marcus Marcelo,MARCUS MARCELO DE BARROS ARAÚJO,O,NF,537,27/07/2026,LEANDRO FINELLI HORTA VIANNA,01.100.804/0001-25,10000.0,0
@@ -7008,7 +7008,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,3702,30/07/2026,Restaurante Rio das Pedras – EIRELI,38.146.130/0001-00,44.0,0
 2026,7,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,100412,31/07/2026,Comércio de Combustível Casa Tua Ltda,34.309.267/0001-87,6181.56,0
 2026,7,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,1363,31/07/2026,Francisco Ferreira Rolim – EPP,05.385.627/0001-24,503.0,0
-2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,4,,27.07.2026 DELZIRAN PEREIRA BARBOSA,***.398.877-**,1900.0,0
+2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,4,,27.07.2026 DELZIRAN PEREIRA BARBOSA,,1900.0,0
 2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,81,,27.07.2026 LEANDRO GOMES DE MELO - SOC. IND. DE ADV.,41.745.347/0001-40,14400.0,0
 2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,293,,27.07.2026 WR VIAGENS LTDA,50.181.398/0001-88,2919.73,0
 2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,6477,,27.07.2026 POSTO SERRA DOURADA COM. DE COMB. LTDA,04.874.758/0001-00,1155.54,0
@@ -7018,7 +7018,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,7,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,27432,,29.07.2026 LANCHES E COMPANHIA LTDA,06.926.204/0001-34,2910.18,0
 2026,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,,,,,,18000.0,1
 2026,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,1630,02/07/2026,HOTEL DE LEON LTDA,36.938.049/0001-37,1670.0,0
-2026,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/07/2026,FABIO COSTA CUNHA,***.096.711-**,3800.0,0
+2026,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/07/2026,FABIO COSTA CUNHA,,3800.0,0
 2026,7,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NF-e,39882,31/07/2026,STAR COM DE COMBUSTIVEL LTDA,02.588.773/0001-66,14580.14,0
 2026,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,26230-48,01/07/2026,Starlink Brazil Serviços de Internet Ltda,40.154.884/0001-53,339.0,0
 2026,7,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NF-e,109284,08/07/2026,Rede de Postos Toca da Onça Araguaina Cidade Ltda.,06.333.164/0001-17,404.88,0
@@ -7149,7 +7149,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,719,14/08/2026,Baruch Hotel Ltda,44.055.186/0001-51,556.0,0
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,1840122,14/08/2026,Rede de Postos Toca da Onça Araguaina Rodovia Ltda,02.772.168/0001-40,412.76,0
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,6570,15/08/2026,Auto Posto de Combustiveis Entre Serras Ltda,06.281.441/0001-95,410.33,0
-2026,8,Amélio Cayres,AMÉLIO CAYRES,O,REC,08/12,18/08/2026,Nildevan F S Sousa,***.552.661-**,750.0,0
+2026,8,Amélio Cayres,AMÉLIO CAYRES,O,REC,08/12,18/08/2026,Nildevan F S Sousa,,750.0,0
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,939,18/08/2026,Posto Cristal 3 Comercio de Derivados de Petroleo,64.371.067/0001-15,320.0,0
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NFS-e,8,21/08/2026,Andrea Gonzalez Graciano - Sociedade Individual de Advocacia,50.819.589/0001-22,9000.0,0
 2026,8,Amélio Cayres,AMÉLIO CAYRES,O,NF-e,19150,22/08/2026,Rede de Postos Toca da Onça Xambioa Ltda,22.206.336/0001-48,337.44,0
@@ -7211,7 +7211,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Eduardo Fortes,EDUARDO FORTES,O,NFS-e,6936,20/08/2026,Tecnegocios Solucoes em Informatica Ltda,11.521.613/0001-90,649.0,0
 2026,8,Eduardo Fortes,EDUARDO FORTES,O,NFS,540,21/08/2026,Leandro Finelli Horta Vianna,01.100.804/0001-25,6000.0,0
 2026,8,Eduardo Fortes,EDUARDO FORTES,O,NF-e,101573,21/08/2026,Comercial de Combustíveis Casa Tua Ltda,34.309.267/0001-87,7530.6,0
-2026,8,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11728,04/08/2026,Vilma Maria Martins da Silva,***.628.726-**,4218.2,0
+2026,8,Eduardo Mantoan,EDUARDO MANTOAN,O,FAT,11728,04/08/2026,Vilma Maria Martins da Silva,,4218.2,0
 2026,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NF-e,732,26/08/2026,Difer Distribuidora Ltda,03.955.560/0001-98,6100.42,0
 2026,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,20,28/08/2026,VJI Aluguel de Maquinas e Equipamentos Agrícolas Ltda,40.760.672/0001-10,2900.0,0
 2026,8,Eduardo Mantoan,EDUARDO MANTOAN,O,NFS-e,4,29/08/2026,WR Aluguel de Carros de Luxo Ltda - 59,51.770.153/0001-59,6000.0,0
@@ -7271,7 +7271,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Ivory de Lira,IVORY DE LIRA,O,NF-e,8130,17/08/2026,Posto Veredão Eireli – EPP,13.757.909/0001-30,4100.0,0
 2026,8,Ivory de Lira,IVORY DE LIRA,O,NFS-e,8,18/08/2026,Gomes de Matos - Sociedade Individual de Advocacia,24.925.509/0002-94,14000.0,0
 2026,8,Ivory de Lira,IVORY DE LIRA,O,NFS-e,35,18/08/2026,"Clean Serviços de Limpeza, Construção Locação Ltda.",18.626.336/0001-20,18000.0,0
-2026,8,Jair Farias,JAIR FARIAS,O,REC,8,,20.08.2026 Welitania Araujo de Sousa Mendonça,***.524.151-**,1800.0,0
+2026,8,Jair Farias,JAIR FARIAS,O,REC,8,,20.08.2026 Welitania Araujo de Sousa Mendonça,,1800.0,0
 2026,8,Jair Farias,JAIR FARIAS,O,NFS-e,134,,27.08.2026 Dias & Pereira Prestacao de Servicos Ltda - Me,10.528.028/0001-50,8000.0,0
 2026,8,Jair Farias,JAIR FARIAS,O,NF-e,731,,25.08.2026 Difer Distribuidora Ltda,03.955.560/0001-98,1300.0,0
 2026,8,Jair Farias,JAIR FARIAS,O,NFS-e,14,,19.08.2026 Helio Onorio-Sociedade Individual de Advocacia,32.921.688/0001-39,12000.0,0
@@ -7326,7 +7326,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,989892,21/08/2026,Nova Petro Combustiveis e Participaçoes LTDA,21.423.549/0001-69,100.0,0
 2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,1754,24/08/2026,Auto Posto Premium,41.073.001/0001-43,200.0,0
 2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,323091,24/08/2026,Posto Milena Palmas LTDA,34.620.793/0001-63,390.16,0
-2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/08/2026,Maria Castorina Mendes,***.793.411-**,2621.0,0
+2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,REC,0,25/08/2026,Maria Castorina Mendes,,2621.0,0
 2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NFC-e,323373,25/08/2026,Posto Milena Palmas LTDA,34.620.793/0001-63,500.06,0
 2026,8,Luciano Oliveira,LUCIANO OLIVEIRA,O,NF-e,11885,25/08/2026,Posto Milena Palmas LTDA,34.620.793/0001-63,200.0,0
 2026,8,Léo Barbosa,LÉO BARBOSA,O,NFS-e,334,25/08/2026,Sandoval A. Fontoura Junior Sociedade Individual de Advocacia,26.557.281/0001-71,13000.0,0
@@ -7370,7 +7370,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NFS-e,109,29/08/2026,Visão Serviços de Locação LTDA.,16.578.789/0001-00,18000.0,0
 2026,8,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,75733,29/08/2026,Posto do Lago Comercio de combustíveis LTDA,10.677.225/0001-30,314.68,0
 2026,8,Moisemar Marinho,MOISEMAR ALVES MARINHO,O,NF-e,9322,30/08/2026,Petro Petróleo 71 Comercio Combustível LTDA.,12.301.888/0001-81,200.0,0
-2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,5,,24.08.2026 Delziran Pereira Barbosa,***.398.877-**,1900.0,0
+2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,REC,5,,24.08.2026 Delziran Pereira Barbosa,,1900.0,0
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,151,,25.08.2026 Ascend Gestão e Administração Ltda,63.992.471/0001-43,14000.0,0
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,116,,26.08.2026 Leandro Gomes de Melo - Soc. Ind. de Adv.,41.745.347/0001-40,14400.0,0
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NFS-e,346,,28.08.2026 WR Viagens Ltda,50.181.398/0001-88,2919.73,0
@@ -7378,7 +7378,7 @@ ano,mes,deputado,nome_pdf,oa,tipo_doc,numero,data,emitente,cnpj_cpf,valor,ajuste
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,93405,,28.08.2026 Medeiros Com. Varej. De Combustível Ltda,03.775.225/0001-08,3249.2,0
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,3624,,28.08.2026 Ecoposto Petromax Ltda,21.875.861/0002-74,10917.04,0
 2026,8,Nilton Franco,NILTON BANDEIRA FRANCO,O,NF-e,6639,,25.08.2026 Posto Serra Dourada Com. de Comb. Ltda,04.874.758/0001-00,1210.16,0
-2026,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/08/2026,Fabio Costa Cunha,***.096.711-**,3800.0,0
+2026,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,REC,0,10/08/2026,Fabio Costa Cunha,,3800.0,0
 2026,8,Olyntho Neto,OLYNTHO GARCIA DE OLIVEIRA NETO,O,NFS-e,9,20/08/2026,Jackson Macedo de Brito – Sociedade Individual de Advocacia,49.222.231/0001-39,18000.0,0
 2026,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,REC,58567-67,01/08/2026,Starlink,40.154.884/0001-53,339.0,0
 2026,8,Professor Júnior Geo,PROFESSOR JUNIOR GEO,O,NFS-e,527,14/08/2026,Alright Tecnologias de Midia S/A,14.239.499/0001-07,750.0,0

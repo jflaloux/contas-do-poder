@@ -151,12 +151,12 @@
   {
    "uf": "AC",
    "nome": "Acre",
-   "indice": 0.681,
+   "indice": 0.681239,
    "blocos": {
     "governo": {
-     "indice": 0.968,
+     "indice": 0.967742,
      "completude": 1.0,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "nome": {
        "v": 1,
@@ -204,9 +204,9 @@
      "fonte": "https://transparencia.ac.gov.br/servidores"
     },
     "assembleia": {
-     "indice": 0.395,
+     "indice": 0.394737,
      "completude": 0.25,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -259,10 +259,10 @@
   {
    "uf": "AL",
    "nome": "Alagoas",
-   "indice": 0.771,
+   "indice": 0.770852,
    "blocos": {
     "governo": {
-     "indice": 0.836,
+     "indice": 0.835821,
      "completude": 0.8,
      "facilidade": 0.875,
      "criterios": {
@@ -312,8 +312,8 @@
      "fonte": "https://transparencia.al.gov.br/pessoal/servidores/"
     },
     "assembleia": {
-     "indice": 0.706,
-     "completude": 0.667,
+     "indice": 0.705882,
+     "completude": 0.666667,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
@@ -367,12 +367,12 @@
   {
    "uf": "AM",
    "nome": "Amazonas",
-   "indice": 0.768,
+   "indice": 0.768235,
    "blocos": {
     "governo": {
-     "indice": 0.839,
-     "completude": 0.867,
-     "facilidade": 0.812,
+     "indice": 0.83871,
+     "completude": 0.866667,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -420,9 +420,9 @@
      "fonte": "https://www.transparencia.am.gov.br/pessoal/"
     },
     "assembleia": {
-     "indice": 0.698,
-     "completude": 0.708,
-     "facilidade": 0.688,
+     "indice": 0.697761,
+     "completude": 0.708333,
+     "facilidade": 0.6875,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -467,7 +467,7 @@
       }
      },
      "a_conferir": [],
-     "fonte": "https://www.aleam.gov.br/"
+     "fonte": "https://www.aleam.gov.br/transparencia/controle-de-cota-parlamentar/"
     }
    },
    "a_conferir": []
@@ -475,10 +475,10 @@
   {
    "uf": "AP",
    "nome": "Amapá",
-   "indice": 0.644,
+   "indice": 0.644009,
    "blocos": {
     "governo": {
-     "indice": 0.643,
+     "indice": 0.642857,
      "completude": 0.9,
      "facilidade": 0.5,
      "criterios": {
@@ -528,8 +528,8 @@
      "fonte": "https://transparencia.ap.gov.br/consulta/3/41/pessoa/folha-por-servidor"
     },
     "assembleia": {
-     "indice": 0.645,
-     "completude": 0.667,
+     "indice": 0.645161,
+     "completude": 0.666667,
      "facilidade": 0.625,
      "criterios": {
       "salario": {
@@ -582,12 +582,12 @@
   {
    "uf": "BA",
    "nome": "Bahia",
-   "indice": 0.756,
+   "indice": 0.755162,
    "blocos": {
     "governo": {
-     "indice": 0.677,
+     "indice": 0.676991,
      "completude": 0.85,
-     "facilidade": 0.562,
+     "facilidade": 0.5625,
      "criterios": {
       "nome": {
        "v": 0.5,
@@ -635,9 +635,9 @@
      "fonte": "https://www.transparencia.ba.gov.br/ServidorPessoal/PainelDadosServidores?Aba=Remuneracao"
     },
     "assembleia": {
-     "indice": 0.834,
+     "indice": 0.833333,
      "completude": 0.75,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -690,11 +690,11 @@
   {
    "uf": "CE",
    "nome": "Ceará",
-   "indice": 0.89,
+   "indice": 0.889952,
    "blocos": {
     "governo": {
-     "indice": 0.871,
-     "completude": 0.867,
+     "indice": 0.870813,
+     "completude": 0.866667,
      "facilidade": 0.875,
      "criterios": {
       "nome": {
@@ -743,8 +743,8 @@
      "fonte": "https://cearatransparente.ce.gov.br/portal-da-transparencia/servidores"
     },
     "assembleia": {
-     "indice": 0.909,
-     "completude": 0.833,
+     "indice": 0.909091,
+     "completude": 0.833333,
      "facilidade": 1.0,
      "criterios": {
       "salario": {
@@ -798,12 +798,12 @@
   {
    "uf": "DF",
    "nome": "Distrito Federal",
-   "indice": 0.899,
+   "indice": 0.89889,
    "blocos": {
     "governo": {
-     "indice": 0.919,
+     "indice": 0.918367,
      "completude": 0.9,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "nome": {
        "v": 1,
@@ -851,9 +851,9 @@
      "fonte": "https://www.transparencia.df.gov.br/#/servidores/remuneracao"
     },
     "assembleia": {
-     "indice": 0.879,
-     "completude": 0.958,
-     "facilidade": 0.812,
+     "indice": 0.879412,
+     "completude": 0.958333,
+     "facilidade": 0.8125,
      "criterios": {
       "salario": {
        "v": 1,
@@ -898,7 +898,7 @@
       }
      },
      "a_conferir": [],
-     "fonte": "https://www.cl.df.gov.br/"
+     "fonte": "https://www.cl.df.gov.br/web/portal-transparencia/verbas-indenizatorias"
     }
    },
    "a_conferir": []
@@ -906,7 +906,7 @@
   {
    "uf": "ES",
    "nome": "Espírito Santo",
-   "indice": 0.859,
+   "indice": 0.858696,
    "blocos": {
     "governo": {
      "indice": 1.0,
@@ -959,9 +959,9 @@
      "fonte": "https://transparencia.es.gov.br/"
     },
     "assembleia": {
-     "indice": 0.718,
+     "indice": 0.717391,
      "completude": 0.75,
-     "facilidade": 0.688,
+     "facilidade": 0.6875,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -1014,11 +1014,11 @@
   {
    "uf": "GO",
    "nome": "Goiás",
-   "indice": 0.922,
+   "indice": 0.922248,
    "blocos": {
     "governo": {
-     "indice": 0.983,
-     "completude": 0.967,
+     "indice": 0.983051,
+     "completude": 0.966667,
      "facilidade": 1.0,
      "criterios": {
       "nome": {
@@ -1067,9 +1067,9 @@
      "fonte": "https://dadosabertos.go.gov.br/dataset/folha-de-pagamento"
     },
     "assembleia": {
-     "indice": 0.861,
-     "completude": 0.917,
-     "facilidade": 0.812,
+     "indice": 0.861446,
+     "completude": 0.916667,
+     "facilidade": 0.8125,
      "criterios": {
       "salario": {
        "v": 0.75,
@@ -1122,11 +1122,11 @@
   {
    "uf": "MA",
    "nome": "Maranhão",
-   "indice": 0.634,
+   "indice": 0.633766,
    "blocos": {
     "governo": {
-     "indice": 0.749,
-     "completude": 0.933,
+     "indice": 0.748663,
+     "completude": 0.933333,
      "facilidade": 0.625,
      "criterios": {
       "nome": {
@@ -1175,9 +1175,9 @@
      "fonte": "https://www.transparencia.ma.gov.br/app/v2/pessoal/remuneracao"
     },
     "assembleia": {
-     "indice": 0.519,
-     "completude": 0.417,
-     "facilidade": 0.688,
+     "indice": 0.518868,
+     "completude": 0.416667,
+     "facilidade": 0.6875,
      "criterios": {
       "salario": {
        "v": 0,
@@ -1229,11 +1229,11 @@
   {
    "uf": "MG",
    "nome": "Minas Gerais",
-   "indice": 0.895,
+   "indice": 0.895372,
    "blocos": {
     "governo": {
-     "indice": 0.983,
-     "completude": 0.967,
+     "indice": 0.983051,
+     "completude": 0.966667,
      "facilidade": 1.0,
      "criterios": {
       "nome": {
@@ -1282,7 +1282,7 @@
      "fonte": "https://dados.mg.gov.br/dataset/remuneracao-servidores-ativos"
     },
     "assembleia": {
-     "indice": 0.808,
+     "indice": 0.807692,
      "completude": 0.75,
      "facilidade": 0.875,
      "criterios": {
@@ -1337,12 +1337,12 @@
   {
    "uf": "MS",
    "nome": "Mato Grosso do Sul",
-   "indice": 0.861,
+   "indice": 0.860531,
    "blocos": {
     "governo": {
-     "indice": 0.839,
-     "completude": 0.867,
-     "facilidade": 0.812,
+     "indice": 0.83871,
+     "completude": 0.866667,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -1390,9 +1390,9 @@
      "fonte": "https://www.transparencia.ms.gov.br/"
     },
     "assembleia": {
-     "indice": 0.882,
-     "completude": 0.833,
-     "facilidade": 0.938,
+     "indice": 0.882353,
+     "completude": 0.833333,
+     "facilidade": 0.9375,
      "criterios": {
       "salario": {
        "v": 1,
@@ -1445,28 +1445,28 @@
   {
    "uf": "MT",
    "nome": "Mato Grosso",
-   "indice": null,
+   "indice": 0.56746,
    "blocos": {
     "governo": {
-     "indice": null,
-     "completude": null,
-     "facilidade": null,
+     "indice": 0.857143,
+     "completude": 1.0,
+     "facilidade": 0.75,
      "criterios": {
       "nome": {
-       "v": null,
-       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+       "v": 1,
+       "prova": "Nome completo"
       },
       "cargo": {
-       "v": null,
-       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+       "v": 1,
+       "prova": "Cargo e função (Governador), com o órgão e o setor (Gabinete do Governador)"
       },
       "no_cargo_hoje": {
-       "v": null,
-       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+       "v": 1,
+       "prova": "O governador aparece na folha de ago/2026 (o cargo de vice está vago desde 31/03/2026)"
       },
       "partes": {
-       "v": null,
-       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+       "v": 1,
+       "prova": "Cada rubrica no detalhe de cada pessoa; o 13º em folha própria"
       },
       "historico": {
        "v": 1,
@@ -1474,39 +1474,33 @@
       },
       "lei": {
        "v": 1,
-       "prova": "Lei nº 10.247/2014 + revisão geral anual de 2026 (5,40%, Lei nº 13.220, de 21/01/2026) sobre o valor de 2025 (cálculo nosso, não conferido na folha)",
-       "link": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2026-01-21;13220/gerar-pdf-redacao"
+       "prova": "Lei nº 10.247/2014 + revisão geral anual de 2026 (5,40%, Lei nº 13.220, de 21/01/2026); conferido na folha de ago/2026 (R$ 34.100,55)",
+       "link": "https://consultas.transparencia.mt.gov.br/pessoal/servidores_ativos/"
       },
       "formato": {
-       "v": null,
-       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+       "v": 1,
+       "prova": "CSV e Excel do mês para baixar (depois do CAPTCHA)"
       },
       "acesso": {
-       "v": 0.5,
-       "prova": "Consulta na página, uma pessoa por vez"
+       "v": 1,
+       "prova": "Arquivo para baixar na consulta (depois do CAPTCHA); o detalhe de cada pessoa tem endereço próprio"
       },
       "sem_barreira": {
        "v": 0,
-       "prova": "A consulta pede CAPTCHA"
+       "prova": "A consulta pede CAPTCHA (reCAPTCHA): o robô não lê; conferido à mão em 01/10/2026"
       },
       "robos_exterior": {
        "v": 1,
        "prova": "Sem robots.txt; abre de fora do Brasil (conferido em 01/10/2026 de um servidor fora do Brasil)"
       }
      },
-     "a_conferir": [
-      "nome",
-      "cargo",
-      "no_cargo_hoje",
-      "partes",
-      "formato"
-     ],
+     "a_conferir": [],
      "fonte": "https://consultas.transparencia.mt.gov.br/pessoal/servidores_ativos/"
     },
     "assembleia": {
-     "indice": 0.278,
+     "indice": 0.277778,
      "completude": 0.25,
-     "facilidade": 0.312,
+     "facilidade": 0.3125,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -1554,19 +1548,17 @@
      "fonte": "https://www.al.mt.gov.br/parlamento/verba-indenizatoria"
     }
    },
-   "a_conferir": [
-    "governo"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "PA",
    "nome": "Pará",
-   "indice": 0.697,
+   "indice": 0.697756,
    "blocos": {
     "governo": {
-     "indice": 0.822,
-     "completude": 0.833,
-     "facilidade": 0.812,
+     "indice": 0.822785,
+     "completude": 0.833333,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -1614,9 +1606,9 @@
      "fonte": "https://www.sistemas.pa.gov.br/portaltransparencia/servidores"
     },
     "assembleia": {
-     "indice": 0.572,
-     "completude": 0.583,
-     "facilidade": 0.562,
+     "indice": 0.572727,
+     "completude": 0.583333,
+     "facilidade": 0.5625,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -1669,11 +1661,11 @@
   {
    "uf": "PB",
    "nome": "Paraíba",
-   "indice": 0.914,
+   "indice": 0.913668,
    "blocos": {
     "governo": {
-     "indice": 0.871,
-     "completude": 0.867,
+     "indice": 0.870813,
+     "completude": 0.866667,
      "facilidade": 0.875,
      "criterios": {
       "nome": {
@@ -1722,8 +1714,8 @@
      "fonte": "https://dados.pb.gov.br/dataset/remuneracao-servidores"
     },
     "assembleia": {
-     "indice": 0.957,
-     "completude": 0.917,
+     "indice": 0.956522,
+     "completude": 0.916667,
      "facilidade": 1.0,
      "criterios": {
       "salario": {
@@ -1777,11 +1769,11 @@
   {
    "uf": "PE",
    "nome": "Pernambuco",
-   "indice": 0.944,
+   "indice": 0.944112,
    "blocos": {
     "governo": {
-     "indice": 0.983,
-     "completude": 0.967,
+     "indice": 0.983051,
+     "completude": 0.966667,
      "facilidade": 1.0,
      "criterios": {
       "nome": {
@@ -1830,9 +1822,9 @@
      "fonte": "https://dados.pe.gov.br/dataset/remuneracao-de-servidores"
     },
     "assembleia": {
-     "indice": 0.905,
+     "indice": 0.905172,
      "completude": 0.875,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "salario": {
        "v": 0.5,
@@ -1885,10 +1877,10 @@
   {
    "uf": "PI",
    "nome": "Piauí",
-   "indice": 0.807,
+   "indice": 0.807948,
    "blocos": {
     "governo": {
-     "indice": 0.887,
+     "indice": 0.887324,
      "completude": 0.9,
      "facilidade": 0.875,
      "criterios": {
@@ -1938,8 +1930,8 @@
      "fonte": "https://transparencia.pi.gov.br/"
     },
     "assembleia": {
-     "indice": 0.728,
-     "completude": 0.708,
+     "indice": 0.728571,
+     "completude": 0.708333,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
@@ -1993,10 +1985,10 @@
   {
    "uf": "PR",
    "nome": "Paraná",
-   "indice": 0.631,
+   "indice": 0.631352,
    "blocos": {
     "governo": {
-     "indice": 0.738,
+     "indice": 0.737705,
      "completude": 0.9,
      "facilidade": 0.625,
      "criterios": {
@@ -2101,12 +2093,12 @@
   {
    "uf": "RJ",
    "nome": "Rio de Janeiro",
-   "indice": 0.847,
+   "indice": 0.846868,
    "blocos": {
     "governo": {
-     "indice": 0.868,
-     "completude": 0.933,
-     "facilidade": 0.812,
+     "indice": 0.868735,
+     "completude": 0.933333,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -2155,7 +2147,7 @@
     },
     "assembleia": {
      "indice": 0.825,
-     "completude": 0.917,
+     "completude": 0.916667,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
@@ -2209,12 +2201,12 @@
   {
    "uf": "RN",
    "nome": "Rio Grande do Norte",
-   "indice": 0.77,
+   "indice": 0.77058,
    "blocos": {
     "governo": {
-     "indice": 0.77,
-     "completude": 0.733,
-     "facilidade": 0.812,
+     "indice": 0.770889,
+     "completude": 0.733333,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -2262,8 +2254,8 @@
      "fonte": "https://remuneracao.rn.gov.br/"
     },
     "assembleia": {
-     "indice": 0.77,
-     "completude": 0.792,
+     "indice": 0.77027,
+     "completude": 0.791667,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
@@ -2317,7 +2309,7 @@
   {
    "uf": "RO",
    "nome": "Rondônia",
-   "indice": 0.893,
+   "indice": 0.892857,
    "blocos": {
     "governo": {
      "indice": 1.0,
@@ -2370,9 +2362,9 @@
      "fonte": "https://transparencia.api.ro.gov.br/swagger/index.html"
     },
     "assembleia": {
-     "indice": 0.786,
-     "completude": 0.917,
-     "facilidade": 0.688,
+     "indice": 0.785714,
+     "completude": 0.916667,
+     "facilidade": 0.6875,
      "criterios": {
       "salario": {
        "v": 0.75,
@@ -2425,12 +2417,12 @@
   {
    "uf": "RR",
    "nome": "Roraima",
-   "indice": 0.809,
+   "indice": 0.808871,
    "blocos": {
     "governo": {
-     "indice": 0.968,
+     "indice": 0.967742,
      "completude": 1.0,
-     "facilidade": 0.938,
+     "facilidade": 0.9375,
      "criterios": {
       "nome": {
        "v": 1,
@@ -2479,8 +2471,8 @@
     },
     "assembleia": {
      "indice": 0.65,
-     "completude": 0.542,
-     "facilidade": 0.812,
+     "completude": 0.541667,
+     "facilidade": 0.8125,
      "criterios": {
       "salario": {
        "v": 0,
@@ -2532,10 +2524,10 @@
   {
    "uf": "RS",
    "nome": "Rio Grande do Sul",
-   "indice": 0.794,
+   "indice": 0.794792,
    "blocos": {
     "governo": {
-     "indice": 0.933,
+     "indice": 0.933333,
      "completude": 1.0,
      "facilidade": 0.875,
      "criterios": {
@@ -2585,8 +2577,8 @@
      "fonte": "https://www.transparencia.rs.gov.br/"
     },
     "assembleia": {
-     "indice": 0.656,
-     "completude": 0.583,
+     "indice": 0.65625,
+     "completude": 0.583333,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
@@ -2639,11 +2631,11 @@
   {
    "uf": "SC",
    "nome": "Santa Catarina",
-   "indice": 0.867,
+   "indice": 0.866667,
    "blocos": {
     "governo": {
      "indice": 0.8,
-     "completude": 0.667,
+     "completude": 0.666667,
      "facilidade": 1.0,
      "criterios": {
       "nome": {
@@ -2692,7 +2684,7 @@
      "fonte": "https://dados.sc.gov.br/dataset/remuneracaoservidores"
     },
     "assembleia": {
-     "indice": 0.933,
+     "indice": 0.933333,
      "completude": 0.875,
      "facilidade": 1.0,
      "criterios": {
@@ -2747,12 +2739,12 @@
   {
    "uf": "SE",
    "nome": "Sergipe",
-   "indice": 0.794,
+   "indice": 0.794355,
    "blocos": {
     "governo": {
-     "indice": 0.839,
-     "completude": 0.867,
-     "facilidade": 0.812,
+     "indice": 0.83871,
+     "completude": 0.866667,
+     "facilidade": 0.8125,
      "criterios": {
       "nome": {
        "v": 1,
@@ -2854,12 +2846,12 @@
   {
    "uf": "SP",
    "nome": "São Paulo",
-   "indice": 0.905,
+   "indice": 0.904892,
    "blocos": {
     "governo": {
-     "indice": 0.901,
-     "completude": 0.867,
-     "facilidade": 0.938,
+     "indice": 0.900693,
+     "completude": 0.866667,
+     "facilidade": 0.9375,
      "criterios": {
       "nome": {
        "v": 1,
@@ -2907,8 +2899,8 @@
      "fonte": "https://www.transparencia.sp.gov.br/PortalTransparencia-Report/Remuneracao.aspx"
     },
     "assembleia": {
-     "indice": 0.909,
-     "completude": 0.833,
+     "indice": 0.909091,
+     "completude": 0.833333,
      "facilidade": 1.0,
      "criterios": {
       "salario": {
@@ -2962,11 +2954,11 @@
   {
    "uf": "TO",
    "nome": "Tocantins",
-   "indice": 0.671,
+   "indice": 0.671622,
    "blocos": {
     "governo": {
-     "indice": 0.743,
-     "completude": 0.917,
+     "indice": 0.743243,
+     "completude": 0.916667,
      "facilidade": 0.625,
      "criterios": {
       "nome": {

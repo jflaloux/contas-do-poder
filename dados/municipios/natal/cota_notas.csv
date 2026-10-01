@@ -13,7 +13,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,67,Anne Lagartixa,24/02/2025,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-31,1891063,1028.08
 2025,1,67,Anne Lagartixa,29/01/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1018,1101.87
 2025,1,67,Anne Lagartixa,31/01/2025,Locação de Veículo Automotor,JV FERREIRA - ME,17.104.197/0001-01,FATURA 1056,5500.0
-2025,1,57,Brisa Bracchi,04/02/2025,Auditoria,JOSÉ GERMANO NETO,***.625.154-**,2227993,1900.0
+2025,1,57,Brisa Bracchi,04/02/2025,Auditoria,JOSÉ GERMANO NETO,,2227993,1900.0
 2025,1,57,Brisa Bracchi,28/01/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001133291,266.44
 2025,1,57,Brisa Bracchi,30/01/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001135090,24.65
 2025,1,57,Brisa Bracchi,27/01/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,0406536000020,001132917,80.0
@@ -67,7 +67,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,69,Daniell Rendall,17/01/2025,Extração de Cópias Reprográficas e Digitais,ABRAAO L SOUZA DA SILVA,23.457.937/0001-96,0000004994,660.0
 2025,1,69,Daniell Rendall,31/01/2025,"Material de Expediente - Locação de notebooks e impressora. Emitidos dois faturamentos (dispensa de NF) o valor dos faturamentos foi somado e lançado em sua totalidade. Faturamento 1 - Nº R88210 - Valor R$ 2.060,00 (dois mil e sessenta reais) Faturamento 2 - Nº R88211 - Valor R$ 677,00 (seiscentos e sessenta e sete reais)",AM SERVIÇOS E LOC DE EQ. DE INFORMATICA,04.999.366/0001-77,R88210 e R88211,2737.0
 2025,1,69,Daniell Rendall,31/01/2025,Consultoria e Assessoria na Área de Comunicação,GERA COMUNICAÇÃO INTEGRADA LTDA,27.555.117/0001-98,000000057,4990.0
-2025,1,69,Daniell Rendall,31/01/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,***.328.694-**,0002227350,13200.0
+2025,1,69,Daniell Rendall,31/01/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,,0002227350,13200.0
 2025,1,56,Eribaldo Medeiros,04/02/2025,Consultoria e Assessoria Jurídica,NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34828165000178,0000000002,11900.0
 2025,1,56,Eribaldo Medeiros,31/01/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02909308000180,12267,5500.0
 2025,1,56,Eribaldo Medeiros,25/01/2025,Locação de Equipamentos de Informática,JOÃO VICTOR CAMPOS DE LIMA,35028065000120,1,1000.0
@@ -124,7 +124,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,51,Luciano Nascimento,04/02/2025,Consultoria e Assessoria na Área de Comunicação,ODDS COMUNICAÇÃO LTDA,48324219000172,0150,4600.0
 2025,1,51,Luciano Nascimento,04/02/2025,Material de Expediente,TOMAZ & TOMAZ CIA LTDA,02179292000105,2346,291.0
 2025,1,51,Luciano Nascimento,04/02/2025,Combustível,F P COMBUSTIVEIS LTDA,14878644000272,1209,1582.45
-2025,1,75,Matheus Faustino,28/01/2025,Consultoria e Assessoria Jurídica,Lucas Xavier Bezerra Dos Santos,***.671.744-**,037.825,5500.0
+2025,1,75,Matheus Faustino,28/01/2025,Consultoria e Assessoria Jurídica,Lucas Xavier Bezerra Dos Santos,,037.825,5500.0
 2025,1,76,Pedro Henrique,05/02/2025,Extração de Cópias Reprográficas e Digitais,ABRAAO CAMPELO GOMES SILVA,32.297.809/0001-13,36,760.0
 2025,1,76,Pedro Henrique,31/01/2025,Consultoria e Assessoria na Área de Comunicação,MULT! AGENCIA DE COMUNICACAO LTDA,33.753.537/0001-81,0000000120,3300.0
 2025,1,76,Pedro Henrique,03/02/2025,Material de Expediente,AM SERVICOS E LOC. DE EQ. INFORMATICA,04.999.366/0001-77,R88241,220.0
@@ -166,7 +166,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,80,Tony Henrique,10/02/2025,Consultoria e Assessoria Jurídica,MATHEUS FILLIPE SOCIEDADE INDIVIDUAL DE ADVOCACIA,50974250000109,021,13000.0
 2025,1,80,Tony Henrique,31/01/2025,Locação de Veículo Automotor,L N RODRIGUES DA SILVA LTDA,42090206000108,00012025,5500.0
 2025,1,80,Tony Henrique,29/01/2025,Material de Expediente,JOÃO VICTOR CMPOS DE LIMA,35028065000120,0002,1000.0
-2025,1,80,Tony Henrique,28/01/2025,Consultoria e Assessoria na Área de Comunicação,JOÃO FRANCISCO DE SOUZA NETO,***.366.684-**,0002226867,2000.0
+2025,1,80,Tony Henrique,28/01/2025,Consultoria e Assessoria na Área de Comunicação,JOÃO FRANCISCO DE SOUZA NETO,,0002226867,2000.0
 2025,2,55,Aldo Clemente,27/02/2025,Locação de Veículo Automotor,JP Assessoria e Serviços Ltda,58.733.693/0001-01,0003,5000.0
 2025,2,55,Aldo Clemente,27/02/2025,Combustível,Migra Combustíveis Ltda,04.534.989/0001-74,5923,1798.57
 2025,2,55,Aldo Clemente,15/02/2025,"Provedores de internet, telefonia fixa ou celular",Cabo Serviços de Telecomunicações,02.952.192/0001-61,549823,62.49
@@ -222,7 +222,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,83,Cleiton da Policlinica,27/02/2025,Combustível,MIGRA COMBUSTÍVEIS LTDA,35.751.096/0001-04,005921,1000.0
 2025,2,70,Daniel Santiago,28/02/2025,"Material para a Divulgação da Atividade Parlamentar - Folders educativos em policromia, frente e verso. Papel couche 150g.CAMPANHA EDUCATIVA""CONHEÇA OS DIREITOS DAS CRIANÇAS AUTISTAS/NATAL"".",L S COMERCIO E SERVIÇOS LTDA,03.637.347/0001-38,4204,700.0
 2025,2,70,Daniel Santiago,28/02/2025,"Consultoria e Assessoria Contábil - CONTABILIDADE, INCLUSIVE SERVIÇOS TÉCNICOS E AUXILIARES.",BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,182,2400.0
-2025,2,70,Daniel Santiago,28/02/2025,"Locação de Veículo Automotor - VW/POLO TRACK de fabricação 2024, Modelo 2024 Placa: RGM 4I71, Renavam: 01383668539, Álcoo-Gasolina Cor: Prata. Referente ao período de Fevereiro de 2025.",MALIVE VEÍCULOS LTDA,***.648.964-**,0002,3300.0
+2025,2,70,Daniel Santiago,28/02/2025,"Locação de Veículo Automotor - VW/POLO TRACK de fabricação 2024, Modelo 2024 Placa: RGM 4I71, Renavam: 01383668539, Álcoo-Gasolina Cor: Prata. Referente ao período de Fevereiro de 2025.",MALIVE VEÍCULOS LTDA,,0002,3300.0
 2025,2,70,Daniel Santiago,26/02/2025,Consultoria e Assessoria Jurídica - ADVOCACIA,BILA AGUIAR SOCIEDADE INDIVIDUAL DE ADVOCACIA,59.193.764/0001-93,3,7800.0
 2025,2,70,Daniel Santiago,28/02/2025,Consultoria e Assessoria na Área de Comunicação - AGENCIAMENTO DE NOTÍCIAS.,MULT! AGENCIA DE COMUNICAÇÃO LTDA,33.753.537/0001-81,124,3800.0
 2025,2,70,Daniel Santiago,05/03/2025,"Consultoria e Assessoria na Área de Comunicação - Criação de 17 conteúdos para redes sociais (Instagram e Facebook), incluindo vídeos e artes, para prestação de contas do mandato do vereador Daniel Santiago, referente ao mês de fevereiro de 2025.",ELIABE E VICTOR LTDA,26.684.366/0001-10,738,4000.0
@@ -239,7 +239,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,63,Daniel Valença,07/02/2025,"Provedores de internet, telefonia fixa ou celular",TIM S.A.,02.421.421/0001-11,5404946343,75.99
 2025,2,69,Daniell Rendall,25/02/2025,"Provedores de internet, telefonia fixa ou celular - Nº do documento do boleto: 264495921-1/1-25",CABO SERV TELEC LTDA,02.952.192/0001-61,SEM NOTA,178.91
 2025,2,69,Daniell Rendall,21/02/2025,"Material de Expediente - Dispensa de Nota Fiscal conforme Lei nº 116/2006 Número do Demonstrativo 01: R88743 - Valor R$ 2.060,00 - Locação de Notebooks Número do Demonstrativo 02: R88895 - Valor R$ 1.261,80 - Locação de Impressora",AM SERVICOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,R88743 e R88895,3321.8
-2025,2,69,Daniell Rendall,26/02/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,***.328.694-**,0002230650,13200.0
+2025,2,69,Daniell Rendall,26/02/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,,0002230650,13200.0
 2025,2,56,Eribaldo Medeiros,24/02/2025,"Material de Expediente - Referente Locação de equipamentos de Informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC 21,5 e teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 impressora multifuncional EPSON M2120",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,06,1000.0
 2025,2,56,Eribaldo Medeiros,27/02/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de matérias institucionais do mandato do Vereador Eribaldo Medeiros no site Blog do Bispo e assessoria de imprensa durante o mês de fevereiro/2025,JEFFERSON STERFENO DA SILVA,43.167.369/0001-04,035,3600.0
 2025,2,56,Eribaldo Medeiros,05/03/2025,Consultoria e Assessoria Jurídica - ADVOCACIA,NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34.828.165/0001-78,00000006,10500.0
@@ -276,7 +276,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,73,João Batista Torres,28/02/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,5339,1688.44
 2025,2,73,João Batista Torres,28/02/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02909308000180,12412,5500.0
 2025,2,73,João Batista Torres,28/02/2025,Material de Expediente,R M DE MELO INACIO,47167319000170,50,1272.16
-2025,2,73,João Batista Torres,26/02/2025,Consultoria e Assessoria na Área de Comunicação,JOEBERSSON DE SOUZA SILVA,***.522.504-**,2230630,8000.0
+2025,2,73,João Batista Torres,26/02/2025,Consultoria e Assessoria na Área de Comunicação,JOEBERSSON DE SOUZA SILVA,,2230630,8000.0
 2025,2,73,João Batista Torres,28/01/2025,Consultoria e Assessoria Jurídica - Projetos de Leis,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,58986595000186,001,4000.0
 2025,2,15,Kleber Fernandes,06/03/2025,"Provedores de internet, telefonia fixa ou celular",ALARES,05.054.341/0001-90,263752091-1/1-25,99.73
 2025,2,15,Kleber Fernandes,05/03/2025,Locação de Equipamentos de Informática,FRANCISCO DE ASSIS FERREIRA DE SOUZA JUNIOR,20.349.683/0001-02,54,2000.0
@@ -318,7 +318,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,30,Robson Carvalho,28/02/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1057,3002.34
 2025,2,30,Robson Carvalho,02/03/2025,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVICOS LTDA,26.917.355/0001-33,264,2700.0
 2025,2,30,Robson Carvalho,28/02/2025,Locação de Veículo Automotor,F2 VEICULOS EIRELI - ME,10.360.809/0001-88,FATURA 457,4500.0
-2025,2,77,Samanda Alves,12/03/2025,Consultoria e Assessoria Jurídica,MATHEUS P QUERINO,***.938.924-**,0002232194,12400.0
+2025,2,77,Samanda Alves,12/03/2025,Consultoria e Assessoria Jurídica,MATHEUS P QUERINO,,0002232194,12400.0
 2025,2,77,Samanda Alves,06/03/2025,Locação de Equipamentos de Informática,SGM COPIADORAS COMÉRCIO E SERVIÇO LTDA,06.224.460/0001-80,PAGAMENTO REFERENTE AO CONTRAT,1500.0
 2025,2,77,Samanda Alves,06/03/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERV TELEC LTDA,02.952.192/0001-61,264495891-1/1-25,172.13
 2025,2,77,Samanda Alves,06/03/2025,Combustível,QUIRINO E SOUZA COM DE PETE SERV LTDA,04.065.360/0002-03,000.005.358,233.46
@@ -427,7 +427,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,69,Daniell Rendall,10/03/2025,"Provedores de internet, telefonia fixa ou celular - 3 BOLETOS DE R$ 46,99 CADA. Nº DO DOCUMENTO: LINHA (84) 99935-8003 - DOCUMENTO 47160220001 LINHA (84) 99980-9030 - DOCUMENTO 60787200000 LINHA (84) 99990-7262 - DOCUMENTO 60787790001",TIM S.A,02421421/0028-31,BOLETO,140.97
 2025,3,69,Daniell Rendall,31/03/2025,Consultoria e Assessoria na Área de Comunicação,GERA COMUNICAÇÃO INTEGRADA LTDA,27.555.117/0001-98,000000063,4990.0
 2025,3,69,Daniell Rendall,24/03/2025,Locação de Equipamentos de Informática,AM SERVICOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,R89503 e R89599,3332.0
-2025,3,69,Daniell Rendall,02/04/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,***.328.694-**,0002234925,13200.0
+2025,3,69,Daniell Rendall,02/04/2025,Consultoria e Assessoria Jurídica,MATHEUS SANTOS DO NASCIMENTO,,0002234925,13200.0
 2025,3,56,Eribaldo Medeiros,02/04/2025,"Consultoria e Assessoria Jurídica - 01 Parecer PL nº 106/2024, 01 Parecer PL nº 385/2024, 01 Parecer PL nº 434/2021, Parecer PL nº 232/2024, Projeto de Lei Atendimento Prioritário portadores de CA, Projeto de Lei Programa de Arborização Urbana, Projeto de Lei Pulseira Alzheimer, Projeto de Lei Mudança de Nomenclatura da Guarda Municipal, Projeto de Lei substitutivo ao PL nº 741/2023",Naniely Rocha Sociedade Individual de Advocacia,34.828.165/0001-78,0000000007,11500.0
 2025,3,56,Eribaldo Medeiros,27/03/2025,"Material de Expediente - Locação de Equipamentos de Informática, sendo 03 computadores completos(CPU Miranda CORE I5-4590, monitores AOC 21,5 e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2120",João Victor Campos de Lima,35.028.065/0001-20,9,1000.0
 2025,3,56,Eribaldo Medeiros,27/03/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de matérias institucionais do mandato do Vereador Eribaldo Medeiros no site Blog do Bispo e assessoria de imprensa,Jefferson Sterfeno da Silva,43.167.369/0001-04,37,3600.0
@@ -461,7 +461,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,72,Irapoã Nóbrega,01/03/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERV TELEC LTDA,02.952.192/0001-61,286052931-1/1-25,119.99
 2025,3,72,Irapoã Nóbrega,24/03/2025,Locação de Equipamentos de Informática,AM SERVIÇOS E LOC. DE EQ. DE INFORMATICA LTDA,04.999.366/0001-77,R89504,1520.0
 2025,3,73,João Batista Torres,31/03/2025,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,58986595000186,002,7000.0
-2025,3,73,João Batista Torres,28/04/2025,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,***.522.504-**,2234442,5500.0
+2025,3,73,João Batista Torres,28/04/2025,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,,2234442,5500.0
 2025,3,73,João Batista Torres,27/03/2025,Material de Expediente,JOÃO VICTOR CAMPOS DE LIMA,35028065000120,10,1000.0
 2025,3,73,João Batista Torres,06/03/2025,Extração de Cópias Reprográficas e Digitais - Cartões de visita,ALAN DAVID GOMES DE FARIAS,43230064000191,074,250.0
 2025,3,73,João Batista Torres,28/03/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02909308000180,12541,5500.0
@@ -508,7 +508,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,30,Robson Carvalho,01/04/2025,Consultoria e Assessoria na Área de Comunicação,ELIABE E VICTOR LTDA,26.684.366/0001-10,759,4250.0
 2025,3,30,Robson Carvalho,01/04/2025,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVICOS LTDA,26.917.355/0001-33,266,2700.0
 2025,3,77,Samanda Alves,07/04/2025,Locação de Veículo Automotor,J V FERREIRA - ME,17.104.197/0001-01,0000001,1466.66
-2025,3,77,Samanda Alves,04/04/2025,Consultoria e Assessoria Jurídica,MATHEUS P QUERINO,***.938.924-**,0002235291,10000.0
+2025,3,77,Samanda Alves,04/04/2025,Consultoria e Assessoria Jurídica,MATHEUS P QUERINO,,0002235291,10000.0
 2025,3,77,Samanda Alves,03/04/2025,Consultoria e Assessoria na Área de Comunicação,NAO ME KAHLO COMUNICACOES LTDA,39.254.019/0001-08,000000001,6000.0
 2025,3,77,Samanda Alves,01/04/2025,Locação de Equipamentos de Informática,S G M COPIADORAS COMERCIO E SERVICOS LTDA,06.224.460/0001-80,FATURA N° 54988,1500.0
 2025,3,77,Samanda Alves,01/04/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04.065.360/0002-03,000.005.432 SÉRIE 2,764.16
@@ -589,7 +589,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,4,17,Chagas Catarino,28/04/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,0000159,11000.0
 2025,4,17,Chagas Catarino,05/05/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,01,6750.0
 2025,4,17,Chagas Catarino,25/04/2025,Locação de Veículo Automotor,LAS LOCAÇAO DE VEICULOS LTDA,50.278.163/0001-09,44,3800.0
-2025,4,68,Claudio Custódio,24/04/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART,***.363.074-**,25915,73.3
+2025,4,68,Claudio Custódio,24/04/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART,,25915,73.3
 2025,4,68,Claudio Custódio,23/04/2025,Combustível,FLOR E OLIVEIRA LTDA,12.689.295/0001-34,1571,180.0
 2025,4,68,Claudio Custódio,30/04/2025,Consultoria e Assessoria Jurídica,RODRIGO FERNANDES DE PAIVA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34758302000145,164,3300.0
 2025,4,68,Claudio Custódio,30/04/2025,Consultoria e Assessoria na Área de Comunicação,GLACIA MARILLAC AZEVEDO DE MEDEIROS RONDON,40.924.768/0001-76,59,4500.0
@@ -703,7 +703,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,4,30,Robson Carvalho,02/05/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0001-13,1154,2922.18
 2025,4,30,Robson Carvalho,02/05/2025,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVIÇOS LTDA,26.917.355/0001-33,269,2700.0
 2025,4,30,Robson Carvalho,30/04/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,FATURA 12694,4500.0
-2025,4,77,Samanda Alves,09/05/2025,Consultoria e Assessoria Jurídica,MATHEUS PEIXOTO QUERINO,***.938.924-**,0002239495,11000.0
+2025,4,77,Samanda Alves,09/05/2025,Consultoria e Assessoria Jurídica,MATHEUS PEIXOTO QUERINO,,0002239495,11000.0
 2025,4,77,Samanda Alves,09/05/2025,Consultoria e Assessoria na Área de Comunicação,NAO ME KAHLO COMUNICACOES LTDA,39.254.019/0001-08,000000004,4000.0
 2025,4,77,Samanda Alves,06/05/2025,Locação de Veículo Automotor,J V FERREIRA ME,17.104.197/0001-01,FATURA DE LOCAÇÃO 0001141,5500.0
 2025,4,77,Samanda Alves,05/05/2025,Locação de Equipamentos de Informática,SGM COPIADORAS E IMPRESSORAS,06.224.460/0001-80,FATURA DE LOCAÇÃO 04/12,1500.0
@@ -947,7 +947,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,5,80,Tony Henrique,04/06/2025,Combustível,MAFRA E MAFRA COM VAR COMBUSTIVEL LTDA,09317359000161,652,2235.83
 2025,5,80,Tony Henrique,04/06/2025,Locação de Veículo Automotor,L N RODRIGUES DA SILVA LTDA,42090206000108,0006,5500.0
 2025,5,80,Tony Henrique,04/06/2025,Material de Expediente,JOAO VICTOR CAMPOS DE LIMA,35028065000120,16,1000.0
-2025,5,80,Tony Henrique,04/06/2025,Consultoria e Assessoria na Área de Comunicação,JOAO FRANCISCO DE SOUZA NETO,***.366.684-**,2242278,3500.0
+2025,5,80,Tony Henrique,04/06/2025,Consultoria e Assessoria na Área de Comunicação,JOAO FRANCISCO DE SOUZA NETO,,2242278,3500.0
 2025,6,55,Aldo Clemente,30/06/2025,Locação de Veículo Automotor,JP Assessoria e Serviços Ltda,58.733.693/0001-01,0015,5000.0
 2025,6,55,Aldo Clemente,30/06/2025,Combustível,Migra Combustíveis Ltda,04.534.989/0001-74,6371,1783.72
 2025,6,55,Aldo Clemente,15/06/2025,"Provedores de internet, telefonia fixa ou celular",Cabo Serviços de Telecomunicações,02.952.192/0001-61,247170,68.56
@@ -1046,7 +1046,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,6,72,Irapoã Nóbrega,20/06/2025,Locação de Equipamentos de Informática,AM SERVIÇOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,R91732,1860.0
 2025,6,72,Irapoã Nóbrega,25/06/2025,Locação de Equipamentos de Informática,AM SERVIÇOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,R91871,1153.0
 2025,6,73,João Batista Torres,01/07/2025,Material para a Divulgação da Atividade Parlamentar,ALAN DAVID GOMES DE FARIAS,43230064000191,92,230.0
-2025,6,73,João Batista Torres,24/06/2025,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,***.860.001-**,7,8000.0
+2025,6,73,João Batista Torres,24/06/2025,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,,7,8000.0
 2025,6,73,João Batista Torres,23/06/2025,Locação de Equipamentos de Informática,JOAO VICTOR CAMPOS DE LIMA,35028065000120,19,1000.0
 2025,6,73,João Batista Torres,27/06/2025,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,60480625000120,6,5600.0
 2025,6,73,João Batista Torres,30/06/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02909308000180,12974,5500.0
@@ -1133,7 +1133,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,6,81,Thabatta Pimenta,26/06/2025,Material de Expediente - MATERIAL DE EXPEDIENTE MATERIAL DE LIMPEZA MATERIAL DE MANUTENÇÃO DO GABINETE,CASA NORTE LTDA,08713513000181,1964305,891.99
 2025,6,81,Thabatta Pimenta,25/06/2025,"Provedores de internet, telefonia fixa ou celular",CLARO S.A,40432544000147,16653420/052025,219.9
 2025,6,81,Thabatta Pimenta,26/06/2025,Água mineral,D D ARAUJO COMERCIO,22869913000181,1718,56.0
-2025,6,80,Tony Henrique,04/07/2025,Consultoria e Assessoria na Área de Comunicação,JOAO FRANCISCO DE SOUZA NETO,***.366.684-**,2246168,3500.0
+2025,6,80,Tony Henrique,04/07/2025,Consultoria e Assessoria na Área de Comunicação,JOAO FRANCISCO DE SOUZA NETO,,2246168,3500.0
 2025,6,80,Tony Henrique,04/07/2025,Consultoria e Assessoria Jurídica,MATHEUS FILIPPE SOCIEDADE INDIVIDUAL DE ADVOCACIA,50974250000109,0035,10699.92
 2025,6,80,Tony Henrique,02/07/2025,Combustível,MAFRA E MAFRA COM VAR COMBUSTIVEL LTDA,09317359000161,662,1248.69
 2025,6,80,Tony Henrique,02/07/2025,Locação de Veículo Automotor,L N RODRIGUES DA SILVA LTDA,42090206000108,007/2025,5500.0
@@ -1211,7 +1211,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,7,69,Daniell Rendall,01/08/2025,"Provedores de internet, telefonia fixa ou celular - DÉBITO AUTOMÁTICO LINHA (84) 99980-9030 - R$ 46,99 - FATURA 5503762817 LINHA (84) 99990-7262 - R$ 46,99 - FATURA 5503762810 LINHA (84) 99935-8003 - R$ 46,99 - FATURA 5505748068",TIM S.A,02421421000111,DISPENSA NF - BOLETO,140.97
 2025,7,69,Daniell Rendall,23/07/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERVICOS DE TELECOMUNICACOES LTDA,02952192000161,BOLETO,234.89
 2025,7,69,Daniell Rendall,28/07/2025,Material de Expediente,GR8 SERVICOS DE T.I LTDA,35143471000133,0000000728,1938.4
-2025,7,69,Daniell Rendall,01/08/2025,"Material de Expediente - DISPENSA NF CONFORME LEI COMPLEMENTAR Nº 116/2003 DEMONSTRATIVO R92560 - VALOR DA FATURA R$ 2.060,00 DEMONSTRATIVO R92714 - VALOR DA FATURA R$ 401,60",AM SERVICOS E LOC. DE EQ. DE INFORMATICA,***.509.134-**,DISPENSA,2461.6
+2025,7,69,Daniell Rendall,01/08/2025,"Material de Expediente - DISPENSA NF CONFORME LEI COMPLEMENTAR Nº 116/2003 DEMONSTRATIVO R92560 - VALOR DA FATURA R$ 2.060,00 DEMONSTRATIVO R92714 - VALOR DA FATURA R$ 401,60",AM SERVICOS E LOC. DE EQ. DE INFORMATICA,,DISPENSA,2461.6
 2025,7,69,Daniell Rendall,30/07/2025,Consultoria e Assessoria na Área de Comunicação,GERA COMUNICACAO INTEGRADA LTDA,27555117000198,000000077,4246.46
 2025,7,56,Eribaldo Medeiros,31/07/2025,"Locação de Veículo Automotor - Locação de 01(um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de julho de 2025",SANTOS E FERNANDES LTDA,02909308/0001-80,13131,5500.0
 2025,7,56,Eribaldo Medeiros,31/07/0205,"Consultoria e Assessoria Jurídica - Elaboração de 07 PL: 01 PL que dispõe sobre a criação do Programa Permanente de Qualificação, Treinamento e Direção Defensiva para trabalhadores motociclistas do município de Natal e dá outras providencias, 01 PL que sugere ao Chefe do Poder Executivo do município de Natal a criação do programa de Apoio à Aprendizagem e Equidade, com foco na redução das desigualdades educacionais no Ensino Fundamental, 01 PL que sugere ao chefe do poder executivo do Município de Natal a criação do Plano Natal Inclusiva, plano municipal integrado de atenção a população em vulnerabilidade social, com foco na redução das desigualdades educacionais no Ensino Fundamental, 01 PL que dispõe sobre a criação da rede municipal de Clínicas Escolas do Autista no Município de Natal, 01 PL que institui a Política Municipal Integral à pessoa com Albinismo no Município de Natal, 01 PL que cria o Programa de Acessibilidade no Sistema de Transporte Público de Passageiros no Município de Natal -STTP, 01 PL que estabelece diretrizes para a realização de eventos inclusivos voltados para pessoas com Transtorno do Espectro Autista (TEA), TDAH, Síndrome de Down e mães e pais neurodivergentes no Município de Natal e 01 Parecer do PL nº 190/2023 da Vereadora Camila Araújo",NANIELY RPCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34828165/0001-78,0000011,11500.0
@@ -2036,7 +2036,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,11,72,Irapoã Nóbrega,26/11/2025,Locação de Equipamentos de Informática,AM Serviços e Loc. de Eq. de Informatica LTDA,04.999.366/0001-77,R95626,1266.05
 2025,11,72,Irapoã Nóbrega,24/11/2025,Locação de Equipamentos de Informática,AM Serviços e Loc. de Eq. de Informatica LTDA,04.999.366/0001-77,R95559,1860.0
 2025,11,73,João Batista Torres,25/11/2025,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,58986595000186,13,8859.28
-2025,11,73,João Batista Torres,30/11/2025,Combustível,QUIRINO E SOUZA DE PET E SERV LTDA,***.650.002-**,6044,1040.72
+2025,11,73,João Batista Torres,30/11/2025,Combustível,QUIRINO E SOUZA DE PET E SERV LTDA,,6044,1040.72
 2025,11,73,João Batista Torres,24/11/2025,Suprimentos de Informática,JOAO VICTOR CAMPOS DE LIMA,35028065000120,34,1000.0
 2025,11,73,João Batista Torres,28/11/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02.9093080001-80,13789,5500.0
 2025,11,73,João Batista Torres,02/12/2025,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,604806250001-20,10,5600.0
@@ -3034,9 +3034,9 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,55,Aldo Clemente,03/06/2026,Suprimentos de Informática,AM Serviços e Loc. de Eq. de Informática,04.999.366/0001-77,N00672,1240.0
 2026,5,55,Aldo Clemente,03/06/2026,Extração de Cópias Reprográficas e Digitais,AM Serviços e Loc. de Eq. de Informática,04.999.366/001-77,N00673,350.0
 2026,5,67,Anne Lagartixa,25/05/2026,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,001562,5500.0
-2026,5,67,Anne Lagartixa,28/05/2026,Consultoria e Assessoria Jurídica,VANUTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,***.981.574-**,2,10000.0
+2026,5,67,Anne Lagartixa,28/05/2026,Consultoria e Assessoria Jurídica,VANUTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,,2,10000.0
 2026,5,67,Anne Lagartixa,01/06/2026,Consultoria e Assessoria na Área de Comunicação,084 COMUNICACAO E MARKETING LTDA,30.436.906/0001-14,8,4600.0
-2026,5,67,Anne Lagartixa,01/06/2026,Combustível,JVC COMERCIAL LTDA,***.194.744-**,1780,1781.22
+2026,5,67,Anne Lagartixa,01/06/2026,Combustível,JVC COMERCIAL LTDA,,1780,1781.22
 2026,5,57,Brisa Bracchi,29/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001613078,147.3
 2026,5,57,Brisa Bracchi,28/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDAv,04065360000203,001611406,198.2
 2026,5,57,Brisa Bracchi,25/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001608270,100.0
@@ -3372,7 +3372,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,6,30,Robson Carvalho,01/07/2026,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVIÇOS LTDA,26.917.355/0001-33,3,2100.0
 2026,6,30,Robson Carvalho,30/06/2026,Locação de Veículo Automotor,PAVEL RENT CAR,42.908.733/0001-79,FATURA 300601,5500.0
 2026,6,77,Samanda Alves,07/07/2026,"Provedores de internet, telefonia fixa ou celular",STARLINK BRAZIL SERVICCOS DE INTERNET LTDA,40.154.884/0001-53,INV-DF-BRA-18701104-59096-43,619.0
-2026,6,77,Samanda Alves,06/07/2026,Consultoria e Assessoria Jurídica,JOAO MARIA DE OLIVEIRA,***.112.674-**,0002288778,7640.0
+2026,6,77,Samanda Alves,06/07/2026,Consultoria e Assessoria Jurídica,JOAO MARIA DE OLIVEIRA,,0002288778,7640.0
 2026,6,77,Samanda Alves,06/07/2026,Locação de Equipamentos de Informática,S G M COPIADORAS COMERCIO E SERVICOS LTDA,06.224.460/0001-80,63753,1500.0
 2026,6,77,Samanda Alves,06/07/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04.065.360/0002-03,N° 000.006.616 SÉRIE 2,1646.85
 2026,6,77,Samanda Alves,03/07/2026,Locação de Veículo Automotor,J V FERREIRA-ME,17.104.197/0001-01,FL 001596,4500.0
@@ -3557,7 +3557,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,7,30,Robson Carvalho,03/08/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTE SOCIEDADE DE ADVOCACIA,43.807.410/0001-51,12,11100.0
 2026,7,30,Robson Carvalho,03/08/2026,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVIÇOS LTDA,26.917.355/0001-33,NF 4,2100.0
 2026,7,77,Samanda Alves,07/08/2026,"Provedores de internet, telefonia fixa ou celular",STARLINK BRAZIL SERVICOS DE INTERNET LTDA,40.154.884/0001-53,INV-DF-BRA-20099646-30004-35,619.0
-2026,7,77,Samanda Alves,06/08/2026,Consultoria e Assessoria Jurídica,ALINE PATRICIA AZEVEDO DOS SANTOS,***.564.914-**,0002292095,4160.0
+2026,7,77,Samanda Alves,06/08/2026,Consultoria e Assessoria Jurídica,ALINE PATRICIA AZEVEDO DOS SANTOS,,0002292095,4160.0
 2026,7,77,Samanda Alves,04/08/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04.065.360/0002-03,000.006.700 SÉRIE 2,1406.08
 2026,7,77,Samanda Alves,03/08/2026,Locação de Equipamentos de Informática,S G M COPIADORAS COMERCIO E SERVICOS LTDA,06.224.460/0001-80,FL 64340,1500.0
 2026,7,77,Samanda Alves,03/08/2026,Locação de Veículo Automotor,J V FERREIRA-ME,17.104.197/0001-01,FL 001633,4500.0

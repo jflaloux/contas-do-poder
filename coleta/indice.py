@@ -1,19 +1,18 @@
-"""Índice de acesso aos salários dos governadores: dá para saber, pela fonte oficial, quanto o governador e o vice
-receberam em cada mês? Uma nota de 0 a 1 por Estado, em duas dimensões, como no Índice de Transparência do DadosJusBr
-(https://dadosjusbr.org/indice):
+"""Índice de Transparência dos estados: dá para saber, pela fonte oficial de cada Estado, quanto ganham e quanto custam
+os seus políticos? Uma nota de 0 a 1 por Estado, como no Índice de Transparência do DadosJusBr
+(https://dadosjusbr.org/indice), com um bloco para cada fonte:
 
-- Completude (o que a fonte mostra): nome, cargo, quem está no cargo hoje, as partes do pagamento, histórico e a lei do
-  salário.
-- Facilidade (como dá para obter): formato aberto, acesso programático, sem barreiras (CAPTCHA, login, CPF) e aberto a
-  robôs e a quem está fora do Brasil.
+- Governo do Estado: a folha do governador e do vice (notas em dados/indice/governadores.json; a nota da lei vem de
+  dados/governadores/governadores.json: 1 se achamos a lei ou o decreto legislativo que fixa o valor de hoje).
+- Assembleia Legislativa: salário, verba do gabinete e equipe de cada deputado estadual (dados/indice/assembleias.json).
 
-Cada dimensão é a média dos seus critérios; o índice é a média harmônica das duas (se uma é zero, o índice é zero: uma
-fonte completa que ninguém consegue usar, ou fácil de usar que não mostra nada, não é transparente).
-
-As notas e as provas estão em dados/indice/governadores.json (mantido à mão, estado por estado: o que a folha mostra e o
-que o nosso robô consegue). A nota da lei vem de dados/governadores/governadores.json: 1 se achamos a lei (ou decreto
-legislativo) que fixa o valor de hoje. Estado com algum critério "a conferir" (None) fica sem índice.
-Saída: site/dados/indice.json.
+Cada bloco tem duas dimensões: completude (o que a fonte mostra) e facilidade (formato aberto, acesso programático, sem
+barreiras como CAPTCHA, login ou CPF, aberto a robôs e a quem está fora do Brasil). Cada dimensão é a média dos seus
+critérios; o índice do bloco é a média harmônica das duas (se uma é zero, o índice é zero: uma fonte completa que
+ninguém consegue usar, ou fácil de usar que não mostra nada, não é transparente). O índice do Estado é a média dos
+blocos. As contas usam os valores exatos; o arquivo leva 6 casas, e o site arredonda só na hora de mostrar. Estado com algum critério "a
+conferir" (None) num bloco fica sem índice geral; os blocos com nota aparecem.
+Saída: site/dados/indice_transparencia.json.
 """
 import json
 
@@ -22,7 +21,6 @@ from .util import log, salvar_json
 
 CURADO = DADOS / "indice" / "governadores.json"
 GOVERNADORES = DADOS / "governadores" / "governadores.json"
-SAIDA = RAIZ / "site" / "dados" / "indice.json"
 
 CRITERIOS = [
     # (id, dimensão, nome curto, como pontua)
@@ -59,62 +57,6 @@ def _lei(e):
 
 def _media(v):
     return sum(v) / len(v) if v else None
-
-
-def executar():
-    curado = json.loads(CURADO.read_text(encoding="utf-8"))
-    gov = {e["uf"]: e for e in json.loads(GOVERNADORES.read_text(encoding="utf-8"))}
-    estados, erros = [], []
-    if set(curado["estados"]) != set(NOMES_UF):
-        erros.append(f"estados diferentes de 27: {sorted(set(NOMES_UF) ^ set(curado['estados']))}")
-    for uf in sorted(NOMES_UF):
-        c = dict(curado["estados"].get(uf, {}))
-        nota, prova, link = _lei(gov[uf])
-        c["lei"] = [nota, prova]
-        crit = {}
-        for cid, dim, _, _ in CRITERIOS:
-            if cid not in c or len(c[cid]) != 2 or not c[cid][1]:
-                erros.append(f"{uf}: critério {cid} sem nota ou sem prova")
-                continue
-            v, p = c[cid]
-            if v is not None and v not in VALORES:
-                erros.append(f"{uf}: {cid} = {v} fora dos valores possíveis")
-            crit[cid] = {"v": v, "prova": p}
-        crit.get("lei", {})["link"] = link
-        dims = {}
-        for dim in ("completude", "facilidade"):
-            vs = [crit[cid]["v"] for cid, d, _, _ in CRITERIOS if d == dim and cid in crit]
-            dims[dim] = None if any(v is None for v in vs) else round(_media(vs), 3)
-        cmp, fac = dims["completude"], dims["facilidade"]
-        indice = None if cmp is None or fac is None else (0.0 if cmp == 0 or fac == 0 else round(2 * cmp * fac / (cmp + fac), 3))
-        estados.append({"uf": uf, "nome": NOMES_UF[uf], "indice": indice, "completude": cmp, "facilidade": fac,
-                        "fonte": (gov[uf].get("folha") or {}).get("url"), "criterios": crit,
-                        "a_conferir": [cid for cid, v in crit.items() if v["v"] is None]})
-    if erros:
-        raise ValueError("Índice: " + "; ".join(erros))
-    com = sorted((e for e in estados if e["indice"] is not None), key=lambda e: -e["indice"])
-    saida = {
-        "meta": {
-            "titulo": "Índice de acesso aos salários dos governadores",
-            "pergunta": "Dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês?",
-            "conferido_em": curado["conferido_em"],
-            "como": ["Duas dimensões, de 0 a 1: completude (o que a fonte mostra) e facilidade (como dá para obter). Cada uma é "
-                     "a média dos seus critérios; o índice é a média harmônica das duas, então uma fonte completa que é difícil "
-                     "de usar, ou fácil de usar que mostra pouco, não tem nota alta.",
-                     "Cada nota tem a prova: o que a folha de pagamento do Estado mostra e o que o nosso robô conseguiu ler. "
-                     "Estado com algum critério ainda a conferir fica sem índice.",
-                     "O índice mede uma coisa só: o acesso ao salário do governador e do vice. Não é uma nota da transparência "
-                     "do Estado como um todo.",
-                     "Inspirado no Índice de Transparência do DadosJusBr (dadosjusbr.org/indice), que avalia o Judiciário."],
-            "criterios": [{"id": cid, "dimensao": dim, "nome": nome, "como_pontua": como} for cid, dim, nome, como in CRITERIOS],
-        },
-        "estados": estados,
-    }
-    salvar_json(SAIDA, saida)
-    transparencia()
-    log(f"Índice: site/dados/indice.json — {len(com)} estados com nota (de {com[-1]['indice'] if com else '-'} a "
-        f"{com[0]['indice'] if com else '-'}), {len(estados) - len(com)} a conferir")
-    return saida
 
 
 # ---------------------------------------------------------------- Índice de Transparência dos estados (vários blocos)
@@ -160,15 +102,23 @@ def _bloco(criterios, notas, uf, erros, extra=None):
     dims = {}
     for dim in ("completude", "facilidade"):
         vs = [crit[cid]["v"] for cid, d, _, _ in criterios if d == dim and cid in crit]
-        dims[dim] = None if any(v is None for v in vs) else round(_media(vs), 3)
+        dims[dim] = None if any(v is None for v in vs) else _media(vs)
     cmp, fac = dims["completude"], dims["facilidade"]
-    indice = None if cmp is None or fac is None else (0.0 if cmp == 0 or fac == 0 else round(2 * cmp * fac / (cmp + fac), 3))
-    return {"indice": indice, "completude": cmp, "facilidade": fac, "criterios": crit, "a_conferir": [k for k, v in crit.items() if v["v"] is None]}
+    indice = None if cmp is None or fac is None else (0.0 if cmp == 0 or fac == 0 else 2 * cmp * fac / (cmp + fac))
+    # o valor exato fica em "_exato" para a média do Estado; o arquivo leva só os arredondados
+    return {"indice": _arred(indice), "completude": _arred(cmp), "facilidade": _arred(fac), "criterios": crit,
+            "a_conferir": [k for k, v in crit.items() if v["v"] is None], "_exato": indice}
 
 
-def transparencia():
+def _arred(v):
+    # 6 casas: o site arredonda para 2 na hora de mostrar, e arredondar duas vezes (0,9049 -> 0,905 -> 0,91) erra
+    return None if v is None else round(v, 6)
+
+
+def executar():
     """site/dados/indice_transparencia.json: o Índice de Transparência dos estados, com um bloco por fonte (governo e
-    Assembleia). Cada bloco tem as duas dimensões; o índice do Estado é a média dos blocos."""
+    Assembleia). Cada bloco tem as duas dimensões; o índice do Estado é a média dos blocos (contas com os valores
+    exatos; 6 casas no arquivo)."""
     gov_c = json.loads(CURADO.read_text(encoding="utf-8"))
     ass_c = json.loads(CURADO_ASSEMBLEIA.read_text(encoding="utf-8"))
     gov = {e["uf"]: e for e in json.loads(GOVERNADORES.read_text(encoding="utf-8"))}
@@ -188,8 +138,8 @@ def transparencia():
         if (r.get("subsidio") or {}).get("url"):
             b_ass["criterios"].get("lei", {})["link"] = r["subsidio"]["url"]
         blocos = {"governo": b_gov, "assembleia": b_ass}
-        vs = [b["indice"] for b in blocos.values()]
-        estados.append({"uf": uf, "nome": NOMES_UF[uf], "indice": None if any(v is None for v in vs) else round(_media(vs), 3),
+        vs = [b.pop("_exato") for b in blocos.values()]
+        estados.append({"uf": uf, "nome": NOMES_UF[uf], "indice": None if any(v is None for v in vs) else _arred(_media(vs)),
                         "blocos": blocos, "a_conferir": [k for k, b in blocos.items() if b["indice"] is None]})
     if erros:
         raise ValueError("Índice de Transparência: " + "; ".join(erros))

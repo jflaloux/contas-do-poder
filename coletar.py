@@ -15,7 +15,7 @@ Uso:
                                        # e, em 24 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
     python3 coletar.py assembleias     # deputados estaduais (SP, MG, RJ, BA, PE, CE, PB, GO, SC, MS, RO, TO, SE, ES, RS, AP): subsídio pela lei, verba do gabinete
                                        # com fornecedores, em site/dados/assembleias.json (dados/assembleias/)
-    python3 coletar.py indice          # índice de acesso aos salários dos governadores (dados/indice/), em site/dados/indice.json
+    python3 coletar.py indice          # Índice de Transparência dos estados (dados/indice/), em site/dados/indice_transparencia.json
     python3 coletar.py renda           # distribuição da renda de quem trabalha (PNAD Contínua do IBGE), para o "ganha
                                        # mais que X% dos brasileiros que trabalham"; só baixa (~900 MB) quando sai um
                                        # trimestre novo

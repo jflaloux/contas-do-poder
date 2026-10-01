@@ -460,36 +460,36 @@
   },
   "MT": {
    "nome": [
-    null,
-    "A conferir: o resultado só aparece depois do CAPTCHA"
+    1,
+    "Nome completo"
    ],
    "cargo": [
-    null,
-    "A conferir: o resultado só aparece depois do CAPTCHA"
+    1,
+    "Cargo e função (Governador), com o órgão e o setor (Gabinete do Governador)"
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir: o resultado só aparece depois do CAPTCHA"
+    1,
+    "O governador aparece na folha de ago/2026 (o cargo de vice está vago desde 31/03/2026)"
    ],
    "partes": [
-    null,
-    "A conferir: o resultado só aparece depois do CAPTCHA"
+    1,
+    "Cada rubrica no detalhe de cada pessoa; o 13º em folha própria"
    ],
    "historico": [
     1,
     "Busca por mês, de 2010 a 2026"
    ],
    "formato": [
-    null,
-    "A conferir: o resultado só aparece depois do CAPTCHA"
+    1,
+    "CSV e Excel do mês para baixar (depois do CAPTCHA)"
    ],
    "acesso": [
-    0.5,
-    "Consulta na página, uma pessoa por vez"
+    1,
+    "Arquivo para baixar na consulta (depois do CAPTCHA); o detalhe de cada pessoa tem endereço próprio"
    ],
    "sem_barreira": [
     0,
-    "A consulta pede CAPTCHA"
+    "A consulta pede CAPTCHA (reCAPTCHA): o robô não lê; conferido à mão em 01/10/2026"
    ],
    "robos_exterior": [
     1,
