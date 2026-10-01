@@ -2105,9 +2105,9 @@
    "uf": "MA",
    "nome": "Maranhão",
    "capital": "São Luís",
-   "indice": null,
-   "indice_parcial": 0.617866,
-   "blocos_com_nota": 3,
+   "indice": 0.646473,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -2210,21 +2210,21 @@
      "fonte": "https://sistemas.al.ma.leg.br/transparencia/lista-parlamentar.html"
     },
     "prefeitura": {
-     "indice": null,
-     "completude": null,
+     "indice": 0.732295,
+     "completude": 0.783333,
      "facilidade": 0.6875,
      "criterios": {
       "nome": {
-       "v": null,
-       "prova": "A conferir: a consulta nominal pede CAPTCHA; não vimos os registros."
+       "v": 1,
+       "prova": "Nome completo de cada servidor (CPF mascarado), depois do CAPTCHA."
       },
       "cargo": {
        "v": 1,
        "prova": "O filtro de cargos inclui 'PREFEITO', 'VICE PREFEITO' e 'SECRETARIO MUNICIPAL'."
       },
       "no_cargo_hoje": {
-       "v": null,
-       "prova": "A conferir: o CAPTCHA impediu ver o último mês."
+       "v": 0.5,
+       "prova": "A busca pelo cargo 'prefeito' em ago/2026 traz um único registro, que não é o do prefeito eleito; o vice não foi conferido."
       },
       "partes": {
        "v": 0.2,
@@ -2255,10 +2255,7 @@
        "prova": "O robots.txt proíbe tudo; abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "nome",
-      "no_cargo_hoje"
-     ],
+     "a_conferir": [],
      "cidade": "São Luís",
      "fonte": "https://saoluis.giap.com.br/ords/saoluis/f?p=1618:1"
     },
@@ -2313,17 +2310,15 @@
      "fonte": "https://cmsaoluis.portalremuneracao.com.br/"
     }
    },
-   "a_conferir": [
-    "prefeitura"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "MG",
    "nome": "Minas Gerais",
    "capital": "Belo Horizonte",
-   "indice": null,
-   "indice_parcial": 0.895372,
-   "blocos_com_nota": 2,
+   "indice": 0.808071,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -2427,71 +2422,63 @@
      "fonte": "https://www.almg.gov.br/transparencia/prestacao-de-contas/deputados/verba-indenizatoria/"
     },
     "prefeitura": {
-     "indice": null,
-     "completude": null,
-     "facilidade": null,
+     "indice": 0.756757,
+     "completude": 0.666667,
+     "facilidade": 0.875,
      "criterios": {
       "nome": {
-       "v": null,
-       "prova": "A conferir: o portal respondeu 'Acesso Bloqueado' (403) ao robô, também do Brasil."
+       "v": 1,
+       "prova": "Nome de cada servidor da administração direta."
       },
       "cargo": {
-       "v": null,
-       "prova": "A conferir: o portal bloqueou o acesso do robô."
+       "v": 1,
+       "prova": "Órgão, unidade de lotação, vínculo e cargo (efetivo e em comissão)."
       },
       "no_cargo_hoje": {
-       "v": null,
-       "prova": "A conferir: o portal bloqueou o acesso do robô."
+       "v": 0,
+       "prova": "O prefeito e o vice não aparecem no arquivo mensal (ago/2026): não há vínculo de agente político."
       },
       "partes": {
-       "v": null,
-       "prova": "A conferir: o portal bloqueou o acesso do robô."
+       "v": 0,
+       "prova": "Só a remuneração total do mês."
       },
       "secretarios": {
-       "v": null,
-       "prova": "A conferir: o portal bloqueou o acesso do robô."
+       "v": 1,
+       "prova": "Os secretários aparecem pelo cargo em comissão ('Secretário'), com a remuneração."
       },
       "historico": {
        "v": 1,
-       "prova": "O portal de dados abertos tem a 'Folha de Pagamento – PBH Ativos' em arquivos mensais desde out/2021."
+       "prova": "Arquivos mensais de dez/2023 a ago/2026."
       },
       "formato": {
-       "v": null,
-       "prova": "A conferir: os arquivos não puderam ser abertos (bloqueio)."
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos."
       },
       "acesso": {
-       "v": null,
-       "prova": "A conferir: os arquivos estão em CKAN, mas o acesso do robô foi barrado."
+       "v": 1,
+       "prova": "Arquivo para baixar."
       },
       "sem_barreira": {
-       "v": 0,
-       "prova": "O bloqueio do site (WAF) responde 403 ao acesso automatizado, no portal e nos dados abertos."
+       "v": 0.5,
+       "prova": "Abre sem barreira para quem usa o navegador; o bloqueio do site (WAF) recusa o acesso automatizado, também do Brasil."
       },
       "robos_exterior": {
        "v": 1,
-       "prova": "O robots.txt permite as páginas e o portal abre de fora do Brasil."
+       "prova": "O robots.txt permite os arquivos e o portal abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "nome",
-      "cargo",
-      "no_cargo_hoje",
-      "partes",
-      "secretarios",
-      "formato",
-      "acesso"
-     ],
+     "a_conferir": [],
      "cidade": "Belo Horizonte",
-     "fonte": "https://prefeitura.pbh.gov.br/transparencia/sevidores/remuneracao"
+     "fonte": "https://dados.pbh.gov.br/dataset/relatorio-do-funcionalismo-publico-administracao-direta"
     },
     "camara": {
-     "indice": null,
-     "completude": null,
+     "indice": 0.684783,
+     "completude": 0.875,
      "facilidade": 0.5625,
      "criterios": {
       "salario": {
-       "v": null,
-       "prova": "A conferir: a consulta nominal da folha pede CAPTCHA."
+       "v": 0.75,
+       "prova": "Contracheque de cada vereador por mês, com as rubricas, numa consulta por pessoa que pede CAPTCHA."
       },
       "verba_vereador": {
        "v": 1,
@@ -2502,8 +2489,8 @@
        "prova": "Item a item, com o tipo e o link da nota, sem o fornecedor."
       },
       "equipe": {
-       "v": null,
-       "prova": "A conferir: a consulta nominal da folha, que traz os assessores, pede CAPTCHA."
+       "v": 0.75,
+       "prova": "A consulta da folha mostra a lotação de cada assessor ('Vereador <nome>') e o que recebe, uma pessoa por vez (com CAPTCHA)."
       },
       "historico": {
        "v": 1,
@@ -2530,26 +2517,20 @@
        "prova": "O robots.txt permite (pede 10 s entre pedidos) e abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "salario",
-      "equipe"
-     ],
+     "a_conferir": [],
      "cidade": "Belo Horizonte",
      "fonte": "https://www.cmbh.mg.gov.br/transparencia/vereadores/custeio-parlamentar"
     }
    },
-   "a_conferir": [
-    "prefeitura",
-    "camara"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "MS",
    "nome": "Mato Grosso do Sul",
    "capital": "Campo Grande",
-   "indice": null,
-   "indice_parcial": 0.82594,
-   "blocos_com_nota": 3,
+   "indice": 0.758344,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -2703,75 +2684,65 @@
      "fonte": "https://sig-transparencia.campogrande.ms.gov.br/servidores/consulta"
     },
     "camara": {
-     "indice": null,
-     "completude": null,
-     "facilidade": null,
+     "indice": 0.555556,
+     "completude": 0.5,
+     "facilidade": 0.625,
      "criterios": {
       "salario": {
-       "v": null,
-       "prova": "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+       "v": 1,
+       "prova": "Folha de cada vereador por mês (portal Fiorilli), com o detalhe dos eventos e folhas próprias de 13º."
       },
       "verba_vereador": {
-       "v": null,
-       "prova": "A conferir: há verba indenizatória (Atos da Mesa 281 e 282/2023), mas o portal está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "O portal não tem consulta da verba indenizatória por vereador."
       },
       "verba_nota": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "Não há notas da verba indenizatória publicadas."
       },
       "equipe": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "A lotação de todos os servidores é a própria Câmara: não liga o servidor ao gabinete."
       },
       "historico": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA (e o subdomínio da transparência estava fora do ar)."
+       "v": 1,
+       "prova": "Exercícios anteriores selecionáveis, mês a mês."
       },
       "lei": {
        "v": 1,
        "prova": "Lei 7.176/2023 fixa R$ 26.080,98 desde fev/2025 (no Diário Oficial da Câmara)."
       },
       "formato": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 1,
+       "prova": "Exportação em CSV, XLS e TXT (e PDF)."
       },
       "acesso": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0.5,
+       "prova": "O arquivo sai pelo botão de exportar, que depende da sessão da página."
       },
       "sem_barreira": {
-       "v": 0,
-       "prova": "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA; o subdomínio da transparência estava fora do ar."
+       "v": 0.5,
+       "prova": "O site da Câmara passa por uma verificação reCAPTCHA antes de levar ao portal; o portal abre sem barreira."
       },
       "robos_exterior": {
-       "v": 0,
-       "prova": "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+       "v": 0.5,
+       "prova": "O portal (num endereço IP, sem HTTPS) não tem robots.txt, mas não abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "salario",
-      "verba_vereador",
-      "verba_nota",
-      "equipe",
-      "historico",
-      "formato",
-      "acesso"
-     ],
+     "a_conferir": [],
      "cidade": "Campo Grande",
-     "fonte": "https://www.camara.ms.gov.br/"
+     "fonte": "http://45.225.6.93:8079/transparencia/"
     }
    },
-   "a_conferir": [
-    "camara"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "MT",
    "nome": "Mato Grosso",
    "capital": "Cuiabá",
    "indice": null,
-   "indice_parcial": 0.56746,
-   "blocos_com_nota": 2,
+   "indice_parcial": 0.60558,
+   "blocos_com_nota": 3,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -2927,21 +2898,21 @@
      "fonte": "https://transparencia.cuiaba.mt.gov.br/portaltransparencia/transparencia/"
     },
     "camara": {
-     "indice": null,
-     "completude": null,
-     "facilidade": 0.5625,
+     "indice": 0.681818,
+     "completude": 0.625,
+     "facilidade": 0.75,
      "criterios": {
       "salario": {
-       "v": null,
-       "prova": "A conferir: há folha nominal por competência (2003 a set/2026), mas os vereadores e as colunas não foram conferidos."
+       "v": 0.75,
+       "prova": "Folha de cada vereador por mês (desde 2003): o detalhe só traz o total de proventos e de descontos, sem as partes."
       },
       "verba_vereador": {
-       "v": null,
-       "prova": "A conferir: há arquivos mensais de valores pagos de verba indenizatória em 2026; o conteúdo não foi aberto."
+       "v": 1,
+       "prova": "Arquivos mensais com os valores pagos de verba indenizatória a cada vereador (2026; faltam fev e abr)."
       },
       "verba_nota": {
        "v": 0,
-       "prova": "Só valores pagos por mês e empenhos por credor; não há notas com fornecedor e CNPJ."
+       "prova": "A verba é paga em valor mensal, sem notas publicadas."
       },
       "equipe": {
        "v": 0,
@@ -2956,12 +2927,12 @@
        "prova": "Lei 7.038/2024 fixa R$ 26.080,98 desde fev/2025 (no portal da Câmara)."
       },
       "formato": {
-       "v": 0.5,
-       "prova": "Grades HTML e anexos; sem CSV ou JSON."
+       "v": 1,
+       "prova": "A folha exporta em CSV, TXT e PDF."
       },
       "acesso": {
-       "v": 0.25,
-       "prova": "Só por formulários montados na página."
+       "v": 0.5,
+       "prova": "A lista sai de um formulário da página, com botão de exportar que depende da sessão."
       },
       "sem_barreira": {
        "v": 1,
@@ -2972,17 +2943,13 @@
        "prova": "O robots.txt do sistema proíbe tudo; abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "salario",
-      "verba_vereador"
-     ],
+     "a_conferir": [],
      "cidade": "Cuiabá",
      "fonte": "https://www.gp.srv.br/transparencia_cuiabacm/servlet/folha_pagamento_v2?1"
     }
    },
    "a_conferir": [
-    "prefeitura",
-    "camara"
+    "prefeitura"
    ]
   },
   {
@@ -5107,9 +5074,9 @@
    "uf": "SC",
    "nome": "Santa Catarina",
    "capital": "Florianópolis",
-   "indice": null,
-   "indice_parcial": 0.787875,
-   "blocos_com_nota": 3,
+   "indice": 0.745669,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -5263,68 +5230,57 @@
      "fonte": "https://adm.pmf.sc.gov.br/srh/transparencia.list.php"
     },
     "camara": {
-     "indice": null,
-     "completude": null,
-     "facilidade": null,
+     "indice": 0.619048,
+     "completude": 0.5,
+     "facilidade": 0.8125,
      "criterios": {
       "salario": {
-       "v": null,
-       "prova": "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+       "v": 1,
+       "prova": "Folha de cada vereador por mês (portal e-Pública), com as rubricas e as folhas complementares."
       },
       "verba_vereador": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "Não há consulta da verba de gabinete por vereador; os pagamentos aos vereadores aparecem só no total por favorecido."
       },
       "verba_nota": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "Não há notas da verba de gabinete publicadas."
       },
       "equipe": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 1,
+       "prova": "Os comissionados aparecem com o local 'Gabinete <vereador>' e a remuneração de cada um."
       },
       "historico": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 1,
+       "prova": "Folha por mês de referência, com meses de anos anteriores."
       },
       "lei": {
-       "v": null,
-       "prova": "A conferir: só a imprensa cita a lei de 2023; o site da Câmara está atrás do reCAPTCHA."
+       "v": 0,
+       "prova": "Não achamos o ato que fixa o subsídio de hoje em fonte oficial."
       },
       "formato": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 1,
+       "prova": "Exportação em CSV, JSON, XLS, TXT e PDF."
       },
       "acesso": {
-       "v": null,
-       "prova": "A conferir: o portal está atrás do reCAPTCHA."
+       "v": 0.75,
+       "prova": "O que a página do portal e-Pública usa, sem documentação, com botões de exportar."
       },
       "sem_barreira": {
-       "v": 0,
-       "prova": "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA antes de qualquer dado."
+       "v": 0.5,
+       "prova": "O site da Câmara passa por uma verificação reCAPTCHA antes de levar ao portal; o portal da transparência abre sem barreira."
       },
       "robos_exterior": {
-       "v": 0,
-       "prova": "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+       "v": 1,
+       "prova": "O portal da transparência (e-Pública) não tem robots.txt e abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "salario",
-      "verba_vereador",
-      "verba_nota",
-      "equipe",
-      "historico",
-      "lei",
-      "formato",
-      "acesso"
-     ],
+     "a_conferir": [],
      "cidade": "Florianópolis",
-     "fonte": "https://www.cmf.sc.gov.br/"
+     "fonte": "https://transparencia.e-publica.net/epublica-portal/#/florianopolis/portal/gestaoDePessoal/agentePoliticoTable?entidade=1018"
     }
    },
-   "a_conferir": [
-    "camara"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "SE",

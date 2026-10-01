@@ -361,16 +361,16 @@
    "cidade": "São Luís",
    "fonte": "https://saoluis.giap.com.br/ords/saoluis/f?p=1618:1",
    "nome": [
-    null,
-    "A conferir: a consulta nominal pede CAPTCHA; não vimos os registros."
+    1,
+    "Nome completo de cada servidor (CPF mascarado), depois do CAPTCHA."
    ],
    "cargo": [
     1,
     "O filtro de cargos inclui 'PREFEITO', 'VICE PREFEITO' e 'SECRETARIO MUNICIPAL'."
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir: o CAPTCHA impediu ver o último mês."
+    0.5,
+    "A busca pelo cargo 'prefeito' em ago/2026 traz um único registro, que não é o do prefeito eleito; o vice não foi conferido."
    ],
    "partes": [
     0.2,
@@ -403,46 +403,46 @@
   },
   "MG": {
    "cidade": "Belo Horizonte",
-   "fonte": "https://prefeitura.pbh.gov.br/transparencia/sevidores/remuneracao",
+   "fonte": "https://dados.pbh.gov.br/dataset/relatorio-do-funcionalismo-publico-administracao-direta",
    "nome": [
-    null,
-    "A conferir: o portal respondeu 'Acesso Bloqueado' (403) ao robô, também do Brasil."
+    1,
+    "Nome de cada servidor da administração direta."
    ],
    "cargo": [
-    null,
-    "A conferir: o portal bloqueou o acesso do robô."
+    1,
+    "Órgão, unidade de lotação, vínculo e cargo (efetivo e em comissão)."
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir: o portal bloqueou o acesso do robô."
+    0,
+    "O prefeito e o vice não aparecem no arquivo mensal (ago/2026): não há vínculo de agente político."
    ],
    "partes": [
-    null,
-    "A conferir: o portal bloqueou o acesso do robô."
+    0,
+    "Só a remuneração total do mês."
    ],
    "secretarios": [
-    null,
-    "A conferir: o portal bloqueou o acesso do robô."
+    1,
+    "Os secretários aparecem pelo cargo em comissão ('Secretário'), com a remuneração."
    ],
    "historico": [
     1,
-    "O portal de dados abertos tem a 'Folha de Pagamento – PBH Ativos' em arquivos mensais desde out/2021."
+    "Arquivos mensais de dez/2023 a ago/2026."
    ],
    "formato": [
-    null,
-    "A conferir: os arquivos não puderam ser abertos (bloqueio)."
+    1,
+    "CSV mensal no portal de dados abertos."
    ],
    "acesso": [
-    null,
-    "A conferir: os arquivos estão em CKAN, mas o acesso do robô foi barrado."
+    1,
+    "Arquivo para baixar."
    ],
    "sem_barreira": [
-    0,
-    "O bloqueio do site (WAF) responde 403 ao acesso automatizado, no portal e nos dados abertos."
+    0.5,
+    "Abre sem barreira para quem usa o navegador; o bloqueio do site (WAF) recusa o acesso automatizado, também do Brasil."
    ],
    "robos_exterior": [
     1,
-    "O robots.txt permite as páginas e o portal abre de fora do Brasil."
+    "O robots.txt permite os arquivos e o portal abre de fora do Brasil."
    ]
   },
   "MS": {

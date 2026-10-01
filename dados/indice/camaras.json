@@ -405,8 +405,8 @@
    "cidade": "Belo Horizonte",
    "fonte": "https://www.cmbh.mg.gov.br/transparencia/vereadores/custeio-parlamentar",
    "salario": [
-    null,
-    "A conferir: a consulta nominal da folha pede CAPTCHA."
+    0.75,
+    "Contracheque de cada vereador por mês, com as rubricas, numa consulta por pessoa que pede CAPTCHA."
    ],
    "verba_vereador": [
     1,
@@ -417,8 +417,8 @@
     "Item a item, com o tipo e o link da nota, sem o fornecedor."
    ],
    "equipe": [
-    null,
-    "A conferir: a consulta nominal da folha, que traz os assessores, pede CAPTCHA."
+    0.75,
+    "A consulta da folha mostra a lotação de cada assessor ('Vereador <nome>') e o que recebe, uma pessoa por vez (com CAPTCHA)."
    ],
    "historico": [
     1,
@@ -447,62 +447,62 @@
   },
   "MS": {
    "cidade": "Campo Grande",
-   "fonte": "https://www.camara.ms.gov.br/",
+   "fonte": "http://45.225.6.93:8079/transparencia/",
    "salario": [
-    null,
-    "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+    1,
+    "Folha de cada vereador por mês (portal Fiorilli), com o detalhe dos eventos e folhas próprias de 13º."
    ],
    "verba_vereador": [
-    null,
-    "A conferir: há verba indenizatória (Atos da Mesa 281 e 282/2023), mas o portal está atrás do reCAPTCHA."
+    0,
+    "O portal não tem consulta da verba indenizatória por vereador."
    ],
    "verba_nota": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0,
+    "Não há notas da verba indenizatória publicadas."
    ],
    "equipe": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0,
+    "A lotação de todos os servidores é a própria Câmara: não liga o servidor ao gabinete."
    ],
    "historico": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA (e o subdomínio da transparência estava fora do ar)."
+    1,
+    "Exercícios anteriores selecionáveis, mês a mês."
    ],
    "lei": [
     1,
     "Lei 7.176/2023 fixa R$ 26.080,98 desde fev/2025 (no Diário Oficial da Câmara)."
    ],
    "formato": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    1,
+    "Exportação em CSV, XLS e TXT (e PDF)."
    ],
    "acesso": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0.5,
+    "O arquivo sai pelo botão de exportar, que depende da sessão da página."
    ],
    "sem_barreira": [
-    0,
-    "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA; o subdomínio da transparência estava fora do ar."
+    0.5,
+    "O site da Câmara passa por uma verificação reCAPTCHA antes de levar ao portal; o portal abre sem barreira."
    ],
    "robos_exterior": [
-    0,
-    "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+    0.5,
+    "O portal (num endereço IP, sem HTTPS) não tem robots.txt, mas não abre de fora do Brasil."
    ]
   },
   "MT": {
    "cidade": "Cuiabá",
    "fonte": "https://www.gp.srv.br/transparencia_cuiabacm/servlet/folha_pagamento_v2?1",
    "salario": [
-    null,
-    "A conferir: há folha nominal por competência (2003 a set/2026), mas os vereadores e as colunas não foram conferidos."
+    0.75,
+    "Folha de cada vereador por mês (desde 2003): o detalhe só traz o total de proventos e de descontos, sem as partes."
    ],
    "verba_vereador": [
-    null,
-    "A conferir: há arquivos mensais de valores pagos de verba indenizatória em 2026; o conteúdo não foi aberto."
+    1,
+    "Arquivos mensais com os valores pagos de verba indenizatória a cada vereador (2026; faltam fev e abr)."
    ],
    "verba_nota": [
     0,
-    "Só valores pagos por mês e empenhos por credor; não há notas com fornecedor e CNPJ."
+    "A verba é paga em valor mensal, sem notas publicadas."
    ],
    "equipe": [
     0,
@@ -517,12 +517,12 @@
     "Lei 7.038/2024 fixa R$ 26.080,98 desde fev/2025 (no portal da Câmara)."
    ],
    "formato": [
-    0.5,
-    "Grades HTML e anexos; sem CSV ou JSON."
+    1,
+    "A folha exporta em CSV, TXT e PDF."
    ],
    "acesso": [
-    0.25,
-    "Só por formulários montados na página."
+    0.5,
+    "A lista sai de um formulário da página, com botão de exportar que depende da sessão."
    ],
    "sem_barreira": [
     1,
@@ -975,46 +975,46 @@
   },
   "SC": {
    "cidade": "Florianópolis",
-   "fonte": "https://www.cmf.sc.gov.br/",
+   "fonte": "https://transparencia.e-publica.net/epublica-portal/#/florianopolis/portal/gestaoDePessoal/agentePoliticoTable?entidade=1018",
    "salario": [
-    null,
-    "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+    1,
+    "Folha de cada vereador por mês (portal e-Pública), com as rubricas e as folhas complementares."
    ],
    "verba_vereador": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0,
+    "Não há consulta da verba de gabinete por vereador; os pagamentos aos vereadores aparecem só no total por favorecido."
    ],
    "verba_nota": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0,
+    "Não há notas da verba de gabinete publicadas."
    ],
    "equipe": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    1,
+    "Os comissionados aparecem com o local 'Gabinete <vereador>' e a remuneração de cada um."
    ],
    "historico": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    1,
+    "Folha por mês de referência, com meses de anos anteriores."
    ],
    "lei": [
-    null,
-    "A conferir: só a imprensa cita a lei de 2023; o site da Câmara está atrás do reCAPTCHA."
+    0,
+    "Não achamos o ato que fixa o subsídio de hoje em fonte oficial."
    ],
    "formato": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    1,
+    "Exportação em CSV, JSON, XLS, TXT e PDF."
    ],
    "acesso": [
-    null,
-    "A conferir: o portal está atrás do reCAPTCHA."
+    0.75,
+    "O que a página do portal e-Pública usa, sem documentação, com botões de exportar."
    ],
    "sem_barreira": [
-    0,
-    "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA antes de qualquer dado."
+    0.5,
+    "O site da Câmara passa por uma verificação reCAPTCHA antes de levar ao portal; o portal da transparência abre sem barreira."
    ],
    "robos_exterior": [
-    0,
-    "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+    1,
+    "O portal da transparência (e-Pública) não tem robots.txt e abre de fora do Brasil."
    ]
   },
   "SE": {

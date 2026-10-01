@@ -24,8 +24,8 @@ inteiro, não só do governo):
   o índice do DF é a média dos 2 blocos que valem. Mostre o texto no lugar do bloco, sem barra nem nota.
 - Os valores continuam com 6 casas; arredonde só ao mostrar.
 
-Hoje: 21 estados com índice geral; 6 com um bloco a conferir (MG, MS, SC, AL, MA, MT), quase todos por CAPTCHA ou
-bloqueio do site. Esses ainda vão mudar.
+Hoje: 25 estados com índice geral; 2 com um bloco a conferir (AL e MT: as consultas das prefeituras de Maceió e de
+Cuiabá são muito lentas). Esses ainda vão mudar.
 
 O que fazer no site (/indice, secIndice e gerar.mjs)
 -----------------------------------------------------

@@ -154,5 +154,6 @@ Cada número tem link para a fonte oficial.
 
 - Você quer mexer no código ou prefere cuidar só das decisões e da divulgação?
 - [x] Índice de Transparência com 4 blocos: governo, Assembleia, prefeitura e Câmara da capital (01/10/2026) — Claude
-- [ ] Índice: os 6 estados com bloco a conferir (CAPTCHA ou bloqueio: Câmaras de Florianópolis, Campo Grande, BH e Cuiabá; prefeituras de BH, São Luís, Maceió e Cuiabá) — Jean-François resolve o CAPTCHA no Chrome, Claude lê
+- [x] Índice: blocos atrás de CAPTCHA ou bloqueio conferidos no Chrome (Câmaras de Florianópolis, Campo Grande, BH e Cuiabá; prefeituras de BH e São Luís) — Jean-François e Claude
+- [ ] Índice: prefeituras de Maceió e Cuiabá (consultas muito lentas; falta ver prefeito, vice e secretários) — Claude
 - [ ] Prova de conceito: os 27 Tribunais de Contas (folha e despesas de todos os municípios? para o índice e para robôs que cubram o estado inteiro) — Claude
