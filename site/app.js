@@ -1467,7 +1467,7 @@
         h("p", { class: "rotulo" }, { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo" }[p.k] || "Contracheque do mandato"),
         h("h1", { class: "conta__nome" }, p.n),
         h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
-      h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Página oficial\u00a0↗")),
+      h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Página\u00a0oficial\u00a0↗")),
       resumoTopo(p, k, r, C, pos, trocar));
     const lado = h("div", { class: "conta__lado" });
     if (r) {
@@ -2374,7 +2374,7 @@
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
-          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte\u00a0↗"))),
+          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver\u00a0a\u00a0fonte\u00a0↗"))),
         h("h2", { class: "h3" }, `Comparado com os outros governadores`),
         h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}. A mediana dos 27 estados é ${reais(med)}.`
           : p.pos === p.n ? `É o menor salário de governador do país. A mediana dos 27 estados é ${reais(med)}.`
@@ -2694,7 +2694,7 @@
       const tri = (t) => t.replace("/", " trimestre de ");
       add(rn, `São cerca de ${num(R.pessoas / 1e6, 0)} milhões de pessoas (do ${tri(R.trimestres[R.trimestres.length - 1])} ao ${tri(R.trimestres[0])}). `,
         `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
-        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte: IBGE\u00a0↗"));
+        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte:\u00a0IBGE\u00a0↗"));
     }
     $("#gerado-em").textContent = `Gerado em ${D.meta.atualizado}.`;
   }
@@ -3109,7 +3109,7 @@
           dimensao(x, crit, "completude", "Completude", "O que a fonte mostra."),
           dimensao(x, crit, "facilidade", "Facilidade", "Como dá para obter os dados.")),
         h("p", { class: "indice-links" },
-          x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte oficial", h("span", { class: "visualmente-oculto" }, ` (${tituloBloco(b, x)}, ${e.nome})`), " ↗") : null,
+          x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte\u00a0oficial", h("span", { class: "visualmente-oculto" }, ` (${tituloBloco(b, x)}, ${e.nome})`), " ↗") : null,
           b.id === "governo" && GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null,
           b.id === "assembleia" && assembleiaUF(e.uf) && GOV.porUF[e.uf] ? h("a", { href: `${urlGov(e.uf)}#assembleia`, onclick: () => { S.origem = "indice"; } }, `Deputados estaduais ${deUF(e.uf)}, um a um →`) : null,
           (() => {
