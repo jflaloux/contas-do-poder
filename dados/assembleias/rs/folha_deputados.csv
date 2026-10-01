@@ -1,0 +1,1163 @@
+ano,mes,id_funcional,nome,cargo,bruta,indenizatorias,abono,ferias,decimo
+2025,1,3465357,Adolfo Brito,Presidente,33006.27,16503.13,0.0,0.0,0.0
+2025,1,4219740,Adriana Lara,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4864670,Adão Pretto Filho,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4552229,Airton Artus,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537459,Airton Lima,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3465039,Aloísio Classmann,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4228880,Beto Fantinel,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4282434,Bruna Rodrigues,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4863704,Capitão Martim,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3889130,Carlos Búrigo,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3524566,Cláudio Tatsch,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2593696,Costella,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2776332,Delegada Nadine,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2430347,Delegado Zucco,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3617050,Dimas Costa,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537327,Dirceu Franciscon,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2816784,Dr. Thiago Duarte,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4493354,Edivilson Brum,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4231678,Eduardo Loureiro,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4443128,Eliana Bayer,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537360,Elizandro Sabino,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4231660,Elton Weber,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3531198,Ernani Polo,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4863470,Felipe Camozzato,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2430754,Frederico Antunes,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537467,Gaúcho da Geral,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3467163,Gerson Burmann,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3098419,Guilherme Pasin,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4863518,Gustavo Victorino,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,5041899,Halley Lino,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3506320,Jeferson Fernandes,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4864298,Joel Wilhelm,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4863496,Kaká dÁvila,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3795748,Kelly Moraes,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3543862,Laura Sito,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3629287,Leonel Radde,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4230566,Luciana Genro,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4234073,Luciano Silveira,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537475,Luiz Marenco,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4571967,Marcus Vinícius,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4864735,Matheus Gomes,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4865294,Miguel Rossetto,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537599,"Neri, o Carteiro",Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537343,Paparico Bacchi,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4374460,Patrícia Alba,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,2774933,Pedro Pereira,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537521,Pepe Vargas,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4864212,Prof. Claudio Branchieri,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537440,Prof. Issur Koch,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4864271,Professor Bonatto,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4435001,Rafael Braga,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4243170,Rodrigo Lorenzoni,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3523608,Santini,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3470130,Silvana Covatti,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4537564,Sofia Cavedon,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,1442759,Stela Farias,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,3516806,Valdeci Oliveira,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,1,4231520,Vilmar Zanchin,Deputado Estadual,33006.27,0.0,0.0,0.0,0.0
+2025,2,3465357,Adolfo Brito,Deputado Estadual,34772.11,1241.86,0.0,0.0,0.0
+2025,2,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537521,Pepe Vargas,Presidente,34772.11,16144.19,0.0,0.0,0.0
+2025,2,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,2,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3524566,Cláudio Tatsch,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,3,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,2430754,Frederico Antunes,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,3,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,3,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,3,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,4,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,2679280,Tiago Simon,Deputado Estadual,25499.55,0.0,0.0,0.0,0.0
+2025,4,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,4,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,5,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,1442759,Stela Farias,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,5,3145085,Tiago Cadó,Deputado Estadual,30285.39,0.0,0.0,0.0,0.0
+2025,5,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,5,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,6,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,2679280,Tiago Simon,Deputado Estadual,31294.89,0.0,0.0,0.0,0.0
+2025,6,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,6,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,7,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,7,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3465357,Adolfo Brito,Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2025,8,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537599,"Neri, o Carteiro",Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2025,8,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,8,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,8,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3889130,Carlos Búrigo,Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2025,9,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2776332,Delegada Nadine,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,9,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,9,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,9,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537459,Airton Lima,Deputado Estadual,31407.07,0.0,0.0,0.0,0.0
+2025,10,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,10,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,2679280,Tiago Simon,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,10,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,10,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2774933,Pedro Pereira,Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2025,11,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,11,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4243170,Rodrigo Lorenzoni,Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2025,11,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,2679280,Tiago Simon,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,11,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,11,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4219740,Adriana Lara,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,12,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3889130,Carlos Búrigo,Deputado Estadual,31294.89,0.0,0.0,0.0,0.0
+2025,12,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4864735,Matheus Gomes,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2025,12,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2025,12,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537440,Prof. Issur Koch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2025,12,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2430754,Frederico Antunes,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,1,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537521,Pepe Vargas,Presidente,34772.11,17386.05,0.0,0.0,0.0
+2026,1,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537440,Prof. Issur Koch,EXONERADO,13460.17,0.0,0.0,0.0,0.0
+2026,1,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,1,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3617050,Dimas Costa,EXONERADO,2483.72,0.0,0.0,0.0,0.0
+2026,2,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537521,Pepe Vargas,Deputado Estadual,34772.11,1241.86,0.0,0.0,0.0
+2026,2,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,2679280,Tiago Simon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,2,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4552229,Airton Artus,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537459,Airton Lima,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3889130,Carlos Búrigo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3617050,Dimas Costa,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4435001,Rafael Braga,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,3145085,Tiago Cadó,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,2679280,Tiago Simon,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,3,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,3,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4552229,Airton Artus,EXONERADO,86.93,0.0,0.0,0.0,0.0
+2026,4,3465039,Aloísio Classmann,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,4,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3889130,Carlos Búrigo,EXONERADO,3.47,0.0,0.0,0.0,0.0
+2026,4,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4435001,Rafael Braga,EXONERADO,86.93,0.0,0.0,0.0,0.0
+2026,4,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3470059,Sossella,Deputado Estadual,33613.04,0.0,0.0,0.0,0.0
+2026,4,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,3145085,Tiago Cadó,EXONERADO,1159.07,0.0,0.0,0.0,0.0
+2026,4,2679280,Tiago Simon,EXONERADO,86.93,0.0,0.0,0.0,0.0
+2026,4,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,4,4231520,Vilmar Zanchin,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,5,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3531198,Ernani Polo,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,5,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3470059,Sossella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,5,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3465039,Aloísio Classmann,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,6,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537467,Gaúcho da Geral,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,6,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3470059,Sossella,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,6,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,6,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4864735,Matheus Gomes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4864271,Professor Bonatto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3470059,Sossella,Deputado Estadual,32453.96,0.0,0.0,0.0,0.0
+2026,7,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,7,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3465357,Adolfo Brito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4219740,Adriana Lara,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4864670,Adão Pretto Filho,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3465039,Aloísio Classmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4228880,Beto Fantinel,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4282434,Bruna Rodrigues,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4863704,Capitão Martim,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3524566,Cláudio Tatsch,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2593696,Costella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2776332,Delegada Nadine,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2430347,Delegado Zucco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537327,Dirceu Franciscon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2816784,Dr. Thiago Duarte,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4493354,Edivilson Brum,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4231678,Eduardo Loureiro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4443128,Eliana Bayer,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537360,Elizandro Sabino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4231660,Elton Weber,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3531198,Ernani Polo,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4863470,Felipe Camozzato,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2430754,Frederico Antunes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537467,Gaúcho da Geral,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3467163,Gerson Burmann,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3098419,Guilherme Pasin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4863518,Gustavo Victorino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,5041899,Halley Lino,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3506320,Jeferson Fernandes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4864298,Joel Wilhelm,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4863496,Kaká dÁvila,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3795748,Kelly Moraes,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3543862,Laura Sito,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3629287,Leonel Radde,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4230566,Luciana Genro,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4234073,Luciano Silveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537475,Luiz Marenco,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4571967,Marcus Vinícius,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4864735,Matheus Gomes,Deputado Estadual,33613.03,0.0,0.0,0.0,0.0
+2026,8,4865294,Miguel Rossetto,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537599,"Neri, o Carteiro",Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537343,Paparico Bacchi,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4374460,Patrícia Alba,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,2774933,Pedro Pereira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537521,Pepe Vargas,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4864212,Prof. Claudio Branchieri,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4864271,Professor Bonatto,Deputado Estadual,5608.4,0.0,0.0,0.0,0.0
+2026,8,4243170,Rodrigo Lorenzoni,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3523608,Santini,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3470130,Silvana Covatti,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4537564,Sofia Cavedon,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3470059,Sossella,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,1442759,Stela Farias,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,3516806,Valdeci Oliveira,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,4231520,Vilmar Zanchin,Deputado Estadual,34772.11,0.0,0.0,0.0,0.0
+2026,8,321982,Zilá Breitenbach,Deputado Estadual,29163.71,0.0,0.0,0.0,0.0

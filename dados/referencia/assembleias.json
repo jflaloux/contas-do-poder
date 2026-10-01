@@ -567,19 +567,30 @@
   "RS": {
    "site": "https://www.al.rs.gov.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "mensal (total por rubrica)",
+    "formato": "HTML e JSON (o que a página usa)",
+    "url": "https://transparencia.al.rs.gov.br/parlamentares/gastos",
+    "desde": "2011"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true,
+    "formato": "busca pelo nome completo exato e JSON do mês (/ajax-remuneracaoModal)",
+    "url": "https://transparencia.al.rs.gov.br/pessoal/remuneracao-servidores-parlamentares"
    },
    "equipe": {
-    "publica": null
+    "publica": false,
+    "formato": "só a estrutura de cargos do gabinete (igual para todos)",
+    "url": "https://transparencia.al.rs.gov.br/parlamentares/cargos-gabinete"
    },
    "subsidio": {
-    "valor": null
+    "valor": 34772.11,
+    "desde": "2025-02",
+    "ato": null,
+    "fonte": "folha da ALRS (remuneração bruta de deputado)"
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil.",
+   "barreiras": "O portal só abre de dentro do Brasil (o robô roda no Mac). A busca da folha pede o nome completo exato, sem acento.",
+   "observacoes": "Robô pronto (coleta/assembleias/rs.py), desde jan/2025. A lista de gabinetes da cota não tem todos: dez eleitos nunca aparecem nela em 2025-2026 e são achados na folha pelo nome do TSE. Mainardi, Sérgio Peres e Zé Nunes não aparecem na busca da folha (os dois últimos ficam com o subsídio da lei).",
    "abriu_de_fora": false
   },
   "SC": {
