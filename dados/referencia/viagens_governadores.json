@@ -1,0 +1,789 @@
+{
+ "_sobre": "Levantamento das viagens a serviço (diárias e passagens) do governador e do vice nos 27 estados: se o portal publica, com o nome, por viagem ou por mês, desde quando, em que formato, com que barreira e como um robô leria. Também o que se publica sobre a aeronave do Estado e sobre cartão corporativo ou suprimento de fundos. Nenhum custo foi estimado. Feito do Brasil (Mac) e de um servidor nos EUA, sem contornar CAPTCHA, login ou consulta por CPF.",
+ "conferido_em": "2026-10-01",
+ "estados": [
+  {
+   "uf": "AC",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (por empenho, com o histórico: destino, datas e motivo)",
+    "desde": "1996-01",
+    "formato": "HTML com JSON por trás (DataTables, POST com token CSRF da própria página); botões de PDF/CSV/JSON na página",
+    "url": "https://transparencia.ac.gov.br/diarias",
+    "exemplo": "Nenhuma diária paga em nome de Gladson Cameli (2024, 2025) nem de Mailza Assis (2025, 2026): a busca pelo nome só traz servidores da comitiva cujo histórico cita o governador ou a vice (ex.: Casa Civil, 08/05/2025, R$ 6.218,00 a uma diretora, 'assessorando o governador Gladson Cameli' em Brasília, 06 a 11/04/2025). Existe a entidade 'GABINETE DA VICE GOVERNADORA'."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "empenho (favorecido é a agência ou o táxi aéreo)",
+    "desde": "1996-01",
+    "formato": "HTML/JSON (Despesas, filtro por elemento 33 - Passagens e Despesas com Locomoção)",
+    "url": "https://transparencia.ac.gov.br/despesas",
+    "exemplo": "Sem nome do passageiro. Em 2025, Casa Civil: empenhos a agência de viagens (Valora Agência de Viagens) e a táxis aéreos; o Gabinete da Vice-Governadora tem 2 empenhos à mesma agência (R$ 250.000,00 empenhados)."
+   },
+   "aeronave": "Não há registro de voos. Aparecem empenhos de fretamento de aeronave pela Casa Civil (Ortiz Táxi Aéreo, contratos 34/2023 e 49/2025, 'para atender demandas do Gabinete do Governador'; Rio Branco Aerotáxi, King Air), por empenho, sem trecho nem passageiro.",
+   "cartao": "Não localizado (o portal não tem seção de suprimento de fundos ou cartão corporativo na lista de rotas).",
+   "barreiras": "Nenhuma: token CSRF entregue pela própria página (meta csrf-token) e cookie de sessão.",
+   "exterior": true,
+   "robots": "User-agent: * / Disallow: (vazio): tudo permitido.",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://transparencia.ac.gov.br/diarias (pega o meta csrf-token e o cookie); POST /diarias/listar com cabeçalhos X-CSRF-TOKEN e X-Requested-With e formulário draw=1, start, length, ano=AAAA, orgao=0, busca=<nome>, filtro=0, periodo=0 (os demais vazios). Resposta JSON: razaosocial (favorecido), entidade, historico, dataempenho, empenhado/liquidado/pago. A busca casa também o histórico: filtrar razaosocial pelo nome. Passagens: POST /despesas/listar com filtro=elemento_despesa, elemento_despesa=33.",
+   "obs": "A resposta traz cpfcnpjcredor mascarado (***.xxx.xxx-**): não guardar. A busca por nome devolve diárias de comitiva que citam o governador no histórico, úteis só como contexto."
+  },
+  {
+   "uf": "AL",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "total por favorecido, por unidade gestora e pelo período pedido (datas inicial e final livres; dá para pedir mês a mês); sem destino nem motivo",
+    "desde": "2015-01",
+    "formato": "API JSON pública documentada",
+    "url": "https://transparencia.al.gov.br/portal/api/despesas/despesas-por-diarias/lista-de-favorecidos",
+    "exemplo": "Nenhuma diária em nome de Paulo Dantas (UG 110006 Gabinete Civil) nem de Ronaldo Lessa (UG 210013 Gabinete do Vice-Governador) em 2023, 2024, 2025 e 2026 (filtro nome_favorecido; o mesmo filtro achou outros servidores). Em 2025 o Gabinete Civil pagou R$ 276.664,26 em diárias a 83 favorecidos e o Gabinete do Vice R$ 62.980,38 a 22."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "total por favorecido (agência) e unidade gestora",
+    "desde": "2015-01",
+    "formato": "API JSON (Despesas por Favorecido / subelementos)",
+    "url": "https://transparencia.al.gov.br/portal/api/despesas/despesas-por-favorecido/lista-de-favorecidos",
+    "exemplo": "Sem nome do passageiro: o favorecido da despesa de passagem é a agência."
+   },
+   "aeronave": "Não há registro de voos. Existe a unidade gestora 'DEPARTAMENTO ESTADUAL DE AVIAÇÃO' (aparece na lista de diárias de 2025).",
+   "cartao": null,
+   "barreiras": "Nenhuma (pede só o cabeçalho X-Requested-With: XMLHttpRequest).",
+   "exterior": false,
+   "robots": "Não há robots.txt (404).",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://transparencia.al.gov.br/despesa/json-despesa-diarias-ug/<id_ug>/?data_registro_dti_=01/MM/AAAA&data_registro_dtf_=DD/MM/AAAA&limit=50&offset=0&nome_favorecido=<nome> com X-Requested-With: XMLHttpRequest. UGs: /despesa/json-despesa-diarias/ (110006 Gabinete Civil, 210013 Gabinete do Vice-Governador). Detalhe por subelemento: /despesa/json-despesa-diarias-favorecido/<ug>/<id_favorecido>/.",
+   "obs": "O campo codigo_favorecido traz 11 dígitos sem máscara (o CPF do favorecido, segundo a própria documentação): o robô não pode guardar esse campo. Só abre de dentro do Brasil (do exterior a conexão TLS é cortada)."
+  },
+  {
+   "uf": "AM",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (solicitação no SCDP: interessado, cargo, destino, ida e volta, objetivo, quantidade e valor)",
+    "desde": "2014-01",
+    "formato": "JSON (serviço SCDP usado pela página)",
+    "url": "https://www.transparencia.am.gov.br/diarias-e-passagens/",
+    "exemplo": "Wilson Lima (cargo 'GOVERNADOR DE ESTADO', Casa Civil): R$ 2.271,33 (1 diária, Brasília, 20/03/2025, 'reunião com representante do BID'); R$ 4.542,66 (2 diárias, Brasília, 11 a 12/03/2025). Serafim Corrêa (cargo 'VICE-GOVERNADOR'): solicitações para Brasília em 13/07/2026 e 28/07/2026 com valor 0. Roberto Cidade: nenhum registro na Casa Civil nos meses de 2026 consultados (05 a 08)."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "bilhete (trecho, meio de transporte, agência, datas, valor da passagem, taxas, descontos e crédito)",
+    "desde": "2014-01",
+    "formato": "JSON (serviço SCDP)",
+    "url": "https://www.transparencia.am.gov.br/diarias-e-passagens/",
+    "exemplo": "Tadeu de Souza Silva (vice): Manaus-Brasília 26/03/2025, R$ 2.820,89 (Viana Turismo); Brasília-Manaus 28/03/2025, R$ 2.670,77; Manaus-Guarulhos 02/04/2025, R$ 1.642,94. Wilson Lima: trechos Manaus-Brasília em 11/03/2025 e 20/03/2025 com agência '----' e valor 0."
+   },
+   "aeronave": "Não há registro de voos. Nas passagens, os trechos do governador aparecem com agência '----' e valor 0; em passagens da Casa Militar o campo pago_terceiros traz 'CASA MILITAR'. O portal não diz qual foi o meio além de 'AVIÃO'.",
+   "cartao": null,
+   "barreiras": "Nenhuma (JSON aberto, sem token).",
+   "exterior": false,
+   "robots": "Só proíbe /wp-admin/; /servicos/scdp/ permitido.",
+   "robo_possivel": "sim",
+   "como_ler": "GET https://www.transparencia.am.gov.br/servicos/scdp/{diarias|passagens}/{id_orgao}/{ano}/{mes} (Accept: application/json), opcional ?interessado=<nome>. Órgãos: 75 Casa Civil (governador e vice), 154 Casa Militar, 77 SGVG, 170 SEGOV. Filtrar pelo campo interessado ou pelo cargo ('GOVERNADOR DE ESTADO', 'VICE-GOVERNADOR'). O ranking (/servicos/scdp/ranking/...) só dá totais por órgão.",
+   "obs": "Melhor fonte da parte 1: por viagem, com nome, cargo e valor. Sem CPF na resposta. Só abre de dentro do Brasil. Há solicitações com valor 0 (diária ou passagem sem custo registrado)."
+  },
+  {
+   "uf": "AP",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "consulta por mês (nome do favorecido); os arquivos estáticos só têm totais anuais por natureza de despesa",
+    "desde": "2004-01",
+    "formato": "HTML com reCAPTCHA; arquivos CSV/PDF/XLSX anuais no SIGDocs (totais, sem nome)",
+    "url": "https://transparencia.ap.gov.br/consulta/2/491/despesa/diaria-civil-militar",
+    "exemplo": "Não testado para o governador: a consulta com nome exige resolver um reCAPTCHA. Os arquivos estáticos (2020-2023) têm só dotação, empenhado, liquidado e pago por natureza."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "bilhete (beneficiário, órgão, cargo, valor, tipo de trecho, objetivo, origem, destino e datas)",
+    "desde": "2023-01",
+    "formato": "HTML (busca com token CSRF) e download completo em JSON/CSV/XLSX",
+    "url": "https://epassagem.ap.gov.br/consulta",
+    "exemplo": "Clécio Luís Vilhena Vieira (Casa Civil, 'GOVERNADOR DO ESTADO DO AMAPÁ'): R$ 16.159,88 só ida (04/05/2025) e R$ 16.683,49 só volta (07/05/2025), 'Offshore Technology Conference - OTC 2025', Houston (EUA); R$ 1.091,32 Macapá-Brasília 25/03/2025. Antônio Pinheiro Teles Júnior (vice): R$ 8.785,58 Macapá-Brasília 20 a 21/02/2024 (posse da diretoria da Atricon); R$ 6.349,37 Macapá-Brasília 19/09/2024 (GABGOV)."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Diárias com nome: reCAPTCHA (sitekey ativa) na consulta, não contornar. ePassagem: a página carrega o script do reCAPTCHA, mas o elemento está com sitekey vazia e a busca funciona só com o token CSRF do formulário. O certificado de transparencia.ap.gov.br vem sem o intermediário (Sectigo Public Server Authentication CA DV R36): completar pela AIA junto com o certifi.",
+   "exterior": false,
+   "robots": "robots.txt responde 403 nos dois endereços (transparencia.ap.gov.br e epassagem.ap.gov.br): pela regra do projeto (4xx), tratado como sem robots.txt.",
+   "robo_possivel": "parcial",
+   "como_ler": "Passagens: GET https://epassagem.ap.gov.br/consulta (pega _token e cookie); POST /consulta com _token, filter=beneficiario, search=<nome> (ex.: 'CLÉCIO', 'PINHEIRO TELES'); ler a tabela HTML. Alternativa: GET /api/passagens_json (arquivo completo; no teste o pedido passou de 2 minutos sem resposta). Diárias: sem caminho automático (reCAPTCHA).",
+   "obs": "Na ePassagem, pacientes do TFD aparecem com CPF mascarado no lugar do nome: não guardar. A busca por 'CLECIO' sem acento não acha; com acento ('CLÉCIO') acha. Só abre de dentro do Brasil."
+  },
+  {
+   "uf": "BA",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (destino município/UF, motivo, datas de início e fim, quantidade, valor pago e data do pagamento)",
+    "desde": "2023-06",
+    "formato": "Painel Power BI (chave anônima entregue pela página)",
+    "url": "https://www.transparencia.ba.gov.br/ServidorPessoal/PainelDiarias",
+    "exemplo": "Cargo 'Vice Governador' (Geraldo Júnior): 18 pagamentos entre 01/2026 e 07/2026, ex.: Irecê/BA 30/04 a 10/05/2026, 6,5 diárias, R$ 2.433,73 (pago 21/05/2026); Ilhéus/BA 21 a 25/01/2026, R$ 1.497,68. O cargo 'Governador' não aparece na tabela de diárias (aparecem 'Ajudante de Ordens Governador' e 'Assessor de Imprensa do Governador')."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado painel ou consulta de passagens no portal."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma: a página entrega a chave anônima do Power BI (como no robô da folha, powerbi.py).",
+   "exterior": true,
+   "robots": "Não há robots.txt (404).",
+   "robo_possivel": "sim",
+   "como_ler": "Mesmo caminho de coleta/folhas_estaduais/powerbi.py: na página PainelDiarias, accessToken e embedReportId; modelo via modelsAndExploration; consulta (explore/querydata) às tabelas vw_pagamento_diaria (nom_cargo_servidor, Data de Início/Término da Diária, nom_municipio_destino, sig_unidade_federacao_destino, des_motivo_viagem, qtd_diaria) e pag_not_ord_banc (Data do Pagamento, SglOrgaoOrcamento, soma de val_pagto_nob), com filtro nom_cargo_servidor In ['Vice Governador'] (e 'Governador', se surgir).",
+   "obs": "O modelo tem nom_recebedor e colunas de CPF; não foram pedidas (o filtro pelo cargo basta, e não ficou confirmado que o painel mostra o nome completo). A maior 'Data de Início da Diária' no modelo é 26/08/2924 (erro de digitação na fonte)."
+  },
+  {
+   "uf": "CE",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "mês (valor total de diárias do servidor, coluna da folha mensal)",
+    "desde": null,
+    "formato": "CSV mensal da folha (sem cabeçalho)",
+    "url": "https://cearatransparente.ce.gov.br/portal-da-transparencia/servidores",
+    "exemplo": "Jade Romero: R$ 206,86 em 2026-06 (cargo VICEGOV); R$ 1.432,92 em 2025-08 como Secretária da Proteção Social. Elmano de Freitas: 0,00 em 2025-08 e 2026-06."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado (a página de despesas que poderia ter passagens é proibida no robots.txt)."
+   },
+   "aeronave": null,
+   "cartao": "Há a seção 'Suprimentos de Fundos' (/portal-da-transparencia/despesas/suprimentos-de-fundos/), proibida no robots.txt; não lida.",
+   "barreiras": "A página de diárias e a de suprimentos de fundos são proibidas no robots.txt. A página de dados abertos (/portal-da-transparencia/dados-abertos/conjuntos-de-dados) respondeu com um desafio em JavaScript (bloqueio de robôs), não contornado.",
+   "exterior": false,
+   "robots": "Disallow: /*?*, /portal-da-transparencia/despesas/diarias/, /portal-da-transparencia/despesas/suprimentos-de-fundos/, /portal-da-transparencia/servidores/ e outras; os arquivos em /files/downloads/ não são proibidos.",
+   "robo_possivel": "parcial",
+   "como_ler": "O CSV da folha que o robô ce.py já lê: https://cearatransparente.ce.gov.br/files/downloads/integration/servers/server_salaries/{AAAAMM}/servidores_{AAAAMM}.csv, coluna 'diarias' (a 10ª, ver ce.COLUNAS). Dá o total do mês, sem viagem nem destino.",
+   "obs": "O detalhe por viagem fica na consulta de diárias, que o robots.txt proíbe; só com a exceção da LAI (regra do CLAUDE.md) ou pedido de acesso. Só abre de dentro do Brasil (do exterior até o robots.txt responde 403)."
+  },
+  {
+   "uf": "DF",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "processo (favorecido, UG, número do processo, subitem e valores empenhado, liquidado e pago no ano); sem destino nem datas (há detalhe por nota de empenho e ordem bancária)",
+    "desde": "2009-01",
+    "formato": "API JSON do portal (e exportação CSV)",
+    "url": "https://www.transparencia.df.gov.br/#/despesas/diarias-passagens-locomocao",
+    "exemplo": "Celina Leão Hizim Ferreira: 2025, Gabinete do Vice-Governador, diárias no país, R$ 4.396,79 e R$ 1.954,12 pagos; 2026, Casa Civil, R$ 459,44 e R$ 459,44. Ibaneis Rocha: nenhum registro em 2024 e 2026 (busca 'IBANEIS')."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "processo (favorecido é a agência)",
+    "desde": "2009-01",
+    "formato": "API JSON (mesma consulta, subitem de passagens)",
+    "url": "https://www.transparencia.df.gov.br/#/despesas/diarias-passagens-locomocao",
+    "exemplo": "Sem nome do passageiro. 2025: Casa Civil pagou R$ 589.598,45 à R Moraes Agência de Turismo; Gabinete do Vice-Governador, R$ 116.394,11 à Amazon Explorers Manaus (subitem passagens para o país)."
+   },
+   "aeronave": null,
+   "cartao": "Existe a seção Suprimento de Fundos (#/despesas/suprimento); não testada para o governador.",
+   "barreiras": "A API pede um cabeçalho x-client-id com um identificador qualquer, que o site gera a cada visita (o robô df.py já manda um fixo).",
+   "exterior": true,
+   "robots": "Sem robots.txt (o endereço devolve a página do aplicativo).",
+   "robo_possivel": "sim",
+   "como_ler": "GET https://www.transparencia.df.gov.br/api/despesa/diarias-passagens?anoExercicio=AAAA&favorecido=<nome>&page=0&size=30 (ou listaCodigoUnidadeGestora=100101 Gabinete do Vice-Governador, 90101 Casa Civil) com x-client-id. Anos: /api/despesa/diarias-passagens/anos. Campos: favorecido, unidadeGestora, elemento, subItem, numeroProcesso, valorNeFinal, valorNlBruto, valorObFinal.",
+   "obs": "A resposta traz codigoCredor com 11 dígitos sem máscara (CPF) além de codigoCredorMascarado: o robô não pode guardar nenhum dos dois."
+  },
+  {
+   "uf": "ES",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "documento (empenho, liquidação e pagamento), com histórico que traz destino, período e motivo; cargo do favorecido (CargoFuncaoDiaria)",
+    "desde": "2009-01",
+    "formato": "CSV anual nos dados abertos (CKAN), ~250 MB por ano",
+    "url": "https://dados.es.gov.br/dataset/portal-da-transparencia-pessoal-diarias",
+    "exemplo": "Ricardo Rezende Ferraço (cargo 'VICE-GOVERNADOR DO ESTADO'), Secretaria da Casa Militar: pagamento de R$ 26.684,99 em 19/02/2025 (OB), '10 diárias + 40% + 20% de transporte', viagem ao Vietnã de 04 a 14/03/2025. Nenhum registro em nome de José Renato Casagrande em 2025, nem dos dois em 2026 (até a última atualização)."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado conjunto de passagens nos dados abertos da SECONT; o portal da transparência proíbe robôs."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma nos dados abertos. Arquivos grandes (2025: 374 mil linhas, 2026: 257 MB).",
+   "exterior": true,
+   "robots": "transparencia.es.gov.br: Disallow: / (tudo proibido). dados.es.gov.br: proíbe /api/, /dataset? e /datastore/dump/, Crawl-Delay 10; páginas de conjunto e downloads permitidos.",
+   "robo_possivel": "sim",
+   "como_ler": "Achar os arquivos pela página do conjunto (util.recursos_ckan): Diarias-AAAA.csv (sep ';', UTF-8 com BOM). Ler em fluxo (comum.linhas_csv) e filtrar pela coluna CargoFuncaoDiaria contendo 'GOVERNADOR DO ESTADO' ou pelo Favorecido; somar ValorPago dos documentos OB.",
+   "obs": "CpfCnpjNis vem mascarado: não guardar. As colunas QuantidadeDiarias, LocalDestino, DataInicioAfastamento e MotivoAfastamento estavam vazias nas linhas lidas (as 20 mil primeiras de 2025 e as do vice); destino e período só no texto do histórico. O nome do vice aparece como 'RICARDO REZENDE FERRACO' (sem o 'DE')."
+  },
+  {
+   "uf": "GO",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (nome, cargo, órgão, destino, saída, retorno, motivo, quantidade e valor)",
+    "desde": "2011-01",
+    "formato": "CSV mensal (2026) e ZIP anual (2011-2025) nos dados abertos (CKAN)",
+    "url": "https://dadosabertos.go.gov.br/dataset/diarias",
+    "exemplo": "Nenhuma diária em nome de Ronaldo Caiado ou Daniel Vilela em 2025 (120.898 linhas) nem em 03/2026. Aparecem servidores da segurança e da comunicação 'do governador' (ex.: SECAMI, Brasília 18 a 19/03/2026, R$ 225,00, 'segurança do governador Ronaldo Caiado'; VICEGOV, Uruaçu 10 a 11/03/2026, R$ 345,00)."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado conjunto de passagens nos dados abertos nem seção no portal."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma nos dados abertos.",
+   "exterior": true,
+   "robots": "dadosabertos.go.gov.br: proíbe /api/, Crawl-Delay 10. transparencia.go.gov.br: o painel de diárias (/wp-content/uploads/sites/2/painel/diarias.php) fica em caminho proibido.",
+   "robo_possivel": "parcial",
+   "como_ler": "Página do conjunto https://dadosabertos.go.gov.br/dataset/diarias -> diarias_AAAAMM.csv (sep ';', UTF-8 com BOM; colunas NUMR_MES, NUMR_ANO, NOME_CARGO_SERVIDOR, NOME_SERVIDOR, DESC_DESTINO_VIAGEM, SIGL_ORGAO_SERVIDOR, DATA_SAIDA_VIAGEM, DATA_RETORNO_VIAGEM, DESC_MOTIVO_VIAGEM, QTDE_DIARIAS, VALR_TOTAL_VIAGEM). Filtrar por NOME_SERVIDOR.",
+   "obs": "Sem CPF no arquivo. Fonte boa, mas governador e vice não aparecem como beneficiários; daria para mostrar as diárias da comitiva (texto do motivo cita o governador), com cuidado."
+  },
+  {
+   "uf": "MA",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "total por credor no período (ano ou mês), por unidade gestora; detalhe até a nota de empenho",
+    "desde": null,
+    "formato": "HTML paginado e exportação CSV/XLSX/PDF",
+    "url": "https://www.transparencia.ma.gov.br/app/v2/pessoal",
+    "exemplo": "2025, todas as UGs: Carlos Orleans Brandão Junior R$ 100.217,12 em diárias (pago); Felipe Costa Camarão R$ 36.380,00 (Casa Civil, UG 110109)."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": false,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizada consulta de passagens por pessoa; a seção 'Pessoal e Diárias' só tem pessoal e diárias."
+   },
+   "aeronave": null,
+   "cartao": "Existe a seção 'Adiantamentos' (/app/v2/adiantamentos); não testada.",
+   "barreiras": "Nenhuma de dentro do Brasil. Do exterior a página responde 'Acesso bloqueado'.",
+   "exterior": false,
+   "robots": "User-agent: * / Disallow: (vazio): tudo permitido.",
+   "robo_possivel": "sim",
+   "como_ler": "GET https://www.transparencia.ma.gov.br/app/v2/pessoal/exportar/page/pessoal?tipo=csv&detalhe=false&opt_periodo=ano&ano=AAAA&filtros_pagos_n=selecao_pagos&tipodespesa=diaria&ug=all&visualizacao=credor (CSV: Código, Descrição, Empenhado, Liquidado, Pago). Por UG: ug=110109 e detalhe=true. Filtrar a coluna Descrição pelo nome.",
+   "obs": "A coluna 'Código' traz os dígitos do CPF com zeros à esquerda (14 caracteres), sem máscara: o robô não pode guardar. Não ficou identificada a UG das diárias do governador (a lista de todas as UGs não mostra a UG); o detalhe por credor usa esse código."
+  },
+  {
+   "uf": "MG",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "trecho de viagem (origem, destino, meio de transporte, motivo, datas, quantidade e valor da diária)",
+    "desde": "2019-01",
+    "formato": "CSV.gz nos dados abertos (CKAN), modelo estrela (fato + dimensões)",
+    "url": "https://dados.mg.gov.br/dataset/viagens",
+    "exemplo": "Mateus Simões de Almeida: trecho em 10/08/2026, diária de R$ 269,50; em 2026 (01 a 08) a soma de vr_diaria dos 285 trechos dele é R$ 52.055,62. Romeu Zema Neto, 2025: 367 trechos, soma de vr_diaria R$ 33.035,80."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "trecho (valor da passagem no mesmo arquivo)",
+    "desde": "2019-01",
+    "formato": "CSV.gz (mesmo arquivo, coluna vr_passagem)",
+    "url": "https://dados.mg.gov.br/dataset/viagens",
+    "exemplo": "Romeu Zema Neto, 2025: soma de vr_passagem R$ 148.366,48; Mateus Simões, 2025: R$ 180.327,94 (somas dos trechos do arquivo, a conferir)."
+   },
+   "aeronave": "Não há registro de voos da aeronave oficial. Nos trechos, meio de transporte 1 = 'AEREO' (vários trechos do governador sem valor de passagem) e 7 = 'VEICULO OFICIAL'.",
+   "cartao": null,
+   "barreiras": "Nos dados abertos, nenhuma. O portal novo (transparencia.mg.gov.br) usa um gateway com OAuth cuja chave está no código JavaScript: não usar.",
+   "exterior": true,
+   "robots": "dados.mg.gov.br: proíbe /api/, Crawl-Delay 10. transparencia.mg.gov.br: sem robots.txt.",
+   "robo_possivel": "sim",
+   "como_ler": "Pela página do conjunto 'viagens': dm_favorecido_scdp.csv.gz (id_favorecido, nome_anonimizado, masp; achar o id pelo nome) e ft_diarias_scdp.csv.gz (~42 MB, 2,9 milhões de trechos; filtrar id_favorecido; colunas id_cargo, id_orgao, id_cidade_origem/destino, id_meio_transporte, id_motivo, dt_inicio_trecho, dt_fim_trecho, qt_diaria, vr_diaria, vr_passagem, id_documento_viagem). Dimensões dm_cidade, dm_motivo_viagem, dm_meio_transporte, dm_cargo_scdp. Há também o conjunto 'diarias' (empenhos, ft_diarias_AAAA, 2002-2025).",
+   "obs": "Zema: id_favorecido 200786; Simões: 215284. dm_favorecido_scdp traz CPF mascarado, mas alguns registros têm o CPF inteiro escrito no campo do nome (no formato 'NOME - ' seguido do CPF com pontos e traço): o robô deve guardar só o nome e limpar esse sufixo. Conferir se somar vr_diaria por trecho não conta a mesma diária duas vezes."
+  },
+  {
+   "uf": "MS",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (diária por beneficiário: órgão, cargo, processo, ordem bancária; trechos no detalhe)",
+    "desde": "2012-01",
+    "formato": "API JSON (gateway gw.sgi.ms.gov.br, chave anônima de /Auth/Token)",
+    "url": "https://www.transparencia.ms.gov.br/",
+    "exemplo": "Nenhum registro para Eduardo Correa Riedel nem José Carlos Barbosa em 2025 e 2026 (a API responde 404 'Não encontrado beneficiários'; a mesma busca acha outros nomes)."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "requisição (beneficiário, cargo, motivo, processo, nota de empenho; trechos no detalhe)",
+    "desde": "2012-01",
+    "formato": "API JSON (d0129/transppassagens; a versão nova d0259/sgpar-consulta-passagens não respondeu em 60 s)",
+    "url": "https://www.transparencia.ms.gov.br/",
+    "exemplo": "Nenhum registro para Riedel nem Barbosinha em 2025 e 2026 na API d0129."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma: chave anônima entregue a qualquer visitante (GET /Auth/Token depois de abrir a página inicial, com o cookie).",
+   "exterior": true,
+   "robots": "User-Agent: * / Disallow: (vazio): tudo permitido.",
+   "robo_possivel": "parcial",
+   "como_ler": "Token: GET https://www.transparencia.ms.gov.br/ e depois /Auth/Token. Diárias: GET https://gw.sgi.ms.gov.br/d0128/transpdiarias/v1/beneficiarios?anoconsulta=AAAA&mesconsulta=&orgao=&cpf=&nome=<nome>&localidadeorigem=&localidadedestino=&pageno=1&pagesize=50&exportarcsv=false (Authorization: Bearer <token>); trechos: /trechosbeneficiario?exercicio=&idDiaria=&tipoDiaria=. Passagens: /d0129/transppassagens/v1/beneficiarios (mesmos parâmetros) e /trechosbeneficiario.",
+   "obs": "A resposta tem um campo 'cpf' (não guardar; não conferido se vem mascarado). Governador e vice não aparecem como beneficiários."
+  },
+  {
+   "uf": "MT",
+   "diarias": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado: o portal principal proíbe robôs e não foi achada consulta de diárias no endereço das consultas."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "www.transparencia.mt.gov.br proíbe robôs no robots.txt. As consultas (consultas.transparencia.mt.gov.br) usam reCAPTCHA v3 (ex.: servidores ativos). Do exterior, o firewall responde 'Request Rejected'.",
+   "exterior": false,
+   "robots": "www.transparencia.mt.gov.br: User-agent: * / Disallow: / (Crawl-delay 30; Googlebot e Bingbot liberados). consultas.transparencia.mt.gov.br: sem robots.txt.",
+   "robo_possivel": "não",
+   "como_ler": "Sem caminho automático identificado. Caminhos testados em consultas.transparencia.mt.gov.br (despesa/diarias, pessoal/diarias, diarias, despesas/diarias e variantes) deram 404. dados.mt.gov.br não tem busca de conjuntos.",
+   "obs": "Caberia pedido pela LAI ou a exceção do robots.txt (regra do CLAUDE.md) depois de achar a página de diárias à mão."
+  },
+  {
+   "uf": "PA",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "pagamento (beneficiário, cargo, órgão, data da diária, valor, nota de empenho e ordem bancária); sem destino",
+    "desde": "2016-01",
+    "formato": "API JSON do portal",
+    "url": "https://www.sistemas.pa.gov.br/portaltransparencia/despesas-diarias/publicas",
+    "exemplo": "Nenhum registro em nome de Helder Zahluth Barbalho. Hana Ghassan Tuma: 29 registros de 2019 a 2022, como auditora fiscal e conselheira (SEPLAN/SEPLAD), nenhum a partir de 2023 (como vice ou governadora)."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": null,
+    "url": null,
+    "exemplo": "Não localizado módulo de passagens no portal (o código do portal só tem diárias)."
+   },
+   "aeronave": null,
+   "cartao": "Existe o módulo Suprimento de Fundos (API api-suprimento-fundos.sistemas.pa.gov.br); não testado.",
+   "barreiras": "A busca por nome é aberta. As exportações (/exportar) pedem o cabeçalho g-recaptcha-response: não usar. www.transparencia.pa.gov.br está com o certificado TLS vencido.",
+   "exterior": false,
+   "robots": "api-despesas-diarias.sistemas.pa.gov.br: sem robots.txt (404).",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://api-despesas-diarias.sistemas.pa.gov.br/dados-diarios/funcionario-texto?periodo01=AAAA-MM-DD&periodo02=AAAA-MM-DD&texto=<nome>&quantidade=200&pagina=1 (cabeçalho Origin: https://www.sistemas.pa.gov.br). Meses disponíveis: /dados-diarios/ano-mes. Filtrar por beneficiario e pelo ano de dt_diaria.",
+   "obs": "No teste, periodo01/periodo02 não filtraram (vieram registros de 2012 a 2023 para o mesmo nome): filtrar a data no robô. Os valores vêm como inteiros (ex.: 3442); conferir se são reais ou centavos antes de publicar. Sem CPF nesse endpoint."
+  },
+  {
+   "uf": "PB",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem",
+    "desde": "2021-01",
+    "formato": "API REST JSON (api.dados.pb.gov.br, documentação Swagger); ano e mês obrigatórios, filtro por nome do credor",
+    "url": "https://api.dados.pb.gov.br/swagger/",
+    "exemplo": "JOAO AZEVEDO LINS FILHO (Casa Civil do Governador): Brasília, 26 a 27/06/2025, 1,5 diária, R$ 2.360,14 empenhados e pagos (empenho de jun/2025); Brasília, 05 a 06/11/2025, R$ 2.360,14. LUCAS RIBEIRO NOVAIS DE ARAUJO (Casa Civil do Governador), mai/2026: São Paulo 15 a 16/05 (R$ 1.573,43), Brasília 18 a 20/05 (R$ 3.146,86) e Brasília 26 a 27/05 (R$ 1.573,43). Como vice, nenhum registro em mar/2025."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "empenho",
+    "desde": "2021-01",
+    "formato": "API REST JSON (/api/v1/despesas/passagens_locomocao), filtro por ano, mês, órgão e credor",
+    "url": "https://api.dados.pb.gov.br/swagger/#/despesas/get_lista_passagens_locomocao",
+    "exemplo": "Mai/2026: 'Encargos Gerais do Estado - SEAD' empenha à Norte Turismo (contrato 189/25) R$ 1.200.000,00, R$ 200.000,00 e R$ 150.000,00 para passagens aéreas do mês, sem nome de passageiro. Só empenhos do Ministério Público e de outros órgãos citam o passageiro no histórico."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma (sem login nem CAPTCHA). A resposta traz o campo cpfCnpjCredor, que não deve ser guardado.",
+   "exterior": null,
+   "robots": "api.dados.pb.gov.br não tem regras no robots.txt. O CKAN dados.pb.gov.br proíbe /api/, mas a API fica em outro endereço.",
+   "robo_possivel": "sim",
+   "como_ler": "GET https://api.dados.pb.gov.br/api/v1/remuneracao/diarias?ano=AAAA&mes=M&nomeCredor=JOAO%20AZEVEDO%20LINS&per_page=100 (e LUCAS RIBEIRO NOVAIS); ficar com nomeOrgao 'CASA CIVIL DO GOVERNADOR'; campos dataSaida, dataChegada, destinoViagem, descricaoEmpenho, valorEmpenhado, valorPago. Ignorar cpfCnpjCredor.",
+   "obs": "Governador e vice recebem diárias pela Casa Civil do Governador. O mês é o do empenho (há viagem de julho empenhada em junho) e alguns empenhos recentes têm valorPago 0. Dos EUA, a documentação abriu e a consulta de diárias teve a conexão reiniciada (duas tentativas)."
+  },
+  {
+   "uf": "PE",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "pagamento (ordem bancária)",
+    "desde": "2008-01",
+    "formato": "CSV e JSON anuais no CKAN (dados.pe.gov.br); o de 2026 tem 92 MB. Painel de diárias em aplicação Dash (só com navegador).",
+    "url": "https://dados.pe.gov.br/dataset/all-diarias",
+    "exemplo": "No arquivo de 2026 (atualizado em 01/10/2026, 249 mil linhas) nenhum pagamento tem a governadora Raquel Lyra ou a vice Priscila Krause como credora. Aparecem diárias de quem as acompanha: Casa Militar, 18/08/2026, R$ 227,12, 'missão institucional com a vice-governadora Priscila Krause Branco' em Serrita; Secretaria de Mobilidade, 26/02/2026, R$ 617,66, viagem a Brasília 'acompanhando a Governadora'."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Não achamos página nem conjunto de dados de passagens; a seção Diárias do portal não trata de passagens.",
+    "url": "https://transparencia.pe.gov.br/recursos-humanos/diarias/",
+    "exemplo": "Não verificado nas despesas gerais (credor seria a agência de viagens)."
+   },
+   "aeronave": "Página 'Registros de Voos' com PDFs mensais de fretamento de aeronaves de 2013 a dez/2022 (alguns são imagem escaneada). Ofício da Casa Militar de 03/03/2023 informa a rescisão do contrato de táxi aéreo em 08/02/2023 e a suspensão do envio das planilhas. https://transparencia.pe.gov.br/licitacoes-e-contratos/menu-contratos/registro-de-voos/",
+   "cartao": "O arquivo de diárias traz pagamentos de 'suprimento individual' da Casa Militar, em nome de ajudantes de ordens, de R$ 5.000,00 cada, 'com o objetivo de apoiar a Exmª Sra. Governadora' em missões fora da sede (ex.: 08/09/2026, 31/07/2026).",
+   "barreiras": "Nenhuma. O arquivo anual é grande e o servidor ignorou o pedido parcial (Range): baixa inteiro. O campo do credor traz o CPF mascarado junto ao nome (não guardar).",
+   "exterior": true,
+   "robots": "dados.pe.gov.br: proíbe /api/ e pede Crawl-Delay de 10 s; os downloads em /dataset/.../download/ são permitidos. transparencia.pe.gov.br: só /wp-admin/ proibido.",
+   "robo_possivel": "parcial",
+   "como_ler": "Baixar o CSV anual (link 'diarias_AAAA_*.csv' na página do conjunto); filtrar unidade_gestora 'GABINETE DA GOVERNADORA', 'GABINETE DA VICE GOVERNADORA', 'SECRETARIA  DA CASA MILITAR' e/ou finalidade_ordem_bancaria com GOVERNADORA/VICE-GOV; do campo masc_nm_credor guardar só o nome.",
+   "obs": "Governadora e vice não aparecem como credoras de diárias em 2026; outros anos não foram baixados (um arquivo por ano, dezenas de MB)."
+  },
+  {
+   "uf": "PI",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (empenho)",
+    "desde": "2020-01",
+    "formato": "API REST JSON (api.transparencia.pi.gov.br, OpenAPI em /schema/), com filtros por nome, órgão, destino e período, e download",
+    "url": "https://api.transparencia.pi.gov.br/docs/",
+    "exemplo": "Busca no nome do credor por TAJRA e FONTELES (governador Rafael Tajra Fonteles) e por THEMISTOCLES e SAMPAIO PEREIRA (vice), de 2023 a 2026: nenhum registro deles. Na Governadoria (órgão 11), servidores da Secretaria de Governo recebem diárias para 'acompanhar a agenda oficial do Governador' (ex.: 20/12/2025, Nazária e Curralinhos, meia diária, R$ 120,00)."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "empenho",
+    "desde": "2020-01",
+    "formato": "API REST JSON (/api/v2/despesas/...), credor é a agência de viagens",
+    "url": "https://api.transparencia.pi.gov.br/docs/",
+    "exemplo": "2026: Gabinete do Vice-Governador, empenho 2026NE00678 de R$ 509.605,00 (pago R$ 486.583,65) à Miraceu Turismo; Gabinete Militar, 2026NE02612, R$ 400.000,00 empenhados (pago R$ 261.340,49) à Primeira Classe Viagens e Turismo. Sem nome de passageiro."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma. O campo credor_codigo traz o CPF mascarado e, em alguns registros, o nome do credor vem com o CPF completo junto (não guardar).",
+   "exterior": false,
+   "robots": "api.transparencia.pi.gov.br não tem robots.txt.",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://api.transparencia.pi.gov.br/api/v2/diarias/{ano}/1/12/?credor_titulo__contains=<nome>&page_size=100 ou ?orgao_codigo=11 (Governadoria); campos diaria_afastamento_inicio/fim, diaria_municipio_destino, diaria_motivo, diaria_quantidade, temp_pago_saldo. Passagens: /api/v2/despesas/{ano}/1/12/?orgao_codigo=11&search=passagens.",
+   "obs": "Governador e vice não aparecem como credores de diárias (2023 a 2026). Só abre de dentro do Brasil."
+  },
+  {
+   "uf": "PR",
+   "diarias": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Portal da Transparência (/pte); não aberto",
+    "url": "https://www.transparencia.pr.gov.br/",
+    "exemplo": "Não lido: o robots.txt proíbe /pte para todos os robôs (menos Googlebot, Slurp e BingBot) e a exceção do projeto cobre só a remuneração do governador e do vice. O portal de dados abertos do Paraná (dados.pr.gov.br) é a base estatística do Ipardes, sem diárias."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Portal da Transparência (/pte); não aberto",
+    "url": "https://www.transparencia.pr.gov.br/",
+    "exemplo": "Não lido, pelo mesmo motivo (robots.txt)."
+   },
+   "aeronave": "A Casa Militar publica 'Voos Oficiais': um PDF por mês (com texto), de jul/2022 a jul/2026, com data, horários, aeronave (prefixo), órgão solicitante, origem, destino, motivo e lista de passageiros com função; sem custo. Em abr/2026 (10 páginas), 'Carlos Roberto Massa Junior - Governador' aparece em 25 linhas e 'Darci Piana - Vice-Governador' em 7; ex.: 06/04/2026, aeronave PS-HTT, Governadoria, Curitiba-Curitiba, 'verificar a situação do prédio histórico de Paranaguá que pegou fogo'. Os PDFs de jan e fev/2025 apontam para casamilitar.intranet.pr.gov.br, cujo robots.txt proíbe robôs. https://www.casamilitar.pr.gov.br/Pagina/Voos-Oficiais",
+   "cartao": null,
+   "barreiras": "robots.txt (Disallow: /pte) no Portal da Transparência.",
+   "exterior": true,
+   "robots": "transparencia.pr.gov.br: Disallow: /pte para todos, menos buscadores; a raiz redireciona para /pte/home. casamilitar.pr.gov.br: permite /Pagina/ e /sites/default/arquivos_restritos/ (só bloqueia admin, login e busca).",
+   "robo_possivel": "parcial",
+   "como_ler": "Voos: ler https://www.casamilitar.pr.gov.br/Pagina/Voos-Oficiais, baixar os PDFs (/sites/default/arquivos_restritos/files/documento/AAAA-MM/...pdf), pdftotext -layout, separar os blocos por data e ficar com os voos que têm 'Governador' ou 'Vice-Governador' entre os passageiros. Diárias e passagens: só com nova exceção ao robots.txt (decisão do responsável pelo projeto) ou pedido pela LAI.",
+   "obs": "O voo não traz valor; o custo da hora de voo não é publicado na página."
+  },
+  {
+   "uf": "RJ",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "nota de empenho",
+    "desde": null,
+    "formato": "Painel Streamlit (dashboards.cge.rj.gov.br/relatorio-gasto-com-diarias/); o dicionário de dados (PDF) lista nome do beneficiário, histórico, processo, valores empenhado, liquidado e pago",
+    "url": "https://www.transparencia.rj.gov.br/recursos-humanos/relatorio-de-diarias/",
+    "exemplo": "Não testado: o painel só funciona com JavaScript e WebSocket, sem API visível. O CKAN dadosabertos.rj.gov.br não tem diárias do Executivo (só um arquivo de 2025 de um órgão, no conjunto 'Orçamento e Finanças')."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Sem página própria; 'Relatório de nota de empenho por credor' (também em painel)",
+    "url": "https://www.transparencia.rj.gov.br/despesas/relatorio-de-nota-de-empenho-por-credor/",
+    "exemplo": "Não testado (painel só com navegador)."
+   },
+   "aeronave": "Página 'Voos do Governador', com painel Streamlit (dashboards.cge.rj.gov.br/relatorio-voo-do-governador/); a página diz que as planilhas são mensais e acumuladas no ano. Não lido (só com navegador). https://www.transparencia.rj.gov.br/voos-do-governador/",
+   "cartao": "'Relatório de Adiantamentos (Suprimento de Fundos)', em painel Streamlit (dashboards.cge.rj.gov.br/relatorio-adiantamentos/). Não lido.",
+   "barreiras": "Painéis Streamlit (JavaScript + WebSocket), sem API ou arquivo para baixar visível na página.",
+   "exterior": true,
+   "robots": "transparencia.rj.gov.br e dashboards.cge.rj.gov.br: tudo permitido. dadosabertos.rj.gov.br: proíbe /api/, Crawl-Delay 10.",
+   "robo_possivel": "não",
+   "como_ler": "Sem caminho para robô: os três relatórios (diárias, voos do governador, adiantamentos) só abrem no navegador. Alternativa: pedir as planilhas pela LAI.",
+   "obs": "O governador em exercício desde 23/03/2026 é o presidente do Tribunal de Justiça (pago pelo Tribunal). O vice Thiago Pampolha saiu em 21/05/2025."
+  },
+  {
+   "uf": "RN",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "total do período escolhido (nº de diárias, nº de PCDs e valor); detalhe por viagem só com CPF",
+    "desde": "2019-01",
+    "formato": "API JSON usada pelo site diaria.rn.gov.br (pedidos POST)",
+    "url": "https://diaria.rn.gov.br/",
+    "exemplo": "Maria de Fátima Bezerra (Gabinete Civil, função 'Governador e Vice-Governador'): 2025, 57 diárias em 23 PCDs, R$ 58.240,59; mar/2025, 5 diárias, R$ 3.287,21; jan a set/2026, 12 diárias, R$ 7.807,13. Walter Pereira Alves (vice): 2025, 54 diárias pelo Gabinete do Vice-Governador (R$ 75.989,17) e 4 pelo Gabinete Civil."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Sem página própria de passagens no portal",
+    "url": "https://www.transparencia.rn.gov.br/despesas",
+    "exemplo": "Não verificado."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "O detalhe por viagem (ObterDiariaDetalhe) só responde com o CPF; sem ele, 'Não há registros'. A resposta da busca por nome traz o CPF completo do beneficiário (não guardar). Uma consulta de ago/2026 deu erro 500.",
+   "exterior": false,
+   "robots": "diaria.rn.gov.br e api.diaria.rn.gov.br: sem regras no robots.txt. transparencia.rn.gov.br: Disallow vazio.",
+   "robo_possivel": "parcial",
+   "como_ler": "POST https://api.diaria.rn.gov.br/ObterDiariaPorNome com JSON {dataInicial:'AAAA-MM-01', dataFinal:'AAAA-MM-DD', tipoViagem:'TD', cpf:'', nome:'Maria de Fátima Bezerra', classificacao:'', xMaisViajados:'', orgaoId:'', pagina:1}; campos itens[].siglaOrgao, diariasTotal, qtdPcD, valorTotal. Um pedido por mês e por pessoa, pausa de alguns segundos; descartar cpf e cpfForm.",
+   "obs": "Totais por pessoa e período, não por viagem (destino e datas ficam no detalhe, que pede CPF)."
+  },
+  {
+   "uf": "RO",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem (solicitação: período, quantidade, valor da diária e total)",
+    "desde": "2012-01",
+    "formato": "Página HTML com tabela que carrega JSON (POST /diarias/filtrar); botões CSV e Excel",
+    "url": "https://transparencia.ro.gov.br/diarias",
+    "exemplo": "Busca por 'MARCOS JOSE ROCHA' (2025 e 2026) e 'SERGIO GONCALVES' (2025): nenhum registro. A lista de órgãos do filtro não tem Governadoria, Casa Civil nem Vice-Governadoria; a Casa Militar (CM) teve 0 registros em 2025."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Sem página própria achada (a API de dados abertos transparencia.api.ro.gov.br não tem diárias nem passagens)",
+    "url": "https://transparencia.api.ro.gov.br/swagger/index.html",
+    "exemplo": "Não verificado."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "O formulário pede o token __RequestVerificationToken que a página entrega a qualquer visitante (com o cookie da sessão); mês inicial e final obrigatórios.",
+   "exterior": true,
+   "robots": "transparencia.ro.gov.br e frota.sistemas.ro.gov.br: sem robots.txt.",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://transparencia.ro.gov.br/diarias (cookie + token do formulário); POST multipart /diarias/filtrar com Nome, Exercicio, MesInicial, MesFinal, Orgao, Autorizacao, __RequestVerificationToken, draw, start, length e cabeçalho X-Requested-With → JSON data[] (nome, orgao, periodo, valorDiaria, quantidade, valorTotalDiaria, solicitacaoLink).",
+   "obs": "Os dados vêm do sistema de frota (formulário de solicitação de viagem em frota.sistemas.ro.gov.br, preenchido por JavaScript). Muitos registros aparecem como 'Sem ônus para o Estado'."
+  },
+  {
+   "uf": "RR",
+   "diarias": {
+    "publica": true,
+    "com_nome": null,
+    "granularidade": "viagem (filtros por credor, cargo, destino e data de início da viagem)",
+    "desde": null,
+    "formato": "API JSON usada pelo portal (api.transparencia.rr.gov.br/api/v1/portal/transparencia/diarias/...), com exportação CSV/JSON/PDF",
+    "url": "https://www.transparencia.rr.gov.br/diarias",
+    "exemplo": "Todas as consultas de teste (jan a mar e abr a jun de 2024, 2025 e 2026, com e sem filtro de nome ou da Casa Civil, UG 13101) voltaram sem registros; o gráfico 'top 10' de 2023 e 2025 veio vazio e /diarias-por-servidor deu erro 500. Não foi possível ver um registro do governador ou do vice."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Sem página própria achada",
+    "url": "https://www.transparencia.rr.gov.br/",
+    "exemplo": "Não verificado."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Consulta limitada a períodos de até 3 meses (erro 422 acima disso).",
+   "exterior": true,
+   "robots": "api.transparencia.rr.gov.br: Disallow vazio. www.transparencia.rr.gov.br: sem robots.txt.",
+   "robo_possivel": "parcial",
+   "como_ler": "GET https://api.transparencia.rr.gov.br/api/v1/portal/transparencia/diarias/listar-diarias-analise-detalhada?page=0&size=25&mesInicioDataInicioViagem=MM&mesFimDataInicioViagem=MM&anoInicioDataInicioViagem=AAAA&anoFimDataInicioViagem=AAAA&nomeCredor=<nome> (até 3 meses); ou cdUnidadeOrcamentaria=13101 (Casa Civil), 13103 (Casa Militar), 13109 (Representação do Governo).",
+   "obs": "Governador em exercício desde 30/04/2026: o presidente da Assembleia. Vale repetir a consulta mais tarde: a API respondeu, mas sem dados."
+  },
+  {
+   "uf": "RS",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem",
+    "desde": "2004-01",
+    "formato": "CSV anual zipado no CKAN dados.rs.gov.br (2026: zip de 5,9 MB, CSV de 53 MB, até ago/2026), layout em PDF; e painel Power BI 'Viagens do Governador'",
+    "url": "https://dados.rs.gov.br/dataset/diarias-do-estado",
+    "exemplo": "No CSV de 2026 (jan a ago, 200.698 linhas) não há diárias em nome de Eduardo Figueiredo Cavalheiro Leite nem de Gabriel Vieira de Souza; o órgão 'Governo do Estado' tem 4.255 linhas (Casa Militar 2.293, Casa Civil 591, Gabinete do Vice-Governador 328). O painel 'Viagens do Governador' lista despesas de viagem do governador por rubrica: 23 a 24/09/2026, Alegrete, alimentação R$ 303,40 e hospedagem R$ 401,96; 24/09/2026, Pelotas, alimentação R$ 96,60."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "bilhete",
+    "desde": "2023-01",
+    "formato": "Painel Power BI 'Viagens do Governador', aba Passagens Aéreas (lido com a chave anônima que a página entrega, como a folha do RS)",
+    "url": "https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/",
+    "exemplo": "300 bilhetes de 2023 a set/2026 (298 do governador, 2 do vice), identificados pelo cargo ('Governador', 'Vice-Governador'), não pelo nome: data da compra, data da viagem, rota, companhia, tipo e valor. Ex.: viagem 26/09/2026, POA-CGH, Latam, comprada em 16/09/2026, R$ 3.276,47; vice: 16/06/2026, POA-CGH, R$ 1.892,82."
+   },
+   "aeronave": "Não achamos publicação dos voos das aeronaves do Estado na seção Viagens do portal.",
+   "cartao": null,
+   "barreiras": "Painel Power BI: a página entrega a qualquer visitante uma chave anônima (umbraco/Surface/PowerBI/Report), a mesma usada pelo robô da folha. O CSV de diárias é grande (53 MB por ano).",
+   "exterior": true,
+   "robots": "dados.rs.gov.br: proíbe /api/, Crawl-Delay 10; downloads permitidos. transparencia.rs.gov.br: sem robots.txt.",
+   "robo_possivel": "sim",
+   "como_ler": "POST https://www.transparencia.rs.gov.br/umbraco/Surface/PowerBI/Report com workspaceId=48138f86-653d-4a67-98d5-4cf00cdbcf4a e reportId=256079ca-fe2b-4681-a5e3-b0e692e56f72 → Token; modelo 11881334 no cluster wabi-brazil-south; powerbi.consultar na tabela ViagensGovernador2 (Autoridade, Data da viagem, Data da compra da passagem, Rota, Companhia Aérea, Tipo, Valor) e na ViagensGovernador (Autoridade, Data Início, Data Fim, Municipio, Rubrica, Tipo Destino, Valor, Processo, Empenho). Diárias dos servidores: CSV anual do CKAN.",
+   "obs": "No dia da leitura, a tabela de despesas de viagem do governador (ViagensGovernador) tinha só 22 linhas, de 10 a 26/09/2026; a de passagens vai de 2023 a 2026. O painel tem também a agenda do governador (tabela AgendaGov) e links para documentos dos processos."
+  },
+  {
+   "uf": "SC",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "soma por credor, unidade e período (tabela dinâmica)",
+    "desde": null,
+    "formato": "API JSON usada pelo portal (api-portal-transparencia.apps.sm.okd4.ciasc.sc.gov.br/api/pgtodiaria), com agrupamentos e filtros",
+    "url": "https://www.transparencia.sc.gov.br/pagamento-diarias",
+    "exemplo": "O governador tem cadastro de credor ('JORGINHO DOS SANTO MELLO', código 4333) e a vice também ('MARILISA BOEHM', 326372), mas as consultas de diárias com esses credores voltaram vazias (2024 e 2025). O portal separa os tipos 'Beneficiário' (R$ 402,5 milhões no Estado em 2025) e 'Responsável por Adiantamento' (R$ 77,1 milhões); na Casa Civil (UG 410001), 545 credores em 2025, o maior com R$ 487.425,00 no ano."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Sem seção própria achada",
+    "url": "https://www.transparencia.sc.gov.br/",
+    "exemplo": "Não verificado."
+   },
+   "aeronave": null,
+   "cartao": "Seção CPESC (Cartão de Pagamento do Estado de SC) na mesma API (/api/cpesc), com agrupamentos por portador e estabelecimento; a consulta de teste por unidade gestora em 2025 voltou vazia.",
+   "barreiras": "Nenhuma. A busca de credores (/busca/documento) traz CPF/CNPJ e, em alguns nomes, um número de 11 dígitos junto ao nome (não guardar).",
+   "exterior": true,
+   "robots": "api-portal-transparencia.apps.sm.okd4.ciasc.sc.gov.br: Disallow vazio. www.transparencia.sc.gov.br: sem robots.txt. dados.sc.gov.br: proíbe /api/, Crawl-Delay 10.",
+   "robo_possivel": "parcial",
+   "como_ler": "GET {api}/busca/documento?page=1&query=JORGINHO*&tipofiltro=credorfiltro → id do credor; GET {api}/pgtodiaria?agrupamentos[]=unidadegestora&credorfiltro=<id>&anoini=AAAA&mesini=01&anofim=AAAA&mesfim=12&indicador=0 → detalhe[].vlbruto; por unidade: unidadegestorafiltro=410001 (Casa Civil), 410301 (Casa Militar), 420001/420002 (Gabinete do Vice).",
+   "obs": "Com o filtro de credor, um mesmo credor teve o mesmo total em 2024 e 2025, o que sugere que o período pode não estar sendo aplicado nesse tipo de consulta; conferir antes de usar."
+  },
+  {
+   "uf": "SE",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem",
+    "desde": "2024-01",
+    "formato": "API JSON usada pelo portal (api.transparencia.se.gov.br/api/relatorios/diaria), filtros ano, mês e órgão (unidade gestora)",
+    "url": "https://www.transparencia.se.gov.br/Diarias/Relacao",
+    "exemplo": "Fábio Cruz Mitidieri (cargo 'Governador do Estado', Casa Civil, UG 131011): Brasília, 22 a 24/03/2026, 2 diárias, R$ 2.560,00, cerimônia do Selo Nacional Compromisso com a Alfabetização (relatório de mar/2026). José Macedo Sobral (Vice-Governador, UG 121011): Brasília, 01 a 03/03/2026, 3 diárias, R$ 3.200,00 (39ª Conferência Regional da FAO); no mesmo mês, outro registro de R$ 1.920,00 traz datas de 23 a 24/03/2025."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": false,
+    "granularidade": "mês, por órgão e favorecido",
+    "desde": null,
+    "formato": "API JSON (/api/relatorios/passagens e /api/relatorios/passagens-detalhe)",
+    "url": "https://www.transparencia.se.gov.br/Despesas/Passagens",
+    "exemplo": "Jun/2025, Casa Civil (13000): R$ 355.715,96 no mês; os favorecidos são agências (Aereotur, R$ 151.595,32) e locadoras de veículos: o relatório soma passagens e locomoção, sem nome de passageiro."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma. O detalhe de passagens traz cpf_cnpj (não guardar).",
+   "exterior": false,
+   "robots": "api.transparencia.se.gov.br e www.transparencia.se.gov.br: sem robots.txt.",
+   "robo_possivel": "sim",
+   "como_ler": "GET https://api.transparencia.se.gov.br/api/relatorios/diaria?page=1&limit=300&ano=AAAA&mes=M&orgao=131011 (Casa Civil) e orgao=121011 (Gabinete do Vice-Governador); ficar com Cargo 'GOVERNADOR DO ESTADO' ou 'VICE-GOVERNADOR' (ou pelo Credor); campos Destino município, Motivo, Data saída, Data retorno, Qtd. diárias, Valor pago atualizado, Status.",
+   "obs": "Em jun/2025 o governador e o vice não aparecem; em mar/2026, sim. Só abre de dentro do Brasil."
+  },
+  {
+   "uf": "SP",
+   "diarias": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem",
+    "desde": "2016-01",
+    "formato": "JSON (POST /Diarias/Buscar) e exportação CSV/PDF; arquivos CSV anuais de 2016 a 2022",
+    "url": "https://www.transparencia.sp.gov.br/Gastosindividualizadoscomdiariasepassagensaereas/Index",
+    "exemplo": "Tarcísio Gomes de Freitas (Governador, Casa Civil): 11 registros em 2023, todos de passagens (ex.: Davos, Fórum Econômico Mundial, 14/01/2023, R$ 61.323,99; Lisboa, XI Fórum Jurídico, 24/06/2023, trechos de R$ 13.899,82 e R$ 15.894,34); nenhum registro em 2024, 2025 e 2026. Felício Ramuth (Vice-Governador): Brasília, 29/08/2023, passagem R$ 5.494,25; Brasília, 15/11/2025, passagem R$ 4.536,45."
+   },
+   "passagens": {
+    "publica": true,
+    "com_nome": true,
+    "granularidade": "viagem ou trecho",
+    "desde": "2016-01",
+    "formato": "Mesma consulta das diárias (campo valorPassagem em cada registro)",
+    "url": "https://www.transparencia.sp.gov.br/Gastosindividualizadoscomdiariasepassagensaereas/Index",
+    "exemplo": "Ver diárias: os registros do governador e do vice são de passagens (valorDiaria 0); o destino às vezes traz o trecho (ex.: 'LIS/GRU') ou o item ('SEGURO-VIAGEM', R$ 144,84)."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Nenhuma.",
+   "exterior": true,
+   "robots": "www.transparencia.sp.gov.br: sem robots.txt.",
+   "robo_possivel": "sim",
+   "como_ler": "POST https://www.transparencia.sp.gov.br/Diarias/Buscar com JSON {favorecido:'TARCISIO GOMES', anoReferencia:AAAA, page:1, pageSize:50, totalItens:0} e cabeçalho X-Requested-With; campos favorecido, cargo, orgao, data, destino, motivo, valorDiaria, valorPassagem, valorTotal. Alguns registros têm espaço duplo no nome ('TARCISIO GOMES  DE FREITAS'): buscar por parte do nome e filtrar pelo cargo.",
+   "obs": "Data de atualização informada pela própria consulta (/Diarias/Combos): 01/10/2026."
+  },
+  {
+   "uf": "TO",
+   "diarias": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Portal da Transparência em Vaadin (transparencia.to.gov.br): a tela é montada pelo servidor e só funciona com cliques",
+    "url": "https://transparencia.to.gov.br/",
+    "exemplo": "Não testado: sem API visível e sem portal de dados abertos (dados.to.gov.br não existe)."
+   },
+   "passagens": {
+    "publica": null,
+    "com_nome": null,
+    "granularidade": null,
+    "desde": null,
+    "formato": "Mesmo portal (Vaadin)",
+    "url": "https://transparencia.to.gov.br/",
+    "exemplo": "Não testado."
+   },
+   "aeronave": null,
+   "cartao": null,
+   "barreiras": "Aplicação Vaadin, só com navegador. O endereço com www tem certificado de outro nome.",
+   "exterior": false,
+   "robots": "transparencia.to.gov.br: sem robots.txt.",
+   "robo_possivel": "não",
+   "como_ler": "Sem caminho para robô; alternativa: pedido pela LAI ou leitura manual.",
+   "obs": "Governador afastado de 03/09/2025 a 05/12/2025 (vice em exercício no período)."
+  }
+ ]
+}
