@@ -1,0 +1,3071 @@
+{
+ "meta": {
+  "titulo": "Índice de Transparência dos estados",
+  "pergunta": "Dá para saber, pela fonte oficial de cada Estado, quanto ganham e quanto custam os seus políticos?",
+  "conferido_em": "2026-10-01",
+  "como": [
+   "Um bloco para cada fonte do Estado: o governo (salário do governador e do vice) e a Assembleia Legislativa (salário, verba do gabinete e equipe de cada deputado estadual).",
+   "Cada bloco tem duas dimensões, de 0 a 1: completude (o que a fonte mostra) e facilidade (como dá para obter). Cada dimensão é a média dos seus critérios; o índice do bloco é a média harmônica das duas, então uma fonte completa que é difícil de usar, ou fácil de usar que mostra pouco, não tem nota alta.",
+   "O índice do Estado é a média dos índices dos blocos. Estado com algum bloco ainda a conferir fica sem índice geral; os blocos que já têm nota aparecem.",
+   "Cada nota tem a prova: o que a fonte oficial mostra e o que o nosso robô conseguiu ler.",
+   "Inspirado no Índice de Transparência do DadosJusBr (dadosjusbr.org/indice), que avalia o Judiciário."
+  ],
+  "blocos": [
+   {
+    "id": "governo",
+    "titulo": "Governo do Estado",
+    "pergunta": "Dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês?",
+    "criterios": [
+     {
+      "id": "nome",
+      "dimensao": "completude",
+      "nome": "Nome",
+      "como_pontua": "1 = nome completo; 0,5 = nome mascarado; 0 = sem nome."
+     },
+     {
+      "id": "cargo",
+      "dimensao": "completude",
+      "nome": "Cargo",
+      "como_pontua": "1 = mostra o cargo (ou o vínculo pelo qual a pessoa recebe)."
+     },
+     {
+      "id": "no_cargo_hoje",
+      "dimensao": "completude",
+      "nome": "Quem está no cargo",
+      "como_pontua": "1 = o governador e o vice aparecem no mês mais recente (ou a fonte explica que recebem por outro órgão); 0 = sumiram da consulta."
+     },
+     {
+      "id": "partes",
+      "dimensao": "completude",
+      "nome": "Partes do pagamento",
+      "como_pontua": "Fração de 5 partes mostradas separadas: subsídio, 13º, férias, auxílios e abate-teto."
+     },
+     {
+      "id": "historico",
+      "dimensao": "completude",
+      "nome": "Histórico",
+      "como_pontua": "1 = pelo menos 12 meses publicados."
+     },
+     {
+      "id": "lei",
+      "dimensao": "completude",
+      "nome": "Lei do salário",
+      "como_pontua": "1 = a lei (ou decreto legislativo) que fixa o valor de hoje está publicada e foi achada."
+     },
+     {
+      "id": "formato",
+      "dimensao": "facilidade",
+      "nome": "Formato aberto",
+      "como_pontua": "1 = arquivo ou API em formato aberto (CSV, JSON); 0,75 = parte em formato proprietário; 0,5 = só páginas HTML; 0 = só painel ou PDF."
+     },
+     {
+      "id": "acesso",
+      "dimensao": "facilidade",
+      "nome": "Acesso",
+      "como_pontua": "1 = arquivo para baixar ou API documentada; 0,75 = API sem documentação (a que a página usa); 0,5 = só lendo as páginas; 0,25 = só pelo painel; 0 = só clicando."
+     },
+     {
+      "id": "sem_barreira",
+      "dimensao": "facilidade",
+      "nome": "Sem barreiras",
+      "como_pontua": "1 = sem CAPTCHA, login ou CPF; 0 = com alguma dessas barreiras."
+     },
+     {
+      "id": "robos_exterior",
+      "dimensao": "facilidade",
+      "nome": "Aberto a robôs e ao exterior",
+      "como_pontua": "1 = o robots.txt permite e abre de fora do Brasil; 0,5 = só um dos dois; 0 = nenhum."
+     }
+    ]
+   },
+   {
+    "id": "assembleia",
+    "titulo": "Assembleia Legislativa",
+    "pergunta": "Dá para saber, pela fonte oficial, quanto cada deputado estadual recebe e quanto gasta da verba do gabinete?",
+    "criterios": [
+     {
+      "id": "salario",
+      "dimensao": "completude",
+      "nome": "Salário",
+      "como_pontua": "1 = folha de cada deputado, mês a mês, com as partes (subsídio, 13º, auxílios); 0,75 = folha de cada deputado sem todas as partes (ou só em páginas); 0,5 = só o valor da lei ou da tabela; 0 = nada."
+     },
+     {
+      "id": "verba_deputado",
+      "dimensao": "completude",
+      "nome": "Verba por deputado",
+      "como_pontua": "1 = a verba do gabinete (cota, verba indenizatória) de cada deputado, mês a mês; 0 = não."
+     },
+     {
+      "id": "verba_nota",
+      "dimensao": "completude",
+      "nome": "Verba nota a nota",
+      "como_pontua": "1 = cada nota, com fornecedor e CNPJ; 0,75 = nota a nota sem CNPJ (ou com o CNPJ mascarado), ou somada por fornecedor; 0,5 = só o total por categoria; 0 = só o total ou nada."
+     },
+     {
+      "id": "equipe",
+      "dimensao": "completude",
+      "nome": "Equipe do gabinete",
+      "como_pontua": "1 = os servidores de cada gabinete com o custo; 0,75 = a folha com a lotação do gabinete; 0,5 = só a lista ou a contagem; 0 = nada ou sem ligação com o gabinete."
+     },
+     {
+      "id": "historico",
+      "dimensao": "completude",
+      "nome": "Histórico",
+      "como_pontua": "1 = pelo menos 12 meses publicados."
+     },
+     {
+      "id": "lei",
+      "dimensao": "completude",
+      "nome": "Lei do salário",
+      "como_pontua": "1 = a lei que fixa o subsídio de hoje está publicada e foi achada."
+     },
+     {
+      "id": "formato",
+      "dimensao": "facilidade",
+      "nome": "Formato aberto",
+      "como_pontua": "1 = arquivo ou API em formato aberto (CSV, JSON, XML, ODS); 0,75 = parte aberto, parte em PDF, páginas ou formato proprietário; 0,5 = só páginas HTML; 0 = só painel ou PDF."
+     },
+     {
+      "id": "acesso",
+      "dimensao": "facilidade",
+      "nome": "Acesso",
+      "como_pontua": "1 = arquivo para baixar ou API documentada; 0,75 = API sem documentação (a que a página usa); 0,5 = só lendo as páginas; 0,25 = só pelo painel ou por formulários que a página monta; 0 = só clicando."
+     },
+     {
+      "id": "sem_barreira",
+      "dimensao": "facilidade",
+      "nome": "Sem barreiras",
+      "como_pontua": "1 = sem CAPTCHA, login, token ou CPF; 0,5 = barreira só numa parte; 0 = barreira nos dados principais."
+     },
+     {
+      "id": "robos_exterior",
+      "dimensao": "facilidade",
+      "nome": "Aberto a robôs e ao exterior",
+      "como_pontua": "1 = o robots.txt permite e abre de fora do Brasil; 0,5 = só um dos dois; 0 = nenhum."
+     }
+    ]
+   }
+  ]
+ },
+ "estados": [
+  {
+   "uf": "AC",
+   "nome": "Acre",
+   "indice": 0.681,
+   "blocos": {
+    "governo": {
+     "indice": 0.968,
+     "completude": 1.0,
+     "facilidade": 0.938,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e folha (normal, 13º, rescisão)"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Governadora e vice aparecem no último mês"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Cada rubrica (subsídio, auxílio-alimentação, 13º, férias) e cada tipo de folha"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês, com os meses anteriores"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 4.752, de 29/12/2025 (DOE 14.177, 30/12/2025), efeitos desde 01/01/2026: 100% do subsídio de desembargador do TJAC",
+       "link": "https://app.al.ac.leg.br/legisla-e/legislacao/visualizar/9727"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "Respostas em JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "Formulário da página com token de segurança; sem API documentada"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.ac.gov.br/servidores"
+    },
+    "assembleia": {
+     "indice": 0.395,
+     "completude": 0.25,
+     "facilidade": 0.938,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 4.136/2023); a folha dos deputados não foi achada"
+      },
+      "verba_deputado": {
+       "v": 0,
+       "prova": "A verba indenizatória não é publicada por deputado (só a regulamentação)"
+      },
+      "verba_nota": {
+       "v": 0,
+       "prova": "Sem notas da verba"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "A lista de servidores tem a lotação só como 'GABINETE', sem dizer de qual deputado"
+      },
+      "historico": {
+       "v": 0,
+       "prova": "Sem verba publicada, não há histórico"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 4.136/2023",
+       "link": "https://app.al.ac.leg.br/legisla-e/legislacao/visualizar/9238"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "Consultas em JSON (as da página)"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://app.al.ac.leg.br/verbas-indenizatorias/regulamentacao"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "AL",
+   "nome": "Alagoas",
+   "indice": 0.771,
+   "blocos": {
+    "governo": {
+     "indice": 0.836,
+     "completude": 0.8,
+     "facilidade": 0.875,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo (o governador recebe pela comissão)"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.8,
+       "prova": "Remuneração base, comissão, benefícios, verbas eventuais e abate-teto; 13º em folha própria; férias junto com as eventuais"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Histórico do ano por pessoa"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei que fixa o valor de hoje (Lei não localizada; valor conferido na folha de pagamento do Estado (agosto de 2026))",
+       "link": "https://transparencia.al.gov.br/pessoal/servidores/"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "API pública documentada (JSON)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "API documentada: transparencia.al.gov.br/portal/api"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.gov.br/pessoal/servidores/"
+    },
+    "assembleia": {
+     "indice": 0.706,
+     "completude": 0.667,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 9.056/2023)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "VIAP por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por categoria, sem fornecedor nem CNPJ"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2019"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 9.056/2023",
+       "link": "https://sapl.al.al.leg.br/media/sapl/public/normajuridica/2023/2750/lei_no_9.056_de_8_de_novembro_de_2023.pdf"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "PDF escaneado (imagem)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivos para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "AM",
+   "nome": "Amazonas",
+   "indice": 0.768,
+   "blocos": {
+    "governo": {
+     "indice": 0.839,
+     "completude": 0.867,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e função"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "Só o total bruto e o desconto do teto; não separa salário, 13º e férias"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca pelo ano, com todos os meses"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 4.740, de 27/12/2018 (DOE 33.908), efeitos desde 01/01/2019",
+       "link": "https://sapl.al.am.leg.br/media/sapl/public/normajuridica/2018/10312/lei_4740.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.am.gov.br/pessoal/"
+    },
+    "assembleia": {
+     "indice": 0.698,
+     "completude": 0.708,
+     "facilidade": 0.688,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 8.161/2026); a consulta de vencimentos nominal não trouxe resultado nas buscas testadas (mar/2025)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Cota (CEAP) por deputado e mês, no Controle de Cota Parlamentar"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Por beneficiário e categoria (nome da empresa, sem CNPJ)"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2015"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 8.161/2026",
+       "link": "https://sapl.al.am.leg.br/media/sapl/public/normajuridica/2026/14731/8161.pdf"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Página HTML; o CSV, o Excel e o PDF de cada deputado e mês são montados pelo navegador"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Só lendo as páginas: um envio do formulário por deputado e mês"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt não proíbe; só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.aleam.gov.br/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "AP",
+   "nome": "Amapá",
+   "indice": 0.644,
+   "blocos": {
+    "governo": {
+     "indice": 0.643,
+     "completude": 0.9,
+     "facilidade": 0.5,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo (\"GOVERNADOR\"), órgão e lotação"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Governador e vice aparecem no último mês (ago/2026), com o cargo"
+      },
+      "partes": {
+       "v": 0.4,
+       "prova": "O 13º vem em folha separada; o resto só aparece como salário base, valor do cargo e \"outros valores\" (o governador recebe os R$ 33.000 em \"outros valores\")"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês; a lista de anos vai até 1999"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 2.799/2022; valor na tabela oficial de valores do Portal da Transparência (\"Subsídio de Governador e Vice Governador\")",
+       "link": "https://transparencia.ap.gov.br/relatorios/tabelavalores.xlsx"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "A página baixa a consulta em CSV ou XLS"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Consulta na página, uma pessoa por vez"
+      },
+      "sem_barreira": {
+       "v": 0,
+       "prova": "A consulta pede CAPTCHA"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil); a cadeia do certificado HTTPS está incompleta"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.ap.gov.br/consulta/3/41/pessoa/folha-por-servidor"
+    },
+    "assembleia": {
+     "indice": 0.645,
+     "completude": 0.667,
+     "facilidade": 0.625,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Folha de cada deputado no mês, com as rubricas (subsídio, GFE, auxílio-alimentação)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "CEAP por gabinete e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota: CNPJ, empresa, objeto, número da nota e valor"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2012"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei; o valor vem da folha (R$ 33.448,48 de subsídio)"
+      },
+      "formato": {
+       "v": 0.5,
+       "prova": "Só páginas HTML"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Só lendo as páginas (formulários da página)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt responde 403 (vale como sem regras); só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.ap.gov.br/transparencia/pagina.php?pg=ceap"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "BA",
+   "nome": "Bahia",
+   "indice": 0.756,
+   "blocos": {
+    "governo": {
+     "indice": 0.677,
+     "completude": 0.85,
+     "facilidade": 0.562,
+     "criterios": {
+      "nome": {
+       "v": 0.5,
+       "prova": "Nome mascarado (\"JERONIMO R*** S***\")"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo em comissão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.6,
+       "prova": "Valor bruto, 13º, férias, outras verbas temporárias e estorno do teto"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Painel com os meses anteriores"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 14.728, de 28/05/2024, art. 1º, II (R$ 36.894,89 a partir de 31/08/2024; antes R$ 36.171,46 a partir de 01/05/2024)",
+       "link": "https://www.legislabahia.ba.gov.br/documentos/lei-no-14728-de-28-de-maio-de-2024"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "Painel Power BI, sem arquivo para baixar"
+      },
+      "acesso": {
+       "v": 0.25,
+       "prova": "Só pelo painel (lido com a chave anônima que a página entrega)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.ba.gov.br/ServidorPessoal/PainelDadosServidores?Aba=Remuneracao"
+    },
+    "assembleia": {
+     "indice": 0.834,
+     "completude": 0.75,
+     "facilidade": 0.938,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na tabela da ALBA (Lei 14.532/2023); a folha nominal dos deputados não é publicada"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Processo por processo; fornecedor e CNPJ na página de cada processo"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "A equipe de cada gabinete não é publicada"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2015"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 14.532/2023",
+       "link": "https://portalrh.alba.ba.gov.br/pdf/transparencia/ALBA_ECV_Deputados.pdf"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Planilha Excel do mês (sem CNPJ) e páginas HTML com o detalhe"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Planilha para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.ba.gov.br/transparencia/verbas-idenizatorias"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "CE",
+   "nome": "Ceará",
+   "indice": 0.89,
+   "blocos": {
+    "governo": {
+     "indice": 0.871,
+     "completude": 0.867,
+     "facilidade": 0.875,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "Salário bruto e abatimento do teto; não separa 13º e férias"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Um arquivo por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 19.667, de 09/03/2026, art. 1º, a partir de 01/05/2026",
+       "link": "https://belt.al.ce.gov.br/index.php/component/k2/item/11498-lei-n-19-667-de-09-03-26-d-o-10-03-26"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal (sem linha de cabeçalho; as colunas seguem o XLSX do mesmo mês)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite os arquivos (proíbe as páginas de consulta); só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://cearatransparente.ce.gov.br/portal-da-transparencia/servidores"
+    },
+    "assembleia": {
+     "indice": 0.909,
+     "completude": 0.833,
+     "facilidade": 1.0,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Folha mensal dos deputados em CSV: bruto, 13º e abate-teto"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba de Desempenho Parlamentar por deputado"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Empenho por empenho, com credor e CNPJ"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "A folha não liga os servidores ao gabinete de cada deputado"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2021"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Ato Deliberativo 917/2022",
+       "link": "https://transparencia.al.ce.gov.br/uploads/estrutura_remuneratoria/YuihxetEr86nWb3jQ0XLfOcxvijZ3SjnmVsS7mWJ.txt"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo CSV para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "DF",
+   "nome": "Distrito Federal",
+   "indice": 0.899,
+   "blocos": {
+    "governo": {
+     "indice": 0.919,
+     "completude": 0.9,
+     "facilidade": 0.938,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.4,
+       "prova": "Subsídio, benefícios e verbas eventuais (13º e férias juntos)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 7.255, de 02/05/2023 (DODF nº 82, 03/05/2023), a partir de 01/07/2023 — sem alteração no texto compilado do SINJ",
+       "link": "https://www.sinj.df.gov.br/sinj/Norma/d5e0a6d527d84e06b24678cf04c4881c/Lei_7255_02_05_2023.html"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa (pede um identificador qualquer no cabeçalho), sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.df.gov.br/#/servidores/remuneracao"
+    },
+    "assembleia": {
+     "indice": 0.879,
+     "completude": 0.958,
+     "facilidade": 0.812,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Folha mensal de cada deputado em CSV nos dados abertos da CLDF (subsídio, vantagens e outros créditos)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Quadro demonstrativo mensal da verba indenizatória por gabinete (PDF)"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Nota a nota, com CNPJ, nos dados abertos, mas só para parte dos gabinetes (11 de 24 deputados em 2025)"
+      },
+      "equipe": {
+       "v": 1,
+       "prova": "A folha mensal traz a lotação de cada servidor ('Gabinete do Deputado ...') com a remuneração"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Folhas mensais e planilhas da verba de vários anos"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Decreto Legislativo 2.383/2022",
+       "link": "https://economia.df.gov.br/documents/d/seec/dodf-237-23-12-2022-integra"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Folha em CSV e notas em XLSX/CSV; o quadro da verba é PDF"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivos para baixar no portal de dados abertos (CKAN)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt permite os arquivos (pede 10 s entre pedidos); só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.cl.df.gov.br/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "ES",
+   "nome": "Espírito Santo",
+   "indice": 0.859,
+   "blocos": {
+    "governo": {
+     "indice": 1.0,
+     "completude": 1.0,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e função"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês (o vice está vago desde abril de 2026)"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Cada rubrica (subsídio, 13º, férias, auxílios), uma linha por rubrica"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Arquivos mensais desde 2009"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 12.795, de 01/04/2026 (DIO-ES 02/04/2026): reajuste de 4% para governador, vice e secretários, efeitos desde 01/07/2026",
+       "link": "https://ioes.dio.es.gov.br/busca/busca/buscar/query/0/?1=1&q=%22subs%C3%ADdios%20do%20Governador%22"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.es.gov.br/"
+    },
+    "assembleia": {
+     "indice": 0.718,
+     "completude": 0.75,
+     "facilidade": 0.688,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na tabela de estrutura remuneratória (Lei 11.766/2022)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Cota parlamentar por gabinete e mês"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por rubrica, sem fornecedor"
+      },
+      "equipe": {
+       "v": 0.5,
+       "prova": "Lista dos servidores por lotação, só a de hoje"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2010"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 11.766/2022",
+       "link": "https://www.al.es.gov.br/Transparencia/EstruturaRemuneratoria"
+      },
+      "formato": {
+       "v": 0.5,
+       "prova": "Páginas HTML"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "O que a página usa (CotasParlamentaresNovoTable), sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Sem robots.txt (404), mas só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.es.gov.br/Transparencia/CotasParlamentares"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "GO",
+   "nome": "Goiás",
+   "indice": 0.922,
+   "blocos": {
+    "governo": {
+     "indice": 0.983,
+     "completude": 0.967,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo (\"Governador - DSE-1\")"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês (o vice está vago desde abril de 2026)"
+      },
+      "partes": {
+       "v": 0.8,
+       "prova": "Provento do mês, 13º, férias e corte do teto"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Arquivos mensais e ZIP dos anos fechados"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 17.254, de 19/01/2011 (R$ 20.042,00) mais os reajustes das Leis nº 18.744/2014 (25%), 21.250/2022 (10,16%), 21.960/2023 (5,93%), 22.692/2024 (4,62%), 23.236/2025 (4,83%, desde 01/05/2025) e 24.178/2026 (4,26%, desde 01/05/2026); a conta bate ao centavo com o valor da folha de pagamento do Estado",
+       "link": "https://dadosabertos.go.gov.br/dataset/folha-de-pagamento"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite os arquivos (pede 10 s entre pedidos); abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://dadosabertos.go.gov.br/dataset/folha-de-pagamento"
+    },
+    "assembleia": {
+     "indice": 0.861,
+     "completude": 0.917,
+     "facilidade": 0.812,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Valores da folha dos deputados na lista que a página carrega; o detalhe pede nome e CPF de quem consulta"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota, com fornecedor, CNPJ e valor indenizado"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Gabinetes do período na folha (JSON)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2014"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 17.253/2011 (redação da Lei 21.780/2023)",
+       "link": "https://legisla.casacivil.go.gov.br/api/v2/pesquisa/legislacoes/106697/pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 0.5,
+       "prova": "O detalhe da folha pede nome e CPF de quem consulta"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite os dados usados; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.go.leg.br/api/transparencia/verbas_indenizatorias/periodos"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "MA",
+   "nome": "Maranhão",
+   "indice": 0.634,
+   "blocos": {
+    "governo": {
+     "indice": 0.749,
+     "completude": 0.933,
+     "facilidade": 0.625,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo, por matrícula"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.6,
+       "prova": "Subsídio, férias, adiantamento do 13º e outros proventos"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Histórico do ano, uma coluna por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 12.282, de 23/05/2024, art. 1º (originária do Projeto de Lei nº 217/2024, da Comissão de Orçamento da Assembleia), a partir de 01/06/2024; valor conferido na folha de pagamento do Estado",
+       "link": "https://arquivos.al.ma.leg.br:8443/ged/legislacao/LEI_12282"
+      },
+      "formato": {
+       "v": 0.5,
+       "prova": "Páginas HTML, sem arquivo para baixar"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Só lendo as páginas de consulta"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.ma.gov.br/app/v2/pessoal/remuneracao"
+    },
+    "assembleia": {
+     "indice": 0.519,
+     "completude": 0.417,
+     "facilidade": 0.688,
+     "criterios": {
+      "salario": {
+       "v": 0,
+       "prova": "Os deputados não aparecem na consulta de remuneração (busca pelo cargo e pelo nome, set/2026); não achamos a lei do subsídio"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verbas por deputado e mês (consulta por competência)"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por categoria da CEAP, sem fornecedor"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "A consulta de remuneração não traz a lotação: sem ligação com o gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Consulta por competência (há meses de 2024, 2025 e 2026)"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei do subsídio"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Páginas HTML, com CSV, XML e XLS de cada deputado e mês"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "A lista do mês sai de um formulário (JSF); o detalhe de cada deputado e mês é uma página com endereço próprio"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt responde 403 (vale como sem regras); só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://sistemas.al.ma.leg.br/transparencia/lista-parlamentar.html"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "MG",
+   "nome": "Minas Gerais",
+   "indice": 0.895,
+   "blocos": {
+    "governo": {
+     "indice": 0.983,
+     "completude": 0.967,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo em comissão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês publicado"
+      },
+      "partes": {
+       "v": 0.8,
+       "prova": "Remuneração, 13º, férias, jetons e abate-teto"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Arquivos mensais desde 2012"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 24.314, de 02/05/2023, art. 1º, III",
+       "link": "https://www.almg.gov.br/legislacao-mineira/texto/LEI/24314/2023/"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos (o leiaute mudou em fevereiro de 2026)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://dados.mg.gov.br/dataset/remuneracao-servidores-ativos"
+    },
+    "assembleia": {
+     "indice": 0.808,
+     "completude": 0.75,
+     "facilidade": 0.875,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na página de remuneração (Lei 24.266/2022)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota, com emitente, CNPJ, documento e valor reembolsado"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Vários anos na API"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 24.266/2022",
+       "link": "https://www.almg.gov.br/legislacao-mineira/texto/LEI/24266/2022/"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON e XML (API de dados abertos)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "API de dados abertos com documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA na API (as páginas de verba do site têm reCAPTCHA)"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt dos dados abertos proíbe robôs (Disallow: /); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.almg.gov.br/transparencia/prestacao-de-contas/deputados/verba-indenizatoria/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "MS",
+   "nome": "Mato Grosso do Sul",
+   "indice": 0.861,
+   "blocos": {
+    "governo": {
+     "indice": 0.839,
+     "completude": 0.867,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "Só a remuneração fixa e a eventual, sem as rubricas"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 5.299, de 19/12/2018 (promulgada pela ALEMS; DOE nº 9.805 de 20/12/2018), art. 1º, I",
+       "link": "https://aacpdappls.net.ms.gov.br/appls/legislacao/secoge/govato.nsf/448b683bce4ca84704256c0b00651e9d/13244caf0dc33085042583690047a02e?OpenDocument"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa (com uma chave anônima que o portal entrega), sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.ms.gov.br/"
+    },
+    "assembleia": {
+     "indice": 0.882,
+     "completude": 0.833,
+     "facilidade": 0.938,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Contracheque de cada deputado em PDF, com as partes"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "CEAP por deputado"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota, com CNPJ e o comprovante"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "A equipe de cada gabinete não é publicada"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2012"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 6.016/2022",
+       "link": "https://www.transparencia.al.ms.gov.br/uploads/ac633cbeae1cad5ef3590fd62b32d828.pdf"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "CSV da verba; a folha em PDF"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "CSV anual para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia2.al.ms.gov.br/ceap/notas/exportar-csv?ano=2026"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "MT",
+   "nome": "Mato Grosso",
+   "indice": null,
+   "blocos": {
+    "governo": {
+     "indice": null,
+     "completude": null,
+     "facilidade": null,
+     "criterios": {
+      "nome": {
+       "v": null,
+       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+      },
+      "cargo": {
+       "v": null,
+       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+      },
+      "no_cargo_hoje": {
+       "v": null,
+       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+      },
+      "partes": {
+       "v": null,
+       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês, de 2010 a 2026"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 10.247/2014 + revisão geral anual de 2026 (5,40%, Lei nº 13.220, de 21/01/2026) sobre o valor de 2025 (cálculo nosso, não conferido na folha)",
+       "link": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2026-01-21;13220/gerar-pdf-redacao"
+      },
+      "formato": {
+       "v": null,
+       "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Consulta na página, uma pessoa por vez"
+      },
+      "sem_barreira": {
+       "v": 0,
+       "prova": "A consulta pede CAPTCHA"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt; abre de fora do Brasil (conferido em 01/10/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [
+      "nome",
+      "cargo",
+      "no_cargo_hoje",
+      "partes",
+      "formato"
+     ],
+     "fonte": "https://consultas.transparencia.mt.gov.br/pessoal/servidores_ativos/"
+    },
+    "assembleia": {
+     "indice": 0.278,
+     "completude": 0.25,
+     "facilidade": 0.312,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 12.011/2023); a folha antiga em PDF pede nome, e-mail e CPF"
+      },
+      "verba_deputado": {
+       "v": 0,
+       "prova": "Não achamos a verba por deputado"
+      },
+      "verba_nota": {
+       "v": 0,
+       "prova": "Sem notas da verba"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 0,
+       "prova": "Sem verba publicada, não há histórico"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 12.011/2023",
+       "link": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2023-01-13;12011"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "PDF e portal em JavaScript"
+      },
+      "acesso": {
+       "v": 0.25,
+       "prova": "Só pelo portal"
+      },
+      "sem_barreira": {
+       "v": 0,
+       "prova": "Nome, e-mail e CPF na folha; reCAPTCHA no portal; a API pede login"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.mt.gov.br/parlamento/verba-indenizatoria"
+    }
+   },
+   "a_conferir": [
+    "governo"
+   ]
+  },
+  {
+   "uf": "PA",
+   "nome": "Pará",
+   "indice": 0.697,
+   "blocos": {
+    "governo": {
+     "indice": 0.822,
+     "completude": 0.833,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Vínculo (\"MANDATO ELETIVO\")"
+      },
+      "no_cargo_hoje": {
+       "v": 0,
+       "prova": "Desde abril de 2026, a consulta não mostra mais ninguém em mandato eletivo: nem a governadora, nem o vice"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "As rubricas do mês (vantagens)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Decreto Legislativo nº 01/2023, de 12/01/2023 (Mesa Diretora da ALEPA; DOE nº 35.262 de 20/01/2023), art. 2º",
+       "link": "https://bancodeleis.alepa.pa.gov.br/arquivos/lei01_2023_18125.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.sistemas.pa.gov.br/portaltransparencia/servidores"
+    },
+    "assembleia": {
+     "indice": 0.572,
+     "completude": 0.583,
+     "facilidade": 0.562,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio no Decreto Legislativo 1/2023"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 0,
+       "prova": "Só o valor pago ao deputado no mês, sem fornecedor"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2022"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Decreto Legislativo 1/2023",
+       "link": "https://bancodeleis.alepa.pa.gov.br/arquivos/lei01_2023_18125.pdf"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "Painel"
+      },
+      "acesso": {
+       "v": 0.25,
+       "prova": "Só pelo painel"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://alepa.pa.gov.br/Transparencia/Page/VerbaIndenizatoria"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "PB",
+   "nome": "Paraíba",
+   "indice": 0.914,
+   "blocos": {
+    "governo": {
+     "indice": 0.871,
+     "completude": 0.867,
+     "facilidade": 0.875,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo, por órgão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "Só a parte fixa (o subsídio) e uma parte variável sem descrição; o 13º não aparece"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 12.550, de 28/12/2022, art. 1º, IV",
+       "link": "https://sapl.al.pb.leg.br/media/sapl/public/normajuridica/2022/15969/15969_texto_integral.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "API de dados abertos da Codata"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Sem robots.txt na API; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://dados.pb.gov.br/dataset/remuneracao-servidores"
+    },
+    "assembleia": {
+     "indice": 0.957,
+     "completude": 0.917,
+     "facilidade": 1.0,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Planilha mensal dos eletivos com subsídio e verba"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "VIAP por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Nota a nota, com o CNPJ mascarado em parte"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Folha dos comissionados com a lotação 'GAB DEP'"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2022"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 12.550/2022",
+       "link": "https://sapl3.al.pb.leg.br/media/sapl/public/normajuridica/2022/15969/15969_texto_integral.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "Planilhas ODS"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivos para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.pb.leg.br/transparencia/deputados/viap-v2"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "PE",
+   "nome": "Pernambuco",
+   "indice": 0.944,
+   "blocos": {
+    "governo": {
+     "indice": 0.983,
+     "completude": 0.967,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e função (a governadora aparece como procuradora do Estado, o cargo pelo qual recebe)"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.8,
+       "prova": "Remuneração, férias, 13º, outras vantagens e desconto do teto"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Arquivos mensais desde 2012"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 18.137, de 13/01/2023 (promulgada pelo presidente da ALEPE; DOE 14/01/2023), art. 1º, I",
+       "link": "https://legis.alepe.pe.gov.br/texto.aspx?id=71120"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://dados.pe.gov.br/dataset/remuneracao-de-servidores"
+    },
+    "assembleia": {
+     "indice": 0.905,
+     "completude": 0.875,
+     "facilidade": 0.938,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 18.138/2023); a folha nominal dos deputados não é publicada"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota: rubrica, CNPJ, empresa e valor"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Servidores com a lotação 'GAB.DEP.' na API de dados abertos"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2015"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 18.138/2023",
+       "link": "https://legis.alepe.pe.gov.br/texto.aspx?tiponorma=1&numero=18138&complemento=0&ano=2023&tipo=&url="
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON (API de dados abertos e a da página)"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "Lista de deputados na API de dados abertos; a verba pela API da página"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.alepe.pe.gov.br/servicos/transparencia/adm/verbaindenizatoria.php?dep=4508&ano=2025&mes=6"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "PI",
+   "nome": "Piauí",
+   "indice": 0.807,
+   "blocos": {
+    "governo": {
+     "indice": 0.887,
+     "completude": 0.9,
+     "facilidade": 0.875,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.4,
+       "prova": "Remuneração básica, variável (o subsídio) e eventual (férias e adiantamento do 13º juntos); folha do 13º à parte"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 7.955, de 19/01/2023, art. 1º, IV",
+       "link": "https://sapl.al.pi.leg.br/media/sapl/public/normajuridica/2023/5512/7955.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "API REST documentada (api.transparencia.pi.gov.br/docs)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.pi.gov.br/"
+    },
+    "assembleia": {
+     "indice": 0.728,
+     "completude": 0.708,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 7.955/2023)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba por deputado"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Nota a nota; o fornecedor só no PDF"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2012"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 7.955/2023",
+       "link": "https://sapl.al.pi.leg.br/media/sapl/public/normajuridica/2023/5512/7955.pdf"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Grade com exportação para CSV; o fornecedor em PDF"
+      },
+      "acesso": {
+       "v": 0.25,
+       "prova": "Só pela grade da página (depende de sessão e JavaScript)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.pi.leg.br/grid_transp_publico_gecop/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "PR",
+   "nome": "Paraná",
+   "indice": 0.631,
+   "blocos": {
+    "governo": {
+     "indice": 0.738,
+     "completude": 0.9,
+     "facilidade": 0.625,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.4,
+       "prova": "Vencimento, gratificações, retroativos, auxílios; férias e 13º numa coluna só; abate-teto junto com devoluções"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Os 20 meses mais recentes"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 19.901, de 22/07/2019 (limitou o valor a R$ 33.763,00 até dez/2022) e Lei nº 21.348, de 27/12/2022, art. 1º, I (R$ 33.763,00 de 2023 a 2026); valor conferido na folha",
+       "link": "https://www.legislacao.pr.gov.br/legislacao/pesquisarAto.do?action=exibir&codAto=278907"
+      },
+      "formato": {
+       "v": 0.5,
+       "prova": "Páginas HTML, sem arquivo para baixar"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Só lendo as páginas de busca e de detalhes"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt não permite robôs em /pte; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.pr.gov.br/pte/pessoal/servidores/poderexecutivo/remuneracao"
+    },
+    "assembleia": {
+     "indice": 0.525,
+     "completude": 0.875,
+     "facilidade": 0.375,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Remuneração dos parlamentares em páginas HTML"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Ressarcimento por deputado"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota"
+      },
+      "equipe": {
+       "v": 0.5,
+       "prova": "Lista dos comissionados em páginas HTML"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2014"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 21.348/2022",
+       "link": "http://webservices.assembleia.pr.leg.br/api/public/norma-legal/58812"
+      },
+      "formato": {
+       "v": 0.5,
+       "prova": "Páginas HTML"
+      },
+      "acesso": {
+       "v": 0,
+       "prova": "A verba só clicando (reCAPTCHA)"
+      },
+      "sem_barreira": {
+       "v": 0,
+       "prova": "reCAPTCHA na consulta da verba"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://consultas.assembleia.pr.leg.br/#/ressarcimento"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "RJ",
+   "nome": "Rio de Janeiro",
+   "indice": 0.847,
+   "blocos": {
+    "governo": {
+     "indice": 0.868,
+     "completude": 0.933,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo, por matrícula"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Mostra quem recebe pelo Estado; o governador em exercício (presidente do TJ) é pago pelo Tribunal"
+      },
+      "partes": {
+       "v": 0.6,
+       "prova": "Folha mensal, adiantamento do 13º e 13º; abate-teto entre os descontos"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 6.651, de 20/12/2013, art. 1º; não achamos mudança em 2026 (valor conferido na folha de pagamento do Estado)",
+       "link": "http://alerjln1.alerj.rj.gov.br/contlei.nsf/c8aa0900025feef6032564ec0060dfff/b39511aa507cb0ae83257c5400608810?OpenDocument"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação (a busca pelo nome passa de 60 s)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "robots.txt permite; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.rj.gov.br/remuneracao/"
+    },
+    "assembleia": {
+     "indice": 0.825,
+     "completude": 0.917,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Folha mensal em PDF"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por deputado e mês (DOCIGP)"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Lançamento a lançamento, com fornecedor, CNPJ e documento"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Relatório em PDF com a lotação 'GAB.DEP.'"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2019"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 11.074/2025",
+       "link": "https://transparencia.alerj.rj.gov.br/section/report/62"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Verba em JSON; folha e equipe em PDF"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a página do DOCIGP usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF para ler"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt do DOCIGP proíbe robôs (Disallow: /); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://docigp.alerj.rj.gov.br/transparencia"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "RN",
+   "nome": "Rio Grande do Norte",
+   "indice": 0.77,
+   "blocos": {
+    "governo": {
+     "indice": 0.77,
+     "completude": 0.733,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.4,
+       "prova": "Remuneração do mês, outras remunerações e redutor do teto; não mostra 13º nem férias"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei que fixa o valor de hoje (Tabela de Padrão Remuneratório de Cargos e Funções do Estado (código 109001, Governador), referências jan/2026 e mar/2026; lei não localizada)",
+       "link": "https://www.transparencia.rn.gov.br/docs/remuneracao/2026/03.%20Tabela%20de%20Padr%C3%A3o%20Remunerat%C3%B3rio%20de%20Cargos%20e%20Fun%C3%A7%C3%B5es%20-%20Mar%C3%A7o%20de%202026.xlsx"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON (a exportação em CSV responde \"muitos pedidos\" mesmo com pausas)"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação; uma consulta a cada 10 s"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Sem robots.txt; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://remuneracao.rn.gov.br/"
+    },
+    "assembleia": {
+     "indice": 0.77,
+     "completude": 0.792,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Pagamentos dos servidores e deputados em página com exportação"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verbas por deputado"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2009"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 11.315/2022",
+       "link": "https://www.al.rn.leg.br/storage/legislacao/2023/es2r5o18f7ve1pnah0ckgc15wtj8q7.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "Exportação em CSV, XLSX e JSON"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Só pela página (a API pede um token)"
+      },
+      "sem_barreira": {
+       "v": 0.5,
+       "prova": "A API da página pede um token (a página abre sem)"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.rn.leg.br/verbas"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "RO",
+   "nome": "Rondônia",
+   "indice": 0.893,
+   "blocos": {
+    "governo": {
+     "indice": 1.0,
+     "completude": 1.0,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Cada rubrica; 13º em folha própria"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 5.529, de 9 de janeiro de 2023 (altera art. 1º, I, da Lei nº 3.500, de 19/01/2015); vigência na publicação",
+       "link": "http://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11249/lei_5529-23.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "API documentada (Swagger)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.api.ro.gov.br/swagger/index.html"
+    },
+    "assembleia": {
+     "indice": 0.786,
+     "completude": 0.917,
+     "facilidade": 0.688,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Remuneração dos deputados em páginas HTML"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba indenizatória por gabinete e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota, com prestador, CNPJ e classe"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Servidores com a lotação 'GAB. DEP.' (JSON)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde dez/2020"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 5.530/2023",
+       "link": "https://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11274/lei_5530.pdf"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "Equipe em JSON; a verba em tabelas HTML"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "A verba só lendo as páginas"
+      },
+      "sem_barreira": {
+       "v": 0.5,
+       "prova": "A remuneração pede nome e e-mail de quem consulta"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.ro.leg.br/Deputados/VerbaIndenizatoria/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "RR",
+   "nome": "Roraima",
+   "indice": 0.809,
+   "blocos": {
+    "governo": {
+     "indice": 0.968,
+     "completude": 1.0,
+     "facilidade": 0.938,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Cada lançamento (subsídio, parcelas do 13º, férias)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 1.789, de 17 de janeiro de 2023 (efeitos a partir de 01/01/2023)",
+       "link": "https://www.folhabv.com.br/?p=94608"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.rr.gov.br/remuneracoes"
+    },
+    "assembleia": {
+     "indice": 0.65,
+     "completude": 0.542,
+     "facilidade": 0.812,
+     "criterios": {
+      "salario": {
+       "v": 0,
+       "prova": "A folha dos deputados não é publicada e não achamos a lei"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Verba por deputado e mês (PDF e ODT)"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por categoria"
+      },
+      "equipe": {
+       "v": 0.75,
+       "prova": "Planilha mensal com a lotação 'GAB. DEP.'"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde set/2025 neste portal"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei do subsídio"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "ODT e XLSX; também PDF"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "A lista de arquivos só aparece com JavaScript"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.rr.leg.br/execucao-orcamentaria-e-financeira/verbas-indenizatorias-a-partir-de-set25/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "RS",
+   "nome": "Rio Grande do Sul",
+   "indice": 0.794,
+   "blocos": {
+    "governo": {
+     "indice": 0.933,
+     "completude": 1.0,
+     "facilidade": 0.875,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e vínculo"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Rubricas (subsídio, 1/3 de férias, 13º, vale-refeição)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Painel com 36 meses; arquivos mensais"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 15.940, de 02/01/2023 (DOE-RS de 03/01/2023), art. 1º, com efeitos desde 01/01/2023",
+       "link": "https://doe-backend.pro.rs.gov.br/public/materias/pdf-inline/809236"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "Arquivos mensais em dados abertos, além do painel Power BI"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt do endereço dos arquivos (arquivostransparencia.sefaz.rs.gov.br) não permite robôs; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.rs.gov.br/"
+    },
+    "assembleia": {
+     "indice": 0.656,
+     "completude": 0.583,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Folha de cada deputado no mês: remuneração bruta, parcelas indenizatórias, férias e 13º"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Cota por gabinete e mês"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por rubrica, sem fornecedor"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Só a estrutura de cargos do gabinete, igual para todos"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2011"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei; o valor vem da folha"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "A folha em JSON; a cota em páginas HTML"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "O que a página usa, sem documentação (a busca da folha pede o nome completo exato)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "O robots.txt permite; só abre de dentro do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.al.rs.gov.br/parlamentares/gastos"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "SC",
+   "nome": "Santa Catarina",
+   "indice": 0.867,
+   "blocos": {
+    "governo": {
+     "indice": 0.8,
+     "completude": 0.667,
+     "facilidade": 1.0,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e órgão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0,
+       "prova": "Só o valor bruto do mês, sem as partes"
+      },
+      "historico": {
+       "v": 0,
+       "prova": "O Estado só mantém publicados os meses mais recentes (em set/2026, desde jul/2026)"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 18.590, de 13 de janeiro de 2023 (efeitos desde 01/01/2023; promulgada pelo presidente da Alesc)",
+       "link": "http://leis.alesc.sc.gov.br/html/2023/18590_2023_lei.html"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV mensal no portal de dados abertos"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite os arquivos; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://dados.sc.gov.br/dataset/remuneracaoservidores"
+    },
+    "assembleia": {
+     "indice": 0.933,
+     "completude": 0.875,
+     "facilidade": 1.0,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Contracheque de cada deputado em página HTML"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Gastos do gabinete por deputado"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Nota a nota, sem CNPJ"
+      },
+      "equipe": {
+       "v": 0.5,
+       "prova": "Lista de servidores com a lotação 'GAB DEP'"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2011"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 18.642/2023",
+       "link": "https://leis.alesc.sc.gov.br/ato-normativo/21961"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "CSV anual"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "CSV para baixar (dados abertos)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.alesc.sc.gov.br/gabinetes-parlamentares/dados-abertos"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "SE",
+   "nome": "Sergipe",
+   "indice": 0.794,
+   "blocos": {
+    "governo": {
+     "indice": 0.839,
+     "completude": 0.867,
+     "facilidade": 0.812,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo, por órgão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "O contracheque do mês mostra o subsídio; 13º e férias não aparecem na consulta"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 9.136, de 28/12/2022, art. 1º, IV: R$ 46.366,19 a partir de 01/02/2025 (valor conferido na folha de pagamento do Estado)",
+       "link": "https://al.se.leg.br/Legislacao/Ordinaria/2022/O91362022.pdf"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "JSON"
+      },
+      "acesso": {
+       "v": 0.75,
+       "prova": "API que a própria página usa, sem documentação"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Sem robots.txt na API; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.se.gov.br/RecursosHumanos/FolhaPagamento"
+    },
+    "assembleia": {
+     "indice": 0.75,
+     "completude": 0.75,
+     "facilidade": 0.75,
+     "criterios": {
+      "salario": {
+       "v": 1,
+       "prova": "Folha mensal com os rendimentos de cada deputado (subsídio, outras verbas, 13º, férias, auxílio)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Ressarcimento por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 0.5,
+       "prova": "Só o total por categoria, sem fornecedor"
+      },
+      "equipe": {
+       "v": 1,
+       "prova": "Servidores com a lotação 'GABINETE DO DEPUTADO ...' e os rendimentos de cada um, na folha"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2016"
+      },
+      "lei": {
+       "v": 0,
+       "prova": "Não achamos a lei; o valor vem da folha"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "PDF"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivos para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://al.se.leg.br/portal-da-transparencia/despesas/ressarcimento-dos-deputados/"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "SP",
+   "nome": "São Paulo",
+   "indice": 0.905,
+   "blocos": {
+    "governo": {
+     "indice": 0.901,
+     "completude": 0.867,
+     "facilidade": 0.938,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 1,
+       "prova": "Cargo e órgão"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Aparecem no último mês publicado"
+      },
+      "partes": {
+       "v": 0.2,
+       "prova": "Remuneração do mês e, numa coluna só, férias e 13º"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Série histórica mensal"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 18.385, de 23 de dezembro de 2025 (prorroga para 2026 os valores da Lei 18.152/2025)",
+       "link": "https://www.al.sp.gov.br/repositorio/legislacao/lei/2025/lei-18385-23.12.2025.html"
+      },
+      "formato": {
+       "v": 0.75,
+       "prova": "CSV do mês atual; a série histórica vem em .rar (formato proprietário)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivo para baixar"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "robots.txt permite; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.transparencia.sp.gov.br/PortalTransparencia-Report/Remuneracao.aspx"
+    },
+    "assembleia": {
+     "indice": 0.909,
+     "completude": 0.833,
+     "facilidade": 1.0,
+     "criterios": {
+      "salario": {
+       "v": 0.75,
+       "prova": "Folha de pagamento mensal dos deputados em página HTML (desde nov/2025)"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "Despesas do gabinete por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 0.75,
+       "prova": "Por fornecedor e mês, com CNPJ (as notas do mesmo fornecedor vêm somadas)"
+      },
+      "equipe": {
+       "v": 0.5,
+       "prova": "Lotações dos servidores (XML), sem o custo"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2002"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Leis 17.617/2023 e 18.384/2025",
+       "link": "https://www.al.sp.gov.br/repositorio/legislacao/lei/2025/lei-18384-23.12.2025.html"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "XML (dados abertos)"
+      },
+      "acesso": {
+       "v": 1,
+       "prova": "Arquivos para baixar (dados abertos)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "O robots.txt permite os dados abertos; abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.sp.gov.br/repositorioDados/deputados/despesas_gabinetes.xml"
+    }
+   },
+   "a_conferir": []
+  },
+  {
+   "uf": "TO",
+   "nome": "Tocantins",
+   "indice": 0.671,
+   "blocos": {
+    "governo": {
+     "indice": 0.743,
+     "completude": 0.917,
+     "facilidade": 0.625,
+     "criterios": {
+      "nome": {
+       "v": 1,
+       "prova": "Nome completo"
+      },
+      "cargo": {
+       "v": 0.5,
+       "prova": "O campo Cargo fica vazio; o vínculo diz \"agente político\" e o setor \"Secretaria Particular do Governador\" (o vice: \"Gabinete do Vice-Governador\")"
+      },
+      "no_cargo_hoje": {
+       "v": 1,
+       "prova": "Governador e vice aparecem no último mês (ago/2026)"
+      },
+      "partes": {
+       "v": 1,
+       "prova": "Cada rubrica no detalhe (subsídio e descontos, por código)"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Busca por mês, desde 2016, com o 13º"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei nº 4.667, de 30 de abril de 2025 (altera a Lei nº 4.367/2024), efeitos desde 01/05/2025",
+       "link": "https://al.to.leg.br/arquivo/74832"
+      },
+      "formato": {
+       "v": 1,
+       "prova": "A página exporta a consulta em CSV (também Excel, TXT, PDF e RTF)"
+      },
+      "acesso": {
+       "v": 0,
+       "prova": "Só funciona clicando na página (o robô não consegue)"
+      },
+      "sem_barreira": {
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF"
+      },
+      "robos_exterior": {
+       "v": 0.5,
+       "prova": "Sem robots.txt; só abre de dentro do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://transparencia.to.gov.br/#!servidores"
+    },
+    "assembleia": {
+     "indice": 0.6,
+     "completude": 0.75,
+     "facilidade": 0.5,
+     "criterios": {
+      "salario": {
+       "v": 0.5,
+       "prova": "Só o valor do subsídio na lei (Lei 4.073/2022); a consulta da folha tem hCaptcha"
+      },
+      "verba_deputado": {
+       "v": 1,
+       "prova": "CODAP por deputado e mês"
+      },
+      "verba_nota": {
+       "v": 1,
+       "prova": "Nota a nota, com emitente, CNPJ e valor"
+      },
+      "equipe": {
+       "v": 0,
+       "prova": "Não achamos a equipe de cada gabinete"
+      },
+      "historico": {
+       "v": 1,
+       "prova": "Desde 2017"
+      },
+      "lei": {
+       "v": 1,
+       "prova": "Lei 4.073/2022",
+       "link": "https://sapl.al.to.leg.br/media/sapl/public/normajuridica/2022/509/lei_4073-2022.pdf"
+      },
+      "formato": {
+       "v": 0,
+       "prova": "PDF (com texto)"
+      },
+      "acesso": {
+       "v": 0.5,
+       "prova": "Uma pesquisa na página por deputado e mês"
+      },
+      "sem_barreira": {
+       "v": 0.5,
+       "prova": "A verba abre sem barreira; a folha tem hCaptcha"
+      },
+      "robos_exterior": {
+       "v": 1,
+       "prova": "Sem robots.txt (404); abre de fora do Brasil"
+      }
+     },
+     "a_conferir": [],
+     "fonte": "https://www.al.to.leg.br/transparencia/verbaIndenizatoria"
+    }
+   },
+   "a_conferir": []
+  }
+ ]
+}

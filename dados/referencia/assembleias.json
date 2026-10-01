@@ -59,10 +59,16 @@
   "AM": {
    "site": "https://www.aleam.gov.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "beneficiário e categoria (sem CNPJ)",
+    "formato": "HTML (formulário POST; CSV/Excel/PDF montados no navegador)",
+    "url": "https://www.aleam.gov.br/transparencia/controle-de-cota-parlamentar/",
+    "desde": "2015"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": null,
+    "url": "https://www.aleam.gov.br/transparencia/consulta-de-vencimentos-nominal/",
+    "obs": "A consulta não trouxe resultado nas buscas testadas"
    },
    "equipe": {
     "publica": null
@@ -72,8 +78,8 @@
     "ato": "Lei 8.161/2026",
     "url": "https://sapl.al.am.leg.br/media/sapl/public/normajuridica/2026/14731/8161.pdf"
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil. CEAP: Resolução Legislativa 460/2009.",
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil). Sem CAPTCHA.",
+   "observacoes": "Conferido do Brasil em 01/10/2026: CEAP por deputado e mês (24 deputados), por beneficiário e categoria, sem CNPJ. Robô possível (formulário POST, sem CAPTCHA). CEAP: Resolução Legislativa 460/2009.",
    "abriu_de_fora": false
   },
   "AP": {
@@ -157,21 +163,28 @@
   "DF": {
    "site": "https://www.cl.df.gov.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "nota (CNPJ) nos dados abertos, só para parte dos gabinetes; quadro mensal consolidado em PDF",
+    "formato": "XLSX/CSV (CKAN) e PDF",
+    "url": "https://www.cl.df.gov.br/web/portal-transparencia/verbas-indenizatorias"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true,
+    "formato": "CSV mensal (CKAN: quadro-demonstrativo-de-pessoal-mensal), com tipo, cargo e lotação",
+    "url": "https://dados.cl.df.gov.br/dataset/quadro-demonstrativo-de-pessoal-mensal"
    },
    "equipe": {
-    "publica": null
+    "publica": true,
+    "formato": "a folha mensal tem a lotação 'GABINETE DO DEPUTADO ...'",
+    "url": "https://dados.cl.df.gov.br/dataset/quadro-demonstrativo-de-pessoal-mensal"
    },
    "subsidio": {
     "valor": null,
     "ato": "Decreto Legislativo 2.383/2022 (75% do federal)",
     "url": "https://economia.df.gov.br/documents/d/seec/dodf-237-23-12-2022-integra"
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil.",
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil). O robots.txt dos dados abertos (dados.cl.df.gov.br) proíbe só /api/ e pede 10 s entre pedidos.",
+   "observacoes": "Conferido do Brasil em 01/10/2026. Bom candidato: folha mensal em CSV (deputados e servidores, com a lotação do gabinete) e notas da verba em XLSX (em 2025, só 11 dos 24 deputados). O CSV da folha tem IRRF, seguridade, outros descontos e líquido, e a planilha da verba tem o CPF do deputado: o robô não deve guardar essas colunas.",
    "abriu_de_fora": false
   },
   "ES": {
@@ -252,7 +265,7 @@
     "valor": null
    },
    "barreiras": "O portal só abre de dentro do Brasil. Páginas JSF (cada consulta é um postback com ViewState). O robots.txt responde 403.",
-   "observacoes": "Levantado em 01/10/2026 do Brasil: a consulta de verbas por competência (mm/aaaa) lista 43 parlamentares (06/2025), em tabela paginada; o detalhe de cada um é uma ação JSF. A própria Alema diz que ainda não tem API de dados abertos. Robô a fazer.",
+   "observacoes": "Conferido do Brasil em 01/10/2026: a consulta de verbas por competência (mm/aaaa) lista 43 parlamentares; o detalhe de cada um (lista-sintetico.html?competencia=AAAA-MM-01&parlamentar=N) é uma página com endereço próprio, com o total por categoria da CEAP (sem fornecedor) e CSV/XML/XLS. Os deputados não aparecem na consulta de remuneração dos servidores (que não tem lotação). A própria Alema diz que ainda não tem API de dados abertos. Robô a fazer.",
    "abriu_de_fora": false
   },
   "MG": {
@@ -275,8 +288,8 @@
     "ato": "Lei 24.266/2022",
     "url": "https://www.almg.gov.br/legislacao-mineira/texto/LEI/24266/2022/"
    },
-   "barreiras": "O robots.txt de dadosabertos.almg.gov.br proíbe robôs (Disallow: /); as páginas de verba têm reCAPTCHA. Seria preciso uma exceção ao robots.txt (verba é dado que a LAI manda abrir) — decisão do Jean-François.",
-   "observacoes": "",
+   "barreiras": "O robots.txt de dadosabertos.almg.gov.br proíbe robôs (Disallow: /); as páginas de verba do site têm reCAPTCHA. A API de dados abertos é lida como exceção ao robots.txt (decisão de 30/09/2026; ver coleta/util.py).",
+   "observacoes": "Robô feito (coleta/assembleias/mg.py): deputados (em exercício e que saíram, com a data da situação) e a verba indenizatória nota a nota pela API /ws/ dos dados abertos.",
    "abriu_de_fora": true
   },
   "MS": {
@@ -494,8 +507,8 @@
     "ato": "Lei 11.074/2025",
     "url": "https://transparencia.alerj.rj.gov.br/section/report/62"
    },
-   "barreiras": "O robots.txt de docigp.alerj.rj.gov.br diz Disallow: / (conferido em 01/10/2026): a verba fica de fora sem uma exceção. A folha e a equipe saem em PDF.",
-   "observacoes": "Bom candidato: verba nota a nota com CNPJ.",
+   "barreiras": "O robots.txt de docigp.alerj.rj.gov.br diz Disallow: /: o DOCIGP é lido como exceção ao robots.txt (decisão de 30/09/2026; ver coleta/util.py). A folha e a equipe saem em PDF.",
+   "observacoes": "Robô feito (coleta/assembleias/rj.py): orçamento mensal e lançamentos de débito do DOCIGP; quem está no cargo e o partido de hoje pela página 'Quem são' do site da Alerj (sem robots.txt). O partido do DOCIGP está desatualizado.",
    "abriu_de_fora": true
   },
   "RN": {

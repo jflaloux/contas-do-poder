@@ -76,6 +76,12 @@ EXCECOES_ROBOTS = [
      "Prefeitura de São Paulo: folha de pagamento nos dados abertos (o robots.txt do portal tem Disallow: /)", 10),
     ("https://www.transparencia.pr.gov.br/pte/",
      "Paraná: remuneração do governador e do vice no Portal da Transparência (o robots.txt tem Disallow: /pte)", 2),
+    ("https://dadosabertos.almg.gov.br/ws/",
+     "Assembleia de Minas Gerais: deputados e verba indenizatória nos dados abertos da ALMG (serviço feito para acesso "
+     "automatizado; o robots.txt tem Disallow: /)", 1),
+    ("https://docigp.alerj.rj.gov.br/",
+     "Assembleia do Rio de Janeiro: verba indenizatória de cada deputado no DOCIGP, o portal de transparência da verba "
+     "(o robots.txt tem Disallow: /)", 0.5),
 ]
 _robots, _robots_trava, _ultimo_pedido, _trava_host = {}, threading.Lock(), {}, {}
 

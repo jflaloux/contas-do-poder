@@ -1,4 +1,4 @@
-# Conferência dos dados — 01/10/2026 11:23
+# Conferência dos dados — 01/10/2026 13:35
 
 ## 1. Cobertura
 
@@ -138,6 +138,8 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Prefeitura de Campo Grande: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Campo Grande: secretários na folha do último mês | 11 | 7 | OK |
 | Assembleia SP: deputados estaduais no cargo | 94 | 84 | OK |
+| Assembleia MG: deputados estaduais no cargo | 77 | 69 | OK |
+| Assembleia RJ: deputados estaduais no cargo | 70 | 63 | OK |
 | Assembleia BA: deputados estaduais no cargo | 63 | 56 | OK |
 | Assembleia PE: deputados estaduais no cargo | 49 | 44 | OK |
 | Assembleia CE: deputados estaduais no cargo | 49 | 41 | OK |

@@ -1,0 +1,1140 @@
+{
+ "_sobre": "Notas do bloco Assembleia do Índice de Transparência: dá para saber, pela fonte oficial, quanto cada deputado estadual recebe e quanto gasta da verba do gabinete? Mantido à mão, estado por estado, a partir do levantamento em dados/referencia/assembleias.json e do que os robôs conseguem ler. Cada critério é [nota, prova]; nota null = a conferir.",
+ "conferido_em": "2026-10-01",
+ "estados": {
+  "AC": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 4.136/2023); a folha dos deputados não foi achada"
+   ],
+   "verba_deputado": [
+    0,
+    "A verba indenizatória não é publicada por deputado (só a regulamentação)"
+   ],
+   "verba_nota": [
+    0,
+    "Sem notas da verba"
+   ],
+   "equipe": [
+    0,
+    "A lista de servidores tem a lotação só como 'GABINETE', sem dizer de qual deputado"
+   ],
+   "historico": [
+    0,
+    "Sem verba publicada, não há histórico"
+   ],
+   "lei": [
+    1,
+    "Lei 4.136/2023"
+   ],
+   "formato": [
+    1,
+    "Consultas em JSON (as da página)"
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  },
+  "AL": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 9.056/2023)"
+   ],
+   "verba_deputado": [
+    1,
+    "VIAP por deputado e mês"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por categoria, sem fornecedor nem CNPJ"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2019"
+   ],
+   "lei": [
+    1,
+    "Lei 9.056/2023"
+   ],
+   "formato": [
+    0,
+    "PDF escaneado (imagem)"
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "AM": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 8.161/2026); a consulta de vencimentos nominal não trouxe resultado nas buscas testadas (mar/2025)"
+   ],
+   "verba_deputado": [
+    1,
+    "Cota (CEAP) por deputado e mês, no Controle de Cota Parlamentar"
+   ],
+   "verba_nota": [
+    0.75,
+    "Por beneficiário e categoria (nome da empresa, sem CNPJ)"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2015"
+   ],
+   "lei": [
+    1,
+    "Lei 8.161/2026"
+   ],
+   "formato": [
+    0.75,
+    "Página HTML; o CSV, o Excel e o PDF de cada deputado e mês são montados pelo navegador"
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas: um envio do formulário por deputado e mês"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt não proíbe; só abre de dentro do Brasil"
+   ]
+  },
+  "AP": {
+   "salario": [
+    1,
+    "Folha de cada deputado no mês, com as rubricas (subsídio, GFE, auxílio-alimentação)"
+   ],
+   "verba_deputado": [
+    1,
+    "CEAP por gabinete e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota: CNPJ, empresa, objeto, número da nota e valor"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2012"
+   ],
+   "lei": [
+    0,
+    "Não achamos a lei; o valor vem da folha (R$ 33.448,48 de subsídio)"
+   ],
+   "formato": [
+    0.5,
+    "Só páginas HTML"
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas (formulários da página)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt responde 403 (vale como sem regras); só abre de dentro do Brasil"
+   ]
+  },
+  "BA": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na tabela da ALBA (Lei 14.532/2023); a folha nominal dos deputados não é publicada"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por deputado e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Processo por processo; fornecedor e CNPJ na página de cada processo"
+   ],
+   "equipe": [
+    0,
+    "A equipe de cada gabinete não é publicada"
+   ],
+   "historico": [
+    1,
+    "Desde 2015"
+   ],
+   "lei": [
+    1,
+    "Lei 14.532/2023"
+   ],
+   "formato": [
+    0.75,
+    "Planilha Excel do mês (sem CNPJ) e páginas HTML com o detalhe"
+   ],
+   "acesso": [
+    1,
+    "Planilha para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  },
+  "CE": {
+   "salario": [
+    1,
+    "Folha mensal dos deputados em CSV: bruto, 13º e abate-teto"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba de Desempenho Parlamentar por deputado"
+   ],
+   "verba_nota": [
+    1,
+    "Empenho por empenho, com credor e CNPJ"
+   ],
+   "equipe": [
+    0,
+    "A folha não liga os servidores ao gabinete de cada deputado"
+   ],
+   "historico": [
+    1,
+    "Desde 2021"
+   ],
+   "lei": [
+    1,
+    "Ato Deliberativo 917/2022"
+   ],
+   "formato": [
+    1,
+    "CSV"
+   ],
+   "acesso": [
+    1,
+    "Arquivo CSV para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "DF": {
+   "salario": [
+    1,
+    "Folha mensal de cada deputado em CSV nos dados abertos da CLDF (subsídio, vantagens e outros créditos)"
+   ],
+   "verba_deputado": [
+    1,
+    "Quadro demonstrativo mensal da verba indenizatória por gabinete (PDF)"
+   ],
+   "verba_nota": [
+    0.75,
+    "Nota a nota, com CNPJ, nos dados abertos, mas só para parte dos gabinetes (11 de 24 deputados em 2025)"
+   ],
+   "equipe": [
+    1,
+    "A folha mensal traz a lotação de cada servidor ('Gabinete do Deputado ...') com a remuneração"
+   ],
+   "historico": [
+    1,
+    "Folhas mensais e planilhas da verba de vários anos"
+   ],
+   "lei": [
+    1,
+    "Decreto Legislativo 2.383/2022"
+   ],
+   "formato": [
+    0.75,
+    "Folha em CSV e notas em XLSX/CSV; o quadro da verba é PDF"
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar no portal de dados abertos (CKAN)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt permite os arquivos (pede 10 s entre pedidos); só abre de dentro do Brasil"
+   ]
+  },
+  "ES": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na tabela de estrutura remuneratória (Lei 11.766/2022)"
+   ],
+   "verba_deputado": [
+    1,
+    "Cota parlamentar por gabinete e mês"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por rubrica, sem fornecedor"
+   ],
+   "equipe": [
+    0.5,
+    "Lista dos servidores por lotação, só a de hoje"
+   ],
+   "historico": [
+    1,
+    "Desde 2010"
+   ],
+   "lei": [
+    1,
+    "Lei 11.766/2022"
+   ],
+   "formato": [
+    0.5,
+    "Páginas HTML"
+   ],
+   "acesso": [
+    0.75,
+    "O que a página usa (CotasParlamentaresNovoTable), sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt (404), mas só abre de dentro do Brasil"
+   ]
+  },
+  "GO": {
+   "salario": [
+    0.75,
+    "Valores da folha dos deputados na lista que a página carrega; o detalhe pede nome e CPF de quem consulta"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por deputado e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com fornecedor, CNPJ e valor indenizado"
+   ],
+   "equipe": [
+    0.75,
+    "Gabinetes do período na folha (JSON)"
+   ],
+   "historico": [
+    1,
+    "Desde 2014"
+   ],
+   "lei": [
+    1,
+    "Lei 17.253/2011 (redação da Lei 21.780/2023)"
+   ],
+   "formato": [
+    1,
+    "JSON"
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação"
+   ],
+   "sem_barreira": [
+    0.5,
+    "O detalhe da folha pede nome e CPF de quem consulta"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite os dados usados; abre de fora do Brasil"
+   ]
+  },
+  "MA": {
+   "salario": [
+    0,
+    "Os deputados não aparecem na consulta de remuneração (busca pelo cargo e pelo nome, set/2026); não achamos a lei do subsídio"
+   ],
+   "verba_deputado": [
+    1,
+    "Verbas por deputado e mês (consulta por competência)"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por categoria da CEAP, sem fornecedor"
+   ],
+   "equipe": [
+    0,
+    "A consulta de remuneração não traz a lotação: sem ligação com o gabinete"
+   ],
+   "historico": [
+    1,
+    "Consulta por competência (há meses de 2024, 2025 e 2026)"
+   ],
+   "lei": [
+    0,
+    "Não achamos a lei do subsídio"
+   ],
+   "formato": [
+    0.75,
+    "Páginas HTML, com CSV, XML e XLS de cada deputado e mês"
+   ],
+   "acesso": [
+    0.5,
+    "A lista do mês sai de um formulário (JSF); o detalhe de cada deputado e mês é uma página com endereço próprio"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt responde 403 (vale como sem regras); só abre de dentro do Brasil"
+   ]
+  },
+  "MG": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na página de remuneração (Lei 24.266/2022)"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por deputado e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com emitente, CNPJ, documento e valor reembolsado"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Vários anos na API"
+   ],
+   "lei": [
+    1,
+    "Lei 24.266/2022"
+   ],
+   "formato": [
+    1,
+    "JSON e XML (API de dados abertos)"
+   ],
+   "acesso": [
+    1,
+    "API de dados abertos com documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA na API (as páginas de verba do site têm reCAPTCHA)"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt dos dados abertos proíbe robôs (Disallow: /); abre de fora do Brasil"
+   ]
+  },
+  "MS": {
+   "salario": [
+    1,
+    "Contracheque de cada deputado em PDF, com as partes"
+   ],
+   "verba_deputado": [
+    1,
+    "CEAP por deputado"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com CNPJ e o comprovante"
+   ],
+   "equipe": [
+    0,
+    "A equipe de cada gabinete não é publicada"
+   ],
+   "historico": [
+    1,
+    "Desde 2012"
+   ],
+   "lei": [
+    1,
+    "Lei 6.016/2022"
+   ],
+   "formato": [
+    0.75,
+    "CSV da verba; a folha em PDF"
+   ],
+   "acesso": [
+    1,
+    "CSV anual para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "MT": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 12.011/2023); a folha antiga em PDF pede nome, e-mail e CPF"
+   ],
+   "verba_deputado": [
+    0,
+    "Não achamos a verba por deputado"
+   ],
+   "verba_nota": [
+    0,
+    "Sem notas da verba"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    0,
+    "Sem verba publicada, não há histórico"
+   ],
+   "lei": [
+    1,
+    "Lei 12.011/2023"
+   ],
+   "formato": [
+    0,
+    "PDF e portal em JavaScript"
+   ],
+   "acesso": [
+    0.25,
+    "Só pelo portal"
+   ],
+   "sem_barreira": [
+    0,
+    "Nome, e-mail e CPF na folha; reCAPTCHA no portal; a API pede login"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "PA": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio no Decreto Legislativo 1/2023"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba por deputado e mês"
+   ],
+   "verba_nota": [
+    0,
+    "Só o valor pago ao deputado no mês, sem fornecedor"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2022"
+   ],
+   "lei": [
+    1,
+    "Decreto Legislativo 1/2023"
+   ],
+   "formato": [
+    0,
+    "Painel"
+   ],
+   "acesso": [
+    0.25,
+    "Só pelo painel"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  },
+  "PB": {
+   "salario": [
+    1,
+    "Planilha mensal dos eletivos com subsídio e verba"
+   ],
+   "verba_deputado": [
+    1,
+    "VIAP por deputado e mês"
+   ],
+   "verba_nota": [
+    0.75,
+    "Nota a nota, com o CNPJ mascarado em parte"
+   ],
+   "equipe": [
+    0.75,
+    "Folha dos comissionados com a lotação 'GAB DEP'"
+   ],
+   "historico": [
+    1,
+    "Desde 2022"
+   ],
+   "lei": [
+    1,
+    "Lei 12.550/2022"
+   ],
+   "formato": [
+    1,
+    "Planilhas ODS"
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "PE": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 18.138/2023); a folha nominal dos deputados não é publicada"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por deputado e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota: rubrica, CNPJ, empresa e valor"
+   ],
+   "equipe": [
+    0.75,
+    "Servidores com a lotação 'GAB.DEP.' na API de dados abertos"
+   ],
+   "historico": [
+    1,
+    "Desde 2015"
+   ],
+   "lei": [
+    1,
+    "Lei 18.138/2023"
+   ],
+   "formato": [
+    1,
+    "JSON (API de dados abertos e a da página)"
+   ],
+   "acesso": [
+    0.75,
+    "Lista de deputados na API de dados abertos; a verba pela API da página"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "PI": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 7.955/2023)"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba por deputado"
+   ],
+   "verba_nota": [
+    0.75,
+    "Nota a nota; o fornecedor só no PDF"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2012"
+   ],
+   "lei": [
+    1,
+    "Lei 7.955/2023"
+   ],
+   "formato": [
+    0.75,
+    "Grade com exportação para CSV; o fornecedor em PDF"
+   ],
+   "acesso": [
+    0.25,
+    "Só pela grade da página (depende de sessão e JavaScript)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  },
+  "PR": {
+   "salario": [
+    0.75,
+    "Remuneração dos parlamentares em páginas HTML"
+   ],
+   "verba_deputado": [
+    1,
+    "Ressarcimento por deputado"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota"
+   ],
+   "equipe": [
+    0.5,
+    "Lista dos comissionados em páginas HTML"
+   ],
+   "historico": [
+    1,
+    "Desde 2014"
+   ],
+   "lei": [
+    1,
+    "Lei 21.348/2022"
+   ],
+   "formato": [
+    0.5,
+    "Páginas HTML"
+   ],
+   "acesso": [
+    0,
+    "A verba só clicando (reCAPTCHA)"
+   ],
+   "sem_barreira": [
+    0,
+    "reCAPTCHA na consulta da verba"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "RJ": {
+   "salario": [
+    0.75,
+    "Folha mensal em PDF"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por deputado e mês (DOCIGP)"
+   ],
+   "verba_nota": [
+    1,
+    "Lançamento a lançamento, com fornecedor, CNPJ e documento"
+   ],
+   "equipe": [
+    0.75,
+    "Relatório em PDF com a lotação 'GAB.DEP.'"
+   ],
+   "historico": [
+    1,
+    "Desde 2019"
+   ],
+   "lei": [
+    1,
+    "Lei 11.074/2025"
+   ],
+   "formato": [
+    0.75,
+    "Verba em JSON; folha e equipe em PDF"
+   ],
+   "acesso": [
+    0.75,
+    "API que a página do DOCIGP usa, sem documentação"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF para ler"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt do DOCIGP proíbe robôs (Disallow: /); abre de fora do Brasil"
+   ]
+  },
+  "RN": {
+   "salario": [
+    0.75,
+    "Pagamentos dos servidores e deputados em página com exportação"
+   ],
+   "verba_deputado": [
+    1,
+    "Verbas por deputado"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2009"
+   ],
+   "lei": [
+    1,
+    "Lei 11.315/2022"
+   ],
+   "formato": [
+    1,
+    "Exportação em CSV, XLSX e JSON"
+   ],
+   "acesso": [
+    0.5,
+    "Só pela página (a API pede um token)"
+   ],
+   "sem_barreira": [
+    0.5,
+    "A API da página pede um token (a página abre sem)"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "RO": {
+   "salario": [
+    0.75,
+    "Remuneração dos deputados em páginas HTML"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba indenizatória por gabinete e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com prestador, CNPJ e classe"
+   ],
+   "equipe": [
+    0.75,
+    "Servidores com a lotação 'GAB. DEP.' (JSON)"
+   ],
+   "historico": [
+    1,
+    "Desde dez/2020"
+   ],
+   "lei": [
+    1,
+    "Lei 5.530/2023"
+   ],
+   "formato": [
+    0.75,
+    "Equipe em JSON; a verba em tabelas HTML"
+   ],
+   "acesso": [
+    0.5,
+    "A verba só lendo as páginas"
+   ],
+   "sem_barreira": [
+    0.5,
+    "A remuneração pede nome e e-mail de quem consulta"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  },
+  "RR": {
+   "salario": [
+    0,
+    "A folha dos deputados não é publicada e não achamos a lei"
+   ],
+   "verba_deputado": [
+    1,
+    "Verba por deputado e mês (PDF e ODT)"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por categoria"
+   ],
+   "equipe": [
+    0.75,
+    "Planilha mensal com a lotação 'GAB. DEP.'"
+   ],
+   "historico": [
+    1,
+    "Desde set/2025 neste portal"
+   ],
+   "lei": [
+    0,
+    "Não achamos a lei do subsídio"
+   ],
+   "formato": [
+    0.75,
+    "ODT e XLSX; também PDF"
+   ],
+   "acesso": [
+    0.5,
+    "A lista de arquivos só aparece com JavaScript"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "RS": {
+   "salario": [
+    1,
+    "Folha de cada deputado no mês: remuneração bruta, parcelas indenizatórias, férias e 13º"
+   ],
+   "verba_deputado": [
+    1,
+    "Cota por gabinete e mês"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por rubrica, sem fornecedor"
+   ],
+   "equipe": [
+    0,
+    "Só a estrutura de cargos do gabinete, igual para todos"
+   ],
+   "historico": [
+    1,
+    "Desde 2011"
+   ],
+   "lei": [
+    0,
+    "Não achamos a lei; o valor vem da folha"
+   ],
+   "formato": [
+    0.75,
+    "A folha em JSON; a cota em páginas HTML"
+   ],
+   "acesso": [
+    0.75,
+    "O que a página usa, sem documentação (a busca da folha pede o nome completo exato)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt permite; só abre de dentro do Brasil"
+   ]
+  },
+  "SC": {
+   "salario": [
+    1,
+    "Contracheque de cada deputado em página HTML"
+   ],
+   "verba_deputado": [
+    1,
+    "Gastos do gabinete por deputado"
+   ],
+   "verba_nota": [
+    0.75,
+    "Nota a nota, sem CNPJ"
+   ],
+   "equipe": [
+    0.5,
+    "Lista de servidores com a lotação 'GAB DEP'"
+   ],
+   "historico": [
+    1,
+    "Desde 2011"
+   ],
+   "lei": [
+    1,
+    "Lei 18.642/2023"
+   ],
+   "formato": [
+    1,
+    "CSV anual"
+   ],
+   "acesso": [
+    1,
+    "CSV para baixar (dados abertos)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "SE": {
+   "salario": [
+    1,
+    "Folha mensal com os rendimentos de cada deputado (subsídio, outras verbas, 13º, férias, auxílio)"
+   ],
+   "verba_deputado": [
+    1,
+    "Ressarcimento por deputado e mês"
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o total por categoria, sem fornecedor"
+   ],
+   "equipe": [
+    1,
+    "Servidores com a lotação 'GABINETE DO DEPUTADO ...' e os rendimentos de cada um, na folha"
+   ],
+   "historico": [
+    1,
+    "Desde 2016"
+   ],
+   "lei": [
+    0,
+    "Não achamos a lei; o valor vem da folha"
+   ],
+   "formato": [
+    0,
+    "PDF"
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite; abre de fora do Brasil"
+   ]
+  },
+  "SP": {
+   "salario": [
+    0.75,
+    "Folha de pagamento mensal dos deputados em página HTML (desde nov/2025)"
+   ],
+   "verba_deputado": [
+    1,
+    "Despesas do gabinete por deputado e mês"
+   ],
+   "verba_nota": [
+    0.75,
+    "Por fornecedor e mês, com CNPJ (as notas do mesmo fornecedor vêm somadas)"
+   ],
+   "equipe": [
+    0.5,
+    "Lotações dos servidores (XML), sem o custo"
+   ],
+   "historico": [
+    1,
+    "Desde 2002"
+   ],
+   "lei": [
+    1,
+    "Leis 17.617/2023 e 18.384/2025"
+   ],
+   "formato": [
+    1,
+    "XML (dados abertos)"
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar (dados abertos)"
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF"
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite os dados abertos; abre de fora do Brasil"
+   ]
+  },
+  "TO": {
+   "salario": [
+    0.5,
+    "Só o valor do subsídio na lei (Lei 4.073/2022); a consulta da folha tem hCaptcha"
+   ],
+   "verba_deputado": [
+    1,
+    "CODAP por deputado e mês"
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com emitente, CNPJ e valor"
+   ],
+   "equipe": [
+    0,
+    "Não achamos a equipe de cada gabinete"
+   ],
+   "historico": [
+    1,
+    "Desde 2017"
+   ],
+   "lei": [
+    1,
+    "Lei 4.073/2022"
+   ],
+   "formato": [
+    0,
+    "PDF (com texto)"
+   ],
+   "acesso": [
+    0.5,
+    "Uma pesquisa na página por deputado e mês"
+   ],
+   "sem_barreira": [
+    0.5,
+    "A verba abre sem barreira; a folha tem hCaptcha"
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt (404); abre de fora do Brasil"
+   ]
+  }
+ }
+}

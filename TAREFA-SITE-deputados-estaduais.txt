@@ -1,0 +1,61 @@
+TAREFA PARA O CHAT DO SITE: deputados estaduais
+(escrito pelo chat de dados em 01/10/2026; pode apagar este arquivo depois de implementar, ele não está no git)
+
+O QUE É
+Um nível novo no site: os deputados estaduais, Assembleia por Assembleia. Por enquanto, dois estados:
+São Paulo (94 no cargo) e Mato Grosso do Sul (24). Os outros vêm aos poucos (levantamento em
+dados/referencia/assembleias.json). Pode publicar já com os dois; o resto entra sozinho quando o arquivo crescer.
+
+DADOS (prontos, não editar à mão)
+- Arquivo: site/dados/assembleias.json (no site publicado: /dados/assembleias.json)
+- Gerado por: python3 coletar.py assembleias (robôs em coleta/assembleias/), toda semana no GitHub Actions.
+- Formato: o MESMO de site/dados/camaras.json (vereadores), com duas diferenças:
+  1. meta.estados (chave = sigla da UF, "SP", "MS") no lugar de meta.cidades.
+     Cada estado tem os mesmos campos de uma cidade: n (nome do estado), uf, casa ("Assembleia Legislativa de São
+     Paulo"), vagas, inicio, ultimo_mes, anos, subsidio [[AAAAMM, valor], ...], salario_nota, verba_nome, verba_regra,
+     verba_notas, verba_por_nota, notas, fontes...
+  2. Cada pessoa tem k = "e" (não "v"), id = "est-<código IBGE da UF>-<número>" (ex.: est-35-300607), cid = código
+     IBGE da UF (35 = SP, 50 = MS), uf, g = "Deputado estadual" / "Deputada estadual".
+  O resto é igual aos vereadores: n, nc, pt, f/fc (foto e crédito, quando houver), x (no cargo hoje), sup, oc
+  (períodos no cargo), per (por ano e "leg"), t (mês a mês), dt (detalhe da verba: tipos e fornecedores, índices em
+  meta.tipos), vb, eq.
+- O salário vem da lei (subsídio proporcional aos dias no cargo), como nas câmaras sem folha; a verba é a de
+  gabinete (SP) ou a CEAP (MS), com fornecedores.
+
+O QUE FAZER (sugestão; adaptar ao que o site já faz com camaras.json)
+1. Carregar /dados/assembleias.json como o camaras.json (e, no publicacao/gerar.mjs, a versão leve e os arquivos por
+   pessoa do mesmo jeito).
+2. Página de cada deputado estadual (/est-35-300607 ou o padrão de endereço que já existe), com o mesmo bloco do
+   vereador: salário, verba com fornecedores, mês a mês, fontes (meta.estados[uf].fontes) e notas.
+3. Na busca e nos filtros: "Deputados estaduais" como tipo novo. Na página do estado: seção "Assembleia Legislativa"
+   com a lista dos deputados no cargo (x = 1).
+4. Comparação com os colegas da mesma Assembleia (como os vereadores da mesma Câmara).
+5. Título e descrição para o Google e o WhatsApp, como nas outras páginas.
+
+CUIDADOS
+- Linguagem neutra, como no resto do site.
+- Partido: em SP vem da Alesp; em MS vem da candidatura de 2026 no TSE e pode faltar (pt = null) para quem não é
+  candidato: mostrar sem partido, sem inventar.
+- Fotos: só as que vierem com f/fc (Wikimedia Commons, com crédito e licença); sem foto, as iniciais.
+- Arquivos do chat do site: site/app.js, site/estilo.css, site/index.html, publicacao/. Não mexer em
+  site/dados/assembleias.json.
+
+ATUALIZAÇÃO (01/10/2026, chat dos dados)
+- assembleias.json agora tem 14 estados: SP, BA, PE, CE, PB, GO, SC, MS, RO, TO, SE, ES, RS e AP (647 deputados, 578 no cargo).
+  Os estados novos entram sozinhos por meta.estados; nada muda no formato.
+- Fotos: quase todos têm f/fc agora. A maioria vem da foto da candidatura de 2022 no TSE (fc.a = "Tribunal Superior
+  Eleitoral (foto da candidatura de 2022)", fc.l = "CC BY", fc.u = página do conjunto de dados no Portal de Dados
+  Abertos do TSE). Mostrar o crédito como nas outras fotos.
+- Sergipe é o primeiro estado com EQUIPE do gabinete (pessoas lotadas e soma dos rendimentos, por mês), nos mesmos
+  campos dos vereadores (per[ano].e/me/pm/mp/ep, t[i][3..4], meta.estados.SE.equipe_custo = true e equipe_nota).
+  Se a página do deputado estadual ainda não mostra a equipe, usar o mesmo bloco dos vereadores.
+- Em SE, CE, RS e AP o salário vem da folha (subsidio_folha = true), com 13º e outros pagamentos; nos outros, da lei.
+- camaras.json ganhou Aracaju (só a folha; sem verba) e Boa Vista (subsídio da resolução e verba por tipo): entram
+  sozinhos por meta.cidades, sem mudança de formato.
+
+Atualização de 01/10/2026 (tarde)
+- assembleias.json ganhou Minas Gerais (82 deputados, 77 no cargo) e Rio de Janeiro (82, 70 no cargo): 16 estados,
+  811 deputados. Entram sozinhos por meta.estados, sem mudança de formato. Fotos: todos os que estão no cargo têm foto
+  (TSE 2022). Nos dois, o salário é o da lei (subsidio_folha = false) e a verba é nota a nota (verba_por_nota = true).
+- MG vai até jul/2026 e RJ até mai/2026: os meses seguintes ainda não estão completos na fonte (as notas em
+  meta.estados.XX.verba_notas explicam). Vale mostrar meta.estados.XX.ultimo_mes na página do estado.

@@ -7,8 +7,8 @@ da Câmara, do Senado e do Portal da Transparência. E também o salário de cad
 estado), a Câmara Municipal de cada cidade, cada vereador de treze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
 Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
-São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul, Rondônia, Tocantins, Sergipe,
-Espírito Santo, Rio Grande do Sul e Amapá.
+São Paulo, Minas Gerais, Rio de Janeiro, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul,
+Rondônia, Tocantins, Sergipe, Espírito Santo, Rio Grande do Sul e Amapá.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -209,8 +209,9 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
 - O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.
-- Teresina e João Pessoa: o robots.txt das Câmaras proíbe robôs em todo o site (conferido em 01/10/2026): ficam de fora
-  sem uma exceção. Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
+- Teresina e João Pessoa: as Câmaras mudaram de endereço (teresina.pi.leg.br e joaopessoa.pb.leg.br). Os endereços
+  antigos não respondem, e o robô tratava a falta de robots.txt como proibição (RFC 9309): não há proibição, os robôs
+  ficam a fazer com os endereços novos. Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.
 - Fotos: as da Câmara Municipal; quem está no cargo sem foto da Câmara recebe a foto da candidatura de 2024 no TSE
@@ -294,6 +295,8 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 
 | Estado | Fonte | O que entra |
 |---|---|---|
+| Minas Gerais | Dados abertos da ALMG (`dadosabertos.almg.gov.br/ws/`; exceção ao robots.txt, ver "Robôs e robots.txt"): deputados em exercício e que saíram, e a verba indenizatória de cada deputado e mês | Subsídio da lei (Lei 24.266/2022); verba indenizatória nota a nota (emitente, CNPJ, documento, valor reembolsado). Quem está no cargo: a situação na ALMG (em exercício; para quem saiu, a data da renúncia ou do fim da suplência). O site vai até o último mês em que 80% dos deputados já prestaram contas |
+| Rio de Janeiro | DOCIGP, o portal da verba da Alerj (exceção ao robots.txt): o orçamento mensal de cada gabinete e os lançamentos publicados; a página "Quem são" do site da Alerj | Subsídio da lei (Lei 11.074/2025), desde fev/2025; lançamentos de débito um a um (centro de custo, fornecedor, CNPJ, documento), sem o saldo que passa de mês, os créditos e a devolução do saldo. Quem está no cargo e o partido de hoje: a página "Quem são" (70); desde quando: os meses com orçamento. O site vai até o último mês em que 80% dos gabinetes já foram publicados |
 | São Paulo | Dados abertos da Alesp: `deputados.xml` e `despesas_gabinetes_AAAA.xml` | Subsídio da lei (Leis 17.617/2023 e 18.384/2025); verba de gabinete por mês, tipo e fornecedor (a Alesp soma as notas do mesmo fornecedor no mês) |
 | Bahia | Transparência da ALBA: a lista de deputados e a planilha mensal da verba (botão Excel) | Subsídio da lei (Lei 14.532/2023), desde fev/2025; verba indenizatória processo por processo, por categoria (o fornecedor só está na página de cada processo, ainda fora) |
 | Pernambuco | Portal da Transparência da Alepe: a lista de dados abertos e o que a página usa (prestações da verba e as notas de cada uma) | Subsídio da lei (Lei 18.138/2023); verba indenizatória nota a nota (rubrica, CNPJ, empresa, valor). As notas chegam aos poucos (no máximo 400 prestações por vez) |
@@ -313,8 +316,10 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as
   mesmas palavras, sem títulos como "Dr." ou "Cel.").
 - O que cada uma das 27 Assembleias publica (verba, folha, equipe, subsídio, barreiras) está em
-  `dados/referencia/assembleias.json`. As outras têm barreira (CAPTCHA, token, robots.txt) ou só PDF; ver o levantamento.
-  RJ: o robots.txt do DOCIGP (a verba) proíbe robôs. MG: o robots.txt dos dados abertos proíbe robôs (precisaria de exceção). PR: CAPTCHA.
+  `dados/referencia/assembleias.json`. As outras têm barreira (CAPTCHA, token) ou só PDF; ver o levantamento. PR: CAPTCHA.
+  Próximos candidatos (levantados do Brasil): DF (folha mensal em CSV com a lotação do gabinete; notas da verba em
+  XLSX, só de parte dos gabinetes), AM (cota por beneficiário, formulário sem CAPTCHA) e MA (total da CEAP por
+  categoria, página por deputado e mês).
 - Fotos: primeiro a foto da candidatura de 2022 no TSE (Portal de Dados Abertos do TSE, licença Creative Commons Atribuição,
   `foto_cand2022_<UF>_div.zip`, lido por pedaços: só as fotos que faltam), quando o nome civil do deputado é exatamente o de
   um eleito ou suplente da UF; depois, para quem sobrar, o Wikimedia Commons, pelas mesmas regras do governo federal (no
@@ -374,30 +379,36 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
   fora do ar no período eleitoral).
 
-## Índice de acesso aos salários dos governadores
+## Índice de Transparência dos estados
 
-`python3 coletar.py indice` (também roda no `tudo`) gera `site/dados/indice.json`: para cada Estado, uma nota de 0 a 1
-para a pergunta "dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês?", no molde do
-[Índice de Transparência do DadosJusBr](https://dadosjusbr.org/indice).
+`python3 coletar.py indice` (também roda no `tudo`) gera `site/dados/indice_transparencia.json`: para cada Estado, uma
+nota de 0 a 1 para a pergunta "dá para saber, pela fonte oficial de cada Estado, quanto ganham e quanto custam os seus
+políticos?", no molde do [Índice de Transparência do DadosJusBr](https://dadosjusbr.org/indice). Há um bloco para cada
+fonte do Estado, com as mesmas duas dimensões:
 
-- **Completude** (o que a fonte mostra): nome, cargo, quem está no cargo hoje, partes do pagamento (subsídio, 13º, férias,
-  auxílios, abate-teto), histórico de 12 meses e a lei do salário.
-- **Facilidade** (como dá para obter): formato aberto, acesso (arquivo ou API documentada, API da página, só páginas,
-  só painel, só clicando), sem barreiras (CAPTCHA, login, CPF) e aberto a robôs e a quem está fora do Brasil.
-- Cada dimensão é a média dos seus critérios; o índice é a média harmônica das duas.
+- **Governo do Estado** (a folha do governador e do vice): nome, cargo, quem está no cargo hoje, partes do pagamento
+  (subsídio, 13º, férias, auxílios, abate-teto), histórico de 12 meses e a lei do salário.
+- **Assembleia Legislativa** (cada deputado estadual): salário (folha ou só a lei), verba do gabinete por deputado, verba
+  nota a nota (fornecedor e CNPJ), equipe do gabinete, histórico de 12 meses e a lei do subsídio.
+- **Completude** (o que a fonte mostra) e **facilidade** (como dá para obter: formato aberto, acesso — arquivo ou API
+  documentada, API da página, só páginas, só painel, só clicando —, sem barreiras como CAPTCHA, login ou CPF, e aberto a
+  robôs e a quem está fora do Brasil).
+- Cada dimensão é a média dos seus critérios; o índice do bloco é a média harmônica das duas; o índice do Estado é a
+  média dos blocos. Estado com algum bloco a conferir (critério `null`) fica sem índice geral; os blocos com nota aparecem.
 
-As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` (mantido à mão: o que a folha mostra e o
-que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA). A nota da lei vem de
-`dados/governadores/governadores.json`. Estado com algum critério `null` (a conferir) fica sem índice: em 01/10/2026,
-só o Mato Grosso (a consulta da folha pede CAPTCHA). O índice mede só o acesso ao salário do governador e do vice,
-não a transparência do Estado como um todo.
+As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` e `dados/indice/assembleias.json` (mantidas
+à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA, e os
+sites que só abrem do Brasil, pelo Chrome no Brasil). A nota da lei do governador vem de
+`dados/governadores/governadores.json`. Em 01/10/2026: 26 estados com índice geral; só o Mato Grosso a conferir (a folha
+do governador pede CAPTCHA). O índice mede o acesso aos dados dessas duas fontes, não a transparência do Estado como um
+todo, e é uma nota da fonte, não de quem está no cargo.
 
-No site, a página `/indice` (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
-`publicacao/gerar.mjs`) mostra os estados do maior índice para o menor, com a completude e a facilidade em barras; ao
-abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada, mais o link da consulta
-oficial e o da página do governador. Estado a conferir fica no fim, sem índice. O método (`meta.como`) aparece na própria
-página. Há link para o índice no cabeçalho do site, na lista dos governadores e na página de cada estado
-(`/indice#indice-sp` abre o estado).
+O arquivo antigo, `site/dados/indice.json` (só o bloco do governo), continua sendo gerado enquanto a página `/indice`
+usa ele (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
+`publicacao/gerar.mjs`). A página mostra os estados do maior índice para o menor, com a completude e a facilidade em
+barras; ao abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada. A passagem da
+página para o Índice de Transparência (os dois blocos) está em `TAREFA-SITE-indice-transparencia.txt`. Há link para o
+índice no cabeçalho do site, na lista dos governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
 ## Robôs e robots.txt
 
@@ -418,6 +429,8 @@ pedido pela LAI dos mesmos dados. Hoje:
 | Câmara dos Deputados | `/deputados/*/*` (desde 18/09/2026) | Remuneração, contracheque detalhado e pessoal de gabinete de cada deputado | 0,25 s |
 | Prefeitura de São Paulo (dados abertos) | todo o portal (`Disallow: /`) | Folha de pagamento mensal (CSV) | 10 s |
 | Paraná (Portal da Transparência) | `/pte` | Remuneração do governador e do vice | 2 s |
+| Assembleia de Minas Gerais (dados abertos) | todo o serviço (`Disallow: /`) | Deputados e verba indenizatória de cada deputado e mês (API `/ws/`, feita para acesso automatizado) | 1 s |
+| Assembleia do Rio de Janeiro (DOCIGP) | todo o portal (`Disallow: /`) | Orçamento mensal e lançamentos publicados da verba de cada gabinete | 0,5 s |
 
 Os portais CKAN (ES, MG, PE, SC, Recife e Fortaleza) proíbem só a API (`/api/`): os arquivos são achados pela página
 do conjunto de dados (`coleta.util.recursos_ckan`), com os 10 s de pausa que pedem.
