@@ -79,7 +79,9 @@ Cada número tem link para a fonte oficial.
 - [ ] Vereadores, passo 2d: Curitiba, Teresina, João Pessoa, Boa Vista, Palmas e Aracaju (dados parciais). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
 - [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
-- [ ] Prefeituras, próximas: Curitiba (a exportação da folha dá erro), Natal, João Pessoa, Salvador, Rio, Campo Grande, Macapá. Belo Horizonte: o portal bloqueia robôs (WAF), não contornamos; só se a Prefeitura liberar ou publicar os dados abertos — Claude
+- [x] Prefeituras: Salvador, Curitiba, Natal e Rio (no Rio, só prefeito e vice: a folha não diz o cargo) — Claude
+- [ ] Prefeituras, próximas: Campo Grande (a consulta nova não devolveu resultados em 01/10/2026), Macapá (portal de
+  terceiro em Bubble), João Pessoa (Incapsula, não contornamos). Belo Horizonte: o portal bloqueia robôs (WAF) — Claude
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
 - [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
 - [x] Governadores, v3: folha mês a mês em 24 estados (+ AL, AM, BA, CE, GO, MA, MS, PA, PI, RJ, RN, RS, SE). AP e MT pedem CAPTCHA (não contornamos); TO só funciona clicando — Claude
@@ -94,6 +96,10 @@ Cada número tem link para a fonte oficial.
 - [x] Índice de acesso aos salários dos governadores: 26 estados com nota, cada uma com a prova (`dados/indice/governadores.json`,
   mantido à mão → `site/dados/indice.json`). MT a conferir: a consulta de servidores não abriu em 01/10/2026 — Claude
 - [ ] Página `/indice` no site, publicada já, sem esperar a eleição (decisão de 01/10/2026) — chat do site
+- [x] Deputados estaduais, passo 1: SP (Alesp), PE (Alepe) e MS (Alems): subsídio da lei e verba com fornecedores, em
+  `site/dados/assembleias.json`; levantamento das 27 em `dados/referencia/assembleias.json` — Claude
+- [ ] Deputados estaduais no site: página, busca, seção na página do estado (texto em TAREFA-SITE-deputados-estaduais.txt) — chat do site
+- [ ] Deputados estaduais, passo 2: GO, SC, PB, RO, RJ e CE; MG só com exceção ao robots.txt (decisão do Jean-François) — Claude
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
 
 ## Fase 3 — Testes e confiabilidade

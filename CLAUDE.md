@@ -91,3 +91,10 @@ armadilhas que não estão escritas em outro lugar.
 - Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): exceções ao robots.txt; para parar, `BLOQUEADO_ROBOTS = True`.
 - No Cowork, a pasta montada não deixa apagar arquivos: `node publicacao/gerar.mjs` falha ao limpar `publicar/`. Para
   conferir o build, copie `site/` e `publicacao/` para uma pasta fora de `mnt/` e rode lá.
+
+- Assembleias: o TSE de 2022 traz o partido da eleição; muitos deputados mudaram na janela de 2026. Use o partido da
+  própria Assembleia (SP, PE) ou o da candidatura de 2026 (`assembleias.comum.partido_2026`); sem nenhum dos dois,
+  sem partido. O arquivo de 2026 traz CPF: só nome e partido são lidos, nada é guardado.
+- Alepe (PE): as notas da verba vêm uma prestação por pedido; o robô baixa no máximo 400 por vez (as que faltam
+  entram com o total, sem detalhe).
+- Prefeitura do Rio: o CSV mensal não tem o cargo; só prefeito e vice entram, pelo nome dos eleitos de 2024.

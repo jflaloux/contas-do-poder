@@ -757,6 +757,54 @@
    "licenca": "CC BY 4.0",
    "url_licenca": "https://creativecommons.org/licenses/by/4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:2020_RAFA_ZIMBALDI_CANDIDATO_PREFEITO_SP_CAMPINAS_TSE_(250000869099).jpg"
+  },
+  "est-35-300539": {
+   "wikidata": "Q56195643",
+   "arquivo": "Ricardo Madalena (cropped).jpg",
+   "autor": "Governo do Estado de São Paulo",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Ricardo_Madalena_(cropped).jpg"
+  },
+  "est-35-300520": {
+   "wikidata": "Q28678157",
+   "arquivo": "Sebastião Santos.jpg",
+   "autor": "Anyelle nogueira",
+   "licenca": "CC BY-SA 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Sebasti%C3%A3o_Santos.jpg"
+  },
+  "est-35-300649": {
+   "wikidata": "Q59222598",
+   "arquivo": "Dep. Valéria Bolsonaro.jpg",
+   "autor": "Alesp",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Dep._Val%C3%A9ria_Bolsonaro.jpg"
+  },
+  "est-26-4468": {
+   "wikidata": "Q59246458",
+   "arquivo": "Alvaro Porto 2022 170001605464.jpg",
+   "autor": "Portal de Dados Abertos do Tribunal Superior Eleitoral do Brasil (TSE)",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Alvaro_Porto_2022_170001605464.jpg"
+  },
+  "est-26-4529": {
+   "wikidata": "Q48873438",
+   "arquivo": "Alberto Feitosa - Turismo (5297892940).jpg",
+   "autor": "governadoreduardocampos",
+   "licenca": "CC BY-SA 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by-sa/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Alberto_Feitosa_-_Turismo_(5297892940).jpg"
+  },
+  "est-26-4507": {
+   "wikidata": "Q116689127",
+   "arquivo": "DANIPORTELAALEPE.jpg",
+   "autor": "Equipedani",
+   "licenca": "CC BY-SA 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:DANIPORTELAALEPE.jpg"
   }
  },
  "procurado_em": {
@@ -1104,6 +1152,34 @@
   "est-35-300680": "2026-10-01",
   "est-35-300344": "2026-10-01",
   "est-35-300681": "2026-10-01",
-  "est-35-300682": "2026-10-01"
+  "est-35-300682": "2026-10-01",
+  "est-35-300539": "2026-10-01",
+  "est-35-300519": "2026-10-01",
+  "est-35-300407": "2026-10-01",
+  "est-35-300683": "2026-10-01",
+  "est-35-300684": "2026-10-01",
+  "est-35-300685": "2026-10-01",
+  "est-35-300520": "2026-10-01",
+  "est-35-300686": "2026-10-01",
+  "est-35-300646": "2026-10-01",
+  "est-35-300584": "2026-10-01",
+  "est-35-300687": "2026-10-01",
+  "est-35-300648": "2026-10-01",
+  "est-35-300688": "2026-10-01",
+  "est-35-300396": "2026-10-01",
+  "est-35-300649": "2026-10-01",
+  "est-35-300689": "2026-10-01",
+  "est-26-4508": "2026-10-01",
+  "est-26-4433": "2026-10-01",
+  "est-26-4482": "2026-10-01",
+  "est-26-4468": "2026-10-01",
+  "est-26-4484": "2026-10-01",
+  "est-26-11": "2026-10-01",
+  "est-26-170001620364": "2026-10-01",
+  "est-26-4436": "2026-10-01",
+  "est-26-4529": "2026-10-01",
+  "est-26-4507": "2026-10-01",
+  "est-26-4510": "2026-10-01",
+  "est-26-4511": "2026-10-01"
  }
 }

@@ -1,0 +1,1482 @@
+ano,mes,docid,tipo,deputado,total
+2025,1,6616,P,Abimael Santos,59880.0
+2025,1,6606,P,Adalto Santos,60000.0
+2025,1,6630,P,Aglailson Victor,43428.0
+2025,1,6641,C,Aglailson Victor,16500.0
+2025,1,6592,P,Antonio Coelho,17700.0
+2025,1,6611,P,Antônio Moraes,28617.4
+2025,1,6721,C,Antônio Moraes,13667.5
+2025,1,6767,C,Antônio Moraes,3976.0
+2025,1,6793,C,Antônio Moraes,9000.0
+2025,1,6710,P,Cayo Albino,16398.0
+2025,1,6724,C,Cayo Albino,40030.0
+2025,1,6604,P,Claudiano Martins Filho,60073.27
+2025,1,6593,P,Coronel Alberto Feitosa,49891.25
+2025,1,6654,C,Coronel Alberto Feitosa,10180.0
+2025,1,6607,P,Dani Portela,37716.8
+2025,1,6650,C,Dani Portela,15904.0
+2025,1,6617,P,Dannilo Godoy,59900.0
+2025,1,6613,P,Delegada Gleide Angelo,56292.0
+2025,1,6601,P,Diogo Moraes,60073.27
+2025,1,6656,P,Doriel Barros,40458.0
+2025,1,6714,C,Doriel Barros,6500.0
+2025,1,6596,P,Débora Almeida,42101.0
+2025,1,6591,P,Edson Vieira,59500.0
+2025,1,6653,P,Fabrizio Ferraz,59905.45
+2025,1,6628,P,France Hacker,49773.27
+2025,1,6657,C,France Hacker,10300.0
+2025,1,6615,P,Francismar Pontes,60020.0
+2025,1,6629,P,Gilmar Junior,30980.0
+2025,1,6645,C,Gilmar Junior,23145.86
+2025,1,6643,P,Gustavo Gouveia,44533.77
+2025,1,6655,C,Gustavo Gouveia,15539.5
+2025,1,6648,P,Henrique Queiroz Filho,59030.0
+2025,1,6633,P,Izaias Régis,50100.0
+2025,1,6636,C,Izaias Régis,9970.0
+2025,1,6587,P,Jarbas Filho,47038.82
+2025,1,6618,C,Jarbas Filho,429.9
+2025,1,6936,C,Jarbas Filho,4725.0
+2025,1,7352,C,Jarbas Filho,6958.0
+2025,1,6646,P,Jeferson Timóteo,60010.0
+2025,1,6638,P,Joaquim Lira,31128.5
+2025,1,6651,C,Joaquim Lira,11000.0
+2025,1,6602,P,Joel da Harpa,59676.87
+2025,1,6609,P,João Paulo Costa,59640.0
+2025,1,6623,P,João Paulo do PT,57050.82
+2025,1,6652,C,João Paulo do PT,2652.1
+2025,1,6631,P,João de Nadegi,55558.2
+2025,1,7337,C,João de Nadegi,4515.07
+2025,1,6625,P,Joãozinho Tenório,41526.4
+2025,1,6642,C,Joãozinho Tenório,14175.0
+2025,1,6701,C,Joãozinho Tenório,4335.4
+2025,1,6610,P,Junior Matuto,60000.0
+2025,1,6624,P,Kaio Maniçoba,58900.0
+2025,1,6605,P,Luciano Duque,60015.5
+2025,1,6595,P,Mário Ricardo,38368.0
+2025,1,6869,C,Mário Ricardo,14810.6
+2025,1,6597,P,Nino de Enoque,46903.83
+2025,1,6634,C,Nino de Enoque,13169.44
+2025,1,6614,P,Pastor Junior Tercio,40366.0
+2025,1,6712,C,Pastor Junior Tercio,17892.0
+2025,1,6608,P,Renato Antunes,45102.63
+2025,1,6647,C,Renato Antunes,14691.32
+2025,1,6589,P,Roberta Arraes,36264.97
+2025,1,6622,C,Roberta Arraes,19595.17
+2025,1,6649,P,Rodrigo Farias,55215.85
+2025,1,6590,P,Romero Albuquerque,39643.0
+2025,1,6612,C,Romero Albuquerque,19995.5
+2025,1,6599,P,Romero Sales Filho,59665.47
+2025,1,6640,P,Rosa Amorim,50738.52
+2025,1,6808,C,Rosa Amorim,9000.0
+2025,1,6594,P,Sileno Guedes,59492.2
+2025,1,6682,C,Sileno Guedes,346.31
+2025,1,6603,P,Simone Santana,59263.0
+2025,1,6588,P,Socorro Pimentel,40014.2
+2025,1,6600,C,Socorro Pimentel,19880.0
+2025,1,6598,P,Waldemar Borges,56657.8
+2025,1,6626,P,Wanderson Florêncio,20930.0
+2025,1,6637,C,Wanderson Florêncio,35093.0
+2025,1,6619,P,William BrIgido,59344.69
+2025,1,6644,C,William BrIgido,639.9
+2025,1,6621,P,Álvaro Porto,55863.6
+2025,1,7318,C,Álvaro Porto,4209.67
+2025,2,6671,P,Abimael Santos,59880.0
+2025,2,6660,P,Adalto Santos,60000.0
+2025,2,6687,P,Aglailson Victor,59928.0
+2025,2,6679,P,Antonio Coelho,33500.0
+2025,2,6691,P,Antônio Moraes,4000.0
+2025,2,6703,C,Antônio Moraes,13667.5
+2025,2,6768,C,Antônio Moraes,35231.8
+2025,2,6794,C,Antônio Moraes,6361.6
+2025,2,6711,P,Cayo Albino,59970.0
+2025,2,6706,P,Claudiano Martins Filho,42809.0
+2025,2,6718,C,Claudiano Martins Filho,17264.27
+2025,2,6675,P,Coronel Alberto Feitosa,60071.25
+2025,2,6669,P,Dani Portela,45760.0
+2025,2,6727,C,Dani Portela,9187.07
+2025,2,6681,P,Dannilo Godoy,59900.0
+2025,2,6639,P,Delegada Gleide Angelo,1607.45
+2025,2,6695,C,Delegada Gleide Angelo,58465.82
+2025,2,6692,P,Diogo Moraes,60073.27
+2025,2,6736,P,Doriel Barros,4970.0
+2025,2,6788,C,Doriel Barros,41988.0
+2025,2,7328,C,Doriel Barros,13000.0
+2025,2,6704,P,Débora Almeida,42101.0
+2025,2,6661,P,Edson Vieira,59500.0
+2025,2,6680,P,Fabrizio Ferraz,59905.45
+2025,2,6698,P,France Hacker,60073.27
+2025,2,6684,P,Francismar Pontes,60020.0
+2025,2,6674,P,Gilmar Junior,54125.86
+2025,2,6709,P,Gustavo Gouveia,54133.27
+2025,2,6735,C,Gustavo Gouveia,5940.0
+2025,2,6702,P,Henrique Queiroz Filho,59030.0
+2025,2,6693,P,Izaias Régis,60050.0
+2025,2,6632,P,Jarbas Filho,46991.35
+2025,2,6708,C,Jarbas Filho,500.0
+2025,2,7241,C,Jarbas Filho,5500.0
+2025,2,7303,C,Jarbas Filho,7000.0
+2025,2,6717,P,Jeferson Timóteo,60010.0
+2025,2,6697,P,Joaquim Lira,28234.03
+2025,2,6741,C,Joaquim Lira,13887.3
+2025,2,6667,P,Joel da Harpa,59676.87
+2025,2,6676,P,João Paulo Costa,59424.0
+2025,2,6635,P,João Paulo do PT,3029.85
+2025,2,6658,C,João Paulo do PT,50370.54
+2025,2,6705,C,João Paulo do PT,3500.0
+2025,2,6700,P,João de Nadegi,55437.6
+2025,2,7338,C,João de Nadegi,4572.4
+2025,2,6716,P,Joãozinho Tenório,14214.0
+2025,2,6781,C,Joãozinho Tenório,30390.0
+2025,2,6860,C,Joãozinho Tenório,14832.8
+2025,2,7396,C,Joãozinho Tenório,591.0
+2025,2,6694,P,Junior Matuto,59970.0
+2025,2,6686,P,Kaio Maniçoba,58900.0
+2025,2,6688,P,Luciano Duque,57115.5
+2025,2,6677,P,Mário Ricardo,48838.0
+2025,2,6841,C,Mário Ricardo,10934.0
+2025,2,6659,P,Nino de Enoque,55073.27
+2025,2,6707,C,Nino de Enoque,5000.0
+2025,2,6670,P,Pastor Cleiton Collins,59640.0
+2025,2,7064,C,Pastor Cleiton Collins,199.9
+2025,2,6690,P,Pastor Junior Tercio,60047.2
+2025,2,6689,P,Renato Antunes,45956.72
+2025,2,6777,C,Renato Antunes,4605.15
+2025,2,6720,P,Rodrigo Farias,59979.0
+2025,2,6678,P,Romero Albuquerque,45408.2
+2025,2,6722,C,Romero Albuquerque,14413.0
+2025,2,6673,P,Romero Sales Filho,60060.71
+2025,2,6699,P,Rosa Amorim,42923.78
+2025,2,6760,C,Rosa Amorim,3500.0
+2025,2,6809,C,Rosa Amorim,12093.8
+2025,2,6663,P,Sileno Guedes,59719.9
+2025,2,6725,C,Sileno Guedes,342.12
+2025,2,6672,P,Simone Santana,59263.0
+2025,2,6662,P,Socorro Pimentel,34094.2
+2025,2,6683,C,Socorro Pimentel,10500.0
+2025,2,6696,C,Socorro Pimentel,15350.0
+2025,2,6627,P,Waldemar Borges,1660.0
+2025,2,6666,C,Waldemar Borges,24205.6
+2025,2,6715,C,Waldemar Borges,16252.5
+2025,2,6723,C,Waldemar Borges,17900.0
+2025,2,6668,P,Wanderson Florêncio,59799.4
+2025,2,6664,P,William BrIgido,59757.79
+2025,2,6685,P,Álvaro Porto,55863.6
+2025,2,7319,C,Álvaro Porto,4209.67
+2025,3,6744,P,Abimael Santos,59724.0
+2025,3,6743,P,Adalto Santos,60000.0
+2025,3,6764,P,Aglailson Victor,59928.0
+2025,3,6733,P,Antonio Coelho,50700.0
+2025,3,6765,P,Antônio Moraes,42284.9
+2025,3,6795,C,Antônio Moraes,3976.0
+2025,3,6779,P,Cayo Albino,59970.0
+2025,3,6742,P,Claudiano Martins Filho,60073.27
+2025,3,6737,P,Coronel Alberto Feitosa,60071.2
+2025,3,6762,P,Dani Portela,37808.0
+2025,3,6786,C,Dani Portela,11928.0
+2025,3,6748,P,Dannilo Godoy,39900.0
+2025,3,6827,C,Dannilo Godoy,20000.0
+2025,3,6719,P,Delegada Gleide Angelo,1652.89
+2025,3,6771,C,Delegada Gleide Angelo,58420.38
+2025,3,6753,P,Diogo Moraes,60073.27
+2025,3,6801,P,Doriel Barros,7000.0
+2025,3,6913,C,Doriel Barros,26500.0
+2025,3,7044,C,Doriel Barros,4970.0
+2025,3,7150,C,Doriel Barros,1988.0
+2025,3,7166,C,Doriel Barros,3188.0
+2025,3,7329,C,Doriel Barros,13000.0
+2025,3,6730,P,Débora Almeida,42101.0
+2025,3,6726,P,Edson Vieira,59500.0
+2025,3,6866,P,Fabrizio Ferraz,59905.45
+2025,3,6761,P,France Hacker,60073.27
+2025,3,6756,P,Francismar Pontes,60020.0
+2025,3,6747,P,Gilmar Junior,43247.0
+2025,3,6790,C,Gilmar Junior,9345.86
+2025,3,6792,P,Gustavo Gouveia,21479.5
+2025,3,6853,C,Gustavo Gouveia,25647.0
+2025,3,6789,P,Henrique Queiroz Filho,59030.0
+2025,3,6749,P,Izaias Régis,60060.0
+2025,3,6713,P,Jarbas Filho,36439.3
+2025,3,6780,C,Jarbas Filho,11116.67
+2025,3,7242,C,Jarbas Filho,5500.0
+2025,3,7304,C,Jarbas Filho,7000.0
+2025,3,6791,P,Jeferson Timóteo,60010.0
+2025,3,6776,P,Joaquim Lira,42105.23
+2025,3,6746,P,Joel da Harpa,52123.0
+2025,3,6774,C,Joel da Harpa,7553.87
+2025,3,6773,P,João Paulo Costa,59514.0
+2025,3,6755,P,João Paulo do PT,57369.88
+2025,3,6770,P,João de Nadegi,55437.6
+2025,3,7339,C,João de Nadegi,4572.4
+2025,3,6782,P,Joãozinho Tenório,40064.0
+2025,3,6861,C,Joãozinho Tenório,14480.0
+2025,3,6877,C,Joãozinho Tenório,4892.8
+2025,3,7397,C,Joãozinho Tenório,591.0
+2025,3,6752,P,Junior Matuto,59850.0
+2025,3,6785,P,Kaio Maniçoba,45116.77
+2025,3,6734,P,Luciano Duque,57115.5
+2025,3,6739,P,Mário Ricardo,48838.0
+2025,3,6842,C,Mário Ricardo,10934.0
+2025,3,6729,P,Nino de Enoque,55073.27
+2025,3,6759,C,Nino de Enoque,5000.0
+2025,3,6757,P,Pastor Cleiton Collins,59640.0
+2025,3,7065,C,Pastor Cleiton Collins,199.9
+2025,3,6754,P,Pastor Junior Tercio,60047.2
+2025,3,6778,P,Renato Antunes,31465.4
+2025,3,6943,C,Renato Antunes,4096.68
+2025,3,7090,C,Renato Antunes,1400.0
+2025,3,7463,C,Renato Antunes,15427.54
+2025,3,6766,P,Roberta Arraes,13957.25
+2025,3,6775,P,Rodrigo Farias,56500.0
+2025,3,6798,C,Rodrigo Farias,3479.0
+2025,3,6738,P,Romero Albuquerque,45408.2
+2025,3,6783,C,Romero Albuquerque,14413.0
+2025,3,6740,P,Romero Sales Filho,60060.71
+2025,3,6797,P,Rosa Amorim,59996.3
+2025,3,6732,P,Sileno Guedes,59719.9
+2025,3,6772,C,Sileno Guedes,20.0
+2025,3,6800,C,Sileno Guedes,333.37
+2025,3,6745,P,Simone Santana,59263.0
+2025,3,6728,P,Socorro Pimentel,59944.2
+2025,3,6665,P,Waldemar Borges,1660.0
+2025,3,6750,C,Waldemar Borges,44406.8
+2025,3,6787,C,Waldemar Borges,14000.0
+2025,3,6763,P,Wanderson Florêncio,59799.4
+2025,3,6731,P,William BrIgido,59117.89
+2025,3,6784,C,William BrIgido,639.9
+2025,3,6769,P,Álvaro Porto,55863.6
+2025,3,7320,C,Álvaro Porto,4209.67
+2025,4,6822,P,Abimael Santos,59724.0
+2025,4,6825,P,Adalto Santos,60000.0
+2025,4,6839,P,Aglailson Victor,59928.0
+2025,4,6804,P,Antonio Coelho,59838.0
+2025,4,6796,P,Antônio Moraes,39815.66
+2025,4,6896,C,Antônio Moraes,7976.0
+2025,4,7014,C,Antônio Moraes,6500.0
+2025,4,6848,P,Cayo Albino,43470.0
+2025,4,6854,C,Cayo Albino,16500.0
+2025,4,6847,P,Claudiano Martins Filho,60073.27
+2025,4,6810,P,Coronel Alberto Feitosa,26111.25
+2025,4,6868,C,Coronel Alberto Feitosa,33962.02
+2025,4,6819,P,Dani Portela,46736.0
+2025,4,6844,C,Dani Portela,3000.0
+2025,4,6828,P,Dannilo Godoy,59900.0
+2025,4,6830,P,Delegada Gleide Angelo,49674.39
+2025,4,6863,C,Delegada Gleide Angelo,10398.88
+2025,4,6814,P,Diogo Moraes,59903.87
+2025,4,6875,P,Doriel Barros,4000.0
+2025,4,6915,C,Doriel Barros,29500.0
+2025,4,7152,C,Doriel Barros,1988.0
+2025,4,7167,C,Doriel Barros,5146.0
+2025,4,7280,C,Doriel Barros,1200.0
+2025,4,7327,C,Doriel Barros,13000.0
+2025,4,6803,P,Débora Almeida,42101.0
+2025,4,6806,P,Edson Vieira,59500.0
+2025,4,6867,P,Fabrizio Ferraz,59905.55
+2025,4,6843,P,France Hacker,60073.27
+2025,4,6831,P,Francismar Pontes,60020.0
+2025,4,6826,P,Gilmar Junior,37925.86
+2025,4,6857,C,Gilmar Junior,17800.0
+2025,4,6852,P,Gustavo Gouveia,21479.5
+2025,4,6871,C,Gustavo Gouveia,25647.0
+2025,4,6874,C,Gustavo Gouveia,3884.03
+2025,4,6834,P,Henrique Queiroz Filho,59030.0
+2025,4,6835,P,Izaias Régis,60070.0
+2025,4,6758,P,Jarbas Filho,53107.21
+2025,4,6849,C,Jarbas Filho,5000.0
+2025,4,6924,C,Jarbas Filho,400.0
+2025,4,6858,P,Jeferson Timóteo,60010.0
+2025,4,6855,P,Joaquim Lira,38659.63
+2025,4,6938,C,Joaquim Lira,3500.0
+2025,4,6837,P,Joel da Harpa,37939.0
+2025,4,6864,C,Joel da Harpa,21737.87
+2025,4,6833,P,João Paulo Costa,53514.0
+2025,4,6836,P,João Paulo do PT,57259.89
+2025,4,6856,P,João de Nadegi,55437.6
+2025,4,7340,C,João de Nadegi,4572.4
+2025,4,6865,P,Joãozinho Tenório,51405.0
+2025,4,6907,C,Joãozinho Tenório,8031.8
+2025,4,7398,C,Joãozinho Tenório,591.0
+2025,4,6846,P,Junior Matuto,59850.0
+2025,4,6823,P,Luciano Duque,35115.5
+2025,4,6851,C,Luciano Duque,22000.0
+2025,4,6840,P,Mário Ricardo,59772.0
+2025,4,6812,P,Nino de Enoque,60073.27
+2025,4,6807,P,Pastor Cleiton Collins,59839.9
+2025,4,6829,P,Pastor Junior Tercio,60047.2
+2025,4,6870,P,Renato Antunes,15850.0
+2025,4,6945,C,Renato Antunes,26670.08
+2025,4,7091,C,Renato Antunes,1400.0
+2025,4,7464,C,Renato Antunes,15583.6
+2025,4,6813,P,Roberta Arraes,59816.97
+2025,4,6873,P,Rodrigo Farias,59979.0
+2025,4,6817,P,Romero Albuquerque,45408.2
+2025,4,6850,C,Romero Albuquerque,14413.0
+2025,4,6821,P,Romero Sales Filho,60060.71
+2025,4,6859,P,Rosa Amorim,44496.3
+2025,4,6872,C,Rosa Amorim,15500.0
+2025,4,6805,P,Sileno Guedes,59719.9
+2025,4,6824,P,Simone Santana,59263.0
+2025,4,6802,P,Socorro Pimentel,59944.2
+2025,4,6751,P,Waldemar Borges,1260.0
+2025,4,6818,C,Waldemar Borges,44775.6
+2025,4,6838,C,Waldemar Borges,14000.0
+2025,4,6811,P,Wanderson Florêncio,59799.4
+2025,4,6816,P,William BrIgido,59757.79
+2025,4,6832,P,Álvaro Porto,55863.6
+2025,4,7321,C,Álvaro Porto,4209.67
+2025,5,6894,P,Abimael Santos,59652.0
+2025,5,6889,P,Adalto Santos,60000.0
+2025,5,6934,P,Aglailson Victor,59928.0
+2025,5,6887,P,Antonio Coelho,59838.0
+2025,5,6989,P,Antônio Moraes,39954.06
+2025,5,7012,C,Antônio Moraes,7976.0
+2025,5,6919,P,Cayo Albino,59970.0
+2025,5,6905,P,Claudiano Martins Filho,60073.27
+2025,5,6895,P,Coronel Alberto Feitosa,60071.25
+2025,5,6885,P,Dani Portela,37808.0
+2025,5,6918,C,Dani Portela,11928.0
+2025,5,6947,P,Dannilo Godoy,42000.0
+2025,5,7009,C,Dannilo Godoy,18000.0
+2025,5,6862,P,Delegada Gleide Angelo,1804.56
+2025,5,6909,C,Delegada Gleide Angelo,57720.22
+2025,5,6897,P,Diogo Moraes,59909.87
+2025,5,6942,P,Doriel Barros,33500.0
+2025,5,7151,C,Doriel Barros,4473.0
+2025,5,7177,C,Doriel Barros,1200.0
+2025,5,7291,C,Doriel Barros,17000.0
+2025,5,6876,P,Débora Almeida,42101.0
+2025,5,6878,P,Edson Vieira,59500.0
+2025,5,6904,P,Fabrizio Ferraz,59905.45
+2025,5,6923,P,France Hacker,49754.98
+2025,5,6937,C,France Hacker,10300.0
+2025,5,6900,P,Francismar Pontes,42020.0
+2025,5,6927,C,Francismar Pontes,18000.0
+2025,5,6903,P,Gilmar Junior,29880.0
+2025,5,6925,C,Gilmar Junior,16945.86
+2025,5,6941,C,Gilmar Junior,8900.0
+2025,5,6922,P,Gustavo Gouveia,60073.27
+2025,5,6933,P,Henrique Queiroz Filho,59030.0
+2025,5,6898,P,Izaias Régis,60070.0
+2025,5,6820,P,Jarbas Filho,48496.45
+2025,5,7243,C,Jarbas Filho,5500.0
+2025,5,7354,C,Jarbas Filho,2982.0
+2025,5,6940,P,Jeferson Timóteo,60010.0
+2025,5,6914,P,Joaquim Lira,38863.57
+2025,5,6939,C,Joaquim Lira,3500.0
+2025,5,6916,P,Joel da Harpa,52123.0
+2025,5,6929,C,Joel da Harpa,7553.87
+2025,5,6901,P,João Paulo Costa,58514.0
+2025,5,6890,P,João Paulo do PT,56523.17
+2025,5,6990,C,João Paulo do PT,1757.35
+2025,5,6921,P,João de Nadegi,55437.6
+2025,5,7341,C,João de Nadegi,4572.4
+2025,5,6908,P,Joãozinho Tenório,43225.4
+2025,5,6926,C,Joãozinho Tenório,12271.4
+2025,5,6944,C,Joãozinho Tenório,3940.0
+2025,5,7399,C,Joãozinho Tenório,591.0
+2025,5,6917,P,Junior Matuto,59850.0
+2025,5,6884,P,Luciano Duque,57115.5
+2025,5,6893,P,Mário Ricardo,59772.0
+2025,5,6881,P,Nino de Enoque,60073.27
+2025,5,6891,P,Pastor Cleiton Collins,59839.9
+2025,5,6910,P,Pastor Junior Tercio,59747.2
+2025,5,6935,P,Renato Antunes,33823.4
+2025,5,7092,C,Renato Antunes,8496.68
+2025,5,7222,C,Renato Antunes,1600.0
+2025,5,7470,C,Renato Antunes,14780.0
+2025,5,6931,P,Roberta Arraes,59816.97
+2025,5,6902,P,Rodrigo Farias,59979.0
+2025,5,6899,P,Romero Albuquerque,45408.2
+2025,5,6928,C,Romero Albuquerque,14413.0
+2025,5,6883,P,Romero Sales Filho,60060.71
+2025,5,6932,P,Rosa Amorim,59996.3
+2025,5,6879,P,Sileno Guedes,59719.9
+2025,5,6892,P,Simone Santana,59263.0
+2025,5,6880,P,Socorro Pimentel,40760.0
+2025,5,6912,C,Socorro Pimentel,19184.2
+2025,5,6815,P,Waldemar Borges,1660.0
+2025,5,6886,C,Waldemar Borges,58375.6
+2025,5,6906,P,Wanderson Florêncio,59799.4
+2025,5,6888,P,William BrIgido,59757.79
+2025,5,6920,P,Álvaro Porto,56037.6
+2025,5,7322,C,Álvaro Porto,4035.67
+2025,6,6978,P,Abimael Santos,36790.0
+2025,6,6993,C,Abimael Santos,22862.0
+2025,6,6946,P,Adalto Santos,60000.0
+2025,6,6994,P,Aglailson Victor,59928.0
+2025,6,6956,P,Antonio Coelho,59838.0
+2025,6,6971,P,Antônio Moraes,34247.11
+2025,6,7013,C,Antônio Moraes,7976.0
+2025,6,6969,P,Cayo Albino,59970.0
+2025,6,6981,P,Claudiano Martins Filho,60073.27
+2025,6,6955,P,Coronel Alberto Feitosa,49891.25
+2025,6,7011,C,Coronel Alberto Feitosa,10180.0
+2025,6,6965,P,Dani Portela,49736.0
+2025,6,7000,P,Dannilo Godoy,50000.0
+2025,6,7010,C,Dannilo Godoy,10000.0
+2025,6,6911,P,Delegada Gleide Angelo,954.17
+2025,6,6979,C,Delegada Gleide Angelo,57021.5
+2025,6,6960,P,Diogo Moraes,60029.8
+2025,6,7037,P,Doriel Barros,4000.0
+2025,6,7076,C,Doriel Barros,3000.0
+2025,6,7088,C,Doriel Barros,26500.0
+2025,6,7154,C,Doriel Barros,4473.0
+2025,6,7290,C,Doriel Barros,17000.0
+2025,6,7316,C,Doriel Barros,1200.0
+2025,6,6949,P,Débora Almeida,42101.0
+2025,6,6950,P,Edson Vieira,59500.0
+2025,6,6991,P,Fabrizio Ferraz,59905.45
+2025,6,6980,P,France Hacker,45054.98
+2025,6,6999,C,France Hacker,10500.0
+2025,6,7027,C,France Hacker,4500.0
+2025,6,6976,P,Francismar Pontes,60020.0
+2025,6,6972,P,Gilmar Junior,47125.86
+2025,6,7002,C,Gilmar Junior,8600.0
+2025,6,6997,P,Gustavo Gouveia,60073.27
+2025,6,7001,P,Henrique Queiroz Filho,59030.0
+2025,6,6966,P,Izaias Régis,60070.0
+2025,6,6930,P,Jarbas Filho,47939.02
+2025,6,7244,C,Jarbas Filho,5500.0
+2025,6,7355,C,Jarbas Filho,2982.0
+2025,6,7006,P,Jeferson Timóteo,60010.0
+2025,6,6982,P,Joaquim Lira,42072.63
+2025,6,6983,P,Joel da Harpa,59676.87
+2025,6,6967,P,João Paulo Costa,53514.0
+2025,6,7015,C,João Paulo Costa,6000.0
+2025,6,6985,P,João Paulo do PT,58473.59
+2025,6,6992,P,João de Nadegi,55437.6
+2025,6,7342,C,João de Nadegi,4572.4
+2025,6,6986,P,Joãozinho Tenório,52001.4
+2025,6,7007,C,Joãozinho Tenório,7435.4
+2025,6,7400,C,Joãozinho Tenório,591.0
+2025,6,6995,P,Junior Matuto,59850.0
+2025,6,6953,P,Luciano Duque,57115.5
+2025,6,6964,P,Mário Ricardo,59772.0
+2025,6,6952,P,Nino de Enoque,55103.27
+2025,6,7004,C,Nino de Enoque,4970.0
+2025,6,6968,P,Pastor Cleiton Collins,59839.9
+2025,6,6970,P,Pastor Junior Tercio,59747.2
+2025,6,6996,P,Renato Antunes,40920.08
+2025,6,7221,C,Renato Antunes,3000.0
+2025,6,7465,C,Renato Antunes,15298.19
+2025,6,6977,P,Roberta Arraes,59816.97
+2025,6,6988,P,Rodrigo Farias,59979.0
+2025,6,6954,P,Romero Albuquerque,45408.2
+2025,6,6984,C,Romero Albuquerque,14413.0
+2025,6,6957,P,Romero Sales Filho,60060.71
+2025,6,7005,P,Rosa Amorim,59996.3
+2025,6,6948,P,Sileno Guedes,59719.9
+2025,6,6962,P,Simone Santana,59263.0
+2025,6,6951,P,Socorro Pimentel,30260.0
+2025,6,6961,C,Socorro Pimentel,29684.2
+2025,6,6882,P,Waldemar Borges,1660.0
+2025,6,6959,C,Waldemar Borges,41820.0
+2025,6,6975,C,Waldemar Borges,16376.15
+2025,6,6963,P,Wanderson Florêncio,59799.4
+2025,6,6974,P,William BrIgido,42422.79
+2025,6,7003,C,William BrIgido,17395.0
+2025,6,6987,P,Álvaro Porto,39037.6
+2025,6,7008,C,Álvaro Porto,17000.0
+2025,6,7323,C,Álvaro Porto,4035.67
+2025,7,7022,P,Abimael Santos,59652.0
+2025,7,7020,P,Adalto Santos,60000.0
+2025,7,7068,P,Aglailson Victor,59928.0
+2025,7,7026,P,Antonio Coelho,59838.0
+2025,7,7078,P,Antônio Moraes,34002.31
+2025,7,7082,C,Antônio Moraes,7976.0
+2025,7,7051,P,Cayo Albino,59970.0
+2025,7,7045,P,Claudiano Martins Filho,60073.27
+2025,7,7041,P,Coronel Alberto Feitosa,60071.25
+2025,7,7038,P,Dani Portela,49736.0
+2025,7,7073,P,Dannilo Godoy,60000.0
+2025,7,6998,P,Delegada Gleide Angelo,1652.89
+2025,7,7036,C,Delegada Gleide Angelo,38521.5
+2025,7,7031,P,Diogo Moraes,59909.87
+2025,7,7033,P,Doriel Barros,4000.0
+2025,7,7075,C,Doriel Barros,3000.0
+2025,7,7089,C,Doriel Barros,26500.0
+2025,7,7153,C,Doriel Barros,4473.0
+2025,7,7289,C,Doriel Barros,17000.0
+2025,7,7317,C,Doriel Barros,1200.0
+2025,7,7035,P,Débora Almeida,59893.6
+2025,7,7018,P,Edson Vieira,59500.0
+2025,7,7061,P,Fabrizio Ferraz,59905.45
+2025,7,7053,P,France Hacker,46724.27
+2025,7,7086,C,France Hacker,13349.0
+2025,7,7043,P,Francismar Pontes,60020.0
+2025,7,7049,P,Gilmar Junior,48725.86
+2025,7,7060,C,Gilmar Junior,7000.0
+2025,7,7046,P,Gustavo Gouveia,60073.27
+2025,7,7057,P,Henrique Queiroz Filho,49910.0
+2025,7,7085,C,Henrique Queiroz Filho,9120.0
+2025,7,7042,P,Izaias Régis,60070.0
+2025,7,6973,P,Jarbas Filho,38995.24
+2025,7,7069,C,Jarbas Filho,8417.5
+2025,7,7334,C,Jarbas Filho,12660.0
+2025,7,7081,P,Jeferson Timóteo,60010.0
+2025,7,7074,P,Joaquim Lira,34558.34
+2025,7,7084,C,Joaquim Lira,7500.0
+2025,7,7048,P,Joel da Harpa,59676.87
+2025,7,7066,P,João Paulo Costa,59514.0
+2025,7,7054,P,João Paulo do PT,53239.99
+2025,7,7137,C,João Paulo do PT,6833.0
+2025,7,7063,P,João de Nadegi,55437.6
+2025,7,7343,C,João de Nadegi,4572.4
+2025,7,7059,P,Joãozinho Tenório,34086.4
+2025,7,7083,C,Joãozinho Tenório,13079.0
+2025,7,7128,C,Joãozinho Tenório,11075.0
+2025,7,7203,C,Joãozinho Tenório,1196.4
+2025,7,7401,C,Joãozinho Tenório,591.0
+2025,7,7058,P,Junior Matuto,39970.0
+2025,7,7080,C,Junior Matuto,19880.0
+2025,7,7047,P,Luciano Duque,57115.5
+2025,7,7024,P,Mário Ricardo,59772.0
+2025,7,7021,P,Nino de Enoque,60073.27
+2025,7,7034,P,Pastor Cleiton Collins,59839.9
+2025,7,7052,P,Pastor Junior Tercio,59747.2
+2025,7,7077,P,Renato Antunes,33823.4
+2025,7,7093,C,Renato Antunes,8496.68
+2025,7,7220,C,Renato Antunes,1600.0
+2025,7,7466,C,Renato Antunes,15234.35
+2025,7,7039,P,Roberta Arraes,59816.97
+2025,7,7056,P,Rodrigo Farias,46979.0
+2025,7,7145,C,Rodrigo Farias,13000.0
+2025,7,7017,P,Romero Albuquerque,45381.62
+2025,7,7050,C,Romero Albuquerque,14413.0
+2025,7,7032,P,Romero Sales Filho,60060.71
+2025,7,7087,P,Rosa Amorim,59996.3
+2025,7,7019,P,Sileno Guedes,55677.4
+2025,7,7094,C,Sileno Guedes,202.2
+2025,7,7030,P,Simone Santana,39263.0
+2025,7,7055,C,Simone Santana,20000.0
+2025,7,7023,P,Socorro Pimentel,49444.2
+2025,7,7040,C,Socorro Pimentel,10500.0
+2025,7,6958,P,Waldemar Borges,1660.0
+2025,7,7028,C,Waldemar Borges,58196.15
+2025,7,7029,P,Wanderson Florêncio,59799.4
+2025,7,7025,P,William BrIgido,42384.79
+2025,7,7072,C,William BrIgido,17395.0
+2025,7,7062,P,Álvaro Porto,51112.6
+2025,7,7079,C,Álvaro Porto,4925.0
+2025,7,7324,C,Álvaro Porto,4035.67
+2025,8,7107,P,Abimael Santos,59652.0
+2025,8,7103,P,Adalto Santos,60000.0
+2025,8,7139,P,Aglailson Victor,59928.0
+2025,8,7098,P,Antonio Coelho,59838.0
+2025,8,7122,P,Antônio Moraes,18255.8
+2025,8,7215,C,Antônio Moraes,29525.86
+2025,8,7131,P,Cayo Albino,59970.0
+2025,8,7115,P,Claudiano Martins Filho,42809.0
+2025,8,7143,C,Claudiano Martins Filho,17264.27
+2025,8,7110,P,Coronel Alberto Feitosa,51071.25
+2025,8,7156,C,Coronel Alberto Feitosa,9000.0
+2025,8,7111,P,Dani Portela,49736.0
+2025,8,7159,P,Dannilo Godoy,60000.0
+2025,8,7070,P,Delegada Gleide Angelo,1652.89
+2025,8,7106,C,Delegada Gleide Angelo,42021.5
+2025,8,7132,P,Diogo Moraes,60049.8
+2025,8,7148,P,Doriel Barros,32488.0
+2025,8,7168,C,Doriel Barros,5485.0
+2025,8,7174,C,Doriel Barros,1200.0
+2025,8,7284,C,Doriel Barros,17000.0
+2025,8,7121,P,Débora Almeida,59893.6
+2025,8,7101,P,Edson Vieira,59500.0
+2025,8,7123,P,Fabrizio Ferraz,43703.25
+2025,8,7149,C,Fabrizio Ferraz,16202.2
+2025,8,7120,P,France Hacker,57024.27
+2025,8,7134,C,France Hacker,3030.71
+2025,8,7127,P,Francismar Pontes,60020.0
+2025,8,7141,P,Gilmar Junior,55725.86
+2025,8,7130,P,Gustavo Gouveia,60073.27
+2025,8,7146,P,Henrique Queiroz Filho,59030.0
+2025,8,7114,P,Izaias Régis,60070.0
+2025,8,7071,P,Jarbas Filho,47457.62
+2025,8,7336,C,Jarbas Filho,12615.0
+2025,8,7162,P,Jeferson Timóteo,60010.0
+2025,8,7125,P,Joaquim Lira,42096.11
+2025,8,7194,C,Joaquim Lira,1799.0
+2025,8,7117,P,Joel da Harpa,59676.87
+2025,8,7104,P,João Paulo Costa,59514.0
+2025,8,7142,P,João Paulo do PT,49569.48
+2025,8,7158,C,João Paulo do PT,10503.79
+2025,8,7129,P,João de Nadegi,55437.6
+2025,8,7344,C,João de Nadegi,4572.4
+2025,8,7133,P,Joãozinho Tenório,34821.4
+2025,8,7161,C,Joãozinho Tenório,13479.0
+2025,8,7204,C,Joãozinho Tenório,10536.4
+2025,8,7330,C,Joãozinho Tenório,600.0
+2025,8,7402,C,Joãozinho Tenório,591.0
+2025,8,7155,P,Junior Matuto,59850.0
+2025,8,7105,P,Luciano Duque,57115.5
+2025,8,7109,P,Mário Ricardo,59772.0
+2025,8,7095,P,Nino de Enoque,55103.27
+2025,8,7147,C,Nino de Enoque,4970.0
+2025,8,7113,P,Pastor Cleiton Collins,59640.0
+2025,8,7140,C,Pastor Cleiton Collins,199.9
+2025,8,7126,P,Pastor Junior Tercio,58944.2
+2025,8,7157,P,Renato Antunes,36962.08
+2025,8,7219,C,Renato Antunes,6958.0
+2025,8,7467,C,Renato Antunes,15283.92
+2025,8,7119,P,Roberta Arraes,59816.97
+2025,8,7144,P,Rodrigo Farias,59979.0
+2025,8,7136,P,Romero Albuquerque,45381.62
+2025,8,7160,C,Romero Albuquerque,14413.0
+2025,8,7097,P,Romero Sales Filho,60060.71
+2025,8,7163,P,Rosa Amorim,39492.0
+2025,8,7165,C,Rosa Amorim,15417.3
+2025,8,7233,C,Rosa Amorim,4990.0
+2025,8,7102,P,Sileno Guedes,55677.4
+2025,8,7169,C,Sileno Guedes,202.17
+2025,8,7108,P,Simone Santana,59263.0
+2025,8,7096,P,Socorro Pimentel,14910.0
+2025,8,7112,C,Socorro Pimentel,19184.2
+2025,8,7138,C,Socorro Pimentel,24833.87
+2025,8,7016,P,Waldemar Borges,1660.0
+2025,8,7118,C,Waldemar Borges,58196.15
+2025,8,7135,P,Wanderson Florêncio,59799.4
+2025,8,7124,P,William BrIgido,59757.79
+2025,8,7116,P,Álvaro Porto,50857.6
+2025,8,7225,C,Álvaro Porto,5000.0
+2025,8,7325,C,Álvaro Porto,4215.67
+2025,9,7183,P,Abimael Santos,59652.0
+2025,9,7192,P,Adalto Santos,60000.0
+2025,9,7224,P,Aglailson Victor,59928.0
+2025,9,7176,P,Antonio Coelho,59838.0
+2025,9,7180,P,Antônio Moraes,41131.86
+2025,9,7214,C,Antônio Moraes,6659.8
+2025,9,7223,P,Cayo Albino,59970.0
+2025,9,7191,P,Claudiano Martins Filho,60073.27
+2025,9,7209,P,Coronel Alberto Feitosa,50071.25
+2025,9,7231,C,Coronel Alberto Feitosa,10000.0
+2025,9,7199,P,Dani Portela,37808.0
+2025,9,7211,C,Dani Portela,11928.0
+2025,9,7229,P,Dannilo Godoy,60000.0
+2025,9,7164,P,Delegada Gleide Angelo,1652.89
+2025,9,7179,C,Delegada Gleide Angelo,39021.5
+2025,9,7232,P,Diogo Moraes,60005.08
+2025,9,7238,P,Doriel Barros,7973.0
+2025,9,7251,C,Doriel Barros,29500.0
+2025,9,7314,C,Doriel Barros,18200.0
+2025,9,7181,P,Débora Almeida,59893.6
+2025,9,7172,P,Edson Vieira,59500.0
+2025,9,7206,P,Fabrizio Ferraz,59905.45
+2025,9,7193,P,France Hacker,60073.27
+2025,9,7201,P,Francismar Pontes,60020.0
+2025,9,7195,P,Gilmar Junior,55725.86
+2025,9,7217,P,Gustavo Gouveia,60073.27
+2025,9,7205,P,Henrique Queiroz Filho,59030.0
+2025,9,7207,P,Izaias Régis,60000.0
+2025,9,7100,P,Jarbas Filho,48234.01
+2025,9,7356,C,Jarbas Filho,2982.0
+2025,9,7234,P,Jeferson Timóteo,60010.0
+2025,9,7200,P,Joaquim Lira,42167.04
+2025,9,7216,P,Joel da Harpa,52123.0
+2025,9,7301,C,Joel da Harpa,7553.87
+2025,9,7187,P,João Paulo Costa,59514.0
+2025,9,7208,P,João Paulo do PT,60073.27
+2025,9,7227,P,João de Nadegi,55437.6
+2025,9,7345,C,João de Nadegi,4572.4
+2025,9,7212,P,Joãozinho Tenório,37521.4
+2025,9,7228,C,Joãozinho Tenório,16175.4
+2025,9,7235,C,Joãozinho Tenório,3940.0
+2025,9,7333,C,Joãozinho Tenório,1800.0
+2025,9,7403,C,Joãozinho Tenório,591.0
+2025,9,7202,P,Junior Matuto,59850.0
+2025,9,7184,P,Luciano Duque,57115.5
+2025,9,7188,P,Mário Ricardo,59772.0
+2025,9,7186,P,Nino de Enoque,60073.27
+2025,9,7175,P,Pastor Cleiton Collins,59839.9
+2025,9,7190,P,Pastor Junior Tercio,58944.2
+2025,9,7213,P,Renato Antunes,39823.4
+2025,9,7468,C,Renato Antunes,15414.0
+2025,9,7197,P,Roberta Arraes,59816.97
+2025,9,7236,P,Rodrigo Farias,59979.0
+2025,9,7178,P,Romero Albuquerque,45381.62
+2025,9,7210,C,Romero Albuquerque,14413.0
+2025,9,7182,P,Romero Sales Filho,60060.71
+2025,9,7237,P,Rosa Amorim,59899.3
+2025,9,7189,P,Sileno Guedes,55677.4
+2025,9,7249,C,Sileno Guedes,202.2
+2025,9,7185,P,Simone Santana,59263.0
+2025,9,7173,P,Socorro Pimentel,59944.2
+2025,9,7099,P,Waldemar Borges,1660.0
+2025,9,7171,C,Waldemar Borges,58196.15
+2025,9,7198,P,Wanderson Florêncio,59799.4
+2025,9,7196,P,William BrIgido,59757.79
+2025,9,7226,P,Álvaro Porto,55857.6
+2025,9,7326,C,Álvaro Porto,4215.67
+2025,10,7274,P,Abimael Santos,59652.0
+2025,10,7268,P,Adalto Santos,60000.0
+2025,10,7313,P,Aglailson Victor,59928.0
+2025,10,7257,P,Antonio Coelho,59838.0
+2025,10,7287,P,Antônio Moraes,43815.66
+2025,10,7299,C,Antônio Moraes,3976.0
+2025,10,7293,P,Cayo Albino,59970.0
+2025,10,7247,P,Claudiano Martins Filho,60073.27
+2025,10,7261,P,Coronel Alberto Feitosa,60071.25
+2025,10,7279,P,Dani Portela,34808.0
+2025,10,7302,C,Dani Portela,3000.0
+2025,10,7309,P,Dannilo Godoy,38200.0
+2025,10,7361,C,Dannilo Godoy,21800.0
+2025,10,7230,P,Delegada Gleide Angelo,1689.66
+2025,10,7255,C,Delegada Gleide Angelo,38521.5
+2025,10,7271,P,Diogo Moraes,60005.08
+2025,10,7282,P,Doriel Barros,34973.0
+2025,10,7315,C,Doriel Barros,21200.0
+2025,10,7266,P,Débora Almeida,59893.6
+2025,10,7246,P,Edson Vieira,59500.0
+2025,10,7310,P,Fabrizio Ferraz,59905.45
+2025,10,7254,P,France Hacker,60073.27
+2025,10,7265,P,Francismar Pontes,42020.0
+2025,10,7297,C,Francismar Pontes,18000.0
+2025,10,7260,P,Gilmar Junior,50380.0
+2025,10,7308,C,Gilmar Junior,5345.86
+2025,10,7283,P,Gustavo Gouveia,60073.27
+2025,10,7285,P,Henrique Queiroz Filho,59030.0
+2025,10,7264,P,Izaias Régis,32260.0
+2025,10,7286,C,Izaias Régis,27800.0
+2025,10,7218,P,Jarbas Filho,43794.86
+2025,10,7296,C,Jarbas Filho,6626.67
+2025,10,7357,C,Jarbas Filho,2982.0
+2025,10,7332,P,Jeferson Timóteo,60010.0
+2025,10,7305,P,Joaquim Lira,35074.38
+2025,10,7417,C,Joaquim Lira,18756.0
+2025,10,7288,P,Joel da Harpa,59676.87
+2025,10,7272,P,João Paulo Costa,59514.0
+2025,10,7275,P,João Paulo do PT,60073.27
+2025,10,7312,P,João de Nadegi,60010.0
+2025,10,7270,P,Joãozinho Tenório,44600.4
+2025,10,7331,C,Joãozinho Tenório,14836.4
+2025,10,7404,C,Joãozinho Tenório,591.0
+2025,10,7273,P,Junior Matuto,39850.0
+2025,10,7311,C,Junior Matuto,20000.0
+2025,10,7250,P,Luciano Duque,57115.5
+2025,10,7267,P,Mário Ricardo,59772.0
+2025,10,7253,P,Nino de Enoque,60073.27
+2025,10,7262,P,Pastor Cleiton Collins,59839.9
+2025,10,7276,P,Pastor Junior Tercio,58944.2
+2025,10,7281,P,Renato Antunes,40423.4
+2025,10,7469,C,Renato Antunes,15262.01
+2025,10,7263,P,Roberta Arraes,59816.97
+2025,10,7335,P,Rodrigo Farias,59979.0
+2025,10,7252,P,Romero Albuquerque,45408.2
+2025,10,7295,C,Romero Albuquerque,14413.0
+2025,10,7256,P,Romero Sales Filho,60060.71
+2025,10,7298,P,Rosa Amorim,59899.3
+2025,10,7278,P,Sileno Guedes,55677.4
+2025,10,7411,C,Sileno Guedes,202.2
+2025,10,7269,P,Simone Santana,59263.0
+2025,10,7245,P,Socorro Pimentel,59944.2
+2025,10,7170,P,Waldemar Borges,1660.0
+2025,10,7259,C,Waldemar Borges,58196.14
+2025,10,7292,P,Wanderson Florêncio,40913.4
+2025,10,7300,C,Wanderson Florêncio,18886.0
+2025,10,7248,P,William BrIgido,59757.79
+2025,10,7307,P,Álvaro Porto,60073.27
+2025,11,7383,P,Abimael Santos,59652.0
+2025,11,7367,P,Adalto Santos,60000.0
+2025,11,7394,P,Aglailson Victor,58878.0
+2025,11,7368,P,Antonio Coelho,59838.0
+2025,11,7437,P,Antônio Moraes,28682.86
+2025,11,7454,C,Antônio Moraes,19928.0
+2025,11,7429,P,Cayo Albino,26056.0
+2025,11,7448,C,Cayo Albino,21920.0
+2025,11,7421,P,Claudiano Martins Filho,60073.27
+2025,11,7384,P,Coronel Alberto Feitosa,49381.85
+2025,11,7462,C,Coronel Alberto Feitosa,10690.0
+2025,11,7414,P,Dani Portela,37808.0
+2025,11,7455,C,Dani Portela,22000.0
+2025,11,7439,P,Dannilo Godoy,70.0
+2025,11,7449,C,Dannilo Godoy,60000.0
+2025,11,7277,P,Delegada Gleide Angelo,1652.9
+2025,11,7364,C,Delegada Gleide Angelo,38521.5
+2025,11,7387,P,Diogo Moraes,38125.08
+2025,11,7423,C,Diogo Moraes,21948.0
+2025,11,7452,P,Doriel Barros,56071.0
+2025,11,7348,P,Débora Almeida,59893.6
+2025,11,7360,P,Edson Vieira,59500.0
+2025,11,7353,P,Fabrizio Ferraz,59905.45
+2025,11,7434,P,France Hacker,60073.27
+2025,11,7418,P,Francismar Pontes,42020.0
+2025,11,7451,C,Francismar Pontes,18000.0
+2025,11,7372,P,Gilmar Junior,36645.86
+2025,11,7441,C,Gilmar Junior,19080.0
+2025,11,7422,P,Gustavo Gouveia,60073.27
+2025,11,7409,P,Henrique Queiroz Filho,59030.0
+2025,11,7376,P,Izaias Régis,60070.0
+2025,11,7306,P,Jarbas Filho,50987.61
+2025,11,7430,C,Jarbas Filho,7382.0
+2025,11,7390,P,Jeferson Timóteo,60010.0
+2025,11,7445,P,Joaquim Lira,39273.17
+2025,11,7480,C,Joaquim Lira,14756.0
+2025,11,7381,P,Joel da Harpa,59676.87
+2025,11,7426,P,João Paulo Costa,59512.0
+2025,11,7347,P,João Paulo do PT,60073.27
+2025,11,7474,P,João de Nadegi,60010.0
+2025,11,7405,P,Joãozinho Tenório,60027.8
+2025,11,7389,P,Junior Matuto,59850.0
+2025,11,7420,P,Luciano Duque,57115.5
+2025,11,7378,P,Mário Ricardo,59772.0
+2025,11,7351,P,Nino de Enoque,55073.27
+2025,11,7385,C,Nino de Enoque,5000.0
+2025,11,7369,P,Pastor Cleiton Collins,59839.9
+2025,11,7415,P,Pastor Junior Tercio,58944.2
+2025,11,7427,P,Renato Antunes,40423.4
+2025,11,7471,C,Renato Antunes,15473.83
+2025,11,7428,P,Roberta Arraes,59816.97
+2025,11,7386,P,Rodrigo Farias,59979.0
+2025,11,7350,P,Romero Albuquerque,45381.62
+2025,11,7444,C,Romero Albuquerque,14500.0
+2025,11,7349,P,Romero Sales Filho,60060.71
+2025,11,7406,P,Rosa Amorim,59899.3
+2025,11,7410,P,Sileno Guedes,55677.4
+2025,11,7371,P,Simone Santana,59263.0
+2025,11,7346,P,Socorro Pimentel,59944.2
+2025,11,7258,P,Waldemar Borges,1660.0
+2025,11,7363,C,Waldemar Borges,58325.0
+2025,11,7477,P,Wanderson Florêncio,59082.73
+2025,11,7358,P,William BrIgido,59757.79
+2025,11,7472,P,Álvaro Porto,60073.27
+2025,12,7476,P,Abimael Santos,40.0
+2025,12,7528,C,Abimael Santos,59880.0
+2025,12,7419,P,Adalto Santos,20.0
+2025,12,7502,C,Adalto Santos,60000.0
+2025,12,7393,P,Aglailson Victor,20.0
+2025,12,7516,C,Aglailson Victor,60000.0
+2025,12,7377,P,Antonio Coelho,20.0
+2025,12,7483,C,Antonio Coelho,60000.0
+2025,12,7438,P,Antônio Moraes,39.99
+2025,12,7488,C,Antônio Moraes,53213.0
+2025,12,7436,P,Cayo Albino,20.0
+2025,12,7494,C,Cayo Albino,59970.0
+2025,12,7460,P,Claudiano Martins Filho,20.0
+2025,12,7522,C,Claudiano Martins Filho,60053.27
+2025,12,7459,P,Coronel Alberto Feitosa,60.43
+2025,12,7496,C,Coronel Alberto Feitosa,60012.84
+2025,12,7447,P,Dani Portela,20.0
+2025,12,7495,C,Dani Portela,39900.0
+2025,12,7440,P,Dannilo Godoy,70.0
+2025,12,7512,C,Dannilo Godoy,60000.0
+2025,12,7366,P,Delegada Gleide Angelo,954.17
+2025,12,7508,C,Delegada Gleide Angelo,38539.2
+2025,12,7407,P,Diogo Moraes,50.0
+2025,12,7491,C,Diogo Moraes,60023.27
+2025,12,7453,P,Doriel Barros,40.0
+2025,12,7530,C,Doriel Barros,56200.0
+2025,12,7395,P,Débora Almeida,92.0
+2025,12,7513,C,Débora Almeida,42185.0
+2025,12,7373,P,Edson Vieira,20.0
+2025,12,7484,C,Edson Vieira,59500.0
+2025,12,7374,P,Fabrizio Ferraz,20.0
+2025,12,7511,C,Fabrizio Ferraz,60003.25
+2025,12,7446,P,France Hacker,20.0
+2025,12,7505,C,France Hacker,60053.27
+2025,12,7365,P,Francismar Pontes,60.0
+2025,12,7498,C,Francismar Pontes,60013.27
+2025,12,7442,P,Gilmar Junior,20.0
+2025,12,7520,C,Gilmar Junior,51725.86
+2025,12,7433,P,Gustavo Gouveia,70.9
+2025,12,7497,C,Gustavo Gouveia,60002.37
+2025,12,7443,P,Henrique Queiroz Filho,71.1
+2025,12,7485,C,Henrique Queiroz Filho,59030.0
+2025,12,7370,P,Izaias Régis,19.62
+2025,12,7514,C,Izaias Régis,60035.65
+2025,12,7408,P,Jarbas Filho,79.9
+2025,12,7503,C,Jarbas Filho,59530.61
+2025,12,7391,P,Jeferson Timóteo,50.0
+2025,12,7515,C,Jeferson Timóteo,60010.0
+2025,12,7431,P,Joaquim Lira,110.99
+2025,12,7532,C,Joaquim Lira,54268.66
+2025,12,7382,P,Joel da Harpa,20.0
+2025,12,7529,C,Joel da Harpa,59676.87
+2025,12,7479,P,João Paulo Costa,20.0
+2025,12,7519,C,João Paulo Costa,59730.0
+2025,12,7379,P,João Paulo do PT,78.9
+2025,12,7492,C,João Paulo do PT,59994.37
+2025,12,7475,P,João de Nadegi,50.0
+2025,12,7526,C,João de Nadegi,59960.0
+2025,12,7424,P,Joãozinho Tenório,30.13
+2025,12,7501,C,Joãozinho Tenório,60031.4
+2025,12,7392,P,Junior Matuto,20.0
+2025,12,7517,C,Junior Matuto,60000.0
+2025,12,7461,P,Luciano Duque,35.97
+2025,12,7489,C,Luciano Duque,57115.5
+2025,12,7380,P,Mário Ricardo,50.0
+2025,12,7500,C,Mário Ricardo,60000.0
+2025,12,7450,P,Nino de Enoque,100.0
+2025,12,7482,C,Nino de Enoque,59973.27
+2025,12,7413,P,Pastor Cleiton Collins,60.0
+2025,12,7523,C,Pastor Cleiton Collins,60013.27
+2025,12,7416,P,Pastor Junior Tercio,20.0
+2025,12,7510,C,Pastor Junior Tercio,59090.0
+2025,12,7435,P,Renato Antunes,20.0
+2025,12,7518,C,Renato Antunes,60053.27
+2025,12,7432,P,Roberta Arraes,20.0
+2025,12,7499,C,Roberta Arraes,59945.97
+2025,12,7388,P,Rodrigo Farias,38.0
+2025,12,7524,C,Rodrigo Farias,60000.0
+2025,12,7359,P,Romero Albuquerque,20.0
+2025,12,7486,C,Romero Albuquerque,60003.42
+2025,12,7457,P,Romero Sales Filho,43.95
+2025,12,7487,C,Romero Sales Filho,60029.21
+2025,12,7456,P,Rosa Amorim,20.0
+2025,12,7507,C,Rosa Amorim,52040.0
+2025,12,7412,P,Sileno Guedes,20.0
+2025,12,7493,C,Sileno Guedes,58100.0
+2025,12,7425,P,Simone Santana,28.95
+2025,12,7521,C,Simone Santana,59500.0
+2025,12,7375,P,Socorro Pimentel,20.0
+2025,12,7481,C,Socorro Pimentel,60050.0
+2025,12,7362,P,Waldemar Borges,1660.0
+2025,12,7504,C,Waldemar Borges,58325.0
+2025,12,7478,P,Wanderson Florêncio,30.0
+2025,12,7531,C,Wanderson Florêncio,60025.0
+2025,12,7458,P,William BrIgido,82.54
+2025,12,7490,C,William BrIgido,59757.79
+2025,12,7473,P,Álvaro Porto,20.0
+2025,12,7525,C,Álvaro Porto,60053.27
+2026,1,7561,P,Abimael Santos,44880.0
+2026,1,7593,C,Abimael Santos,15000.0
+2026,1,7542,P,Adalto Santos,60000.0
+2026,1,7577,P,Aglailson Victor,60000.0
+2026,1,7539,P,Antonio Coelho,60000.0
+2026,1,7534,P,Antônio Moraes,19123.0
+2026,1,7583,C,Antônio Moraes,15000.0
+2026,1,7731,C,Antônio Moraes,15290.0
+2026,1,7805,C,Antônio Moraes,4000.0
+2026,1,7591,P,Cayo Albino,43470.0
+2026,1,7638,C,Cayo Albino,16500.0
+2026,1,7560,P,Claudiano Martins Filho,60073.27
+2026,1,7547,P,Coronel Alberto Feitosa,39760.0
+2026,1,7585,C,Coronel Alberto Feitosa,20313.27
+2026,1,7538,P,Dani Portela,34400.0
+2026,1,7567,C,Dani Portela,24000.0
+2026,1,7580,P,Dannilo Godoy,60000.0
+2026,1,7509,P,Delegada Gleide Angelo,39490.67
+2026,1,7548,P,Diogo Moraes,60073.27
+2026,1,7657,P,Doriel Barros,28600.0
+2026,1,7690,C,Doriel Barros,2500.0
+2026,1,7720,C,Doriel Barros,22000.0
+2026,1,7550,P,Débora Almeida,42185.0
+2026,1,7536,P,Edson Vieira,59500.0
+2026,1,7737,P,Fabrizio Ferraz,60070.0
+2026,1,7558,P,France Hacker,60073.27
+2026,1,7564,P,Francismar Pontes,42140.0
+2026,1,7582,C,Francismar Pontes,17933.27
+2026,1,7565,P,Gilmar Junior,34480.0
+2026,1,7574,C,Gilmar Junior,21900.0
+2026,1,7543,P,Gustavo Gouveia,60073.27
+2026,1,7551,P,Henrique Queiroz Filho,59030.0
+2026,1,7554,P,Izaias Régis,60035.0
+2026,1,7527,P,Jarbas Filho,58188.28
+2026,1,7578,P,Jeferson Timóteo,60010.0
+2026,1,7569,P,Joaquim Lira,32096.43
+2026,1,7589,C,Joaquim Lira,10780.0
+2026,1,7570,P,Joel da Harpa,59676.87
+2026,1,7545,P,João Paulo Costa,60000.0
+2026,1,7579,P,João Paulo do PT,60073.27
+2026,1,7584,P,João de Nadegi,59738.6
+2026,1,7572,P,Joãozinho Tenório,30325.0
+2026,1,7621,C,Joãozinho Tenório,24780.0
+2026,1,7807,C,Joãozinho Tenório,4939.0
+2026,1,7573,P,Junior Matuto,36562.0
+2026,1,7581,C,Junior Matuto,20000.0
+2026,1,7541,P,Luciano Duque,35300.0
+2026,1,7588,C,Luciano Duque,22000.0
+2026,1,7552,P,Mário Ricardo,60000.0
+2026,1,7555,P,Nino de Enoque,26882.41
+2026,1,7587,C,Nino de Enoque,33170.86
+2026,1,7556,P,Pastor Cleiton Collins,60037.9
+2026,1,7568,P,Pastor Junior Tercio,54800.0
+2026,1,7658,C,Pastor Junior Tercio,4500.0
+2026,1,7559,P,Renato Antunes,32409.23
+2026,1,7709,C,Renato Antunes,14100.0
+2026,1,7951,C,Renato Antunes,13564.04
+2026,1,7544,P,Roberta Arraes,59945.97
+2026,1,7592,P,Rodrigo Farias,60000.0
+2026,1,7535,P,Romero Albuquerque,45530.0
+2026,1,7571,C,Romero Albuquerque,14500.0
+2026,1,7540,P,Romero Sales Filho,60073.21
+2026,1,7586,P,Rosa Amorim,53650.0
+2026,1,7652,C,Rosa Amorim,6000.0
+2026,1,7537,P,Sileno Guedes,58100.0
+2026,1,7549,P,Simone Santana,39500.0
+2026,1,7576,C,Simone Santana,20000.0
+2026,1,7533,P,Socorro Pimentel,34200.0
+2026,1,7546,C,Socorro Pimentel,25850.0
+2026,1,7506,P,Waldemar Borges,1660.0
+2026,1,7563,C,Waldemar Borges,58316.0
+2026,1,7620,P,Wanderson Florêncio,60000.0
+2026,1,7557,P,William BrIgido,42362.79
+2026,1,7575,C,William BrIgido,17395.0
+2026,1,7566,P,Álvaro Porto,59577.6
+2026,2,7618,P,Abimael Santos,59880.0
+2026,2,7610,P,Adalto Santos,60000.0
+2026,2,7633,P,Aglailson Victor,48000.0
+2026,2,7645,C,Aglailson Victor,12000.0
+2026,2,7601,P,Antonio Coelho,60000.0
+2026,2,7627,P,Antônio Moraes,19123.0
+2026,2,7730,C,Antônio Moraes,19290.0
+2026,2,7804,C,Antônio Moraes,15000.0
+2026,2,7640,P,Cayo Albino,43470.0
+2026,2,7650,C,Cayo Albino,16500.0
+2026,2,7612,P,Claudiano Martins Filho,25670.0
+2026,2,7623,C,Claudiano Martins Filho,18200.0
+2026,2,7700,C,Claudiano Martins Filho,16203.27
+2026,2,7596,P,Coronel Alberto Feitosa,50090.0
+2026,2,7653,C,Coronel Alberto Feitosa,9983.27
+2026,2,7619,P,Dani Portela,58400.0
+2026,2,7617,P,Dannilo Godoy,48000.0
+2026,2,7631,C,Dannilo Godoy,12000.0
+2026,2,7590,P,Delegada Gleide Angelo,7875.48
+2026,2,7659,C,Delegada Gleide Angelo,12534.7
+2026,2,7670,C,Delegada Gleide Angelo,18000.0
+2026,2,7707,C,Delegada Gleide Angelo,5000.0
+2026,2,7603,P,Diogo Moraes,60073.27
+2026,2,7660,P,Doriel Barros,11500.0
+2026,2,7705,C,Doriel Barros,22000.0
+2026,2,7722,C,Doriel Barros,25000.0
+2026,2,7594,P,Débora Almeida,42185.0
+2026,2,7602,P,Edson Vieira,59500.0
+2026,2,7738,P,Fabrizio Ferraz,60070.0
+2026,2,7628,P,France Hacker,60073.27
+2026,2,7615,P,Francismar Pontes,60073.27
+2026,2,7624,P,Gilmar Junior,29680.0
+2026,2,7649,C,Gilmar Junior,26700.0
+2026,2,7630,P,Gustavo Gouveia,54133.27
+2026,2,7646,C,Gustavo Gouveia,5940.0
+2026,2,7629,P,Henrique Queiroz Filho,29270.0
+2026,2,7656,C,Henrique Queiroz Filho,29760.0
+2026,2,7614,P,Izaias Régis,50035.0
+2026,2,7651,C,Izaias Régis,10000.0
+2026,2,7553,P,Jarbas Filho,60052.67
+2026,2,7639,P,Jeferson Timóteo,60010.0
+2026,2,7641,P,Joaquim Lira,37001.89
+2026,2,7642,P,Joel da Harpa,59676.87
+2026,2,7616,P,João Paulo Costa,60000.0
+2026,2,7626,P,João Paulo do PT,56341.82
+2026,2,7662,C,João Paulo do PT,3731.45
+2026,2,7632,P,João de Nadegi,59496.5
+2026,2,7661,P,Joãozinho Tenório,27225.0
+2026,2,7721,C,Joãozinho Tenório,18039.0
+2026,2,7735,C,Joãozinho Tenório,1800.0
+2026,2,7958,C,Joãozinho Tenório,10600.0
+2026,2,7636,P,Junior Matuto,28450.0
+2026,2,7655,C,Junior Matuto,31424.0
+2026,2,7605,P,Luciano Duque,57300.0
+2026,2,7606,P,Mário Ricardo,60000.0
+2026,2,7607,P,Nino de Enoque,46939.86
+2026,2,7644,C,Nino de Enoque,13133.41
+2026,2,7608,P,Pastor Cleiton Collins,60037.9
+2026,2,7637,P,Pastor Junior Tercio,60000.0
+2026,2,7648,P,Renato Antunes,44309.23
+2026,2,7714,C,Renato Antunes,2200.0
+2026,2,7952,C,Renato Antunes,13564.04
+2026,2,7604,P,Roberta Arraes,59945.97
+2026,2,7643,P,Rodrigo Farias,36500.0
+2026,2,7654,C,Rodrigo Farias,23500.0
+2026,2,7595,P,Romero Albuquerque,45530.0
+2026,2,7625,C,Romero Albuquerque,14500.0
+2026,2,7600,P,Romero Sales Filho,54750.0
+2026,2,7647,P,Rosa Amorim,44804.13
+2026,2,7757,C,Rosa Amorim,15000.0
+2026,2,7611,P,Sileno Guedes,58100.0
+2026,2,7613,P,Simone Santana,59500.0
+2026,2,7597,P,Socorro Pimentel,60050.0
+2026,2,7562,P,Waldemar Borges,1860.0
+2026,2,7599,C,Waldemar Borges,46041.0
+2026,2,7635,C,Waldemar Borges,12000.0
+2026,2,7695,P,Wanderson Florêncio,41000.0
+2026,2,7726,C,Wanderson Florêncio,19000.0
+2026,2,7634,P,William BrIgido,59757.79
+2026,2,7609,P,Álvaro Porto,59594.0
+2026,3,7684,P,Abimael Santos,59880.0
+2026,3,7679,P,Adalto Santos,60000.0
+2026,3,7693,P,Aglailson Victor,60000.0
+2026,3,7668,P,Antonio Coelho,60000.0
+2026,3,7716,P,Antônio Moraes,23000.0
+2026,3,7806,C,Antônio Moraes,23290.0
+2026,3,7682,P,Cayo Albino,59970.0
+2026,3,7724,P,Claudiano Martins Filho,60073.27
+2026,3,7672,P,Coronel Alberto Feitosa,50090.0
+2026,3,7710,C,Coronel Alberto Feitosa,9983.27
+2026,3,7675,P,Dani Portela,58400.0
+2026,3,7694,P,Dannilo Godoy,60000.0
+2026,3,7692,P,Delegada Gleide Angelo,34642.56
+2026,3,7719,C,Delegada Gleide Angelo,3000.0
+2026,3,7671,P,Diogo Moraes,60073.27
+2026,3,7696,P,Doriel Barros,15000.0
+2026,3,7711,C,Doriel Barros,19000.0
+2026,3,7723,C,Doriel Barros,22000.0
+2026,3,7742,C,Doriel Barros,3000.0
+2026,3,7666,P,Débora Almeida,42185.0
+2026,3,7665,P,Edson Vieira,59500.0
+2026,3,7739,P,Fabrizio Ferraz,60070.0
+2026,3,7680,P,France Hacker,60073.27
+2026,3,7678,P,Francismar Pontes,60073.27
+2026,3,7703,P,Gilmar Junior,47480.0
+2026,3,7728,C,Gilmar Junior,8900.0
+2026,3,7691,P,Gustavo Gouveia,57606.27
+2026,3,7770,C,Gustavo Gouveia,2467.0
+2026,3,7686,P,Henrique Queiroz Filho,59030.0
+2026,3,7701,P,Izaias Régis,48470.0
+2026,3,7717,C,Izaias Régis,11600.0
+2026,3,7622,P,Jarbas Filho,56572.68
+2026,3,7715,C,Jarbas Filho,3500.0
+2026,3,7729,P,Jeferson Timóteo,60010.0
+2026,3,7706,P,Joaquim Lira,48660.19
+2026,3,7733,C,Joaquim Lira,10780.0
+2026,3,7685,P,Joel da Harpa,35223.0
+2026,3,7740,C,Joel da Harpa,24453.0
+2026,3,7698,P,João Paulo Costa,60000.0
+2026,3,7689,P,João Paulo do PT,54188.58
+2026,3,7862,C,João Paulo do PT,5866.92
+2026,3,7718,P,João de Nadegi,59496.5
+2026,3,7732,P,Joãozinho Tenório,41864.0
+2026,3,7736,C,Joãozinho Tenório,4600.0
+2026,3,7808,C,Joãozinho Tenório,13609.0
+2026,3,7713,P,Junior Matuto,60073.27
+2026,3,7676,P,Luciano Duque,57300.0
+2026,3,7681,P,Mário Ricardo,60000.0
+2026,3,7667,P,Nino de Enoque,60073.27
+2026,3,7687,P,Pastor Cleiton Collins,60037.9
+2026,3,7712,P,Pastor Junior Tercio,55000.0
+2026,3,7708,P,Renato Antunes,36950.0
+2026,3,7953,C,Renato Antunes,14780.0
+2026,3,7673,P,Roberta Arraes,59945.97
+2026,3,7727,P,Rodrigo Farias,60000.0
+2026,3,7683,P,Romero Albuquerque,45530.0
+2026,3,7725,C,Romero Albuquerque,14500.0
+2026,3,7669,P,Romero Sales Filho,54750.0
+2026,3,7734,P,Rosa Amorim,54908.61
+2026,3,7758,C,Rosa Amorim,5000.0
+2026,3,7674,P,Sileno Guedes,58100.0
+2026,3,7677,P,Simone Santana,59500.0
+2026,3,7663,P,Socorro Pimentel,60050.0
+2026,3,7598,P,Waldemar Borges,1860.0
+2026,3,7699,C,Waldemar Borges,29250.0
+2026,3,7741,C,Waldemar Borges,28850.0
+2026,3,7702,P,Wanderson Florêncio,60000.0
+2026,3,7664,P,William BrIgido,59757.79
+2026,3,7688,P,Álvaro Porto,59594.0
+2026,4,7759,P,Abimael Santos,57880.0
+2026,4,7761,P,Adalto Santos,60000.0
+2026,4,7789,P,Aglailson Victor,60000.0
+2026,4,7747,P,Antonio Coelho,60000.0
+2026,4,7803,P,Antônio Moraes,27290.0
+2026,4,7813,C,Antônio Moraes,8000.0
+2026,4,7781,P,Claudiano Martins Filho,60073.27
+2026,4,7772,P,Coronel Alberto Feitosa,55180.0
+2026,4,7851,C,Coronel Alberto Feitosa,4893.27
+2026,4,7774,P,Dani Portela,58400.0
+2026,4,7760,P,Dannilo Godoy,60000.0
+2026,4,7766,P,Delegada Gleide Angelo,25629.5
+2026,4,7793,C,Delegada Gleide Angelo,12385.82
+2026,4,7848,C,Delegada Gleide Angelo,4000.0
+2026,4,7786,P,Diogo Moraes,38193.27
+2026,4,7795,C,Diogo Moraes,21880.0
+2026,4,7801,P,Doriel Barros,53500.0
+2026,4,7812,C,Doriel Barros,5000.0
+2026,4,7744,P,Débora Almeida,47385.0
+2026,4,7746,P,Edson Vieira,59500.0
+2026,4,7814,P,Eriberto Filho,49850.0
+2026,4,7940,C,Eriberto Filho,10100.0
+2026,4,7876,P,Fabrizio Ferraz,43800.0
+2026,4,7776,P,France Hacker,60073.27
+2026,4,7765,P,Francismar Pontes,42140.0
+2026,4,7790,C,Francismar Pontes,17626.9
+2026,4,7763,P,Gilmar Junior,53380.0
+2026,4,7787,C,Gilmar Junior,3000.0
+2026,4,7769,P,Gustavo Gouveia,60073.27
+2026,4,7753,P,Henrique Queiroz Filho,59030.0
+2026,4,7775,P,Izaias Régis,49400.0
+2026,4,7799,C,Izaias Régis,10670.0
+2026,4,7704,P,Jarbas Filho,59068.03
+2026,4,7811,P,Jeferson Timóteo,60010.0
+2026,4,7796,P,Joaquim Lira,51931.37
+2026,4,7810,C,Joaquim Lira,7500.0
+2026,4,7771,P,Joel da Harpa,59676.87
+2026,4,7773,P,João Paulo Costa,60000.0
+2026,4,7785,P,João Paulo do PT,53637.69
+2026,4,7865,C,João Paulo do PT,6435.58
+2026,4,7802,P,João de Nadegi,59496.5
+2026,4,7779,P,Joãozinho Tenório,31650.0
+2026,4,7797,C,Joãozinho Tenório,27314.0
+2026,4,7809,C,Joãozinho Tenório,1109.0
+2026,4,7784,P,Junior Matuto,60073.27
+2026,4,7764,P,Kaio Maniçoba,38500.0
+2026,4,7788,C,Kaio Maniçoba,21500.0
+2026,4,7778,P,Luciano Duque,57300.0
+2026,4,7752,P,Mário Ricardo,60000.0
+2026,4,7751,P,Nino de Enoque,60073.27
+2026,4,7754,P,Pastor Cleiton Collins,60073.27
+2026,4,7782,P,Pastor Junior Tercio,55000.0
+2026,4,7791,P,Renato Antunes,36950.0
+2026,4,7756,P,Rodrigo Farias,60000.0
+2026,4,7777,P,Romero Albuquerque,60030.0
+2026,4,7743,P,Romero Sales Filho,54750.0
+2026,4,7800,P,Rosa Amorim,59501.64
+2026,4,7750,P,Sileno Guedes,58100.0
+2026,4,7755,P,Simone Santana,59500.0
+2026,4,7745,P,Socorro Pimentel,40750.0
+2026,4,7749,C,Socorro Pimentel,19300.0
+2026,4,7697,P,Waldemar Borges,1860.0
+2026,4,7780,C,Waldemar Borges,36700.0
+2026,4,7794,C,Waldemar Borges,16800.0
+2026,4,7768,P,Wanderson Florêncio,60000.0
+2026,4,7762,P,William BrIgido,59757.79
+2026,4,7767,P,Álvaro Porto,59594.0
+2026,5,7858,P,Abimael Santos,57880.0
+2026,5,7828,P,Adalto Santos,60000.0
+2026,5,7857,P,Aglailson Victor,27000.0
+2026,5,7878,C,Aglailson Victor,16500.0
+2026,5,7881,C,Aglailson Victor,16500.0
+2026,5,7829,P,Antonio Coelho,60000.0
+2026,5,7917,P,Antônio Moraes,23000.0
+2026,5,7945,C,Antônio Moraes,20000.0
+2026,5,7831,P,Claudiano Martins Filho,60073.27
+2026,5,7852,P,Coronel Alberto Feitosa,38760.0
+2026,5,7931,C,Coronel Alberto Feitosa,21313.27
+2026,5,7842,P,Dani Portela,58400.0
+2026,5,7859,P,Dannilo Godoy,60000.0
+2026,5,7798,P,Delegada Gleide Angelo,1011.42
+2026,5,7847,C,Delegada Gleide Angelo,37129.5
+2026,5,7873,C,Delegada Gleide Angelo,3878.4
+2026,5,7821,P,Diogo Moraes,60073.27
+2026,5,7838,P,Doriel Barros,11000.0
+2026,5,7864,C,Doriel Barros,49073.0
+2026,5,7830,P,Débora Almeida,47385.0
+2026,5,7815,P,Edson Vieira,59500.0
+2026,5,7849,P,Eriberto Filho,51670.0
+2026,5,7941,C,Eriberto Filho,8300.0
+2026,5,7877,P,Fabrizio Ferraz,43800.0
+2026,5,7832,P,France Hacker,60073.27
+2026,5,7836,P,Francismar Pontes,60073.27
+2026,5,7827,P,Gilmar Junior,47480.0
+2026,5,7861,C,Gilmar Junior,8900.0
+2026,5,7839,P,Gustavo Gouveia,60073.27
+2026,5,7837,P,Henrique Queiroz Filho,59030.0
+2026,5,7841,P,Izaias Régis,60070.0
+2026,5,7783,P,Jarbas Filho,41695.0
+2026,5,7854,C,Jarbas Filho,4849.58
+2026,5,7887,C,Jarbas Filho,10300.0
+2026,5,7875,P,Jeferson Timóteo,60010.0
+2026,5,7845,P,Joaquim Lira,59399.84
+2026,5,7824,P,Joel da Harpa,59676.87
+2026,5,7869,P,João Paulo Costa,60000.0
+2026,5,7870,P,João Paulo do PT,55039.23
+2026,5,7929,P,João de Nadegi,59496.5
+2026,5,7863,P,Joãozinho Tenório,25050.0
+2026,5,7880,C,Joãozinho Tenório,23914.0
+2026,5,7957,C,Joãozinho Tenório,10600.0
+2026,5,7846,P,Junior Matuto,60073.27
+2026,5,7825,P,Kaio Maniçoba,49700.0
+2026,5,7844,C,Kaio Maniçoba,10300.0
+2026,5,7822,P,Luciano Duque,57300.0
+2026,5,7843,P,Mário Ricardo,49000.0
+2026,5,7866,C,Mário Ricardo,11000.0
+2026,5,7826,P,Nino de Enoque,26902.41
+2026,5,7872,C,Nino de Enoque,33170.86
+2026,5,7850,P,Pastor Cleiton Collins,60073.27
+2026,5,7840,P,Pastor Junior Tercio,52500.0
+2026,5,7860,P,Renato Antunes,42909.23
+2026,5,7871,P,Rodrigo Farias,40000.0
+2026,5,7886,C,Rodrigo Farias,20000.0
+2026,5,7817,P,Romero Albuquerque,60030.0
+2026,5,7816,P,Romero Sales Filho,52500.0
+2026,5,7874,P,Rosa Amorim,59480.55
+2026,5,7823,P,Sileno Guedes,58100.0
+2026,5,7835,P,Simone Santana,59500.0
+2026,5,7818,P,Socorro Pimentel,60050.0
+2026,5,7748,P,Waldemar Borges,1860.0
+2026,5,7820,C,Waldemar Borges,53580.0
+2026,5,7856,P,Wanderson Florêncio,37600.0
+2026,5,7879,C,Wanderson Florêncio,22400.0
+2026,5,7833,P,William BrIgido,59757.79
+2026,5,7853,P,Álvaro Porto,59594.0
+2026,6,7909,P,Abimael Santos,57880.0
+2026,6,7900,P,Adalto Santos,45500.0
+2026,6,7928,C,Adalto Santos,14500.0
+2026,6,7924,P,Aglailson Victor,60000.0
+2026,6,7891,P,Antonio Coelho,60000.0
+2026,6,7918,P,Antônio Moraes,23000.0
+2026,6,7906,P,Cayo Albino,24823.41
+2026,6,7907,P,Claudiano Martins Filho,43870.0
+2026,6,8078,C,Claudiano Martins Filho,16203.27
+2026,6,7919,P,Coronel Alberto Feitosa,48940.0
+2026,6,7932,C,Coronel Alberto Feitosa,10330.0
+2026,6,7905,P,Dani Portela,59400.0
+2026,6,7936,P,Dannilo Godoy,41800.0
+2026,6,8083,C,Dannilo Godoy,18200.0
+2026,6,7868,P,Delegada Gleide Angelo,1255.02
+2026,6,7901,C,Delegada Gleide Angelo,33129.5
+2026,6,7899,P,Diogo Moraes,47277.65
+2026,6,7926,P,Doriel Barros,37000.0
+2026,6,7888,P,Débora Almeida,19385.0
+2026,6,7882,P,Edson Vieira,59500.0
+2026,6,7939,P,Eriberto Filho,44950.0
+2026,6,7949,C,Eriberto Filho,15000.0
+2026,6,7911,P,France Hacker,60053.27
+2026,6,7913,P,Francismar Pontes,37933.27
+2026,6,7948,C,Francismar Pontes,22140.0
+2026,6,7889,P,Gilmar Junior,40780.0
+2026,6,7908,P,Gustavo Gouveia,60073.27
+2026,6,7904,P,Henrique Queiroz Filho,60073.27
+2026,6,7922,P,Izaias Régis,21600.0
+2026,6,7934,C,Izaias Régis,27800.0
+2026,6,8003,C,Izaias Régis,10280.0
+2026,6,7855,P,Jarbas Filho,42313.91
+2026,6,7942,C,Jarbas Filho,5096.76
+2026,6,7938,P,Jeferson Timóteo,60000.0
+2026,6,7920,P,Joaquim Lira,38846.59
+2026,6,7950,C,Joaquim Lira,20500.0
+2026,6,7923,P,Joel da Harpa,52339.0
+2026,6,7910,P,João Paulo Costa,54000.0
+2026,6,7933,P,João Paulo do PT,39915.57
+2026,6,8072,C,João Paulo do PT,14950.0
+2026,6,7937,P,João de Nadegi,59496.5
+2026,6,7944,P,Joãozinho Tenório,22550.0
+2026,6,7947,C,Joãozinho Tenório,27475.0
+2026,6,7956,C,Joãozinho Tenório,10000.0
+2026,6,7915,P,Junior Matuto,40073.27
+2026,6,7902,P,Kaio Maniçoba,31800.0
+2026,6,7912,C,Kaio Maniçoba,28200.0
+2026,6,7892,P,Luciano Duque,60000.0
+2026,6,7903,P,Mário Ricardo,60000.0
+2026,6,7890,P,Nino de Enoque,18133.41
+2026,6,7916,C,Nino de Enoque,8769.0
+2026,6,7921,C,Nino de Enoque,33170.86
+2026,6,7914,P,Pastor Cleiton Collins,60073.27
+2026,6,7927,P,Pastor Junior Tercio,52500.0
+2026,6,7959,C,Pastor Junior Tercio,7500.0
+2026,6,7935,P,Renato Antunes,36950.0
+2026,6,8006,P,Rodrigo Farias,52500.0
+2026,6,7896,P,Romero Albuquerque,35300.0
+2026,6,7990,C,Romero Albuquerque,24730.0
+2026,6,7884,P,Romero Sales Filho,52500.0
+2026,6,7930,P,Rosa Amorim,58712.69
+2026,6,7895,P,Sileno Guedes,32800.0
+2026,6,7893,P,Simone Santana,59500.0
+2026,6,7883,P,Socorro Pimentel,60050.0
+2026,6,7819,P,Waldemar Borges,1860.0
+2026,6,7897,C,Waldemar Borges,9786.61
+2026,6,7894,P,Wanderson Florêncio,37600.0
+2026,6,7997,C,Wanderson Florêncio,22400.0
+2026,6,7885,P,William BrIgido,60060.89
+2026,6,7925,P,Álvaro Porto,59675.0
+2026,7,7995,P,Abimael Santos,57880.0
+2026,7,7969,P,Adalto Santos,60000.0
+2026,7,7998,P,Aglailson Victor,60000.0
+2026,7,7967,P,Antonio Coelho,60000.0
+2026,7,7996,P,Antônio Moraes,53000.0
+2026,7,8019,C,Antônio Moraes,5000.0
+2026,7,7898,P,Cayo Albino,1860.0
+2026,7,7968,C,Cayo Albino,33850.1
+2026,7,7992,C,Cayo Albino,16000.0
+2026,7,7979,P,Claudiano Martins Filho,43870.0
+2026,7,8079,C,Claudiano Martins Filho,16203.27
+2026,7,8002,P,Coronel Alberto Feitosa,59270.0
+2026,7,7980,P,Dani Portela,59512.32
+2026,7,7988,P,Dannilo Godoy,20000.0
+2026,7,8020,C,Dannilo Godoy,21800.0
+2026,7,8082,C,Dannilo Godoy,18200.0
+2026,7,7977,P,Delegada Gleide Angelo,34140.92
+2026,7,7976,P,Diogo Moraes,44280.0
+2026,7,7993,P,Doriel Barros,6500.0
+2026,7,8012,C,Doriel Barros,33000.0
+2026,7,7972,P,Débora Almeida,19385.0
+2026,7,7960,P,Edson Vieira,59500.0
+2026,7,8015,P,Eriberto Filho,59950.0
+2026,7,8008,P,France Hacker,60053.27
+2026,7,7983,P,Francismar Pontes,60073.27
+2026,7,7984,P,Gilmar Junior,40780.0
+2026,7,8010,P,Gustavo Gouveia,60073.27
+2026,7,7999,P,Henrique Queiroz Filho,60073.27
+2026,7,7981,P,Izaias Régis,49400.0
+2026,7,8009,C,Izaias Régis,10280.0
+2026,7,7943,P,Jarbas Filho,38083.21
+2026,7,8000,C,Jarbas Filho,9350.0
+2026,7,8014,P,Jeferson Timóteo,60000.0
+2026,7,7978,P,Joaquim Lira,59395.3
+2026,7,7975,P,Joel da Harpa,52339.0
+2026,7,7994,P,João Paulo Costa,54000.0
+2026,7,8011,P,João Paulo do PT,57732.39
+2026,7,8017,P,João de Nadegi,59496.5
+2026,7,8001,P,Joãozinho Tenório,22550.0
+2026,7,8016,C,Joãozinho Tenório,10475.0
+2026,7,7987,P,Junior Matuto,35073.27
+2026,7,8013,C,Junior Matuto,5000.0
+2026,7,7985,P,Kaio Maniçoba,60000.0
+2026,7,7974,P,Luciano Duque,38000.0
+2026,7,8004,C,Luciano Duque,22000.0
+2026,7,7973,P,Mário Ricardo,60000.0
+2026,7,7970,P,Nino de Enoque,60073.27
+2026,7,7982,P,Pastor Cleiton Collins,60073.27
+2026,7,7991,P,Pastor Junior Tercio,57500.0
+2026,7,8007,P,Rodrigo Farias,32500.0
+2026,7,8038,C,Rodrigo Farias,20000.0
+2026,7,7963,P,Romero Albuquerque,20800.0
+2026,7,7989,C,Romero Albuquerque,39230.0
+2026,7,7962,P,Romero Sales Filho,52500.0
+2026,7,8086,C,Rosa Amorim,36000.0
+2026,7,7966,P,Sileno Guedes,32800.0
+2026,7,7971,P,Simone Santana,59500.0
+2026,7,7961,P,Socorro Pimentel,60050.0
+2026,7,8005,P,Wanderson Florêncio,41000.0
+2026,7,8060,C,Wanderson Florêncio,19000.0
+2026,7,7964,P,William BrIgido,59600.89
+2026,7,7986,P,Álvaro Porto,59675.0
+2026,8,8062,P,Abimael Santos,57880.0
+2026,8,8035,P,Adalto Santos,60000.0
+2026,8,8063,P,Aglailson Victor,60000.0
+2026,8,8034,P,Antonio Coelho,60000.0
+2026,8,8069,P,Antônio Moraes,42000.0
+2026,8,8076,C,Antônio Moraes,16000.0
+2026,8,8021,P,Cayo Albino,16000.0
+2026,8,8054,C,Cayo Albino,5000.0
+2026,8,8056,P,Claudiano Martins Filho,25670.0
+2026,8,8059,C,Claudiano Martins Filho,18200.0
+2026,8,8084,P,Coronel Alberto Feitosa,25310.0
+2026,8,8031,P,Dani Portela,49670.0
+2026,8,8068,C,Dani Portela,10000.0
+2026,8,8055,P,Dannilo Godoy,33800.0
+2026,8,8081,C,Dannilo Godoy,26200.0
+2026,8,8032,P,Delegada Gleide Angelo,34140.92
+2026,8,8028,P,Diogo Moraes,44280.0
+2026,8,8022,P,Débora Almeida,5200.0
+2026,8,8023,P,Edson Vieira,59500.0
+2026,8,8049,P,Eriberto Filho,59950.0
+2026,8,8065,P,France Hacker,60053.27
+2026,8,8043,P,Francismar Pontes,60073.27
+2026,8,8057,P,Gilmar Junior,25700.0
+2026,8,8080,C,Gilmar Junior,15080.0
+2026,8,8067,P,Gustavo Gouveia,60073.27
+2026,8,8053,P,Henrique Queiroz Filho,60073.27
+2026,8,8039,P,Izaias Régis,59680.0
+2026,8,7965,P,Jarbas Filho,42584.41
+2026,8,8066,P,Jeferson Timóteo,60000.0
+2026,8,8051,P,Joaquim Lira,58230.0
+2026,8,8041,P,Joel da Harpa,52339.0
+2026,8,8033,P,João Paulo Costa,54000.0
+2026,8,8073,P,João Paulo do PT,49329.38
+2026,8,8064,P,Joãozinho Tenório,20175.0
+2026,8,8070,C,Joãozinho Tenório,12850.0
+2026,8,8047,P,Junior Matuto,40073.27
+2026,8,8050,P,Kaio Maniçoba,60000.0
+2026,8,8058,P,Luciano Duque,45000.0
+2026,8,8085,C,Luciano Duque,15000.0
+2026,8,8044,P,Mário Ricardo,60000.0
+2026,8,8025,P,Nino de Enoque,60073.27
+2026,8,8052,P,Pastor Junior Tercio,39500.0
+2026,8,8030,P,Renato Antunes,36950.0
+2026,8,8040,P,Rodrigo Farias,52500.0
+2026,8,8024,P,Romero Albuquerque,60030.0
+2026,8,8026,P,Romero Sales Filho,52500.0
+2026,8,8045,C,Romero Sales Filho,7000.0
+2026,8,8029,P,Sileno Guedes,58200.0
+2026,8,8037,P,Simone Santana,59500.0
+2026,8,8027,P,Socorro Pimentel,60050.0
+2026,8,8061,P,Wanderson Florêncio,41000.0
+2026,8,8071,C,Wanderson Florêncio,19000.0
+2026,8,8042,P,William BrIgido,59600.89
+2026,8,8048,P,Álvaro Porto,59675.0
