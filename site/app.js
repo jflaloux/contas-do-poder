@@ -69,6 +69,63 @@
 
   // ================================================================== Google Analytics (só se o gtag estiver carregado)
   const evento = (nome, params = {}) => { try { if (typeof gtag === "function") gtag("event", nome, params); } catch (e) { /* segue sem medir */ } };
+
+  // ------------------------------------------------------------------ velocidade medida no aparelho de quem visita
+  // Um evento "velocidade" por visita, enviado quando a pessoa sai da página ou troca de aba pela primeira vez, com os
+  // três números que o Google usa para dizer se um site é rápido (Core Web Vitals), medidos pelo próprio navegador:
+  //   lcp_ms  quando o maior bloco de texto ou imagem da primeira página apareceu (bom até 2.500 ms; ruim acima de 4.000)
+  //   cls     quanto a primeira página pulou enquanto carregava (bom até 0,1; ruim acima de 0,25)
+  //   inp_ms  quanto o site demorou para responder a um toque, clique ou tecla, no pior caso da visita (bom até 200 ms;
+  //           ruim acima de 500)
+  // e a faixa de cada um (lcp_faixa, cls_faixa, inp_faixa: "bom", "melhorar" ou "ruim"), que é o que dá para contar no
+  // Google Analytics (ele mostra soma e média dos números, não o valor que 75% das visitas alcançam). pagina: o tipo da
+  // primeira página (inicio, politico, governador, cidade, indice, correcoes). LCP e CLS param de contar quando a pessoa
+  // vai para outra página do site; o INP vale para a visita inteira. O navegador que não mede um dos números (o Safari
+  // não mede todos) só não manda aquele; página aberta em segundo plano não manda nada (os números não valeriam).
+  const VEL = (() => {
+    const tipos = (typeof PerformanceObserver !== "undefined" && PerformanceObserver.supportedEntryTypes) || [];
+    if (!tipos.length || document.visibilityState === "hidden") return null;
+    const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
+    const v = {
+      pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
+        : caminho === "indice" || caminho === "correcoes" ? caminho : "politico",
+      lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
+    };
+    const ver = (tipo, f, extra) => {
+      if (!tipos.includes(tipo)) return;
+      try { new PerformanceObserver((l) => l.getEntries().forEach(f)).observe({ type: tipo, buffered: true, ...extra }); } catch (e) { /* sem essa medida */ }
+    };
+    ver("largest-contentful-paint", (e) => { if (!v.congelado) v.lcp = e.startTime; });
+    // CLS: a maior "janela" de pulos (pulos com menos de 1 s entre um e outro, até 5 s por janela), sem os que vêm logo
+    // depois de um toque (esses a pessoa espera)
+    ver("layout-shift", (e) => {
+      if (v.congelado || e.hadRecentInput) return;
+      if (v.janela && e.startTime - v.fim < 1000 && e.startTime - v.ini < 5000) v.janela += e.value;
+      else { v.janela = e.value; v.ini = e.startTime; }
+      v.fim = e.startTime; v.cls = Math.max(v.cls, v.janela);
+    });
+    // INP: a demora de cada interação (do toque até a tela mudar); vale a pior, ou quase a pior quando são 50 ou mais
+    const interacao = (e) => { if (e.interactionId) v.interacoes.set(e.interactionId, Math.max(v.interacoes.get(e.interactionId) || 0, e.duration)); };
+    ver("event", interacao, { durationThreshold: 40 });
+    ver("first-input", interacao);
+    const faixa = (x, bom, ruim) => (x <= bom ? "bom" : x <= ruim ? "melhorar" : "ruim");
+    const enviar = () => {
+      if (v.enviado) return;
+      v.enviado = true;
+      const p = { pagina: v.pagina };
+      if (v.lcp !== null) Object.assign(p, { lcp_ms: Math.round(v.lcp), lcp_faixa: faixa(v.lcp, 2500, 4000) });
+      if (tipos.includes("layout-shift")) Object.assign(p, { cls: Number(v.cls.toFixed(3)), cls_faixa: faixa(v.cls, 0.1, 0.25) });
+      const ds = [...v.interacoes.values()].sort((a, b) => b - a);
+      if (ds.length) {
+        const inp = ds[Math.min(ds.length - 1, Math.floor((performance.interactionCount || ds.length) / 50))];
+        Object.assign(p, { inp_ms: Math.round(inp), inp_faixa: faixa(inp, 200, 500) });
+      }
+      if (Object.keys(p).length > 1) evento("velocidade", p);
+    };
+    document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") enviar(); });
+    window.addEventListener("pagehide", enviar);
+    return { trocouDePagina: () => { v.congelado = true; } };
+  })();
   const casaTxt = (p) => ({ d: "deputado", s: "senador", e: "governo", j: "dois cargos", v: "vereador", p: "prefeitura", a: "deputado estadual" })[p.k];
 
   // ================================================================== cidades e estados com cada político
@@ -2776,6 +2833,7 @@
     if (converterAntigo() && modo === "voltar") modo = "nova";
     const secao = decodeURIComponent(location.hash.slice(1)) || null;
     if (modo === "voltar" && location.pathname + location.search === ultimoLocal) { if (secao) irPara(secao); return; } // só o # mudou
+    if (VEL && modo !== "inicio") VEL.trocouDePagina(); // a velocidade da primeira página para de contar
     lerEndereco();
     ultimoLocal = location.pathname + location.search;
     // a seção do # (/nikolas-ferreira#ranking) pode só existir depois que os dados da página chegam: render() rola
@@ -3062,7 +3120,7 @@
       const abrir = aberto === `indice-${uf}`;
       if (abrir) montar();
       return h("li", null, h("details", { class: `indice-estado${falta ? " indice-estado--conferir" : ""}`, id: `indice-${uf}`, open: abrir,
-        ontoggle: (ev) => { if (ev.target.open) { montar(); evento("abrir_indice", { uf: e.uf }); } } },
+        ontoggle: (ev) => { if (ev.target.open) { montar(); evento("abrir_indice", { uf: e.uf, situacao: falta ? "parcial" : "completo" }); } } },
         h("summary", null,
           h("span", { class: "indice__pos" }, falta ? "–" : `${posDe(e)}º`),
           h("span", { class: "indice__nome" }, e.nome),

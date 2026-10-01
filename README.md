@@ -530,10 +530,27 @@ seguem o mesmo desenho.
   Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
   Índice de Transparência: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um
-  estado no índice, com a `uf`; os dois blocos do estado abrem juntos).
+  estado no índice, com a `uf` e, desde 01/10/2026, a `situacao`: `completo`, se o estado está no ranking, ou `parcial`,
+  se está na lista dos que têm algum bloco a conferir; todos os blocos do estado abrem juntos).
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+- **Velocidade nos aparelhos de quem visita** (desde 01/10/2026): o evento `velocidade`, um por visita, enviado quando a
+  pessoa sai da página ou troca de aba pela primeira vez. Leva os três números que o Google usa para dizer se um site é
+  rápido (Core Web Vitals), medidos pelo próprio navegador: `lcp_ms` (quando o maior bloco de texto ou imagem da primeira
+  página apareceu; bom até 2.500 ms, ruim acima de 4.000), `cls` (quanto a primeira página pulou enquanto carregava; bom
+  até 0,1, ruim acima de 0,25) e `inp_ms` (quanto o site demorou para responder a um toque, clique ou tecla, no pior caso
+  da visita; bom até 200 ms, ruim acima de 500). Cada um vem com a faixa (`lcp_faixa`, `cls_faixa`, `inp_faixa`: `bom`,
+  `melhorar` ou `ruim`), e `pagina` diz o tipo da primeira página (`inicio`, `politico`, `governador`, `cidade`,
+  `indice` ou `correcoes`). LCP e CLS param de contar quando a pessoa vai para outra página do site; o INP vale para a
+  visita inteira. O navegador que não mede um dos números (o Safari não mede todos) só não manda aquele, e a página
+  aberta em segundo plano não manda nada. O código fica no começo do `site/app.js` (`VEL`).
+  Para ver no Google Analytics, é preciso registrar os parâmetros uma vez (Administrador > Definições personalizadas):
+  `pagina`, `lcp_faixa`, `cls_faixa` e `inp_faixa` como dimensões personalizadas (escopo: evento); `lcp_ms` e `inp_ms`
+  como métricas personalizadas em milissegundos e `cls` como métrica padrão. O Analytics mostra soma e média dos números,
+  não percentis: o jeito de ler é contar os eventos por faixa (por exemplo, numa exploração com o evento `velocidade`,
+  as linhas por `pagina` e as colunas por `lcp_faixa`). O Google considera o site bom quando 75% das visitas estão em
+  `bom` nos três. A `situacao` do `abrir_indice` também precisa ser registrada como dimensão para aparecer nos relatórios.
 
 ## Erros e correções
 
