@@ -30,6 +30,7 @@ CFG = {
     "cod": COD, "n": "Aracaju", "uf": "SE", "casa": "Câmara Municipal de Aracaju", "vagas": 24, "inicio": INICIO,
     "subsidio": [[202501, 22865.16]],
     "salario_nota": "Valor bruto da folha de pagamento da Câmara (a planilha não separa subsídio, 13º e outros pagamentos).",
+    "conferir_gastos": False,  # sem verba no site (a VAEP está fora): a conferência não espera gastos do gabinete
     "credito_foto": "Câmara Municipal de Aracaju", "pagina": "https://www.aracaju.se.leg.br/institucional/vereadores",
     "notas": ["Quem estava no cargo em cada mês: os vereadores na folha de pagamento do mês.",
               "A Verba do Exercício Parlamentar (VAEP, até R$ 20.000 por mês, Lei 4.678/2015) sai num PDF de imagem por mês, sem texto "

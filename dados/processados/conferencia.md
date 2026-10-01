@@ -1,4 +1,4 @@
-# Conferência dos dados — 01/10/2026 02:43
+# Conferência dos dados — 01/10/2026 11:23
 
 ## 1. Cobertura
 
@@ -114,8 +114,13 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de Porto Alegre com gastos do gabinete no mês retrasado | 30 | 21 | OK |
 | Vereadores de Recife no cargo (camaras.json) | 41 | 33 | OK |
 | Vereadores de São Luís no cargo (camaras.json) | 31 | 26 | OK |
+| Vereadores de Aracaju no cargo (camaras.json) | 25 | 20 | OK |
+| Vereadores de Boa Vista no cargo (camaras.json) | 23 | 19 | OK |
+| Vereadores de Boa Vista com gastos do gabinete no mês retrasado | 23 | 13 | OK |
 | Prefeitura de São Paulo: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de São Paulo: secretários na folha do último mês | 24 | 14 | OK |
+| Prefeitura do Rio de Janeiro: prefeito na folha do último mês | 1 | 1 | OK |
+| Prefeitura do Rio de Janeiro: secretários na folha do último mês | 0 | 0 | OK |
 | Prefeitura do Recife: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura do Recife: secretários na folha do último mês | 22 | 14 | OK |
 | Prefeitura de Fortaleza: prefeito na folha do último mês | 1 | 1 | OK |
@@ -124,6 +129,28 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Prefeitura de Vitória: secretários na folha do último mês | 13 | 8 | OK |
 | Prefeitura de Porto Alegre: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Porto Alegre: secretários na folha do último mês | 19 | 11 | OK |
+| Prefeitura de Salvador: prefeito na folha do último mês | 1 | 1 | OK |
+| Prefeitura de Salvador: secretários na folha do último mês | 17 | 11 | OK |
+| Prefeitura de Curitiba: prefeito na folha do último mês | 1 | 1 | OK |
+| Prefeitura de Curitiba: secretários na folha do último mês | 11 | 7 | OK |
+| Prefeitura do Natal: prefeito na folha do último mês | 1 | 1 | OK |
+| Prefeitura do Natal: secretários na folha do último mês | 17 | 16 | OK |
+| Prefeitura de Campo Grande: prefeito na folha do último mês | 1 | 1 | OK |
+| Prefeitura de Campo Grande: secretários na folha do último mês | 11 | 7 | OK |
+| Assembleia SP: deputados estaduais no cargo | 94 | 84 | OK |
+| Assembleia BA: deputados estaduais no cargo | 63 | 56 | OK |
+| Assembleia PE: deputados estaduais no cargo | 49 | 44 | OK |
+| Assembleia CE: deputados estaduais no cargo | 49 | 41 | OK |
+| Assembleia PB: deputados estaduais no cargo | 37 | 32 | OK |
+| Assembleia GO: deputados estaduais no cargo | 39 | 36 | OK |
+| Assembleia SC: deputados estaduais no cargo | 42 | 36 | OK |
+| Assembleia MS: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia RO: deputados estaduais no cargo | 25 | 21 | OK |
+| Assembleia TO: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia SE: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia ES: deputados estaduais no cargo | 30 | 27 | OK |
+| Assembleia RS: deputados estaduais no cargo | 56 | 49 | OK |
+| Assembleia AP: deputados estaduais no cargo | 22 | 21 | OK |
 | Governadores no arquivo do site | 27 | 27 | OK |
 | Governadores com o valor da lei, da folha ou da tabela oficial | 26 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
