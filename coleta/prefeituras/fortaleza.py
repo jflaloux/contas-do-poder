@@ -15,12 +15,11 @@ import time
 import pandas as pd
 
 from ..config import DADOS
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, log, normalizar_nome, recursos_ckan, verificar_prazo
 from . import comum
 
 COD = 2304400
 INICIO = 202501
-PACOTE = "https://dados.fortaleza.ce.gov.br/api/3/action/package_show?id=servidores"
 PAGINA = "https://dados.fortaleza.ce.gov.br/dataset/servidores"
 PASTA = DADOS / "municipios" / "fortaleza"
 LINHAS = PASTA / "prefeitura_remuneracao.csv"
@@ -69,7 +68,7 @@ CFG = {
 
 def _meses():
     """{AAAAMM: url} dos arquivos do Portal."""
-    itens = _sessao().get(PACOTE, timeout=120).json()["result"]["resources"]
+    itens = recursos_ckan(PAGINA)
     saida = {}
     for x in itens:
         m = re.search(r"relacao_(\d{6})\.csv", x.get("url") or "")
@@ -84,6 +83,7 @@ def _ler(am, url):
         try:
             r = _sessao().get(url, timeout=600)
             r.raise_for_status()
+            time.sleep(10)  # Crawl-delay do robots.txt do portal
             break
         except TempoEsgotado:
             raise

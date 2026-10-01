@@ -25,8 +25,8 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import pandas as pd
 import requests
 
-from .config import CACHE, DADOS, HOJE, USER_AGENT
-from .util import TempoEsgotado, baixar, cache_valido, ler_json, log, normalizar_nome, salvar_json, verificar_prazo
+from .config import CACHE, DADOS, HOJE
+from .util import TempoEsgotado, _sessao, baixar, cache_valido, ler_json, log, normalizar_nome, salvar_json, verificar_prazo
 
 SICONFI = "https://apidatalake.tesouro.gov.br/ords/siconfi/tt"
 TSE = "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip"
@@ -61,8 +61,7 @@ def _dca(cod, ano):
     """(legislativa, controle externo) liquidados no ano, ou None se a cidade não entregou as contas."""
     for tentativa in range(3):
         try:
-            r = requests.get(f"{SICONFI}/dca", params={"an_exercicio": ano, "no_anexo": "DCA-Anexo I-E", "id_ente": cod},
-                             headers={"User-Agent": USER_AGENT}, timeout=60)
+            r = _sessao().get(f"{SICONFI}/dca", params={"an_exercicio": ano, "no_anexo": "DCA-Anexo I-E", "id_ente": cod}, timeout=60)
             if r.status_code == 429:
                 time.sleep(20 * (tentativa + 1))
                 continue

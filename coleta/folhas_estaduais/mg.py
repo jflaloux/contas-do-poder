@@ -4,11 +4,10 @@ fevereiro de 2026; o robô lê os dois. A Secretaria de Planejamento publica com
 https://dados.mg.gov.br/dataset/remuneracao-servidores-ativos"""
 import re
 
-from ..util import _sessao
+from ..util import recursos_ckan
 from . import comum
 
 UF = "MG"
-PACOTE = "https://dados.mg.gov.br/api/3/action/package_show?id=remuneracao-servidores-ativos"
 FONTE = "https://dados.mg.gov.br/dataset/remuneracao-servidores-ativos"
 # nome no leiaute novo | no antigo
 COL = {"cargo": ("cargo_comissao", "desccomi"), "salario": ("remuneracao", "remuner"), "teto": ("abate_teto", "teto"),
@@ -21,7 +20,7 @@ ESTATAIS = ("bdmg", "cemig", "codemig", "cohab", "copasa", "emater", "epamig", "
 
 def _arquivos():
     saida = {}
-    for x in _sessao().get(PACOTE, timeout=120).json()["result"]["resources"]:
+    for x in recursos_ckan(FONTE):
         u = x.get("url") or ""
         m = re.search(r"servidores-(\d{4})-(\d{2})\.csv$", u) or re.search(r"servidores_(\d{2})(\d{4})\.csv$", u)
         if m:

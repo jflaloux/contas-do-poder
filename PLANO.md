@@ -45,8 +45,10 @@ Cada número tem link para a fonte oficial.
 
 ### Fase 1b — pendências de dados (antes do lançamento)
 
-- [ ] Câmara: 13º salário e ajuda de custo dos deputados — Claude
-- [ ] Câmara: diárias de viagens oficiais — Claude
+- [ ] Câmara: 13º salário, ajuda de custo e diárias dos deputados — bloqueado: só estão nas páginas /deputados/ID/... que o
+  robots.txt da Câmara proíbe (desde 18/09/2026). Pedir autorização à Câmara (rascunho nas notas) — Jean-François
+- [x] Câmara: robô adaptado ao robots.txt (verba pela página principal; salário pela lei depois de set/2026; equipe
+  congelada em set/2026) — Claude
 - [ ] Câmara: limites históricos da cota por estado (2023–2025) — Claude
 - [ ] Senado: validar a estimativa de custo dos assessores (ex.: pedir via LAI o custo por gabinete) — Você e Claude
 
@@ -65,7 +67,8 @@ Cada número tem link para a fonte oficial.
 - [x] Google Analytics com eventos e prévia do link (`og.png`) — Claude
 - [x] Página própria por político, estado e cidade (endereço fixo, título, descrição e resumo para o Google e o WhatsApp) — Claude
 - [x] Governo federal: presidente, vice e ministros (salário, jetons, viagens) — Claude
-- [x] Fotos do governo federal: Congresso ou Wikimedia Commons com crédito (45 de 71; o resto com iniciais) — Claude
+- [x] Fotos do governo federal: Congresso ou Wikimedia Commons com crédito (62 de 71, 17 escolhidas à mão em
+  `dados/referencia/fotos_governo.json`; faltam 9 sem foto de licença livre) — Claude
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
 - [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
 - [ ] TCU; presidentes de estatais — depois
@@ -81,10 +84,12 @@ Cada número tem link para a fonte oficial.
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
 - [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
 - [x] Governadores, v3: folha mês a mês em 24 estados (+ AL, AM, BA, CE, GO, MA, MS, PA, PI, RJ, RN, RS, SE). AP e MT pedem CAPTCHA (não contornamos); TO só funciona clicando — Claude
-- [ ] Governadores: completar os meses do RN (limite de consultas) — Claude
+- [x] Governadores: completar os meses do RN (jan/2025 a ago/2026) — Claude
 - [x] Logo novo (prédio público cujas colunas são um gráfico de barras), favicon e prévia do link; rodapé sem nome, com fontes oficiais, código aberto e contato — Claude
 - [x] E-mail contato@contasdopoder.com (Cloudflare Email Routing; envio pelo Gmail como contato@) — Jean-François
-- [ ] Governadores: achar o número das leis que faltam (AL, GO, MA e RJ já conferidos na folha; AP pela tabela oficial) — Claude
+- [x] Governadores: leis achadas e lidas no texto oficial: SE (9.136/2022), RS (15.940/2023), MA (12.282/2024), RJ (6.651/2013),
+  PR (19.901/2019 e 21.348/2022); GO pela cadeia de reajustes desde a Lei 17.254/2011 — Claude
+- [ ] Governadores: AL (só leis de revisão geral em percentual; o valor de ago/2026 sem lei achada) e RN (lei não localizada) — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
 
@@ -93,7 +98,11 @@ Cada número tem link para a fonte oficial.
 - [ ] Página "Como calculamos" — Claude rascunha, você revisa
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você
 - [ ] Uma conversa com advogado (linguagem, LGPD) — Você
-- [x] Canal para pedir correção de dados: "Encontrou um erro?" em cada página e a lista pública em /correcoes — Claude
+- [x] Canal para pedir correção de dados: "Encontrou um erro?" em cada página (primeiro a fonte, depois o e-mail) e a lista
+  pública em /correcoes — Claude
+- [x] Conferência dos robots.txt de todos os sites usados; a sessão dos robôs agora bloqueia o que é proibido e respeita
+  o Crawl-delay (CKAN pela página do conjunto; Prefeitura de SP e Paraná parados) — Claude
+- [ ] Pedir autorização (ou liberação no robots.txt) à Câmara dos Deputados, à Prefeitura de São Paulo e ao Paraná — Jean-François
 
 ## Fase 4 — Lançamento
 

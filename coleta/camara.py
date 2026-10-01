@@ -4,12 +4,19 @@ Fontes:
 - API de dados abertos: lista e dados pessoais dos deputados
   https://dadosabertos.camara.leg.br/swagger/api.html
 - Arquivos anuais da Cota Parlamentar (CEAP): https://www.camara.leg.br/cotas/Ano-AAAA.csv.zip
-- Páginas de cada deputado: salário mensal e verba de gabinete
-  https://www.camara.leg.br/deputados/ID/remuneracao?ano=AAAA
-  https://www.camara.leg.br/deputados/ID/verba-gabinete?ano=AAAA
+- Página principal de cada deputado: verba de gabinete usada em cada mês
+  https://www.camara.leg.br/deputados/ID?ano=AAAA
 - Auxílio-moradia e imóvel funcional: https://www.camara.leg.br/moradia/detalhamento
+
+O robots.txt da Câmara (desde 18/09/2026) não deixa robôs abrirem /deputados/ID/... (as páginas de salário, de verba
+de gabinete e de pessoal de gabinete de cada deputado). Por isso, desde 30/09/2026:
+- salário: até set/2026, o que essas páginas mostravam (guardado em dados/camara/remuneracao_paginas.csv); depois, o
+  subsídio fixado em lei (Decreto Legislativo 172/2022) nos meses em que o deputado estava em exercício, pelo histórico
+  da API de dados abertos;
+- equipe do gabinete: até set/2026, contada nas páginas de pessoal (dados/camara/pessoal_paginas.csv); depois, sem dado;
+- verba de gabinete: pela página principal do deputado, que o robots.txt permite.
+O 13º, as férias e as diárias só aparecem nas páginas proibidas: ficam de fora até a Câmara autorizar.
 """
-import hashlib
 import re
 import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -18,7 +25,7 @@ import pandas as pd
 import requests
 from bs4 import BeautifulSoup
 
-from .config import ANOS, BRUTOS, CACHE, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES
+from .config import ANOS, BRUTOS, CACHE, DADOS, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES, meses_da_legislatura
 from .util import TempoEsgotado, baixar, cache_valido, ler_json, log, numero_br, salvar_json
 
 API = "https://dadosabertos.camara.leg.br/api/v2"
@@ -238,48 +245,56 @@ def moradia():
     log(f"Câmara: moradia ok ({len(df)} linhas, auxílio total R$ {df['auxilio_moradia'].sum():,.2f})")
 
 
-# ---------------------------------------------------------------- páginas de cada deputado
-def _linhas_tabela(html):
+# ---------------------------------------------------------------- página principal de cada deputado
+CONGELADO = DADOS / "camara"  # vai para o Git: o que as páginas de cada deputado mostravam até set/2026
+MESES_ABREV = {m: i + 1 for i, m in enumerate(["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"])}
+# Subsídio dos membros do Congresso (Decreto Legislativo 172/2022, art. 1º): (a partir de AAAAMM, valor)
+SUBSIDIOS = [(202301, 39293.32), (202304, 41650.92), (202402, 44008.52), (202502, 46366.19)]
+DL_SUBSIDIO = "https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html"
+
+
+def subsidio(aaaamm):
+    return [v for de, v in SUBSIDIOS if de <= aaaamm][-1]
+
+
+def _linhas_tabela(html, id_tabela=None):
     soup = BeautifulSoup(html, "lxml")
-    tabela = soup.find("table")
+    tabela = soup.find("table", id=id_tabela) if id_tabela else soup.find("table")
     if not tabela:
         return []
     return [[td.get_text(" ", strip=True) for td in tr.find_all("td")]
             for tr in tabela.select("tbody tr") if tr.find("td")]
 
 
-def _pagina(id_, ano, tipo):
-    try:
-        return baixar(f"{SITE}/deputados/{id_}/{tipo}", params={"ano": ano}).text
-    except requests.HTTPError as e:
-        if e.response is not None and e.response.status_code == 404:
-            return ""
-        raise
-
-
-def _perfil_ano(tarefa):
+def _principal_ano(tarefa):
+    """Verba de gabinete usada em cada mês do ano, pela página principal do deputado (/deputados/ID?ano=AAAA)."""
     id_, ano = tarefa
-    arq = C / "perfil" / f"{id_}_{ano}.json"
+    arq = C / "principal" / f"{id_}_{ano}.json"
     if cache_valido(arq, 3 if ano == HOJE.year else None):
         return
-    rem = _linhas_tabela(_pagina(id_, ano, "remuneracao"))
-    verba = _linhas_tabela(_pagina(id_, ano, "verba-gabinete"))
-    salvar_json(arq, {
-        "remuneracao": [{"mes": int(l[0]), "valor": numero_br(l[1])} for l in rem if len(l) >= 2 and l[0].isdigit()],
-        "verba_gabinete": [{"mes": int(l[0]), "disponivel": numero_br(l[1]), "gasto": numero_br(l[2])}
-                           for l in verba if len(l) >= 3 and l[0].isdigit()],
-    })
+    try:
+        html = baixar(f"{SITE}/deputados/{id_}", params={"ano": ano}).text
+    except requests.HTTPError as e:
+        if e.response is None or e.response.status_code != 404:
+            raise
+        html = ""
+    verba = []
+    for l in _linhas_tabela(html, "gastomensalverbagabinete"):
+        if len(l) >= 3 and l[0].upper() in MESES_ABREV:
+            pct = float(l[2].replace("%", "").replace(",", ".") or 0)
+            verba.append({"mes": MESES_ABREV[l[0].upper()], "gasto": numero_br(l[1]), "pct": pct})
+    salvar_json(arq, {"verba_gabinete": verba})
 
 
-def perfis(lista):
+def verba_gabinete(lista):
     tarefas = [(d["id"], ano) for d in lista for ano in ANOS]
     pendentes = [t for t in tarefas
-                 if not cache_valido(C / "perfil" / f"{t[0]}_{t[1]}.json", 3 if t[1] == HOJE.year else None)]
-    log(f"Câmara: páginas de salário e verba de gabinete — {len(tarefas) - len(pendentes)}/{len(tarefas)} já no cache")
+                 if not cache_valido(C / "principal" / f"{t[0]}_{t[1]}.json", 3 if t[1] == HOJE.year else None)]
+    log(f"Câmara: verba de gabinete (página principal de cada deputado) — {len(tarefas) - len(pendentes)}/{len(tarefas)} já no cache")
     erros = []
     feitos = 0
     with ThreadPoolExecutor(PARALELO) as ex:
-        futuros = {ex.submit(_perfil_ano, t): t for t in pendentes}
+        futuros = {ex.submit(_principal_ano, t): t for t in pendentes}
         try:
             for f in as_completed(futuros):
                 try:
@@ -297,108 +312,97 @@ def perfis(lista):
     if erros:
         log(f"Câmara: {len(erros)} páginas com erro (serão tentadas de novo na próxima vez): {erros[:3]}")
         raise RuntimeError("Algumas páginas falharam; rode de novo.")
-
-    rem, verba = [], []
+    verba = []
     for id_, ano in tarefas:
-        d = ler_json(C / "perfil" / f"{id_}_{ano}.json")
-        rem += [{"id_deputado": id_, "ano": ano, **x} for x in d["remuneracao"]]
+        d = ler_json(C / "principal" / f"{id_}_{ano}.json")
         verba += [{"id_deputado": id_, "ano": ano, **x} for x in d["verba_gabinete"]]
-    pd.DataFrame(rem).to_csv(BRUTOS / "camara_remuneracao.csv", index=False)
-    pd.DataFrame(verba).to_csv(BRUTOS / "camara_verba_gabinete.csv", index=False)
-    log(f"Câmara: salários ({len(rem)} meses) e verba de gabinete ({len(verba)} meses) ok")
+    df = pd.DataFrame(verba, columns=["id_deputado", "ano", "mes", "gasto", "pct"])
+    # a página dá o gasto e o percentual do disponível (arredondado); o disponível é o mesmo para todos no mês
+    est = df[df.pct >= 50].assign(d=lambda x: x.gasto / (x.pct / 100)).groupby(["ano", "mes"]).d.median().round(2)
+    df["disponivel"] = [est.get((a, m)) for a, m in zip(df.ano, df.mes)]
+    df[["id_deputado", "ano", "mes", "disponivel", "gasto"]].to_csv(BRUTOS / "camara_verba_gabinete.csv", index=False)
+    log(f"Câmara: verba de gabinete ok ({len(df)} meses)")
+
+
+# ---------------------------------------------------------------- salário: páginas (até set/2026) e lei (depois)
+def _historico(id_):
+    """Situações do deputado (posse, licença, afastamento, reassunção...) pela API de dados abertos."""
+    arq = C / "historico" / f"{id_}.json"
+    if not cache_valido(arq, 3):
+        d = baixar(f"{API}/deputados/{id_}/historico", headers=JSON).json()["dados"]
+        salvar_json(arq, [[x["dataHora"][:10], x.get("idLegislatura"), x.get("situacao")] for x in d])
+    return ler_json(arq)
+
+
+def meses_em_exercicio(eventos, legislatura=LEGISLATURA):
+    """Meses (AAAAMM) em exercício na legislatura. O mês da posse e o mês da saída contam."""
+    evs = sorted((dt, sit) for dt, leg, sit in eventos if leg == legislatura and sit)
+    fim = ULTIMO_MES[0] * 100 + ULTIMO_MES[1]
+    meses, dentro, desde = set(), False, None
+    for dt, sit in evs:
+        am = int(dt[:4] + dt[5:7])
+        if sit == "Exercício" and not dentro:
+            dentro, desde = True, am
+        elif sit != "Exercício" and dentro:
+            meses.update(x for x in _meses_entre(desde, am))
+            dentro = False
+    if dentro:
+        meses.update(_meses_entre(desde, fim))
+    return meses
+
+
+def _meses_entre(de, ate):
+    a, m = divmod(de, 100)
+    while a * 100 + m <= ate:
+        yield a * 100 + m
+        a, m = (a + 1, 1) if m == 12 else (a, m + 1)
+
+
+def remuneracao(lista):
+    """Salário de cada mês. Até set/2026, o que a página de remuneração de cada deputado mostrava (guardado no Git).
+    Depois, o subsídio fixado em lei, nos meses em que o deputado estava em exercício pelo histórico da API; quem, no
+    último mês guardado, recebia o subsídio cheio sem estar em exercício (licenciado que optou pelo salário de
+    deputado, como os ministros) continua recebendo enquanto o histórico não mudar."""
+    base = pd.read_csv(CONGELADO / "remuneracao_paginas.csv")
+    base["calculado"] = False
+    ultimo = int((base.ano * 100 + base.mes).max())
+    novos = [a * 100 + m for a, m in meses_da_legislatura() if a * 100 + m > ultimo]
+    linhas = []
+    if novos:
+        pagos = base[base.ano * 100 + base.mes == ultimo].set_index("id_deputado").valor
+        ids = [d["id"] for d in lista]
+        with ThreadPoolExecutor(PARALELO) as ex:
+            hist = dict(zip(ids, ex.map(_historico, ids)))
+        fim_ultimo = f"{ultimo // 100}-{ultimo % 100:02d}-31"
+        for id_ in ids:
+            ev = hist[id_]
+            meses = meses_em_exercicio(ev)
+            mudou = any(dt > fim_ultimo and leg == LEGISLATURA for dt, leg, _ in ev)
+            continua = not mudou and pagos.get(id_, 0) >= 0.9 * subsidio(ultimo)
+            for am in novos:
+                if am in meses or continua:
+                    linhas.append({"id_deputado": id_, "ano": am // 100, "mes": am % 100, "valor": subsidio(am), "calculado": True})
+    df = pd.concat([base, pd.DataFrame(linhas, columns=base.columns)], ignore_index=True)
+    df.to_csv(BRUTOS / "camara_remuneracao.csv", index=False)
+    log(f"Câmara: salários ok ({len(base)} meses das páginas, até {ultimo % 100:02d}/{ultimo // 100}; "
+        f"{len(linhas)} meses pelo subsídio da lei)")
 
 
 # ---------------------------------------------------------------- tamanho da equipe
-RX_PERIODO = re.compile(r"(?:De|Desde)\s+(\d{2})/(\d{2})/(\d{4})(?:\s+a\s+(\d{2})/(\d{2})/(\d{4}))?")
-
-
-def _pessoal_ano(tarefa):
-    """Lê a página de pessoal de gabinete de um ano e guarda os períodos de exercício de cada pessoa.
-    Não guarda nomes: só um código (hash) para contar pessoas diferentes.
-    Secretários parlamentares são pagos pela verba de gabinete; cargos de natureza especial (CNE),
-    pela própria Câmara, quando o deputado tem cargo de liderança ou na Mesa."""
-    id_, ano = tarefa
-    arq = C / "pessoal_v2" / f"{id_}_{ano}.json"
-    if cache_valido(arq, 3 if ano == HOJE.year else None):
-        return
-    linhas = _linhas_tabela(_pagina(id_, ano, "pessoal-gabinete"))
-    periodos = []
-    for l in linhas:
-        if len(l) < 4:
-            continue
-        m = RX_PERIODO.search(l[3])
-        if not m:
-            continue
-        d1, m1, a1, d2, m2, a2 = m.groups()
-        periodos.append({
-            "h": hashlib.sha1(l[0].strip().upper().encode("utf-8")).hexdigest()[:12],
-            "t": "sp" if "SECRET" in l[1].upper() else "cne",
-            "i": [int(a1), int(m1)],
-            "f": [int(a2), int(m2)] if a2 else None,
-        })
-    salvar_json(arq, periodos)
-
-
 def pessoal(lista):
-    """Quantas pessoas trabalharam no gabinete de cada deputado em cada mês.
-    As páginas são por ano, mas uma pessoa pode aparecer só na página do ano em que começou;
-    por isso juntamos as páginas de todos os anos antes de contar."""
-    rem = pd.read_csv(BRUTOS / "camara_remuneracao.csv")
-    verba = pd.read_csv(BRUTOS / "camara_verba_gabinete.csv")
-    ativos = set(map(tuple, pd.concat([rem[rem["valor"] > 0][["id_deputado", "ano"]],
-                                       verba[verba["gasto"] > 0][["id_deputado", "ano"]]]).drop_duplicates().values.tolist()))
-    tarefas = [(d["id"], ano) for d in lista for ano in ANOS if (d["id"], ano) in ativos]
-    pendentes = [t for t in tarefas if not cache_valido(C / "pessoal_v2" / f"{t[0]}_{t[1]}.json", 3 if t[1] == HOJE.year else None)]
-    log(f"Câmara: tamanho das equipes — {len(tarefas) - len(pendentes)}/{len(tarefas)} já no cache")
-    erros = []
-    with ThreadPoolExecutor(PARALELO) as ex:
-        futuros = {ex.submit(_pessoal_ano, t): t for t in pendentes}
-        try:
-            for f in as_completed(futuros):
-                try:
-                    f.result()
-                except TempoEsgotado:
-                    raise
-                except Exception as e:
-                    erros.append((futuros[f], repr(e)))
-        except TempoEsgotado:
-            ex.shutdown(wait=True, cancel_futures=True)
-            raise
-    # Algumas páginas dão erro 500 de vez em quando; toleramos poucas (são tentadas de novo na próxima vez).
-    if erros:
-        log(f"Câmara: {len(erros)} páginas de pessoal com erro, ex.: {erros[:2]}")
-        if len(erros) > max(20, 0.05 * len(pendentes)):
-            raise RuntimeError(f"{len(erros)} páginas de pessoal falharam. Rode de novo.")
-    por_dep = {}
-    for id_, ano in tarefas:
-        arq = C / "pessoal_v2" / f"{id_}_{ano}.json"
-        if arq.exists():
-            conj = por_dep.setdefault(id_, set())
-            for x in ler_json(arq):
-                conj.add((x["h"], x["t"], tuple(x["i"]), tuple(x["f"]) if x["f"] else None))
-    meses = []
-    ano, mes = INICIO_LEGISLATURA
-    while (ano, mes) <= ULTIMO_MES:
-        meses.append((ano, mes))
-        mes += 1
-        if mes > 12:
-            ano, mes = ano + 1, 1
-    linhas = []
-    for id_, periodos in por_dep.items():
-        for am in meses:
-            sp = {h for h, t, i, f in periodos if t == "sp" and i <= am and (f is None or am <= f)}
-            cne = {h for h, t, i, f in periodos if t == "cne" and i <= am and (f is None or am <= f)}
-            if sp or cne:
-                linhas.append({"id_deputado": id_, "ano": am[0], "mes": am[1], "secretarios": len(sp), "cne": len(cne)})
-    pd.DataFrame(linhas).to_csv(BRUTOS / "camara_pessoal.csv", index=False)
-    log(f"Câmara: tamanho das equipes ok ({len(linhas)} meses)")
+    """Quantas pessoas trabalharam no gabinete de cada deputado em cada mês, até set/2026 (contadas nas páginas de
+    pessoal de gabinete, que o robots.txt da Câmara não deixa mais robôs abrirem; sem nomes)."""
+    df = pd.read_csv(CONGELADO / "pessoal_paginas.csv")
+    df.to_csv(BRUTOS / "camara_pessoal.csv", index=False)
+    log(f"Câmara: tamanho das equipes ok ({len(df)} meses, até {int((df.ano * 100 + df.mes).max()) % 100:02d}/{int(df.ano.max())})")
 
 
 def coletar():
     lista = deputados()
     cota()
     moradia()
-    perfis(lista)
+    remuneracao(lista)
+    verba_gabinete(lista)
     pessoal(lista)
     cota_site(lista)
     log("Câmara: coleta completa.")

@@ -1,0 +1,22 @@
+{
+  "_sobre": "Fotos escolhidas à mão no Wikimedia Commons para quem o robô não achou pelo Wikidata (coleta/fotos.py). Só arquivos com licença livre (CC BY, CC BY-SA, CC0) e cuja descrição ou plaquinha diz quem é; nada com licença duvidosa (fotos do gov.br marcadas como livres, 'PD-USGov' em foto brasileira). corte: [esquerda, topo, direita, base] em frações da imagem, para tirar um retrato 3:4 de uma foto maior. Para trocar uma foto, apague site/fotos/<id>.webp e rode python3 coletar.py fotos.",
+  "fotos": {
+    "exe-1123135": {"arquivo": "Fernanda Machiaveli.jpg", "corte": [0.27, 0.30, 0.77, 0.74]},
+    "exe-1656328": {"arquivo": "Tadeu Alencar em dezembro de 2016.jpg"},
+    "exe-3447356": {"arquivo": "24.04.2025 - Posse de Frederico de Siqueira Filho como Ministro de Estado das Comunicações (54472591392) (cropped).jpg"},
+    "exe-4162993": {"arquivo": "23.12.2025 - Cerimônia de transmissão de cargo e posse do Ministro do Turismo, Gustavo Feliciano (55001712455) (cropped).jpg"},
+    "exe-999653": {"arquivo": "02.01.2023 - Posse de Jader Filho, Ministro de Estado das Cidades (52626809793) (cropped).jpg"},
+    "exe-1050424": {"arquivo": "09.09.2024 - Deputada Macaé Evaristo (53983818379) (cropped).jpg"},
+    "exe-797817": {"arquivo": "05.05.2025 - Márcia Helena Carvalho Lopes assina termo de posse como Ministra de Estado das Mulheres (54497969047) (cropped).jpg"},
+    "exe-3170974": {"arquivo": "02.01.2023 - Posse de Márcio Macêdo, Ministro de Estado da Secretaria-geral da Presidência da República (52625858807) (cropped).jpg"},
+    "exe-3660362": {"arquivo": "COP30 - Rachel Barros 01.jpg", "corte": [0.26, 0.15, 0.77, 0.53]},
+    "exe-4000583": {"arquivo": "28.08.2024 - Lançamento do livro “Brasil da Esperança - O Marketing Nas Eleições Mais Importantes do País”, do marqueteiro Sidônio Palmeira (53954931766) (Sidônio Palmeira).jpg"},
+    "exe-2961013": {"arquivo": "Wellington César Lima e Silva (3x4).jpg"},
+    "exe-526346": {"arquivo": "02.05.2025 - Nomeação e posse de Wolney Queiroz Maciel como Ministro de Estado da Previdência Social (54492443226) (cropped).jpg"},
+    "exe-1096103": {"arquivo": "Edipo Araujo.jpg", "corte": [0.17, 0.13, 0.79, 0.68]},
+    "exe-767332": {"arquivo": "George André Palermo Santoro.jpg", "corte": [0.315, 0.05, 0.765, 0.95]},
+    "exe-1198450": {"arquivo": "CRA - Comissão de Agricultura e Reforma Agrária - 54976130231.jpg", "corte": [0.26, 0.255, 0.82, 0.755], "nota": "a plaquinha da mesa diz o nome"},
+    "exe-791886": {"arquivo": "Márcio Fernando Elias Rosa.jpg"},
+    "exe-299246": {"arquivo": "2025-10-08 CAE - Comissão de Assuntos Econômicos (54841464925).jpg", "corte": [0.57, 0.13, 0.87, 0.73], "nota": "à direita, atrás da plaquinha 'Sr. Bruno Moretti'; a legenda diz que ele está em pronunciamento"}
+  }
+}

@@ -57,7 +57,16 @@ def _tabela(nome):
     return saida
 
 
+# O robots.txt do Portal da Transparência do Paraná tem "Disallow: /pte" para todos os robôs (menos os buscadores).
+# Desde 30/09/2026 o robô não abre mais o portal: o site usa o que já estava gravado (até ago/2026) até o Estado
+# autorizar. Para voltar a coletar, troque para False.
+BLOQUEADO_ROBOTS = True
+
+
 def coletar():
+    if BLOQUEADO_ROBOTS:
+        comum.avisar(UF, "o robots.txt do portal não permite robôs; fica o que já estava gravado")
+        return 0
     feitos, linhas = set(), []
     fazer = set(comum.a_fazer(UF, comum.ultimo_possivel()))
     if not fazer:

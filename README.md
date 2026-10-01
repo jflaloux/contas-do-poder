@@ -236,8 +236,8 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 
 | Cidade | Fonte | O que a folha dá |
 |---|---|---|
-| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês) | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
-| Recife | Dados Abertos do Recife, "Servidores e salários" (CKAN, uma tabela por ano, filtrada pela função) | Proventos, férias e 13º ("natalina"). R$ 0 no mês = recebe de outro órgão |
+| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês). **Parado desde 30/09/2026**: o robots.txt do portal tem `Disallow: /`; fica o que já estava gravado (até ago/2026) | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
+| Recife | Dados Abertos do Recife, "Servidores e salários" (um CSV de ~85 MB por ano, lido aos poucos e filtrado pela função) | Proventos, férias e 13º ("natalina"). R$ 0 no mês = recebe de outro órgão |
 | Fortaleza | Dados Abertos de Fortaleza, `relacao_AAAAMM.csv` (~24 MB por mês) | Só o total dos proventos: o que passa do normal da pessoa vira "outros". Menos de 30% do normal do cargo = recebe de outro órgão |
 | Vitória | Dados Abertos de Vitória, conjunto "Pessoal" (API do portal, uma tabela por mês) | Só a remuneração bruta total. Quadro "cedido por outros órgãos" = recebe de outro órgão |
 | Porto Alegre | Portal Transparência (Procempa), "Remuneração dos servidores": a pesquisa do mês e o CSV da pesquisa, como o botão do site | Remuneração básica, abate-teto, 13º (folha "natalina" de dezembro), férias, eventuais e jetons |
@@ -292,7 +292,7 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 | MG | Dados abertos, "Remuneração dos servidores ativos" | CSV mensal de ~130 MB (dois leiautes), com 13º, férias, jetons e abate-teto |
 | PB | Dados abertos (API da Codata) | Por órgão e mês: parte fixa e parte variável |
 | PE | Dados abertos, "Remuneração de servidores" | CSV mensal; a governadora é achada pelo nome (recebe como procuradora) |
-| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses) |
+| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses). **Parado desde 30/09/2026**: o robots.txt tem `Disallow: /pte`; fica o que já estava gravado (até ago/2026) |
 | RO | API do Portal da Transparência | Por cargo e mês, com as rubricas; o 13º numa folha à parte |
 | RR | API do Portal da Transparência | Por nome e mês, com os lançamentos |
 | SC | Dados abertos, "Remuneração dos servidores" | CSV mensal só com o bruto; o Estado só mantém os meses recentes |
@@ -306,6 +306,29 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
   fora do ar no período eleitoral).
 
+## Robôs e robots.txt
+
+Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
+primeiro pedido: o que ele proíbe não é aberto (erro `BloqueadoRobots`, e o estado ou a cidade segue com o que já estava
+gravado), e o `Crawl-delay` é respeitado (um pedido por vez naquele site, com a pausa pedida). As APIs da Wikimedia
+ficam de fora (têm regras próprias para robôs). Quem cria um robô novo deve usar essa sessão, e não `requests` direto.
+
+O que mudou em 30/09/2026, depois de uma conferência dos robots.txt:
+
+- **Câmara dos Deputados**: o robots.txt (de 18/09/2026) proíbe `/deputados/*/*`, ou seja, as páginas de salário,
+  de verba de gabinete e de pessoal de gabinete de cada deputado. Agora: a verba de gabinete vem da página principal
+  do deputado (`/deputados/ID?ano=AAAA`, permitida; os valores batem ao centavo com os de antes); o salário até
+  set/2026 é o que as páginas mostravam (guardado em `dados/camara/remuneracao_paginas.csv`) e, depois, o subsídio
+  do Decreto Legislativo 172/2022 nos meses em exercício, pelo histórico da API (quem recebia o subsídio cheio sem
+  estar em exercício, como os ministros licenciados, continua enquanto o histórico não mudar); a equipe fica como
+  estava em set/2026 (`dados/camara/pessoal_paginas.csv`, só contagens). 13º, férias, ajuda de custo e diárias ficam de
+  fora até a Câmara autorizar.
+- **Portais CKAN** (ES, MG, PE, SC, Recife e Fortaleza): o robots.txt proíbe `/api/` e pede 10 s entre pedidos. Os
+  arquivos agora são achados pela página do conjunto de dados (`coleta.util.recursos_ckan`), com a pausa.
+- **Prefeitura de São Paulo** (`Disallow: /`) e **Paraná** (`Disallow: /pte`): os robôs estão parados
+  (`BLOQUEADO_ROBOTS = True` em `coleta/prefeituras/sp.py` e `coleta/folhas_estaduais/pr.py`) e o site usa o que já
+  estava gravado, até haver autorização.
+
 ## Compartilhamento e medição
 
 - **Imagem para compartilhar**: no fim da página de cada parlamentar, o site mostra uma imagem 1080×1350 (4:5,
@@ -317,16 +340,22 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do
   Wikimedia Commons (via Wikidata), só com licença livre e só retratos; o crédito fica em
-  `site/fotos/creditos.json` e aparece no contracheque e na imagem. Quem não tem foto aparece com as iniciais.
+  `site/fotos/creditos.json` e aparece no contracheque e na imagem. Quem o Wikidata não resolve pode ter a foto
+  escolhida à mão em `dados/referencia/fotos_governo.json` (o arquivo do Commons e, se preciso, o corte do retrato;
+  o crédito diz "recortada"). Nada com licença ND nem com licença duvidosa (foto do gov.br marcada como livre, "PD-USGov"
+  em foto brasileira). Quem não tem foto aparece com as iniciais.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
   baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar`, `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
-  Também `reportar_erro` (clique no "Encontrou um erro?") e `ver_correcoes`.
+  Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
+  (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
 
 ## Erros e correções
 
-- No fim de cada página (político, governador, cidade), o bloco **"Encontrou um erro?"** abre um e-mail para
-  contato@contasdopoder.com já com o endereço da página.
+- No fim de cada página (político, governador, cidade), o bloco **"Encontrou um erro?"** leva primeiro às fontes
+  oficiais daquela página (página oficial do político, lei e folha do governador, Siconfi para a cidade). Se a fonte
+  mostra o mesmo valor, quem corrige é o órgão (ouvidoria ou LAI). Só se a fonte mostra outro valor ("A fonte mostra
+  outro valor?", que abre ao toque) aparece o e-mail para contato@contasdopoder.com, já com o endereço da página.
 - O que for corrigido entra, à mão, em `site/dados/correcoes.json` e aparece em
   [contasdopoder.com/correcoes](https://contasdopoder.com/correcoes): a data, o que estava errado, o que mudou e as
   páginas afetadas (`paginas`: o id do político, como `dep-204558`, ou `governador/al`). `publicacao/gerar.mjs` monta
@@ -346,7 +375,8 @@ Veja `metadados.json` → `pendencias`. As principais:
    de dados abertos (cerca de R$ 4 milhões por mês). Completamos com o total mensal do site oficial.
 2. **Senado:** o custo dos assessores é uma **estimativa** (liga a folha de pagamento à lotação atual de cada
    comissionado, pelo nome).
-3. **Câmara:** ainda faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão).
+3. **Câmara:** faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão): só aparecem nas
+   páginas de cada deputado que o robots.txt da Câmara não deixa robôs abrirem (ver "Robôs e robots.txt").
    Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
 4. **Governadores:** o mês a mês pela folha em 24 estados. Faltam o Amapá e o Mato Grosso (a consulta pede CAPTCHA,
    que não contornamos) e o Tocantins (o portal só funciona clicando na página). No Pará, a consulta pública deixou de
@@ -358,8 +388,10 @@ Veja `metadados.json` → `pendencias`. As principais:
 ## Fontes
 
 - Câmara: [API de dados abertos](https://dadosabertos.camara.leg.br/swagger/api.html),
-  [arquivos da cota](https://www.camara.leg.br/cotas/), páginas de cada deputado e
-  [moradia](https://www.camara.leg.br/moradia/detalhamento).
+  [arquivos da cota](https://www.camara.leg.br/cotas/), página principal de cada deputado (verba de gabinete),
+  [moradia](https://www.camara.leg.br/moradia/detalhamento) e o
+  [Decreto Legislativo 172/2022](https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html)
+  (subsídio). Até set/2026, também as páginas de salário e de pessoal de cada deputado.
 - Senado: [dados abertos legislativos](https://legis.senado.leg.br/dadosabertos/docs/) e
   [administrativos](https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html).
 - Governadores: leis e decretos legislativos das assembleias, diários oficiais, folhas de pagamento e tabelas

@@ -10,7 +10,9 @@ armadilhas que não estão escritas em outro lugar.
   como "captcha" ou "navegador" e segue sem o dado. Não usar credenciais que apareçam no código dos portais (no Mato
   Grosso do Sul, só a chave anônima de `/Auth/Token`, que o portal entrega a qualquer visitante).
 - Não guardar CPF, nem mascarado, nem os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
-- Respeitar o `robots.txt` e o `Crawl-delay`, com pausas entre as consultas.
+- Respeitar o `robots.txt` e o `Crawl-delay`, com pausas entre as consultas. A sessão de `coleta/util.py` (`_sessao()`,
+  `SessaoEducada`) já lê o robots.txt de cada site, não abre o que ele proíbe e respeita o Crawl-delay: todo robô usa
+  essa sessão, nunca `requests.get` direto. Quando um site proíbe, o robô para e o site fica com o que já foi gravado.
 - Nunca desligar a verificação de TLS. Se a cadeia do certificado estiver incompleta, completar com o certificado
   intermediário certo (AIA) junto com o `certifi`.
 - Fotos só com licença livre ou autorização, com crédito em `site/fotos/creditos.json`.
@@ -53,8 +55,16 @@ armadilhas que não estão escritas em outro lugar.
   ex-deputado, antes da posse de suplentes). `coleta/site.py` (`_sem_pagamento_fora_do_mandato`) tira esses meses
   pelo histórico oficial.
 - Governadores: o 13º adiantado vem marcado e fica fora da média (`_serie` em `coleta/governadores.py`).
-- Rio Grande do Norte limita as consultas (erro 429): pausa de 10 s e várias rodadas.
+- Rio Grande do Norte limita as consultas (erro 429): pausa de 10 s. A exportação em CSV por órgão passou a dar 429
+  sempre; o robô usa a busca pelo nome (JSON), que sai antes da lista por órgão. Cada mês leva ~1 min.
 - Bahia e Rio Grande do Sul: painéis Power BI, lidos com a chave anônima que a própria página entrega
   (`coleta/folhas_estaduais/powerbi.py`).
 - Node 22: `fs.cpSync` falha em pastas montadas de máquina virtual; `gerar.mjs` copia arquivo por arquivo.
 - Ao passar arquivos entre máquinas, use nomes únicos e confira o md5 (uma cópia antiga já foi publicada por engano).
+- Câmara: o robots.txt (desde 18/09/2026) proíbe `/deputados/*/*` (salário, verba e pessoal de cada deputado). A verba
+  vem da página principal (`/deputados/ID?ano=`); salário e equipe até set/2026 estão em `dados/camara/` (no Git);
+  depois, o salário sai do Decreto Legislativo 172/2022 pelos meses em exercício. 13º e diárias: só com autorização.
+- Portais CKAN proíbem `/api/` no robots.txt: ache os arquivos pela página do conjunto (`util.recursos_ckan`).
+- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): robôs parados (`BLOQUEADO_ROBOTS`).
+- No Cowork, a pasta montada não deixa apagar arquivos: `node publicacao/gerar.mjs` falha ao limpar `publicar/`. Para
+  conferir o build, copie `site/` e `publicacao/` para uma pasta fora de `mnt/` e rode lá.

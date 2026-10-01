@@ -3,17 +3,16 @@ cargo, o órgão e o valor bruto (o CPF vem mascarado e não é guardado). Só o
 https://dados.sc.gov.br/dataset/remuneracaoservidores"""
 import re
 
-from ..util import _sessao
+from ..util import recursos_ckan
 from . import comum
 
 UF = "SC"
-PACOTE = "https://dados.sc.gov.br/api/3/action/package_show?id=remuneracaoservidores"
 FONTE = "https://dados.sc.gov.br/dataset/remuneracaoservidores"
 
 
 def _arquivos():
     saida = {}
-    for x in _sessao().get(PACOTE, timeout=120).json()["result"]["resources"]:
+    for x in recursos_ckan(FONTE):
         m = re.match(r"Servidores-Ativos-(\d{4})-(\d{2})\.csv$", x.get("name") or "", re.I)
         if m:
             saida[int(m.group(1)) * 100 + int(m.group(2))] = x["url"]

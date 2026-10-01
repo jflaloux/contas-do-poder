@@ -26,7 +26,7 @@ NOTAS = {
     "PB": "A folha da Paraíba dá só a parte fixa (o subsídio) e a parte variável de cada mês, sem dizer o que é a variável; o 13º não aparece.",
     "PE": "A folha de Pernambuco separa a remuneração, as férias, o 13º, outras vantagens e o desconto do teto. Algumas linhas trazem só o total, sem descrição: entram em \"outros\".",
     "PI": "A folha do Piauí separa a remuneração básica, a variável (o subsídio) e a eventual (1/3 de férias, adiantamento do 13º); a folha do 13º entra em dezembro.",
-    "PR": "A folha do Paraná separa o vencimento, as gratificações, os retroativos, os auxílios e, numa coluna só, as férias e o 13º (que entram em \"outros\").",
+    "PR": "A folha do Paraná separa o vencimento, as gratificações, os retroativos, os auxílios e, numa coluna só, as férias e o 13º (que entram em \"outros\"). Os meses depois de agosto de 2026 ainda não entram: o Portal da Transparência do Paraná não permite a leitura por robôs (robots.txt): voltam quando houver autorização.",
     "RJ": "A folha do Rio separa a folha mensal, o adiantamento do 13º (junho) e o 13º (dezembro). O governador em exercício desde março de 2026, presidente do Tribunal de Justiça, é pago pelo Tribunal e não aparece nesta folha.",
     "RN": "A folha do Rio Grande do Norte dá a remuneração do mês, outras remunerações e o redutor do teto; o 13º e as férias não aparecem.",
     "RO": "A folha de Rondônia traz cada rubrica, e o 13º vem numa folha à parte.",

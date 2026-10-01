@@ -44,7 +44,7 @@ import pandas as pd
 import requests
 
 from ..config import CACHE, DADOS, HOJE, USER_AGENT
-from ..util import TempoEsgotado, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import SessaoEducada, TempoEsgotado, cache_valido, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 3304557
@@ -191,7 +191,7 @@ def _conferir_intermediario(der, raizes_pem, arquivo_raizes):
 def _sessao():
     global _s
     if _s is None:
-        _s = requests.Session()
+        _s = SessaoEducada()  # lê o robots.txt e respeita o Crawl-delay
         _s.headers["User-Agent"] = USER_AGENT
         _s.verify = _ca()
     return _s

@@ -490,6 +490,10 @@ input[type="search"] { line-height: 1.5; }
 .erro-aviso { border-style: dashed; }
 .erro-aviso h2 { margin: 0; font-size: 1.15rem; }
 .erro-aviso p { margin: 0; }
+.erro-aviso__fontes { margin: 0; padding-left: 1.2em; }
+.erro-aviso__fontes li { margin: 2px 0; }
+.erro-aviso__email summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.erro-aviso__email[open] summary { margin-bottom: 6px; }
 .correcoes { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
 .correcao h3 { margin: 0; font-size: 1.05rem; }
 .correcao p { margin: 0; max-width: 760px; }

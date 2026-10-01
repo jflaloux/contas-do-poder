@@ -3,18 +3,17 @@ por rubrica de cada servidor (sem CPF). O robô lê o arquivo aos poucos e fica 
 https://dados.es.gov.br/dataset/portal-da-transparencia-pessoal"""
 import re
 
-from ..util import _sessao
+from ..util import recursos_ckan
 from . import comum
 
 UF = "ES"
-PACOTE = "https://dados.es.gov.br/api/3/action/package_show?id=portal-da-transparencia-pessoal"
 FONTE = "https://dados.es.gov.br/dataset/portal-da-transparencia-pessoal"
 
 
 def _arquivos():
     """{AAAAMM: url} dos CSVs mensais."""
     saida = {}
-    for x in _sessao().get(PACOTE, timeout=120).json()["result"]["resources"]:
+    for x in recursos_ckan(FONTE):
         m = re.match(r"Remuneracoes-(\d{2})_(\d{4})\.csv", x.get("name") or "")
         if m:
             saida[int(m.group(2)) * 100 + int(m.group(1))] = x["url"]

@@ -2,6 +2,15 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-10-01",
+      "titulo": "Maranhão e Rio de Janeiro: fonte do salário do governador descrita errado",
+      "texto": [
+        "A página do Maranhão dizia que os valores vinham só da imprensa, e a do Rio de Janeiro, que o valor do governador era o informado pela imprensa. Nos dois casos, os valores já eram os da folha de pagamento do Estado.",
+        "Agora as páginas também citam as leis: Lei nº 12.282/2024, no Maranhão, e Lei nº 6.651/2013, no Rio de Janeiro. Os números não mudaram."
+      ],
+      "paginas": ["governador/ma", "governador/rj"]
+    },
+    {
       "data": "2026-09-30",
       "titulo": "Deputados que assumiram como suplentes: meses fora do mandato contados como salário",
       "texto": [

@@ -1,25 +1,23 @@
 """Prefeitura do Recife: prefeito, vice e secretários municipais, mês a mês.
 
-Fonte: Portal de Dados Abertos do Recife, "Relação dos Servidores e salários da Prefeitura do Recife", uma tabela
-por ano, com o nome de cada servidor, pela API do portal (CKAN, datastore_search, filtrando a função):
-https://dados.recife.pe.gov.br/dataset/servidores
+Fonte: Portal de Dados Abertos do Recife, "Relação dos Servidores e salários da Prefeitura do Recife", um arquivo
+por ano (CSV de ~85 MB), com o nome de cada servidor: https://dados.recife.pe.gov.br/dataset/servidores
+O robô acha os arquivos pela página do conjunto de dados e lê cada um aos poucos, ficando só com o prefeito, o vice e
+os secretários. A API do portal (/api/) não é usada: o robots.txt não deixa robôs usarem, e pede 10 s entre pedidos.
 
 Colunas usadas: mês, nome, função (PREFEITO DA CAPITAL, VICE-PREFEITO, SECRETARIO MUNICIPAL), unidade (a secretaria),
 proventos (o bruto), férias e 13º ("natalina"). O CPF vem mascarado e não é guardado.
 """
 import json
 import re
-import time
-
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import cache_valido, log, normalizar_nome, recursos_ckan
 from . import comum
 
 COD = 2611606
 INICIO = 202501
-CKAN = "https://dados.recife.pe.gov.br/api/3/action"
 PAGINA = "https://dados.recife.pe.gov.br/dataset/servidores"
 PASTA = DADOS / "municipios" / "recife"
 LINHAS = PASTA / "prefeitura_remuneracao.csv"
@@ -47,49 +45,30 @@ CFG = {
 }
 
 
-def _get(acao, params, arquivo=None, dias=None):
-    if arquivo is not None and cache_valido(arquivo, dias):
+def _ano(ano, url, arquivo, dias):
+    """As linhas do prefeito, do vice e dos secretários no arquivo do ano (guardadas no cache)."""
+    if cache_valido(arquivo, dias):
         return json.loads(arquivo.read_text(encoding="utf-8"))
-    verificar_prazo()
-    for tentativa in range(4):
-        try:
-            r = _sessao().get(f"{CKAN}/{acao}", params=params, timeout=180)
-            r.raise_for_status()
-            d = r.json()["result"]
-            break
-        except TempoEsgotado:
-            raise
-        except Exception:
-            if tentativa == 3:
-                raise
-            time.sleep(10 * (tentativa + 1))
-    time.sleep(1)
-    if arquivo is not None:
-        arquivo.parent.mkdir(parents=True, exist_ok=True)
-        arquivo.write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
-    return d
+    from ..folhas_estaduais.comum import linhas_csv
+    _, achadas = linhas_csv(url, list(FUNCOES), encoding="utf-8-sig", sep=";")
+    regs = [x for x in achadas if (x.get("nsalsefunc") or "").strip() in FUNCOES]
+    arquivo.parent.mkdir(parents=True, exist_ok=True)
+    arquivo.write_text(json.dumps(regs, ensure_ascii=False), encoding="utf-8")
+    return regs
 
 
 def coletar():
     from ..vereadores.comum import ultimo_mes_fechado
     ano_atual = ultimo_mes_fechado() // 100
     recursos = {}
-    for r in _get("package_show", {"id": "servidores"})["resources"]:
+    for r in recursos_ckan(PAGINA):
         m = re.match(r"\s*(\d{4})\s*-", r.get("name") or "")
-        if m and int(m.group(1)) >= INICIO // 100 and r.get("datastore_active"):
-            recursos[int(m.group(1))] = r["id"]
+        if m and int(m.group(1)) >= INICIO // 100 and (r.get("url") or "").lower().endswith(".csv"):
+            recursos[int(m.group(1))] = r["url"]
     velhas = pd.read_csv(LINHAS) if LINHAS.exists() else pd.DataFrame(columns=COLUNAS)
     linhas = []
-    for ano, rid in sorted(recursos.items()):
-        dias = 5 if ano >= ano_atual else None
-        regs, desloc = [], 0
-        while True:
-            d = _get("datastore_search", {"resource_id": rid, "filters": json.dumps({"nsalsefunc": list(FUNCOES)}), "limit": 1000, "offset": desloc},
-                     C / f"folha_{ano}_{desloc}.json", dias)
-            regs += d.get("records") or []
-            desloc += 1000
-            if desloc >= int(d.get("total") or 0):
-                break
+    for ano, url in sorted(recursos.items()):
+        regs = _ano(ano, url, C / f"folha_{ano}.json", 5 if ano >= ano_atual else None)
         for x in regs:
             linhas.append({"aaaamm": ano * 100 + int(x["asalsemess"]), "tp": FUNCOES[x["nsalsefunc"].strip()], "nome": x["nsalsenome"].strip(),
                            "funcao": x["nsalsefunc"].strip(), "unidade": (x.get("esalseunidade") or "").strip(), "vinculo": (x.get("nsalsecarg") or "").strip(),

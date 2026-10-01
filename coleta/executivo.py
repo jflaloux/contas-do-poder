@@ -25,8 +25,8 @@ import zipfile
 import pandas as pd
 import requests
 
-from .config import ANOS, BRUTOS, DADOS, USER_AGENT, meses_da_legislatura
-from .util import cache_valido, ler_json, log, normalizar_nome, numero_br, salvar_json, verificar_prazo
+from .config import ANOS, BRUTOS, DADOS, meses_da_legislatura
+from .util import _sessao, cache_valido, ler_json, log, normalizar_nome, numero_br, salvar_json, verificar_prazo
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados"
 C = DADOS / "portal_transparencia"
@@ -63,7 +63,7 @@ def _baixar_zip(caminho, tentativas=3):
             time.sleep(espera)
         _ultimo_download[0] = time.time()
         try:
-            r = requests.get(f"{BASE}/{caminho}", headers={"User-Agent": USER_AGENT}, timeout=300)
+            r = _sessao().get(f"{BASE}/{caminho}", timeout=300)
             if r.status_code in (403, 404):
                 raise NaoPublicado(caminho)
             if r.status_code in (405, 429) or b"Human Verification" in r.content[:3000]:

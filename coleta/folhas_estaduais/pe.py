@@ -5,17 +5,16 @@ A governadora Raquel Lyra não recebe como governadora: aparece como procuradora
 e é achada pelo nome (folha_nome em dados/governadores/governadores.json)."""
 import re
 
-from ..util import _sessao
+from ..util import recursos_ckan
 from . import comum
 
 UF = "PE"
-PACOTE = "https://dados.pe.gov.br/api/3/action/package_show?id=remuneracao-de-servidores"
 FONTE = "https://dados.pe.gov.br/dataset/remuneracao-de-servidores"
 
 
 def _arquivos():
     saida = {}
-    for x in _sessao().get(PACOTE, timeout=120).json()["result"]["resources"]:
+    for x in recursos_ckan(FONTE):
         m = re.search(r"/(\d{4})_(\d{1,2})_remuneracao_ativos\.csv$", x.get("url") or "")
         if m:
             saida[int(m.group(1)) * 100 + int(m.group(2))] = x["url"]

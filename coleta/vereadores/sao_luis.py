@@ -37,6 +37,7 @@ CFG = {
                    "Quando o titular se licencia, o gabinete continua com o nome dele e a folha não diz qual suplente o ocupa: esses meses ficam de fora.",
     "credito_foto": "Câmara Municipal de São Luís", "pagina": f"{PORTAL}/",
     "fontes": {"folha": f"{PORTAL}/"},
+    "conferir_gastos": False,  # a Câmara não publica a verba (ou cota) de cada gabinete: não há gasto do mês para conferir
 }
 CAMPOS = ["nome", "referencia", "cargo_funcao", "lotacao", "vinculo", "tipo_folha", "valor", "admissao", "exoneracao", "matricula"]
 

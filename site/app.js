@@ -389,6 +389,21 @@
     for (let v = 0; v <= topo + 1e-6; v += passo) ticks.push(v);
     return { ticks, topo };
   }
+  // Eixo de min a max com números redondos, sem começar do zero (para pontos: a posição é que conta, não o tamanho).
+  // Se todos têm o mesmo valor, volta ao eixo do zero.
+  function escalaFaixa(min, max, n = 4) {
+    if (!(max > min)) return { ...escala(max, n), base: 0, casas: 0 };
+    const bruto = (max - min) / n;
+    const pot = Math.pow(10, Math.floor(Math.log10(bruto)));
+    const passo = [1, 2, 2.5, 5, 10].map((f) => f * pot).find((x) => x >= bruto) || bruto;
+    // as pontas vão até a metade do passo mais próxima (41 e 103 mil: de 40 a 110 mil, com marcas em 40, 60, 80 e 100)
+    const meio = passo / 2;
+    const base = Math.max(min >= 0 ? 0 : -Infinity, Math.floor(min / meio) * meio), topo = Math.ceil(max / meio) * meio;
+    const casas = Math.max(0, -Math.floor(Math.log10(passo) + 1e-9)) + (Math.round(passo / pot * 10) === 25 ? 1 : 0);
+    const ticks = [];
+    for (let v = Math.ceil(base / passo - 1e-9) * passo; v <= topo + passo * 1e-6; v += passo) ticks.push(Math.round(v * 1e6) / 1e6);
+    return { ticks, topo, base, casas };
+  }
   function colunaArredondada(x, y, w, alt, r) {
     if (alt <= 0) return "";
     r = Math.min(r, w / 2, alt);
@@ -490,14 +505,30 @@
       const W = Math.max(260, caixa.clientWidth), H = 150;
       const m = { t: 30, r: 14, b: 26, l: 14 };
       const iw = W - m.l - m.r, ih = H - m.t - m.b;
-      const { ticks, topo } = escala(Math.max(...pares.map((p) => p.v)), 4);
-      const x = (v) => m.l + (v / topo) * iw;
+      const vs = pares.map((p) => p.v);
+      const { ticks, topo, base, casas } = escalaFaixa(Math.min(...vs), Math.max(...vs), 4);
+      const x = (v) => m.l + ((v - base) / (topo - base)) * iw;
+      const rotulo = (t) => (t === 0 ? "0" : fmt === reais ? compacto(t).replace(/,0 (mil|mi|bi)$/, " $1") : fmt === reaisC ? `R$ ${num(t, casas)}` : num(t, casas));
       const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Onde cada um fica" });
-      for (const t of ticks) {
+      // rótulos do eixo: se encostam (celular estreito), tenta sem o "R$ " e, se ainda encostam, um sim, um não
+      const ancora = (t) => (x(t) < m.l + 30 ? "start" : x(t) > W - m.r - 30 ? "end" : "middle");
+      const cabem = (textos) => {
+        let fimAnt = -Infinity;
+        return ticks.every((t, i) => {
+          if (textos[i] === null) return true;
+          const larg = textos[i].length * 6.6, a = ancora(t); // fonte mono de 11 px
+          const ini = a === "start" ? x(t) : a === "end" ? x(t) - larg : x(t) - larg / 2;
+          const ok = ini >= fimAnt + 8; fimAnt = ini + larg; return ok;
+        });
+      };
+      const cheios = ticks.map(rotulo), curtos = cheios.map((t) => t.replace(/^R\$ /, ""));
+      const textos = [cheios, curtos, curtos.map((t, i) => ((ticks.length - 1 - i) % 2 ? null : t))].find(cabem) || curtos.map((t, i) => (i % 3 ? null : t));
+      ticks.forEach((t, i) => {
         svg.append(s("line", { class: "grade", x1: x(t), x2: x(t), y1: m.t - 6, y2: H - m.b }));
-        const tx = s("text", { x: x(t), y: H - 8, "text-anchor": t === 0 ? "start" : t === topo ? "end" : "middle" });
-        tx.textContent = t === 0 ? "0" : fmt === reais ? compacto(t) : num(t, 0); svg.append(tx);
-      }
+        if (textos[i] === null) return;
+        const tx = s("text", { x: x(t), y: H - 8, "text-anchor": ancora(t) });
+        tx.textContent = textos[i]; svg.append(tx);
+      });
       const pos = pares.map((p) => ({ ...p, cx: x(p.v), cy: m.t + 6 + ((hashNum(p.id) % 1000) / 1000) * (ih - 12) }));
       for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: 3.5 }));
       const meu = pos.find((p) => p.id === euId);
@@ -957,7 +988,7 @@
           (c.notas || []).map((n) => h("p", { class: "nota" }, n)),
           h("p", { class: "nota" }, `Dados da ${c.casa} até ${fmtMes(c.ultimo_mes)}.`));
       }
-      if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, p.fc.l ? `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})` : p.fc.a), p.fc.l ? ", via Wikimedia Commons." : "."));
+      if (p.fc) add(lado, h("p", { class: "nota credito" }, "Foto: ", h("a", { href: p.fc.u, target: "_blank", rel: "noopener" }, p.fc.l ? `${(p.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${p.fc.l})` : p.fc.a), p.fc.l ? `${p.fc.r ? ", recortada" : ""}, via Wikimedia Commons.` : "."));
       if (p.q) add(lado, h("p", { class: "nota" }, p.k === "p"
         ? `No mês da saída, recebeu mais ${reais(p.q[1])} de acertos (férias, 13º proporcional e outros). Esse valor não entra nas médias.`
         : `Depois de deixar o cargo, recebeu mais ${reais(p.q[1])} em ${p.q[0]} ${p.q[0] === 1 ? "mês" : "meses"} (acertos da saída e quarentena). Esse valor não entra nas médias.`));
@@ -2225,20 +2256,44 @@
     if (l && endereco()) l.href = `${origem()}${S.naoAchada ? "/" : location.pathname}`;
   }
   // ------------------------------------------------------------------ "Encontrou um erro?" e a lista de correções
-  // No fim de cada página: um e-mail já com o endereço da página. O que for corrigido entra em dados/correcoes.json
-  // (editado à mão) e aparece em /correcoes.
+  // No fim de cada página: primeiro, os links para conferir na fonte oficial; só se a fonte mostrar outro valor, o
+  // e-mail (já com o endereço da página). O que for corrigido entra em dados/correcoes.json (editado à mão) e aparece
+  // em /correcoes.
   const CONTATO = "contato@contasdopoder.com";
-  function blocoErro(nome) {
+  const SICONFI = "https://siconfi.tesouro.gov.br/siconfi/pages/public/declaracao/declaracao_list.jsf";
+  // [texto, link] das fontes oficiais de cada página
+  function fontesPessoa(p) {
+    const nome = { d: "Página do deputado no site da Câmara", s: "Página do senador no site do Senado", e: "Página no Portal da Transparência",
+      j: "Página no Portal da Transparência", v: "Página do vereador no site da Câmara Municipal", p: "Folha de pagamento da Prefeitura" }[p.k] || "Página oficial";
+    const f = [[nome, p.o]];
+    const par = p.k === "j" && p.j ? S.porId.get(p.j) : null; // tudo junto: a página do Congresso também
+    if (par && par.o) f.push([par.k === "s" ? "Página do senador no site do Senado" : "Página do deputado no site da Câmara", par.o]);
+    return f;
+  }
+  function fontesGov(e) {
+    return [e.v && e.v[4] ? [`Lei ou fonte do salário ${deUF(e.uf)}`, e.v[4]] : null, e.folha && e.folha.u ? [`Folha de pagamento ${deUF(e.uf)}`, e.folha.u] : null];
+  }
+  function fontesCidade(c) {
+    return [["Declarações das prefeituras ao Tesouro Nacional (Siconfi)", SICONFI]];
+  }
+  function blocoErro(nome, fontes) {
     const url = `${origem() || location.origin}${location.pathname}${location.search}`;
-    const corpo = `Página: ${url}\n\nO que parece errado (qual número, de qual mês):\n\n\nOnde está o valor certo (link da fonte, se tiver):\n\n`;
+    const corpo = `Página: ${url}\n\nQual número está diferente (e de qual mês):\n\n\nO que a fonte oficial mostra (com o link):\n\n`;
     const mailto = `mailto:${CONTATO}?subject=${encodeURIComponent(`Erro no Contas do Poder: ${nome}`)}&body=${encodeURIComponent(corpo)}`;
+    const links = (fontes || []).filter((f) => f && f[1]);
     return h("section", { class: "bloco", id: "erro", "aria-labelledby": "t-erro" },
       h("div", { class: "cartao erro-aviso" },
         h("h2", { id: "t-erro" }, "Encontrou um erro nesta página?"),
-        h("p", { class: "discreto" }, "Avise a gente. Conferimos na fonte oficial, corrigimos e registramos o que mudou na ", h("a", { href: "/correcoes" }, "lista de correções"), "."),
-        h("div", { class: "acoes" }, h("a", { class: "botao botao--leve", href: mailto, "data-evento": "reportar_erro" }, "Avisar por e-mail")),
-        h("p", { class: "discreto pequeno" }, "Ou escreva para ", h("a", { href: mailto, "data-evento": "reportar_erro" }, CONTATO),
-          ", com o link da página. Se o valor estiver errado na própria fonte, quem corrige é o órgão que publicou: fale com a ouvidoria dele ou faça um pedido pela Lei de Acesso à Informação.")));
+        h("p", null, h("strong", null, "Primeiro, confira na fonte. "),
+          "Os números desta página vêm de fontes oficiais, com o link ao lado de cada bloco", links.length ? ". As principais:" : "."),
+        links.length ? h("ul", { class: "erro-aviso__fontes" }, links.map(([t, u]) => h("li", null, h("a", { href: u, target: "_blank", rel: "noopener" }, `${t} ↗`)))) : null,
+        h("p", { class: "discreto" }, h("strong", null, "A fonte mostra o mesmo valor? "),
+          "Então é o que o órgão publicou, e quem pode corrigir é ele: fale com a ouvidoria do órgão ou faça um pedido pela Lei de Acesso à Informação."),
+        h("details", { class: "erro-aviso__email", ontoggle: (ev) => { if (ev.target.open) evento("abrir_reportar_erro", { pagina: nome }); } },
+          h("summary", null, "A fonte mostra outro valor?"),
+          h("p", null, "Então o erro é nosso. Escreva para ", h("a", { href: mailto, "data-evento": "reportar_erro" }, CONTATO),
+            " com o link desta página, o número que está diferente e o link da fonte. Conferimos, corrigimos e registramos o que mudou na ",
+            h("a", { href: "/correcoes" }, "lista de correções"), "."))));
   }
   let correcoes = null;
   function carregarCorrecoes() {
@@ -2296,7 +2351,7 @@
     if (S.gov) {
       const e = GOV.porUF[S.gov];
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
-      app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`));
+      app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e)));
       navSecoes(["governador", "governadores", "entenda", "fontes"]);
       if (rolar) irPara("governador", true);
       return;
@@ -2312,7 +2367,7 @@
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`)].filter(Boolean));
+        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
         if (rolar) irPara("cidade", true);
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
@@ -2322,7 +2377,7 @@
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
-      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n)].filter(Boolean));
+      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       if (rolar) irPara("contracheque", true);
     } else {

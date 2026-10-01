@@ -11,6 +11,8 @@ foto em dados abertos; buscamos no Wikidata/Wikimedia Commons, só com licença 
 CC0 ou domínio público) e com o crédito do autor guardado em site/fotos/creditos.json (o site mostra).
 Para não pegar a foto errada: a pessoa no Wikidata precisa ser brasileira e ter ocupado um cargo de
 ministro, presidente ou vice; e a foto precisa ser um retrato (mais alta que larga).
+Quem o Wikidata não resolve pode ter a foto escolhida à mão em dados/referencia/fotos_governo.json (arquivo do
+Commons e, se preciso, o corte), com as mesmas regras de licença.
 """
 import json
 import re
@@ -28,7 +30,8 @@ CREDITOS = PASTA / "creditos.json"
 WIKIDATA = "https://www.wikidata.org/w/api.php"
 COMMONS = "https://commons.wikimedia.org/w/api.php"
 CARGO_OK = re.compile(r"minist|presid|advogad|attorney general|chefe", re.I)
-LICENCA_OK = re.compile(r"^(cc[ -]by|cc0|public domain|dom[ií]nio p[uú]blico|pd)", re.I)
+LICENCA_OK = re.compile(r"^(cc[ -]by(?![ -]*nd)|cc0|public domain|dom[ií]nio p[uú]blico|pd)", re.I)  # sem "ND": o corte é uma obra derivada
+ESCOLHIDAS = RAIZ / "dados" / "referencia" / "fotos_governo.json"  # fotos escolhidas à mão, quando o Wikidata não ajuda
 TAMANHO = (240, 320)  # retrato 3:4
 
 
@@ -40,9 +43,13 @@ def _enderecos(p):
     return [f"https://legis.senado.leg.br/senadores/fotos-oficiais/{numero}", p.get("foto")]
 
 
-def _ajustar(conteudo):
-    """Corta em 3:4 (tirando dos lados, ou de baixo para não cortar o rosto) e reduz para 240×320."""
+def _ajustar(conteudo, corte=None):
+    """Corta em 3:4 (tirando dos lados, ou de baixo para não cortar o rosto) e reduz para 240×320.
+    corte: [esquerda, topo, direita, base] em frações, para tirar o retrato de uma foto maior (fotos escolhidas à mão)."""
     im = Image.open(BytesIO(conteudo)).convert("RGB")
+    if corte:
+        w, h = im.size
+        im = im.crop((round(corte[0] * w), round(corte[1] * h), round(corte[2] * w), round(corte[3] * h)))
     w, h = im.size
     if w * 4 > h * 3:
         nw = round(h * 3 / 4)
@@ -136,9 +143,9 @@ def _wikidata(p):
     return None
 
 
-def _commons(arquivo):
+def _commons(arquivo, largura=330):
     paginas = _api(COMMONS, action="query", titles=f"File:{arquivo}", prop="imageinfo",
-                   iiprop="url|size|extmetadata", iiurlwidth=330)["query"]["pages"]  # 330 px: um dos tamanhos padrão da Wikimedia
+                   iiprop="url|size|extmetadata", iiurlwidth=largura)["query"]["pages"]  # 330 px: um dos tamanhos padrão da Wikimedia
     info = next(iter(paginas.values())).get("imageinfo", [{}])[0]
     meta = info.get("extmetadata", {})
     texto = lambda k: re.sub(r"<[^>]+>", "", meta.get(k, {}).get("value", "")).strip()
@@ -153,6 +160,7 @@ def _governo_commons(politicos, limite=None):
     (cada busca leva uns 15 s, por causa do ritmo que a Wikimedia pede; o resto fica para a próxima semana)."""
     dados = ler_json(CREDITOS) if CREDITOS.exists() else {}
     creditos, tentou = dados.setdefault("fotos", {}), dados.setdefault("procurado_em", {})
+    escolhidas = ler_json(ESCOLHIDAS).get("fotos", {}) if ESCOLHIDAS.exists() else {}
     hoje = time.strftime("%Y-%m-%d")
     novas = buscas = 0
     try:
@@ -160,28 +168,36 @@ def _governo_commons(politicos, limite=None):
             destino = PASTA / f"{p['id']}.webp"
             if p["casa"] != "executivo" or destino.exists():
                 continue
-            if tentou.get(p["id"], "0000") > time.strftime("%Y-%m-%d", time.localtime(time.time() - 30 * 86400)):
+            escolhida = escolhidas.get(p["id"])
+            if not escolhida and tentou.get(p["id"], "0000") > time.strftime("%Y-%m-%d", time.localtime(time.time() - 30 * 86400)):
                 continue
             if limite is not None and buscas >= limite:
                 break
             buscas += 1
             tentou[p["id"]] = hoje
             try:
-                achou = _wikidata(p)
+                achou = (None, escolhida["arquivo"]) if escolhida else _wikidata(p)
                 if not achou:
                     continue
                 qid, arquivo = achou
-                f = _commons(arquivo)
-                if not f["url"] or not LICENCA_OK.search(f["licenca"] or "") or f["altura"] < 0.95 * f["largura"]:
-                    continue  # sem licença livre ou não é um retrato
+                corte = (escolhida or {}).get("corte")
+                f = _commons(arquivo, 1280 if corte else 330)  # com corte, uma imagem maior (o retrato sai de um pedaço dela)
+                if not f["url"] or not LICENCA_OK.search(f["licenca"] or ""):
+                    if escolhida:
+                        log(f"  foto escolhida de {p['nome']}: sem licença livre no Commons ({f['licenca']}); não usada")
+                    continue
+                if not escolhida and f["altura"] < 0.95 * f["largura"]:
+                    continue  # não é um retrato
                 time.sleep(1.1)
                 import requests
                 r = requests.get(f["url"], headers=_ua, timeout=60)
                 if r.status_code == 429:  # a Wikimedia pediu para ir mais devagar: tenta de novo na próxima vez
                     raise WikimediaLimitou()
                 r.raise_for_status()
-                destino.write_bytes(_ajustar(r.content))
+                destino.write_bytes(_ajustar(r.content, corte))
                 creditos[p["id"]] = {"wikidata": qid, "arquivo": arquivo, **{k: f[k] for k in ("autor", "licenca", "url_licenca", "pagina")}}
+                if corte:
+                    creditos[p["id"]]["cortada"] = True
                 novas += 1
             except (TempoEsgotado, WikimediaLimitou):
                 del tentou[p["id"]]
@@ -203,6 +219,7 @@ def coletar():
         res = list(ex.map(_uma, politicos))
     if res.count("sem foto"):
         log(f"Fotos: Wikimedia Commons para o governo federal: {_governo_commons(politicos)} novas")
-        res = ["sem foto" if p["casa"] == "executivo" and not (PASTA / f"{p['id']}.webp").exists() else "ok" for p in politicos]
+        res = ["sem foto" if r == "sem foto" and not (PASTA / f"{p['id']}.webp").exists() else ("nova" if r == "sem foto" else r)
+               for p, r in zip(politicos, res)]
     log(f"Fotos: {res.count('nova')} novas, {res.count('já tinha')} já existiam, {res.count('falhou')} falharam, "
         f"{res.count('sem foto')} do governo sem foto oficial disponível")

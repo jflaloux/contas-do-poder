@@ -104,10 +104,15 @@ def _camara():
     L = []
 
     rem = _na_legislatura(pd.read_csv(BRUTOS / "camara_remuneracao.csv"))
-    for r in rem.itertuples():
+    calc = rem["calculado"] if "calculado" in rem else pd.Series(False, index=rem.index)
+    for r, c in zip(rem.itertuples(), calc):
         if r.id_deputado in pid and r.valor:
-            L.append(_linha(pid[r.id_deputado], r.ano, r.mes, "salario", "Salário mensal bruto", r.valor,
-                            "camara_remuneracao"))
+            if c is True or str(c) == "True":  # depois de set/2026: o subsídio da lei, nos meses em exercício
+                L.append(_linha(pid[r.id_deputado], r.ano, r.mes, "salario", "Salário mensal bruto (subsídio fixado em lei)",
+                                r.valor, "camara_subsidio_lei"))
+            else:
+                L.append(_linha(pid[r.id_deputado], r.ano, r.mes, "salario", "Salário mensal bruto", r.valor,
+                                "camara_remuneracao"))
 
     verba = _na_legislatura(pd.read_csv(BRUTOS / "camara_verba_gabinete.csv"))
     for r in verba.itertuples():
@@ -530,7 +535,8 @@ def executar():
         "fontes_por_lancamento": {
             "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
             "camara_remuneracao": "https://www.camara.leg.br/deputados/{id}/remuneracao?ano={ano}",
-            "camara_verba_gabinete": "https://www.camara.leg.br/deputados/{id}/verba-gabinete?ano={ano}",
+            "camara_verba_gabinete": "https://www.camara.leg.br/deputados/{id}?ano={ano}",
+            "camara_subsidio_lei": "https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html",
             "camara_cota": "https://www.camara.leg.br/cota-parlamentar/consulta-cota-parlamentar?ideDeputado={id}&dataInicio=01{ano}&dataFim=12{ano}",
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
             "senado_folha": "https://adm.senado.gov.br/adm-dadosabertos/api/v1/servidores/remuneracoes/{ano}/{mes}/csv",
@@ -542,15 +548,18 @@ def executar():
         "fontes": {
             "camara_api": "https://dadosabertos.camara.leg.br/swagger/api.html",
             "camara_cota": "https://www.camara.leg.br/cotas/",
-            "camara_paginas": "https://www.camara.leg.br/deputados/{id}/remuneracao e /verba-gabinete",
+            "camara_paginas": "https://www.camara.leg.br/deputados/{id} (verba de gabinete); até set/2026, também /remuneracao e /pessoal-gabinete",
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
             "senado_legis": "https://legis.senado.leg.br/dadosabertos/docs/",
             "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
             "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados",
         },
         "pendencias": [
-            "Câmara: 13º salário e ajuda de custo dos deputados ainda não coletados (no Senado já estão).",
-            "Câmara: diárias de viagens oficiais (missão oficial) ainda não coletadas.",
+            "Câmara: 13º salário, férias, ajuda de custo e diárias dos deputados não entram: só aparecem nas páginas de "
+            "cada deputado que o robots.txt da Câmara não deixa robôs abrirem (no Senado já estão).",
+            "Câmara: desde out/2026, o salário de cada deputado é o subsídio fixado em lei (Decreto Legislativo 172/2022) "
+            "nos meses em exercício, pelo histórico oficial, e o tamanho da equipe do gabinete fica como estava em set/2026: "
+            "as páginas de salário e de pessoal de cada deputado não podem ser lidas por robôs (robots.txt).",
             "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
             "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
             "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada "

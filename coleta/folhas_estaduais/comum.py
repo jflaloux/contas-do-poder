@@ -145,13 +145,14 @@ def avisar(uf, texto):
     log(f"  Folha {uf}: {texto}")
 
 
-def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600, colunas=None):
+def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600, colunas=None, pausa=10):
     """Lê um CSV grande aos poucos, sem guardar, e devolve (cabeçalho, [linhas que têm alguma das chaves]) como dicionários.
     As chaves (sem acento) são procuradas nos bytes da linha, em maiúsculas, antes de ler as colunas: é o que deixa ler
-    arquivos de 100-200 MB sem gastar memória. `colunas`: nomes das colunas, para arquivo sem linha de cabeçalho."""
+    arquivos de 100-200 MB sem gastar memória. `colunas`: nomes das colunas, para arquivo sem linha de cabeçalho.
+    `pausa`: segundos de espera depois do download (os portais CKAN pedem 10 s entre pedidos no robots.txt)."""
     import csv
     import time
-    from ..util import TempoEsgotado, _sessao, verificar_prazo
+    from ..util import TempoEsgotado, _sessao, restante, verificar_prazo
     chaves = [normalizar_nome(c).encode("ascii") for c in chaves]
     bom = "\N{ZERO WIDTH NO-BREAK SPACE}"
     for tentativa in range(3):
@@ -169,6 +170,8 @@ def linhas_csv(url, chaves, encoding="utf-8-sig", sep=";", timeout=600, colunas=
                     maiusc = bruta.upper()
                     if any(c in maiusc for c in chaves):
                         achadas.append(dict(zip(cab, next(csv.reader([bruta.decode(encoding, "replace")], delimiter=sep)))))
+            falta = restante()
+            time.sleep(pausa if falta is None else max(0, min(pausa, falta)))
             return cab, achadas
         except TempoEsgotado:
             raise

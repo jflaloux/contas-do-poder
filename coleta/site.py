@@ -382,7 +382,7 @@ def executar():
             item["tp"] = {"presidente": "pr", "vice": "vp"}.get(p.get("tipo"), "mi")
             credito = creditos.get(pid)
             if credito and item["f"] and item["f"].startswith("fotos/"):
-                item["fc"] = {"a": credito.get("autor"), "l": credito.get("licenca"), "u": credito.get("pagina")}
+                item["fc"] = {"a": credito.get("autor"), "l": credito.get("licenca"), "u": credito.get("pagina"), **({"r": 1} if credito.get("cortada") else {})}
             if p.get("quarentena"):
                 item["q"] = [p["quarentena"]["meses"], _r(p["quarentena"]["total"])]
         if p.get("relacionado"):
