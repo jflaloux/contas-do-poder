@@ -57,6 +57,14 @@ endereço, com título, descrição e prévia de link próprios e um resumo em t
 WhatsApp, que não rodam JavaScript. Também gera o `sitemap.xml` e o `_redirects`. Depois de carregar, a página
 funciona como antes: o `app.js` desenha tudo e troca de página sem recarregar.
 
+Para a primeira visita ser rápida no celular, o `gerar.mjs` também divide os dados: `publicar/dados/indice/` tem
+`dados.json` e `camaras.json` sem a série mês a mês (`t`) e sem o detalhe dos gastos (`dt`) de cada pessoa, que vão
+para `publicar/dados/pessoa/<id>.json` e só são baixados ao abrir a página daquela pessoa (ao abrir o site, de cerca de
+820 KB para cerca de 320 KB comprimidos). Os arquivos inteiros continuam em `publicar/dados/`, para quem reutiliza os
+dados. Cada página pronta já traz o topo do contracheque (nome, custo por mês e de onde ele vem) e pede ao navegador
+para baixar os dados junto com o `app.js` (`<link rel="preload">`). Sem o `gerar.mjs`, o `app.js` lê os arquivos
+inteiros de `site/dados/`.
+
 ## Ver o site no seu computador
 
 ```bash
@@ -344,9 +352,13 @@ O que mudou em 30/09/2026, depois de uma conferência dos robots.txt:
   escolhida à mão em `dados/referencia/fotos_governo.json` (o arquivo do Commons e, se preciso, o corte do retrato;
   o crédito diz "recortada"). Nada com licença ND nem com licença duvidosa (foto do gov.br marcada como livre, "PD-USGov"
   em foto brasileira). Quem não tem foto aparece com as iniciais.
-- **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, guia, estado,
+- **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, busca_topo, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
-  baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar`, `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
+  baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar` (botão "Compartilhar" no fim do contracheque, que leva
+  à seção da imagem; o WhatsApp fica só nessa seção), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
+  Busca e listas: `abrir_busca` (a lupa do cabeçalho fixo, com a página em que a pessoa estava; quem escolhe um nome por
+  ali chega com a origem `busca_topo`) e `abrir_lista` (listas que começam fechadas: `ministros`, `governadores`,
+  `vice_governadores`, `cidades` com a UF, `secretarios`, `subprefeitos` e `sairam_prefeitura`).
   Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
 
