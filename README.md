@@ -8,7 +8,7 @@ estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (Sã
 Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
 São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul, Rondônia, Tocantins, Sergipe,
-Espírito Santo e Rio Grande do Sul.
+Espírito Santo, Rio Grande do Sul e Amapá.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -296,6 +296,7 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 | Sergipe | Portal da Transparência da Alese: o PDF mensal da folha de pagamento e o PDF mensal do ressarcimento dos deputados | Rendimentos da folha (subsídio, "outras verbas", 13º, auxílio; sem descontos nem líquido); ressarcimento por deputado e categoria (sem fornecedor), no mês da competência; equipe do gabinete (pessoas lotadas e soma dos rendimentos, sem nomes). Quem está no cargo: quem está na folha |
 | Espírito Santo | Portal da Transparência da Ales (só abre do Brasil: roda no Mac): o que a página das cotas parlamentares usa, por gabinete e mês | Subsídio da lei (Lei 11.766/2022), desde fev/2025; cota por rubrica (diárias, passagens, divulgação, consultorias, aluguel), sem fornecedor. Quem está no cargo: os meses em que a página tem a tabela do gabinete (o titular licenciado fica sem tabela) |
 | Rio Grande do Sul | Portal da Transparência da ALRS (só abre do Brasil: roda no Mac): o que as páginas "Gastos | Cotas" e "Remuneração de Servidores e Parlamentares" usam | Folha de cada deputado (remuneração bruta, parcelas indenizatórias, terço de férias, 13º; sem descontos), pela busca do nome completo do TSE; cota por gabinete, mês e rubrica (sem fornecedor). Quem está no cargo: os meses na folha (o titular licenciado sai da folha, mas o gabinete continua na lista de cotas e a cota fica no nome dele) |
+| Amapá | Portal da Transparência da Alap (só abre do Brasil: roda no Mac): o que as páginas da CEAP e da consulta remuneratória de deputados usam | Folha de cada deputado (subsídio, GFE, auxílio-alimentação; sem descontos); CEAP por gabinete e mês, nota a nota (CNPJ, empresa, nota, valor). Quem está no cargo: os gabinetes da CEAP do mês (e, para quem não tem gabinete, os meses na folha) |
 
 - Nome civil, gênero e eleito/suplente: arquivo de candidatos de 2022 do TSE (`consulta_cand_2022.zip`, ~4 MB, no
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as

@@ -79,19 +79,28 @@
   "AP": {
    "site": "https://www.al.ap.leg.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "HTML (o que a página usa: gabinete_ceap_json.php, pagina.php?pg=ceap&acao=buscar, ceap_exibir_detalhado.php)",
+    "url": "https://www.al.ap.gov.br/transparencia/pagina.php?pg=ceap",
+    "desde": "2012"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true,
+    "formato": "HTML por deputado e mês (pg=deputado_consulta, pg=exibir_servidor)",
+    "url": "https://www.al.ap.gov.br/transparencia/pagina.php?pg=deputado_consulta"
    },
    "equipe": {
     "publica": null
    },
    "subsidio": {
-    "valor": null
+    "valor": 33448.48,
+    "desde": "2025",
+    "ato": null,
+    "fonte": "folha da Alap (\"SUBSIDIO FIXO\"), mais GFE e auxílio-alimentação"
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil.",
+   "barreiras": "O portal só abre de dentro do Brasil (o robô roda no Mac). O robots.txt responde 403.",
+   "observacoes": "Robô pronto (coleta/assembleias/ap.py), desde jan/2025. A folha de fev/2026 não está publicada. Na folha, 20 dos 24 deputados; a CEAP lista os gabinetes de cada mês.",
    "abriu_de_fora": false
   },
   "BA": {
