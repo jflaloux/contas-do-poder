@@ -47,8 +47,7 @@ Cada número tem link para a fonte oficial.
 
 - [x] Câmara: 13º, férias, acertos, ajuda de custo e diárias dos deputados, pelo contracheque detalhado de cada mês
   (exceção ao robots.txt; leitura do mais recente para o mais antigo) — Claude
-- [ ] Câmara: terminar a leitura dos contracheques até fev/2023 (sozinho, 6.000 por semana; ou de uma vez no Mac com
-  `CAMARA_MAX_DETALHE=30000 python3 coletar.py camara`) — Claude / Jean-François
+- [x] Câmara: contracheques lidos de fev/2023 a set/2026 (23.781; depois só os meses novos) — Claude
 - [ ] Câmara: limites históricos da cota por estado (2023–2025) — Claude
 - [ ] Senado: validar a estimativa de custo dos assessores (ex.: pedir via LAI o custo por gabinete) — Você e Claude
 
