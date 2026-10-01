@@ -115,7 +115,7 @@
     "url": "https://portalrh.alba.ba.gov.br/pdf/transparencia/ALBA_ECV_Deputados.pdf"
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "Fornecedor e CNPJ só na página de cada processo.",
+   "observacoes": "Fornecedor e CNPJ só na página de cada processo. Robô feito (coleta/assembleias/ba.py): planilha mensal da verba (sem fornecedor).",
    "abriu_de_fora": true
   },
   "CE": {

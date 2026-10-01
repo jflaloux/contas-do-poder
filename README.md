@@ -7,7 +7,7 @@ da Câmara, do Senado e do Portal da Transparência. E também o salário de cad
 estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
 Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de oito capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba e Natal), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
-São Paulo, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul e Rondônia.
+São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul e Rondônia.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -279,6 +279,7 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 | Estado | Fonte | O que entra |
 |---|---|---|
 | São Paulo | Dados abertos da Alesp: `deputados.xml` e `despesas_gabinetes_AAAA.xml` | Subsídio da lei (Leis 17.617/2023 e 18.384/2025); verba de gabinete por mês, tipo e fornecedor (a Alesp soma as notas do mesmo fornecedor no mês) |
+| Bahia | Transparência da ALBA: a lista de deputados e a planilha mensal da verba (botão Excel) | Subsídio da lei (Lei 14.532/2023), desde fev/2025; verba indenizatória processo por processo, por categoria (o fornecedor só está na página de cada processo, ainda fora) |
 | Pernambuco | Portal da Transparência da Alepe: a lista de dados abertos e o que a página usa (prestações da verba e as notas de cada uma) | Subsídio da lei (Lei 18.138/2023); verba indenizatória nota a nota (rubrica, CNPJ, empresa, valor). As notas chegam aos poucos (no máximo 400 prestações por vez) |
 | Ceará | Portal da Transparência da Alece: CSV mensal da folha de pagamento (categoria "DEPUTADOS") e CSV mensal da VDP | Salário e 13º da folha (remuneração bruta menos abate-teto; sem descontos pessoais); Verba de Desempenho Parlamentar empenho por empenho, com credor e CNPJ. Quem está no cargo: quem está na folha do mês |
 | Paraíba | Portal da Transparência da ALPB: a planilha ODS dos eletivos da folha de cada mês | Subsídio da folha e a VIAP paga na folha (só o total do mês, sem fornecedores; as notas saem num arquivo por deputado). Jul/2025 sem planilha: vale o subsídio da lei |
