@@ -8,8 +8,9 @@ Uso:
     python3 coletar.py vereadores      # capitais (São Paulo, Rio, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre,
                                        # Recife, São Luís): cada vereador,
                                        # com salário, verba do gabinete e equipe (vereadores_sp é o nome antigo)
-    python3 coletar.py prefeituras     # São Paulo, Recife, Fortaleza, Vitória e Porto Alegre: prefeito, vice e secretários
-                                       # (e subprefeitos, em SP), mês a mês, pela folha (prefeitura_sp é o nome antigo)
+    python3 coletar.py prefeituras     # São Paulo, Rio (só prefeito e vice), Recife, Fortaleza, Vitória, Porto Alegre, Salvador,
+                                       # Curitiba e Natal: prefeito, vice e secretários (e subprefeitos, em SP), mês a mês,
+                                       # pela folha (prefeitura_sp é o nome antigo)
     python3 coletar.py governadores    # os 27 governadores e vices: salário pela lei (dados/governadores/governadores.json)
                                        # e, em 24 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
     python3 coletar.py indice          # índice de acesso aos salários dos governadores (dados/indice/), em site/dados/indice.json

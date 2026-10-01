@@ -5,8 +5,8 @@
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
 da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
 estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
-Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de cinco capitais (São Paulo, Recife, Fortaleza, Vitória e
-Porto Alegre).
+Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de oito capitais (São Paulo, Recife, Fortaleza, Vitória,
+Porto Alegre, Salvador, Curitiba e Natal), além do prefeito e do vice do Rio de Janeiro.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -249,6 +249,10 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 | Fortaleza | Dados Abertos de Fortaleza, `relacao_AAAAMM.csv` (~24 MB por mês) | Só o total dos proventos: o que passa do normal da pessoa vira "outros". Menos de 30% do normal do cargo = recebe de outro órgão |
 | Vitória | Dados Abertos de Vitória, conjunto "Pessoal" (API do portal, uma tabela por mês) | Só a remuneração bruta total. Quadro "cedido por outros órgãos" = recebe de outro órgão |
 | Porto Alegre | Portal Transparência (Procempa), "Remuneração dos servidores": a pesquisa do mês e o CSV da pesquisa, como o botão do site | Remuneração básica, abate-teto, 13º (folha "natalina" de dezembro), férias, eventuais e jetons |
+| Salvador | Portal da Transparência, "Remunerações": a API pública da página (lista do mês filtrada pelo cargo e o detalhe de cada pessoa) | Remuneração básica, 13º, férias e abate-teto (verbas indenizatórias à parte, fora do bruto). Vínculo "regime especial outra esfera" = recebe de outro órgão |
+| Curitiba | Portal da Transparência, "Remuneração dos Servidores": o CSV do mês inteiro, como o botão "Exportar para CSV" | Só o total bruto do mês: o que passa do normal da pessoa vira "outros". Só entra quem tem o cargo "secretário" na lista (o secretário de carreira que recebe pelo cargo de origem não aparece como secretário). Remuneração zero = recebe de outro órgão |
+| Natal | Natal Transparente, "Servidores - Folha de Pagamento": a pesquisa por cargo e o contracheque de cada pessoa | Subsídio ou cargo em comissão, 13º, férias, rescisão e o "jeton indenizatório" mensal (Lei 7.274/2021). Sem contracheque no mês = recebe de outro órgão |
+| Rio de Janeiro | "Consultar Remuneração do Servidor": a base mensal em CSV (`contrachequedoc.rio.gov.br/repositorio/ArquivoTCAAAAMM.csv`, ~21 MB) | Bruto por tipo de folha (normal, 13º, suplementos, rescisão) e abate-teto. O arquivo não diz o cargo: só entram o prefeito e o vice, pelo nome (eleitos de 2024) |
 
 - **Vai para o bolso** = remuneração bruta da folha. Os acertos do mês da saída (acima do normal da pessoa, a partir
   de R$ 3 mil) ficam à parte e fora das médias. As prefeituras não publicam gastos por pessoa.
@@ -259,7 +263,9 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 - Vice que também é secretário (Recife, Fortaleza) aparece com um cargo só ("Vice-prefeito e secretário de ...").
 - Nada de CPF: quando a fonte traz o CPF mascarado, ele não é guardado.
 - **Belo Horizonte** publica a folha nominal, mas o portal bloqueia acessos automáticos (WAF): não tentamos
-  contornar. **Curitiba** e as outras capitais ficam para depois.
+  contornar. **João Pessoa** também (Incapsula). **Campo Grande**: a consulta nova (sig-transparencia) não devolveu
+  nenhum resultado em 01/10/2026, nem no navegador; tentar de novo. **Macapá**: a folha nominal fica num portal de
+  terceiro (Portal CR2, feito em Bubble), sem arquivo para baixar; fica para depois.
 - Saída: `site/dados/prefeituras.json`, que o site junta à lista de políticos (tipo `p`), com as notas de cada cidade.
 
 ## Governadores
@@ -447,7 +453,8 @@ Veja `metadados.json` → `pendencias`. As principais:
 4. **Governadores:** o mês a mês pela folha em 24 estados. Faltam o Amapá e o Mato Grosso (a consulta pede CAPTCHA,
    que não contornamos) e o Tocantins (o portal só funciona clicando na página). No Pará, a consulta pública deixou de
    mostrar a governadora e o vice a partir de abril de 2026.
-5. **Prefeituras:** Belo Horizonte (portal bloqueia robôs), Curitiba e as outras capitais ainda não foram feitas.
+5. **Prefeituras:** Belo Horizonte e João Pessoa (portais bloqueiam robôs), Campo Grande (consulta sem resultados), Macapá (portal de
+   terceiro) e as outras capitais ainda não foram feitas. No Rio, só prefeito e vice (a folha não diz o cargo).
 6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
    afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).
 
@@ -465,8 +472,12 @@ Veja `metadados.json` → `pendencias`. As principais:
   oficiais dos estados (o link de cada valor está em `dados/governadores/governadores.json`).
 - Prefeituras: [São Paulo](https://dados.prefeitura.sp.gov.br/dataset/remuneracao-servidores-prefeitura-de-sao-paulo),
   [Recife](https://dados.recife.pe.gov.br/dataset/servidores), [Fortaleza](https://dados.fortaleza.ce.gov.br/dataset/servidores),
-  [Vitória](https://dadosabertos.vitoria.es.gov.br/) e
-  [Porto Alegre](https://portaltransparenciapmpa.procempa.com.br/portalpmpa/fpRemuneracaoPesquisa.do?viaMenu=true).
+  [Vitória](https://dadosabertos.vitoria.es.gov.br/),
+  [Porto Alegre](https://portaltransparenciapmpa.procempa.com.br/portalpmpa/fpRemuneracaoPesquisa.do?viaMenu=true),
+  [Salvador](https://transparencia.salvador.ba.gov.br/#/RemuneracaoDadosFuncionais),
+  [Curitiba](https://www.transparencia.curitiba.pr.gov.br/meta4/servidores.aspx?quadro=),
+  [Natal](https://www2.natal.rn.gov.br/transparencia/servidores.php) e
+  [Rio de Janeiro](https://transparencia.prefeitura.rio/servidor-municipal/remuneracao/).
 - Renda de quem trabalha no Brasil ("ganha mais que X% dos brasileiros que trabalham"): microdados dos 4 trimestres
   mais recentes da [PNAD Contínua do IBGE](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?t=microdados)
   (rendimento mensal habitual de todos os trabalhos, pessoas ocupadas com renda, em salários mínimos de cada ano);
