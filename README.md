@@ -446,7 +446,8 @@ seguem o mesmo desenho.
   Os dois abrem primeiro uma janela com a imagem, para a pessoa ver o que vai mandar, com **Enviar imagem…** (o menu do aparelho:
   WhatsApp, Telegram...; no iPhone vai só a imagem, porque com texto junto o WhatsApp do iPhone nem sempre manda os
   dois), **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar
-  em texto?". A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
+  em texto?". No fim da página (a seção "Resumo para compartilhar" do político e o fim da página da cidade e do
+  governador), a imagem e o texto aparecem juntos. A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
   (`site/fotos/`) porque o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do

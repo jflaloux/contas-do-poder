@@ -1074,6 +1074,15 @@
         h("span", null, "Uma imagem pronta para o WhatsApp, com o endereço desta página e a fonte dos dados.")),
       h("button", { type: "button", class: "botao", onclick: abrir }, "Compartilhar imagem"));
   }
+  // No fim da página da cidade e do governador: a imagem e o texto juntos, como na seção "Resumo para compartilhar" do
+  // político (o convite depois dos números continua lá em cima)
+  function fimCompartilhar(spec) {
+    if (!spec || (!spec.gerar && !spec.textoZap)) return null;
+    return h("div", { class: "compartilhar-fim" },
+      h("h2", { class: "h3" }, "Compartilhar"),
+      spec.gerar ? blocoCompartilhar(spec, "fim", "Imagem") : null,
+      spec.textoZap ? h("div", { class: "compartilhar-fim__texto" }, opcoesTexto(spec, "fim", spec.link, true)) : null);
+  }
   // No celular, o botão "Compartilhar" fixo no canto de baixo da tela aparece depois que a pessoa passa pelos números
   // principais (marco) e some enquanto o convite ou a seção da imagem estão na tela. No computador ele não aparece
   // (estilo.css).
@@ -1833,7 +1842,7 @@
           estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
         h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. O salário de verdade é definido pela própria Câmara e ainda não tem uma fonte nacional: por enquanto mostramos o teto.`),
         h("h2", { class: "h3" }, `Os ${c.nv} vereadores eleitos em 2024`), lista],
-        opcoesTexto(spec, "fim", spec.link),
+        fimCompartilhar(spec),
         h("ul", { class: "lista nota" },
           h("li", null, `Custo da Câmara: tudo o que ela gastou em ${c.ano || "no ano"} (salários de vereadores e servidores, prédio, contratos), segundo as contas que a prefeitura entregou ao Tesouro Nacional (Siconfi, função Legislativa). Não é o salário de cada vereador.`),
           detalhe ? h("li", null, "Vereadores: quem ocupa cada gabinete hoje, com os suplentes que assumiram, segundo a própria Câmara. Salário, verba do gabinete e equipe de cada um vêm dos dados abertos da Câmara Municipal.")
@@ -2175,7 +2184,7 @@
         h("p", { class: "nota", style: "margin:0" }, h("a", { href: `/indice#indice-${e.uf.toLowerCase()}`, onclick: () => { S.origem = "governador"; } }, `Ver a nota ${deUF(e.uf)} no índice de acesso aos salários dos governadores`)),
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
-        opcoesTexto(spec, "fim", spec.link),
+        fimCompartilhar(spec),
         h("ul", { class: "lista nota" },
           h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não aparecem por pessoa."),
           h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),

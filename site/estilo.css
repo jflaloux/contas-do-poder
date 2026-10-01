@@ -811,3 +811,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-topo .lide { color: var(--banda-ink-2); }
 .indice-topo .pequeno { color: var(--banda-ink-3); }
 .indice-topo .caixa-nota { background: var(--banda-2); border: 0; color: var(--banda-ink-2); }
+/* fim da página da cidade e do governador: a imagem e o texto juntos */
+.compartilhar-fim { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line-2); }
+.compartilhar-fim__texto { padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--raio); background: var(--bg); }
+.compartilhar-fim__texto h3 { margin: 0 0 4px; }
