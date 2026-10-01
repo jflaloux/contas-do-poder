@@ -6,9 +6,11 @@
 // o site funciona como antes (app.js desenha tudo). Na página de um político, o resumo pronto é o topo do contracheque
 // (nome, custo por mês e de onde ele vem), para a primeira tela já mostrar o principal enquanto o resto carrega.
 //
-// Dados mais leves: em publicar/dados/indice/ ficam dados.json e camaras.json sem a série mês a mês (t) e sem o
-// detalhe dos gastos (dt) de cada pessoa, que vão para publicar/dados/pessoa/<id>.json e só são baixados ao abrir a
-// página daquela pessoa. Os arquivos inteiros continuam em publicar/dados/ (para quem reutiliza os dados).
+// Dados mais leves: em publicar/dados/indice/ ficam dados.json, camaras.json e assembleias.json sem a série mês a mês
+// (t) e sem o detalhe dos gastos (dt) de cada pessoa, que vão para publicar/dados/pessoa/<id>.json e só são baixados ao
+// abrir a página daquela pessoa (com o nome de cada tipo de gasto e de cada fornecedor: por isso a lista meta.tipos das
+// câmaras e das Assembleias, com milhares de fornecedores, não vai na versão leve). Os arquivos inteiros continuam em
+// publicar/dados/ (para quem reutiliza os dados).
 //
 // Uso: node publicacao/gerar.mjs      (sem dependências; Node 18 ou mais novo)
 // No Cloudflare Pages: comando de build "node publicacao/gerar.mjs", pasta de saída "publicar".
@@ -24,6 +26,9 @@ const ler = (arq, padrao) => { try { return JSON.parse(fs.readFileSync(path.join
 const D = ler("dados.json");
 const CAM = ler("camaras.json", { meta: { cidades: {} }, p: [] });
 const PRE = ler("prefeituras.json", { meta: { cidades: {} }, p: [] });
+// deputados estaduais: no arquivo vêm com k = "e" (que no site é o governo federal); aqui, como no app.js, viram "a"
+const ASS = ler("assembleias.json", { meta: { estados: {} }, p: [] });
+const deputadosEstaduais = (ASS.p || []).map((p) => ({ ...p, k: "a" }));
 const GOV = ler("governadores.json", { e: [] });
 const MUN = ler("municipios.json", { m: [] });
 const END = ler("enderecos.json", { p: {}, antigos: {} });
@@ -44,7 +49,10 @@ const reais = (v) => fmt.format(Math.round(v)).replace(/\s/g, " ");
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const ultimoMes = D.meta.ultimo_mes;
 const anoAtual = String(Math.floor(ultimoMes / 100));
-const quando = (k) => (k === anoAtual ? `Em ${k} (até ${MESES[(ultimoMes % 100) - 1]})` : `Em ${k}`);
+// o último mês com dados: o da Câmara, da Prefeitura ou da Assembleia da pessoa (cada uma publica num ritmo) ou o geral
+const ultimoDe = (p) => ((!p ? null : p.k === "v" ? (CAM.meta.cidades || {})[p.cid] : p.k === "p" ? (PRE.meta.cidades || {})[p.cid]
+  : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : null) || {}).ultimo_mes || ultimoMes;
+const quando = (k, p) => { const u = ultimoDe(p); return String(Math.floor(u / 100)) === k ? `Em ${k} (até ${MESES[(u % 100) - 1]})` : `Em ${k}`; };
 const num = (v, casas = 0) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas, minimumFractionDigits: casas });
 const smTxt = (v) => (v >= 10 ? num(v, 0) : num(v, 1));
 const daRaiz = (u) => (u && !/^(https?:|data:|\/)/.test(u) ? `/${u}` : u);
@@ -53,7 +61,8 @@ function iniciais(nome) {
   return ((p[0] || "")[0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
 }
 // arquivos que o app.js baixa ao abrir qualquer página: o navegador começa a baixar junto com o app.js
-const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json"];
+const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json",
+  ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : [])];
 const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
 
 // ------------------------------------------------------------------ a página pronta
@@ -91,21 +100,23 @@ const paginas = []; // [caminho, html]
 
 // ------------------------------------------------------------------ políticos
 const cidades = { ...(CAM.meta.cidades || {}), ...(PRE.meta.cidades || {}) };
-const pessoas = [...D.p, ...CAM.p, ...PRE.p];
+const estados = (ASS.meta && ASS.meta.estados) || {};
+const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais];
 const porId = new Map(pessoas.map((p) => [p.id, p]));
 function periodoPadrao(p) {
   if (p.per["2025"] && p.per["2025"].m >= 1) return "2025";
-  const anos = Object.keys(p.per).filter((a) => p.per[a] && p.per[a].m > 0).sort();
+  const anos = Object.keys(p.per).filter((a) => a !== "leg" && p.per[a] && p.per[a].m > 0).sort(); // "leg" é o mandato todo
   return anos[anos.length - 1];
 }
 function rotuloPessoa(p) {
   const cid = p.cid ? cidades[p.cid] : null;
   if (p.k === "v") return `${p.g} ${cid ? deCidade(p.cid, cid.n) : ""}${p.pt ? ` · ${p.pt}` : ""}`.replace(/\s+/g, " ").trim();
   if (p.k === "p") return /Prefeit/.test(p.g) || !cid ? p.g : `${p.g} · Prefeitura ${deCidade(p.cid, cid.n)}`;
+  if (p.k === "a") return `${p.g} ${deUF(p.uf)}${p.pt ? ` · ${p.pt}` : ""}`;
   if (p.k === "e") return `${p.g}${p.pt ? ` · ${p.pt}` : ""}`;
   return `${p.g}${p.pt || p.uf ? ` · ${[p.pt, p.uf].filter(Boolean).join("-")}` : ""}`;
 }
-const GASTOS = { d: "em gastos do mandato (cota parlamentar e outros)", s: "em gastos do mandato (cota parlamentar e outros)", e: "em viagens oficiais", j: "em gastos dos cargos", v: "com a verba do gabinete" };
+const GASTOS = { d: "em gastos do mandato (cota parlamentar e outros)", s: "em gastos do mandato (cota parlamentar e outros)", e: "em viagens oficiais", j: "em gastos dos cargos", v: "com a verba do gabinete", a: "com a verba do gabinete" };
 const FONTE = { d: "da Câmara dos Deputados", s: "do Senado Federal", e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" };
 // o mesmo topo de contracheque que o app.js desenha (secContracheque/resumoTopo), com os números do período padrão
 const partidoUF = (p) => {
@@ -113,10 +124,11 @@ const partidoUF = (p) => {
   if (p.k === "e") return p.pt ? `${p.pt} · governo federal` : "Governo federal";
   if (p.k === "v") return `${p.pt || "sem partido"} · ${(cid || {}).n || "vereador"}`;
   if (p.k === "p") return p.pt || `Prefeitura ${cid ? deCidade(p.cid, cid.n) : ""}`;
+  if (p.k === "a") return p.pt ? `${p.pt}-${p.uf}` : p.uf;
   return `${p.pt || "sem partido"}-${p.uf}`;
 };
 const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "gastos do cargo" })[p.k] || "gastos do mandato";
-const nomeK = (k) => (k === anoAtual ? `em ${k} (até ${MESES[(ultimoMes % 100) - 1]})` : `em ${k}`);
+const nomeK = (k, p) => quando(k, p).replace(/^Em/, "em");
 function previaPessoa(p, k, r, texto) {
   const foto = p.f ? `<img src="${esc(daRaiz(p.f))}" alt="" referrerpolicy="no-referrer">` : "";
   const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
@@ -131,7 +143,7 @@ function previaPessoa(p, k, r, texto) {
       : `<div class="resumo-divisao" style="--parte:${parte}" aria-hidden="true"><span class="resumo-divisao__ganha"></span><span class="resumo-divisao__custa"></span></div>`
         + `<ul class="resumo-partes" style="--parte:${parte}" aria-label="De onde vem o custo"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>para o bolso</span></li>`
         + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
-    resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${p.k === "p" ? "Recebe por mês" : "Custo por mês"} ${esc(nomeK(k))}</p>`
+    resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${p.k === "p" ? "Recebe por mês" : "Custo por mês"} ${esc(nomeK(k, p))}</p>`
       + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${partes}${salMin ? `<p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p>` : ""}</div></div>`;
   }
   return `<article class="cartao conta" id="previa" data-id="${esc(p.id)}" data-k="${esc(k || "")}">`
@@ -142,11 +154,13 @@ function previaPessoa(p, k, r, texto) {
     + `<p class="conta__texto">${esc(texto)}</p>`
     + '<p class="carregando" role="status">Carregando os números oficiais…</p></article>';
 }
-// quem tem a série mês a mês (t) num arquivo à parte (dados/pessoa/<id>.json): dados.json e camaras.json; as prefeituras
-// continuam inteiras (o app usa o mês a mês de todos na página da cidade)
-const separados = new Set([...D.p, ...CAM.p].filter((p) => p.t).map((p) => p.id));
+// quem tem a série mês a mês (t) num arquivo à parte (dados/pessoa/<id>.json): dados.json, camaras.json e
+// assembleias.json; as prefeituras continuam inteiras (o app usa o mês a mês de todos na página da cidade)
+const separados = new Set([...D.p, ...CAM.p, ...deputadosEstaduais].filter((p) => p.t).map((p) => p.id));
 for (const p of pessoas) {
-  const caminho = END.p[p.id];
+  // deputado estadual ainda sem nome no enderecos.json: a página fica no próprio id (/est-35-300607), que o app também
+  // abre; quando ganhar um nome, o id vai para "antigos" (e vira redirecionamento)
+  const caminho = END.p[p.id] || (p.k === "a" ? p.id : null);
   if (!caminho) continue;
   const k = periodoPadrao(p);
   const r = k && p.per[k];
@@ -155,10 +169,11 @@ for (const p of pessoas) {
   if (!r) texto = `${rotulo}. Veja quanto recebe e quanto custa por mês, com números oficiais.`;
   else {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
-    const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : FONTE[p.k];
-    if (p.k === "p") texto = `${rotulo}. ${quando(k)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
-    else if (!cm) texto = `${rotulo}. ${quando(k)}, recebeu ${reais(gm)} por mês, em média (salário e auxílios, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
-    else texto = `${rotulo}. ${quando(k)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (salário e auxílios) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
+    const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "a" ? `da ${(estados[p.uf] || {}).casa || "Assembleia Legislativa"}`
+      : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : FONTE[p.k];
+    if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
+    else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (salário e auxílios, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
+    else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (salário e auxílios) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
   const titulo = `${p.n}: ${p.k === "p" ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
   const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : [];
@@ -173,7 +188,8 @@ for (const e of GOV.e) {
   const cargo = e.gov.ex ? (fem ? "Governadora em exercício" : "Governador em exercício") : fem ? "Governadora" : "Governador";
   const pos = ordemGov.findIndex((x) => x.uf === e.uf) + 1;
   const texto = `${cargo} ${deUF(e.uf)}: ${e.gov.n}${e.gov.pt ? ` (${e.gov.pt})` : ""}. O salário do cargo é de ${reais(e.v[0])} por mês, bruto, o ${pos}º maior entre os 27 estados.`
-    + `${e.vv ? ` O do vice é de ${reais(e.vv[0])}.` : ""}${e.m && e.m.length ? " Veja também o que foi pago mês a mês, pela folha de pagamento do Estado." : ""} Com a fonte de cada valor.`;
+    + `${e.vv ? ` O do vice é de ${reais(e.vv[0])}.` : ""}${e.m && e.m.length ? " Veja também o que foi pago mês a mês, pela folha de pagamento do Estado." : ""}`
+    + `${estados[e.uf] ? ` E quanto ganha e quanto custa cada um dos ${deputadosEstaduais.filter((p) => p.uf === e.uf && p.x).length} deputados estaduais.` : ""} Com a fonte de cada valor.`;
   const titulo = `Salário do governador ${deUF(e.uf)} (${e.gov.n}) | Contas do Poder`;
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Governo ${deUF(e.uf)}`, e.gov.n, texto))]);
 }
@@ -266,10 +282,13 @@ const comNomes = (dt, tipos) => Object.fromEntries(Object.entries(dt || {}).map(
 let nPessoa = 0;
 fs.mkdirSync(path.join(SAIDA, "dados", "indice"), { recursive: true });
 fs.mkdirSync(path.join(SAIDA, "dados", "pessoa"), { recursive: true });
-for (const [arq, dados] of [["dados.json", D], ["camaras.json", CAM]]) {
+for (const [arq, dados] of [["dados.json", D], ["camaras.json", CAM], ["assembleias.json", ASS]]) {
   if (!dados || !dados.p || !dados.p.length) continue;
   const tipos = (dados.meta && dados.meta.tipos) || [];
-  fs.writeFileSync(path.join(SAIDA, "dados", "indice", arq), JSON.stringify({ ...dados, p: dados.p.map(({ t, dt, ...resto }) => resto) }));
+  // dados.json fica com a lista de tipos (o app junta as outras a ela); nas câmaras e nas Assembleias, ela só serve ao
+  // detalhe, que vai com os nomes no arquivo de cada pessoa
+  const metaLeve = arq === "dados.json" ? dados.meta : Object.fromEntries(Object.entries(dados.meta || {}).filter(([k]) => k !== "tipos"));
+  fs.writeFileSync(path.join(SAIDA, "dados", "indice", arq), JSON.stringify({ ...dados, meta: metaLeve, p: dados.p.map(({ t, dt, ...resto }) => resto) }));
   for (const p of dados.p) {
     if (!p.t) continue;
     fs.writeFileSync(path.join(SAIDA, "dados", "pessoa", `${p.id}.json`), JSON.stringify({ t: p.t, dt: comNomes(p.dt, tipos) }));
@@ -289,4 +308,4 @@ fs.writeFileSync(path.join(SAIDA, "sitemap.xml"), `<?xml version="1.0" encoding=
 // endereços que mudaram (site/dados/enderecos.json, "antigos"): redirecionamento permanente para o atual
 const redir = Object.entries(END.antigos || {}).filter(([, id]) => END.p[id]).map(([velho, id]) => `/${velho} /${END.p[id]} 301`);
 if (redir.length) fs.writeFileSync(path.join(SAIDA, "_redirects"), `${redir.join("\n")}\n`);
-console.log(`publicar/: ${paginas.length} páginas prontas (${pessoas.filter((p) => END.p[p.id]).length} políticos, ${GOV.e.length} estados, ${vistos.size} cidades), sitemap com ${urls.length} endereços, ${redir.length} redirecionamentos, ${nPessoa} arquivos por pessoa`);
+console.log(`publicar/: ${paginas.length} páginas prontas (${pessoas.filter((p) => END.p[p.id] || p.k === "a").length} políticos, ${GOV.e.length} estados, ${vistos.size} cidades), sitemap com ${urls.length} endereços, ${redir.length} redirecionamentos, ${nPessoa} arquivos por pessoa`);

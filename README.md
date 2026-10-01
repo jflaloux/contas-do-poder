@@ -60,9 +60,11 @@ WhatsApp, que não rodam JavaScript. Também gera o `sitemap.xml` e o `_redirect
 funciona como antes: o `app.js` desenha tudo e troca de página sem recarregar.
 
 Para a primeira visita ser rápida no celular, o `gerar.mjs` também divide os dados: `publicar/dados/indice/` tem
-`dados.json` e `camaras.json` sem a série mês a mês (`t`) e sem o detalhe dos gastos (`dt`) de cada pessoa, que vão
-para `publicar/dados/pessoa/<id>.json` e só são baixados ao abrir a página daquela pessoa (ao abrir o site, de cerca de
-820 KB para cerca de 320 KB comprimidos). Os arquivos inteiros continuam em `publicar/dados/`, para quem reutiliza os
+`dados.json`, `camaras.json` e `assembleias.json` sem a série mês a mês (`t`) e sem o detalhe dos gastos (`dt`) de cada
+pessoa, que vão para `publicar/dados/pessoa/<id>.json` (com o nome de cada tipo de gasto e de cada fornecedor) e só são
+baixados ao abrir a página daquela pessoa; por isso a lista `meta.tipos` das câmaras e das Assembleias, com milhares de
+fornecedores, também fica fora da versão leve (ao abrir o site, os dados vão de cerca de 1,3 MB para cerca de 420 KB
+comprimidos, já com os deputados estaduais). Os arquivos inteiros continuam em `publicar/dados/`, para quem reutiliza os
 dados. Cada página pronta já traz o topo do contracheque (nome, custo por mês e de onde ele vem) e pede ao navegador
 para baixar os dados junto com o `app.js` (`<link rel="preload">`). Sem o `gerar.mjs`, o `app.js` lê os arquivos
 inteiros de `site/dados/`.
@@ -321,6 +323,18 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
   Próximos candidatos (levantados do Brasil): DF (folha mensal em CSV com a lotação do gabinete; notas da verba em
   XLSX, só de parte dos gabinetes), AM (cota por beneficiário, formulário sem CAPTCHA) e MA (total da CEAP por
   categoria, página por deputado e mês).
+- No site, o deputado estadual é o tipo `a` (Assembleia): o `app.js` e o `gerar.mjs` trocam o `k` "e" do arquivo, que no
+  site é o governo federal. A página de cada um é a mesma do vereador (salário, verba do gabinete mês a mês, para onde
+  foi o dinheiro, equipe onde a Assembleia publica, as notas e as fontes de `meta.estados[uf]`), e ele só se compara com
+  os colegas da mesma Assembleia. O endereço é o do `site/dados/enderecos.json`; enquanto não houver nome lá, o próprio
+  id (`/est-35-300607`), com página pronta para o Google e o WhatsApp. Quando o nome entrar, o id vai para `antigos`
+  (vira redirecionamento), para os links já compartilhados continuarem valendo. A página do estado
+  (`/governador/sp#assembleia`) tem a seção "Assembleia Legislativa": o salário, o custo típico, a verba usada, o
+  último mês com dados, a lista de quem está no cargo e de quem saiu, como a Assembleia publica, e o ranking dos
+  deputados do estado; estado ainda sem os dados mostra só o aviso e o link para o Índice. Na busca, no ranking
+  ("Deputados estaduais", um estado de cada vez), no guia, em "Ver por estado" e nos números da abertura, também.
+  Partido em branco na fonte (MS e outros, onde vem da candidatura de 2026) aparece só com a sigla do estado, sem
+  "sem partido".
 - Fotos: primeiro a foto da candidatura de 2022 no TSE (Portal de Dados Abertos do TSE, licença Creative Commons Atribuição,
   `foto_cand2022_<UF>_div.zip`, lido por pedaços: só as fotos que faltam), quando o nome civil do deputado é exatamente o de
   um eleito ou suplente da UF; depois, para quem sobrar, o Wikimedia Commons, pelas mesmas regras do governo federal (no
@@ -410,11 +424,10 @@ em cada um, o índice de cada bloco com a completude e a facilidade em barras; e
 "a conferir". A posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a
 posição e aparecem em ordem alfabética. Ao abrir um estado, cada bloco com os seus critérios (nota, prova, link quando
 há e como a nota é dada; os nomes e o "como pontua" vêm de `meta.blocos`, não do `app.js`), o link da fonte oficial e,
-no bloco do governo, a página do governador; no bloco da Assembleia, o link para a lista dos deputados estaduais entra
-junto com essa lista no site. O método (`meta.como`) fica na própria página. No site, a página `/indice` (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
-`publicacao/gerar.mjs`) lê `indice_transparencia.json`: os estados do maior índice para o menor, com os dois blocos; ao
-abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada. O arquivo leva os valores
-com 6 casas: o site arredonda só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
+no bloco do governo, a página do governador; no bloco da Assembleia, nos estados que já estão em `assembleias.json`, o link
+para a seção "Assembleia Legislativa" da página do estado (`/governador/sp#assembleia`), onde a lista dos deputados
+estaduais está. O método (`meta.como`) fica na própria página. O arquivo leva os valores com 6 casas: o site arredonda
+só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
 ## Robôs e robots.txt
@@ -455,7 +468,8 @@ em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativ
 Faixas em azul-petróleo escuro (`#0f2b3c`: cabeçalho, abertura, topo do contracheque, rodapé e fundo da imagem para
 compartilhar) e, nos dados, sempre as mesmas cores: verde-água para o que vai para o bolso, âmbar para os gastos do
 mandato e azul-acinzentado para a equipe do gabinete (nas barras, nos gráficos, no índice e na imagem). O logo é uma
-rosca com essas duas partes da conta (bolso e gastos), ao lado do nome em duas linhas. Letras: Barlow Condensed nos
+rosca com essas duas partes da conta (bolso e gastos), ao lado do nome: em duas linhas no celular, numa linha só no
+computador e na imagem para compartilhar. Letras: Barlow Condensed nos
 títulos e números e Barlow no texto (Google Fonts, sem travar a primeira pintura). Tema claro e escuro em
 `site/estilo.css` (variáveis no começo do arquivo); o ícone (`site/favicon.svg`) e a prévia do link (`site/og.png`)
 seguem o mesmo desenho.
@@ -474,6 +488,7 @@ seguem o mesmo desenho.
   WhatsApp, Telegram...; no iPhone vai só a imagem, porque com texto junto o WhatsApp do iPhone nem sempre manda os
   dois), **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar
   em texto?"; no fim da página do político (a seção "Resumo para compartilhar"), a imagem e o texto aparecem juntos.
+  Na seção "Mande a imagem para quem você quiser" (e na janela), tocar na imagem a amplia do tamanho da tela.
   A imagem é feita logo depois que a página aparece, para o toque não esperar. Quando ela tem pouca informação
   (uma Câmara pequena, um prefeito), o espaço que sobra antes do rodapé é dividido entre os blocos. As fotos ficam no próprio site
   (`site/fotos/`) porque o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
@@ -483,7 +498,9 @@ seguem o mesmo desenho.
   `site/fotos/creditos.json` e aparece no contracheque e na imagem. Quem o Wikidata não resolve pode ter a foto
   escolhida à mão em `dados/referencia/fotos_governo.json` (o arquivo do Commons e, se preciso, o corte do retrato;
   o crédito diz "recortada"). Nada com licença ND nem com licença duvidosa (foto do gov.br marcada como livre, "PD-USGov"
-  em foto brasileira). Quem não tem foto aparece com as iniciais.
+  em foto brasileira). Quem não tem foto aparece com as iniciais. No crédito (contracheque e imagem), "via Wikimedia
+  Commons" só quando a foto vem de lá; a da candidatura (vereadores e deputados estaduais) vem do Portal de Dados
+  Abertos do TSE.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, busca_topo, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (método: enviar_imagem, copiar_imagem,
   baixar_imagem, whatsapp, copiar_texto ou copiar_link; `conteudo`: parlamentar, governador ou cidade; `onde`: topo,
@@ -497,6 +514,9 @@ seguem o mesmo desenho.
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
   Índice de Transparência: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um
   estado no índice, com a `uf`; os dois blocos do estado abrem juntos).
+  Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
+  origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
+  `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
 
 ## Erros e correções
 
