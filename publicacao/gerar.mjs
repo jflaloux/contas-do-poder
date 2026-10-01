@@ -123,8 +123,14 @@ function previaPessoa(p, k, r, texto) {
   let resumo = "";
   if (r) {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
-    const partes = p.k === "p" ? '<p class="resumo-partes">Tudo para o bolso</p>'
-      : `<ul class="resumo-partes"><li><span class="chave chave--ganha"></span>${esc(reais(gm))} para o bolso</li><li><span class="chave chave--custa"></span>${esc(reais(cm))} em ${gastosNome(p)}</li></ul>`;
+    // a barra dividida (bolso e gastos) e o valor embaixo de cada pedaço, como no app.js (resumoTopo)
+    const parte = `${(gm + cm > 0 ? (gm / (gm + cm)) * 100 : 100).toFixed(1)}%`;
+    const partes = p.k === "p"
+      ? '<div class="resumo-divisao" style="--parte:100%" aria-hidden="true"><span class="resumo-divisao__ganha"></span></div>'
+        + `<ul class="resumo-partes resumo-partes--um"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>tudo para o bolso</span></li></ul>`
+      : `<div class="resumo-divisao" style="--parte:${parte}" aria-hidden="true"><span class="resumo-divisao__ganha"></span><span class="resumo-divisao__custa"></span></div>`
+        + `<ul class="resumo-partes" style="--parte:${parte}" aria-label="De onde vem o custo"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>para o bolso</span></li>`
+        + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
     resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${p.k === "p" ? "Recebe por mês" : "Custo por mês"} ${esc(nomeK(k))}</p>`
       + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${partes}${salMin ? `<p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p>` : ""}</div></div>`;
   }
@@ -211,6 +217,27 @@ if (COR) {
     + `<ol class="correcoes">${itens.join("")}</ol></section>`;
   const texto = `Os erros do site que já corrigimos: o que estava errado, o que mudou e quais páginas foram afetadas. ${lista.length} ${lista.length === 1 ? "correção" : "correções"} até agora.`;
   paginas.push(["correcoes", pagina("correcoes", "Correções | Contas do Poder", texto, corpo)]);
+}
+
+// ------------------------------------------------------------------ índice de acesso aos salários dos governadores (/indice)
+// de site/dados/indice.json: a lista dos estados com o índice em texto (o app.js desenha as barras e os critérios)
+const IDX = ler("indice.json", null);
+if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
+  const M = IDX.meta || {};
+  const dataBR = (d) => String(d || "").split("-").reverse().join("/");
+  const n2 = (v) => (v === null || v === undefined ? "a conferir" : num(v, 2));
+  const com = IDX.estados.filter((e) => e.indice !== null && e.indice !== undefined && !(e.a_conferir || []).length)
+    .sort((a, b) => b.indice - a.indice || a.nome.localeCompare(b.nome, "pt-BR"));
+  const sem = IDX.estados.filter((e) => !com.includes(e)).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
+  const itens = [...com, ...sem].map((e) => `<li><a href="/governador/${esc(e.uf.toLowerCase())}">${esc(e.nome)}</a>: `
+    + (com.includes(e) ? `índice ${n2(e.indice)} (completude ${n2(e.completude)}, facilidade ${n2(e.facilidade)})` : "a conferir") + "</li>");
+  const titulo = M.titulo || "Índice de acesso aos salários dos governadores";
+  const corpo = `<section class="bloco" id="indice"><div class="indice-topo"><p class="rotulo">Governadores</p><h1 class="titulo-pagina">${esc(titulo)}</h1>`
+    + (M.pergunta ? `<p class="lide">${esc(M.pergunta)}</p>` : "")
+    + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}.</p></div><ol class="indice-previa">${itens.join("")}</ol>`
+    + (M.como || []).map((c) => `<p class="discreto">${esc(c)}</p>`).join("") + "</section>";
+  const texto = `${M.pergunta || titulo} A nota de cada um dos 27 estados, critério por critério, com a prova de cada nota. Conferido em ${dataBR(M.conferido_em)}.`;
+  paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice.json"] })]);
 }
 
 // ------------------------------------------------------------------ grava

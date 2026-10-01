@@ -13,8 +13,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contas do Poder</title>
 <meta name="description" content="Quanto custa cada deputado federal, senador, ministro, o presidente, quanto ganha cada governador, e cada vereador de São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís, os prefeitos e os secretários de São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, por mês, com números oficiais. E quanto custa a Câmara Municipal da sua cidade. Um projeto Contas do Brasil.">
-<meta name="theme-color" content="#f4f3f8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#100e1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#0f2b3c">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://contasdopoder.com/">
 <meta property="og:type" content="website">
@@ -32,26 +31,29 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- fontes sem travar a primeira pintura: o texto aparece com a fonte do sistema e troca quando a fonte chega -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Public+Sans:ital,wght@0,400..700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap"></noscript>
 <link rel="stylesheet" href="/estilo.css">
 </head>
 <body>
 <!--INICIO-CORPO-->
-<div class="faixa" aria-hidden="true"></div>
 <header class="cabecalho" id="cabecalho">
   <div class="cabecalho__linha">
     <a class="logo" href="/" aria-label="Contas do Poder, início">
+      <!-- a rosca: as duas partes de cada conta, o que vai para o bolso (verde-água) e os gastos do mandato (âmbar) -->
       <span class="logo__icone" aria-hidden="true">
-        <svg viewBox="0 0 32 32" width="30" height="30"><path d="M16 3.5 29 10.4H3Z"/><rect x="3" y="11.5" width="26" height="2.1" rx=".6"/><rect x="5.5" y="20" width="5" height="6.4" rx="1"/><rect x="13.5" y="16.6" width="5" height="9.8" rx="1"/><rect x="21.5" y="14.8" width="5" height="11.6" rx="1"/><rect x="2" y="27.3" width="28" height="2.1" rx=".6"/></svg>
+        <svg viewBox="0 0 40 40" width="38" height="38"><circle cx="20" cy="20" r="14" fill="none" stroke="#3ee0b4" stroke-width="7" stroke-dasharray="47.6 88" transform="rotate(-90 20 20)"/><circle cx="20" cy="20" r="14" fill="none" stroke="#ffc266" stroke-width="7" stroke-dasharray="37.4 88" stroke-dashoffset="-49.1" transform="rotate(-90 20 20)"/></svg>
       </span>
-      <span class="logo__nome">Contas do Poder</span>
+      <span class="logo__nome"><span>contas</span><span>do poder</span></span>
     </a>
-    <button type="button" class="cabecalho__buscar" id="abrir-busca" aria-expanded="false" aria-controls="busca-topo-caixa">
-      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-      <span class="cabecalho__buscar-texto">Buscar</span>
-    </button>
+    <div class="cabecalho__acoes">
+      <a class="cabecalho__link" href="/indice" id="link-indice">Índice<span class="cabecalho__link-longo">&nbsp;dos governadores</span></a>
+      <button type="button" class="cabecalho__buscar" id="abrir-busca" aria-expanded="false" aria-controls="busca-topo-caixa">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span class="cabecalho__buscar-texto">Buscar</span>
+      </button>
+    </div>
   </div>
   <div class="cabecalho__busca busca-caixa" id="busca-topo-caixa" hidden>
     <label class="visualmente-oculto" for="busca-topo">Procurar político, estado ou cidade</label>
@@ -66,13 +68,13 @@
 </header>
 <div class="pagina">
   <section class="abertura" aria-labelledby="titulo-abertura">
-    <h1 id="titulo-abertura">Quanto ganha e quanto custa quem te representa?</h1>
+    <h1 id="titulo-abertura">Quanto ganha e quanto custa <span class="realce">quem te representa?</span></h1>
     <p class="lide">Todo mês, dinheiro público paga o salário, os auxílios e as despesas de quem te representa. Veja quanto vai para cada um, de deputados e senadores a ministros, governadores, prefeitos e vereadores, compare com os colegas e com o salário mínimo e confira a fonte oficial de cada número.</p>
     <div class="acoes">
       <button type="button" class="botao" id="abrir-guia">Descobrir os meus representantes</button>
       <button type="button" class="link-botao" data-ir="resumo">Compartilhar</button>
     </div>
-    <div class="chips" id="chips-info"></div>
+    <div class="numeros" id="chips-info"></div>
   </section>
 
   <section class="escolha" aria-labelledby="rotulo-escolha">
@@ -131,7 +133,7 @@
       <details data-para="v cidade"><summary>Câmaras municipais e vereadores</summary><p>São 5.568 câmaras e cerca de 58 mil vereadores. O salário de cada vereador é definido por lei da própria Câmara e publicado só no portal de cada uma, sem uma fonte nacional. Por isso mostramos, para todas as cidades: quanto a Câmara gastou no ano (tudo: vereadores, servidores, prédio, contratos), segundo as contas que a prefeitura entrega ao Tesouro Nacional (Siconfi, função Legislativa, despesas liquidadas); esse gasto por mês, por habitante e dividido pelos vereadores; os vereadores eleitos em 2024 (TSE); e o teto do salário do vereador, que a Constituição (art. 29) fixa entre 20% e 75% do salário do deputado estadual, conforme a população.</p></details>
       <details data-para="v cidade"><summary>Vereadores de São Paulo, um a um</summary><p>Na capital paulista, a própria Câmara Municipal publica dados abertos de cada vereador, e mostramos cada um como os deputados. <strong>Vai para o bolso</strong>: o salário (subsídio), igual para todos: R$ 24.754,79 em janeiro de 2025 e R$ 26.080,98 desde fevereiro de 2025, o máximo que a Constituição permite. Suplentes recebem pelos dias no cargo. A Câmara só mostra o contracheque de cada vereador para quem informa um CPF, por isso descontos, 13º e outros pagamentos não aparecem. <strong>Gastos do mandato</strong>: a verba do gabinete (Auxílio-Encargos Gerais de Gabinete), de até R$ 34.706,25 por mês em 2025 e R$ 36.018,75 em 2026, usada com nota fiscal em conteúdo para redes sociais, material gráfico, carros, escritório e serviços de empresas; o que sobra no fim do ano volta para a Câmara. Mostramos cada tipo de despesa e os maiores fornecedores. <strong>Equipe do gabinete</strong>: quantas pessoas trabalham em cada gabinete e em quais cargos, pela lista de funcionários da Câmara; o custo da equipe não é publicado sem CPF.</p></details>
       <details data-para="v cidade"><summary>Vereadores de outras capitais, um a um</summary><p>Em outras dez capitais (Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís), a Câmara também publica dados de cada vereador, e mostramos cada um como em São Paulo. Cada Câmara publica coisas diferentes, e cada página diz o que entra. <strong>Vai para o bolso</strong>: onde a folha de pagamento da Câmara tem o nome de cada vereador (Goiânia, Maceió, Manaus, Recife, São Luís e, no Rio, o contracheque dos meses em que alguém entrou ou saiu), o que ela mostra mês a mês; em Fortaleza, o subsídio de cada mês pela folha; nas outras (Natal, Porto Alegre, Belo Horizonte e Rio), o subsídio fixado em lei, pelos dias no cargo, e, onde é publicado, o auxílio-alimentação. Quem estava no cargo em cada mês sai da folha, da lista de presença (Belo Horizonte), das datas de posse e licença (Rio) ou da prestação de contas da verba (Natal e Porto Alegre): assim os suplentes que assumiram entram só nos meses em que ocuparam a cadeira. <strong>Gastos do mandato</strong>: a verba do gabinete de cada Câmara (CEAP em Manaus e Goiânia, SDP em Fortaleza, Cota em Natal, Verba Indenizatória no Recife, Quota Básica Mensal em Porto Alegre, custeio parlamentar em Belo Horizonte e a cota de combustível no Rio). Em Manaus, Fortaleza e Natal vem nota por nota, com o fornecedor; nas outras, por tipo de despesa. Em Maceió, a verba indenizatória foi publicada só para parte dos vereadores e fica de fora até sair completa; em São Luís, as páginas da verba pedem que robôs não as leiam. <strong>Equipe do gabinete</strong>: em Goiânia, Maceió, Manaus, Recife e São Luís, os assessores lotados em cada gabinete e quanto custam, pela folha da Câmara; no Rio, os cargos de cada gabinete, pela relação de servidores. Vereadores só se comparam com os da mesma cidade. O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.</p></details>
-      <details data-para="gov"><summary>Governadores e vice-governadores</summary><p>O salário do governador e do vice (o <strong>subsídio</strong>) é fixado por lei em cada estado, votada pela Assembleia Legislativa (no Pará, por decreto legislativo). Não existe uma fonte nacional com esses valores, e cada estado publica a folha de pagamento do seu jeito. Por isso, montamos a lista à mão, estado por estado, e cada valor traz a sua origem:</p>
+      <details data-para="gov indice"><summary>Governadores e vice-governadores</summary><p>O salário do governador e do vice (o <strong>subsídio</strong>) é fixado por lei em cada estado, votada pela Assembleia Legislativa (no Pará, por decreto legislativo). Não existe uma fonte nacional com esses valores, e cada estado publica a folha de pagamento do seu jeito. Por isso, montamos a lista à mão, estado por estado, e cada valor traz a sua origem:</p>
         <ul class="lista">
           <li><strong>Lei</strong>: lemos o valor no texto da lei (ou do decreto legislativo).</li>
           <li><strong>Conferido na folha</strong>: o valor aparece na folha de pagamento do Estado, com o nome de quem recebe.</li>

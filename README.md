@@ -332,6 +332,13 @@ que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos 
 Amapá e Mato Grosso (CAPTCHA) e Tocantins (só clicando). O índice mede só o acesso ao salário do governador e do vice,
 não a transparência do Estado como um todo.
 
+No site, a página `/indice` (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
+`publicacao/gerar.mjs`) mostra os estados do maior índice para o menor, com a completude e a facilidade em barras; ao
+abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada, mais o link da consulta
+oficial e o da página do governador. Estado a conferir fica no fim, sem índice. O método (`meta.como`) aparece na própria
+página. Há link para o índice no cabeçalho do site, na lista dos governadores e na página de cada estado
+(`/indice#indice-sp` abre o estado).
+
 ## Robôs e robots.txt
 
 Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
@@ -363,6 +370,16 @@ robots.txt permite. Os contracheques são lidos do mais recente para o mais anti
 entram no site os meses em que todos os deputados já têm o seu (o site avisa desde quando). Os auxílios do contracheque
 não entram de novo (são o auxílio-moradia, que vem da página de moradia). Se a Câmara bloquear, o robô usa o que está
 em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativo 172/2022 nos meses em exercício.
+
+## Identidade visual
+
+Faixas em azul-petróleo escuro (`#0f2b3c`: cabeçalho, abertura, topo do contracheque, rodapé e fundo da imagem para
+compartilhar) e, nos dados, sempre as mesmas cores: verde-água para o que vai para o bolso, âmbar para os gastos do
+mandato e azul-acinzentado para a equipe do gabinete (nas barras, nos gráficos, no índice e na imagem). O logo é uma
+rosca com essas duas partes da conta (bolso e gastos), ao lado do nome em duas linhas. Letras: Barlow Condensed nos
+títulos e números e Barlow no texto (Google Fonts, sem travar a primeira pintura). Tema claro e escuro em
+`site/estilo.css` (variáveis no começo do arquivo); o ícone (`site/favicon.svg`) e a prévia do link (`site/og.png`)
+seguem o mesmo desenho.
 
 ## Compartilhamento e medição
 
@@ -396,6 +413,8 @@ em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativ
   `vice_governadores`, `cidades` com a UF, `secretarios`, `subprefeitos` e `sairam_prefeitura`).
   Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
+  Índice dos governadores: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um
+  estado no índice, com a `uf`).
 
 ## Erros e correções
 

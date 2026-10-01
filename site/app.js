@@ -362,6 +362,9 @@
   }
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
     let itens = [], ativo = -1;
+    // a lista de sugestões é uma listbox (cada sugestão é uma option), para o leitor de tela
+    caixa.setAttribute("role", "listbox");
+    if (!caixa.hasAttribute("aria-label")) caixa.setAttribute("aria-label", "Sugestões");
     const fechar = () => { caixa.hidden = true; ativo = -1; };
     const marcar = () => [...caixa.children].forEach((b, i) => b.setAttribute("aria-selected", String(i === ativo)));
     input.addEventListener("input", () => {
@@ -377,7 +380,7 @@
       pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
       if (input.value.trim().length >= 2 && !itens.length) {
-        caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px" }, "Ninguém encontrado. Confira a grafia."));
+        caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px", role: "option", "aria-disabled": "true", "aria-selected": "false" }, "Ninguém encontrado. Confira a grafia."));
         medirBuscaVazia(input.value);
       }
       caixa.hidden = !caixa.children.length;
@@ -519,12 +522,23 @@
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
       if (!pares.length) return;
-      const W = Math.max(260, caixa.clientWidth), H = W < 520 ? 210 : 170;
-      const m = { t: 34, r: 14, b: 26, l: 14 };
-      const iw = W - m.l - m.r, ih = H - m.t - m.b;
+      const W = Math.max(260, caixa.clientWidth);
+      const m = { t: 44, r: 14, b: 28, l: 14 };
+      const iw = W - m.l - m.r;
       const vs = pares.map((p) => p.v);
       const { ticks, topo, base, casas } = escalaFaixa(Math.min(...vs), Math.max(...vs), 4);
       const x = (v) => m.l + ((v - base) / (topo - base)) * iw;
+      // enxame: quem tem valores parecidos fica na mesma coluna, empilhado para cima e para baixo do meio (do menor para
+      // o maior, sempre na mesma ordem); a altura do gráfico acompanha a pilha mais alta
+      const raio = W < 520 ? 2.6 : 3.4, passo = raio * 2 + 1;
+      const cont = new Map(), pilha = new Map();
+      for (const q of [...pares].sort((a, b) => a.v - b.v || (a.id < b.id ? -1 : 1))) {
+        const b = Math.round(x(q.v) / passo), n = cont.get(b) || 0;
+        cont.set(b, n + 1);
+        pilha.set(q.id, { cx: b * passo, k: n % 2 ? Math.ceil(n / 2) : -n / 2 });
+      }
+      const maxK = Math.max(1, ...[...pilha.values()].map((d) => Math.abs(d.k)));
+      const ih = Math.max(W < 520 ? 120 : 100, (2 * maxK + 1) * passo + 16), H = m.t + ih + m.b, meio = m.t + ih / 2;
       const rotulo = (t) => (t === 0 ? "0" : fmt === reais ? compacto(t).replace(/,0 (mil|mi|bi)$/, " $1") : fmt === reaisC ? `R$ ${num(t, casas)}` : num(t, casas));
       const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Onde cada um fica" });
       // rótulos do eixo: se encostam (celular estreito), tenta sem o "R$ " e, se ainda encostam, um sim, um não
@@ -546,15 +560,22 @@
         const tx = s("text", { x: x(t), y: H - 8, "text-anchor": ancora(t) });
         tx.textContent = textos[i]; svg.append(tx);
       });
-      const pos = pares.map((p) => ({ ...p, cx: x(p.v), cy: m.t + 6 + ((hashNum(p.id) % 1000) / 1000) * (ih - 12) }));
-      for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: W < 520 ? 3.2 : 3.5 }));
+      const pos = pares.map((p) => { const d = pilha.get(p.id); return { ...p, cx: d.cx, cy: meio + d.k * passo }; });
+      for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: raio }));
+      // a mediana: linha tracejada, com o nome embaixo do nome da pessoa
+      const med = mediana(vs);
+      if (med !== null && pares.length > 2) {
+        const mx = x(med);
+        svg.append(s("line", { class: "mediana-linha", x1: mx, x2: mx, y1: 26, y2: H - m.b }));
+        const tm = s("text", { x: mx + (mx > W * 0.8 ? -5 : 5), y: 36, "text-anchor": mx > W * 0.8 ? "end" : "start" }); tm.textContent = "mediana"; svg.append(tm);
+      }
       const meu = pos.find((p) => p.id === euId);
       if (meu) {
         // linha do nome até o ponto e até o eixo, e um anel em volta: dá para achar a pessoa no meio dos outros
-        svg.append(s("line", { class: "guia-linha", x1: meu.cx, x2: meu.cx, y1: 18, y2: H - m.b }));
-        svg.append(s("circle", { class: "ponto--anel", cx: meu.cx, cy: meu.cy, r: 12 }));
-        svg.append(s("circle", { class: "ponto--eu", cx: meu.cx, cy: meu.cy, r: 7 }));
-        const tx = s("text", { class: "forte", x: meu.cx, y: 12, "text-anchor": meu.cx < W * 0.2 ? "start" : meu.cx > W * 0.8 ? "end" : "middle" });
+        svg.append(s("line", { class: "guia-linha", x1: meu.cx, x2: meu.cx, y1: 20, y2: meu.cy - 13 }));
+        svg.append(s("circle", { class: "ponto--anel", cx: meu.cx, cy: meu.cy, r: 13 }));
+        svg.append(s("circle", { class: "ponto--eu", cx: meu.cx, cy: meu.cy, r: 7.5 }));
+        const tx = s("text", { class: "forte", x: meu.cx, y: 14, "text-anchor": meu.cx < W * 0.2 ? "start" : meu.cx > W * 0.8 ? "end" : "middle" });
         tx.textContent = `${meu.n}: ${fmt === reais ? compacto(meu.v) : fmt(meu.v)}`; svg.append(tx);
       }
       const destaque = s("circle", { class: "ponto--ativo", r: 5, cx: 0, cy: 0, visibility: "hidden" });
@@ -641,7 +662,7 @@
     // as fontes carregam sem travar a página (index.html): espera a folha de estilo delas, por no máximo 3 s
     const css = document.querySelector('link[href*="fonts.googleapis.com/css2"][media="print"]');
     if (css) await new Promise((ok) => { css.addEventListener("load", ok, { once: true }); setTimeout(ok, 3000); });
-    try { await Promise.all(['800 64px "Bricolage Grotesque"', '600 30px "Public Sans"', '500 60px "IBM Plex Mono"'].map((f) => document.fonts.load(f))); } catch (e) { /* usa a fonte do sistema */ }
+    try { await Promise.all(['700 64px "Barlow Condensed"', '600 60px "Barlow Condensed"', '600 30px "Barlow"', '400 24px "Barlow"', '700 24px "Barlow"'].map((f) => document.fonts.load(f))); } catch (e) { /* usa a fonte do sistema */ }
   }
   // a tela com o fundo, a faixa e a marca; devolve o contexto e as peças de desenho
   async function novaTela() {
@@ -651,8 +672,10 @@
     const g = cv.getContext("2d");
     const t = {
       cv, g, W, H, M,
-      DISP: '"Bricolage Grotesque", "Public Sans", sans-serif', BODY: '"Public Sans", system-ui, sans-serif', MONO: '"IBM Plex Mono", monospace',
-      C: { fundo: "#17142e", cartao: "#221d42", ink: "#f2f0fb", ink2: "#c4bfe0", linha: "rgba(242,240,251,.28)", marca: "#4430c2", hi: "#ff6f9f", ganha: "#3987e5", custa: "#eb6834", equipe: "#1baf7a", regua: "#a898ff" },
+      // as letras e as cores do site (estilo.css): Barlow Condensed nos títulos e números, Barlow no texto; a faixa escura
+      // de fundo, verde-água para o bolso, âmbar para os gastos e azul-acinzentado para a equipe
+      DISP: '"Barlow Condensed", "Barlow", sans-serif', BODY: '"Barlow", system-ui, sans-serif', MONO: '"Barlow Condensed", "Barlow", sans-serif',
+      C: { fundo: "#0f2b3c", cartao: "#163a4f", ink: "#f1f6f8", ink2: "#c9d7e0", linha: "rgba(201,215,224,.4)", marca: "#3ee0b4", hi: "#3ee0b4", ganha: "#3ee0b4", custa: "#ffc266", equipe: "#8fb0c9", regua: "#3ee0b4" },
     };
     const C = t.C;
     t.caixa = (x, y, w, alt, raio) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, alt, raio); else g.rect(x, y, w, alt); };
@@ -675,14 +698,14 @@
     t.bolinha = (cor, x, y) => { g.fillStyle = cor; g.beginPath(); g.arc(x, y, 11, 0, 7); g.fill(); };
     t.png = () => new Promise((ok) => cv.toBlob(ok, "image/png"));
     g.fillStyle = C.fundo; g.fillRect(0, 0, W, H);
-    g.fillStyle = C.marca; g.fillRect(0, 0, W * 0.72, 12); g.fillStyle = C.hi; g.fillRect(W * 0.72, 0, W * 0.28, 12);
-    g.fillStyle = C.marca; t.caixa(M, 52, 64, 64, 14); g.fill();
-    const svg = $(".logo__icone svg");
-    if (svg) {
-      const logo = await carregarImagem("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.outerHTML.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" ')));
-      if (logo) g.drawImage(logo, M + 11, 63, 42, 42);
-    }
-    g.textBaseline = "middle"; g.fillStyle = C.ink; g.font = `700 36px ${t.DISP}`; g.fillText("Contas do Poder", M + 82, 85);
+    // a marca: a rosca (bolso e gastos) e o nome em duas linhas, como no cabeçalho do site
+    const lx = M + 30, ly = 84, lr = 22, volta = Math.PI * 2, ini = -Math.PI / 2, vao = 0.07;
+    g.lineWidth = 11;
+    g.strokeStyle = C.ganha; g.beginPath(); g.arc(lx, ly, lr, ini, ini + volta * 0.558 - vao); g.stroke();
+    g.strokeStyle = C.custa; g.beginPath(); g.arc(lx, ly, lr, ini + volta * 0.558, ini + volta - vao); g.stroke();
+    g.textBaseline = "middle"; g.font = `700 34px ${t.DISP}`;
+    g.fillStyle = C.ink; g.fillText("contas", M + 70, 68);
+    g.fillStyle = C.ganha; g.fillText("do poder", M + 70, 99);
     g.textBaseline = "alphabetic";
     return t;
   }
@@ -695,14 +718,14 @@
     g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh);
     if (img) g.drawImage(img, M, fy, fw, fh);
     else if (predio) {
-      g.translate(M + fw / 2 - 48, fy + fh / 2 - 48); g.scale(4, 4); g.fillStyle = C.regua;
+      g.translate(M + fw / 2 - 48, fy + fh / 2 - 48); g.scale(4, 4); g.fillStyle = C.ganha;
       g.fill(new Path2D("M12 2 2 7v2h20V7L12 2Zm-7 9v7h3v-7H5Zm5.5 0v7h3v-7h-3ZM16 11v7h3v-7h-3ZM2 20v2h20v-2H2Z"));
-    } else { g.fillStyle = C.ink2; g.font = `700 64px ${t.DISP}`; g.textAlign = "center"; g.fillText(iniciais(nome), M + fw / 2, fy + fh / 2 + 22); g.textAlign = "left"; }
+    } else { g.fillStyle = C.ganha; g.font = `700 72px ${t.DISP}`; g.textAlign = "center"; g.fillText(iniciais(nome), M + fw / 2, fy + fh / 2 + 24); g.textAlign = "left"; }
     g.restore();
     const tx = M + fw + 32, tmax = W - M - tx, grande = nome.length <= 22;
     g.fillStyle = C.ink2; g.font = `600 24px ${t.BODY}`; g.fillText(rotulo, tx, fy + 28);
-    g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 58 : 50}px ${t.DISP}`;
-    let y = t.quebra(nome, tx, fy + 88, tmax, grande ? 62 : 54, 3);
+    g.fillStyle = "#ffffff"; g.font = `700 ${grande ? 68 : 58}px ${t.DISP}`;
+    let y = t.quebra(nome, tx, fy + 90, tmax, grande ? 66 : 58, 3);
     g.fillStyle = C.ink2; g.font = `500 30px ${t.BODY}`; y = t.quebra(sub, tx, y + 2, tmax, 38, linhasSub);
     return { y: Math.max(y + 30, fy + fh + 62), temFoto: !!img };
   }
@@ -710,11 +733,11 @@
   function valorImagem(t, y, rotulo, valor, porMes = true) {
     const { g, M, C } = t;
     g.fillStyle = C.ink2; g.font = `600 28px ${t.BODY}`; g.fillText(rotulo, M, y);
-    let tam = 112; g.font = `500 ${tam}px ${t.MONO}`;
-    while (g.measureText(valor).width > t.W - 2 * M - (porMes ? 90 : 0) && tam > 72) { tam -= 4; g.font = `500 ${tam}px ${t.MONO}`; }
-    if (porMes) t.comMes(valor, M - 6, y + 118, `500 ${tam}px ${t.MONO}`, 36, "#ffffff");
-    else { g.fillStyle = "#ffffff"; g.fillText(valor, M - 6, y + 118); }
-    return y + 140;
+    let tam = 150; g.font = `700 ${tam}px ${t.MONO}`;
+    while (g.measureText(valor).width > t.W - 2 * M - (porMes ? 90 : 0) && tam > 80) { tam -= 4; g.font = `700 ${tam}px ${t.MONO}`; }
+    if (porMes) t.comMes(valor, M - 4, y + 124, `700 ${tam}px ${t.MONO}`, 36, "#ffffff");
+    else { g.fillStyle = "#ffffff"; g.fillText(valor, M - 4, y + 124); }
+    return y + 144;
   }
   // a frase da posição e a régua dos quatro quartos, como na página: sempre no mesmo tom (índigo claro), sem verde nem
   // vermelho. lugar: de 0 (o que menos custa) a 100 (o que mais custa)
@@ -726,7 +749,7 @@
     g.fillStyle = "#ffffff"; g.fillText(frase, M, y + 32);
     const ry = y + 50, alt = 16, vao = 8, seg = (larg - 3 * vao) / 4;
     for (let i = 0; i < 4; i++) {
-      g.fillStyle = i === quarto ? C.regua : "rgba(242,240,251,.16)";
+      g.fillStyle = i === quarto ? C.regua : "rgba(201,215,224,.2)";
       t.caixa(M + i * (seg + vao), ry, seg, alt, alt / 2); g.fill();
     }
     const mx = M + (larg * lugar) / 100;
@@ -749,8 +772,8 @@
       t.bolinha(cor, x + 34, y + 38);
       g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText(rotulo, x + 56, y + 47);
       if (valor === null) { g.fillStyle = "#ffffff"; g.font = `600 36px ${t.BODY}`; g.fillText("não publicados", x + 24, y + 104); }
-      else if (porMes) t.comMes(valor, x + 24, y + 106, `500 54px ${t.MONO}`, 25, "#ffffff");
-      else { g.fillStyle = "#ffffff"; g.font = `500 54px ${t.MONO}`; g.fillText(valor, x + 24, y + 106); }
+      else if (porMes) t.comMes(valor, x + 24, y + 106, `600 54px ${t.MONO}`, 25, "#ffffff");
+      else { g.fillStyle = "#ffffff"; g.font = `600 54px ${t.MONO}`; g.fillText(valor, x + 24, y + 106); }
       g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
       let d = detalhe;
       while (g.measureText(d).width > tw - 40 && d.length > 10) d = d.slice(0, -2);
@@ -766,13 +789,13 @@
     for (const [nomeL, valor, porMes = true] of linhas) {
       y += alt;
       t.bolinha(cor || C.custa, M + 8, y - 8);
-      g.fillStyle = "#e4e1f3"; g.font = `500 26px ${t.BODY}`;
+      g.fillStyle = "#e3ecf1"; g.font = `500 26px ${t.BODY}`;
       let nome = nomeL.replace(/\*$/, "");
       while (g.measureText(nome).width > W - 2 * M - 300 && nome.length > 10) nome = nome.slice(0, -2);
       g.fillText(nome === nomeL.replace(/\*$/, "") ? nome : `${nome.trim()}…`, M + 28, y);
       g.font = `500 26px ${t.BODY}`; const wMes = porMes ? g.measureText("/mês").width + 6 : 0;
-      g.font = `500 30px ${t.MONO}`; const wV = g.measureText(valor).width;
-      if (porMes) t.comMes(valor, W - M - wMes - wV, y, `500 30px ${t.MONO}`, 22, "#ffffff");
+      g.font = `600 30px ${t.MONO}`; const wV = g.measureText(valor).width;
+      if (porMes) t.comMes(valor, W - M - wMes - wV, y, `600 30px ${t.MONO}`, 22, "#ffffff");
       else { g.fillStyle = "#ffffff"; g.fillText(valor, W - M - wV, y); }
     }
     return y + 26;
@@ -780,20 +803,20 @@
   // rodapé: o endereço da própria página e de onde vêm os dados
   function rodapeImagem(t, chamada, caminho, fonte, credito) {
     const { g, W, H, M, C } = t;
-    if (credito) { g.fillStyle = "rgba(196,191,224,.7)"; g.font = `400 16px ${t.BODY}`; t.direita(credito, W - M, H - 190); }
+    if (credito) { g.fillStyle = "rgba(201,215,224,.75)"; g.font = `400 16px ${t.BODY}`; t.direita(credito, W - M, H - 190); }
     const ry = H - 176;
     g.fillStyle = C.marca; g.fillRect(0, ry, W, H - ry);
-    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `700 24px ${t.BODY}`; g.fillText(chamada, M, ry + 46);
+    g.fillStyle = "rgba(8,22,31,.85)"; g.font = `700 24px ${t.BODY}`; g.fillText(chamada, M, ry + 46);
     // o domínio e o caminho da página, no mesmo tamanho (diminui até caber; sem caber, só o domínio)
     const dom = dominio(), larg = W - 2 * M;
     let tam = 58;
-    const medir = () => { g.font = `800 ${tam}px ${t.DISP}`; return g.measureText(dom + (caminho || "")).width; };
+    const medir = () => { g.font = `700 ${tam}px ${t.DISP}`; return g.measureText(dom + (caminho || "")).width; };
     while (caminho && medir() > larg && tam > 34) tam -= 2;
     const cabe = !caminho || medir() <= larg;
     if (!cabe) tam = 58;
-    g.font = `800 ${tam}px ${t.DISP}`; g.fillStyle = "#ffc2d6"; g.fillText(dom, M, ry + 106);
-    if (caminho && cabe) { const wd = g.measureText(dom).width; g.fillStyle = "#ffffff"; g.fillText(caminho, M + wd, ry + 106); }
-    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `500 26px ${t.BODY}`; g.fillText(fonte, M, ry + 150);
+    g.font = `700 ${tam}px ${t.DISP}`; g.fillStyle = "#0b5a46"; g.fillText(dom, M, ry + 106);
+    if (caminho && cabe) { const wd = g.measureText(dom).width; g.fillStyle = "#08161f"; g.fillText(caminho, M + wd, ry + 106); }
+    g.fillStyle = "rgba(8,22,31,.85)"; g.font = `500 26px ${t.BODY}`; g.fillText(fonte, M, ry + 150);
   }
   const creditoFoto = (fc) => (fc ? (fc.l ? `Foto: ${(fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${fc.l}), Wikimedia Commons` : `Foto: ${fc.a}`) : null);
 
@@ -807,6 +830,13 @@
       rotulo: { e: "CONTRACHEQUE DO CARGO", j: "DOIS CARGOS, SOMADOS", p: "CONTRACHEQUE DO CARGO" }[p.k] || "CONTRACHEQUE DO MANDATO",
     });
     let y = valorImagem(t, cab.y, `${p.k === "p" ? "QUANTO RECEBE POR MÊS" : "CUSTO POR MÊS"} · ${nomePeriodo(k, true).toUpperCase()}`, reais(r.tm));
+    // a barra dividida: o que vai para o bolso e os gastos, como no topo da página
+    if (p.k !== "p" && r.tm > 0) {
+      const larg = W - 2 * M, wg = r.cm > 0 ? Math.max(12, Math.min(larg - 12, (larg * r.gm) / r.tm)) : larg;
+      g.fillStyle = C.ganha; t.caixa(M, y + 2, wg - (r.cm > 0 ? 4 : 0), 14, 5); g.fill();
+      if (r.cm > 0) { g.fillStyle = C.custa; t.caixa(M + wg + 4, y + 2, larg - wg - 4, 14, 5); g.fill(); }
+      y += 30;
+    }
     if (pos) {
       const igual = empatado(pos);
       const frase = igual ? `${p.k === "p" ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${plural(grupo(p))}`
@@ -840,15 +870,15 @@
       g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
       g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${casaBase(p) === "s" ? " (estimativa)" : ""}`, M + 24, y + 88);
       g.font = `500 24px ${t.BODY}`; const wMes = g.measureText("/mês").width + 6;
-      g.font = `500 48px ${t.MONO}`; const wValor = g.measureText(reais(r.em)).width;
-      t.comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${t.MONO}`, 24, "#ffffff");
+      g.font = `600 48px ${t.MONO}`; const wValor = g.measureText(reais(r.em)).width;
+      t.comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `600 48px ${t.MONO}`, 24, "#ffffff");
       y += eh;
     } else if (p.k === "v" && p.eq) {
       const eh = 92;
       g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); t.caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
       t.bolinha(C.equipe, M + 34, y + 46);
       g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 55);
-      g.fillStyle = "#ffffff"; g.font = `500 30px ${t.MONO}`; t.direita(pessoasTxt(p.eq.n), W - M - 24, y + 57);
+      g.fillStyle = "#ffffff"; g.font = `600 30px ${t.MONO}`; t.direita(pessoasTxt(p.eq.n), W - M - 24, y + 57);
       y += eh;
     }
     const aviso = p.k === "v" ? avisoVereador(p)
@@ -1226,13 +1256,17 @@
       pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período"));
     if (!r) return h("div", { class: "conta__resumo" }, add(principal, h("p", { class: "discreto" }, "Sem pagamentos registrados neste período.")));
     const recebe = p.k === "p", smT = sm(emSalariosMinimos(p, k, "t"));
+    // a barra dividida (bolso e gastos) e, embaixo de cada pedaço, o valor dele (estilo.css: --parte)
+    const parte = `${(r.tm > 0 ? (r.gm / r.tm) * 100 : 100).toFixed(1)}%`;
     add(principal,
       h("p", { class: "rotulo" }, `${recebe ? "Recebe por mês" : "Custo por mês"} ${nomePeriodo(k, false)}`),
       h("p", { class: "resumo-valor" }, reais(r.tm)),
-      recebe ? h("p", { class: "resumo-partes" }, "Tudo para o bolso")
-        : h("ul", { class: "resumo-partes", "aria-label": "De onde vem o custo" },
-          h("li", null, h("span", { class: "chave chave--ganha" }), `${reais(r.gm)} para o bolso`),
-          h("li", null, h("span", { class: "chave chave--custa" }), `${reais(r.cm)} em ${gastosNome(p).toLowerCase()}`)),
+      h("div", { class: "resumo-divisao", style: `--parte:${recebe ? "100%" : parte}`, "aria-hidden": "true" },
+        h("span", { class: "resumo-divisao__ganha" }), recebe ? null : h("span", { class: "resumo-divisao__custa" })),
+      recebe ? h("ul", { class: "resumo-partes resumo-partes--um" }, h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, "tudo para o bolso")))
+        : h("ul", { class: "resumo-partes", style: `--parte:${parte}`, "aria-label": "De onde vem o custo" },
+          h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, "para o bolso")),
+          h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))),
       h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
       seloComp(r.tm, C.tm, `vs. mediana dos ${plural(grupo(p))}`));
     // à direita (no computador): a posição entre os colegas
@@ -2006,6 +2040,10 @@
       h("h2", null, atual ? "Os 27 governadores" : "Quanto ganha cada governador"),
       h("p", { class: "discreto" }, "O salário (subsídio) do governador e do vice é fixado por lei em cada estado, e não há uma fonte nacional com todos. Juntamos, estado por estado, a lei, a tabela oficial ou a folha de pagamento e mostramos de onde veio cada valor. Toque num estado para ver quem governa, a lei e a história do valor."),
       GOV.e.some((e) => e.m) ? h("p", { class: "discreto" }, `Em ${GOV.e.filter((e) => e.m).length} estados, a folha de pagamento abre para o nosso robô, e a página do estado mostra também o que o governador e o vice receberam em cada mês (marcados com "mês a mês").`) : null,
+      h("a", { class: "chamada-indice", href: "/indice", onclick: () => { S.origem = atual ? "governador" : "inicio"; } },
+        h("span", { class: "rotulo" }, "Índice de acesso"),
+        h("strong", null, "Dá para saber, pela fonte oficial, quanto cada governador recebeu em cada mês?"),
+        h("span", null, "A nota de cada estado, critério por critério, com a prova →")),
       corpo);
   }
   // mês a mês pela folha do Estado: e.m = [[aaaamm, tp, índice em e.oc, recebido, salário, 13º, férias, auxílios, outros, abate-teto, marca]]
@@ -2127,6 +2165,7 @@
         h("p", { style: "margin:0" }, e.m ? "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê toda semana: veja o mês a mês acima." : FOLHA_GOV[e.folha.s]),
         e.folha.c && !e.m ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
         e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)}\u00a0↗`)) : null,
+        h("p", { class: "nota", style: "margin:0" }, h("a", { href: `/indice#indice-${e.uf.toLowerCase()}`, onclick: () => { S.origem = "governador"; } }, `Ver a nota ${deUF(e.uf)} no índice de acesso aos salários dos governadores`)),
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
         opcoesTexto(spec, "fim", spec.link),
@@ -2312,16 +2351,18 @@
   }
   function montarCabecalho() {
     const D = S.D, noCargo = D.p.filter((p) => p.x).length;
+    // os números da abertura, em blocos sobre a faixa escura
     const chips = $("#chips-info");
     chips.textContent = "";
+    const numero = (n, texto) => h("p", { class: "numero" }, h("strong", null, String(n)), h("span", null, texto));
+    const nVer = D.p.filter((p) => p.x && p.k === "v").length, nPref = D.p.filter((p) => p.x && p.k === "p").length;
     add(chips,
-      h("span", { class: "chip" }, "Dados até ", h("strong", null, `${MESES[mesAtual() - 1]}/${anoAtual()}`)),
-      h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length), " parlamentares e ", h("strong", null, D.p.filter((p) => p.x && p.k === "e").length), " no governo federal, no cargo"),
-      cidadesCamara().length ? h("span", { class: "chip" }, h("strong", null, D.p.filter((p) => p.x && p.k === "v").length),
-        cidadesCamara().length === 1 ? ` vereadores ${deCid(cidadesCamara()[0].cod)}` : [" vereadores em ", h("strong", null, cidadesCamara().length), " capitais"],
-        cidadesPrefeitura().length ? [" e ", h("strong", null, D.p.filter((p) => p.x && p.k === "p").length), cidadesPrefeitura().length === 1 ? " na Prefeitura" : " nas prefeituras"] : null) : null,
-      GOV.e.length ? h("span", { class: "chip" }, h("strong", null, GOV.e.length), " governadores") : null,
-      h("span", { class: "chip" }, "Atualizado em ", h("strong", null, D.meta.atualizado)));
+      numero(D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length, "deputados e senadores no cargo"),
+      numero(D.p.filter((p) => p.x && p.k === "e").length, "no governo federal"),
+      GOV.e.length ? numero(GOV.e.length, "governadores") : null,
+      cidadesCamara().length ? numero(nVer, cidadesCamara().length === 1 ? `vereadores ${deCid(cidadesCamara()[0].cod)}` : `vereadores em ${cidadesCamara().length} capitais`) : null,
+      cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`) : null,
+      h("p", { class: "numeros__data" }, `Dados até ${MESES[mesAtual() - 1]}/${anoAtual()} · atualizado em ${D.meta.atualizado}`));
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
     ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); }, null, true);
@@ -2371,7 +2412,7 @@
       h("div", { class: "lista-estado__grupo" }, dep.map(chip))));
   }
   function navSecoes(ids) {
-    const nomes = { correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
@@ -2549,9 +2590,9 @@
       return;
     }
     S.cidadeVista = null;
-    // páginas do site que não são de um político: /correcoes
-    if (caminho === "correcoes") {
-      if (extraAntes !== caminho) evento("ver_correcoes", { origem: S.origem || (S.carregado ? "navegacao" : "link") });
+    // páginas do site que não são de um político: /correcoes e /indice
+    if (caminho === "correcoes" || caminho === "indice") {
+      if (extraAntes !== caminho) evento(`ver_${caminho}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
     }
@@ -2664,6 +2705,96 @@
         h("a", { href: `mailto:${CONTATO}?subject=${encodeURIComponent("Erro no Contas do Poder")}`, "data-evento": "reportar_erro" }, CONTATO), "."));
   }
 
+  // ------------------------------------------------------------------ índice de acesso aos salários dos governadores
+  // /indice: para cada estado, se dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês.
+  // Os números vêm de dados/indice.json (feito pelo robô, "coletar.py indice"); cada nota tem a prova e, às vezes, o link.
+  // O índice e as duas dimensões vão de 0 a 1, com duas casas, como no método.
+  let indice = null;
+  function carregarIndice() {
+    if (!indice) {
+      indice = fetch("/dados/indice.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+      indice.catch(() => { indice = null; }); // se falhar, tenta de novo na próxima vez
+    }
+    return indice;
+  }
+  const notaIdx = (v) => (v === null || v === undefined ? "a conferir" : num(v, 2));
+  const notaCrit = (v) => (v === null || v === undefined ? "a conferir" : v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }));
+  const dataBR = (d) => String(d || "").split("-").reverse().join("/");
+  function secIndice(I) {
+    const M = I.meta || {}, crit = M.criterios || [];
+    const comNota = I.estados.filter((e) => e.indice !== null && e.indice !== undefined && !(e.a_conferir || []).length);
+    const semNota = I.estados.filter((e) => !comNota.includes(e));
+    const ordem = [...comNota.sort((a, b) => b.indice - a.indice || a.nome.localeCompare(b.nome, "pt-BR")), ...semNota.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))];
+    const posDe = (e) => 1 + comNota.filter((x) => x.indice > e.indice).length; // empate: a mesma posição
+    const vals = comNota.map((e) => e.indice), med = mediana(vals);
+    const maior = Math.max(...vals), menor = Math.min(...vals);
+    const nomes = (v) => listaE(comNota.filter((e) => e.indice === v).map((e) => e.nome));
+    const aberto = decodeURIComponent(location.hash.slice(1));
+    const barra = (rotulo, v, tipo) => h("span", { class: "indice__barra" },
+      h("span", null, rotulo),
+      h("span", { class: `indice__trilho indice__trilho--${tipo}` }, v === null || v === undefined ? null : h("span", { style: `width:${Math.max(1, v * 100).toFixed(1)}%` })),
+      h("span", { class: "indice__num" }, v === null || v === undefined ? "—" : notaIdx(v)));
+    const dimensao = (e, d, titulo, sub) => h("div", { class: "indice-dimensao" },
+      h("p", { class: "indice-dimensao__titulo" }, h("span", null, titulo), h("span", { class: "indice-dimensao__nota" }, notaIdx(e[d]))),
+      h("p", { class: "pequeno discreto" }, sub),
+      h("ul", { class: "criterios" }, crit.filter((c) => c.dimensao === d).map((c) => {
+        const x = (e.criterios || {})[c.id] || {}, v = x.v;
+        const falta = v === null || v === undefined;
+        return h("li", { class: `criterio${falta ? " criterio--conferir" : ""}` },
+          h("span", { class: "criterio__nome" }, c.nome),
+          h("span", { class: "criterio__nota" }, falta ? null : h("span", { class: "criterio__medidor", "aria-hidden": "true" }, h("span", { style: `width:${(v * 100).toFixed(0)}%` })), notaCrit(v)),
+          x.prova ? h("span", { class: "criterio__prova" }, x.prova, x.link ? [" ", h("a", { href: x.link, target: "_blank", rel: "noopener" }, "ver\u00a0↗")] : null) : null,
+          h("span", { class: "criterio__como" }, c.como_pontua));
+      })));
+    const linha = (e) => {
+      const falta = !comNota.includes(e), uf = e.uf.toLowerCase();
+      return h("li", null, h("details", { class: `indice-estado${falta ? " indice-estado--conferir" : ""}`, id: `indice-${uf}`, open: aberto === `indice-${uf}`,
+        ontoggle: (ev) => { if (ev.target.open) evento("abrir_indice", { uf: e.uf }); } },
+        h("summary", null,
+          h("span", { class: "indice__pos" }, falta ? "–" : `${posDe(e)}º`),
+          h("span", { class: "indice__nome" }, e.nome),
+          h("span", { class: "indice__valor" }, falta ? "a conferir" : notaIdx(e.indice)),
+          h("span", { class: "indice__barras" }, barra("Completude", e.completude, "completude"), barra("Facilidade", e.facilidade, "facilidade"))),
+        h("div", { class: "indice-corpo" },
+          falta ? h("p", { class: "aviso" }, `Sem índice por enquanto: ${(e.a_conferir || []).length} dos ${crit.length} critérios ainda estão a conferir. Abaixo, os que já têm nota.`) : null,
+          h("div", { class: "indice-dimensoes" },
+            dimensao(e, "completude", "Completude", "O que a fonte mostra."),
+            dimensao(e, "facilidade", "Facilidade", "Como dá para obter os dados.")),
+          h("p", { class: "indice-links" },
+            e.fonte ? h("a", { href: e.fonte, target: "_blank", rel: "noopener" }, `Consulta oficial da folha ${deUF(e.uf)}\u00a0↗`) : null,
+            GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null))));
+    };
+    const aviso = (M.como || []).find((c) => /não é uma nota/i.test(c));
+    return [
+      h("section", { class: "bloco", id: "indice", "aria-labelledby": "t-indice" },
+        h("div", { class: "indice-topo" },
+          h("p", { class: "rotulo" }, "Governadores"),
+          h("h1", { id: "t-indice", class: "titulo-pagina" }, M.titulo || "Índice de acesso aos salários dos governadores"),
+          M.pergunta ? h("p", { class: "lide" }, M.pergunta) : null,
+          h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice${semNota.length ? `; ${listaE(semNota.map((e) => e.nome))} a conferir` : ""}.`),
+          aviso ? h("p", { class: "caixa-nota" }, aviso) : null),
+        comNota.length ? h("div", { class: "estatisticas" },
+          estatistica("Maior índice", notaIdx(maior), nomes(maior)),
+          estatistica("Mediana dos estados", notaIdx(med), "metade tem índice maior, metade menor"),
+          estatistica("Menor índice", notaIdx(menor), nomes(menor))) : null,
+        h("div", { class: "legenda" },
+          h("span", null, h("span", { class: "chave chave--ganha" }), "Completude: o que a fonte mostra"),
+          h("span", null, h("span", { class: "chave chave--custa" }), "Facilidade: como dá para obter")),
+        h("article", { class: "cartao indice-cartao" },
+          h("p", { class: "pequeno discreto" }, "Do maior índice para o menor. Toque num estado para ver cada critério, a nota e a prova."),
+          h("ol", { class: "indice-lista" }, ordem.map(linha)))),
+      h("section", { class: "bloco", id: "indice-como", "aria-labelledby": "t-indice-como" },
+        h("h2", { id: "t-indice-como" }, "Como funciona"),
+        h("div", { class: "cartao" },
+          (M.como || []).map((c) => h("p", null, c)),
+          h("div", { class: "indice-dimensoes" },
+            [["completude", "Completude: o que a fonte mostra"], ["facilidade", "Facilidade: como dá para obter"]].map(([d, titulo]) => h("div", null,
+              h("h3", null, titulo),
+              h("dl", { class: "indice-criterios" }, crit.filter((c) => c.dimensao === d).map((c) => [h("dt", null, c.nome), h("dd", null, c.como_pontua)]))))),
+          h("p", { class: "nota" }, "Os dados do índice, com todas as notas e provas: ", h("a", { href: "/dados/indice.json" }, "indice.json"), ". O robô confere as fontes toda semana."))),
+    ];
+  }
+
   // ------------------------------------------------------------------ série mês a mês e detalhe dos gastos de cada pessoa
   // No site publicado, a lista de todos (dados/indice/) vem sem a série mês a mês (p.t) e sem o detalhe dos gastos (p.dt):
   // cada pessoa tem o seu arquivo (dados/pessoa/<id>.json, feito pelo publicacao/gerar.mjs), baixado só ao abrir a
@@ -2696,7 +2827,9 @@
   function marcarPagina(interna, tipo) {
     document.body.classList.toggle("interna", interna);
     const t = document.getElementById("titulo-abertura");
-    if (t && !interna && t.tagName !== "H1") t.replaceWith(h("h1", { id: "titulo-abertura" }, t.textContent));
+    if (t && !interna && t.tagName !== "H1") { const n = h("h1", { id: "titulo-abertura" }); n.append(...t.childNodes); t.replaceWith(n); }
+    const li = document.getElementById("link-indice");
+    if (li) { if (tipo === "indice") li.setAttribute("aria-current", "page"); else li.removeAttribute("aria-current"); }
     document.querySelectorAll("#entenda details[data-para]").forEach((d) => { d.hidden = !!tipo && !d.dataset.para.split(" ").includes(tipo); });
   }
 
@@ -2705,7 +2838,7 @@
     botaoFlutuante(null);
     const app = $("#app");
     const p = S.sel ? S.porId.get(S.sel) : null;
-    marcarPagina(!!(p || S.gov || S.cidade || S.extra), p ? p.k : S.gov ? "gov" : S.cidade ? "cidade" : null);
+    marcarPagina(!!(p || S.gov || S.cidade || S.extra), p ? p.k : S.gov ? "gov" : S.cidade ? "cidade" : S.extra === "indice" ? "indice" : null);
     if (p && !p.t) {
       document.title = `${p.n} · Contas do Poder`;
       // primeira visita: o resumo pronto do HTML (gerar.mjs, no período padrão) fica na tela; trocando de página ou com
@@ -2736,6 +2869,19 @@
         navSecoes(["correcoes", "entenda", "fontes"]);
         rolarPendente();
       }, () => { espera.textContent = "Não foi possível carregar as correções."; });
+      return;
+    }
+    if (S.extra === "indice") {
+      document.title = "Índice de acesso aos salários dos governadores · Contas do Poder";
+      const espera = h("p", { class: "discreto" }, "Carregando o índice…");
+      app.append(espera);
+      navSecoes(["entenda", "fontes"]);
+      carregarIndice().then((I) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        espera.replaceWith(...secIndice(I));
+        navSecoes(["indice", "indice-como", "entenda", "fontes"]);
+        rolarPendente();
+      }, () => { espera.textContent = "Não foi possível carregar o índice."; });
       return;
     }
     if (S.gov) {
