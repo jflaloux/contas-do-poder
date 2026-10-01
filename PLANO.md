@@ -156,4 +156,6 @@ Cada número tem link para a fonte oficial.
 - [x] Índice de Transparência com 4 blocos: governo, Assembleia, prefeitura e Câmara da capital (01/10/2026) — Claude
 - [x] Índice: blocos atrás de CAPTCHA ou bloqueio conferidos no Chrome (Câmaras de Florianópolis, Campo Grande, BH e Cuiabá; prefeituras de BH e São Luís) — Jean-François e Claude
 - [ ] Índice: prefeituras de Maceió e Cuiabá (consultas muito lentas; falta ver prefeito, vice e secretários) — Claude
-- [ ] Prova de conceito: os 27 Tribunais de Contas (folha e despesas de todos os municípios? para o índice e para robôs que cubram o estado inteiro) — Claude
+- [x] Prova de conceito: os 26 Tribunais de Contas que fiscalizam municípios (dados/referencia/tribunais.json; prova na Paraíba) — Claude
+- [ ] Robôs estaduais de vereadores pelos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API) primeiro; depois ES, PE e RJ (valor por cargo) — Claude
+- [ ] Pedir acesso: token da API do TCM-GO, chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide

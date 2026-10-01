@@ -453,6 +453,28 @@ responsáveis diferentes e que a nota é da fonte, não de quem está no cargo. 
 só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
+## Tribunais de Contas (prova de conceito)
+
+Os municípios mandam a folha e as despesas ao Tribunal de Contas do estado; alguns tribunais abrem esses dados para
+todos os municípios de uma vez. Um robô por tribunal cobriria todas as câmaras e prefeituras do estado, em vez de um
+robô por Câmara. O levantamento dos 26 tribunais que fiscalizam municípios (o DF não tem municípios) está em
+`dados/referencia/tribunais.json` (01/10/2026):
+
+- **Folha nominal com valor de cada pessoa, câmaras incluídas:** Paraíba (TCE-PB, CSV por município e ano, desde 2013)
+  e Ceará (TCE-CE, API documentada com cada item da folha). Também, com ressalvas: Maranhão (valor por pessoa, sem
+  nome), Pará (TCM-PA, Power BI, só o mês corrente) e Goiás (TCM-GO, só com token da API).
+- **Valor por cargo (total da câmara ÷ número de vereadores):** Espírito Santo (CSV), Pernambuco (Tome Conta) e Rio de
+  Janeiro (por situação funcional).
+- **Só despesas (empenhos com credor e CNPJ):** São Paulo, Paraná, Rio Grande do Sul (só do Brasil), Tocantins, Rio
+  Grande do Norte e, em parte, Acre e Roraima.
+- **Nada aberto ou atrás de barreira:** Amazonas, Amapá, Rondônia, Alagoas, Sergipe, Mato Grosso, Mato Grosso do Sul,
+  Santa Catarina (bloqueio de robôs), Minas Gerais (reCAPTCHA na API), Bahia (TCM-BA, reCAPTCHA) e Piauí (sem valores).
+
+Prova feita na Paraíba: o arquivo de 2026 do TCE-PB (68 MB, CSV em ZIP, atualizado todo dia) tem, em ago/2026, 1.817
+vereadores de 203 das 223 câmaras, com valor mediano de R$ 6.950 por mês (de R$ 4.000 a R$ 20.864,78). O resumo por
+município, sem nomes, está em `dados/referencia/tce_pb_vereadores_202608.csv`. Os valores vêm no formato brasileiro
+(ponto de milhar, vírgula decimal, sem zeros à direita: "9.300" é R$ 9.300,00).
+
 ## Robôs e robots.txt
 
 Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
