@@ -84,16 +84,21 @@ def _slug(nome):
 
 
 def _fotos(estados, baixar):
-    """Foto do governador e do vice no cargo hoje (Wikimedia Commons, licença livre)."""
+    """Foto de cada pessoa que foi governador, vice ou governador em exercício desde 2023 (a candidatura de 2022 no TSE
+    ou o Wikimedia Commons, com licença livre). Sem foto própria, vale a da outra página da mesma pessoa no site (rel)."""
     from . import fotos as F
-    pessoas = [o for e in estados for o in (e["gov"], e["vice"]) if o]
+    pessoas = [o for e in estados for o in (e["gov"], e["vice"], *e["oc"]) if o]
+    unicas = {}
+    for o in pessoas:
+        unicas.setdefault(o["id"], o)
     if baixar:
         # primeiro a foto da candidatura de 2022 no TSE (governador, vice, senador, deputado: quem assumiu depois também
         # foi candidato a alguma coisa em 2022), pelo nome civil ou de urna exato; o resto, no Commons
         from . import fotos_tse
         novas = 0
         for e in estados:
-            faltam = [{"id": o["id"], "n": o["n"], "nc": o.get("nc")} for o in (e["gov"], e["vice"]) if o and not (FOTOS / f"{o['id']}.webp").exists()]
+            daqui = {o["id"]: o for o in (e["gov"], e["vice"], *e["oc"]) if o}
+            faltam = [{"id": o["id"], "n": o["n"], "nc": o.get("nc")} for o in daqui.values() if not (FOTOS / f"{o['id']}.webp").exists()]
             if faltam:
                 try:
                     novas += fotos_tse.por_nome(2022, e["uf"], faltam, ("3", "4", "5", "6", "7", "8"))
@@ -106,7 +111,8 @@ def _fotos(estados, baixar):
         antigo = F.CARGO_OK
         F.CARGO_OK = re.compile(r"govern|vice|prefeit|deputad|senad|mayor|member of", re.I)
         try:
-            novas = F._governo_commons([{"id": o["id"], "nome": o["n"], "nome_civil": o.get("nc"), "casa": "executivo"} for o in pessoas], limite=60)
+            novas = F._governo_commons([{"id": o["id"], "nome": o["n"], "nome_civil": o.get("nc"), "casa": "executivo"} for o in unicas.values()
+                                        if not (FOTOS / f"{o['id']}.webp").exists()], limite=60)
             if novas:
                 log(f"  {novas} fotos novas de governadores e vices (Wikimedia Commons)")
         except TempoEsgotado:
@@ -117,11 +123,44 @@ def _fotos(estados, baixar):
             F.CARGO_OK = antigo
     creditos = json.loads(F.CREDITOS.read_text(encoding="utf-8")).get("fotos", {}) if F.CREDITOS.exists() else {}
     for o in pessoas:
-        if (FOTOS / f"{o['id']}.webp").exists():
-            o["f"] = f"fotos/{o['id']}.webp"
-            c = creditos.get(o["id"])
-            if c:
-                o["fc"] = {"a": c.get("autor"), "l": c.get("licenca"), "u": c.get("pagina")}
+        # a própria foto ou, sem ela, a da outra página da mesma pessoa (deputado, prefeito...)
+        for fid in [o["id"], *o.get("rel", [])]:
+            if (FOTOS / f"{fid}.webp").exists():
+                o["f"] = f"fotos/{fid}.webp"
+                c = creditos.get(fid)
+                if c:
+                    o["fc"] = {"a": c.get("autor"), "l": c.get("licenca"), "u": c.get("pagina")}
+                break
+
+
+# ---------------------------------------------------------------- a mesma pessoa em outra página do site
+_OUTRAS = ("dados.json", "assembleias.json", "prefeituras.json", "camaras.json")
+_indice_outras = None
+
+
+def _relacionados(uf, o):
+    """Ids das outras páginas da mesma pessoa no site (deputado federal, senador, ministro, deputado estadual, prefeito,
+    vereador, antes ou depois): o mesmo nome (de urna, civil ou da folha) no mesmo estado. Página sem estado (governo
+    federal): só pelo nome civil. Cada página mostra o que a pessoa recebeu naquele cargo; nada é somado duas vezes."""
+    global _indice_outras
+    if _indice_outras is None:
+        _indice_outras = {}
+        for nome_arq in _OUTRAS:
+            arq = RAIZ / "site" / "dados" / nome_arq
+            if not arq.exists():
+                continue
+            for p in json.loads(arq.read_text(encoding="utf-8")).get("p", []):
+                if p.get("k") == "j":  # a página "tudo junto" já liga os cargos separados
+                    continue
+                for nm, civil in ((p.get("n"), False), (p.get("nc"), True)):
+                    if nm:
+                        _indice_outras.setdefault(normalizar_nome(nm), []).append((p["id"], p.get("uf"), civil))
+    achou = []
+    for nm, civil in ((o.get("nome"), False), (o.get("folha_nome"), True), (o.get("civil"), True)):
+        for pid, puf, pcivil in _indice_outras.get(normalizar_nome(nm or ""), []) if nm else []:
+            if (puf == uf or (not puf and civil and pcivil)) and pid not in achou:
+                achou.append(pid)
+    return achou
 
 
 # ---------------------------------------------------------------- mês a mês, pela folha do Estado (coleta/folhas_estaduais)
@@ -235,9 +274,10 @@ def executar(baixar_fotos=True):
         e = {**e, "ocupantes": sorted(e["ocupantes"], key=lambda o: (o["de"], {"gov": 0, "exercicio": 0, "vice": 1}[o["cargo"]]))}
         chefe = next(o for o in e["ocupantes"] if o["cargo"] in ("gov", "exercicio") and not o.get("ate"))
         vice = next((o for o in e["ocupantes"] if o["cargo"] == "vice" and not o.get("ate")), None)
-        pessoa = lambda o: {"id": f"gov-{uf.lower()}-{_slug(o['nome'])}", "n": o["nome"], "nc": o.get("civil"), "pt": o.get("partido"), "de": o["de"],
+        pid = lambda o: f"gov-{uf.lower()}-{_slug(o['nome'])}"
+        pessoa = lambda o: {"id": pid(o), "n": o["nome"], "nc": o.get("civil"), "pt": o.get("partido"), "de": o["de"],
                             "ex": 1 if o["cargo"] == "exercicio" else 0, **({"fem": 1} if o.get("fem") else {}),
-                            **({"obs": o["obs"]} if o.get("obs") else {})}
+                            **({"obs": o["obs"]} if o.get("obs") else {}), **({"rel": r} if (r := _relacionados(uf, o)) else {})}
         g, v = _vigente(e["subsidio"], "gov", agora), _vigente(e["subsidio"], "vice", agora)
         s = _vigente(e["subsidio"], "sec", agora)
         saida.append({
@@ -251,8 +291,11 @@ def executar(baixar_fotos=True):
             # a história: [cargo, desde, valor, confiança, norma, fonte]
             "h": [[x["cargo"], _mes(x["desde"]), x["valor"], x["confianca"], x["norma"], x["fonte"]]
                   for x in sorted(e["subsidio"], key=lambda x: (x["desde"], x["cargo"]))],
+            # uma linha por pessoa e cargo; "id" é da pessoa (o mesmo nas duas linhas de quem foi vice e depois governador),
+            # "rel" são as outras páginas dela no site
             "oc": [{"n": o["nome"], "pt": o.get("partido"), "c": o["cargo"], "de": o["de"], "ate": o.get("ate"), **({"fem": 1} if o.get("fem") else {}),
-                    **({"obs": o["obs"]} if o.get("obs") else {})}
+                    **({"obs": o["obs"]} if o.get("obs") else {}), "id": pid(o), **({"nc": o["civil"]} if o.get("civil") else {}),
+                    **({"rel": r} if (r := _relacionados(uf, o)) else {})}
                    for o in e["ocupantes"]],
             "folha": {"s": e["folha"]["situacao"], "u": e["folha"].get("url"), **({"c": e["folha"]["conferido"]} if e["folha"].get("conferido") else {})},
             **({"recebe": e["recebe"]} if e.get("recebe") else {}),

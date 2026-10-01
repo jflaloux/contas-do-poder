@@ -236,7 +236,9 @@ def montar(tipos):
         if not meses_g and not d.em_exercicio:
             continue
         t = por_civil.get(normalizar_nome(d.nome_completo)) or comum.achar(d.nome, tse) or comum.achar(d.nome_completo, por_civil) or {}
-        ver.append({"codigo": int(d.id), "nome": d.nome, "nome_civil": vc.titulo(t.get("nome") or d.nome_completo),
+        # a Alerj escreve alguns nomes em maiúsculas ("ATILA NUNES"): aí vale o nome de urna do TSE, que tem os acentos
+        nome = (vc.titulo(t["urna"]) if t.get("urna") else vc.titulo(d.nome)) if d.nome.isupper() else d.nome
+        ver.append({"codigo": int(d.id), "nome": nome, "nome_civil": vc.titulo(t.get("nome") or d.nome_completo),
                     "partido": d.partido if d.em_exercicio else (t.get("partido") or d.partido),
                     "genero": t.get("genero") or ("F" if feminino(d.nome_completo) else "M"), "eleito": t.get("eleito", ""), "pagina": CFG["pagina"]})
         if d.em_exercicio:

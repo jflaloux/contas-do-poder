@@ -12,6 +12,9 @@ ainda não tem:
 - se o endereço de alguém muda (um deputado que vira ministro passa a ser "nome/deputado"), o antigo continua
   funcionando: vai para "antigos", e o site leva para o novo.
 
+Governadores, vices e governadores em exercício têm página por pessoa ("gov-sp-tarcisio-de-freitas"), e
+os deputados estaduais ("est-35-300607"), também: entram aqui com os outros.
+
 Cidades (cidade/sao-paulo-sp) e estados (governador/sp) não precisam de registro: o nome da cidade não se repete no
 mesmo estado. O site monta esses endereços sozinho, e publicacao/gerar.mjs cria uma página pronta para cada endereço.
 """
@@ -23,11 +26,33 @@ from .config import RAIZ
 from .util import log
 
 ARQ = RAIZ / "site" / "dados" / "enderecos.json"
-FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json")]
+FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json", "assembleias.json")]
+GOVERNADORES = RAIZ / "site" / "dados" / "governadores.json"
 # primeiros pedaços de endereço que não podem ser nome de político (pastas e rotas do site)
 RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes"}
-# quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, prefeituras, câmaras
-PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "p": 4, "v": 5}
+# quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, governadores, prefeituras,
+# câmaras, Assembleias (os deputados estaduais, "est-", também têm k "e")
+PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "g": 4, "p": 5, "v": 6}
+
+
+def _prioridade(p):
+    return 7 if p["id"].startswith("est-") else PRIORIDADE.get(p["k"], 9)
+
+
+def _governadores():
+    """Uma página por pessoa que foi governador, vice ou governador em exercício desde 2023 (o id é da pessoa: quem foi
+    vice e depois governador tem uma página só). O cargo do endereço, se o nome repetir, é o último dela."""
+    if not GOVERNADORES.exists():
+        return {}
+    pessoas = {}
+    for e in json.loads(GOVERNADORES.read_text(encoding="utf-8"))["e"]:
+        for o in sorted(e.get("oc", []), key=lambda o: o["de"]):
+            if not o.get("id"):
+                continue
+            f = o.get("fem")
+            g = {"vice": "Vice-governadora" if f else "Vice-governador"}.get(o["c"], "Governadora" if f else "Governador")
+            pessoas[o["id"]] = {"id": o["id"], "k": "g", "n": o["n"], "uf": e["uf"], "g": g}
+    return pessoas
 
 
 def slug(texto):
@@ -37,10 +62,12 @@ def slug(texto):
 
 def cargo_curto(p):
     """"deputado", "senadora", "ministro", "vice-prefeito", "secretario"... (a primeira palavra do cargo)."""
+    if p["id"].startswith("est-"):  # "deputado-estadual", para não confundir com o deputado federal
+        return "deputada-estadual" if (p.get("g") or "").startswith("Deputada") else "deputado-estadual"
     c = slug((p.get("g") or "").split()[0] if p.get("g") else "")
     if c.startswith("ministr"):
         return "ministra" if c.startswith("ministra") else "ministro"
-    return c or {"d": "deputado", "s": "senador", "e": "governo", "v": "vereador", "p": "prefeitura"}.get(p["k"], "cargo")
+    return c or {"d": "deputado", "s": "senador", "e": "governo", "g": "governador", "v": "vereador", "p": "prefeitura"}.get(p["k"], "cargo")
 
 
 def _ler():
@@ -56,6 +83,7 @@ def executar():
         if f.exists():
             for p in json.loads(f.read_text(encoding="utf-8"))["p"]:
                 pessoas[p["id"]] = p
+    pessoas.update(_governadores())
     if not pessoas:
         return
     atuais, saidos, antigos = _ler()
@@ -72,7 +100,7 @@ def executar():
     # 1) quem já tinha endereço de um pedaço só fica com ele. Os cargos separados de quem tem dois cargos ficam de fora:
     # quando um deputado vira ministro, o nome dele passa para a página "tudo junto" (é a mesma pessoa), e o deputado
     # vira "nome/deputado"
-    ordem = sorted((pid for pid in pessoas if pid not in do_junto), key=lambda pid: (PRIORIDADE.get(pessoas[pid]["k"], 9), pid))
+    ordem = sorted((pid for pid in pessoas if pid not in do_junto), key=lambda pid: (_prioridade(pessoas[pid]), pid))
     for pid in ordem:
         cam = registro.get(pid)
         if cam and "/" not in cam and cam not in ocupado:

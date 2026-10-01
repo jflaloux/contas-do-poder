@@ -92,7 +92,6 @@
   "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados"
  },
  "pendencias": [
-  "Câmara: 13º, férias, acertos, diárias e ajuda de custo vêm do contracheque detalhado de cada mês, no site da Câmara. Os auxílios do contracheque não entram de novo: são o auxílio-moradia, que vem da página de moradia.",
   "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
   "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
   "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
@@ -103,7 +102,6 @@
   "Governo federal: o Portal da Transparência publica os salários com cerca de 2 meses de atraso.",
   "Governo federal: o arquivo de salários de dezembro de 2024 do Portal veio incompleto; esse mês fica sem salário.",
   "Governo federal: viagens em aviões da FAB e do avião presidencial não têm custo publicado; entram só diárias e passagens compradas. Por isso o presidente aparece praticamente só com o salário.",
-  "Governo federal: ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; nesses meses usamos o salário pago pela Câmara ou pelo Senado.",
-  "Governo federal: ex-ministros podem receber até 6 meses de 'quarentena' depois de sair; esses meses ainda não são separados dos meses no cargo."
+  "Governo federal: ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; nesses meses usamos o salário pago pela Câmara ou pelo Senado."
  ]
 }

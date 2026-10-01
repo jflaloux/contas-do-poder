@@ -537,7 +537,7 @@
   "pre-3304557-eduardo-da-costa-paes": {
    "wikidata": "Q972007",
    "arquivo": "Foto oficial de Eduardo Paes.jpg",
-   "autor": "Unknown authorUnknown author",
+   "autor": "Prefeitura do Rio de Janeiro",
    "licenca": "CC BY 3.0 br",
    "url_licenca": "https://creativecommons.org/licenses/by/3.0/br/deed.en",
    "pagina": "https://commons.wikimedia.org/wiki/File:Foto_oficial_de_Eduardo_Paes.jpg"
@@ -681,7 +681,7 @@
   "est-35-300673": {
    "wikidata": "Q116520588",
    "arquivo": "Guto Zacaraias em 2022.jpg",
-   "autor": "Unknown authorUnknown author",
+   "autor": "Tribunal Superior Eleitoral (via Wikimedia Commons)",
    "licenca": "CC BY 4.0",
    "url_licenca": "https://creativecommons.org/licenses/by/4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Guto_Zacaraias_em_2022.jpg"
@@ -737,7 +737,7 @@
   "est-35-300483": {
    "wikidata": "Q28678150",
    "arquivo": "Milton Leite Filho em 2022.jpg",
-   "autor": "Unknown authorUnknown author",
+   "autor": "Tribunal Superior Eleitoral (via Wikimedia Commons)",
    "licenca": "CC BY 4.0",
    "url_licenca": "https://creativecommons.org/licenses/by/4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Milton_Leite_Filho_em_2022.jpg"
@@ -745,7 +745,7 @@
   "est-35-300640": {
    "wikidata": "Q59222588",
    "arquivo": "Professora Bebel.jpg",
-   "autor": "Unknown authorUnknown author",
+   "autor": "Autor desconhecido",
    "licenca": "CC BY 4.0",
    "url_licenca": "https://creativecommons.org/licenses/by/4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:Professora_Bebel.jpg"
@@ -6689,6 +6689,156 @@
    "licenca": "CC BY",
    "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
    "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-ac-gladson-cameli": {
+   "arquivo": "FAC10001612476_div.jpeg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-am-wilson-lima": {
+   "arquivo": "FAM40001619528_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-am-tadeu-de-souza": {
+   "arquivo": "FAM40001619527_div.jpeg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-df-ibaneis-rocha": {
+   "arquivo": "FDF70001651044_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-es-renato-casagrande": {
+   "arquivo": "FES80001649123_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-go-ronaldo-caiado": {
+   "arquivo": "FGO90001646326_div.jpeg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-mt-mauro-mendes": {
+   "arquivo": "FMT110001643543_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-rj-claudio-castro": {
+   "arquivo": "FRJ190001615753_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-rr-antonio-denarium": {
+   "arquivo": "FRR230001604255_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-rr-edilson-damiao": {
+   "arquivo": "FRR230001604254_div.jpg",
+   "autor": "Tribunal Superior Eleitoral (foto da candidatura de 2022)",
+   "licenca": "CC BY",
+   "url_licenca": "http://www.opendefinition.org/licenses/cc-by",
+   "pagina": "https://dadosabertos.tse.jus.br/dataset/candidatos-2022"
+  },
+  "gov-am-serafim-correa": {
+   "wikidata": "Q10370176",
+   "arquivo": "Serafim Corrêa.jpg",
+   "autor": "Assembleia Legislativa do Estado do Amazonas",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Serafim_Corr%C3%AAa.jpg"
+  },
+  "gov-ba-jeronimo-rodrigues": {
+   "wikidata": "Q115058424",
+   "arquivo": "PGP Bacia do Jacuípe em Capim Grosso (52241179839) (cropped 2).jpg",
+   "autor": "Neusa Cadore from Salvador, Brazil",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:PGP_Bacia_do_Jacu%C3%ADpe_em_Capim_Grosso_(52241179839)_(cropped_2).jpg"
+  },
+  "gov-mg-mateus-simoes": {
+   "wikidata": "Q104213656",
+   "arquivo": "Mateus Simões, April 2024 (cropped).jpg",
+   "autor": "Jonas Pereira/Agência Senado",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mateus_Sim%C3%B5es,_April_2024_(cropped).jpg"
+  },
+  "gov-mg-romeu-zema": {
+   "wikidata": "Q57092113",
+   "arquivo": "Romeu Zema, December 2024 (cropped).jpg",
+   "autor": "Andressa Anholete/Agência Senado",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Romeu_Zema,_December_2024_(cropped).jpg"
+  },
+  "gov-pa-hana-ghassan": {
+   "wikidata": "Q117833180",
+   "arquivo": "2023-06-30 Medalha da Ordem do Mérito Dom Pedro II 10 (Hana Ghassan).jpg",
+   "autor": "Tribunal de Justiça do Estado do Pará",
+   "licenca": "CC0",
+   "url_licenca": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+   "pagina": "https://commons.wikimedia.org/wiki/File:2023-06-30_Medalha_da_Ordem_do_M%C3%A9rito_Dom_Pedro_II_10_(Hana_Ghassan).jpg"
+  },
+  "gov-pa-helder-barbalho": {
+   "wikidata": "Q3784499",
+   "arquivo": "Helder Barbalho, January 2023 (cropped).jpg",
+   "autor": "Palácio do Planalto from Brasilia, Brasil",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Helder_Barbalho,_January_2023_(cropped).jpg"
+  },
+  "gov-pb-joao-azevedo": {
+   "wikidata": "Q56351397",
+   "arquivo": "João Azevêdo, May 2023 (cropped).jpg",
+   "autor": "Agência Brasília from Brasília, Brasil",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Jo%C3%A3o_Azev%C3%AAdo,_May_2023_(cropped).jpg"
+  },
+  "gov-rj-thiago-pampolha": {
+   "wikidata": "Q10382101",
+   "arquivo": "RJ na COP26 - Secretario do Ambiente (cropped).jpg",
+   "autor": "Aline Lopes",
+   "licenca": "CC BY 2.0 br",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0/br/deed.en",
+   "pagina": "https://commons.wikimedia.org/wiki/File:RJ_na_COP26_-_Secretario_do_Ambiente_(cropped).jpg"
+  },
+  "gov-rr-soldado-sampaio": {
+   "wikidata": "Q59247737",
+   "arquivo": "Soldado-Sampaio-AssLeg.RR.jpg",
+   "autor": "Assembleia Legislativa do Estado de Roraima",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Soldado-Sampaio-AssLeg.RR.jpg"
+  },
+  "gov-se-fabio-mitidieri": {
+   "wikidata": "Q48871938",
+   "arquivo": "Foto oficial do governador Fábio Mitidieri.jpg",
+   "autor": "Governo do Sergipe",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Foto_oficial_do_governador_F%C3%A1bio_Mitidieri.jpg"
   }
  },
  "procurado_em": {
@@ -7183,6 +7333,18 @@
   "est-28-260001644221": "2026-10-01",
   "est-28-260001712249": "2026-10-01",
   "est-28-260001668327": "2026-10-01",
-  "est-26-2354408638": "2026-10-01"
+  "est-26-2354408638": "2026-10-01",
+  "gov-am-serafim-correa": "2026-10-01",
+  "gov-ba-jeronimo-rodrigues": "2026-10-01",
+  "gov-mg-mateus-simoes": "2026-10-01",
+  "gov-mg-romeu-zema": "2026-10-01",
+  "gov-pa-hana-ghassan": "2026-10-01",
+  "gov-pa-helder-barbalho": "2026-10-01",
+  "gov-pb-joao-azevedo": "2026-10-01",
+  "gov-rj-ricardo-couto": "2026-10-01",
+  "gov-rj-thiago-pampolha": "2026-10-01",
+  "gov-rr-soldado-sampaio": "2026-10-01",
+  "gov-sc-marilisa-boehm": "2026-10-01",
+  "gov-se-fabio-mitidieri": "2026-10-01"
  }
 }

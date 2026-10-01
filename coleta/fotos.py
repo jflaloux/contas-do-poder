@@ -143,14 +143,26 @@ def _wikidata(p):
     return None
 
 
+def _autor(artista, credito):
+    """O crédito da foto. Quando o Commons diz "Unknown author" (às vezes repetido, "Unknown authorUnknown author"), vale
+    a fonte da foto (campo Credit): o TSE, a Prefeitura...; sem ela, "Autor desconhecido"."""
+    if artista and not re.fullmatch(r"(unknown author\s*)+", artista, re.I):
+        return artista[:80]
+    if re.search(r"\bTSE\b|Tribunal Superior Eleitoral", credito):
+        return "Tribunal Superior Eleitoral (via Wikimedia Commons)"
+    if credito and len(credito) <= 80:
+        return credito
+    return "Autor desconhecido"
+
+
 def _commons(arquivo, largura=330):
     paginas = _api(COMMONS, action="query", titles=f"File:{arquivo}", prop="imageinfo",
                    iiprop="url|size|extmetadata", iiurlwidth=largura)["query"]["pages"]  # 330 px: um dos tamanhos padrão da Wikimedia
     info = next(iter(paginas.values())).get("imageinfo", [{}])[0]
     meta = info.get("extmetadata", {})
-    texto = lambda k: re.sub(r"<[^>]+>", "", meta.get(k, {}).get("value", "")).strip()
+    texto = lambda k: re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", meta.get(k, {}).get("value", ""))).strip()
     return {"url": info.get("thumburl") or info.get("url"), "largura": info.get("width", 0), "altura": info.get("height", 0),
-            "autor": re.sub(r"\s+", " ", texto("Artist"))[:80], "licenca": texto("LicenseShortName"),
+            "autor": _autor(texto("Artist"), texto("Credit")), "licenca": texto("LicenseShortName"),
             "url_licenca": texto("LicenseUrl"), "pagina": info.get("descriptionurl")}
 
 

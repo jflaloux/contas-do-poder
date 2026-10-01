@@ -597,8 +597,6 @@ def executar():
             "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados",
         },
         "pendencias": [
-            "Câmara: 13º, férias, acertos, diárias e ajuda de custo vêm do contracheque detalhado de cada mês, no site da "
-            "Câmara. Os auxílios do contracheque não entram de novo: são o auxílio-moradia, que vem da página de moradia.",
             *([f"Câmara: o contracheque detalhado (13º, férias, acertos, diárias e ajuda de custo) já entra desde "
                f"{DETALHE_DESDE % 100:02d}/{DETALHE_DESDE // 100}; os meses anteriores estão sendo lidos aos poucos e entram "
                f"nas próximas semanas. Até lá, o que vai para o bolso dos deputados está um pouco subestimado nesses meses."]
@@ -622,8 +620,6 @@ def executar():
             "diárias e passagens compradas. Por isso o presidente aparece praticamente só com o salário.",
             "Governo federal: ministro que é deputado ou senador licenciado pode receber o salário pelo Congresso; "
             "nesses meses usamos o salário pago pela Câmara ou pelo Senado.",
-            "Governo federal: ex-ministros podem receber até 6 meses de 'quarentena' depois de sair; esses meses ainda "
-            "não são separados dos meses no cargo.",
         ],
     })
     n_dep = sum(p["casa"] == "camara" for p in politicos)
