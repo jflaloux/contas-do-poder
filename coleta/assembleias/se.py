@@ -162,7 +162,7 @@ def coletar():
     finally:
         if len(dep):
             dep.sort_values(["ano", "mes", "nome"]).to_csv(arq_d, index=False)
-            gab.sort_values(["ano", "mes", "lotacao"]).to_csv(arq_g, index=False)
+            gab.astype({"pessoas": int}).sort_values(["ano", "mes", "lotacao"]).to_csv(arq_g, index=False)
         if len(ver):
             ver.sort_values(["pagamento", "item"]).to_csv(arq_v, index=False)
         log(f"  Alese: {len(feitos_f)} folhas e {len(feitos_v)} ressarcimentos desde {INICIO % 100:02d}/{INICIO // 100}")
