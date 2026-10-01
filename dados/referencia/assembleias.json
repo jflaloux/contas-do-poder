@@ -235,10 +235,15 @@
   "MA": {
    "site": "https://www.al.ma.leg.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "a conferir (lista por competência, detalhe por deputado)",
+    "formato": "JSF/PrimeFaces (postback com ViewState)",
+    "url": "https://sistemas.al.ma.leg.br/transparencia/lista-parlamentar.html"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true,
+    "formato": "consulta JSF",
+    "url": "https://sistemas.al.ma.leg.br/transparencia/servidor-remuneracao/busca.html"
    },
    "equipe": {
     "publica": null
@@ -246,8 +251,8 @@
    "subsidio": {
     "valor": null
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil.",
+   "barreiras": "O portal só abre de dentro do Brasil. Páginas JSF (cada consulta é um postback com ViewState). O robots.txt responde 403.",
+   "observacoes": "Levantado em 01/10/2026 do Brasil: a consulta de verbas por competência (mm/aaaa) lista 43 parlamentares (06/2025), em tabela paginada; o detalhe de cada um é uma ação JSF. A própria Alema diz que ainda não tem API de dados abertos. Robô a fazer.",
    "abriu_de_fora": false
   },
   "MG": {
