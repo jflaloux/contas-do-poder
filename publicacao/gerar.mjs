@@ -48,11 +48,11 @@ const fmt = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL",
 const reais = (v) => fmt.format(Math.round(v)).replace(/\s/g, " ");
 const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 const ultimoMes = D.meta.ultimo_mes;
-const anoAtual = String(Math.floor(ultimoMes / 100));
 // o último mês com dados: o da Câmara, da Prefeitura ou da Assembleia da pessoa (cada uma publica num ritmo) ou o geral
 const ultimoDe = (p) => ((!p ? null : p.k === "v" ? (CAM.meta.cidades || {})[p.cid] : p.k === "p" ? (PRE.meta.cidades || {})[p.cid]
   : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : null) || {}).ultimo_mes || ultimoMes;
 const quando = (k, p) => { const u = ultimoDe(p); return String(Math.floor(u / 100)) === k ? `Em ${k} (até ${MESES[(u % 100) - 1]})` : `Em ${k}`; };
+const dataBR = (d) => String(d || "").split("-").reverse().join("/"); // "2026-10-01" → "01/10/2026"
 const num = (v, casas = 0) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas, minimumFractionDigits: casas });
 const smTxt = (v) => (v >= 10 ? num(v, 0) : num(v, 1));
 const daRaiz = (u) => (u && !/^(https?:|data:|\/)/.test(u) ? `/${u}` : u);
@@ -220,7 +220,6 @@ if (COR) {
     const p = porId.get(ref);
     return p && END.p[ref] ? `<a href="/${esc(END.p[ref])}">${esc(p.n)}</a>` : null;
   };
-  const dataBR = (d) => d.split("-").reverse().join("/");
   const lista = (COR.c || []).map((c, i) => ({ ...c, i })).sort((a, b) => b.data.localeCompare(a.data) || a.i - b.i);
   const itens = lista.map((c) => {
     const links = (c.paginas || []).map(link).filter(Boolean);
@@ -241,7 +240,6 @@ if (COR) {
 const IDX = ler("indice_transparencia.json", null);
 if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   const M = IDX.meta || {}, BL = M.blocos || [];
-  const dataBR = (d) => String(d || "").split("-").reverse().join("/");
   const nulo = (v) => v === null || v === undefined;
   const n2 = (v) => (nulo(v) ? "a conferir" : num(v, 2));
   const com = IDX.estados.filter((e) => !nulo(e.indice) && !(e.a_conferir || []).length)

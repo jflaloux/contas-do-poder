@@ -1,6 +1,8 @@
-/* Contas do Poder — protótipo. Um projeto Contas do Brasil.
-   Site estático: lê dados/dados.json (gerado por `python3 coletar.py site`) e monta a página no navegador.
-   Endereços: #dep-123 ou #sen-456 escolhem o parlamentar; #dep-123~2024 escolhe também o período. */
+/* Contas do Poder. Um projeto Contas do Brasil.
+   Site estático: lê os arquivos de site/dados/ (feitos por `python3 coletar.py`) e monta a página no navegador.
+   Endereços: /nome-do-politico (site/dados/enderecos.json, ou o id), /governador/sp, /cidade/sao-paulo-sp, /indice e
+   /correcoes; o período vai em ?periodo=2025 (ou ?periodo=mandato) e a seção, em #. Os endereços antigos com #
+   (/#dep-220639~2025) levam para os novos. publicacao/gerar.mjs faz uma página pronta para cada endereço. */
 "use strict";
 (() => {
   // ================================================================== utilidades
@@ -57,7 +59,6 @@
     const p = nome.replace(/^(Dr|Dra|Delegad[oa]|Coronel|Capitão|Pastor[a]?|Sargento|Professor[a]?|Missionário|General|Cabo|Major|Tenente)\.?\s+/i, "").split(/\s+/);
     return ((p[0] || "")[0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
   }
-  function hashNum(t) { let x = 0; for (const c of t) x = (x * 31 + c.charCodeAt(0)) >>> 0; return x; }
 
   // ================================================================== estado
   const S = {
@@ -253,7 +254,9 @@
     if (pos.pos === pos.n) return p.k === "p" ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
     return acimaDaMediana(pos) ? `${verbo} mais que ${pos.pct}% dos ${g}` : `${verbo} menos que ${pos.pctMais}% dos ${g}`;
   };
-  // faixa dos colegas (em quartos) e a régua com o lugar da pessoa, do que menos custa ao que mais custa
+  // a frase com a posição e, embaixo, a régua dos quatro quartos com o lugar da pessoa, do que menos custa ao que mais
+  // custa. A faixa ("entre os 25% que mais custam") fica só na régua (e no nome dela, para o leitor de tela): na frase,
+  // repetiria o que o desenho já mostra
   function blocoPosicao(p, k, pos) {
     const igual = empatado(pos);
     // no empate, a marca fica no meio do grupo dos empatados
@@ -262,7 +265,7 @@
     const verbo = p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
     const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
     return h("div", { class: "destaque destaque--posicao" },
-      h("p", { style: "margin:0" }, igual ? `${fraseposicao(p, pos)} ${nomePeriodo(k, false)}.` : `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}): ${faixa}.`),
+      h("p", { style: "margin:0" }, igual ? `${fraseposicao(p, pos)} ${nomePeriodo(k, false)}.` : `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}).`),
       h("div", { class: "regua", role: "img", "aria-label": `Posição entre os ${plural(grupo(p))}: ${faixa}` },
         h("div", { class: "regua__trilho" }, [0, 1, 2, 3].map((i) => h("span", { class: `regua__quarto${i === quarto ? " regua__quarto--eu" : ""}` })),
           h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
@@ -401,7 +404,7 @@
       govs.forEach((e) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; S.origem = origemBusca; navegar(urlGov(e.uf)); } },
         avatar({ n: e.gov.n, f: e.gov.f }, "p"), h("span", null, e.gov.n, h("small", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")}`)))));
       cid.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao sugestao--cidade", role: "option", onclick: () => { fechar(); input.value = ""; irParaCidade(c, origemBusca); } },
-        iconeCidade(avatarCidade("p")), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
+        avatarCidade("p"), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
       pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
       if (input.value.trim().length >= 2 && !itens.length) {
@@ -765,8 +768,8 @@
     else { g.fillStyle = "#ffffff"; g.fillText(valor, M - 4, y + 124); }
     return y + 144;
   }
-  // a frase da posição e a régua dos quatro quartos, como na página: sempre no mesmo tom (índigo claro), sem verde nem
-  // vermelho. lugar: de 0 (o que menos custa) a 100 (o que mais custa)
+  // a frase da posição e a régua dos quatro quartos, como na página: sempre no mesmo tom (verde-água), sem cor de bom
+  // ou ruim. lugar: de 0 (o que menos custa) a 100 (o que mais custa)
   function reguaImagem(t, y, frase, lugar, verbo) {
     const { g, W, M, C } = t;
     const quarto = Math.min(3, Math.floor(lugar / 25)), larg = W - 2 * M;
@@ -1802,7 +1805,6 @@
     svg.append(s("path", { fill: "currentColor", d: "M12 2 2 7v2h20V7L12 2Zm-7 9v7h3v-7H5Zm5.5 0v7h3v-7h-3ZM16 11v7h3v-7h-3ZM2 20v2h20v-2H2Z" }));
     return h("span", { class: `avatar avatar--${tam} avatar--cidade`, "aria-hidden": "true" }, svg);
   }
-  const iconeCidade = (el) => el;
   const irParaCidade = (c, de) => { S.origem = de; navegar(urlCidade(c)); };
   // O que há de errado com os dados de uma cidade (null = nada)
   const anoRecente = () => Math.max(...CID.m.map((c) => c.ano || 0));
@@ -1951,7 +1953,7 @@
     // imagem só para Câmara com o gasto informado; o texto, para todas
     const spec = specCidade(c) || { textoZap: textoCidade(c), link: endereco() ? `${origem()}${urlCidade(c)}` : "", medir: { conteudo: "cidade", cidade: c.n, uf: c.uf } };
     return h("article", { class: "cartao conta", id: "cidade" },
-      h("div", { class: "conta__topo" }, iconeCidade(avatarCidade("g")),
+      h("div", { class: "conta__topo" }, avatarCidade("g"),
         h("div", null,
           h("p", { class: "rotulo" }, "Câmara Municipal"),
           h("h1", { class: "conta__nome" }, `${c.n} (${c.uf})`),
@@ -2039,7 +2041,7 @@
     input.addEventListener("input", () => {
       sug.textContent = "";
       encontrarCidades(input.value, 8).forEach((c) => sug.append(h("button", { type: "button", class: "sugestao", onclick: () => irParaCidade(c, "busca_cidade") },
-        iconeCidade(avatarCidade("p")), h("span", null, `${c.n} (${c.uf})`, h("small", null, `${num(c.pop, 0)} habitantes · ${c.nv} vereadores`)))));
+        avatarCidade("p"), h("span", null, `${c.n} (${c.uf})`, h("small", null, `${num(c.pop, 0)} habitantes · ${c.nv} vereadores`)))));
       sug.hidden = !sug.children.length;
     });
     const desenhar = () => {
@@ -2112,7 +2114,6 @@
   const GOV = { e: [], porUF: {}, meta: null };
   const ART_UF = { AC: "o", AP: "o", AM: "o", BA: "a", CE: "o", DF: "o", ES: "o", MA: "o", MT: "o", MS: "o", PA: "o", PB: "a", PR: "o", PI: "o", RJ: "o", RN: "o", RS: "o", TO: "o" };
   const deUF = (uf) => (ART_UF[uf] ? `d${ART_UF[uf]} ${ESTADOS[uf]}` : `de ${ESTADOS[uf]}`);
-  const emUF = (uf) => (ART_UF[uf] ? `n${ART_UF[uf]} ${ESTADOS[uf]}` : `em ${ESTADOS[uf]}`);
   const CONF = {
     lei: ["Lei", "O valor está no texto da lei (ou do decreto legislativo) que fixa o subsídio."],
     folha: ["Conferido na folha", "O valor foi conferido na folha de pagamento do Estado, com o nome de quem recebe."],
@@ -2130,6 +2131,7 @@
     captcha: "O Estado publica a folha com o nome de cada servidor, mas a consulta pede um CAPTCHA (o teste para provar que não é um robô), e nós não contornamos esse tipo de bloqueio. Você pode consultar pelo nome no portal.",
     navegador: "O Estado publica a folha com o nome de cada servidor, mas o portal só funciona clicando na página, sem arquivo para baixar nem acesso para programas. Ainda não automatizamos; você pode consultar pelo nome no portal.",
   };
+  const dataBR = (d) => String(d || "").split("-").reverse().join("/"); // "2026-10-01" → "01/10/2026"
   const fmtData = (s) => (s ? `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}` : "");
   const mesTxt = (s) => (s ? fmtMes(Number(s.slice(0, 4)) * 100 + Number(s.slice(5, 7))) : "");
   const govFem = (e) => !!e.gov.fem;
@@ -2260,7 +2262,7 @@
       h("p", { class: "discreto pequeno", style: "margin:0" }, `Pela folha de pagamento ${deUF(e.uf)}, com o nome de cada servidor: o que ${govFem(e) ? "a governadora" : "o governador"} e o vice receberam de fato em cada mês, com 13º, férias e acertos.`),
       corpo];
   }
-  // página de um estado: #gov-SP
+  // página de um estado: /governador/sp
   function secGovernador(e) {
     const p = posGov(e), med = mediana(GOV.e.map((x) => x.v[0]));
     const sm = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
@@ -2908,7 +2910,6 @@
   }
   function secCorrecoes(C) {
     const itens = (C.c || []).map((c, i) => ({ ...c, i })).sort((a, b) => b.data.localeCompare(a.data) || a.i - b.i);
-    const dataBR = (d) => d.split("-").reverse().join("/");
     return h("section", { class: "bloco", id: "correcoes", "aria-labelledby": "t-correcoes" },
       h("p", { class: "rotulo" }, "Transparência do site"),
       h("h1", { id: "t-correcoes", class: "titulo-pagina" }, "Correções"),
@@ -2943,7 +2944,6 @@
   const semNotaIdx = (v) => v === null || v === undefined;
   const notaIdx = (v) => (semNotaIdx(v) ? "a conferir" : num(v, 2));
   const notaCrit = (v) => (semNotaIdx(v) ? "a conferir" : v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }));
-  const dataBR = (d) => String(d || "").split("-").reverse().join("/");
   function secIndice(I) {
     const M = I.meta || {}, BL = M.blocos || [];
     const curto = (b) => String(b.titulo || b.id).split(" ")[0]; // "Governo do Estado" → "Governo"

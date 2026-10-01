@@ -181,7 +181,7 @@ p { margin: 0; }
 
 /* escolha */
 .escolha { display: grid; gap: 12px; }
-.escolha__linha { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 10px; max-width: 760px; }
+.escolha__linha { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 10px; max-width: 760px; align-items: stretch; }
 @media (max-width: 560px) { .escolha__linha { grid-template-columns: minmax(0, 1fr); } }
 input[type="search"], input[type="text"], select {
   font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 10px;
@@ -202,7 +202,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent); box-shad
 .secoes { display: flex; flex-wrap: wrap; gap: 8px; }
 .secoes button {
   font: inherit; font-size: .9rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line);
-  border-radius: 999px; padding: 6px 13px; cursor: pointer;
+  border-radius: 999px; padding: 6px 13px; cursor: pointer; min-height: 36px;
 }
 .secoes button:hover { border-color: var(--accent); color: var(--accent); }
 .lista-estado { display: grid; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--raio); padding: 14px; }
@@ -228,8 +228,7 @@ input:focus, select:focus { outline: none; border-color: var(--accent); box-shad
 .ficha dt { color: var(--ink-2); }
 .ficha dd { margin: 0; font-weight: 600; }
 .fonte { text-decoration: none; color: var(--ink); gap: 6px; font-size: .92rem; }
-.fonte span:not(.rotulo):not(.fonte__link) { color: var(--ink-2); }
-.fonte__link { color: var(--accent); font-weight: 600; font-size: .88rem; }
+.fonte span:not(.rotulo) { color: var(--ink-2); }
 a.fonte:hover { border-color: var(--accent); }
 
 /* contracheque (cartão principal): o topo (nome, custo por mês, de onde vem, posição) na faixa escura; o item por item
@@ -501,7 +500,7 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .credito a { color: inherit; }
 
 /* quem tem dois cargos */
-.cargos { padding: 12px 22px 14px; border-bottom: 1px solid var(--line-2); display: grid; gap: 8px; background: var(--bg); }
+.cargos { padding: 12px 22px 14px; border-bottom: 1px solid var(--line-2); display: grid; gap: 8px; background: var(--bg); grid-template-columns: minmax(0, 1fr); }
 .cargos .rotulo { margin: 0; }
 .cargos__lista { display: flex; flex-wrap: wrap; gap: 8px; }
 .cargo-opcao { display: grid; gap: 2px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper);
@@ -516,7 +515,7 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 
 /* câmaras municipais */
 .avatar--cidade { background: var(--accent-soft); color: var(--accent); display: inline-grid; place-items: center; }
-.cidade__corpo { padding: 18px 22px 22px; display: grid; gap: 14px; }
+.cidade__corpo { padding: 18px 22px 22px; display: grid; gap: 14px; grid-template-columns: minmax(0, 1fr); }
 .cidade__corpo h3, .cidade__corpo h2.h3 { margin: 6px 0 0; }
 .pessoa-chip--fixo { cursor: default; }
 .pessoa-chip--fixo:hover { border-color: var(--line); }
@@ -540,7 +539,7 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 
 /* dois cargos: valor de cada visão e a conta lado a lado */
 .cargo-opcao__valor { font-family: var(--display); font-weight: 600; font-size: 1.05rem; color: var(--ink); }
-.conta-cargos { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; }
+.conta-cargos { background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; min-width: 0; }
 .conta-cargos summary { cursor: pointer; font-weight: 600; font-size: .92rem; color: var(--accent); }
 .conta-cargos[open] summary { margin-bottom: 8px; }
 .conta-cargos p { margin: 8px 0 0; color: var(--ink-2); max-width: 760px; }
@@ -549,8 +548,6 @@ input::-webkit-contacts-auto-fill-button, input::-webkit-credentials-auto-fill-b
 .conta-cargos__total td { font-weight: 700; border-top: 1.5px solid var(--line); }
 a.pessoa-chip { text-decoration: none; }
 a.pessoa-chip:hover { border-color: var(--accent); }
-.cargos { grid-template-columns: minmax(0, 1fr); }
-.conta-cargos { min-width: 0; }
 @media (max-width: 560px) {
   .cargo-opcao { flex: 1 1 100%; }
   .conta-cargos__tabela { font-size: .85rem; }
@@ -576,7 +573,6 @@ a.pessoa-chip:hover { border-color: var(--accent); }
 .coluna.ativa .seg-extra { opacity: .6; }
 .rank__mes { color: var(--accent) !important; font-weight: 600 !important; white-space: nowrap; }
 /* tabelas largas dentro dos cartões rolam sozinhas, sem alargar a página */
-.cidade__corpo { grid-template-columns: minmax(0, 1fr); }
 .cidade__corpo > *, .cidade__corpo > div > * { min-width: 0; }
 /* selects com a mesma altura e o mesmo desenho dos campos de busca (o padrão do sistema fica menor no Mac) */
 select {
@@ -585,7 +581,6 @@ select {
   background-repeat: no-repeat; background-position: right 14px center;
 }
 input[type="search"] { line-height: 1.5; }
-.escolha__linha { align-items: stretch; }
 /* ranking: o "Quem" numa linha só, em cima dos outros filtros */
 .filtros .campo--quem { grid-column: 1 / -1; }
 /* posição entre os colegas: a frase e a régua dos quatro quartos, no mesmo tom de qualquer lado da mediana */
@@ -643,7 +638,6 @@ input[type="search"] { line-height: 1.5; }
   .secoes::-webkit-scrollbar { display: none; }
   .secoes button { flex: none; }
 }
-.secoes button { min-height: 36px; }
 
 /* topo do contracheque: período, custo por mês, de onde vem e a posição */
 .conta__resumo { display: grid; gap: 18px 40px; padding: 8px 22px 26px; grid-template-columns: minmax(0, 1fr); }
@@ -662,9 +656,8 @@ input[type="search"] { line-height: 1.5; }
 .resumo-parte--ganha strong { color: var(--banda-ganha); }
 .resumo-parte--custa strong { color: var(--banda-custa); }
 .resumo-sm { color: var(--banda-ink-2); font-size: 1rem; margin-top: 6px; }
-.conta__resumo .item__detalhe { color: var(--banda-ink-2); }
+.conta__resumo .item__detalhe { color: var(--banda-ink-2); margin-top: 2px; }
 .conta__resumo .selo-comp { color: var(--banda-ink); }
-.conta__resumo .item__detalhe { margin-top: 2px; }
 .conta__resumo-lado { display: grid; gap: 10px; align-content: start; }
 @media (min-width: 761px) {
   .conta__resumo { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; }
@@ -797,7 +790,6 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice__trilho span { display: block; height: 100%; border-radius: 3px; }
 .indice__trilho--completude span { background: var(--ganha); }
 .indice__trilho--facilidade span { background: var(--custa); }
-.indice__num { text-align: right; font-weight: 600; color: var(--ink); }
 .indice-corpo { padding: 2px 0 18px; display: grid; gap: 14px; }
 .indice-bloco { display: grid; gap: 10px; min-width: 0; }
 .indice-bloco + .indice-bloco { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line-2); }
