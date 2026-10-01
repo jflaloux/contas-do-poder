@@ -8,9 +8,9 @@ O levantamento do que cada Assembleia publica está em dados/referencia/assemble
 """
 from ..util import TempoEsgotado, log
 from ..vereadores import comum as vc
-from . import ce, comum, go, ms, pe, sc, sp
+from . import ce, comum, go, ms, pb, pe, sc, sp
 
-ESTADOS = [sp, pe, ce, go, sc, ms]
+ESTADOS = [sp, pe, ce, pb, go, sc, ms]
 
 
 def coletar():

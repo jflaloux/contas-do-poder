@@ -143,8 +143,8 @@ def montar(tipos):
     ultimo_dado = int((folha.ano * 100 + folha.mes).max())
     ver, mandatos, nomes_folha = [], [], {}
     for mat, g in folha.groupby("matricula"):
-        nome_civil = vc.titulo(g.nome.iloc[-1])
         t = comum.achar(g.nome.iloc[-1], {normalizar_nome(v["nome"]): v for v in tse.values()}) or comum.achar(g.nome.iloc[-1], tse) or {}
+        nome_civil = vc.titulo(t.get("nome") or g.nome.iloc[-1])  # o do TSE tem os acentos; o da folha, não
         nomes_folha[normalizar_nome(g.nome.iloc[-1])] = {"nome": g.nome.iloc[-1], "urna": t.get("urna", ""), "eleito": "eleito", "mat": mat}
         ver.append({"codigo": int(mat), "nome": vc.titulo(t["urna"]) if t.get("urna") else nome_civil, "nome_civil": nome_civil,
                     "partido": partidos.get(normalizar_nome(g.nome.iloc[-1]), ""), "genero": t.get("genero") or ("F" if feminino(nome_civil) else "M"),

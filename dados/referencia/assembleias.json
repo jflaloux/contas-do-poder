@@ -357,7 +357,7 @@
     "url": "https://sapl3.al.pb.leg.br/media/sapl/public/normajuridica/2022/15969/15969_texto_integral.pdf"
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "Bom candidato: verba, folha e equipe em arquivos. Lista no SAPL.",
+   "observacoes": "Bom candidato: verba, folha e equipe em arquivos. Lista no SAPL. Robô feito (coleta/assembleias/pb.py): folha dos eletivos (subsídio e VIAP total).",
    "abriu_de_fora": true
   },
   "PE": {
