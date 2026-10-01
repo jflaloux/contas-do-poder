@@ -92,6 +92,10 @@ Cada número tem link para a fonte oficial.
 - [ ] Governadores: AL (só leis de revisão geral em percentual; o valor de ago/2026 sem lei achada) e RN (lei não localizada) — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
+- [x] Índice de acesso aos salários dos governadores: 26 estados com nota, cada uma com a prova (`dados/indice/governadores.json`,
+  mantido à mão → `site/dados/indice.json`). MT a conferir: a consulta de servidores não abriu em 01/10/2026 — Claude
+- [ ] Página `/indice` no site, publicada já, sem esperar a eleição (decisão de 01/10/2026) — chat do site
+- [ ] Índice: conferir o MT quando o portal voltar — Claude
 
 ## Fase 3 — Testes e confiabilidade
 
