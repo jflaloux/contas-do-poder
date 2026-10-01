@@ -614,6 +614,17 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .janela-img__corpo { padding: 20px; display: grid; gap: 14px; }
 .janela-img__grade { display: grid; gap: 18px; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); align-items: start; }
 .janela-img__lado { display: grid; gap: 12px; align-content: start; }
+.janela-img__grupo { display: grid; gap: 10px; align-content: start; }
+.janela-img__grupo h3 { margin: 0; }
+/* computador: janela grande, com a imagem quase da altura da tela */
+@media (min-width: 621px) {
+  .janela-img { width: min(1000px, calc(100vw - 32px)); }
+  .janela-img__corpo { padding: 22px 26px 26px; gap: 16px; }
+  .janela-img__grade { grid-template-columns: minmax(0, min(460px, calc((100vh - 150px) * .8))) minmax(0, 1fr); gap: 28px; }
+  .janela-img .compartilhar-img__quadro { max-width: none; width: 100%; }
+  .janela-img__lado { gap: 22px; padding-top: 4px; }
+  .janela-img__lado .janela-img__grupo + .janela-img__grupo { border-top: 1px solid var(--line-2); padding-top: 20px; }
+}
 @media (max-width: 620px) {
   .janela-img { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
   .janela-img__corpo { padding: 14px 14px 18px; gap: 10px; }

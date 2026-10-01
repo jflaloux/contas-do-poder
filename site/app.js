@@ -984,10 +984,11 @@
     ? (podeEnviarArquivo() ? "Toque em “Enviar imagem” e escolha o WhatsApp (ou outro aplicativo). Ou toque e segure a imagem para salvar." : "Toque e segure a imagem para salvar ou compartilhar.")
     : "Copie e cole na conversa do WhatsApp Web, do Telegram ou num e-mail. Ou baixe para anexar.");
   // o resumo em texto, para quem prefere: WhatsApp, copiar o texto e copiar o link
-  function opcoesTexto(spec, onde, link) {
+  // aberto (computador, onde há espaço): com o título "Texto"; fechado (celular): dobrado em "Prefere mandar em texto?"
+  function opcoesTexto(spec, onde, link, aberto) {
     const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
-    return h("details", { class: "texto-zap" },
-      h("summary", null, "Prefere mandar em texto?"),
+    return h(aberto ? "div" : "details", { class: `texto-zap${aberto ? " janela-img__grupo" : ""}` },
+      aberto ? h("h3", null, "Texto") : h("summary", null, "Prefere mandar em texto?"),
       h("p", { class: "pequeno discreto" }, "O mesmo resumo em texto, com o link para ver mais detalhes."),
       h("div", { class: "acoes" },
         h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(spec.textoZap)}`, target: "_blank", rel: "noopener", onclick: () => medirComp(spec, "whatsapp", onde) }, "Mandar no WhatsApp"),
@@ -1009,11 +1010,13 @@
     const quadro = h("div", { class: "compartilhar-img__quadro carregando" }, img);
     const botoes = h("div", { class: "acoes" });
     add(janela, h("div", { class: "janela-img__corpo" },
-      h("div", { class: "guia__topo" }, h("h2", { id: "janela-img-titulo", class: "h3" }, "Imagem para compartilhar"),
+      h("div", { class: "guia__topo" }, h("h2", { id: "janela-img-titulo", class: "h3" }, "Compartilhar"),
         h("button", { type: "button", class: "fechar", "aria-label": "Fechar", onclick: () => janela.close() }, "×")),
+      // no computador, a imagem grande à esquerda e, à direita, a imagem e o texto; no celular, um embaixo do outro
       h("div", { class: "janela-img__grade" }, quadro,
-        h("div", { class: "janela-img__lado" }, h("p", { class: "pequeno discreto" }, dicaImagem()), botoes, retorno,
-          spec.textoZap ? opcoesTexto(spec, onde, spec.link) : null))));
+        h("div", { class: "janela-img__lado" },
+          h("div", { class: "janela-img__grupo" }, noCelular() ? null : h("h3", null, "Imagem"), h("p", { class: "pequeno discreto" }, dicaImagem()), botoes, retorno),
+          spec.textoZap ? opcoesTexto(spec, onde, spec.link, !noCelular()) : null))));
     if (janela.showModal) janela.showModal(); else janela.setAttribute("open", "");
     obterImagem(spec).then((a) => {
       if (!a.blob) { retorno.textContent = "Não deu para gerar a imagem neste navegador."; return; }
@@ -1592,7 +1595,7 @@
             h("h3", null, "Imagem"),
             h("p", { class: "pequeno discreto" }, dicaImagem()),
             botoes, retorno),
-          h("div", { class: "cartao compartilhar-img__opcao" }, opcoesTexto(spec, onde, spec.link)),
+          h("div", { class: "cartao compartilhar-img__opcao" }, opcoesTexto(spec, onde, spec.link, true)),
           h("p", { class: "nota" }, `A imagem e o texto mostram o período escolhido no contracheque (${nomePeriodo(k, true)}). Dados abertos oficiais ${fonteDados(p)}.`))));
   }
 
