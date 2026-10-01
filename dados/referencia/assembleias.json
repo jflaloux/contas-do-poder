@@ -527,7 +527,7 @@
     "url": "https://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11274/lei_5530.pdf"
    },
    "barreiras": "A remuneração pede nome e e-mail de quem consulta (não usar).",
-   "observacoes": "Bom candidato: verba nota a nota e equipe em JSON. Lista no SAPL.",
+   "observacoes": "Bom candidato: verba nota a nota e equipe em JSON. Lista no SAPL. Robô feito (coleta/assembleias/ro.py): verba nota a nota.",
    "abriu_de_fora": true
   },
   "RR": {
