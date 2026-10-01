@@ -398,25 +398,32 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 
 `python3 coletar.py indice` (também roda no `tudo`) gera `site/dados/indice_transparencia.json`: para cada Estado, uma
 nota de 0 a 1 para a pergunta "dá para saber, pela fonte oficial de cada Estado, quanto ganham e quanto custam os seus
-políticos?", no molde do [Índice de Transparência do DadosJusBr](https://dadosjusbr.org/indice). Há um bloco para cada
-fonte do Estado, com as mesmas duas dimensões:
+políticos?", no molde do [Índice de Transparência do DadosJusBr](https://dadosjusbr.org/indice). Há quatro blocos,
+um para cada fonte, com as mesmas duas dimensões:
 
 - **Governo do Estado** (a folha do governador e do vice): nome, cargo, quem está no cargo hoje, partes do pagamento
   (subsídio, 13º, férias, auxílios, abate-teto), histórico de 12 meses e a lei do salário.
 - **Assembleia Legislativa** (cada deputado estadual): salário (folha ou só a lei), verba do gabinete por deputado, verba
   nota a nota (fornecedor e CNPJ), equipe do gabinete, histórico de 12 meses e a lei do subsídio.
-- **Completude** (o que a fonte mostra) e **facilidade** (como dá para obter: formato aberto, acesso — arquivo ou API
-  documentada, API da página, só páginas, só painel, só clicando —, sem barreiras como CAPTCHA, login ou CPF, e aberto a
-  robôs e a quem está fora do Brasil).
+- **Prefeitura da capital** (prefeito, vice e secretários): os critérios do governo, com "secretários" no lugar da lei.
+- **Câmara Municipal da capital** (cada vereador): os critérios da Assembleia. No DF, que não tem prefeitura nem
+  vereadores, esses dois blocos não se aplicam.
+- **Completude** (o que a fonte mostra) e **facilidade** (como dá para obter: formato aberto; acesso — arquivo ou API
+  documentada 1, API da página 0,75, só páginas ou botão de exportar que depende da sessão 0,5, só formulários 0,25,
+  só clicando 0 —; sem barreiras como CAPTCHA, login ou CPF; aberto a robôs e a quem está fora do Brasil).
 - Cada dimensão é a média dos seus critérios; o índice do bloco é a média harmônica das duas; o índice do Estado é a
-  média dos blocos. Estado com algum bloco a conferir (critério `null`) fica sem índice geral; os blocos com nota aparecem.
+  média dos blocos que se aplicam, com peso igual. Estado com algum bloco a conferir (critério `null`) fica sem índice
+  geral e ganha um "índice parcial" (a média dos blocos que já têm nota).
 
-As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` e `dados/indice/assembleias.json` (mantidas
-à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA, e os
-sites que só abrem do Brasil, pelo Chrome no Brasil). A nota da lei do governador vem de
-`dados/governadores/governadores.json`. Em 01/10/2026, os 27 estados têm índice geral. A folha do Mato Grosso pede
-CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. O índice mede o acesso aos dados dessas duas fontes, não a transparência do Estado como um
-todo, e é uma nota da fonte, não de quem está no cargo.
+As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json`, `assembleias.json`, `prefeituras.json` e
+`camaras.json` (mantidas à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de
+um servidor nos EUA, e o resto, do Brasil, pelo Mac e pelo Chrome). As capitais sem robô foram levantadas em
+01/10/2026. A nota da lei do governador vem de `dados/governadores/governadores.json`. A folha do Mato Grosso pede
+CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. Em 01/10/2026: 21
+estados com índice geral e 6 com um bloco a conferir, quase todos atrás de CAPTCHA ou de bloqueio do site (Câmaras de
+Florianópolis, Campo Grande, Belo Horizonte e Cuiabá; prefeituras de Belo Horizonte, São Luís, Maceió e Cuiabá). O
+índice mede o acesso aos dados dessas quatro fontes, não a transparência do Estado como um todo, e é uma nota da
+fonte, não de quem está no cargo. A passagem da página para os 4 blocos está em `TAREFA-SITE-indice-4-blocos.txt`.
 
 A página `/indice` lê `site/dados/indice_transparencia.json` (`secIndice` no `site/app.js`; a versão em HTML para o
 Google e as prévias de link sai do `publicacao/gerar.mjs`). Ela mostra os estados do maior índice geral para o menor e,
