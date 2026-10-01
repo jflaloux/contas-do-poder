@@ -913,10 +913,10 @@
   const arquivoNome = (nome) => `contas-do-poder-${semAcento(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.png`;
 
   // ------------------------------------------------------------------ compartilhar a imagem
-  // No celular, "Compartilhar imagem" abre o menu do aparelho (WhatsApp, Telegram, Instagram...) já com a imagem. No
-  // computador (ou num navegador que não envia arquivos), abre uma janela com a imagem para copiar e colar no WhatsApp
-  // Web, baixar ou enviar. A imagem é feita logo depois que a página aparece, quando o navegador está livre: o toque
-  // não espera (o celular só abre o menu de compartilhar dentro do próprio toque).
+  // "Compartilhar" (o botão fixo no canto da tela, no celular; o cartão ao lado dos números, no computador) abre uma
+  // janela com a imagem: a pessoa vê o que vai mandar e escolhe enviar (o menu do aparelho: WhatsApp, Telegram...),
+  // copiar (para colar no WhatsApp Web) ou baixar. A imagem é feita logo depois que a página aparece, quando o navegador
+  // está livre: o toque em "Enviar imagem" não espera (o celular só abre o menu de compartilhar dentro do próprio toque).
   // spec: { chave, gerar, arquivo, alt, legenda, textoZap, medir: {conteudo, ...} }
   const imagens = new Map(), prontas = new Map();
   const ocioso = (fn) => ("requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 400));
@@ -953,10 +953,9 @@
     if (spec.legenda && !ehIOS()) dados.text = spec.legenda;
     navigator.share(dados).then(() => medirComp(spec, "enviar_imagem", onde), (e) => { if (e.name !== "AbortError" && falhou) falhou(e); });
   }
+  // "Compartilhar" sempre abre a imagem primeiro (a pessoa vê o que vai mandar); lá ficam enviar, copiar e baixar
   function compartilharImagem(spec, onde) {
     evento("abrir_compartilhar", { onde, ...spec.medir });
-    const a = prontas.get(spec.chave);
-    if (a && a.blob && noCelular() && podeEnviarArquivo()) { enviarArquivo(spec, a, onde, () => janelaImagem(spec, onde)); return; }
     janelaImagem(spec, onde);
   }
   // os botões da imagem pronta: no celular, enviar primeiro; no computador, copiar primeiro
@@ -982,7 +981,7 @@
     return ordem.filter(([, f]) => f).map(([rotulo, f], i) => h("button", { type: "button", class: `botao${i ? " botao--leve" : ""}`, onclick: f }, rotulo));
   }
   const dicaImagem = () => (noCelular()
-    ? (podeEnviarArquivo() ? "Toque em “Enviar imagem” e escolha o WhatsApp (ou outro aplicativo)." : "Toque e segure a imagem para salvar ou compartilhar.")
+    ? (podeEnviarArquivo() ? "Toque em “Enviar imagem” e escolha o WhatsApp (ou outro aplicativo). Ou toque e segure a imagem para salvar." : "Toque e segure a imagem para salvar ou compartilhar.")
     : "Copie e cole na conversa do WhatsApp Web, do Telegram ou num e-mail. Ou baixe para anexar.");
   // o resumo em texto, para quem prefere: WhatsApp, copiar o texto e copiar o link
   function opcoesTexto(spec, onde, link) {
@@ -1022,40 +1021,47 @@
       add(botoes, acoesImagem(spec, a, retorno, onde));
     }, () => { retorno.textContent = "Não deu para gerar a imagem neste navegador."; });
   }
-  // a faixa "Compartilhar imagem", com a miniatura da imagem pronta: um botão só, grande, perto do valor principal
-  function faixaCompartilhar(spec, onde) {
+  // O convite para compartilhar vem depois dos números principais (a pessoa lê primeiro) e antes dos detalhes (o mês a
+  // mês): a prévia da imagem, uma frase e o botão, num bloco discreto.
+  function blocoCompartilhar(spec, onde, convite) {
     if (!spec) return null;
-    const mini = h("span", { class: "faixa-img__mini carregando", "aria-hidden": "true" });
-    obterImagem(spec).then((a) => { if (a.url) { mini.classList.remove("carregando"); mini.append(h("img", { src: a.url, alt: "" })); } }, () => {});
-    return h("button", { type: "button", class: "faixa-img", onclick: () => compartilharImagem(spec, onde) },
-      mini,
-      h("span", { class: "faixa-img__texto" }, h("strong", null, "Compartilhar imagem"), h("small", null, "Pronta para o WhatsApp, com a fonte dos dados")),
-      h("span", { class: "faixa-img__seta", "aria-hidden": "true" }, "→"));
+    const abrir = () => compartilharImagem(spec, onde);
+    const previa = h("span", { class: "compartilhar-bloco__previa carregando", "aria-hidden": "true", onclick: abrir });
+    obterImagem(spec).then((a) => { if (a.url) { previa.classList.remove("carregando"); previa.append(h("img", { src: a.url, alt: "" })); } }, () => {});
+    return h("div", { class: "compartilhar-bloco" },
+      previa,
+      h("div", { class: "compartilhar-bloco__texto" }, h("strong", null, convite),
+        h("span", null, "Uma imagem pronta para o WhatsApp, com o endereço desta página e a fonte dos dados.")),
+      h("button", { type: "button", class: "botao", onclick: abrir }, "Compartilhar imagem"));
   }
-  // no celular, um botão "Compartilhar" flutuante, depois que a faixa do topo sai da tela e enquanto nenhuma outra opção
-  // de compartilhar está à vista
+  // No celular, o botão "Compartilhar" fixo no canto de baixo da tela aparece depois que a pessoa passa pelos números
+  // principais (marco) e some enquanto o convite ou a seção da imagem estão na tela. No computador ele não aparece
+  // (estilo.css).
   let flutuante = null;
-  function botaoFlutuante(spec) {
+  function botaoFlutuante(spec, marco) {
     if (!flutuante) {
-      flutuante = h("button", { type: "button", class: "compartilhar-flutuante", hidden: true },
-        h("span", { "aria-hidden": "true" }, "↗"), "Compartilhar");
+      const icone = s("svg", { viewBox: "0 0 24 24", width: "22", height: "22", "aria-hidden": "true" });
+      icone.append(s("path", { d: "M12 15V3m-4.5 4.5L12 3l4.5 4.5M6 11H5v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9h-1", fill: "none", stroke: "currentColor", "stroke-width": "2", "stroke-linecap": "round", "stroke-linejoin": "round" }));
+      flutuante = h("button", { type: "button", class: "compartilhar-flutuante", hidden: true, "aria-label": "Compartilhar a imagem desta página" }, icone, h("span", null, "Compartilhar"));
       document.body.append(flutuante);
     }
     flutuante.hidden = true;
-    if (!spec || !("IntersectionObserver" in window)) return;
+    document.body.classList.toggle("com-flutuante", !!spec);
+    if (!spec) return;
     flutuante.onclick = () => compartilharImagem(spec, "flutuante");
-    const alvos = [...document.querySelectorAll("#app .faixa-img, #app #resumo, #app .compartilhar")];
-    if (!alvos.length) return;
+    const m = marco && document.querySelector(marco);
+    if (!m || !("IntersectionObserver" in window)) { flutuante.hidden = false; return; }
+    const alvos = [...document.querySelectorAll("#app .compartilhar-bloco, #app #resumo")];
     const vistos = new Set();
     let passou = false;
     const obs = new IntersectionObserver((es) => {
       for (const e of es) {
-        if (e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target);
-        if (e.target === alvos[0]) passou = !e.isIntersecting && e.boundingClientRect.top < 0;
+        if (e.target === m) passou = !e.isIntersecting && e.boundingClientRect.top < 0;
+        else if (e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target);
       }
-      flutuante.hidden = !(passou && !vistos.size);
+      flutuante.hidden = !passou || vistos.size > 0;
     });
-    alvos.forEach((a) => obs.observe(a));
+    [m, ...alvos].forEach((a) => obs.observe(a));
     observadores.push(obs);
   }
   // o que cada página compartilha
@@ -1088,14 +1094,6 @@
       const campo = h("textarea", { readonly: true, rows: 4, "aria-label": "Texto para copiar" }, conteudo);
       retorno.append("Selecione e copie:", campo); campo.select();
     }
-  }
-  // no fim do contracheque: o mesmo botão de compartilhar a imagem
-  function botoesCompartilhar(p, k) {
-    const spec = specPessoa(p, k);
-    return spec ? h("div", { class: "compartilhar" },
-      h("div", { class: "acoes" },
-        h("button", { type: "button", class: "botao", onclick: () => compartilharImagem(spec, "fim_contracheque") },
-          h("span", { "aria-hidden": "true" }, "↗"), "Compartilhar imagem"))) : null;
   }
 
   // ================================================================== seções com parlamentar escolhido
@@ -1220,7 +1218,7 @@
     return anos.map((a) => [a, (p.vb || {})[a] ? p.vb[a][1] : 0]).filter(([, v]) => v > 0);
   }
   // o que importa na primeira tela do celular: o período, o custo por mês, de onde ele vem e a posição entre os colegas
-  function resumoTopo(p, k, r, C, pos, trocar, spec) {
+  function resumoTopo(p, k, r, C, pos, trocar) {
     const principal = h("div", { class: "conta__resumo-principal" },
       pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período"));
     if (!r) return h("div", { class: "conta__resumo" }, add(principal, h("p", { class: "discreto" }, "Sem pagamentos registrados neste período.")));
@@ -1234,7 +1232,8 @@
           h("li", null, h("span", { class: "chave chave--custa" }), `${reais(r.cm)} em ${gastosNome(p).toLowerCase()}`)),
       h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
       seloComp(r.tm, C.tm, `vs. mediana dos ${plural(grupo(p))}`));
-    return h("div", { class: "conta__resumo" }, principal, pos ? blocoPosicao(p, k, pos) : null, faixaCompartilhar(spec, "topo"));
+    // à direita (no computador): a posição entre os colegas
+    return h("div", { class: "conta__resumo" }, principal, pos ? h("div", { class: "conta__resumo-lado" }, blocoPosicao(p, k, pos)) : null);
   }
   function secContracheque(p, k) {
     const r = resumo(p, k), C = p.ced ? { cat: {}, tm: null } : colegas(grupo(p), k), pos = posicao(p, k);
@@ -1248,7 +1247,7 @@
         h("h1", { class: "conta__nome" }, p.n),
         h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
       h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Página oficial\u00a0↗")),
-      resumoTopo(p, k, r, C, pos, trocar, specPessoa(p, k)));
+      resumoTopo(p, k, r, C, pos, trocar));
     const lado = h("div", { class: "conta__lado" });
     if (r) {
       // deputado/senador que também foi ministro: conta só os meses exercendo o mandato
@@ -1357,8 +1356,7 @@
           h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
             estatistica("Pessoas", String(p.eq.n), `em ${fmtMes(mesEquipe(camaraDe(p.cid)))}`),
             estatistica("Custo da equipe", "não publicado", p.cid === SP ? "a Câmara só mostra os salários com CPF" : "a Câmara não publica")),
-          h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver os cargos da equipe")) : null,
-        botoesCompartilhar(p, k));
+          h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver os cargos da equipe")) : null);
     }
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
     return card;
@@ -1784,8 +1782,8 @@
         prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
         prob ? cobrarCidade(c, prob, med) : null,
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
-        spec.gerar ? faixaCompartilhar(spec, "topo") : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
+        spec.gerar ? blocoCompartilhar(spec, "depois_numeros", "Compartilhe estes números") : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
@@ -2100,7 +2098,6 @@
           estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
           estatisticaPop(e.v[0] / sm),
           e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null),
-        faixaCompartilhar(spec, "topo"),
         e.recebe ? h("p", { class: "caixa-nota" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
         h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}.`
@@ -2109,6 +2106,7 @@
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
           h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte\u00a0↗"))),
+        blocoCompartilhar(spec, "depois_numeros", "Compartilhe estes números"),
         blocoMensalGov(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },
@@ -2742,7 +2740,7 @@
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
       app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e)));
       navSecoes(["governador", "governadores", "entenda", "fontes"]);
-      botaoFlutuante(specGov(e));
+      botaoFlutuante(specGov(e), "#governador .estatisticas");
       rolarPendente();
       return;
     }
@@ -2759,7 +2757,7 @@
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
         espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
-        botaoFlutuante(specCidade(c));
+        botaoFlutuante(specCidade(c), "#cidade .estatisticas");
         rolarPendente();
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
       return;
@@ -2768,9 +2766,9 @@
       const k = S.periodo || periodoPadrao(p);
       document.title = `${p.n} · Contas do Poder`;
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
-      app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))].filter(Boolean));
+      app.append(...[secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
-      botaoFlutuante(specPessoa(p, k));
+      botaoFlutuante(specPessoa(p, k), "#contracheque .conta__resumo");
     } else {
       document.title = "Contas do Poder";
       if (S.naoAchada) app.append(h("p", { class: "aviso" }, "Não achamos esta página. Procure pelo nome acima ou veja os destaques abaixo."));

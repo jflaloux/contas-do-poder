@@ -542,10 +542,10 @@ input[type="search"] { line-height: 1.5; }
 .resumo-sm { color: var(--ink-2); font-size: .9rem; }
 @media (min-width: 761px) { .resumo-partes { display: flex; flex-wrap: wrap; gap: 4px 18px; } }
 .conta__resumo .item__detalhe { margin-top: 2px; }
-.conta__resumo .destaque { align-self: start; }
+.conta__resumo-lado { display: grid; gap: 10px; align-content: start; }
 @media (min-width: 761px) {
   .conta__resumo { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; }
-  .conta__resumo .destaque { margin-top: 44px; }
+  .conta__resumo-lado { margin-top: 44px; }
 }
 .conta__oficial { white-space: nowrap; }
 @media (max-width: 760px) { .conta__oficial { grid-column: 2; justify-self: start; } }
@@ -579,29 +579,33 @@ input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent);
 label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 
 /* ---------- compartilhar a imagem ----------
-   A faixa "Compartilhar imagem" (com a miniatura), a janela da imagem (computador), o botão flutuante (celular) e o
-   texto dobrado em "Prefere mandar em texto?" */
-.faixa-img {
-  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer;
-  padding: 10px 14px 10px 10px; min-height: 64px; border-radius: 14px; border: 1.5px solid var(--accent); background: var(--accent-soft);
+   O convite (depois dos números principais, antes do mês a mês), o botão fixo no canto de baixo da tela (celular, depois
+   que a pessoa passa pelos números), a janela com a imagem e o texto dobrado em "Prefere mandar em texto?" */
+.compartilhar-bloco {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 14px 18px;
+  padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--raio); background: var(--paper);
 }
-.faixa-img:hover { background: color-mix(in srgb, var(--accent) 18%, var(--paper)); }
-.faixa-img__mini { width: 48px; aspect-ratio: 4 / 5; border-radius: 7px; overflow: hidden; background: #17142e; flex: none; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); }
-.faixa-img__mini img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.faixa-img__mini.carregando { animation: piscar 1.1s ease-in-out infinite alternate; }
-.faixa-img__texto { display: grid; gap: 1px; flex: 1; min-width: 0; line-height: 1.3; }
-.faixa-img__texto strong { font-size: 1.02rem; color: var(--accent); }
-.faixa-img__texto small { color: var(--ink-2); font-size: .85rem; }
-.faixa-img__seta { font-size: 1.3rem; color: var(--accent); flex: none; }
-.conta__resumo .faixa-img { grid-column: 1 / -1; }
-.cidade__corpo .faixa-img { max-width: 560px; }
+.cidade__corpo .compartilhar-bloco { background: var(--bg); }
+.compartilhar-bloco__previa { width: 60px; aspect-ratio: 4 / 5; border-radius: 7px; overflow: hidden; background: #17142e; cursor: pointer; box-shadow: 0 1px 3px rgba(0, 0, 0, .2); }
+.compartilhar-bloco__previa img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.compartilhar-bloco__previa.carregando { animation: piscar 1.1s ease-in-out infinite alternate; }
+.compartilhar-bloco__texto { display: grid; gap: 2px; min-width: 0; }
+.compartilhar-bloco__texto strong { font-size: 1rem; }
+.compartilhar-bloco__texto span { color: var(--ink-2); font-size: .88rem; }
+@media (max-width: 560px) {
+  .compartilhar-bloco { grid-template-columns: auto minmax(0, 1fr); padding: 14px; }
+  .compartilhar-bloco .botao { grid-column: 1 / -1; justify-content: center; }
+}
 .compartilhar-flutuante {
-  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 35; display: inline-flex; align-items: center; gap: 8px;
-  font: inherit; font-weight: 700; min-height: 48px; padding: 12px 18px; border: 0; border-radius: 999px; cursor: pointer;
+  position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 35; width: 78px; height: 66px;
+  display: grid; place-items: center; align-content: center; gap: 3px; padding: 0; border: 0; border-radius: 14px; cursor: pointer;
+  font: inherit; font-size: .7rem; font-weight: 700;
   background: var(--accent); color: var(--on-accent); box-shadow: 0 6px 20px rgba(16, 14, 28, .35);
 }
 @media (min-width: 761px) { .compartilhar-flutuante { display: none !important; } }
-@media (prefers-reduced-motion: reduce) { .faixa-img__mini.carregando { animation: none; } }
+/* espaço no fim da página para o botão fixo não cobrir a última linha */
+@media (max-width: 760px) { body.com-flutuante .pagina { padding-bottom: 96px; } }
+@media (prefers-reduced-motion: reduce) { .compartilhar-bloco__previa.carregando { animation: none; } }
 .janela-img {
   border: 0; border-radius: 16px; padding: 0; width: min(760px, calc(100vw - 24px)); max-height: calc(100vh - 32px); overflow: auto;
   background: var(--paper); color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
@@ -611,8 +615,11 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .janela-img__grade { display: grid; gap: 18px; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); align-items: start; }
 .janela-img__lado { display: grid; gap: 12px; align-content: start; }
 @media (max-width: 620px) {
-  .janela-img__grade { grid-template-columns: minmax(0, 1fr); }
-  .janela-img .compartilhar-img__quadro { max-width: 230px; justify-self: center; }
+  .janela-img { width: calc(100vw - 16px); max-height: calc(100vh - 16px); }
+  .janela-img__corpo { padding: 14px 14px 18px; gap: 10px; }
+  .janela-img__grade { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .janela-img .compartilhar-img__quadro { max-width: min(300px, 100%, calc((100vh - 280px) * .8)); justify-self: center; }
+  .janela-img .acoes .botao { flex: 1 1 auto; justify-content: center; }
 }
 .texto-zap > summary { cursor: pointer; font-weight: 600; color: var(--accent); }
 .texto-zap[open] > summary { margin-bottom: 8px; }

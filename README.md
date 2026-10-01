@@ -351,11 +351,14 @@ em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativ
 - **Imagem para compartilhar**: cada político, governador e Câmara Municipal (com o gasto informado) tem uma imagem
   1080×1350 (4:5, aparece inteira no WhatsApp e no Telegram e serve para status e stories), com a foto, o valor
   principal, a posição entre os colegas e o endereço da própria página (quem recebe a imagem não consegue clicar, mas
-  consegue digitar). O botão **Compartilhar imagem**, com a miniatura, fica logo abaixo do valor principal. No celular,
-  um toque abre o menu do aparelho já com a imagem (no iPhone vai só a imagem: com texto junto, o WhatsApp do iPhone nem
-  sempre manda os dois), e um botão "Compartilhar" flutuante aparece ao rolar a página. No computador, abre uma janela
-  com **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar em
-  texto?". A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
+  consegue digitar). O convite para compartilhar ("Compartilhe este contracheque", com a prévia da imagem) vem depois dos
+  números principais, para a pessoa ler primeiro, e antes dos detalhes: no político, entre o contracheque e o mês a mês;
+  no governador e na cidade, depois dos números e da posição. No celular, o botão quadrado **Compartilhar**, fixo no canto
+  de baixo da tela, aparece depois que a pessoa passa pelos números principais (e some enquanto o convite está na tela).
+  Os dois abrem primeiro uma janela com a imagem, para a pessoa ver o que vai mandar, com **Enviar imagem…** (o menu do aparelho:
+  WhatsApp, Telegram...; no iPhone vai só a imagem, porque com texto junto o WhatsApp do iPhone nem sempre manda os
+  dois), **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar
+  em texto?". A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
   (`site/fotos/`) porque o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do
@@ -367,8 +370,8 @@ em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativ
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, busca_topo, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (método: enviar_imagem, copiar_imagem,
   baixar_imagem, whatsapp, copiar_texto ou copiar_link; `conteudo`: parlamentar, governador ou cidade; `onde`: topo,
-  fim_contracheque, flutuante, secao ou fim), `abrir_compartilhar` (toque num botão "Compartilhar imagem", com `onde` e
-  `conteudo`), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia` (ao abrir, com a origem: botao ou
+  depois_contracheque, depois_numeros, flutuante, secao ou fim), `abrir_compartilhar` (abriu a janela da imagem, com
+  `onde` e `conteudo`), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia` (ao abrir, com a origem: botao ou
   busca_topo, quando a pessoa escolhe o estado na busca do cabeçalho).
   Busca e listas: `abrir_busca` (a lupa do cabeçalho fixo, com a página em que a pessoa estava; quem escolhe um nome por
   ali chega com a origem `busca_topo`) e `abrir_lista` (listas que começam fechadas: `ministros`, `governadores`,
