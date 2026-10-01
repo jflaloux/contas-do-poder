@@ -2185,12 +2185,30 @@
     const ate = meta().ultimo_mes_executivo;
     const linha = (p) => pessoaLinha(p, pastaCurta(p.g), urlPessoa(p), () => { S.origem = "governo"; });
     const topo = atuais.filter((p) => p.tp !== "mi"), mins = atuais.filter((p) => p.tp === "mi");
+    // uma grade só: o presidente e o vice e, logo depois, os ministros. Fechada, ela mostra a primeira linha de
+    // ministros apagada, cortada por um degradê, para mostrar que há mais; tocar nela ou no botão abre a lista. Os
+    // ministros fechados ficam inertes (fora do Tab e dos leitores de tela) até a lista abrir.
+    const itensMin = mins.map(linha);
+    const grade = h("div", { class: "pessoas-lista pessoas-lista--governo", id: "lista-governo" }, topo.map(linha), itensMin);
+    const botao = mins.length ? h("button", { type: "button", class: "pessoas-abrir", "aria-controls": "lista-governo" }) : null;
+    const fechar = (sim) => {
+      grade.classList.toggle("pessoas-lista--fechada", sim);
+      itensMin.forEach((a) => {
+        a.inert = sim; a.classList.toggle("pessoa-linha--previa", sim);
+        if (sim) { a.setAttribute("tabindex", "-1"); a.setAttribute("aria-hidden", "true"); } else { a.removeAttribute("tabindex"); a.removeAttribute("aria-hidden"); }
+      });
+      if (botao) { botao.setAttribute("aria-expanded", String(!sim)); botao.textContent = sim ? `Ver os ${mins.length} ministros` : "Mostrar menos"; }
+    };
+    grade.abrir = () => { if (grade.classList.contains("pessoas-lista--fechada")) { fechar(false); evento("abrir_lista", { lista: "ministros" }); } };
+    // fechada, um toque no meio dos ministros apagados também abre (os links inertes não recebem o toque)
+    grade.addEventListener("click", (ev) => { if (grade.classList.contains("pessoas-lista--fechada") && !ev.target.closest("a:not([inert])")) grade.abrir(); });
+    if (botao) botao.addEventListener("click", () => { if (grade.classList.contains("pessoas-lista--fechada")) grade.abrir(); else { fechar(true); irPara("governo"); } });
+    fechar(mins.length > 0);
     return h("section", { class: "bloco", id: "governo" },
       h("p", { class: "rotulo" }, "Governo federal"),
       h("h2", null, "Presidente, vice e ministros"),
       h("p", { class: "discreto" }, `Toque num nome para ver quanto ganha e quanto custa por mês. Dados do Portal da Transparência até ${MESES[(ate % 100) - 1]}/${Math.floor(ate / 100)}.`),
-      h("div", { class: "cartao" }, listaPessoas(topo.map(linha)),
-        mins.length ? listaFechada(`Ver os ${mins.length} ministros`, "ministros", listaPessoas(mins.map(linha))) : null));
+      h("div", { class: "cartao" }, grade, botao));
   }
   // ================================================================== governadores (dados/governadores.json)
   // O salário de governador e de vice é fixado por lei em cada estado; o arquivo traz, para cada um, o valor em vigor,
@@ -2778,7 +2796,7 @@
         lista,
         h("div", { class: "guia__rodape" },
           h("button", { type: "button", class: "link-botao", onclick: passo1 }, "← Voltar"),
-          h("button", { type: "button", class: "link-botao", onclick: () => { fechar(); irPara("governo"); } }, "Ver todos na página")));
+          h("button", { type: "button", class: "link-botao", onclick: () => { fechar(); const g = $("#lista-governo"); if (g && g.abrir) g.abrir(); irPara("governo"); } }, "Ver todos na página")));
       pintar("");
     };
     const passo2 = (uf) => {
