@@ -474,8 +474,35 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
     return meta, pessoas
 
 
-def escrever(resultados, tipos):
+def _fotos_tse(resultados, baixar=True):
+    """Quem está no cargo e não tem foto da Câmara: a foto da candidatura de 2024 no TSE (coleta/fotos_tse.py), quando o
+    nome civil (ou, sem ele, o nome de urna) é exatamente o de um único candidato a vereador da cidade."""
+    from .. import fotos_tse
+    from ..fotos import CREDITOS
+    novas = 0
+    for meta, ps in resultados:
+        faltam = [p for p in ps if p["x"] and not p["f"]]
+        if faltam and baixar:
+            try:
+                novas += fotos_tse.por_nome(2024, meta["uf"], faltam, ("13",), municipio=meta["n"])
+            except TempoEsgotado:
+                raise
+            except Exception as e:  # noqa: BLE001 — foto é opcional
+                log(f"  fotos do TSE ({meta['n']}): {e}")
+    creditos = json.loads(CREDITOS.read_text(encoding="utf-8")).get("fotos", {}) if CREDITOS.exists() else {}
+    for _, ps in resultados:
+        for p in ps:
+            c = creditos.get(p["id"])
+            if c and c.get("arquivo") and (FOTOS / f"{p['id']}.webp").exists():
+                p["f"] = f"fotos/{p['id']}.webp"
+                p["fc"] = {"a": c.get("autor"), "l": c.get("licenca"), "u": c.get("pagina")}
+    if novas:
+        log(f"  {novas} fotos novas de vereadores (candidatura de 2024 no TSE)")
+
+
+def escrever(resultados, tipos, baixar_fotos=True):
     """resultados: [(meta, pessoas), ...] -> site/dados/camaras.json."""
+    _fotos_tse(resultados, baixar_fotos)
     todas = [p for _, ps in resultados for p in ps]
     dados = {
         "meta": {

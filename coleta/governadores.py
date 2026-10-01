@@ -19,7 +19,8 @@ base é um arquivo mantido à mão, dados/governadores/governadores.json, com a 
 
 Para atualizar: quando sair uma lei nova, acrescente uma linha em "subsidio"; quando mudar o governador, feche a linha
 dele em "ocupantes" (ate) e abra outra. Este robô confere o arquivo, escolhe o valor em vigor e gera
-site/dados/governadores.json. As fotos vêm do Wikimedia Commons (licença livre), como as do governo federal.
+site/dados/governadores.json. As fotos vêm da candidatura de 2022 no TSE (dados abertos, licença Creative Commons
+Atribuição) ou, sem ela, do Wikimedia Commons (licença livre), como as do governo federal.
 """
 import json
 import re
@@ -87,6 +88,21 @@ def _fotos(estados, baixar):
     from . import fotos as F
     pessoas = [o for e in estados for o in (e["gov"], e["vice"]) if o]
     if baixar:
+        # primeiro a foto da candidatura de 2022 no TSE (governador, vice, senador, deputado: quem assumiu depois também
+        # foi candidato a alguma coisa em 2022), pelo nome civil ou de urna exato; o resto, no Commons
+        from . import fotos_tse
+        novas = 0
+        for e in estados:
+            faltam = [{"id": o["id"], "n": o["n"], "nc": o.get("nc")} for o in (e["gov"], e["vice"]) if o and not (FOTOS / f"{o['id']}.webp").exists()]
+            if faltam:
+                try:
+                    novas += fotos_tse.por_nome(2022, e["uf"], faltam, ("3", "4", "5", "6", "7", "8"))
+                except TempoEsgotado:
+                    raise
+                except Exception as ex:  # noqa: BLE001 — foto é opcional
+                    log(f"  fotos do TSE ({e['uf']}): {ex}")
+        if novas:
+            log(f"  {novas} fotos novas de governadores e vices (candidatura de 2022 no TSE)")
         antigo = F.CARGO_OK
         F.CARGO_OK = re.compile(r"govern|vice|prefeit|deputad|senad|mayor|member of", re.I)
         try:

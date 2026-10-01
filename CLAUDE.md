@@ -73,6 +73,11 @@ armadilhas que não estão escritas em outro lugar.
 
 ## Armadilhas conhecidas
 
+- Fotos do TSE (`coleta/fotos_tse.py`): o zip de fotos de SP de 2024 tem 2,3 GB. Nunca baixar inteiro: o leitor
+  por pedaços (HTTP Range) lê o índice do zip e só as fotos que faltam. Casar só por nome exato com um único SQ
+  (homônimos ficam sem foto). O conjunto de dados do TSE é Creative Commons Atribuição: sempre com o crédito.
+- Regenerar `camaras.json` ou `governadores.json` fora da rodada semanal muda mais do que se quer (o último mês
+  fechado avança, a nota do Paraná sobre o robots.txt some). Para mudar só as fotos, trocar só `f`/`fc` no arquivo.
 - Câmara: a página de remuneração de cada deputado lista pagamentos de meses fora do mandato (aposentadoria de
   ex-deputado, antes da posse de suplentes). `coleta/site.py` (`_sem_pagamento_fora_do_mandato`) tira esses meses
   pelo histórico oficial.

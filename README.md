@@ -84,7 +84,7 @@ site estático. Para os links de compartilhamento apontarem para o endereço cer
 | Pasta | O que tem |
 |---|---|
 | `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
-| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`, `municipios.py`, `governadores.py`, `vereadores/`, `prefeituras/`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
+| `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`, `fotos_tse.py`, `municipios.py`, `governadores.py`, `vereadores/`, `prefeituras/`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
 | `dados/governadores/` | O salário de cada governador e vice, com a fonte de cada valor (mantido à mão), e em `folha/` o mês a mês pela folha de cada estado |
 | `dados/municipios/` | Cidades, custo das câmaras, vereadores eleitos e, por capital, as linhas das folhas da Câmara e da Prefeitura |
 | `dados/portal_transparencia/` | Linhas do presidente, do vice e dos ministros tiradas dos arquivos do Portal (vai para o Git, para o robô só baixar os meses novos) |
@@ -201,6 +201,9 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 - O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.
+- Fotos: as da Câmara Municipal; quem está no cargo sem foto da Câmara recebe a foto da candidatura de 2024 no TSE
+  (`coleta/fotos_tse.py`: Portal de Dados Abertos do TSE, licença Creative Commons Atribuição), quando o nome civil (ou,
+  sem ele, o nome de urna) é exatamente o de um único candidato a vereador da cidade. O crédito fica em `site/fotos/creditos.json`.
 - Recife: em ago/2026 a folha traz também R$ 18.980 (o salário da legislatura passada) a vereadores e
   ex-vereadores daquela legislatura; não entram. A página da verba de alguns vereadores dá erro no site da
   Câmara: o site avisa e mostra a verba zerada nesse período.
@@ -241,7 +244,8 @@ as linhas desses cargos em `dados/municipios/<cidade>/prefeitura_remuneracao.csv
 (transforma em linhas comuns: mês, cargo, nome, pasta, salário, 13º, outros, bruto, "cedido"). O `comum.py` faz o
 resto para todas: junta a mesma pessoa escrita de jeitos diferentes, acha o nome de urna e o partido do prefeito e
 do vice (TSE), liga quem também é vereador da cidade à página de vereador, separa os acertos do mês da saída e busca
-as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava gravado.
+as fotos (Wikimedia Commons; para quem sobrar, a foto da candidatura de 2024 no TSE, quando o nome civil é exatamente o de
+um único candidato a prefeito, vice ou vereador da cidade). Uma cidade fora do ar não para as outras: o site usa o que já estava gravado.
 
 | Cidade | Fonte | O que a folha dá |
 |---|---|---|
@@ -319,7 +323,9 @@ mantido à mão, `dados/governadores/governadores.json`, montado estado por esta
 
 O robô confere o arquivo (27 estados, um governador no cargo por estado, valores e datas plausíveis, link em cada
 valor; se algo estiver errado, a etapa falha), escolhe o valor em vigor e gera `site/dados/governadores.json`.
-As fotos do governador e do vice vêm do Wikimedia Commons (licença livre, com crédito).
+As fotos do governador e do vice vêm da candidatura de 2022 no TSE (Portal de Dados Abertos do TSE, licença Creative
+Commons Atribuição; nome civil ou de urna exato, entre os candidatos a governador, vice, senador e deputado da UF) ou,
+sem ela, do Wikimedia Commons (licença livre, com crédito).
 
 **Para atualizar**: quando sair uma lei nova, acrescente uma linha em `subsidio`; quando mudar o governador, feche a
 linha dele em `ocupantes` (`ate`) e abra outra (com `folha_nome`, o nome como aparece na folha, nos estados em que a

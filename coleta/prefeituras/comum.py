@@ -344,6 +344,24 @@ def fotos(pessoas):
         F.CARGO_OK = antigo
 
 
+def _fotos_tse(resultados):
+    """Prefeito, vice e secretários no cargo sem foto: a foto da candidatura de 2024 no TSE (coleta/fotos_tse.py), quando o
+    nome civil é exatamente o de um único candidato a prefeito, vice ou vereador da cidade."""
+    from .. import fotos_tse
+    novas = 0
+    for meta, ps in resultados:
+        faltam = [p for p in ps if p["x"] and not (FOTOS / f"{p['id']}.webp").exists()
+                  and not (p.get("rel") and (FOTOS / f"{p['rel']}.webp").exists())]
+        if faltam:
+            try:
+                novas += fotos_tse.por_nome(2024, meta["uf"], [{"id": p["id"], "nc": p["nc"]} for p in faltam], ("11", "12", "13"), municipio=meta["n"])
+            except TempoEsgotado:
+                raise
+            except Exception as e:  # noqa: BLE001 — foto é opcional
+                log(f"  fotos do TSE ({meta['n']}): {e}")
+    return novas
+
+
 def _por_fotos(pessoas, metas):
     from ..fotos import CREDITOS
     creditos = json.loads(CREDITOS.read_text(encoding="utf-8")).get("fotos", {}) if CREDITOS.exists() else {}
@@ -373,6 +391,9 @@ def escrever(resultados, baixar_fotos=True):
             raise
         except Exception as e:  # noqa: BLE001 — foto é opcional
             log(f"  Fotos das prefeituras: {e}")
+        novas = _fotos_tse(resultados)
+        if novas:
+            log(f"  {novas} fotos novas das prefeituras (candidatura de 2024 no TSE)")
     _por_fotos(todas, metas)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "tipos": [], "categorias": {}, "cidades": metas}, "p": todas}
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
