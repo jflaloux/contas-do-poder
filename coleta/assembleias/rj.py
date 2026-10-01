@@ -13,6 +13,7 @@ Fontes:
 Desde quando: os meses com orçamento no DOCIGP.
 """
 import json
+import re
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -87,6 +88,12 @@ def _quem_sao():
         if m:
             saida[int(m.group(1))] = {"partido": html.unescape(p.group(1)).strip() if p else "", "nome": html.unescape(n.group(1)).strip() if n else ""}
     return saida
+
+
+def _so_cnpj(doc):
+    """Só o CNPJ (empresa) é guardado; o CPF de quem é pessoa física não, nem mascarado (regra do projeto)."""
+    d = re.sub(r"\D", "", doc or "")
+    return d if len(d) == 14 else ""
 
 
 def coletar():
@@ -165,7 +172,7 @@ def coletar():
             saida.append({"orcamento": b, "deputado": dep, "data": e.get("date", ""), "centro_custo": e.get("cost_center_name", ""),
                           "codigo_centro": e.get("cost_center_code", ""), "objeto": " ".join((e.get("object") or "").split()),
                           "fornecedor": " ".join((e.get("provider_name") or e.get("to") or "").split()),
-                          "cnpj_cpf": vc.mascarar(e.get("provider_cpf_cnpj") or ""), "documento": e.get("document_number", ""), "valor": round(-v, 2)})
+                          "cnpj_cpf": _so_cnpj(e.get("provider_cpf_cnpj") or ""), "documento": e.get("document_number", ""), "valor": round(-v, 2)})
         return b, saida
     res = []
     try:

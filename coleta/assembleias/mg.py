@@ -12,6 +12,7 @@ do site tem "Disallow: /", e a leitura é uma das exceções do projeto, ver col
 Quem está no cargo hoje: a lista de deputados em exercício. Desde quando: os meses com verba.
 """
 import json
+import re
 import time
 from concurrent.futures import ThreadPoolExecutor
 
@@ -71,6 +72,12 @@ def _meses():
     return [a * 100 + m for a in range(INICIO // 100, h.tm_year + 1) for m in range(1, 13) if INICIO <= a * 100 + m < h.tm_year * 100 + h.tm_mon]
 
 
+def _so_cnpj(doc):
+    """Só o CNPJ (empresa) é guardado; o CPF de quem é pessoa física não, nem mascarado (regra do projeto)."""
+    d = re.sub(r"\D", "", doc or "")
+    return d if len(d) == 14 else ""
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     # 1. deputados (em exercício, afastados e quem exerceu mandato na legislatura) e os dados de cada um
@@ -110,7 +117,7 @@ def coletar():
             detalhes = t.get("listaDetalheVerba") or []
             for x in detalhes:
                 saida.append({"ano": am // 100, "mes": am % 100, "id": i, "tipo": t.get("descTipoDespesa", ""), "emitente": " ".join((x.get("nomeEmitente") or "").split()),
-                              "cnpj_cpf": vc.mascarar(x.get("cpfCnpj") or ""), "documento": x.get("descDocumento", ""), "data": _data(x.get("dataEmissao")),
+                              "cnpj_cpf": _so_cnpj(x.get("cpfCnpj") or ""), "documento": x.get("descDocumento", ""), "data": _data(x.get("dataEmissao")),
                               "valor_despesa": x.get("valorDespesa"), "valor": x.get("valorReembolsado")})
             resto = round(float(t.get("valor") or 0) - sum(float(x.get("valorReembolsado") or 0) for x in detalhes), 2)
             if abs(resto) >= 0.01:  # o total do tipo que as notas não explicam
