@@ -235,8 +235,9 @@ if (COR) {
 }
 
 // ------------------------------------------------------------------ Índice de Transparência dos estados (/indice)
-// de site/dados/indice_transparencia.json: a lista dos estados com o índice geral e o de cada bloco (governo e Assembleia
-// Legislativa) em texto; o app.js desenha as barras e os critérios
+// de site/dados/indice_transparencia.json: a lista dos estados com o índice geral e o de cada bloco (cada fonte do
+// estado: governo, Assembleia...) em texto; o app.js desenha as barras e os critérios. O texto do contexto é o mesmo do
+// app.js (textoContextoIndice): mudando um, mude o outro
 const IDX = ler("indice_transparencia.json", null);
 if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   const M = IDX.meta || {}, BL = M.blocos || [];
@@ -245,19 +246,31 @@ if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   const com = IDX.estados.filter((e) => !nulo(e.indice) && !(e.a_conferir || []).length)
     .sort((a, b) => Number(b.indice.toFixed(2)) - Number(a.indice.toFixed(2)) || a.nome.localeCompare(b.nome, "pt-BR")); // como no app.js
   const sem = IDX.estados.filter((e) => !com.includes(e)).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
-  const blocoTxt = (e, b) => {
-    const x = (e.blocos || {})[b.id] || {};
-    const nome = b.id === "governo" && GOV.e.some((g) => g.uf === e.uf) ? `<a href="/governador/${esc(e.uf.toLowerCase())}">${esc(b.titulo)}</a>` : esc(b.titulo);
-    return `${nome} ${nulo(x.indice) ? "a conferir" : `${n2(x.indice)} (completude ${n2(x.completude)}, facilidade ${n2(x.facilidade)})`}`;
+  // o link de cada bloco para a página do site com os números daquela fonte, quando ela existe
+  const capital = (meta, uf) => Object.values((meta && meta.cidades) || {}).find((c) => c.uf === uf);
+  const linkBloco = (e, b) => {
+    const uf = e.uf.toLowerCase();
+    if (b.id === "governo" && GOV.e.some((g) => g.uf === e.uf)) return `/governador/${uf}`;
+    if (b.id === "assembleia" && estados[e.uf] && GOV.e.some((g) => g.uf === e.uf)) return `/governador/${uf}#assembleia`;
+    const c = b.id === "prefeitura" ? capital(PRE.meta, e.uf) : b.id === "camara" ? capital(CAM.meta, e.uf) : null;
+    return c ? `/cidade/${slugTxt(c.n)}-${uf}` : null;
   };
+  const blocoTxt = (e, b) => {
+    const x = (e.blocos || {})[b.id] || {}, u = linkBloco(e, b);
+    const nome = u && !x.nao_se_aplica ? `<a href="${esc(u)}">${esc(b.titulo)}</a>` : esc(b.titulo);
+    return `${nome} ${x.nao_se_aplica ? "não se aplica" : nulo(x.indice) ? "a conferir" : `${n2(x.indice)} (completude ${n2(x.completude)}, facilidade ${n2(x.facilidade)})`}`;
+  };
+  const nFontes = IDX.estados.reduce((a, e) => a + BL.filter((b) => { const x = (e.blocos || {})[b.id]; return x && !x.nao_se_aplica; }).length, 0);
+  const contexto = `Não existe uma base nacional com esses números. Cada órgão publica os seus no próprio portal, do seu jeito: em planilha, em página, em PDF, às vezes só depois de um CAPTCHA. Para reunir tudo, entramos em cada uma das ${nFontes} fontes dos ${IDX.estados.length} estados, baixamos os dados (com um robô, onde o portal deixa) e conferimos. O índice mede esse caminho: o que cada fonte mostra e como dá para obter os dados.`;
   const itens = [...com, ...sem].map((e) => `<li><strong>${esc(e.nome)}</strong>: `
     + (com.includes(e) ? `índice ${n2(e.indice)}` : "índice geral a conferir") + (BL.length ? `; ${BL.map((b) => blocoTxt(e, b)).join("; ")}` : "") + "</li>");
   const titulo = M.titulo || "Índice de Transparência dos estados";
   const corpo = `<section class="bloco" id="indice"><div class="indice-topo"><p class="rotulo">Estados</p><h1 class="titulo-pagina">${esc(titulo)}</h1>`
     + (M.pergunta ? `<p class="lide">${esc(M.pergunta)}</p>` : "")
+    + `<p class="indice-topo__contexto">${esc(contexto)}</p>`
     + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}. ${com.length} estados com índice geral.</p></div><ol class="indice-previa">${itens.join("")}</ol>`
     + (M.como || []).map((c) => `<p class="discreto">${esc(c)}</p>`).join("") + "</section>";
-  const texto = `${M.pergunta || titulo} A nota do governo e da Assembleia Legislativa de cada um dos 27 estados, critério por critério, com a prova de cada nota. Conferido em ${dataBR(M.conferido_em)}.`;
+  const texto = `${M.pergunta || titulo} Não existe uma base nacional: são ${nFontes} fontes oficiais, cada uma publicada do seu jeito. A nota de cada uma, critério por critério, com a prova. Conferido em ${dataBR(M.conferido_em)}.`;
   paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice_transparencia.json"] })]);
 }
 

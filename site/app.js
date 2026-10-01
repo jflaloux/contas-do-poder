@@ -2194,7 +2194,7 @@
       h("a", { class: "chamada-indice", href: "/indice", onclick: () => { S.origem = atual ? "governador" : "inicio"; } },
         h("span", { class: "rotulo" }, "Índice de Transparência"),
         h("strong", null, "Dá para saber, pela fonte oficial de cada estado, quanto ganham e quanto custam os seus políticos?"),
-        h("span", null, "As notas do governo e da Assembleia Legislativa de cada estado, critério por critério, com a prova →")),
+        h("span", null, "Não existe uma base nacional: cada órgão publica no próprio portal, do seu jeito. A nota de cada fonte, critério por critério, com a prova →")),
       corpo);
   }
   // mês a mês pela folha do Estado: e.m = [[aaaamm, tp, índice em e.oc, recebido, salário, 13º, férias, auxílios, outros, abate-teto, marca]]
@@ -2944,6 +2944,9 @@
   const semNotaIdx = (v) => v === null || v === undefined;
   const notaIdx = (v) => (semNotaIdx(v) ? "a conferir" : num(v, 2));
   const notaCrit = (v) => (semNotaIdx(v) ? "a conferir" : v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }));
+  // por que um índice: não há uma base nacional com esses números, e cada fonte publica do seu jeito (o mesmo texto vai
+  // na página pronta do gerar.mjs)
+  const textoContextoIndice = (n, nEstados) => `Não existe uma base nacional com esses números. Cada órgão publica os seus no próprio portal, do seu jeito: em planilha, em página, em PDF, às vezes só depois de um CAPTCHA. Para reunir tudo, entramos em cada uma das ${n} fontes dos ${nEstados} estados, baixamos os dados (com um robô, onde o portal deixa) e conferimos. O índice mede esse caminho: o que cada fonte mostra e como dá para obter os dados.`;
   function secIndice(I) {
     const M = I.meta || {}, BL = M.blocos || [];
     const curto = (b) => String(b.titulo || b.id).split(" ")[0]; // "Governo do Estado" → "Governo"
@@ -2962,6 +2965,12 @@
     // na linha do estado, um bloco por linha: o nome curto, as duas dimensões em barras finas e o índice do bloco
     const blocoLinha = (e, b) => {
       const x = (e.blocos || {})[b.id] || {};
+      if (x.nao_se_aplica) {
+        return h("span", { class: "indice-bl indice-bl--na" },
+          h("span", { class: "indice-bl__nome", "aria-hidden": "true" }, curto(b)),
+          h("span", { class: "indice-bl__na", "aria-hidden": "true" }, "não se aplica"),
+          h("span", { class: "visualmente-oculto" }, `. ${b.titulo}: não se aplica`));
+      }
       return h("span", { class: `indice-bl${semNotaIdx(x.indice) ? " indice-bl--conferir" : ""}` },
         h("span", { class: "indice-bl__nome", "aria-hidden": "true" }, curto(b)),
         h("span", { class: "indice-bl__barras", "aria-hidden": "true" }, trilho(x.completude, "completude"), trilho(x.facilidade, "facilidade")),
@@ -2983,6 +2992,13 @@
     // ao abrir o estado: cada bloco com os critérios, a fonte oficial e a página do site que mostra os números
     const blocoDetalhe = (e, b) => {
       const x = (e.blocos || {})[b.id] || {}, crit = b.criterios || [];
+      if (x.nao_se_aplica) {
+        return h("div", { class: `indice-bloco indice-bloco--${b.id}` },
+          h("div", { class: "indice-bloco__topo" },
+            h("p", { class: "indice-bloco__titulo" }, b.titulo),
+            h("p", { class: "indice-bloco__nota indice-bloco__nota--conferir" }, "não se aplica")),
+          h("p", { class: "pequeno discreto" }, x.nao_se_aplica));
+      }
       const nConf = (x.a_conferir || []).length;
       return h("div", { class: `indice-bloco indice-bloco--${b.id}` },
         h("div", { class: "indice-bloco__topo" },
@@ -2996,7 +3012,12 @@
         h("p", { class: "indice-links" },
           x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte oficial", h("span", { class: "visualmente-oculto" }, ` (${b.titulo}, ${e.nome})`), " ↗") : null,
           b.id === "governo" && GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null,
-          b.id === "assembleia" && assembleiaUF(e.uf) && GOV.porUF[e.uf] ? h("a", { href: `${urlGov(e.uf)}#assembleia`, onclick: () => { S.origem = "indice"; } }, `Deputados estaduais ${deUF(e.uf)}, um a um →`) : null));
+          b.id === "assembleia" && assembleiaUF(e.uf) && GOV.porUF[e.uf] ? h("a", { href: `${urlGov(e.uf)}#assembleia`, onclick: () => { S.origem = "indice"; } }, `Deputados estaduais ${deUF(e.uf)}, um a um →`) : null,
+          (() => {
+            const c = b.id === "prefeitura" ? cidadesPrefeitura().find((x) => x.uf === e.uf) : b.id === "camara" ? cidadesCamara().find((x) => x.uf === e.uf) : null;
+            return c ? h("a", { href: `${urlCidade(c)}#${b.id === "prefeitura" ? "prefeitura" : "cidade"}`, onclick: () => { S.origem = "indice"; } },
+              b.id === "prefeitura" ? `A Prefeitura ${deCid(c.cod)}, um a um →` : `Os vereadores ${deCid(c.cod)}, um a um →`) : null;
+          })()));
     };
     const linha = (e) => {
       const falta = !comNota.includes(e), uf = e.uf.toLowerCase();
@@ -3015,12 +3036,15 @@
           BL.map((b) => blocoDetalhe(e, b)))));
     };
     const como = M.como || [];
+    // quantas fontes o índice olha: um bloco por fonte de cada estado, menos os que não se aplicam (no DF)
+    const nFontes = I.estados.reduce((a, e) => a + BL.filter((b) => { const x = (e.blocos || {})[b.id]; return x && !x.nao_se_aplica; }).length, 0);
     return [
       h("section", { class: "bloco", id: "indice", "aria-labelledby": "t-indice" },
         h("div", { class: "indice-topo" },
           h("p", { class: "rotulo" }, "Estados"),
           h("h1", { id: "t-indice", class: "titulo-pagina" }, M.titulo || "Índice de Transparência dos estados"),
           M.pergunta ? h("p", { class: "lide" }, M.pergunta) : null,
+          h("p", { class: "indice-topo__contexto" }, textoContextoIndice(nFontes, I.estados.length)),
           h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice geral${semNota.length ? `; ${listaE(semNota.map((e) => e.nome))} a conferir` : ""}.`),
           como[0] ? h("p", { class: "caixa-nota" }, como[0]) : null),
         comNota.length ? h("div", { class: "estatisticas" },

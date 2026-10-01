@@ -786,6 +786,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-bl__barras { display: grid; gap: 3px; }
 .indice-bl__num { font-weight: 700; font-size: .95rem; color: var(--ink); font-variant-numeric: tabular-nums; }
 .indice-bl--conferir .indice-bl__num { font-weight: 600; font-size: .8rem; color: var(--ink-3); }
+.indice-bl__na { grid-column: 2 / 4; font-weight: 600; font-size: .8rem; color: var(--ink-3); }
 .indice__trilho { height: 6px; border-radius: 3px; background: var(--line-2); overflow: hidden; }
 .indice__trilho span { display: block; height: 100%; border-radius: 3px; }
 .indice__trilho--completude span { background: var(--ganha); }
@@ -845,7 +846,9 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-topo { background: var(--banda); color: var(--banda-ink); border-radius: var(--raio); padding: 24px 22px; display: grid; gap: 12px; }
 .indice-topo .rotulo { display: flex; align-items: center; gap: 8px; color: var(--banda-ganha); }
 .indice-topo .rotulo::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--banda-ganha); flex: none; }
-.indice-topo .lide { color: var(--banda-ink-2); }
+.indice-topo .lide { color: var(--banda-ink); font-weight: 600; }
+/* o contexto embaixo da pergunta: não há base nacional, cada fonte publica do seu jeito */
+.indice-topo__contexto { color: var(--banda-ink-2); max-width: 68ch; }
 .indice-topo .pequeno { color: var(--banda-ink-3); }
 .indice-topo .caixa-nota { background: var(--banda-2); border: 0; color: var(--banda-ink-2); }
 /* Assembleia Legislativa (página do estado) e o link para ela na lista "Ver por estado" */
