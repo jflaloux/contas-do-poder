@@ -377,8 +377,8 @@ para a pergunta "dá para saber, pela fonte oficial, quanto o governador e o vic
 
 As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json` (mantido à mão: o que a folha mostra e o
 que o robô consegue; "abre de fora do Brasil" foi conferido de um servidor nos EUA). A nota da lei vem de
-`dados/governadores/governadores.json`. Estado com algum critério `null` (a conferir) fica sem índice: em 30/09/2026,
-Amapá e Mato Grosso (CAPTCHA) e Tocantins (só clicando). O índice mede só o acesso ao salário do governador e do vice,
+`dados/governadores/governadores.json`. Estado com algum critério `null` (a conferir) fica sem índice: em 01/10/2026,
+só o Mato Grosso (a consulta da folha pede CAPTCHA). O índice mede só o acesso ao salário do governador e do vice,
 não a transparência do Estado como um todo.
 
 No site, a página `/indice` (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
