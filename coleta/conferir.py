@@ -80,6 +80,15 @@ def _prefeituras():
     return saida
 
 
+def _assembleias():
+    """Por estado do site/dados/assembleias.json: (sigla, vagas, deputados no cargo)."""
+    arq = RAIZ / "site" / "dados" / "assembleias.json"
+    if not arq.exists():
+        return []
+    d = json.load(open(arq, encoding="utf-8"))
+    return [(uf, m.get("vagas") or 0, sum(1 for p in d["p"] if p["uf"] == uf and p["x"])) for uf, m in d["meta"]["estados"].items()]
+
+
 def _governadores():
     """(estados no arquivo do site, estados com o valor da lei ou conferido na folha, estados com o mês a mês)."""
     arq = RAIZ / "site" / "dados" / "governadores.json"
@@ -223,6 +232,7 @@ def executar():
         *[c for n, pr, se, maximo in _prefeituras() for c in (
             (f"Prefeitura {n}: prefeito na folha do último mês", pr, 1),
             (f"Prefeitura {n}: secretários na folha do último mês", se, int(maximo * 0.6)))],
+        *[(f"Assembleia {uf}: deputados estaduais no cargo", no_cargo, int(vagas * 0.9)) for uf, vagas, no_cargo in _assembleias()],
         ("Governadores no arquivo do site", _governadores()[0], 27),
         ("Governadores com o valor da lei, da folha ou da tabela oficial", _governadores()[1], 18),
         ("Estados com o mês a mês do governador pela folha", _governadores()[2], 20),

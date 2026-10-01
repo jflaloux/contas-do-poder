@@ -1,0 +1,688 @@
+{
+ "_sobre": "O que cada Assembleia Legislativa publica sobre os deputados estaduais (verba indenizatória, folha, equipe, subsídio). Levantamento de 01/10/2026, feito pela web a partir de um servidor fora do Brasil (os sites marcados com abriu_de_fora=false abrem do Brasil e ficam a conferir). Antes de fazer o robô de um estado, conferir de novo a fonte e o robots.txt.",
+ "conferido_em": "2026-10-01",
+ "estados": {
+  "AC": {
+   "site": "https://www.al.ac.leg.br/",
+   "verba": {
+    "por_deputado": false,
+    "url": "https://app.al.ac.leg.br/verbas-indenizatorias/regulamentacao"
+   },
+   "folha_nominal": {
+    "publica": null,
+    "url": "https://app.al.ac.leg.br/gestao-pessoas/remuneracao-servidores"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "JSON (lotação só 'GABINETE')",
+    "url": "https://app.al.ac.leg.br/gestao-pessoas/servidores"
+   },
+   "subsidio": {
+    "valor": 33448.49,
+    "desde": "2025-02",
+    "depois": [
+     34774.64,
+     "2026-02"
+    ],
+    "ato": "Lei 4.136/2023",
+    "url": "https://app.al.ac.leg.br/legisla-e/legislacao/visualizar/9238"
+   },
+   "barreiras": "Consultas em JavaScript (endpoints JSON sem login).",
+   "observacoes": "Verba indenizatória sem dados por deputado (só a regulamentação). Lista de deputados no SAPL.",
+   "abriu_de_fora": true
+  },
+  "AL": {
+   "site": "https://www.al.al.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "mensal (total por categoria)",
+    "formato": "PDF escaneado",
+    "url": "https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar",
+    "desde": "2019"
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 9.056/2023",
+    "url": "https://sapl.al.al.leg.br/media/sapl/public/normajuridica/2023/2750/lei_no_9.056_de_8_de_novembro_de_2023.pdf"
+   },
+   "barreiras": "VIAP em PDF de imagem (precisaria de OCR); portal de pessoal novo não abriu de fora.",
+   "observacoes": "Sem fornecedor nem CNPJ na VIAP.",
+   "abriu_de_fora": true
+  },
+  "AM": {
+   "site": "https://www.aleam.gov.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "ato": "Lei 8.161/2026",
+    "url": "https://sapl.al.am.leg.br/media/sapl/public/normajuridica/2026/14731/8161.pdf"
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil. CEAP: Resolução Legislativa 460/2009.",
+   "abriu_de_fora": false
+  },
+  "AP": {
+   "site": "https://www.al.ap.leg.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": null
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil.",
+   "abriu_de_fora": false
+  },
+  "BA": {
+   "site": "https://www.al.ba.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "HTML por processo; Excel sem CNPJ",
+    "url": "https://www.al.ba.gov.br/transparencia/verbas-idenizatorias",
+    "desde": "2015"
+   },
+   "folha_nominal": {
+    "publica": false
+   },
+   "equipe": {
+    "publica": false
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "ato": "Lei 14.532/2023",
+    "url": "https://portalrh.alba.ba.gov.br/pdf/transparencia/ALBA_ECV_Deputados.pdf"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Fornecedor e CNPJ só na página de cada processo.",
+   "abriu_de_fora": true
+  },
+  "CE": {
+   "site": "https://www.al.ce.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota de empenho",
+    "formato": "CSV",
+    "url": "https://transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar",
+    "desde": "2021"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "CSV",
+    "url": "https://transparencia.al.ce.gov.br/gestao-de-pessoas/pessoal"
+   },
+   "equipe": {
+    "publica": "parcial (sem gabinete)"
+   },
+   "subsidio": {
+    "valor": 34776.64,
+    "ato": "Ato Deliberativo 917/2022",
+    "url": "https://transparencia.al.ce.gov.br/uploads/estrutura_remuneratoria/YuihxetEr86nWb3jQ0XLfOcxvijZ3SjnmVsS7mWJ.txt",
+    "conferir": "R$ 2 acima de 75% do federal; conferir no DOE"
+   },
+   "barreiras": "Nenhuma (mês com dois dígitos no CSV).",
+   "observacoes": "Folha com bruto, 13º e teto; filtro 'DEPUTADOS'.",
+   "abriu_de_fora": true
+  },
+  "DF": {
+   "site": "https://www.cl.df.gov.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": null,
+    "ato": "Decreto Legislativo 2.383/2022 (75% do federal)",
+    "url": "https://economia.df.gov.br/documents/d/seec/dodf-237-23-12-2022-integra"
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil.",
+   "abriu_de_fora": false
+  },
+  "ES": {
+   "site": "https://www.al.es.gov.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": null,
+    "ato": "Lei 11.766/2022 (a conferir)"
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil.",
+   "abriu_de_fora": false
+  },
+  "GO": {
+   "site": "https://portal.al.go.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "JSON (o que a página usa)",
+    "url": "https://transparencia.al.go.leg.br/api/transparencia/verbas_indenizatorias/periodos",
+    "desde": "2014"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "JSON",
+    "url": "https://transparencia.al.go.leg.br/api/transparencia/remuneracoes?ano=2026&mes=6&vinculo=DEPUTADOS"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "JSON",
+    "url": "https://transparencia.al.go.leg.br/api/transparencia/remuneracoes/gabinetes-no-periodo?ano=2026&mes=6"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 17.253/2011, redação da Lei 21.780/2023",
+    "url": "https://legisla.casacivil.go.gov.br/api/v2/pesquisa/legislacoes/106697/pdf"
+   },
+   "barreiras": "A tela de detalhe da remuneração pede nome e CPF de quem consulta (não usar); a lista que a página carrega já traz os valores.",
+   "observacoes": "Bom candidato: verba, folha e equipe em JSON.",
+   "abriu_de_fora": true
+  },
+  "MA": {
+   "site": "https://www.al.ma.leg.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": null
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil.",
+   "abriu_de_fora": false
+  },
+  "MG": {
+   "site": "https://www.almg.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "HTML (e API de dados abertos)",
+    "url": "https://www.almg.gov.br/transparencia/prestacao-de-contas/deputados/verba-indenizatoria/"
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 24.266/2022",
+    "url": "https://www.almg.gov.br/legislacao-mineira/texto/LEI/24266/2022/"
+   },
+   "barreiras": "O robots.txt de dadosabertos.almg.gov.br proíbe robôs (Disallow: /); as páginas de verba têm reCAPTCHA. Seria preciso uma exceção ao robots.txt (verba é dado que a LAI manda abrir) — decisão do Jean-François.",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "MS": {
+   "site": "https://al.ms.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "CSV anual (com CNPJ e link do comprovante)",
+    "url": "https://transparencia2.al.ms.gov.br/ceap/notas/exportar-csv?ano=2026",
+    "desde": "2012"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "PDF por deputado",
+    "url": "https://www.transparencia.al.ms.gov.br/pages/index.php/gerdocumento/1201"
+   },
+   "equipe": {
+    "publica": false
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 6.016/2022",
+    "url": "https://www.transparencia.al.ms.gov.br/uploads/ac633cbeae1cad5ef3590fd62b32d828.pdf"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Melhor CSV de verba. A folha mostra 'Plano de Assistência Médico-Social' de R$ 13.425,82 por mês.",
+   "abriu_de_fora": true
+  },
+  "MT": {
+   "site": "https://www.al.mt.gov.br/",
+   "verba": {
+    "por_deputado": null,
+    "url": "https://www.al.mt.gov.br/parlamento/verba-indenizatoria"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "PDF até jan/2022; depois portal em JavaScript",
+    "url": "https://www.al.mt.gov.br/parlamento/subsidio/"
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 12.011/2023",
+    "url": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2023-01-13;12011"
+   },
+   "barreiras": "Folha antiga pede nome, e-mail e CPF; API pede login; portal com reCAPTCHA.",
+   "observacoes": "Sem verba por deputado encontrada.",
+   "abriu_de_fora": true
+  },
+  "PA": {
+   "site": "https://www.alepa.pa.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "mensal (pagamento ao deputado)",
+    "formato": "painel DevExpress (JSON do painel)",
+    "url": "https://alepa.pa.gov.br/Transparencia/Page/VerbaIndenizatoria",
+    "desde": "2022"
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Decreto Legislativo 1/2023",
+    "url": "https://bancodeleis.alepa.pa.gov.br/arquivos/lei01_2023_18125.pdf"
+   },
+   "barreiras": "Painel em JavaScript; o sistema de pessoal (sigep) não abriu de fora.",
+   "observacoes": "Sem fornecedor nem CNPJ.",
+   "abriu_de_fora": true
+  },
+  "PB": {
+   "site": "https://www.al.pb.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "ODS por deputado e mês (CNPJ mascarado em parte)",
+    "url": "https://www.al.pb.leg.br/transparencia/deputados/viap-v2",
+    "desde": "2022"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "ODS mensal (ELETIVOS)",
+    "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "ODS (COMISSIONADOS, lotação 'GAB DEP')",
+    "url": "https://www.al.pb.leg.br/transparencia/recursos-humanos/remuneracoes"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 12.550/2022",
+    "url": "https://sapl3.al.pb.leg.br/media/sapl/public/normajuridica/2022/15969/15969_texto_integral.pdf"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Bom candidato: verba, folha e equipe em arquivos. Lista no SAPL.",
+   "abriu_de_fora": true
+  },
+  "PE": {
+   "site": "https://www.alepe.pe.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "JSON (o que a página usa)",
+    "url": "https://www.alepe.pe.gov.br/servicos/transparencia/adm/verbaindenizatoria.php?dep=4508&ano=2025&mes=6",
+    "desde": "2015"
+   },
+   "folha_nominal": {
+    "publica": false
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "API JSON/CSV (lotação 'GAB.DEP.')",
+    "url": "https://dadosabertos.alepe.pe.gov.br/api/v1/servidores/?ano=2025&mes=6"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 18.138/2023",
+    "url": "https://legis.alepe.pe.gov.br/texto.aspx?tiponorma=1&numero=18138&complemento=0&ano=2023&tipo=&url="
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Bom candidato: lista em API de dados abertos, verba nota a nota, equipe por gabinete.",
+   "abriu_de_fora": true
+  },
+  "PI": {
+   "site": "https://www.al.pi.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota (fornecedor só no PDF)",
+    "formato": "grid com exportação CSV",
+    "url": "https://transparencia.al.pi.leg.br/grid_transp_publico_gecop/",
+    "desde": "2012"
+   },
+   "folha_nominal": {
+    "publica": null,
+    "url": "https://transparencia.al.pi.leg.br/grid_transp_publico_remuneracao/"
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 7.955/2023",
+    "url": "https://sapl.al.pi.leg.br/media/sapl/public/normajuridica/2023/5512/7955.pdf"
+   },
+   "barreiras": "Consultas ScriptCase dependem de sessão e JavaScript.",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "PR": {
+   "site": "https://www.assembleia.pr.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "página com reCAPTCHA (desde 2020)",
+    "url": "https://consultas.assembleia.pr.leg.br/#/ressarcimento",
+    "desde": "2014"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "HTML",
+    "url": "https://transparencia.assembleia.pr.leg.br/pessoal/parlamentares"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "HTML",
+    "url": "https://transparencia.assembleia.pr.leg.br/pessoal/comissionados"
+   },
+   "subsidio": {
+    "valor": 33448.48,
+    "desde": "2025-02",
+    "depois": [
+     34774.64,
+     "2026-02"
+    ],
+    "ato": "Lei 21.348/2022",
+    "url": "http://webservices.assembleia.pr.leg.br/api/public/norma-legal/58812"
+   },
+   "barreiras": "reCAPTCHA na verba (não contornamos).",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "RJ": {
+   "site": "https://www.alerj.rj.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "JSON (o que a página DOCIGP usa)",
+    "url": "https://docigp.alerj.rj.gov.br/transparencia",
+    "desde": "2019"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "PDF mensal",
+    "url": "https://transparencia.alerj.rj.gov.br/section/report/73"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "PDF (lotação 'GAB.DEP.')",
+    "url": "https://transparencia.alerj.rj.gov.br/section/report/107"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "ato": "Lei 11.074/2025",
+    "url": "https://transparencia.alerj.rj.gov.br/section/report/62"
+   },
+   "barreiras": "DOCIGP só funciona com JavaScript (a API JSON responde).",
+   "observacoes": "Bom candidato: verba nota a nota com CNPJ.",
+   "abriu_de_fora": true
+  },
+  "RN": {
+   "site": "https://www.al.rn.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "página com exportação CSV/XLSX/JSON",
+    "url": "https://transparencia.al.rn.leg.br/verbas",
+    "desde": "2009"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "página com exportação",
+    "url": "https://transparencia.al.rn.leg.br/servidores-pagamentos"
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 11.315/2022",
+    "url": "https://www.al.rn.leg.br/storage/legislacao/2023/es2r5o18f7ve1pnah0ckgc15wtj8q7.pdf"
+   },
+   "barreiras": "A API da página pede um token (401): não usar.",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "RO": {
+   "site": "https://www.al.ro.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "tabela HTML (GET)",
+    "url": "https://transparencia.al.ro.leg.br/Deputados/VerbaIndenizatoria/",
+    "desde": "2020-12"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "HTML (pede nome e e-mail)",
+    "url": "https://transparencia.al.ro.leg.br/Deputados/Remuneracao/"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "JSON (lotação 'GAB. DEP.')",
+    "url": "https://transparencia.al.ro.leg.br/api/servidores"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 5.530/2023",
+    "url": "https://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11274/lei_5530.pdf"
+   },
+   "barreiras": "A remuneração pede nome e e-mail de quem consulta (não usar).",
+   "observacoes": "Bom candidato: verba nota a nota e equipe em JSON. Lista no SAPL.",
+   "abriu_de_fora": true
+  },
+  "RR": {
+   "site": "https://al.rr.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "mensal (total por categoria)",
+    "formato": "PDF/ODT por deputado e mês",
+    "url": "https://transparencia.al.rr.leg.br/execucao-orcamentaria-e-financeira/verbas-indenizatorias-a-partir-de-set25/"
+   },
+   "folha_nominal": {
+    "publica": false
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "XLSX mensal ('GAB. DEP.')",
+    "url": "https://transparencia.al.rr.leg.br/execucao-orcamentaria-e-financeira/gestao-de-pessoal-a-partir-de-set25/"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "ato": null
+   },
+   "barreiras": "Lista de arquivos por JavaScript; portal lento; SAPL 403.",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "RS": {
+   "site": "https://www.al.rs.gov.br/",
+   "verba": {
+    "por_deputado": null
+   },
+   "folha_nominal": {
+    "publica": null
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": null
+   },
+   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
+   "observacoes": "A conferir de dentro do Brasil.",
+   "abriu_de_fora": false
+  },
+  "SC": {
+   "site": "https://www.alesc.sc.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota (sem CNPJ)",
+    "formato": "CSV anual",
+    "url": "https://transparencia.alesc.sc.gov.br/gabinetes-parlamentares/dados-abertos",
+    "desde": "2011"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "HTML (contracheque por deputado)",
+    "url": "https://transparencia.alesc.sc.gov.br/deputados"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "HTML ('GAB DEP')",
+    "url": "https://transparencia.alesc.sc.gov.br/servidores"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 18.642/2023",
+    "url": "https://leis.alesc.sc.gov.br/ato-normativo/21961"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Bom candidato: CSV de verba.",
+   "abriu_de_fora": true
+  },
+  "SE": {
+   "site": "https://al.se.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "mensal (total por categoria)",
+    "formato": "PDF com texto",
+    "url": "https://al.se.leg.br/portal-da-transparencia/despesas/ressarcimento-dos-deputados/",
+    "desde": "2016"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "PDF mensal",
+    "url": "https://al.se.leg.br/portal-da-transparencia/recursos-humanos/subsidio-e-remuneracoes/"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "PDF ('GABINETE DO DEPUTADO')",
+    "url": "https://al.se.leg.br/portal-da-transparencia/recursos-humanos/subsidio-e-remuneracoes/"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "ato": null,
+    "conferir": "tabela de 2026 diz 34.775,64"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "",
+   "abriu_de_fora": true
+  },
+  "SP": {
+   "site": "https://www.al.sp.gov.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "mensal por fornecedor (com CNPJ)",
+    "formato": "XML",
+    "url": "https://www.al.sp.gov.br/repositorioDados/deputados/despesas_gabinetes.xml",
+    "desde": "2002"
+   },
+   "folha_nominal": {
+    "publica": true,
+    "formato": "HTML mensal (desde nov/2025)",
+    "url": "https://www.al.sp.gov.br/alesp/folha-de-pagamento-deputados/"
+   },
+   "equipe": {
+    "publica": true,
+    "formato": "XML (lotacoes.xml)",
+    "url": "https://www.al.sp.gov.br/repositorioDados/administracao/lotacoes.xml"
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 17.617/2023 e Lei 18.384/2025",
+    "url": "https://www.al.sp.gov.br/repositorio/legislacao/lei/2025/lei-18384-23.12.2025.html"
+   },
+   "barreiras": "Nenhuma.",
+   "observacoes": "Robô feito (coleta/assembleias/sp.py).",
+   "abriu_de_fora": true
+  },
+  "TO": {
+   "site": "https://www.al.to.leg.br/",
+   "verba": {
+    "por_deputado": true,
+    "granularidade": "nota",
+    "formato": "PDF por deputado e mês",
+    "url": "https://www.al.to.leg.br/transparencia/verbaIndenizatoria",
+    "desde": "2017"
+   },
+   "folha_nominal": {
+    "publica": null,
+    "formato": "consulta com hCaptcha"
+   },
+   "equipe": {
+    "publica": null
+   },
+   "subsidio": {
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 4.073/2022",
+    "url": "https://sapl.al.to.leg.br/media/sapl/public/normajuridica/2022/509/lei_4073-2022.pdf"
+   },
+   "barreiras": "hCaptcha na folha (não contornamos).",
+   "observacoes": "",
+   "abriu_de_fora": true
+  }
+ }
+}

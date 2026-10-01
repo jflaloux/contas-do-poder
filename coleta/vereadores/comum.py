@@ -439,14 +439,15 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
                 cred, dev = _r(gg.credito.fillna(0).sum()), _r(gg.devolvido.fillna(0).sum())
                 if cred or dev:
                     vb[str(int(a))] = [cred, dev]
-        foto = FOTOS / f"ver-{cod}-{codigo}.webp"
+        prefixo = cfg.get("id_prefixo", "ver")  # as assembleias usam o mesmo formato, com outro prefixo e outro cargo
+        foto = FOTOS / f"{prefixo}-{cod}-{codigo}.webp"
         n_cargos = cargos_cod.get(codigo, [])
         n_eq = sum(n for _, n in n_cargos)
         gab = g.gabinete.dropna().iloc[-1] if "gabinete" in g and g.gabinete.notna().any() else None
         pessoas.append({
-            "id": f"ver-{cod}-{codigo}", "k": "v", "cid": cod, "n": r.nome, "nc": (r.nome_civil or r.nome),
-            "g": "Vereadora" if r.genero == "F" else "Vereador", "pt": sigla(r.partido), "uf": cfg["uf"],
-            "f": f"fotos/ver-{cod}-{codigo}.webp" if foto.exists() else None,
+            "id": f"{prefixo}-{cod}-{codigo}", "k": cfg.get("k", "v"), "cid": cod, "n": r.nome, "nc": (r.nome_civil or r.nome),
+            "g": cfg.get("cargo", ("Vereadora", "Vereador"))[0 if r.genero == "F" else 1], "pt": sigla(r.partido), "uf": cfg["uf"],
+            "f": f"fotos/{prefixo}-{cod}-{codigo}.webp" if foto.exists() else None,
             "fc": {"a": cfg.get("credito_foto") or cfg["casa"], "u": r.pagina or cfg.get("pagina")} if foto.exists() else None,
             "x": 1 if no_cargo else 0, "o": r.pagina or cfg.get("pagina"),
             **({"gab": int(gab)} if gab is not None and str(gab).isdigit() else {}),
