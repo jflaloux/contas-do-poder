@@ -98,6 +98,9 @@ def _ratear_anuais(L):
 
 
 # ---------------------------------------------------------------- Câmara
+DETALHE_DESDE = None  # primeiro mês (AAAAMM) com o contracheque detalhado de todos os deputados lido
+
+
 def _camara():
     deps = ler_json(BRUTOS / "camara_deputados.json")
     pid = {d["id"]: f"dep-{d['id']}" for d in deps}
@@ -113,6 +116,44 @@ def _camara():
             else:
                 L.append(_linha(pid[r.id_deputado], r.ano, r.mes, "salario", "Salário mensal bruto", r.valor,
                                 "camara_remuneracao"))
+
+    # contracheque detalhado de cada mês: o que vem além do salário da folha normal (que já entrou acima)
+    arq_det = BRUTOS / "camara_remuneracao_detalhe.csv"
+    det = _na_legislatura(pd.read_csv(arq_det)) if arq_det.exists() else pd.DataFrame(columns=["id_deputado", "ano", "mes"])
+    sal_normal = rem.groupby(["id_deputado", "ano", "mes"]).valor.sum().to_dict()  # o que a página de resumo mostra
+    # Os contracheques são lidos do mais recente para o mais antigo, aos poucos: só entram os meses em que todos (ou
+    # quase todos) os deputados com salário já têm o contracheque lido, para a comparação entre eles ser justa.
+    global DETALHE_DESDE
+    pagos = rem[~rem.get("calculado", pd.Series(False, index=rem.index)).astype(bool) & (rem.valor.fillna(0) != 0)]
+    com_sal = pagos.groupby(pagos.ano * 100 + pagos.mes).id_deputado.agg(set).to_dict()
+    com_det = det.groupby(det.ano * 100 + det.mes).id_deputado.agg(set).to_dict() if len(det) else {}
+    DETALHE_DESDE = None
+    for am in sorted(com_sal, reverse=True):
+        falta = com_sal[am] - com_det.get(am, set())
+        if len(falta) > max(2, 0.01 * len(com_sal[am])):
+            break
+        DETALHE_DESDE = am
+    det = det[(det.ano * 100 + det.mes) >= (DETALHE_DESDE or 999999)]
+    for r in det.itertuples():
+        if r.id_deputado not in pid:
+            continue
+        i = pid[r.id_deputado]
+        if r.natalina:
+            L.append(_linha(i, r.ano, r.mes, "decimo_terceiro", "13º salário (gratificação natalina)", r.natalina, "camara_detalhe"))
+        if r.indenizatorias:
+            L.append(_linha(i, r.ano, r.mes, "ajuda_de_custo", "Ajuda de custo e outras verbas indenizatórias", r.indenizatorias, "camara_detalhe"))
+        if r.diarias:
+            L.append(_linha(i, r.ano, r.mes, "diarias", "Diárias de viagens oficiais", r.diarias, "camara_detalhe"))
+        # férias, vantagens pessoais, função, abono e acertos do mês (que podem ser negativos: faltas, devoluções),
+        # menos o abate-teto (o redutor vem negativo). Os auxílios da folha não entram: são o auxílio-moradia, que já
+        # vem da página de moradia.
+        outros = sum(getattr(r, c) or 0 for c in ("ferias", "vantagens_pessoais", "funcao", "abono", "eventuais", "redutor"))
+        # subsídio pago em outra folha do mês (complementar, acertos de meses anteriores): o resumo só mostra a normal
+        outros += (r.fixa or 0) - sal_normal.get((r.id_deputado, r.ano, r.mes), 0)
+        if outros > 0.004:
+            L.append(_linha(i, r.ano, r.mes, "outros_rendimentos", "Férias, acertos e outros pagamentos da folha", outros, "camara_detalhe"))
+        elif outros < -0.004:
+            L.append(_linha(i, r.ano, r.mes, "salario", "Descontos na folha (faltas, acertos e abate-teto)", outros, "camara_detalhe"))
 
     verba = _na_legislatura(pd.read_csv(BRUTOS / "camara_verba_gabinete.csv"))
     for r in verba.itertuples():
@@ -536,6 +577,7 @@ def executar():
             "_como_usar": "troque {id} pelo número do político (sem 'dep-'/'sen-'), {ano} e {mes}",
             "camara_remuneracao": "https://www.camara.leg.br/deputados/{id}/remuneracao?ano={ano}",
             "camara_verba_gabinete": "https://www.camara.leg.br/deputados/{id}?ano={ano}",
+            "camara_detalhe": "https://www.camara.leg.br/deputados/{id}/remuneracao-deputado-detalhado?mesAno={mes}{ano} (mês com 2 dígitos)",
             "camara_subsidio_lei": "https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html",
             "camara_cota": "https://www.camara.leg.br/cota-parlamentar/consulta-cota-parlamentar?ideDeputado={id}&dataInicio=01{ano}&dataFim=12{ano}",
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
@@ -548,18 +590,21 @@ def executar():
         "fontes": {
             "camara_api": "https://dadosabertos.camara.leg.br/swagger/api.html",
             "camara_cota": "https://www.camara.leg.br/cotas/",
-            "camara_paginas": "https://www.camara.leg.br/deputados/{id} (verba de gabinete); até set/2026, também /remuneracao e /pessoal-gabinete",
+            "camara_paginas": "https://www.camara.leg.br/deputados/{id} (verba de gabinete), /remuneracao, /remuneracao-deputado-detalhado e /pessoal-gabinete",
             "camara_moradia": "https://www.camara.leg.br/moradia/detalhamento",
             "senado_legis": "https://legis.senado.leg.br/dadosabertos/docs/",
             "senado_adm": "https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html",
             "portal_transparencia": "https://portaldatransparencia.gov.br/download-de-dados",
         },
         "pendencias": [
-            "Câmara: 13º salário, férias, ajuda de custo e diárias dos deputados não entram: só aparecem nas páginas de "
-            "cada deputado que o robots.txt da Câmara não deixa robôs abrirem (no Senado já estão).",
-            "Câmara: desde out/2026, o salário de cada deputado é o subsídio fixado em lei (Decreto Legislativo 172/2022) "
-            "nos meses em exercício, pelo histórico oficial, e o tamanho da equipe do gabinete fica como estava em set/2026: "
-            "as páginas de salário e de pessoal de cada deputado não podem ser lidas por robôs (robots.txt).",
+            "Câmara: 13º, férias, acertos, diárias e ajuda de custo vêm do contracheque detalhado de cada mês, no site da "
+            "Câmara. Os auxílios do contracheque não entram de novo: são o auxílio-moradia, que vem da página de moradia.",
+            *([f"Câmara: o contracheque detalhado (13º, férias, acertos, diárias e ajuda de custo) já entra desde "
+               f"{DETALHE_DESDE % 100:02d}/{DETALHE_DESDE // 100}; os meses anteriores estão sendo lidos aos poucos e entram "
+               f"nas próximas semanas. Até lá, o que vai para o bolso dos deputados está um pouco subestimado nesses meses."]
+              if DETALHE_DESDE and DETALHE_DESDE > INICIO_LEGISLATURA[0] * 100 + INICIO_LEGISLATURA[1] else
+              [] if DETALHE_DESDE else ["Câmara: o contracheque detalhado (13º, férias, acertos, diárias e ajuda de custo) "
+                                        "ainda está sendo lido e entra nas próximas semanas."]),
             "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
             "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
             "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada "

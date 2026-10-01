@@ -11,7 +11,7 @@ armadilhas que não estão escritas em outro lugar.
   credenciais que apareçam no código dos portais (no Mato Grosso do Sul, só a chave anônima de `/Auth/Token`, que o
   portal entrega a qualquer visitante).
 - Não guardar CPF, nem mascarado, nem os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
-- `robots.txt`: é uma convenção, não lei (decisão do Jean-François, 01/10/2026). Por padrão, respeitar o robots.txt e o
+- `robots.txt`: é uma convenção, não lei (decisão do Jean-François, 30/09/2026). Por padrão, respeitar o robots.txt e o
   `Crawl-delay`, com pausas entre as consultas: a sessão de `coleta/util.py` (`_sessao()`, `SessaoEducada`) faz isso, e
   todo robô usa essa sessão, nunca `requests.get` direto.
   Exceção: dados públicos que a LAI manda publicar e abrir para acesso automatizado (Lei 12.527/2011, art. 8º, § 3º,
@@ -83,11 +83,11 @@ armadilhas que não estão escritas em outro lugar.
   (`coleta/folhas_estaduais/powerbi.py`).
 - Node 22: `fs.cpSync` falha em pastas montadas de máquina virtual; `gerar.mjs` copia arquivo por arquivo.
 - Ao passar arquivos entre máquinas, use nomes únicos e confira o md5 (uma cópia antiga já foi publicada por engano).
-- Câmara: o robots.txt (desde 18/09/2026) proíbe `/deputados/*/*` (salário, verba e pessoal de cada deputado). A verba
-  vem da página principal (`/deputados/ID?ano=`); salário e equipe até set/2026 estão em `dados/camara/` (no Git);
-  depois, o salário sai do Decreto Legislativo 172/2022 pelos meses em exercício. 13º e diárias: entram se essas
-  páginas virarem exceção (regra do robots.txt acima).
+- Câmara: o robots.txt (desde 18/09/2026) proíbe `/deputados/*/*`; essas páginas são exceção (lista em
+  `coleta/util.py`). O que já foi lido fica em `dados/camara/` (no Git) e não é baixado de novo. Os contracheques
+  detalhados (~530 por mês) são lidos aos poucos, do mais recente para o mais antigo (`CAMARA_MAX_DETALHE`, 6.000 por
+  vez); o padronizar só usa os meses completos (`DETALHE_DESDE`). Nunca guardar IR, previdência ou líquido.
 - Portais CKAN proíbem `/api/` no robots.txt: ache os arquivos pela página do conjunto (`util.recursos_ckan`).
-- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): robôs parados (`BLOQUEADO_ROBOTS`) até virarem exceção.
+- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): exceções ao robots.txt; para parar, `BLOQUEADO_ROBOTS = True`.
 - No Cowork, a pasta montada não deixa apagar arquivos: `node publicacao/gerar.mjs` falha ao limpar `publicar/`. Para
   conferir o build, copie `site/` e `publicacao/` para uma pasta fora de `mnt/` e rode lá.

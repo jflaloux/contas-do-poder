@@ -205,9 +205,7 @@ CFG = {
     "salario_nota": ("Remuneração bruta da folha da Prefeitura: salário e verba de representação, mais 13º, férias, auxílio-refeição e "
                      "pagamentos atrasados (que a Prefeitura chama de \"demais elementos\"). Valores antes do desconto de impostos."),
     "notas": ["A folha é de todos os servidores da administração direta, com o nome, publicada todo mês nos dados abertos da Prefeitura.",
-              "Quem tem decisão judicial para não aparecer na folha não aparece aqui.",
-              "Os meses depois de agosto de 2026 ainda não entram: o portal de dados abertos da Prefeitura não permite a leitura por "
-              "robôs (robots.txt): voltam quando houver autorização."],
+              "Quem tem decisão judicial para não aparecer na folha não aparece aqui."],
     "credito_camara": "Câmara Municipal de São Paulo", "pagina_camara": "https://www.saopaulo.sp.leg.br/vereadores/membros/",
     "vereadores": _vereadores_sp,
 }
@@ -234,9 +232,9 @@ def montar():
 
 
 # O robots.txt do Portal de Dados Abertos da Prefeitura (dados.prefeitura.sp.gov.br) tem "Disallow: /" para todos os
-# robôs. Desde 30/09/2026 o robô não baixa mais nada de lá: o site usa o que já estava gravado (até ago/2026) até a
-# Prefeitura autorizar ou mudar o robots.txt. Para voltar a coletar, troque para False.
-BLOQUEADO_ROBOTS = True
+# robôs. O portal está na lista de exceções (coleta/util.py, regra no CLAUDE.md): a folha é dado que a LAI manda abrir.
+# Se a Prefeitura pedir para parar ou bloquear, troque para True: o site fica com o que já estava gravado.
+BLOQUEADO_ROBOTS = False
 
 
 def coletar():

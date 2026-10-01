@@ -195,9 +195,11 @@ def executar():
     k = ULTIMO_MES[0] * 12 + (ULTIMO_MES[1] - 1) - 2
     ano_f, mes_f = k // 12, k % 12 + 1
     lanc["casa"] = lanc.id_politico.str[:3]
-    def quantos(casa, cat):
-        f = lanc[(lanc.casa == casa) & (lanc.categoria == cat) & (lanc.ano == ano_f) & (lanc.mes == mes_f) & (lanc.valor > 0)]
+    def quantos(casa, cat, ano=None, mes=None):
+        f = lanc[(lanc.casa == casa) & (lanc.categoria == cat) & (lanc.ano == (ano or ano_f)) & (lanc.mes == (mes or mes_f)) & (lanc.valor > 0)]
         return f.id_politico.nunique()
+    # a verba de gabinete da Câmara sai uns 2 meses depois (no fim de setembro, o último mês era julho): um mês antes
+    ano_v, mes_v = (k - 1) // 12, (k - 1) % 12 + 1
     chave = lanc.ano * 12 + lanc.mes.fillna(0)
     janela = (chave > ano_f * 12 + mes_f - 12) & (chave <= ano_f * 12 + mes_f)
     def cota_12m(casa):
@@ -226,7 +228,7 @@ def executar():
         ("Estados com o mês a mês do governador pela folha", _governadores()[2], 20),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
-        (f"Deputados com verba de gabinete em {mes_f:02d}/{ano_f}", quantos("dep", "assessores_gabinete"), 450),
+        (f"Deputados com verba de gabinete em {mes_v:02d}/{ano_v}", quantos("dep", "assessores_gabinete", ano_v, mes_v), 450),
         (f"Senadores com salário em {mes_f:02d}/{ano_f}", quantos("sen", "salario"), 75),
         (f"Senadores com assessores em {mes_f:02d}/{ano_f}", quantos("sen", "assessores_gabinete"), 60),
         ("Cota da Câmara nos últimos 12 meses (R$ milhões)", round(cota_12m("dep") / 1e6), 150),

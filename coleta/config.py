@@ -23,7 +23,7 @@ LEGISLATURA_ENCERRADA = (HOJE.year, HOJE.month) > FIM_LEGISLATURA
 # Quantos pedidos simultâneos fazer aos sites oficiais (seja educado com eles)
 PARALELO = 4
 
-USER_AGENT = "Mozilla/5.0 (compatible; ContasDoPoder/0.1; projeto civico de transparencia)"
+USER_AGENT = "Mozilla/5.0 (compatible; ContasDoPoder/0.1; +https://contasdopoder.com; projeto civico de transparencia)"
 
 
 def meses_da_legislatura():

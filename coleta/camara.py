@@ -6,17 +6,23 @@ Fontes:
 - Arquivos anuais da Cota Parlamentar (CEAP): https://www.camara.leg.br/cotas/Ano-AAAA.csv.zip
 - Página principal de cada deputado: verba de gabinete usada em cada mês
   https://www.camara.leg.br/deputados/ID?ano=AAAA
+- Páginas de cada deputado: salário mensal, contracheque detalhado de cada mês e pessoal de gabinete
+  https://www.camara.leg.br/deputados/ID/remuneracao?ano=AAAA
+  https://www.camara.leg.br/deputados/ID/remuneracao-deputado-detalhado?mesAno=MMAAAA
+  https://www.camara.leg.br/deputados/ID/pessoal-gabinete?ano=AAAA
 - Auxílio-moradia e imóvel funcional: https://www.camara.leg.br/moradia/detalhamento
 
-O robots.txt da Câmara (desde 18/09/2026) não deixa robôs abrirem /deputados/ID/... (as páginas de salário, de verba
-de gabinete e de pessoal de gabinete de cada deputado). Por isso, desde 30/09/2026:
-- salário: até set/2026, o que essas páginas mostravam (guardado em dados/camara/remuneracao_paginas.csv); depois, o
-  subsídio fixado em lei (Decreto Legislativo 172/2022) nos meses em que o deputado estava em exercício, pelo histórico
-  da API de dados abertos;
-- equipe do gabinete: até set/2026, contada nas páginas de pessoal (dados/camara/pessoal_paginas.csv); depois, sem dado;
-- verba de gabinete: pela página principal do deputado, que o robots.txt permite.
-O 13º, as férias e as diárias só aparecem nas páginas proibidas: ficam de fora até a Câmara autorizar.
+O robots.txt da Câmara (desde 18/09/2026) não deixa robôs abrirem /deputados/ID/... (as páginas de salário, do
+contracheque detalhado e de pessoal de gabinete de cada deputado). Essas páginas são lidas como exceção (regra no
+CLAUDE.md, lista em coleta/util.py): é a remuneração de agente público, que a LAI manda publicar e abrir para acesso
+automatizado. Devagar (um pedido a cada 0,25 s) e só o que falta: o que já foi lido fica em dados/camara/ (no Git) e não
+é baixado de novo, a não ser os meses recentes. Se a Câmara bloquear, o robô usa o que está em dados/camara/ e, para os
+meses seguintes, o subsídio fixado em lei (Decreto Legislativo 172/2022) nos meses em exercício.
+Do contracheque detalhado guardamos só o que o deputado recebe (subsídio, vantagens, 13º, férias, acertos, abate-teto,
+diárias, auxílios, verbas indenizatórias), nunca o imposto de renda, a previdência ou o líquido.
 """
+import hashlib
+import os
 import re
 import zipfile
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -26,7 +32,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .config import ANOS, BRUTOS, CACHE, DADOS, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES, meses_da_legislatura
-from .util import TempoEsgotado, baixar, cache_valido, ler_json, log, numero_br, salvar_json
+from .util import BloqueadoRobots, TempoEsgotado, baixar, cache_valido, ler_json, log, normalizar_nome, numero_br, salvar_json
 
 API = "https://dadosabertos.camara.leg.br/api/v2"
 SITE = "https://www.camara.leg.br"
@@ -246,7 +252,7 @@ def moradia():
 
 
 # ---------------------------------------------------------------- página principal de cada deputado
-CONGELADO = DADOS / "camara"  # vai para o Git: o que as páginas de cada deputado mostravam até set/2026
+CONGELADO = DADOS / "camara"  # vai para o Git: salário, contracheque detalhado e equipe de cada deputado
 MESES_ABREV = {m: i + 1 for i, m in enumerate(["JAN", "FEV", "MAR", "ABR", "MAI", "JUN", "JUL", "AGO", "SET", "OUT", "NOV", "DEZ"])}
 # Subsídio dos membros do Congresso (Decreto Legislativo 172/2022, art. 1º): (a partir de AAAAMM, valor)
 SUBSIDIOS = [(202301, 39293.32), (202304, 41650.92), (202402, 44008.52), (202502, 46366.19)]
@@ -324,7 +330,49 @@ def verba_gabinete(lista):
     log(f"Câmara: verba de gabinete ok ({len(df)} meses)")
 
 
-# ---------------------------------------------------------------- salário: páginas (até set/2026) e lei (depois)
+# ---------------------------------------------------------------- páginas de cada deputado (exceção ao robots.txt)
+def _pagina(id_, tipo, **params):
+    try:
+        return baixar(f"{SITE}/deputados/{id_}/{tipo}", params=params).text
+    except requests.HTTPError as e:
+        if e.response is not None and e.response.status_code == 404:
+            return ""
+        raise
+
+
+def _em_paralelo(func, tarefas, nome, tolerancia=0):
+    """Roda func em cada tarefa (PARALELO de cada vez; a sessão espaça os pedidos). Falhas acima da tolerância: erro."""
+    erros, feitos = [], 0
+    with ThreadPoolExecutor(PARALELO) as ex:
+        futuros = {ex.submit(func, t): t for t in tarefas}
+        try:
+            for f in as_completed(futuros):
+                try:
+                    f.result()
+                except (TempoEsgotado, BloqueadoRobots):
+                    raise
+                except Exception as e:  # registra e segue
+                    erros.append((futuros[f], repr(e)))
+                feitos += 1
+                if feitos % 500 == 0:
+                    log(f"  ... {nome}: {feitos}/{len(tarefas)}")
+        except (TempoEsgotado, BloqueadoRobots):
+            ex.shutdown(wait=True, cancel_futures=True)
+            raise
+    if erros:
+        log(f"Câmara: {len(erros)} páginas de {nome} com erro (tentadas de novo na próxima vez), ex.: {erros[:2]}")
+        if len(erros) > tolerancia:
+            raise RuntimeError(f"{len(erros)} páginas de {nome} falharam; rode de novo.")
+
+
+def _resumo_ano(tarefa):
+    """Salário de cada mês do ano (a folha normal), pela página de remuneração do deputado."""
+    id_, ano = tarefa
+    linhas = _linhas_tabela(_pagina(id_, "remuneracao", ano=ano))
+    salvar_json(C / "remuneracao" / f"{id_}_{ano}.json",
+                [{"mes": int(l[0]), "valor": numero_br(l[1])} for l in linhas if len(l) >= 2 and l[0].isdigit()])
+
+
 def _historico(id_):
     """Situações do deputado (posse, licença, afastamento, reassunção...) pela API de dados abertos."""
     arq = C / "historico" / f"{id_}.json"
@@ -344,7 +392,7 @@ def meses_em_exercicio(eventos, legislatura=LEGISLATURA):
         if sit == "Exercício" and not dentro:
             dentro, desde = True, am
         elif sit != "Exercício" and dentro:
-            meses.update(x for x in _meses_entre(desde, am))
+            meses.update(_meses_entre(desde, am))
             dentro = False
     if dentro:
         meses.update(_meses_entre(desde, fim))
@@ -358,51 +406,226 @@ def _meses_entre(de, ate):
         a, m = (a + 1, 1) if m == 12 else (a, m + 1)
 
 
-def remuneracao(lista):
-    """Salário de cada mês. Até set/2026, o que a página de remuneração de cada deputado mostrava (guardado no Git).
-    Depois, o subsídio fixado em lei, nos meses em que o deputado estava em exercício pelo histórico da API; quem, no
-    último mês guardado, recebia o subsídio cheio sem estar em exercício (licenciado que optou pelo salário de
-    deputado, como os ministros) continua recebendo enquanto o histórico não mudar."""
-    base = pd.read_csv(CONGELADO / "remuneracao_paginas.csv")
-    base["calculado"] = False
+def _pela_lei(lista, base):
+    """Se as páginas não abrem: depois do último mês guardado, o subsídio da lei nos meses em exercício. Quem, no último
+    mês guardado, recebia o subsídio cheio sem estar em exercício (licenciado que optou pelo salário de deputado, como
+    os ministros) continua recebendo enquanto o histórico não mudar."""
     ultimo = int((base.ano * 100 + base.mes).max())
     novos = [a * 100 + m for a, m in meses_da_legislatura() if a * 100 + m > ultimo]
+    if not novos:
+        return []
+    pagos = base[base.ano * 100 + base.mes == ultimo].set_index("id_deputado").valor
+    ids = [d["id"] for d in lista]
+    with ThreadPoolExecutor(PARALELO) as ex:
+        hist = dict(zip(ids, ex.map(_historico, ids)))
+    fim_ultimo = f"{ultimo // 100}-{ultimo % 100:02d}-31"
     linhas = []
-    if novos:
-        pagos = base[base.ano * 100 + base.mes == ultimo].set_index("id_deputado").valor
-        ids = [d["id"] for d in lista]
-        with ThreadPoolExecutor(PARALELO) as ex:
-            hist = dict(zip(ids, ex.map(_historico, ids)))
-        fim_ultimo = f"{ultimo // 100}-{ultimo % 100:02d}-31"
-        for id_ in ids:
-            ev = hist[id_]
-            meses = meses_em_exercicio(ev)
-            mudou = any(dt > fim_ultimo and leg == LEGISLATURA for dt, leg, _ in ev)
-            continua = not mudou and pagos.get(id_, 0) >= 0.9 * subsidio(ultimo)
-            for am in novos:
-                if am in meses or continua:
-                    linhas.append({"id_deputado": id_, "ano": am // 100, "mes": am % 100, "valor": subsidio(am), "calculado": True})
-    df = pd.concat([base, pd.DataFrame(linhas, columns=base.columns)], ignore_index=True)
+    for id_ in ids:
+        ev = hist[id_]
+        meses = meses_em_exercicio(ev)
+        mudou = any(dt > fim_ultimo and leg == LEGISLATURA for dt, leg, _ in ev)
+        continua = not mudou and pagos.get(id_, 0) >= 0.9 * subsidio(ultimo)
+        linhas += [{"id_deputado": id_, "ano": am // 100, "mes": am % 100, "valor": subsidio(am), "calculado": True}
+                   for am in novos if am in meses or continua]
+    return linhas
+
+
+def remuneracao(lista):
+    """Salário de cada mês (a folha normal), pela página de remuneração de cada deputado; guardado em
+    dados/camara/remuneracao.csv. Os anos passados que já estão lá não são baixados de novo."""
+    arq = CONGELADO / "remuneracao.csv"
+    guardado = pd.read_csv(arq) if arq.exists() else pd.DataFrame(columns=["id_deputado", "ano", "mes", "valor"])
+    tem = set(zip(guardado.id_deputado, guardado.ano))
+    tarefas = [(d["id"], ano) for d in lista for ano in ANOS]
+    pendentes = [t for t in tarefas if not cache_valido(C / "remuneracao" / f"{t[0]}_{t[1]}.json", 3)
+                 and (t[1] == HOJE.year or t not in tem)]
+    log(f"Câmara: salário (página de remuneração de cada deputado) — {len(pendentes)} páginas a ler")
+    try:
+        _em_paralelo(_resumo_ano, pendentes, "remuneração")
+        novas = []
+        for id_, ano in tarefas:
+            c = C / "remuneracao" / f"{id_}_{ano}.json"
+            if c.exists() and (ano == HOJE.year or (id_, ano) not in tem or cache_valido(c, 3)):
+                novas += [{"id_deputado": id_, "ano": ano, **x} for x in ler_json(c)]
+        refeitos = {(x["id_deputado"], x["ano"]) for x in novas}
+        df = pd.concat([guardado[[k not in refeitos for k in zip(guardado.id_deputado, guardado.ano)]],
+                        pd.DataFrame(novas, columns=guardado.columns)], ignore_index=True)
+        df = df.sort_values(["id_deputado", "ano", "mes"])
+        df.to_csv(arq, index=False)
+        df["calculado"] = False
+        log(f"Câmara: salários ok ({len(df)} meses)")
+    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+        log(f"Câmara: as páginas de remuneração não abriram ({e}); fica o que está em dados/camara/ e, depois, o subsídio da lei")
+        df = guardado.assign(calculado=False)
+        df = pd.concat([df, pd.DataFrame(_pela_lei(lista, df), columns=df.columns)], ignore_index=True)
     df.to_csv(BRUTOS / "camara_remuneracao.csv", index=False)
-    log(f"Câmara: salários ok ({len(base)} meses das páginas, até {ultimo % 100:02d}/{ultimo // 100}; "
-        f"{len(linhas)} meses pelo subsídio da lei)")
+    return df
+
+
+# ---------------------------------------------------------------- contracheque detalhado de cada mês
+# rubrica da página -> coluna (o resto, como imposto de renda, previdência e líquido, não é guardado)
+RUBRICAS = [("REMUNERACAO FIXA", "fixa"), ("VANTAGENS DE NATUREZA PESSOAL", "vantagens_pessoais"),
+            ("FUNCAO OU CARGO EM COMISSAO", "funcao"), ("GRATIFICACAO NATALINA", "natalina"), ("FERIAS", "ferias"),
+            ("OUTRAS REMUNERACOES EVENTUAIS", "eventuais"), ("ABONO PERMANENCIA", "abono"), ("REDUTOR CONSTITUCIONAL", "redutor"),
+            ("DIARIAS", "diarias"), ("AUXILIOS", "auxilios"), ("VANTAGENS INDENIZATORIAS", "indenizatorias")]
+NAO_GUARDA = ("CONTRIBUICAO PREVIDENCIARIA", "IMPOSTO DE RENDA", "REMUNERACAO APOS DESCONTOS")
+COLUNAS_DETALHE = ["id_deputado", "ano", "mes", "folhas"] + [c for _, c in RUBRICAS]
+# contracheques novos por vez (os mais recentes primeiro; ~25 min com a pausa); o resto fica para a próxima semana.
+# Para ler tudo de uma vez no Mac: CAMARA_MAX_DETALHE=30000 python3 coletar.py camara (~1h40)
+MAX_DETALHE = int(os.environ.get("CAMARA_MAX_DETALHE", 6000))
+
+
+def _ler_detalhe(html):
+    """{coluna: soma de todas as folhas do mês (normal, 13º, complementar...)} e os nomes das folhas."""
+    soma, folhas = {c: 0.0 for _, c in RUBRICAS}, []
+    for t in BeautifulSoup(html, "lxml").find_all("table"):
+        cap = t.find("caption")
+        if not cap or "Tipo Folha" not in cap.get_text():
+            continue
+        folhas.append(re.sub(r"\s+", " ", cap.get_text(" ", strip=True)).split(":", 1)[-1].split("-", 1)[-1].strip())
+        for tr in t.select("tbody tr"):
+            tds = tr.find_all("td")
+            if len(tds) != 2:
+                continue
+            rotulo = normalizar_nome(tds[0].get_text(" ", strip=True))
+            if any(n in rotulo for n in NAO_GUARDA):
+                continue
+            col = next((c for chave, c in RUBRICAS if chave in rotulo), None)
+            if col is None:
+                log(f"Câmara: rubrica nova no contracheque, não lida: {rotulo}")
+                continue
+            soma[col] += numero_br(tds[1].get_text(strip=True)) or 0.0
+    return soma, folhas
+
+
+def _detalhe_mes(tarefa):
+    id_, am = tarefa
+    html = _pagina(id_, "remuneracao-deputado-detalhado", mesAno=f"{am % 100:02d}{am // 100}")
+    soma, folhas = _ler_detalhe(html)
+    salvar_json(C / "detalhe" / f"{id_}_{am}.json", {"folhas": folhas, **{k: round(v, 2) for k, v in soma.items()}})
+
+
+def detalhe(rem):
+    """13º, férias, acertos, diárias e verbas indenizatórias (como a ajuda de custo), pelo contracheque detalhado de
+    cada mês com salário; guardado em dados/camara/remuneracao_detalhe.csv. Só os meses que faltam e os 2 últimos."""
+    arq = CONGELADO / "remuneracao_detalhe.csv"
+    guardado = pd.read_csv(arq) if arq.exists() else pd.DataFrame(columns=COLUNAS_DETALHE)
+    tem = set(zip(guardado.id_deputado, guardado.ano * 100 + guardado.mes))
+    inicio = INICIO_LEGISLATURA[0] * 100 + INICIO_LEGISLATURA[1]
+    fim = ULTIMO_MES[0] * 100 + ULTIMO_MES[1]
+    recentes = {fim, fim - 1 if fim % 100 > 1 else fim - 89}
+    r = rem[~rem.calculado.astype(bool) & (rem.valor.fillna(0) != 0)]
+    meses = sorted({(int(i), int(a) * 100 + int(m)) for i, a, m in zip(r.id_deputado, r.ano, r.mes) if inicio <= a * 100 + m <= fim},
+                   key=lambda t: (-t[1], t[0]))
+    faltam = [t for t in meses if (t not in tem or t[1] in recentes) and not cache_valido(C / "detalhe" / f"{t[0]}_{t[1]}.json", 3)]
+    log(f"Câmara: contracheques detalhados — {len(meses) - len(faltam)}/{len(meses)} já lidos; {min(len(faltam), MAX_DETALHE)} agora")
+    erro = None
+    try:
+        _em_paralelo(_detalhe_mes, faltam[:MAX_DETALHE], "contracheque detalhado", tolerancia=20)
+    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+        erro = e
+        log(f"Câmara: os contracheques detalhados não abriram ({e}); fica o que está em dados/camara/")
+    finally:  # grava o que já foi lido, mesmo se o tempo acabar
+        novas = []
+        for id_, am in meses:
+            c = C / "detalhe" / f"{id_}_{am}.json"
+            if c.exists() and ((id_, am) not in tem or am in recentes):
+                novas.append({"id_deputado": id_, "ano": am // 100, "mes": am % 100, **ler_json(c)})
+        if novas:
+            for x in novas:
+                x["folhas"] = "; ".join(x["folhas"]) if isinstance(x["folhas"], list) else x["folhas"]
+            refeitos = {(x["id_deputado"], x["ano"] * 100 + x["mes"]) for x in novas}
+            guardado = pd.concat([guardado[[k not in refeitos for k in zip(guardado.id_deputado, guardado.ano * 100 + guardado.mes)]],
+                                  pd.DataFrame(novas, columns=COLUNAS_DETALHE)], ignore_index=True)
+            guardado = guardado.sort_values(["id_deputado", "ano", "mes"])
+            CONGELADO.mkdir(parents=True, exist_ok=True)
+            guardado.to_csv(arq, index=False)
+        guardado.to_csv(BRUTOS / "camara_remuneracao_detalhe.csv", index=False)
+    cobertos = set(zip(guardado.id_deputado, guardado.ano * 100 + guardado.mes))
+    falta = [am for t in meses for am in [t[1]] if t not in cobertos]
+    log(f"Câmara: contracheques detalhados ok ({len(guardado)} meses; faltam {len(falta)}"
+        f"{f', o mais recente {max(falta) % 100:02d}/{max(falta) // 100}' if falta else ''})")
+    return erro
 
 
 # ---------------------------------------------------------------- tamanho da equipe
-def pessoal(lista):
-    """Quantas pessoas trabalharam no gabinete de cada deputado em cada mês, até set/2026 (contadas nas páginas de
-    pessoal de gabinete, que o robots.txt da Câmara não deixa mais robôs abrirem; sem nomes)."""
-    df = pd.read_csv(CONGELADO / "pessoal_paginas.csv")
+RX_PERIODO = re.compile(r"(?:De|Desde)\s+(\d{2})/(\d{2})/(\d{4})(?:\s+a\s+(\d{2})/(\d{2})/(\d{4}))?")
+
+
+def _pessoal_ano(tarefa):
+    """Lê a página de pessoal de gabinete de um ano e guarda os períodos de exercício de cada pessoa.
+    Não guarda nomes: só um código (hash) para contar pessoas diferentes.
+    Secretários parlamentares são pagos pela verba de gabinete; cargos de natureza especial (CNE),
+    pela própria Câmara, quando o deputado tem cargo de liderança ou na Mesa."""
+    id_, ano = tarefa
+    linhas = _linhas_tabela(_pagina(id_, "pessoal-gabinete", ano=ano))
+    periodos = []
+    for l in linhas:
+        if len(l) < 4:
+            continue
+        m = RX_PERIODO.search(l[3])
+        if not m:
+            continue
+        d1, m1, a1, d2, m2, a2 = m.groups()
+        periodos.append({
+            "h": hashlib.sha1(l[0].strip().upper().encode("utf-8")).hexdigest()[:12],
+            "t": "sp" if "SECRET" in l[1].upper() else "cne",
+            "i": [int(a1), int(m1)],
+            "f": [int(a2), int(m2)] if a2 else None,
+        })
+    salvar_json(C / "pessoal_v2" / f"{id_}_{ano}.json", periodos)
+
+
+def pessoal(lista, rem):
+    """Quantas pessoas trabalharam no gabinete de cada deputado em cada mês, pela página de pessoal de gabinete
+    (sem nomes); guardado em dados/camara/pessoal.csv. As páginas são por ano, mas uma pessoa pode aparecer só na
+    página do ano em que começou; por isso juntamos as páginas de todos os anos antes de contar."""
+    arq = CONGELADO / "pessoal.csv"
+    verba = pd.read_csv(BRUTOS / "camara_verba_gabinete.csv")
+    ativos = set(map(tuple, pd.concat([rem[rem["valor"] > 0][["id_deputado", "ano"]],
+                                       verba[verba["gasto"] > 0][["id_deputado", "ano"]]]).drop_duplicates().values.tolist()))
+    tarefas = [(d["id"], ano) for d in lista for ano in ANOS if (d["id"], ano) in ativos]
+    pendentes = [t for t in tarefas if not cache_valido(C / "pessoal_v2" / f"{t[0]}_{t[1]}.json", 3 if t[1] == HOJE.year else None)]
+    log(f"Câmara: tamanho das equipes — {len(tarefas) - len(pendentes)}/{len(tarefas)} já no cache")
+    try:
+        # algumas páginas dão erro 500 de vez em quando; toleramos poucas (são tentadas de novo na próxima vez)
+        _em_paralelo(_pessoal_ano, pendentes, "pessoal de gabinete", tolerancia=max(20, int(0.05 * len(pendentes))))
+    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+        log(f"Câmara: as páginas de pessoal não abriram ({e}); fica o que está em dados/camara/pessoal.csv")
+        df = pd.read_csv(arq)
+        df.to_csv(BRUTOS / "camara_pessoal.csv", index=False)
+        return
+    por_dep = {}
+    for id_, ano in tarefas:
+        a = C / "pessoal_v2" / f"{id_}_{ano}.json"
+        if a.exists():
+            conj = por_dep.setdefault(id_, set())
+            for x in ler_json(a):
+                conj.add((x["h"], x["t"], tuple(x["i"]), tuple(x["f"]) if x["f"] else None))
+    linhas = []
+    for id_, periodos in por_dep.items():
+        for am in meses_da_legislatura():
+            sp = {h for h, t, i, f in periodos if t == "sp" and i <= am and (f is None or am <= f)}
+            cne = {h for h, t, i, f in periodos if t == "cne" and i <= am and (f is None or am <= f)}
+            if sp or cne:
+                linhas.append({"id_deputado": id_, "ano": am[0], "mes": am[1], "secretarios": len(sp), "cne": len(cne)})
+    df = pd.DataFrame(linhas, columns=["id_deputado", "ano", "mes", "secretarios", "cne"])
+    if len(df) < 0.8 * len(pd.read_csv(arq)) if arq.exists() else False:  # o cache sumiu: não troca o guardado por menos
+        log("Câmara: equipes com menos meses que o guardado (cache incompleto?); fica o que está em dados/camara/pessoal.csv")
+        df = pd.read_csv(arq)
+    else:
+        df.sort_values(["id_deputado", "ano", "mes"]).to_csv(arq, index=False)
     df.to_csv(BRUTOS / "camara_pessoal.csv", index=False)
-    log(f"Câmara: tamanho das equipes ok ({len(df)} meses, até {int((df.ano * 100 + df.mes).max()) % 100:02d}/{int(df.ano.max())})")
+    log(f"Câmara: tamanho das equipes ok ({len(df)} meses)")
 
 
 def coletar():
     lista = deputados()
     cota()
     moradia()
-    remuneracao(lista)
+    rem = remuneracao(lista)
+    detalhe(rem)
     verba_gabinete(lista)
-    pessoal(lista)
+    pessoal(lista, rem)
     cota_site(lista)
     log("Câmara: coleta completa.")

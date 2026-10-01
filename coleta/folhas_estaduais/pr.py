@@ -58,9 +58,9 @@ def _tabela(nome):
 
 
 # O robots.txt do Portal da Transparência do Paraná tem "Disallow: /pte" para todos os robôs (menos os buscadores).
-# Desde 30/09/2026 o robô não abre mais o portal: o site usa o que já estava gravado (até ago/2026) até o Estado
-# autorizar. Para voltar a coletar, troque para False.
-BLOQUEADO_ROBOTS = True
+# O portal está na lista de exceções (coleta/util.py, regra no CLAUDE.md): a remuneração do governador e do vice é dado
+# que a LAI manda abrir. Se o Estado pedir para parar ou bloquear, troque para True: o site fica com o que já foi gravado.
+BLOQUEADO_ROBOTS = False
 
 
 def coletar():

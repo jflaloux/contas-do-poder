@@ -244,7 +244,7 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 
 | Cidade | Fonte | O que a folha dá |
 |---|---|---|
-| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês). **Parado desde 30/09/2026**: o robots.txt do portal tem `Disallow: /`; fica o que já estava gravado (até ago/2026) | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
+| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês; exceção ao robots.txt, ver "Robôs e robots.txt") | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
 | Recife | Dados Abertos do Recife, "Servidores e salários" (um CSV de ~85 MB por ano, lido aos poucos e filtrado pela função) | Proventos, férias e 13º ("natalina"). R$ 0 no mês = recebe de outro órgão |
 | Fortaleza | Dados Abertos de Fortaleza, `relacao_AAAAMM.csv` (~24 MB por mês) | Só o total dos proventos: o que passa do normal da pessoa vira "outros". Menos de 30% do normal do cargo = recebe de outro órgão |
 | Vitória | Dados Abertos de Vitória, conjunto "Pessoal" (API do portal, uma tabela por mês) | Só a remuneração bruta total. Quadro "cedido por outros órgãos" = recebe de outro órgão |
@@ -300,7 +300,7 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 | MG | Dados abertos, "Remuneração dos servidores ativos" | CSV mensal de ~130 MB (dois leiautes), com 13º, férias, jetons e abate-teto |
 | PB | Dados abertos (API da Codata) | Por órgão e mês: parte fixa e parte variável |
 | PE | Dados abertos, "Remuneração de servidores" | CSV mensal; a governadora é achada pelo nome (recebe como procuradora) |
-| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses). **Parado desde 30/09/2026**: o robots.txt tem `Disallow: /pte`; fica o que já estava gravado (até ago/2026) |
+| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses; exceção ao robots.txt) |
 | RO | API do Portal da Transparência | Por cargo e mês, com as rubricas; o 13º numa folha à parte |
 | RR | API do Portal da Transparência | Por nome e mês, com os lançamentos |
 | SC | Dados abertos, "Remuneração dos servidores" | CSV mensal só com o bruto; o Estado só mantém os meses recentes |
@@ -318,24 +318,33 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 
 Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
 primeiro pedido: o que ele proíbe não é aberto (erro `BloqueadoRobots`, e o estado ou a cidade segue com o que já estava
-gravado), e o `Crawl-delay` é respeitado (um pedido por vez naquele site, com a pausa pedida). As APIs da Wikimedia
-ficam de fora (têm regras próprias para robôs). Quem cria um robô novo deve usar essa sessão, e não `requests` direto.
+gravado), e o `Crawl-delay` é respeitado. As APIs da Wikimedia ficam de fora (têm regras próprias para robôs). Quem cria
+um robô novo deve usar essa sessão, e não `requests` direto.
 
-O que mudou em 30/09/2026, depois de uma conferência dos robots.txt:
+**Exceções.** O robots.txt é uma convenção, não lei. Dados que a Lei de Acesso à Informação manda publicar e abrir para
+"acesso automatizado por sistemas externos" (Lei 12.527/2011, art. 8º, § 3º, III), como a remuneração de agentes
+públicos, são lidos mesmo quando o robots.txt de um órgão proíbe. Cada exceção está em `EXCECOES_ROBOTS`
+(`coleta/util.py`), com o motivo e uma pausa entre os pedidos; o robô se identifica ("ContasDoPoder", com o endereço
+do site), lê só o que falta (o que já foi lido fica no Git) e para se o órgão pedir ou bloquear. Em paralelo, há um
+pedido pela LAI dos mesmos dados. Hoje:
 
-- **Câmara dos Deputados**: o robots.txt (de 18/09/2026) proíbe `/deputados/*/*`, ou seja, as páginas de salário,
-  de verba de gabinete e de pessoal de gabinete de cada deputado. Agora: a verba de gabinete vem da página principal
-  do deputado (`/deputados/ID?ano=AAAA`, permitida; os valores batem ao centavo com os de antes); o salário até
-  set/2026 é o que as páginas mostravam (guardado em `dados/camara/remuneracao_paginas.csv`) e, depois, o subsídio
-  do Decreto Legislativo 172/2022 nos meses em exercício, pelo histórico da API (quem recebia o subsídio cheio sem
-  estar em exercício, como os ministros licenciados, continua enquanto o histórico não mudar); a equipe fica como
-  estava em set/2026 (`dados/camara/pessoal_paginas.csv`, só contagens). 13º, férias, ajuda de custo e diárias ficam de
-  fora até a Câmara autorizar.
-- **Portais CKAN** (ES, MG, PE, SC, Recife e Fortaleza): o robots.txt proíbe `/api/` e pede 10 s entre pedidos. Os
-  arquivos agora são achados pela página do conjunto de dados (`coleta.util.recursos_ckan`), com a pausa.
-- **Prefeitura de São Paulo** (`Disallow: /`) e **Paraná** (`Disallow: /pte`): os robôs estão parados
-  (`BLOQUEADO_ROBOTS = True` em `coleta/prefeituras/sp.py` e `coleta/folhas_estaduais/pr.py`) e o site usa o que já
-  estava gravado, até haver autorização.
+| Site | O que o robots.txt proíbe | O que lemos | Pausa |
+|---|---|---|---|
+| Câmara dos Deputados | `/deputados/*/*` (desde 18/09/2026) | Remuneração, contracheque detalhado e pessoal de gabinete de cada deputado | 0,25 s |
+| Prefeitura de São Paulo (dados abertos) | todo o portal (`Disallow: /`) | Folha de pagamento mensal (CSV) | 10 s |
+| Paraná (Portal da Transparência) | `/pte` | Remuneração do governador e do vice | 2 s |
+
+Os portais CKAN (ES, MG, PE, SC, Recife e Fortaleza) proíbem só a API (`/api/`): os arquivos são achados pela página
+do conjunto de dados (`coleta.util.recursos_ckan`), com os 10 s de pausa que pedem.
+
+**Câmara.** O que as páginas de cada deputado mostram fica em `dados/camara/` (no Git): `remuneracao.csv` (salário da
+folha normal), `remuneracao_detalhe.csv` (o contracheque de cada mês: 13º, férias, acertos, abate-teto, diárias,
+auxílios, verbas indenizatórias, somando todas as folhas do mês; nunca imposto de renda, previdência ou líquido) e
+`pessoal.csv` (quantas pessoas no gabinete, sem nomes). A verba de gabinete vem da página principal do deputado, que o
+robots.txt permite. Os contracheques são lidos do mais recente para o mais antigo, no máximo 6.000 por semana; só
+entram no site os meses em que todos os deputados já têm o seu (o site avisa desde quando). Os auxílios do contracheque
+não entram de novo (são o auxílio-moradia, que vem da página de moradia). Se a Câmara bloquear, o robô usa o que está
+em `dados/camara/` e, para os meses seguintes, o subsídio do Decreto Legislativo 172/2022 nos meses em exercício.
 
 ## Compartilhamento e medição
 
@@ -392,9 +401,9 @@ Veja `metadados.json` → `pendencias`. As principais:
    de dados abertos (cerca de R$ 4 milhões por mês). Completamos com o total mensal do site oficial.
 2. **Senado:** o custo dos assessores é uma **estimativa** (liga a folha de pagamento à lotação atual de cada
    comissionado, pelo nome).
-3. **Câmara:** faltam o 13º, a ajuda de custo e as diárias dos deputados (no Senado já estão): só aparecem nas
-   páginas de cada deputado que o robots.txt da Câmara não deixa robôs abrirem (ver "Robôs e robots.txt").
-   Por isso, hoje o "ganha" dos deputados está um pouco subestimado.
+3. **Câmara:** o 13º, as férias, os acertos, as diárias e a ajuda de custo dos deputados vêm do contracheque
+   detalhado de cada mês, lido aos poucos (ver "Robôs e robots.txt"); enquanto a leitura não chega ao começo da
+   legislatura, os meses mais antigos ficam sem eles (o site diz desde quando entram).
 4. **Governadores:** o mês a mês pela folha em 24 estados. Faltam o Amapá e o Mato Grosso (a consulta pede CAPTCHA,
    que não contornamos) e o Tocantins (o portal só funciona clicando na página). No Pará, a consulta pública deixou de
    mostrar a governadora e o vice a partir de abril de 2026.
@@ -406,9 +415,10 @@ Veja `metadados.json` → `pendencias`. As principais:
 
 - Câmara: [API de dados abertos](https://dadosabertos.camara.leg.br/swagger/api.html),
   [arquivos da cota](https://www.camara.leg.br/cotas/), página principal de cada deputado (verba de gabinete),
-  [moradia](https://www.camara.leg.br/moradia/detalhamento) e o
+  [moradia](https://www.camara.leg.br/moradia/detalhamento), as páginas de remuneração, de contracheque detalhado e
+  de pessoal de gabinete de cada deputado e o
   [Decreto Legislativo 172/2022](https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html)
-  (subsídio). Até set/2026, também as páginas de salário e de pessoal de cada deputado.
+  (subsídio).
 - Senado: [dados abertos legislativos](https://legis.senado.leg.br/dadosabertos/docs/) e
   [administrativos](https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html).
 - Governadores: leis e decretos legislativos das assembleias, diários oficiais, folhas de pagamento e tabelas

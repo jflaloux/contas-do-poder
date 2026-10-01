@@ -209,7 +209,9 @@ def _sem_pagamento_fora_do_mandato(lanc):
         # secretário de Estado, por exemplo) recebe o subsídio cheio, e isso continua na conta
         chave = pd.Series(list(zip(lanc.id_politico, lanc.ano, lanc.mes)), index=lanc.index)
         pequeno = chave.map(lambda k: sal.get(k, 0) < pouco)
-        fora = (lanc.id_politico == pid) & (lanc.categoria == "salario") & ~am.isin(meses) & pequeno
+        # o salário e o resto do contracheque da Câmara (13º, acertos) daquele mês
+        fora = ((lanc.id_politico == pid) & (lanc.categoria == "salario") | (lanc.id_politico == pid) & (lanc.fonte == "camara_detalhe")
+                & (lanc.grupo == "ganha")) & ~am.isin(meses) & pequeno
         if fora.any():
             log(f"Site: {pid}: {int(fora.sum())} meses de pagamento fora do exercício do mandato saem da conta "
                 f"(R$ {lanc[fora].valor.sum():,.2f})")

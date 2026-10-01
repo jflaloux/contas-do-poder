@@ -64,7 +64,39 @@ class BloqueadoRobots(Exception):
 # APIs feitas para robôs, com regras próprias de uso (a da Wikimedia pede só um User-Agent identificado e ritmo
 # moderado); o robots.txt desses sites é para quem varre as páginas, não para a API
 APIS_LIBERADAS = ("https://commons.wikimedia.org/w/api.php", "https://www.wikidata.org/w/api.php")
+# Exceções ao robots.txt (regra no CLAUDE.md): dados que a LAI manda publicar e abrir para acesso automatizado
+# (Lei 12.527/2011, art. 8º, § 3º, III). Cada uma: (começo do endereço, motivo, segundos entre pedidos naquele site).
+# A leitura é mínima (o cache faz cada página ser baixada no máximo uma vez por semana), o robô se identifica pelo
+# User-Agent e para se o site bloquear. Em paralelo, há um pedido pela LAI dos mesmos dados (NOTAS-PRIVADAS).
+EXCECOES_ROBOTS = [
+    ("https://www.camara.leg.br/deputados/",
+     "Câmara dos Deputados: salário, 13º, férias, diárias e pessoal de gabinete de cada deputado (remuneração de "
+     "agente público, que a LAI manda publicar; o robots.txt proíbe /deputados/*/* desde 18/09/2026)", 0.25),
+    ("https://dados.prefeitura.sp.gov.br/",
+     "Prefeitura de São Paulo: folha de pagamento nos dados abertos (o robots.txt do portal tem Disallow: /)", 10),
+    ("https://www.transparencia.pr.gov.br/pte/",
+     "Paraná: remuneração do governador e do vice no Portal da Transparência (o robots.txt tem Disallow: /pte)", 2),
+]
 _robots, _robots_trava, _ultimo_pedido, _trava_host = {}, threading.Lock(), {}, {}
+
+
+def excecao_robots(url):
+    """(motivo, pausa) se o endereço está na lista de exceções ao robots.txt; senão None."""
+    for comeco, motivo, pausa in EXCECOES_ROBOTS:
+        if str(url).startswith(comeco):
+            return motivo, pausa
+    return None
+
+
+def _esperar_vez(origem, intervalo):
+    """Reserva o próximo horário livre para um pedido naquele site (no máximo um a cada `intervalo` segundos, mesmo com
+    vários pedidos em paralelo) e espera até ele."""
+    with _robots_trava:
+        vez = max(time.time(), _ultimo_pedido.get(origem, 0) + intervalo)
+        _ultimo_pedido[origem] = vez
+    espera = vez - time.time()
+    if espera > 0:
+        dormir(espera)
 
 
 def _regras_robots(texto):
@@ -146,7 +178,8 @@ def _robots_de(origem, sessao):
 
 class SessaoEducada(requests.Session):
     """requests.Session que lê o robots.txt de cada site antes do primeiro pedido: não abre o que ele proíbe
-    (BloqueadoRobots) e respeita o Crawl-delay (um pedido por vez naquele site, com a pausa pedida)."""
+    (BloqueadoRobots), a não ser os endereços de EXCECOES_ROBOTS (com pausa entre os pedidos), e respeita o
+    Crawl-delay (um pedido por vez naquele site, com a pausa pedida)."""
 
     def request(self, method, url, *args, **kwargs):
         from urllib.parse import urlsplit
@@ -154,6 +187,10 @@ class SessaoEducada(requests.Session):
         origem = f"{u.scheme}://{u.netloc}"
         if not str(url).startswith(APIS_LIBERADAS):
             regras = _robots_de(origem, self)
+            exc = excecao_robots(url)
+            if exc:  # exceção: lê mesmo com o robots.txt proibindo, com a pausa (e o Crawl-delay, se houver)
+                _esperar_vez(origem, max(exc[1], regras["atraso"] or 0))
+                return super().request(method, url, *args, **kwargs)
             if not permitido(str(url), regras):
                 raise BloqueadoRobots(f"o robots.txt de {u.netloc} não permite robôs em {u.path}")
             if regras["atraso"]:

@@ -1,4 +1,4 @@
-# Conferência dos dados — 30/09/2026 23:17
+# Conferência dos dados — 01/10/2026 02:43
 
 ## 1. Cobertura
 
@@ -128,14 +128,14 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Governadores com o valor da lei, da folha ou da tabela oficial | 26 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
 | Governo federal: com salário em 07/2026 | 40 | 25 | OK |
-| Deputados com salário em 07/2026 | 529 | 480 | OK |
+| Deputados com salário em 08/2026 | 528 | 480 | OK |
 | Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
-| Senadores com salário em 07/2026 | 82 | 75 | OK |
-| Senadores com assessores em 07/2026 | 80 | 60 | OK |
-| Cota da Câmara nos últimos 12 meses (R$ milhões) | 269 | 150 | OK |
-| Cota do Senado nos últimos 12 meses (R$ milhões) | 38 | 15 | OK |
+| Senadores com salário em 08/2026 | 84 | 75 | OK |
+| Senadores com assessores em 08/2026 | 82 | 60 | OK |
+| Cota da Câmara nos últimos 12 meses (R$ milhões) | 256 | 150 | OK |
+| Cota do Senado nos últimos 12 meses (R$ milhões) | 36 | 15 | OK |
 | Parlamentares no arquivo do site | 842 | 700 | OK |
-| Deputados com a equipe contada em 07/2026 | 513 | 450 | OK |
+| Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
 
 ---
 **Total de alertas: 3**

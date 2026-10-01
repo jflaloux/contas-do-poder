@@ -45,10 +45,10 @@ Cada número tem link para a fonte oficial.
 
 ### Fase 1b — pendências de dados (antes do lançamento)
 
-- [ ] Câmara: 13º salário, ajuda de custo e diárias dos deputados — bloqueado: só estão nas páginas /deputados/ID/... que o
-  robots.txt da Câmara proíbe (desde 18/09/2026). Pedir autorização à Câmara (rascunho nas notas) — Jean-François
-- [x] Câmara: robô adaptado ao robots.txt (verba pela página principal; salário pela lei depois de set/2026; equipe
-  congelada em set/2026) — Claude
+- [x] Câmara: 13º, férias, acertos, ajuda de custo e diárias dos deputados, pelo contracheque detalhado de cada mês
+  (exceção ao robots.txt; leitura do mais recente para o mais antigo) — Claude
+- [ ] Câmara: terminar a leitura dos contracheques até fev/2023 (sozinho, 6.000 por semana; ou de uma vez no Mac com
+  `CAMARA_MAX_DETALHE=30000 python3 coletar.py camara`) — Claude / Jean-François
 - [ ] Câmara: limites históricos da cota por estado (2023–2025) — Claude
 - [ ] Senado: validar a estimativa de custo dos assessores (ex.: pedir via LAI o custo por gabinete) — Você e Claude
 
@@ -102,7 +102,8 @@ Cada número tem link para a fonte oficial.
   pública em /correcoes — Claude
 - [x] Conferência dos robots.txt de todos os sites usados; a sessão dos robôs agora bloqueia o que é proibido e respeita
   o Crawl-delay (CKAN pela página do conjunto; Prefeitura de SP e Paraná parados) — Claude
-- [ ] Pedir autorização (ou liberação no robots.txt) à Câmara dos Deputados, à Prefeitura de São Paulo e ao Paraná — Jean-François
+- [x] Regra do robots.txt: convenção, não lei; exceções para dados que a LAI manda abrir (Câmara, Prefeitura de SP, Paraná) — Jean-François e Claude
+- [ ] Mandar os pedidos pela LAI à Câmara, à Prefeitura de São Paulo e ao Paraná (textos nas notas) — Jean-François
 
 ## Fase 4 — Lançamento
 
