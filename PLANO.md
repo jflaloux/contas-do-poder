@@ -76,7 +76,9 @@ Cada número tem link para a fonte oficial.
 - [x] Prefeitura de São Paulo: prefeito, vice, secretários e subprefeitos, mês a mês (folha nos dados abertos) — Claude
 - [x] Vereadores, passo 2b: Fortaleza, Goiânia, Manaus, Natal e Recife, vereador por vereador (robô comum a várias cidades) — Claude
 - [x] Vereadores, passo 2c: Rio de Janeiro, Belo Horizonte, Porto Alegre, Maceió e São Luís (robôs rodam no Mac, no Brasil) — Claude
-- [ ] Vereadores, passo 2d: Curitiba, Teresina, João Pessoa, Boa Vista, Palmas e Aracaju (dados parciais). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
+- [x] Vereadores, passo 2d: Aracaju (folha) e Boa Vista (subsídio da resolução e verba por tipo) — Claude
+- [ ] Vereadores, passo 2e: Curitiba (Betha Cloud) e Palmas (NúcleoGov e prodata, em JavaScript). Teresina e João Pessoa: o robots.txt proíbe
+  robôs no site inteiro (só com exceção). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
 - [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
 - [x] Prefeituras: Salvador, Curitiba, Natal, Campo Grande (desde jun/2025) e Rio (só prefeito e vice: a folha não diz o cargo) — Claude
@@ -99,7 +101,10 @@ Cada número tem link para a fonte oficial.
 - [x] Deputados estaduais, passo 1: SP (Alesp), PE (Alepe) e MS (Alems): subsídio da lei e verba com fornecedores, em
   `site/dados/assembleias.json`; levantamento das 27 em `dados/referencia/assembleias.json` — Claude
 - [ ] Deputados estaduais no site: página, busca, seção na página do estado (texto em TAREFA-SITE-deputados-estaduais.txt) — chat do site
-- [ ] Deputados estaduais, passo 2: GO, SC, PB, RO, RJ e CE; MG só com exceção ao robots.txt (decisão do Jean-François) — Claude
+- [x] Deputados estaduais, passo 2: BA, CE, PB, GO, SC, RO, TO, SE, ES, RS e AP (ES, RS e AP rodam no Mac, no Brasil) — Claude
+- [ ] Deputados estaduais, passo 3: MA (JSF), AM e DF (a levantar do Brasil), PA (painel), PI (ScriptCase), RR (PDF/ODT), AL (PDF de imagem),
+  AC (só salário); MG e RJ só com exceção ao robots.txt (decisão do Jean-François); PR e MT têm CAPTCHA — Claude
+- [x] Fotos do TSE (candidaturas de 2022 e 2024, dados abertos CC BY) para deputados estaduais, vereadores, prefeitos, vices e governadores sem foto — Claude
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
 
 ## Fase 3 — Testes e confiabilidade
