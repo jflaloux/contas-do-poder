@@ -1,0 +1,30 @@
+<!doctype html>
+<!-- Fonte da prévia de link (site/og.png, 1200×630), a imagem que o WhatsApp e as redes mostram ao colar o endereço.
+     Para refazer: abra este arquivo no navegador, deixe a área .og com 1200×630 e salve como PNG (por exemplo, com o
+     Playwright: page.locator(".og").screenshot()). Depois, reduza para 128 cores (o PNG cai de ~57 KB para ~22 KB). -->
+<html lang="pt-BR"><head><meta charset="utf-8"><title>Prévia de link</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+.og{width:1200px;height:630px;box-sizing:border-box;background:#0f2b3c;color:#f1f6f8;font-family:Barlow,sans-serif;position:relative;overflow:hidden}
+.topo{padding:52px 72px 0;display:flex;flex-direction:column;gap:30px}
+.marca{display:flex;align-items:center;gap:20px}
+.marca svg{display:block}
+.nome{font-family:"Barlow Condensed";font-weight:700;font-size:66px;line-height:1;letter-spacing:.005em;white-space:nowrap}
+.nome span{color:#3ee0b4}
+h1{margin:0;font-family:"Barlow Condensed";font-weight:700;font-size:94px;line-height:.94;letter-spacing:-.005em;max-width:1060px}
+h1 span{color:#3ee0b4}
+.quem{display:flex;flex-wrap:wrap;gap:10px;margin-top:2px;max-width:860px}
+.quem span{background:#163a4f;border:1px solid #24506a;border-radius:999px;padding:7px 18px;font-size:25px;font-weight:600;color:#e3ecf1}
+.faixa{position:absolute;left:0;right:0;bottom:0;height:112px;background:#3ee0b4;display:flex;align-items:center;justify-content:space-between;padding:0 72px;box-sizing:border-box}
+.dom{font-family:"Barlow Condensed";font-weight:700;font-size:58px;color:#08161f;letter-spacing:.005em}
+.fonte{font-size:25px;font-weight:600;color:rgba(8,22,31,.82);text-align:right;line-height:1.25}
+</style></head><body><div class="og">
+<div class="topo">
+<div class="marca"><svg width="80" height="80" viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="none" stroke="#3ee0b4" stroke-width="7" stroke-dasharray="47.6 88" transform="rotate(-90 20 20)"/><circle cx="20" cy="20" r="14" fill="none" stroke="#ffc266" stroke-width="7" stroke-dasharray="37.4 88" stroke-dashoffset="-49.1" transform="rotate(-90 20 20)"/></svg>
+<span class="nome">contas <span>do poder</span></span></div>
+<h1>Quanto ganha e quanto custa <span>quem te representa?</span></h1>
+<div class="quem"><span>Deputados federais</span><span>Senadores</span><span>Ministros</span><span>Governadores</span><span>Deputados estaduais</span><span>Prefeitos</span><span>Vereadores</span></div>
+</div>
+<div class="faixa"><span class="dom">contasdopoder.com</span><span class="fonte">Mês a mês, com a fonte<br>oficial de cada número</span></div>
+</div></body></html>
