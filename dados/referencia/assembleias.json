@@ -663,7 +663,7 @@
    "verba": {
     "por_deputado": true,
     "granularidade": "nota",
-    "formato": "PDF por deputado e mês",
+    "formato": "PDF por deputado e mês (com texto), pela pesquisa da página (POST, sem CAPTCHA)",
     "url": "https://www.al.to.leg.br/transparencia/verbaIndenizatoria",
     "desde": "2017"
    },
@@ -681,7 +681,7 @@
     "url": "https://sapl.al.to.leg.br/media/sapl/public/normajuridica/2022/509/lei_4073-2022.pdf"
    },
    "barreiras": "hCaptcha na folha (não contornamos).",
-   "observacoes": "",
+   "observacoes": "Robô pronto (coleta/assembleias/to.py), desde jan/2025. O nome guardado em cada prestação às vezes não tem acento (\"Leo Barbosa\" em 2025): o robô tenta as duas grafias. Em 2025 falta a prestação de uma vaga (a de Fabion Gomes, que saiu em dez/2024; o SAPL dá Dr. Danilo Alencar desde jan/2025, mas a pesquisa não acha PDF dele antes de 2026).",
    "abriu_de_fora": true
   }
  }

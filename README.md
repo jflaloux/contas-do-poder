@@ -7,7 +7,7 @@ da Câmara, do Senado e do Portal da Transparência. E também o salário de cad
 estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
 Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
-São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul e Rondônia.
+São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul, Rondônia e Tocantins.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -287,6 +287,7 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 | Goiás | Portal da Transparência da Alego: o que a página usa (meses publicados, deputados com prestação no mês e a prestação de cada um) | Subsídio da lei (Lei 17.253/2011, redação da Lei 21.780/2023); verba indenizatória nota a nota (valor indenizado, fornecedor, CNPJ). Quem está no cargo: deputados com prestação no mês |
 | Santa Catarina | Portal da Transparência da Alesc: CSV anual dos gastos dos gabinetes; a página de deputados para quem está no cargo hoje | Subsídio da lei (Lei 18.642/2023); diárias, passagens, telefone, veículos, aluguel e reembolsos do gabinete (sem CNPJ; nas diárias e passagens, sem o nome da pessoa) |
 | Mato Grosso do Sul | Portal da Transparência da Alems: CSV anual da CEAP | Subsídio da lei (Lei 6.016/2022); CEAP nota a nota, com CNPJ e comprovante. Sem lista de deputados aberta: quem está no cargo sai dos meses com notas. Partido: o da candidatura de 2026 no TSE |
+| Tocantins | Portal da Transparência da Aleto: a pesquisa da Verba Indenizatória (CODAP), que devolve um PDF por deputado e mês | Subsídio da lei (Lei 4.073/2022); CODAP nota a nota (emitente, CNPJ, valor), lida do PDF. O PDF não tem a categoria: ela sai do nome do emitente (posto, hotel, escritório de advocacia...). O total do mês é o valor ressarcido do PDF. A folha tem hCaptcha e não entra. Quem está no cargo: a lista de deputados da página |
 
 - Nome civil, gênero e eleito/suplente: arquivo de candidatos de 2022 do TSE (`consulta_cand_2022.zip`, ~4 MB, no
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as
