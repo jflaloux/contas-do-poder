@@ -1063,26 +1063,35 @@
   }
   // O convite para compartilhar vem depois dos números principais (a pessoa lê primeiro) e antes dos detalhes (o mês a
   // mês): a prévia da imagem, uma frase e o botão, num bloco discreto.
-  function blocoCompartilhar(spec, onde, convite) {
+  function blocoCompartilhar(spec, onde, convite, comTexto) {
     if (!spec) return null;
+    const temImg = !!spec.gerar;
     const abrir = () => compartilharImagem(spec, onde);
-    const previa = h("span", { class: "compartilhar-bloco__previa carregando", "aria-hidden": "true", onclick: abrir });
-    obterImagem(spec).then((a) => { if (a.url) { previa.classList.remove("carregando"); previa.append(h("img", { src: a.url, alt: "" })); } }, () => {});
-    return h("div", { class: "compartilhar-bloco" },
+    let previa = null;
+    if (temImg) {
+      previa = h("span", { class: "compartilhar-bloco__previa carregando", "aria-hidden": "true", onclick: abrir });
+      obterImagem(spec).then((a) => { if (a.url) { previa.classList.remove("carregando"); previa.append(h("img", { src: a.url, alt: "" })); } }, () => {});
+    }
+    // o texto, na mesma caixa e em letra menor: WhatsApp, copiar o texto, copiar o link
+    let texto = null;
+    if (comTexto && spec.textoZap) {
+      const retorno = h("span", { class: "compartilhar-bloco__retorno", role: "status" });
+      texto = h("p", { class: "compartilhar-bloco__links" }, temImg ? "Ou em texto: " : "Em texto: ",
+        h("a", { href: `https://wa.me/?text=${encodeURIComponent(spec.textoZap)}`, target: "_blank", rel: "noopener", onclick: () => medirComp(spec, "whatsapp", onde) }, "mandar no WhatsApp"),
+        " · ", h("button", { type: "button", class: "link-botao", onclick: () => { medirComp(spec, "copiar_texto", onde); copiarTexto(spec.textoZap, retorno, "Texto copiado. É só colar."); } }, "copiar texto"),
+        spec.link ? [" · ", h("button", { type: "button", class: "link-botao", onclick: () => { medirComp(spec, "copiar_link", onde); copiarTexto(spec.link, retorno, "Link copiado."); } }, "copiar link")] : null,
+        " ", retorno);
+    }
+    return h("div", { class: `compartilhar-bloco${temImg ? "" : " compartilhar-bloco--so-texto"}` },
       previa,
       h("div", { class: "compartilhar-bloco__texto" }, h("strong", null, convite),
-        h("span", null, "Uma imagem pronta para o WhatsApp, com o endereço desta página e a fonte dos dados.")),
-      h("button", { type: "button", class: "botao", onclick: abrir }, "Compartilhar imagem"));
+        temImg ? h("span", null, "Uma imagem pronta para o WhatsApp, com o endereço desta página e a fonte dos dados.") : null),
+      temImg ? h("button", { type: "button", class: "botao", onclick: abrir }, "Compartilhar imagem") : null,
+      texto);
   }
-  // No fim da página da cidade e do governador: a imagem e o texto juntos, como na seção "Resumo para compartilhar" do
-  // político (o convite depois dos números continua lá em cima)
-  function fimCompartilhar(spec) {
-    if (!spec || (!spec.gerar && !spec.textoZap)) return null;
-    return h("div", { class: "compartilhar-fim" },
-      h("h2", { class: "h3" }, "Compartilhar"),
-      spec.gerar ? blocoCompartilhar(spec, "fim", "Imagem") : null,
-      spec.textoZap ? h("div", { class: "compartilhar-fim__texto" }, opcoesTexto(spec, "fim", spec.link, true)) : null);
-  }
+  // Cidade e governador: um bloco só, no fim da página, com a imagem e o texto juntos (no celular, o botão fixo
+  // "Compartilhar" aparece depois dos números)
+  const fimCompartilhar = (spec) => blocoCompartilhar(spec, "fim", "Compartilhe estes números", true);
   // No celular, o botão "Compartilhar" fixo no canto de baixo da tela aparece depois que a pessoa passa pelos números
   // principais (marco) e some enquanto o convite ou a seção da imagem estão na tela. No computador ele não aparece
   // (estilo.css).
@@ -1836,7 +1845,6 @@
         prob ? cobrarCidade(c, prob, med) : null,
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
-        spec.gerar ? blocoCompartilhar(spec, "depois_numeros", "Compartilhe estes números") : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
@@ -2163,7 +2171,6 @@
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
           h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte\u00a0↗"))),
-        blocoCompartilhar(spec, "depois_numeros", "Compartilhe estes números"),
         blocoMensalGov(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },

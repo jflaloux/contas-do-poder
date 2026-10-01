@@ -811,7 +811,12 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-topo .lide { color: var(--banda-ink-2); }
 .indice-topo .pequeno { color: var(--banda-ink-3); }
 .indice-topo .caixa-nota { background: var(--banda-2); border: 0; color: var(--banda-ink-2); }
-/* fim da página da cidade e do governador: a imagem e o texto juntos */
-.compartilhar-fim { display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line-2); }
-.compartilhar-fim__texto { padding: 14px 18px; border: 1px solid var(--line); border-radius: var(--raio); background: var(--bg); }
-.compartilhar-fim__texto h3 { margin: 0 0 4px; }
+/* bloco de compartilhar com o texto junto (fim da página da cidade e do governador): os links do texto embaixo */
+.compartilhar-bloco__links { grid-column: 2 / -1; margin: -6px 0 0; font-size: .9rem; color: var(--ink-2); }
+.compartilhar-bloco__links .link-botao { color: var(--accent); font-weight: 600; }
+.compartilhar-bloco__links a { font-weight: 600; }
+.compartilhar-bloco__retorno { color: var(--ink-2); }
+.compartilhar-bloco--so-texto { grid-template-columns: minmax(0, 1fr); }
+.compartilhar-bloco--so-texto .compartilhar-bloco__links { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 560px) { .compartilhar-bloco__links { grid-column: 1 / -1; margin: 0; } }
+.compartilhar-bloco__links a, .compartilhar-bloco__links .link-botao { display: inline-block; padding: 4px 0; min-height: 24px; }
