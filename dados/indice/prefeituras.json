@@ -1,0 +1,1153 @@
+{
+ "_sobre": "Notas do bloco Prefeitura da capital do Índice de Transparência: dá para saber, pela fonte oficial, quanto o prefeito, o vice e os secretários da capital receberam em cada mês? Mantido à mão, a partir dos robôs de coleta/prefeituras/ e do levantamento de cada capital. Cada critério é [nota, prova]; nota null = a conferir.",
+ "conferido_em": "2026-10-01",
+ "estados": {
+  "AC": {
+   "cidade": "Rio Branco",
+   "fonte": "https://transparencia.riobranco.ac.gov.br/portal-transparencia/servidor/",
+   "nome": [
+    1,
+    "Folha nominal com nome completo e matrícula."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo (prefeito, vice-prefeito, secretário municipal) e o vínculo 'agente político'."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito (era o vice e assumiu em abr/2026) está na folha de ago/2026; o cargo de vice ficou vago."
+   ],
+   "partes": [
+    0.8,
+    "Mostra vencimento base, abate-teto e folhas separadas de 13º e férias; auxílios somados em 'outras verbas'."
+   ],
+   "secretarios": [
+    1,
+    "O cargo de secretário municipal pode ser filtrado, com os valores mensais."
+   ],
+   "historico": [
+    1,
+    "De 2010 a 2026, mês a mês."
+   ],
+   "formato": [
+    1,
+    "Exporta em CSV, JSON e ODS (também PDF e Excel)."
+   ],
+   "acesso": [
+    0.5,
+    "O arquivo do mês sai pelo botão de exportar, que depende da sessão da página (JSF)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login, token ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt (nada proibido), mas quase sempre não abre de fora do Brasil."
+   ]
+  },
+  "AL": {
+   "cidade": "Maceió",
+   "fonte": "https://www.transparencia.maceio.al.gov.br/transparencia/pages/servidores.faces?i=4",
+   "nome": [
+    1,
+    "A consulta mostra o nome do servidor (CPF mascarado)."
+   ],
+   "cargo": [
+    1,
+    "Colunas de cargo e vínculo na consulta."
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir: a busca pelo nome do prefeito em jun/2026 voltou vazia e os meses anteriores não responderam a tempo."
+   ],
+   "partes": [
+    0.6,
+    "A consulta separa vencimento, benefícios, comissão, redutor e eventuais; 13º e férias só no arquivo aberto sem nomes."
+   ],
+   "secretarios": [
+    null,
+    "A conferir: não há filtro por cargo e as consultas não responderam a tempo."
+   ],
+   "historico": [
+    1,
+    "A consulta cobre 2020 a 2026."
+   ],
+   "formato": [
+    0.75,
+    "Consulta HTML com exportação em TXT e JSON; o arquivo aberto (CSV) não tem nomes."
+   ],
+   "acesso": [
+    0.5,
+    "Os nomes saem por formulário (JSF), com exportação em TXT e JSON pelo botão da página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF; as consultas são muito lentas."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "AM": {
+   "cidade": "Manaus",
+   "fonte": "https://transparencia.manaus.am.gov.br/transparencia/v2/#servidores/pessoal",
+   "nome": [
+    1,
+    "Nome completo, matrícula, órgão e lotação."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo (prefeito, secretário municipal) e o vínculo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito aparece em ago/2026; o vice não aparece (o cargo parece vago)."
+   ],
+   "partes": [
+    0.4,
+    "Separa o subsídio e o desconto do teto; 13º, férias e auxílios ficam somados."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários municipais aparecem por órgão, com a remuneração."
+   ],
+   "historico": [
+    1,
+    "De 2018 a 2026, mês a mês."
+   ],
+   "formato": [
+    1,
+    "Download da consulta em CSV; a página recebe JSON."
+   ],
+   "acesso": [
+    0.75,
+    "A página usa uma API sem documentação; o CSV sai pelo botão da consulta."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "AP": {
+   "cidade": "Macapá",
+   "fonte": "https://folha.governotransparente.com.br/160010501/foff/listar-por/funcionariosresumo/202608",
+   "nome": [
+    1,
+    "Nome completo e matrícula."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo (prefeito, vice-prefeito, secretário) e o vínculo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito e o vice-prefeito aparecem na folha de ago/2026."
+   ],
+   "partes": [
+    0.8,
+    "Detalhe por rubrica e competências próprias de 13º; abate-teto não visto."
+   ],
+   "secretarios": [
+    1,
+    "O cargo de secretário aparece com o órgão e os proventos."
+   ],
+   "historico": [
+    1,
+    "Competências de 2021 a 2026."
+   ],
+   "formato": [
+    0.75,
+    "Página HTML grande com CSV e Excel gerados na própria página; rubricas em JSON."
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas (o link oficial passa por outro portal, sem arquivo)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Abre de fora do Brasil; o robots.txt do sistema responde erro."
+   ]
+  },
+  "BA": {
+   "cidade": "Salvador",
+   "fonte": "https://transparencia.salvador.ba.gov.br/#/RemuneracaoDadosFuncionais",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "Órgão, cargo e vínculo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    1,
+    "Remuneração básica, 13º, férias, verbas indenizatórias e abate-teto, cada um à parte."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Consulta por mês, de vários anos."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt não proíbe e abre de fora do Brasil."
+   ]
+  },
+  "CE": {
+   "cidade": "Fortaleza",
+   "fonte": "https://dados.fortaleza.ce.gov.br/dataset/servidores",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "Órgão e cargo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0,
+    "Só o total dos proventos do mês."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos."
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite os arquivos (pede 10 s entre pedidos) e abre de fora do Brasil."
+   ]
+  },
+  "DF": {
+   "nao_se_aplica": "Brasília não tem prefeitura nem Câmara de Vereadores: o Governo do Distrito Federal e a Câmara Legislativa (CLDF) fazem esses papéis e já estão nos outros blocos."
+  },
+  "ES": {
+   "cidade": "Vitória",
+   "fonte": "https://dadosabertos.vitoria.es.gov.br",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "Secretaria, quadro e cargo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0,
+    "Só a remuneração bruta total."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Uma tabela por mês, de vários anos."
+   ],
+   "formato": [
+    1,
+    "JSON pela API do portal de dados abertos."
+   ],
+   "acesso": [
+    1,
+    "API do portal de dados abertos (conjunto Pessoal)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem proibição no robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "GO": {
+   "cidade": "Goiânia",
+   "fonte": "http://goiania.bsit-br.com.br/portal/employee-transparency-simplified.jsf",
+   "nome": [
+    1,
+    "Mostra nome completo, matrícula, cargo, lotação e proventos."
+   ],
+   "cargo": [
+    1,
+    "Cargos 'PREFEITO', 'VICE-PREFEITO' e 'SECRETÁRIO', como agentes políticos."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem na folha de ago/2026."
+   ],
+   "partes": [
+    0.6,
+    "O detalhe mostra vencimento base, 13º e férias; não há auxílios nem abate-teto à parte."
+   ],
+   "secretarios": [
+    1,
+    "O filtro do cargo de secretário traz os secretários com os proventos."
+   ],
+   "historico": [
+    1,
+    "Consulta por mês e ano, com anos anteriores."
+   ],
+   "formato": [
+    0.75,
+    "Tela HTML com botões para gerar CSV e PDF da consulta."
+   ],
+   "acesso": [
+    0.5,
+    "O CSV da consulta sai pelo botão da página, que depende da sessão (JSF)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login, token ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt no sistema e abre de fora do Brasil."
+   ]
+  },
+  "MA": {
+   "cidade": "São Luís",
+   "fonte": "https://saoluis.giap.com.br/ords/saoluis/f?p=1618:1",
+   "nome": [
+    null,
+    "A conferir: a consulta nominal pede CAPTCHA; não vimos os registros."
+   ],
+   "cargo": [
+    1,
+    "O filtro de cargos inclui 'PREFEITO', 'VICE PREFEITO' e 'SECRETARIO MUNICIPAL'."
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir: o CAPTCHA impediu ver o último mês."
+   ],
+   "partes": [
+    0.2,
+    "Só o vencimento base aparece à parte; os proventos somam férias, 13º, indenizações e outros."
+   ],
+   "secretarios": [
+    1,
+    "O cargo de secretário municipal está no filtro da folha."
+   ],
+   "historico": [
+    1,
+    "Exercícios de 2023 a 2026, por mês."
+   ],
+   "formato": [
+    1,
+    "A página de dados abertos descreve uma API JSON de remunerações."
+   ],
+   "acesso": [
+    0.75,
+    "A API não traz o endereço completo (é montado pela página)."
+   ],
+   "sem_barreira": [
+    0.5,
+    "A consulta nominal pede CAPTCHA; a API não, mas limita a 100 registros."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt proíbe tudo; abre de fora do Brasil."
+   ]
+  },
+  "MG": {
+   "cidade": "Belo Horizonte",
+   "fonte": "https://prefeitura.pbh.gov.br/transparencia/sevidores/remuneracao",
+   "nome": [
+    null,
+    "A conferir: o portal respondeu 'Acesso Bloqueado' (403) ao robô, também do Brasil."
+   ],
+   "cargo": [
+    null,
+    "A conferir: o portal bloqueou o acesso do robô."
+   ],
+   "no_cargo_hoje": [
+    null,
+    "A conferir: o portal bloqueou o acesso do robô."
+   ],
+   "partes": [
+    null,
+    "A conferir: o portal bloqueou o acesso do robô."
+   ],
+   "secretarios": [
+    null,
+    "A conferir: o portal bloqueou o acesso do robô."
+   ],
+   "historico": [
+    1,
+    "O portal de dados abertos tem a 'Folha de Pagamento – PBH Ativos' em arquivos mensais desde out/2021."
+   ],
+   "formato": [
+    null,
+    "A conferir: os arquivos não puderam ser abertos (bloqueio)."
+   ],
+   "acesso": [
+    null,
+    "A conferir: os arquivos estão em CKAN, mas o acesso do robô foi barrado."
+   ],
+   "sem_barreira": [
+    0,
+    "O bloqueio do site (WAF) responde 403 ao acesso automatizado, no portal e nos dados abertos."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite as páginas e o portal abre de fora do Brasil."
+   ]
+  },
+  "MS": {
+   "cidade": "Campo Grande",
+   "fonte": "https://sig-transparencia.campogrande.ms.gov.br/servidores/consulta",
+   "nome": [
+    1,
+    "Nome de cada servidor (CPF mascarado)."
+   ],
+   "cargo": [
+    1,
+    "Lotação e cargo (desde jun/2025)."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "A prefeita e o vice aparecem no mês mais recente publicado (dez/2025, em 01/10/2026)."
+   ],
+   "partes": [
+    0,
+    "Só a remuneração bruta do mês."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    0,
+    "Só sete meses com o cargo preenchido (jun a dez/2025); os meses de 2026 não estavam publicados em 01/10/2026."
+   ],
+   "formato": [
+    1,
+    "JSON (botão 'Download JSON')."
+   ],
+   "acesso": [
+    0.5,
+    "O arquivo sai pelo botão da pesquisa da página, por cargo e mês."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite e abre de fora do Brasil."
+   ]
+  },
+  "MT": {
+   "cidade": "Cuiabá",
+   "fonte": "https://transparencia.cuiaba.mt.gov.br/portaltransparencia/transparencia/",
+   "nome": [
+    1,
+    "A consulta traz nome completo, matrícula, órgão, lotação e valores."
+   ],
+   "cargo": [
+    1,
+    "Cargos 'PREFEITO' e 'VICE-PREFEITO', do tipo eletivo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem em ago/2026."
+   ],
+   "partes": [
+    0.6,
+    "Mostra o básico, o 13º em folha própria e a verba indenizatória em folha própria; férias e abate-teto não aparecem à parte."
+   ],
+   "secretarios": [
+    null,
+    "A conferir: há uma folha de verba indenizatória de agentes políticos e secretários, mas as amostras não mostraram os secretários pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Anos de 2015 a 2026."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF na folha."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "PA": {
+   "cidade": "Belém",
+   "fonte": "https://sistemas.belem.pa.gov.br/folhas/",
+   "nome": [
+    1,
+    "A consulta mostra o nome completo; prefeito e vice aparecem em ago/2026."
+   ],
+   "cargo": [
+    1,
+    "A coluna do cargo traz 'PREFEITO MUNICIPAL', 'VICE-PREFEITO' e 'SECRETARIO'."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice estão na folha de ago/2026, o último mês."
+   ],
+   "partes": [
+    0.4,
+    "Separa a remuneração e o desconto do teto; férias vêm somadas com outros; 13º e auxílios não aparecem à parte."
+   ],
+   "secretarios": [
+    1,
+    "Dá para filtrar o cargo de secretário em cada órgão, com a remuneração."
+   ],
+   "historico": [
+    1,
+    "De 2007 a 2026, mês a mês."
+   ],
+   "formato": [
+    1,
+    "Exporta CSV, além de PDF e tabela HTML."
+   ],
+   "acesso": [
+    0.75,
+    "O CSV sai do que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login, token ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt não proíbe, mas o site não abre de fora do Brasil."
+   ]
+  },
+  "PB": {
+   "cidade": "João Pessoa",
+   "fonte": "https://transparencia.joaopessoa.pb.gov.br/#/servidores/listagem",
+   "nome": [
+    1,
+    "A folha traz nome completo, matrícula, cargo, secretaria, bruto e líquido de cada vínculo."
+   ],
+   "cargo": [
+    1,
+    "Os cargos 'PREFEITO' e 'VICE-PREFEITO' aparecem explícitos."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito aparece em jul/2026; o cargo de vice está vago desde a sucessão de 2026."
+   ],
+   "partes": [
+    0,
+    "Só mostra bruto e líquido; o detalhe por rubrica volta vazio."
+   ],
+   "secretarios": [
+    0.5,
+    "Os secretários aparecem só como comissionados de símbolo SMN-1, sem o cargo de secretário."
+   ],
+   "historico": [
+    1,
+    "Série mensal desde 2009."
+   ],
+   "formato": [
+    1,
+    "JSON pela API e exportação em CSV, TXT e XML."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login, token ou CPF na folha."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt (nada proibido), mas não abre de fora do Brasil."
+   ]
+  },
+  "PE": {
+   "cidade": "Recife",
+   "fonte": "https://dados.recife.pe.gov.br/dataset/servidores",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "Função (prefeito, vice-prefeito, secretário municipal) e unidade."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0.4,
+    "Férias e 13º à parte; o resto só no bruto."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pela função."
+   ],
+   "historico": [
+    1,
+    "Um arquivo por ano, de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV anual no portal de dados abertos."
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite os arquivos (pede 10 s entre pedidos) e abre de fora do Brasil."
+   ]
+  },
+  "PI": {
+   "cidade": "Teresina",
+   "fonte": "https://transparencia.teresina.pi.gov.br/servidores",
+   "nome": [
+    1,
+    "A consulta traz o nome completo; prefeito e vice aparecem em jul/2026."
+   ],
+   "cargo": [
+    1,
+    "O cargo vem vazio para eles, mas há o vínculo 'cargo de mandato eletivo' e a lotação do gabinete do prefeito e do vice."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice estão em jul/2026, o último mês."
+   ],
+   "partes": [
+    0.6,
+    "Separa o subsídio, a indenização e o redutor (abate-teto); 13º e férias não têm campo próprio."
+   ],
+   "secretarios": [
+    0.5,
+    "Os comissionados vêm com o cargo vazio: não dá para separar os secretários."
+   ],
+   "historico": [
+    1,
+    "De 2008 a jul/2026."
+   ],
+   "formato": [
+    1,
+    "Exporta CSV e JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou token."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt (nada proibido), mas não abre de fora do Brasil."
+   ]
+  },
+  "PR": {
+   "cidade": "Curitiba",
+   "fonte": "https://www.transparencia.curitiba.pr.gov.br/meta4/servidores.aspx?quadro=",
+   "nome": [
+    1,
+    "Nome de cada servidor ativo."
+   ],
+   "cargo": [
+    1,
+    "Cargo e lotação."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0,
+    "Só o total bruto do mês."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo (quem recebe pelo cargo de carreira não aparece como secretário)."
+   ],
+   "historico": [
+    1,
+    "Lista por mês, de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV do mês inteiro."
+   ],
+   "acesso": [
+    0.5,
+    "O CSV do mês sai pelo botão 'Exportar para CSV' da página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem proibição no robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "RJ": {
+   "cidade": "Rio de Janeiro",
+   "fonte": "https://transparencia.prefeitura.rio/servidor-municipal/remuneracao/",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    0,
+    "O arquivo não diz o cargo: prefeito e vice só são achados pelo nome."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem (pelo nome) no mês mais recente."
+   ],
+   "partes": [
+    0.6,
+    "Bruto por tipo de folha (normal, 13º, suplementos, rescisão) e abate-teto."
+   ],
+   "secretarios": [
+    0.5,
+    "Os secretários estão no arquivo, mas sem o cargo: não dá para separá-los."
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV mensal."
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar (um por mês)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem proibição no robots.txt, mas não abre de fora do Brasil."
+   ]
+  },
+  "RN": {
+   "cidade": "Natal",
+   "fonte": "https://www2.natal.rn.gov.br/transparencia/servidores.php",
+   "nome": [
+    1,
+    "Nome de cada servidor (CPF mascarado)."
+   ],
+   "cargo": [
+    1,
+    "Cargo e lotação."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0.6,
+    "O contracheque separa subsídio, 13º e férias (e o jeton); abate-teto e auxílios não vistos à parte."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Consulta por mês, de vários anos."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação (um contracheque por pessoa)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "RO": {
+   "cidade": "Porto Velho",
+   "fonte": "https://transparencia.portovelho.ro.gov.br/el/folha-pagamento",
+   "nome": [
+    1,
+    "Nome completo e matrícula."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo (prefeito, vice-prefeito, secretário municipal) e o vínculo de mandato eletivo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito e o vice-prefeito aparecem na folha de ago/2026."
+   ],
+   "partes": [
+    1,
+    "O detalhe mostra subsídio, férias, 13º, auxílios (outras remunerações), indenizações e abate-teto."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários municipais aparecem com a remuneração detalhada."
+   ],
+   "historico": [
+    1,
+    "Sistema novo desde nov/2024 e o anterior até out/2024."
+   ],
+   "formato": [
+    1,
+    "API JSON e portal de dados abertos."
+   ],
+   "acesso": [
+    1,
+    "API documentada (api.portovelho.ro.gov.br/docs)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login; a API limita o ritmo dos pedidos."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt libera tudo e abre de fora do Brasil."
+   ]
+  },
+  "RR": {
+   "cidade": "Boa Vista",
+   "fonte": "https://transparencia.pmbv.rr.gov.br/transparencia/?AcessoIndividual=LnkServidores",
+   "nome": [
+    1,
+    "Nome completo e matrícula."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo (prefeito municipal, secretário municipal), a unidade e o vínculo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "O prefeito está na folha de set/2026."
+   ],
+   "partes": [
+    0.8,
+    "O detalhe mostra os eventos por rubrica e há folhas separadas de 13º; abate-teto não visto."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários municipais aparecem com a unidade e os proventos."
+   ],
+   "historico": [
+    1,
+    "De 2016 a 2026."
+   ],
+   "formato": [
+    1,
+    "Exporta em CSV, XLS, TXT e PDF."
+   ],
+   "acesso": [
+    0.5,
+    "O arquivo do mês sai pelo botão de exportar, que depende da sessão da página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "RS": {
+   "cidade": "Porto Alegre",
+   "fonte": "https://portaltransparenciapmpa.procempa.com.br/portalpmpa/fpRemuneracaoPesquisa.do",
+   "nome": [
+    1,
+    "Nome de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "Órgão de exercício e cargo."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0.8,
+    "Rubricas: básica, 13º, férias, eventuais, abate-teto e jetons."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem pelo cargo."
+   ],
+   "historico": [
+    1,
+    "Pesquisa por mês, de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV da pesquisa."
+   ],
+   "acesso": [
+    0.5,
+    "O CSV do mês sai pelo botão da pesquisa da página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "SC": {
+   "cidade": "Florianópolis",
+   "fonte": "https://adm.pmf.sc.gov.br/srh/transparencia.list.php",
+   "nome": [
+    1,
+    "A consulta nominal mostra nome completo, matrícula, cargo e lotação de cada servidor."
+   ],
+   "cargo": [
+    1,
+    "O cargo aparece como 'PREFEITO MUNICIPAL' ou 'SECRETARIO MUNICIPAL'."
+   ],
+   "no_cargo_hoje": [
+    0.5,
+    "O prefeito aparece na folha de set/2026; o vice-prefeito não foi achado nas buscas por secretaria e por nome."
+   ],
+   "partes": [
+    0.8,
+    "Mostra à parte remuneração básica, verbas eventuais, indenizatórias, férias e 13º; o abate-teto não aparece separado."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários aparecem com o cargo 'SECRETARIO MUNICIPAL' e a ficha da remuneração."
+   ],
+   "historico": [
+    0,
+    "Só o mês atual (set/2026) é exibido; não há meses anteriores."
+   ],
+   "formato": [
+    0.5,
+    "Só páginas HTML."
+   ],
+   "acesso": [
+    0.25,
+    "Só por formulários encadeados (secretaria ou nome, matrícula, remuneração), com sessão."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem login nem CPF; a página pede para marcar 'não sou um robô', mas a verificação está desligada."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt não proíbe a consulta, mas o site não abre de fora do Brasil."
+   ]
+  },
+  "SE": {
+   "cidade": "Aracaju",
+   "fonte": "https://folhapagamento.aracaju.se.gov.br/folha/2026/8",
+   "nome": [
+    1,
+    "Lista o nome completo de cada servidor na folha mensal."
+   ],
+   "cargo": [
+    1,
+    "Mostra o cargo ('Prefeita', 'Secretario Municipal'), o vínculo 'Agentes Políticos' e a lotação."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "A prefeita e o vice-prefeito aparecem na folha de ago/2026, o mês mais recente."
+   ],
+   "partes": [
+    0.8,
+    "Separa 13º, férias, auxílios e indenizações e o redutor (abate-teto); o subsídio vem em 'outros proventos'."
+   ],
+   "secretarios": [
+    1,
+    "A função 'Secretario Municipal' aparece com bruto e rubricas."
+   ],
+   "historico": [
+    1,
+    "Meses de jan/2025 a ago/2026."
+   ],
+   "formato": [
+    0.75,
+    "Página HTML com os dados embutidos (JSON); o CSV e o PDF são gerados na própria página."
+   ],
+   "acesso": [
+    0.5,
+    "Uma página por mês com todos os registros; não há API nem filtro."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login, token ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt (nada proibido), mas não abre de fora do Brasil."
+   ]
+  },
+  "SP": {
+   "cidade": "São Paulo",
+   "fonte": "https://dados.prefeitura.sp.gov.br/dataset/remuneracao-servidores-prefeitura-de-sao-paulo",
+   "nome": [
+    1,
+    "Nome de cada servidor da administração direta."
+   ],
+   "cargo": [
+    1,
+    "Cargo base e cargo em comissão."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice aparecem no mês mais recente."
+   ],
+   "partes": [
+    0.2,
+    "Remuneração do mês e, numa coluna só, 13º, férias, auxílio-refeição e atrasados."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários e subprefeitos aparecem pelo cargo em comissão."
+   ],
+   "historico": [
+    1,
+    "Arquivos mensais de vários anos."
+   ],
+   "formato": [
+    1,
+    "CSV mensal no portal de dados abertos."
+   ],
+   "acesso": [
+    1,
+    "Arquivo para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Abre de fora do Brasil, mas o robots.txt do portal de dados abertos proíbe tudo."
+   ]
+  },
+  "TO": {
+   "cidade": "Palmas",
+   "fonte": "https://acessoainformacao.palmas.to.gov.br/cidadao/transparencia/sgservidores",
+   "nome": [
+    1,
+    "A folha mostra o nome completo (CPF mascarado)."
+   ],
+   "cargo": [
+    1,
+    "Cargo e vínculo: 'PREFEITO' e 'VICE PREFEITO' como agentes políticos; 'SECRETARIO MUNICIPAL'."
+   ],
+   "no_cargo_hoje": [
+    1,
+    "Prefeito e vice estão na folha de ago/2026."
+   ],
+   "partes": [
+    0.8,
+    "Proventos por rubrica (subsídio) e 13º em folha própria; férias e auxílios como rubricas; sem abate-teto."
+   ],
+   "secretarios": [
+    1,
+    "Os secretários municipais aparecem com a rubrica do subsídio e os valores."
+   ],
+   "historico": [
+    1,
+    "Folhas desde pelo menos 2021."
+   ],
+   "formato": [
+    1,
+    "Exporta CSV; a API responde em JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou token."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt não proíbe e abre de fora do Brasil."
+   ]
+  }
+ }
+}

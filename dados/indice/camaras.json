@@ -1,0 +1,1153 @@
+{
+ "_sobre": "Notas do bloco Câmara Municipal da capital do Índice de Transparência: dá para saber, pela fonte oficial, quanto cada vereador da capital recebe e quanto gasta da verba do gabinete? Mantido à mão, a partir dos robôs de coleta/vereadores/ e do levantamento de cada capital. Cada critério é [nota, prova]; nota null = a conferir.",
+ "conferido_em": "2026-10-01",
+ "estados": {
+  "AC": {
+   "cidade": "Rio Branco",
+   "fonte": "https://cmriobranco-ac.portaltp.com.br/consultas/pessoal/servidores.aspx",
+   "salario": [
+    1,
+    "Folha mensal de cada vereador com salário base, férias, 13º, outros vencimentos, alimentação e abate-teto."
+   ],
+   "verba_vereador": [
+    0,
+    "O link da verba indenizatória diz 'submenu não disponível'; a verba existe (Lei 1.856/2011), mas não há dados."
+   ],
+   "verba_nota": [
+    0,
+    "Não há prestação de contas da verba."
+   ],
+   "equipe": [
+    1,
+    "A folha traz o centro de custo 'GAB. VEREADOR <nome>' com a remuneração de cada assessor."
+   ],
+   "historico": [
+    1,
+    "Folha nominal de 2017 a 2026."
+   ],
+   "lei": [
+    1,
+    "Resolução 22/2023 fixa o subsídio (no SAPL da Câmara)."
+   ],
+   "formato": [
+    1,
+    "Exporta em CSV, JSON, XML e outros."
+   ],
+   "acesso": [
+    1,
+    "Arquivo por mês na seção de dados abertos."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Abre de fora do Brasil, mas o robots.txt proíbe /api/ (a exportação)."
+   ]
+  },
+  "AL": {
+   "cidade": "Maceió",
+   "fonte": "https://www.maceio.al.leg.br/transparencia/portal/folhax",
+   "salario": [
+    0.75,
+    "Folha nominal dos vereadores em PDF, por mês (com nomes desde out/2025)."
+   ],
+   "verba_vereador": [
+    1,
+    "VIAP de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.5,
+    "Só os totais do mês (gastos, glosas, indenizado); o detalhe só no requerimento em PDF."
+   ],
+   "equipe": [
+    1,
+    "Folha por lotação (pessoas e custo de cada gabinete) e a folha nominal de cada lotação em PDF."
+   ],
+   "historico": [
+    1,
+    "Folha por lotação de vários anos; a nominal tem 12 meses."
+   ],
+   "lei": [
+    1,
+    "Lei 7.498/2023 fixa o subsídio de 2025 a 2028 (no site da Câmara)."
+   ],
+   "formato": [
+    0.5,
+    "Tabelas HTML e PDF."
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas (com endereço próprio por lotação e mês)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Sem robots.txt, mas não abre de fora do Brasil."
+   ]
+  },
+  "AM": {
+   "cidade": "Manaus",
+   "fonte": "https://www.cmm.am.gov.br/transparencia/",
+   "salario": [
+    0.75,
+    "Folha nominal mensal de cada vereador, só com o subsídio."
+   ],
+   "verba_vereador": [
+    1,
+    "CEAP de cada vereador."
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com fornecedor e CNPJ."
+   ],
+   "equipe": [
+    1,
+    "A folha traz a lotação 'VER. <vereador>' com o custo de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha e CEAP de vários meses."
+   ],
+   "lei": [
+    1,
+    "Lei 587/2024 fixa R$ 26.080,98 desde fev/2025 (no SAPL da Câmara)."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "O que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "AP": {
+   "cidade": "Macapá",
+   "fonte": "http://contabilcmmacapa.transparenciabr.net/transparencia/Default.aspx?AcessoIndividual=LnkServidores",
+   "salario": [
+    0.75,
+    "Folha mensal de cada vereador só com proventos, descontos e líquido, sem as partes."
+   ],
+   "verba_vereador": [
+    0,
+    "As páginas de verba indenizatória e de cotas existem, mas estão vazias, e o portal não diz que a verba não existe."
+   ],
+   "verba_nota": [
+    0,
+    "Nenhuma despesa de verba publicada."
+   ],
+   "equipe": [
+    0.5,
+    "Folha com custo, mas a lotação é quase sempre genérica ('gabinete parlamentar')."
+   ],
+   "historico": [
+    1,
+    "Exercícios de 2021 a 2026."
+   ],
+   "lei": [
+    1,
+    "Lei 2.865/2024 fixa o subsídio de 2025 a 2028 (no site da Câmara)."
+   ],
+   "formato": [
+    1,
+    "Exporta em CSV, XLS, TXT e PDF."
+   ],
+   "acesso": [
+    0.5,
+    "O arquivo do mês sai pelo botão de exportar, que depende da sessão da página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt no portal e abre de fora do Brasil."
+   ]
+  },
+  "BA": {
+   "cidade": "Salvador",
+   "fonte": "https://www.cms.ba.gov.br/transparencia/recursos-humanos",
+   "salario": [
+    0.5,
+    "Só o subsídio fixado em lei; os vereadores não aparecem nas relações mensais de pessoal."
+   ],
+   "verba_vereador": [
+    0,
+    "Não achamos a verba de cada vereador no portal nem na transparência financeira."
+   ],
+   "verba_nota": [
+    0,
+    "Não há prestação de contas da verba por vereador."
+   ],
+   "equipe": [
+    1,
+    "O PDF mensal lista os servidores com o centro de custo 'GAB. VER. <vereador>' e o total de proventos."
+   ],
+   "historico": [
+    1,
+    "Relações mensais de 2014 a dez/2025."
+   ],
+   "lei": [
+    1,
+    "Lei 9.825/2024 fixa R$ 26.080,98 desde fev/2025 (no Diário Oficial)."
+   ],
+   "formato": [
+    0,
+    "Só PDF."
+   ],
+   "acesso": [
+    1,
+    "PDFs mensais com link direto."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt libera tudo e o site abre de fora do Brasil."
+   ]
+  },
+  "CE": {
+   "cidade": "Fortaleza",
+   "fonte": "https://transparencia.cmfor.ce.gov.br/",
+   "salario": [
+    0.75,
+    "Folha de cada vereador mês a mês, com o valor do subsídio; 13º e férias não aparecem à parte."
+   ],
+   "verba_vereador": [
+    1,
+    "Serviço de Desempenho Parlamentar (SDP) de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com credor e CNPJ."
+   ],
+   "equipe": [
+    0,
+    "A folha não liga os servidores aos gabinetes."
+   ],
+   "historico": [
+    1,
+    "Folha e SDP de vários meses."
+   ],
+   "lei": [
+    1,
+    "Resolução 1.682/2024 fixa R$ 26.080,98 desde fev/2025 (no SAPL da Câmara)."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt na API e abre de fora do Brasil."
+   ]
+  },
+  "DF": {
+   "nao_se_aplica": "Brasília não tem prefeitura nem Câmara de Vereadores: o Governo do Distrito Federal e a Câmara Legislativa (CLDF) fazem esses papéis e já estão nos outros blocos."
+  },
+  "ES": {
+   "cidade": "Vitória",
+   "fonte": "https://www.cmv.es.gov.br/transparencia/rh/servidores/?comp_ano=2026&cargo=VEREADOR&situacao=Ativo",
+   "salario": [
+    1,
+    "Rendimentos de cada vereador mês a mês, por rubrica: subsídio, 13º e auxílio-alimentação."
+   ],
+   "verba_vereador": [
+    1,
+    "A página 'Cotas Parlamentares' informa que a Câmara não tem cota parlamentar desde 2023."
+   ],
+   "verba_nota": [
+    1,
+    "Sem cota parlamentar (a Câmara informa), não há notas a detalhar."
+   ],
+   "equipe": [
+    1,
+    "PDF mensal da assessoria de gabinete lista, por gabinete, cada servidor, com cargo e valor."
+   ],
+   "historico": [
+    1,
+    "Rendimentos desde 2021 e PDFs mensais da assessoria desde 2021."
+   ],
+   "lei": [
+    1,
+    "Lei 9.941/2023 fixa o subsídio dos vereadores de 2025 a 2028."
+   ],
+   "formato": [
+    0.75,
+    "Folha em JSON e XML pela API e em páginas HTML; a lotação nos gabinetes só em PDF."
+   ],
+   "acesso": [
+    1,
+    "API documentada (/transparencia/api/webservice), com JSON paginado."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0,
+    "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+   ]
+  },
+  "GO": {
+   "cidade": "Goiânia",
+   "fonte": "https://camaragoiania.nucleogov.com.br/",
+   "salario": [
+    1,
+    "Folha nominal mensal de cada vereador, com folhas próprias de férias e 13º."
+   ],
+   "verba_vereador": [
+    1,
+    "CEAP de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o valor de cada tipo de despesa por mês, sem fornecedor."
+   ],
+   "equipe": [
+    1,
+    "A folha traz a lotação 'Gabinete de <vereador>' com o custo de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha e CEAP de vários meses."
+   ],
+   "lei": [
+    0,
+    "Não achamos o ato que fixa o subsídio de hoje em fonte oficial."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt não proíbe e abre de fora do Brasil."
+   ]
+  },
+  "MA": {
+   "cidade": "São Luís",
+   "fonte": "https://cmsaoluis.portalremuneracao.com.br/",
+   "salario": [
+    0.75,
+    "Folha nominal mensal de cada vereador, com o bruto."
+   ],
+   "verba_vereador": [
+    0,
+    "Só empenhos globais por vereador, em PDF (relatórios acumulados do ano); não há o mês a mês."
+   ],
+   "verba_nota": [
+    0,
+    "Só valores empenhados e pagos ao próprio vereador; sem notas, fornecedores ou categorias."
+   ],
+   "equipe": [
+    1,
+    "A folha traz a lotação 'GAB VER <vereador>' com o custo de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha de vários meses."
+   ],
+   "lei": [
+    0,
+    "Não achamos o ato que fixa o subsídio de hoje em fonte oficial (o acervo da Câmara só traz o de 2013 a 2016)."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "O que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O portal da folha permite e abre de fora do Brasil; o site principal da Câmara proíbe tudo no robots.txt."
+   ]
+  },
+  "MG": {
+   "cidade": "Belo Horizonte",
+   "fonte": "https://www.cmbh.mg.gov.br/transparencia/vereadores/custeio-parlamentar",
+   "salario": [
+    null,
+    "A conferir: a consulta nominal da folha pede CAPTCHA."
+   ],
+   "verba_vereador": [
+    1,
+    "Custeio Parlamentar de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.75,
+    "Item a item, com o tipo e o link da nota, sem o fornecedor."
+   ],
+   "equipe": [
+    null,
+    "A conferir: a consulta nominal da folha, que traz os assessores, pede CAPTCHA."
+   ],
+   "historico": [
+    1,
+    "Custeio desde ago/2017."
+   ],
+   "lei": [
+    1,
+    "Lei 11.016/2016 fixa o subsídio (R$ 18.402,02)."
+   ],
+   "formato": [
+    0.5,
+    "Páginas HTML (notas em PDF)."
+   ],
+   "acesso": [
+    0.25,
+    "Só por formulários da página (pesquisar e detalhar)."
+   ],
+   "sem_barreira": [
+    0.5,
+    "O custeio abre sem barreira; a folha nominal pede CAPTCHA."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite (pede 10 s entre pedidos) e abre de fora do Brasil."
+   ]
+  },
+  "MS": {
+   "cidade": "Campo Grande",
+   "fonte": "https://www.camara.ms.gov.br/",
+   "salario": [
+    null,
+    "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+   ],
+   "verba_vereador": [
+    null,
+    "A conferir: há verba indenizatória (Atos da Mesa 281 e 282/2023), mas o portal está atrás do reCAPTCHA."
+   ],
+   "verba_nota": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "equipe": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "historico": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA (e o subdomínio da transparência estava fora do ar)."
+   ],
+   "lei": [
+    1,
+    "Lei 7.176/2023 fixa R$ 26.080,98 desde fev/2025 (no Diário Oficial da Câmara)."
+   ],
+   "formato": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "acesso": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "sem_barreira": [
+    0,
+    "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA; o subdomínio da transparência estava fora do ar."
+   ],
+   "robos_exterior": [
+    0,
+    "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+   ]
+  },
+  "MT": {
+   "cidade": "Cuiabá",
+   "fonte": "https://www.gp.srv.br/transparencia_cuiabacm/servlet/folha_pagamento_v2?1",
+   "salario": [
+    null,
+    "A conferir: há folha nominal por competência (2003 a set/2026), mas os vereadores e as colunas não foram conferidos."
+   ],
+   "verba_vereador": [
+    null,
+    "A conferir: há arquivos mensais de valores pagos de verba indenizatória em 2026; o conteúdo não foi aberto."
+   ],
+   "verba_nota": [
+    0,
+    "Só valores pagos por mês e empenhos por credor; não há notas com fornecedor e CNPJ."
+   ],
+   "equipe": [
+    0,
+    "O lotacionograma está vazio; não achamos os servidores de cada gabinete."
+   ],
+   "historico": [
+    1,
+    "Folha de 2003 a set/2026; verba de 2023 a 2026."
+   ],
+   "lei": [
+    1,
+    "Lei 7.038/2024 fixa R$ 26.080,98 desde fev/2025 (no portal da Câmara)."
+   ],
+   "formato": [
+    0.5,
+    "Grades HTML e anexos; sem CSV ou JSON."
+   ],
+   "acesso": [
+    0.25,
+    "Só por formulários montados na página."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt do sistema proíbe tudo; abre de fora do Brasil."
+   ]
+  },
+  "PA": {
+   "cidade": "Belém",
+   "fonte": "https://cmb.pa.gov.br/transparencia/folha-pagamento",
+   "salario": [
+    0.5,
+    "Só o subsídio fixado na resolução; a página da folha dá erro e não tem arquivos."
+   ],
+   "verba_vereador": [
+    0,
+    "O portal não mostra verba de gabinete por vereador nem diz que ela não existe."
+   ],
+   "verba_nota": [
+    0,
+    "Não há verba publicada; as despesas só aparecem como empenhos da Câmara."
+   ],
+   "equipe": [
+    0,
+    "Não há folha nem lista de servidores por gabinete."
+   ],
+   "historico": [
+    0,
+    "Nenhum mês de folha publicado."
+   ],
+   "lei": [
+    1,
+    "Resolução 34/2024 fixa R$ 24.754,79 desde jan/2025 (no site da Câmara)."
+   ],
+   "formato": [
+    0,
+    "Nada publicado sobre remuneração."
+   ],
+   "acesso": [
+    0,
+    "Nenhum dado de remuneração acessível."
+   ],
+   "sem_barreira": [
+    1,
+    "As páginas abrem sem CAPTCHA, login ou CPF (mas não há dados de remuneração)."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite e o site abre de fora do Brasil."
+   ]
+  },
+  "PB": {
+   "cidade": "João Pessoa",
+   "fonte": "https://joaopessoa.pb.leg.br/transparencia/verbas-indenizatorias/",
+   "salario": [
+    0.75,
+    "A página de recursos humanos lista cada vereador por mês com um único valor de vantagens, sem as partes."
+   ],
+   "verba_vereador": [
+    1,
+    "Tabela da verba indenizatória por vereador e por mês (dez/2022 a jun/2026), com o serviço e o valor."
+   ],
+   "verba_nota": [
+    0.75,
+    "Cada linha tem PDF do contrato e das notas (imagem); a tabela não traz fornecedor nem CNPJ."
+   ],
+   "equipe": [
+    0,
+    "Há cargos de gabinete com valor, mas a coluna da unidade vem vazia: não liga o servidor ao gabinete."
+   ],
+   "historico": [
+    1,
+    "Verba desde dez/2022 e folha de 2024 a 2026."
+   ],
+   "lei": [
+    1,
+    "Lei 14.702/2022 fixa o subsídio de 2025 a 2028 (no site da Câmara)."
+   ],
+   "formato": [
+    0.5,
+    "Só páginas HTML, com anexos em PDF de imagem."
+   ],
+   "acesso": [
+    0.5,
+    "A verba está numa página; a folha sai de um formulário simples (mês e ano)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt só bloqueia /wp-admin/ e o site abre de fora do Brasil."
+   ]
+  },
+  "PE": {
+   "cidade": "Recife",
+   "fonte": "https://transparenciacamara.recife.pe.gov.br/",
+   "salario": [
+    0.75,
+    "Folha nominal mensal em CSV, com o bruto de cada vereador (13º e férias somados no mês)."
+   ],
+   "verba_vereador": [
+    1,
+    "Verba indenizatória de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o valor por tipo de despesa, sem fornecedor."
+   ],
+   "equipe": [
+    1,
+    "A folha traz a lotação 'VER. <vereador>' com o custo de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha e verba de vários meses."
+   ],
+   "lei": [
+    1,
+    "Decreto Legislativo 1.075/2023 fixa R$ 23.428,64 desde jan/2025 (no e-processo da Câmara)."
+   ],
+   "formato": [
+    1,
+    "CSV e JSON."
+   ],
+   "acesso": [
+    1,
+    "CSV mensal para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "PI": {
+   "cidade": "Teresina",
+   "fonte": "https://transparencia.teresina.pi.leg.br/project6-war/ext/consultarServidores.jsf",
+   "salario": [
+    0.75,
+    "Folha mensal (jan/2016 a ago/2026) dos parlamentares; o detalhe mostra vencimento, gratificação e redutor."
+   ],
+   "verba_vereador": [
+    1,
+    "As cotas para exercício parlamentar mostram os pagamentos de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    1,
+    "O detalhe traz cada nota: fornecedor, CNPJ, tipo de atividade, valor e anexo."
+   ],
+   "equipe": [
+    0,
+    "Os comissionados aparecem só pelo nível, sem o gabinete onde estão lotados."
+   ],
+   "historico": [
+    1,
+    "Folha desde jan/2016; cotas de 2025 e 2026."
+   ],
+   "lei": [
+    1,
+    "Resolução Normativa 130/2024 fixa R$ 24.754,79 para 2025 a 2028 (no acervo da Câmara)."
+   ],
+   "formato": [
+    0.75,
+    "Tabelas HTML com exportação para Excel e PDF; sem CSV ou JSON."
+   ],
+   "acesso": [
+    0.25,
+    "Só por formulários (JSF), com sessão."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt no portal da transparência e abre de fora do Brasil."
+   ]
+  },
+  "PR": {
+   "cidade": "Curitiba",
+   "fonte": "https://transparencia.betha.cloud/#/pYH4AbLiIyAHwETflX8gpQ==/consulta/360083",
+   "salario": [
+    1,
+    "A consulta 'Vereadores - Remunerações' mostra cada vereador por competência, com o detalhe por evento (subsídio, INSS, IR)."
+   ],
+   "verba_vereador": [
+    1,
+    "A Câmara diz (perguntas frequentes) que o vereador recebe só o subsídio: não há verba de gabinete nem cota de ressarcimento."
+   ],
+   "verba_nota": [
+    1,
+    "Sem cota de ressarcimento (perguntas frequentes da Câmara), não há notas a publicar."
+   ],
+   "equipe": [
+    0.75,
+    "A folha dos servidores traz o cargo, a lotação 'GAB. VER. <vereador>' e a remuneração bruta; não há quadro de custo por gabinete."
+   ],
+   "historico": [
+    1,
+    "Consulta por competência com muitos anos; 2017 a 2023 também no portal anterior."
+   ],
+   "lei": [
+    0,
+    "A Câmara cita a Lei 13.917/2012 e revisões anuais; o ato que fixa o valor de hoje não foi achado."
+   ],
+   "formato": [
+    1,
+    "Cada consulta exporta em CSV, ODS, XLS, PDF, ODT e DOCX."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa (api.transparencia.betha.cloud), sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF; a API pede um token anônimo que a própria página entrega."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt só veta /search e /login e abre de fora do Brasil."
+   ]
+  },
+  "RJ": {
+   "cidade": "Rio de Janeiro",
+   "fonte": "https://transparencia.camara.rj.gov.br/",
+   "salario": [
+    0.75,
+    "Contracheque de cada vereador, um por vez, pelo nome (sem CPF)."
+   ],
+   "verba_vereador": [
+    1,
+    "Cota de combustível e auxílio-alimentação de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.5,
+    "Combustível em litros e valor por mês, sem as notas."
+   ],
+   "equipe": [
+    0.5,
+    "Pessoas e cargos de cada gabinete, pela relação de servidores, sem o custo."
+   ],
+   "historico": [
+    1,
+    "Meses de 2025 e 2026 publicados."
+   ],
+   "lei": [
+    1,
+    "Decreto Legislativo 1.752/2024 fixa o subsídio em 75% do de deputado estadual (hoje R$ 26.080,98)."
+   ],
+   "formato": [
+    0.75,
+    "Relação de servidores em dados abertos; o resto em páginas HTML."
+   ],
+   "acesso": [
+    0.5,
+    "Só lendo as páginas (o contracheque, um por pessoa)."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "O robots.txt permite, mas não abre de fora do Brasil."
+   ]
+  },
+  "RN": {
+   "cidade": "Natal",
+   "fonte": "https://www.cmnat.rn.gov.br/verbas-2026",
+   "salario": [
+    0.5,
+    "Só o subsídio fixado em lei (R$ 26.000); a folha nominal fica num servidor que só abre dentro da rede da Câmara."
+   ],
+   "verba_vereador": [
+    1,
+    "Cota de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com fornecedor, CNPJ e número da nota."
+   ],
+   "equipe": [
+    0,
+    "A equipe dos gabinetes não é publicada."
+   ],
+   "historico": [
+    1,
+    "Cotas de vários meses."
+   ],
+   "lei": [
+    1,
+    "Lei Promulgada 761/2023 fixa R$ 26.000 para 2025 a 2028 (no SAPL da Câmara)."
+   ],
+   "formato": [
+    0.75,
+    "Lista em JSON; as notas em tabelas HTML."
+   ],
+   "acesso": [
+    0.75,
+    "O que a página usa, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "Sem robots.txt e abre de fora do Brasil."
+   ]
+  },
+  "RO": {
+   "cidade": "Porto Velho",
+   "fonte": "https://cmportovelho-ro.portaltp.com.br/consultas/pessoal/servidores.aspx",
+   "salario": [
+    1,
+    "Folha mensal de cada vereador com salário base, férias, 13º, vantagens, indenizações e abate-teto."
+   ],
+   "verba_vereador": [
+    1,
+    "A página da verba indenizatória lista as liquidações mensais de cada vereador."
+   ],
+   "verba_nota": [
+    1,
+    "O histórico de cada liquidação descreve cada nota fiscal, com valor, fornecedor e CNPJ."
+   ],
+   "equipe": [
+    1,
+    "A folha traz a lotação 'GAB. <vereador>' com a remuneração de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha nominal de 2017 a 2026."
+   ],
+   "lei": [
+    1,
+    "Resolução 679/2023 fixa o subsídio de 2025 a 2028 (no SAPL da Câmara)."
+   ],
+   "formato": [
+    1,
+    "Exporta em CSV, JSON, XML e XLS."
+   ],
+   "acesso": [
+    1,
+    "Arquivo por mês na seção de dados abertos."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA ou login."
+   ],
+   "robos_exterior": [
+    0.5,
+    "Abre de fora do Brasil, mas o robots.txt proíbe /api/ (a exportação)."
+   ]
+  },
+  "RR": {
+   "cidade": "Boa Vista",
+   "fonte": "https://www.boavista.rr.leg.br/transparencia/parlamentares-e-gabinetes",
+   "salario": [
+    0.5,
+    "Só o subsídio fixado (Resolução 253/2023); a folha dos vereadores não é publicada."
+   ],
+   "verba_vereador": [
+    1,
+    "Quadro da verba indenizatória de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    0.5,
+    "Só o valor por tipo de despesa (limite, gasto, ressarcimento)."
+   ],
+   "equipe": [
+    0,
+    "A equipe dos gabinetes não é publicada."
+   ],
+   "historico": [
+    1,
+    "Quadros mensais de vários meses."
+   ],
+   "lei": [
+    1,
+    "Resolução 253/2023 fixa o subsídio (no SAPL da Câmara)."
+   ],
+   "formato": [
+    0,
+    "Só PDF."
+   ],
+   "acesso": [
+    1,
+    "PDFs para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite e abre de fora do Brasil."
+   ]
+  },
+  "RS": {
+   "cidade": "Porto Alegre",
+   "fonte": "https://transparencia.camarapoa.rs.gov.br/vereadores/qbm",
+   "salario": [
+    1,
+    "Portal de RH da Câmara: cada vereador por mês, com o subsídio e colunas de 13º, férias, verbas indenizatórias e teto; exporta CSV."
+   ],
+   "verba_vereador": [
+    1,
+    "Quota Básica Mensal de cada gabinete, mês a mês."
+   ],
+   "verba_nota": [
+    0.75,
+    "Lançamento a lançamento, com a categoria, sem fornecedor."
+   ],
+   "equipe": [
+    1,
+    "O portal de RH lista, por gabinete ('GAB. VER. <nome>'), cada assessor com cargo e remuneração (CSV)."
+   ],
+   "historico": [
+    1,
+    "Lançamentos de vários meses."
+   ],
+   "lei": [
+    1,
+    "Lei 13.575/2023 fixa o subsídio de 2025 a 2028."
+   ],
+   "formato": [
+    1,
+    "JSON."
+   ],
+   "acesso": [
+    0.75,
+    "API que a página usa (portal-api), sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    0.5,
+    "A API não tem robots.txt, mas não abre de fora do Brasil."
+   ]
+  },
+  "SC": {
+   "cidade": "Florianópolis",
+   "fonte": "https://www.cmf.sc.gov.br/",
+   "salario": [
+    null,
+    "A conferir: todo o site pede verificação reCAPTCHA antes de mostrar qualquer página."
+   ],
+   "verba_vereador": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "verba_nota": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "equipe": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "historico": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "lei": [
+    null,
+    "A conferir: só a imprensa cita a lei de 2023; o site da Câmara está atrás do reCAPTCHA."
+   ],
+   "formato": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "acesso": [
+    null,
+    "A conferir: o portal está atrás do reCAPTCHA."
+   ],
+   "sem_barreira": [
+    0,
+    "Todo o site, inclusive a transparência, abre uma tela de verificação reCAPTCHA antes de qualquer dado."
+   ],
+   "robos_exterior": [
+    0,
+    "O robots.txt proíbe tudo e o site não abre de fora do Brasil."
+   ]
+  },
+  "SE": {
+   "cidade": "Aracaju",
+   "fonte": "https://www.aracaju.se.leg.br/transparencia/gestao-de-pessoas/Folha%20de%20Pagamento",
+   "salario": [
+    0.75,
+    "Folha mensal em planilha, com o valor bruto de cada vereador (sem as partes)."
+   ],
+   "verba_vereador": [
+    1,
+    "VAEP: um PDF por mês, com uma página por vereador."
+   ],
+   "verba_nota": [
+    1,
+    "O requerimento de cada vereador lista cada documento: fornecedor, CNPJ, tipo, número, data e valor (muitas páginas são imagem)."
+   ],
+   "equipe": [
+    0,
+    "A lotação é genérica ('gabinete de vereador'): não liga o servidor ao gabinete."
+   ],
+   "historico": [
+    1,
+    "Planilhas mensais de vários anos."
+   ],
+   "lei": [
+    1,
+    "Lei 5.995/2024 fixa R$ 22.865,16 desde jan/2025 (no SAPL da Câmara)."
+   ],
+   "formato": [
+    0.75,
+    "Planilha mensal e PDFs (a VAEP é imagem)."
+   ],
+   "acesso": [
+    1,
+    "Arquivos para baixar."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite e abre de fora do Brasil."
+   ]
+  },
+  "SP": {
+   "cidade": "São Paulo",
+   "fonte": "https://www.saopaulo.sp.leg.br/transparencia/custos-de-mandato/contas-vereadores/",
+   "salario": [
+    0.5,
+    "Só o subsídio fixado pela Câmara; o contracheque de cada vereador só aparece para quem informa um CPF."
+   ],
+   "verba_vereador": [
+    1,
+    "Auxílio-Encargos Gerais de Gabinete de cada vereador, mês a mês."
+   ],
+   "verba_nota": [
+    1,
+    "Nota a nota, com fornecedor e CNPJ."
+   ],
+   "equipe": [
+    0.5,
+    "Pessoas e cargos de cada gabinete (só o mês mais recente); os salários só com CPF."
+   ],
+   "historico": [
+    1,
+    "Gastos de gabinete de vários anos, mês a mês."
+   ],
+   "lei": [
+    1,
+    "Resolução 10/2024 da Câmara fixa o subsídio de 2025 a 2028 (R$ 26.080,98 desde fev/2025)."
+   ],
+   "formato": [
+    1,
+    "JSON e XML (serviços web e arquivo da Câmara)."
+   ],
+   "acesso": [
+    1,
+    "Serviços web públicos (SPLegis e SisGV) e arquivo XML dos funcionários."
+   ],
+   "sem_barreira": [
+    0.5,
+    "Os gastos abrem sem barreira; o contracheque de vereadores e assessores só com CPF."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt permite e abre de fora do Brasil."
+   ]
+  },
+  "TO": {
+   "cidade": "Palmas",
+   "fonte": "https://acessoainformacao.palmas.to.leg.br/cidadao/transparencia/sgservidores",
+   "salario": [
+    1,
+    "Folha de cada vereador por mês: rubrica do subsídio e 13º em folha própria."
+   ],
+   "verba_vereador": [
+    1,
+    "Verbas indenizatórias: um PDF por vereador por mês."
+   ],
+   "verba_nota": [
+    1,
+    "O PDF (escaneado) é o pedido de reembolso e lista cada nota: tipo, data, CNPJ, beneficiário e valor."
+   ],
+   "equipe": [
+    0.75,
+    "A folha traz a lotação 'GAB VER <vereador>' e o custo de cada servidor."
+   ],
+   "historico": [
+    1,
+    "Folha desde pelo menos 2022."
+   ],
+   "lei": [
+    0,
+    "Não achamos o ato que fixa o subsídio de hoje em fonte oficial."
+   ],
+   "formato": [
+    0.75,
+    "Folha em CSV e JSON; verbas só em PDF escaneado."
+   ],
+   "acesso": [
+    0.75,
+    "APIs que as páginas usam, sem documentação."
+   ],
+   "sem_barreira": [
+    1,
+    "Sem CAPTCHA, login ou CPF; a lista das verbas pede um cabeçalho que o próprio aplicativo gera."
+   ],
+   "robos_exterior": [
+    1,
+    "O robots.txt não proíbe os dados e os portais abrem de fora do Brasil."
+   ]
+  }
+ }
+}
