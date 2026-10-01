@@ -110,6 +110,11 @@ def _folha_pdf(b):
 
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
+    try:  # se o portal não responder (de fora do Brasil, por exemplo), desiste logo: o site usa o que já está gravado
+        _sessao().get(FOLHA.format(ano=INICIO // 100), timeout=20).raise_for_status()
+    except Exception as e:  # noqa: BLE001
+        log(f"  Aracaju: o portal da Câmara não abriu ({type(e).__name__}); fica o que já estava gravado")
+        return
     h = time.localtime()
     anos = list(range(INICIO // 100, h.tm_year + 1))
     arq_f, arq_v = PASTA / "folha_vereadores.csv", PASTA / "vaep.csv"
