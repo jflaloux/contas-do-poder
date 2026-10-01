@@ -196,9 +196,11 @@ for (const p of pessoas) {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
     const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "a" ? `da ${(estados[p.uf] || {}).casa || "Assembleia Legislativa"}`
       : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : FONTE[p.k];
+    // no Congresso e no governo federal, o bolso tem também o 13º (vereador e deputado estadual com o salário da lei, não)
+    const bolso = ["d", "s", "e", "j"].includes(p.k) ? "salário, 13º e auxílios" : "salário e auxílios";
     if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
-    else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (salário e auxílios, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
-    else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (salário e auxílios) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
+    else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (${bolso}, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
+    else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (${bolso}) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
   const titulo = `${p.n}: ${p.k === "p" ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
   const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : [];

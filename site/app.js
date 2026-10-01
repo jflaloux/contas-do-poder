@@ -1612,7 +1612,8 @@
         pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
           ? "≈ O auxílio-moradia é informado por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado."
           : "≈ Passagens, correios e outros gastos do Senado são informados por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado.") : null,
-        (casaBase(p) !== "d" && !legisl(p) && p.k !== "p") || p.k === "j" ? h("li", null, "Os meses mais altos costumam ter o 13º salário, pago de uma vez.") : null,
+        (casaBase(p) !== "d" && !legisl(p) && p.k !== "p") || p.k === "j" ? h("li", null, "Os meses mais altos costumam ter o 13º salário (ou uma parcela dele) ou as férias.") : null,
+        p.k === "d" ? h("li", null, "Junho e dezembro costumam ser mais altos: a Câmara paga o 13º em duas parcelas, nesses meses.") : null,
         p.k === "p" || (p.k === "a" && (casaDe(p) || {}).subsidio_folha) ? h("li", null, `Meses mais altos: férias, 13º ou pagamentos atrasados, que a ${p.k === "p" ? "Prefeitura" : "Assembleia"} soma no mês em que paga.`) : null,
         legisl(p) && ocupacaoTxt(p) ? h("li", null, `Mês com salário menor: o ${cargoCurto(p)} ficou só parte do mês no cargo.`) : null,
         p.k === "j" ? h("li", null, "A faixa embaixo das colunas mostra em qual cargo a pessoa estava em cada mês.") : null,
@@ -1648,7 +1649,7 @@
       p.eq && p.eq.c.length ? h("div", { class: "barras" }, h("div", { class: "barras__cabeca" }, h("span", null, `Cargos em ${fmtMes(mesEquipe(cv))}`), h("span", null, "Pessoas")),
         p.eq.c.map(([cargo, n]) => barra(cargo, String(n), n / maxCargo, "barra__fill--equipe"))) : null,
       h("p", { class: "nota" }, cv ? `${cv.equipe_nota || `Assessores do gabinete, pela folha de pagamento da ${nomeCasa(p)}.`} Contamos quem recebeu no mês, mesmo que só parte dele.` : casaBase(p) === "d"
-        ? "Na Câmara, cada deputado tem até R$ 165.806,07 por mês para pagar até 25 secretários parlamentares. Contamos quem trabalhou no gabinete em cada mês, mesmo que só parte dele."
+        ? "Na Câmara, a verba de gabinete paga até 25 secretários parlamentares: até R$ 165,8 mil por mês em 2026 (R$ 133,2 mil em 2025, R$ 125,5 mil em 2024 e R$ 118,4 mil em 2023). Contamos quem trabalhou no gabinete em cada mês, mesmo que só parte dele."
         : "No Senado, os assessores são pagos direto pela folha. Ligamos a folha à lotação de cada comissionado: é uma estimativa, mais precisa nos meses recentes."));
     graficoColunas(caixa, pontos, [{ k: "e", cls: "seg-equipe" }],
       (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]);
@@ -2408,7 +2409,7 @@
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
         h("ul", { class: "lista nota" },
-          h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não aparecem por pessoa."),
+          h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não entram aqui: os três primeiros não são publicados por pessoa, e as diárias e passagens ainda não foram levantadas, estado por estado."),
           h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),
           h("li", null, "Nenhum governador pode ganhar mais que um ministro do STF (R$ 46.366,19 em 2025 e 2026).")),
         foto));
