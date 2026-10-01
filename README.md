@@ -177,6 +177,9 @@ Robô `coleta/municipios.py`, para as 5.568 câmaras:
   formais (inclui órgãos públicos), em reais, do Cadastro Central de Empresas do IBGE (tabela 9509 do SIDRA, ano mais
   recente: 2024), para pôr ao lado do teto do vereador. Uma consulta só para as 5.570 cidades
   (`dados/municipios/salario_medio.csv`), de novo a cada 30 dias. No `municipios.json` é o 9º campo de cada cidade.
+  No site, a comparação com o salário médio (quanto acima, e o "ganha mais que X% dos brasileiros que trabalham") só
+  aparece onde há o salário de verdade do vereador (as capitais com vereador por vereador). Nas outras cidades, o teto e
+  o salário médio ficam lado a lado, sem comparação: o teto é só o máximo, e o salário fixado pela Câmara pode ser menor.
 - **Valor suspeito**: custo por habitante abaixo de 30% da mediana das cidades do mesmo tamanho (46 cidades).
   Provavelmente parte do gasto foi informada em outra função; a cidade aparece com aviso e fica fora das
   comparações.

@@ -957,7 +957,7 @@
     if (!temCusto(c)) return null;
     return comFolga(async (t) => {
     const { C } = t;
-    const cp = comparacaoCidade(c), cam = camaraDe(c.cod), sub = cam && !cam.subsidio_folha ? (cam.subsidio || [])[(cam.subsidio || []).length - 1] : null;
+    const cp = comparacaoCidade(c);
     const cab = await cabecaImagem(t, { predio: true, nome: `${c.n} (${c.uf})`, rotulo: "CÂMARA MUNICIPAL", sub: `${num(c.pop, 0)} habitantes · ${c.nv} vereadores${c.cap ? " · capital" : ""}` });
     let y = valorImagem(t, cab.y + respiro(t), `CUSTO DA CÂMARA POR MÊS · ${c.ano}`, compacto(c.custo / 12));
     if (cp.pct !== null) {
@@ -967,12 +967,14 @@
     y = cartoesImagem(t, y + respiro(t), [
       [C.custa, "POR HABITANTE", reaisC(porHabMes(c)), cp.med ? `mediana: ${reaisC(cp.med)}` : "por mês"],
       [C.regua, "CÂMARA POR VEREADOR", compacto(c.custo / 12 / Math.max(1, c.nv)), `o gasto todo ÷ ${c.nv}; não é o salário`]]);
-    // o salário do vereador e, embaixo, o salário médio da cidade (IBGE), cada um com o seu ano
-    const anoSm = (CID.meta || {}).salario_medio_ano;
-    y = linhasImagem(t, y + respiro(t), c.sm > 0 ? "SALÁRIO DO VEREADOR E SALÁRIO MÉDIO DA CIDADE" : sub ? "SALÁRIO DE CADA VEREADOR" : "SALÁRIO DE UM VEREADOR DAQUI", [
-      sub ? [`vereador, desde ${fmtMes(sub[0])}`, reaisC(sub[1])] : ["vereador, no máximo, pela Constituição", reais(tetoVereador(c.pop))],
-      c.sm > 0 ? [`salário médio na cidade em ${anoSm} (IBGE)`, reais(c.sm)] : null].filter(Boolean), 40, C.ganha);
-    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos: ${listaE(["Tesouro Nacional (Siconfi)", "TSE", sub ? "Câmara Municipal" : null, c.sm > 0 ? "IBGE" : null].filter(Boolean))}`);
+    // o salário do vereador e, embaixo, o salário médio da cidade (IBGE), cada um com o seu ano. Sem o salário de verdade
+    // (fora das capitais com vereador por vereador), só o teto, sem o salário médio ao lado
+    const anoSm = (CID.meta || {}).salario_medio_ano, real = salarioReal(c);
+    y = linhasImagem(t, y + respiro(t), real ? (c.sm > 0 ? "SALÁRIO DO VEREADOR E SALÁRIO MÉDIO DA CIDADE" : "SALÁRIO DE CADA VEREADOR") : "TETO DO SALÁRIO DE UM VEREADOR DAQUI", [
+      real ? (real.folha ? ["vereador, mediana de 2025 (folha da Câmara)", reais(real.v)] : [`vereador, desde ${fmtMes(real.desde)}`, reaisC(real.v)])
+        : ["no máximo, pela Constituição (o salário pode ser menor)", reais(tetoVereador(c.pop))],
+      real && c.sm > 0 ? [`salário médio na cidade em ${anoSm} (IBGE)`, reais(c.sm)] : null].filter(Boolean), 40, C.ganha);
+    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos: ${listaE(["Tesouro Nacional (Siconfi)", "TSE", real ? "Câmara Municipal" : null, real && c.sm > 0 ? "IBGE" : null].filter(Boolean))}`);
     return y;
     });
   }
@@ -1797,16 +1799,28 @@
       retorno);
   }
   function textoCidade(c) {
-    const link = endereco() ? `${origem()}${urlCidade(c)}` : "";
+    const link = endereco() ? `${origem()}${urlCidade(c)}` : "", real = salarioReal(c);
     return [
       `*Câmara Municipal de ${c.n} (${c.uf})*`,
       temCusto(c) ? `Custa *${compacto(c.custo / 12)} por mês* (${reaisC(porHabMes(c))} por habitante, por mês), com ${c.nv} vereadores.` : `${c.nv} vereadores.`,
-      `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês.`,
-      c.sm > 0 ? `O salário médio na cidade era de ${reais(c.sm)} por mês em ${(CID.meta || {}).salario_medio_ano} (IBGE).` : null,
+      real ? (real.folha ? `Um vereador recebe ${reais(real.v)} por mês pela folha da Câmara (mediana de 2025).` : `Cada vereador recebe ${reaisC(real.v)} por mês (desde ${fmtMes(real.desde)}).`)
+        : `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês: é o teto da Constituição, e o salário fixado pela Câmara pode ser menor.`,
+      real && c.sm > 0 ? `O salário médio na cidade era de ${reais(c.sm)} por mês em ${(CID.meta || {}).salario_medio_ano} (IBGE).` : null,
       "",
-      `Dados abertos oficiais do Tesouro Nacional, do TSE${c.sm > 0 ? " e do IBGE" : ""}.`,
+      `Dados abertos oficiais ${listaE(["do Tesouro Nacional", "do TSE", real ? "da Câmara Municipal" : null, real && c.sm > 0 ? "do IBGE" : null].filter(Boolean))}.`,
       `Veja a da sua cidade: ${link || "Contas do Poder"}`,
     ].filter((x) => x !== null).join("\n");
+  }
+  // O salário de verdade de um vereador da cidade, onde a Câmara publica (capitais com vereador por vereador): o
+  // subsídio de hoje, igual para todos, ou, onde vem da folha, a mediana do que foi para o bolso em 2025. Nas outras
+  // cidades só existe o teto da Constituição, e o site não compara o teto com nada: o salário pode ser bem menor.
+  function salarioReal(c) {
+    const cam = camaraDe(c.cod);
+    if (!cam) return null;
+    const sub = (cam.subsidio || [])[(cam.subsidio || []).length - 1];
+    if (sub && !cam.subsidio_folha) return { v: sub[1], ano: anoAtual(), oQue: "o salário de hoje", desde: sub[0], folha: false };
+    const C = colegas(`v${c.cod}`, "2025");
+    return C.n && C.gm ? { v: C.gm, ano: "2025", oQue: "a mediana de 2025", folha: true } : null;
   }
   // Cidade com os dados de cada vereador (capitais): salário de verdade e a lista com link para cada um
   function vereadoresDaCidade(c) {
@@ -1821,7 +1835,7 @@
     const noTeto = sub && teto && Math.abs(sub[1] - teto) < 1;
     const temEquipe = todos.some((q) => q.eq) || cam.equipe_custo;
     // o salário de um vereador: o subsídio de hoje (igual para todos) ou, onde vem da folha, a mediana de 2025
-    const sal = sub && !cam.subsidio_folha ? { v: sub[1], ano: anoAtual(), oQue: "o salário de hoje" } : C.n ? { v: C.gm, ano: "2025", oQue: "a mediana de 2025" } : null;
+    const sal = salarioReal(c);
     const chip = (q) => h("a", { class: "pessoa-chip", href: urlDe(q.id), onclick: () => { S.origem = "cidade"; } },
       avatar(q, "p"), q.n, h("small", null, `${q.pt || "sem partido"}${q.sup ? " · suplente" : ""}`));
     const partidos = {};
@@ -1907,10 +1921,8 @@
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo do vereador", `até ${reais(teto)}`, "por mês hoje, pela Constituição"),
-          estatSalarioMedio(c),
-          comparaSalarioMedio(c, teto, "o teto de hoje"),
-          estatisticaPop(teto / smDoAno(anoAtual()), "recebendo o teto")),
-        h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. O salário de verdade é definido pela própria Câmara e ainda não tem uma fonte nacional: por enquanto mostramos o teto.`),
+          estatSalarioMedio(c)),
+        h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. Esse é o teto: o salário de cada vereador é fixado pela própria Câmara e pode ser menor. Como ainda não há uma fonte nacional com esse salário, aqui não comparamos o teto com o salário médio da cidade.`),
         h("h2", { class: "h3" }, `Os ${c.nv} vereadores eleitos em 2024`), lista],
         fimCompartilhar(spec),
         h("ul", { class: "lista nota" },
