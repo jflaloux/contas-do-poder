@@ -38,7 +38,7 @@
   --ganha: #12a07b;        /* dado: vai para a pessoa */
   --custa: #e0901a;        /* dado: gastos do mandato */
   --equipe: #5f84a0;       /* dado: equipe do gabinete (vai para outras pessoas) */
-  --ponto: rgba(15, 43, 60, .26);
+  --ponto: rgba(15, 43, 60, .26); --ponto-cor: #0f2b3c; --ponto-alfa: .26;
   --on-hi: #ffffff;
   --zap: #15803d;          /* verde do WhatsApp escurecido: texto branco com contraste de 5:1 */
   /* faixa escura (igual nos dois temas) */
@@ -72,7 +72,7 @@
     --botao: #3ee0b4; --botao-2: #8af0d2; --on-botao: #08161f;
     --hi: #3ee0b4; --hi-soft: #123b33; --hi-ink: #a7f3dc;
     --alerta-soft: #3a1e19; --alerta-ink: #ffc9bc;
-    --ganha: #2fcb9f; --custa: #ffb547; --equipe: #8fb0c9; --ponto: rgba(233, 241, 244, .28); --on-hi: #08161f;
+    --ganha: #2fcb9f; --custa: #ffb547; --equipe: #8fb0c9; --ponto: rgba(233, 241, 244, .28); --ponto-cor: #e9f1f4; --ponto-alfa: .28; --on-hi: #08161f;
     --banda: #12324a; --banda-2: #1a4260; --banda-linha: #2f6080;
     --sombra: 0 1px 2px rgba(0, 0, 0, .5);
     color-scheme: dark;
@@ -84,7 +84,7 @@
   --botao: #3ee0b4; --botao-2: #8af0d2; --on-botao: #08161f;
   --hi: #3ee0b4; --hi-soft: #123b33; --hi-ink: #a7f3dc;
   --alerta-soft: #3a1e19; --alerta-ink: #ffc9bc;
-  --ganha: #2fcb9f; --custa: #ffb547; --equipe: #8fb0c9; --ponto: rgba(233, 241, 244, .28); --on-hi: #08161f;
+  --ganha: #2fcb9f; --custa: #ffb547; --equipe: #8fb0c9; --ponto: rgba(233, 241, 244, .28); --ponto-cor: #e9f1f4; --ponto-alfa: .28; --on-hi: #08161f;
   --banda: #12324a; --banda-2: #1a4260; --banda-linha: #2f6080;
   --sombra: 0 1px 2px rgba(0, 0, 0, .5);
   color-scheme: dark;
@@ -340,6 +340,7 @@ a.fonte:hover { border-color: var(--accent); }
 
 /* gráficos */
 .grafico { position: relative; min-width: 0; }
+.grafico__nota { margin: 2px 0 0; }
 .grafico svg { display: block; width: 100%; overflow: visible; }
 .grafico text { fill: var(--ink-3); font-family: var(--body); font-size: 12px; }
 .grafico .forte { fill: var(--ink); font-family: var(--body); font-weight: 700; font-size: 13px; }
@@ -351,6 +352,10 @@ a.fonte:hover { border-color: var(--accent); }
 .alvo { fill: transparent; cursor: crosshair; }
 .coluna.ativa .seg-ganha, .coluna.ativa .seg-custa { filter: brightness(1.12); }
 .ponto { fill: var(--ponto); }
+/* os pontos dos colegas vão num grupo transparente, com a cor cheia: onde se sobrepõem (muita gente com o mesmo
+   valor), a mancha fica com a mesma cor de um ponto sozinho, sem escurecer */
+.pontos { opacity: var(--ponto-alfa); }
+.pontos .ponto { fill: var(--ponto-cor); }
 .ponto--eu { fill: var(--ganha); stroke: var(--ink); stroke-width: 2.5; }
 .ponto--anel { fill: none; stroke: var(--hi); stroke-width: 2; opacity: .6; }
 .ponto--ativo { fill: var(--ink); }

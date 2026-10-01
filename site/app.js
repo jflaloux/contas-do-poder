@@ -621,7 +621,7 @@
   // pares: [{id, n, sub, v, url?}]; clicar num ponto abre a página daquela pessoa (ou o url, quando vem: os governadores).
   function graficoPontos(caixa, euId, pares, fmt) {
     const desenhar = () => {
-      caixa.querySelectorAll("svg").forEach((x) => x.remove());
+      caixa.querySelectorAll("svg, .grafico__nota").forEach((x) => x.remove());
       if (!pares.length) return;
       const W = Math.max(260, caixa.clientWidth);
       const m = { t: 44, r: 14, b: 28, l: 14 };
@@ -639,7 +639,12 @@
         pilha.set(q.id, { cx: b * passo, k: n % 2 ? Math.ceil(n / 2) : -n / 2 });
       }
       const maxK = Math.max(1, ...[...pilha.values()].map((d) => Math.abs(d.k)));
-      const ih = Math.max(W < 520 ? 120 : 100, (2 * maxK + 1) * passo + 16), H = m.t + ih + m.b, meio = m.t + ih / 2;
+      // com muita gente no mesmo valor (as 2.360 cidades de 10 a 50 mil habitantes, os deputados que recebem o mesmo
+      // salário), a pilha mais alta passaria da altura da tela: a altura para em ALTURA_MAX e os pontos de cada pilha
+      // se sobrepõem, formando uma mancha (mais alta onde há mais gente)
+      const ALTURA_MAX = W < 520 ? 200 : 220, precisa = (2 * maxK + 1) * passo + 16;
+      const apertado = precisa > ALTURA_MAX, passoY = apertado ? (ALTURA_MAX - 16) / (2 * maxK + 1) : passo;
+      const ih = Math.max(W < 520 ? 120 : 100, Math.min(precisa, ALTURA_MAX)), H = m.t + ih + m.b, meio = m.t + ih / 2;
       const rotulo = (t) => (t === 0 ? "0" : fmt === reais ? compacto(t).replace(/,0 (mil|mi|bi)$/, " $1") : fmt === reaisC ? `R$ ${num(t, casas)}` : num(t, casas));
       const svg = s("svg", { width: W, height: H, viewBox: `0 0 ${W} ${H}`, role: "img", "aria-label": "Onde cada um fica" });
       // rótulos do eixo: se encostam (celular estreito), tenta sem o "R$ " e, se ainda encostam, um sim, um não
@@ -661,8 +666,10 @@
         const tx = s("text", { x: x(t), y: H - 8, "text-anchor": ancora(t) });
         tx.textContent = textos[i]; svg.append(tx);
       });
-      const pos = pares.map((p) => { const d = pilha.get(p.id); return { ...p, cx: d.cx, cy: meio + d.k * passo }; });
-      for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: raio }));
+      const pos = pares.map((p) => { const d = pilha.get(p.id); return { ...p, cx: d.cx, cy: meio + d.k * passoY }; });
+      const grupo = s("g", { class: "pontos" });
+      for (const p of pos) if (p.id !== euId) grupo.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: raio }));
+      svg.append(grupo);
       // a mediana: linha tracejada, com o nome embaixo do nome da pessoa
       const med = mediana(vs);
       const meu = pos.find((p) => p.id === euId);
@@ -670,7 +677,7 @@
         const mx = x(med);
         svg.append(s("line", { class: "mediana-linha", x1: mx, x2: mx, y1: 26, y2: H - m.b }));
         // o rótulo fica à direita da linha, a não ser que encoste na borda ou na linha da pessoa destacada
-        const esquerda = mx > W * 0.8 || (meu && meu.cx > mx && meu.cx - mx < 62 && mx > 70);
+        const esquerda = mx > W * 0.8 || (meu && meu.cx > mx && meu.cx - mx < 62 && mx > 52);
         const tm = s("text", { x: mx + (esquerda ? -5 : 5), y: 36, "text-anchor": esquerda ? "end" : "start" }); tm.textContent = "mediana"; svg.append(tm);
       }
       if (meu) {
@@ -706,6 +713,7 @@
       svg.addEventListener("click", (ev) => { const p = achar(ev); if (p && p.id !== euId) { S.origem = "grafico"; navegar(p.url || urlPessoa(p)); } });
       svg.addEventListener("pointerleave", () => { d.hidden = true; destaque.setAttribute("visibility", "hidden"); });
       caixa.prepend(svg);
+      if (apertado) caixa.append(h("p", { class: "grafico__nota pequeno discreto" }, "Pontos com valores parecidos ficam sobrepostos: onde a mancha é mais alta, há mais deles."));
     };
     aoRedimensionar(caixa, desenhar);
   }
