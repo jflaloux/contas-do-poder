@@ -168,20 +168,30 @@
   "ES": {
    "site": "https://www.al.es.gov.br/",
    "verba": {
-    "por_deputado": null
+    "por_deputado": true,
+    "granularidade": "mensal (total por rubrica)",
+    "formato": "HTML (o que a página usa: Transparencia/Api/CotasParlamentaresNovoTable)",
+    "url": "https://www.al.es.gov.br/Transparencia/CotasParlamentares",
+    "desde": "2010"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true,
+    "formato": "consulta por servidor (ListagemServidores, ServidorDetalhes)",
+    "url": "https://www.al.es.gov.br/Transparencia/ListagemServidores"
    },
    "equipe": {
-    "publica": null
+    "publica": true,
+    "formato": "lista de servidores por lotação (só o retrato de hoje)",
+    "url": "https://www.al.es.gov.br/Transparencia/ListagemServidores"
    },
    "subsidio": {
-    "valor": null,
-    "ato": "Lei 11.766/2022 (a conferir)"
+    "valor": 34774.64,
+    "desde": "2025-02",
+    "ato": "Lei 11.766/2022",
+    "url": "https://www.al.es.gov.br/Transparencia/EstruturaRemuneratoria"
    },
-   "barreiras": "O site não abre de fora do Brasil (abre do Brasil).",
-   "observacoes": "A conferir de dentro do Brasil.",
+   "barreiras": "O portal só abre de dentro do Brasil (o robô roda no Mac). Sem robots.txt (404).",
+   "observacoes": "Robô pronto (coleta/assembleias/es.py), desde fev/2025. Sem fornecedor. A página da cota mostra o nome civil e o partido de hoje. Tyago Hoffmann ficou fora de mar/2025 a mar/2026 (Toninho da Emater no lugar até fev/2026).",
    "abriu_de_fora": false
   },
   "GO": {
