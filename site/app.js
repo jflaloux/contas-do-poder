@@ -106,6 +106,9 @@
   const COM_ARTIGO = new Set([2611606, 3304557]);
   const deCidade = (c) => (c && COM_ARTIGO.has(+c.cod) ? `do ${c.n}` : `de ${c ? c.n : ""}`);
   const deCid = (cod) => deCidade({ n: (camaraDe(cod) || prefeituraDe(cod) || {}).n || "", cod });
+  // o mesmo pelo nome, para as capitais que ainda não estão nos dados das câmaras e prefeituras (Índice de Transparência)
+  const COM_ARTIGO_NOME = new Set(["Recife", "Rio de Janeiro"]);
+  const deNome = (n) => `${COM_ARTIGO_NOME.has(n) ? "do" : "de"} ${n}`;
   const listaE = (xs) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs[xs.length - 1]}`);
   // junta à lista de políticos; os tipos de gasto vêm numa lista própria, então os índices mudam. chave: onde estão as
   // Casas no meta ("cidades" ou "estados"); tipo: troca o k das pessoas (os deputados estaduais vêm com k = "e", que
@@ -390,6 +393,13 @@
   }
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
     let itens = [], ativo = -1;
+    // a lista das 5.570 cidades (dados/municipios.json) só é baixada quando a pessoa começa a buscar: quem só abre a
+    // página de um político não precisa dela. Se chegar depois que a pessoa já digitou, a lista de sugestões se refaz.
+    if (comCidades) {
+      const pedir = () => carregarCidades().then(() => { if (input.value.trim() && document.activeElement === input) input.dispatchEvent(new Event("input")); }, () => {});
+      input.addEventListener("focus", pedir, { once: true });
+      input.addEventListener("input", pedir, { once: true });
+    }
     // a lista de sugestões é uma listbox (cada sugestão é uma option), para o leitor de tela
     caixa.setAttribute("role", "listbox");
     if (!caixa.hasAttribute("aria-label")) caixa.setAttribute("aria-label", "Sugestões");
@@ -467,9 +477,15 @@
     d.style.left = `${Math.max(4, Math.min(larg - dw - 4, x - dw / 2))}px`;
     d.style.top = `${Math.max(4, y - d.offsetHeight - 10)}px`;
   }
+  // desenha o gráfico e redesenha quando a largura muda. A caixa costuma ser criada antes de entrar na página; o desenho
+  // fica para o fim da tarefa (microtarefa), quando ela já entrou e antes de o navegador calcular o layout e pintar: assim
+  // o gráfico aparece junto com a página, sem empurrar o que vem abaixo. O ResizeObserver cobre o resto (largura nova,
+  // caixa que entra depois).
   function aoRedimensionar(caixa, desenhar) {
     let largura = 0;
-    const ro = new ResizeObserver(() => { const w = caixa.clientWidth; if (Math.abs(w - largura) > 8) { largura = w; desenhar(); } });
+    const ver = () => { const w = caixa.isConnected ? caixa.clientWidth : 0; if (w && Math.abs(w - largura) > 8) { largura = w; desenhar(); } };
+    ver(); queueMicrotask(ver);
+    const ro = new ResizeObserver(ver);
     ro.observe(caixa); observadores.push(ro);
   }
   // Colunas mês a mês, empilhando as séries dadas (de baixo para cima)
@@ -531,7 +547,7 @@
       svg.addEventListener("pointerleave", () => { d.hidden = true; svg.querySelectorAll(".coluna.ativa").forEach((c) => c.classList.remove("ativa")); });
       caixa.prepend(svg);
     };
-    aoRedimensionar(caixa, desenhar); desenhar();
+    aoRedimensionar(caixa, desenhar);
   }
   const linhaDica = (cor, valor, texto) => h("div", null, h("span", { class: "traco", style: `background:var(--${cor})` }), h("strong", null, valor), ` ${texto}`);
   // dica ao lado do ponteiro (não em cima do ponto)
@@ -632,7 +648,7 @@
       svg.addEventListener("pointerleave", () => { d.hidden = true; destaque.setAttribute("visibility", "hidden"); });
       caixa.prepend(svg);
     };
-    aoRedimensionar(caixa, desenhar); desenhar();
+    aoRedimensionar(caixa, desenhar);
   }
   // ================================================================== compartilhar
   const endereco = () => (($('meta[name="endereco-do-site"]') || {}).content || "").replace(/#.*$/, "");
@@ -1547,12 +1563,12 @@
           : p.k === "p" ? h("li", null, "A Prefeitura publica a folha de cada mês no fim do próprio mês.")
           : legisl(p) ? h("li", null, notaMensalVereador(p))
           : h("li", null, "Os 3 últimos meses ainda podem receber notas da cota.")));
-    requestAnimationFrame(() => graficoColunas(caixa, pontos,
+    graficoColunas(caixa, pontos,
       [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
       (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`), h("div", null, "Custo total ", h("strong", null, reais(q.g + q.c))),
         q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null,
         p.k === "j" && cargoNoMes(p, q.aaaamm) ? h("div", { class: "pequeno" }, cargoNoMes(p, q.aaaamm) === "e" ? "Neste mês: ministro" : "Neste mês: no Congresso") : null],
-      p.k === "j" ? (q) => cargoNoMes(p, q.aaaamm) : null));
+      p.k === "j" ? (q) => cargoNoMes(p, q.aaaamm) : null);
     return card;
   }
   function secEquipe(p, k) {
@@ -1577,8 +1593,8 @@
       h("p", { class: "nota" }, cv ? `${cv.equipe_nota || `Assessores do gabinete, pela folha de pagamento da ${nomeCasa(p)}.`} Contamos quem recebeu no mês, mesmo que só parte dele.` : casaBase(p) === "d"
         ? "Na Câmara, cada deputado tem até R$ 165.806,07 por mês para pagar até 25 secretários parlamentares. Contamos quem trabalhou no gabinete em cada mês, mesmo que só parte dele."
         : "No Senado, os assessores são pagos direto pela folha. Ligamos a folha à lotação de cada comissionado: é uma estimativa, mais precisa nos meses recentes."));
-    requestAnimationFrame(() => graficoColunas(caixa, pontos, [{ k: "e", cls: "seg-equipe" }],
-      (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]));
+    graficoColunas(caixa, pontos, [{ k: "e", cls: "seg-equipe" }],
+      (q) => [linhaDica("equipe", reais(q.e), "com a equipe"), q.pes ? h("div", null, `${q.pes} pessoas · `, h("strong", null, reais(q.e / q.pes)), " por pessoa") : null]);
     return card;
   }
   // Vereador (ou deputado estadual): a Casa publica quem trabalha em cada gabinete (retrato do mês), mas não os salários
@@ -1807,7 +1823,9 @@
   }
   const irParaCidade = (c, de) => { S.origem = de; navegar(urlCidade(c)); };
   // O que há de errado com os dados de uma cidade (null = nada)
-  const anoRecente = () => Math.max(...CID.m.map((c) => c.ano || 0));
+  // o ano mais recente das contas: calculado uma vez (problemaCidade roda para as 5.570 cidades, e recalcular aqui a cada
+  // chamada deixava a página da cidade e a inicial meio segundo travadas)
+  const anoRecente = () => CID.anoRecente || (CID.anoRecente = CID.m.reduce((a, c) => Math.max(a, c.ano || 0), 0));
   function problemaCidade(c) {
     if (!(c.custo > 0)) return { tipo: "sem", curto: "sem o gasto da Câmara" };
     if (c.suspeito) return { tipo: "suspeito", curto: "valor muito baixo" };
@@ -1949,7 +1967,7 @@
         h("div", { class: "lista-estado__grupo" }, vs.map(([nome, pt]) => h("span", { class: "pessoa-chip pessoa-chip--fixo" }, nome, h("small", null, pt)))));
     }, () => { lista.textContent = "Não foi possível carregar os vereadores."; });
     const caixa = h("div", { class: "grafico" });
-    if (tem && mesmos.length > 5) requestAnimationFrame(() => graficoPontos(caixa, c.id, mesmos.map((x) => ({ id: x.id, n: x.n, sub: x.uf, v: porHabMes(x) })), reaisC));
+    if (tem && mesmos.length > 5) graficoPontos(caixa, c.id, mesmos.map((x) => ({ id: x.id, n: x.n, sub: x.uf, v: porHabMes(x) })), reaisC);
     // imagem só para Câmara com o gasto informado; o texto, para todas
     const spec = specCidade(c) || { textoZap: textoCidade(c), link: endereco() ? `${origem()}${urlCidade(c)}` : "", medir: { conteudo: "cidade", cidade: c.n, uf: c.uf } };
     return h("article", { class: "cartao conta", id: "cidade" },
@@ -2251,11 +2269,11 @@
           ls.some((x) => x[10].includes("s")) ? h("li", null, "Quem deixa o cargo recebe no último mês os acertos: férias não tiradas (às vezes de vários anos) e o 13º proporcional. Esse mês fica fora da média.") : null,
           ls.some((x) => x[10].includes("a")) ? h("li", null, "Parte do 13º é paga adiantada no meio do ano, e a folha de dezembro traz o 13º inteiro e desconta o adiantamento. Aqui, dezembro já aparece sem o adiantamento, para o 13º não contar duas vezes.") : null,
           h("li", null, "Fonte: ", h("a", { href: e.mf.u, target: "_blank", rel: "noopener" }, `folha de pagamento ${deUF(e.uf)}`), `, mês a mês desde ${fmtMes(e.m[0][0])}. O robô confere toda semana.`)));
-      requestAnimationFrame(() => graficoColunas(caixa, pontos, [{ k: "s", cls: "seg-ganha" }, { k: "x", cls: "seg-extra" }],
+      graficoColunas(caixa, pontos, [{ k: "s", cls: "seg-ganha" }, { k: "x", cls: "seg-extra" }],
         (p) => [...p.xs.map((x) => h("div", null, h("strong", null, nomeOc(x[2])), `: ${reaisC(x[3])}`, x[10].includes("s") ? " (saída, com os acertos)" : "")),
           ...PARTES_GOV.filter(([k]) => p.xs.some((x) => x[k])).map(([k, n]) => h("div", { class: "pequeno" }, `${n}: ${reaisC(p.xs.reduce((a, x) => a + (x[k] || 0), 0))}`)),
           p.xs.some((x) => x[9]) ? h("div", { class: "pequeno" }, `Abate-teto: − ${reaisC(p.xs.reduce((a, x) => a + (x[9] || 0), 0))}`) : null],
-        pessoas.length > 1 ? (p) => cor(p.i) : null));
+        pessoas.length > 1 ? (p) => cor(p.i) : null);
     };
     desenhar();
     return [h("h2", { class: "h3" }, "Quanto recebeu, mês a mês"),
@@ -2486,7 +2504,7 @@
           R.casa === "a" ? h("li", null, `${maiuscula(plural(G()))}: ${(infoG(G()) || {}).subsidio_folha ? "o salário vem da folha de pagamento da Assembleia" : "o salário é o da lei, o mesmo para todos; o que muda é quanto cada um usa da verba do gabinete"}. Suplentes entram pelos meses em que estiveram no cargo. Deputados de estados diferentes não se comparam aqui: cada Assembleia tem as suas regras.`) : null,
           R.periodo === anoAtual() ? h("li", null, R.casa === "e" ? "Período ainda aberto: o Portal publica os salários com uns 2 meses de atraso." : "Período ainda aberto: os últimos meses ainda podem receber notas.") : null,
           h("li", null, `Só entra quem teve pelo menos ${minimo} meses ${R.casa === "e" || R.casa === "p" ? "no cargo" : "de mandato"} no período.`)));
-      if (lista.length) requestAnimationFrame(() => graficoPontos(caixa, p ? p.id : null, lista.map((x) => ({ id: x.p.id, n: x.p.n, sub: sub(x.p), v: x.v })), M.fmt));
+      if (lista.length) graficoPontos(caixa, p ? p.id : null, lista.map((x) => ({ id: x.p.id, n: x.p.n, sub: sub(x.p), v: x.v })), M.fmt);
     };
     const medir = () => evento("ranking", { casa: nomeGrupo(G()), metrica: R.metrica, periodo: R.periodo === "leg" ? "mandato" : R.periodo, uf: R.uf || "todos" });
     const trocouGrupo = () => { R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = "custo"; periodosOk(); medir(); render(); irPara("ranking"); };
@@ -2929,8 +2947,9 @@
 
   // ------------------------------------------------------------------ Índice de Transparência dos estados
   // /indice: para cada estado, se dá para saber, pela fonte oficial, quanto ganham e quanto custam os seus políticos.
-  // Um bloco para cada fonte (o governo e a Assembleia Legislativa), cada um com completude (o que a fonte mostra) e
-  // facilidade (como dá para obter). Os números vêm de dados/indice_transparencia.json (feito pelo robô e conferido à
+  // Um bloco para cada fonte (o governo, a Assembleia Legislativa, a prefeitura e a Câmara da capital), cada um com
+  // completude (o que a fonte mostra) e facilidade (como dá para obter). Estado com algum bloco a conferir fica fora da
+  // ordem, numa lista à parte, com o índice parcial (a média dos blocos que já têm nota). Os números vêm de dados/indice_transparencia.json (feito pelo robô e conferido à
   // mão, "coletar.py indice"); os nomes dos blocos e dos critérios e o "como pontua" vêm de meta.blocos, não daqui.
   // Cada nota tem a prova e, às vezes, o link. O índice e as dimensões vão de 0 a 1, com duas casas, como no método.
   let indice = null;
@@ -2955,12 +2974,18 @@
     // a posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a posição
     // e aparecem em ordem alfabética (0,905 e 0,914 aparecem os dois como 0,91)
     const r2 = (v) => Number(v.toFixed(2));
-    const ordem = [...comNota.sort((a, b) => r2(b.indice) - r2(a.indice) || a.nome.localeCompare(b.nome, "pt-BR")), ...semNota.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))];
+    comNota.sort((a, b) => r2(b.indice) - r2(a.indice) || a.nome.localeCompare(b.nome, "pt-BR"));
+    semNota.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
     const posDe = (e) => 1 + comNota.filter((x) => r2(x.indice) > r2(e.indice)).length; // empate: a mesma posição
     const vals = comNota.map((e) => r2(e.indice)), med = mediana(vals);
     const maior = Math.max(...vals), menor = Math.min(...vals);
     const nomes = (v) => listaE(comNota.filter((e) => r2(e.indice) === v).map((e) => e.nome));
     const aberto = decodeURIComponent(location.hash.slice(1));
+    // nos blocos da capital, o nome da cidade: "Prefeitura do Recife", "Câmara Municipal do Recife"
+    const tituloBloco = (b, x) => (!x || !x.cidade ? b.titulo
+      : / da capital$/.test(b.titulo) ? `${b.titulo.replace(/ da capital$/, "")} ${deNome(x.cidade)}` : `${b.titulo} (${x.cidade})`);
+    // a página do site com os números da capital, quando a cidade está nos dados (a capital do estado, não outra cidade dele)
+    const capitalDe = (lista, e) => lista.find((c) => c.uf === e.uf && (!e.capital || c.n === e.capital));
     const trilho = (v, tipo) => h("span", { class: `indice__trilho indice__trilho--${tipo}` }, semNotaIdx(v) ? null : h("span", { style: `width:${Math.max(1, v * 100).toFixed(1)}%` }));
     // na linha do estado, um bloco por linha: o nome curto, as duas dimensões em barras finas e o índice do bloco
     const blocoLinha = (e, b) => {
@@ -2969,13 +2994,13 @@
         return h("span", { class: "indice-bl indice-bl--na" },
           h("span", { class: "indice-bl__nome", "aria-hidden": "true" }, curto(b)),
           h("span", { class: "indice-bl__na", "aria-hidden": "true" }, "não se aplica"),
-          h("span", { class: "visualmente-oculto" }, `. ${b.titulo}: não se aplica`));
+          h("span", { class: "visualmente-oculto" }, `. ${tituloBloco(b, x)}: não se aplica`));
       }
       return h("span", { class: `indice-bl${semNotaIdx(x.indice) ? " indice-bl--conferir" : ""}` },
         h("span", { class: "indice-bl__nome", "aria-hidden": "true" }, curto(b)),
         h("span", { class: "indice-bl__barras", "aria-hidden": "true" }, trilho(x.completude, "completude"), trilho(x.facilidade, "facilidade")),
         h("span", { class: "indice-bl__num", "aria-hidden": "true" }, notaIdx(x.indice)),
-        h("span", { class: "visualmente-oculto" }, `. ${b.titulo}: ${semNotaIdx(x.indice) ? "a conferir" : `índice ${notaIdx(x.indice)}`} (completude ${notaIdx(x.completude)}; facilidade ${notaIdx(x.facilidade)})`));
+        h("span", { class: "visualmente-oculto" }, `. ${tituloBloco(b, x)}: ${semNotaIdx(x.indice) ? "a conferir" : `índice ${notaIdx(x.indice)}`} (completude ${notaIdx(x.completude)}; facilidade ${notaIdx(x.facilidade)})`));
     };
     const dimensao = (x, crit, d, titulo, sub) => h("div", { class: "indice-dimensao" },
       h("p", { class: "indice-dimensao__titulo" }, h("span", null, titulo), h("span", { class: "indice-dimensao__nota" }, notaIdx(x[d]))),
@@ -2995,14 +3020,14 @@
       if (x.nao_se_aplica) {
         return h("div", { class: `indice-bloco indice-bloco--${b.id}` },
           h("div", { class: "indice-bloco__topo" },
-            h("p", { class: "indice-bloco__titulo" }, b.titulo),
+            h("p", { class: "indice-bloco__titulo" }, tituloBloco(b, x)),
             h("p", { class: "indice-bloco__nota indice-bloco__nota--conferir" }, "não se aplica")),
           h("p", { class: "pequeno discreto" }, x.nao_se_aplica));
       }
       const nConf = (x.a_conferir || []).length;
       return h("div", { class: `indice-bloco indice-bloco--${b.id}` },
         h("div", { class: "indice-bloco__topo" },
-          h("p", { class: "indice-bloco__titulo" }, b.titulo),
+          h("p", { class: "indice-bloco__titulo" }, tituloBloco(b, x)),
           h("p", { class: `indice-bloco__nota${semNotaIdx(x.indice) ? " indice-bloco__nota--conferir" : ""}` }, semNotaIdx(x.indice) ? "a conferir" : notaIdx(x.indice))),
         b.pergunta ? h("p", { class: "pequeno discreto" }, b.pergunta) : null,
         semNotaIdx(x.indice) && nConf ? h("p", { class: "pequeno" }, h("strong", null, `${nConf} dos ${crit.length} critérios ainda estão a conferir`), "; o índice do bloco sai quando todos tiverem nota.") : null,
@@ -3010,30 +3035,44 @@
           dimensao(x, crit, "completude", "Completude", "O que a fonte mostra."),
           dimensao(x, crit, "facilidade", "Facilidade", "Como dá para obter os dados.")),
         h("p", { class: "indice-links" },
-          x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte oficial", h("span", { class: "visualmente-oculto" }, ` (${b.titulo}, ${e.nome})`), " ↗") : null,
+          x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte oficial", h("span", { class: "visualmente-oculto" }, ` (${tituloBloco(b, x)}, ${e.nome})`), " ↗") : null,
           b.id === "governo" && GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null,
           b.id === "assembleia" && assembleiaUF(e.uf) && GOV.porUF[e.uf] ? h("a", { href: `${urlGov(e.uf)}#assembleia`, onclick: () => { S.origem = "indice"; } }, `Deputados estaduais ${deUF(e.uf)}, um a um →`) : null,
           (() => {
-            const c = b.id === "prefeitura" ? cidadesPrefeitura().find((x) => x.uf === e.uf) : b.id === "camara" ? cidadesCamara().find((x) => x.uf === e.uf) : null;
+            const c = b.id === "prefeitura" ? capitalDe(cidadesPrefeitura(), e) : b.id === "camara" ? capitalDe(cidadesCamara(), e) : null;
             return c ? h("a", { href: `${urlCidade(c)}#${b.id === "prefeitura" ? "prefeitura" : "cidade"}`, onclick: () => { S.origem = "indice"; } },
-              b.id === "prefeitura" ? `A Prefeitura ${deCid(c.cod)}, um a um →` : `Os vereadores ${deCid(c.cod)}, um a um →`) : null;
+              b.id === "prefeitura" ? `O prefeito, o vice e os secretários ${deCid(c.cod)}, um a um →` : `Os vereadores ${deCid(c.cod)}, um a um →`) : null;
           })()));
     };
+    // o detalhe de cada estado (4 blocos com todos os critérios: centenas de elementos) só é montado ao abrir
     const linha = (e) => {
       const falta = !comNota.includes(e), uf = e.uf.toLowerCase();
       const blocosConf = BL.filter((b) => (e.a_conferir || []).includes(b.id));
-      return h("li", null, h("details", { class: `indice-estado${falta ? " indice-estado--conferir" : ""}`, id: `indice-${uf}`, open: aberto === `indice-${uf}`,
-        ontoggle: (ev) => { if (ev.target.open) evento("abrir_indice", { uf: e.uf }); } },
+      const corpo = h("div", { class: "indice-corpo" });
+      const montar = () => {
+        if (corpo.childNodes.length) return;
+        add(corpo,
+          falta ? h("p", { class: "aviso" }, blocosConf.length
+            ? `Sem índice geral por enquanto: ${blocosConf.length === 1 ? "o bloco" : "os blocos"} ${listaE(blocosConf.map((b) => tituloBloco(b, e.blocos[b.id])))} ainda ${blocosConf.length === 1 ? "está" : "estão"} a conferir.`
+            : "Sem índice geral por enquanto.",
+            semNotaIdx(e.indice_parcial) ? "" : ` Com ${e.blocos_com_nota === 1 ? "o bloco que já tem" : `os ${e.blocos_com_nota} blocos que já têm`} nota, o índice parcial é ${notaIdx(e.indice_parcial)}; o estado fica fora da ordem até todos os blocos terem nota.`,
+            " As notas que já existem estão abaixo.") : null,
+          BL.map((b) => blocoDetalhe(e, b)));
+      };
+      const abrir = aberto === `indice-${uf}`;
+      if (abrir) montar();
+      return h("li", null, h("details", { class: `indice-estado${falta ? " indice-estado--conferir" : ""}`, id: `indice-${uf}`, open: abrir,
+        ontoggle: (ev) => { if (ev.target.open) { montar(); evento("abrir_indice", { uf: e.uf }); } } },
         h("summary", null,
           h("span", { class: "indice__pos" }, falta ? "–" : `${posDe(e)}º`),
           h("span", { class: "indice__nome" }, e.nome),
-          h("span", { class: "indice__valor" }, falta ? "a conferir" : notaIdx(e.indice)),
+          falta && !semNotaIdx(e.indice_parcial)
+            ? h("span", { class: "indice__valor indice__valor--parcial" },
+              h("span", { "aria-hidden": "true" }, notaIdx(e.indice_parcial)), h("small", { "aria-hidden": "true" }, "parcial"),
+              h("span", { class: "visualmente-oculto" }, `índice parcial ${notaIdx(e.indice_parcial)}, com ${e.blocos_com_nota} de ${e.blocos_que_valem} blocos`))
+            : h("span", { class: "indice__valor" }, falta ? "a conferir" : notaIdx(e.indice)),
           h("span", { class: "indice__blocos" }, BL.map((b) => blocoLinha(e, b)))),
-        h("div", { class: "indice-corpo" },
-          falta ? h("p", { class: "aviso" }, blocosConf.length
-            ? `Sem índice geral por enquanto: ${blocosConf.length === 1 ? "o bloco" : "os blocos"} ${listaE(blocosConf.map((b) => b.titulo))} ainda ${blocosConf.length === 1 ? "está" : "estão"} a conferir. As notas que já existem estão abaixo.`
-            : "Sem índice geral por enquanto. As notas que já existem estão abaixo.") : null,
-          BL.map((b) => blocoDetalhe(e, b)))));
+        corpo));
     };
     const como = M.como || [];
     // quantas fontes o índice olha: um bloco por fonte de cada estado, menos os que não se aplicam (no DF)
@@ -3045,7 +3084,7 @@
           h("h1", { id: "t-indice", class: "titulo-pagina" }, M.titulo || "Índice de Transparência dos estados"),
           M.pergunta ? h("p", { class: "lide" }, M.pergunta) : null,
           h("p", { class: "indice-topo__contexto" }, textoContextoIndice(nFontes, I.estados.length)),
-          h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice geral${semNota.length ? `; ${listaE(semNota.map((e) => e.nome))} a conferir` : ""}.`),
+          h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice geral${semNota.length ? `; em ${semNota.length === 1 ? semNota[0].nome : `${semNota.length} (${listaE(semNota.map((e) => e.nome))})`}, algum bloco ainda está a conferir` : ""}.`),
           como[0] ? h("p", { class: "caixa-nota" }, como[0]) : null),
         comNota.length ? h("div", { class: "estatisticas" },
           estatistica("Maior índice", notaIdx(maior), nomes(maior)),
@@ -3056,7 +3095,13 @@
           h("span", null, h("span", { class: "chave chave--custa" }), "Facilidade: como dá para obter")),
         h("article", { class: "cartao indice-cartao" },
           h("p", { class: "pequeno discreto" }, `Do maior índice geral para o menor. Em cada estado, o índice de cada bloco (${listaE(BL.map(curto))}), com as duas dimensões em barras. Toque num estado para ver cada critério, a nota e a prova.`),
-          h("ol", { class: "indice-lista" }, ordem.map(linha)))),
+          BL.some((b) => b.id === "prefeitura" || b.id === "camara")
+            ? h("p", { class: "pequeno discreto" }, "Cada bloco é uma fonte, com responsáveis diferentes: a Assembleia, a prefeitura e a Câmara da capital não dependem do governo do Estado. A nota é da fonte, não de quem está no cargo.") : null,
+          h("ol", { class: "indice-lista" }, comNota.map(linha)),
+          semNota.length ? [
+            h("h2", { class: "h3 indice-parciais" }, "Com algum bloco a conferir"),
+            h("p", { class: "pequeno discreto" }, "Fora da ordem acima. O índice parcial é a média só dos blocos que já têm nota; o índice geral sai quando todos tiverem."),
+            h("ul", { class: "indice-lista" }, semNota.map(linha))] : null)),
       h("section", { class: "bloco", id: "indice-como", "aria-labelledby": "t-indice-como" },
         h("h2", { id: "t-indice-como" }, "Como funciona"),
         h("div", { class: "cartao" },
@@ -3134,31 +3179,36 @@
       });
       return;
     }
-    app.textContent = "";
+    // primeira visita a uma página que espera mais dados (correções, índice, cidade): a página pronta do HTML (gerar.mjs)
+    // fica na tela até eles chegarem, em vez de dar lugar a um "Carregando…" curto (a página não pula, e o rodapé não
+    // sobe e desce). Trocando de página dentro do site, o "Carregando…" aparece como antes.
+    const pronta = !S.carregado && (S.extra || S.cidade) && app.children.length ? [...app.children] : null;
+    if (!pronta) app.textContent = "";
+    const esperar = (texto) => { const e = h("p", { class: "discreto", hidden: !!pronta }, texto); app.append(e); return e; };
+    const trocar = (espera, ...novos) => { if (pronta) pronta.forEach((n) => n.remove()); espera.replaceWith(...novos); };
+    const falhou = (espera, texto) => { if (pronta) pronta.forEach((n) => n.remove()); espera.hidden = false; espera.textContent = texto; };
     if (S.extra === "correcoes") {
       document.title = "Correções · Contas do Poder";
-      const espera = h("p", { class: "discreto" }, "Carregando as correções…");
-      app.append(espera);
+      const espera = esperar("Carregando as correções…");
       navSecoes(["entenda", "fontes"]);
       carregarCorrecoes().then((C) => {
         if (!espera.isConnected) return; // já foi para outra página
-        espera.replaceWith(secCorrecoes(C));
+        trocar(espera, secCorrecoes(C));
         navSecoes(["correcoes", "entenda", "fontes"]);
         rolarPendente();
-      }, () => { espera.textContent = "Não foi possível carregar as correções."; });
+      }, () => falhou(espera, "Não foi possível carregar as correções."));
       return;
     }
     if (S.extra === "indice") {
       document.title = "Índice de Transparência dos estados · Contas do Poder";
-      const espera = h("p", { class: "discreto" }, "Carregando o índice…");
-      app.append(espera);
+      const espera = esperar("Carregando o índice…");
       navSecoes(["entenda", "fontes"]);
       carregarIndice().then((I) => {
         if (!espera.isConnected) return; // já foi para outra página
-        espera.replaceWith(...secIndice(I));
+        trocar(espera, ...secIndice(I));
         navSecoes(["indice", "indice-como", "entenda", "fontes"]);
         rolarPendente();
-      }, () => { espera.textContent = "Não foi possível carregar o índice."; });
+      }, () => falhou(espera, "Não foi possível carregar o índice."));
       return;
     }
     if (S.gov) {
@@ -3174,22 +3224,21 @@
     }
     if (S.cidade) {
       document.title = "Câmara Municipal · Contas do Poder";
-      const espera = h("p", { class: "discreto" }, "Carregando a câmara…");
-      app.append(espera);
+      const espera = esperar("Carregando a câmara…");
       carregarCidades().then(() => {
         if (!espera.isConnected) return; // já foi para outra página
         const c = /^cid-\d+$/.test(S.cidade) ? CID.porId.get(S.cidade) : CID.porSlug.get(S.cidade);
-        if (!c) { espera.textContent = "Cidade não encontrada."; return; }
+        if (!c) { falhou(espera, "Cidade não encontrada."); return; }
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
+        trocar(espera, ...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
           secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
           secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "resumo", "cidades", "entenda", "fontes"]);
         botaoFlutuante(specCidade(c), "#cidade .estatisticas");
         rolarPendente();
-      }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
+      }, () => falhou(espera, "Não foi possível carregar as câmaras."));
       return;
     }
     if (p) {
@@ -3257,7 +3306,6 @@
       ligarLinksInternos();
       aplicarEndereco("inicio");
       S.carregado = true;
-      carregarCidades().catch(() => {});
     })
     .catch((e) => {
       const app = $("#app");

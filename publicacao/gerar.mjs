@@ -32,7 +32,7 @@ const deputadosEstaduais = (ASS.p || []).map((p) => ({ ...p, k: "a" }));
 const GOV = ler("governadores.json", { e: [] });
 const MUN = ler("municipios.json", { m: [] });
 const END = ler("enderecos.json", { p: {}, antigos: {} });
-const MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8");
+let MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8"); // com os números da abertura: ver numerosHTML
 const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/) || [])[1] || "https://contasdopoder.com/").replace(/\/+$/, "");
 
 // ------------------------------------------------------------------ textos (os mesmos do site)
@@ -64,6 +64,31 @@ function iniciais(nome) {
 const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json",
   ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : [])];
 const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
+
+// ------------------------------------------------------------------ os números da abertura
+// Os mesmos blocos que o app.js põe em #chips-info (montarCabecalho), já no HTML: assim a abertura tem a altura certa
+// desde o começo e não cresce quando o app.js chega (a página não pula). Mudando o texto lá, mude aqui.
+function numerosHTML() {
+  const numero = (n, texto) => `<p class="numero"><strong>${n}</strong><span>${esc(texto)}</span></p>`;
+  const noCargo = (xs, f) => xs.filter((p) => p.x && f(p)).length;
+  const camaras = Object.entries(CAM.meta.cidades || {}), prefs = Object.entries(PRE.meta.cidades || {});
+  const ests = [...new Set(deputadosEstaduais.map((p) => p.uf))].filter((uf) => ((ASS.meta || {}).estados || {})[uf]);
+  const nomeCid = ([cod, c]) => deCidade(cod, c.n);
+  return [
+    numero(noCargo(D.p, (p) => p.k === "d" || p.k === "s"), "deputados e senadores no cargo"),
+    numero(noCargo(D.p, (p) => p.k === "e"), "no governo federal"),
+    GOV.e.length ? numero(GOV.e.length, "governadores") : "",
+    ests.length ? numero(noCargo(deputadosEstaduais, () => true), ests.length === 1 ? `deputados estaduais ${deUF(ests[0])}` : `deputados estaduais em ${ests.length} estados`) : "",
+    camaras.length ? numero(noCargo(CAM.p, () => true), camaras.length === 1 ? `vereadores ${nomeCid(camaras[0])}` : `vereadores em ${camaras.length} capitais`) : "",
+    prefs.length ? numero(noCargo(PRE.p, () => true), prefs.length === 1 ? "na Prefeitura" : `nas prefeituras de ${prefs.length} capitais`) : "",
+    `<p class="numeros__data">${esc(`Dados até ${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)} · atualizado em ${D.meta.atualizado}`)}</p>`,
+  ].join("");
+}
+{
+  const vazio = '<div class="numeros" id="chips-info"></div>';
+  if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
+  MODELO = MODELO.replace(vazio, `<div class="numeros" id="chips-info">${numerosHTML()}</div>`);
+}
 
 // ------------------------------------------------------------------ a página pronta
 // troca, no index.html, o título, a descrição, o endereço oficial e as prévias, e põe um resumo em texto no lugar do
@@ -236,8 +261,9 @@ if (COR) {
 
 // ------------------------------------------------------------------ Índice de Transparência dos estados (/indice)
 // de site/dados/indice_transparencia.json: a lista dos estados com o índice geral e o de cada bloco (cada fonte do
-// estado: governo, Assembleia...) em texto; o app.js desenha as barras e os critérios. O texto do contexto é o mesmo do
-// app.js (textoContextoIndice): mudando um, mude o outro
+// estado: governo, Assembleia, prefeitura e Câmara da capital) em texto; os estados com algum bloco a conferir vêm à
+// parte, com o índice parcial. O app.js desenha as barras e os critérios. O texto do contexto e os nomes dos blocos da
+// capital ("Prefeitura do Recife") são os mesmos do app.js (textoContextoIndice, tituloBloco): mudando um, mude o outro
 const IDX = ler("indice_transparencia.json", null);
 if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   const M = IDX.meta || {}, BL = M.blocos || [];
@@ -246,29 +272,37 @@ if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   const com = IDX.estados.filter((e) => !nulo(e.indice) && !(e.a_conferir || []).length)
     .sort((a, b) => Number(b.indice.toFixed(2)) - Number(a.indice.toFixed(2)) || a.nome.localeCompare(b.nome, "pt-BR")); // como no app.js
   const sem = IDX.estados.filter((e) => !com.includes(e)).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
-  // o link de cada bloco para a página do site com os números daquela fonte, quando ela existe
-  const capital = (meta, uf) => Object.values((meta && meta.cidades) || {}).find((c) => c.uf === uf);
+  // o link de cada bloco para a página do site com os números daquela fonte, quando ela existe (a da capital do estado)
+  const capital = (meta, e) => Object.values((meta && meta.cidades) || {}).find((c) => c.uf === e.uf && (!e.capital || c.n === e.capital));
+  const listaE = (xs) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs[xs.length - 1]}`);
+  const deNome = (n) => `${["Recife", "Rio de Janeiro"].includes(n) ? "do" : "de"} ${n}`;
+  const tituloBloco = (b, x) => (!x || !x.cidade ? b.titulo
+    : / da capital$/.test(b.titulo) ? `${b.titulo.replace(/ da capital$/, "")} ${deNome(x.cidade)}` : `${b.titulo} (${x.cidade})`);
   const linkBloco = (e, b) => {
     const uf = e.uf.toLowerCase();
     if (b.id === "governo" && GOV.e.some((g) => g.uf === e.uf)) return `/governador/${uf}`;
     if (b.id === "assembleia" && estados[e.uf] && GOV.e.some((g) => g.uf === e.uf)) return `/governador/${uf}#assembleia`;
-    const c = b.id === "prefeitura" ? capital(PRE.meta, e.uf) : b.id === "camara" ? capital(CAM.meta, e.uf) : null;
+    const c = b.id === "prefeitura" ? capital(PRE.meta, e) : b.id === "camara" ? capital(CAM.meta, e) : null;
     return c ? `/cidade/${slugTxt(c.n)}-${uf}` : null;
   };
   const blocoTxt = (e, b) => {
     const x = (e.blocos || {})[b.id] || {}, u = linkBloco(e, b);
-    const nome = u && !x.nao_se_aplica ? `<a href="${esc(u)}">${esc(b.titulo)}</a>` : esc(b.titulo);
+    const t = tituloBloco(b, x), nome = u && !x.nao_se_aplica ? `<a href="${esc(u)}">${esc(t)}</a>` : esc(t);
     return `${nome} ${x.nao_se_aplica ? "não se aplica" : nulo(x.indice) ? "a conferir" : `${n2(x.indice)} (completude ${n2(x.completude)}, facilidade ${n2(x.facilidade)})`}`;
   };
   const nFontes = IDX.estados.reduce((a, e) => a + BL.filter((b) => { const x = (e.blocos || {})[b.id]; return x && !x.nao_se_aplica; }).length, 0);
   const contexto = `Não existe uma base nacional com esses números. Cada órgão publica os seus no próprio portal, do seu jeito: em planilha, em página, em PDF, às vezes só depois de um CAPTCHA. Para reunir tudo, entramos em cada uma das ${nFontes} fontes dos ${IDX.estados.length} estados, baixamos os dados (com um robô, onde o portal deixa) e conferimos. O índice mede esse caminho: o que cada fonte mostra e como dá para obter os dados.`;
-  const itens = [...com, ...sem].map((e) => `<li><strong>${esc(e.nome)}</strong>: `
-    + (com.includes(e) ? `índice ${n2(e.indice)}` : "índice geral a conferir") + (BL.length ? `; ${BL.map((b) => blocoTxt(e, b)).join("; ")}` : "") + "</li>");
+  const item = (e) => `<li><strong>${esc(e.nome)}</strong>: `
+    + (com.includes(e) ? `índice ${n2(e.indice)}` : nulo(e.indice_parcial) ? "índice geral a conferir"
+      : `índice parcial ${n2(e.indice_parcial)}, com ${e.blocos_com_nota} de ${e.blocos_que_valem} blocos`)
+    + (BL.length ? `; ${BL.map((b) => blocoTxt(e, b)).join("; ")}` : "") + "</li>";
+  const listaSem = sem.length ? `<h2 class="h3">Com algum bloco a conferir</h2><p class="discreto">Fora da ordem acima. O índice parcial é a média só dos blocos que já têm nota; o índice geral sai quando todos tiverem.</p><ul class="indice-previa">${sem.map(item).join("")}</ul>` : "";
   const titulo = M.titulo || "Índice de Transparência dos estados";
   const corpo = `<section class="bloco" id="indice"><div class="indice-topo"><p class="rotulo">Estados</p><h1 class="titulo-pagina">${esc(titulo)}</h1>`
     + (M.pergunta ? `<p class="lide">${esc(M.pergunta)}</p>` : "")
     + `<p class="indice-topo__contexto">${esc(contexto)}</p>`
-    + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}. ${com.length} estados com índice geral.</p></div><ol class="indice-previa">${itens.join("")}</ol>`
+    + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}. ${com.length} estados com índice geral${sem.length ? `; em ${sem.length === 1 ? esc(sem[0].nome) : `${sem.length} (${esc(listaE(sem.map((e) => e.nome)))})`}, algum bloco ainda está a conferir` : ""}.</p></div>`
+    + `<ol class="indice-previa">${com.map(item).join("")}</ol>${listaSem}`
     + (M.como || []).map((c) => `<p class="discreto">${esc(c)}</p>`).join("") + "</section>";
   const texto = `${M.pergunta || titulo} Não existe uma base nacional: são ${nFontes} fontes oficiais, cada uma publicada do seu jeito. A nota de cada uma, critério por critério, com a prova. Conferido em ${dataBR(M.conferido_em)}.`;
   paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice_transparencia.json"] })]);

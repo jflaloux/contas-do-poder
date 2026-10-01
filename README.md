@@ -69,6 +69,12 @@ dados. Cada página pronta já traz o topo do contracheque (nome, custo por mês
 para baixar os dados junto com o `app.js` (`<link rel="preload">`). Sem o `gerar.mjs`, o `app.js` lê os arquivos
 inteiros de `site/dados/`.
 
+Para a página não pular enquanto carrega: o texto pronto fica na tela até o `app.js` ter a versão completa (aí uma
+troca pela outra); os números do topo da página inicial já vêm no HTML; enquanto a fonte Barlow não chega, o site usa
+uma fonte do sistema ajustada às medidas dela (`Barlow Reserva` no `estilo.css`); e cada gráfico é desenhado antes da
+primeira pintura (`aoRedimensionar` no `app.js`). A lista das 5.570 cidades (`municipios.json`) só é baixada nas páginas que
+mostram câmaras municipais (a inicial e a de cada cidade) ou quando a pessoa toca no campo de busca.
+
 ## Ver o site no seu computador
 
 ```bash
@@ -427,13 +433,16 @@ fonte, não de quem está no cargo. A passagem da página para os 4 blocos está
 
 A página `/indice` lê `site/dados/indice_transparencia.json` (`secIndice` no `site/app.js`; a versão em HTML para o
 Google e as prévias de link sai do `publicacao/gerar.mjs`). Ela mostra os estados do maior índice geral para o menor e,
-em cada um, o índice de cada bloco com a completude e a facilidade em barras; estado sem índice geral fica no fim, com
-"a conferir". A posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a
+em cada um, o índice de cada bloco com a completude e a facilidade em barras. Estado com algum bloco a conferir fica fora
+da ordem, numa lista à parte ("Com algum bloco a conferir"), com o índice parcial marcado como parcial (e quantos blocos
+já têm nota). A posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a
 posição e aparecem em ordem alfabética. Ao abrir um estado, cada bloco com os seus critérios (nota, prova, link quando
 há e como a nota é dada; os nomes e o "como pontua" vêm de `meta.blocos`, não do `app.js`), o link da fonte oficial e,
 no bloco do governo, a página do governador; no bloco da Assembleia, nos estados que já estão em `assembleias.json`, o link
 para a seção "Assembleia Legislativa" da página do estado (`/governador/sp#assembleia`), onde a lista dos deputados
-estaduais está. O método (`meta.como`) fica na própria página. O arquivo leva os valores com 6 casas: o site arredonda
+estaduais está; nos blocos da capital, o nome da cidade ("Prefeitura do Recife", "Câmara Municipal do Recife") e, quando
+ela já está em `prefeituras.json` ou `camaras.json`, o link para a página da cidade. A página diz que cada bloco tem
+responsáveis diferentes e que a nota é da fonte, não de quem está no cargo. O método (`meta.como`) fica na própria página. O arquivo leva os valores com 6 casas: o site arredonda
 só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 

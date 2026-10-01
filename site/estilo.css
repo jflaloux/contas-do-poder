@@ -2,6 +2,19 @@
    Identidade "Plenário": faixas em azul-petróleo escuro (cabeçalho, abertura, topo do contracheque e rodapé) e, nos
    dados, verde-água (vai para o bolso), âmbar (gastos do mandato) e azul-acinzentado (equipe do gabinete). As mesmas
    cores nos gráficos e na imagem para compartilhar. Letras: Barlow Condensed (títulos e números) e Barlow (texto). */
+
+/* Enquanto a Barlow não chega (ela vem do Google Fonts sem travar a página), o texto aparece numa fonte do sistema
+   ajustada para ocupar o mesmo espaço: a mesma largura média (size-adjust) e a mesma altura de linha (ascent/descent).
+   Assim, quando a Barlow chega, as linhas não quebram em outro lugar e a página não pula. Os números vêm das métricas
+   das próprias fontes (Barlow e Barlow Condensed, comparadas com a Arial no texto do site). Pelo mesmo motivo, as
+   larguras máximas de texto vão em em, e não em ch (o ch muda com a fonte): 1ch da Barlow = 0,565em, da Barlow
+   Condensed = 0,453em. */
+@font-face { font-family: "Barlow Reserva"; font-weight: 400; size-adjust: 95.2%; ascent-override: 105%; descent-override: 21%; line-gap-override: 0%;
+  src: local("Arial"), local("ArialMT"), local("Helvetica"), local("Roboto"), local("Roboto-Regular"), local("Liberation Sans"); }
+@font-face { font-family: "Barlow Reserva"; font-weight: 600 700; size-adjust: 91.5%; ascent-override: 109.3%; descent-override: 21.9%; line-gap-override: 0%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Roboto Bold"), local("Roboto-Bold"), local("Liberation Sans Bold"); }
+@font-face { font-family: "Barlow Condensed Reserva"; font-weight: 600 700; size-adjust: 75%; ascent-override: 133.3%; descent-override: 26.7%; line-gap-override: 0%;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Helvetica Bold"), local("Helvetica-Bold"), local("Roboto Bold"), local("Roboto-Bold"), local("Liberation Sans Bold"); }
 :root {
   --bg: #eef3f5;           /* fundo */
   --paper: #ffffff;        /* cartões */
@@ -46,8 +59,8 @@
   --sombra: 0 1px 2px rgba(13, 31, 43, .05), 0 10px 30px rgba(13, 31, 43, .08);
   --altura-cabecalho: 64px; /* cabeçalho fixo: as seções param logo abaixo dele */
 
-  --display: "Barlow Condensed", "Barlow", system-ui, sans-serif;
-  --body: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --display: "Barlow Condensed", "Barlow Condensed Reserva", "Barlow", system-ui, sans-serif;
+  --body: "Barlow", "Barlow Reserva", system-ui, -apple-system, "Segoe UI", sans-serif;
   --mono: "Barlow", system-ui, sans-serif; /* números de tabela: Barlow com algarismos de largura fixa */
   --raio: 14px;
   --largura: 1080px;
@@ -84,7 +97,7 @@ body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--b
 a { color: var(--accent); text-underline-offset: 2px; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
 h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; line-height: 1.02; }
-h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); font-weight: 700; letter-spacing: -.01em; max-width: 20ch; }
+h1 { font-size: clamp(2.6rem, 8vw, 4.4rem); font-weight: 700; letter-spacing: -.01em; max-width: 9.06em; }
 h2 { font-size: clamp(1.9rem, 4.6vw, 2.4rem); font-weight: 700; letter-spacing: -.005em; }
 h3, h2.h3 { font-size: 1.15rem; font-weight: 700; font-family: var(--body); letter-spacing: 0; line-height: 1.15; }
 p { margin: 0; }
@@ -99,11 +112,14 @@ p { margin: 0; }
 
 /* ---------- estrutura ---------- */
 .pagina { max-width: var(--largura); margin-inline: auto; padding-inline: 16px; padding-block: 26px 0; display: grid; gap: 34px; }
-#app { display: grid; gap: 28px; }
+#app { display: grid; gap: 28px; align-content: start; }
+/* nas páginas internas, o conteúdo ocupa pelo menos a tela: enquanto ele carrega ou cresce, o "Entenda" e o rodapé ficam
+   fora da tela e não sobem nem descem (a página não pula) */
+.interna #app { min-height: 100vh; }
 #app:focus { outline: none; }
 /* cabeçalho fixo no topo, na faixa escura: logo e a lupa da busca, em qualquer ponto da rolagem */
 .cabecalho { position: sticky; top: 0; z-index: 40; padding: 10px 16px; background: var(--banda); color: var(--banda-ink); border-bottom: 1px solid var(--banda-2); }
-.cabecalho__linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: calc(var(--largura) - 32px); margin-inline: auto; }
+.cabecalho__linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: calc(var(--largura) - 32px); margin-inline: auto; height: 44px; }
 .cabecalho__acoes { display: flex; align-items: center; gap: 6px; }
 .cabecalho__link { color: var(--banda-ink); font-weight: 600; font-size: .98rem; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; padding: 0 10px; border-radius: 999px; }
 .cabecalho__link:hover, .cabecalho__link[aria-current="page"] { color: var(--banda-ganha); }
@@ -132,6 +148,9 @@ p { margin: 0; }
 .logo__icone svg { display: block; width: 100%; height: 100%; }
 .logo__nome { display: grid; font-family: var(--display); font-weight: 700; font-size: 1.32rem; line-height: .9; letter-spacing: .01em; text-transform: lowercase; }
 .logo__nome span + span { color: var(--banda-ganha); }
+/* o nome não quebra nem quando a página ainda está com a fonte do sistema (o cabeçalho não muda de altura quando a Barlow
+   chega) */
+.logo__nome span { white-space: nowrap; }
 @media (min-width: 761px) {
   .logo { gap: 12px; }
   .logo__nome { display: flex; gap: .26em; font-size: 1.75rem; line-height: 1; white-space: nowrap; }
@@ -142,9 +161,9 @@ p { margin: 0; }
   display: grid; gap: 20px; margin-top: -26px; padding: 30px 0 34px;
   background: var(--banda); color: var(--banda-ink); box-shadow: 0 0 0 100vmax var(--banda); clip-path: inset(0 -100vmax);
 }
-.abertura h1 { font-size: clamp(2.9rem, 10vw, 5rem); line-height: .95; max-width: 16ch; }
+.abertura h1 { font-size: clamp(2.9rem, 10vw, 5rem); line-height: .95; max-width: 7.25em; }
 .abertura h1 .realce, .abertura #titulo-abertura .realce { color: var(--banda-ganha); }
-.lide { font-size: 1.12rem; color: var(--ink-2); max-width: 62ch; }
+.lide { font-size: 1.12rem; color: var(--ink-2); max-width: 35em; }
 .abertura .lide { color: var(--banda-ink-2); }
 .abertura .botao { background: var(--banda-ganha); color: #08161f; font-weight: 700; }
 .abertura .botao:hover { background: #8af0d2; }
@@ -293,7 +312,7 @@ a.fonte:hover { border-color: var(--accent); }
 /* fato em destaque (posição entre os colegas, o lugar do salário entre os estados): caixa neutra */
 .destaque { background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-weight: 600; }
 .compartilhar { padding: 16px 22px 20px; display: grid; gap: 12px; }
-.nota { font-size: .9rem; color: var(--ink-2); max-width: 75ch; }
+.nota { font-size: .9rem; color: var(--ink-2); max-width: 42.4em; }
 /* rosa só para dado que falta ou que a fonte não publica; explicação e fato vão na caixa neutra */
 .aviso { font-size: .9rem; background: var(--alerta-soft); color: var(--alerta-ink); border-radius: 10px; padding: 10px 12px; }
 .caixa-nota { font-size: .9rem; background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
@@ -401,7 +420,7 @@ td.num { font-family: var(--mono); }
 .acordeao details { border-bottom: 1px solid var(--line-2); padding: 14px 18px; }
 .acordeao details:last-child { border-bottom: 0; }
 .acordeao summary { cursor: pointer; font-weight: 600; }
-.acordeao p, .acordeao ul { margin-top: 8px; color: var(--ink-2); max-width: 75ch; }
+.acordeao p, .acordeao ul { margin-top: 8px; color: var(--ink-2); max-width: 42.4em; }
 .lista { padding-left: 1.2em; display: grid; gap: 6px; margin: 0; }
 
 .vazio { text-align: center; padding: 34px 20px; }
@@ -566,7 +585,7 @@ a.pessoa-chip:hover { border-color: var(--accent); }
 .tabela-gov td, .tabela-gov th { text-align: left; }
 .tabela-gov td.num { text-align: right; }
 .tabela-gov td { white-space: normal; vertical-align: top; }
-.tabela-gov__obs { display: block; color: var(--ink-2); font-size: .82rem; margin-top: 2px; max-width: 46ch; }
+.tabela-gov__obs { display: block; color: var(--ink-2); font-size: .82rem; margin-top: 2px; max-width: 26em; }
 .tabela-gov td.num, .tabela-gov td:nth-child(3), .tabela-gov td:nth-child(4) { white-space: nowrap; }
 .seg-extra { fill: var(--ganha); opacity: .42; }
 .chave--extra { background: var(--ganha); opacity: .42; }
@@ -625,10 +644,12 @@ input[type="search"] { line-height: 1.5; }
    Da "escolha", fica só a lista das seções da página; a busca está na lupa do cabeçalho. */
 .interna .abertura, .interna #rotulo-escolha, .interna .escolha__linha, .interna #lista-estado { display: none; }
 .interna .escolha { gap: 0; margin-block: -12px -18px; }
+/* a lista das seções já tem a altura dos botões antes de o app.js preenchê-la (a página não desce quando eles aparecem) */
+.interna .secoes { min-height: 36px; }
 .interna #entenda .grade-cartoes, .interna #fontes .grade-cartoes { display: none; }
-.titulo-pagina { font-size: clamp(2.3rem, 7vw, 3.4rem); max-width: 24ch; }
+.titulo-pagina { font-size: clamp(2.3rem, 7vw, 3.4rem); max-width: 10.87em; }
 /* resumo pronto (HTML do gerar.mjs) e prévia enquanto o detalhe carrega */
-.conta__texto { padding: 14px 22px 0; color: var(--ink-2); font-size: .92rem; max-width: 75ch; }
+.conta__texto { padding: 14px 22px 0; color: var(--ink-2); font-size: .92rem; max-width: 42.4em; }
 .conta > .carregando { padding: 12px 22px 20px; margin: 0; font-size: .9rem; }
 
 /* seções da página: no celular, uma linha só que rola para o lado (em vez de 3 ou 4 linhas de botões) */
@@ -637,6 +658,7 @@ input[type="search"] { line-height: 1.5; }
     -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
   .secoes::-webkit-scrollbar { display: none; }
   .secoes button { flex: none; }
+  .interna .secoes { min-height: 44px; }
 }
 
 /* topo do contracheque: período, custo por mês, de onde vem e a posição */
@@ -762,9 +784,10 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .cabecalho__estados .link-botao { justify-self: start; font-size: .92rem; min-height: 36px; }
 
 /* ---------- Índice de Transparência dos estados (/indice) ----------
-   Um estado por linha, do maior índice geral para o menor. Embaixo do nome, um bloco por linha (Governo, Assembleia):
-   as duas dimensões em barras finas (completude em verde-água, facilidade em âmbar) e o índice do bloco. Ao abrir, cada
-   bloco com os critérios de cada dimensão, a nota, a prova e como cada nota é dada. */
+   Um estado por linha, do maior índice geral para o menor. Embaixo do nome, um bloco por linha (Governo, Assembleia,
+   Prefeitura e Câmara da capital): as duas dimensões em barras finas (completude em verde-água, facilidade em âmbar) e o
+   índice do bloco. Ao abrir, cada bloco com os critérios de cada dimensão, a nota, a prova e como cada nota é dada.
+   Estados com algum bloco a conferir ficam numa lista à parte, com o índice parcial. */
 .indice-cartao { padding: 14px 18px 6px; gap: 6px; }
 .indice-lista { list-style: none; margin: 0; padding: 0; display: grid; }
 .indice-lista > li { border-bottom: 1px solid var(--line-2); }
@@ -820,7 +843,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-como-bloco h3 { font-family: var(--display); font-size: 1.45rem; }
 .indice-como-bloco h4 { margin: 10px 0 0; font-size: .95rem; }
 @media (min-width: 900px) {
-  /* no computador, tudo numa linha: posição, estado, os dois blocos e o índice geral */
+  /* no computador, numa linha: posição, estado, os blocos (dois por linha) e o índice geral */
   .indice-estado > summary { grid-template-columns: 2.2rem 11.5rem minmax(0, 1fr) 4.2rem 1rem; gap: 6px 18px; padding: 10px 2px; }
   .indice__blocos { grid-column: 3; grid-row: 1; grid-template-columns: 1fr 1fr; }
   .indice__valor { grid-column: 4; text-align: right; }
@@ -832,6 +855,10 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
   .indice__blocos { grid-column: 1 / -1; }
   .indice-dimensao { padding: 12px 13px; }
 }
+/* estado com algum bloco a conferir: o índice parcial, menor e mais claro que o geral, com "parcial" embaixo */
+.indice-estado--conferir .indice__valor.indice__valor--parcial { display: grid; justify-items: end; gap: 3px; font-family: var(--display); font-size: 1.45rem; font-weight: 700; color: var(--ink-3); }
+.indice__valor--parcial small { font-family: var(--body); font-size: .72rem; font-weight: 600; line-height: 1; }
+.indice-parciais { margin: 14px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
 /* chamada para o índice, na lista dos governadores */
 .chamada-indice {
   display: grid; gap: 4px; max-width: 640px; padding: 14px 18px; border-radius: var(--raio); text-decoration: none;
@@ -848,7 +875,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-topo .rotulo::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--banda-ganha); flex: none; }
 .indice-topo .lide { color: var(--banda-ink); font-weight: 600; }
 /* o contexto embaixo da pergunta: não há base nacional, cada fonte publica do seu jeito */
-.indice-topo__contexto { color: var(--banda-ink-2); max-width: 68ch; }
+.indice-topo__contexto { color: var(--banda-ink-2); max-width: 38.4em; }
 .indice-topo .pequeno { color: var(--banda-ink-3); }
 .indice-topo .caixa-nota { background: var(--banda-2); border: 0; color: var(--banda-ink-2); }
 /* Assembleia Legislativa (página do estado) e o link para ela na lista "Ver por estado" */
