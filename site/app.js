@@ -631,152 +631,224 @@
   // ------------------------------------------------------------------ imagem para compartilhar
   // 1080×1350 (4:5): aparece inteira numa conversa do WhatsApp ou do Telegram e também serve para status e stories.
   // A foto precisa vir do próprio site (site/fotos/): foto de outro endereço "suja" o canvas e o navegador não deixa copiar.
+  // Há uma imagem para cada político, cada governador e cada Câmara Municipal. As peças são as mesmas: o topo com a
+  // marca, a cabeça (foto, nome e cargo), o valor grande, a régua da posição, os cartões e o rodapé com o endereço da
+  // própria página (quem recebe a imagem não consegue clicar, mas consegue digitar).
   function carregarImagem(src) {
     return new Promise((ok) => { const img = new Image(); img.onload = () => ok(img); img.onerror = () => ok(null); img.src = src; });
   }
-  async function imagemCompartilhar(p, k) {
-    const r = resumo(p, k), pos = posicao(p, k);
-    if (!r) return null;
+  async function esperarFontes() {
     // as fontes carregam sem travar a página (index.html): espera a folha de estilo delas, por no máximo 3 s
     const css = document.querySelector('link[href*="fonts.googleapis.com/css2"][media="print"]');
     if (css) await new Promise((ok) => { css.addEventListener("load", ok, { once: true }); setTimeout(ok, 3000); });
     try { await Promise.all(['800 64px "Bricolage Grotesque"', '600 30px "Public Sans"', '500 60px "IBM Plex Mono"'].map((f) => document.fonts.load(f))); } catch (e) { /* usa a fonte do sistema */ }
+  }
+  // a tela com o fundo, a faixa e a marca; devolve o contexto e as peças de desenho
+  async function novaTela() {
+    await esperarFontes();
     const W = 1080, H = 1350, M = 72, cv = document.createElement("canvas");
     cv.width = W; cv.height = H;
     const g = cv.getContext("2d");
-    const DISP = '"Bricolage Grotesque", "Public Sans", sans-serif', BODY = '"Public Sans", system-ui, sans-serif', MONO = '"IBM Plex Mono", monospace';
-    const C = { fundo: "#17142e", cartao: "#221d42", ink: "#f2f0fb", ink2: "#c4bfe0", linha: "rgba(242,240,251,.28)", marca: "#4430c2", hi: "#ff6f9f", ganha: "#3987e5", custa: "#eb6834", equipe: "#1baf7a" };
-    const caixa = (x, y, w, alt, raio) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, alt, raio); else g.rect(x, y, w, alt); };
-    const quebra = (texto, x, y, max, lh, maxLinhas) => {
+    const t = {
+      cv, g, W, H, M,
+      DISP: '"Bricolage Grotesque", "Public Sans", sans-serif', BODY: '"Public Sans", system-ui, sans-serif', MONO: '"IBM Plex Mono", monospace',
+      C: { fundo: "#17142e", cartao: "#221d42", ink: "#f2f0fb", ink2: "#c4bfe0", linha: "rgba(242,240,251,.28)", marca: "#4430c2", hi: "#ff6f9f", ganha: "#3987e5", custa: "#eb6834", equipe: "#1baf7a", regua: "#a898ff" },
+    };
+    const C = t.C;
+    t.caixa = (x, y, w, alt, raio) => { g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, alt, raio); else g.rect(x, y, w, alt); };
+    t.quebra = (texto, x, y, max, lh, maxLinhas) => {
       let linha = "", n = 0;
       for (const w of texto.split(" ")) {
-        const t = linha ? `${linha} ${w}` : w;
-        if (g.measureText(t).width > max && linha && n < maxLinhas - 1) { g.fillText(linha, x, y); y += lh; n++; linha = w; } else linha = t;
+        const tx = linha ? `${linha} ${w}` : w;
+        if (g.measureText(tx).width > max && linha && n < maxLinhas - 1) { g.fillText(linha, x, y); y += lh; n++; linha = w; } else linha = tx;
       }
       g.fillText(linha, x, y); return y + lh;
     };
-    const direita = (t, x, y) => g.fillText(t, x - g.measureText(t).width, y);
+    t.direita = (tx, x, y) => g.fillText(tx, x - g.measureText(tx).width, y);
     // escreve um valor seguido de "/mês" menor, na mesma linha de base
-    const comMes = (valor, x, y, fonte, tamanho, cor) => {
+    t.comMes = (valor, x, y, fonte, tamanho, cor) => {
       g.fillStyle = cor; g.font = fonte; g.fillText(valor, x, y);
       const w = g.measureText(valor).width;
-      g.fillStyle = C.ink2; g.font = `500 ${tamanho}px ${BODY}`; g.fillText("/mês", x + w + 6, y);
+      g.fillStyle = C.ink2; g.font = `500 ${tamanho}px ${t.BODY}`; g.fillText("/mês", x + w + 6, y);
       return w + 6 + g.measureText("/mês").width;
     };
-    const bolinha = (cor, x, y) => { g.fillStyle = cor; g.beginPath(); g.arc(x, y, 11, 0, 7); g.fill(); };
+    t.bolinha = (cor, x, y) => { g.fillStyle = cor; g.beginPath(); g.arc(x, y, 11, 0, 7); g.fill(); };
+    t.png = () => new Promise((ok) => cv.toBlob(ok, "image/png"));
     g.fillStyle = C.fundo; g.fillRect(0, 0, W, H);
     g.fillStyle = C.marca; g.fillRect(0, 0, W * 0.72, 12); g.fillStyle = C.hi; g.fillRect(W * 0.72, 0, W * 0.28, 12);
-    // marca
-    g.fillStyle = C.marca; caixa(M, 52, 64, 64, 14); g.fill();
+    g.fillStyle = C.marca; t.caixa(M, 52, 64, 64, 14); g.fill();
     const svg = $(".logo__icone svg");
     if (svg) {
       const logo = await carregarImagem("data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg.outerHTML.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" fill="#ffffff" ')));
       if (logo) g.drawImage(logo, M + 11, 63, 42, 42);
     }
-    g.textBaseline = "middle"; g.fillStyle = C.ink; g.font = `700 36px ${DISP}`; g.fillText("Contas do Poder", M + 82, 85);
+    g.textBaseline = "middle"; g.fillStyle = C.ink; g.font = `700 36px ${t.DISP}`; g.fillText("Contas do Poder", M + 82, 85);
     g.textBaseline = "alphabetic";
-    // foto e nome
+    return t;
+  }
+  // foto (ou iniciais, ou o desenho do prédio da Câmara), rótulo, nome e cargo; devolve onde a próxima parte começa
+  async function cabecaImagem(t, { foto, nome, rotulo, sub, linhasSub = 2, predio }) {
+    const { g, W, M, C } = t;
     const fy = 148, fw = 150, fh = 200;
-    const foto = p.f && p.f.startsWith("fotos/") ? await carregarImagem(daRaiz(p.f)) : null;
-    g.save(); caixa(M, fy, fw, fh, 20); g.clip();
-    if (foto) g.drawImage(foto, M, fy, fw, fh);
-    else { g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh); g.fillStyle = C.ink2; g.font = `700 64px ${DISP}`; g.textAlign = "center"; g.fillText(iniciais(p.n), M + fw / 2, fy + fh / 2 + 22); g.textAlign = "left"; }
+    const img = foto && foto.startsWith("fotos/") ? await carregarImagem(daRaiz(foto)) : null;
+    g.save(); t.caixa(M, fy, fw, fh, 20); g.clip();
+    g.fillStyle = C.cartao; g.fillRect(M, fy, fw, fh);
+    if (img) g.drawImage(img, M, fy, fw, fh);
+    else if (predio) {
+      g.translate(M + fw / 2 - 48, fy + fh / 2 - 48); g.scale(4, 4); g.fillStyle = C.regua;
+      g.fill(new Path2D("M12 2 2 7v2h20V7L12 2Zm-7 9v7h3v-7H5Zm5.5 0v7h3v-7h-3ZM16 11v7h3v-7h-3ZM2 20v2h20v-2H2Z"));
+    } else { g.fillStyle = C.ink2; g.font = `700 64px ${t.DISP}`; g.textAlign = "center"; g.fillText(iniciais(nome), M + fw / 2, fy + fh / 2 + 22); g.textAlign = "left"; }
     g.restore();
-    const tx = M + fw + 32, tmax = W - M - tx, grande = p.n.length <= 22;
-    g.fillStyle = C.ink2; g.font = `600 24px ${BODY}`; g.fillText({ e: "CONTRACHEQUE DO CARGO", j: "DOIS CARGOS, SOMADOS", p: "CONTRACHEQUE DO CARGO" }[p.k] || "CONTRACHEQUE DO MANDATO", tx, fy + 28);
-    g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 58 : 50}px ${DISP}`;
-    let y = quebra(p.n, tx, fy + 88, tmax, grande ? 62 : 54, 3);
-    g.fillStyle = C.ink2; g.font = `500 30px ${BODY}`; y = quebra(`${p.g} · ${partidoUF(p)}`, tx, y + 2, tmax, 38, p.k === "e" || p.k === "j" || p.k === "p" ? 3 : 2);
-    // custo dele
-    y = Math.max(y + 30, fy + fh + 62);
-    g.fillStyle = C.ink2; g.font = `600 28px ${BODY}`; g.fillText(`${p.k === "p" ? "QUANTO RECEBE POR MÊS" : "CUSTO POR MÊS"} · ${nomePeriodo(k, true).toUpperCase()}`, M, y);
-    comMes(reais(r.tm), M - 6, y + 118, `500 112px ${MONO}`, 36, "#ffffff");
-    y += 140;
+    const tx = M + fw + 32, tmax = W - M - tx, grande = nome.length <= 22;
+    g.fillStyle = C.ink2; g.font = `600 24px ${t.BODY}`; g.fillText(rotulo, tx, fy + 28);
+    g.fillStyle = "#ffffff"; g.font = `800 ${grande ? 58 : 50}px ${t.DISP}`;
+    let y = t.quebra(nome, tx, fy + 88, tmax, grande ? 62 : 54, 3);
+    g.fillStyle = C.ink2; g.font = `500 30px ${t.BODY}`; y = t.quebra(sub, tx, y + 2, tmax, 38, linhasSub);
+    return { y: Math.max(y + 30, fy + fh + 62), temFoto: !!img };
+  }
+  // o valor grande, com o rótulo em cima
+  function valorImagem(t, y, rotulo, valor, porMes = true) {
+    const { g, M, C } = t;
+    g.fillStyle = C.ink2; g.font = `600 28px ${t.BODY}`; g.fillText(rotulo, M, y);
+    let tam = 112; g.font = `500 ${tam}px ${t.MONO}`;
+    while (g.measureText(valor).width > t.W - 2 * M - (porMes ? 90 : 0) && tam > 72) { tam -= 4; g.font = `500 ${tam}px ${t.MONO}`; }
+    if (porMes) t.comMes(valor, M - 6, y + 118, `500 ${tam}px ${t.MONO}`, 36, "#ffffff");
+    else { g.fillStyle = "#ffffff"; g.fillText(valor, M - 6, y + 118); }
+    return y + 140;
+  }
+  // a frase da posição e a régua dos quatro quartos, como na página: sempre no mesmo tom (índigo claro), sem verde nem
+  // vermelho. lugar: de 0 (o que menos custa) a 100 (o que mais custa)
+  function reguaImagem(t, y, frase, lugar, verbo) {
+    const { g, W, M, C } = t;
+    const quarto = Math.min(3, Math.floor(lugar / 25)), larg = W - 2 * M;
+    let tam = 34; g.font = `700 ${tam}px ${t.BODY}`;
+    while (g.measureText(frase).width > larg && tam > 24) { tam -= 2; g.font = `700 ${tam}px ${t.BODY}`; }
+    g.fillStyle = "#ffffff"; g.fillText(frase, M, y + 32);
+    const ry = y + 50, alt = 16, vao = 8, seg = (larg - 3 * vao) / 4;
+    for (let i = 0; i < 4; i++) {
+      g.fillStyle = i === quarto ? C.regua : "rgba(242,240,251,.16)";
+      t.caixa(M + i * (seg + vao), ry, seg, alt, alt / 2); g.fill();
+    }
+    const mx = M + (larg * lugar) / 100;
+    g.fillStyle = C.fundo; g.beginPath(); g.arc(mx, ry + alt / 2, 15, 0, 7); g.fill();
+    g.fillStyle = "#ffffff"; g.beginPath(); g.arc(mx, ry + alt / 2, 11, 0, 7); g.fill();
+    g.fillStyle = C.regua; g.beginPath(); g.arc(mx, ry + alt / 2, 6, 0, 7); g.fill();
+    g.fillStyle = C.ink2; g.font = `500 21px ${t.BODY}`;
+    g.fillText(`← ${verbo[0]}`, M, ry + alt + 28);
+    g.textAlign = "center"; g.fillText("mediana", M + larg / 2, ry + alt + 28); g.textAlign = "left";
+    t.direita(`${verbo[1]} →`, W - M, ry + alt + 28);
+    return y + 112;
+  }
+  // dois cartões lado a lado: [cor, rótulo, valor (null = "não publicados"), detalhe, com "/mês"?]
+  function cartoesImagem(t, y, cartoes) {
+    const { g, W, M, C } = t;
+    const tw = (W - 2 * M - 24) / 2, th = 160;
+    cartoes.forEach(([cor, rotulo, valor, detalhe, porMes = true], i) => {
+      const x = M + i * (tw + 24);
+      g.fillStyle = C.cartao; t.caixa(x, y, tw, th, 20); g.fill();
+      t.bolinha(cor, x + 34, y + 38);
+      g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText(rotulo, x + 56, y + 47);
+      if (valor === null) { g.fillStyle = "#ffffff"; g.font = `600 36px ${t.BODY}`; g.fillText("não publicados", x + 24, y + 104); }
+      else if (porMes) t.comMes(valor, x + 24, y + 106, `500 54px ${t.MONO}`, 25, "#ffffff");
+      else { g.fillStyle = "#ffffff"; g.font = `500 54px ${t.MONO}`; g.fillText(valor, x + 24, y + 106); }
+      g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
+      let d = detalhe;
+      while (g.measureText(d).width > tw - 40 && d.length > 10) d = d.slice(0, -2);
+      g.fillText(d === detalhe ? d : `${d.trim()}…`, x + 24, y + 142);
+    });
+    return y + th + 18;
+  }
+  // linhas com bolinha, nome e valor à direita (onde mais gasta, quanto recebeu no mês)
+  function linhasImagem(t, y, titulo, linhas, alt = 40, cor) {
+    const { g, W, M, C } = t;
+    g.fillStyle = C.ink2; g.font = `700 22px ${t.BODY}`; g.fillText(titulo, M, y + 26);
+    y += 26;
+    for (const [nomeL, valor, porMes = true] of linhas) {
+      y += alt;
+      t.bolinha(cor || C.custa, M + 8, y - 8);
+      g.fillStyle = "#e4e1f3"; g.font = `500 26px ${t.BODY}`;
+      let nome = nomeL.replace(/\*$/, "");
+      while (g.measureText(nome).width > W - 2 * M - 300 && nome.length > 10) nome = nome.slice(0, -2);
+      g.fillText(nome === nomeL.replace(/\*$/, "") ? nome : `${nome.trim()}…`, M + 28, y);
+      g.font = `500 26px ${t.BODY}`; const wMes = porMes ? g.measureText("/mês").width + 6 : 0;
+      g.font = `500 30px ${t.MONO}`; const wV = g.measureText(valor).width;
+      if (porMes) t.comMes(valor, W - M - wMes - wV, y, `500 30px ${t.MONO}`, 22, "#ffffff");
+      else { g.fillStyle = "#ffffff"; g.fillText(valor, W - M - wV, y); }
+    }
+    return y + 26;
+  }
+  // rodapé: o endereço da própria página e de onde vêm os dados
+  function rodapeImagem(t, chamada, caminho, fonte, credito) {
+    const { g, W, H, M, C } = t;
+    if (credito) { g.fillStyle = "rgba(196,191,224,.7)"; g.font = `400 16px ${t.BODY}`; t.direita(credito, W - M, H - 190); }
+    const ry = H - 176;
+    g.fillStyle = C.marca; g.fillRect(0, ry, W, H - ry);
+    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `700 24px ${t.BODY}`; g.fillText(chamada, M, ry + 46);
+    // o domínio e o caminho da página, no mesmo tamanho (diminui até caber; sem caber, só o domínio)
+    const dom = dominio(), larg = W - 2 * M;
+    let tam = 58;
+    const medir = () => { g.font = `800 ${tam}px ${t.DISP}`; return g.measureText(dom + (caminho || "")).width; };
+    while (caminho && medir() > larg && tam > 34) tam -= 2;
+    const cabe = !caminho || medir() <= larg;
+    if (!cabe) tam = 58;
+    g.font = `800 ${tam}px ${t.DISP}`; g.fillStyle = "#ffc2d6"; g.fillText(dom, M, ry + 106);
+    if (caminho && cabe) { const wd = g.measureText(dom).width; g.fillStyle = "#ffffff"; g.fillText(caminho, M + wd, ry + 106); }
+    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `500 26px ${t.BODY}`; g.fillText(fonte, M, ry + 150);
+  }
+  const creditoFoto = (fc) => (fc ? (fc.l ? `Foto: ${(fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${fc.l}), Wikimedia Commons` : `Foto: ${fc.a}`) : null);
+
+  // ---------------------------------------------------------------- imagem de um político (no período escolhido)
+  async function imagemPessoa(p, k) {
+    const r = resumo(p, k), pos = posicao(p, k);
+    if (!r) return null;
+    const t = await novaTela(), { g, W, H, M, C } = t;
+    const cab = await cabecaImagem(t, {
+      foto: p.f, nome: p.n, sub: `${p.g} · ${partidoUF(p)}`, linhasSub: p.k === "e" || p.k === "j" || p.k === "p" ? 3 : 2,
+      rotulo: { e: "CONTRACHEQUE DO CARGO", j: "DOIS CARGOS, SOMADOS", p: "CONTRACHEQUE DO CARGO" }[p.k] || "CONTRACHEQUE DO MANDATO",
+    });
+    let y = valorImagem(t, cab.y, `${p.k === "p" ? "QUANTO RECEBE POR MÊS" : "CUSTO POR MÊS"} · ${nomePeriodo(k, true).toUpperCase()}`, reais(r.tm));
     if (pos) {
-      const selo = empatado(pos) ? `${p.k === "p" ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${plural(grupo(p))}`
-        : p.k === "p" ? (pos.pos === 1 ? `Quem mais recebe na Prefeitura` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
+      const igual = empatado(pos);
+      const frase = igual ? `${p.k === "p" ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${plural(grupo(p))}`
+        : p.k === "p" ? (pos.pos === 1 ? "Quem mais recebe na Prefeitura" : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
         : pos.pos === 1 ? `O maior custo entre os ${plural(grupo(p))}` : pos.pos === pos.n ? `O menor custo entre os ${plural(grupo(p))}`
         : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${plural(grupo(p))}` : `Custa menos que ${pos.pctMais}% dos ${plural(grupo(p))}`;
-      // a frase e a régua dos quatro quartos, como na página: sempre no mesmo tom (índigo claro), sem verde nem vermelho
-      const igual = empatado(pos), cor = "#a898ff";
-      const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50, quarto = Math.min(3, Math.floor(lugar / 25));
-      const larg = W - 2 * M;
-      let tam = 34; g.font = `700 ${tam}px ${BODY}`;
-      while (g.measureText(selo).width > larg && tam > 24) { tam -= 2; g.font = `700 ${tam}px ${BODY}`; }
-      g.fillStyle = "#ffffff"; g.fillText(selo, M, y + 32);
-      const ry = y + 50, alt = 16, vao = 8, seg = (larg - 3 * vao) / 4;
-      for (let i = 0; i < 4; i++) {
-        g.fillStyle = i === quarto ? cor : "rgba(242,240,251,.16)";
-        caixa(M + i * (seg + vao), ry, seg, alt, alt / 2); g.fill();
-      }
-      const mx = M + (larg * lugar) / 100;
-      g.fillStyle = C.fundo; g.beginPath(); g.arc(mx, ry + alt / 2, 15, 0, 7); g.fill();
-      g.fillStyle = "#ffffff"; g.beginPath(); g.arc(mx, ry + alt / 2, 11, 0, 7); g.fill();
-      g.fillStyle = cor; g.beginPath(); g.arc(mx, ry + alt / 2, 6, 0, 7); g.fill();
-      const verbo = p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
-      g.fillStyle = C.ink2; g.font = `500 21px ${BODY}`;
-      g.fillText(`← ${verbo[0]}`, M, ry + alt + 28);
-      g.textAlign = "center"; g.fillText("mediana", M + larg / 2, ry + alt + 28); g.textAlign = "left";
-      direita(`${verbo[1]} →`, W - M, ry + alt + 28);
-      y += 112;
+      const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
+      y = reguaImagem(t, y, frase, lugar, p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"]);
     } else y += 4;
-    // as duas partes do custo dele
-    const tw = (W - 2 * M - 24) / 2, th = 160;
-    const bloco = (x, cor, rotulo, valor, detalhe) => {
-      g.fillStyle = C.cartao; caixa(x, y, tw, th, 20); g.fill();
-      bolinha(cor, x + 34, y + 38);
-      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText(rotulo, x + 56, y + 47);
-      if (valor === null) { g.fillStyle = "#ffffff"; g.font = `600 36px ${BODY}`; g.fillText("não publicados", x + 24, y + 104); }
-      else comMes(valor, x + 24, y + 106, `500 54px ${MONO}`, 25, "#ffffff");
-      g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`; g.fillText(detalhe, x + 24, y + 142);
-    };
-    bloco(M, C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`);
-    // vereador de Câmara que não publica a verba (ou publicou incompleta, e ela ficou de fora): "não publicados", não R$ 0
+    // as duas partes do custo dele; vereador de Câmara que não publica a verba (ou publicou incompleta, e ela ficou de
+    // fora): "não publicados", não R$ 0
     const cid = p.k === "v" ? cidadeDe(p) || {} : {};
     const semVerba = p.k === "v" && (!cid.verba_nome || (cid.verba_fora || []).some((a) => k === "leg" || a === k));
-    bloco(M + tw + 24, C.custa, gastosNome(p).toUpperCase(), p.k === "p" || semVerba ? null : reais(r.cm),
-      p.k === "p" ? "carro oficial, viagens, equipe" : semVerba ? (cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p));
-    y += th + 18;
+    y = cartoesImagem(t, y, [
+      [C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`],
+      [C.custa, gastosNome(p).toUpperCase(), p.k === "p" || semVerba ? null : reais(r.cm),
+        p.k === "p" ? "carro oficial, viagens, equipe" : semVerba ? (cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p)]]);
     // onde mais gasta: os 3 maiores tipos de gasto, por mês (menos, se não couber: a equipe e o aviso vêm embaixo, e o
     // rodapé começa em H - 176)
     const altEquipe = r.em ? 110 : p.k === "v" && p.eq ? 92 : 0;
     const livre = H - 232 - y - altEquipe - 52, linhaG = Math.floor(livre / 3) >= 40 ? 40 : Math.max(34, Math.floor(livre / 3));
     const cabem = Math.max(0, Math.min(3, Math.floor(livre / linhaG)));
     const maiores = cabem ? maioresGastos(p, k, cabem) : [];
-    if (maiores.length) {
-      g.fillStyle = C.ink2; g.font = `700 22px ${BODY}`; g.fillText(`${gastosNome(p).toUpperCase()}: ONDE MAIS GASTA`, M, y + 26);
-      y += 26;
-      for (const [t, v] of maiores) {
-        y += linhaG;
-        bolinha(C.custa, M + 8, y - 8);
-        g.fillStyle = "#e4e1f3"; g.font = `500 26px ${BODY}`;
-        let nome = t.replace(/\*$/, "");
-        while (g.measureText(nome).width > W - 2 * M - 260 && nome.length > 10) nome = nome.slice(0, -2);
-        g.fillText(nome === t.replace(/\*$/, "") ? nome : `${nome.trim()}…`, M + 28, y);
-        g.font = `500 26px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
-        g.font = `500 30px ${MONO}`; const wV = g.measureText(reais(v)).width;
-        comMes(reais(v), W - M - wMes - wV, y, `500 30px ${MONO}`, 22, "#ffffff");
-      }
-      y += 26;
-    }
+    if (maiores.length) y = linhasImagem(t, y, `${gastosNome(p).toUpperCase()}: ONDE MAIS GASTA`, maiores.map(([n, v]) => [n, reais(v)]), linhaG);
     // equipe: à parte (borda tracejada, fora da soma)
     if (r.em) {
       const eh = 110;
-      g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
-      bolinha(C.equipe, M + 34, y + 40);
-      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 49);
-      g.fillStyle = C.ink2; g.font = `400 24px ${BODY}`;
+      g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); t.caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
+      t.bolinha(C.equipe, M + 34, y + 40);
+      g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 49);
+      g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
       g.fillText(`${r.pessoas ? pessoasTxt(r.pessoas) : "Assessores"}${r.porPessoa ? ` · ${reais(r.porPessoa)} por pessoa` : ""}${casaBase(p) === "s" ? " (estimativa)" : ""}`, M + 24, y + 88);
-      g.font = `500 24px ${BODY}`; const wMes = g.measureText("/mês").width + 6;
-      g.font = `500 48px ${MONO}`; const wValor = g.measureText(reais(r.em)).width;
-      comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${MONO}`, 24, "#ffffff");
+      g.font = `500 24px ${t.BODY}`; const wMes = g.measureText("/mês").width + 6;
+      g.font = `500 48px ${t.MONO}`; const wValor = g.measureText(reais(r.em)).width;
+      t.comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `500 48px ${t.MONO}`, 24, "#ffffff");
       y += eh;
     } else if (p.k === "v" && p.eq) {
       const eh = 92;
-      g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
-      bolinha(C.equipe, M + 34, y + 46);
-      g.fillStyle = C.ink2; g.font = `700 24px ${BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 55);
-      g.fillStyle = "#ffffff"; g.font = `500 30px ${MONO}`; direita(pessoasTxt(p.eq.n), W - M - 24, y + 57);
+      g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); t.caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
+      t.bolinha(C.equipe, M + 34, y + 46);
+      g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText("À PARTE: EQUIPE DO GABINETE", M + 56, y + 55);
+      g.fillStyle = "#ffffff"; g.font = `500 30px ${t.MONO}`; t.direita(pessoasTxt(p.eq.n), W - M - 24, y + 57);
       y += eh;
     }
     const aviso = p.k === "v" ? avisoVereador(p)
@@ -785,33 +857,230 @@
       : p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
       : p.tp === "pr" ? "O avião presidencial e a estrutura da Presidência não entram na conta."
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
-    if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
-    if (p.fc && foto) {
-      g.fillStyle = "rgba(196,191,224,.7)"; g.font = `400 16px ${BODY}`;
-      direita(p.fc.l ? `Foto: ${(p.fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${p.fc.l}), Wikimedia Commons` : `Foto: ${p.fc.a}`, W - M, H - 190);
-    }
-    // rodapé: onde ver mais e de onde vêm os dados
-    const ry = H - 176;
-    g.fillStyle = C.marca; g.fillRect(0, ry, W, H - ry);
-    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `700 24px ${BODY}`; g.fillText(p.k === "v" ? "VEJA TAMBÉM OS OUTROS VEREADORES, DEPUTADOS E SENADORES EM" : p.k === "p" ? "VEJA TAMBÉM OS VEREADORES, OS DEPUTADOS E OS SENADORES EM" : "VEJA TAMBÉM O SEU DEPUTADO, OS SENADORES E OS MINISTROS EM", M, ry + 46);
-    g.fillStyle = "#ffc2d6"; g.font = `800 58px ${DISP}`; g.fillText(dominio(), M, ry + 106);
-    g.fillStyle = "rgba(255,255,255,.85)"; g.font = `500 26px ${BODY}`; g.fillText(`Tudo com dados abertos oficiais ${fonteDados(p)}`, M, ry + 150);
-    return await new Promise((ok) => cv.toBlob(ok, "image/png"));
+    if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${t.BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
+    rodapeImagem(t, "VEJA O MÊS A MÊS E A FONTE DE CADA NÚMERO EM", `/${caminhoDe(p)}`, `Tudo com dados abertos oficiais ${fonteDados(p)}`, cab.temFoto ? creditoFoto(p.fc) : null);
+    return t.png();
   }
-  const arquivoNome = (p) => `contas-do-poder-${semAcento(p.n).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.png`;
-  // guarda a última imagem gerada (troca quando muda o parlamentar ou o período)
-  let imagemAtual = { chave: null, blob: null, url: null };
-  async function obterImagem(p, k) {
-    const chave = `${p.id}~${k}`;
-    if (imagemAtual.chave === chave && imagemAtual.blob) return imagemAtual;
-    const blob = await imagemCompartilhar(p, k);
-    if (imagemAtual.url) URL.revokeObjectURL(imagemAtual.url);
-    imagemAtual = { chave, blob, url: blob ? URL.createObjectURL(blob) : null };
-    return imagemAtual;
+
+  // ---------------------------------------------------------------- imagem de um governador
+  async function imagemGov(e) {
+    const t = await novaTela(), { g, M, H, C } = t;
+    const fem = govFem(e), p = posGov(e), R = rankingGov("v"), med = mediana(GOV.e.map((x) => x.v[0]));
+    const smAtual = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
+    const cab = await cabecaImagem(t, { foto: e.gov.f, nome: e.gov.n, rotulo: `GOVERNO ${deUF(e.uf).toUpperCase()}`, sub: `${tituloGov(e)} ${deUF(e.uf)}${e.gov.pt ? ` · ${e.gov.pt}` : ""}` });
+    let y = valorImagem(t, cab.y, `SALÁRIO ${fem ? "DA GOVERNADORA" : "DO GOVERNADOR"} · BRUTO, ${e.v[2] === "imprensa" ? `VALOR DE ${fmtMes(e.v[1])}` : `DESDE ${fmtMes(e.v[1])}`}`.toUpperCase(), reaisC(e.v[0]));
+    const frase = p.pos === 1 ? "O maior salário de governador do país" : p.pos === p.n ? "O menor salário de governador do país" : `O ${p.pos}º maior salário de governador entre os 27 estados`;
+    y = reguaImagem(t, y, frase, p.n > 1 ? (1 - (p.pos - 1) / (p.n - 1)) * 100 : 50, ["menores salários", "maiores salários"]);
+    const pop = acimaDeQuemTrabalha(e.v[0] / smAtual);
+    y = cartoesImagem(t, y, [
+      [C.ganha, "EM SALÁRIOS MÍNIMOS", num(e.v[0] / smAtual, 1), pop !== null ? `mais que ${pctPop(pop)} de quem trabalha` : `salários mínimos de ${reais(smAtual)}`, false],
+      e.vv ? [C.regua, e.vice && e.vice.fem ? "VICE-GOVERNADORA" : "VICE-GOVERNADOR", reais(e.vv[0]), e.vice ? `${e.vice.n}${e.vice.pt ? ` (${e.vice.pt})` : ""}` : "cargo vago hoje"]
+        : [C.regua, "MEDIANA DOS 27 ESTADOS", reais(med), `o maior: ${ESTADOS[R[0].uf]}`]]);
+    // o que recebeu de fato no último mês da folha (onde a folha do Estado abre para o robô)
+    const ls = (e.m || []).filter((x) => x[1] === "gov");
+    if (ls.length) {
+      const ult = Math.max(...ls.map((x) => x[0])), doMes = ls.filter((x) => x[0] === ult);
+      y = linhasImagem(t, y, `PELA FOLHA DE PAGAMENTO ${deUF(e.uf).toUpperCase()}`, doMes.map((x) => [`${e.oc[x[2]] ? e.oc[x[2]].n : e.gov.n} recebeu em ${fmtMes(ult)}`, reaisC(x[3]), false]), 40, C.ganha);
+    }
+    if (e.recebe) {
+      g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
+      t.quebra(`${e.recebe.texto}.`, M, Math.min(y + 40, H - 240), t.W - 2 * M, 32, 2);
+    }
+    const fonte = { lei: "Fonte: lei estadual que fixa o subsídio", folha: "Fonte: folha de pagamento do Estado", tabela: "Fonte: tabela oficial de remuneração do Estado",
+      calculado: "Fonte: cálculo nosso a partir da lei estadual", imprensa: "Fonte: valor informado pela imprensa" }[e.v[2]] || "Fonte: lei e folha de pagamento do Estado";
+    rodapeImagem(t, ls.length ? "VEJA A LEI, O MÊS A MÊS E OS OUTROS 26 ESTADOS EM" : "VEJA A LEI, A HISTÓRIA DO VALOR E OS OUTROS 26 ESTADOS EM", urlGov(e.uf), fonte, cab.temFoto ? creditoFoto(e.gov.fc) : null);
+    return t.png();
+  }
+
+  // ---------------------------------------------------------------- imagem de uma Câmara Municipal
+  async function imagemCidade(c) {
+    if (!temCusto(c)) return null;
+    const t = await novaTela(), { C } = t;
+    const cp = comparacaoCidade(c), cam = camaraDe(c.cod), sub = cam && !cam.subsidio_folha ? (cam.subsidio || [])[(cam.subsidio || []).length - 1] : null;
+    const cab = await cabecaImagem(t, { predio: true, nome: `${c.n} (${c.uf})`, rotulo: "CÂMARA MUNICIPAL", sub: `${num(c.pop, 0)} habitantes · ${c.nv} vereadores${c.cap ? " · capital" : ""}` });
+    let y = valorImagem(t, cab.y, `CUSTO DA CÂMARA POR MÊS · ${c.ano}`, compacto(c.custo / 12));
+    if (cp.pct !== null) {
+      const frase = `Por habitante, custa ${cp.pctMais < 50 ? `mais que ${cp.pct}%` : `menos que ${cp.pctMais}%`} das cidades do mesmo tamanho`;
+      y = reguaImagem(t, y, frase, cp.lugar, ["custam menos", "custam mais"]);
+    } else y += 4;
+    y = cartoesImagem(t, y, [
+      [C.custa, "POR HABITANTE", reaisC(porHabMes(c)), cp.med ? `mediana: ${reaisC(cp.med)}` : "por mês"],
+      [C.regua, "POR VEREADOR", compacto(c.custo / 12 / Math.max(1, c.nv)), `dividido pelos ${c.nv} vereadores`]]);
+    y = linhasImagem(t, y, sub ? "SALÁRIO DE CADA VEREADOR" : "SALÁRIO DE UM VEREADOR DAQUI", [sub ? [`desde ${fmtMes(sub[0])}`, reaisC(sub[1])] : ["no máximo, pela Constituição (art. 29)", reais(tetoVereador(c.pop))]], 40, C.ganha);
+    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos do Tesouro Nacional (Siconfi)${sub ? ", do TSE e da Câmara Municipal" : " e do TSE"}`);
+    return t.png();
+  }
+  const arquivoNome = (nome) => `contas-do-poder-${semAcento(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.png`;
+
+  // ------------------------------------------------------------------ compartilhar a imagem
+  // No celular, "Compartilhar imagem" abre o menu do aparelho (WhatsApp, Telegram, Instagram...) já com a imagem. No
+  // computador (ou num navegador que não envia arquivos), abre uma janela com a imagem para copiar e colar no WhatsApp
+  // Web, baixar ou enviar. A imagem é feita logo depois que a página aparece, quando o navegador está livre: o toque
+  // não espera (o celular só abre o menu de compartilhar dentro do próprio toque).
+  // spec: { chave, gerar, arquivo, alt, legenda, textoZap, medir: {conteudo, ...} }
+  const imagens = new Map(), prontas = new Map();
+  const ocioso = (fn) => ("requestIdleCallback" in window ? requestIdleCallback(fn, { timeout: 1500 }) : setTimeout(fn, 400));
+  function obterImagem(spec) {
+    if (!imagens.has(spec.chave)) {
+      const pr = new Promise((ok) => ocioso(ok)).then(spec.gerar).then((blob) => {
+        const a = { blob, url: blob ? URL.createObjectURL(blob) : null };
+        prontas.set(spec.chave, a);
+        return a;
+      });
+      pr.catch(() => imagens.delete(spec.chave));
+      imagens.set(spec.chave, pr);
+      // guarda só as últimas 8 imagens
+      while (imagens.size > 8) {
+        const velha = imagens.keys().next().value;
+        const a = prontas.get(velha);
+        if (a && a.url) URL.revokeObjectURL(a.url);
+        imagens.delete(velha); prontas.delete(velha);
+      }
+    }
+    return imagens.get(spec.chave);
   }
   const podeCopiarImagem = () => !!(navigator.clipboard && navigator.clipboard.write && window.ClipboardItem);
   const podeEnviarArquivo = () => { try { return !!(navigator.canShare && navigator.canShare({ files: [new File([""], "x.png", { type: "image/png" })] })); } catch (e) { return false; } };
   const noCelular = () => matchMedia("(pointer: coarse)").matches;
+  // no iPhone vai só a imagem: com texto junto, o WhatsApp do iPhone nem sempre manda os dois (o endereço da página já
+  // está na imagem)
+  const ehIOS = () => /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const medirComp = (spec, metodo, onde) => evento("compartilhar", { metodo, onde, ...spec.medir });
+  // abre o menu do aparelho com a imagem (precisa estar pronta: chamado dentro do toque)
+  function enviarArquivo(spec, a, onde, falhou) {
+    const arquivo = new File([a.blob], spec.arquivo, { type: "image/png" });
+    const dados = { files: [arquivo] };
+    if (spec.legenda && !ehIOS()) dados.text = spec.legenda;
+    navigator.share(dados).then(() => medirComp(spec, "enviar_imagem", onde), (e) => { if (e.name !== "AbortError" && falhou) falhou(e); });
+  }
+  function compartilharImagem(spec, onde) {
+    evento("abrir_compartilhar", { onde, ...spec.medir });
+    const a = prontas.get(spec.chave);
+    if (a && a.blob && noCelular() && podeEnviarArquivo()) { enviarArquivo(spec, a, onde, () => janelaImagem(spec, onde)); return; }
+    janelaImagem(spec, onde);
+  }
+  // os botões da imagem pronta: no celular, enviar primeiro; no computador, copiar primeiro
+  function acoesImagem(spec, a, retorno, onde) {
+    const enviar = podeEnviarArquivo() ? () => enviarArquivo(spec, a, onde, () => { retorno.textContent = "Não deu para abrir o menu de compartilhar. Copie ou baixe a imagem."; }) : null;
+    const copiar = podeCopiarImagem() ? () => {
+      // sem await antes do write: o Safari só deixa copiar dentro do clique
+      navigator.clipboard.write([new ClipboardItem({ "image/png": a.blob })]).then(() => {
+        medirComp(spec, "copiar_imagem", onde);
+        retorno.textContent = noCelular() ? "Imagem copiada. Abra a conversa e cole." : "Imagem copiada. Abra a conversa (no WhatsApp Web, por exemplo) e cole com Ctrl+V ou ⌘+V.";
+      }, () => {
+        retorno.textContent = noCelular() ? "Não deu para copiar. Toque e segure a imagem para copiar ou salvar." : "O navegador não deixou copiar a imagem. Use “Baixar imagem”.";
+      });
+    } : null;
+    const baixar = () => {
+      const l = h("a", { href: a.url, download: spec.arquivo });
+      document.body.append(l); l.click(); l.remove();
+      medirComp(spec, "baixar_imagem", onde);
+      retorno.textContent = "Imagem salva. Agora é só anexar na conversa.";
+    };
+    const ordem = noCelular() ? [["Enviar imagem…", enviar], ["Baixar imagem", baixar], ["Copiar imagem", copiar]]
+      : [["Copiar imagem", copiar], ["Baixar imagem", baixar], ["Enviar…", enviar]];
+    return ordem.filter(([, f]) => f).map(([rotulo, f], i) => h("button", { type: "button", class: `botao${i ? " botao--leve" : ""}`, onclick: f }, rotulo));
+  }
+  const dicaImagem = () => (noCelular()
+    ? (podeEnviarArquivo() ? "Toque em “Enviar imagem” e escolha o WhatsApp (ou outro aplicativo)." : "Toque e segure a imagem para salvar ou compartilhar.")
+    : "Copie e cole na conversa do WhatsApp Web, do Telegram ou num e-mail. Ou baixe para anexar.");
+  // o resumo em texto, para quem prefere: WhatsApp, copiar o texto e copiar o link
+  function opcoesTexto(spec, onde, link) {
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    return h("details", { class: "texto-zap" },
+      h("summary", null, "Prefere mandar em texto?"),
+      h("p", { class: "pequeno discreto" }, "O mesmo resumo em texto, com o link para ver mais detalhes."),
+      h("div", { class: "acoes" },
+        h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(spec.textoZap)}`, target: "_blank", rel: "noopener", onclick: () => medirComp(spec, "whatsapp", onde) }, "Mandar no WhatsApp"),
+        h("button", { type: "button", class: "botao botao--leve", onclick: () => { medirComp(spec, "copiar_texto", onde); copiarTexto(spec.textoZap, retorno, "Texto copiado. É só colar."); } }, "Copiar texto"),
+        link ? h("button", { type: "button", class: "botao botao--leve", onclick: () => { medirComp(spec, "copiar_link", onde); copiarTexto(link, retorno, "Link copiado."); } }, "Copiar link") : null),
+      retorno);
+  }
+  // janela com a imagem (computador, ou celular sem "enviar arquivo")
+  let janela = null;
+  function janelaImagem(spec, onde) {
+    if (!janela) {
+      janela = h("dialog", { class: "janela-img", "aria-labelledby": "janela-img-titulo" });
+      janela.addEventListener("click", (e) => { if (e.target === janela) janela.close(); });
+      document.body.append(janela);
+    }
+    janela.textContent = "";
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    const img = h("img", { class: "compartilhar-img__previa", alt: spec.alt, width: 1080, height: 1350 });
+    const quadro = h("div", { class: "compartilhar-img__quadro carregando" }, img);
+    const botoes = h("div", { class: "acoes" });
+    add(janela, h("div", { class: "janela-img__corpo" },
+      h("div", { class: "guia__topo" }, h("h2", { id: "janela-img-titulo", class: "h3" }, "Imagem para compartilhar"),
+        h("button", { type: "button", class: "fechar", "aria-label": "Fechar", onclick: () => janela.close() }, "×")),
+      h("div", { class: "janela-img__grade" }, quadro,
+        h("div", { class: "janela-img__lado" }, h("p", { class: "pequeno discreto" }, dicaImagem()), botoes, retorno,
+          spec.textoZap ? opcoesTexto(spec, onde, spec.link) : null))));
+    if (janela.showModal) janela.showModal(); else janela.setAttribute("open", "");
+    obterImagem(spec).then((a) => {
+      if (!a.blob) { retorno.textContent = "Não deu para gerar a imagem neste navegador."; return; }
+      img.src = a.url; quadro.classList.remove("carregando");
+      add(botoes, acoesImagem(spec, a, retorno, onde));
+    }, () => { retorno.textContent = "Não deu para gerar a imagem neste navegador."; });
+  }
+  // a faixa "Compartilhar imagem", com a miniatura da imagem pronta: um botão só, grande, perto do valor principal
+  function faixaCompartilhar(spec, onde) {
+    if (!spec) return null;
+    const mini = h("span", { class: "faixa-img__mini carregando", "aria-hidden": "true" });
+    obterImagem(spec).then((a) => { if (a.url) { mini.classList.remove("carregando"); mini.append(h("img", { src: a.url, alt: "" })); } }, () => {});
+    return h("button", { type: "button", class: "faixa-img", onclick: () => compartilharImagem(spec, onde) },
+      mini,
+      h("span", { class: "faixa-img__texto" }, h("strong", null, "Compartilhar imagem"), h("small", null, "Pronta para o WhatsApp, com a fonte dos dados")),
+      h("span", { class: "faixa-img__seta", "aria-hidden": "true" }, "→"));
+  }
+  // no celular, um botão "Compartilhar" flutuante, depois que a faixa do topo sai da tela e enquanto nenhuma outra opção
+  // de compartilhar está à vista
+  let flutuante = null;
+  function botaoFlutuante(spec) {
+    if (!flutuante) {
+      flutuante = h("button", { type: "button", class: "compartilhar-flutuante", hidden: true },
+        h("span", { "aria-hidden": "true" }, "↗"), "Compartilhar");
+      document.body.append(flutuante);
+    }
+    flutuante.hidden = true;
+    if (!spec || !("IntersectionObserver" in window)) return;
+    flutuante.onclick = () => compartilharImagem(spec, "flutuante");
+    const alvos = [...document.querySelectorAll("#app .faixa-img, #app #resumo, #app .compartilhar")];
+    if (!alvos.length) return;
+    const vistos = new Set();
+    let passou = false;
+    const obs = new IntersectionObserver((es) => {
+      for (const e of es) {
+        if (e.isIntersecting) vistos.add(e.target); else vistos.delete(e.target);
+        if (e.target === alvos[0]) passou = !e.isIntersecting && e.boundingClientRect.top < 0;
+      }
+      flutuante.hidden = !(passou && !vistos.size);
+    });
+    alvos.forEach((a) => obs.observe(a));
+    observadores.push(obs);
+  }
+  // o que cada página compartilha
+  function specPessoa(p, k) {
+    const r = resumo(p, k);
+    if (!r) return null;
+    const link = linkDe(p, k);
+    return { chave: `p:${p.id}~${k}`, gerar: () => imagemPessoa(p, k), arquivo: arquivoNome(p.n), link,
+      alt: `Resumo de ${p.n}: ${p.k === "p" ? "recebe" : "custo de"} ${reais(r.tm)} por mês ${nomePeriodo(k, false)}`,
+      legenda: link ? `Mais detalhes e a fonte de cada número: ${link}` : undefined, textoZap: textoCompartilhar(p, k),
+      medir: { conteudo: "parlamentar", parlamentar: p.n, casa: casaTxt(p) } };
+  }
+  function specGov(e) {
+    const link = endereco() ? `${origem()}${urlGov(e.uf)}` : "";
+    return { chave: `g:${e.uf}`, gerar: () => imagemGov(e), arquivo: arquivoNome(`${tituloGov(e)} ${e.uf} ${e.gov.n}`), link,
+      alt: `${tituloGov(e)} ${deUF(e.uf)}: salário de ${reaisC(e.v[0])} por mês`,
+      legenda: link ? `Mais detalhes e a fonte de cada número: ${link}` : undefined, textoZap: textoGov(e), medir: { conteudo: "governador", uf: e.uf } };
+  }
+  function specCidade(c) {
+    if (!temCusto(c)) return null;
+    const link = endereco() ? `${origem()}${urlCidade(c)}` : "";
+    return { chave: `c:${c.cod}`, gerar: () => imagemCidade(c), arquivo: arquivoNome(`camara ${c.n} ${c.uf}`), link,
+      alt: `Câmara Municipal ${deCidade(c)}: custo de ${compacto(c.custo / 12)} por mês`,
+      legenda: link ? `Mais detalhes e a fonte de cada número: ${link}` : undefined, textoZap: textoCidade(c), medir: { conteudo: "cidade", cidade: c.n, uf: c.uf } };
+  }
   async function copiarTexto(conteudo, retorno, msg) {
     try { await navigator.clipboard.writeText(conteudo); retorno.textContent = msg; }
     catch (e) {
@@ -820,13 +1089,13 @@
       retorno.append("Selecione e copie:", campo); campo.select();
     }
   }
-  // no fim do contracheque, um botão só: leva à seção "Mande para quem você quiser" (imagem, WhatsApp, texto e link),
-  // para o WhatsApp não aparecer duas vezes na página
-  function botoesCompartilhar(p) {
-    return h("div", { class: "compartilhar" },
+  // no fim do contracheque: o mesmo botão de compartilhar a imagem
+  function botoesCompartilhar(p, k) {
+    const spec = specPessoa(p, k);
+    return spec ? h("div", { class: "compartilhar" },
       h("div", { class: "acoes" },
-        h("button", { type: "button", class: "botao botao--leve", "aria-label": "Compartilhar: imagem, WhatsApp, texto ou link", onclick: () => { evento("abrir_compartilhar", { parlamentar: p.n, casa: casaTxt(p) }); irPara("resumo"); } },
-          h("span", { "aria-hidden": "true" }, "↗"), "Compartilhar")));
+        h("button", { type: "button", class: "botao", onclick: () => compartilharImagem(spec, "fim_contracheque") },
+          h("span", { "aria-hidden": "true" }, "↗"), "Compartilhar imagem"))) : null;
   }
 
   // ================================================================== seções com parlamentar escolhido
@@ -951,7 +1220,7 @@
     return anos.map((a) => [a, (p.vb || {})[a] ? p.vb[a][1] : 0]).filter(([, v]) => v > 0);
   }
   // o que importa na primeira tela do celular: o período, o custo por mês, de onde ele vem e a posição entre os colegas
-  function resumoTopo(p, k, r, C, pos, trocar) {
+  function resumoTopo(p, k, r, C, pos, trocar, spec) {
     const principal = h("div", { class: "conta__resumo-principal" },
       pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período"));
     if (!r) return h("div", { class: "conta__resumo" }, add(principal, h("p", { class: "discreto" }, "Sem pagamentos registrados neste período.")));
@@ -965,7 +1234,7 @@
           h("li", null, h("span", { class: "chave chave--custa" }), `${reais(r.cm)} em ${gastosNome(p).toLowerCase()}`)),
       h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
       seloComp(r.tm, C.tm, `vs. mediana dos ${plural(grupo(p))}`));
-    return h("div", { class: "conta__resumo" }, principal, pos ? blocoPosicao(p, k, pos) : null);
+    return h("div", { class: "conta__resumo" }, principal, pos ? blocoPosicao(p, k, pos) : null, faixaCompartilhar(spec, "topo"));
   }
   function secContracheque(p, k) {
     const r = resumo(p, k), C = p.ced ? { cat: {}, tm: null } : colegas(grupo(p), k), pos = posicao(p, k);
@@ -978,8 +1247,8 @@
         h("p", { class: "rotulo" }, { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo" }[p.k] || "Contracheque do mandato"),
         h("h1", { class: "conta__nome" }, p.n),
         h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
-      h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Página oficial ↗")),
-      resumoTopo(p, k, r, C, pos, trocar));
+      h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Página oficial\u00a0↗")),
+      resumoTopo(p, k, r, C, pos, trocar, specPessoa(p, k)));
     const lado = h("div", { class: "conta__lado" });
     if (r) {
       // deputado/senador que também foi ministro: conta só os meses exercendo o mandato
@@ -1089,7 +1358,7 @@
             estatistica("Pessoas", String(p.eq.n), `em ${fmtMes(mesEquipe(camaraDe(p.cid)))}`),
             estatistica("Custo da equipe", "não publicado", p.cid === SP ? "a Câmara só mostra os salários com CPF" : "a Câmara não publica")),
           h("button", { type: "button", class: "link-botao pequeno", style: "margin:6px 22px 0", onclick: () => irPara("equipe") }, "Ver os cargos da equipe")) : null,
-        botoesCompartilhar(p));
+        botoesCompartilhar(p, k));
     }
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
     return card;
@@ -1300,63 +1569,32 @@
     }
     return card;
   }
-  // Resumo para compartilhar: a própria imagem, com copiar / enviar / baixar, e o texto à parte
+  // Resumo para compartilhar: a própria imagem, grande, com enviar / copiar / baixar; o texto fica à parte, para quem prefere
   function secResumo(p, k) {
-    const r = resumo(p, k);
-    if (!r) return null;
-    const medir = (metodo) => evento("compartilhar", { metodo, conteudo: "parlamentar", parlamentar: p.n, casa: casaTxt(p) });
-    const texto = textoCompartilhar(p, k), link = linkDe(p, k);
-    let atual = null;
-    const retornoImg = h("p", { class: "compartilhar-img__retorno", role: "status" });
-    const retornoTxt = h("p", { class: "compartilhar-img__retorno", role: "status" });
-    const img = h("img", { class: "compartilhar-img__previa", width: 1080, height: 1350, alt: `Resumo de ${p.n}: custo de ${reais(r.tm)} por mês ${nomePeriodo(k, false)}` });
+    const spec = specPessoa(p, k);
+    if (!spec) return null;
+    const onde = "secao";
+    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    const img = h("img", { class: "compartilhar-img__previa", width: 1080, height: 1350, alt: spec.alt });
     const quadro = h("div", { class: "compartilhar-img__quadro carregando" }, img);
-    const botao = (rotulo, cls, fn) => h("button", { type: "button", class: `botao ${cls}`, disabled: true, onclick: fn }, rotulo);
-    const botoes = [];
-    if (podeCopiarImagem()) botoes.push(botao("Copiar imagem", "", () => {
-      // sem await antes do write: o Safari só deixa copiar dentro do clique
-      navigator.clipboard.write([new ClipboardItem({ "image/png": atual.blob })]).then(() => {
-        medir("copiar_imagem");
-        retornoImg.textContent = noCelular() ? "Imagem copiada. Abra a conversa e cole." : "Imagem copiada. Abra a conversa e cole (Ctrl+V ou ⌘+V).";
-      }, () => {
-        retornoImg.textContent = noCelular() ? "Não deu para copiar. Toque e segure a imagem para copiar ou salvar." : "O navegador não deixou copiar a imagem. Use “Baixar imagem”.";
-      });
-    }));
-    if (podeEnviarArquivo()) botoes.push(botao("Enviar imagem…", botoes.length ? "botao--leve" : "", async () => {
-      const arquivo = new File([atual.blob], arquivoNome(p), { type: "image/png" });
-      try { await navigator.share({ files: [arquivo], text: link ? `Mais detalhes: ${link}` : undefined }); medir("enviar_imagem"); }
-      catch (e) { if (e.name !== "AbortError") retornoImg.textContent = "Não deu para abrir o menu de compartilhar. Copie ou baixe a imagem."; }
-    }));
-    botoes.push(botao("Baixar imagem", botoes.length ? "botao--leve" : "", () => {
-      const a = h("a", { href: atual.url, download: arquivoNome(p) });
-      document.body.append(a); a.click(); a.remove();
-      medir("baixar_imagem");
-      retornoImg.textContent = "Imagem salva. Agora é só anexar na conversa.";
-    }));
-    obterImagem(p, k).then((a) => {
-      if (!a.blob) { retornoImg.textContent = "Não deu para gerar a imagem neste navegador."; return; }
-      atual = a; img.src = a.url; quadro.classList.remove("carregando");
-      botoes.forEach((b) => { b.disabled = false; });
-    }, () => { retornoImg.textContent = "Não deu para gerar a imagem neste navegador."; });
+    const botoes = h("div", { class: "acoes" }, h("button", { type: "button", class: "botao", disabled: true }, "Preparando a imagem…"));
+    obterImagem(spec).then((a) => {
+      botoes.textContent = "";
+      if (!a.blob) { retorno.textContent = "Não deu para gerar a imagem neste navegador."; return; }
+      img.src = a.url; quadro.classList.remove("carregando");
+      add(botoes, acoesImagem(spec, a, retorno, onde));
+    }, () => { botoes.textContent = ""; retorno.textContent = "Não deu para gerar a imagem neste navegador."; });
     return h("section", { class: "bloco", id: "resumo" },
       h("p", { class: "rotulo" }, "Resumo para compartilhar"),
-      h("h2", null, "Mande para quem você quiser"),
+      h("h2", null, "Mande a imagem para quem você quiser"),
       h("div", { class: "compartilhar-img" },
         quadro,
         h("div", { class: "compartilhar-img__lado" },
           h("div", { class: "cartao compartilhar-img__opcao" },
             h("h3", null, "Imagem"),
-            h("p", { class: "pequeno discreto" },
-              `${noCelular() ? "Copie e cole numa conversa do WhatsApp, do Telegram ou onde quiser." : "Copie e cole numa conversa do WhatsApp Web, do Telegram ou num e-mail."}${podeEnviarArquivo() ? " Ou toque em “Enviar imagem” para escolher o aplicativo." : " Ou baixe para anexar."}`),
-            h("div", { class: "acoes" }, botoes), retornoImg),
-          h("div", { class: "cartao compartilhar-img__opcao" },
-            h("h3", null, "Texto"),
-            h("p", { class: "pequeno discreto" }, "O mesmo resumo em texto, com o link para ver mais detalhes."),
-            h("div", { class: "acoes" },
-              h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => medir("whatsapp") }, "Mandar no WhatsApp"),
-              h("button", { type: "button", class: "botao botao--leve", onclick: () => { medir("copiar_texto"); copiarTexto(texto, retornoTxt, "Texto copiado. É só colar."); } }, "Copiar texto"),
-              link ? h("button", { type: "button", class: "botao botao--leve", onclick: () => { medir("copiar_link"); copiarTexto(link, retornoTxt, "Link copiado."); } }, "Copiar link") : null),
-            retornoTxt),
+            h("p", { class: "pequeno discreto" }, dicaImagem()),
+            botoes, retorno),
+          h("div", { class: "cartao compartilhar-img__opcao" }, opcoesTexto(spec, onde, spec.link)),
           h("p", { class: "nota" }, `A imagem e o texto mostram o período escolhido no contracheque (${nomePeriodo(k, true)}). Dados abertos oficiais ${fonteDados(p)}.`))));
   }
 
@@ -1490,19 +1728,26 @@
       sairam.length ? h("details", { class: "problemas" }, h("summary", null, `Quem ocupou um gabinete e saiu (${sairam.length})`), h("div", { class: "lista-estado__grupo" }, sairam.map(chip))) : null,
     ];
   }
+  // a Câmara comparada com as das cidades do mesmo tamanho (faixa de população), por habitante: como na posição dos
+  // políticos, "custa menos que X%" abaixo da mediana e "mais que X%" acima (sem cor de bom/ruim), arredondando para
+  // baixo; lugar (de 0 a 100) é a posição na régua da imagem
+  function comparacaoCidade(c) {
+    const faixa = faixaDe(c.pop);
+    const mesmos = CID.m.filter((x) => temCusto(x) && faixaDe(x.pop) === faixa);
+    const med = mediana(mesmos.map(porHabMes));
+    const outras = Math.max(1, mesmos.length - 1);
+    const abaixo = mesmos.filter((x) => porHabMes(x) < porHabMes(c)).length, acima = mesmos.filter((x) => porHabMes(x) > porHabMes(c)).length;
+    const pct = temCusto(c) && mesmos.length > 1 ? Math.floor((abaixo / outras) * 100) : null;
+    const pctMais = pct === null ? null : Math.floor((acima / outras) * 100);
+    const lugar = ((abaixo + Math.max(0, outras - abaixo - acima) / 2) / outras) * 100;
+    return { faixa, mesmos, med, outras, pct, pctMais, lugar };
+  }
   function secCidade(c) {
     const tem = temCusto(c) || c.suspeito;
     const detalhe = vereadoresDaCidade(c);
     const prob = problemaCidade(c);
     if (prob) evento("ver_problema_cidade", { cidade: c.n, uf: c.uf, problema: prob.tipo });
-    const faixa = faixaDe(c.pop);
-    const mesmos = CID.m.filter((x) => temCusto(x) && faixaDe(x.pop) === faixa);
-    const med = mediana(mesmos.map(porHabMes));
-    // como na posição dos políticos: "custa menos que X%" abaixo da mediana, "mais que X%" acima (sem cor de bom/ruim);
-    // arredonda para baixo
-    const outras = Math.max(1, mesmos.length - 1);
-    const pct = temCusto(c) && mesmos.length > 1 ? Math.floor((mesmos.filter((x) => porHabMes(x) < porHabMes(c)).length / outras) * 100) : null;
-    const pctMais = pct === null ? null : Math.floor((mesmos.filter((x) => porHabMes(x) > porHabMes(c)).length / outras) * 100);
+    const { faixa, mesmos, med, outras, pct, pctMais } = comparacaoCidade(c);
     const doEstado = CID.m.filter((x) => x.uf === c.uf && temCusto(x)).sort((a, b) => porHabMes(b) - porHabMes(a));
     const posUF = doEstado.findIndex((x) => x.cod === c.cod);
     const teto = tetoVereador(c.pop);
@@ -1520,8 +1765,8 @@
     }, () => { lista.textContent = "Não foi possível carregar os vereadores."; });
     const caixa = h("div", { class: "grafico" });
     if (tem && mesmos.length > 5) requestAnimationFrame(() => graficoPontos(caixa, c.id, mesmos.map((x) => ({ id: x.id, n: x.n, sub: x.uf, v: porHabMes(x) })), reaisC));
-    const texto = textoCidade(c);
-    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    // imagem só para Câmara com o gasto informado; o texto, para todas
+    const spec = specCidade(c) || { textoZap: textoCidade(c), link: endereco() ? `${origem()}${urlCidade(c)}` : "", medir: { conteudo: "cidade", cidade: c.n, uf: c.uf } };
     return h("article", { class: "cartao conta", id: "cidade" },
       h("div", { class: "conta__topo" }, iconeCidade(avatarCidade("g")),
         h("div", null,
@@ -1539,16 +1784,14 @@
         prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
         prob ? cobrarCidade(c, prob, med) : null,
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
+        spec.gerar ? faixaCompartilhar(spec, "topo") : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo de um vereador aqui", `até ${reais(teto)}`, "por mês, pela Constituição")),
         h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. O salário de verdade é definido pela própria Câmara e ainda não tem uma fonte nacional: por enquanto mostramos o teto.`),
         h("h2", { class: "h3" }, `Os ${c.nv} vereadores eleitos em 2024`), lista],
-        h("div", { class: "acoes" },
-          h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => evento("compartilhar", { metodo: "whatsapp", conteudo: "cidade", cidade: c.n }) }, "Mandar no WhatsApp"),
-          h("button", { type: "button", class: "botao botao--leve", onclick: () => { evento("compartilhar", { metodo: "copiar_texto", conteudo: "cidade" }); copiarTexto(texto, retorno, "Texto copiado. É só colar."); } }, "Copiar texto")),
-        retorno,
+        opcoesTexto(spec, "fim", spec.link),
         h("ul", { class: "lista nota" },
           h("li", null, `Custo da Câmara: tudo o que ela gastou em ${c.ano || "no ano"} (salários de vereadores e servidores, prédio, contratos), segundo as contas que a prefeitura entregou ao Tesouro Nacional (Siconfi, função Legislativa). Não é o salário de cada vereador.`),
           detalhe ? h("li", null, "Vereadores: quem ocupa cada gabinete hoje, com os suplentes que assumiram, segundo a própria Câmara. Salário, verba do gabinete e equipe de cada um vêm dos dados abertos da Câmara Municipal.")
@@ -1794,7 +2037,7 @@
       const ultimo = pontos[pontos.length - 1];
       const caixa = h("div", { class: "grafico" });
       const colunas = [4, 5, 6, 7, 8, 9].filter((k) => ls.some((x) => x[k]));
-      const dinheiro = (v) => (v == null ? "—" : reaisC(v));
+      const dinheiro = (v) => (v == null ? "—" : v === 0 ? h("span", { class: "zero" }, reaisC(0)) : reaisC(v));
       add(corpo,
         temVice ? pilulas([["gov", "Governador"], ["vice", "Vice-governador"]], tp, (v) => { tp = v; evento("ver_governador_mes", { uf: e.uf, cargo: v }); desenhar(); }, "Cargo") : null,
         h("div", { class: "estatisticas" },
@@ -1807,7 +2050,7 @@
         caixa,
         h("details", { class: "tabela" }, h("summary", null, "Ver os valores em tabela"),
           rolagem("Quanto recebeu, mês a mês", h("table", { class: "tabela-gov" },
-            h("thead", null, h("tr", null, ["Mês", "Quem", "Recebeu", ...colunas.map((k) => (k === 9 ? "Abate-teto" : PARTES_GOV.find(([c]) => c === k)[1]))].map((c) => h("th", null, c)))),
+            h("thead", null, h("tr", null, ["Mês", "Quem", "Recebeu", ...colunas.map((k) => (k === 9 ? "Abate-teto" : PARTES_GOV.find(([c]) => c === k)[1]))].map((c, i) => h("th", { class: i > 1 ? "num" : null }, c)))),
             h("tbody", null, ls.slice().reverse().map((x) => h("tr", null, h("td", null, fmtMes(x[0])),
               h("td", null, nomeOc(x[2]), x[10].includes("s") ? h("small", { class: "tabela-gov__obs" }, "mês da saída, com os acertos") : null,
                 x[10].includes("a") ? h("small", { class: "tabela-gov__obs" }, "13º já sem o adiantamento pago antes") : null),
@@ -1834,15 +2077,14 @@
     const p = posGov(e), med = mediana(GOV.e.map((x) => x.v[0]));
     const sm = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
     const fem = govFem(e), R = rankingGov("v"), maior = R[0], menor = R[R.length - 1];
-    const texto = textoGov(e);
-    const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
+    const spec = specGov(e);
     const cargoTxt = (c, f) => ({ gov: f ? "Governadora" : "Governador", vice: f ? "Vice-governadora" : "Vice-governador", exercicio: f ? "Governadora em exercício" : "Governador em exercício", sec: "Secretário de Estado" })[c];
     const lado = (o) => o ? h("span", null, `${o.n}${partidoTxt(o)}`) : null;
     const hist = e.h.filter((x) => x[0] !== "sec");
     const sec = e.h.filter((x) => x[0] === "sec");
     const linhaHist = (x) => h("tr", null,
       h("td", null, fmtMes(x[1])), h("td", null, cargoTxt(x[0])), h("td", { class: "num" }, reaisC(x[2])), h("td", null, seloConf(x[3])),
-      h("td", { style: "white-space:normal;min-width:16rem" }, x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, "fonte ↗")));
+      h("td", { style: "white-space:normal;min-width:16rem" }, x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, "fonte\u00a0↗")));
     const foto = e.gov.fc ? h("p", { class: "nota credito" }, "Foto: ", h("a", { href: e.gov.fc.u, target: "_blank", rel: "noopener" }, e.gov.fc.l ? `${(e.gov.fc.a || "autor no Wikimedia Commons").replace(/ from .*$/, "")} (${e.gov.fc.l})` : e.gov.fc.a), e.gov.fc.l ? ", via Wikimedia Commons." : ".") : null;
     return h("article", { class: "cartao conta", id: "governador" },
       h("div", { class: "conta__topo" }, avatar({ n: e.gov.n, f: e.gov.f }, "g"),
@@ -1858,6 +2100,7 @@
           estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
           estatisticaPop(e.v[0] / sm),
           e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null),
+        faixaCompartilhar(spec, "topo"),
         e.recebe ? h("p", { class: "caixa-nota" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
         h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}.`
@@ -1865,7 +2108,7 @@
             : `É o ${p.pos}º maior salário de governador entre os 27 estados. A mediana é ${reais(med)}; o maior é o ${deUF(maior.uf)} (${reais(maior.v[0])}) e o menor, o ${deUF(menor.uf)} (${reais(menor.v[0])}).`),
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
-          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte ↗"))),
+          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte\u00a0↗"))),
         blocoMensalGov(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },
@@ -1875,20 +2118,17 @@
             h("td", null, cargoTxt(o.c, o.fem)), h("td", null, fmtData(o.de)), h("td", null, o.ate ? fmtData(o.ate) : "hoje")))))),
         h("h2", { class: "h3" }, "O salário ao longo do tempo"),
         rolagem("O salário ao longo do tempo", h("table", { class: "tabela-gov" },
-          h("thead", null, h("tr", null, ["Desde", "Cargo", "Valor por mês", "Origem", "Lei ou fonte"].map((c) => h("th", null, c)))),
+          h("thead", null, h("tr", null, ["Desde", "Cargo", "Valor por mês", "Origem", "Lei ou fonte"].map((c, i) => h("th", { class: i === 2 ? "num" : null }, c)))),
           h("tbody", null, hist.map(linhaHist)))),
         sec.length ? h("details", { class: "tabela" }, h("summary", null, "Secretários de Estado"), rolagem("Secretários de Estado", h("table", { class: "tabela-gov" }, h("tbody", null, sec.map(linhaHist))))) : null,
         h("p", { class: "nota" }, "\"Desde\" é o mês em que o valor passou a valer. Quando a fonte é só a imprensa, é o mês a que o valor se refere."),
         h("h2", { class: "h3" }, "Dá para conferir na folha de pagamento?"),
         h("p", { style: "margin:0" }, e.m ? "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê toda semana: veja o mês a mês acima." : FOLHA_GOV[e.folha.s]),
         e.folha.c && !e.m ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
-        e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)} ↗`)) : null,
+        e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)}\u00a0↗`)) : null,
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
-        h("div", { class: "acoes" },
-          h("a", { class: "botao botao--zap", href: `https://wa.me/?text=${encodeURIComponent(texto)}`, target: "_blank", rel: "noopener", onclick: () => evento("compartilhar", { metodo: "whatsapp", conteudo: "governador", uf: e.uf }) }, "Mandar no WhatsApp"),
-          h("button", { type: "button", class: "botao botao--leve", onclick: () => { evento("compartilhar", { metodo: "copiar_texto", conteudo: "governador" }); copiarTexto(texto, retorno, "Texto copiado. É só colar."); } }, "Copiar texto")),
-        retorno,
+        opcoesTexto(spec, "fim", spec.link),
         h("ul", { class: "lista nota" },
           h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não aparecem por pessoa."),
           h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),
@@ -2051,7 +2291,7 @@
     if (!botao || !painel || !campo || !sug) return;
     const rotulo = $(".cabecalho__buscar-texto", botao);
     const marcar = (aberto) => { painel.hidden = !aberto; botao.setAttribute("aria-expanded", String(aberto)); if (rotulo) rotulo.textContent = aberto ? "Fechar" : "Buscar"; };
-    fecharBuscaTopo = () => { if (!painel.hidden) { marcar(false); campo.value = ""; sug.hidden = true; } };
+    fecharBuscaTopo = () => { if (!painel.hidden) { marcar(false); campo.value = ""; sug.hidden = true; const est = $("#estados-topo"); if (est) est.hidden = false; } };
     botao.addEventListener("click", () => {
       if (!painel.hidden) { fecharBuscaTopo(); return; }
       marcar(true); campo.focus();
@@ -2059,6 +2299,14 @@
     });
     // Esc com a lista de sugestões fechada fecha o campo (com a lista aberta, o primeiro Esc fecha só a lista)
     campo.addEventListener("keydown", (e) => { if (e.key === "Escape" && sug.hidden) { fecharBuscaTopo(); botao.focus(); } });
+    // embaixo do campo: escolher o estado abre o guia já com o governador, os senadores e os deputados dele
+    const estados = $("#estados-topo"), ufs = $("#ufs-topo");
+    if (estados && ufs) {
+      UFS.forEach((u) => ufs.append(h("button", { type: "button", title: ESTADOS[u], "aria-label": ESTADOS[u], onclick: () => { fecharBuscaTopo(); abrirGuia(u, "busca_topo"); } }, u)));
+      const gov = $("#governo-topo");
+      if (gov) gov.addEventListener("click", () => { fecharBuscaTopo(); abrirGuia("governo", "busca_topo"); });
+      campo.addEventListener("input", () => { estados.hidden = !!campo.value.trim(); });
+    }
     ligarBusca(campo, sug, (p) => { S.origem = "busca_topo"; escolher(p.id); }, null, true, "busca_topo");
   }
   function montarCabecalho() {
@@ -2102,7 +2350,7 @@
       const tri = (t) => t.replace("/", " trimestre de ");
       add(rn, `São cerca de ${num(R.pessoas / 1e6, 0)} milhões de pessoas (do ${tri(R.trimestres[R.trimestres.length - 1])} ao ${tri(R.trimestres[0])}). `,
         `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
-        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte: IBGE ↗"));
+        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte: IBGE\u00a0↗"));
     }
     $("#gerado-em").textContent = `Gerado em ${D.meta.atualizado}.`;
   }
@@ -2129,7 +2377,9 @@
   }
 
   // ================================================================== guia passo a passo
-  function abrirGuia() {
+  // inicio: a sigla de um estado (abre direto na lista dele) ou "governo"; origem: de onde a pessoa abriu
+  function abrirGuia(inicio, origem) {
+    if (typeof inicio !== "string") inicio = null; // chamado direto pelo clique de um botão
     const dlg = $("#guia"), corpo = $("#guia-corpo");
     const topo = (passo, titulo) => h("div", { class: "guia__topo" },
       h("p", { class: "rotulo" }, `Passo ${passo} de 2`, h("span", { class: "progresso" }, h("span", { class: "feito" }), h("span", { class: passo === 2 ? "feito" : "" }))),
@@ -2213,8 +2463,8 @@
           h("button", { type: "button", class: "link-botao", onclick: () => { fechar(); S.ufLista = uf; const e = $("#estado"); if (e) e.value = uf; listaEstado(); irPara("rotulo-escolha"); } }, "Ver todos na página")));
       pintar("");
     };
-    passo1();
-    evento("guia", { etapa: "abrir" });
+    if (inicio === "governo") passoGoverno(); else if (inicio && ESTADOS[inicio]) passo2(inicio); else passo1();
+    evento("guia", { etapa: "abrir", origem: typeof origem === "string" ? origem : "botao" });
     if (dlg.showModal) dlg.showModal(); else dlg.setAttribute("open", "");
   }
 
@@ -2369,7 +2619,7 @@
         h("h2", { id: "t-erro" }, "Encontrou um erro nesta página?"),
         h("p", null, h("strong", null, "Primeiro, confira na fonte. "),
           "Os números desta página vêm de fontes oficiais, com o link ao lado de cada bloco", links.length ? ". As principais:" : "."),
-        links.length ? h("ul", { class: "erro-aviso__fontes" }, links.map(([t, u]) => h("li", null, h("a", { href: u, target: "_blank", rel: "noopener" }, `${t} ↗`)))) : null,
+        links.length ? h("ul", { class: "erro-aviso__fontes" }, links.map(([t, u]) => h("li", null, h("a", { href: u, target: "_blank", rel: "noopener" }, `${t}\u00a0↗`)))) : null,
         h("p", { class: "discreto" }, h("strong", null, "A fonte mostra o mesmo valor? "),
           "Então é o que o órgão publicou, e quem pode corrigir é ele: fale com a ouvidoria do órgão ou faça um pedido pela Lei de Acesso à Informação."),
         h("details", { class: "erro-aviso__email", ontoggle: (ev) => { if (ev.target.open) evento("abrir_reportar_erro", { pagina: nome }); } },
@@ -2451,6 +2701,7 @@
 
   function render() {
     observadores.forEach((o) => o.disconnect()); observadores = [];
+    botaoFlutuante(null);
     const app = $("#app");
     const p = S.sel ? S.porId.get(S.sel) : null;
     marcarPagina(!!(p || S.gov || S.cidade || S.extra), p ? p.k : S.gov ? "gov" : S.cidade ? "cidade" : null);
@@ -2491,6 +2742,7 @@
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
       app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e)));
       navSecoes(["governador", "governadores", "entenda", "fontes"]);
+      botaoFlutuante(specGov(e));
       rolarPendente();
       return;
     }
@@ -2507,6 +2759,7 @@
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
         espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
+        botaoFlutuante(specCidade(c));
         rolarPendente();
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
       return;
@@ -2517,6 +2770,7 @@
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
       app.append(...[secContracheque(p, k), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))].filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
+      botaoFlutuante(specPessoa(p, k));
     } else {
       document.title = "Contas do Poder";
       if (S.naoAchada) app.append(h("p", { class: "aviso" }, "Não achamos esta página. Procure pelo nome acima ou veja os destaques abaixo."));

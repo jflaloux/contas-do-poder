@@ -577,3 +577,52 @@ input[type="search"] { line-height: 1.5; }
 ::placeholder { color: var(--ink-3); opacity: 1; }
 input[type="checkbox"] { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; flex: none; }
 label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
+
+/* ---------- compartilhar a imagem ----------
+   A faixa "Compartilhar imagem" (com a miniatura), a janela da imagem (computador), o botão flutuante (celular) e o
+   texto dobrado em "Prefere mandar em texto?" */
+.faixa-img {
+  display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; font: inherit; color: var(--ink); cursor: pointer;
+  padding: 10px 14px 10px 10px; min-height: 64px; border-radius: 14px; border: 1.5px solid var(--accent); background: var(--accent-soft);
+}
+.faixa-img:hover { background: color-mix(in srgb, var(--accent) 18%, var(--paper)); }
+.faixa-img__mini { width: 48px; aspect-ratio: 4 / 5; border-radius: 7px; overflow: hidden; background: #17142e; flex: none; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); }
+.faixa-img__mini img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.faixa-img__mini.carregando { animation: piscar 1.1s ease-in-out infinite alternate; }
+.faixa-img__texto { display: grid; gap: 1px; flex: 1; min-width: 0; line-height: 1.3; }
+.faixa-img__texto strong { font-size: 1.02rem; color: var(--accent); }
+.faixa-img__texto small { color: var(--ink-2); font-size: .85rem; }
+.faixa-img__seta { font-size: 1.3rem; color: var(--accent); flex: none; }
+.conta__resumo .faixa-img { grid-column: 1 / -1; }
+.cidade__corpo .faixa-img { max-width: 560px; }
+.compartilhar-flutuante {
+  position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 35; display: inline-flex; align-items: center; gap: 8px;
+  font: inherit; font-weight: 700; min-height: 48px; padding: 12px 18px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--accent); color: var(--on-accent); box-shadow: 0 6px 20px rgba(16, 14, 28, .35);
+}
+@media (min-width: 761px) { .compartilhar-flutuante { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .faixa-img__mini.carregando { animation: none; } }
+.janela-img {
+  border: 0; border-radius: 16px; padding: 0; width: min(760px, calc(100vw - 24px)); max-height: calc(100vh - 32px); overflow: auto;
+  background: var(--paper); color: var(--ink); box-shadow: 0 20px 60px rgba(0, 0, 0, .3);
+}
+.janela-img::backdrop { background: rgba(16, 14, 28, .6); }
+.janela-img__corpo { padding: 20px; display: grid; gap: 14px; }
+.janela-img__grade { display: grid; gap: 18px; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); align-items: start; }
+.janela-img__lado { display: grid; gap: 12px; align-content: start; }
+@media (max-width: 620px) {
+  .janela-img__grade { grid-template-columns: minmax(0, 1fr); }
+  .janela-img .compartilhar-img__quadro { max-width: 230px; justify-self: center; }
+}
+.texto-zap > summary { cursor: pointer; font-weight: 600; color: var(--accent); }
+.texto-zap[open] > summary { margin-bottom: 8px; }
+.texto-zap .acoes { margin-top: 10px; }
+
+/* tabelas dos governadores: título das colunas de valores alinhado com os números; zero mais claro */
+.tabela-gov th.num { text-align: right; }
+.zero { color: var(--ink-3); }
+
+/* busca do cabeçalho: escolher o estado ("Quem te representa em Brasília?") */
+.cabecalho__estados { margin-top: 14px; display: grid; gap: 8px; }
+.cabecalho__estados .ufs { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
+.cabecalho__estados .link-botao { justify-self: start; font-size: .92rem; min-height: 36px; }

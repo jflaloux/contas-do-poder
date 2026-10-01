@@ -339,12 +339,15 @@ O que mudou em 30/09/2026, depois de uma conferência dos robots.txt:
 
 ## Compartilhamento e medição
 
-- **Imagem para compartilhar**: no fim da página de cada parlamentar, o site mostra uma imagem 1080×1350 (4:5,
-  aparece inteira no WhatsApp e no Telegram e serve para status e stories) com a foto, o custo dele por mês,
-  a posição entre os colegas e a equipe. Botões: **Copiar imagem** (para colar em qualquer conversa),
-  **Enviar imagem…** (abre o menu do celular: WhatsApp, Telegram...) e **Baixar imagem**. O texto e o link
-  ficam ao lado. As fotos ficam no próprio site (`site/fotos/`) porque o site da Câmara não deixa outro
-  endereço usar as fotos dele num canvas.
+- **Imagem para compartilhar**: cada político, governador e Câmara Municipal (com o gasto informado) tem uma imagem
+  1080×1350 (4:5, aparece inteira no WhatsApp e no Telegram e serve para status e stories), com a foto, o valor
+  principal, a posição entre os colegas e o endereço da própria página (quem recebe a imagem não consegue clicar, mas
+  consegue digitar). O botão **Compartilhar imagem**, com a miniatura, fica logo abaixo do valor principal. No celular,
+  um toque abre o menu do aparelho já com a imagem (no iPhone vai só a imagem: com texto junto, o WhatsApp do iPhone nem
+  sempre manda os dois), e um botão "Compartilhar" flutuante aparece ao rolar a página. No computador, abre uma janela
+  com **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar em
+  texto?". A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
+  (`site/fotos/`) porque o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do
   Wikimedia Commons (via Wikidata), só com licença livre e só retratos; o crédito fica em
@@ -353,9 +356,11 @@ O que mudou em 30/09/2026, depois de uma conferência dos robots.txt:
   o crédito diz "recortada"). Nada com licença ND nem com licença duvidosa (foto do gov.br marcada como livre, "PD-USGov"
   em foto brasileira). Quem não tem foto aparece com as iniciais.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, busca_topo, guia, estado,
-  ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (whatsapp, copiar_imagem, enviar_imagem,
-  baixar_imagem, copiar_texto, copiar_link), `abrir_compartilhar` (botão "Compartilhar" no fim do contracheque, que leva
-  à seção da imagem; o WhatsApp fica só nessa seção), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia`.
+  ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (método: enviar_imagem, copiar_imagem,
+  baixar_imagem, whatsapp, copiar_texto ou copiar_link; `conteudo`: parlamentar, governador ou cidade; `onde`: topo,
+  fim_contracheque, flutuante, secao ou fim), `abrir_compartilhar` (toque num botão "Compartilhar imagem", com `onde` e
+  `conteudo`), `comparar`, `ranking`, `ranking_completo`, `ver_estado` e `guia` (ao abrir, com a origem: botao ou
+  busca_topo, quando a pessoa escolhe o estado na busca do cabeçalho).
   Busca e listas: `abrir_busca` (a lupa do cabeçalho fixo, com a página em que a pessoa estava; quem escolhe um nome por
   ali chega com a origem `busca_topo`) e `abrir_lista` (listas que começam fechadas: `ministros`, `governadores`,
   `vice_governadores`, `cidades` com a UF, `secretarios`, `subprefeitos` e `sairam_prefeitura`).
