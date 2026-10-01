@@ -805,6 +805,30 @@
    "licenca": "CC BY-SA 4.0",
    "url_licenca": "https://creativecommons.org/licenses/by-sa/4.0",
    "pagina": "https://commons.wikimedia.org/wiki/File:DANIPORTELAALEPE.jpg"
+  },
+  "pre-5002704-adriane-barbosa-nogueira-lopes": {
+   "wikidata": "Q107721723",
+   "arquivo": "Adriane Lopes in June 2022.jpg",
+   "autor": "Palácio do Planalto",
+   "licenca": "CC BY 2.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/2.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Adriane_Lopes_in_June_2022.jpg"
+  },
+  "pre-5002704-camilla-nascimento-de-oliveira": {
+   "wikidata": "Q130244630",
+   "arquivo": "2024 DRA CAMILLA CANDIDATO VICE-PREFEITO MS CAMPO GRANDE TSE (120002167894).jpg",
+   "autor": "Portal de Dados Abertos do Tribunal Superior Eleitoral do Brasil (TSE)",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:2024_DRA_CAMILLA_CANDIDATO_VICE-PREFEITO_MS_CAMPO_GRANDE_TSE_(120002167894).jpg"
+  },
+  "pre-2927408-luiz-carlos-de-souza": {
+   "wikidata": "Q64832647",
+   "arquivo": "FBA50000758379 div Luiz Carlos de Souza.jpg",
+   "autor": "Portal de Dados Abertos do Tribunal Superior Eleitoral do Brasil (TSE)",
+   "licenca": "CC BY 4.0",
+   "url_licenca": "https://creativecommons.org/licenses/by/4.0",
+   "pagina": "https://commons.wikimedia.org/wiki/File:FBA50000758379_div_Luiz_Carlos_de_Souza.jpg"
   }
  },
  "procurado_em": {
@@ -1180,6 +1204,46 @@
   "est-26-4529": "2026-10-01",
   "est-26-4507": "2026-10-01",
   "est-26-4510": "2026-10-01",
-  "est-26-4511": "2026-10-01"
+  "est-26-4511": "2026-10-01",
+  "pre-5002704-adriane-barbosa-nogueira-lopes": "2026-10-01",
+  "pre-5002704-camilla-nascimento-de-oliveira": "2026-10-01",
+  "pre-5002704-ademar-silva-junior": "2026-10-01",
+  "pre-5002704-andre-de-moura-brandao": "2026-10-01",
+  "pre-5002704-andrea-alves-ferreira-rocha": "2026-10-01",
+  "pre-5002704-catiana-sabadin-zamarrenho": "2026-10-01",
+  "pre-5002704-darci-caldo": "2026-10-01",
+  "pre-5002704-ednei-marcelo-miglioli": "2026-10-01",
+  "pre-5002704-isaac-jose-de-araujo": "2026-10-01",
+  "pre-5002704-lucas-henrique-bitencourt-de-souza": "2026-10-01",
+  "pre-5002704-marcia-helena-hokama": "2026-10-01",
+  "pre-5002704-thelma-fernandes-mendes-nogueira-lopes": "2026-10-01",
+  "pre-5002704-ulisses-da-silva-rocha": "2026-10-01",
+  "pre-3205309-alexandre-ofranti-ramalho": "2026-10-01",
+  "pre-3205309-cintya-silva-schulz": "2026-10-01",
+  "pre-3205309-eduardo-henning-louzada": "2026-10-01",
+  "pre-3205309-neyla-tardin": "2026-10-01",
+  "pre-3205309-soraya-de-souza-mannato": "2026-10-01",
+  "pre-3205309-tarcisio-jose-foeger": "2026-10-01",
+  "pre-4314902-andre-luiz-de-mello-machado": "2026-10-01",
+  "pre-4314902-giuseppe-ricardo-meneghetti-riesgo": "2026-10-01",
+  "pre-4314902-jorge-antonio-dornelles-carpes": "2026-10-01",
+  "pre-4314902-rosani-alves-pereira": "2026-10-01",
+  "pre-2927408-carlos-felipe-vazquez-de-souza-leao": "2026-10-01",
+  "pre-2927408-fabrizzio-muller-martinez": "2026-10-01",
+  "pre-2927408-ivete-alves-do-sacramento": "2026-10-01",
+  "pre-2927408-joao-xavier-nunes-filho": "2026-10-01",
+  "pre-2927408-luciano-ricardo-gomes-sandes": "2026-10-01",
+  "pre-2927408-luiz-carlos-de-souza": "2026-10-01",
+  "pre-2927408-pedro-conde-tourinho": "2026-10-01",
+  "pre-2927408-samuel-pereira-araujo": "2026-10-01",
+  "pre-4106902-euler-de-freitas-silva-junior": "2026-10-01",
+  "pre-4106902-jean-pierre-geremias-de-jesus-neto": "2026-10-01",
+  "pre-4106902-maria-amalia-barros-tortato": "2026-10-01",
+  "pre-2408102-carlos-alexandre-varela-duarte": "2026-10-01",
+  "pre-2408102-carlson-geraldo-correia-gomes": "2026-10-01",
+  "pre-2408102-chilon-batista-de-araujo-neto": "2026-10-01",
+  "pre-2408102-daliana-bandeira-luz-monteiro-santos": "2026-10-01",
+  "pre-2408102-heverton-santos-freitas": "2026-10-01",
+  "pre-2408102-joham-alves-xavier": "2026-10-01"
  }
 }

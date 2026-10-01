@@ -6,10 +6,10 @@ dados/municipios/<cidade>/ (vai para o Git), e `montar()` devolve (meta, pessoas
 Uma cidade que falhar não derruba as outras: o site continua com o que já estava gravado.
 """
 from ..util import TempoEsgotado, log
-from . import comum, curitiba, fortaleza, natal, porto_alegre, recife, rio, salvador, sp, vitoria
+from . import campo_grande, comum, curitiba, fortaleza, natal, porto_alegre, recife, rio, salvador, sp, vitoria
 
 # ordem do site: a primeira é a cidade que abre a seção
-CIDADES = [sp, rio, recife, fortaleza, vitoria, porto_alegre, salvador, curitiba, natal]
+CIDADES = [sp, rio, recife, fortaleza, vitoria, porto_alegre, salvador, curitiba, natal, campo_grande]
 
 
 def coletar():

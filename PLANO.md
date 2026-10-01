@@ -79,8 +79,8 @@ Cada número tem link para a fonte oficial.
 - [ ] Vereadores, passo 2d: Curitiba, Teresina, João Pessoa, Boa Vista, Palmas e Aracaju (dados parciais). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
 - [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
-- [x] Prefeituras: Salvador, Curitiba, Natal e Rio (no Rio, só prefeito e vice: a folha não diz o cargo) — Claude
-- [ ] Prefeituras, próximas: Campo Grande (a consulta nova não devolveu resultados em 01/10/2026), Macapá (portal de
+- [x] Prefeituras: Salvador, Curitiba, Natal, Campo Grande (desde jun/2025) e Rio (só prefeito e vice: a folha não diz o cargo) — Claude
+- [ ] Prefeituras, próximas: Macapá (portal de
   terceiro em Bubble), João Pessoa (Incapsula, não contornamos). Belo Horizonte: o portal bloqueia robôs (WAF) — Claude
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
 - [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude

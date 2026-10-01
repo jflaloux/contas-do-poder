@@ -5,8 +5,8 @@
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
 da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
 estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
-Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de oito capitais (São Paulo, Recife, Fortaleza, Vitória,
-Porto Alegre, Salvador, Curitiba e Natal), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
+Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
+Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
 São Paulo, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul e Rondônia.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
@@ -253,6 +253,7 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 | Salvador | Portal da Transparência, "Remunerações": a API pública da página (lista do mês filtrada pelo cargo e o detalhe de cada pessoa) | Remuneração básica, 13º, férias e abate-teto (verbas indenizatórias à parte, fora do bruto). Vínculo "regime especial outra esfera" = recebe de outro órgão |
 | Curitiba | Portal da Transparência, "Remuneração dos Servidores": o CSV do mês inteiro, como o botão "Exportar para CSV" | Só o total bruto do mês: o que passa do normal da pessoa vira "outros". Só entra quem tem o cargo "secretário" na lista (o secretário de carreira que recebe pelo cargo de origem não aparece como secretário). Remuneração zero = recebe de outro órgão |
 | Natal | Natal Transparente, "Servidores - Folha de Pagamento": a pesquisa por cargo e o contracheque de cada pessoa | Subsídio ou cargo em comissão, 13º, férias, rescisão e o "jeton indenizatório" mensal (Lei 7.274/2021). Sem contracheque no mês = recebe de outro órgão |
+| Campo Grande | SIG Transparência, "Consultar Remuneração dos Servidores": a pesquisa por cargo e mês, com o botão "Download JSON" | Só a remuneração bruta do mês. De jan a mai/2025 o cargo vem vazio na consulta: os dados começam em jun/2025 |
 | Rio de Janeiro | "Consultar Remuneração do Servidor": a base mensal em CSV (`contrachequedoc.rio.gov.br/repositorio/ArquivoTCAAAAMM.csv`, ~21 MB) | Bruto por tipo de folha (normal, 13º, suplementos, rescisão) e abate-teto. O arquivo não diz o cargo: só entram o prefeito e o vice, pelo nome (eleitos de 2024) |
 
 - **Vai para o bolso** = remuneração bruta da folha. Os acertos do mês da saída (acima do normal da pessoa, a partir
@@ -264,8 +265,7 @@ as fotos. Uma cidade fora do ar não para as outras: o site usa o que já estava
 - Vice que também é secretário (Recife, Fortaleza) aparece com um cargo só ("Vice-prefeito e secretário de ...").
 - Nada de CPF: quando a fonte traz o CPF mascarado, ele não é guardado.
 - **Belo Horizonte** publica a folha nominal, mas o portal bloqueia acessos automáticos (WAF): não tentamos
-  contornar. **João Pessoa** também (Incapsula). **Campo Grande**: a consulta nova (sig-transparencia) não devolveu
-  nenhum resultado em 01/10/2026, nem no navegador; tentar de novo. **Macapá**: a folha nominal fica num portal de
+  contornar. **João Pessoa** também (Incapsula). **Macapá**: a folha nominal fica num portal de
   terceiro (Portal CR2, feito em Bubble), sem arquivo para baixar; fica para depois.
 - Saída: `site/dados/prefeituras.json`, que o site junta à lista de políticos (tipo `p`), com as notas de cada cidade.
 
@@ -481,7 +481,7 @@ Veja `metadados.json` → `pendencias`. As principais:
 4. **Governadores:** o mês a mês pela folha em 24 estados. Faltam o Amapá e o Mato Grosso (a consulta pede CAPTCHA,
    que não contornamos) e o Tocantins (o portal só funciona clicando na página). No Pará, a consulta pública deixou de
    mostrar a governadora e o vice a partir de abril de 2026.
-5. **Prefeituras:** Belo Horizonte e João Pessoa (portais bloqueiam robôs), Campo Grande (consulta sem resultados), Macapá (portal de
+5. **Prefeituras:** Belo Horizonte e João Pessoa (portais bloqueiam robôs), Macapá (portal de
    terceiro) e as outras capitais ainda não foram feitas. No Rio, só prefeito e vice (a folha não diz o cargo).
 6. **Câmara Municipal do Recife:** a consulta da Verba Indenizatória está com erro no site da Câmara; os meses
    afetados ficam de fora até ela voltar (o robô tenta de novo toda semana).
