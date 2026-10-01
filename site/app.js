@@ -1015,7 +1015,6 @@
     const aviso = legisl(p) ? avisoVereador(p)
       : p.k === "p" ? "A Prefeitura publica só o que cada um recebe, não os gastos por pessoa."
       : p.k === "j" ? "Soma dos dois cargos, sem contar o salário duas vezes."
-      : p.k === "d" ? "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias."
       : p.tp === "pr" ? "O avião presidencial e a estrutura da Presidência não entram na conta."
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
     if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${t.BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
@@ -1485,7 +1484,6 @@
       if (r.mg < r.m && p.k !== "e" && p.k !== "j" && p.k !== "p" && !p.j) add(lado, h("p", { class: "nota" }, `Em ${r.m - r.mg} ${r.m - r.mg === 1 ? "mês" : "meses"} não houve salário (licença, por exemplo), mas o gabinete continuou funcionando. Cada média usa os seus próprios meses.`));
       if (p.k === "j") add(lado, h("p", { class: "caixa-nota" }, "Somamos os dois cargos sem contar nada duas vezes: o salário entra uma vez (nos meses como ministro, quem paga é o Congresso); a cota e a equipe do gabinete só nos meses exercendo o mandato; viagens e jetons só nos meses como ministro."));
       if ((p.k === "d" || p.k === "s") && p.j) add(lado, h("p", { class: "nota" }, `Nos meses no ministério, o salário que ${p.k === "d" ? "a Câmara" : "o Senado"} pagou aparece na página de ministro, e não aqui: aqui ficam só os meses exercendo o mandato.`));
-      if (casaBase(p) === "d") add(lado, h("p", { class: "aviso" }, "Ainda faltam o 13º, a ajuda de custo e as diárias dos deputados. O valor real que recebem é um pouco maior."));
       if (p.k === "e") {
         const ate = meta().ultimo_mes_executivo;
         add(lado, h("p", { class: "aviso" }, p.tp === "pr"
@@ -1784,7 +1782,7 @@
           h("div", { class: "acoes" },
             h("a", { href: urlDe(o.id), class: "pequeno", onclick: () => { S.origem = "comparar"; } }, `Ver o contracheque de ${o.n}`),
             h("button", { type: "button", class: "link-botao pequeno", onclick: () => { S.outro = null; render(); irPara("comparar"); } }, "Tirar da comparação")),
-          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa. Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null);
+          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa.") : null);
       }
     }
     return card;
@@ -2570,7 +2568,6 @@
         h("ul", { class: "lista nota" },
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
-          R.casa === "d" && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "Para deputados, ainda faltam o 13º, a ajuda de custo e as diárias.") : null,
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,
           R.casa === "p" ? h("li", null, `Prefeitura ${deCid(R.cid)}: prefeito, vice, secretários municipais${R.cid === SP ? " e subprefeitos" : ""}. Só o que recebem: a Prefeitura não publica os gastos por pessoa. Servidores cedidos por outro órgão ficam de fora.`) : null,
           R.casa === "v" ? h("li", null, `Vereadores ${deCid(R.cid)}: ${(infoG(G()) || {}).subsidio_folha ? "o salário vem da folha de pagamento da Câmara" : "o salário é o mesmo para todos; o que muda é quanto cada um usa da verba do gabinete"}. Suplentes entram pelos meses em que ocuparam o gabinete. Vereadores de cidades diferentes não se comparam aqui: cada Câmara tem as suas regras.`) : null,
