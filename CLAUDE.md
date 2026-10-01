@@ -6,13 +6,22 @@ armadilhas que não estão escritas em outro lugar.
 ## Regras que não mudam
 
 - Só dados públicos oficiais, e cada número com o link da fonte.
-- Não contornar CAPTCHA, bloqueio de robôs (WAF), login ou consulta que pede CPF. Se o portal bloqueia, o estado fica
-  como "captcha" ou "navegador" e segue sem o dado. Não usar credenciais que apareçam no código dos portais (no Mato
-  Grosso do Sul, só a chave anônima de `/Auth/Token`, que o portal entrega a qualquer visitante).
+- Não contornar CAPTCHA, bloqueio de robôs (WAF), login ou consulta que pede CPF: isso é barreira técnica, e não se
+  passa por cima. Se o portal bloqueia, o estado fica como "captcha" ou "navegador" e segue sem o dado. Não usar
+  credenciais que apareçam no código dos portais (no Mato Grosso do Sul, só a chave anônima de `/Auth/Token`, que o
+  portal entrega a qualquer visitante).
 - Não guardar CPF, nem mascarado, nem os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
-- Respeitar o `robots.txt` e o `Crawl-delay`, com pausas entre as consultas. A sessão de `coleta/util.py` (`_sessao()`,
-  `SessaoEducada`) já lê o robots.txt de cada site, não abre o que ele proíbe e respeita o Crawl-delay: todo robô usa
-  essa sessão, nunca `requests.get` direto. Quando um site proíbe, o robô para e o site fica com o que já foi gravado.
+- `robots.txt`: é uma convenção, não lei (decisão do Jean-François, 01/10/2026). Por padrão, respeitar o robots.txt e o
+  `Crawl-delay`, com pausas entre as consultas: a sessão de `coleta/util.py` (`_sessao()`, `SessaoEducada`) faz isso, e
+  todo robô usa essa sessão, nunca `requests.get` direto.
+  Exceção: dados públicos que a LAI manda publicar e abrir para acesso automatizado (Lei 12.527/2011, art. 8º, § 3º,
+  III), como a remuneração de agentes públicos, podem ser lidos mesmo quando o robots.txt proíbe, desde que:
+  - o endereço esteja na lista de exceções do código, com o motivo, e no README (público);
+  - a leitura seja mínima: só as páginas necessárias, no máximo uma vez por semana, com pausa entre os pedidos e
+    respeitando o Crawl-delay;
+  - o robô se identifique (User-Agent "ContasDoPoder");
+  - o robô pare se o órgão pedir ou bloquear (e aí vale a regra do WAF acima);
+  - haja, em paralelo, um pedido pela LAI dos mesmos dados.
 - Nunca desligar a verificação de TLS. Se a cadeia do certificado estiver incompleta, completar com o certificado
   intermediário certo (AIA) junto com o `certifi`.
 - Fotos só com licença livre ou autorização, com crédito em `site/fotos/creditos.json`.
@@ -63,8 +72,9 @@ armadilhas que não estão escritas em outro lugar.
 - Ao passar arquivos entre máquinas, use nomes únicos e confira o md5 (uma cópia antiga já foi publicada por engano).
 - Câmara: o robots.txt (desde 18/09/2026) proíbe `/deputados/*/*` (salário, verba e pessoal de cada deputado). A verba
   vem da página principal (`/deputados/ID?ano=`); salário e equipe até set/2026 estão em `dados/camara/` (no Git);
-  depois, o salário sai do Decreto Legislativo 172/2022 pelos meses em exercício. 13º e diárias: só com autorização.
+  depois, o salário sai do Decreto Legislativo 172/2022 pelos meses em exercício. 13º e diárias: entram se essas
+  páginas virarem exceção (regra do robots.txt acima).
 - Portais CKAN proíbem `/api/` no robots.txt: ache os arquivos pela página do conjunto (`util.recursos_ckan`).
-- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): robôs parados (`BLOQUEADO_ROBOTS`).
+- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): robôs parados (`BLOQUEADO_ROBOTS`) até virarem exceção.
 - No Cowork, a pasta montada não deixa apagar arquivos: `node publicacao/gerar.mjs` falha ao limpar `publicar/`. Para
   conferir o build, copie `site/` e `publicacao/` para uma pasta fora de `mnt/` e rode lá.
