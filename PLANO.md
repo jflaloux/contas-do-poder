@@ -69,7 +69,8 @@ Cada número tem link para a fonte oficial.
 - [x] Fotos do governo federal: Congresso ou Wikimedia Commons com crédito (62 de 71, 17 escolhidas à mão em
   `dados/referencia/fotos_governo.json`; faltam 9 sem foto de licença livre) — Claude
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
-- [ ] Judiciário: ministros do STF e dos tribunais superiores — próximo passo sugerido
+- [x] Judiciário, prova de conceito: levantamento do STF, STJ, TST, STM, TSE, CNJ, TJs e PGR, com amostra conferida (`dados/referencia/judiciario.json`) — Claude
+- [ ] Judiciário, passo 1: ministros do STF, STJ, TST, STM e TSE e conselheiros do CNJ, mês a mês (STJ, TST, CNJ e PGR pela fonte oficial; STF, STM, TSE e desembargadores dos TJs pelo DadosJusBr, até a decisão sobre as exceções ao robots.txt do STF e do STM) — Claude; exceções ao robots.txt do STF e do STM — Jean-François decide
 - [ ] TCU; presidentes de estatais — depois
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude
@@ -79,7 +80,8 @@ Cada número tem link para a fonte oficial.
 - [x] Vereadores, passo 2d: Aracaju (folha) e Boa Vista (subsídio da resolução e verba por tipo) — Claude
 - [ ] Vereadores, passo 2e: Curitiba (Betha Cloud) e Palmas (NúcleoGov e prodata, em JavaScript). Teresina e João Pessoa: as Câmaras
   mudaram de endereço (teresina.pi.leg.br, joaopessoa.pb.leg.br); não há proibição no robots.txt (o "bloqueio" era o endereço antigo fora do ar). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
-- [ ] Capitais que bloqueiam o exterior: rodar o robô num computador no Brasil (runner próprio do GitHub no seu Mac ou num servidor brasileiro) — Jean-François decide
+- [x] Capitais e estados que bloqueiam o exterior: rodada semanal no Mac (`rotina/semana-brasil.sh`, launchd), com `coleta/onde.py` e o relatório `dados/processados/situacao.md` — Claude
+- [ ] Instalar a rodada no Mac: `bash rotina/instalar-mac.sh` e uma primeira vez com `bash rotina/semana-brasil.sh --agora` — Jean-François
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
 - [x] Prefeituras: Salvador, Curitiba, Natal, Campo Grande (desde jun/2025) e Rio (só prefeito e vice: a folha não diz o cargo) — Claude
 - [ ] Prefeituras, próximas: Macapá (portal de
