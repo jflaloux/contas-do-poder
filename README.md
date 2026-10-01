@@ -173,6 +173,10 @@ Robô `coleta/municipios.py`, para as 5.568 câmaras:
   aparecem.
 - **Teto do salário do vereador**: Constituição, art. 29, VI (20% a 75% do salário do deputado estadual, que é
   no máximo 75% do federal), pela população.
+- **Salário médio da cidade**: o salário médio mensal do pessoal assalariado das empresas e outras organizações
+  formais (inclui órgãos públicos), em reais, do Cadastro Central de Empresas do IBGE (tabela 9509 do SIDRA, ano mais
+  recente: 2024), para pôr ao lado do teto do vereador. Uma consulta só para as 5.570 cidades
+  (`dados/municipios/salario_medio.csv`), de novo a cada 30 dias. No `municipios.json` é o 9º campo de cada cidade.
 - **Valor suspeito**: custo por habitante abaixo de 30% da mediana das cidades do mesmo tamanho (46 cidades).
   Provavelmente parte do gasto foi informada em outra função; a cidade aparece com aviso e fica fora das
   comparações.

@@ -441,7 +441,8 @@ FAIXAS_TETO = [(10_000, 0.20), (50_000, 0.30), (100_000, 0.40), (300_000, 0.50),
 
 def _municipios():
     """site/dados/municipios.json (todas as cidades) e site/dados/vereadores/UF.json (nomes, lidos sob demanda).
-    municipios.json -> m: [[cod_ibge, nome, uf, populacao, capital, vereadores, custo_anual, ano_do_custo], ...]"""
+    municipios.json -> m: [[cod_ibge, nome, uf, populacao, capital, vereadores, custo_anual, ano_do_custo, salario_medio], ...]
+    (salario_medio: salário médio mensal dos trabalhadores formais da cidade, em reais, do ano meta.salario_medio_ano)"""
     pasta = RAIZ / "dados" / "municipios"
     if not (pasta / "municipios.csv").exists():
         return
@@ -453,16 +454,24 @@ def _municipios():
     custo = custo[custo.custo > 0].sort_values("ano").groupby("cod_ibge").tail(1).set_index("cod_ibge")
     ver = pd.read_csv(pasta / "vereadores.csv") if (pasta / "vereadores.csv").exists() else None
     n_ver = ver.groupby("cod_ibge").size() if ver is not None else pd.Series(dtype=int)
+    sm = pd.read_csv(pasta / "salario_medio.csv") if (pasta / "salario_medio.csv").exists() else pd.DataFrame(columns=["cod_ibge", "ano", "salario_medio_reais"])
+    sal = dict(zip(sm.cod_ibge, sm.salario_medio_reais))
+    sm_ano = int(sm.ano.max()) if len(sm) else None
     linhas = []
     for r in mu.itertuples():
         c = custo.loc[r.cod_ibge] if r.cod_ibge in custo.index else None
         linhas.append([int(r.cod_ibge), r.nome, r.uf, int(r.populacao or 0), int(r.capital), int(n_ver.get(r.cod_ibge, 0)),
-                       _r(c.custo) if c is not None else None, int(c.ano) if c is not None else None])
+                       _r(c.custo) if c is not None else None, int(c.ano) if c is not None else None,
+                       round(float(sal[r.cod_ibge]), 2) if r.cod_ibge in sal and pd.notna(sal[r.cod_ibge]) else None])
     saida = RAIZ / "site" / "dados" / "municipios.json"
     saida.write_text(json.dumps({
         "meta": {"teto_deputado_estadual": round(SUBSIDIO_DEPUTADO_FEDERAL * 0.75, 2), "faixas_teto": [[f if f != float("inf") else None, pct] for f, pct in FAIXAS_TETO],
                  "fonte_custo": "Tesouro Nacional (Siconfi), Declaração de Contas Anuais, função Legislativa, despesas liquidadas",
-                 "fonte_vereadores": "TSE, eleitos em 2024"},
+                 "fonte_vereadores": "TSE, eleitos em 2024",
+                 "salario_medio_ano": sm_ano,
+                 "fonte_salario_medio": "IBGE, Cadastro Central de Empresas (CEMPRE): salário médio mensal do pessoal assalariado "
+                                        "das empresas e outras organizações formais da cidade (inclui órgãos públicos), em reais do ano",
+                 "link_salario_medio": "https://sidra.ibge.gov.br/tabela/9509"},
         "m": linhas}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     if ver is not None:
         pasta_v = RAIZ / "site" / "dados" / "vereadores"

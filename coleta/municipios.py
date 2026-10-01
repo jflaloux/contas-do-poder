@@ -7,6 +7,8 @@ Fontes (todas nacionais, para as 5.568 cidades com câmara):
   cidade: https://apidatalake.tesouro.gov.br/ords/siconfi/tt/dca?an_exercicio=AAAA&no_anexo=DCA-Anexo%20I-E&id_ente=COD
   Custo da Câmara = função "01 - Legislativa" menos "01.032 - Controle Externo" (tribunal de contas do
   município, que só São Paulo e Rio têm), em despesas liquidadas.
+- IBGE, Cadastro Central de Empresas (CEMPRE), salário médio mensal dos trabalhadores formais por cidade (tabela 9509
+  do SIDRA): https://apisidra.ibge.gov.br/values/t/9509/n6/all/v/1606,10143/p/last%201
 - TSE, candidatos de 2024: https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip
   (vereadores eleitos: "ELEITO POR QP" e "ELEITO POR MÉDIA"; com eleição suplementar, vale a que tem mais eleitos).
 
@@ -179,7 +181,30 @@ _NOMES_DIFERENTES = {
 }
 
 
+SIDRA_SALARIO = "https://apisidra.ibge.gov.br/values/t/9509/n6/all/v/1606,10143/p/last%201"
+SALARIO_MEDIO = PASTA / "salario_medio.csv"
+
+
+def salario_medio():
+    """Salário médio mensal dos trabalhadores formais de cada cidade (IBGE, Cadastro Central de Empresas, tabela 9509 do
+    SIDRA): em reais e em salários mínimos, do ano mais recente. Uma consulta só, para as 5.570 cidades; de novo a cada
+    30 dias (o IBGE publica um ano novo por vez)."""
+    if SALARIO_MEDIO.exists() and time.time() - SALARIO_MEDIO.stat().st_mtime < 30 * 86400:
+        return
+    linhas = {}
+    for x in _sessao().get(SIDRA_SALARIO, timeout=180).json()[1:]:
+        if x.get("V") in (None, "", "-", "...", "X"):
+            continue
+        r = linhas.setdefault(int(x["D1C"]), {"cod_ibge": int(x["D1C"]), "ano": int(x["D3C"])})
+        r["salario_medio_reais" if x["D2C"] == "10143" else "salario_medio_sm"] = float(x["V"])
+    if len(linhas) < 5000:
+        raise ValueError(f"salário médio do IBGE: só {len(linhas)} cidades")
+    pd.DataFrame(list(linhas.values())).sort_values("cod_ibge").to_csv(SALARIO_MEDIO, index=False)
+    log(f"  Salário médio dos trabalhadores formais (IBGE, CEMPRE): {len(linhas)} cidades")
+
+
 def coletar():
     muni = municipios()
     vereadores(muni)
     custos(muni)
+    salario_medio()
