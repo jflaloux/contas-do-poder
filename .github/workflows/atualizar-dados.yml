@@ -1,6 +1,8 @@
 # Robô de atualização do Contas do Poder.
 # Toda semana ele baixa os dados oficiais da Câmara e do Senado, monta a base, confere com os
 # sites oficiais e, se estiver tudo certo, salva os números novos neste repositório.
+# Roda nos EUA: as fontes que só abrem do Brasil ficam para a rodada do Mac (rotina/semana-brasil.sh, terça à tarde);
+# coleta/onde.py diz quem roda o quê, e dados/processados/situacao.md mostra a situação de cada fonte.
 # O Cloudflare Pages publica o site sozinho a cada mudança no repositório.
 # Se uma fonte estiver fora do ar ou a conferência falhar, nada é salvo: o site anterior
 # continua no ar e o GitHub manda um e-mail avisando.
@@ -20,6 +22,9 @@ permissions:
 concurrency:
   group: atualizar-dados
   cancel-in-progress: false
+
+env:
+  CONTAS_ONDE: exterior
 
 jobs:
   atualizar:
@@ -60,16 +65,33 @@ jobs:
       - name: Conferir com os sites oficiais (trava se algo estiver errado)
         run: python coletar.py conferir --max-alertas 8
 
+      - name: Situação das fontes (no resumo desta execução)
+        if: always()
+        run: cat dados/processados/situacao.md >> "$GITHUB_STEP_SUMMARY" || true
+
       - name: Salvar os números novos no repositório
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add dados/processados dados/portal_transparencia dados/municipios dados/governadores dados/camara dados/assembleias dados/referencia/renda_trabalho.json site/dados site/fotos
+          git add dados/processados dados/portal_transparencia dados/municipios dados/municipios_tce dados/governadores dados/camara dados/assembleias dados/referencia/renda_trabalho.json site/dados site/fotos
           if git diff --cached --quiet; then
             echo "Nada mudou desde a última atualização."
           else
             git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
-            git pull --rebase
+            if ! git pull --rebase; then
+              # conflito com a rodada do Mac: só nos arquivos do site gerados a partir dos CSVs. Fica a versão de lá
+              # e os arquivos são refeitos com os CSVs das duas rodadas
+              CONFLITOS=$(git diff --name-only --diff-filter=U)
+              if echo "$CONFLITOS" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/)'; then
+                echo "Conflito fora dos arquivos gerados: $CONFLITOS"; git rebase --abort; exit 1
+              fi
+              echo "$CONFLITOS" | xargs git checkout --ours --
+              echo "$CONFLITOS" | xargs git add --
+              GIT_EDITOR=true git rebase --continue
+              python coletar.py montar
+              git add dados/processados site/dados site/fotos
+              git diff --cached --quiet || git commit -m "Arquivos do site refeitos depois das duas rodadas"
+            fi
             git push
           fi
 

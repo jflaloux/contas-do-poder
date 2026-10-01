@@ -5,6 +5,7 @@ Cada módulo desta pasta cuida de uma cidade: `coletar()` baixa a folha e grava 
 dados/municipios/<cidade>/ (vai para o Git), e `montar()` devolve (meta, pessoas) no formato comum (comum.py).
 Uma cidade que falhar não derruba as outras: o site continua com o que já estava gravado.
 """
+from .. import onde
 from ..util import TempoEsgotado, log
 from . import campo_grande, comum, curitiba, fortaleza, natal, porto_alegre, recife, rio, salvador, sp, vitoria
 
@@ -14,8 +15,11 @@ CIDADES = [sp, rio, recife, fortaleza, vitoria, porto_alegre, salvador, curitiba
 
 def coletar():
     for cidade in CIDADES:
+        if onde.pular("prefeituras", cidade):
+            continue
         try:
-            cidade.coletar()
+            with onde.registrar("prefeituras", cidade):
+                cidade.coletar()
         except TempoEsgotado:
             raise
         except Exception as e:  # noqa: BLE001 — uma cidade fora do ar não para as outras

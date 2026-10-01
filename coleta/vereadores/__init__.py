@@ -4,6 +4,7 @@ Cada módulo desta pasta cuida de uma Câmara Municipal: `coletar()` baixa os da
 dados/municipios/<cidade>/ (vai para o Git), e `montar(tipos)` devolve (meta, pessoas) no formato comum
 (ver comum.py). Uma cidade que falhar não derruba as outras: o site continua com o que já estava gravado.
 """
+from .. import onde
 from ..util import TempoEsgotado, log
 from . import aracaju, belo_horizonte, boa_vista, comum, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, rio_de_janeiro, sao_luis, sp
 
@@ -12,8 +13,11 @@ CIDADES = [sp, rio_de_janeiro, belo_horizonte, fortaleza, goiania, maceio, manau
 
 def coletar():
     for cidade in CIDADES:
+        if onde.pular("vereadores", cidade):
+            continue
         try:
-            cidade.coletar()
+            with onde.registrar("vereadores", cidade):
+                cidade.coletar()
         except TempoEsgotado:
             raise
         except Exception as e:  # noqa: BLE001 — uma cidade fora do ar não para as outras

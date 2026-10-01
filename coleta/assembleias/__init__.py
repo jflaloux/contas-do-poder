@@ -6,6 +6,7 @@ dados/assembleias/<uf>/ (vai para o Git), e `montar(tipos)` devolve (meta, pesso
 site/dados/assembleias.json. Um estado que falhar não derruba os outros: o site continua com o que já estava gravado.
 O levantamento do que cada Assembleia publica está em dados/referencia/assembleias.json.
 """
+from .. import onde
 from ..util import TempoEsgotado, log
 from ..vereadores import comum as vc
 from . import ap, ba, ce, comum, es, go, mg, ms, pb, pe, rj, ro, rs, sc, se, sp, to
@@ -15,8 +16,11 @@ ESTADOS = [sp, mg, rj, ba, pe, ce, pb, go, sc, ms, ro, to, se, es, rs, ap]
 
 def coletar():
     for estado in ESTADOS:
+        if onde.pular("assembleias", estado):
+            continue
         try:
-            estado.coletar()
+            with onde.registrar("assembleias", estado):
+                estado.coletar()
         except TempoEsgotado:
             raise
         except Exception as e:  # noqa: BLE001 — uma Assembleia fora do ar não para as outras

@@ -37,7 +37,16 @@ armadilhas que não estão escritas em outro lugar.
 ## Onde e como rodar
 
 - Vários portais de estados e capitais só abrem de dentro do Brasil. Esses robôs rodam no Mac do Jean-François; o
-  GitHub Actions roda nos EUA e pega só o que abre de fora.
+  GitHub Actions roda nos EUA e pega só o que abre de fora. Quem roda o quê está em `coleta/onde.py` (`SO_BRASIL` e o
+  histórico de cada fonte em `dados/processados/coletas_*.json`); a rodada do Mac é `rotina/semana-brasil.sh`
+  (README, "Duas rodadas"). Robô novo que só abre do Brasil: o nome dele em `SO_BRASIL`. Grupo novo de fontes: o laço
+  de `coletar()` com `onde.pular(...)` e `with onde.registrar(...)`, como em `coleta/vereadores/__init__.py`, e o
+  grupo em `coletar.py rodada_brasil()` e em `coleta/situacao.py`.
+- `dados/processados/situacao.md` (`python3 coletar.py situacao`) mostra cada fonte: último mês, última coleta certa,
+  erro. Atraso que é da própria fonte vai em `ATRASOS_CONHECIDOS` (`coleta/situacao.py`), com o motivo.
+- No Cowork, `git status` cria `.git/index.lock` e, sem permissão para apagar arquivos na pasta, não consegue tirar
+  a trava, que fica lá e bloqueia os commits (os seus e os do chat do site). Peça a permissão de apagar no começo da
+  sessão ou, sem ela, tire a trava com `mv` para fora de `.git/`.
 - Em sessões com tempo limitado por comando (Cowork: uns 3 minutos, sem processo em segundo plano), rode em partes:
   `python3 coletar.py <etapa> --tempo-max 150`, ou, para a folha de um estado,
   `python3 -m coleta.folhas_estaduais rn 150`. Os robôs gravam o que já pegaram e continuam de onde pararam.

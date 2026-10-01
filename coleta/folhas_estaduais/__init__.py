@@ -5,6 +5,7 @@ abertos do Estado): `coletar()` grava dados/governadores/folha/<uf>.csv (vai par
 (e os 2 últimos de novo, porque a folha pode ser corrigida). Um estado fora do ar não para os outros: o site usa o
 que já estava gravado. O resto (o salário fixado em lei, quem ocupa o cargo) está em dados/governadores/governadores.json.
 """
+from .. import onde
 from ..util import TempoEsgotado, log
 from . import ac, al, am, ba, ce, df, es, go, ma, mg, ms, pa, pb, pe, pi, pr, rj, rn, ro, rr, rs, sc, se, sp
 
@@ -40,8 +41,11 @@ NOTAS = {
 
 def coletar():
     for uf, m in ESTADOS.items():
+        if onde.pular("folhas", uf):
+            continue
         try:
-            n = m.coletar()
+            with onde.registrar("folhas", uf):
+                n = m.coletar()
             log(f"  Folha {uf}: {n} linhas novas ou refeitas")
         except TempoEsgotado:
             raise

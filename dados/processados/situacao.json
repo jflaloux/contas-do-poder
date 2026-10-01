@@ -1,0 +1,676 @@
+{
+ "gerado_em": "2026-10-01T22:45:55",
+ "ultimo_mes_fechado": 202609,
+ "fontes": [
+  {
+   "fonte": "prefeituras/campo_grande",
+   "situacao": "atrasada",
+   "ultimo_mes": 202602,
+   "meses_atras": 7,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/recife",
+   "situacao": "atrasada",
+   "ultimo_mes": 202606,
+   "meses_atras": 3,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/rj",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202605,
+   "meses_atras": 4,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas"
+  },
+  {
+   "fonte": "folhas/MG",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202603,
+   "meses_atras": 6,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": "a Secretaria de Planejamento publica a folha com alguns meses de atraso"
+  },
+  {
+   "fonte": "folhas/PA",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202603,
+   "meses_atras": 6,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": "desde abr/2026 a consulta não mostra quem tem mandato eletivo"
+  },
+  {
+   "fonte": "folhas/RJ",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202603,
+   "meses_atras": 6,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago"
+  },
+  {
+   "fonte": "folhas/SP",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202604,
+   "meses_atras": 5,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": "o Estado publica a série histórica com alguns meses de atraso"
+  },
+  {
+   "fonte": "assembleias/ap",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/ba",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/ce",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/es",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/go",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/mg",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/ms",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/pb",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/pe",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/ro",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/rs",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/sc",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/se",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/sp",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/to",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "federal/camara",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "federal/executivo",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "federal/senado",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/AC",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/AL",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/AM",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/BA",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/CE",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/DF",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/ES",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/GO",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/MA",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/MS",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/PB",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/PE",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/PI",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/PR",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/RN",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/RO",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/RR",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/RS",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/SC",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/SE",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/curitiba",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/fortaleza",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/natal",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/porto_alegre",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/rio",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/salvador",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/sp",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/vitoria",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "tce/pb",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/aracaju",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/belo_horizonte",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/boa_vista",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/fortaleza",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/goiania",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/maceio",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/manaus",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/natal",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/porto_alegre",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/recife",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/rio_de_janeiro",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/sao_luis",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/sp",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  }
+ ]
+}

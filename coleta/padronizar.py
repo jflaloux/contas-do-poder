@@ -530,7 +530,7 @@ def _resumo(politicos, lanc, equipe):
 def executar():
     log("Padronizando...")
     pc, lc = _camara()
-    ps, ls, liquido = _senado()
+    ps, ls, _liquido = _senado()  # o líquido não é guardado (regra do projeto: nada de descontos nem líquido)
     lanc = _ratear_anuais(lc + ls)
     pe, le = _executivo(pc + ps, pd.DataFrame(lanc))
     # ligação de volta: deputado/senador que foi ministro
@@ -552,7 +552,6 @@ def executar():
     salvar_json(PROCESSADOS / "politicos.json", politicos)
     pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"]) \
         .to_csv(PROCESSADOS / "lancamentos.csv.gz", index=False)
-    pd.DataFrame(liquido).to_csv(PROCESSADOS / "senado_salario_liquido.csv", index=False)
     equipe = _equipe(ids)
     equipe.to_csv(PROCESSADOS / "equipe.csv", index=False)
     salvar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe))

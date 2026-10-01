@@ -43,6 +43,36 @@ e o GitHub manda um e-mail. O relatório da conferência fica anexado em cada ex
 A legislatura atual termina em janeiro de 2027. A partir de fevereiro de 2027 o robô para com um aviso
 até `coleta/config.py` ser atualizado para a nova legislatura.
 
+### Duas rodadas: nos EUA e no Brasil
+
+Vários portais de estados e capitais só abrem de dentro do Brasil, e o GitHub Actions roda nos EUA. Por isso há
+duas rodadas por semana:
+
+| Rodada | Onde | Quando | O que faz |
+|---|---|---|---|
+| Exterior | GitHub Actions | terça, 8h17 | Tudo o que abre de fora (`CONTAS_ONDE=exterior`) |
+| Brasil | Mac do Jean-François (`rotina/semana-brasil.sh`, pelo launchd) | terça, 13h07 (ou quando o Mac acordar; tenta de novo nos dias seguintes) | `python3 coletar.py brasil`: as fontes que só abrem do Brasil e as que falharam de fora nesta semana; refaz os arquivos do site a partir dos CSVs; commit só dos dados e push |
+
+- **Quem roda o quê** (`coleta/onde.py`): a lista `SO_BRASIL` e o histórico de cada fonte. Cada rodada anota, por
+  fonte, a última tentativa, o último sucesso, as falhas seguidas e o erro, num arquivo só seu
+  (`dados/processados/coletas_exterior.json` e `coletas_brasil.json`, para as duas não brigarem no Git). Uma fonte que
+  falha de fora passa sozinha para o Mac na mesma semana; depois de 2 falhas de fora, o GitHub deixa de tentar (e tenta
+  de novo uma vez por mês).
+- **Situação das fontes** (`python3 coletar.py situacao`, no fim de cada rodada): `dados/processados/situacao.md`,
+  com o último mês no site, a última coleta certa e onde, e o último erro de cada fonte. "falhando" = a última
+  tentativa falhou; "atrasada" = 3 meses ou mais atrás do último mês fechado; "atrasada (fonte)" = o atraso é da própria
+  fonte (Minas e São Paulo publicam a folha com meses de atraso, por exemplo). No GitHub, o relatório aparece no resumo
+  de cada execução; no Mac, as fontes com problema viram um aviso na Central de Notificações.
+- **Conflitos**: os CSVs de cada rodada são de fontes diferentes; os arquivos do site saem dos CSVs. Se as duas rodadas
+  mexerem no mesmo arquivo do site, a segunda fica com a versão da outra e refaz os arquivos (`python3 coletar.py
+  montar`, que só monta, sem coletar).
+- **Commits feitos à mão**: se houver commits esperando o push do Jean-François, a rodada do Brasil faz o seu commit
+  mas não envia nada (avisa). Se houver mudança sem commit nos arquivos de dados ou no código, ela não roda (avisa e
+  tenta no dia seguinte).
+- **Instalar no Mac** (uma vez): `bash rotina/instalar-mac.sh` (cria o `.venv`, instala as dependências e o
+  agendamento). Rodar na hora: `bash rotina/semana-brasil.sh --agora`. O registro de cada rodada fica em
+  `~/Library/Logs/ContasDoPoder/`.
+
 ## Publicação (Cloudflare Pages)
 
 Projeto do Cloudflare Pages conectado a este repositório, com o comando de build `node publicacao/gerar.mjs`

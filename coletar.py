@@ -23,8 +23,16 @@ Uso:
     python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
+    python3 coletar.py situacao        # relatório de cada fonte: último mês no site, última coleta certa, falhas
+                                       # (dados/processados/situacao.md)
     python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + assembleias + indice
-                                       # + renda + padronizar + fotos + site
+                                       # + renda + padronizar + fotos + site + situacao
+    python3 coletar.py montar          # só refaz os arquivos do site das capitais, Assembleias e governadores (sem coletar),
+                                       # os endereços e o relatório de situação
+    python3 coletar.py brasil          # a rodada do Mac, no Brasil (rotina/semana-brasil.sh): só as fontes que o exterior não
+                                       # pega (coleta/onde.py), e depois os arquivos do site que dependem delas
+
+    No GitHub Actions (CONTAS_ONDE=exterior), "tudo" pula as fontes que só abrem do Brasil (coleta/onde.py).
 
     --tempo-max 160   para parar sozinho depois de 160 s (rode de novo para continuar)
     --max-alertas 8   (com "conferir") termina com erro se a conferência passar desse número;
@@ -33,7 +41,8 @@ Uso:
 import argparse
 import sys
 
-from coleta import assembleias, camara, conferir, executivo, fotos, governadores, indice, municipios, padronizar, prefeituras, renda, senado, site, vereadores
+from coleta import (assembleias, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
+                    renda, senado, site, situacao, vereadores)
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -54,12 +63,36 @@ ETAPAS = {
     "fotos": fotos.coletar,
     "conferir": conferir.executar,
     "site": site.executar,
+    "situacao": situacao.executar,
 }
+# etapas de uma fonte só (federais): a tentativa e o resultado vão para dados/processados/coletas_<lugar>.json
+FEDERAIS = {"camara", "senado", "executivo", "municipios", "renda"}
+
+
+def montar():
+    """Refaz, sem coletar nada, os arquivos do site que vêm dos CSVs de dados/ (capitais, Assembleias, governadores),
+    os endereços e o relatório de situação. É o que resolve um conflito do Git nesses arquivos: eles saem dos CSVs."""
+    vereadores.executar_site()
+    prefeituras.executar_site(baixar_fotos=False)
+    assembleias.executar_site(baixar_fotos=False)
+    governadores.executar(baixar_fotos=False)
+    enderecos.executar()
+    return situacao.executar()
+
+
+def rodada_brasil():
+    """A rodada do Mac: as fontes que só abrem do Brasil (e as que falharam de fora nesta semana), depois os arquivos
+    do site que dependem delas, os endereços e o relatório de situação. Não mexe na base federal (dados.json)."""
+    onde.SO_O_QUE_FALTA = True
+    for etapa in (vereadores.coletar, prefeituras.coletar, assembleias.coletar, governadores.coletar):
+        etapa()
+    enderecos.executar()
+    return situacao.executar()
 
 
 def main():
     ap = argparse.ArgumentParser(description="Coleta de dados públicos sobre políticos (federais, governadores, prefeituras e câmaras)")
-    ap.add_argument("etapa", choices=[*ETAPAS, "tudo"])
+    ap.add_argument("etapa", choices=[*ETAPAS, "tudo", "brasil", "montar"])
     ap.add_argument("--tempo-max", type=int, default=0, help="segundos (0 = sem limite)")
     ap.add_argument("--max-alertas", type=int, default=None, help="com 'conferir': erro se passar deste número")
     args = ap.parse_args()
@@ -69,10 +102,19 @@ def main():
         sys.exit(5)
     definir_prazo(args.tempo_max)
     etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "indice", "renda", "padronizar",
-               "fotos", "site"]
+               "fotos", "site", "situacao"]
               if args.etapa == "tudo" else [args.etapa])
     try:
+        if args.etapa in ("brasil", "montar"):
+            (rodada_brasil if args.etapa == "brasil" else montar)()
+            return
         for etapa in etapas:
+            if etapa in FEDERAIS:
+                if onde.pular("federal", etapa):
+                    continue
+                with onde.registrar("federal", etapa):
+                    resultado = ETAPAS[etapa]()
+                continue
             resultado = ETAPAS[etapa]()
             if etapa == "conferir" and args.max_alertas is not None and resultado > args.max_alertas:
                 log(f"Conferência com {resultado} alertas (máximo {args.max_alertas}). Veja dados/processados/conferencia.md.")
