@@ -20,8 +20,9 @@ armadilhas que não estão escritas em outro lugar.
   - a leitura seja mínima: só as páginas necessárias, no máximo uma vez por semana, com pausa entre os pedidos e
     respeitando o Crawl-delay;
   - o robô se identifique (User-Agent "ContasDoPoder");
-  - o robô pare se o órgão pedir ou bloquear (e aí vale a regra do WAF acima);
-  - haja, em paralelo, um pedido pela LAI dos mesmos dados.
+  - o robô pare se o órgão pedir ou bloquear (e aí vale a regra do WAF acima).
+  Quando a única barreira é o robots.txt, não precisa de pedido pela LAI em paralelo (decisão do Jean-François,
+  01/10/2026).
 - Nunca desligar a verificação de TLS. Se a cadeia do certificado estiver incompleta, completar com o certificado
   intermediário certo (AIA) junto com o `certifi`.
 - Fotos só com licença livre ou autorização, com crédito em `site/fotos/creditos.json`.

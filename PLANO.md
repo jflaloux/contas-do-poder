@@ -117,7 +117,7 @@ Cada número tem link para a fonte oficial.
 - [x] Conferência dos robots.txt de todos os sites usados; a sessão dos robôs agora bloqueia o que é proibido e respeita
   o Crawl-delay (CKAN pela página do conjunto; Prefeitura de SP e Paraná parados) — Claude
 - [x] Regra do robots.txt: convenção, não lei; exceções para dados que a LAI manda abrir (Câmara, Prefeitura de SP, Paraná) — Jean-François e Claude
-- [ ] Mandar os pedidos pela LAI à Câmara, à Prefeitura de São Paulo e ao Paraná (textos nas notas) — Jean-François
+- [x] Pedidos pela LAI junto com as exceções ao robots.txt: não precisa (decisão de 01/10/2026: quando a única barreira é o robots.txt, o robô lê) — Jean-François
 
 ## Fase 4 — Lançamento
 

@@ -427,8 +427,7 @@ um robô novo deve usar essa sessão, e não `requests` direto.
 "acesso automatizado por sistemas externos" (Lei 12.527/2011, art. 8º, § 3º, III), como a remuneração de agentes
 públicos, são lidos mesmo quando o robots.txt de um órgão proíbe. Cada exceção está em `EXCECOES_ROBOTS`
 (`coleta/util.py`), com o motivo e uma pausa entre os pedidos; o robô se identifica ("ContasDoPoder", com o endereço
-do site), lê só o que falta (o que já foi lido fica no Git) e para se o órgão pedir ou bloquear. Em paralelo, há um
-pedido pela LAI dos mesmos dados. Hoje:
+do site), lê só o que falta (o que já foi lido fica no Git) e para se o órgão pedir ou bloquear. Hoje:
 
 | Site | O que o robots.txt proíbe | O que lemos | Pausa |
 |---|---|---|---|

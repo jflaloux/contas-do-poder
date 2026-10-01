@@ -67,7 +67,7 @@ APIS_LIBERADAS = ("https://commons.wikimedia.org/w/api.php", "https://www.wikida
 # Exceções ao robots.txt (regra no CLAUDE.md): dados que a LAI manda publicar e abrir para acesso automatizado
 # (Lei 12.527/2011, art. 8º, § 3º, III). Cada uma: (começo do endereço, motivo, segundos entre pedidos naquele site).
 # A leitura é mínima (o cache faz cada página ser baixada no máximo uma vez por semana), o robô se identifica pelo
-# User-Agent e para se o site bloquear. Em paralelo, há um pedido pela LAI dos mesmos dados (NOTAS-PRIVADAS).
+# User-Agent e para se o site bloquear.
 EXCECOES_ROBOTS = [
     ("https://www.camara.leg.br/deputados/",
      "Câmara dos Deputados: salário, 13º, férias, diárias e pessoal de gabinete de cada deputado (remuneração de "
