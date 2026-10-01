@@ -445,14 +445,15 @@ seguem o mesmo desenho.
   principal, a posição entre os colegas e o endereço da própria página (quem recebe a imagem não consegue clicar, mas
   consegue digitar). O convite para compartilhar ("Compartilhe este contracheque", com a prévia da imagem) vem depois dos
   números principais, para a pessoa ler primeiro, e antes dos detalhes: no político, entre o contracheque e o mês a mês.
-  No governador e na cidade, há um bloco só, no fim da página, com a imagem e, em letra menor, o texto (WhatsApp, copiar
-  o texto, copiar o link). No celular, o botão quadrado **Compartilhar**, fixo no canto
+  No governador e na cidade, a mesma seção do fim da página do político ("Mande a imagem para quem você quiser"), com a
+  imagem grande e o texto; a Câmara sem o gasto informado não tem imagem e mostra só o texto, no fim do cartão. No celular, o botão quadrado **Compartilhar**, fixo no canto
   de baixo da tela, aparece depois que a pessoa passa pelos números principais (e some enquanto o convite está na tela).
   Os dois abrem primeiro uma janela com a imagem, para a pessoa ver o que vai mandar, com **Enviar imagem…** (o menu do aparelho:
   WhatsApp, Telegram...; no iPhone vai só a imagem, porque com texto junto o WhatsApp do iPhone nem sempre manda os
   dois), **Copiar imagem** (para colar no WhatsApp Web) e **Baixar imagem**. O texto com o link fica em "Prefere mandar
   em texto?"; no fim da página do político (a seção "Resumo para compartilhar"), a imagem e o texto aparecem juntos.
-  A imagem é feita logo depois que a página aparece, para o toque não esperar. As fotos ficam no próprio site
+  A imagem é feita logo depois que a página aparece, para o toque não esperar. Quando ela tem pouca informação
+  (uma Câmara pequena, um prefeito), o espaço que sobra antes do rodapé é dividido entre os blocos. As fotos ficam no próprio site
   (`site/fotos/`) porque o site da Câmara não deixa outro endereço usar as fotos dele num canvas.
 - **Prévia do link** (`site/og.png`, 1200×630) para WhatsApp e redes sociais.
 - **Fotos do governo federal**: quem é deputado ou senador usa a foto oficial do Congresso. Os outros vêm do

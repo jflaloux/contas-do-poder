@@ -678,7 +678,7 @@
     cv.width = W; cv.height = H;
     const g = cv.getContext("2d");
     const t = {
-      cv, g, W, H, M,
+      cv, g, W, H, M, folga: 0, blocos: 0, fixo: {},
       // as letras e as cores do site (estilo.css): Barlow Condensed nos títulos e números, Barlow no texto; a faixa escura
       // de fundo, verde-água para o bolso, âmbar para os gastos e azul-acinzentado para a equipe
       DISP: '"Barlow Condensed", "Barlow", sans-serif', BODY: '"Barlow", system-ui, sans-serif', MONO: '"Barlow Condensed", "Barlow", sans-serif',
@@ -828,15 +828,30 @@
   const creditoFoto = (fc) => (fc ? (fc.l ? `Foto: ${(fc.a || "Wikimedia Commons").replace(/ from .*$/, "").slice(0, 40)} (${fc.l}), Wikimedia Commons` : `Foto: ${fc.a}`) : null);
 
   // ---------------------------------------------------------------- imagem de um político (no período escolhido)
+  // Duas passadas: a primeira desenha com o espaço normal e mede onde o conteúdo termina. Se sobra espaço antes do
+  // rodapé (imagem com poucas informações, como a de uma Câmara pequena), a segunda distribui a sobra entre os blocos
+  // (até 80 px entre um e outro). desenhar(t) devolve onde o conteúdo termina; respiro(t) marca cada vão entre blocos.
+  const respiro = (t) => { t.blocos++; return t.folga; };
+  async function comFolga(desenhar) {
+    const t1 = await novaTela();
+    const fim = await desenhar(t1);
+    const sobra = t1.H - 214 - fim;
+    if (!t1.blocos || sobra < 30) return t1.png();
+    const t2 = await novaTela();
+    Object.assign(t2, { folga: Math.min(80, Math.floor(sobra / t1.blocos)), fixo: t1.fixo });
+    await desenhar(t2);
+    return t2.png();
+  }
   async function imagemPessoa(p, k) {
     const r = resumo(p, k), pos = posicao(p, k);
     if (!r) return null;
-    const t = await novaTela(), { g, W, H, M, C } = t;
+    return comFolga(async (t) => {
+    const { g, W, H, M, C } = t;
     const cab = await cabecaImagem(t, {
       foto: p.f, nome: p.n, sub: `${p.g} · ${partidoUF(p)}`, linhasSub: p.k === "e" || p.k === "j" || p.k === "p" ? 3 : 2,
       rotulo: { e: "CONTRACHEQUE DO CARGO", j: "DOIS CARGOS, SOMADOS", p: "CONTRACHEQUE DO CARGO" }[p.k] || "CONTRACHEQUE DO MANDATO",
     });
-    let y = valorImagem(t, cab.y, `${p.k === "p" ? "QUANTO RECEBE POR MÊS" : "CUSTO POR MÊS"} · ${nomePeriodo(k, true).toUpperCase()}`, reais(r.tm));
+    let y = valorImagem(t, cab.y + respiro(t), `${p.k === "p" ? "QUANTO RECEBE POR MÊS" : "CUSTO POR MÊS"} · ${nomePeriodo(k, true).toUpperCase()}`, reais(r.tm));
     // a barra dividida: o que vai para o bolso e os gastos, como no topo da página
     if (p.k !== "p" && r.tm > 0) {
       const larg = W - 2 * M, wg = r.cm > 0 ? Math.max(12, Math.min(larg - 12, (larg * r.gm) / r.tm)) : larg;
@@ -851,25 +866,29 @@
         : pos.pos === 1 ? `O maior custo entre os ${plural(grupo(p))}` : pos.pos === pos.n ? `O menor custo entre os ${plural(grupo(p))}`
         : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${plural(grupo(p))}` : `Custa menos que ${pos.pctMais}% dos ${plural(grupo(p))}`;
       const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
-      y = reguaImagem(t, y, frase, lugar, p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"]);
+      y = reguaImagem(t, y + respiro(t), frase, lugar, p.k === "p" ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"]);
     } else y += 4;
     // as duas partes do custo dele; vereador de Câmara que não publica a verba (ou publicou incompleta, e ela ficou de
     // fora): "não publicados", não R$ 0
     const cid = p.k === "v" ? cidadeDe(p) || {} : {};
     const semVerba = p.k === "v" && (!cid.verba_nome || (cid.verba_fora || []).some((a) => k === "leg" || a === k));
-    y = cartoesImagem(t, y, [
+    y = cartoesImagem(t, y + respiro(t), [
       [C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`],
       [C.custa, gastosNome(p).toUpperCase(), p.k === "p" || semVerba ? null : reais(r.cm),
         p.k === "p" ? "carro oficial, viagens, equipe" : semVerba ? (cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p)]]);
     // onde mais gasta: os 3 maiores tipos de gasto, por mês (menos, se não couber: a equipe e o aviso vêm embaixo, e o
     // rodapé começa em H - 176)
     const altEquipe = r.em ? 110 : p.k === "v" && p.eq ? 92 : 0;
-    const livre = H - 232 - y - altEquipe - 52, linhaG = Math.floor(livre / 3) >= 40 ? 40 : Math.max(34, Math.floor(livre / 3));
-    const cabem = Math.max(0, Math.min(3, Math.floor(livre / linhaG)));
+    // (na segunda passada, com mais espaço entre os blocos, vale o número de linhas da primeira: ver comFolga)
+    const livre = H - 232 - y - altEquipe - 52;
+    const linhaG = t.fixo.linhaG ?? (Math.floor(livre / 3) >= 40 ? 40 : Math.max(34, Math.floor(livre / 3)));
+    const cabem = t.fixo.cabem ?? Math.max(0, Math.min(3, Math.floor(livre / linhaG)));
+    Object.assign(t.fixo, { linhaG, cabem });
     const maiores = cabem ? maioresGastos(p, k, cabem) : [];
-    if (maiores.length) y = linhasImagem(t, y, `${gastosNome(p).toUpperCase()}: ONDE MAIS GASTA`, maiores.map(([n, v]) => [n, reais(v)]), linhaG);
+    if (maiores.length) y = linhasImagem(t, y + respiro(t), `${gastosNome(p).toUpperCase()}: ONDE MAIS GASTA`, maiores.map(([n, v]) => [n, reais(v)]), linhaG);
     // equipe: à parte (borda tracejada, fora da soma)
     if (r.em) {
+      y += respiro(t);
       const eh = 110;
       g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); t.caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
       t.bolinha(C.equipe, M + 34, y + 40);
@@ -881,6 +900,7 @@
       t.comMes(reais(r.em), W - M - 24 - wMes - wValor, y + 66, `600 48px ${t.MONO}`, 24, "#ffffff");
       y += eh;
     } else if (p.k === "v" && p.eq) {
+      y += respiro(t);
       const eh = 92;
       g.strokeStyle = C.linha; g.lineWidth = 2; g.setLineDash([10, 8]); t.caixa(M + 1, y + 1, W - 2 * M - 2, eh - 2, 20); g.stroke(); g.setLineDash([]);
       t.bolinha(C.equipe, M + 34, y + 46);
@@ -896,20 +916,22 @@
       : p.k === "e" ? `${r.cats.jetons ? `O bolso inclui ${reais(porMes(r, "jetons"))} por mês de jetons. ` : ""}Voos da FAB não têm custo publicado.` : null;
     if (aviso) { g.fillStyle = C.ink2; g.font = `400 22px ${t.BODY}`; g.fillText(aviso, M, Math.min(y + 34, H - 196)); }
     rodapeImagem(t, "VEJA O MÊS A MÊS E A FONTE DE CADA NÚMERO EM", `/${caminhoDe(p)}`, `Tudo com dados abertos oficiais ${fonteDados(p)}`, cab.temFoto ? creditoFoto(p.fc) : null);
-    return t.png();
+    return aviso ? Math.min(y + 34, H - 196) : y;
+    });
   }
 
   // ---------------------------------------------------------------- imagem de um governador
   async function imagemGov(e) {
-    const t = await novaTela(), { g, M, H, C } = t;
+    return comFolga(async (t) => {
+    const { g, M, H, C } = t;
     const fem = govFem(e), p = posGov(e), R = rankingGov("v"), med = mediana(GOV.e.map((x) => x.v[0]));
     const smAtual = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
     const cab = await cabecaImagem(t, { foto: e.gov.f, nome: e.gov.n, rotulo: `GOVERNO ${deUF(e.uf).toUpperCase()}`, sub: `${tituloGov(e)} ${deUF(e.uf)}${e.gov.pt ? ` · ${e.gov.pt}` : ""}` });
-    let y = valorImagem(t, cab.y, `SALÁRIO ${fem ? "DA GOVERNADORA" : "DO GOVERNADOR"} · BRUTO, ${e.v[2] === "imprensa" ? `VALOR DE ${fmtMes(e.v[1])}` : `DESDE ${fmtMes(e.v[1])}`}`.toUpperCase(), reaisC(e.v[0]));
+    let y = valorImagem(t, cab.y + respiro(t), `SALÁRIO ${fem ? "DA GOVERNADORA" : "DO GOVERNADOR"} · BRUTO, ${e.v[2] === "imprensa" ? `VALOR DE ${fmtMes(e.v[1])}` : `DESDE ${fmtMes(e.v[1])}`}`.toUpperCase(), reaisC(e.v[0]));
     const frase = p.pos === 1 ? "O maior salário de governador do país" : p.pos === p.n ? "O menor salário de governador do país" : `O ${p.pos}º maior salário de governador entre os 27 estados`;
-    y = reguaImagem(t, y, frase, p.n > 1 ? (1 - (p.pos - 1) / (p.n - 1)) * 100 : 50, ["menores salários", "maiores salários"]);
+    y = reguaImagem(t, y + respiro(t), frase, p.n > 1 ? (1 - (p.pos - 1) / (p.n - 1)) * 100 : 50, ["menores salários", "maiores salários"]);
     const pop = acimaDeQuemTrabalha(e.v[0] / smAtual);
-    y = cartoesImagem(t, y, [
+    y = cartoesImagem(t, y + respiro(t), [
       [C.ganha, "EM SALÁRIOS MÍNIMOS", num(e.v[0] / smAtual, 1), pop !== null ? `mais que ${pctPop(pop)} de quem trabalha` : `salários mínimos de ${reais(smAtual)}`, false],
       e.vv ? [C.regua, e.vice && e.vice.fem ? "VICE-GOVERNADORA" : "VICE-GOVERNADOR", reais(e.vv[0]), e.vice ? `${e.vice.n}${e.vice.pt ? ` (${e.vice.pt})` : ""}` : "cargo vago hoje"]
         : [C.regua, "MEDIANA DOS 27 ESTADOS", reais(med), `o maior: ${ESTADOS[R[0].uf]}`]]);
@@ -917,35 +939,42 @@
     const ls = (e.m || []).filter((x) => x[1] === "gov");
     if (ls.length) {
       const ult = Math.max(...ls.map((x) => x[0])), doMes = ls.filter((x) => x[0] === ult);
-      y = linhasImagem(t, y, `PELA FOLHA DE PAGAMENTO ${deUF(e.uf).toUpperCase()}`, doMes.map((x) => [`${e.oc[x[2]] ? e.oc[x[2]].n : e.gov.n} recebeu em ${fmtMes(ult)}`, reaisC(x[3]), false]), 40, C.ganha);
+      y = linhasImagem(t, y + respiro(t), `PELA FOLHA DE PAGAMENTO ${deUF(e.uf).toUpperCase()}`, doMes.map((x) => [`${e.oc[x[2]] ? e.oc[x[2]].n : e.gov.n} recebeu em ${fmtMes(ult)}`, reaisC(x[3]), false]), 40, C.ganha);
     }
     if (e.recebe) {
       g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
-      t.quebra(`${e.recebe.texto}.`, M, Math.min(y + 40, H - 240), t.W - 2 * M, 32, 2);
+      y = t.quebra(`${e.recebe.texto}.`, M, Math.min(y + 40, H - 240), t.W - 2 * M, 32, 2);
     }
     const fonte = { lei: "Fonte: lei estadual que fixa o subsídio", folha: "Fonte: folha de pagamento do Estado", tabela: "Fonte: tabela oficial de remuneração do Estado",
       calculado: "Fonte: cálculo nosso a partir da lei estadual", imprensa: "Fonte: valor informado pela imprensa" }[e.v[2]] || "Fonte: lei e folha de pagamento do Estado";
     rodapeImagem(t, ls.length ? "VEJA A LEI, O MÊS A MÊS E OS OUTROS 26 ESTADOS EM" : "VEJA A LEI, A HISTÓRIA DO VALOR E OS OUTROS 26 ESTADOS EM", urlGov(e.uf), fonte, cab.temFoto ? creditoFoto(e.gov.fc) : null);
-    return t.png();
+    return y;
+    });
   }
 
   // ---------------------------------------------------------------- imagem de uma Câmara Municipal
   async function imagemCidade(c) {
     if (!temCusto(c)) return null;
-    const t = await novaTela(), { C } = t;
+    return comFolga(async (t) => {
+    const { C } = t;
     const cp = comparacaoCidade(c), cam = camaraDe(c.cod), sub = cam && !cam.subsidio_folha ? (cam.subsidio || [])[(cam.subsidio || []).length - 1] : null;
     const cab = await cabecaImagem(t, { predio: true, nome: `${c.n} (${c.uf})`, rotulo: "CÂMARA MUNICIPAL", sub: `${num(c.pop, 0)} habitantes · ${c.nv} vereadores${c.cap ? " · capital" : ""}` });
-    let y = valorImagem(t, cab.y, `CUSTO DA CÂMARA POR MÊS · ${c.ano}`, compacto(c.custo / 12));
+    let y = valorImagem(t, cab.y + respiro(t), `CUSTO DA CÂMARA POR MÊS · ${c.ano}`, compacto(c.custo / 12));
     if (cp.pct !== null) {
       const frase = `Por habitante, custa ${cp.pctMais < 50 ? `mais que ${cp.pct}%` : `menos que ${cp.pctMais}%`} das cidades do mesmo tamanho`;
-      y = reguaImagem(t, y, frase, cp.lugar, ["custam menos", "custam mais"]);
+      y = reguaImagem(t, y + respiro(t), frase, cp.lugar, ["custam menos", "custam mais"]);
     } else y += 4;
-    y = cartoesImagem(t, y, [
+    y = cartoesImagem(t, y + respiro(t), [
       [C.custa, "POR HABITANTE", reaisC(porHabMes(c)), cp.med ? `mediana: ${reaisC(cp.med)}` : "por mês"],
       [C.regua, "CÂMARA POR VEREADOR", compacto(c.custo / 12 / Math.max(1, c.nv)), `o gasto todo ÷ ${c.nv}; não é o salário`]]);
-    y = linhasImagem(t, y, sub ? "SALÁRIO DE CADA VEREADOR" : "SALÁRIO DE UM VEREADOR DAQUI", [sub ? [`desde ${fmtMes(sub[0])}`, reaisC(sub[1])] : ["no máximo, pela Constituição (art. 29)", reais(tetoVereador(c.pop))]], 40, C.ganha);
-    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos do Tesouro Nacional (Siconfi)${sub ? ", do TSE e da Câmara Municipal" : " e do TSE"}`);
-    return t.png();
+    // o salário do vereador e, embaixo, o salário médio da cidade (IBGE), cada um com o seu ano
+    const anoSm = (CID.meta || {}).salario_medio_ano;
+    y = linhasImagem(t, y + respiro(t), c.sm > 0 ? "SALÁRIO DO VEREADOR E SALÁRIO MÉDIO DA CIDADE" : sub ? "SALÁRIO DE CADA VEREADOR" : "SALÁRIO DE UM VEREADOR DAQUI", [
+      sub ? [`vereador, desde ${fmtMes(sub[0])}`, reaisC(sub[1])] : ["vereador, no máximo, pela Constituição", reais(tetoVereador(c.pop))],
+      c.sm > 0 ? [`salário médio na cidade em ${anoSm} (IBGE)`, reais(c.sm)] : null].filter(Boolean), 40, C.ganha);
+    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos: ${listaE(["Tesouro Nacional (Siconfi)", "TSE", sub ? "Câmara Municipal" : null, c.sm > 0 ? "IBGE" : null].filter(Boolean))}`);
+    return y;
+    });
   }
   const arquivoNome = (nome) => `contas-do-poder-${semAcento(nome).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}.png`;
 
@@ -1089,9 +1118,9 @@
       temImg ? h("button", { type: "button", class: "botao", onclick: abrir }, "Compartilhar imagem") : null,
       texto);
   }
-  // Cidade e governador: um bloco só, no fim da página, com a imagem e o texto juntos (no celular, o botão fixo
-  // "Compartilhar" aparece depois dos números)
-  const fimCompartilhar = (spec) => blocoCompartilhar(spec, "fim", "Compartilhe estes números", true);
+  // Cidade sem o gasto informado (sem imagem): o texto para compartilhar, no fim do cartão. As outras cidades e os
+  // governadores têm a seção "Mande a imagem para quem você quiser" depois do cartão (secCompartilhar)
+  const fimCompartilhar = (spec) => (spec && !spec.gerar ? blocoCompartilhar(spec, "fim", "Compartilhe estes números", true) : null);
   // No celular, o botão "Compartilhar" fixo no canto de baixo da tela aparece depois que a pessoa passa pelos números
   // principais (marco) e some enquanto o convite ou a seção da imagem estão na tela. No computador ele não aparece
   // (estilo.css).
@@ -1629,10 +1658,10 @@
     }
     return card;
   }
-  // Resumo para compartilhar: a própria imagem, grande, com enviar / copiar / baixar; o texto fica à parte, para quem prefere
-  function secResumo(p, k) {
-    const spec = specPessoa(p, k);
-    if (!spec) return null;
+  // Resumo para compartilhar: a própria imagem, grande, com enviar / copiar / baixar; o texto fica à parte, para quem prefere.
+  // A mesma seção no fim da página do político, da cidade (com o gasto informado) e do governador.
+  function secCompartilhar(spec, nota) {
+    if (!spec || !spec.gerar) return null;
     const onde = "secao";
     const retorno = h("p", { class: "compartilhar-img__retorno", role: "status" });
     const img = h("img", { class: "compartilhar-img__previa", width: 1080, height: 1350, alt: spec.alt });
@@ -1654,8 +1683,11 @@
             h("h3", null, "Imagem"),
             h("p", { class: "pequeno discreto" }, dicaImagem()),
             botoes, retorno),
-          h("div", { class: "cartao compartilhar-img__opcao" }, opcoesTexto(spec, onde, spec.link, true)),
-          h("p", { class: "nota" }, `A imagem e o texto mostram o período escolhido no contracheque (${nomePeriodo(k, true)}). Dados abertos oficiais ${fonteDados(p)}.`))));
+          spec.textoZap ? h("div", { class: "cartao compartilhar-img__opcao" }, opcoesTexto(spec, onde, spec.link, true)) : null,
+          nota ? h("p", { class: "nota" }, nota) : null)));
+  }
+  function secResumo(p, k) {
+    return secCompartilhar(specPessoa(p, k), `A imagem e o texto mostram o período escolhido no contracheque (${nomePeriodo(k, true)}). Dados abertos oficiais ${fonteDados(p)}.`);
   }
 
   // ================================================================== câmaras municipais (vereadores)
@@ -1770,10 +1802,11 @@
       `*Câmara Municipal de ${c.n} (${c.uf})*`,
       temCusto(c) ? `Custa *${compacto(c.custo / 12)} por mês* (${reaisC(porHabMes(c))} por habitante, por mês), com ${c.nv} vereadores.` : `${c.nv} vereadores.`,
       `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês.`,
+      c.sm > 0 ? `O salário médio na cidade era de ${reais(c.sm)} por mês em ${(CID.meta || {}).salario_medio_ano} (IBGE).` : null,
       "",
-      "Dados abertos oficiais do Tesouro Nacional e do TSE.",
+      `Dados abertos oficiais do Tesouro Nacional, do TSE${c.sm > 0 ? " e do IBGE" : ""}.`,
       `Veja a da sua cidade: ${link || "Contas do Poder"}`,
-    ].join("\n");
+    ].filter((x) => x !== null).join("\n");
   }
   // Cidade com os dados de cada vereador (capitais): salário de verdade e a lista com link para cada um
   function vereadoresDaCidade(c) {
@@ -2220,7 +2253,6 @@
         h("p", { class: "nota", style: "margin:0" }, h("a", { href: `/indice#indice-${e.uf.toLowerCase()}`, onclick: () => { S.origem = "governador"; } }, `Ver a nota ${deUF(e.uf)} no índice de acesso aos salários dos governadores`)),
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
-        fimCompartilhar(spec),
         h("ul", { class: "lista nota" },
           h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não aparecem por pessoa."),
           h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),
@@ -2939,8 +2971,9 @@
     if (S.gov) {
       const e = GOV.porUF[S.gov];
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
-      app.append(secGovernador(e), secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e)));
-      navSecoes(["governador", "governadores", "entenda", "fontes"]);
+      app.append(...[secGovernador(e), secCompartilhar(specGov(e), `A imagem e o texto mostram o salário do cargo ${deUF(e.uf)} e de onde vem o valor.`),
+        secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e))].filter(Boolean));
+      navSecoes(["governador", "resumo", "governadores", "entenda", "fontes"]);
       botaoFlutuante(specGov(e), "#governador .estatisticas");
       rolarPendente();
       return;
@@ -2956,8 +2989,10 @@
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null, secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
-        navSecoes(["cidade", "prefeitura", "ranking", "cidades", "entenda", "fontes"]);
+        espera.replaceWith(...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
+          secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
+          secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
+        navSecoes(["cidade", "prefeitura", "ranking", "resumo", "cidades", "entenda", "fontes"]);
         botaoFlutuante(specCidade(c), "#cidade .estatisticas");
         rolarPendente();
       }, () => { espera.textContent = "Não foi possível carregar as câmaras."; });
