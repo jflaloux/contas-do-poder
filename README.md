@@ -372,6 +372,12 @@ sem ela, do Wikimedia Commons (licença livre, com crédito).
 linha dele em `ocupantes` (`ate`) e abra outra (com `folha_nome`, o nome como aparece na folha, nos estados em que a
 busca é pelo nome).
 
+No site, a página do estado (`/governador/sp`, `secGovernador` no `site/app.js`) começa pelo governador: o salário, de
+onde vem o valor e a comparação com os outros 26 (a posição, a mediana e um gráfico em que cada ponto é um estado; tocar
+num ponto abre aquele estado). Depois vêm o vice e o secretário de Estado, num bloco próprio (o salário deles sai da
+mesma lei e a folha traz os dois, mas a página é do governador), o mês a mês da folha (governador ou vice), a história
+dos valores, a Assembleia Legislativa e, no fim, a lista dos 27 governadores.
+
 ### Governadores mês a mês (folhas dos estados)
 
 Robôs em `coleta/folhas_estaduais/`, um por estado, rodados pela etapa `governadores`: o que o governador, o vice e

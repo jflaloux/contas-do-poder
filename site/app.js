@@ -618,7 +618,7 @@
     d.style.top = `${Math.max(-dh / 2, y - dh / 2)}px`;
   }
   // Pontos: cada colega é um ponto na horizontal (valor); a pessoa escolhida aparece destacada.
-  // pares: [{id, n, sub, v}]; clicar num ponto abre a página daquela pessoa.
+  // pares: [{id, n, sub, v, url?}]; clicar num ponto abre a página daquela pessoa (ou o url, quando vem: os governadores).
   function graficoPontos(caixa, euId, pares, fmt) {
     const desenhar = () => {
       caixa.querySelectorAll("svg").forEach((x) => x.remove());
@@ -665,12 +665,14 @@
       for (const p of pos) if (p.id !== euId) svg.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: raio }));
       // a mediana: linha tracejada, com o nome embaixo do nome da pessoa
       const med = mediana(vs);
+      const meu = pos.find((p) => p.id === euId);
       if (med !== null && pares.length > 2) {
         const mx = x(med);
         svg.append(s("line", { class: "mediana-linha", x1: mx, x2: mx, y1: 26, y2: H - m.b }));
-        const tm = s("text", { x: mx + (mx > W * 0.8 ? -5 : 5), y: 36, "text-anchor": mx > W * 0.8 ? "end" : "start" }); tm.textContent = "mediana"; svg.append(tm);
+        // o rótulo fica à direita da linha, a não ser que encoste na borda ou na linha da pessoa destacada
+        const esquerda = mx > W * 0.8 || (meu && meu.cx > mx && meu.cx - mx < 62 && mx > 70);
+        const tm = s("text", { x: mx + (esquerda ? -5 : 5), y: 36, "text-anchor": esquerda ? "end" : "start" }); tm.textContent = "mediana"; svg.append(tm);
       }
-      const meu = pos.find((p) => p.id === euId);
       if (meu) {
         // linha do nome até o ponto e até o eixo, e um anel em volta: dá para achar a pessoa no meio dos outros
         svg.append(s("line", { class: "guia-linha", x1: meu.cx, x2: meu.cx, y1: 20, y2: meu.cy - 13 }));
@@ -701,7 +703,7 @@
       };
       svg.addEventListener("pointermove", mostrar);
       svg.addEventListener("pointerdown", mostrar);
-      svg.addEventListener("click", (ev) => { const p = achar(ev); if (p && p.id !== euId) { S.origem = "grafico"; navegar(urlPessoa(p)); } });
+      svg.addEventListener("click", (ev) => { const p = achar(ev); if (p && p.id !== euId) { S.origem = "grafico"; navegar(p.url || urlPessoa(p)); } });
       svg.addEventListener("pointerleave", () => { d.hidden = true; destaque.setAttribute("visibility", "hidden"); });
       caixa.prepend(svg);
     };
@@ -2351,6 +2353,8 @@
       h("td", null, fmtMes(x[1])), h("td", null, cargoTxt(x[0])), h("td", { class: "num" }, reaisC(x[2])), h("td", null, seloConf(x[3])),
       h("td", { style: "white-space:normal;min-width:16rem" }, x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, "fonte\u00a0↗")));
     const foto = e.gov.fc ? notaCredito(e.gov.fc) : null;
+    const caixaGovs = h("div", { class: "grafico" });
+    graficoPontos(caixaGovs, e.uf, GOV.e.map((x) => ({ id: x.uf, n: x.gov.n, sub: x.uf, v: x.v[0], url: urlGov(x.uf) })), reais);
     return h("article", { class: "cartao conta", id: "governador" },
       h("div", { class: "conta__topo" }, avatar({ n: e.gov.n, f: e.gov.f }, "g"),
         h("div", null,
@@ -2359,20 +2363,32 @@
           h("div", { class: "conta__sub" }, h("span", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")} · desde ${fmtData(e.gov.de)}`))),
         null),
       h("div", { class: "cidade__corpo" },
+        // primeiro o governador: o salário, de onde vem o valor e onde ele fica entre os 27 estados (em pontos, como os
+        // colegas de um parlamentar). O vice e os secretários vêm depois, num bloco próprio: o salário deles sai da mesma
+        // lei, e a folha do Estado traz os dois, mas a página é do governador.
         h("div", { class: "estatisticas" },
           estatistica(`Salário ${fem ? "da governadora" : "do governador"}`, reaisC(e.v[0]), `por mês, bruto, ${e.v[2] === "imprensa" ? `valor de ${fmtMes(e.v[1])}` : `desde ${fmtMes(e.v[1])}`}`),
-          estatistica(e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador", e.vv ? reaisC(e.vv[0]) : "—", e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : `cargo vago hoje${e.vv ? " (valor do cargo)" : ""}`),
           estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
-          estatisticaPop(e.v[0] / sm),
-          e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null),
+          estatisticaPop(e.v[0] / sm)),
         e.recebe ? h("p", { class: "caixa-nota" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
-        h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}.`
-          : p.pos === p.n ? `É o menor salário de governador do país. A mediana dos 27 estados é ${reais(med)}.`
-            : `É o ${p.pos}º maior salário de governador entre os 27 estados. A mediana é ${reais(med)}; o maior é o ${deUF(maior.uf)} (${reais(maior.v[0])}) e o menor, o ${deUF(menor.uf)} (${reais(menor.v[0])}).`),
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
           h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver a fonte\u00a0↗"))),
+        h("h2", { class: "h3" }, `Comparado com os outros governadores`),
+        h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}. A mediana dos 27 estados é ${reais(med)}.`
+          : p.pos === p.n ? `É o menor salário de governador do país. A mediana dos 27 estados é ${reais(med)}.`
+            : `É o ${p.pos}º maior salário de governador entre os 27 estados. A mediana é ${reais(med)}; o maior é o ${deUF(maior.uf)} (${reais(maior.v[0])}) e o menor, o ${deUF(menor.uf)} (${reais(menor.v[0])}).`),
+        h("div", null,
+          h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, "Cada ponto é um estado: o salário do governador, por mês. Toque num ponto para ver qual é."),
+          caixaGovs),
+        h("p", { class: "nota", style: "margin:0" }, h("a", { href: "#governadores", onclick: (ev) => { ev.preventDefault(); irPara("governadores"); } }, "Ver a lista dos 27 governadores, com o vice de cada um\u00a0↓")),
+        h("h2", { class: "h3" }, e.vs ? "O vice e os secretários" : "O vice"),
+        e.vv || e.vs ? h("div", { class: "estatisticas" },
+          e.vv ? estatistica(e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador", reaisC(e.vv[0]), e.vice ? `${e.vice.n}${partidoTxt(e.vice)}` : "cargo vago hoje (valor do cargo)") : null,
+          e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null) : null,
+        !e.vv ? h("p", { style: "margin:0" }, e.vice ? `Vice: ${e.vice.n}${partidoTxt(e.vice)}. Não achamos o valor do salário do cargo.` : "O cargo de vice está vago hoje.") : null,
+        e.vv || e.vs ? h("p", { class: "nota", style: "margin:0" }, "A fonte de cada valor está em \"O salário ao longo do tempo\", abaixo.") : null,
         blocoMensalGov(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },
@@ -2699,11 +2715,11 @@
       assembleiaUF(S.ufLista) && g ? h("p", { class: "lista-estado__mais" }, h("a", { href: `${urlGov(S.ufLista)}#assembleia`, onclick: () => { S.origem = "estado"; } },
         `Os ${doEstado.filter((p) => p.k === "a").length} deputados estaduais ${deUF(S.ufLista)}, um a um →`)) : null));
   }
-  function navSecoes(ids) {
+  function navSecoes(ids, outrosNomes = {}) {
     const nomes = { assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
-    ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, nomes[id])));
+    ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
   }
 
   // ================================================================== guia passo a passo
@@ -3275,7 +3291,7 @@
       app.append(...[secGovernador(e), secAssembleia(e.uf), assembleiaUF(e.uf) ? secRanking(null, null) : null,
         secCompartilhar(specGov(e), `A imagem e o texto mostram o salário do cargo ${deUF(e.uf)} e de onde vem o valor.`),
         secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e))].filter(Boolean));
-      navSecoes(["governador", "assembleia", "ranking", "resumo", "governadores", "entenda", "fontes"]);
+      navSecoes(["governador", "assembleia", "ranking", "resumo", "governadores", "entenda", "fontes"], { ranking: "Ranking da Assembleia" });
       botaoFlutuante(specGov(e), "#governador .estatisticas");
       rolarPendente();
       return;
