@@ -622,11 +622,12 @@
    },
    "subsidio": {
     "valor": 34774.64,
+    "desde": "2025-02",
     "ato": null,
-    "conferir": "tabela de 2026 diz 34.775,64"
+    "fonte": "folha de pagamento da Alese (R$ 33.006,39 em jan/2025)"
    },
    "barreiras": "Nenhuma.",
-   "observacoes": "",
+   "observacoes": "Robô pronto (coleta/assembleias/se.py), desde jan/2025: folha (PDF com texto, lido pela posição das palavras) e ressarcimento (PDF por mês de pagamento). A folha paga aos deputados \"outras verbas\" de 30% do subsídio (R$ 10.432,39) e auxílio de R$ 1.200; em 2025 havia 25 deputados na folha em quase todos os meses (24 vagas).",
    "abriu_de_fora": true
   },
   "SP": {
