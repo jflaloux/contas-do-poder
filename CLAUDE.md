@@ -42,6 +42,19 @@ armadilhas que não estão escritas em outro lugar.
 - Para ver o site: `python3 coletar.py site && node publicacao/gerar.mjs && node publicacao/servir.mjs`
   (http://localhost:8000).
 
+## Duas conversas ao mesmo tempo
+
+Às vezes há duas conversas trabalhando no projeto: uma cuida dos dados, a outra do site. Para não pisar uma na outra:
+
+- **Dados**: `coleta/`, `dados/`, `coletar.py`, `site/dados/*.json` (gerados por `python3 coletar.py site`) e
+  `site/fotos/`. É também quem roda os robôs.
+- **Site**: `site/app.js`, `site/estilo.css`, `site/index.html`, `publicacao/`. Não roda robôs. Para ver o site, usa
+  os dados que já estão em `site/dados/`.
+- Se uma conversa precisar mexer num arquivo da outra (um texto do site que fala de dados, por exemplo), avisa o
+  Jean-François em vez de editar.
+- Commit só dos próprios arquivos (`git add <arquivos>`, nunca `git add -A`), um de cada vez. Antes, confira que não
+  existe `.git/index.lock`: se existir, a outra conversa está fazendo commit.
+
 ## Git e publicação
 
 - Commits com a identidade `Jean-François Laloux <jeanfrancois@laloux.me>`. Quem faz o `git push` é o Jean-François.
