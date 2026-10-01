@@ -2139,9 +2139,9 @@
       h("p", { class: "discreto" }, "O salário (subsídio) do governador e do vice é fixado por lei em cada estado, e não há uma fonte nacional com todos. Juntamos, estado por estado, a lei, a tabela oficial ou a folha de pagamento e mostramos de onde veio cada valor. Toque num estado para ver quem governa, a lei e a história do valor."),
       GOV.e.some((e) => e.m) ? h("p", { class: "discreto" }, `Em ${GOV.e.filter((e) => e.m).length} estados, a folha de pagamento abre para o nosso robô, e a página do estado mostra também o que o governador e o vice receberam em cada mês (marcados com "mês a mês").`) : null,
       h("a", { class: "chamada-indice", href: "/indice", onclick: () => { S.origem = atual ? "governador" : "inicio"; } },
-        h("span", { class: "rotulo" }, "Índice de acesso"),
-        h("strong", null, "Dá para saber, pela fonte oficial, quanto cada governador recebeu em cada mês?"),
-        h("span", null, "A nota de cada estado, critério por critério, com a prova →")),
+        h("span", { class: "rotulo" }, "Índice de Transparência"),
+        h("strong", null, "Dá para saber, pela fonte oficial de cada estado, quanto ganham e quanto custam os seus políticos?"),
+        h("span", null, "As notas do governo e da Assembleia Legislativa de cada estado, critério por critério, com a prova →")),
       corpo);
   }
   // mês a mês pela folha do Estado: e.m = [[aaaamm, tp, índice em e.oc, recebido, salário, 13º, férias, auxílios, outros, abate-teto, marca]]
@@ -2262,7 +2262,7 @@
         h("p", { style: "margin:0" }, e.m ? "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê toda semana: veja o mês a mês acima." : FOLHA_GOV[e.folha.s]),
         e.folha.c && !e.m ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
         e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)}\u00a0↗`)) : null,
-        h("p", { class: "nota", style: "margin:0" }, h("a", { href: `/indice#indice-${e.uf.toLowerCase()}`, onclick: () => { S.origem = "governador"; } }, `Ver a nota ${deUF(e.uf)} no índice de acesso aos salários dos governadores`)),
+        h("p", { class: "nota", style: "margin:0" }, h("a", { href: `/indice#indice-${e.uf.toLowerCase()}`, onclick: () => { S.origem = "governador"; } }, `Ver as notas ${deUF(e.uf)} no Índice de Transparência`)),
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
         h("ul", { class: "lista nota" },
@@ -2801,74 +2801,102 @@
         h("a", { href: `mailto:${CONTATO}?subject=${encodeURIComponent("Erro no Contas do Poder")}`, "data-evento": "reportar_erro" }, CONTATO), "."));
   }
 
-  // ------------------------------------------------------------------ índice de acesso aos salários dos governadores
-  // /indice: para cada estado, se dá para saber, pela fonte oficial, quanto o governador e o vice receberam em cada mês.
-  // Os números vêm de dados/indice.json (feito pelo robô, "coletar.py indice"); cada nota tem a prova e, às vezes, o link.
-  // O índice e as duas dimensões vão de 0 a 1, com duas casas, como no método.
+  // ------------------------------------------------------------------ Índice de Transparência dos estados
+  // /indice: para cada estado, se dá para saber, pela fonte oficial, quanto ganham e quanto custam os seus políticos.
+  // Um bloco para cada fonte (o governo e a Assembleia Legislativa), cada um com completude (o que a fonte mostra) e
+  // facilidade (como dá para obter). Os números vêm de dados/indice_transparencia.json (feito pelo robô e conferido à
+  // mão, "coletar.py indice"); os nomes dos blocos e dos critérios e o "como pontua" vêm de meta.blocos, não daqui.
+  // Cada nota tem a prova e, às vezes, o link. O índice e as dimensões vão de 0 a 1, com duas casas, como no método.
   let indice = null;
   function carregarIndice() {
     if (!indice) {
-      indice = fetch("/dados/indice.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
+      indice = fetch("/dados/indice_transparencia.json").then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
       indice.catch(() => { indice = null; }); // se falhar, tenta de novo na próxima vez
     }
     return indice;
   }
-  const notaIdx = (v) => (v === null || v === undefined ? "a conferir" : num(v, 2));
-  const notaCrit = (v) => (v === null || v === undefined ? "a conferir" : v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }));
+  const semNotaIdx = (v) => v === null || v === undefined;
+  const notaIdx = (v) => (semNotaIdx(v) ? "a conferir" : num(v, 2));
+  const notaCrit = (v) => (semNotaIdx(v) ? "a conferir" : v.toLocaleString("pt-BR", { maximumFractionDigits: 2 }));
   const dataBR = (d) => String(d || "").split("-").reverse().join("/");
   function secIndice(I) {
-    const M = I.meta || {}, crit = M.criterios || [];
-    const comNota = I.estados.filter((e) => e.indice !== null && e.indice !== undefined && !(e.a_conferir || []).length);
+    const M = I.meta || {}, BL = M.blocos || [];
+    const curto = (b) => String(b.titulo || b.id).split(" ")[0]; // "Governo do Estado" → "Governo"
+    const comNota = I.estados.filter((e) => !semNotaIdx(e.indice) && !(e.a_conferir || []).length);
     const semNota = I.estados.filter((e) => !comNota.includes(e));
-    const ordem = [...comNota.sort((a, b) => b.indice - a.indice || a.nome.localeCompare(b.nome, "pt-BR")), ...semNota.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))];
-    const posDe = (e) => 1 + comNota.filter((x) => x.indice > e.indice).length; // empate: a mesma posição
-    const vals = comNota.map((e) => e.indice), med = mediana(vals);
+    // a posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a posição
+    // e aparecem em ordem alfabética (0,905 e 0,914 aparecem os dois como 0,91)
+    const r2 = (v) => Number(v.toFixed(2));
+    const ordem = [...comNota.sort((a, b) => r2(b.indice) - r2(a.indice) || a.nome.localeCompare(b.nome, "pt-BR")), ...semNota.sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"))];
+    const posDe = (e) => 1 + comNota.filter((x) => r2(x.indice) > r2(e.indice)).length; // empate: a mesma posição
+    const vals = comNota.map((e) => r2(e.indice)), med = mediana(vals);
     const maior = Math.max(...vals), menor = Math.min(...vals);
-    const nomes = (v) => listaE(comNota.filter((e) => e.indice === v).map((e) => e.nome));
+    const nomes = (v) => listaE(comNota.filter((e) => r2(e.indice) === v).map((e) => e.nome));
     const aberto = decodeURIComponent(location.hash.slice(1));
-    const barra = (rotulo, v, tipo) => h("span", { class: "indice__barra" },
-      h("span", null, rotulo),
-      h("span", { class: `indice__trilho indice__trilho--${tipo}` }, v === null || v === undefined ? null : h("span", { style: `width:${Math.max(1, v * 100).toFixed(1)}%` })),
-      h("span", { class: "indice__num" }, v === null || v === undefined ? "—" : notaIdx(v)));
-    const dimensao = (e, d, titulo, sub) => h("div", { class: "indice-dimensao" },
-      h("p", { class: "indice-dimensao__titulo" }, h("span", null, titulo), h("span", { class: "indice-dimensao__nota" }, notaIdx(e[d]))),
+    const trilho = (v, tipo) => h("span", { class: `indice__trilho indice__trilho--${tipo}` }, semNotaIdx(v) ? null : h("span", { style: `width:${Math.max(1, v * 100).toFixed(1)}%` }));
+    // na linha do estado, um bloco por linha: o nome curto, as duas dimensões em barras finas e o índice do bloco
+    const blocoLinha = (e, b) => {
+      const x = (e.blocos || {})[b.id] || {};
+      return h("span", { class: `indice-bl${semNotaIdx(x.indice) ? " indice-bl--conferir" : ""}` },
+        h("span", { class: "indice-bl__nome", "aria-hidden": "true" }, curto(b)),
+        h("span", { class: "indice-bl__barras", "aria-hidden": "true" }, trilho(x.completude, "completude"), trilho(x.facilidade, "facilidade")),
+        h("span", { class: "indice-bl__num", "aria-hidden": "true" }, notaIdx(x.indice)),
+        h("span", { class: "visualmente-oculto" }, `. ${b.titulo}: ${semNotaIdx(x.indice) ? "a conferir" : `índice ${notaIdx(x.indice)}`} (completude ${notaIdx(x.completude)}; facilidade ${notaIdx(x.facilidade)})`));
+    };
+    const dimensao = (x, crit, d, titulo, sub) => h("div", { class: "indice-dimensao" },
+      h("p", { class: "indice-dimensao__titulo" }, h("span", null, titulo), h("span", { class: "indice-dimensao__nota" }, notaIdx(x[d]))),
       h("p", { class: "pequeno discreto" }, sub),
       h("ul", { class: "criterios" }, crit.filter((c) => c.dimensao === d).map((c) => {
-        const x = (e.criterios || {})[c.id] || {}, v = x.v;
-        const falta = v === null || v === undefined;
+        const y = (x.criterios || {})[c.id] || {}, v = y.v;
+        const falta = semNotaIdx(v);
         return h("li", { class: `criterio${falta ? " criterio--conferir" : ""}` },
           h("span", { class: "criterio__nome" }, c.nome),
           h("span", { class: "criterio__nota" }, falta ? null : h("span", { class: "criterio__medidor", "aria-hidden": "true" }, h("span", { style: `width:${(v * 100).toFixed(0)}%` })), notaCrit(v)),
-          x.prova ? h("span", { class: "criterio__prova" }, x.prova, x.link ? [" ", h("a", { href: x.link, target: "_blank", rel: "noopener" }, "ver\u00a0↗")] : null) : null,
+          y.prova ? h("span", { class: "criterio__prova" }, y.prova, y.link ? [" ", h("a", { href: y.link, target: "_blank", rel: "noopener" }, "ver ↗")] : null) : null,
           h("span", { class: "criterio__como" }, c.como_pontua));
       })));
+    // ao abrir o estado: cada bloco com os critérios, a fonte oficial e a página do site que mostra os números
+    const blocoDetalhe = (e, b) => {
+      const x = (e.blocos || {})[b.id] || {}, crit = b.criterios || [];
+      const nConf = (x.a_conferir || []).length;
+      return h("div", { class: `indice-bloco indice-bloco--${b.id}` },
+        h("div", { class: "indice-bloco__topo" },
+          h("p", { class: "indice-bloco__titulo" }, b.titulo),
+          h("p", { class: `indice-bloco__nota${semNotaIdx(x.indice) ? " indice-bloco__nota--conferir" : ""}` }, semNotaIdx(x.indice) ? "a conferir" : notaIdx(x.indice))),
+        b.pergunta ? h("p", { class: "pequeno discreto" }, b.pergunta) : null,
+        semNotaIdx(x.indice) && nConf ? h("p", { class: "pequeno" }, h("strong", null, `${nConf} dos ${crit.length} critérios ainda estão a conferir`), "; o índice do bloco sai quando todos tiverem nota.") : null,
+        h("div", { class: "indice-dimensoes" },
+          dimensao(x, crit, "completude", "Completude", "O que a fonte mostra."),
+          dimensao(x, crit, "facilidade", "Facilidade", "Como dá para obter os dados.")),
+        h("p", { class: "indice-links" },
+          x.fonte ? h("a", { href: x.fonte, target: "_blank", rel: "noopener" }, "Fonte oficial", h("span", { class: "visualmente-oculto" }, ` (${b.titulo}, ${e.nome})`), " ↗") : null,
+          b.id === "governo" && GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null));
+    };
     const linha = (e) => {
       const falta = !comNota.includes(e), uf = e.uf.toLowerCase();
+      const blocosConf = BL.filter((b) => (e.a_conferir || []).includes(b.id));
       return h("li", null, h("details", { class: `indice-estado${falta ? " indice-estado--conferir" : ""}`, id: `indice-${uf}`, open: aberto === `indice-${uf}`,
         ontoggle: (ev) => { if (ev.target.open) evento("abrir_indice", { uf: e.uf }); } },
         h("summary", null,
           h("span", { class: "indice__pos" }, falta ? "–" : `${posDe(e)}º`),
           h("span", { class: "indice__nome" }, e.nome),
           h("span", { class: "indice__valor" }, falta ? "a conferir" : notaIdx(e.indice)),
-          h("span", { class: "indice__barras" }, barra("Completude", e.completude, "completude"), barra("Facilidade", e.facilidade, "facilidade"))),
+          h("span", { class: "indice__blocos" }, BL.map((b) => blocoLinha(e, b)))),
         h("div", { class: "indice-corpo" },
-          falta ? h("p", { class: "aviso" }, `Sem índice por enquanto: ${(e.a_conferir || []).length} dos ${crit.length} critérios ainda estão a conferir. Abaixo, os que já têm nota.`) : null,
-          h("div", { class: "indice-dimensoes" },
-            dimensao(e, "completude", "Completude", "O que a fonte mostra."),
-            dimensao(e, "facilidade", "Facilidade", "Como dá para obter os dados.")),
-          h("p", { class: "indice-links" },
-            e.fonte ? h("a", { href: e.fonte, target: "_blank", rel: "noopener" }, `Consulta oficial da folha ${deUF(e.uf)}\u00a0↗`) : null,
-            GOV.porUF[e.uf] ? h("a", { href: urlGov(e.uf), onclick: () => { S.origem = "indice"; } }, `Salário do governador ${deUF(e.uf)} →`) : null))));
+          falta ? h("p", { class: "aviso" }, blocosConf.length
+            ? `Sem índice geral por enquanto: ${blocosConf.length === 1 ? "o bloco" : "os blocos"} ${listaE(blocosConf.map((b) => b.titulo))} ainda ${blocosConf.length === 1 ? "está" : "estão"} a conferir. As notas que já existem estão abaixo.`
+            : "Sem índice geral por enquanto. As notas que já existem estão abaixo.") : null,
+          BL.map((b) => blocoDetalhe(e, b)))));
     };
-    const aviso = (M.como || []).find((c) => /não é uma nota/i.test(c));
+    const como = M.como || [];
     return [
       h("section", { class: "bloco", id: "indice", "aria-labelledby": "t-indice" },
         h("div", { class: "indice-topo" },
-          h("p", { class: "rotulo" }, "Governadores"),
-          h("h1", { id: "t-indice", class: "titulo-pagina" }, M.titulo || "Índice de acesso aos salários dos governadores"),
+          h("p", { class: "rotulo" }, "Estados"),
+          h("h1", { id: "t-indice", class: "titulo-pagina" }, M.titulo || "Índice de Transparência dos estados"),
           M.pergunta ? h("p", { class: "lide" }, M.pergunta) : null,
-          h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice${semNota.length ? `; ${listaE(semNota.map((e) => e.nome))} a conferir` : ""}.`),
-          aviso ? h("p", { class: "caixa-nota" }, aviso) : null),
+          h("p", { class: "pequeno" }, `Conferido em ${dataBR(M.conferido_em)}. ${comNota.length} estados com índice geral${semNota.length ? `; ${listaE(semNota.map((e) => e.nome))} a conferir` : ""}.`),
+          como[0] ? h("p", { class: "caixa-nota" }, como[0]) : null),
         comNota.length ? h("div", { class: "estatisticas" },
           estatistica("Maior índice", notaIdx(maior), nomes(maior)),
           estatistica("Mediana dos estados", notaIdx(med), "metade tem índice maior, metade menor"),
@@ -2877,17 +2905,20 @@
           h("span", null, h("span", { class: "chave chave--ganha" }), "Completude: o que a fonte mostra"),
           h("span", null, h("span", { class: "chave chave--custa" }), "Facilidade: como dá para obter")),
         h("article", { class: "cartao indice-cartao" },
-          h("p", { class: "pequeno discreto" }, "Do maior índice para o menor. Toque num estado para ver cada critério, a nota e a prova."),
+          h("p", { class: "pequeno discreto" }, `Do maior índice geral para o menor. Em cada estado, o índice de cada bloco (${listaE(BL.map(curto))}), com as duas dimensões em barras. Toque num estado para ver cada critério, a nota e a prova.`),
           h("ol", { class: "indice-lista" }, ordem.map(linha)))),
       h("section", { class: "bloco", id: "indice-como", "aria-labelledby": "t-indice-como" },
         h("h2", { id: "t-indice-como" }, "Como funciona"),
         h("div", { class: "cartao" },
-          (M.como || []).map((c) => h("p", null, c)),
-          h("div", { class: "indice-dimensoes" },
-            [["completude", "Completude: o que a fonte mostra"], ["facilidade", "Facilidade: como dá para obter"]].map(([d, titulo]) => h("div", null,
-              h("h3", null, titulo),
-              h("dl", { class: "indice-criterios" }, crit.filter((c) => c.dimensao === d).map((c) => [h("dt", null, c.nome), h("dd", null, c.como_pontua)]))))),
-          h("p", { class: "nota" }, "Os dados do índice, com todas as notas e provas: ", h("a", { href: "/dados/indice.json" }, "indice.json"), ". O robô confere as fontes toda semana."))),
+          como.slice(1).map((c) => h("p", null, c)),
+          BL.map((b) => h("div", { class: "indice-como-bloco" },
+            h("h3", null, b.titulo),
+            b.pergunta ? h("p", { class: "discreto" }, b.pergunta) : null,
+            h("div", { class: "indice-dimensoes" },
+              [["completude", "Completude: o que a fonte mostra"], ["facilidade", "Facilidade: como dá para obter"]].map(([d, titulo]) => h("div", null,
+                h("h4", null, titulo),
+                h("dl", { class: "indice-criterios" }, (b.criterios || []).filter((c) => c.dimensao === d).map((c) => [h("dt", null, c.nome), h("dd", null, c.como_pontua)]))))))),
+          h("p", { class: "nota" }, "Os dados do índice, com todas as notas e provas: ", h("a", { href: "/dados/indice_transparencia.json" }, "indice_transparencia.json"), ". O robô confere as fontes toda semana."))),
     ];
   }
 
@@ -2968,7 +2999,7 @@
       return;
     }
     if (S.extra === "indice") {
-      document.title = "Índice de acesso aos salários dos governadores · Contas do Poder";
+      document.title = "Índice de Transparência dos estados · Contas do Poder";
       const espera = h("p", { class: "discreto" }, "Carregando o índice…");
       app.append(espera);
       navSecoes(["entenda", "fontes"]);

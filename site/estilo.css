@@ -745,9 +745,10 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .cabecalho__estados .ufs { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); }
 .cabecalho__estados .link-botao { justify-self: start; font-size: .92rem; min-height: 36px; }
 
-/* ---------- índice de acesso aos salários dos governadores (/indice) ----------
-   Um estado por linha, do maior índice para o menor: o índice e as duas dimensões em barras (completude em verde-água,
-   facilidade em âmbar). Ao abrir, os critérios de cada dimensão, com a nota, a prova e como cada nota é dada. */
+/* ---------- Índice de Transparência dos estados (/indice) ----------
+   Um estado por linha, do maior índice geral para o menor. Embaixo do nome, um bloco por linha (Governo, Assembleia):
+   as duas dimensões em barras finas (completude em verde-água, facilidade em âmbar) e o índice do bloco. Ao abrir, cada
+   bloco com os critérios de cada dimensão, a nota, a prova e como cada nota é dada. */
 .indice-cartao { padding: 14px 18px 6px; gap: 6px; }
 .indice-lista { list-style: none; margin: 0; padding: 0; display: grid; }
 .indice-lista > li { border-bottom: 1px solid var(--line-2); }
@@ -764,17 +765,26 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice__nome { font-weight: 700; font-size: 1.08rem; min-width: 0; }
 .indice__valor { font-family: var(--display); font-weight: 700; font-size: 2rem; line-height: 1; grid-column: 3; grid-row: 1; }
 .indice-estado--conferir .indice__valor { font-family: var(--body); font-size: .95rem; font-weight: 600; color: var(--ink-3); }
-.indice__barras { grid-column: 2 / 4; display: grid; gap: 6px 22px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
-.indice__barra { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr) 2.4rem; align-items: center; gap: 8px; font-size: .86rem; color: var(--ink-2); }
-.indice__trilho { height: 8px; border-radius: 4px; background: var(--line-2); overflow: hidden; }
-.indice__trilho span { display: block; height: 100%; border-radius: 4px; }
+.indice__blocos { grid-column: 2 / 4; display: grid; gap: 6px 28px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
+.indice-bl { display: grid; grid-template-columns: 5.4rem minmax(0, 1fr) 3.9rem; align-items: center; gap: 10px; font-size: .88rem; color: var(--ink-2); }
+.indice-bl__barras { display: grid; gap: 3px; }
+.indice-bl__num { font-weight: 700; font-size: .95rem; color: var(--ink); font-variant-numeric: tabular-nums; }
+.indice-bl--conferir .indice-bl__num { font-weight: 600; font-size: .8rem; color: var(--ink-3); }
+.indice__trilho { height: 6px; border-radius: 3px; background: var(--line-2); overflow: hidden; }
+.indice__trilho span { display: block; height: 100%; border-radius: 3px; }
 .indice__trilho--completude span { background: var(--ganha); }
 .indice__trilho--facilidade span { background: var(--custa); }
 .indice__num { text-align: right; font-weight: 600; color: var(--ink); }
 .indice-corpo { padding: 2px 0 18px; display: grid; gap: 14px; }
+.indice-bloco { display: grid; gap: 10px; min-width: 0; }
+.indice-bloco + .indice-bloco { margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line-2); }
+.indice-bloco__topo { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.indice-bloco__titulo { font-family: var(--display); font-weight: 700; font-size: 1.55rem; line-height: 1.05; }
+.indice-bloco__nota { font-family: var(--display); font-weight: 700; font-size: 1.9rem; line-height: 1; white-space: nowrap; }
+.indice-bloco__nota--conferir { font-family: var(--body); font-size: .95rem; font-weight: 600; color: var(--ink-3); }
 .indice-dimensoes { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); }
 .indice-dimensao { background: var(--bg); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; align-content: start; }
-.indice-dimensao__titulo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.45rem; line-height: 1.1; }
+.indice-dimensao__titulo { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-family: var(--display); font-weight: 700; font-size: 1.25rem; line-height: 1.1; }
 .indice-dimensao__nota { font-weight: 700; }
 .criterios { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .criterio { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; padding-top: 10px; border-top: 1px solid var(--line); }
@@ -790,9 +800,21 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .indice-criterios { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2px; margin: 8px 0 0; font-size: .92rem; }
 .indice-criterios dt { font-weight: 700; margin-top: 8px; }
 .indice-criterios dd { margin: 0; color: var(--ink-2); }
+.indice-como-bloco { display: grid; gap: 6px; margin-top: 8px; padding-top: 16px; border-top: 1px solid var(--line-2); }
+.indice-como-bloco h3 { font-family: var(--display); font-size: 1.45rem; }
+.indice-como-bloco h4 { margin: 10px 0 0; font-size: .95rem; }
+@media (min-width: 900px) {
+  /* no computador, tudo numa linha: posição, estado, os dois blocos e o índice geral */
+  .indice-estado > summary { grid-template-columns: 2.2rem 11.5rem minmax(0, 1fr) 4.2rem 1rem; gap: 6px 18px; padding: 10px 2px; }
+  .indice__blocos { grid-column: 3; grid-row: 1; grid-template-columns: 1fr 1fr; }
+  .indice__valor { grid-column: 4; text-align: right; }
+  .indice-estado > summary::after { grid-column: 5; }
+  .indice-estado--conferir .indice__valor { font-size: .9rem; }
+}
 @media (max-width: 560px) {
   .indice-estado > summary { grid-template-columns: 1.8rem minmax(0, 1fr) auto 1rem; gap: 6px 10px; }
-  .indice__barras { grid-column: 1 / -1; }
+  .indice__blocos { grid-column: 1 / -1; }
+  .indice-dimensao { padding: 12px 13px; }
 }
 /* chamada para o índice, na lista dos governadores */
 .chamada-indice {

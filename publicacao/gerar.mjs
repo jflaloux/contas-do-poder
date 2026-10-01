@@ -219,25 +219,32 @@ if (COR) {
   paginas.push(["correcoes", pagina("correcoes", "Correções | Contas do Poder", texto, corpo)]);
 }
 
-// ------------------------------------------------------------------ índice de acesso aos salários dos governadores (/indice)
-// de site/dados/indice.json: a lista dos estados com o índice em texto (o app.js desenha as barras e os critérios)
-const IDX = ler("indice.json", null);
+// ------------------------------------------------------------------ Índice de Transparência dos estados (/indice)
+// de site/dados/indice_transparencia.json: a lista dos estados com o índice geral e o de cada bloco (governo e Assembleia
+// Legislativa) em texto; o app.js desenha as barras e os critérios
+const IDX = ler("indice_transparencia.json", null);
 if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
-  const M = IDX.meta || {};
+  const M = IDX.meta || {}, BL = M.blocos || [];
   const dataBR = (d) => String(d || "").split("-").reverse().join("/");
-  const n2 = (v) => (v === null || v === undefined ? "a conferir" : num(v, 2));
-  const com = IDX.estados.filter((e) => e.indice !== null && e.indice !== undefined && !(e.a_conferir || []).length)
-    .sort((a, b) => b.indice - a.indice || a.nome.localeCompare(b.nome, "pt-BR"));
+  const nulo = (v) => v === null || v === undefined;
+  const n2 = (v) => (nulo(v) ? "a conferir" : num(v, 2));
+  const com = IDX.estados.filter((e) => !nulo(e.indice) && !(e.a_conferir || []).length)
+    .sort((a, b) => Number(b.indice.toFixed(2)) - Number(a.indice.toFixed(2)) || a.nome.localeCompare(b.nome, "pt-BR")); // como no app.js
   const sem = IDX.estados.filter((e) => !com.includes(e)).sort((a, b) => a.nome.localeCompare(b.nome, "pt-BR"));
-  const itens = [...com, ...sem].map((e) => `<li><a href="/governador/${esc(e.uf.toLowerCase())}">${esc(e.nome)}</a>: `
-    + (com.includes(e) ? `índice ${n2(e.indice)} (completude ${n2(e.completude)}, facilidade ${n2(e.facilidade)})` : "a conferir") + "</li>");
-  const titulo = M.titulo || "Índice de acesso aos salários dos governadores";
-  const corpo = `<section class="bloco" id="indice"><div class="indice-topo"><p class="rotulo">Governadores</p><h1 class="titulo-pagina">${esc(titulo)}</h1>`
+  const blocoTxt = (e, b) => {
+    const x = (e.blocos || {})[b.id] || {};
+    const nome = b.id === "governo" && GOV.e.some((g) => g.uf === e.uf) ? `<a href="/governador/${esc(e.uf.toLowerCase())}">${esc(b.titulo)}</a>` : esc(b.titulo);
+    return `${nome} ${nulo(x.indice) ? "a conferir" : `${n2(x.indice)} (completude ${n2(x.completude)}, facilidade ${n2(x.facilidade)})`}`;
+  };
+  const itens = [...com, ...sem].map((e) => `<li><strong>${esc(e.nome)}</strong>: `
+    + (com.includes(e) ? `índice ${n2(e.indice)}` : "índice geral a conferir") + (BL.length ? `; ${BL.map((b) => blocoTxt(e, b)).join("; ")}` : "") + "</li>");
+  const titulo = M.titulo || "Índice de Transparência dos estados";
+  const corpo = `<section class="bloco" id="indice"><div class="indice-topo"><p class="rotulo">Estados</p><h1 class="titulo-pagina">${esc(titulo)}</h1>`
     + (M.pergunta ? `<p class="lide">${esc(M.pergunta)}</p>` : "")
-    + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}.</p></div><ol class="indice-previa">${itens.join("")}</ol>`
+    + `<p class="pequeno">Conferido em ${esc(dataBR(M.conferido_em))}. ${com.length} estados com índice geral.</p></div><ol class="indice-previa">${itens.join("")}</ol>`
     + (M.como || []).map((c) => `<p class="discreto">${esc(c)}</p>`).join("") + "</section>";
-  const texto = `${M.pergunta || titulo} A nota de cada um dos 27 estados, critério por critério, com a prova de cada nota. Conferido em ${dataBR(M.conferido_em)}.`;
-  paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice.json"] })]);
+  const texto = `${M.pergunta || titulo} A nota do governo e da Assembleia Legislativa de cada um dos 27 estados, critério por critério, com a prova de cada nota. Conferido em ${dataBR(M.conferido_em)}.`;
+  paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice_transparencia.json"] })]);
 }
 
 // ------------------------------------------------------------------ grava

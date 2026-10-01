@@ -403,12 +403,16 @@ sites que só abrem do Brasil, pelo Chrome no Brasil). A nota da lei do governad
 do governador pede CAPTCHA). O índice mede o acesso aos dados dessas duas fontes, não a transparência do Estado como um
 todo, e é uma nota da fonte, não de quem está no cargo.
 
-O arquivo antigo, `site/dados/indice.json` (só o bloco do governo), continua sendo gerado enquanto a página `/indice`
-usa ele (`secIndice` no `site/app.js`; a versão em HTML para o Google e as prévias de link sai do
-`publicacao/gerar.mjs`). A página mostra os estados do maior índice para o menor, com a completude e a facilidade em
-barras; ao abrir um estado, cada critério com a nota, a prova, o link (quando há) e como a nota é dada. A passagem da
-página para o Índice de Transparência (os dois blocos) está em `TAREFA-SITE-indice-transparencia.txt`. Há link para o
-índice no cabeçalho do site, na lista dos governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
+A página `/indice` lê `site/dados/indice_transparencia.json` (`secIndice` no `site/app.js`; a versão em HTML para o
+Google e as prévias de link sai do `publicacao/gerar.mjs`). Ela mostra os estados do maior índice geral para o menor e,
+em cada um, o índice de cada bloco com a completude e a facilidade em barras; estado sem índice geral fica no fim, com
+"a conferir". A posição usa o índice com as duas casas que a página mostra: dois estados com o mesmo número dividem a
+posição e aparecem em ordem alfabética. Ao abrir um estado, cada bloco com os seus critérios (nota, prova, link quando
+há e como a nota é dada; os nomes e o "como pontua" vêm de `meta.blocos`, não do `app.js`), o link da fonte oficial e,
+no bloco do governo, a página do governador; no bloco da Assembleia, o link para a lista dos deputados estaduais entra
+junto com essa lista no site. O método (`meta.como`) fica na própria página. O arquivo antigo, `site/dados/indice.json`
+(só o bloco do governo), não é mais usado pelo site. Há link para o índice no cabeçalho do site, na lista dos
+governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
 ## Robôs e robots.txt
 
@@ -489,8 +493,8 @@ seguem o mesmo desenho.
   `vice_governadores`, `cidades` com a UF, `secretarios`, `subprefeitos` e `sairam_prefeitura`).
   Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
-  Índice dos governadores: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um
-  estado no índice, com a `uf`).
+  Índice de Transparência: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um
+  estado no índice, com a `uf`; os dois blocos do estado abrem juntos).
 
 ## Erros e correções
 
