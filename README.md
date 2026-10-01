@@ -7,7 +7,7 @@ da Câmara, do Senado e do Portal da Transparência. E também o salário de cad
 estado), a Câmara Municipal de cada cidade, cada vereador de onze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
 Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife e São Luís) e o prefeito, o vice e os secretários de oito capitais (São Paulo, Recife, Fortaleza, Vitória,
 Porto Alegre, Salvador, Curitiba e Natal), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
-São Paulo, Pernambuco e Mato Grosso do Sul.
+São Paulo, Pernambuco, Goiás, Santa Catarina e Mato Grosso do Sul.
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
@@ -280,13 +280,15 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 |---|---|---|
 | São Paulo | Dados abertos da Alesp: `deputados.xml` e `despesas_gabinetes_AAAA.xml` | Subsídio da lei (Leis 17.617/2023 e 18.384/2025); verba de gabinete por mês, tipo e fornecedor (a Alesp soma as notas do mesmo fornecedor no mês) |
 | Pernambuco | Portal da Transparência da Alepe: a lista de dados abertos e o que a página usa (prestações da verba e as notas de cada uma) | Subsídio da lei (Lei 18.138/2023); verba indenizatória nota a nota (rubrica, CNPJ, empresa, valor). As notas chegam aos poucos (no máximo 400 prestações por vez) |
+| Goiás | Portal da Transparência da Alego: o que a página usa (meses publicados, deputados com prestação no mês e a prestação de cada um) | Subsídio da lei (Lei 17.253/2011, redação da Lei 21.780/2023); verba indenizatória nota a nota (valor indenizado, fornecedor, CNPJ). Quem está no cargo: deputados com prestação no mês |
+| Santa Catarina | Portal da Transparência da Alesc: CSV anual dos gastos dos gabinetes; a página de deputados para quem está no cargo hoje | Subsídio da lei (Lei 18.642/2023); diárias, passagens, telefone, veículos, aluguel e reembolsos do gabinete (sem CNPJ; nas diárias e passagens, sem o nome da pessoa) |
 | Mato Grosso do Sul | Portal da Transparência da Alems: CSV anual da CEAP | Subsídio da lei (Lei 6.016/2022); CEAP nota a nota, com CNPJ e comprovante. Sem lista de deputados aberta: quem está no cargo sai dos meses com notas. Partido: o da candidatura de 2026 no TSE |
 
 - Nome civil, gênero e eleito/suplente: arquivo de candidatos de 2022 do TSE (`consulta_cand_2022.zip`, ~4 MB, no
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as
   mesmas palavras, sem títulos como "Dr." ou "Cel.").
 - O que cada uma das 27 Assembleias publica (verba, folha, equipe, subsídio, barreiras) está em
-  `dados/referencia/assembleias.json`. Próximas, sem barreira: GO (JSON), SC (CSV), PB (ODS), RO (HTML e JSON), RJ
+  `dados/referencia/assembleias.json`. Próximas, sem barreira: PB (ODS), RO (HTML e JSON), RJ
   (JSON do DOCIGP), CE (CSV). MG: o robots.txt dos dados abertos proíbe robôs (precisaria de exceção). PR e TO: CAPTCHA.
 - Fotos: Wikimedia Commons com licença livre, pelas mesmas regras do governo federal (no máximo 40 buscas por vez).
 

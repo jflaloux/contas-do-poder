@@ -1,0 +1,770 @@
+ano,mes,id,nome
+2025,1,808,Alessandro Moreira
+2025,1,137,Amauri Ribeiro
+2025,1,138,Amilton Filho
+2025,1,809,Anderson Teodoro
+2025,1,810,André do Premium
+2025,1,139,Antônio Gomide
+2025,1,811,Bia de Lima
+2025,1,51,Bruno Peixoto
+2025,1,140,Cairo Salim
+2025,1,117,Charles Bento
+2025,1,812,Clécio Alves
+2025,1,142,Coronel Adailton
+2025,1,813,Cristiano Galindo
+2025,1,6,Cristóvão Tormin
+2025,1,143,Delegado Eduardo Prado
+2025,1,815,Dr. George Morais
+2025,1,825,Dra. Zeli
+2025,1,817,Gugu Nader
+2025,1,122,Gustavo Sebba
+2025,1,134,Henrique César
+2025,1,406,Issy Quinan
+2025,1,818,Jamil Calife
+2025,1,814,José Machado
+2025,1,145,Julio Pina
+2025,1,63,Karlos Cabral
+2025,1,64,Lincoln Tejota
+2025,1,819,Lineu Olimpio
+2025,1,125,Lucas Calil
+2025,1,820,Lucas do Vale
+2025,1,62,Major Araújo
+2025,1,40,Mauro Rubem
+2025,1,28,Paulo Cezar Martins
+2025,1,821,Ricardo Quirino
+2025,1,822,Rosângela Rezende
+2025,1,148,Rubens Marques
+2025,1,68,Talles Barreto
+2025,1,823,Veter Martins
+2025,1,131,Virmondes Cruvinel
+2025,1,824,Vivian Naves
+2025,1,152,Wagner Camargo Neto
+2025,1,153,Wilde Cambão
+2025,2,808,Alessandro Moreira
+2025,2,137,Amauri Ribeiro
+2025,2,138,Amilton Filho
+2025,2,809,Anderson Teodoro
+2025,2,810,André do Premium
+2025,2,139,Antônio Gomide
+2025,2,811,Bia de Lima
+2025,2,51,Bruno Peixoto
+2025,2,140,Cairo Salim
+2025,2,117,Charles Bento
+2025,2,812,Clécio Alves
+2025,2,142,Coronel Adailton
+2025,2,813,Cristiano Galindo
+2025,2,6,Cristóvão Tormin
+2025,2,143,Delegado Eduardo Prado
+2025,2,815,Dr. George Morais
+2025,2,825,Dra. Zeli
+2025,2,817,Gugu Nader
+2025,2,122,Gustavo Sebba
+2025,2,134,Henrique César
+2025,2,406,Issy Quinan
+2025,2,818,Jamil Calife
+2025,2,814,José Machado
+2025,2,145,Julio Pina
+2025,2,63,Karlos Cabral
+2025,2,64,Lincoln Tejota
+2025,2,819,Lineu Olimpio
+2025,2,125,Lucas Calil
+2025,2,820,Lucas do Vale
+2025,2,62,Major Araújo
+2025,2,40,Mauro Rubem
+2025,2,28,Paulo Cezar Martins
+2025,2,821,Ricardo Quirino
+2025,2,822,Rosângela Rezende
+2025,2,148,Rubens Marques
+2025,2,68,Talles Barreto
+2025,2,823,Veter Martins
+2025,2,131,Virmondes Cruvinel
+2025,2,824,Vivian Naves
+2025,2,152,Wagner Camargo Neto
+2025,2,153,Wilde Cambão
+2025,3,808,Alessandro Moreira
+2025,3,137,Amauri Ribeiro
+2025,3,138,Amilton Filho
+2025,3,809,Anderson Teodoro
+2025,3,810,André do Premium
+2025,3,139,Antônio Gomide
+2025,3,811,Bia de Lima
+2025,3,51,Bruno Peixoto
+2025,3,140,Cairo Salim
+2025,3,117,Charles Bento
+2025,3,812,Clécio Alves
+2025,3,142,Coronel Adailton
+2025,3,813,Cristiano Galindo
+2025,3,6,Cristóvão Tormin
+2025,3,143,Delegado Eduardo Prado
+2025,3,815,Dr. George Morais
+2025,3,825,Dra. Zeli
+2025,3,817,Gugu Nader
+2025,3,122,Gustavo Sebba
+2025,3,134,Henrique César
+2025,3,406,Issy Quinan
+2025,3,818,Jamil Calife
+2025,3,814,José Machado
+2025,3,145,Julio Pina
+2025,3,63,Karlos Cabral
+2025,3,64,Lincoln Tejota
+2025,3,819,Lineu Olimpio
+2025,3,125,Lucas Calil
+2025,3,820,Lucas do Vale
+2025,3,62,Major Araújo
+2025,3,40,Mauro Rubem
+2025,3,28,Paulo Cezar Martins
+2025,3,821,Ricardo Quirino
+2025,3,822,Rosângela Rezende
+2025,3,148,Rubens Marques
+2025,3,68,Talles Barreto
+2025,3,823,Veter Martins
+2025,3,131,Virmondes Cruvinel
+2025,3,824,Vivian Naves
+2025,3,152,Wagner Camargo Neto
+2025,3,153,Wilde Cambão
+2025,4,808,Alessandro Moreira
+2025,4,137,Amauri Ribeiro
+2025,4,138,Amilton Filho
+2025,4,809,Anderson Teodoro
+2025,4,810,André do Premium
+2025,4,139,Antônio Gomide
+2025,4,811,Bia de Lima
+2025,4,51,Bruno Peixoto
+2025,4,140,Cairo Salim
+2025,4,117,Charles Bento
+2025,4,812,Clécio Alves
+2025,4,142,Coronel Adailton
+2025,4,813,Cristiano Galindo
+2025,4,6,Cristóvão Tormin
+2025,4,143,Delegado Eduardo Prado
+2025,4,815,Dr. George Morais
+2025,4,825,Dra. Zeli
+2025,4,817,Gugu Nader
+2025,4,122,Gustavo Sebba
+2025,4,134,Henrique César
+2025,4,406,Issy Quinan
+2025,4,818,Jamil Calife
+2025,4,814,José Machado
+2025,4,145,Julio Pina
+2025,4,63,Karlos Cabral
+2025,4,64,Lincoln Tejota
+2025,4,819,Lineu Olimpio
+2025,4,125,Lucas Calil
+2025,4,820,Lucas do Vale
+2025,4,62,Major Araújo
+2025,4,40,Mauro Rubem
+2025,4,28,Paulo Cezar Martins
+2025,4,821,Ricardo Quirino
+2025,4,822,Rosângela Rezende
+2025,4,148,Rubens Marques
+2025,4,823,Veter Martins
+2025,4,131,Virmondes Cruvinel
+2025,4,824,Vivian Naves
+2025,4,152,Wagner Camargo Neto
+2025,4,153,Wilde Cambão
+2025,5,808,Alessandro Moreira
+2025,5,137,Amauri Ribeiro
+2025,5,138,Amilton Filho
+2025,5,809,Anderson Teodoro
+2025,5,810,André do Premium
+2025,5,139,Antônio Gomide
+2025,5,811,Bia de Lima
+2025,5,51,Bruno Peixoto
+2025,5,140,Cairo Salim
+2025,5,117,Charles Bento
+2025,5,812,Clécio Alves
+2025,5,142,Coronel Adailton
+2025,5,813,Cristiano Galindo
+2025,5,6,Cristóvão Tormin
+2025,5,143,Delegado Eduardo Prado
+2025,5,815,Dr. George Morais
+2025,5,825,Dra. Zeli
+2025,5,817,Gugu Nader
+2025,5,122,Gustavo Sebba
+2025,5,134,Henrique César
+2025,5,406,Issy Quinan
+2025,5,818,Jamil Calife
+2025,5,814,José Machado
+2025,5,145,Julio Pina
+2025,5,63,Karlos Cabral
+2025,5,64,Lincoln Tejota
+2025,5,819,Lineu Olimpio
+2025,5,125,Lucas Calil
+2025,5,820,Lucas do Vale
+2025,5,62,Major Araújo
+2025,5,40,Mauro Rubem
+2025,5,28,Paulo Cezar Martins
+2025,5,821,Ricardo Quirino
+2025,5,822,Rosângela Rezende
+2025,5,148,Rubens Marques
+2025,5,68,Talles Barreto
+2025,5,823,Veter Martins
+2025,5,131,Virmondes Cruvinel
+2025,5,824,Vivian Naves
+2025,5,152,Wagner Camargo Neto
+2025,5,153,Wilde Cambão
+2025,6,808,Alessandro Moreira
+2025,6,137,Amauri Ribeiro
+2025,6,138,Amilton Filho
+2025,6,809,Anderson Teodoro
+2025,6,810,André do Premium
+2025,6,139,Antônio Gomide
+2025,6,811,Bia de Lima
+2025,6,51,Bruno Peixoto
+2025,6,140,Cairo Salim
+2025,6,117,Charles Bento
+2025,6,812,Clécio Alves
+2025,6,142,Coronel Adailton
+2025,6,813,Cristiano Galindo
+2025,6,6,Cristóvão Tormin
+2025,6,143,Delegado Eduardo Prado
+2025,6,815,Dr. George Morais
+2025,6,825,Dra. Zeli
+2025,6,817,Gugu Nader
+2025,6,122,Gustavo Sebba
+2025,6,134,Henrique César
+2025,6,406,Issy Quinan
+2025,6,818,Jamil Calife
+2025,6,814,José Machado
+2025,6,145,Julio Pina
+2025,6,63,Karlos Cabral
+2025,6,64,Lincoln Tejota
+2025,6,819,Lineu Olimpio
+2025,6,125,Lucas Calil
+2025,6,820,Lucas do Vale
+2025,6,62,Major Araújo
+2025,6,40,Mauro Rubem
+2025,6,28,Paulo Cezar Martins
+2025,6,821,Ricardo Quirino
+2025,6,822,Rosângela Rezende
+2025,6,148,Rubens Marques
+2025,6,68,Talles Barreto
+2025,6,823,Veter Martins
+2025,6,131,Virmondes Cruvinel
+2025,6,824,Vivian Naves
+2025,6,152,Wagner Camargo Neto
+2025,6,153,Wilde Cambão
+2025,7,808,Alessandro Moreira
+2025,7,137,Amauri Ribeiro
+2025,7,138,Amilton Filho
+2025,7,809,Anderson Teodoro
+2025,7,810,André do Premium
+2025,7,139,Antônio Gomide
+2025,7,811,Bia de Lima
+2025,7,51,Bruno Peixoto
+2025,7,140,Cairo Salim
+2025,7,117,Charles Bento
+2025,7,812,Clécio Alves
+2025,7,142,Coronel Adailton
+2025,7,813,Cristiano Galindo
+2025,7,6,Cristóvão Tormin
+2025,7,143,Delegado Eduardo Prado
+2025,7,815,Dr. George Morais
+2025,7,825,Dra. Zeli
+2025,7,817,Gugu Nader
+2025,7,122,Gustavo Sebba
+2025,7,406,Issy Quinan
+2025,7,818,Jamil Calife
+2025,7,814,José Machado
+2025,7,145,Julio Pina
+2025,7,63,Karlos Cabral
+2025,7,64,Lincoln Tejota
+2025,7,819,Lineu Olimpio
+2025,7,125,Lucas Calil
+2025,7,820,Lucas do Vale
+2025,7,828,Léo Portilho
+2025,7,62,Major Araújo
+2025,7,40,Mauro Rubem
+2025,7,28,Paulo Cezar Martins
+2025,7,821,Ricardo Quirino
+2025,7,822,Rosângela Rezende
+2025,7,148,Rubens Marques
+2025,7,68,Talles Barreto
+2025,7,823,Veter Martins
+2025,7,131,Virmondes Cruvinel
+2025,7,824,Vivian Naves
+2025,7,152,Wagner Camargo Neto
+2025,7,153,Wilde Cambão
+2025,8,808,Alessandro Moreira
+2025,8,137,Amauri Ribeiro
+2025,8,138,Amilton Filho
+2025,8,809,Anderson Teodoro
+2025,8,810,André do Premium
+2025,8,139,Antônio Gomide
+2025,8,811,Bia de Lima
+2025,8,51,Bruno Peixoto
+2025,8,140,Cairo Salim
+2025,8,117,Charles Bento
+2025,8,812,Clécio Alves
+2025,8,142,Coronel Adailton
+2025,8,813,Cristiano Galindo
+2025,8,6,Cristóvão Tormin
+2025,8,143,Delegado Eduardo Prado
+2025,8,815,Dr. George Morais
+2025,8,825,Dra. Zeli
+2025,8,817,Gugu Nader
+2025,8,122,Gustavo Sebba
+2025,8,406,Issy Quinan
+2025,8,818,Jamil Calife
+2025,8,814,José Machado
+2025,8,145,Julio Pina
+2025,8,63,Karlos Cabral
+2025,8,64,Lincoln Tejota
+2025,8,819,Lineu Olimpio
+2025,8,125,Lucas Calil
+2025,8,820,Lucas do Vale
+2025,8,828,Léo Portilho
+2025,8,62,Major Araújo
+2025,8,40,Mauro Rubem
+2025,8,28,Paulo Cezar Martins
+2025,8,821,Ricardo Quirino
+2025,8,822,Rosângela Rezende
+2025,8,148,Rubens Marques
+2025,8,68,Talles Barreto
+2025,8,823,Veter Martins
+2025,8,131,Virmondes Cruvinel
+2025,8,824,Vivian Naves
+2025,8,152,Wagner Camargo Neto
+2025,8,153,Wilde Cambão
+2025,9,808,Alessandro Moreira
+2025,9,137,Amauri Ribeiro
+2025,9,138,Amilton Filho
+2025,9,809,Anderson Teodoro
+2025,9,810,André do Premium
+2025,9,139,Antônio Gomide
+2025,9,811,Bia de Lima
+2025,9,51,Bruno Peixoto
+2025,9,140,Cairo Salim
+2025,9,117,Charles Bento
+2025,9,812,Clécio Alves
+2025,9,142,Coronel Adailton
+2025,9,6,Cristóvão Tormin
+2025,9,829,Delegada Fernanda
+2025,9,143,Delegado Eduardo Prado
+2025,9,815,Dr. George Morais
+2025,9,825,Dra. Zeli
+2025,9,817,Gugu Nader
+2025,9,122,Gustavo Sebba
+2025,9,406,Issy Quinan
+2025,9,818,Jamil Calife
+2025,9,814,José Machado
+2025,9,145,Julio Pina
+2025,9,63,Karlos Cabral
+2025,9,64,Lincoln Tejota
+2025,9,819,Lineu Olimpio
+2025,9,125,Lucas Calil
+2025,9,820,Lucas do Vale
+2025,9,828,Léo Portilho
+2025,9,62,Major Araújo
+2025,9,40,Mauro Rubem
+2025,9,28,Paulo Cezar Martins
+2025,9,821,Ricardo Quirino
+2025,9,822,Rosângela Rezende
+2025,9,148,Rubens Marques
+2025,9,68,Talles Barreto
+2025,9,823,Veter Martins
+2025,9,131,Virmondes Cruvinel
+2025,9,824,Vivian Naves
+2025,9,152,Wagner Camargo Neto
+2025,9,153,Wilde Cambão
+2025,10,808,Alessandro Moreira
+2025,10,137,Amauri Ribeiro
+2025,10,138,Amilton Filho
+2025,10,809,Anderson Teodoro
+2025,10,810,André do Premium
+2025,10,139,Antônio Gomide
+2025,10,811,Bia de Lima
+2025,10,51,Bruno Peixoto
+2025,10,140,Cairo Salim
+2025,10,117,Charles Bento
+2025,10,812,Clécio Alves
+2025,10,142,Coronel Adailton
+2025,10,6,Cristóvão Tormin
+2025,10,143,Delegado Eduardo Prado
+2025,10,815,Dr. George Morais
+2025,10,825,Dra. Zeli
+2025,10,817,Gugu Nader
+2025,10,122,Gustavo Sebba
+2025,10,406,Issy Quinan
+2025,10,818,Jamil Calife
+2025,10,814,José Machado
+2025,10,145,Julio Pina
+2025,10,63,Karlos Cabral
+2025,10,64,Lincoln Tejota
+2025,10,819,Lineu Olimpio
+2025,10,125,Lucas Calil
+2025,10,820,Lucas do Vale
+2025,10,830,Luiz Sampaio
+2025,10,828,Léo Portilho
+2025,10,62,Major Araújo
+2025,10,40,Mauro Rubem
+2025,10,28,Paulo Cezar Martins
+2025,10,821,Ricardo Quirino
+2025,10,822,Rosângela Rezende
+2025,10,148,Rubens Marques
+2025,10,68,Talles Barreto
+2025,10,823,Veter Martins
+2025,10,131,Virmondes Cruvinel
+2025,10,824,Vivian Naves
+2025,10,152,Wagner Camargo Neto
+2025,10,153,Wilde Cambão
+2025,11,808,Alessandro Moreira
+2025,11,137,Amauri Ribeiro
+2025,11,138,Amilton Filho
+2025,11,809,Anderson Teodoro
+2025,11,810,André do Premium
+2025,11,139,Antônio Gomide
+2025,11,811,Bia de Lima
+2025,11,51,Bruno Peixoto
+2025,11,140,Cairo Salim
+2025,11,117,Charles Bento
+2025,11,812,Clécio Alves
+2025,11,142,Coronel Adailton
+2025,11,813,Cristiano Galindo
+2025,11,6,Cristóvão Tormin
+2025,11,143,Delegado Eduardo Prado
+2025,11,815,Dr. George Morais
+2025,11,825,Dra. Zeli
+2025,11,817,Gugu Nader
+2025,11,122,Gustavo Sebba
+2025,11,134,Henrique César
+2025,11,406,Issy Quinan
+2025,11,818,Jamil Calife
+2025,11,814,José Machado
+2025,11,145,Julio Pina
+2025,11,63,Karlos Cabral
+2025,11,64,Lincoln Tejota
+2025,11,819,Lineu Olimpio
+2025,11,125,Lucas Calil
+2025,11,820,Lucas do Vale
+2025,11,830,Luiz Sampaio
+2025,11,62,Major Araújo
+2025,11,40,Mauro Rubem
+2025,11,28,Paulo Cezar Martins
+2025,11,821,Ricardo Quirino
+2025,11,822,Rosângela Rezende
+2025,11,148,Rubens Marques
+2025,11,68,Talles Barreto
+2025,11,823,Veter Martins
+2025,11,131,Virmondes Cruvinel
+2025,11,824,Vivian Naves
+2025,11,152,Wagner Camargo Neto
+2025,11,153,Wilde Cambão
+2025,12,808,Alessandro Moreira
+2025,12,137,Amauri Ribeiro
+2025,12,138,Amilton Filho
+2025,12,809,Anderson Teodoro
+2025,12,810,André do Premium
+2025,12,139,Antônio Gomide
+2025,12,811,Bia de Lima
+2025,12,51,Bruno Peixoto
+2025,12,140,Cairo Salim
+2025,12,117,Charles Bento
+2025,12,812,Clécio Alves
+2025,12,142,Coronel Adailton
+2025,12,813,Cristiano Galindo
+2025,12,6,Cristóvão Tormin
+2025,12,143,Delegado Eduardo Prado
+2025,12,815,Dr. George Morais
+2025,12,825,Dra. Zeli
+2025,12,817,Gugu Nader
+2025,12,122,Gustavo Sebba
+2025,12,134,Henrique César
+2025,12,406,Issy Quinan
+2025,12,818,Jamil Calife
+2025,12,814,José Machado
+2025,12,145,Julio Pina
+2025,12,63,Karlos Cabral
+2025,12,64,Lincoln Tejota
+2025,12,819,Lineu Olimpio
+2025,12,125,Lucas Calil
+2025,12,820,Lucas do Vale
+2025,12,62,Major Araújo
+2025,12,40,Mauro Rubem
+2025,12,28,Paulo Cezar Martins
+2025,12,821,Ricardo Quirino
+2025,12,822,Rosângela Rezende
+2025,12,148,Rubens Marques
+2025,12,68,Talles Barreto
+2025,12,823,Veter Martins
+2025,12,131,Virmondes Cruvinel
+2025,12,824,Vivian Naves
+2025,12,152,Wagner Camargo Neto
+2025,12,153,Wilde Cambão
+2026,1,808,Alessandro Moreira
+2026,1,137,Amauri Ribeiro
+2026,1,138,Amilton Filho
+2026,1,809,Anderson Teodoro
+2026,1,810,André do Premium
+2026,1,139,Antônio Gomide
+2026,1,811,Bia de Lima
+2026,1,51,Bruno Peixoto
+2026,1,140,Cairo Salim
+2026,1,117,Charles Bento
+2026,1,812,Clécio Alves
+2026,1,142,Coronel Adailton
+2026,1,813,Cristiano Galindo
+2026,1,6,Cristóvão Tormin
+2026,1,143,Delegado Eduardo Prado
+2026,1,815,Dr. George Morais
+2026,1,825,Dra. Zeli
+2026,1,817,Gugu Nader
+2026,1,122,Gustavo Sebba
+2026,1,134,Henrique César
+2026,1,406,Issy Quinan
+2026,1,818,Jamil Calife
+2026,1,814,José Machado
+2026,1,145,Julio Pina
+2026,1,63,Karlos Cabral
+2026,1,64,Lincoln Tejota
+2026,1,819,Lineu Olimpio
+2026,1,125,Lucas Calil
+2026,1,820,Lucas do Vale
+2026,1,62,Major Araújo
+2026,1,40,Mauro Rubem
+2026,1,28,Paulo Cezar Martins
+2026,1,821,Ricardo Quirino
+2026,1,822,Rosângela Rezende
+2026,1,148,Rubens Marques
+2026,1,68,Talles Barreto
+2026,1,823,Veter Martins
+2026,1,131,Virmondes Cruvinel
+2026,1,824,Vivian Naves
+2026,1,152,Wagner Camargo Neto
+2026,1,153,Wilde Cambão
+2026,2,808,Alessandro Moreira
+2026,2,137,Amauri Ribeiro
+2026,2,138,Amilton Filho
+2026,2,809,Anderson Teodoro
+2026,2,810,André do Premium
+2026,2,139,Antônio Gomide
+2026,2,811,Bia de Lima
+2026,2,51,Bruno Peixoto
+2026,2,140,Cairo Salim
+2026,2,117,Charles Bento
+2026,2,812,Clécio Alves
+2026,2,142,Coronel Adailton
+2026,2,813,Cristiano Galindo
+2026,2,6,Cristóvão Tormin
+2026,2,143,Delegado Eduardo Prado
+2026,2,815,Dr. George Morais
+2026,2,825,Dra. Zeli
+2026,2,817,Gugu Nader
+2026,2,122,Gustavo Sebba
+2026,2,134,Henrique César
+2026,2,406,Issy Quinan
+2026,2,818,Jamil Calife
+2026,2,814,José Machado
+2026,2,145,Julio Pina
+2026,2,63,Karlos Cabral
+2026,2,64,Lincoln Tejota
+2026,2,819,Lineu Olimpio
+2026,2,125,Lucas Calil
+2026,2,820,Lucas do Vale
+2026,2,62,Major Araújo
+2026,2,40,Mauro Rubem
+2026,2,28,Paulo Cezar Martins
+2026,2,821,Ricardo Quirino
+2026,2,822,Rosângela Rezende
+2026,2,148,Rubens Marques
+2026,2,68,Talles Barreto
+2026,2,823,Veter Martins
+2026,2,131,Virmondes Cruvinel
+2026,2,824,Vivian Naves
+2026,2,152,Wagner Camargo Neto
+2026,2,153,Wilde Cambão
+2026,3,808,Alessandro Moreira
+2026,3,137,Amauri Ribeiro
+2026,3,138,Amilton Filho
+2026,3,809,Anderson Teodoro
+2026,3,810,André do Premium
+2026,3,139,Antônio Gomide
+2026,3,811,Bia de Lima
+2026,3,51,Bruno Peixoto
+2026,3,140,Cairo Salim
+2026,3,117,Charles Bento
+2026,3,812,Clécio Alves
+2026,3,142,Coronel Adailton
+2026,3,813,Cristiano Galindo
+2026,3,6,Cristóvão Tormin
+2026,3,143,Delegado Eduardo Prado
+2026,3,815,Dr. George Morais
+2026,3,825,Dra. Zeli
+2026,3,817,Gugu Nader
+2026,3,122,Gustavo Sebba
+2026,3,134,Henrique César
+2026,3,406,Issy Quinan
+2026,3,818,Jamil Calife
+2026,3,814,José Machado
+2026,3,145,Julio Pina
+2026,3,63,Karlos Cabral
+2026,3,64,Lincoln Tejota
+2026,3,819,Lineu Olimpio
+2026,3,125,Lucas Calil
+2026,3,820,Lucas do Vale
+2026,3,62,Major Araújo
+2026,3,40,Mauro Rubem
+2026,3,28,Paulo Cezar Martins
+2026,3,821,Ricardo Quirino
+2026,3,822,Rosângela Rezende
+2026,3,148,Rubens Marques
+2026,3,68,Talles Barreto
+2026,3,823,Veter Martins
+2026,3,131,Virmondes Cruvinel
+2026,3,824,Vivian Naves
+2026,3,152,Wagner Camargo Neto
+2026,3,153,Wilde Cambão
+2026,4,808,Alessandro Moreira
+2026,4,137,Amauri Ribeiro
+2026,4,138,Amilton Filho
+2026,4,809,Anderson Teodoro
+2026,4,810,André do Premium
+2026,4,139,Antônio Gomide
+2026,4,811,Bia de Lima
+2026,4,51,Bruno Peixoto
+2026,4,140,Cairo Salim
+2026,4,117,Charles Bento
+2026,4,812,Clécio Alves
+2026,4,813,Cristiano Galindo
+2026,4,6,Cristóvão Tormin
+2026,4,143,Delegado Eduardo Prado
+2026,4,815,Dr. George Morais
+2026,4,825,Dra. Zeli
+2026,4,831,Eliel Junior
+2026,4,817,Gugu Nader
+2026,4,122,Gustavo Sebba
+2026,4,134,Henrique César
+2026,4,406,Issy Quinan
+2026,4,818,Jamil Calife
+2026,4,814,José Machado
+2026,4,145,Julio Pina
+2026,4,63,Karlos Cabral
+2026,4,64,Lincoln Tejota
+2026,4,819,Lineu Olimpio
+2026,4,125,Lucas Calil
+2026,4,820,Lucas do Vale
+2026,4,62,Major Araújo
+2026,4,40,Mauro Rubem
+2026,4,28,Paulo Cezar Martins
+2026,4,821,Ricardo Quirino
+2026,4,822,Rosângela Rezende
+2026,4,148,Rubens Marques
+2026,4,823,Veter Martins
+2026,4,131,Virmondes Cruvinel
+2026,4,824,Vivian Naves
+2026,4,152,Wagner Camargo Neto
+2026,4,153,Wilde Cambão
+2026,5,808,Alessandro Moreira
+2026,5,137,Amauri Ribeiro
+2026,5,138,Amilton Filho
+2026,5,809,Anderson Teodoro
+2026,5,810,André do Premium
+2026,5,139,Antônio Gomide
+2026,5,811,Bia de Lima
+2026,5,51,Bruno Peixoto
+2026,5,140,Cairo Salim
+2026,5,117,Charles Bento
+2026,5,812,Clécio Alves
+2026,5,813,Cristiano Galindo
+2026,5,6,Cristóvão Tormin
+2026,5,143,Delegado Eduardo Prado
+2026,5,815,Dr. George Morais
+2026,5,825,Dra. Zeli
+2026,5,831,Eliel Junior
+2026,5,832,Givago Valadares
+2026,5,817,Gugu Nader
+2026,5,122,Gustavo Sebba
+2026,5,134,Henrique César
+2026,5,406,Issy Quinan
+2026,5,818,Jamil Calife
+2026,5,814,José Machado
+2026,5,145,Julio Pina
+2026,5,63,Karlos Cabral
+2026,5,64,Lincoln Tejota
+2026,5,819,Lineu Olimpio
+2026,5,125,Lucas Calil
+2026,5,820,Lucas do Vale
+2026,5,62,Major Araújo
+2026,5,40,Mauro Rubem
+2026,5,28,Paulo Cezar Martins
+2026,5,821,Ricardo Quirino
+2026,5,822,Rosângela Rezende
+2026,5,148,Rubens Marques
+2026,5,823,Veter Martins
+2026,5,131,Virmondes Cruvinel
+2026,5,824,Vivian Naves
+2026,5,152,Wagner Camargo Neto
+2026,5,153,Wilde Cambão
+2026,6,808,Alessandro Moreira
+2026,6,137,Amauri Ribeiro
+2026,6,138,Amilton Filho
+2026,6,809,Anderson Teodoro
+2026,6,810,André do Premium
+2026,6,139,Antônio Gomide
+2026,6,811,Bia de Lima
+2026,6,51,Bruno Peixoto
+2026,6,140,Cairo Salim
+2026,6,117,Charles Bento
+2026,6,812,Clécio Alves
+2026,6,813,Cristiano Galindo
+2026,6,6,Cristóvão Tormin
+2026,6,143,Delegado Eduardo Prado
+2026,6,815,Dr. George Morais
+2026,6,825,Dra. Zeli
+2026,6,831,Eliel Junior
+2026,6,832,Givago Valadares
+2026,6,817,Gugu Nader
+2026,6,122,Gustavo Sebba
+2026,6,134,Henrique César
+2026,6,406,Issy Quinan
+2026,6,818,Jamil Calife
+2026,6,814,José Machado
+2026,6,63,Karlos Cabral
+2026,6,64,Lincoln Tejota
+2026,6,819,Lineu Olimpio
+2026,6,125,Lucas Calil
+2026,6,820,Lucas do Vale
+2026,6,62,Major Araújo
+2026,6,40,Mauro Rubem
+2026,6,28,Paulo Cezar Martins
+2026,6,822,Rosângela Rezende
+2026,6,148,Rubens Marques
+2026,6,823,Veter Martins
+2026,6,131,Virmondes Cruvinel
+2026,6,824,Vivian Naves
+2026,6,152,Wagner Camargo Neto
+2026,6,153,Wilde Cambão
+2026,7,808,Alessandro Moreira
+2026,7,137,Amauri Ribeiro
+2026,7,809,Anderson Teodoro
+2026,7,810,André do Premium
+2026,7,139,Antônio Gomide
+2026,7,811,Bia de Lima
+2026,7,51,Bruno Peixoto
+2026,7,140,Cairo Salim
+2026,7,117,Charles Bento
+2026,7,812,Clécio Alves
+2026,7,813,Cristiano Galindo
+2026,7,6,Cristóvão Tormin
+2026,7,143,Delegado Eduardo Prado
+2026,7,825,Dra. Zeli
+2026,7,831,Eliel Junior
+2026,7,832,Givago Valadares
+2026,7,817,Gugu Nader
+2026,7,134,Henrique César
+2026,7,406,Issy Quinan
+2026,7,814,José Machado
+2026,7,64,Lincoln Tejota
+2026,7,819,Lineu Olimpio
+2026,7,125,Lucas Calil
+2026,7,820,Lucas do Vale
+2026,7,62,Major Araújo
+2026,7,40,Mauro Rubem
+2026,7,28,Paulo Cezar Martins
+2026,7,822,Rosângela Rezende
+2026,7,148,Rubens Marques
+2026,7,823,Veter Martins
+2026,7,131,Virmondes Cruvinel
+2026,7,824,Vivian Naves
+2026,7,152,Wagner Camargo Neto
+2026,7,153,Wilde Cambão

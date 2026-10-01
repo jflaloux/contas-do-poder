@@ -13,8 +13,8 @@ Uso:
                                        # pela folha (prefeitura_sp é o nome antigo)
     python3 coletar.py governadores    # os 27 governadores e vices: salário pela lei (dados/governadores/governadores.json)
                                        # e, em 24 estados, o mês a mês pela folha (coleta/folhas_estaduais/)
-    python3 coletar.py assembleias     # deputados estaduais (por enquanto, São Paulo): subsídio pela lei, verba de gabinete
-                                       # por fornecedor, em site/dados/assembleias.json (dados/assembleias/)
+    python3 coletar.py assembleias     # deputados estaduais (SP, PE, GO, SC, MS): subsídio pela lei, verba do gabinete
+                                       # com fornecedores, em site/dados/assembleias.json (dados/assembleias/)
     python3 coletar.py indice          # índice de acesso aos salários dos governadores (dados/indice/), em site/dados/indice.json
     python3 coletar.py renda           # distribuição da renda de quem trabalha (PNAD Contínua do IBGE), para o "ganha
                                        # mais que X% dos brasileiros que trabalham"; só baixa (~900 MB) quando sai um
