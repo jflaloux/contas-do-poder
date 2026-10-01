@@ -10,7 +10,10 @@ armadilhas que não estão escritas em outro lugar.
   passa por cima. Se o portal bloqueia, o estado fica como "captcha" ou "navegador" e segue sem o dado. Não usar
   credenciais que apareçam no código dos portais (no Mato Grosso do Sul, só a chave anônima de `/Auth/Token`, que o
   portal entrega a qualquer visitante).
-- Não guardar CPF, nem mascarado, nem os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
+- CPF: o inteiro, nunca. Mascarado (como o Portal da Transparência publica), só de agente público, quando a fonte
+  oficial já publica assim e serve para separar homônimos (ex.: ministros nas viagens). De fornecedor pessoa física,
+  não, nem mascarado (`vereadores/comum.mascarar` devolve ""). Decisão do Jean-François, 01/10/2026.
+- Não guardar os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
 - `robots.txt`: é uma convenção, não lei (decisão do Jean-François, 30/09/2026). Por padrão, respeitar o robots.txt e o
   `Crawl-delay`, com pausas entre as consultas: a sessão de `coleta/util.py` (`_sessao()`, `SessaoEducada`) faz isso, e
   todo robô usa essa sessão, nunca `requests.get` direto.

@@ -138,7 +138,8 @@ Robô `coleta/executivo.py`, com os arquivos de download do Portal da Transparê
   eventuais e verbas indenizatórias) e **jetons** (conselhos de estatais e do Sistema S). O 13º aparece no
   Portal como adiantamento e, no fim do ano, inteiro; contamos uma vez só.
 - **Gastos do cargo**: viagens a serviço (diárias + passagens + outros gastos − devoluções), no mês em que a
-  viagem começou. Voos da FAB e do avião presidencial não têm custo publicado.
+  viagem começou. As viagens são casadas pelo nome e pelo CPF mascarado que o próprio Portal publica (para não
+  confundir homônimos); é o único CPF mascarado guardado no projeto, e só de agentes públicos. Voos da FAB e do avião presidencial não têm custo publicado.
 - **Ministro que é deputado ou senador licenciado** (ligação pelo nome civil): nos meses no cargo, entra o
   salário pago pela Câmara ou pelo Senado. As duas páginas têm link uma para a outra.
 - **Depois de sair**: quem deixa o cargo pode receber por até 6 meses ("quarentena") e continua no cadastro.
@@ -238,7 +239,7 @@ ranking, comparar e imagem para compartilhar. A página da cidade (`#cid-3550308
 - **Gastos do mandato**: a verba do gabinete (Auxílio-Encargos Gerais de Gabinete), nota por nota, do SisGV
   (`ObterDebitoVereadorJSON`, SOAP), e o crédito mensal (`ObterCreditoVereadorJSON`); o saldo que sobra em
   dezembro volta para a Câmara. Tipos de despesa com nomes curtos e os 8 maiores fornecedores; CPF de pessoa
-  física (aluguel de imóvel) fica mascarado e o nome não aparece no site. Os 4 últimos meses são baixados de novo
+  física (aluguel de imóvel) não é guardado, nem mascarado, e o nome não aparece no site. Os 4 últimos meses são baixados de novo
   toda semana, porque ainda recebem notas. O último mês é o último fechado.
 - **Equipe**: pessoas e cargos de cada gabinete, pela lista de funcionários da Câmara (retrato do mês mais
   recente). O custo da equipe não é publicado sem CPF.
