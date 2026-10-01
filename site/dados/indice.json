@@ -707,23 +707,23 @@
    "criterios": {
     "nome": {
      "v": null,
-     "prova": "A conferir: a consulta pede CAPTCHA"
+     "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
     },
     "cargo": {
      "v": null,
-     "prova": "A conferir"
+     "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
     },
     "no_cargo_hoje": {
      "v": null,
-     "prova": "A conferir"
+     "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
     },
     "partes": {
      "v": null,
-     "prova": "A conferir"
+     "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
     },
     "historico": {
-     "v": null,
-     "prova": "A conferir"
+     "v": 1,
+     "prova": "Busca por mês, de 2010 a 2026"
     },
     "lei": {
      "v": 1,
@@ -732,7 +732,7 @@
     },
     "formato": {
      "v": null,
-     "prova": "A conferir"
+     "prova": "A conferir: o resultado só aparece depois do CAPTCHA"
     },
     "acesso": {
      "v": 0.5,
@@ -743,8 +743,8 @@
      "prova": "A consulta pede CAPTCHA"
     },
     "robos_exterior": {
-     "v": null,
-     "prova": "A conferir: a consulta não abriu em 01/10/2026 (tempo esgotado, também de dentro do Brasil)"
+     "v": 1,
+     "prova": "Sem robots.txt; abre de fora do Brasil (conferido em 01/10/2026 de um servidor fora do Brasil)"
     }
    },
    "a_conferir": [
@@ -752,9 +752,7 @@
     "cargo",
     "no_cargo_hoje",
     "partes",
-    "historico",
-    "formato",
-    "robos_exterior"
+    "formato"
    ]
   },
   {

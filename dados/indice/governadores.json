@@ -461,27 +461,27 @@
   "MT": {
    "nome": [
     null,
-    "A conferir: a consulta pede CAPTCHA"
+    "A conferir: o resultado só aparece depois do CAPTCHA"
    ],
    "cargo": [
     null,
-    "A conferir"
+    "A conferir: o resultado só aparece depois do CAPTCHA"
    ],
    "no_cargo_hoje": [
     null,
-    "A conferir"
+    "A conferir: o resultado só aparece depois do CAPTCHA"
    ],
    "partes": [
     null,
-    "A conferir"
+    "A conferir: o resultado só aparece depois do CAPTCHA"
    ],
    "historico": [
-    null,
-    "A conferir"
+    1,
+    "Busca por mês, de 2010 a 2026"
    ],
    "formato": [
     null,
-    "A conferir"
+    "A conferir: o resultado só aparece depois do CAPTCHA"
    ],
    "acesso": [
     0.5,
@@ -492,8 +492,8 @@
     "A consulta pede CAPTCHA"
    ],
    "robos_exterior": [
-    null,
-    "A conferir: a consulta não abriu em 01/10/2026 (tempo esgotado, também de dentro do Brasil)"
+    1,
+    "Sem robots.txt; abre de fora do Brasil (conferido em 01/10/2026 de um servidor fora do Brasil)"
    ]
   },
   "PA": {
