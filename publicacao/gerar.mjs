@@ -12,6 +12,10 @@
 // câmaras e das Assembleias, com milhares de fornecedores, não vai na versão leve). Os arquivos inteiros continuam em
 // publicar/dados/ (para quem reutiliza os dados).
 //
+// Governadores e vices: cada pessoa de governadores.json (e.oc) vira uma pessoa como as da Prefeitura (só o que vai para o
+// bolso), em publicar/dados/indice/governadores-pessoas.json, com o mês a mês em publicar/dados/pessoa/<id>.json (ver
+// pessoasGovernadores).
+//
 // Uso: node publicacao/gerar.mjs      (sem dependências; Node 18 ou mais novo)
 // No Cloudflare Pages: comando de build "node publicacao/gerar.mjs", pasta de saída "publicar".
 import fs from "node:fs";
@@ -50,7 +54,7 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const ultimoMes = D.meta.ultimo_mes;
 // o último mês com dados: o da Câmara, da Prefeitura ou da Assembleia da pessoa (cada uma publica num ritmo) ou o geral
 const ultimoDe = (p) => ((!p ? null : p.k === "v" ? (CAM.meta.cidades || {})[p.cid] : p.k === "p" ? (PRE.meta.cidades || {})[p.cid]
-  : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : null) || {}).ultimo_mes || ultimoMes;
+  : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : p.k === "g" ? { ultimo_mes: p.um } : null) || {}).ultimo_mes || ultimoMes;
 const quando = (k, p) => { const u = ultimoDe(p); return String(Math.floor(u / 100)) === k ? `Em ${k} (até ${MESES[(u % 100) - 1]})` : `Em ${k}`; };
 const dataBR = (d) => String(d || "").split("-").reverse().join("/"); // "2026-10-01" → "01/10/2026"
 const num = (v, casas = 0) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas, minimumFractionDigits: casas });
@@ -60,9 +64,123 @@ function iniciais(nome) {
   const p = nome.replace(/^(Dr|Dra|Delegad[oa]|Coronel|Capitão|Pastor[a]?|Sargento|Professor[a]?|Missionário|General|Cabo|Major|Tenente)\.?\s+/i, "").split(/\s+/);
   return ((p[0] || "")[0] + (p.length > 1 ? p[p.length - 1][0] : "")).toUpperCase();
 }
+// ------------------------------------------------------------------ governadores e vices como pessoas
+// Cada governador e vice desde 2023 (e.oc; o id é a pessoa, não o cargo: o vice que virou governador tem uma página só)
+// vira uma pessoa no formato das da Prefeitura: só o que vai para o bolso, mês a mês, desde jan/2025.
+// - Onde a folha do Estado abre (e.m: [aaaamm, cargo, índice em e.oc, recebido, salário, 13º, férias, auxílios,
+//   outros, abate-teto, marca]): o que ela pagou, bruto, já sem o abate-teto. O salário é o recebido menos as outras
+//   partes (o abate-teto sai dele); onde a folha não separa as partes (salário vazio), o mês inteiro fica num item só.
+//   A linha do mês da saída (marca "s", com os acertos: férias não tiradas, 13º proporcional) fica fora das médias e
+//   do mês a mês, como na página do estado: vai em qs, com o valor.
+// - No Amapá, em Mato Grosso e no Tocantins (sem folha): o salário da lei (e.h) proporcional aos dias no cargo (de
+//   e.oc; a data de saída é o dia em que o próximo assume). Quem esteve só "em exercício" fica sem valores: sem a folha,
+//   não dá para saber quem pagou. Nesses estados, hoje, não há ninguém assim.
+// gp: em cada período, o grupo de comparação ("g": governador ou em exercício; "gv": vice), ou null se a pessoa teve os
+// dois cargos no período (aí fica fora das comparações). tr: o cargo em cada trecho de meses (a faixa do mês a mês).
+const CARGO_G = { gov: ["Governador", "Governadora"], vice: ["Vice-governador", "Vice-governadora"], exercicio: ["Governador em exercício", "Governadora em exercício"] };
+const INICIO_G = 202501;
+const mesDe = (d) => Number(d.slice(0, 4)) * 100 + Number(d.slice(5, 7));
+const proxMes = (m) => (m % 100 === 12 ? m + 89 : m + 1);
+const mesAnt = (m) => (m % 100 === 1 ? m - 89 : m - 1);
+const diaUTC = (d) => Date.UTC(+d.slice(0, 4), +d.slice(5, 7) - 1, +d.slice(8, 10));
+// dias de [de, ate) dentro do mês m, e quantos dias o mês tem
+function diasNoCargo(de, ate, m) {
+  const ini = Date.UTC(Math.floor(m / 100), (m % 100) - 1, 1), fim = Date.UTC(Math.floor(m / 100), m % 100, 1);
+  const a = Math.max(ini, diaUTC(de)), b = Math.min(fim, ate ? diaUTC(ate) : fim);
+  return [Math.max(0, Math.round((b - a) / 864e5)), Math.round((fim - ini) / 864e5)];
+}
+const CATS_G = {
+  ferias: { grupo: "ganha", nome: "Férias" },
+  auxilios_folha: { grupo: "ganha", nome: "Auxílios e benefícios" },
+  folha_total: { grupo: "ganha", nome: "Pagamento do mês (a folha não separa salário, 13º e férias)" },
+};
+function pessoasGovernadores() {
+  const fimGeral = mesAnt(Math.floor(((GOV.meta || {}).mes) || proxMes(ultimoMes))); // o último mês fechado
+  const lista = [];
+  for (const e of GOV.e) {
+    const folha = !!(e.m && e.m.length);
+    const ini = folha ? Math.min(...e.m.map((x) => x[0])) : INICIO_G;
+    const um = folha ? Math.max(...e.m.map((x) => x[0])) : fimGeral;
+    for (const id of [...new Set(e.oc.map((o) => o.id).filter(Boolean))]) {
+      const ocs = e.oc.map((o, i) => [o, i]).filter(([o]) => o.id === id);
+      const idx = new Set(ocs.map(([, i]) => i));
+      const ult = ocs[ocs.length - 1][0], fem = ocs.some(([o]) => o.fem) ? 1 : 0;
+      const meses = new Map(), qs = [];
+      const somar = (m, c, cats) => {
+        const x = meses.get(m) || { v: 0, cats: {}, cargos: {} };
+        for (const [k, v] of Object.entries(cats)) if (v) { x.cats[k] = (x.cats[k] || 0) + v; x.v += v; x.cargos[c] = (x.cargos[c] || 0) + v; }
+        meses.set(m, x);
+      };
+      if (folha) {
+        for (const x of e.m) {
+          if (!idx.has(x[2])) continue;
+          const c = e.oc[x[2]].c;
+          if (String(x[10] || "").includes("s")) { qs.push([x[0], c, Math.round(x[3])]); continue; }
+          const parte = (i) => x[i] || 0;
+          const partes = { decimo_terceiro: parte(5), ferias: parte(6), auxilios_folha: parte(7), outros_rendimentos: parte(8) };
+          let resto = x[3] - Object.values(partes).reduce((a, v) => a + v, 0);
+          if (resto < 0) { // o abate-teto maior que o salário: as partes encolhem na mesma proporção
+            const f = x[3] / (x[3] - resto);
+            for (const k of Object.keys(partes)) partes[k] *= f;
+            resto = 0;
+          }
+          somar(x[0], c, { [x[4] == null ? "folha_total" : "salario"]: resto, ...partes });
+        }
+      } else {
+        for (const [o] of ocs) {
+          if (o.c === "exercicio") continue;
+          const ate = o.ate ? Math.min(um, mesDe(o.ate)) : um;
+          for (let m = Math.max(ini, mesDe(o.de)); m <= ate; m = proxMes(m)) {
+            const lei = e.h.filter((x) => x[0] === o.c && x[1] <= m).sort((a, b) => a[1] - b[1]).pop();
+            const [d, n] = diasNoCargo(o.de, o.ate, m);
+            if (lei && d > 0) somar(m, o.c, { salario: (lei[2] * d) / n });
+          }
+        }
+      }
+      const per = {}, t = [], papel = {}, trechos = [];
+      const vazio = () => ({ m: 0, mg: 0, mc: 0, me: 0, g: 0, c: 0, e: 0, pm: 0, mp: 0, pu: 0, ep: 0, cats: {} });
+      for (const m of [...meses.keys()].sort((a, b) => a - b)) {
+        const x = meses.get(m);
+        if (x.v < 1) continue;
+        const cargo = Object.entries(x.cargos).sort((a, b) => b[1] - a[1])[0][0]; // no mês da troca, o de maior valor
+        for (const k of [String(Math.floor(m / 100)), "leg"]) {
+          const r = per[k] || (per[k] = vazio());
+          r.m++; r.mg++; r.g += x.v;
+          for (const [c, v] of Object.entries(x.cats)) r.cats[c] = (r.cats[c] || 0) + v;
+          (papel[k] || (papel[k] = new Set())).add(cargo === "vice" ? "gv" : "g");
+        }
+        t.push([m, Math.round(x.v), 0, 0, 0, 0]);
+        const tr = trechos[trechos.length - 1];
+        if (tr && tr[2] === cargo && proxMes(tr[1]) === m) tr[1] = m; else trechos.push([m, m, cargo]);
+      }
+      for (const r of Object.values(per)) {
+        r.g = Math.round(r.g);
+        r.cats = Object.fromEntries(Object.entries(r.cats).map(([c, v]) => [c, Math.round(v)]).filter(([, v]) => v));
+      }
+      const atual = (e.gov && e.gov.id === id) || (e.vice && e.vice.id === id);
+      const tp = ult.c;
+      lista.push({
+        id, k: "g", uf: e.uf, tp, n: ult.n, nc: ocs.map(([o]) => o.nc).find(Boolean) || null, pt: ult.pt || null, fem,
+        f: ocs.map(([o]) => o.f).reverse().find(Boolean) || null, fc: ocs.map(([o]) => o.fc).reverse().find(Boolean) || null,
+        g: `${CARGO_G[tp][fem]} ${deUF(e.uf)}`, x: atual ? 1 : 0,
+        o: (folha ? (e.mf && e.mf.u) || (e.folha && e.folha.u) : e.v && e.v[4]) || (e.folha && e.folha.u) || null,
+        fonte: folha ? "folha" : "lei", ini, um,
+        cg: ocs.map(([o]) => [o.c, o.de, o.ate || null]),
+        gp: Object.fromEntries(Object.entries(papel).map(([k, s]) => [k, s.size === 1 ? [...s][0] : null])),
+        ...(new Set(trechos.map((x) => x[2])).size > 1 ? { tr: trechos } : {}),
+        ...(qs.length ? { qs } : {}),
+        ...(ocs.some(([o]) => o.rel && o.rel.length) ? { rel: ocs.flatMap(([o]) => o.rel || [])[0] } : {}),
+        per, t,
+      });
+    }
+  }
+  return lista;
+}
+const governadores = GOV.e.length ? pessoasGovernadores() : [];
+
 // arquivos que o app.js baixa ao abrir qualquer página: o navegador começa a baixar junto com o app.js
 const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json",
-  ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : [])];
+  ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : []), ...(governadores.length ? ["/dados/indice/governadores-pessoas.json"] : [])];
 const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
 
 // ------------------------------------------------------------------ os números da abertura
@@ -126,7 +244,9 @@ const paginas = []; // [caminho, html]
 // ------------------------------------------------------------------ políticos
 const cidades = { ...(CAM.meta.cidades || {}), ...(PRE.meta.cidades || {}) };
 const estados = (ASS.meta && ASS.meta.estados) || {};
-const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais];
+const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais, ...governadores];
+// quem só tem o que vai para o bolso (a Prefeitura e o governo do estado não publicam os gastos por pessoa)
+const soBolso = (p) => p.k === "p" || p.k === "g";
 const porId = new Map(pessoas.map((p) => [p.id, p]));
 function periodoPadrao(p) {
   if (p.per["2025"] && p.per["2025"].m >= 1) return "2025";
@@ -138,6 +258,7 @@ function rotuloPessoa(p) {
   if (p.k === "v") return `${p.g} ${cid ? deCidade(p.cid, cid.n) : ""}${p.pt ? ` · ${p.pt}` : ""}`.replace(/\s+/g, " ").trim();
   if (p.k === "p") return /Prefeit/.test(p.g) || !cid ? p.g : `${p.g} · Prefeitura ${deCidade(p.cid, cid.n)}`;
   if (p.k === "a") return `${p.g} ${deUF(p.uf)}${p.pt ? ` · ${p.pt}` : ""}`;
+  if (p.k === "g") return `${p.g}${p.pt ? ` · ${p.pt}` : ""}`;
   if (p.k === "e") return `${p.g}${p.pt ? ` · ${p.pt}` : ""}`;
   return `${p.g}${p.pt || p.uf ? ` · ${[p.pt, p.uf].filter(Boolean).join("-")}` : ""}`;
 }
@@ -149,26 +270,30 @@ const partidoUF = (p) => {
   if (p.k === "e") return p.pt ? `${p.pt} · governo federal` : "Governo federal";
   if (p.k === "v") return `${p.pt || "sem partido"} · ${(cid || {}).n || "vereador"}`;
   if (p.k === "p") return p.pt || `Prefeitura ${cid ? deCidade(p.cid, cid.n) : ""}`;
-  if (p.k === "a") return p.pt ? `${p.pt}-${p.uf}` : p.uf;
+  if (p.k === "a" || p.k === "g") return p.pt ? `${p.pt}-${p.uf}` : p.uf;
   return `${p.pt || "sem partido"}-${p.uf}`;
 };
-const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "gastos do cargo" })[p.k] || "gastos do mandato";
+const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "gastos do cargo", g: "gastos do cargo" })[p.k] || "gastos do mandato";
+// governador sem a folha (Amapá, Mato Grosso e Tocantins): o salário da lei, e não o que foi pago
+const rotuloValor = (p) => (p.k === "g" && p.fonte === "lei" ? "Salário do cargo por mês" : soBolso(p) ? "Recebe por mês" : "Custo por mês");
 const nomeK = (k, p) => quando(k, p).replace(/^Em/, "em");
 function previaPessoa(p, k, r, texto) {
   const foto = p.f ? `<img src="${esc(daRaiz(p.f))}" alt="" referrerpolicy="no-referrer">` : "";
-  const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
+  const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
   let resumo = "";
   if (r) {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
     // a barra dividida (bolso e gastos) e o valor embaixo de cada pedaço, como no app.js (resumoTopo)
     const parte = `${(gm + cm > 0 ? (gm / (gm + cm)) * 100 : 100).toFixed(1)}%`;
-    const partes = p.k === "p"
+    const partes = soBolso(p)
       ? '<div class="resumo-divisao" style="--parte:100%" aria-hidden="true"><span class="resumo-divisao__ganha"></span></div>'
         + `<ul class="resumo-partes resumo-partes--um"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>tudo para o bolso</span></li></ul>`
       : `<div class="resumo-divisao" style="--parte:${parte}" aria-hidden="true"><span class="resumo-divisao__ganha"></span><span class="resumo-divisao__custa"></span></div>`
         + `<ul class="resumo-partes" style="--parte:${parte}" aria-label="De onde vem o custo"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>para o bolso</span></li>`
         + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
-    resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${p.k === "p" ? "Recebe por mês" : "Custo por mês"} ${esc(nomeK(k, p))}</p>`
+    const gk = p.k === "g" ? (p.gp || {})[k] : undefined;
+    const como = gk === undefined ? "" : gk === null ? ` (como vice e como ${CARGO_G.gov[p.fem].toLowerCase()})` : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
+    resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
       + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${partes}${salMin ? `<p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p>` : ""}</div></div>`;
   }
   return `<article class="cartao conta" id="previa" data-id="${esc(p.id)}" data-k="${esc(k || "")}">`
@@ -181,7 +306,7 @@ function previaPessoa(p, k, r, texto) {
 }
 // quem tem a série mês a mês (t) num arquivo à parte (dados/pessoa/<id>.json): dados.json, camaras.json e
 // assembleias.json; as prefeituras continuam inteiras (o app usa o mês a mês de todos na página da cidade)
-const separados = new Set([...D.p, ...CAM.p, ...deputadosEstaduais].filter((p) => p.t).map((p) => p.id));
+const separados = new Set([...D.p, ...CAM.p, ...deputadosEstaduais, ...governadores.filter((p) => p.t.length)].filter((p) => p.t).map((p) => p.id));
 for (const p of pessoas) {
   // deputado estadual ainda sem nome no enderecos.json: a página fica no próprio id (/est-35-300607), que o app também
   // abre; quando ganhar um nome, o id vai para "antigos" (e vira redirecionamento)
@@ -191,18 +316,24 @@ for (const p of pessoas) {
   const r = k && p.per[k];
   const rotulo = rotuloPessoa(p);
   let texto;
-  if (!r) texto = `${rotulo}. Veja quanto recebe e quanto custa por mês, com números oficiais.`;
+  if (!r && p.k === "g") texto = `${rotulo}. Não há pagamentos a ${p.n} na folha de pagamento ${deUF(p.uf)} publicada até ${MESES[(p.um % 100) - 1]}/${Math.floor(p.um / 100)}. Veja o salário do cargo e as notas sobre o estado.`;
+  else if (!r) texto = `${rotulo}. Veja quanto recebe e quanto custa por mês, com números oficiais.`;
   else {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
     const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "a" ? `da ${(estados[p.uf] || {}).casa || "Assembleia Legislativa"}`
       : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : FONTE[p.k];
     // no Congresso e no governo federal, o bolso tem também o 13º (vereador e deputado estadual com o salário da lei, não)
     const bolso = ["d", "s", "e", "j"].includes(p.k) ? "salário, 13º e auxílios" : "salário e auxílios";
-    if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
+    // governador que era vice no período (ou teve os dois cargos nele): diz em qual cargo
+    const gk = p.k === "g" ? (p.gp || {})[k] : null, grupoG = gk === "gv" ? "vice-governadores" : "governadores";
+    const como = p.k !== "g" ? "" : gk === null ? " (como vice e como governador)" : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
+    if (p.k === "g" && p.fonte === "lei") texto = `${rotulo}. ${quando(k, p)}${como}, o salário oficial do cargo foi de ${reais(gm)} por mês, em média (bruto), pelos dias no cargo. O Estado não publica a folha de pagamento em dados abertos. Com a fonte de cada valor.`;
+    else if (p.k === "g") texto = `${rotulo}. ${quando(k, p)}${como}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${deUF(p.uf)}. Veja mês a mês${gk ? ` e compare com os outros ${grupoG}` : ""}.`;
+    else if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
     else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (${bolso}, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
     else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (${bolso}) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
-  const titulo = `${p.n}: ${p.k === "p" ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
+  const titulo = `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
   const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : [];
   paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false })]);
 }
@@ -339,6 +470,19 @@ for (const [arq, dados] of [["dados.json", D], ["camaras.json", CAM], ["assemble
   for (const p of dados.p) {
     if (!p.t) continue;
     fs.writeFileSync(path.join(SAIDA, "dados", "pessoa", `${p.id}.json`), JSON.stringify({ t: p.t, dt: comNomes(p.dt, tipos) }));
+    nPessoa++;
+  }
+}
+// governadores e vices (ver pessoasGovernadores): a lista sem o mês a mês, e o arquivo de cada um
+if (governadores.length) {
+  fs.writeFileSync(path.join(SAIDA, "dados", "indice", "governadores-pessoas.json"), JSON.stringify({
+    meta: { inicio: Math.min(...governadores.map((p) => p.ini)), ultimo_mes: Math.max(...governadores.map((p) => p.um)), categorias: CATS_G },
+    // quem não tem nenhum mês (como quem não aparece na folha) leva o t vazio: o app não procura o arquivo dele
+    p: governadores.map(({ t, ...resto }) => (t.length ? resto : { ...resto, t })),
+  }));
+  for (const p of governadores) {
+    if (!p.t.length) continue;
+    fs.writeFileSync(path.join(SAIDA, "dados", "pessoa", `${p.id}.json`), JSON.stringify({ t: p.t, dt: {} }));
     nPessoa++;
   }
 }

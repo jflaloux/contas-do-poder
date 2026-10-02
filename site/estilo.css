@@ -689,6 +689,8 @@ input[type="search"] { line-height: 1.5; }
 .resumo-parte--ganha strong { color: var(--banda-ganha); }
 .resumo-parte--custa strong { color: var(--banda-custa); }
 .resumo-sm { color: var(--banda-ink-2); font-size: 1rem; margin-top: 6px; }
+/* período sem pagamentos (ou governador que não aparece na folha): texto claro sobre o fundo escuro do topo */
+.conta__resumo-principal > .discreto { color: var(--banda-ink-2); }
 .conta__resumo .item__detalhe { color: var(--banda-ink-2); margin-top: 2px; }
 .conta__resumo .selo-comp { color: var(--banda-ink); }
 .conta__resumo-lado { display: grid; gap: 10px; align-content: start; }

@@ -95,7 +95,9 @@ pessoa, que vão para `publicar/dados/pessoa/<id>.json` (com o nome de cada tipo
 baixados ao abrir a página daquela pessoa; por isso a lista `meta.tipos` das câmaras e das Assembleias, com milhares de
 fornecedores, também fica fora da versão leve (ao abrir o site, os dados vão de cerca de 1,3 MB para cerca de 420 KB
 comprimidos, já com os deputados estaduais). Os arquivos inteiros continuam em `publicar/dados/`, para quem reutiliza os
-dados. Cada página pronta já traz o topo do contracheque (nome, custo por mês e de onde ele vem) e pede ao navegador
+dados. Governadores e vices vêm de `governadores.json` e viram pessoas (ver "Governadores"): a lista em
+`publicar/dados/indice/governadores-pessoas.json` e o mês a mês de cada um, também, em `publicar/dados/pessoa/<id>.json`.
+Cada página pronta já traz o topo do contracheque (nome, custo por mês e de onde ele vem) e pede ao navegador
 para baixar os dados junto com o `app.js` (`<link rel="preload">`). Sem o `gerar.mjs`, o `app.js` lê os arquivos
 inteiros de `site/dados/`.
 
@@ -408,6 +410,18 @@ num ponto abre aquele estado). Depois vêm o vice e o secretário de Estado, num
 mesma lei e a folha traz os dois, mas a página é do governador), o mês a mês da folha (governador ou vice), a história
 dos valores, a Assembleia Legislativa e, no fim, a lista dos 27 governadores.
 
+Cada governador e vice desde 2023 tem também a sua página (`/tarcisio-de-freitas`, pelo endereço de
+`site/dados/enderecos.json`; quem foi vice e virou governador tem uma página só), no formato das da Prefeitura: o que
+vai para o bolso, mês a mês, desde jan/2025. O `publicacao/gerar.mjs` monta essas pessoas (`pessoasGovernadores`, com
+`k: "g"`) a partir de `e.oc` e `e.m`: onde a folha do Estado abre, o que ela pagou (o salário é o recebido menos o 13º,
+as férias, os auxílios e os outros pagamentos; onde a folha não separa as partes, o mês fica num item só); o mês da
+saída, com os acertos, fica fora das médias e do mês a mês, como na página do estado. No Amapá, em Mato Grosso e no
+Tocantins (sem folha), é o salário oficial do cargo (`e.h`) pelos dias no cargo, marcado como "não é o que foi pago" e
+fora das comparações. A posição compara com os outros governadores (ou vices) no mesmo período; quem teve os dois
+cargos num ano fica fora da comparação daquele ano. Quem governa em exercício sem aparecer na folha (Ricardo Couto, no
+Rio, pago pelo Tribunal de Justiça) tem a página com as notas do estado e sem valores. Na página do estado, o nome do
+governador, do vice e de quem governou desde 2023 leva à página de cada um.
+
 ### Governadores mês a mês (folhas dos estados)
 
 Robôs em `coleta/folhas_estaduais/`, um por estado, rodados pela etapa `governadores`: o que o governador, o vice e
@@ -624,6 +638,9 @@ seguem o mesmo desenho.
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+  Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
+  `compartilhar` com `casa: governador`; na origem, `governador` (o link da página do estado para a da pessoa); e
+  `ver_governador` com a origem `pessoa_governador` (o link da página da pessoa para a do estado).
 - **Velocidade nos aparelhos de quem visita** (desde 01/10/2026): o evento `velocidade`, um por visita, enviado quando a
   pessoa sai da página ou troca de aba pela primeira vez. Leva os três números que o Google usa para dizer se um site é
   rápido (Core Web Vitals), medidos pelo próprio navegador: `lcp_ms` (quando o maior bloco de texto ou imagem da primeira
