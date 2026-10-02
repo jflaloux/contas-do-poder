@@ -23,6 +23,9 @@ ATRASOS_CONHECIDOS = {
     "folhas/RJ": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago",
     "assembleias/rj": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas",
     "assembleias/ma": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados",
+    "judiciario/stf": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
+    "judiciario/stm": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
+    "judiciario/tse": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "prefeituras/campo_grande": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)",
 }
 SAIDA_MD = PROCESSADOS / "situacao.md"
@@ -59,6 +62,8 @@ def _ultimos_meses():
     for f in ("camara", "senado"):
         um[f"federal/{f}"] = dados.get("ultimo_mes")
     um["federal/executivo"] = dados.get("ultimo_mes_executivo")
+    for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
+        um[f"judiciario/{sigla.lower()}"] = m.get("ultimo_mes")
     for arq in sorted((SITE / "interior").glob("*.json")) if (SITE / "interior").exists() else []:
         meta = _ler(f"interior/{arq.name}").get("meta", {})
         if meta.get("ultimo_mes"):

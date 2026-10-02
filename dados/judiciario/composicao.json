@@ -1,0 +1,1750 @@
+{
+ "_sobre": "Quem está (ou esteve desde jan/2025) no STF, no STJ, no TST, no STM, no TSE, no CNJ e na Procuradoria-Geral da República. Mantido à mão e conferido com a folha de cada órgão (os nomes como a folha escreve vão em 'folha'). inicio e fim: o mês (AAAA-MM) em que a pessoa entra e sai da folha do órgão; inicio vazio = já estava no cargo em jan/2025; fim vazio = no cargo no último mês publicado. As funções (presidente, vice, corregedor) saem da lotação de cada mês na folha. 'rel': a outra página da mesma pessoa (quem está no TSE vindo do STF ou do STJ): o site liga as páginas e nunca soma o que cada órgão paga. 'cnj_sem_folha': quem integra o CNJ e é pago pelo próprio tribunal; a função aparece na página do tribunal. 'fora': nomes que aparecem na folha com cargo de ministro ou conselheiro mas não integram a composição (a conferir na página de composição do órgão). pagina_conferida: false = o robô não abre a página (403), o endereço não foi conferido.",
+ "conferido_em": "2026-10-02",
+ "orgaos": {
+  "STF": {
+   "nome": "Supremo Tribunal Federal",
+   "vagas": 11,
+   "pagina": "https://portal.stf.jus.br/textos/verTexto.asp?servico=sobreStfComposicaoComposicaoPlenariaApresentacao",
+   "pagina_conferida": false,
+   "cargo": [
+    "Ministra do STF",
+    "Ministro do STF"
+   ]
+  },
+  "STJ": {
+   "nome": "Superior Tribunal de Justiça",
+   "vagas": 33,
+   "pagina": "https://www.stj.jus.br/sites/portalp/Institucional/Composicao",
+   "pagina_conferida": true,
+   "cargo": [
+    "Ministra do STJ",
+    "Ministro do STJ"
+   ]
+  },
+  "TST": {
+   "nome": "Tribunal Superior do Trabalho",
+   "vagas": 27,
+   "pagina": "https://www.tst.jus.br/ministros",
+   "pagina_conferida": true,
+   "cargo": [
+    "Ministra do TST",
+    "Ministro do TST"
+   ]
+  },
+  "STM": {
+   "nome": "Superior Tribunal Militar",
+   "vagas": 15,
+   "pagina": "https://www.stm.jus.br/institucional/conheca-o-superior-tribunal-militar/composicao-da-corte",
+   "pagina_conferida": true,
+   "cargo": [
+    "Ministra do STM",
+    "Ministro do STM"
+   ]
+  },
+  "TSE": {
+   "nome": "Tribunal Superior Eleitoral",
+   "vagas": 7,
+   "pagina": "https://www.tse.jus.br/institucional/ministros",
+   "pagina_conferida": false,
+   "cargo": [
+    "Ministra do TSE",
+    "Ministro do TSE"
+   ]
+  },
+  "CNJ": {
+   "nome": "Conselho Nacional de Justiça",
+   "vagas": 15,
+   "pagina": "https://www.cnj.jus.br/composicao-atual/",
+   "pagina_conferida": true,
+   "cargo": [
+    "Conselheira do CNJ",
+    "Conselheiro do CNJ"
+   ]
+  },
+  "PGR": {
+   "nome": "Procuradoria-Geral da República",
+   "vagas": 1,
+   "pagina": "https://www.mpf.mp.br/o-mpf/unidades/procuradoria-geral-da-republica-pgr",
+   "pagina_conferida": true,
+   "cargo": [
+    "Procuradora-Geral da República",
+    "Procurador-Geral da República"
+   ]
+  }
+ },
+ "membros": [
+  {
+   "id": "jud-stf-alexandre-de-moraes",
+   "orgao": "STF",
+   "nome": "Alexandre de Moraes",
+   "nome_civil": "Alexandre de Moraes",
+   "fem": 0,
+   "folha": [
+    "ALEXANDRE DE MORAES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stf-andre-mendonca",
+   "orgao": "STF",
+   "nome": "André Mendonça",
+   "nome_civil": "André Luiz de Almeida Mendonça",
+   "fem": 0,
+   "folha": [
+    "ANDRÉ LUIZ DE ALMEIDA MENDONÇA"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-andre-mendonca"
+   ]
+  },
+  {
+   "id": "jud-stf-carmen-lucia",
+   "orgao": "STF",
+   "nome": "Cármen Lúcia",
+   "nome_civil": "Cármen Lúcia Antunes Rocha",
+   "fem": 1,
+   "folha": [
+    "CÁRMEN LÚCIA ANTUNES ROCHA"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-carmen-lucia"
+   ]
+  },
+  {
+   "id": "jud-stf-cristiano-zanin",
+   "orgao": "STF",
+   "nome": "Cristiano Zanin",
+   "nome_civil": "Cristiano Zanin Martins",
+   "fem": 0,
+   "folha": [
+    "CRISTIANO ZANIN MARTINS"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-cristiano-zanin"
+   ]
+  },
+  {
+   "id": "jud-stf-flavio-dino",
+   "orgao": "STF",
+   "nome": "Flávio Dino",
+   "nome_civil": "Flávio Dino de Castro e Costa",
+   "fem": 0,
+   "folha": [
+    "FLÁVIO DINO DE CASTRO E COSTA"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jun-593253"
+   ],
+   "obs": "também foi senador e ministro da Justiça e Segurança Pública (2023–2024): a página desses cargos é outra (jun-593253)"
+  },
+  {
+   "id": "jud-stf-gilmar-mendes",
+   "orgao": "STF",
+   "nome": "Gilmar Mendes",
+   "nome_civil": "Gilmar Ferreira Mendes",
+   "fem": 0,
+   "folha": [
+    "GILMAR FERREIRA MENDES"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-gilmar-mendes"
+   ]
+  },
+  {
+   "id": "jud-stf-dias-toffoli",
+   "orgao": "STF",
+   "nome": "Dias Toffoli",
+   "nome_civil": "José Antonio Dias Toffoli",
+   "fem": 0,
+   "folha": [
+    "JOSÉ ANTONIO DIAS TOFFOLI"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-dias-toffoli"
+   ]
+  },
+  {
+   "id": "jud-stf-nunes-marques",
+   "orgao": "STF",
+   "nome": "Nunes Marques",
+   "nome_civil": "Kassio Nunes Marques",
+   "fem": 0,
+   "folha": [
+    "KASSIO NUNES MARQUES"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-nunes-marques"
+   ]
+  },
+  {
+   "id": "jud-stf-luis-roberto-barroso",
+   "orgao": "STF",
+   "nome": "Luís Roberto Barroso",
+   "nome_civil": "Luís Roberto Barroso",
+   "fem": 0,
+   "folha": [
+    "LUÍS ROBERTO BARROSO"
+   ],
+   "inicio": null,
+   "fim": "2025-11"
+  },
+  {
+   "id": "jud-stf-edson-fachin",
+   "orgao": "STF",
+   "nome": "Edson Fachin",
+   "nome_civil": "Luiz Edson Fachin",
+   "fem": 0,
+   "folha": [
+    "LUIZ EDSON FACHIN"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stf-luiz-fux",
+   "orgao": "STF",
+   "nome": "Luiz Fux",
+   "nome_civil": "Luiz Fux",
+   "fem": 0,
+   "folha": [
+    "LUIZ FUX"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-antonio-carlos-ferreira",
+   "orgao": "STJ",
+   "nome": "Antonio Carlos Ferreira",
+   "nome_civil": "Antonio Carlos Ferreira",
+   "fem": 0,
+   "folha": [
+    "Antonio Carlos Ferreira"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-antonio-carlos-ferreira"
+   ]
+  },
+  {
+   "id": "jud-stj-herman-benjamin",
+   "orgao": "STJ",
+   "nome": "Herman Benjamin",
+   "nome_civil": "Antonio Herman de Vasconcellos e Benjamin",
+   "fem": 0,
+   "folha": [
+    "Antonio Herman de Vasconcellos e Benjamin"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-antonio-saldanha-palheiro",
+   "orgao": "STJ",
+   "nome": "Antonio Saldanha Palheiro",
+   "nome_civil": "Antonio Saldanha Palheiro",
+   "fem": 0,
+   "folha": [
+    "Antonio Saldanha Palheiro"
+   ],
+   "inicio": null,
+   "fim": "2026-05"
+  },
+  {
+   "id": "jud-stj-benedito-goncalves",
+   "orgao": "STJ",
+   "nome": "Benedito Gonçalves",
+   "nome_civil": "Benedito Gonçalves",
+   "fem": 0,
+   "folha": [
+    "Benedito Gonçalves"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-carlos-pires-brandao",
+   "orgao": "STJ",
+   "nome": "Carlos Pires Brandão",
+   "nome_civil": "Carlos Augusto Pires Brandão",
+   "fem": 0,
+   "folha": [
+    "Carlos Augusto Pires Brandão"
+   ],
+   "inicio": "2025-09",
+   "fim": null
+  },
+  {
+   "id": "jud-stj-daniela-teixeira",
+   "orgao": "STJ",
+   "nome": "Daniela Teixeira",
+   "nome_civil": "Daniela Rodrigues Teixeira",
+   "fem": 1,
+   "folha": [
+    "Daniela Rodrigues Teixeira"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-nancy-andrighi",
+   "orgao": "STJ",
+   "nome": "Nancy Andrighi",
+   "nome_civil": "Fátima Nancy Andrighi",
+   "fem": 1,
+   "folha": [
+    "Fátima Nancy Andrighi"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-francisco-falcao",
+   "orgao": "STJ",
+   "nome": "Francisco Falcão",
+   "nome_civil": "Francisco Cândido de Melo Falcão Neto",
+   "fem": 0,
+   "folha": [
+    "Francisco Cândido de Melo Falcão Neto"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-og-fernandes",
+   "orgao": "STJ",
+   "nome": "Og Fernandes",
+   "nome_civil": "Geraldo Og Nicéas Marques Fernandes",
+   "fem": 0,
+   "folha": [
+    "Geraldo Og Nicéas Marques Fernandes"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-humberto-martins",
+   "orgao": "STJ",
+   "nome": "Humberto Martins",
+   "nome_civil": "Humberto Eustáquio Soares Martins",
+   "fem": 0,
+   "folha": [
+    "Humberto Eustáquio Soares Martins"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-joao-otavio-de-noronha",
+   "orgao": "STJ",
+   "nome": "João Otávio de Noronha",
+   "nome_civil": "João Otávio de Noronha",
+   "fem": 0,
+   "folha": [
+    "João Otávio de Noronha"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-joel-ilan-paciornik",
+   "orgao": "STJ",
+   "nome": "Joel Ilan Paciornik",
+   "nome_civil": "Joel Ilan Paciornik",
+   "fem": 0,
+   "folha": [
+    "Joel Ilan Paciornik"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-afranio-vilela",
+   "orgao": "STJ",
+   "nome": "Afrânio Vilela",
+   "nome_civil": "José Afrânio Vilela",
+   "fem": 0,
+   "folha": [
+    "José Afrânio Vilela"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-luis-felipe-salomao",
+   "orgao": "STJ",
+   "nome": "Luis Felipe Salomão",
+   "nome_civil": "Luis Felipe Salomão",
+   "fem": 0,
+   "folha": [
+    "Luis Felipe Salomão"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-gurgel-de-faria",
+   "orgao": "STJ",
+   "nome": "Gurgel de Faria",
+   "nome_civil": "Luiz Alberto Gurgel de Faria",
+   "fem": 0,
+   "folha": [
+    "Luiz Alberto Gurgel de Faria"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-ribeiro-dantas",
+   "orgao": "STJ",
+   "nome": "Ribeiro Dantas",
+   "nome_civil": "Marcelo Navarro Ribeiro Dantas",
+   "fem": 0,
+   "folha": [
+    "Marcelo Navarro Ribeiro Dantas"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-marco-aurelio-bellizze",
+   "orgao": "STJ",
+   "nome": "Marco Aurélio Bellizze",
+   "nome_civil": "Marco Aurélio Bellizze Oliveira",
+   "fem": 0,
+   "folha": [
+    "Marco Aurélio Bellizze Oliveira"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-marco-buzzi",
+   "orgao": "STJ",
+   "nome": "Marco Buzzi",
+   "nome_civil": "Marco Aurélio Gastaldi Buzzi",
+   "fem": 0,
+   "folha": [
+    "Marco Aurélio Gastaldi Buzzi"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-isabel-gallotti",
+   "orgao": "STJ",
+   "nome": "Isabel Gallotti",
+   "nome_civil": "Maria Isabel Diniz Gallotti Rodrigues",
+   "fem": 1,
+   "folha": [
+    "Maria Isabel Diniz Gallotti Rodrigues"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-isabel-gallotti"
+   ]
+  },
+  {
+   "id": "jud-stj-maria-marluce-caldas",
+   "orgao": "STJ",
+   "nome": "Maria Marluce Caldas",
+   "nome_civil": "Maria Marluce Caldas Bezerra",
+   "fem": 1,
+   "folha": [
+    "Maria Marluce Caldas Bezerra"
+   ],
+   "inicio": "2025-09",
+   "fim": null
+  },
+  {
+   "id": "jud-stj-maria-thereza-de-assis-moura",
+   "orgao": "STJ",
+   "nome": "Maria Thereza de Assis Moura",
+   "nome_civil": "Maria Thereza Rocha de Assis Moura",
+   "fem": 1,
+   "folha": [
+    "Maria Thereza Rocha de Assis Moura"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-mauro-campbell-marques",
+   "orgao": "STJ",
+   "nome": "Mauro Campbell Marques",
+   "nome_civil": "Mauro Luiz Campbell Marques",
+   "fem": 0,
+   "folha": [
+    "Mauro Luiz Campbell Marques"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-messod-azulay-neto",
+   "orgao": "STJ",
+   "nome": "Messod Azulay Neto",
+   "nome_civil": "Messod Azulay Neto",
+   "fem": 0,
+   "folha": [
+    "Messod Azulay Neto"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-moura-ribeiro",
+   "orgao": "STJ",
+   "nome": "Moura Ribeiro",
+   "nome_civil": "Paulo Dias de Moura Ribeiro",
+   "fem": 0,
+   "folha": [
+    "Paulo Dias de Moura Ribeiro"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-paulo-sergio-domingues",
+   "orgao": "STJ",
+   "nome": "Paulo Sérgio Domingues",
+   "nome_civil": "Paulo Sérgio Domingues",
+   "fem": 0,
+   "folha": [
+    "Paulo Sérgio Domingues"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-raul-araujo",
+   "orgao": "STJ",
+   "nome": "Raul Araújo",
+   "nome_civil": "Raul Araújo Filho",
+   "fem": 0,
+   "folha": [
+    "Raul Araújo Filho"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-regina-helena-costa",
+   "orgao": "STJ",
+   "nome": "Regina Helena Costa",
+   "nome_civil": "Regina Helena Costa",
+   "fem": 1,
+   "folha": [
+    "Regina Helena Costa"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-reynaldo-soares-da-fonseca",
+   "orgao": "STJ",
+   "nome": "Reynaldo Soares da Fonseca",
+   "nome_civil": "Reynaldo Soares da Fonseca",
+   "fem": 0,
+   "folha": [
+    "Reynaldo Soares da Fonseca"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-villas-boas-cueva",
+   "orgao": "STJ",
+   "nome": "Villas Bôas Cueva",
+   "nome_civil": "Ricardo Villas Bôas Cueva",
+   "fem": 0,
+   "folha": [
+    "Ricardo Villas Bôas Cueva"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-villas-boas-cueva"
+   ]
+  },
+  {
+   "id": "jud-stj-rogerio-schietti-cruz",
+   "orgao": "STJ",
+   "nome": "Rogerio Schietti Cruz",
+   "nome_civil": "Rogerio Schietti Machado Cruz",
+   "fem": 0,
+   "folha": [
+    "Rogerio Schietti Machado Cruz"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-sebastiao-reis-junior",
+   "orgao": "STJ",
+   "nome": "Sebastião Reis Júnior",
+   "nome_civil": "Sebastião Alves dos Reis Júnior",
+   "fem": 0,
+   "folha": [
+    "Sebastião Alves dos Reis Júnior"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-tse-sebastiao-reis-junior"
+   ]
+  },
+  {
+   "id": "jud-stj-sergio-kukina",
+   "orgao": "STJ",
+   "nome": "Sérgio Kukina",
+   "nome_civil": "Sérgio Luíz Kukina",
+   "fem": 0,
+   "folha": [
+    "Sérgio Luíz Kukina"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stj-teodoro-silva-santos",
+   "orgao": "STJ",
+   "nome": "Teodoro Silva Santos",
+   "nome_civil": "Teodoro Silva Santos",
+   "fem": 0,
+   "folha": [
+    "Teodoro Silva Santos"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-alberto-bastos-balazeiro",
+   "orgao": "TST",
+   "nome": "Alberto Bastos Balazeiro",
+   "nome_civil": "Alberto Bastos Balazeiro",
+   "fem": 0,
+   "folha": [
+    "ALBERTO BASTOS BALAZEIRO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-alexandre-de-souza-agra-belmonte",
+   "orgao": "TST",
+   "nome": "Alexandre de Souza Agra Belmonte",
+   "nome_civil": "Alexandre de Souza Agra Belmonte",
+   "fem": 0,
+   "folha": [
+    "ALEXANDRE DE SOUZA AGRA BELMONTE"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-alexandre-luiz-ramos",
+   "orgao": "TST",
+   "nome": "Alexandre Luiz Ramos",
+   "nome_civil": "Alexandre Luiz Ramos",
+   "fem": 0,
+   "folha": [
+    "ALEXANDRE LUIZ RAMOS"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-aloysio-correa-da-veiga",
+   "orgao": "TST",
+   "nome": "Aloysio Corrêa da Veiga",
+   "nome_civil": "Aloysio Silva Corrêa da Veiga",
+   "fem": 0,
+   "folha": [
+    "ALOYSIO SILVA CORRÊA DA VEIGA"
+   ],
+   "inicio": null,
+   "fim": "2025-09"
+  },
+  {
+   "id": "jud-tst-amaury-rodrigues-pinto-junior",
+   "orgao": "TST",
+   "nome": "Amaury Rodrigues Pinto Junior",
+   "nome_civil": "Amaury Rodrigues Pinto Junior",
+   "fem": 0,
+   "folha": [
+    "AMAURY RODRIGUES PINTO JUNIOR"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-antonio-fabricio-de-matos-goncalves",
+   "orgao": "TST",
+   "nome": "Antônio Fabrício de Matos Gonçalves",
+   "nome_civil": "Antônio Fabrício de Matos Gonçalves",
+   "fem": 0,
+   "folha": [
+    "ANTÔNIO FABRÍCIO DE MATOS GONÇALVES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-augusto-cesar-leite-de-carvalho",
+   "orgao": "TST",
+   "nome": "Augusto César Leite de Carvalho",
+   "nome_civil": "Augusto César Leite de Carvalho",
+   "fem": 0,
+   "folha": [
+    "AUGUSTO CÉSAR LEITE DE CARVALHO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-breno-medeiros",
+   "orgao": "TST",
+   "nome": "Breno Medeiros",
+   "nome_civil": "Breno Medeiros",
+   "fem": 0,
+   "folha": [
+    "BRENO MEDEIROS"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-claudio-mascarenhas-brandao",
+   "orgao": "TST",
+   "nome": "Cláudio Mascarenhas Brandão",
+   "nome_civil": "Cláudio Mascarenhas Brandão",
+   "fem": 0,
+   "folha": [
+    "CLÁUDIO MASCARENHAS BRANDÃO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-delaide-miranda-arantes",
+   "orgao": "TST",
+   "nome": "Delaíde Miranda Arantes",
+   "nome_civil": "Delaíde Alves Miranda Arantes",
+   "fem": 1,
+   "folha": [
+    "DELAÍDE ALVES MIRANDA ARANTES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-dora-maria-da-costa",
+   "orgao": "TST",
+   "nome": "Dora Maria da Costa",
+   "nome_civil": "Dora Maria da Costa",
+   "fem": 1,
+   "folha": [
+    "DORA MARIA DA COSTA"
+   ],
+   "inicio": null,
+   "fim": "2025-12"
+  },
+  {
+   "id": "jud-tst-douglas-alencar-rodrigues",
+   "orgao": "TST",
+   "nome": "Douglas Alencar Rodrigues",
+   "nome_civil": "Douglas Alencar Rodrigues",
+   "fem": 0,
+   "folha": [
+    "DOUGLAS ALENCAR RODRIGUES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-evandro-valadao",
+   "orgao": "TST",
+   "nome": "Evandro Valadão",
+   "nome_civil": "Evandro Pereira Valadão Lopes",
+   "fem": 0,
+   "folha": [
+    "EVANDRO PEREIRA VALADÃO LOPES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-guilherme-caputo-bastos",
+   "orgao": "TST",
+   "nome": "Guilherme Caputo Bastos",
+   "nome_civil": "Guilherme Augusto Caputo Bastos",
+   "fem": 0,
+   "folha": [
+    "GUILHERME AUGUSTO CAPUTO BASTOS"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-hugo-carlos-scheuermann",
+   "orgao": "TST",
+   "nome": "Hugo Carlos Scheuermann",
+   "nome_civil": "Hugo Carlos Scheuermann",
+   "fem": 0,
+   "folha": [
+    "HUGO CARLOS SCHEUERMANN"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-ives-gandra-da-silva-martins-filho",
+   "orgao": "TST",
+   "nome": "Ives Gandra da Silva Martins Filho",
+   "nome_civil": "Ives Gandra da Silva Martins Filho",
+   "fem": 0,
+   "folha": [
+    "IVES GANDRA DA SILVA MARTINS FILHO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-jose-roberto-freire-pimenta",
+   "orgao": "TST",
+   "nome": "José Roberto Freire Pimenta",
+   "nome_civil": "José Roberto Freire Pimenta",
+   "fem": 0,
+   "folha": [
+    "JOSÉ ROBERTO FREIRE PIMENTA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-katia-magalhaes-arruda",
+   "orgao": "TST",
+   "nome": "Kátia Magalhães Arruda",
+   "nome_civil": "Kátia Magalhães Arruda",
+   "fem": 1,
+   "folha": [
+    "KÁTIA MAGALHÃES ARRUDA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-lelio-bentes-correa",
+   "orgao": "TST",
+   "nome": "Lelio Bentes Corrêa",
+   "nome_civil": "Lelio Bentes Corrêa",
+   "fem": 0,
+   "folha": [
+    "LELIO BENTES CORRÊA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-liana-chaib",
+   "orgao": "TST",
+   "nome": "Liana Chaib",
+   "nome_civil": "Liana Chaib",
+   "fem": 1,
+   "folha": [
+    "LIANA CHAIB"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-luiz-jose-dezena-da-silva",
+   "orgao": "TST",
+   "nome": "Luiz José Dezena da Silva",
+   "nome_civil": "Luiz José Dezena da Silva",
+   "fem": 0,
+   "folha": [
+    "LUIZ JOSÉ DEZENA DA SILVA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-luiz-philippe-vieira-de-mello-filho",
+   "orgao": "TST",
+   "nome": "Luiz Philippe Vieira de Mello Filho",
+   "nome_civil": "Luiz Philippe Vieira de Mello Filho",
+   "fem": 0,
+   "folha": [
+    "LUIZ PHILIPPE VIEIRA DE MELLO FILHO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-margareth-rodrigues-costa",
+   "orgao": "TST",
+   "nome": "Margareth Rodrigues Costa",
+   "nome_civil": "Margareth Rodrigues Costa",
+   "fem": 1,
+   "folha": [
+    "MARGARETH RODRIGUES COSTA"
+   ],
+   "inicio": "2026-05",
+   "fim": null
+  },
+  {
+   "id": "jud-tst-maria-cristina-irigoyen-peduzzi",
+   "orgao": "TST",
+   "nome": "Maria Cristina Irigoyen Peduzzi",
+   "nome_civil": "Maria Cristina Irigoyen Peduzzi",
+   "fem": 1,
+   "folha": [
+    "MARIA CRISTINA IRIGOYEN PEDUZZI"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-maria-helena-mallmann",
+   "orgao": "TST",
+   "nome": "Maria Helena Mallmann",
+   "nome_civil": "Maria Helena Mallmann",
+   "fem": 1,
+   "folha": [
+    "MARIA HELENA MALLMANN"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-mauricio-godinho-delgado",
+   "orgao": "TST",
+   "nome": "Maurício Godinho Delgado",
+   "nome_civil": "Mauricio José Godinho Delgado",
+   "fem": 0,
+   "folha": [
+    "MAURICIO JOSÉ GODINHO DELGADO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-morgana-de-almeida",
+   "orgao": "TST",
+   "nome": "Morgana de Almeida",
+   "nome_civil": "Morgana de Almeida Richa",
+   "fem": 1,
+   "folha": [
+    "MORGANA DE ALMEIDA",
+    "MORGANA DE ALMEIDA RICHA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-tst-sergio-pinto-martins",
+   "orgao": "TST",
+   "nome": "Sergio Pinto Martins",
+   "nome_civil": "Sergio Pinto Martins",
+   "fem": 0,
+   "folha": [
+    "SERGIO PINTO MARTINS"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-anisio-david-de-oliveira-junior",
+   "orgao": "STM",
+   "nome": "Anisio David de Oliveira Junior",
+   "nome_civil": "Anisio David de Oliveira Junior",
+   "fem": 0,
+   "folha": [
+    "ANISIO DAVID DE OLIVEIRA JUNIOR"
+   ],
+   "inicio": "2025-12",
+   "fim": null
+  },
+  {
+   "id": "jud-stm-artur-vidigal-de-oliveira",
+   "orgao": "STM",
+   "nome": "Artur Vidigal de Oliveira",
+   "nome_civil": "Artur Vidigal de Oliveira",
+   "fem": 0,
+   "folha": [
+    "ARTUR VIDIGAL DE OLIVEIRA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-carlos-augusto-amaral-oliveira",
+   "orgao": "STM",
+   "nome": "Carlos Augusto Amaral Oliveira",
+   "nome_civil": "Carlos Augusto Amaral Oliveira",
+   "fem": 0,
+   "folha": [
+    "CARLOS AUGUSTO AMARAL OLIVEIRA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-carlos-vuyk-de-aquino",
+   "orgao": "STM",
+   "nome": "Carlos Vuyk de Aquino",
+   "nome_civil": "Carlos Vuyk de Aquino",
+   "fem": 0,
+   "folha": [
+    "CARLOS VUYK DE AQUINO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-celso-luiz-nazareth",
+   "orgao": "STM",
+   "nome": "Celso Luiz Nazareth",
+   "nome_civil": "Celso Luiz Nazareth",
+   "fem": 0,
+   "folha": [
+    "CELSO LUIZ NAZARETH"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-claudio-portugal-de-viveiros",
+   "orgao": "STM",
+   "nome": "Claudio Portugal de Viveiros",
+   "nome_civil": "Claudio Portugal de Viveiros",
+   "fem": 0,
+   "folha": [
+    "CLAUDIO PORTUGAL DE VIVEIROS"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-flavio-marcus-lancia-barbosa",
+   "orgao": "STM",
+   "nome": "Flávio Marcus Lancia Barbosa",
+   "nome_civil": "Flavio Marcus Lancia Barbosa",
+   "fem": 0,
+   "folha": [
+    "FLAVIO MARCUS LANCIA BARBOSA"
+   ],
+   "inicio": "2025-12",
+   "fim": null
+  },
+  {
+   "id": "jud-stm-joseli-parente-camelo",
+   "orgao": "STM",
+   "nome": "Joseli Parente Camelo",
+   "nome_civil": "Francisco Joseli Parente Camelo",
+   "fem": 0,
+   "folha": [
+    "FRANCISCO JOSELI PARENTE CAMELO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-guido-amin-naves",
+   "orgao": "STM",
+   "nome": "Guido Amin Naves",
+   "nome_civil": "Guido Amin Naves",
+   "fem": 0,
+   "folha": [
+    "GUIDO AMIN NAVES"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-jose-barroso-filho",
+   "orgao": "STM",
+   "nome": "Jose Barroso Filho",
+   "nome_civil": "Jose Barroso Filho",
+   "fem": 0,
+   "folha": [
+    "JOSE BARROSO FILHO"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-jose-coelho-ferreira",
+   "orgao": "STM",
+   "nome": "Jose Coelho Ferreira",
+   "nome_civil": "Jose Coelho Ferreira",
+   "fem": 0,
+   "folha": [
+    "JOSE COELHO FERREIRA"
+   ],
+   "inicio": null,
+   "fim": "2025-04"
+  },
+  {
+   "id": "jud-stm-leonardo-puntel",
+   "orgao": "STM",
+   "nome": "Leonardo Puntel",
+   "nome_civil": "Leonardo Puntel",
+   "fem": 0,
+   "folha": [
+    "LEONARDO PUNTEL"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-lourival-carvalho-silva",
+   "orgao": "STM",
+   "nome": "Lourival Carvalho Silva",
+   "nome_civil": "Lourival Carvalho Silva",
+   "fem": 0,
+   "folha": [
+    "LOURIVAL CARVALHO SILVA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-marco-antonio-de-farias",
+   "orgao": "STM",
+   "nome": "Marco Antonio de Farias",
+   "nome_civil": "Marco Antonio de Farias",
+   "fem": 0,
+   "folha": [
+    "MARCO ANTONIO DE FARIAS"
+   ],
+   "inicio": null,
+   "fim": "2025-10"
+  },
+  {
+   "id": "jud-stm-maria-elizabeth-rocha",
+   "orgao": "STM",
+   "nome": "Maria Elizabeth Rocha",
+   "nome_civil": "Maria Elizabeth Guimaraes Teixeira Rocha",
+   "fem": 1,
+   "folha": [
+    "MARIA ELIZABETH GUIMARAES TEIXEIRA ROCHA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-odilson-sampaio-benzi",
+   "orgao": "STM",
+   "nome": "Odilson Sampaio Benzi",
+   "nome_civil": "Odilson Sampaio Benzi",
+   "fem": 0,
+   "folha": [
+    "ODILSON SAMPAIO BENZI"
+   ],
+   "inicio": null,
+   "fim": "2025-11"
+  },
+  {
+   "id": "jud-stm-pericles-aurelio-lima-de-queiroz",
+   "orgao": "STM",
+   "nome": "Pericles Aurelio Lima de Queiroz",
+   "nome_civil": "Pericles Aurelio Lima de Queiroz",
+   "fem": 0,
+   "folha": [
+    "PERICLES AURELIO LIMA DE QUEIROZ"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-stm-veronica-abdalla-sterman",
+   "orgao": "STM",
+   "nome": "Verônica Abdalla Sterman",
+   "nome_civil": "Veronica Abdalla Sterman",
+   "fem": 1,
+   "folha": [
+    "VERONICA ABDALLA STERMAN"
+   ],
+   "inicio": "2025-10",
+   "fim": null
+  },
+  {
+   "id": "jud-tse-andre-mendonca",
+   "orgao": "TSE",
+   "nome": "André Mendonça",
+   "nome_civil": "André Luiz de Almeida Mendonça",
+   "fem": 0,
+   "folha": [
+    "ANDRÉ LUIZ DE ALMEIDA MENDONÇA"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-stf-andre-mendonca"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-andre-ramos-tavares",
+   "orgao": "TSE",
+   "nome": "André Ramos Tavares",
+   "nome_civil": "André Ramos Tavares",
+   "fem": 0,
+   "folha": [
+    "ANDRÉ RAMOS TAVARES"
+   ],
+   "inicio": null,
+   "fim": "2025-05",
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-antonio-carlos-ferreira",
+   "orgao": "TSE",
+   "nome": "Antonio Carlos Ferreira",
+   "nome_civil": "Antonio Carlos Ferreira",
+   "fem": 0,
+   "folha": [
+    "ANTONIO CARLOS FERREIRA"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-stj-antonio-carlos-ferreira"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-carmen-lucia",
+   "orgao": "TSE",
+   "nome": "Cármen Lúcia",
+   "nome_civil": "Cármen Lúcia Antunes Rocha",
+   "fem": 1,
+   "folha": [
+    "CÁRMEN LÚCIA ANTUNES ROCHA"
+   ],
+   "inicio": null,
+   "fim": "2026-05",
+   "rel": [
+    "jud-stf-carmen-lucia"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-cristiano-zanin",
+   "orgao": "TSE",
+   "nome": "Cristiano Zanin",
+   "nome_civil": "Cristiano Zanin Martins",
+   "fem": 0,
+   "folha": [
+    "CRISTIANO ZANIN MARTINS"
+   ],
+   "inicio": "2025-10",
+   "fim": "2026-05",
+   "rel": [
+    "jud-stf-cristiano-zanin"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-edilene-lobo",
+   "orgao": "TSE",
+   "nome": "Edilene Lôbo",
+   "nome_civil": "Edilene Lôbo",
+   "fem": 1,
+   "folha": [
+    "EDILENE LÔBO"
+   ],
+   "inicio": "2025-06",
+   "fim": "2025-08",
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-estela-aranha",
+   "orgao": "TSE",
+   "nome": "Estela Aranha",
+   "nome_civil": "Estela Aranha",
+   "fem": 1,
+   "folha": [
+    "ESTELA ARANHA"
+   ],
+   "inicio": "2025-08",
+   "fim": null,
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-floriano-de-azevedo-marques",
+   "orgao": "TSE",
+   "nome": "Floriano de Azevedo Marques",
+   "nome_civil": "Floriano Peixoto de Azevedo Marques Neto",
+   "fem": 0,
+   "folha": [
+    "FLORIANO PEIXOTO DE AZEVEDO MARQUES NETO"
+   ],
+   "inicio": null,
+   "fim": null,
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-gilmar-mendes",
+   "orgao": "TSE",
+   "nome": "Gilmar Mendes",
+   "nome_civil": "Gilmar Ferreira Mendes",
+   "fem": 0,
+   "folha": [
+    "GILMAR FERREIRA MENDES"
+   ],
+   "inicio": "2025-05",
+   "fim": "2026-03",
+   "rel": [
+    "jud-stf-gilmar-mendes"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-dias-toffoli",
+   "orgao": "TSE",
+   "nome": "Dias Toffoli",
+   "nome_civil": "José Antonio Dias Toffoli",
+   "fem": 0,
+   "folha": [
+    "JOSÉ ANTONIO DIAS TOFFOLI"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-stf-dias-toffoli"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-nunes-marques",
+   "orgao": "TSE",
+   "nome": "Nunes Marques",
+   "nome_civil": "Kassio Nunes Marques",
+   "fem": 0,
+   "folha": [
+    "KASSIO NUNES MARQUES"
+   ],
+   "inicio": null,
+   "fim": null,
+   "rel": [
+    "jud-stf-nunes-marques"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-isabel-gallotti",
+   "orgao": "TSE",
+   "nome": "Isabel Gallotti",
+   "nome_civil": "Maria Isabel Diniz Gallotti Rodrigues",
+   "fem": 1,
+   "folha": [
+    "MARIA ISABEL DINIZ GALLOTTI RODRIGUES"
+   ],
+   "inicio": null,
+   "fim": "2025-11",
+   "rel": [
+    "jud-stj-isabel-gallotti"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-naue-bernardo",
+   "orgao": "TSE",
+   "nome": "Nauê Bernardo",
+   "nome_civil": "Nauê Bernardo Pinheiro de Azevedo",
+   "fem": 0,
+   "folha": [
+    "NAUÊ BERNARDO PINHEIRO DE AZEVEDO"
+   ],
+   "inicio": "2026-05",
+   "fim": null,
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-villas-boas-cueva",
+   "orgao": "TSE",
+   "nome": "Villas Bôas Cueva",
+   "nome_civil": "Ricardo Villas Bôas Cueva",
+   "fem": 0,
+   "folha": [
+    "RICARDO VILLAS BÔAS CUEVA"
+   ],
+   "inicio": "2025-04",
+   "fim": null,
+   "rel": [
+    "jud-stj-villas-boas-cueva"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-sebastiao-reis-junior",
+   "orgao": "TSE",
+   "nome": "Sebastião Reis Júnior",
+   "nome_civil": "Sebastião Alves dos Reis Júnior",
+   "fem": 0,
+   "folha": [
+    "SEBASTIÃO ALVES DOS REIS JÚNIOR"
+   ],
+   "inicio": "2025-11",
+   "fim": null,
+   "rel": [
+    "jud-stj-sebastiao-reis-junior"
+   ],
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-tse-vera-lucia-santana-araujo",
+   "orgao": "TSE",
+   "nome": "Vera Lúcia Santana Araújo",
+   "nome_civil": "Vera Lúcia Santana Araújo",
+   "fem": 1,
+   "folha": [
+    "VERA LÚCIA SANTANA ARAÚJO"
+   ],
+   "inicio": "2025-06",
+   "fim": "2025-10",
+   "obs": "datas pela folha do TSE: quem é substituto só aparece nos meses em que recebe"
+  },
+  {
+   "id": "jud-cnj-alexandre-teixeira-de-freitas-bastos-cunha",
+   "orgao": "CNJ",
+   "nome": "Alexandre Teixeira de Freitas Bastos Cunha",
+   "nome_civil": "Alexandre Teixeira de Freitas Bastos Cunha",
+   "fem": 0,
+   "folha": [
+    "ALEXANDRE TEIXEIRA DE FREITAS BASTOS CUNHA"
+   ],
+   "inicio": null,
+   "fim": "2026-03"
+  },
+  {
+   "id": "jud-cnj-andrea-cunha-esmeraldo",
+   "orgao": "CNJ",
+   "nome": "Andrea Cunha Esmeraldo",
+   "nome_civil": "Andrea Cunha Esmeraldo",
+   "fem": 1,
+   "folha": [
+    "ANDREA CUNHA ESMERALDO"
+   ],
+   "inicio": "2026-05",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-daiane-nogueira-de-lira",
+   "orgao": "CNJ",
+   "nome": "Daiane Nogueira de Lira",
+   "nome_civil": "Daiane Nogueira de Lira",
+   "fem": 1,
+   "folha": [
+    "DAIANE NOGUEIRA DE LIRA"
+   ],
+   "inicio": null,
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-daniela-pereira-madeira",
+   "orgao": "CNJ",
+   "nome": "Daniela Pereira Madeira",
+   "nome_civil": "Daniela Pereira Madeira",
+   "fem": 1,
+   "folha": [
+    "DANIELA PEREIRA MADEIRA"
+   ],
+   "inicio": null,
+   "fim": "2026-03"
+  },
+  {
+   "id": "jud-cnj-fabio-francisco-esteves",
+   "orgao": "CNJ",
+   "nome": "Fábio Francisco Esteves",
+   "nome_civil": "Fábio Francisco Esteves",
+   "fem": 0,
+   "folha": [
+    "FÁBIO FRANCISCO ESTEVES"
+   ],
+   "inicio": "2026-02",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-guilherme-guimaraes-feliciano",
+   "orgao": "CNJ",
+   "nome": "Guilherme Guimaraes Feliciano",
+   "nome_civil": "Guilherme Guimaraes Feliciano",
+   "fem": 0,
+   "folha": [
+    "GUILHERME GUIMARAES FELICIANO"
+   ],
+   "inicio": null,
+   "fim": "2026-05"
+  },
+  {
+   "id": "jud-cnj-ilan-presser",
+   "orgao": "CNJ",
+   "nome": "Ilan Presser",
+   "nome_civil": "Ilan Presser",
+   "fem": 0,
+   "folha": [
+    "ILAN PRESSER"
+   ],
+   "inicio": "2026-05",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-jaceguara-dantas-da-silva",
+   "orgao": "CNJ",
+   "nome": "Jaceguara Dantas da Silva",
+   "nome_civil": "Jaceguara Dantas da Silva",
+   "fem": 1,
+   "folha": [
+    "JACEGUARA DANTAS DA SILVA"
+   ],
+   "inicio": "2026-02",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-joao-paulo-santos-schoucair",
+   "orgao": "CNJ",
+   "nome": "João Paulo Santos Schoucair",
+   "nome_civil": "João Paulo Santos Schoucair",
+   "fem": 0,
+   "folha": [
+    "JOÃO PAULO SANTOS SCHOUCAIR"
+   ],
+   "inicio": null,
+   "fim": "2026-06"
+  },
+  {
+   "id": "jud-cnj-jose-edivaldo-rocha-rotondano",
+   "orgao": "CNJ",
+   "nome": "José Edivaldo Rocha Rotondano",
+   "nome_civil": "José Edivaldo Rocha Rotondano",
+   "fem": 0,
+   "folha": [
+    "JOSÉ EDIVALDO ROCHA ROTONDANO"
+   ],
+   "inicio": null,
+   "fim": "2026-02"
+  },
+  {
+   "id": "jud-cnj-marcello-terto-e-silva",
+   "orgao": "CNJ",
+   "nome": "Marcello Terto e Silva",
+   "nome_civil": "Marcello Terto e Silva",
+   "fem": 0,
+   "folha": [
+    "MARCELLO TERTO E SILVA"
+   ],
+   "inicio": "2025-03",
+   "fim": "2026-04"
+  },
+  {
+   "id": "jud-cnj-monica-autran-machado-nobre",
+   "orgao": "CNJ",
+   "nome": "Mônica Autran Machado Nobre",
+   "nome_civil": "Mônica Autran Machado Nobre",
+   "fem": 1,
+   "folha": [
+    "MÔNICA AUTRAN MACHADO NOBRE"
+   ],
+   "inicio": null,
+   "fim": "2026-03"
+  },
+  {
+   "id": "jud-cnj-noemia-aparecida-garcia-porto",
+   "orgao": "CNJ",
+   "nome": "Noemia Aparecida Garcia Porto",
+   "nome_civil": "Noemia Aparecida Garcia Porto",
+   "fem": 1,
+   "folha": [
+    "NOEMIA APARECIDA GARCIA PORTO"
+   ],
+   "inicio": "2026-05",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-pablo-coutinho-barreto",
+   "orgao": "CNJ",
+   "nome": "Pablo Coutinho Barreto",
+   "nome_civil": "Pablo Coutinho Barreto",
+   "fem": 0,
+   "folha": [
+    "PABLO COUTINHO BARRETO"
+   ],
+   "inicio": null,
+   "fim": "2025-10"
+  },
+  {
+   "id": "jud-cnj-paulo-regis-machado-botelho",
+   "orgao": "CNJ",
+   "nome": "Paulo Regis Machado Botelho",
+   "nome_civil": "Paulo Regis Machado Botelho",
+   "fem": 0,
+   "folha": [
+    "PAULO REGIS MACHADO BOTELHO"
+   ],
+   "inicio": "2026-06",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-renata-gil-de-alcantara-videira",
+   "orgao": "CNJ",
+   "nome": "Renata Gil de Alcântara Videira",
+   "nome_civil": "Renata Gil de Alcântara Videira",
+   "fem": 1,
+   "folha": [
+    "RENATA GIL DE ALCÂNTARA VIDEIRA"
+   ],
+   "inicio": null,
+   "fim": "2026-02"
+  },
+  {
+   "id": "jud-cnj-rodrigo-badaro-almeida-de-castro",
+   "orgao": "CNJ",
+   "nome": "Rodrigo Badaró Almeida de Castro",
+   "nome_civil": "Rodrigo Badaró Almeida de Castro",
+   "fem": 0,
+   "folha": [
+    "RODRIGO BADARÓ ALMEIDA DE CASTRO"
+   ],
+   "inicio": "2025-03",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-silvio-roberto-oliveira-de-amorim-junior",
+   "orgao": "CNJ",
+   "nome": "Silvio Roberto Oliveira de Amorim Junior",
+   "nome_civil": "Silvio Roberto Oliveira de Amorim Junior",
+   "fem": 0,
+   "folha": [
+    "SILVIO ROBERTO OLIVEIRA DE AMORIM JUNIOR"
+   ],
+   "inicio": "2025-12",
+   "fim": null
+  },
+  {
+   "id": "jud-cnj-ulisses-rabaneda-dos-santos",
+   "orgao": "CNJ",
+   "nome": "Ulisses Rabaneda dos Santos",
+   "nome_civil": "Ulisses Rabaneda dos Santos",
+   "fem": 0,
+   "folha": [
+    "ULISSES RABANEDA DOS SANTOS"
+   ],
+   "inicio": "2025-03",
+   "fim": null
+  },
+  {
+   "id": "jud-pgr-paulo-gonet",
+   "orgao": "PGR",
+   "nome": "Paulo Gonet",
+   "nome_civil": "Paulo Gustavo Gonet Branco",
+   "fem": 0,
+   "folha": [
+    "PAULO GUSTAVO GONET BRANCO"
+   ],
+   "inicio": null,
+   "fim": null
+  }
+ ],
+ "cnj_sem_folha": [
+  {
+   "folha_cnj": "LUÍS ROBERTO BARROSO",
+   "funcao": "Presidente do CNJ",
+   "de": null,
+   "ate": "2025-09",
+   "id": "jud-stf-luis-roberto-barroso"
+  },
+  {
+   "folha_cnj": "LUIZ EDSON FACHIN",
+   "funcao": "Presidente do CNJ",
+   "de": "2025-09",
+   "ate": null,
+   "id": "jud-stf-edson-fachin"
+  },
+  {
+   "folha_cnj": "MAURO LUIZ CAMPBELL MARQUES",
+   "funcao": "Corregedor Nacional de Justiça",
+   "de": null,
+   "ate": null,
+   "id": "jud-stj-mauro-campbell-marques"
+  },
+  {
+   "folha_cnj": "GUILHERME AUGUSTO CAPUTO BASTOS",
+   "funcao": "Conselheiro do CNJ (vaga do TST)",
+   "de": null,
+   "ate": "2025-12",
+   "id": "jud-tst-guilherme-caputo-bastos"
+  },
+  {
+   "folha_cnj": "KÁTIA MAGALHÃES ARRUDA",
+   "funcao": "Conselheira do CNJ (vaga do TST)",
+   "de": "2026-06",
+   "ate": null,
+   "id": "jud-tst-katia-magalhaes-arruda"
+  }
+ ],
+ "fora": {
+  "TSE": [
+   {
+    "nome": "ANDREA MACIEL PACHA",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "DANIEL SANTOS ROCHA SOBRAL",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "JÚLIO FERREIRA DE ANDRADE",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "LARISSA ALMEIDA NASCIMENTO",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "LEONARDO HERNANDEZ SANTOS SOARES",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "LUCAS BORGES DIAS",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "RAFAEL SOUZA CARDOZO",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   },
+   {
+    "nome": "THIAGO CORDERO PIVOTTO",
+    "motivo": "aparece como MINISTRO na planilha do TSE enviada ao painel do CNJ (jan/2026; set/2025 para um deles), com a lotação de um gabinete; não integra a composição do TSE (a conferir)"
+   }
+  ],
+  "TST": [
+   {
+    "nome": "WAGNER ANTONIO PIMENTA",
+    "motivo": "aparece uma vez (fev/2026) como MINISTRO, com lotação 'À disposição de outro órgão'; não integra a composição atual do TST (a conferir)"
+   }
+  ]
+ }
+}

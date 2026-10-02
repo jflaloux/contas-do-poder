@@ -26,16 +26,16 @@ from .config import RAIZ
 from .util import log
 
 ARQ = RAIZ / "site" / "dados" / "enderecos.json"
-FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json", "assembleias.json")]
+FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json", "assembleias.json", "judiciario.json")]
 GOVERNADORES = RAIZ / "site" / "dados" / "governadores.json"
 # código IBGE das UFs cujos deputados estaduais foram publicados pelo id antes de ganhar o endereço pelo nome:
 # SP, MG, RJ, BA, PE, CE, PB, GO, SC, MS, RO, TO, SE, ES, RS e AP
 EST_PELO_ID = {"35", "31", "33", "29", "26", "23", "25", "52", "42", "50", "11", "17", "28", "32", "43", "16"}
 # primeiros pedaços de endereço que não podem ser nome de político (pastas e rotas do site)
-RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes"}
+RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes", "judiciario", "dados-abertos"}
 # quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, governadores, prefeituras,
 # câmaras, Assembleias (os deputados estaduais, "est-", também têm k "e")
-PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "g": 4, "p": 5, "v": 6}
+PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "g": 4, "p": 5, "v": 6, "t": 8}
 
 
 def _prioridade(p):
@@ -65,6 +65,9 @@ def slug(texto):
 
 def cargo_curto(p):
     """"deputado", "senadora", "ministro", "vice-prefeito", "secretario"... (a primeira palavra do cargo)."""
+    if p["id"].startswith("jud-"):  # "ministro-stf", "conselheira-cnj"; no TSE, quem vem do STF: "nome-ministro-tse"
+        org = p["id"].split("-")[1]
+        return "procurador-geral" if org == "pgr" else f"{slug((p.get('g') or '').split()[0])}-{org}"
     if p["id"].startswith("est-"):  # "deputado-estadual", para não confundir com o deputado federal
         return "deputada-estadual" if (p.get("g") or "").startswith("Deputada") else "deputado-estadual"
     c = slug((p.get("g") or "").split()[0] if p.get("g") else "")

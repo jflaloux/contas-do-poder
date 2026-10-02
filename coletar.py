@@ -27,7 +27,10 @@ Uso:
                                        # (dados/processados/situacao.md)
     python3 coletar.py tce             # Tribunais de Contas: vereadores, prefeito, vice e (PB) secretários de todas as cidades da
                                        # Paraíba e do Ceará, mês a mês (dados/municipios_tce/, site/dados/interior/<uf>.json)
-    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + assembleias + tce + indice
+    python3 coletar.py judiciario      # ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês
+                                       # (dados/judiciario/, site/dados/judiciario.json)
+    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + assembleias + tce
+                                       # + judiciario + indice
                                        # + renda + padronizar + fotos + site + situacao
     python3 coletar.py montar          # só refaz os arquivos do site das capitais, Assembleias e governadores (sem coletar),
                                        # os endereços e o relatório de situação
@@ -44,7 +47,7 @@ import argparse
 import sys
 
 from coleta import (assembleias, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
-                    renda, senado, site, situacao, tce, vereadores)
+                    judiciario, renda, senado, site, situacao, tce, vereadores)
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
 
@@ -60,6 +63,7 @@ ETAPAS = {
     "governadores": governadores.coletar,
     "assembleias": assembleias.coletar,
     "tce": tce.coletar,
+    "judiciario": judiciario.coletar,
     "indice": indice.executar,
     "renda": renda.executar,
     "padronizar": padronizar.executar,
@@ -77,6 +81,7 @@ def montar():
     os endereços e o relatório de situação. É o que resolve um conflito do Git nesses arquivos: eles saem dos CSVs."""
     vereadores.executar_site()
     tce.executar_site()
+    judiciario.executar_site(baixar_fotos=False)
     prefeituras.executar_site(baixar_fotos=False)
     assembleias.executar_site(baixar_fotos=False)
     governadores.executar(baixar_fotos=False)
@@ -88,7 +93,7 @@ def rodada_brasil():
     """A rodada do Brasil: as fontes que só abrem do Brasil (e as que falharam de fora nesta semana), depois os arquivos
     do site que dependem delas, os endereços e o relatório de situação. Não mexe na base federal (dados.json)."""
     onde.SO_O_QUE_FALTA = True
-    for etapa in (vereadores.coletar, prefeituras.coletar, assembleias.coletar, governadores.coletar, tce.coletar):
+    for etapa in (vereadores.coletar, prefeituras.coletar, assembleias.coletar, governadores.coletar, tce.coletar, judiciario.coletar):
         etapa()
     enderecos.executar()
     return situacao.executar()
@@ -105,7 +110,7 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "tce", "indice", "renda", "padronizar",
+    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "tce", "judiciario", "indice", "renda", "padronizar",
                "fotos", "site", "situacao"]
               if args.etapa == "tudo" else [args.etapa])
     try:

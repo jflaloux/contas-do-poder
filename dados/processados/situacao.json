@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-02T15:58:52",
+ "gerado_em": "2026-10-02T19:16:37",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -11,16 +11,6 @@
    "onde": null,
    "so_brasil": false,
    "erro": "ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package."
-  },
-  {
-   "fonte": "folhas/RO",
-   "situacao": "falhando",
-   "ultimo_mes": 202609,
-   "meses_atras": 0,
-   "ultimo_sucesso": null,
-   "onde": null,
-   "so_brasil": false,
-   "erro": "HTTPError: 404 Client Error: Not Found for url: https://transparencia.api.ro.gov.br/api/v1/remuneracao-servidor?Ano=2026&Mes=10&Cargo=GOVERNADOR&Page=1&PageSize=100"
   },
   {
    "fonte": "folhas/RR",
@@ -533,6 +523,16 @@
    "erro": null
   },
   {
+   "fonte": "folhas/RO",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-02T19:14:20",
+   "onde": "brasil",
+   "so_brasil": false,
+   "erro": null
+  },
+  {
    "fonte": "folhas/RS",
    "situacao": "ok",
    "ultimo_mes": 202608,
@@ -560,6 +560,76 @@
    "ultimo_sucesso": "2026-10-02T15:57:48",
    "onde": "brasil",
    "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/cnj",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/pgr",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/stf",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/stj",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/stm",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/tse",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/tst",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
    "erro": null
   },
   {

@@ -140,3 +140,16 @@ armadilhas que não estão escritas em outro lugar.
 - Cowork: a ligação com o Mac cai (em 02/10/2026, por ~13 h) e, antes de cair, o limite de cada comando encurta (de ~150
   s para ~20 s); chamadas em paralelo se derrubam. Rode os robôs em partes curtas (`definir_prazo(70)` com `timeout 85`),
   um por vez. Depois que a ligação volta, a permissão de apagar arquivos na pasta precisa ser pedida de novo.
+- Judiciário: STF, STM e TSE vêm do DadosJusBr (CC BY 4.0, sempre com o crédito). Não ler a consulta do STF
+  (egesp-portal, robots.txt Disallow: /) nem a do STM (www2.stm.jus.br/rem_web) sem a exceção; o 403 do TSE não se
+  contorna. Do STF, os valores saem da cópia do arquivo oficial (backups/), não do pacote: dez/2025 tem colunas e linhas
+  repetidas, e o sinal das férias de jul/2026 se acerta pelos totais do próprio arquivo.
+- Judiciário: a "remuneração do órgão de origem" (TSE, CNJ) nunca entra, para não somar duas vezes. Quem aparece na folha
+  e não está em dados/judiciario/composicao.json vira aviso no log (os nomes "fora" já conferidos ficam no arquivo).
+- STJ: o CSV detalhado vem com o BOM duas vezes; a retenção pelo teto vem com tipo "Remuneratória": os grupos de desconto
+  saem pelo nome. TST: o leiaute muda de um mês para outro, jun/2025 veio em MacRoman, e aposentado aparece como INATIVO
+  ou APOSENTADO. CNJ: mês com dois dígitos; a página mistura números em formato americano e brasileiro e às vezes perde o
+  primeiro algarismo do subsídio (",10.37"). MPF: usar o endereço sem www; o ODS é lido sem odfpy.
+- Cloudflare Pages (plano gratuito): no máximo 20.000 arquivos e 2.000 redirecionamentos. Em 02/10/2026: ~13.900
+  arquivos e 811 redirecionamentos. Nada de página por pessoa abaixo dos tribunais superiores nem para o interior
+  (vereadores do interior ficam na página da cidade). Ver TAREFA-SITE-limites-cloudflare.txt.

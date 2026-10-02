@@ -41,6 +41,7 @@ SO_BRASIL = {
     "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs"},  # pr, rn, pi, pa, ac, rr, mt abrem de fora
     "folhas": {"AL", "AM", "CE", "MA", "PA", "PB", "PI", "RJ", "RN", "SE"},
     "tce": set(),
+    "judiciario": set(),  # as sete fontes abrem de fora (conferido em 02/10/2026)
     "federal": set(),
 }
 

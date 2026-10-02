@@ -226,10 +226,11 @@
   "ultimo_sucesso": "2026-10-02T15:48:48"
  },
  "folhas/RO": {
-  "ultima_tentativa": "2026-10-02T15:49:42",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-02T19:14:20",
+  "falhas": 0,
   "ultimo_erro": "HTTPError: 404 Client Error: Not Found for url: https://transparencia.api.ro.gov.br/api/v1/remuneracao-servidor?Ano=2026&Mes=10&Cargo=GOVERNADOR&Page=1&PageSize=100",
-  "ultima_falha": "2026-10-02T15:49:42"
+  "ultima_falha": "2026-10-02T15:49:42",
+  "ultimo_sucesso": "2026-10-02T19:14:20"
  },
  "folhas/RR": {
   "ultima_tentativa": "2026-10-02T15:50:04",

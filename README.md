@@ -589,36 +589,41 @@ site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 18
 - A prova de 01/10/2026 (resumo de ago/2026 por município, sem nomes) continua em
   `dados/referencia/tce_pb_vereadores_202608.csv`.
 
-## Judiciário (prova de conceito)
+## Judiciário
 
-Quanto ganham, mês a mês, os ministros dos tribunais superiores e os conselheiros do CNJ? O levantamento de
-01/10/2026 está em `dados/referencia/judiciario.json`, com uma amostra conferida em
-`dados/referencia/judiciario_amostra.csv` (os 10 ministros do STF e os 32 do STJ na folha de jul/2026, só as partes
-brutas, sem descontos nem líquido):
+`python3 coletar.py judiciario` (também no `tudo`) grava em `dados/judiciario/<orgao>/` o pagamento, mês a mês desde
+jan/2025, dos ministros do STF, do STJ, do TST, do STM e do TSE, dos conselheiros do CNJ e do Procurador-Geral da
+República, e escreve `site/dados/judiciario.json` (126 páginas, 103 pessoas no cargo em 02/10/2026). Só as partes
+brutas, como cada fonte separa: subsídio, vantagens pessoais, abono de permanência, indenizações (com o nome de cada
+parcela, quando a fonte dá), vantagens eventuais, férias, 13º e outras; as diárias ficam à parte. Nunca descontos,
+líquido ou CPF. Quem está no cargo vem de `dados/judiciario/composicao.json` (mantido à mão e conferido com a folha); o
+levantamento das fontes está em `dados/referencia/judiciario.json`, com a amostra conferida de jul/2026 em
+`dados/referencia/judiciario_amostra.csv`.
 
-- **Fonte oficial aberta, com nome e cada parte do pagamento:** STJ (API da página de transparência, desde jun/2012,
-  com o detalhe de cada rubrica), TST (CSV mensal desde jul/2021), CNJ (página da folha, desde jun/2012) e MPF, para o
-  Procurador-Geral da República (planilha mensal). As quatro abrem também de fora do Brasil.
-- **Fonte oficial com barreira:** STF (o robots.txt da consulta proíbe robôs e o portal responde 403), STM (o
-  robots.txt proíbe a consulta, que só abre do Brasil) e TSE (o site responde 403 a robôs).
-- **DadosJusBr:** o projeto [DadosJusBr](https://dadosjusbr.org) coleta todo mês a folha de 124 órgãos do sistema de
-  Justiça, entre eles os cinco tribunais superiores, o CNJ, os 27 Tribunais de Justiça e o MPF, desde 2018 (STF desde
-  jul/2020), com licença CC BY 4.0. Para a maioria dos tribunais, a fonte é o Painel de Remuneração dos Magistrados do
-  CNJ (planilhas que os tribunais mandam ao CNJ, mostradas num painel Qlik). A API e os pacotes não trazem o endereço
-  do arquivo oficial de cada mês, mas guardam uma cópia do original. Atraso de 1 a 2 meses.
+| Órgão | Fonte | Desde | Observação |
+|---|---|---|---|
+| STJ | API da página de transparência | jan/2025 | nome de cada parcela desde mai/2026 |
+| TST | arquivo mensal (CSV) | jan/2025 | jan/2026 não publicado |
+| CNJ | página da folha | jan/2025 | só quem o CNJ paga; nov/2025 vazio na página |
+| PGR | planilhas do MPF (ODS) | jan/2025 | o total soma as verbas indenizatórias, que o arquivo deixa de fora |
+| STF | DadosJusBr, cópia do arquivo oficial | jan/2025 | a consulta do STF proíbe robôs no robots.txt |
+| STM | DadosJusBr (Painel do CNJ) | jan/2025 | a consulta proíbe robôs e só abre do Brasil |
+| TSE | DadosJusBr (Painel do CNJ) | fev/2025 | o site do TSE responde 403 a robôs |
 
-Na conferência, os valores do STJ (jun/2026) no DadosJusBr batem com a API do tribunal, e os do STF (jul/2026) batem
-com a cópia do arquivo oficial, item por item. Para dois ministros do STF, a coluna "Férias" de jul/2026 traz um valor
-que os totais do próprio arquivo subtraem, e o DadosJusBr soma. No DadosJusBr, "outras remunerações" inclui também as
-diárias e, no TSE e no CNJ, a remuneração paga pelo tribunal de origem, que não pode ser somada de novo.
+O [DadosJusBr](https://dadosjusbr.org) (Transparência Brasil) coleta a folha oficial do sistema de Justiça todo mês
+(licença CC BY 4.0, com crédito). Do STF, os valores saem da cópia do arquivo oficial que ele guarda, e não do pacote
+padronizado: em dez/2025 o arquivo do STF repete cada coluna e cada linha, e o pacote daquele mês ficou com as colunas
+trocadas. Em jul/2026, para dois ministros, a coluna "Férias" do STF traz um valor que os totais do próprio arquivo
+subtraem; aqui ele entra com sinal negativo. Onde há fonte oficial aberta (STJ, TST, CNJ e MPF), ela vale: cada número
+tem o link do arquivo oficial do mês, e o DadosJusBr não dá esse link.
 
-O que a fonte mostra: em jul/2026, o subsídio de ministro do STF é R$ 46.366,19 e o dos tribunais superiores,
-R$ 44.047,88. Os tribunais pagam também parcelas que classificam como indenizatórias (por tempo na carreira e por
-exercício cumulativo, Resolução Conjunta CNJ/CNMP 14/2026), que não entram no cálculo do abate-teto na própria folha:
-no STJ, R$ 30.833,50 por mês para a maioria dos ministros em jul/2026.
-
-Próximo passo sugerido: robô pela fonte oficial no STJ, TST, CNJ e MPF; STF, STM, TSE e desembargadores dos TJs pelo
-DadosJusBr (com o crédito), até a decisão sobre exceções ao robots.txt do STF e do STM.
+Quem está no TSE vindo do STF ou do STJ, e quem integra o CNJ vindo de um tribunal, recebe o salário no tribunal de
+origem: cada página mostra só o que aquele órgão paga, as páginas da mesma pessoa se ligam ("rel") e nada é somado duas
+vezes. Parcelas que os tribunais classificam como indenizatórias (por exemplo PVTAC e GECJAO, Resolução Conjunta
+CNJ/CNMP 14/2026) não entram no cálculo do abate-teto na própria folha; por isso o total do mês pode passar do subsídio
+de ministro do STF (R$ 46.366,19 desde fev/2025). As sete fontes abrem de fora do Brasil (conferido em 02/10/2026).
+Desembargadores e juízes não entram: seriam milhares de páginas (o limite do Cloudflare Pages no plano gratuito é de
+20.000 arquivos).
 
 ## Robôs e robots.txt
 

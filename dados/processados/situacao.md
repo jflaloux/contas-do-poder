@@ -1,11 +1,10 @@
-# Situação das fontes (02/10/2026 15:58, rodada: brasil)
+# Situação das fontes (02/10/2026 19:16, rodada: brasil)
 
-Último mês fechado: 09/2026. 79 fontes: 68 ok, 7 com o atraso da própria fonte, 1 atrasadas, 3 falhando.
+Último mês fechado: 09/2026. 86 fontes: 76 ok, 7 com o atraso da própria fonte, 1 atrasadas, 2 falhando.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
 | assembleias/pb | falhando | 07/2026 | — | — | ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package. |
-| folhas/RO | falhando | 09/2026 | — | — | HTTPError: 404 Client Error: Not Found for url: https://transparencia.api.ro.gov.br/api/v1/remuneracao-servidor?Ano=2026 |
 | folhas/RR | falhando | 07/2026 | — | — | ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90) |
 | prefeituras/recife | atrasada | 06/2026 | 2026-10-02 | brasil |  |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
@@ -57,9 +56,17 @@
 | folhas/PI (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/PR | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/RN (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
+| folhas/RO | ok | 09/2026 | 2026-10-02 | brasil |  |
 | folhas/RS | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/SC | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/SE (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
+| judiciario/cnj | ok | 08/2026 | — | — |  |
+| judiciario/pgr | ok | 08/2026 | — | — |  |
+| judiciario/stf | ok | 07/2026 | — | — |  |
+| judiciario/stj | ok | 08/2026 | — | — |  |
+| judiciario/stm | ok | 08/2026 | — | — |  |
+| judiciario/tse | ok | 07/2026 | — | — |  |
+| judiciario/tst | ok | 08/2026 | — | — |  |
 | prefeituras/curitiba | ok | 08/2026 | 2026-10-02 | brasil |  |
 | prefeituras/fortaleza | ok | 07/2026 | 2026-10-02 | brasil |  |
 | prefeituras/natal (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |

@@ -70,7 +70,11 @@ Cada número tem link para a fonte oficial.
   `dados/referencia/fotos_governo.json`; faltam 9 sem foto de licença livre) — Claude
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
 - [x] Judiciário, prova de conceito: levantamento do STF, STJ, TST, STM, TSE, CNJ, TJs e PGR, com amostra conferida (`dados/referencia/judiciario.json`) — Claude
-- [ ] Judiciário, passo 1: ministros do STF, STJ, TST, STM e TSE e conselheiros do CNJ, mês a mês (STJ, TST, CNJ e PGR pela fonte oficial; STF, STM, TSE e desembargadores dos TJs pelo DadosJusBr, até a decisão sobre as exceções ao robots.txt do STF e do STM) — Claude; exceções ao robots.txt do STF e do STM — Jean-François decide
+- [x] Judiciário, passo 1: ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês desde jan/2025 (STJ, TST, CNJ e PGR pela fonte oficial; STF, STM e TSE pelo DadosJusBr), em dados/judiciario/ e site/dados/judiciario.json — Claude
+- [ ] Judiciário no site: página /judiciario e página de pessoa (TAREFA-SITE-judiciario.txt) — Agente de Site
+- [ ] Judiciário: se um robô oficial (STJ, TST, CNJ, PGR) quebrar, o órgão passa a vir do DadosJusBr sozinho, com aviso na situação — Claude
+- [ ] Judiciário: exceção ao robots.txt da consulta do STF (egesp-portal) e do STM (rem_web), depois da conversa com o advogado — Jean-François
+- [x] Contato com o DadosJusBr (Transparência Brasil): observações sobre os dados e propostas de troca (02/10/2026) — Jean-François
 - [ ] TCU; presidentes de estatais — depois
 - [x] Vereadores, passo 1: a Câmara de cada cidade (custo, por habitante, vereadores eleitos, teto do salário) — Claude
 - [x] Vereadores, passo 2a: São Paulo (capital), vereador por vereador: salário, verba do gabinete com fornecedores, equipe — Claude

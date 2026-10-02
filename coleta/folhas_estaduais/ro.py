@@ -16,6 +16,8 @@ def _get(params):
     for tentativa in range(3):
         try:
             r = _sessao().get(API, params=params, timeout=90)
+            if r.status_code == 404:
+                return {}  # o mês ainda não foi publicado (a API responde 404, e não uma lista vazia)
             r.raise_for_status()
             return r.json()
         except TempoEsgotado:
