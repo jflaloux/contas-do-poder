@@ -1,5 +1,5 @@
 {
- "_sobre": "Quem está (ou esteve desde jan/2025) no STF, no STJ, no TST, no STM, no TSE, no CNJ e na Procuradoria-Geral da República. Mantido à mão e conferido com a folha de cada órgão (os nomes como a folha escreve vão em 'folha'). inicio e fim: o mês (AAAA-MM) em que a pessoa entra e sai da folha do órgão; inicio vazio = já estava no cargo em jan/2025; fim vazio = no cargo no último mês publicado. As funções (presidente, vice, corregedor) saem da lotação de cada mês na folha. 'rel': a outra página da mesma pessoa (quem está no TSE vindo do STF ou do STJ): o site liga as páginas e nunca soma o que cada órgão paga. 'cnj_sem_folha': quem integra o CNJ e é pago pelo próprio tribunal; a função aparece na página do tribunal. 'fora': nomes que aparecem na folha com cargo de ministro ou conselheiro mas não integram a composição (a conferir na página de composição do órgão). pagina_conferida: false = o robô não abre a página (403), o endereço não foi conferido.",
+ "_sobre": "Quem está (ou esteve desde jan/2025) no STF, no STJ, no TST, no STM, no TSE, no CNJ e na Procuradoria-Geral da República. Mantido à mão e conferido com a folha de cada órgão (os nomes como a folha escreve vão em 'folha'). inicio e fim: o mês (AAAA-MM) em que a pessoa entra e sai da folha do órgão; inicio vazio = já estava no cargo em jan/2025; fim vazio = no cargo no último mês publicado. As funções (presidente, vice, corregedor) saem da lotação de cada mês na folha. 'funcoes': as que a folha não mostra (no STJ, a lotação é sempre a do gabinete do ministro), pela página oficial do órgão (de e ate: o mês da posse e o da saída; ate vazio = na função hoje). 'rel': a outra página da mesma pessoa (quem está no TSE vindo do STF ou do STJ): o site liga as páginas e nunca soma o que cada órgão paga. 'cnj_sem_folha': quem integra o CNJ e é pago pelo próprio tribunal; a função aparece na página do tribunal. 'fora': nomes que aparecem na folha com cargo de ministro ou conselheiro mas não integram a composição (a conferir na página de composição do órgão). pagina_conferida: false = o robô não abre a página (403), o endereço não foi conferido.",
  "conferido_em": "2026-10-02",
  "orgaos": {
   "STF": {
@@ -1687,8 +1687,15 @@
    "folha_cnj": "MAURO LUIZ CAMPBELL MARQUES",
    "funcao": "Corregedor Nacional de Justiça",
    "de": null,
-   "ate": null,
+   "ate": "2026-08",
    "id": "jud-stj-mauro-campbell-marques"
+  },
+  {
+   "folha_cnj": "BENEDITO GONÇALVES",
+   "funcao": "Corregedor Nacional de Justiça",
+   "de": "2026-08",
+   "ate": null,
+   "id": "jud-stj-benedito-goncalves"
   },
   {
    "folha_cnj": "GUILHERME AUGUSTO CAPUTO BASTOS",
@@ -1746,5 +1753,35 @@
     "motivo": "aparece uma vez (fev/2026) como MINISTRO, com lotação 'À disposição de outro órgão'; não integra a composição atual do TST (a conferir)"
    }
   ]
- }
+ },
+ "funcoes": [
+  {
+   "id": "jud-stj-herman-benjamin",
+   "funcao": "Presidente do STJ",
+   "de": null,
+   "ate": "2026-08",
+   "fonte": "https://www.stj.jus.br/sites/portalp/paginas/comunicacao/noticias/2026/19082026-luis-felipe-salomao-assume-presidencia-do-stj-com-foco-em-retomada-da-vocacao-da-corte.aspx"
+  },
+  {
+   "id": "jud-stj-luis-felipe-salomao",
+   "funcao": "Vice-presidente do STJ",
+   "de": null,
+   "ate": "2026-08",
+   "fonte": "https://www.stj.jus.br/sites/portalp/paginas/comunicacao/noticias/2026/19082026-luis-felipe-salomao-assume-presidencia-do-stj-com-foco-em-retomada-da-vocacao-da-corte.aspx"
+  },
+  {
+   "id": "jud-stj-luis-felipe-salomao",
+   "funcao": "Presidente do STJ",
+   "de": "2026-08",
+   "ate": null,
+   "fonte": "https://www.stj.jus.br/sites/portalp/paginas/comunicacao/noticias/2026/19082026-luis-felipe-salomao-assume-presidencia-do-stj-com-foco-em-retomada-da-vocacao-da-corte.aspx"
+  },
+  {
+   "id": "jud-stj-mauro-campbell-marques",
+   "funcao": "Vice-presidente do STJ",
+   "de": "2026-08",
+   "ate": null,
+   "fonte": "https://www.stj.jus.br/sites/portalp/paginas/comunicacao/noticias/2026/19082026-luis-felipe-salomao-assume-presidencia-do-stj-com-foco-em-retomada-da-vocacao-da-corte.aspx"
+  }
+ ]
 }

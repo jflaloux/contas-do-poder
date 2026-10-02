@@ -104,15 +104,21 @@ def _funcao(orgao, lotacao, fem):
     return None
 
 
-def _periodos(meses_fn):
-    """[(am, funcao)] -> [[funcao, de, ate]] (ate None = até o último mês)."""
+def _periodos(meses_fn, sem_dados=()):
+    """[(am, funcao)] -> [[funcao, de, ate]] (ate None = até o último mês). Um mês sem folha publicada no meio (TST em
+    jan/2026, STM em jan, mar e abr/2026) não interrompe a função."""
+    sem_dados = set(sem_dados)
     saida = []
-    for am, f in sorted(meses_fn):
-        if saida and saida[-1][0] == f and comum.mes_mais(saida[-1][2]) == am:
-            saida[-1][2] = am
-        else:
-            saida.append([f, am, am])
-    return saida
+    for f, am in sorted((f, am) for am, f in meses_fn):
+        if saida and saida[-1][0] == f:
+            x = comum.mes_mais(saida[-1][2])
+            while x in sem_dados and x < am:
+                x = comum.mes_mais(x)
+            if x == am:
+                saida[-1][2] = am
+                continue
+        saida.append([f, am, am])
+    return sorted(saida, key=lambda s: (s[1], s[0]))
 
 
 def montar():
@@ -180,7 +186,10 @@ def montar():
                 f = _funcao(org, l.get("lotacao") or "", fem)
                 if f:
                     fn.append((am, f))
-            funcoes = [[f, de, (None if ate >= ultimo and x else ate)] for f, de, ate in _periodos(fn)]
+            funcoes = [[f, de, (None if ate >= ultimo and x else ate)] for f, de, ate in _periodos(fn, sem_dados)]
+            for c in comp.get("funcoes", []):  # as que a folha não mostra (no STJ, a lotação é sempre o gabinete do ministro)
+                if c["id"] == m["id"]:
+                    funcoes.append([c["funcao"], _am(c.get("de")), _am(c.get("ate"))])
             for c in comp.get("cnj_sem_folha", []):
                 if c["id"] == m["id"]:
                     funcoes.append([c["funcao"], _am(c.get("de")), _am(c.get("ate"))])
