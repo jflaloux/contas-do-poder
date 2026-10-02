@@ -102,10 +102,15 @@ def _em_exercicio():
 
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
-    comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], LISTA)
-    nf = _na_folha()
-    if len(nf) >= 30:
-        nf.to_csv(PASTA / "na_folha.csv", index=False)
+    try:  # as duas listas: sem elas, ficam as já gravadas (o site da Alesc pode não abrir de fora do Brasil)
+        comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], LISTA)
+        nf = _na_folha()
+        if len(nf) >= 30:
+            nf.to_csv(PASTA / "na_folha.csv", index=False)
+    except TempoEsgotado:
+        raise
+    except Exception as e:  # noqa: BLE001
+        log(f"  Alesc: a lista de deputados não abriu ({type(e).__name__}); ficam as já gravadas")
     ano_hoje = int(time.strftime("%Y"))
     linhas = []
     for ano in range(INICIO // 100, ano_hoje + 1):
