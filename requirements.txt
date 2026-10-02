@@ -6,3 +6,5 @@ pillow>=10
 openpyxl>=3.1
 libarchive-c>=5
 xlrd>=2.0
+odfpy>=1.4
+cryptography>=41
