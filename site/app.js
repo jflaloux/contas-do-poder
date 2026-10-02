@@ -2604,17 +2604,33 @@
       if (lista.length) graficoPontos(caixa, p ? p.id : null, lista.map((x) => ({ id: x.p.id, n: x.p.n, sub: sub(x.p), v: x.v })), M.fmt);
     };
     const medir = () => evento("ranking", { casa: nomeGrupo(G()), metrica: R.metrica, periodo: R.periodo === "leg" ? "mandato" : R.periodo, uf: R.uf || "todos" });
-    const trocouGrupo = () => { R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = "custo"; periodosOk(); medir(); render(); irPara("ranking"); };
+    // trocar o grupo (ou a cidade) muda os filtros: refaz só esta seção, no lugar, com os botões "Quem" no mesmo ponto
+    // da tela e o foco no que foi escolhido. Antes, a página inteira era refeita e a rolagem pulava para cima.
+    const trocouGrupo = (foco) => {
+      R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = "custo"; periodosOk(); medir();
+      const ancora = (x) => x.querySelector(".grupo-pilulas");
+      const y = sec.isConnected && ancora(sec) ? ancora(sec).getBoundingClientRect().top : null;
+      const novo = secRanking(p, k, comoCargo);
+      sec.replaceWith(novo);
+      if (y !== null) {
+        const raiz = document.documentElement, antes = raiz.style.scrollBehavior;
+        raiz.style.scrollBehavior = "auto";
+        window.scrollBy(0, ancora(novo).getBoundingClientRect().top - y);
+        raiz.style.scrollBehavior = antes;
+      }
+      const alvo = foco === "cidade" ? novo.querySelector("#cidade-rank") : novo.querySelector('.grupo-pilulas [aria-pressed="true"]');
+      if (alvo) alvo.focus({ preventScroll: true });
+    };
     const filtros = h("div", { class: "filtros" },
       h("div", { class: "campo campo--quem" }, h("span", { class: "rotulo" }, "Quem"),
         pilulas([["d", estadosAssembleia().length ? "Deputados federais" : "Deputados"], ["s", "Senadores"], ["e", "Governo"], ...(estadosAssembleia().length ? [["a", "Deputados estaduais"]] : []),
           ...(cidadesCamara().length ? [["v", "Vereadores"]] : []), ...(cidadesPrefeitura().length ? [["p", "Prefeituras"]] : [])], R.casa, (v) => {
           R.casa = v;
           if (porLugar(v) && !cidadesDo(v).some((c) => c.cod === R.cid)) R.cid = cidadesDo(v)[0].cod;
-          trocouGrupo();
+          trocouGrupo("quem");
         }, "Quem", "grupo-pilulas")),
       semUF() && R.casa !== "e" ? h("div", { class: "campo" }, h("label", { for: "cidade-rank" }, R.casa === "a" ? "Estado" : "Cidade"),
-        h("select", { id: "cidade-rank", onchange: (e) => { R.cid = +e.target.value; trocouGrupo(); } },
+        h("select", { id: "cidade-rank", onchange: (e) => { R.cid = +e.target.value; trocouGrupo("cidade"); } },
           cidadesDo(R.casa).map((c) => h("option", { value: c.cod, selected: c.cod === R.cid }, `${c.n} (${c.uf})`)))) : null,
       h("div", { class: "campo" }, h("label", { for: "metrica" }, "Comparar por"),
         h("select", { id: "metrica", onchange: (e) => { R.metrica = e.target.value; medir(); desenhar(); } },
