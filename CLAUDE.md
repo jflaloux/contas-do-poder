@@ -186,3 +186,9 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
   (vereadores do interior ficam na página da cidade). O `gerar.mjs` avisa a partir de 18.000 arquivos ou 1.800
   redirecionamentos e falha acima do limite. Se faltar espaço: juntar os arquivos por pessoa (`dados/pessoa/<id>.json`,
   ~2.650) em pedaços por estado e grupo, o que libera ~2.500 arquivos.
+- Robô que falha não grava arquivo vazio por cima do último dado bom: mantém o anterior e a situação marca a falha. Em
+  02/10/2026 a API de despesas da Câmara do Recife deu erro para todos, o robô gravou vazio e a cidade sumiu do site.
+  `coleta/situacao.py` agora marca como "falhando" cidade ou estado que falta no arquivo do site.
+- "No cargo" nas Assembleias: estar na folha ou nas notas da verba no último mês não basta (licenciados continuam
+  recebendo; suplentes saem quando o titular volta; quem ainda não lançou a verba some). Use a lista de quem está em
+  exercício que a própria Assembleia publica (e a de afastamentos, com as datas, em GO).

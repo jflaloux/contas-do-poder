@@ -117,8 +117,8 @@ Cada número tem link para a fonte oficial.
   AC (só salário); MG e RJ só com exceção ao robots.txt (decisão do Jean-François); PR e MT têm CAPTCHA — Claude
 - [x] Fotos do TSE (candidaturas de 2022 e 2024, dados abertos CC BY) para deputados estaduais, vereadores, prefeitos, vices e governadores sem foto — Claude
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
-- [ ] Avisos do site (02/10/2026): Assembleias com 1.064 deputados "no cargo" para 1.059 cadeiras; equipe vazia no MT, RR e
-  PA; RR com mediana de 80 pessoas por gabinete; funções faltando no STJ (presidência), TST e STM — Agente de Dados
+- [x] Avisos do site (02/10/2026): Assembleias com 1.059 no cargo para 1.059 cadeiras (GO 40/41 e AL 28/27 são da fonte);
+  equipe no MT e em RR; RR com ~80 por gabinete é o que a fonte mostra; presidências do STJ pela página oficial — Agente de Dados
 - [ ] Página "frescor dos dados": até quando vai cada fonte (versão pública de `situacao.json` em `site/dados/`; depois a
   página) — Agente de Dados, depois Agente de Site
 
