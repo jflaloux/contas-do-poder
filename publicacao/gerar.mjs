@@ -23,6 +23,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = path.join(RAIZ, "site");
@@ -467,6 +468,62 @@ if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
   paginas.push(["indice", pagina("indice", `${titulo} | Contas do Poder`, texto, corpo, { extras: ["/dados/indice_transparencia.json"] })]);
 }
 
+
+// ------------------------------------------------------------------ dados abertos (/dados-abertos)
+// Os dados não dependem deste site: as cópias públicas (COPIAS) e cada arquivo de site/dados/, com o tamanho e a
+// impressão digital (SHA-256), para qualquer cópia poder ser conferida. O manifesto (publicar/dados/manifesto.json) é
+// o que o app.js lê para desenhar a página; aqui, a mesma página pronta, para quem não roda JavaScript.
+// Uma cópia nova (Zenodo, Software Heritage, um espelho do repositório): uma linha em COPIAS.
+const COPIAS = [
+  { nome: "GitHub", url: "https://github.com/jflaloux/contas-do-poder", texto: "O código do site, os robôs que coletam os dados e os próprios dados, com o histórico de cada mudança." },
+  { nome: "Pacote completo (ZIP)", url: "https://github.com/jflaloux/contas-do-poder/archive/refs/heads/main.zip", texto: "Tudo o que está no GitHub num arquivo só, na versão mais recente." },
+  { nome: "Internet Archive", url: "https://web.archive.org/web/*/contasdopoder.com/*", texto: "As páginas do site guardadas pelo Wayback Machine, com a data de cada cópia." },
+];
+const DESCRICAO_ARQ = {
+  "dados.json": "Deputados federais, senadores, presidente, vice e ministros: o que vai para o bolso e os gastos de cada um, mês a mês.",
+  "camaras.json": "Vereadores das capitais com dados abertos de cada um: salário, verba do gabinete e equipe, mês a mês.",
+  "prefeituras.json": "Prefeito, vice e secretários das capitais com a folha aberta: o que cada um recebe, mês a mês.",
+  "assembleias.json": "Deputados estaduais e distritais: salário, verba do gabinete e equipe, mês a mês.",
+  "governadores.json": "Governadores e vices: o salário do cargo (com a lei de cada valor), quem governou desde 2023 e a folha mês a mês.",
+  "municipios.json": "As 5.570 cidades: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e o salário médio (IBGE).",
+  "indice_transparencia.json": "O Índice de Transparência: a nota de cada fonte de cada estado, critério por critério, com a prova.",
+  "judiciario.json": "Judiciário (tribunais superiores, CNJ e PGR), ainda fora das páginas do site.",
+  "enderecos.json": "O endereço de cada página do site (e os endereços antigos, que redirecionam).",
+  "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
+};
+const descricaoArq = (a) => DESCRICAO_ARQ[a]
+  || (/^interior\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(9, 11).toUpperCase()] || a}: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao Tribunal de Contas, mês a mês.` : "")
+  || (/^vereadores\/([A-Z]{2})\.json$/.test(a) ? `Vereadores eleitos em 2024 em cada cidade ${deUF(a.slice(11, 13))} (TSE).` : "");
+function manifesto() {
+  const arquivos = [];
+  const andar = (pasta, rel) => {
+    for (const e of fs.readdirSync(pasta, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      const a = path.join(pasta, e.name), r = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) andar(a, r);
+      else if (e.isFile() && /\.json$/.test(e.name)) {
+        const conteudo = fs.readFileSync(a);
+        arquivos.push({ arquivo: r, bytes: conteudo.length, sha256: createHash("sha256").update(conteudo).digest("hex"), descricao: descricaoArq(r) });
+      }
+    }
+  };
+  andar(path.join(SITE, "dados"), "");
+  return { gerado_em: new Date().toISOString().slice(0, 19), site: DOMINIO, copias: COPIAS, arquivos }; // a data desta publicação
+}
+const MANIFESTO = manifesto();
+const tamanhoTxt = (b) => (b >= 1048576 ? `${(b / 1048576).toFixed(1).replace(".", ",")} MB` : `${Math.max(1, Math.round(b / 1024))} KB`);
+{
+  const lide = "Este site é uma forma de ler dados que já são públicos. Os dados, os robôs que os coletam e o código do site têm cópias públicas e verificáveis fora daqui. Qualquer pessoa pode baixar tudo, conferir com as fontes oficiais e publicar de novo. Se este endereço sair do ar, os dados continuam disponíveis.";
+  const linha = (a) => `<tr><td><a href="/dados/${esc(a.arquivo)}" download>${esc(a.arquivo)}</a>${a.descricao ? `<small class="tabela-gov__obs">${esc(a.descricao)}</small>` : ""}<span class="hash">${a.sha256}</span></td><td class="num">${tamanhoTxt(a.bytes)}</td></tr>`;
+  const corpo = '<section class="bloco" id="dados-abertos" aria-labelledby="t-dados"><p class="rotulo">Transparência do site</p>'
+    + '<h1 id="t-dados" class="titulo-pagina">Dados abertos: baixe tudo</h1>'
+    + `<p class="lide">${esc(lide)}</p><h2 class="h3">Onde estão as cópias</h2><ul class="copias">`
+    + COPIAS.map((c) => `<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.nome)}&nbsp;↗</a> <span>${esc(c.texto)}</span></li>`).join("")
+    + `</ul><h2 class="h3">Os arquivos de dados</h2><table class="tabela-gov tabela-dados"><thead><tr><th>Arquivo e impressão digital (SHA-256)</th><th class="num">Tamanho</th></tr></thead><tbody>`
+    + MANIFESTO.arquivos.map(linha).join("") + "</tbody></table></section>";
+  const titulo = "Dados abertos: baixe tudo | Contas do Poder";
+  paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"] })]);
+}
+
 // ------------------------------------------------------------------ grava
 // cópia simples, arquivo por arquivo (o fs.cpSync do Node 22 falha em algumas pastas montadas, como as de máquinas virtuais)
 function copiar(de, para) {
@@ -512,6 +569,7 @@ if (governadores.length) {
     nPessoa++;
   }
 }
+fs.writeFileSync(path.join(SAIDA, "dados", "manifesto.json"), JSON.stringify(MANIFESTO, null, 1));
 fs.writeFileSync(path.join(SAIDA, "index.html"), MODELO.replace(/<\/head>/, `${preloads()}\n</head>`));
 for (const [caminho, html] of paginas) {
   const arq = path.join(SAIDA, `${caminho}.html`);

@@ -708,6 +708,9 @@ seguem o mesmo desenho.
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+  Dados abertos (desde 02/10/2026): `ver_dados_abertos` (abriu `/dados-abertos`, com a origem) e `baixar_dados` (clicou
+  num arquivo da página, com o `arquivo`); os links para o GitHub e o Internet Archive saem como `abrir_github` e
+  `abrir_fonte` com `onde: dados-abertos`. No evento `velocidade`, `pagina` pode ser `dados_abertos`.
   Interior da Paraíba e do Ceará (desde 02/10/2026, sem evento novo): `abrir_lista` com `interior_sairam_<UF>`
   (vereadores que passaram pela Câmara), `interior_secretarios_<UF>` e `interior_sairam_prefeitura_<UF>`.
   Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
@@ -790,6 +793,27 @@ Veja `metadados.json` → `pendencias`. As principais:
   mais recentes da [PNAD Contínua do IBGE](https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?t=microdados)
   (rendimento mensal habitual de todos os trabalhos, pessoas ocupadas com renda, em salários mínimos de cada ano);
   o cálculo está em `coleta/renda.py` e o resultado em `dados/referencia/renda_trabalho.json`.
+
+## Cópias públicas e preservação
+
+Os dados não dependem do site: a página `/dados-abertos` diz onde estão as cópias e lista cada arquivo de
+`site/dados/` com o tamanho e a impressão digital (SHA-256), para qualquer cópia poder ser conferida
+(`sha256sum dados.json`); mostra também como refazer tudo do zero (clonar, `python3 coletar.py tudo`,
+`node publicacao/gerar.mjs`). O `gerar.mjs` grava a lista em `publicar/dados/manifesto.json` (`COPIAS` e
+`DESCRICAO_ARQ`, no próprio `gerar.mjs`: uma cópia nova é uma linha em `COPIAS`). O rodapé de todas as páginas leva
+para lá.
+
+Cópias fora do repositório (a fazer uma vez, pelo dono da conta):
+
+1. **Zenodo** (CERN): entrar em zenodo.org com a conta do GitHub, em "GitHub" ligar o repositório e publicar uma
+   versão (release) no GitHub, por exemplo uma por mês. Cada versão vira uma cópia permanente, com DOI. O DOI (e o
+   selo) entram em `COPIAS` e aqui.
+2. **Software Heritage**: em archive.softwareheritage.org, "Save code now" com o endereço do repositório; o Zenodo
+   também manda cada versão para lá.
+3. **Espelho**: um repositório no Codeberg ou no GitLab que espelha este (pull mirror), atualizado sozinho.
+4. **Internet Archive**: "Save Page Now" (web.archive.org/save) nas páginas principais.
+5. **Contas**: verificação em duas etapas no GitHub, no Cloudflare e no registro do domínio; bloqueio de transferência
+   do domínio ligado.
 
 ## Licença
 

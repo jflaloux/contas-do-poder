@@ -938,3 +938,15 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .tabela-int td:first-child { white-space: normal; min-width: 11rem; }
 .tabela-int td:nth-child(2) { white-space: normal; min-width: 8rem; color: var(--ink-2); }
 .tabela-int td:nth-child(2), .tabela-int th:nth-child(2) { text-align: left; }
+
+/* /dados-abertos: as cópias públicas, os arquivos com a impressão digital (SHA-256) e os comandos */
+.copias { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.copias li { display: grid; gap: 2px; }
+.copias a { font-weight: 600; }
+.copias span { color: var(--ink-2); font-size: .92rem; }
+.tabela-dados .hash { display: block; margin-top: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .72rem; color: var(--ink-2); word-break: break-all; }
+.tabela-dados td:first-child { min-width: 0; }
+.tabela-dados .tabela-gov__obs { max-width: none; }
+#dados-abertos code, pre.codigo { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; background: var(--accent-soft); border-radius: 6px; }
+#dados-abertos code { padding: 1px 6px; }
+pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }

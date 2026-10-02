@@ -88,7 +88,7 @@
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
-        : caminho === "indice" || caminho === "correcoes" ? caminho : "politico",
+        : caminho === "indice" || caminho === "correcoes" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
       lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
     };
     const ver = (tipo, f, extra) => {
@@ -3036,7 +3036,7 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
@@ -3217,9 +3217,9 @@
       return;
     }
     S.cidadeVista = null;
-    // páginas do site que não são de um político: /correcoes e /indice
-    if (caminho === "correcoes" || caminho === "indice") {
-      if (extraAntes !== caminho) evento(`ver_${caminho}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
+    // páginas do site que não são de um político: /correcoes, /indice e /dados-abertos
+    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos") {
+      if (extraAntes !== caminho) evento(`ver_${caminho.replace(/-/g, "_")}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
     }
@@ -3338,6 +3338,56 @@
       })) : h("p", null, "Nenhuma correção até agora."),
       h("p", { class: "discreto pequeno" }, "Viu outro erro? Use o \"Encontrou um erro?\" no fim da página do político ou escreva para ",
         h("a", { href: `mailto:${CONTATO}?subject=${encodeURIComponent("Erro no Contas do Poder")}`, "data-evento": "reportar_erro" }, CONTATO), "."));
+  }
+
+  // ------------------------------------------------------------------ dados abertos: baixe tudo
+  // /dados-abertos: os dados não dependem deste site. As cópias públicas e cada arquivo de dados, com o tamanho e a
+  // impressão digital (SHA-256), para qualquer cópia poder ser conferida; como refazer tudo do zero. A lista vem de
+  // dados/manifesto.json (publicacao/gerar.mjs: COPIAS e a descrição de cada arquivo).
+  let manifestoPedido = null;
+  function carregarManifesto() {
+    if (!manifestoPedido) {
+      manifestoPedido = lerJSON("/dados/manifesto.json");
+      manifestoPedido.catch(() => { manifestoPedido = null; }); // se falhar, tenta de novo na próxima vez
+    }
+    return manifestoPedido;
+  }
+  const tamanhoArq = (b) => (b >= 1048576 ? `${num(b / 1048576, 1)} MB` : `${num(Math.max(1, Math.round(b / 1024)), 0)} KB`);
+  function secDadosAbertos(M) {
+    const arqs = M.arquivos || [], porEstado = arqs.filter((a) => a.arquivo.startsWith("vereadores/")), principais = arqs.filter((a) => !porEstado.includes(a));
+    const quando = M.gerado_em ? dataBR(String(M.gerado_em).slice(0, 10)) : "";
+    const tabela = (lista, rotulo) => rolagem(rotulo, h("table", { class: "tabela-gov tabela-dados" },
+      h("thead", null, h("tr", null, h("th", null, "Arquivo e impressão digital (SHA-256)"), h("th", { class: "num" }, "Tamanho"))),
+      h("tbody", null, lista.map((a) => h("tr", null,
+        h("td", null, h("a", { href: `/dados/${a.arquivo}`, download: "", onclick: () => evento("baixar_dados", { arquivo: a.arquivo }) }, a.arquivo),
+          a.descricao ? h("small", { class: "tabela-gov__obs" }, a.descricao) : null, h("span", { class: "hash" }, a.sha256)),
+        h("td", { class: "num" }, tamanhoArq(a.bytes)))))));
+    const cmd = (texto) => h("code", null, texto);
+    return h("section", { class: "bloco", id: "dados-abertos", "aria-labelledby": "t-dados" },
+      h("p", { class: "rotulo" }, "Transparência do site"),
+      h("h1", { id: "t-dados", class: "titulo-pagina" }, "Dados abertos: baixe tudo"),
+      h("p", { class: "lide" }, "Este site é uma forma de ler dados que já são públicos. Os dados, os robôs que os coletam e o código do site têm cópias públicas e verificáveis fora daqui. Qualquer pessoa pode baixar tudo, conferir com as fontes oficiais e publicar de novo. Se este endereço sair do ar, os dados continuam disponíveis."),
+      h("h2", { class: "h3" }, "Onde estão as cópias"),
+      h("ul", { class: "copias" }, (M.copias || []).map((c) => h("li", null, h("a", { href: c.url, target: "_blank", rel: "noopener" }, `${c.nome} ↗`), " ", h("span", null, c.texto)))),
+      h("h2", { class: "h3" }, "Os arquivos de dados"),
+      h("p", { class: "discreto" }, `Os mesmos arquivos que o site usa, em JSON${quando ? `, na versão de ${quando}` : ""}. Embaixo de cada um, a impressão digital (SHA-256): uma sequência que muda se qualquer letra do arquivo mudar.`),
+      tabela(principais, "Arquivos de dados"),
+      porEstado.length ? h("details", { class: "tabela" }, h("summary", null, `Vereadores eleitos em 2024, um arquivo por estado (${porEstado.length})`), tabela(porEstado, "Vereadores eleitos, por estado")) : null,
+      h("p", { class: "nota" }, "A lista, com a data e as impressões digitais: ", h("a", { href: "/dados/manifesto.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "manifesto.json" }) }, "manifesto.json"), "."),
+      h("h2", { class: "h3" }, "Como conferir uma cópia"),
+      h("p", null, "Baixou um destes arquivos de outro lugar? Calcule a impressão digital dele e compare com a desta página, da mesma data. Se for igual, o arquivo é idêntico."),
+      h("ul", { class: "lista" },
+        h("li", null, "Linux: ", cmd("sha256sum dados.json")),
+        h("li", null, "Mac: ", cmd("shasum -a 256 dados.json")),
+        h("li", null, "Windows (PowerShell): ", cmd("Get-FileHash dados.json"))),
+      h("p", { class: "nota" }, "Os arquivos mudam a cada atualização (toda semana). As versões anteriores ficam no histórico do GitHub, com a data de cada mudança."),
+      h("h2", { class: "h3" }, "Como refazer tudo do zero"),
+      h("p", null, "Os robôs leem de novo as fontes oficiais, e o resultado pode ser comparado com o deste site:"),
+      h("pre", { class: "codigo" }, "git clone https://github.com/jflaloux/contas-do-poder\ncd contas-do-poder\npip3 install -r requirements.txt\npython3 coletar.py tudo\nnode publicacao/gerar.mjs"),
+      h("p", { class: "nota" }, "Os robôs só leem o que cada órgão publica para qualquer pessoa: não contornam CAPTCHA, login nem bloqueio, seguem o robots.txt de cada site (as poucas exceções, para dados que a Lei de Acesso à Informação manda abrir para acesso automatizado, estão listadas no código) e nunca guardam o CPF. Cada número do site traz o link da fonte oficial."),
+      h("h2", { class: "h3" }, "Licenças"),
+      h("p", null, "O código (o site e os robôs) é livre, sob a licença MIT. Os dados podem ser reutilizados sob a licença ",
+        h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0 ↗"), ", citando \"Contas do Poder\" e as fontes originais."));
   }
 
   // ------------------------------------------------------------------ Índice de Transparência dos estados
@@ -3592,6 +3642,18 @@
         navSecoes(["correcoes", "entenda", "fontes"]);
         rolarPendente();
       }, () => falhou(espera, "Não foi possível carregar as correções."));
+      return;
+    }
+    if (S.extra === "dados-abertos") {
+      document.title = "Dados abertos · Contas do Poder";
+      const espera = esperar("Carregando a lista dos arquivos…");
+      navSecoes(["entenda", "fontes"]);
+      carregarManifesto().then((M) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        trocar(espera, secDadosAbertos(M));
+        navSecoes(["dados-abertos", "entenda", "fontes"]);
+        rolarPendente();
+      }, () => falhou(espera, "Não foi possível carregar a lista dos arquivos. Os dados e o código estão em github.com/jflaloux/contas-do-poder."));
       return;
     }
     if (S.extra === "indice") {
