@@ -89,6 +89,16 @@ endereço, com título, descrição e prévia de link próprios e um resumo em t
 WhatsApp, que não rodam JavaScript. Também gera o `sitemap.xml` e o `_redirects`. Depois de carregar, a página
 funciona como antes: o `app.js` desenha tudo e troca de página sem recarregar.
 
+**Limites do Cloudflare Pages.** No fim, o `gerar.mjs` confere os limites do Pages
+([limites](https://developers.cloudflare.com/pages/platform/limits/)): até 20.000 arquivos por site no plano Free
+(100.000 nos pagos, desde 23/01/2026), até 2.000 redirecionamentos no `_redirects` e até 25 MiB por arquivo. Ele mostra
+a contagem (em 02/10/2026: 13.789 arquivos, sendo 5.569 em `cidade/`, 2.960 páginas de políticos, 2.650 arquivos por
+pessoa e 2.506 fotos; 811 redirecionamentos; o maior arquivo, `dados/assembleias.json`, com 2,8 MB), avisa a partir de
+90% de cada limite e, acima dele, faz o build falhar, com a contagem por pasta: o Cloudflare recusaria a publicação, e o
+site no ar continua o anterior. Num plano pago, basta pôr `LIMITE_ARQUIVOS=100000` nas variáveis do projeto. Por isso,
+o que tem milhares de pessoas (como os vereadores do interior) entra na página da cidade, sem página nem arquivo por
+pessoa.
+
 Para a primeira visita ser rápida no celular, o `gerar.mjs` também divide os dados: `publicar/dados/indice/` tem
 `dados.json`, `camaras.json` e `assembleias.json` sem a série mês a mês (`t`) e sem o detalhe dos gastos (`dt`) de cada
 pessoa, que vão para `publicar/dados/pessoa/<id>.json` (com o nome de cada tipo de gasto e de cada fornecedor) e só são

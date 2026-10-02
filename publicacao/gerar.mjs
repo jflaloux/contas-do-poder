@@ -17,6 +17,8 @@
 // pessoasGovernadores).
 //
 // Uso: node publicacao/gerar.mjs      (sem dependências; Node 18 ou mais novo)
+// No fim, confere os limites do Cloudflare Pages (arquivos, redirecionamentos, tamanho): perto deles, avisa; acima, o
+// build falha (ver o fim do arquivo).
 // No Cloudflare Pages: comando de build "node publicacao/gerar.mjs", pasta de saída "publicar".
 import fs from "node:fs";
 import path from "node:path";
@@ -500,3 +502,49 @@ fs.writeFileSync(path.join(SAIDA, "sitemap.xml"), `<?xml version="1.0" encoding=
 const redir = Object.entries(END.antigos || {}).filter(([, id]) => END.p[id]).map(([velho, id]) => `/${velho} /${END.p[id]} 301`);
 if (redir.length) fs.writeFileSync(path.join(SAIDA, "_redirects"), `${redir.join("\n")}\n`);
 console.log(`publicar/: ${paginas.length} páginas prontas (${pessoas.filter((p) => END.p[p.id] || p.k === "a").length} políticos, ${GOV.e.length} estados, ${vistos.size} cidades), sitemap com ${urls.length} endereços, ${redir.length} redirecionamentos, ${nPessoa} arquivos por pessoa`);
+
+// ------------------------------------------------------------------ limites do Cloudflare Pages
+// O Pages recusa a publicação com mais de 20.000 arquivos (plano Free; 100.000 nos pagos), mais de 2.000
+// redirecionamentos no _redirects ou um arquivo de mais de 25 MiB (developers.cloudflare.com/pages/platform/limits/).
+// Melhor o build falhar aqui, dizendo onde está o volume, do que o Cloudflare recusar a publicação sem explicar (o site
+// no ar continua o anterior). Aviso a partir de 90% de cada limite. Em outro plano: LIMITE_ARQUIVOS=100000 nas
+// variáveis do projeto no Cloudflare.
+{
+  const LIMITE = { arquivos: Number(process.env.LIMITE_ARQUIVOS) || 20000, redir: 2000, tamanho: 25 * 1024 * 1024 };
+  const porPasta = new Map();
+  let total = 0, maior = ["", 0];
+  const andar = (pasta, rel) => {
+    for (const e of fs.readdirSync(pasta, { withFileTypes: true })) {
+      const a = path.join(pasta, e.name), r = rel ? `${rel}/${e.name}` : e.name;
+      if (e.isDirectory()) { andar(a, r); continue; }
+      total++;
+      // a pasta de cima (cidade/, fotos/...); dentro de dados/, a de baixo (dados/pessoa/, dados/indice/...)
+      const partes = r.split("/");
+      const chave = partes.length === 1 ? "raiz" : partes[0] === "dados" && partes.length > 2 ? `dados/${partes[1]}/` : `${partes[0]}/`;
+      porPasta.set(chave, (porPasta.get(chave) || 0) + 1);
+      const tam = fs.statSync(a).size;
+      if (tam > maior[1]) maior = [r, tam];
+    }
+  };
+  andar(SAIDA, "");
+  const mil = (n) => n.toLocaleString("pt-BR");
+  // as pastas grandes, uma a uma; as pequenas (como /nome/ministro, de quem tem dois cargos), somadas
+  const ordem = [...porPasta].sort((a, b) => b[1] - a[1]), grandes = ordem.filter(([, n]) => n >= 20), pequenas = ordem.filter(([, n]) => n < 20);
+  const pastas = [...grandes.map(([p, n]) => `${p} ${mil(n)}`),
+    ...(pequenas.length ? [`outras ${pequenas.length} pastas ${mil(pequenas.reduce((a, [, n]) => a + n, 0))}`] : [])].join(", ");
+  console.log(`Cloudflare Pages: ${mil(total)} de ${mil(LIMITE.arquivos)} arquivos (${pastas}); ${mil(redir.length)} de ${mil(LIMITE.redir)} redirecionamentos; maior arquivo ${maior[0]} (${(maior[1] / 1048576).toFixed(1)} MB)`);
+  const erros = [], avisos = [];
+  const conferir = (n, lim, oQue) => {
+    if (n > lim) erros.push(`${oQue}: ${mil(n)}, acima do limite de ${mil(lim)}`);
+    else if (n >= lim * 0.9) avisos.push(`${oQue}: ${mil(n)}, perto do limite de ${mil(lim)}`);
+  };
+  conferir(total, LIMITE.arquivos, "arquivos em publicar/");
+  conferir(redir.length, LIMITE.redir, "linhas no _redirects");
+  conferir(maior[1], LIMITE.tamanho, `tamanho de ${maior[0]} (bytes)`);
+  for (const a of avisos) console.warn(`AVISO: ${a}`);
+  if (erros.length) {
+    for (const e of erros) console.error(`ERRO: ${e}`);
+    console.error("O Cloudflare Pages recusaria esta publicação. Veja a contagem por pasta acima.");
+    process.exit(1);
+  }
+}
