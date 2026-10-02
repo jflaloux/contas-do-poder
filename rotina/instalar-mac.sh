@@ -1,5 +1,5 @@
 #!/bin/bash
-# Instala a rodada semanal do Brasil no Mac (uma vez só): o ambiente Python do projeto (.venv) e um agendamento do
+# Instala a rodada semanal do Brasil num computador com macOS (uma vez só): o ambiente Python do projeto (.venv) e um agendamento do
 # launchd que chama rotina/semana-brasil.sh todo dia às 13h07 (ele só trabalha uma vez por semana, depois da rodada do
 # GitHub de terça). Se o Mac estiver dormindo nessa hora, o launchd roda quando ele acordar.
 #

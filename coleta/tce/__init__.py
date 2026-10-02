@@ -6,7 +6,7 @@ Cada módulo cuida de um tribunal: `coletar()` grava em dados/municipios_tce/<uf
 desses cargos, dos meses que faltam (e os 2 últimos de novo); `montar()` escreve site/dados/interior/<uf>.json, um
 arquivo por estado, para o site só baixar o estado da cidade aberta. Um tribunal fora do ar não para o outro: o site
 usa o que já estava gravado. Cada tribunal é uma fonte em coleta/onde.py ("tce/pb", "tce/ce"): as duas abrem de fora
-do Brasil (conferido em 01/10/2026), então rodam no GitHub Actions; se uma falhar de fora, o Mac a pega na mesma semana.
+do Brasil (conferido em 01/10/2026), então rodam no GitHub Actions; se uma falhar de fora, a rodada do Brasil a pega na mesma semana.
 
 Uso: python3 coletar.py tce            (os dois estados e o site)
      python3 -m coleta.tce ce 150      (um estado só, com tempo máximo, para rodar em partes)

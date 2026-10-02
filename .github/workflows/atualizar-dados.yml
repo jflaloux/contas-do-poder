@@ -1,7 +1,7 @@
 # Robô de atualização do Contas do Poder.
 # Toda semana ele baixa os dados oficiais da Câmara e do Senado, monta a base, confere com os
 # sites oficiais e, se estiver tudo certo, salva os números novos neste repositório.
-# Roda nos EUA: as fontes que só abrem do Brasil ficam para a rodada do Mac (rotina/semana-brasil.sh, terça à tarde);
+# Roda nos EUA: as fontes que só abrem do Brasil ficam para a rodada do Brasil (rotina/semana-brasil.sh, terça à tarde);
 # coleta/onde.py diz quem roda o quê, e dados/processados/situacao.md mostra a situação de cada fonte.
 # O Cloudflare Pages publica o site sozinho a cada mudança no repositório.
 # Se uma fonte estiver fora do ar ou a conferência falhar, nada é salvo: o site anterior
@@ -79,7 +79,7 @@ jobs:
           else
             git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
             if ! git pull --rebase; then
-              # conflito com a rodada do Mac: só nos arquivos do site gerados a partir dos CSVs. Fica a versão de lá
+              # conflito com a rodada do Brasil: só nos arquivos do site gerados a partir dos CSVs. Fica a versão de lá
               # e os arquivos são refeitos com os CSVs das duas rodadas
               CONFLITOS=$(git diff --name-only --diff-filter=U)
               if echo "$CONFLITOS" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/)'; then

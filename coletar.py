@@ -31,7 +31,7 @@ Uso:
                                        # + renda + padronizar + fotos + site + situacao
     python3 coletar.py montar          # só refaz os arquivos do site das capitais, Assembleias e governadores (sem coletar),
                                        # os endereços e o relatório de situação
-    python3 coletar.py brasil          # a rodada do Mac, no Brasil (rotina/semana-brasil.sh): só as fontes que o exterior não
+    python3 coletar.py brasil          # a rodada do Brasil (rotina/semana-brasil.sh): só as fontes que o exterior não
                                        # pega (coleta/onde.py), e depois os arquivos do site que dependem delas
 
     No GitHub Actions (CONTAS_ONDE=exterior), "tudo" pula as fontes que só abrem do Brasil (coleta/onde.py).
@@ -85,7 +85,7 @@ def montar():
 
 
 def rodada_brasil():
-    """A rodada do Mac: as fontes que só abrem do Brasil (e as que falharam de fora nesta semana), depois os arquivos
+    """A rodada do Brasil: as fontes que só abrem do Brasil (e as que falharam de fora nesta semana), depois os arquivos
     do site que dependem delas, os endereços e o relatório de situação. Não mexe na base federal (dados.json)."""
     onde.SO_O_QUE_FALTA = True
     for etapa in (vereadores.coletar, prefeituras.coletar, assembleias.coletar, governadores.coletar, tce.coletar):

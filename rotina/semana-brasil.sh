@@ -1,5 +1,5 @@
 #!/bin/bash
-# Rodada semanal do Brasil: roda no Mac do Jean-François (launchd, ver rotina/instalar-mac.sh) e pega as fontes que só
+# Rodada semanal do Brasil: roda num computador no Brasil, com macOS (launchd, ver rotina/instalar-mac.sh) e pega as fontes que só
 # abrem de dentro do Brasil, depois da rodada do GitHub Actions (terça de manhã, nos EUA).
 #
 # O launchd chama este script todo dia às 13h07; ele só trabalha uma vez por semana, depois da rodada do GitHub de
@@ -55,7 +55,7 @@ if [ -f .git/index.lock ] || [ -n "$(git status --porcelain --untracked-files=no
 fi
 
 git fetch --quiet || { avisar "Rodada parou" "git fetch falhou (sem internet?); veja $LOG"; exit 1; }
-# commits feitos à mão que ainda esperam o push do Jean-François: a rodada não os envia por ele
+# commits feitos à mão que ainda esperam o push: a rodada não os envia
 ESPERANDO=$(git rev-list --count origin/main..HEAD)
 if [ "$ESPERANDO" -gt 0 ] && [ "$PUSH" = 1 ]; then
   PUSH=0; echo "$ESPERANDO commits esperando o push: a rodada faz o commit, mas não envia."

@@ -551,7 +551,7 @@ site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 18
   cadastro, com até 40 letras. Secretários ficam de fora: o valor deles está na folha de cada secretaria, com milhares de
   pessoas, e a API não filtra por pessoa. Ritmo: 2 pedidos por vez, com pausa, até 250 tarefas por rodada; o robô para
   quando 5 municípios seguidos dão erro (em 02/10/2026, depois de ~3 horas da primeira leitura com 3 pedidos por vez, os
-  endereços do TCE-CE pararam de responder ao Mac por ~12 minutos).
+  endereços do TCE-CE pararam de responder por ~12 minutos).
 - **Partido**: o da eleição de 2024 (TSE, o arquivo de candidatos do passo 1), só quando o nome da folha é o de um único
   candidato da cidade (igual, ou só com outra grafia: Souza/Sousa, sem o "de"); homônimos ficam sem partido. Sem fotos
   nesta etapa.

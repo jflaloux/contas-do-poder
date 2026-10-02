@@ -5,7 +5,7 @@ ou Brasil) e a última falha. Sai em dados/processados/situacao.md (e .json), no
 - "atrasada": o último mês no site está 3 meses ou mais atrás do último mês fechado (pode ser só o atraso da própria
   fonte: Minas e São Paulo, por exemplo, publicam a folha com alguns meses de atraso);
 - "ok".
-Na rodada do GitHub, o relatório aparece no resumo da execução; na do Mac, as fontes com problema viram um aviso.
+Na rodada do GitHub, o relatório aparece no resumo da execução; na do Brasil, as fontes com problema viram um aviso.
 """
 import json
 from datetime import datetime
