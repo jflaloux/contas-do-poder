@@ -229,7 +229,7 @@ as três visões lado a lado em totais do período, com os meses de cada cargo.
 
 ## Câmaras municipais (vereadores), passo 1
 
-Robô `coleta/municipios.py`, para as 5.568 câmaras:
+Robô `coleta/municipios.py`, para as 5.569 câmaras:
 
 - **Custo da Câmara**: Declaração de Contas Anuais (Siconfi, Tesouro Nacional), função "01 - Legislativa" menos
   "01.032 - Controle Externo" (tribunal de contas do município, só em SP e no Rio), despesas liquidadas. Uma
