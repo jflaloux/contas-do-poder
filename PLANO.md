@@ -119,8 +119,8 @@ Cada número tem link para a fonte oficial.
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
 - [x] Avisos do site (02/10/2026): Assembleias com 1.059 no cargo para 1.059 cadeiras (GO 40/41 e AL 28/27 são da fonte);
   equipe no MT e em RR; RR com ~80 por gabinete é o que a fonte mostra; presidências do STJ pela página oficial — Agente de Dados
-- [ ] Página "frescor dos dados": até quando vai cada fonte (versão pública de `situacao.json` em `site/dados/`; depois a
-  página) — Agente de Dados, depois Agente de Site
+- [x] Página "Atualização dos dados" (/atualizacao): até quando vai cada fonte, de `site/dados/situacao.json`, refeito a
+  cada rodada — Agente de Dados e Agente de Site
 
 ## Fase 3 — Testes e confiabilidade
 
