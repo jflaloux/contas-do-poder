@@ -513,7 +513,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,1,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000067,2025-01-30,3200.0,3200.0
 2025,1,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,3001789176,2025-01-31,275.0,275.0
 2025,1,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,2528,2025-01-31,500.0,500.0
-2025,1,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,339,2025-01-31,1400.0,1400.0
+2025,1,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,339,2025-01-31,1400.0,1400.0
 2025,1,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,001.24.80797262-6,2025-01-02,136.65,126.09
 2025,1,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,098397821-UB,2025-01-02,222.97,148.65
 2025,1,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0036365092,2025-01-07,151.3,148.69
@@ -1352,7 +1352,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,1,28876,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,014225274,2025-01-15,334.17,334.17
 2025,1,28876,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,,2025-01-21,96.0,96.0
 2025,1,28876,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2025-01-21,23.16,23.16
-2025,1,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,70/2025,2025-01-31,3000.0,3000.0
+2025,1,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,70/2025,2025-01-31,3000.0,3000.0
 2025,1,28877,Combustível e lubrificante,Apm Auto Poto Ltda.,40328546000190,3480,2025-01-01,277.67,277.67
 2025,1,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,512877,2025-01-01,430.05,430.05
 2025,1,28877,Combustível e lubrificante,Auto Posto Topget Ltda.,49308418000150,32216,2025-01-01,289.44,289.44
@@ -2093,7 +2093,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,2,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,3029996747,2025-02-28,275.0,275.0
 2025,2,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,2618,2025-02-28,500.0,500.0
 2025,2,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,105546815,2025-02-28,183.46,183.46
-2025,2,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,340,2025-02-28,1400.0,1400.0
+2025,2,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,340,2025-02-28,1400.0,1400.0
 2025,2,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,00069,2025-02-28,3200.0,3200.0
 2025,2,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,2502901718661,2025-02-01,151.41,149.04
 2025,2,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,100.063737-UB,2025-02-02,244.84,239.97
@@ -2907,9 +2907,9 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,2,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,177229,2025-02-04,302.0,302.0
 2025,2,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,176986,2025-02-04,302.0,302.0
 2025,2,28866,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085093579,DVNF029934,2025-02-03,5065.2,5065.2
-2025,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,37,2025-01-02,440.0,220.0
+2025,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,37,2025-01-02,440.0,220.0
 2025,2,28866,Manutenção e despesas gerais com veículos,Tchuba Pneus Ltda.,19355846000172,431,2025-01-15,200.0,200.0
-2025,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,38,2025-01-29,267.0,267.0
+2025,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,38,2025-01-29,267.0,267.0
 2025,2,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9146,2025-01-07,91.84,91.84
 2025,2,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2108NCD7UPX1,2025-01-12,8.2,8.2
 2025,2,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,01/2025,2025-01-19,210.2,210.2
@@ -3190,7 +3190,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,2,28876,Combustível e lubrificante,Sociedade Comercial Serra Azul Ltda.,21627305000106,000007625,2025-02-25,2142.6,2142.6
 2025,2,28876,Combustível e lubrificante,Auto Posto Amil Ltda.,08574321000101,000005622,2025-02-28,3396.63,3396.63
 2025,2,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001794,2025-02-28,1400.13,1400.13
-2025,2,28876,Divulgação da atividade parlamentar,Diego Francisco Silva de Sousa 10210593660,46653880000104,74/2025,2025-02-10,2000.0,2000.0
+2025,2,28876,Divulgação da atividade parlamentar,Diego Francisco Silva de Sousa,46653880000104,74/2025,2025-02-10,2000.0,2000.0
 2025,2,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00125073925391,2025-02-03,23.11,22.6
 2025,2,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,236223103,2025-02-04,51.12,51.12
 2025,2,28876,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564001030,532992397,2025-02-06,122.2,119.56
@@ -3211,7 +3211,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,2,28876,"Passagens, hospedagem e alimentação",G R Restaurante Ltda.,50219892000194,728,2025-02-19,156.7,156.7
 2025,2,28876,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2025-02-20,204.98,204.98
 2025,2,28876,Promoção e participação em eventos,52593360 Graciene Alves Nogueira,52593360000148,046826231,2025-02-27,960.0,960.0
-2025,2,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,73/2025,2025-02-28,3000.0,3000.0
+2025,2,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,73/2025,2025-02-28,3000.0,3000.0
 2025,2,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,526288,2025-02-01,160.15,160.15
 2025,2,28877,Combustível e lubrificante,Auto Posto Santa Mônica Mr Ltda.,30840001000296,76892,2025-02-01,290.0,290.0
 2025,2,28877,Combustível e lubrificante,Vaquinha da Nevada Ltda.,02441555000102,150156,2025-02-02,254.56,254.56
@@ -4061,7 +4061,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,3,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000071,2025-03-27,3200.0,3200.0
 2025,3,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,3058716087,2025-03-31,275.0,275.0
 2025,3,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,106897133,2025-03-31,266.41,266.41
-2025,3,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,341,2025-03-31,1400.0,1400.0
+2025,3,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,341,2025-03-31,1400.0,1400.0
 2025,3,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,241796424,2025-02-20,106.56,106.56
 2025,3,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,5421717446,2025-03-02,245.07,163.38
 2025,3,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0027698929,2025-03-07,147.9,147.9
@@ -4927,7 +4927,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,3,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,177236,2025-03-06,302.0,302.0
 2025,3,28866,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085093579,ACDVN-4269,2025-03-05,492.58,492.58
 2025,3,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,57479,2025-03-06,520.0,520.0
-2025,3,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,39,2025-02-20,240.0,240.0
+2025,3,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,39,2025-02-20,240.0,240.0
 2025,3,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9200,2025-02-04,83.02,83.02
 2025,3,28866,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,6E4E135C,2025-02-12,9.6,9.6
 2025,3,28866,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,AD061863,2025-02-12,9.6,9.6
@@ -5262,7 +5262,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,3,28876,Promoção e participação em eventos,Sandra Salgados Ltda,17069119000113,000000097,2025-03-28,500.0,500.0
 2025,3,28876,Promoção e participação em eventos,Sandra Salgados Ltda,17069119000113,000000096,2025-03-28,800.0,800.0
 2025,3,28876,Promoção e participação em eventos,G R Restaurante Ltda.,50219892000194,870,2025-03-31,647.02,631.02
-2025,3,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,75/2025,2025-03-31,3000.0,3000.0
+2025,3,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,75/2025,2025-03-31,3000.0,3000.0
 2025,3,28877,Combustível e lubrificante,Iramildo Pereira Resende & Cia Ltda.,04683269000170,2137,2025-02-15,313.79,313.79
 2025,3,28877,Combustível e lubrificante,Gardinus Restaurante & Buffet Ltda.,07510307000181,307,2025-02-19,66.93,66.93
 2025,3,28877,Combustível e lubrificante,Auto Posto Contorno Ltda.,04392497000191,114362,2025-02-22,328.02,328.02
@@ -6223,7 +6223,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,4,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000073,2025-04-24,3200.0,3200.0
 2025,4,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,005/2025,2025-04-28,1000.0,1000.0
 2025,4,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025004831228,2025-04-30,275.0,275.0
-2025,4,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,344,2025-04-30,1400.0,1400.0
+2025,4,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,344,2025-04-30,1400.0,1400.0
 2025,4,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00125171997753,2025-03-19,107.58,107.58
 2025,4,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,251754874,2025-03-24,146.42,144.4
 2025,4,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,103.133.500- UB,2025-04-02,239.95,159.97
@@ -7079,7 +7079,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,4,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,177243,2025-04-07,302.0,302.0
 2025,4,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,177007,2025-04-07,302.0,302.0
 2025,4,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,58253,2025-03-31,6000.0,6000.0
-2025,4,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,40,2025-03-25,370.0,370.0
+2025,4,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,40,2025-03-25,370.0,370.0
 2025,4,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9270,2025-03-06,80.8,80.8
 2025,4,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,210733TSIPP5,2025-03-06,8.2,8.2
 2025,4,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2105QXNCKPX0,2025-03-06,8.2,8.2
@@ -7222,8 +7222,8 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,4,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,47805,2025-04-30,3300.0,3300.0
 2025,4,28871,Locação de imóvel e despesas a ele concernentes,Reginalva Aparecida Soares,,04/2025,2025-04-30,700.0,700.0
 2025,4,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,023508,2025-04-30,11265.0,11265.0
-2025,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,1531,2025-04-22,100.0,100.0
-2025,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,1532,2025-04-24,130.0,130.0
+2025,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,1531,2025-04-22,100.0,100.0
+2025,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,1532,2025-04-24,130.0,130.0
 2025,4,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L05681,2025-04-30,210.0,210.0
 2025,4,28871,"Passagens, hospedagem e alimentação",Tc Empreendimentos Sociedade Unipessoal Ltda.,15286500000109,2025/370,2025-03-11,150.0,150.0
 2025,4,28871,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,PI7KGC,2025-04-14,1628.15,1628.15
@@ -7406,7 +7406,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,4,28876,Promoção e participação em eventos,Artes Bar e Restaurante Ltda.,13020328000111,78256,2025-04-29,330.0,290.2
 2025,4,28876,Promoção e participação em eventos,Luzima Teixeira da Silva Morais,10646848000146,000001049,2025-04-29,1365.59,1365.59
 2025,4,28876,Promoção e participação em eventos,Green Promoçoes e Eventos Ltda.,49347993000161,163/2025,2025-04-30,1900.0,1900.0
-2025,4,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,77/2025,2025-04-30,3000.0,3000.0
+2025,4,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,77/2025,2025-04-30,3000.0,3000.0
 2025,4,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,555221,2025-04-04,211.22,211.22
 2025,4,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,35198,2025-04-09,173.82,173.82
 2025,4,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,558010,2025-04-10,160.21,160.21
@@ -8483,7 +8483,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,19150,Divulgação da atividade parlamentar,New Way Soluções Digitais Lite Ltda,43084200000182,8472,2025-05-01,899.0,899.0
 2025,5,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,006/2025,2025-05-28,1000.0,1000.0
 2025,5,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,202500000000237,2025-05-29,1880.0,1880.0
-2025,5,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,347,2025-05-29,1400.0,1400.0
+2025,5,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,347,2025-05-29,1400.0,1400.0
 2025,5,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,202500000000238,2025-05-30,780.0,780.0
 2025,5,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025006778781,2025-05-31,275.0,275.0
 2025,5,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000074,2025-05-31,3200.0,3200.0
@@ -9326,7 +9326,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0537,2025-05-31,2750.0,2750.0
 2025,5,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0538,2025-05-31,7500.0,7500.0
 2025,5,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0536,2025-05-31,2750.0,2750.0
-2025,5,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,37,2025-05-30,60.0,60.0
+2025,5,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,37,2025-05-30,60.0,60.0
 2025,5,28864,"Passagens, hospedagem e alimentação",Salmao Grill Ltda.,35307934000155,3507,2025-05-11,147.18,147.18
 2025,5,28864,"Passagens, hospedagem e alimentação",Cantina da Nana Ltda.,03050550000103,26856,2025-05-12,78.15,78.15
 2025,5,28864,"Passagens, hospedagem e alimentação",Padaria Hangar dos Paes Ltda.,27390890000141,267857,2025-05-12,67.02,67.02
@@ -9410,7 +9410,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,264061,2025-04-29,324.0,324.0
 2025,5,28866,Locação de imóvel e despesas a ele concernentes,Gislaine Antonia Bernardes,,88396,2025-05-02,2404.5,2400.0
 2025,5,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,59027,2025-04-30,6000.0,6000.0
-2025,5,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,41,2025-04-23,330.0,330.0
+2025,5,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,41,2025-04-23,330.0,330.0
 2025,5,28866,Manutenção e despesas gerais com veículos,Sdl Lubrificantes Ltda.,08227702000203,000004526,2025-05-05,510.0,510.0
 2025,5,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9350,2025-04-02,81.76,81.76
 2025,5,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,04/2025,2025-04-25,377.56,377.56
@@ -9547,7 +9547,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,42101,2025-05-17,200.0,200.0
 2025,5,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,42096,2025-05-17,200.0,200.0
 2025,5,28871,"Passagens, hospedagem e alimentação",Tam Linhas Aéreas S/A,02012862000160,IOPUKD,2025-05-20,1669.35,1669.35
-2025,5,28871,"Passagens, hospedagem e alimentação",Raimundo Jose de Oliveira Cpf 358.698.796-04,08472505000160,04460,2025-05-21,170.0,170.0
+2025,5,28871,"Passagens, hospedagem e alimentação",Raimundo Jose de Oliveira Cpf,08472505000160,04460,2025-05-21,170.0,170.0
 2025,5,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,42146,2025-05-22,200.0,200.0
 2025,5,28871,"Passagens, hospedagem e alimentação",Empreendimento Hoteleiro Três Gs Ltda.,19314001000139,12520,2025-05-29,205.0,205.0
 2025,5,28871,"Passagens, hospedagem e alimentação",Lincoln Palace Hotel Ltda.,18968417000108,21663,2025-05-30,250.0,250.0
@@ -9740,7 +9740,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,28876,Combustível e lubrificante,Sociedade Comercial Serra Azul Ltda.,21627305000106,000007831,2025-05-28,2552.24,2552.24
 2025,5,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001963,2025-05-30,1048.32,1048.32
 2025,5,28876,Combustível e lubrificante,Auto Posto Amil Ltda.,08574321000101,000005818,2025-05-31,3243.44,3243.44
-2025,5,28876,Divulgação da atividade parlamentar,Diego Francisco Silva de Sousa 10210593660,46653880000104,81/2025,2025-05-15,1100.0,1100.0
+2025,5,28876,Divulgação da atividade parlamentar,Diego Francisco Silva de Sousa,46653880000104,81/2025,2025-05-15,1100.0,1100.0
 2025,5,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,264900760,2025-05-06,119.49,119.49
 2025,5,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00125291334557,2025-05-06,23.05,22.6
 2025,5,28876,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564000140,566890101,2025-05-08,122.25,119.56
@@ -9763,7 +9763,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,28876,"Passagens, hospedagem e alimentação",99 Tecnologia Ltda.,18033552000161,,2025-05-31,29.37,29.37
 2025,5,28876,Promoção e participação em eventos,Comercial Ze Pao Ltda.,10506958000102,50/2025,2025-04-30,880.0,880.0
 2025,5,28876,Promoção e participação em eventos,Churrascaria e Pizzaria Mania Jovem Ltda,10642941000182,21233,2025-05-13,227.74,227.74
-2025,5,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,80/2025,2025-05-31,3000.0,3000.0
+2025,5,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,80/2025,2025-05-31,3000.0,3000.0
 2025,5,28877,Combustível e lubrificante,Mg S Rede Dom Pedro de Postos Ltda (Dp S. Gonç. Rod 3),20415295008906,124435,2025-05-01,266.92,266.92
 2025,5,28877,Combustível e lubrificante,Comércio de Combustíveis Milênio Ltda.,03765910000153,19252,2025-05-02,214.87,214.87
 2025,5,28877,Combustível e lubrificante,Auto Posto Pedra Azul Ltda.,04465715000170,213968,2025-05-03,196.65,196.65
@@ -10930,7 +10930,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,202500000000283,2025-06-27,639.0,639.0
 2025,6,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025008699814,2025-06-30,275.0,275.0
 2025,6,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,009/2025,2025-06-30,1000.0,1000.0
-2025,6,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,350,2025-06-30,1400.0,1400.0
+2025,6,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,350,2025-06-30,1400.0,1400.0
 2025,6,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000075,2025-06-30,3200.0,3200.0
 2025,6,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,106293433-UB,2025-06-02,239.97,159.98
 2025,6,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,450000016326125,2025-06-04,148.2,148.2
@@ -11530,7 +11530,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,26149,"Passagens, hospedagem e alimentação",Epr Via Mineira S/A,55231969000165,,2025-06-06,206.4,206.4
 2025,6,26149,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,964675,2025-06-11,36.03,36.03
 2025,6,26149,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,968997,2025-06-17,43.87,43.87
-2025,6,26149,"Passagens, hospedagem e alimentação",Claudio Reis Magalhaes 50733591604,17552453000123,2251,2025-06-17,150.0,150.0
+2025,6,26149,"Passagens, hospedagem e alimentação",Claudio Reis Magalhaes,17552453000123,2251,2025-06-17,150.0,150.0
 2025,6,26149,"Passagens, hospedagem e alimentação",Wd Empreendimento Hoteleiros Ltda.,13920289000109,65407,2025-06-17,171.9,171.9
 2025,6,26149,"Passagens, hospedagem e alimentação",Transleila Transportes e Serviços Ltda.,25412677000320,202500000003431,2025-06-25,180.0,180.0
 2025,6,26149,"Serviços de consultoria, assessoria e pesquisa",Letícia de Paula Soares,,06/2025,2025-06-04,10000.0,10000.0
@@ -11772,7 +11772,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0551,2025-06-30,2750.0,2750.0
 2025,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0550,2025-06-30,2750.0,2750.0
 2025,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0552,2025-06-30,7500.0,7500.0
-2025,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,40,2025-06-17,60.0,60.0
+2025,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,40,2025-06-17,60.0,60.0
 2025,6,28864,"Passagens, hospedagem e alimentação",Hotel Plazaro Ltda.,19954932000100,27373,2025-06-11,180.0,180.0
 2025,6,28864,"Passagens, hospedagem e alimentação",Hotel Plazaro Ltda.,19954932000100,27372,2025-06-11,180.0,180.0
 2025,6,28864,"Passagens, hospedagem e alimentação",Carvalho Alimentação Ltda.,54204943000165,73351,2025-06-12,31.77,31.77
@@ -11852,7 +11852,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,264086,2025-06-04,324.0,324.0
 2025,6,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,264062,2025-06-04,324.0,324.0
 2025,6,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,59806,2025-05-30,6000.0,6000.0
-2025,6,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,42,2025-05-26,420.0,420.0
+2025,6,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,42,2025-05-26,420.0,420.0
 2025,6,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9427,2025-05-06,99.76,99.76
 2025,6,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,05/2025,2025-05-16,411.4,411.4
 2025,6,28867,Combustível e lubrificante,Duodrive Comércio de Combustíveis Ltda.,41147549000190,1290477,2025-06-05,249.03,249.03
@@ -12210,7 +12210,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,28876,Promoção e participação em eventos,Filé e Petiscos Comércio Varejista de Produtos Alimentícios Ltda.,04020428000157,217528,2025-06-24,424.8,376.8
 2025,6,28876,Promoção e participação em eventos,G R Restaurante Ltda.,50219892000194,000000010,2025-06-24,269.47,269.47
 2025,6,28876,Promoção e participação em eventos,Luzima Teixeira da Silva Morais,10646848000146,000001091,2025-06-30,507.5,507.5
-2025,6,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,82/2025,2025-06-30,3000.0,3000.0
+2025,6,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,82/2025,2025-06-30,3000.0,3000.0
 2025,6,28877,Combustível e lubrificante,Auto Posto Pedra Azul Ltda.,04465715000170,56679,2025-06-03,210.01,210.01
 2025,6,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,3011,2025-06-05,180.07,180.07
 2025,6,28877,Combustível e lubrificante,Posto Servsul 300 Ltda.,02919630000190,252076,2025-06-05,276.37,276.37
@@ -13336,7 +13336,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,7,19150,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00027346,2025-07-31,4163.41,4163.41
 2025,7,19150,Divulgação da atividade parlamentar,New Way Soluções Digitais Lite Ltda,43084200000182,9053,2025-07-01,962.11,962.11
 2025,7,19150,Divulgação da atividade parlamentar,Rcprint Comunicacao Visual Ltda,30843884000107,2025/47,2025-07-17,1159.0,1159.0
-2025,7,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,351,2025-07-28,1400.0,1400.0
+2025,7,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,351,2025-07-28,1400.0,1400.0
 2025,7,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,3503,2025-07-29,500.0,500.0
 2025,7,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,013/2025,2025-07-30,1000.0,1000.0
 2025,7,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025010625920,2025-07-31,275.0,275.0
@@ -14215,7 +14215,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,7,28864,"Passagens, hospedagem e alimentação",Hotel e Restaurante Garfo de Ouro Ltda.,25639881000116,42266,2025-07-25,129.0,129.0
 2025,7,28864,"Passagens, hospedagem e alimentação",Hotel e Restaurante Garfo de Ouro Ltda.,25639881000116,42265,2025-07-25,129.0,129.0
 2025,7,28864,"Passagens, hospedagem e alimentação",Leonilda Aparecida dos Santos-Restaurante,12403923000254,37247,2025-07-25,96.9,96.9
-2025,7,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira 07985044639,35473606000129,37,2025-07-25,400.0,400.0
+2025,7,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira,35473606000129,37,2025-07-25,400.0,400.0
 2025,7,28864,"Passagens, hospedagem e alimentação",Autopista Fernao Dias S/A,09326342000170,,2025-07-30,45.0,45.0
 2025,7,28864,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,,2025-07-30,31.0,31.0
 2025,7,28864,"Passagens, hospedagem e alimentação",Concessionaria Rodovias do Sul de Minas Spe S/A,48127008000140,,2025-07-30,19.2,19.2
@@ -14281,7 +14281,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,7,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,60636,2025-06-30,6000.0,6000.0
 2025,7,28866,Manutenção e despesas gerais com veículos,Transmarcelo Servicos de Transportes Ltda.,07643587000104,7344,2025-06-05,1360.0,1360.0
 2025,7,28866,Manutenção e despesas gerais com veículos,Transmarcelo Servicos de Transportes Ltda.,07643587000104,1088,2025-06-05,120.0,120.0
-2025,7,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,43,2025-06-23,360.0,360.0
+2025,7,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,43,2025-06-23,360.0,360.0
 2025,7,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9491,2025-06-04,84.34,84.34
 2025,7,28866,"Passagens, hospedagem e alimentação",Divi Park Estacionamento Ltda.,51773971000105,41,2025-06-03,15.0,15.0
 2025,7,28866,"Passagens, hospedagem e alimentação",Divi Park Estacionamento Ltda.,51773971000105,43,2025-06-16,13.5,13.5
@@ -14421,8 +14421,8 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,7,28871,Locação de imóvel e despesas a ele concernentes,Heloisa Cristine da Silva,,07/2025,2025-07-31,720.0,720.0
 2025,7,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,69179,2025-07-31,3581.15,3581.15
 2025,7,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,023775,2025-07-31,11265.0,11265.0
-2025,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,1569,2025-07-24,130.0,130.0
-2025,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,1572,2025-07-28,130.0,130.0
+2025,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,1569,2025-07-24,130.0,130.0
+2025,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,1572,2025-07-28,130.0,130.0
 2025,7,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L06619,2025-07-30,210.0,210.0
 2025,7,28871,"Passagens, hospedagem e alimentação",Souza Clemente Hotel Ltda.,02823239000197,2108,2025-07-02,175.0,175.0
 2025,7,28871,"Passagens, hospedagem e alimentação",Pousada Kelley Adriany Lucas Branquinho Ltda.,01121679002264,4529,2025-07-03,175.0,175.0
@@ -14615,7 +14615,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,7,28876,Promoção e participação em eventos,Bar e Restaurante Rota do Sol Ltda.,14522398000130,6208,2025-07-12,168.0,168.0
 2025,7,28876,Promoção e participação em eventos,Caroline Teixeira Franca,59164223000137,000000091,2025-07-15,1281.0,1281.0
 2025,7,28876,Promoção e participação em eventos,Bar e Restaurante Rota do Sol Ltda.,14522398000130,6424,2025-07-21,165.53,165.53
-2025,7,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,84/2025,2025-07-31,3000.0,3000.0
+2025,7,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,84/2025,2025-07-31,3000.0,3000.0
 2025,7,28877,Combustível e lubrificante,Posto Flórida Ltda.,05076962000148,139977,2025-06-03,227.35,227.35
 2025,7,28877,Combustível e lubrificante,Auto Posto Pedra Azul Ltda.,04465715000170,219990,2025-07-01,180.06,180.06
 2025,7,28877,Combustível e lubrificante,Posto Souza Ltda.,16652000000106,97394,2025-07-02,203.09,203.09
@@ -15781,7 +15781,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,8,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,202500000000371,2025-08-21,3072.0,3072.0
 2025,8,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000077,2025-08-28,3200.0,3200.0
 2025,8,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,008/2025,2025-08-29,1000.0,1000.0
-2025,8,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,352,2025-08-29,1400.0,1400.0
+2025,8,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,352,2025-08-29,1400.0,1400.0
 2025,8,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025012581854,2025-08-31,275.0,275.0
 2025,8,19150,Divulgação da atividade parlamentar,Politimax Ltda,23526448000149,00001115,2025-08-31,989.9,989.9
 2025,8,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00125462162526,2025-07-14,105.74,101.11
@@ -16587,8 +16587,8 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,8,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,161825,2025-08-31,201.43,201.43
 2025,8,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0580,2025-08-31,8500.0,8500.0
 2025,8,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0579,2025-08-31,2750.0,2750.0
-2025,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,45,2025-08-12,60.0,60.0
-2025,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,46,2025-08-12,60.0,60.0
+2025,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,45,2025-08-12,60.0,60.0
+2025,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,46,2025-08-12,60.0,60.0
 2025,8,28864,"Passagens, hospedagem e alimentação",Hotel Mirante Ltda.,12699475000105,202500000000413,2025-07-21,340.0,340.0
 2025,8,28864,"Passagens, hospedagem e alimentação",Hilarios Restaurante Ltda.,61357541000166,51,2025-08-18,25.17,25.17
 2025,8,28864,"Passagens, hospedagem e alimentação",Carvalho Alimentação Ltda.,54204943000165,85763,2025-08-19,26.88,26.88
@@ -16676,7 +16676,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,8,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,61609,2025-07-31,2200.0,2200.0
 2025,8,28866,Manutenção e despesas gerais com veículos,Vanderlei Costa Tiradentes,46990852000174,81,2025-07-01,600.0,600.0
 2025,8,28866,Manutenção e despesas gerais com veículos,Daniela Alves Pereira Teixeira,50184314000160,55,2025-07-29,586.0,586.0
-2025,8,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,46,2025-08-04,480.0,480.0
+2025,8,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,46,2025-08-04,480.0,480.0
 2025,8,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9557,2025-07-02,141.82,141.82
 2025,8,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2109715MAQ22,2025-07-10,8.8,8.8
 2025,8,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2109X3EN8Q09,2025-07-16,8.8,8.8
@@ -17041,7 +17041,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,8,28876,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,015720375,2025-08-25,280.07,280.07
 2025,8,28876,Promoção e participação em eventos,Restaurante Assembleia do Espeto Ltda.,25260874000109,000000069,2025-08-18,1110.0,1110.0
 2025,8,28876,Promoção e participação em eventos,52593360 Graciene Alves Nogueira,52593360000148,049049299,2025-08-18,1000.0,1000.0
-2025,8,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,86/2025,2025-08-29,3000.0,3000.0
+2025,8,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,86/2025,2025-08-29,3000.0,3000.0
 2025,8,28877,Combustível e lubrificante,Comercial Minas Gril Ltda.,02553038000117,1412862,2025-07-11,183.36,183.36
 2025,8,28877,Combustível e lubrificante,Posto Senador Firmino Ltda.,20277752000101,239548,2025-07-14,290.58,290.58
 2025,8,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,588149,2025-07-31,193.1,193.1
@@ -18116,7 +18116,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,9,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000078,2025-09-29,3200.0,3200.0
 2025,9,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2025014558052,2025-09-30,275.0,275.0
 2025,9,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,121000893,2025-09-30,1899.99,1899.99
-2025,9,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,356,2025-09-30,1400.0,1400.0
+2025,9,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,356,2025-09-30,1400.0,1400.0
 2025,9,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,301644791,2025-08-25,126.89,124.63
 2025,9,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,001.25.53141165-8,2025-08-30,174.86,174.86
 2025,9,19150,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,111231221-UB,2025-09-02,245.97,163.98
@@ -18979,7 +18979,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,9,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,168055,2025-09-30,260.05,260.05
 2025,9,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0587,2025-09-30,2750.0,2750.0
 2025,9,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0588,2025-09-30,8500.0,8500.0
-2025,9,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,49,2025-09-03,60.0,60.0
+2025,9,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,49,2025-09-03,60.0,60.0
 2025,9,28864,"Passagens, hospedagem e alimentação",Aparecida Maria de Mesquita Batista,46271840000190,344,2025-08-22,100.0,100.0
 2025,9,28864,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Br 262 MG S/A,58492120000133,,2025-08-26,51.5,51.5
 2025,9,28864,"Passagens, hospedagem e alimentação",Dallas Palace Hotel Ltda.,32145087000181,337,2025-08-26,188.0,188.0
@@ -19066,7 +19066,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,9,28866,Manutenção e despesas gerais com veículos,Via Mondo Automoveis e Pecas Ltda.,00836942001003,7526,2025-08-01,708.0,708.0
 2025,9,28866,Manutenção e despesas gerais com veículos,Via Mondo Automoveis e Pecas Ltda.,00836942001003,4546,2025-08-01,502.0,502.0
 2025,9,28866,Manutenção e despesas gerais com veículos,Autos Alinhamento Ltda.,02045390000141,7342,2025-08-15,60.0,60.0
-2025,9,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,49,2025-08-28,470.0,470.0
+2025,9,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,49,2025-08-28,470.0,470.0
 2025,9,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9621,2025-08-05,91.0,91.0
 2025,9,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,08/2025,2025-08-18,351.55,351.55
 2025,9,28867,Combustível e lubrificante,Auto Posto Belo Vale Ltda.,03605837000152,72749,2025-08-30,234.51,234.51
@@ -19213,7 +19213,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,9,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,023966,2025-09-30,11265.0,11265.0
 2025,9,28871,Manutenção e despesas gerais com veículos,Akilah Ahad Freire Silva,,171535,2025-09-02,120.0,120.0
 2025,9,28871,Manutenção e despesas gerais com veículos,Akilah Ahad Freire Silva,,171732,2025-09-11,120.0,120.0
-2025,9,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,1587,2025-09-16,150.0,150.0
+2025,9,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,1587,2025-09-16,150.0,150.0
 2025,9,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L07407,2025-09-30,210.0,210.0
 2025,9,28871,"Passagens, hospedagem e alimentação",Sociedade Hoteleira Noroeste de Minas Ltda.,18650705000110,56613,2025-08-21,290.0,290.0
 2025,9,28871,"Passagens, hospedagem e alimentação",Ilma Pires de Siqueira Rezende,01357439000139,2025/1047,2025-09-04,150.0,150.0
@@ -19463,7 +19463,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,9,28876,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,09.2025,2025-09-18,200.11,200.11
 2025,9,28876,Promoção e participação em eventos,Major Espetaria Ltda,36183303000134,000000006,2025-09-05,8000.0,8000.0
 2025,9,28876,Promoção e participação em eventos,Meet Porcao Ltda.,15254059000183,19808,2025-09-16,1843.08,1843.08
-2025,9,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa 10210593660,46653880000104,89/2025,2025-09-30,3000.0,3000.0
+2025,9,28876,"Serviços de consultoria, assessoria e pesquisa",Diego Francisco Silva de Sousa,46653880000104,89/2025,2025-09-30,3000.0,3000.0
 2025,9,28877,Combustível e lubrificante,Auto Posto Pedra Azul Ltda.,04465715000170,226914,2025-09-03,187.01,187.01
 2025,9,28877,Combustível e lubrificante,Auto Posto Rio Branco de Andradas Ltda.,02737116000133,44603,2025-09-03,180.94,180.94
 2025,9,28877,Combustível e lubrificante,Posto Cj Ltda.,04783903000147,349509,2025-09-04,278.03,278.03
@@ -20549,7 +20549,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,10,19150,Divulgação da atividade parlamentar,New Way Soluções Digitais Lite Ltda,43084200000182,9838,2025-10-01,962.11,962.11
 2025,10,19150,Divulgação da atividade parlamentar,Politimax Ltda,23526448000149,00001139,2025-10-01,989.9,989.9
 2025,10,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,0013/2025,2025-10-30,1000.0,1000.0
-2025,10,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,Recibo 359,2025-10-30,1400.0,1400.0
+2025,10,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,Recibo 359,2025-10-30,1400.0,1400.0
 2025,10,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,iee2025016556731,2025-10-31,275.0,275.0
 2025,10,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,Recibo 3515,2025-10-31,500.0,500.0
 2025,10,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,121173421,2025-10-31,2529.4,2529.4
@@ -21454,7 +21454,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,10,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,63226,2025-09-30,6500.0,6500.0
 2025,10,28866,Locação e fretamento de veículos,Unidas Locadora S/A,45736131023382,27821537,2025-09-30,580.0,471.45
 2025,10,28866,Manutenção e despesas gerais com veículos,Total Parts Acessorios Automotivos Ltda.,07759278000196,260,2025-08-08,868.0,868.0
-2025,10,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,50,2025-09-29,390.0,390.0
+2025,10,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,50,2025-09-29,390.0,390.0
 2025,10,28866,Manutenção e despesas gerais com veículos,Sdl Lubrificantes Ltda.,08227702000203,000004798,2025-10-03,399.0,399.0
 2025,10,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9716,2025-09-02,83.02,83.02
 2025,10,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2109CV8R2Q17,2025-09-09,8.8,8.8
@@ -22776,7 +22776,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,11,19150,Combustível e lubrificante,Auto Posto Pouso Alegre Ii Ltda,30458549000195,132394,2025-11-27,235.97,235.97
 2025,11,19150,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00028345,2025-11-28,4215.77,4215.77
 2025,11,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,0015/2025,2025-11-28,1000.0,1000.0
-2025,11,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,364,2025-11-28,1400.0,1400.0
+2025,11,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,364,2025-11-28,1400.0,1400.0
 2025,11,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000084,2025-11-28,3200.0,3200.0
 2025,11,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,124496310,2025-11-30,1849.45,1849.45
 2025,11,19150,Divulgação da atividade parlamentar,Mobi Mobilizaçao e Marketing Inteligente Ltda,61572614000132,2,2025-11-30,3500.0,3500.0
@@ -23682,7 +23682,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,11,28866,Locação e fretamento de veículos,Unidas Locadora S/A,45736131000170,27919119,2025-10-24,368.97,294.06
 2025,11,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,64143,2025-10-31,6500.0,6500.0
 2025,11,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,64144,2025-10-31,600.0,600.0
-2025,11,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,52,2025-10-23,420.0,420.0
+2025,11,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,52,2025-10-23,420.0,420.0
 2025,11,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9807,2025-10-06,82.54,82.54
 2025,11,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,10/2025,2025-10-17,487.46,487.46
 2025,11,28867,Combustível e lubrificante,Posto de Combustiveis Martins Ltda.,11171201000178,417158,2025-11-08,281.04,281.04
@@ -25605,7 +25605,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,12,28863,"Passagens, hospedagem e alimentação",Hotel Amantykir Ltda.,05265321000131,15738,2025-12-04,530.0,265.0
 2025,12,28863,"Passagens, hospedagem e alimentação",Carlton Plaza Ltda.,71478457000154,100084116,2025-12-05,270.0,270.0
 2025,12,28863,"Passagens, hospedagem e alimentação",Vicenzo Hotel Ltda.,47825577000104,202500000002061,2025-12-05,273.0,273.0
-2025,12,28863,"Passagens, hospedagem e alimentação",Selma Gonçalves de Almeida 45081085634,46424272000110,104,2025-12-06,600.0,600.0
+2025,12,28863,"Passagens, hospedagem e alimentação",Selma Gonçalves de Almeida,46424272000110,104,2025-12-06,600.0,600.0
 2025,12,28863,"Passagens, hospedagem e alimentação",Cooperativa Mista de Transporte de Passageiros em Taxi B H Ltda.,25298969000111,115,2025-12-09,399.15,399.15
 2025,12,28863,"Passagens, hospedagem e alimentação",Medieval Hotel Varginha Ltda.,44381217000164,10904,2025-12-09,275.0,275.0
 2025,12,28863,"Passagens, hospedagem e alimentação",Hoteis e Turismo Sovemar Ltda.,20445896000120,202500000004815,2025-12-10,150.0,150.0
@@ -25636,7 +25636,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,12,28864,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,126867056,2025-12-31,1244.67,1244.67
 2025,12,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0606,2025-12-31,2750.0,2750.0
 2025,12,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0605,2025-12-31,8500.0,8500.0
-2025,12,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,67,2025-12-01,60.0,60.0
+2025,12,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,67,2025-12-01,60.0,60.0
 2025,12,28864,Manutenção e despesas gerais com veículos,Pontowash Comercio e Serviços Ltda.,52002555000176,44,2025-12-29,80.0,80.0
 2025,12,28864,"Passagens, hospedagem e alimentação",Divino Fogao - Outlet Contagem,55662063000103,37410,2025-12-16,50.55,50.55
 2025,12,28864,"Passagens, hospedagem e alimentação",Comercial Lins Guedes Ltda.,05336082000244,4672,2025-12-18,61.31,61.31
@@ -25714,7 +25714,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,12,28866,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00000901854323,2025-12-03,220.0,220.0
 2025,12,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,64910,2025-11-28,6500.0,6500.0
 2025,12,28866,Manutenção e despesas gerais com veículos,Wilde Batista Cabral,62424074000102,8,2025-10-01,240.0,240.0
-2025,12,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,53,2025-12-01,480.0,480.0
+2025,12,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,53,2025-12-01,480.0,480.0
 2025,12,28866,Manutenção e despesas gerais com veículos,Vanderlei Costa Tiradentes,46990852000174,117,2025-12-01,510.0,510.0
 2025,12,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9858,2025-11-06,84.58,84.58
 2025,12,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,9913,2025-12-02,82.36,82.36
@@ -25833,8 +25833,8 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,12,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,80702,2025-12-31,3581.15,3581.15
 2025,12,28871,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00000917636480,2025-12-31,208.99,208.99
 2025,12,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024219,2025-12-31,13983.0,13983.0
-2025,12,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,6,2025-12-08,130.0,130.0
-2025,12,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,5,2025-12-08,129.9,129.9
+2025,12,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,6,2025-12-08,130.0,130.0
+2025,12,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,5,2025-12-08,129.9,129.9
 2025,12,28871,"Passagens, hospedagem e alimentação",Hb Hotel Jp Ltda.,41722137000137,2025/7789,2025-12-03,154.0,154.0
 2025,12,28871,"Passagens, hospedagem e alimentação",Tam Linhas Aéreas S/A,02012862000160,MKFJMT,2025-12-03,3073.12,3073.12
 2025,12,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,107657,2025-12-04,229.95,229.95
@@ -26704,7 +26704,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,1,18867,"Serviços de consultoria, assessoria e pesquisa",Instituto Ver Pesquisa e Comunicação Ltda.,09028982000102,24,2026-01-31,8000.0,8000.0
 2026,1,19150,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00028876,2026-01-31,1390.53,1390.53
 2026,1,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,0001/2026,2026-01-23,1000.0,1000.0
-2026,1,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,373,2026-01-29,1400.0,1400.0
+2026,1,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,373,2026-01-29,1400.0,1400.0
 2026,1,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000086,2026-01-29,3200.0,3200.0
 2026,1,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,3518,2026-01-30,500.0,500.0
 2026,1,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2026001982973,2026-01-31,275.0,275.0
@@ -27252,7 +27252,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,1,28863,Combustível e lubrificante,J.P. Derivados de Petroleo Ltda.,02998414000187,3380,2026-01-21,171.0,171.0
 2026,1,28863,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,001861,2026-01-23,8490.0,8490.0
 2026,1,28863,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,674011043,2026-01-03,300.06,268.16
-2026,1,28863,"Serviços de consultoria, assessoria e pesquisa",Nathan Raphael Patricio Lirola 38999845877,20536720000183,37,2026-01-22,1500.0,1500.0
+2026,1,28863,"Serviços de consultoria, assessoria e pesquisa",Nathan Raphael Patricio Lirola,20536720000183,37,2026-01-22,1500.0,1500.0
 2026,1,28864,Combustível e lubrificante,Posto de Combustiveis Mavericks Ltda.,19726140000170,334091,2026-01-06,281.82,281.82
 2026,1,28864,Combustível e lubrificante,Posto Três Poderes Ltda.,16941734000105,359797,2026-01-15,275.02,275.02
 2026,1,28864,Combustível e lubrificante,Posto Danúbio Ltda.,17288630000106,182527,2026-01-16,231.28,231.28
@@ -27264,7 +27264,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,1,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0615,2026-01-31,550.0,550.0
 2026,1,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0613,2026-01-31,8500.0,8500.0
 2026,1,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0614,2026-01-31,2765.0,2765.0
-2026,1,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,69,2026-01-22,60.0,60.0
+2026,1,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,69,2026-01-22,60.0,60.0
 2026,1,28864,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,,2026-01-31,31.0,31.0
 2026,1,28864,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,,2026-01-31,20.4,20.4
 2026,1,28865,Combustível e lubrificante,Auto Posto Star Ltda.,21659370000105,691820,2026-01-10,100.0,100.0
@@ -27420,10 +27420,10 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,1,28871,"Passagens, hospedagem e alimentação",Hotel e Cafeteria da Torre Ltda.,26217124000117,186,2026-01-27,240.0,240.0
 2026,1,28871,"Passagens, hospedagem e alimentação",Hotel e Restaurante Avenida Ltda.,25989864000109,70,2026-01-28,130.0,130.0
 2026,1,28871,"Passagens, hospedagem e alimentação",Lincoln Palace Hotel Ltda.,18968417000108,136,2026-01-29,180.0,180.0
-2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,308,2026-01-30,200.0,200.0
-2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,307,2026-01-30,200.0,200.0
-2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,303,2026-01-30,200.0,200.0
-2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,306,2026-01-30,200.0,200.0
+2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,308,2026-01-30,200.0,200.0
+2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,307,2026-01-30,200.0,200.0
+2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,303,2026-01-30,200.0,200.0
+2026,1,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,306,2026-01-30,200.0,200.0
 2026,1,28871,"Serviços de consultoria, assessoria e pesquisa",Shift Agencia de Publicidade Ltda.,18497010000140,51,2026-01-31,1400.0,1400.0
 2026,1,28872,Combustível e lubrificante,Posto Wap Cristiano Machado Ltda.,22143669000175,815346,2026-01-02,100.0,100.0
 2026,1,28872,Combustível e lubrificante,G. P. D. Empreendimentos Ltda.,42825752000131,525404,2026-01-03,274.24,274.24
@@ -28361,7 +28361,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,2,19150,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00029186,2026-02-28,4224.76,4224.76
 2026,2,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000088,2026-02-26,3200.0,3200.0
 2026,2,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,0002/2026,2026-02-27,1000.0,1000.0
-2026,2,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,375,2026-02-27,1400.0,1400.0
+2026,2,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,375,2026-02-27,1400.0,1400.0
 2026,2,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IEE2026003971275,2026-02-28,275.0,275.0
 2026,2,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,131402120,2026-02-28,515.97,515.97
 2026,2,19150,Divulgação da atividade parlamentar,Mobi Mobilizaçao e Marketing Inteligente Ltda,61572614000132,12,2026-02-28,3500.0,3500.0
@@ -29183,9 +29183,9 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,2,28864,Combustível e lubrificante,Posto Santa Bárbara Ltda.,24380966000160,679140,2026-02-26,325.1,325.1
 2026,2,28864,Combustível e lubrificante,Posto Jr Faisão Vii Ltda.,30259411000167,1466049,2026-02-28,280.97,280.97
 2026,2,28864,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,130777929,2026-02-28,533.12,533.12
-2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,72,2026-02-13,80.0,80.0
-2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,74,2026-02-19,60.0,60.0
-2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,75,2026-02-23,60.0,60.0
+2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,72,2026-02-13,80.0,80.0
+2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,74,2026-02-19,60.0,60.0
+2026,2,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,75,2026-02-23,60.0,60.0
 2026,2,28864,"Passagens, hospedagem e alimentação",Concessionária de Rodovia Nova 381 S/A,58239603000120,,2026-02-03,279.0,279.0
 2026,2,28864,"Passagens, hospedagem e alimentação",Hotel Zeta Ltda.,01389178000139,4725,2026-02-07,180.0,180.0
 2026,2,28864,"Passagens, hospedagem e alimentação",Lop Alimentação Ltda.,24755870000139,21172,2026-02-10,69.23,69.23
@@ -29265,7 +29265,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,2,28866,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,028089304,2026-02-04,220.0,220.0
 2026,2,28866,Locação e fretamento de veículos,Movida Participações S/A,21314559002452,28469650,2026-01-30,4882.33,4735.62
 2026,2,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,66680,2026-01-30,6500.0,6500.0
-2026,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,55,2026-02-03,360.0,360.0
+2026,2,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,55,2026-02-03,360.0,360.0
 2026,2,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,4,2026-01-06,79.6,79.6
 2026,2,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,01/2026,2026-01-16,412.1,412.1
 2026,2,28866,"Passagens, hospedagem e alimentação",Lux Hotel Ltda.,23645815000123,100017075,2026-01-28,496.0,496.0
@@ -29387,8 +29387,8 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,2,28871,Locação de imóvel e despesas a ele concernentes,Heloisa Cristine da Silva,,02/206,2026-02-28,560.0,560.0
 2026,2,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,80704,2026-02-28,3581.15,3581.15
 2026,2,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024385,2026-02-28,13983.0,13983.0
-2026,2,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,19,2026-02-04,150.0,150.0
-2026,2,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,23,2026-02-09,120.0,120.0
+2026,2,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,19,2026-02-04,150.0,150.0
+2026,2,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,23,2026-02-09,120.0,120.0
 2026,2,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,12,2026-02-27,120.0,120.0
 2026,2,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L09031,2026-02-27,210.0,210.0
 2026,2,28871,"Passagens, hospedagem e alimentação",Gran River Hotel Ltda.,08092861000159,00018883,2026-02-04,149.0,149.0
@@ -29408,7 +29408,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,2,28871,"Passagens, hospedagem e alimentação",Tam Linhas Aéreas S/A,02012862000160,SGHWXX,2026-02-23,1805.77,1805.77
 2026,2,28871,"Passagens, hospedagem e alimentação",Tam Linhas Aéreas S/A,02012862000160,JXVEEH,2026-02-24,1965.77,1965.77
 2026,2,28871,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Br 262 MG S/A,58492120000133,,2026-02-25,10.4,10.4
-2026,2,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,342,2026-02-25,190.0,190.0
+2026,2,28871,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,342,2026-02-25,190.0,190.0
 2026,2,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,1753,2026-02-27,522.9,522.9
 2026,2,28871,"Serviços de consultoria, assessoria e pesquisa",Shift Agencia de Publicidade Ltda.,18497010000140,75,2026-02-28,1400.0,1400.0
 2026,2,28872,Combustível e lubrificante,Vaquinha da Nevada Ltda.,02441555000102,188130,2026-01-28,175.03,175.03
@@ -30699,7 +30699,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,3,19150,Combustível e lubrificante,Posto Itapoã Ltda.,17488693000106,002310081,2026-03-28,320.0,320.0
 2026,3,19150,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00029421,2026-03-31,5547.11,5547.11
 2026,3,19150,Divulgação da atividade parlamentar,Mobi Mobilizaçao e Marketing Inteligente Ltda,61572614000132,14,2026-03-17,3500.0,3500.0
-2026,3,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,381,2026-03-26,1400.0,1400.0
+2026,3,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,381,2026-03-26,1400.0,1400.0
 2026,3,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,2026006006402,2026-03-31,320.0,320.0
 2026,3,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,0004/2026,2026-03-31,1000.0,1000.0
 2026,3,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000091,2026-03-31,3200.0,3200.0
@@ -31777,7 +31777,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,3,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,264095,2026-03-04,324.0,324.0
 2026,3,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,003947637,2026-03-04,315.0,315.0
 2026,3,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,67398,2026-02-27,6500.0,6500.0
-2026,3,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,56,2026-03-04,420.0,420.0
+2026,3,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,56,2026-03-04,420.0,420.0
 2026,3,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,85,2026-02-04,86.98,86.98
 2026,3,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,0218039360,2026-02-18,460.52,460.52
 2026,3,28866,"Passagens, hospedagem e alimentação",Lancaster Palace Hotel Ltda.,25118662000191,268,2026-02-25,580.0,580.0
@@ -31912,11 +31912,11 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,3,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,80705,2026-03-31,3581.15,3581.15
 2026,3,28871,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00000980524608,2026-03-31,220.99,220.99
 2026,3,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024473,2026-03-31,13983.0,13983.0
-2026,3,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,29,2026-02-09,150.0,150.0
+2026,3,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,29,2026-02-09,150.0,150.0
 2026,3,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,13,2026-03-02,120.0,120.0
 2026,3,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,15,2026-03-06,120.0,120.0
 2026,3,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,16,2026-03-17,120.0,120.0
-2026,3,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,33,2026-03-23,150.0,150.0
+2026,3,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,33,2026-03-23,150.0,150.0
 2026,3,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L09280,2026-03-30,210.0,210.0
 2026,3,28871,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,BRW28B,2026-02-24,2208.9,2208.9
 2026,3,28871,"Passagens, hospedagem e alimentação",Hotelaria Rodrigues da Cunha Ltda.,04389070000215,2356,2026-03-05,570.0,570.0
@@ -32118,7 +32118,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2026,3,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,0012615255631-1,2026-03-04,64.22,64.22
 2026,3,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,370915573,2026-03-20,122.38,122.38
 2026,3,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000000857,2026-03-23,100.0,100.0
-2026,3,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000001959,2026-03-31,638.04,638.04
+2026,3,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000001959,2026-03-31,638.04,638.04
 2026,3,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001203,2026-03-31,456.43,456.43
 2026,3,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,03.2026,2026-03-31,1500.0,1500.0
 2026,3,28876,Locação e fretamento de veículos,Egs Locadora de Veiculo Ltda,44912245000160,0014,2026-03-31,14000.0,14000.0
@@ -33178,7 +33178,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,4,19150,Divulgação da atividade parlamentar,Renato Roberto Candido da Silva,63902436000196,10,2026-04-10,1400.0,1400.0
 2026,4,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,3618,2026-04-30,500.0,500.0
 2026,4,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,05/2026,2026-04-30,1000.0,1000.0
-2026,4,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,384,2026-04-30,1400.0,1400.0
+2026,4,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,384,2026-04-30,1400.0,1400.0
 2026,4,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000094,2026-04-30,3200.0,3200.0
 2026,4,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,369471501,2026-03-17,168.1,162.5
 2026,4,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00126187797536-6,2026-03-31,87.25,83.85
@@ -34123,7 +34123,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,4,28864,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,135523148,2026-04-30,199.98,199.98
 2026,4,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0643,2026-04-30,3500.0,3500.0
 2026,4,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0642,2026-04-30,8500.0,8500.0
-2026,4,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,80,2026-04-27,70.0,70.0
+2026,4,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,80,2026-04-27,70.0,70.0
 2026,4,28864,"Passagens, hospedagem e alimentação",Chappatutti Ltda.,00083798000182,34432,2026-04-13,40.8,40.8
 2026,4,28864,"Passagens, hospedagem e alimentação",Carvalho e Carvalho Alimentos Ltda.,26261747000359,37442,2026-04-14,32.98,32.98
 2026,4,28864,"Passagens, hospedagem e alimentação",Sushi Bar Cidade Nova Ltda.,58319216000102,10866,2026-04-14,53.85,53.85
@@ -34181,7 +34181,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,4,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,264096,2026-04-07,324.0,324.0
 2026,4,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,68207,2026-03-30,6500.0,6500.0
 2026,4,28866,Manutenção e despesas gerais com veículos,Transmarcelo Servicos de Transportes Ltda.,07643587000104,57,2026-03-26,1076.0,1076.0
-2026,4,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,57,2026-04-01,260.0,260.0
+2026,4,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,57,2026-04-01,260.0,260.0
 2026,4,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,147,2026-03-04,87.46,87.46
 2026,4,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,0318038949,2026-03-18,592.73,592.73
 2026,4,28867,Combustível e lubrificante,Comercio de Combustiveis Morada do Vale Ltda.,28157925000160,465843,2026-04-07,245.04,245.04
@@ -34309,11 +34309,11 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,4,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,80706,2026-04-30,3581.15,3581.15
 2026,4,28871,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001002369226,2026-04-30,220.99,220.99
 2026,4,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024561,2026-04-30,13983.0,13983.0
-2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,39,2026-04-06,150.0,150.0
-2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,41,2026-04-13,150.0,150.0
-2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,44,2026-04-24,150.0,150.0
+2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,39,2026-04-06,150.0,150.0
+2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,41,2026-04-13,150.0,150.0
+2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,44,2026-04-24,150.0,150.0
 2026,4,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,18,2026-04-28,80.0,80.0
-2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,47,2026-04-30,150.0,150.0
+2026,4,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,47,2026-04-30,150.0,150.0
 2026,4,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L09661,2026-04-29,210.0,210.0
 2026,4,28871,"Passagens, hospedagem e alimentação",Use Taxi Online Ltda,34601349000109,,2026-02-25,266.0,266.0
 2026,4,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,1667,2026-02-26,522.9,522.9
@@ -34464,7 +34464,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,4,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,000601673,2026-04-06,54.65,53.54
 2026,4,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,380836267,2026-04-17,113.37,113.37
 2026,4,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000001635,2026-04-22,100.0,100.0
-2026,4,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000002010,2026-04-30,299.99,299.99
+2026,4,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002010,2026-04-30,299.99,299.99
 2026,4,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001208,2026-04-30,375.79,375.79
 2026,4,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,04.2026,2026-04-30,1500.0,1500.0
 2026,4,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0015,2026-04-30,14000.0,14000.0
@@ -35191,7 +35191,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Terezinha Rodrigues da Costa Santos,13150009000120,239,2026-05-21,150.0,150.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Terezinha Rodrigues da Costa Santos,13150009000120,240,2026-05-21,150.0,150.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Terezinha Rodrigues da Costa Santos,13150009000120,242,2026-05-21,150.0,150.0
-2026,5,15330,"Passagens, hospedagem e alimentação",Cassio Rodrigues Barbosa 76141764649,22570546000110,912,2026-05-23,140.0,130.0
+2026,5,15330,"Passagens, hospedagem e alimentação",Cassio Rodrigues Barbosa,22570546000110,912,2026-05-23,140.0,130.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Front Hotel Teofilo Otoni Ltda.,43532321000140,1191,2026-05-23,218.0,218.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Hotel e Servis Log Ltda,21473930000132,94,2026-05-24,400.0,400.0
 2026,5,15330,"Passagens, hospedagem e alimentação",Figueredo Aguiar Ltda.,47621613000100,1200,2026-05-29,135.0,135.0
@@ -35703,7 +35703,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,19150,Divulgação da atividade parlamentar,Adobe Systems Brasil Ltda.,02999520000185,IE2026008052981,2026-04-30,320.0,320.0
 2026,5,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,135494435,2026-05-02,999.61,894.64
 2026,5,19150,Divulgação da atividade parlamentar,Mobi Mobilizaçao e Marketing Inteligente Ltda,61572614000132,23,2026-05-18,3500.0,3500.0
-2026,5,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,390,2026-05-27,1400.0,1400.0
+2026,5,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,390,2026-05-27,1400.0,1400.0
 2026,5,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,261,2026-05-28,1250.0,1250.0
 2026,5,19150,Divulgação da atividade parlamentar,Sistema Alfa de Comunicacao Ltda-Me,03862288000100,000096,2026-05-28,3200.0,3200.0
 2026,5,19150,Divulgação da atividade parlamentar,Cl Comunicação e Cultura Ltda.,05455413000184,3621,2026-05-29,500.0,500.0
@@ -36371,7 +36371,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,26145,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,17468141,2026-05-06,197.72,197.72
 2026,5,26145,"Passagens, hospedagem e alimentação",Viação Pássaro Verde Ltda.,17257916000124,8869313,2026-05-07,139.99,139.99
 2026,5,26145,"Passagens, hospedagem e alimentação",Viação Pássaro Verde Ltda.,17257916000124,8869312,2026-05-07,139.99,139.99
-2026,5,26145,"Passagens, hospedagem e alimentação",Rita de Cassia Batista Miranda Cpf 582.723.056-15,02797214000166,2026000000059,2026-05-12,230.0,230.0
+2026,5,26145,"Passagens, hospedagem e alimentação",Rita de Cassia Batista Miranda Cpf,02797214000166,2026000000059,2026-05-12,230.0,230.0
 2026,5,26145,"Passagens, hospedagem e alimentação",Viação Pássaro Verde Ltda.,17257916000124,8920345,2026-05-21,113.5,113.5
 2026,5,26145,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,693661152,2026-05-23,739.1,600.6
 2026,5,26148,Combustível e lubrificante,Posto Alpa Ltda,02234943001771,000133842,2026-05-01,269.66,269.66
@@ -36661,7 +36661,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,28864,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,1374457515,2026-05-31,1399.59,1399.59
 2026,5,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0652,2026-05-31,8500.0,8500.0
 2026,5,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0651,2026-05-31,3950.0,3950.0
-2026,5,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,82,2026-05-27,70.0,70.0
+2026,5,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,82,2026-05-27,70.0,70.0
 2026,5,28864,"Passagens, hospedagem e alimentação",Hotel Zeta Ltda.,01389178000139,4801,2026-03-20,150.0,150.0
 2026,5,28864,"Passagens, hospedagem e alimentação",Andrade e Soares Ltda.,05655969000114,7640,2026-05-07,26.5,26.5
 2026,5,28864,"Passagens, hospedagem e alimentação",Organizações Campolar Ltda.,65318727000167,000116737,2026-05-07,72.57,72.57
@@ -36753,7 +36753,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,006147708,2026-05-04,576.0,576.0
 2026,5,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,69177,2026-04-30,6500.0,6500.0
 2026,5,28866,Manutenção e despesas gerais com veículos,Auto Eletrica do Anisio Ltda,03392919000166,000010464,2026-04-10,1100.0,1100.0
-2026,5,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,58,2026-04-30,520.0,520.0
+2026,5,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,58,2026-04-30,520.0,520.0
 2026,5,28866,Manutenção e despesas gerais com veículos,Tchuba Pneus Ltda.,19355846000172,58,2026-04-30,350.0,350.0
 2026,5,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,248,2026-04-06,92.14,92.14
 2026,5,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,21089FLB2Q99,2026-03-11,8.8,8.8
@@ -37178,7 +37178,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,5,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001226,2026-05-28,362.51,362.51
 2026,5,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,,05.2026,2026-05-29,1600.0,1600.0
 2026,5,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,05.2026,2026-05-29,1500.0,1500.0
-2026,5,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000002074,2026-05-31,519.54,519.54
+2026,5,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002074,2026-05-31,519.54,519.54
 2026,5,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0016,2026-05-31,14000.0,14000.0
 2026,5,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mastec Cartuchos e Toners de M. Claros Ltda,09320580000179,1418,2026-05-13,100.0,100.0
 2026,5,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,T&J Comercio de Papelaria Cia Ltda,41827075000128,000011738,2026-05-18,147.0,147.0
@@ -38463,7 +38463,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,19150,Divulgação da atividade parlamentar,Facebook Serviços Online do Brasil Ltda.,13347016000117,140398373,2026-06-30,2145.31,1065.9
 2026,6,19150,Divulgação da atividade parlamentar,Grafica e Editora Uniao Eireli,35490095000153,297,2026-06-30,17500.0,17500.0
 2026,6,19150,Divulgação da atividade parlamentar,Priscila Gonsalez Rodrigues Mota Kouloris,30046840000156,12/2026,2026-06-30,1000.0,1000.0
-2026,6,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis 02571069608,31254604000198,393,2026-06-30,1400.0,1400.0
+2026,6,19150,Divulgação da atividade parlamentar,Renato Andre dos Reis,31254604000198,393,2026-06-30,1400.0,1400.0
 2026,6,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,022053289,2026-06-01,168.99,168.99
 2026,6,19150,Locação de imóvel e despesas a ele concernentes,Tim S/A,02421421000111,13672357,2026-06-08,263.97,175.98
 2026,6,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,399709470,2026-06-16,126.82,124.04
@@ -38890,7 +38890,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,26098,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,DWNIKN,2026-06-13,2919.13,2919.13
 2026,6,26098,"Passagens, hospedagem e alimentação",Carlton Plaza Ltda.,71478457000154,100089621,2026-06-26,300.0,300.0
 2026,6,26098,Promoção e participação em eventos,Jr Comércio de Alimentos Ltda.,28019790000176,000355,2026-06-22,630.0,630.0
-2026,6,26098,Promoção e participação em eventos,Geralda Magela Fontes da Silva 02506869611,12577316000120,17,2026-06-26,747.0,747.0
+2026,6,26098,Promoção e participação em eventos,Geralda Magela Fontes da Silva,12577316000120,17,2026-06-26,747.0,747.0
 2026,6,26098,Promoção e participação em eventos,Laureci Alves de Paula - Bem Viver Eventos,50822800000166,83,2026-06-30,5800.0,5800.0
 2026,6,26098,"Serviços de consultoria, assessoria e pesquisa",Studium do Conhecimento Treinamento e Comunicação Ltda.,05356285000111,17,2026-06-30,5770.0,5770.0
 2026,6,26105,Combustível e lubrificante,Posto Araponga Ltda.,20093167000151,935168,2026-05-12,179.01,179.01
@@ -39520,7 +39520,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28863,"Passagens, hospedagem e alimentação",B4 Hotelaria Ltda.,26351098000115,1933,2026-06-17,358.0,358.0
 2026,6,28863,"Passagens, hospedagem e alimentação",Hotel Serra Verde & Malharia Ltda.,02378813000145,434,2026-06-18,208.0,208.0
 2026,6,28863,"Passagens, hospedagem e alimentação",Good Stone Curvelo Hotel Ltda.,44965712000110,3007,2026-06-19,313.0,313.0
-2026,6,28863,Promoção e participação em eventos,Julia Perencin Junqueira 09333237607,30346115000101,45287,2026-06-08,1301.85,1301.85
+2026,6,28863,Promoção e participação em eventos,Julia Perencin Junqueira,30346115000101,45287,2026-06-08,1301.85,1301.85
 2026,6,28863,Promoção e participação em eventos,Restaurante Vila da Serra Ltda.,29356893000194,50214,2026-06-19,911.75,911.75
 2026,6,28863,Promoção e participação em eventos,Pegaso Comercio de Produtos Alimenticios Ltda.,07929935000104,192025,2026-06-20,584.31,584.31
 2026,6,28863,Promoção e participação em eventos,Pegaso Comercio de Produtos Alimenticios Ltda.,07929935000104,192030,2026-06-20,410.56,410.56
@@ -39546,9 +39546,9 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,,2026-05-31,450.0,450.0
 2026,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0660,2026-06-30,8500.0,8500.0
 2026,6,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0661,2026-06-30,3950.0,3950.0
-2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,84,2026-06-04,70.0,70.0
-2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,86,2026-06-10,70.0,70.0
-2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,88,2026-06-29,70.0,70.0
+2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,84,2026-06-04,70.0,70.0
+2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,86,2026-06-10,70.0,70.0
+2026,6,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,88,2026-06-29,70.0,70.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Concessionária de Rodovia Nova 381 S/A,58239603000120,,2026-05-30,208.8,208.8
 2026,6,28864,"Passagens, hospedagem e alimentação",Andrade e Soares Ltda.,05655969000114,16947,2026-06-02,26.5,26.5
 2026,6,28864,"Passagens, hospedagem e alimentação",Hotel Metropolitano Ltda.,01077495000110,1345,2026-06-02,214.2,214.2
@@ -39557,9 +39557,9 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Amarildo de Oliveira & Cia. Ltda.,05229241000120,615,2026-06-05,150.0,150.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Amarildo de Oliveira & Cia. Ltda.,05229241000120,616,2026-06-05,150.0,150.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Churrascaria Boi na Brasa de Perdões Ltda.,34649809000160,47394,2026-06-06,45.0,45.0
-2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira 07985044639,35473606000129,193,2026-06-08,100.0,100.0
-2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira 07985044639,35473606000129,196,2026-06-08,100.0,100.0
-2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira 07985044639,35473606000129,194,2026-06-08,100.0,100.0
+2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira,35473606000129,193,2026-06-08,100.0,100.0
+2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira,35473606000129,196,2026-06-08,100.0,100.0
+2026,6,28864,"Passagens, hospedagem e alimentação",Sofia Terra Ferreira,35473606000129,194,2026-06-08,100.0,100.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Graziella Maria Mansur,06140809000103,357,2026-06-10,150.0,150.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Graziella Maria Mansur,06140809000103,355,2026-06-10,150.0,150.0
 2026,6,28864,"Passagens, hospedagem e alimentação",Em 2 Bar e Restaurante Ltda.,05207710000100,32925,2026-06-26,34.9,34.9
@@ -39628,7 +39628,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269224,2026-06-02,345.0,345.0
 2026,6,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269200,2026-06-02,345.0,345.0
 2026,6,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,70088,2026-05-29,6500.0,6500.0
-2026,6,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,60,2026-05-28,900.0,900.0
+2026,6,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,60,2026-05-28,900.0,900.0
 2026,6,28866,Manutenção e despesas gerais com veículos,Sdl Lubrificantes Ltda.,08227702000203,5112,2026-06-02,1150.0,1150.0
 2026,6,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,313,2026-05-05,90.52,90.52
 2026,6,28867,Combustível e lubrificante,Petrol Rede de Postos de Combustivel Ltda.,01890900000203,232113,2026-06-11,220.07,220.07
@@ -39777,10 +39777,10 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,94408,2026-06-30,3603.0,3603.0
 2026,6,28871,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001047164652,2026-06-30,220.99,220.99
 2026,6,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024709,2026-06-30,13983.0,13983.0
-2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,59,2026-06-02,120.0,120.0
+2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,59,2026-06-02,120.0,120.0
 2026,6,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,27,2026-06-08,100.0,100.0
-2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,64,2026-06-26,180.0,180.0
-2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,67,2026-06-30,180.0,180.0
+2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,64,2026-06-26,180.0,180.0
+2026,6,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,67,2026-06-30,180.0,180.0
 2026,6,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L10266,2026-06-29,210.0,210.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Natalia Luiza Teixeira Braga Cortes e Cia Ltda.,30804020000186,644,2026-05-30,120.0,120.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Hotel Turista Luz Ltda.,23440226000109,2039,2026-05-31,190.0,190.0
@@ -39788,7 +39788,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,1268,2026-06-03,240.0,240.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Aquarios Alimentações Ltda.,05806850000103,75,2026-06-10,110.0,110.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,CM822D,2026-06-11,3417.85,3417.85
-2026,6,28871,"Passagens, hospedagem e alimentação",Pedro Henrique Rabelo Salvador 13875644638,47679366000100,,2026-06-11,181.0,181.0
+2026,6,28871,"Passagens, hospedagem e alimentação",Pedro Henrique Rabelo Salvador,47679366000100,,2026-06-11,181.0,181.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Epr Triângulo S/A,48127012000108,,2026-06-15,28.0,28.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,1370,2026-06-16,220.0,220.0
 2026,6,28871,"Passagens, hospedagem e alimentação",Patos Hotel Ltda.,26147756000151,1378,2026-06-17,660.0,660.0
@@ -39959,7 +39959,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,6,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000002717,2026-06-19,100.0,100.0
 2026,6,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,00126450324613,2026-06-23,54.7,39.22
 2026,6,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,,06.2026,2026-06-30,1600.0,1600.0
-2026,6,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000002144,2026-06-30,566.99,566.99
+2026,6,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002144,2026-06-30,566.99,566.99
 2026,6,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001242,2026-06-30,401.33,401.33
 2026,6,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,06.2026,2026-06-30,1500.0,1500.0
 2026,6,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0017,2026-06-30,14000.0,14000.0
@@ -42129,7 +42129,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,7,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,71014,2026-06-30,6500.0,6500.0
 2026,7,28866,Manutenção e despesas gerais com veículos,Vanderlei Costa Tiradentes,46990852000174,142,2026-06-02,130.0,130.0
 2026,7,28866,Manutenção e despesas gerais com veículos,64.343.357 Pedro Henrique Mendonca,64343357000155,9,2026-06-15,810.0,810.0
-2026,7,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,61,2026-07-01,710.0,710.0
+2026,7,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,61,2026-07-01,710.0,710.0
 2026,7,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,445,2026-06-10,86.86,86.86
 2026,7,28866,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,0518039047,2026-05-18,547.27,547.27
 2026,7,28866,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,2204MQ72SQI4,2026-06-14,9.1,9.1
@@ -42227,8 +42227,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,7,28871,Locação de imóvel e despesas a ele concernentes,Maria Malvina de Nazaré,,07/2026,2026-07-31,400.0,400.0
 2026,7,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024797,2026-07-31,13983.0,13983.0
 2026,7,28871,Manutenção e despesas gerais com veículos,Lava Rapido Drive Thru Ltda.,47819402000186,170,2026-07-13,92.0,92.0
-2026,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,69,2026-07-16,180.0,180.0
-2026,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,71,2026-07-17,180.0,180.0
+2026,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,69,2026-07-16,180.0,180.0
+2026,7,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,71,2026-07-17,180.0,180.0
 2026,7,28871,Manutenção e despesas gerais com veículos,63.530.058 Ana Paula Nogueira Pereira,63530058000167,33,2026-07-27,120.0,120.0
 2026,7,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,4582,2026-05-22,784.35,784.35
 2026,7,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,4865,2026-06-02,784.35,784.35
@@ -42425,7 +42425,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,7,28876,Locação de imóvel e despesas a ele concernentes,Microtell Scm Ltda,22457970000153,000327012,2026-07-22,94.8,94.8
 2026,7,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000003239,2026-07-24,100.0,100.0
 2026,7,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,,,2026-07-31,1600.0,1600.0
-2026,7,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000002212,2026-07-31,462.62,462.62
+2026,7,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002212,2026-07-31,462.62,462.62
 2026,7,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001251,2026-07-31,530.2,530.2
 2026,7,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,,2026-07-31,1600.0,1600.0
 2026,7,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0018,2026-07-31,14000.0,14000.0
@@ -42581,7 +42581,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,7,30238,"Passagens, hospedagem e alimentação",União Empreendimentos Hoteleiros Ltda.,05434087000390,33326/2026,2026-07-01,266.0,266.0
 2026,7,30238,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,6590,2026-07-02,420.4,420.4
 2026,7,30238,"Passagens, hospedagem e alimentação",99 Tecnologia Ltda,18033552001567,,2026-07-03,21.6,21.6
-2026,7,30238,"Passagens, hospedagem e alimentação",Janaine Costa Vidal Araujo 06362132696,33925102000177,149,2026-07-06,380.0,380.0
+2026,7,30238,"Passagens, hospedagem e alimentação",Janaine Costa Vidal Araujo,33925102000177,149,2026-07-06,380.0,380.0
 2026,7,30238,"Passagens, hospedagem e alimentação",99 Tecnologia Ltda,18033552001567,,2026-07-06,25.0,25.0
 2026,7,30238,"Passagens, hospedagem e alimentação",Érika Alves Silveira Hotel,09598974000193,2013,2026-07-07,150.0,150.0
 2026,7,30238,"Passagens, hospedagem e alimentação",Arco Administradora Ltda.,02302811000415,6187,2026-07-09,927.0,927.0
@@ -42591,7 +42591,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,7,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-07-14,83.96,83.96
 2026,7,30238,"Passagens, hospedagem e alimentação",99 Tecnologia Ltda,18033552001567,,2026-07-14,22.3,22.3
 2026,7,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-07-16,68.94,68.94
-2026,7,30238,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva 09421623665,33185583000121,480,2026-07-18,400.0,200.0
+2026,7,30238,"Passagens, hospedagem e alimentação",Lucilene Soares da Silva,33185583000121,480,2026-07-18,400.0,200.0
 2026,7,30238,"Passagens, hospedagem e alimentação",Dan Inn Hotel Uberaba Ltda.,04192534000118,20260000008727,2026-07-19,332.93,332.93
 2026,7,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-07-21,56.95,56.95
 2026,7,30238,"Passagens, hospedagem e alimentação",99 Tecnologia Ltda,18033552001567,,2026-07-22,21.2,21.2
@@ -43881,7 +43881,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28864,Combustível e lubrificante,Posto Vila Pica Pau Ltda.,15218502000160,1568061,2026-08-31,295.91,295.91
 2026,8,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0681,2026-08-31,3950.0,3950.0
 2026,8,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0680,2026-08-31,8500.0,8500.0
-2026,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior 01639875646,46024205000108,91,2026-08-04,70.0,70.0
+2026,8,28864,Manutenção e despesas gerais com veículos,Paulo Rodrigues de Andrade Junior,46024205000108,91,2026-08-04,70.0,70.0
 2026,8,28864,"Passagens, hospedagem e alimentação",Whp Alimentos Ltda.,46892849000118,9695,2026-08-22,57.5,57.5
 2026,8,28864,"Passagens, hospedagem e alimentação",Carvalho e Carvalho Alimentos Ltda.,26261747000359,61999,2026-08-24,36.86,36.86
 2026,8,28864,"Passagens, hospedagem e alimentação",Em 2 Bar e Restaurante Ltda.,05207710000100,807,2026-08-26,44.03,44.03
@@ -43949,7 +43949,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269202,2026-08-05,345.0,345.0
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269226,2026-08-05,345.0,345.0
 2026,8,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,71782,2026-07-31,6500.0,6500.0
-2026,8,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,65,2026-08-04,750.0,750.0
+2026,8,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,65,2026-08-04,750.0,750.0
 2026,8,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,490,2026-07-06,80.86,80.86
 2026,8,28866,"Passagens, hospedagem e alimentação",Alelo S/A,04740876000125,9528333,2026-07-23,314.69,314.69
 2026,8,28868,Combustível e lubrificante,Posto Chefao Ltda.,19751553000104,219608,2026-07-25,233.44,233.44
@@ -43999,7 +43999,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024948,2026-08-15,2017.0,2017.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024946,2026-08-15,2017.0,2017.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024945,2026-08-15,2957.5,2957.5
-2026,8,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf 030.712.426-62,20018486000100,81,2026-08-14,180.0,180.0
+2026,8,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,81,2026-08-14,180.0,180.0
 2026,8,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L10561,2026-07-28,210.0,210.0
 2026,8,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,5606,2026-06-19,522.9,522.9
 2026,8,28871,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,018085549,2026-07-30,385.01,385.01
@@ -44136,7 +44136,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000003764,2026-08-19,100.0,100.0
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,421306401,2026-08-21,123.54,123.54
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Microtell Scm Ltda,22457970000153,000366587,2026-08-21,94.8,94.8
-2026,8,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro 49074881653,46696648000145,000002273,2026-08-27,482.52,482.52
+2026,8,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002273,2026-08-27,482.52,482.52
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,,,2026-08-31,1600.0,1600.0
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001263,2026-08-31,416.97,416.97
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,,2026-08-31,1600.0,1600.0
@@ -44322,6 +44322,6 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269227,2026-09-02,345.0,345.0
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011339197,2026-09-03,619.0,619.0
 2026,9,28866,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72781,2026-08-31,3250.0,3250.0
-2026,9,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati 87478188672,15229504000155,68,2026-09-01,520.0,520.0
+2026,9,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,68,2026-09-01,520.0,520.0
 2026,9,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,566,2026-08-05,84.58,84.58
 2026,9,28866,"Passagens, hospedagem e alimentação",Alelo S/A,04740876000125,0921597,2026-08-20,322.0,322.0

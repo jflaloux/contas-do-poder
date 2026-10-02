@@ -18,6 +18,7 @@ def coletar():
         try:
             with onde.registrar("vereadores", cidade):
                 cidade.coletar()
+                comum.limpar_cpfs(cidade.PASTA)  # CPF no nome de fornecedor MEI, no histórico...
         except TempoEsgotado:
             raise
         except Exception as e:  # noqa: BLE001 — uma cidade fora do ar não para as outras

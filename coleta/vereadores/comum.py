@@ -101,8 +101,47 @@ def titulo(nome):
     return " ".join(w.lower() if w.lower() in _MINUSCULAS and i else w.capitalize() for i, w in enumerate((nome or "").lower().split()))
 
 
+# CPF solto num texto: o MEI tem como razão social "NOME 12345678901", e algumas fontes põem o CPF no nome do
+# fornecedor ou no histórico do pagamento. O número sai (regra do projeto: CPF de pessoa física, nunca)
+_CPF_NO_TEXTO = re.compile(r"(?<![\d./-])\d{3}\.?\d{3}\.?\d{3}-?\d{2}(?![\d./-])")
+_COLUNAS_TEXTO = re.compile(r"fornec|benefic|nome|emitente|credor|favorec|objeto|descri|histor|interessad|detalh", re.I)
+
+
+def sem_cpf(texto):
+    """O texto sem nenhum número com cara de CPF (com ou sem pontos)."""
+    if not isinstance(texto, str) or not _CPF_NO_TEXTO.search(texto):
+        return texto
+    return re.sub(r"\s+", " ", _CPF_NO_TEXTO.sub(" ", texto)).replace("( )", "").replace("()", "").strip(" -–")
+
+
+def limpar_cpfs(pasta):
+    """Tira o CPF dos textos livres (fornecedor, nome, histórico...) de todos os CSVs de uma pasta de dados. Roda depois
+    de cada coleta (coleta/vereadores/__init__.py e coleta/assembleias/__init__.py). Devolve quantas células mudaram."""
+    import csv
+    from pathlib import Path
+    csv.field_size_limit(10**9)
+    total = 0
+    for arq in sorted(Path(pasta).glob("*.csv")):
+        with open(arq, encoding="utf-8", newline="") as f:
+            linhas = list(csv.reader(f))
+        if not linhas:
+            continue
+        cols = [j for j, h in enumerate(linhas[0]) if _COLUNAS_TEXTO.search(h)]
+        mudou = 0
+        for linha in linhas[1:]:
+            for j in cols:
+                if j < len(linha) and _CPF_NO_TEXTO.search(linha[j]):
+                    linha[j] = sem_cpf(linha[j])
+                    mudou += 1
+        if mudou:
+            with open(arq, "w", encoding="utf-8", newline="") as f:
+                csv.writer(f, lineterminator="\n").writerows(linhas)
+            total += mudou
+    return total
+
+
 def empresa(nome):
-    nome = re.sub(r"\s+", " ", nome or "").strip(" .-")
+    nome = re.sub(r"\s+", " ", sem_cpf(nome or "")).strip(" .-")
     return " ".join(_SIGLAS.get(w.lower(), w.lower() if w.lower() in _MINUSCULAS and i else w.capitalize())
                     for i, w in enumerate(nome.split())) or "Sem nome"
 

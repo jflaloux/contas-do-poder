@@ -2,6 +2,14 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-10-02",
+      "titulo": "Fornecedores pessoa física: número do CPF tirado do nome",
+      "texto": [
+        "Nos gastos de deputados estaduais (SP, MG, RJ, PE, CE, GO, SC, MS, RO e AP) e de vereadores (São Paulo e Natal), o nome de alguns fornecedores vinha com o número do CPF do dono, como as fontes publicam a razão social do microempreendedor individual (MEI). O número foi tirado do nome em todas as páginas; os valores não mudaram.",
+        "O site não publica CPF de fornecedor pessoa física."
+      ]
+    },
+    {
       "data": "2026-09-30",
       "titulo": "Maranhão e Rio de Janeiro: fonte do salário do governador descrita errado",
       "texto": [

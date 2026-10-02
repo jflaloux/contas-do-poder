@@ -35,7 +35,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,57,Brisa Bracchi,04/02/2025,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51.995.600/0001-78,67,8500.0
 2025,1,53,Camila Araújo,31/01/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000058,12000.0
 2025,1,53,Camila Araújo,30/01/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,12268,5500.0
-2025,1,53,Camila Araújo,30/01/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAÚJO 02658918410,40.671.215/0001-59,000183,4200.0
+2025,1,53,Camila Araújo,30/01/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAÚJO,40.671.215/0001-59,000183,4200.0
 2025,1,17,Chagas Catarino,30/01/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944604/0001-14,148,11000.0
 2025,1,17,Chagas Catarino,14/01/2025,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNOICACOES S.A,66.970.229/0161-60,MOD21 SERIE D01,71.94
 2025,1,17,Chagas Catarino,09/01/2025,"Provedores de internet, telefonia fixa ou celular",TELEFONICA BRASIL S.A,02.558.157/0001-62,1321397594,71.71
@@ -73,7 +73,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,56,Eribaldo Medeiros,25/01/2025,Locação de Equipamentos de Informática,JOÃO VICTOR CAMPOS DE LIMA,35028065000120,1,1000.0
 2025,1,56,Eribaldo Medeiros,30/01/2025,Consultoria e Assessoria na Área de Comunicação,JEFFERSON STERFENO DA SILVA,43167369000104,34,3600.0
 2025,1,29,Eriko Jácome,31/01/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000056,9900.0
-2025,1,29,Eriko Jácome,31/01/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000178,3300.0
+2025,1,29,Eriko Jácome,31/01/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000178,3300.0
 2025,1,29,Eriko Jácome,31/01/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000001/25,5500.0
 2025,1,29,Eriko Jácome,03/02/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000023,3000.0
 2025,1,29,Eriko Jácome,15/01/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERVIÇOS DE TELECOMUNICAÇÕES LTDA,02.952.192/0001-61,2567383211,95.92
@@ -133,7 +133,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,1,21,Preto Aquino,04/02/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,109,11894.88
 2025,1,21,Preto Aquino,22/01/2025,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1054,5500.0
 2025,1,21,Preto Aquino,03/02/2025,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,2417,1005.12
-2025,1,21,Preto Aquino,03/02/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,61,3600.0
+2025,1,21,Preto Aquino,03/02/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,61,3600.0
 2025,1,30,Robson Carvalho,31/01/2025,Locação de Veículo Automotor,F2 VEICULOS EIRELI-ME,10.360.809/0001-88,RECIBO 445,4500.0
 2025,1,30,Robson Carvalho,03/02/2025,Consultoria e Assessoria Contábil,IN LOCO CONSULTORIA E SERVIÇOS LTDA,26.917.355/0001-33,261,2700.0
 2025,1,30,Robson Carvalho,03/02/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1045,3135.0
@@ -196,7 +196,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,57,Brisa Bracchi,25/02/2025,Água mineral,DD ARAÚJO COMÉRCIO,22869913000181,1603,36.0
 2025,2,57,Brisa Bracchi,10/03/2025,Locação de Veículo Automotor,RADAR RENT A CAR,40763641000112,2202,4400.0
 2025,2,57,Brisa Bracchi,25/02/2025,Consultoria e Assessoria na Área de Comunicação,49390059 LUCAS DE MEDEIROS SILVA,49390059000122,33,1500.0
-2025,2,57,Brisa Bracchi,25/02/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,37,3000.0
+2025,2,57,Brisa Bracchi,25/02/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,37,3000.0
 2025,2,57,Brisa Bracchi,27/02/2025,"Provedores de internet, telefonia fixa ou celular",CLARO SA,40.432.544/0001-47,095003329632,154.9
 2025,2,57,Brisa Bracchi,06/03/2025,Consultoria e Assessoria na Área de Comunicação,ALANE ARAUJO COSTA DA SILVA,34.331.757/0001-80,2482,598.5
 2025,2,57,Brisa Bracchi,25/02/2025,Consultoria e Assessoria na Área de Comunicação,ROBERTH GABRIEL DE GOIS PAIVA,58.978.428/0001-93,3,1450.0
@@ -245,7 +245,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,56,Eribaldo Medeiros,05/03/2025,Consultoria e Assessoria Jurídica - ADVOCACIA,NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34.828.165/0001-78,00000006,10500.0
 2025,2,56,Eribaldo Medeiros,28/02/2025,"Locação de Veículo Automotor - Locação de 01(um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de fevereiro de 2025",SANTOS & FERNANDES LTDA,02.909.308/0001-80,12410,5500.0
 2025,2,29,Eriko Jácome,28/02/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000057,7000.0
-2025,2,29,Eriko Jácome,28/02/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000183,3300.0
+2025,2,29,Eriko Jácome,28/02/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000183,3300.0
 2025,2,29,Eriko Jácome,06/03/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000024,3000.0
 2025,2,29,Eriko Jácome,28/02/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.902.812/0001-60,0000002/25,5500.0
 2025,2,29,Eriko Jácome,28/01/2025,Material de Limpeza,CASA NORTE LTDA,08.713.513/0001-51,0001893141,1571.12
@@ -312,7 +312,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,2,21,Preto Aquino,07/03/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,110,11485.44
 2025,2,21,Preto Aquino,07/03/2025,Combustível,SM comercial e derivados de petroleo LTDA,03459547000148,2497,1414.56
 2025,2,21,Preto Aquino,21/02/2025,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1084,5500.0
-2025,2,21,Preto Aquino,06/03/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,64,3600.0
+2025,2,21,Preto Aquino,06/03/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,64,3600.0
 2025,2,30,Robson Carvalho,05/03/2025,Material para a Divulgação da Atividade Parlamentar,ELIABE E VICTOR LTDA,26.684.366/0001-10,737,4250.0
 2025,2,30,Robson Carvalho,05/03/2025,Consultoria e Assessoria Jurídica,DIEB CORONADO SOCIEDADE INDIVIDUAL DE ADVOCACIA,47.385.818/0001-33,60,7400.0
 2025,2,30,Robson Carvalho,28/02/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1057,3002.34
@@ -387,13 +387,13 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,57,Brisa Bracchi,02/04/2025,"Provedores de internet, telefonia fixa ou celular",CLARO SA,40.432.544/0001-47,095003329632,157.97
 2025,3,57,Brisa Bracchi,02/04/2025,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51995600000178,68,8500.0
 2025,3,57,Brisa Bracchi,27/03/2025,Consultoria e Assessoria na Área de Comunicação,49.711.669 LUANA TAYZEXAVIER DE MELO,49711669000180,95,1400.0
-2025,3,57,Brisa Bracchi,25/03/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,39,3000.0
+2025,3,57,Brisa Bracchi,25/03/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,39,3000.0
 2025,3,57,Brisa Bracchi,01/04/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34.331.757/0001-80,2511,650.0
 2025,3,57,Brisa Bracchi,30/03/2025,Consultoria e Assessoria na Área de Comunicação,ROBERTH GABRIEL DE GOIS PAIVA,58.978.428/0001-93,6,1450.0
 2025,3,53,Camila Araújo,31/03/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,0000000060,12000.0
 2025,3,53,Camila Araújo,27/03/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000035539,300.0
 2025,3,53,Camila Araújo,28/03/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,12540,5500.0
-2025,3,53,Camila Araújo,31/03/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAÚJO - 02658918410,40.671.215/0001-59,000209,4200.0
+2025,3,53,Camila Araújo,31/03/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAÚJO,40.671.215/0001-59,000209,4200.0
 2025,3,17,Chagas Catarino,26/03/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,000156,11000.0
 2025,3,17,Chagas Catarino,02/04/2025,Material para a Divulgação da Atividade Parlamentar,FRANCISCO IVANALDO CONFESSOR,16.882.176/0001-69,67,7000.0
 2025,3,17,Chagas Catarino,26/03/2025,Locação de Veículo Automotor,LAS LOCAÇAO DE VEICULOS LTDA,502.781.63/0001-09,546,3800.0
@@ -433,7 +433,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,56,Eribaldo Medeiros,27/03/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de matérias institucionais do mandato do Vereador Eribaldo Medeiros no site Blog do Bispo e assessoria de imprensa,Jefferson Sterfeno da Silva,43.167.369/0001-04,37,3600.0
 2025,3,56,Eribaldo Medeiros,28/03/2025,"Locação de Veículo Automotor - Locação de 01(um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de março de 2025",Santos & Fernandes Ltda,02.909.308/0001-80,12539,5500.0
 2025,3,29,Eriko Jácome,03/04/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000060,8750.0
-2025,3,29,Eriko Jácome,31/03/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000186,3300.0
+2025,3,29,Eriko Jácome,31/03/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000186,3300.0
 2025,3,29,Eriko Jácome,01/04/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000026,3000.0
 2025,3,29,Eriko Jácome,31/03/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000325,5500.0
 2025,3,29,Eriko Jácome,20/03/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5424597133,544.99
@@ -499,7 +499,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,3,76,Pedro Henrique,31/03/2025,Material de Expediente,CASA NORTE LTDA,087135130001-51,1924216,405.17
 2025,3,76,Pedro Henrique,04/04/2025,Extração de Cópias Reprográficas e Digitais,ABRAAO CAMPELO GOMES DA SILVA,32297809000113,048,3964.0
 2025,3,21,Preto Aquino,01/04/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,111,11505.12
-2025,3,21,Preto Aquino,01/04/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,66,3600.0
+2025,3,21,Preto Aquino,01/04/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,66,3600.0
 2025,3,21,Preto Aquino,02/04/2025,Combustível,S M comercial e derivados de petroleo LTDA,03459547000148,2575,1394.88
 2025,3,21,Preto Aquino,21/03/2025,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1113,5500.0
 2025,3,30,Robson Carvalho,03/04/2025,Consultoria e Assessoria Jurídica,DIEB CORONADO SOCIEDADE INDIVIDUAL DE ADVOCACIA,47.385.818/0001-33,64,7400.0
@@ -561,7 +561,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,4,67,Anne Lagartixa,30/04/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1153,1557.52
 2025,4,67,Anne Lagartixa,02/05/2025,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVICOS LTDA,26.917.355/0001-33,268,2700.0
 2025,4,67,Anne Lagartixa,30/04/2025,Consultoria e Assessoria Jurídica,OBERDAN VIEIRA PINTO LIMA SOCIEDADE INDIVIDUAL DE ADVOCACIA,55.026.494/0001-75,12,6000.0
-2025,4,57,Brisa Bracchi,23/04/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,41,3000.0
+2025,4,57,Brisa Bracchi,23/04/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,41,3000.0
 2025,4,57,Brisa Bracchi,16/04/2025,Material de Limpeza,CASA NORTE,08713513000151,1932341,31.35
 2025,4,57,Brisa Bracchi,16/04/2025,Material de Expediente,CASA NORTE,08713513000151,1932343,33.44
 2025,4,57,Brisa Bracchi,30/04/2025,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001221704,271.15
@@ -624,7 +624,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,4,56,Eribaldo Medeiros,24/04/2025,"Material de Expediente - Locação de equipamentos de informática, sendo 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC 21,5 e teclado e mouse intelbras), 01 notebook Lenovo i5 e 01 impressora multifuncional EPSON M2 120",JOÃO VICTOR CAMPOS DE LIMA,35028065000120,00012,1000.0
 2025,4,56,Eribaldo Medeiros,05/05/2025,"Consultoria e Assessoria Jurídica - Consultoria e assessoria jurídica na elaboração de 04 Projetos de lei: 01 PL determina que estabelecimentos comercias devem garantir a segurança, saúde e bem estar dos animais, 01PL institui a campanha não esqueça criança no carro no Munícipio de Natal, 01 PL institui a campanha permanente de combate a violência e a importunação sexual contra a mulher nos estádios de futebol no Munícipio de Natal, 01 PL institui a campanha de conscientização e mobilização social de limpeza urbana e preservação do Meio Ambiente e 06 pareceres jurídicos; parecer ao PL 469/2024 da Vereadora Brisa Bracchi, parecer ao PL 363/2023 do Vereador Robson Carvalho, parecer ao PL 240/2024 do Vereador Preto Aquino, parecer ao PL 045/2024 do Vereador Klaus Araújo, parecer ao PL 617/2024 do Vereador do Vereador Preto Aquino, parecer ao PL 190/2018 do Vereador Chagas Catarino",NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34828165000178,0000000008,12000.0
 2025,4,29,Eriko Jácome,30/04/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000062,8750.0
-2025,4,29,Eriko Jácome,30/04/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000196,3300.0
+2025,4,29,Eriko Jácome,30/04/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000196,3300.0
 2025,4,29,Eriko Jácome,05/05/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000028,3000.0
 2025,4,29,Eriko Jácome,30/04/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000425,5500.0
 2025,4,29,Eriko Jácome,02/04/2025,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-51,0001925528,873.48
@@ -697,7 +697,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,4,21,Preto Aquino,05/05/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,112,11333.57
 2025,4,21,Preto Aquino,05/05/2025,Combustível,S M comercial e derivados de petroleo LTDA,03459547000148,2660,1566.43
 2025,4,21,Preto Aquino,25/04/2025,Locação de Veículo Automotor,J V ferreira ME,17104197000101,1138,5500.0
-2025,4,21,Preto Aquino,05/05/2025,Consultoria e Assessoria na Área de Comunicação,Francisco ivanaldo confessor 87839920497,16822176000169,68,3600.0
+2025,4,21,Preto Aquino,05/05/2025,Consultoria e Assessoria na Área de Comunicação,Francisco ivanaldo confessor,16822176000169,68,3600.0
 2025,4,30,Robson Carvalho,02/05/2025,Consultoria e Assessoria na Área de Comunicação,ELIABE E VICTOR LTDA,26.684.366/0001-10,778,4250.0
 2025,4,30,Robson Carvalho,02/05/2025,Consultoria e Assessoria Jurídica,DIEB CORONADO SOCIEDADE INDIVIDUAL DE ADVOCACIA,47.385.818/0001-33,68,7400.0
 2025,4,30,Robson Carvalho,02/05/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0001-13,1154,2922.18
@@ -787,11 +787,11 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,5,57,Brisa Bracchi,26/05/2025,Água mineral,DD ARAÚJO COMÉRCIO,22869913000181,1685,36.0
 2025,5,57,Brisa Bracchi,28/05/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34.331.757/0001-80,2551,1080.0
 2025,5,57,Brisa Bracchi,28/05/2025,Consultoria e Assessoria na Área de Comunicação,RIBEIRO FILMES E PRODUÇÕES LTDA,24718257000141,2241451,1000.0
-2025,5,57,Brisa Bracchi,26/05/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,44,3000.0
+2025,5,57,Brisa Bracchi,26/05/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,44,3000.0
 2025,5,57,Brisa Bracchi,27/05/2025,Consultoria e Assessoria na Área de Comunicação,ROBERTH GABRIEL DE GOIS PAIVA,58.978.428/0001-93,9,1450.0
 2025,5,53,Camila Araújo,25/05/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000100374,252.53
 2025,5,53,Camila Araújo,31/05/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000063,12000.0
-2025,5,53,Camila Araújo,02/06/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000233,4200.0
+2025,5,53,Camila Araújo,02/06/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000233,4200.0
 2025,5,53,Camila Araújo,30/05/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,12826,5500.0
 2025,5,17,Chagas Catarino,28/05/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.123.497/0001-58,3,4680.0
 2025,5,17,Chagas Catarino,28/05/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,00163,11000.0
@@ -832,7 +832,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,5,56,Eribaldo Medeiros,27/05/2025,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e teclado e mouse intelbras), 01 notebook Lenovo i e 01 impressora EPSON M2 120",JOÃO VICTOR CAMPOS DE LIMA,350280650001-20,0015,1000.0
 2025,5,29,Eriko Jácome,20/05/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5470074942,544.99
 2025,5,29,Eriko Jácome,30/05/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/00001-85,0000000063,8750.0
-2025,5,29,Eriko Jácome,30/05/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000198,3300.0
+2025,5,29,Eriko Jácome,30/05/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000198,3300.0
 2025,5,29,Eriko Jácome,03/06/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000054,3000.0
 2025,5,29,Eriko Jácome,30/05/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000525,5500.0
 2025,5,29,Eriko Jácome,05/06/2025,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-51,0001955021,902.62
@@ -901,7 +901,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,5,76,Pedro Henrique,15/05/2025,Material de Expediente,CASA NORTE LTDA,08713513000151,1944589,545.84
 2025,5,76,Pedro Henrique,21/05/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,026060,73.3
 2025,5,21,Preto Aquino,02/06/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,113,11610.01
-2025,5,21,Preto Aquino,02/06/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,69,3600.0
+2025,5,21,Preto Aquino,02/06/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,69,3600.0
 2025,5,21,Preto Aquino,02/06/2025,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,2744,1289.99
 2025,5,21,Preto Aquino,26/05/2025,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1180,5500.0
 2025,5,30,Robson Carvalho,03/06/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1213,3083.97
@@ -979,12 +979,12 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,6,57,Brisa Bracchi,10/06/2025,Material de Expediente,CASA NORTE,08713513000151,83600,29.95
 2025,6,57,Brisa Bracchi,30/06/2025,"Provedores de internet, telefonia fixa ou celular",CLARO SA,40.432.544/0001-47,095003329632,157.97
 2025,6,57,Brisa Bracchi,26/06/2025,Material de Expediente,DD ARAÚJO COMÉRCIO,22869913000181,1713,24.0
-2025,6,57,Brisa Bracchi,25/06/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,46,3000.0
+2025,6,57,Brisa Bracchi,25/06/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,46,3000.0
 2025,6,57,Brisa Bracchi,01/07/2025,Consultoria e Assessoria na Área de Comunicação,ROBERTH GABRIEL DE GOIS PAIVA,58.978.428/0001-93,11,1450.0
 2025,6,53,Camila Araújo,01/07/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,64,12000.0
 2025,6,53,Camila Araújo,28/06/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000103501,300.0
 2025,6,53,Camila Araújo,30/06/2025,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02.909.308/0001-80,12971,5500.0
-2025,6,53,Camila Araújo,30/06/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000242,4200.0
+2025,6,53,Camila Araújo,30/06/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000242,4200.0
 2025,6,17,Chagas Catarino,02/07/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,000165,11000.0
 2025,6,17,Chagas Catarino,01/07/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,04,5500.0
 2025,6,17,Chagas Catarino,26/06/2025,Locação de Veículo Automotor,LAS LOCAÇAO DE VEICULOS LTDA,50.278.163/0001-09,48,5500.0
@@ -1019,7 +1019,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,6,56,Eribaldo Medeiros,30/06/2025,"Locação de Veículo Automotor - Locação de 01(um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de junho de 2025",SANTOS & FERNANDES LTDA.,02.909.308/0001-80,12969,5500.0
 2025,6,56,Eribaldo Medeiros,26/06/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de material jornalístico sobre a divulgação de ações institucionais do mandato do vereador Eribaldo Medeiros no Blog do Bispo(www.blogdobispo.com.br) e assessoria de imprensa durante o mês de junho/2025,JEFERSON STERFENO DA SILVA,43.167.369/0001-04,0045,3600.0
 2025,6,29,Eriko Jácome,30/06/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000064,7000.0
-2025,6,29,Eriko Jácome,30/06/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000202,3300.0
+2025,6,29,Eriko Jácome,30/06/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000202,3300.0
 2025,6,29,Eriko Jácome,30/06/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000031,3000.0
 2025,6,29,Eriko Jácome,30/06/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000625,5500.0
 2025,6,29,Eriko Jácome,20/06/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5493274127,544.99
@@ -1088,7 +1088,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,6,76,Pedro Henrique,26/06/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,026454,68.0
 2025,6,76,Pedro Henrique,06/06/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,026241,73.3
 2025,6,21,Preto Aquino,03/07/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,114,13082.22
-2025,6,21,Preto Aquino,01/07/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,70,4000.0
+2025,6,21,Preto Aquino,01/07/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,70,4000.0
 2025,6,21,Preto Aquino,02/07/2025,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,2803,1617.78
 2025,6,21,Preto Aquino,26/06/2025,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1208,3300.0
 2025,6,30,Robson Carvalho,30/06/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,F 12972,4500.0
@@ -1171,11 +1171,11 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,7,57,Brisa Bracchi,24/07/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34.331.757/0001-80,2603,750.0
 2025,7,57,Brisa Bracchi,25/07/2025,Consultoria e Assessoria na Área de Comunicação,49711669 LUANA TAYZE XAVIER DE MELO,49711669000180,05,1750.0
 2025,7,57,Brisa Bracchi,25/07/2025,Consultoria e Assessoria na Área de Comunicação,ROBERTH GABRIEL DE GOIS PAIVA,58.978.428/0001-93,12,1250.0
-2025,7,57,Brisa Bracchi,24/07/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,49,3000.0
+2025,7,57,Brisa Bracchi,24/07/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,49,3000.0
 2025,7,57,Brisa Bracchi,25/07/2025,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51.995.600/0001-78,72,6500.0
 2025,7,53,Camila Araújo,17/07/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000105297,284.99
 2025,7,53,Camila Araújo,31/07/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,12971,5500.0
-2025,7,53,Camila Araújo,01/08/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000255,4200.0
+2025,7,53,Camila Araújo,01/08/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000255,4200.0
 2025,7,53,Camila Araújo,31/07/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000065,12000.0
 2025,7,17,Chagas Catarino,31/07/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,05,5500.0
 2025,7,17,Chagas Catarino,31/07/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,000169,11000.0
@@ -1218,7 +1218,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,7,56,Eribaldo Medeiros,28/07/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de material jornalístico sobre a divulgação de ações institucionais do mandato do Vereador Eribaldo Medeiros no Blog do Bispo (www.blogdobispo.com.br) e assessoria de imprensa durante o mês de julho/2025,JEFFERSON STERFENO DA SILVA,431673690001-04,0053,3600.0
 2025,7,56,Eribaldo Medeiros,25/07/2025,"Locação de Equipamentos de Informática - Locação de Equipamentos de Informática, sendo 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 notebook Lenovo i5 e 01 impressora multifuncional EPSON M2120",JOAO VICTOR CAMPOS DE LIMA,35028065000120,0021,1000.0
 2025,7,29,Eriko Jácome,30/07/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000065,8750.0
-2025,7,29,Eriko Jácome,31/07/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,000000208,3200.0
+2025,7,29,Eriko Jácome,31/07/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,000000208,3200.0
 2025,7,29,Eriko Jácome,04/08/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000033,3000.0
 2025,7,29,Eriko Jácome,31/07/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,00000000725,5500.0
 2025,7,29,Eriko Jácome,20/07/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5516987829,544.99
@@ -1284,7 +1284,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,7,76,Pedro Henrique,06/08/2025,Material de Expediente,CASA NORTE LTDA,08713513000151,1983942,398.64
 2025,7,21,Preto Aquino,26/07/2025,Locação de Veículo Automotor,J V ferreira ME,17104197000101,1223,3200.91
 2025,7,21,Preto Aquino,05/08/2025,Combustível,SM Comercial e derivados de patroleo LTDA,03459547000148,2862,1799.09
-2025,7,21,Preto Aquino,05/08/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,71,4000.0
+2025,7,21,Preto Aquino,05/08/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,71,4000.0
 2025,7,21,Preto Aquino,05/08/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,115,13000.0
 2025,7,30,Robson Carvalho,31/07/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,FATURA 13134,4500.0
 2025,7,30,Robson Carvalho,04/08/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0001-13,1342,2999.6
@@ -1358,10 +1358,10 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,8,57,Brisa Bracchi,13/08/2025,Material de Expediente,CASA NORTE LTDA,08713513000151,1987965,79.62
 2025,8,57,Brisa Bracchi,08/08/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,000026979,70.0
 2025,8,57,Brisa Bracchi,28/08/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,000027202,71.0
-2025,8,57,Brisa Bracchi,27/08/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,52,3000.0
+2025,8,57,Brisa Bracchi,27/08/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,52,3000.0
 2025,8,57,Brisa Bracchi,04/09/2025,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51995600000178,0000000073,8500.0
 2025,8,53,Camila Araújo,31/08/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,0000000066,12000.0
-2025,8,53,Camila Araújo,01/09/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000269,4200.0
+2025,8,53,Camila Araújo,01/09/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000269,4200.0
 2025,8,53,Camila Araújo,31/08/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000048536,300.0
 2025,8,53,Camila Araújo,29/08/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,13290,5500.0
 2025,8,17,Chagas Catarino,02/09/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,06,5500.0
@@ -1406,7 +1406,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,8,56,Eribaldo Medeiros,25/08/2025,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 impressora multifuncional EPSON M2120",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0026,1000.0
 2025,8,56,Eribaldo Medeiros,28/08/2025,Consultoria e Assessoria na Área de Comunicação - Criação e veiculação de matérias institucionais do mandato do Vereador Eribaldo Medeiros para o Blog do Bispo (www.blogdobispo.com.br) e assessoria de imprensa durante o mês de agosto /2025,JEFFERSON STERFENO DA SILVA,43.167.369/0001-04,0051,3600.0
 2025,8,29,Eriko Jácome,01/09/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000066,8750.0
-2025,8,29,Eriko Jácome,03/09/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVA 05174357480,16.204.528/0001-12,0000000211,3300.0
+2025,8,29,Eriko Jácome,03/09/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVA,16.204.528/0001-12,0000000211,3300.0
 2025,8,29,Eriko Jácome,01/09/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000058,3000.0
 2025,8,29,Eriko Jácome,01/09/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000001025,5500.0
 2025,8,29,Eriko Jácome,20/08/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5540662379,544.99
@@ -1478,7 +1478,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,8,76,Pedro Henrique,04/09/2025,Consultoria e Assessoria Jurídica,RAFAEL MARIZ SOCIEDADE INDIVIDUAL DE ADVOCACIA,36057083000100,019,4600.0
 2025,8,21,Preto Aquino,04/09/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,116,12849.13
 2025,8,21,Preto Aquino,04/09/2025,Combustível,SM comercial e derivados de petroleo LTDA,03459547000148,2940,1850.87
-2025,8,21,Preto Aquino,01/09/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,72,4000.0
+2025,8,21,Preto Aquino,01/09/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,72,4000.0
 2025,8,21,Preto Aquino,26/08/2025,Locação de Veículo Automotor,jv ferreira me,17104197000101,1249,3300.0
 2025,8,30,Robson Carvalho,02/09/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1367,3078.18
 2025,8,30,Robson Carvalho,01/09/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,N 13291,4500.0
@@ -1560,11 +1560,11 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,9,57,Brisa Bracchi,26/09/2025,Água mineral,D D ARAUJO COMERCIO,22869913000181,1784,36.0
 2025,9,57,Brisa Bracchi,27/09/2025,Consultoria e Assessoria na Área de Comunicação,AKA CLUB MIDIA LTDA,50189782000127,64,2000.0
 2025,9,57,Brisa Bracchi,29/09/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,000027581,849.5
-2025,9,57,Brisa Bracchi,26/09/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,01,3000.0
+2025,9,57,Brisa Bracchi,26/09/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,01,3000.0
 2025,9,57,Brisa Bracchi,29/09/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2680,675.0
 2025,9,53,Camila Araújo,30/09/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000067,12000.0
 2025,9,53,Camila Araújo,13/09/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000111286,292.01
-2025,9,53,Camila Araújo,01/10/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO - 02658918410,40.671.215/0001-59,000283,4200.0
+2025,9,53,Camila Araújo,01/10/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000283,4200.0
 2025,9,53,Camila Araújo,30/09/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,13478,5500.0
 2025,9,17,Chagas Catarino,01/10/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,07,5500.0
 2025,9,17,Chagas Catarino,26/09/2025,Locação de Veículo Automotor - PLACA DO CARRO RQL1A19 CONTRATO 02/05/2025,LAS LOCAÇAO DE VEICULOS LTDA,50.278.163/0001-09,56,5500.0
@@ -1605,7 +1605,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,9,56,Eribaldo Medeiros,25/09/2025,"Locação de Equipamentos de Informática - Locação equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2120",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,00028,1000.0
 2025,9,56,Eribaldo Medeiros,30/09/2025,"Consultoria e Assessoria Jurídica - Consultoria e assessoria jurídica, elaboração de 06 PL, 01 PI, 01PR, sendo: 01 PL que dispõe sobre a proteção e a reserva de vagas para contratação de pessoas com deficiência - PCD nos contratos de prestação de serviços terceirizados firmados pela Administração Pública do Município de Natal/RN e dá outras providências, 01 PI que sugere ao Chefe do Poder Executivo Municipal de Natal a criação do Programa de Intercâmbio Internacional Natal no Mundo, 01 PL que dispõe sobre a criação do Núcleo de Incentivo à Formação e Capacitação de Costureiras e Costureiros no Município de Natal, 01 PL que dispõe sobre a criação da Biblioteca Pública Municipal de Natal, 01 PL que institui o selo '+vida: Motorista com Diabetes' no Município de Natal e dá outras providências, 01 PL que dispõe diretrizes para o fomento ao empreendedorismo nos Bairros do Município de Natal, denominado ""Natal Empreende Bairro"" e dá outras providências, 01 PL que institui no âmbito do Município de Natal, o Programa Jovem Guardião Ambiental e dá outras providências, 01 PR sobre o Projeto de Lei nº036/2025 do Vereador Léo Souza",NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34.828.165/0001-78,000014,11500.0
 2025,9,29,Eriko Jácome,30/09/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000067,8750.0
-2025,9,29,Eriko Jácome,30/09/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000219,3300.0
+2025,9,29,Eriko Jácome,30/09/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000219,3300.0
 2025,9,29,Eriko Jácome,06/10/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000036,3000.0
 2025,9,29,Eriko Jácome,30/09/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000001125,5500.0
 2025,9,29,Eriko Jácome,20/09/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5564356035,544.99
@@ -1673,7 +1673,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,9,76,Pedro Henrique,23/09/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERVICOS DE TELECOMUNICACOES LTDA,02952192000161,37338870001697926,99.99
 2025,9,76,Pedro Henrique,30/09/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,027594,87.0
 2025,9,21,Preto Aquino,06/10/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,117,12465.36
-2025,9,21,Preto Aquino,05/10/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,73,4000.0
+2025,9,21,Preto Aquino,05/10/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,73,4000.0
 2025,9,21,Preto Aquino,02/10/2025,Combustível,SM comercial e derivados de petroleo LTDA,03459547000148,3022,2234.64
 2025,9,21,Preto Aquino,29/09/2025,Locação de Veículo Automotor,J V ferreira ME,17104197000101,1276,3300.0
 2025,9,30,Robson Carvalho,01/10/2025,Consultoria e Assessoria na Área de Comunicação,ELIABE E VICTOR LTDA,26.684.366/0001-10,895,4250.0
@@ -1754,8 +1754,8 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,10,57,Brisa Bracchi,14/10/2025,Material de Expediente,CASA NORTE LTDA,08713513000151,196323,157.16
 2025,10,57,Brisa Bracchi,27/10/2025,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,19,3900.0
 2025,10,57,Brisa Bracchi,29/10/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2719,750.0
-2025,10,57,Brisa Bracchi,22/10/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41173168000186,0003,3000.0
-2025,10,53,Camila Araújo,03/11/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 026589184-10,40.671.215/0001-59,000297,4200.0
+2025,10,57,Brisa Bracchi,22/10/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41173168000186,0003,3000.0
+2025,10,53,Camila Araújo,03/11/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000297,4200.0
 2025,10,53,Camila Araújo,31/10/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,0000000068,12000.0
 2025,10,53,Camila Araújo,30/10/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,13635,5500.0
 2025,10,53,Camila Araújo,31/10/2025,Combustível,POSTO CARAU JVC COMERCIAL LTDA,35.298.330/0007-85,000053838,300.0
@@ -1804,7 +1804,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,10,56,Eribaldo Medeiros,24/10/2025,"Locação de Equipamentos de Informática - Locação de Equipamentos de Informática, sendo 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 notebook Lenovo i5 e 01 impressora multifuncional EPSON M2 120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0032,1000.0
 2025,10,29,Eriko Jácome,03/11/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000019,5500.0
 2025,10,29,Eriko Jácome,07/11/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000068,7000.0
-2025,10,29,Eriko Jácome,31/10/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000221,3300.0
+2025,10,29,Eriko Jácome,31/10/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000221,3300.0
 2025,10,29,Eriko Jácome,06/11/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000037,3000.0
 2025,10,29,Eriko Jácome,21/10/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5592636521,594.98
 2025,10,29,Eriko Jácome,20/10/2025,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA,02.625.717/0001-54,0000027833,780.0
@@ -1879,7 +1879,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,10,76,Pedro Henrique,05/11/2025,Locação de Equipamentos de Informática,AM SERVICOS E LOC DE EQ DE INFORMATICA,04999366000177,R95064,220.0
 2025,10,76,Pedro Henrique,21/10/2025,Locação de Equipamentos de Informática,AM SERVICOS E LOC DE EQ DE INFORMATICA,04999366000177,R94774,1619.68
 2025,10,76,Pedro Henrique,23/10/2025,"Provedores de internet, telefonia fixa ou celular",CABO SERVICOS DE TELECOMUNICAÇÕES LTDA,02952192000161,00037338870002052663,99.99
-2025,10,21,Preto Aquino,04/11/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,74,3745.32
+2025,10,21,Preto Aquino,04/11/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,74,3745.32
 2025,10,21,Preto Aquino,05/11/2025,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,3099,1954.68
 2025,10,21,Preto Aquino,27/10/2025,Locação de Veículo Automotor,jv ferreira me,17104197000101,1305,3300.0
 2025,10,21,Preto Aquino,05/11/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,118,13000.0
@@ -1960,9 +1960,9 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,11,57,Brisa Bracchi,02/12/2025,"Provedores de internet, telefonia fixa ou celular",CLARO SA,66970229016160,09500329632,157.97
 2025,11,57,Brisa Bracchi,27/11/2025,Consultoria e Assessoria na Área de Comunicação,AKA CLUB MIDIA LTDA,50189782000127,77,2600.0
 2025,11,57,Brisa Bracchi,28/11/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2745,1135.0
-2025,11,57,Brisa Bracchi,26/11/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41.173.168/0001-86,5,3000.0
+2025,11,57,Brisa Bracchi,26/11/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41.173.168/0001-86,5,3000.0
 2025,11,53,Camila Araújo,01/12/2025,Licença de Software,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA ME,49.941.949/0001-85,22,600.0
-2025,11,53,Camila Araújo,01/12/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000311,3900.0
+2025,11,53,Camila Araújo,01/12/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000311,3900.0
 2025,11,53,Camila Araújo,30/11/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000069,12000.0
 2025,11,53,Camila Araújo,30/11/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,41.303.259/0001-99,13787,5500.0
 2025,11,17,Chagas Catarino,28/11/2025,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,00179,11000.0
@@ -2007,7 +2007,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,11,56,Eribaldo Medeiros,28/11/2025,"Locação de Veículo Automotor - Locação de 01 (um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de novembro de 2025.",SANTOS & FERNANDES LTDA.,02.909.308/0001-80,13786,5500.0
 2025,11,56,Eribaldo Medeiros,24/11/2025,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado mouse intelbras), 01 notebook Lenovo i5 e 01 impressora multifuncional EPSON M2 120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,00035,1000.0
 2025,11,29,Eriko Jácome,01/12/2025,Consultoria e Assessoria Jurídica,TAUMATRUGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000069,8750.0
-2025,11,29,Eriko Jácome,02/12/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000227,3300.0
+2025,11,29,Eriko Jácome,02/12/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000227,3300.0
 2025,11,29,Eriko Jácome,03/12/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000038,3000.0
 2025,11,29,Eriko Jácome,02/12/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000042,5500.0
 2025,11,29,Eriko Jácome,20/11/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421./0001-11,5609864537,544.99
@@ -2071,7 +2071,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,11,76,Pedro Henrique,23/11/2025,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02952192000161,37338870002403527,99.99
 2025,11,21,Preto Aquino,03/12/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,119,12800.48
 2025,11,21,Preto Aquino,27/11/2025,Locação de Veículo Automotor,J V ferreira ME,17104197000101,1336,3300.0
-2025,11,21,Preto Aquino,03/12/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,76,4000.0
+2025,11,21,Preto Aquino,03/12/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,76,4000.0
 2025,11,21,Preto Aquino,03/12/2025,Combustível,SM comercial e derivados de petroleo LTDA,03459547000148,3135,1899.52
 2025,11,30,Robson Carvalho,28/11/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,FATURA 13788,4500.0
 2025,11,30,Robson Carvalho,02/12/2025,Consultoria e Assessoria na Área de Comunicação,ELIABE E VICTOR LTDA,26.684.366/0001-10,950,4250.0
@@ -2143,7 +2143,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,12,57,Brisa Bracchi,17/12/2025,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51.995.600/0001-78,78,8500.0
 2025,12,57,Brisa Bracchi,17/12/2025,Consultoria e Assessoria na Área de Comunicação,AKA CLUB MIDIA LTDA,50189782000127,81,1500.0
 2025,12,57,Brisa Bracchi,15/12/2025,Consultoria e Assessoria na Área de Comunicação,AKA CLUB MIDIA LTDA,50189782000127,79,1000.0
-2025,12,57,Brisa Bracchi,11/12/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41.173.168/0001-86,000007,3000.0
+2025,12,57,Brisa Bracchi,11/12/2025,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41.173.168/0001-86,000007,3000.0
 2025,12,57,Brisa Bracchi,16/12/2025,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2762,500.0
 2025,12,57,Brisa Bracchi,11/12/2025,Consultoria e Assessoria na Área de Comunicação,58.978.428 ROBERTH GABRIEL DE GOIS PAIVA,58978428000193,13,1200.0
 2025,12,57,Brisa Bracchi,12/12/2025,Água mineral,D D ARAUJO COMERCIO,22.869.913/0001-81,1847,26.0
@@ -2152,7 +2152,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,12,57,Brisa Bracchi,09/12/2025,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,00028,3900.0
 2025,12,53,Camila Araújo,15/12/2025,Locação de Veículo Automotor,SANTOS E FERNANDES LTDA,02.909.308/0001-80,13924,5500.0
 2025,12,53,Camila Araújo,16/12/2025,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,00000000070,12000.0
-2025,12,53,Camila Araújo,17/12/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,000313,3900.0
+2025,12,53,Camila Araújo,17/12/2025,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,000313,3900.0
 2025,12,53,Camila Araújo,16/12/2025,Licença de Software,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA ME,49.941.949/0001-85,29,600.0
 2025,12,17,Chagas Catarino,16/12/2025,Locação de Veículo Automotor,LAS LOCAÇAO DE VEICULOS LTDA,50.278.163/0001-09,0079,4000.0
 2025,12,17,Chagas Catarino,17/12/2025,Material para a Divulgação da Atividade Parlamentar,MARCELO DA SILVA JUSTINO,60.213.497/0001-58,0011,7000.0
@@ -2193,7 +2193,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,12,56,Eribaldo Medeiros,15/12/2025,"Locação de Veículo Automotor - Locação de 01 (um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês dezembro de 2025",SANTOS & FERNANDES LTDA.,02.909.308/0001-80,13923,5500.0
 2025,12,56,Eribaldo Medeiros,15/12/2025,"Consultoria e Assessoria Jurídica - Elaboração de 06 PL e 01 PR, sendo: 01 PL que dispõe sobre a periodicidade e os procedimentos para revisão das normas técnicas e regulamentares referente ao plantio, manejo e conservação de árvores em logradouros públicos do Município de Natal, 01 PL que regulamenta no âmbito do Município de Natal, a aplicação dos princípios da Economia Circular para a minimização de impactos ambientais e o uso racional de recursos, 01 PL que dispõe sobre a Política Municipal de Desenvolvimento Urbano Sustentável e de Baixo Carbono do Município de Natal, 01 PL que dispõe sobre a criação do ""Portal de Transparência Verde"" no âmbito do Município de Natal/RN, destinado à divulgação de informações sobre a arborização urbana municipal, 01 PL que institui no âmbito do Município do Natal, a Política Municipal de Incentivo à Reciclagem, à Circularidade e ao Sistema Municipal de Logística Reversa - RECICLANAT, cria o certificado Municipal de Reciclagem e Circularidade, 01 PL que institui a Política Municipal de Limpeza Urbana e Sustentabilidade - ""Natal Mais Limpa e estabelece suas diretrizes gerais, 01 PR sobre o Projeto de lei nº 299/2025 do Vereador Chagas Catarino",NANIELY ROCHA SOCIEDADE INDIVIDUAL DE ADVOCACIA,34.828.165/0001-78,00017,10000.0
 2025,12,29,Eriko Jácome,17/12/2025,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000070,8750.0
-2025,12,29,Eriko Jácome,17/12/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000229,3300.0
+2025,12,29,Eriko Jácome,17/12/2025,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000229,3300.0
 2025,12,29,Eriko Jácome,17/12/2025,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000039,3000.0
 2025,12,29,Eriko Jácome,16/12/2025,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000057,5500.0
 2025,12,29,Eriko Jácome,18/12/2025,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5637945775,544.99
@@ -2252,7 +2252,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2025,12,76,Pedro Henrique,23/12/2025,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02952192000161,37338870002755836,99.99
 2025,12,21,Preto Aquino,18/12/2025,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,121,13200.0
 2025,12,21,Preto Aquino,11/12/2025,Locação de Veículo Automotor,jv ferreira me,17104197000101,1371,3300.0
-2025,12,21,Preto Aquino,17/12/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,79,4000.0
+2025,12,21,Preto Aquino,17/12/2025,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,79,4000.0
 2025,12,21,Preto Aquino,18/12/2025,Combustível,SM Comercial e derivados de petroleo LTDA,03459547000148,3168,1232.65
 2025,12,30,Robson Carvalho,17/12/2025,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1551,2737.18
 2025,12,30,Robson Carvalho,17/12/2025,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,18,7400.0
@@ -2320,7 +2320,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,1,57,Brisa Bracchi,13/01/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,1469923,250.02
 2026,1,57,Brisa Bracchi,13/01/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001470314,100.0
 2026,1,57,Brisa Bracchi,05/02/2026,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51.995.600/0001-78,81,8500.0
-2026,1,57,Brisa Bracchi,26/01/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41.173.168/0001-86,10,3000.0
+2026,1,57,Brisa Bracchi,26/01/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41.173.168/0001-86,10,3000.0
 2026,1,57,Brisa Bracchi,30/01/2026,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2795,600.0
 2026,1,57,Brisa Bracchi,26/01/2026,Água mineral,D D ARAUJO COMERCIO,22.869.913/0001-81,1877,26.0
 2026,1,57,Brisa Bracchi,26/01/2026,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,00031,4400.0
@@ -2373,7 +2373,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,1,56,Eribaldo Medeiros,26/01/2026,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 Computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora Multifuncional EPSON M2 120",JOÃO VICTOR CAMPOS DE LIMA,35028065/0001-20,00041,1000.0
 2026,1,56,Eribaldo Medeiros,30/01/2026,"Locação de Veículo Automotor - Locação de 01 (um) veículo tipo caminhonete/pick-up, cabine dupla, bicombustível, com ar condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de janeiro de 2026.",SANTOS & FERNANDES LTDA,02909308/0001-80,14101,5500.0
 2026,1,29,Eriko Jácome,05/02/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000071,8749.67
-2026,1,29,Eriko Jácome,31/01/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000238,3300.0
+2026,1,29,Eriko Jácome,31/01/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000238,3300.0
 2026,1,29,Eriko Jácome,05/02/2026,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000041,3000.0
 2026,1,29,Eriko Jácome,30/01/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000041,5500.0
 2026,1,29,Eriko Jácome,20/01/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5658866483,544.99
@@ -2435,7 +2435,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,1,76,Pedro Henrique,23/01/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02952192000161,37338870002999788,99.99
 2026,1,76,Pedro Henrique,22/01/2026,Material de Expediente,CASA NORTE LTDA,08713513000151,2069656,998.57
 2026,1,21,Preto Aquino,04/02/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,122,13042.13
-2026,1,21,Preto Aquino,02/02/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,83,4000.0
+2026,1,21,Preto Aquino,02/02/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,83,4000.0
 2026,1,21,Preto Aquino,03/02/2026,Combustível,SM comercial e derivados de petroleo LTDA,03459547000148,3283,1657.87
 2026,1,21,Preto Aquino,26/01/2026,Locação de Veículo Automotor,JV ferreira ME,17104197000101,1403,3300.0
 2026,1,30,Robson Carvalho,03/02/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1627,1980.31
@@ -2500,7 +2500,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,2,57,Brisa Bracchi,09/02/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001497988,285.93
 2026,2,57,Brisa Bracchi,26/02/2026,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2821,1000.0
 2026,2,57,Brisa Bracchi,02/03/2026,Consultoria e Assessoria na Área de Comunicação,AKA CLUB MIDIA LTDA,50189782000127,2600000000006,1300.0
-2026,2,57,Brisa Bracchi,24/02/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41.173.168/0001-86,12,3000.0
+2026,2,57,Brisa Bracchi,24/02/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41.173.168/0001-86,12,3000.0
 2026,2,57,Brisa Bracchi,25/02/2026,Material de Limpeza,CASA NORTE LTDA,08713513000151,105649,122.15
 2026,2,57,Brisa Bracchi,25/02/2026,Material de Expediente,CASA NORTE LTDA,08713513000151,105650,119.9
 2026,2,57,Brisa Bracchi,26/02/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,66970229016160,095003329632,157.77
@@ -2550,7 +2550,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,2,56,Eribaldo Medeiros,04/03/2026,Consultoria e Assessoria na Área de Comunicação - Criação de conteúdo jornalístico de redes sociais para divulgação de ações do mandato do vereador Eribaldo Medeiros e assessoria de imprensa,JEFFERSON STERFENO DA SILVA,43.167.369/0001-04,0080,3600.0
 2026,2,56,Eribaldo Medeiros,23/02/2026,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE i5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2120",JOAO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0045,1000.0
 2026,2,29,Eriko Jácome,03/03/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000072,9200.0
-2026,2,29,Eriko Jácome,28/02/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000245,3300.0
+2026,2,29,Eriko Jácome,28/02/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000245,3300.0
 2026,2,29,Eriko Jácome,04/03/2026,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000042,3000.0
 2026,2,29,Eriko Jácome,02/03/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000068,5500.0
 2026,2,29,Eriko Jácome,20/02/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5687517313,574.99
@@ -2607,7 +2607,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,2,76,Pedro Henrique,23/02/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02952192000161,37338870003129008,109.96
 2026,2,21,Preto Aquino,05/03/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,123,12999.89
 2026,2,21,Preto Aquino,22/02/2026,Locação de Veículo Automotor,j v ferreira ME,17104197000101,1436,3300.0
-2026,2,21,Preto Aquino,03/03/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,84,4000.0
+2026,2,21,Preto Aquino,03/03/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,84,4000.0
 2026,2,21,Preto Aquino,05/03/2026,Combustível,S M comercial e derivados de petroleo LTDA,03459547000148,3376,1700.11
 2026,2,30,Robson Carvalho,02/03/2026,Consultoria e Assessoria na Área de Comunicação,ELIABE E VICTOR LTDA,26.684.366/0001-10,1020,4250.0
 2026,2,30,Robson Carvalho,04/03/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,22,7400.0
@@ -2679,7 +2679,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,3,57,Brisa Bracchi,09/04/2026,Consultoria e Assessoria Jurídica,CAVALCANTE CERQUEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,51995600000178,83,8500.0
 2026,3,57,Brisa Bracchi,01/04/2026,Consultoria e Assessoria na Área de Comunicação,49711669 LUANA TAYZE XAVIER DE MELO,49711669000180,63,1060.0
 2026,3,57,Brisa Bracchi,09/04/2026,Material para a Divulgação da Atividade Parlamentar,ALANE ARAUJO COSTA DA SILVA,34331757000180,2857,985.0
-2026,3,57,Brisa Bracchi,30/03/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO 07968135400,41.173.168/0001-86,0000013,3000.0
+2026,3,57,Brisa Bracchi,30/03/2026,Consultoria e Assessoria na Área de Comunicação,PAULO VITOR SILVA DO NASCIMENTO,41.173.168/0001-86,0000013,3000.0
 2026,3,57,Brisa Bracchi,01/04/2026,Material de Expediente,CASA NORTE LTDA,08713513000151,287190,272.3
 2026,3,57,Brisa Bracchi,01/04/2026,Material de Limpeza,CASA NORTE LTDA,08713513000151,287191,48.95
 2026,3,57,Brisa Bracchi,06/04/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,095003329632,095003329632,157.97
@@ -2687,7 +2687,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,3,57,Brisa Bracchi,25/02/2026,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,41,4400.0
 2026,3,53,Camila Araújo,31/03/2026,Licença de Software,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA ME,49.941.949/0001-85,52,600.0
 2026,3,53,Camila Araújo,28/03/2026,Locação de Veículo Automotor,F2 VEICULOS LTDA,10.360.809/0001-88,0002403,5500.0
-2026,3,53,Camila Araújo,31/03/2026,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,360,3900.0
+2026,3,53,Camila Araújo,31/03/2026,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,360,3900.0
 2026,3,53,Camila Araújo,31/03/2026,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,0000000075,12000.0
 2026,3,17,Chagas Catarino,26/03/2026,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,260000000347,11000.0
 2026,3,17,Chagas Catarino,26/03/2026,Locação de Veículo Automotor,LAS LOCAÇAO DE VEICULOS LTDA,50.278.163/0001-09,88,4000.0
@@ -2729,7 +2729,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,3,56,Eribaldo Medeiros,26/03/2026,"Locação de Equipamentos de Informática - Locação de Equipamentos de Informática, sendo: 03 Computadores completos(CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2 120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0049,1000.0
 2026,3,56,Eribaldo Medeiros,30/03/2026,"Locação de Veículo Automotor - Locação de 01(um) veículo tipo caminhonete/Pick-up, cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês de março de 2026.",SANTOS & FERNANDES LTDA.,02909308/0001-80,14411,5500.0
 2026,3,29,Eriko Jácome,27/03/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000073,9200.0
-2026,3,29,Eriko Jácome,31/03/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000251,3300.0
+2026,3,29,Eriko Jácome,31/03/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000251,3300.0
 2026,3,29,Eriko Jácome,01/04/2026,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000043,3000.0
 2026,3,29,Eriko Jácome,30/03/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000096,5500.0
 2026,3,29,Eriko Jácome,20/03/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5708310609,574.99
@@ -2789,7 +2789,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,3,76,Pedro Henrique,26/03/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,01546626,334.26
 2026,3,21,Preto Aquino,08/04/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,124,12483.61
 2026,3,21,Preto Aquino,07/04/2026,Combustível,SM Comercial e derivados de petroleo LTDA,03459547000148,3466,2216.39
-2026,3,21,Preto Aquino,07/04/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,86,4000.0
+2026,3,21,Preto Aquino,07/04/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,86,4000.0
 2026,3,21,Preto Aquino,23/03/2026,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1481,3300.0
 2026,3,30,Robson Carvalho,01/04/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1694,2086.64
 2026,3,30,Robson Carvalho,01/04/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,22,7400.0
@@ -2860,7 +2860,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,4,57,Brisa Bracchi,06/04/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001557019,341.25
 2026,4,57,Brisa Bracchi,01/04/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001553525,100.0
 2026,4,57,Brisa Bracchi,05/05/2026,Consultoria e Assessoria na Área de Comunicação,61.812.450 FLAVIA LORENA DAMASCENO DE MACEDO,61.812.450/0001-73,35,2200.0
-2026,4,57,Brisa Bracchi,04/05/2026,Consultoria e Assessoria na Área de Comunicação,EVERTON DANTAS BESERRA 89818679415,30.456.979/0001-78,25,5000.0
+2026,4,57,Brisa Bracchi,04/05/2026,Consultoria e Assessoria na Área de Comunicação,EVERTON DANTAS BESERRA,30.456.979/0001-78,25,5000.0
 2026,4,57,Brisa Bracchi,06/05/2026,Consultoria e Assessoria na Área de Comunicação,ALANE ARAUJO COSTA DA SILVA,34331757000180,6,665.0
 2026,4,57,Brisa Bracchi,30/04/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,095003329632,095003329632,157.97
 2026,4,57,Brisa Bracchi,29/04/2026,Água mineral,D D ARAUJO COMERCIO,22.869.913/0001-81,1950,52.0
@@ -2906,7 +2906,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,4,56,Eribaldo Medeiros,27/04/2026,"Locação de Equipamentos de Informática - Locação de Equipamentos de Informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2 120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0053,1000.0
 2026,4,56,Eribaldo Medeiros,28/04/2026,Consultoria e Assessoria na Área de Comunicação - Criação de conteúdo jornalístico de redes sociais para divulgação de ações do mandato do Vereador Eribaldo Medeiros e assessoria de imprensa durante o mês de abril/2026,LUCAS TAVARES DE OLIVEIRA,31.912.059/0001-80,0084,3600.0
 2026,4,29,Eriko Jácome,30/04/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000074,9200.0
-2026,4,29,Eriko Jácome,30/04/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000259,3300.0
+2026,4,29,Eriko Jácome,30/04/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000259,3300.0
 2026,4,29,Eriko Jácome,04/05/2026,Consultoria e Assessoria na Área de Comunicação,49.454.467 GILMAR BEZERRA DA SILVA,49.454.467/0001-09,0000000044,3000.0
 2026,4,29,Eriko Jácome,30/04/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000098,5500.0
 2026,4,29,Eriko Jácome,20/04/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5736981544,574.99
@@ -2980,7 +2980,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,4,76,Pedro Henrique,10/04/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,1561964,300.42
 2026,4,21,Preto Aquino,06/05/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advogado,26954329000185,01,12950.24
 2026,4,21,Preto Aquino,23/04/2026,Locação de Veículo Automotor,JV ferreira ME,17104197000101,1513,3300.0
-2026,4,21,Preto Aquino,05/05/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,89,4000.0
+2026,4,21,Preto Aquino,05/05/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,89,4000.0
 2026,4,21,Preto Aquino,06/05/2026,Combustível,SM comercial e derivado de petroleo LTDA,03459547000148,3523,1749.76
 2026,4,30,Robson Carvalho,04/05/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,2,7400.0
 2026,4,30,Robson Carvalho,04/05/2026,Material para a Divulgação da Atividade Parlamentar,ELIABE E VICTOR LTDA,26.684.366/0001-10,3,4250.0
@@ -3052,7 +3052,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,57,Brisa Bracchi,06/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001588141,100.0
 2026,5,57,Brisa Bracchi,05/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001585744,276.22
 2026,5,57,Brisa Bracchi,08/06/2026,Consultoria e Assessoria Jurídica,CERQUEIRA E MIRANDA ADVOGADOS,51.995.600/0001-78,2,6500.0
-2026,5,57,Brisa Bracchi,02/06/2026,Consultoria e Assessoria na Área de Comunicação,EVERTON DANTAS BESERRA 89818679415,30.456.979/0001-78,27,5000.0
+2026,5,57,Brisa Bracchi,02/06/2026,Consultoria e Assessoria na Área de Comunicação,EVERTON DANTAS BESERRA,30.456.979/0001-78,27,5000.0
 2026,5,57,Brisa Bracchi,01/06/2026,Consultoria e Assessoria na Área de Comunicação,61.812.450 FLAVIA LORENA DAMASCENO DE MACEDO,61.812.450/0001-73,39,2200.0
 2026,5,57,Brisa Bracchi,02/06/2026,Consultoria e Assessoria na Área de Comunicação,ALANE ARAUJO COSTA DA SILVA,34331757000180,139,350.0
 2026,5,57,Brisa Bracchi,21/05/2026,Material de Limpeza,CASA NORTE ATACADO,08.713.513/0001-51,111824,50.65
@@ -3063,7 +3063,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,57,Brisa Bracchi,25/05/2026,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,00047,4400.0
 2026,5,53,Camila Araújo,28/05/2026,Locação de Veículo Automotor,MJ LOCACOES E VENDAS DE VEICULOS,45.092.501/0001-83,0002805,5500.0
 2026,5,53,Camila Araújo,27/05/2026,Licença de Software,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA ME,49.941.949/0001-85,67,600.0
-2026,5,53,Camila Araújo,28/05/2026,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,384,3900.0
+2026,5,53,Camila Araújo,28/05/2026,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,384,3900.0
 2026,5,53,Camila Araújo,27/05/2026,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,1,12000.0
 2026,5,68,Claudio Custódio,24/05/2026,"Provedores de internet, telefonia fixa ou celular",Brisanet,04.601.397/0001-28,97429780,109.89
 2026,5,68,Claudio Custódio,24/05/2026,Consultoria e Assessoria na Área de Comunicação,Glacia Marillac Azevedo de Medeiros Rondon,40.924.768/0001-76,13,4500.0
@@ -3104,7 +3104,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,56,Eribaldo Medeiros,26/05/2026,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 impressora multifuncional EPSON M2120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0056,1000.0
 2026,5,56,Eribaldo Medeiros,01/06/2026,Consultoria e Assessoria na Área de Comunicação - Criação de conteúdo jornalístico de redes sociais para divulgação de ações do mandato do vereador Eribaldo Medeiros e assessoria de imprensa durante o mês de maio/2026,JEFFERSON STERFENO DA SILVA,431673690001-04,0093,3600.0
 2026,5,29,Eriko Jácome,02/06/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000001,9200.0
-2026,5,29,Eriko Jácome,09/06/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,000000002,3300.0
+2026,5,29,Eriko Jácome,09/06/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,000000002,3300.0
 2026,5,29,Eriko Jácome,06/05/2026,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02.625.717/0001-54,0000029825,289.98
 2026,5,29,Eriko Jácome,19/05/2026,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02.625.717/0001-54,0000029981,116.0
 2026,5,29,Eriko Jácome,02/06/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000128,5500.0
@@ -3179,7 +3179,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,76,Pedro Henrique,08/05/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001590764,309.96
 2026,5,21,Preto Aquino,03/06/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,02,12961.86
 2026,5,21,Preto Aquino,28/05/2026,Combustível,S M comercial e derivados de petroleo LTDAS,03459547000148,3593,1738.14
-2026,5,21,Preto Aquino,02/06/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,90,4000.0
+2026,5,21,Preto Aquino,02/06/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,90,4000.0
 2026,5,21,Preto Aquino,25/05/2026,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1559,3300.0
 2026,5,30,Robson Carvalho,02/06/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE IND DE ADVOCACIA,43.807.410/0001-51,4,7400.0
 2026,5,30,Robson Carvalho,01/06/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1780,2119.61
@@ -3301,7 +3301,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,6,56,Eribaldo Medeiros,30/06/2026,Consultoria e Assessoria na Área de Comunicação - Criação de conteúdo jornalístico de redes sociais para divulgação de ações do mandato do vereador Eribaldo Medeiros e assessoria de imprensa durante o mês de Junho/2026,LUCAS TAVARES DE OLIVEIRA,31.912.059/0001-80,0101,3600.0
 2026,6,56,Eribaldo Medeiros,18/06/2026,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0059,1000.0
 2026,6,29,Eriko Jácome,07/07/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000002,9200.0
-2026,6,29,Eriko Jácome,07/07/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000004,3300.0
+2026,6,29,Eriko Jácome,07/07/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000004,3300.0
 2026,6,29,Eriko Jácome,01/07/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000181,5500.0
 2026,6,29,Eriko Jácome,20/06/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5786928566,574.99
 2026,6,29,Eriko Jácome,07/07/2026,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-51,0002149230,2802.53
@@ -3364,7 +3364,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,6,76,Pedro Henrique,23/06/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001638038,328.6
 2026,6,76,Pedro Henrique,12/06/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001627674,300.0
 2026,6,21,Preto Aquino,06/07/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,3,12929.23
-2026,6,21,Preto Aquino,01/07/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,93,4000.0
+2026,6,21,Preto Aquino,01/07/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,93,4000.0
 2026,6,21,Preto Aquino,23/06/2026,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1594,3300.0
 2026,6,21,Preto Aquino,03/07/2026,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,3709,1770.77
 2026,6,30,Robson Carvalho,02/07/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,7,11100.0
@@ -3447,7 +3447,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,7,57,Brisa Bracchi,04/08/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,40.432.544/0001-47,095003329632,157.97
 2026,7,57,Brisa Bracchi,27/07/2026,Locação de Veículo Automotor,URBANO LOCAÇÃO E TRANSPORTE LTDA,58336738000104,00055,4400.0
 2026,7,53,Camila Araújo,31/07/2026,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,5,12000.0
-2026,7,53,Camila Araújo,04/08/2026,Extração de Cópias Reprográficas e Digitais,MOISES PEREIRA DE ARAUJO 02658918410,40.671.215/0001-59,416,3900.0
+2026,7,53,Camila Araújo,04/08/2026,Extração de Cópias Reprográficas e Digitais,MOISES PEREIRA DE ARAUJO,40.671.215/0001-59,416,3900.0
 2026,7,53,Camila Araújo,28/06/2026,Locação de Veículo Automotor,PAVEL RENT CAR,42.908.733/0001-79,000290704,5500.0
 2026,7,53,Camila Araújo,31/07/2026,Material de Expediente,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA - ME,49.941.949/0001-85,81,600.0
 2026,7,68,Claudio Custódio,12/08/2026,Consultoria e Assessoria na Área de Comunicação,Facil Comunicação LTDA,05.842.732/0001-42,29,1500.0
@@ -3484,7 +3484,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,7,56,Eribaldo Medeiros,24/07/2026,"Locação de Equipamentos de Informática - Locação de equipamentos de informática, sendo: 03 computadores completos (CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2 120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0061,1000.0
 2026,7,56,Eribaldo Medeiros,28/07/2026,"Locação de Veículo Automotor - Locação de 01 (um) veículo tipo caminhonete/Pick-up cabine dupla, bicombustível, com ar-condicionado, direção hidráulica, travas e vidros elétricas, quilometragem livre, sem motorista e sem combustível, de placa RQG4E73, no mês julho de 2026",SANTOS & FERNANDES LTDA.,02.909.308/0001-80,14975,5500.0
 2026,7,29,Eriko Jácome,31/07/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000003,9200.0
-2026,7,29,Eriko Jácome,31/07/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA 05174357480,16.204.528/0001-12,0000000020,3300.0
+2026,7,29,Eriko Jácome,31/07/2026,Consultoria e Assessoria Contábil,BRUNO DIEGO DA SILVEIRA,16.204.528/0001-12,0000000020,3300.0
 2026,7,29,Eriko Jácome,31/07/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000216,5500.0
 2026,7,29,Eriko Jácome,20/07/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5812295407,574.99
 2026,7,29,Eriko Jácome,06/08/2026,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-51,0002163180,3074.88
@@ -3551,7 +3551,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,7,21,Preto Aquino,04/08/2026,Combustível,S M Comercial e derivados de petroleo LTDA,03459547000148,3797,1501.07
 2026,7,21,Preto Aquino,07/08/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,0005,13000.0
 2026,7,21,Preto Aquino,23/07/2026,Locação de Veículo Automotor,J V ferreira ME,17104197000101,1631,3300.0
-2026,7,21,Preto Aquino,04/08/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor 87839920497,16822176000169,95,4000.0
+2026,7,21,Preto Aquino,04/08/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,95,4000.0
 2026,7,30,Robson Carvalho,03/08/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0001-13,1867,3253.76
 2026,7,30,Robson Carvalho,29/07/2026,Locação de Veículo Automotor,PAVEL RENT CAR LTDA,42.908.733/0001-79,FATURA 290701,5500.0
 2026,7,30,Robson Carvalho,03/08/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTE SOCIEDADE DE ADVOCACIA,43.807.410/0001-51,12,11100.0
