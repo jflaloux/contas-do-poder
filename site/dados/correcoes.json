@@ -3,6 +3,33 @@
   "c": [
     {
       "data": "2026-10-02",
+      "titulo": "Deputados estaduais: quem está no cargo hoje em sete Assembleias",
+      "texto": [
+        "No Ceará, na Paraíba, em Goiás, em Santa Catarina, em Rondônia, no Rio Grande do Sul e no Amapá, quem estava \"no cargo\" saía só da folha de pagamento ou da prestação de contas do último mês publicado. Assim, apareciam como no cargo titulares licenciados que continuam recebendo da Assembleia e suplentes que já tinham deixado a vaga, e ficavam de fora deputados que ainda não tinham prestado contas do último mês. A soma dava 1.064 deputados no cargo para 1.059 cadeiras.",
+        "Agora, quem está no cargo hoje sai da lista de deputados em exercício que cada uma dessas Assembleias publica no próprio site (em Goiás, também da lista de afastamentos, com as datas; na Paraíba, do subsídio pago pela metade no último mês, que mostra a saída do suplente). Mudou a situação de 13 deputados.",
+        "Em Goiás, dois deputados sem afastamento publicado passam a ter o subsídio da lei também nos meses em que não prestaram contas da verba. Em Rondônia, um suplente deixa de ter o subsídio de agosto e setembro de 2026, meses depois da última prestação de contas dele."
+      ],
+      "paginas": ["est-23-37341", "est-23-33551", "est-23-7245", "est-25-2880725", "est-52-138", "est-52-821", "est-52-68", "est-42-240001610066", "est-42-240001610832", "est-11-220001643237", "est-43-210001620208", "est-16-30001606514", "est-16-30001607459"]
+    },
+    {
+      "data": "2026-10-02",
+      "titulo": "STJ e CNJ: presidência e Corregedoria Nacional desatualizadas",
+      "texto": [
+        "As páginas dos ministros do STJ não mostravam quem presidiu o tribunal, porque a folha do STJ traz sempre o gabinete do ministro como lotação. E a página de Mauro Campbell Marques ainda o mostrava como corregedor nacional de Justiça, função que ele deixou em agosto de 2026.",
+        "Agora as funções vêm também da página oficial do STJ: Herman Benjamin, presidente até agosto de 2026; Luis Felipe Salomão, vice-presidente até agosto de 2026 e presidente desde então; Mauro Campbell Marques, vice-presidente desde agosto de 2026; Benedito Gonçalves, corregedor nacional de Justiça desde agosto de 2026. Os valores não mudaram."
+      ],
+      "paginas": ["jud-stj-herman-benjamin", "jud-stj-luis-felipe-salomao", "jud-stj-mauro-campbell-marques", "jud-stj-benedito-goncalves"]
+    },
+    {
+      "data": "2026-10-02",
+      "titulo": "Câmara Municipal do Recife: vereadores fora do site por algumas horas",
+      "texto": [
+        "Na atualização de 2 de outubro de 2026, a consulta da verba indenizatória da Câmara do Recife deu erro para todos os vereadores, e o nosso robô gravou um arquivo vazio em vez de manter o que já tinha. Com isso, a página do Recife ficou sem os vereadores por algumas horas.",
+        "O robô agora mantém os dados já gravados quando a consulta dá erro, e os vereadores voltaram ao site. Os valores não mudaram."
+      ]
+    },
+    {
+      "data": "2026-10-02",
       "titulo": "Fornecedores pessoa física: número do CPF tirado do nome",
       "texto": [
         "Nos gastos de deputados estaduais (SP, MG, RJ, PE, CE, GO, SC, MS, RO e AP) e de vereadores (São Paulo e Natal), o nome de alguns fornecedores vinha com o número do CPF do dono, como as fontes publicam a razão social do microempreendedor individual (MEI). O número foi tirado do nome em todas as páginas; os valores não mudaram.",
