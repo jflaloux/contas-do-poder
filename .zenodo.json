@@ -1,0 +1,29 @@
+{
+  "title": "Contas do Poder: dados e código",
+  "upload_type": "dataset",
+  "creators": [
+    { "name": "Laloux, Jean-François" }
+  ],
+  "description": "<p>Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais da Câmara, do Senado e do Portal da Transparência. E também, sempre pela fonte oficial de cada um: governadores e vices dos 27 estados; deputados estaduais e distritais das 27 Assembleias Legislativas; ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o procurador-geral da República; vereadores, prefeitos e vices de capitais e de cidades do Ceará e da Paraíba; o gasto da Câmara Municipal de cada cidade; e o Índice de Transparência dos estados.</p><p>O pacote reúne os dados (arquivos JSON e a base de onde saem), os robôs que coletam os dados oficiais e o código do site <a href=\"https://contasdopoder.com\">contasdopoder.com</a>. Cada número tem o link da fonte. Só entram dados públicos oficiais.</p><p>Licenças: os dados, sob CC BY 4.0 (citando “Contas do Poder” e as fontes originais); o código, sob MIT (arquivo LICENSE).</p>",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "por",
+  "keywords": [
+    "remuneração de agentes públicos",
+    "transparência pública",
+    "dados abertos",
+    "Brasil",
+    "salários",
+    "gastos públicos",
+    "Poder Legislativo",
+    "Poder Judiciário",
+    "governadores",
+    "vereadores",
+    "Lei de Acesso à Informação"
+  ],
+  "related_identifiers": [
+    { "identifier": "https://contasdopoder.com", "relation": "isDocumentedBy", "resource_type": "other" },
+    { "identifier": "https://github.com/jflaloux/contas-do-poder", "relation": "isSupplementTo", "resource_type": "software" }
+  ],
+  "notes": "Código (robôs e site): licença MIT. Dados gerados: CC BY 4.0. Uma versão por mês, copiada do GitHub."
+}
