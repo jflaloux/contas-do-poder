@@ -534,8 +534,8 @@
     "ato": "Lei 11.315/2022",
     "url": "https://www.al.rn.leg.br/storage/legislacao/2023/es2r5o18f7ve1pnah0ckgc15wtj8q7.pdf"
    },
-   "barreiras": "A API do Portal da Transparência pede uma chave fixa escrita no JavaScript da página (credencial): não usar.",
-   "observacoes": "Robô pronto (coleta/assembleias/rn.py), só com o subsídio da lei (Lei 11.315/2022) e a lista de deputados do sistema legislativo (Transparência Legislativa: nome, vigência e partido de hoje). A verba e a folha do Portal da Transparência saem de uma API que só responde com uma chave fixa escrita no código da página (com usuário e senha dentro): é credencial e não é usada. A lista traz CPF e data de nascimento: não são guardados. Os 24 de hoje estão no cargo desde jan/2025 (George Soares saiu antes; Vivaldo Costa, suplente, no lugar); a lista não mostra licenças.",
+   "barreiras": "A API do Portal da Transparência exige autenticação: não é usada.",
+   "observacoes": "Robô pronto (coleta/assembleias/rn.py), só com o subsídio da lei (Lei 11.315/2022) e a lista de deputados do sistema legislativo (Transparência Legislativa: nome, vigência e partido de hoje). A verba e a folha do Portal da Transparência saem de uma API que exige autenticação, e ela não é usada. A lista traz CPF e data de nascimento: não são guardados. Os 24 de hoje estão no cargo desde jan/2025 (George Soares saiu antes; Vivaldo Costa, suplente, no lugar); a lista não mostra licenças.",
    "abriu_de_fora": true
   },
   "RO": {

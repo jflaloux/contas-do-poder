@@ -8,9 +8,8 @@ Fontes:
   https://www.al.rn.leg.br/deputados.
 - Subsídio: Lei 11.315/2022 (R$ 33.006,39 desde fev/2024 e R$ 34.774,64 desde fev/2025).
 - Verba e folha: o Portal da Transparência da ALRN (https://transparencia.al.rn.leg.br/verbas, nota a nota, e
-  /servidores-pagamentos) lê tudo de uma API que só responde com uma chave fixa escrita no código da página (com um
-  usuário e uma senha dentro): é credencial, e não é usada (regra do projeto). Sem ela, a verba e a folha de cada
-  deputado ficam de fora, e o salário é o da lei.
+  /servidores-pagamentos) lê tudo de uma API que exige autenticação, e ela não é usada (regra do projeto). A verba e a
+  folha de cada deputado ficam de fora, e o salário é o da lei.
 Quem está no cargo: a lista atual da ALRN (24 deputados), desde jan/2025 ou desde o início da vigência. A lista não traz
 quem saiu nem as licenças; os 24 de hoje são os mesmos desde o começo de 2025 (conferido com os eleitos de 2022: George
 Soares deixou a vaga antes de 2025 e Vivaldo Costa, suplente, está no lugar).

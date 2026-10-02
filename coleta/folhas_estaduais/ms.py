@@ -1,7 +1,7 @@
 """Mato Grosso do Sul: Portal da Transparência, "Folha de Pagamento", pela API que o próprio portal usa.
 
 O portal entrega a qualquer visitante uma chave anônima de acesso (GET /Auth/Token, sem login nem senha) e consulta a
-API de folha (gw.sgi.ms.gov.br) com ela. Não usamos as credenciais que aparecem no código JavaScript do portal.
+API de folha (gw.sgi.ms.gov.br) com ela. Só essa chave anônima é usada.
 A busca é por cargo ("GOVERNADOR", "VICE-GOVERNADOR") e mês; a resposta traz a remuneração fixa e a eventual (sem as
 rubricas). O CPF da resposta não é guardado. Só abre de dentro do Brasil.
 https://www.transparencia.ms.gov.br/"""
