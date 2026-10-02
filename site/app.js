@@ -512,7 +512,7 @@
           ? h("span", null, `Governo ${deUF(e.uf)}`, h("small", null, `${tituloGov(e)}: ${e.gov.n} · o salário do cargo${assembleiaUF(e.uf) ? " e a Assembleia" : ""}`))
           : h("span", null, e.gov.n, h("small", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")}`)))));
       cid.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao sugestao--cidade", role: "option", onclick: () => { fechar(); input.value = ""; irParaCidade(c, origemBusca); } },
-        avatarCidade("p"), h("span", null, `Câmara Municipal de ${c.n} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
+        avatarCidade("p"), h("span", null, `Câmara Municipal ${deCidade(c)} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
       pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
       if (input.value.trim().length >= 2 && !itens.length) {
@@ -2046,7 +2046,7 @@
         ? `o gasto da Câmara Municipal em ${c.ano} aparece como ${reais(c.custo)}, ou ${reaisC(porHabMes(c))} por habitante por mês, muito abaixo das cidades do mesmo tamanho (mediana de ${reaisC(med)}). Parece que parte do gasto foi informada em outra função`
         : `ainda não aparece a declaração de ${ano} (a mais recente é a de ${c.ano})`;
     const msg = [
-      `Olá. Sou morador(a) de ${c.n} (${c.uf}).`,
+      `Olá. Sou morador(a) da cidade ${deCidade(c)} (${c.uf}).`,
       `Nas contas anuais que a Prefeitura envia ao Tesouro Nacional (Declaração de Contas Anuais, no Siconfi), ${oQue}.`,
       prob.tipo === "antigo" ? `Peço que a declaração de ${ano} seja entregue, como manda a Lei de Responsabilidade Fiscal.`
         : "Peço que verifiquem e, se for o caso, corrijam (retifiquem) a declaração, para que o gasto da Câmara Municipal apareça na função 01 – Legislativa.",
@@ -2057,8 +2057,9 @@
     const medir = (acao) => evento("cobrar_cidade", { acao, cidade: c.n, uf: c.uf, problema: prob.tipo });
     const link = (texto, q, acao) => h("a", { class: "botao botao--leve", href: busca(q), target: "_blank", rel: "noopener", onclick: () => medir(acao) }, texto);
     return h("div", { class: "cobrar" },
-      h("h2", { class: "h3" }, `Mora em ${c.n}? Ajude a corrigir`),
-      h("p", null, `Quem envia essas contas ao Tesouro Nacional é a Prefeitura de ${c.n} (setor de contabilidade), pelo Siconfi, até 30 de abril de cada ano. Qualquer pessoa pode pedir a correção.`),
+      // "na cidade de São Paulo (SP)": com o nome e a sigla, para não confundir a cidade com o estado de mesmo nome
+      h("h2", { class: "h3" }, `Mora na cidade ${deCidade(c)} (${c.uf})? Ajude a corrigir`),
+      h("p", null, `Quem envia essas contas ao Tesouro Nacional é a Prefeitura ${deCidade(c)} (setor de contabilidade), pelo Siconfi, até 30 de abril de cada ano. Qualquer pessoa pode pedir a correção.`),
       h("ol", { class: "lista" },
         h("li", null, "Copie a mensagem abaixo."),
         h("li", null, "Mande para a ouvidoria ou o e-SIC (pedido de acesso à informação) da Prefeitura. Vale mandar também para a Câmara Municipal."),
@@ -2074,7 +2075,7 @@
   function textoCidade(c) {
     const link = endereco() ? `${origem()}${urlCidade(c)}` : "", real = salarioReal(c);
     return [
-      `*Câmara Municipal de ${c.n} (${c.uf})*`,
+      `*Câmara Municipal ${deCidade(c)} (${c.uf})*`,
       temCusto(c) ? `Custa *${compacto(c.custo / 12)} por mês* (${reaisC(porHabMes(c))} por habitante, por mês), com ${c.nv} vereadores.` : `${c.nv} vereadores.`,
       real ? (real.tribunal ? `Um vereador recebe ${reais(real.v)} por mês (valor típico, bruto, na folha que a Câmara manda ao ${real.tribunal}).` : real.folha ? `Um vereador recebe ${reais(real.v)} por mês pela folha da Câmara (mediana de 2025).` : `Cada vereador recebe ${reaisC(real.v)} por mês (desde ${fmtMes(real.desde)}).`)
         : `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês: é o teto da Constituição, e o salário fixado pela Câmara pode ser menor.`,
@@ -2194,7 +2195,7 @@
         ic.zc ? h("li", null, `A folha da Câmara de ${mesesTxt(ic.zc)} chegou sem vereadores.`) : null,
         h("li", null, "O número de vereadores na folha pode ser diferente do número de cadeiras: suplente que assumiu no meio do mês (os dois aparecem, cada um com uma parte), vereador licenciado que continua na folha."),
         h("li", null, "Fonte: ", h("a", { href: M.url, target: "_blank", rel: "noopener" }, `${M.tribunal}, dados abertos ↗`), `, folha até ${fmtMes(M.ultimo_mes)}. `,
-          ic.f ? [h("a", { href: ic.f, target: "_blank", rel: "noopener" }, `Ver a folha de ${c.n} na fonte ↗`), "."] : null)),
+          ic.f ? [h("a", { href: ic.f, target: "_blank", rel: "noopener" }, `Ver a folha ${deCidade(c)} na fonte ↗`), "."] : null)),
     ];
   }
   // a Prefeitura: o prefeito, o vice e, na Paraíba, os secretários
