@@ -1,0 +1,752 @@
+ano,mes,id,nome
+2025,1,89,Abigail Cunha
+2025,1,86,Aluízio Santos
+2025,1,3,Ana do Gás
+2025,1,50,Andreia M. Rezende
+2025,1,12,Antônio Pereira
+2025,1,72,Ariston Ribeiro de Sousa
+2025,1,51,Arnaldo Melo
+2025,1,80,Carlos Lula
+2025,1,112,Catulé Júnior
+2025,1,96,Claudia Coutinho
+2025,1,94,Claudio Cunha
+2025,1,53,Daniella
+2025,1,81,Davi Brandão
+2025,1,56,Dr. Yglésio
+2025,1,88,Drª Vivianne
+2025,1,90,Edna Silva
+2025,1,7,Edson Araújo
+2025,1,102,Eric Costa
+2025,1,83,Fabiana Vilar
+2025,1,93,Fernando Braide
+2025,1,82,Florêncio Neto
+2025,1,85,Francisco Nagib
+2025,1,17,Glalbert Cutrim
+2025,1,91,Guilherme Paz
+2025,1,19,Hemetério Weba
+2025,1,79,Iracema Vale
+2025,1,95,Janaína
+2025,1,104,João Batista Segundo
+2025,1,99,Julio Mendonça
+2025,1,101,Junior Cascaria
+2025,1,97,Junior França
+2025,1,113,Kekê Teixeira
+2025,1,100,Leandro Bello
+2025,1,66,Mical Damasceno
+2025,1,45,Neto Evangelista
+2025,1,87,Osmar Filho
+2025,1,26,Othelino Neto
+2025,1,103,Ricardo Arruda
+2025,1,31,Ricardo Rios
+2025,1,92,Rodrigo Lago
+2025,1,84,Solange Almeida
+2025,1,40,Wellington do Curso
+2025,2,49,Adelmo Soares
+2025,2,86,Aluízio Santos
+2025,2,3,Ana do Gás
+2025,2,50,Andreia M. Rezende
+2025,2,12,Antônio Pereira
+2025,2,72,Ariston Ribeiro de Sousa
+2025,2,51,Arnaldo Melo
+2025,2,80,Carlos Lula
+2025,2,112,Catulé Júnior
+2025,2,96,Claudia Coutinho
+2025,2,94,Claudio Cunha
+2025,2,53,Daniella
+2025,2,81,Davi Brandão
+2025,2,56,Dr. Yglésio
+2025,2,88,Drª Vivianne
+2025,2,90,Edna Silva
+2025,2,7,Edson Araújo
+2025,2,102,Eric Costa
+2025,2,83,Fabiana Vilar
+2025,2,93,Fernando Braide
+2025,2,82,Florêncio Neto
+2025,2,85,Francisco Nagib
+2025,2,17,Glalbert Cutrim
+2025,2,91,Guilherme Paz
+2025,2,19,Hemetério Weba
+2025,2,79,Iracema Vale
+2025,2,95,Janaína
+2025,2,104,João Batista Segundo
+2025,2,99,Julio Mendonça
+2025,2,101,Junior Cascaria
+2025,2,97,Junior França
+2025,2,113,Kekê Teixeira
+2025,2,100,Leandro Bello
+2025,2,66,Mical Damasceno
+2025,2,45,Neto Evangelista
+2025,2,87,Osmar Filho
+2025,2,26,Othelino Neto
+2025,2,67,Pará Figueiredo
+2025,2,103,Ricardo Arruda
+2025,2,31,Ricardo Rios
+2025,2,92,Rodrigo Lago
+2025,2,84,Solange Almeida
+2025,2,40,Wellington do Curso
+2025,3,49,Adelmo Soares
+2025,3,86,Aluízio Santos
+2025,3,3,Ana do Gás
+2025,3,50,Andreia M. Rezende
+2025,3,12,Antônio Pereira
+2025,3,72,Ariston Ribeiro de Sousa
+2025,3,51,Arnaldo Melo
+2025,3,80,Carlos Lula
+2025,3,112,Catulé Júnior
+2025,3,96,Claudia Coutinho
+2025,3,94,Claudio Cunha
+2025,3,114,Dalton Arruda
+2025,3,53,Daniella
+2025,3,81,Davi Brandão
+2025,3,56,Dr. Yglésio
+2025,3,88,Drª Vivianne
+2025,3,90,Edna Silva
+2025,3,102,Eric Costa
+2025,3,83,Fabiana Vilar
+2025,3,93,Fernando Braide
+2025,3,82,Florêncio Neto
+2025,3,85,Francisco Nagib
+2025,3,17,Glalbert Cutrim
+2025,3,91,Guilherme Paz
+2025,3,19,Hemetério Weba
+2025,3,79,Iracema Vale
+2025,3,95,Janaína
+2025,3,104,João Batista Segundo
+2025,3,99,Julio Mendonça
+2025,3,101,Junior Cascaria
+2025,3,97,Junior França
+2025,3,113,Kekê Teixeira
+2025,3,100,Leandro Bello
+2025,3,66,Mical Damasceno
+2025,3,45,Neto Evangelista
+2025,3,87,Osmar Filho
+2025,3,26,Othelino Neto
+2025,3,67,Pará Figueiredo
+2025,3,103,Ricardo Arruda
+2025,3,31,Ricardo Rios
+2025,3,92,Rodrigo Lago
+2025,3,84,Solange Almeida
+2025,3,40,Wellington do Curso
+2025,4,49,Adelmo Soares
+2025,4,86,Aluízio Santos
+2025,4,3,Ana do Gás
+2025,4,50,Andreia M. Rezende
+2025,4,12,Antônio Pereira
+2025,4,72,Ariston Ribeiro de Sousa
+2025,4,51,Arnaldo Melo
+2025,4,80,Carlos Lula
+2025,4,112,Catulé Júnior
+2025,4,96,Claudia Coutinho
+2025,4,94,Claudio Cunha
+2025,4,53,Daniella
+2025,4,81,Davi Brandão
+2025,4,56,Dr. Yglésio
+2025,4,88,Drª Vivianne
+2025,4,90,Edna Silva
+2025,4,102,Eric Costa
+2025,4,83,Fabiana Vilar
+2025,4,93,Fernando Braide
+2025,4,82,Florêncio Neto
+2025,4,85,Francisco Nagib
+2025,4,17,Glalbert Cutrim
+2025,4,91,Guilherme Paz
+2025,4,19,Hemetério Weba
+2025,4,79,Iracema Vale
+2025,4,95,Janaína
+2025,4,104,João Batista Segundo
+2025,4,99,Julio Mendonça
+2025,4,101,Junior Cascaria
+2025,4,97,Junior França
+2025,4,113,Kekê Teixeira
+2025,4,100,Leandro Bello
+2025,4,66,Mical Damasceno
+2025,4,45,Neto Evangelista
+2025,4,87,Osmar Filho
+2025,4,26,Othelino Neto
+2025,4,67,Pará Figueiredo
+2025,4,103,Ricardo Arruda
+2025,4,31,Ricardo Rios
+2025,4,92,Rodrigo Lago
+2025,4,84,Solange Almeida
+2025,4,40,Wellington do Curso
+2025,5,49,Adelmo Soares
+2025,5,86,Aluízio Santos
+2025,5,3,Ana do Gás
+2025,5,50,Andreia M. Rezende
+2025,5,12,Antônio Pereira
+2025,5,72,Ariston Ribeiro de Sousa
+2025,5,51,Arnaldo Melo
+2025,5,80,Carlos Lula
+2025,5,112,Catulé Júnior
+2025,5,96,Claudia Coutinho
+2025,5,94,Claudio Cunha
+2025,5,53,Daniella
+2025,5,81,Davi Brandão
+2025,5,56,Dr. Yglésio
+2025,5,88,Drª Vivianne
+2025,5,90,Edna Silva
+2025,5,102,Eric Costa
+2025,5,83,Fabiana Vilar
+2025,5,93,Fernando Braide
+2025,5,82,Florêncio Neto
+2025,5,85,Francisco Nagib
+2025,5,17,Glalbert Cutrim
+2025,5,91,Guilherme Paz
+2025,5,19,Hemetério Weba
+2025,5,79,Iracema Vale
+2025,5,95,Janaína
+2025,5,104,João Batista Segundo
+2025,5,99,Julio Mendonça
+2025,5,101,Junior Cascaria
+2025,5,97,Junior França
+2025,5,113,Kekê Teixeira
+2025,5,100,Leandro Bello
+2025,5,66,Mical Damasceno
+2025,5,45,Neto Evangelista
+2025,5,87,Osmar Filho
+2025,5,26,Othelino Neto
+2025,5,67,Pará Figueiredo
+2025,5,103,Ricardo Arruda
+2025,5,31,Ricardo Rios
+2025,5,92,Rodrigo Lago
+2025,5,84,Solange Almeida
+2025,5,40,Wellington do Curso
+2025,6,49,Adelmo Soares
+2025,6,86,Aluízio Santos
+2025,6,3,Ana do Gás
+2025,6,50,Andreia M. Rezende
+2025,6,12,Antônio Pereira
+2025,6,72,Ariston Ribeiro de Sousa
+2025,6,51,Arnaldo Melo
+2025,6,80,Carlos Lula
+2025,6,112,Catulé Júnior
+2025,6,96,Claudia Coutinho
+2025,6,94,Claudio Cunha
+2025,6,53,Daniella
+2025,6,81,Davi Brandão
+2025,6,56,Dr. Yglésio
+2025,6,88,Drª Vivianne
+2025,6,58,Drª. Helena Duailibe
+2025,6,90,Edna Silva
+2025,6,115,Enos Henrique Nogueira Ferreira
+2025,6,102,Eric Costa
+2025,6,83,Fabiana Vilar
+2025,6,93,Fernando Braide
+2025,6,82,Florêncio Neto
+2025,6,85,Francisco Nagib
+2025,6,17,Glalbert Cutrim
+2025,6,91,Guilherme Paz
+2025,6,79,Iracema Vale
+2025,6,95,Janaína
+2025,6,104,João Batista Segundo
+2025,6,99,Julio Mendonça
+2025,6,101,Junior Cascaria
+2025,6,97,Junior França
+2025,6,113,Kekê Teixeira
+2025,6,100,Leandro Bello
+2025,6,66,Mical Damasceno
+2025,6,45,Neto Evangelista
+2025,6,87,Osmar Filho
+2025,6,26,Othelino Neto
+2025,6,67,Pará Figueiredo
+2025,6,103,Ricardo Arruda
+2025,6,31,Ricardo Rios
+2025,6,92,Rodrigo Lago
+2025,6,84,Solange Almeida
+2025,6,40,Wellington do Curso
+2025,7,49,Adelmo Soares
+2025,7,86,Aluízio Santos
+2025,7,3,Ana do Gás
+2025,7,50,Andreia M. Rezende
+2025,7,12,Antônio Pereira
+2025,7,72,Ariston Ribeiro de Sousa
+2025,7,51,Arnaldo Melo
+2025,7,80,Carlos Lula
+2025,7,112,Catulé Júnior
+2025,7,96,Claudia Coutinho
+2025,7,94,Claudio Cunha
+2025,7,53,Daniella
+2025,7,81,Davi Brandão
+2025,7,56,Dr. Yglésio
+2025,7,88,Drª Vivianne
+2025,7,58,Drª. Helena Duailibe
+2025,7,90,Edna Silva
+2025,7,115,Enos Henrique Nogueira Ferreira
+2025,7,102,Eric Costa
+2025,7,83,Fabiana Vilar
+2025,7,93,Fernando Braide
+2025,7,82,Florêncio Neto
+2025,7,85,Francisco Nagib
+2025,7,17,Glalbert Cutrim
+2025,7,91,Guilherme Paz
+2025,7,79,Iracema Vale
+2025,7,95,Janaína
+2025,7,104,João Batista Segundo
+2025,7,99,Julio Mendonça
+2025,7,97,Junior França
+2025,7,113,Kekê Teixeira
+2025,7,100,Leandro Bello
+2025,7,66,Mical Damasceno
+2025,7,45,Neto Evangelista
+2025,7,87,Osmar Filho
+2025,7,26,Othelino Neto
+2025,7,67,Pará Figueiredo
+2025,7,103,Ricardo Arruda
+2025,7,31,Ricardo Rios
+2025,7,92,Rodrigo Lago
+2025,7,84,Solange Almeida
+2025,7,40,Wellington do Curso
+2025,8,49,Adelmo Soares
+2025,8,86,Aluízio Santos
+2025,8,3,Ana do Gás
+2025,8,50,Andreia M. Rezende
+2025,8,12,Antônio Pereira
+2025,8,72,Ariston Ribeiro de Sousa
+2025,8,51,Arnaldo Melo
+2025,8,80,Carlos Lula
+2025,8,112,Catulé Júnior
+2025,8,96,Claudia Coutinho
+2025,8,94,Claudio Cunha
+2025,8,53,Daniella
+2025,8,81,Davi Brandão
+2025,8,56,Dr. Yglésio
+2025,8,88,Drª Vivianne
+2025,8,58,Drª. Helena Duailibe
+2025,8,90,Edna Silva
+2025,8,102,Eric Costa
+2025,8,83,Fabiana Vilar
+2025,8,93,Fernando Braide
+2025,8,82,Florêncio Neto
+2025,8,85,Francisco Nagib
+2025,8,17,Glalbert Cutrim
+2025,8,91,Guilherme Paz
+2025,8,79,Iracema Vale
+2025,8,95,Janaína
+2025,8,104,João Batista Segundo
+2025,8,99,Julio Mendonça
+2025,8,101,Junior Cascaria
+2025,8,97,Junior França
+2025,8,113,Kekê Teixeira
+2025,8,100,Leandro Bello
+2025,8,66,Mical Damasceno
+2025,8,45,Neto Evangelista
+2025,8,87,Osmar Filho
+2025,8,26,Othelino Neto
+2025,8,67,Pará Figueiredo
+2025,8,103,Ricardo Arruda
+2025,8,31,Ricardo Rios
+2025,8,92,Rodrigo Lago
+2025,8,84,Solange Almeida
+2025,8,40,Wellington do Curso
+2025,9,49,Adelmo Soares
+2025,9,86,Aluízio Santos
+2025,9,3,Ana do Gás
+2025,9,50,Andreia M. Rezende
+2025,9,12,Antônio Pereira
+2025,9,72,Ariston Ribeiro de Sousa
+2025,9,51,Arnaldo Melo
+2025,9,80,Carlos Lula
+2025,9,112,Catulé Júnior
+2025,9,96,Claudia Coutinho
+2025,9,94,Claudio Cunha
+2025,9,53,Daniella
+2025,9,81,Davi Brandão
+2025,9,56,Dr. Yglésio
+2025,9,88,Drª Vivianne
+2025,9,58,Drª. Helena Duailibe
+2025,9,90,Edna Silva
+2025,9,102,Eric Costa
+2025,9,83,Fabiana Vilar
+2025,9,93,Fernando Braide
+2025,9,82,Florêncio Neto
+2025,9,85,Francisco Nagib
+2025,9,109,Fred Maia
+2025,9,17,Glalbert Cutrim
+2025,9,91,Guilherme Paz
+2025,9,79,Iracema Vale
+2025,9,95,Janaína
+2025,9,104,João Batista Segundo
+2025,9,99,Julio Mendonça
+2025,9,101,Junior Cascaria
+2025,9,97,Junior França
+2025,9,113,Kekê Teixeira
+2025,9,100,Leandro Bello
+2025,9,66,Mical Damasceno
+2025,9,45,Neto Evangelista
+2025,9,87,Osmar Filho
+2025,9,26,Othelino Neto
+2025,9,67,Pará Figueiredo
+2025,9,103,Ricardo Arruda
+2025,9,31,Ricardo Rios
+2025,9,92,Rodrigo Lago
+2025,9,84,Solange Almeida
+2025,9,40,Wellington do Curso
+2025,10,49,Adelmo Soares
+2025,10,86,Aluízio Santos
+2025,10,3,Ana do Gás
+2025,10,50,Andreia M. Rezende
+2025,10,12,Antônio Pereira
+2025,10,72,Ariston Ribeiro de Sousa
+2025,10,51,Arnaldo Melo
+2025,10,80,Carlos Lula
+2025,10,112,Catulé Júnior
+2025,10,94,Claudio Cunha
+2025,10,53,Daniella
+2025,10,81,Davi Brandão
+2025,10,56,Dr. Yglésio
+2025,10,88,Drª Vivianne
+2025,10,58,Drª. Helena Duailibe
+2025,10,90,Edna Silva
+2025,10,102,Eric Costa
+2025,10,83,Fabiana Vilar
+2025,10,93,Fernando Braide
+2025,10,82,Florêncio Neto
+2025,10,85,Francisco Nagib
+2025,10,109,Fred Maia
+2025,10,17,Glalbert Cutrim
+2025,10,91,Guilherme Paz
+2025,10,79,Iracema Vale
+2025,10,95,Janaína
+2025,10,104,João Batista Segundo
+2025,10,99,Julio Mendonça
+2025,10,101,Junior Cascaria
+2025,10,97,Junior França
+2025,10,113,Kekê Teixeira
+2025,10,100,Leandro Bello
+2025,10,66,Mical Damasceno
+2025,10,45,Neto Evangelista
+2025,10,87,Osmar Filho
+2025,10,26,Othelino Neto
+2025,10,67,Pará Figueiredo
+2025,10,103,Ricardo Arruda
+2025,10,31,Ricardo Rios
+2025,10,92,Rodrigo Lago
+2025,10,84,Solange Almeida
+2025,10,40,Wellington do Curso
+2025,11,49,Adelmo Soares
+2025,11,86,Aluízio Santos
+2025,11,3,Ana do Gás
+2025,11,50,Andreia M. Rezende
+2025,11,12,Antônio Pereira
+2025,11,72,Ariston Ribeiro de Sousa
+2025,11,51,Arnaldo Melo
+2025,11,80,Carlos Lula
+2025,11,112,Catulé Júnior
+2025,11,94,Claudio Cunha
+2025,11,53,Daniella
+2025,11,81,Davi Brandão
+2025,11,56,Dr. Yglésio
+2025,11,88,Drª Vivianne
+2025,11,58,Drª. Helena Duailibe
+2025,11,90,Edna Silva
+2025,11,102,Eric Costa
+2025,11,83,Fabiana Vilar
+2025,11,93,Fernando Braide
+2025,11,82,Florêncio Neto
+2025,11,85,Francisco Nagib
+2025,11,109,Fred Maia
+2025,11,17,Glalbert Cutrim
+2025,11,91,Guilherme Paz
+2025,11,79,Iracema Vale
+2025,11,95,Janaína
+2025,11,104,João Batista Segundo
+2025,11,99,Julio Mendonça
+2025,11,101,Junior Cascaria
+2025,11,97,Junior França
+2025,11,113,Kekê Teixeira
+2025,11,100,Leandro Bello
+2025,11,66,Mical Damasceno
+2025,11,45,Neto Evangelista
+2025,11,87,Osmar Filho
+2025,11,26,Othelino Neto
+2025,11,67,Pará Figueiredo
+2025,11,103,Ricardo Arruda
+2025,11,31,Ricardo Rios
+2025,11,92,Rodrigo Lago
+2025,11,84,Solange Almeida
+2025,11,116,Sérgio Albuquerque
+2025,11,40,Wellington do Curso
+2025,12,89,Abigail Cunha
+2025,12,49,Adelmo Soares
+2025,12,86,Aluízio Santos
+2025,12,3,Ana do Gás
+2025,12,50,Andreia M. Rezende
+2025,12,12,Antônio Pereira
+2025,12,72,Ariston Ribeiro de Sousa
+2025,12,51,Arnaldo Melo
+2025,12,80,Carlos Lula
+2025,12,112,Catulé Júnior
+2025,12,96,Claudia Coutinho
+2025,12,94,Claudio Cunha
+2025,12,53,Daniella
+2025,12,81,Davi Brandão
+2025,12,56,Dr. Yglésio
+2025,12,88,Drª Vivianne
+2025,12,58,Drª. Helena Duailibe
+2025,12,102,Eric Costa
+2025,12,83,Fabiana Vilar
+2025,12,93,Fernando Braide
+2025,12,82,Florêncio Neto
+2025,12,85,Francisco Nagib
+2025,12,109,Fred Maia
+2025,12,17,Glalbert Cutrim
+2025,12,91,Guilherme Paz
+2025,12,79,Iracema Vale
+2025,12,95,Janaína
+2025,12,104,João Batista Segundo
+2025,12,99,Julio Mendonça
+2025,12,101,Junior Cascaria
+2025,12,97,Junior França
+2025,12,113,Kekê Teixeira
+2025,12,100,Leandro Bello
+2025,12,66,Mical Damasceno
+2025,12,45,Neto Evangelista
+2025,12,87,Osmar Filho
+2025,12,26,Othelino Neto
+2025,12,103,Ricardo Arruda
+2025,12,31,Ricardo Rios
+2025,12,92,Rodrigo Lago
+2025,12,84,Solange Almeida
+2025,12,116,Sérgio Albuquerque
+2025,12,40,Wellington do Curso
+2026,1,49,Adelmo Soares
+2026,1,86,Aluízio Santos
+2026,1,3,Ana do Gás
+2026,1,50,Andreia M. Rezende
+2026,1,12,Antônio Pereira
+2026,1,72,Ariston Ribeiro de Sousa
+2026,1,51,Arnaldo Melo
+2026,1,80,Carlos Lula
+2026,1,112,Catulé Júnior
+2026,1,96,Claudia Coutinho
+2026,1,94,Claudio Cunha
+2026,1,53,Daniella
+2026,1,81,Davi Brandão
+2026,1,56,Dr. Yglésio
+2026,1,88,Drª Vivianne
+2026,1,58,Drª. Helena Duailibe
+2026,1,102,Eric Costa
+2026,1,83,Fabiana Vilar
+2026,1,93,Fernando Braide
+2026,1,82,Florêncio Neto
+2026,1,85,Francisco Nagib
+2026,1,17,Glalbert Cutrim
+2026,1,91,Guilherme Paz
+2026,1,79,Iracema Vale
+2026,1,95,Janaína
+2026,1,104,João Batista Segundo
+2026,1,99,Julio Mendonça
+2026,1,101,Junior Cascaria
+2026,1,97,Junior França
+2026,1,113,Kekê Teixeira
+2026,1,100,Leandro Bello
+2026,1,66,Mical Damasceno
+2026,1,45,Neto Evangelista
+2026,1,87,Osmar Filho
+2026,1,26,Othelino Neto
+2026,1,67,Pará Figueiredo
+2026,1,103,Ricardo Arruda
+2026,1,31,Ricardo Rios
+2026,1,92,Rodrigo Lago
+2026,1,84,Solange Almeida
+2026,1,116,Sérgio Albuquerque
+2026,1,40,Wellington do Curso
+2026,2,49,Adelmo Soares
+2026,2,86,Aluízio Santos
+2026,2,3,Ana do Gás
+2026,2,50,Andreia M. Rezende
+2026,2,12,Antônio Pereira
+2026,2,72,Ariston Ribeiro de Sousa
+2026,2,51,Arnaldo Melo
+2026,2,80,Carlos Lula
+2026,2,112,Catulé Júnior
+2026,2,96,Claudia Coutinho
+2026,2,94,Claudio Cunha
+2026,2,53,Daniella
+2026,2,81,Davi Brandão
+2026,2,56,Dr. Yglésio
+2026,2,88,Drª Vivianne
+2026,2,58,Drª. Helena Duailibe
+2026,2,102,Eric Costa
+2026,2,83,Fabiana Vilar
+2026,2,93,Fernando Braide
+2026,2,82,Florêncio Neto
+2026,2,85,Francisco Nagib
+2026,2,17,Glalbert Cutrim
+2026,2,91,Guilherme Paz
+2026,2,79,Iracema Vale
+2026,2,95,Janaína
+2026,2,104,João Batista Segundo
+2026,2,99,Julio Mendonça
+2026,2,101,Junior Cascaria
+2026,2,97,Junior França
+2026,2,113,Kekê Teixeira
+2026,2,100,Leandro Bello
+2026,2,66,Mical Damasceno
+2026,2,45,Neto Evangelista
+2026,2,87,Osmar Filho
+2026,2,26,Othelino Neto
+2026,2,67,Pará Figueiredo
+2026,2,103,Ricardo Arruda
+2026,2,31,Ricardo Rios
+2026,2,92,Rodrigo Lago
+2026,2,84,Solange Almeida
+2026,2,116,Sérgio Albuquerque
+2026,2,40,Wellington do Curso
+2026,3,49,Adelmo Soares
+2026,3,86,Aluízio Santos
+2026,3,3,Ana do Gás
+2026,3,50,Andreia M. Rezende
+2026,3,12,Antônio Pereira
+2026,3,72,Ariston Ribeiro de Sousa
+2026,3,51,Arnaldo Melo
+2026,3,80,Carlos Lula
+2026,3,112,Catulé Júnior
+2026,3,96,Claudia Coutinho
+2026,3,94,Claudio Cunha
+2026,3,53,Daniella
+2026,3,81,Davi Brandão
+2026,3,56,Dr. Yglésio
+2026,3,88,Drª Vivianne
+2026,3,58,Drª. Helena Duailibe
+2026,3,90,Edna Silva
+2026,3,102,Eric Costa
+2026,3,83,Fabiana Vilar
+2026,3,93,Fernando Braide
+2026,3,82,Florêncio Neto
+2026,3,85,Francisco Nagib
+2026,3,17,Glalbert Cutrim
+2026,3,91,Guilherme Paz
+2026,3,79,Iracema Vale
+2026,3,95,Janaína
+2026,3,44,Jota Pinto
+2026,3,104,João Batista Segundo
+2026,3,99,Julio Mendonça
+2026,3,101,Junior Cascaria
+2026,3,97,Junior França
+2026,3,113,Kekê Teixeira
+2026,3,100,Leandro Bello
+2026,3,66,Mical Damasceno
+2026,3,45,Neto Evangelista
+2026,3,87,Osmar Filho
+2026,3,26,Othelino Neto
+2026,3,67,Pará Figueiredo
+2026,3,103,Ricardo Arruda
+2026,3,31,Ricardo Rios
+2026,3,92,Rodrigo Lago
+2026,3,84,Solange Almeida
+2026,3,116,Sérgio Albuquerque
+2026,3,40,Wellington do Curso
+2026,4,89,Abigail Cunha
+2026,4,49,Adelmo Soares
+2026,4,86,Aluízio Santos
+2026,4,3,Ana do Gás
+2026,4,50,Andreia M. Rezende
+2026,4,12,Antônio Pereira
+2026,4,72,Ariston Ribeiro de Sousa
+2026,4,51,Arnaldo Melo
+2026,4,80,Carlos Lula
+2026,4,112,Catulé Júnior
+2026,4,96,Claudia Coutinho
+2026,4,94,Claudio Cunha
+2026,4,53,Daniella
+2026,4,81,Davi Brandão
+2026,4,56,Dr. Yglésio
+2026,4,88,Drª Vivianne
+2026,4,58,Drª. Helena Duailibe
+2026,4,90,Edna Silva
+2026,4,102,Eric Costa
+2026,4,83,Fabiana Vilar
+2026,4,93,Fernando Braide
+2026,4,82,Florêncio Neto
+2026,4,85,Francisco Nagib
+2026,4,17,Glalbert Cutrim
+2026,4,91,Guilherme Paz
+2026,4,79,Iracema Vale
+2026,4,95,Janaína
+2026,4,44,Jota Pinto
+2026,4,104,João Batista Segundo
+2026,4,99,Julio Mendonça
+2026,4,97,Junior França
+2026,4,113,Kekê Teixeira
+2026,4,100,Leandro Bello
+2026,4,66,Mical Damasceno
+2026,4,45,Neto Evangelista
+2026,4,87,Osmar Filho
+2026,4,26,Othelino Neto
+2026,4,103,Ricardo Arruda
+2026,4,31,Ricardo Rios
+2026,4,92,Rodrigo Lago
+2026,4,84,Solange Almeida
+2026,4,40,Wellington do Curso
+2026,5,89,Abigail Cunha
+2026,5,49,Adelmo Soares
+2026,5,86,Aluízio Santos
+2026,5,3,Ana do Gás
+2026,5,50,Andreia M. Rezende
+2026,5,12,Antônio Pereira
+2026,5,72,Ariston Ribeiro de Sousa
+2026,5,51,Arnaldo Melo
+2026,5,80,Carlos Lula
+2026,5,112,Catulé Júnior
+2026,5,96,Claudia Coutinho
+2026,5,94,Claudio Cunha
+2026,5,53,Daniella
+2026,5,81,Davi Brandão
+2026,5,56,Dr. Yglésio
+2026,5,88,Drª Vivianne
+2026,5,58,Drª. Helena Duailibe
+2026,5,90,Edna Silva
+2026,5,102,Eric Costa
+2026,5,83,Fabiana Vilar
+2026,5,93,Fernando Braide
+2026,5,82,Florêncio Neto
+2026,5,85,Francisco Nagib
+2026,5,17,Glalbert Cutrim
+2026,5,91,Guilherme Paz
+2026,5,79,Iracema Vale
+2026,5,95,Janaína
+2026,5,44,Jota Pinto
+2026,5,104,João Batista Segundo
+2026,5,99,Julio Mendonça
+2026,5,97,Junior França
+2026,5,113,Kekê Teixeira
+2026,5,100,Leandro Bello
+2026,5,66,Mical Damasceno
+2026,5,45,Neto Evangelista
+2026,5,87,Osmar Filho
+2026,5,26,Othelino Neto
+2026,5,103,Ricardo Arruda
+2026,5,31,Ricardo Rios
+2026,5,92,Rodrigo Lago
+2026,5,84,Solange Almeida
+2026,5,40,Wellington do Curso
+2026,6,89,Abigail Cunha
+2026,6,49,Adelmo Soares
+2026,6,86,Aluízio Santos
+2026,6,3,Ana do Gás
+2026,6,50,Andreia M. Rezende
+2026,6,12,Antônio Pereira
+2026,6,51,Arnaldo Melo
+2026,6,80,Carlos Lula
+2026,6,112,Catulé Júnior
+2026,6,96,Claudia Coutinho
+2026,6,94,Claudio Cunha
+2026,6,53,Daniella
+2026,6,56,Dr. Yglésio
+2026,6,58,Drª. Helena Duailibe
+2026,6,83,Fabiana Vilar
+2026,6,91,Guilherme Paz
+2026,6,104,João Batista Segundo
+2026,6,99,Julio Mendonça
+2026,6,101,Junior Cascaria
+2026,6,97,Junior França
+2026,6,113,Kekê Teixeira
+2026,6,100,Leandro Bello
+2026,6,66,Mical Damasceno
+2026,6,87,Osmar Filho
+2026,6,26,Othelino Neto
+2026,6,103,Ricardo Arruda
+2026,6,92,Rodrigo Lago
+2026,6,84,Solange Almeida
+2026,6,40,Wellington do Curso

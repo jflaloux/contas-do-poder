@@ -1,6 +1,6 @@
 {
  "_sobre": "O que cada Assembleia Legislativa publica sobre os deputados estaduais (verba indenizatória, folha, equipe, subsídio). Levantamento de 01/10/2026, feito pela web a partir de um servidor fora do Brasil (os sites marcados com abriu_de_fora=false abrem do Brasil e ficam a conferir). Antes de fazer o robô de um estado, conferir de novo a fonte e o robots.txt.",
- "conferido_em": "2026-10-01",
+ "conferido_em": "2026-10-02",
  "estados": {
   "AC": {
    "site": "https://www.al.ac.leg.br/",
@@ -28,7 +28,7 @@
     "url": "https://app.al.ac.leg.br/legisla-e/legislacao/visualizar/9238"
    },
    "barreiras": "Consultas em JavaScript (endpoints JSON sem login).",
-   "observacoes": "Verba indenizatória sem dados por deputado (só a regulamentação). Lista de deputados no SAPL.",
+   "observacoes": "Robô pronto (coleta/assembleias/ac.py): subsídio da Lei 4.136/2023; quem está no cargo pela lista de servidores (admissão e exoneração), nome parlamentar pela página Deputados do site. A 'Remuneração dos Servidores' não traz valores; a lotação da equipe é só 'GABINETE'; verba não publicada por deputado. A lista não mostra licenças (até 09/03/2026, 25 deputados para 24 vagas).",
    "abriu_de_fora": true
   },
   "AL": {
@@ -41,7 +41,7 @@
     "desde": "2019"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true
    },
    "equipe": {
     "publica": null
@@ -53,8 +53,8 @@
     "url": "https://sapl.al.al.leg.br/media/sapl/public/normajuridica/2023/2750/lei_no_9.056_de_8_de_novembro_de_2023.pdf"
    },
    "barreiras": "VIAP em PDF de imagem (precisaria de OCR); portal de pessoal novo não abriu de fora.",
-   "observacoes": "Sem fornecedor nem CNPJ na VIAP.",
-   "abriu_de_fora": true
+   "observacoes": "Robô pronto (coleta/assembleias/al.py): folha nominal no transparencia.al.al.leg.br (só abre do Brasil; lista por letra, ~18 s por página; detalhe com rendimentos). VIAP em formulário escaneado, um modelo por gabinete, com o total corrigido à mão para R$ 39.150,00; o OCR conferiu com o total em 14 de 27 formulários (jun/2025): fica de fora.",
+   "abriu_de_fora": false
   },
   "AM": {
    "site": "https://www.aleam.gov.br/",
@@ -79,7 +79,7 @@
     "url": "https://sapl.al.am.leg.br/media/sapl/public/normajuridica/2026/14731/8161.pdf"
    },
    "barreiras": "O site não abre de fora do Brasil (abre do Brasil). Sem CAPTCHA.",
-   "observacoes": "Conferido do Brasil em 01/10/2026: CEAP por deputado e mês (24 deputados), por beneficiário e categoria, sem CNPJ. Robô possível (formulário POST, sem CAPTCHA). CEAP: Resolução Legislativa 460/2009.",
+   "observacoes": "Robô pronto (coleta/assembleias/am.py), desde jan/2025; só abre do Brasil (entra na rodada do Brasil). CEAP nota a nota pelo CSV do botão 'Exportar para CSV' (createCeap.php): beneficiário, CNPJ, verba, documento, valor bruto, glosa e valor reembolsado; o nome de beneficiário MEI traz o CPF do dono, que o robô tira. A consulta de vencimentos nominal não devolveu resultado para nenhuma busca (conferido de novo em 02/10/2026). Salário: subsídio da Lei 4.729/2018 (75% do federal; R$ 34.774,64 desde fev/2025), ratificado pela Lei 8.161/2026.",
    "abriu_de_fora": false
   },
   "AP": {
@@ -184,7 +184,7 @@
     "url": "https://economia.df.gov.br/documents/d/seec/dodf-237-23-12-2022-integra"
    },
    "barreiras": "O site não abre de fora do Brasil (abre do Brasil). O robots.txt dos dados abertos (dados.cl.df.gov.br) proíbe só /api/ e pede 10 s entre pedidos.",
-   "observacoes": "Conferido do Brasil em 01/10/2026. Bom candidato: folha mensal em CSV (deputados e servidores, com a lotação do gabinete) e notas da verba em XLSX (em 2025, só 11 dos 24 deputados). O CSV da folha tem IRRF, seguridade, outros descontos e líquido, e a planilha da verba tem o CPF do deputado: o robô não deve guardar essas colunas.",
+   "observacoes": "Robô pronto (coleta/assembleias/df.py), desde jan/2025; só abre do Brasil (entra na rodada do Brasil). Folha: CSV mensal do quadro demonstrativo de pessoal (só os rendimentos; IRRF, seguridade, outros descontos e líquido não são lidos). O arquivo de fev/2026 é cópia do de jun/2025 e fica de fora (vale o subsídio do Decreto Legislativo 2.383/2022). Equipe: pessoas lotadas em 'Gabinete do Deputado ...' e a soma dos rendimentos, sem nomes. Verba: quadro mensal consolidado em PDF, por deputado e categoria, sem fornecedor. As notas em XLSX (só parte dos gabinetes, com o CPF do deputado e de prestadores pessoa física, pela data da nota) não são usadas.",
    "abriu_de_fora": false
   },
   "ES": {
@@ -265,7 +265,7 @@
     "valor": null
    },
    "barreiras": "O portal só abre de dentro do Brasil. Páginas JSF (cada consulta é um postback com ViewState). O robots.txt responde 403.",
-   "observacoes": "Conferido do Brasil em 01/10/2026: a consulta de verbas por competência (mm/aaaa) lista 43 parlamentares; o detalhe de cada um (lista-sintetico.html?competencia=AAAA-MM-01&parlamentar=N) é uma página com endereço próprio, com o total por categoria da CEAP (sem fornecedor) e CSV/XML/XLS. Os deputados não aparecem na consulta de remuneração dos servidores (que não tem lotação). A própria Alema diz que ainda não tem API de dados abertos. Robô a fazer.",
+   "observacoes": "Robô pronto (coleta/assembleias/ma.py), desde jan/2025; só abre do Brasil (entra na rodada do Brasil). CEAP por deputado, mês e inciso (sem fornecedor): a lista JSF por competência (o número de cada parlamentar sai do link do nome) e a página lista-sintetico.html, com o total gasto e o valor ressarcido. Subsídio: Lei 11.876/2023 (R$ 34.774,64 desde fev/2025). CEAP até R$ 47.942,35 por mês (Decreto Legislativo 472/2016, reajustado em 14,75% pelo DL 661/2023). A consulta de remuneração dos servidores não traz os deputados. O robots.txt de sistemas.al.ma.leg.br responde 403 (para a regra do projeto, sem robots.txt).",
    "abriu_de_fora": false
   },
   "MG": {
@@ -331,7 +331,7 @@
     "url": "https://www.al.mt.gov.br/parlamento/subsidio/"
    },
    "equipe": {
-    "publica": null
+    "publica": true
    },
    "subsidio": {
     "valor": 34774.64,
@@ -339,8 +339,8 @@
     "ato": "Lei 12.011/2023",
     "url": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2023-01-13;12011"
    },
-   "barreiras": "Folha antiga pede nome, e-mail e CPF; API pede login; portal com reCAPTCHA.",
-   "observacoes": "Sem verba por deputado encontrada.",
+   "barreiras": "O portal Elotech carrega o script do reCAPTCHA, mas ele só aparece em entidades integradas ao Oxy (a ALMT não é); a folha antiga (até jan/2022) pede nome, e-mail e CPF; a api.al.mt.gov.br pede login (não usada).",
+   "observacoes": "Robô pronto (coleta/assembleias/mt.py): folha e equipe (soma dos vencimentos) pela API anônima do portal Elotech (almt.eloweb.net), o link 'Informações Posteriores à Julho 2022'. O reCAPTCHA só aparece em entidades integradas ao Oxy, e a ALMT não é (configuracoes-gerais: isIntegradoOxy=false). A API que pede login é a api.al.mt.gov.br, que não é usada. Verba não publicada por deputado.",
    "abriu_de_fora": true
   },
   "PA": {
@@ -353,10 +353,10 @@
     "desde": "2022"
    },
    "folha_nominal": {
-    "publica": null
+    "publica": true
    },
    "equipe": {
-    "publica": null
+    "publica": true
    },
    "subsidio": {
     "valor": 34774.64,
@@ -365,7 +365,7 @@
     "url": "https://bancodeleis.alepa.pa.gov.br/arquivos/lei01_2023_18125.pdf"
    },
    "barreiras": "Painel em JavaScript; o sistema de pessoal (sigep) não abriu de fora.",
-   "observacoes": "Sem fornecedor nem CNPJ.",
+   "observacoes": "Robô pronto (coleta/assembleias/pa.py), desde jan/2025: verba indenizatória (R$ 35.000) e indenização de transporte (R$ 5.846,75) por deputado e mês, pelo JSON do painel (sem fornecedor; o imposto retido sobre o auxílio de parte dos deputados volta para o valor do auxílio); folha pela busca do começo do nome no sigep, agrupada pela matrícula (remuneração, férias, 13º adiantado, pecúnia, redutor; sem descontos); equipe (assessores e total pago por gabinete) desde abr/2026. Quem está no cargo: meses com verba ou gabinete (Victor Dias, licenciado até mar/2026, continuou na folha; João Pingarilho não está no painel da verba). A folha do 13º de 2025 não traz deputados. O sigep abriu de fora do Brasil em 01-02/10/2026.",
    "abriu_de_fora": true
   },
   "PB": {
@@ -434,7 +434,7 @@
     "desde": "2012"
    },
    "folha_nominal": {
-    "publica": null,
+    "publica": true,
     "url": "https://transparencia.al.pi.leg.br/grid_transp_publico_remuneracao/"
    },
    "equipe": {
@@ -447,7 +447,7 @@
     "url": "https://sapl.al.pi.leg.br/media/sapl/public/normajuridica/2023/5512/7955.pdf"
    },
    "barreiras": "Consultas ScriptCase dependem de sessão e JavaScript.",
-   "observacoes": "",
+   "observacoes": "Robô pronto (coleta/assembleias/pi.py), desde jan/2025: verba nota a nota (competência, subcota, valor; fornecedor só no PDF) e folha pela busca do nome de cada deputado no mês (subsídio, gratificação, férias, 13º; sem previdência e IR). Até mar/2026 a folha traz cerca de 39 parlamentares para 30 vagas (os licenciados, secretários de Estado, continuam nela): quem está no cargo sai dos meses com notas da verba. Os nomes da verba vêm cortados em 30 letras e abreviados: a busca da folha usa o nome civil do TSE. O site vai até o último mês com a verba de 80% dos deputados publicada.",
    "abriu_de_fora": true
   },
   "PR": {
@@ -479,8 +479,8 @@
     "ato": "Lei 21.348/2022",
     "url": "http://webservices.assembleia.pr.leg.br/api/public/norma-legal/58812"
    },
-   "barreiras": "reCAPTCHA na verba (não contornamos).",
-   "observacoes": "",
+   "barreiras": "reCAPTCHA nas notas da verba (não contornamos); os pagamentos de ressarcimento saem na Consulta de Despesa, sem CAPTCHA.",
+   "observacoes": "Robô pronto (coleta/assembleias/pr.py), desde jan/2025: folha de cada deputado (subsídio, 1/3 de férias, vantagens transitórias, benefícios; sem descontos nem líquido), equipe (comissionados lotados em cada gabinete, sem custo) e a verba de ressarcimento pelos pagamentos a cada deputado na Consulta de Despesa (SIAFIC, exportação XLSX da página, sem CAPTCHA), por natureza e mês do pagamento, sem fornecedor; as notas seguem só na consulta com reCAPTCHA. Quem está no cargo: os gabinetes com comissionados no mês (54); o titular licenciado continua na folha. A folha não mostra 13º; em ago-set/2026 o Total Bruto de alguns deputados é menor que o subsídio, sem motivo na página. O objeto de alguns pagamentos traz o CPF do deputado: o robô tira.",
    "abriu_de_fora": true
   },
   "RJ": {
@@ -534,8 +534,8 @@
     "ato": "Lei 11.315/2022",
     "url": "https://www.al.rn.leg.br/storage/legislacao/2023/es2r5o18f7ve1pnah0ckgc15wtj8q7.pdf"
    },
-   "barreiras": "A API da página pede um token (401): não usar.",
-   "observacoes": "",
+   "barreiras": "A API do Portal da Transparência pede uma chave fixa escrita no JavaScript da página (credencial): não usar.",
+   "observacoes": "Robô pronto (coleta/assembleias/rn.py), só com o subsídio da lei (Lei 11.315/2022) e a lista de deputados do sistema legislativo (Transparência Legislativa: nome, vigência e partido de hoje). A verba e a folha do Portal da Transparência saem de uma API que só responde com uma chave fixa escrita no código da página (com usuário e senha dentro): é credencial e não é usada. A lista traz CPF e data de nascimento: não são guardados. Os 24 de hoje estão no cargo desde jan/2025 (George Soares saiu antes; Vivaldo Costa, suplente, no lugar); a lista não mostra licenças.",
    "abriu_de_fora": true
   },
   "RO": {
@@ -588,7 +588,7 @@
     "ato": null
    },
    "barreiras": "Lista de arquivos por JavaScript; portal lento; SAPL 403.",
-   "observacoes": "",
+   "observacoes": "Robô pronto (coleta/assembleias/rr.py): verba por deputado e item desde set/2025 (ODT/PDF; a página até ago/2025 dá erro 504); folha (total de proventos e 13º) de jan a set/2025, depois o subsídio da Lei 1.789/2023; equipe do setor 'GAB DEP' por mês, sem custo.",
    "abriu_de_fora": true
   },
   "RS": {

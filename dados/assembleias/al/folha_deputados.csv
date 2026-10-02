@@ -1,0 +1,563 @@
+ano,mes,folha,matricula,nome,cargo,rubrica,valor
+2025,1,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,1,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,2,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,33006.39
+2025,3,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,8003,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,3,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,3,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,3,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,8003,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,4,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,4,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,4,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,8003,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,5,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,5,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,8003,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,6,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,6,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,8003,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,7,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,7,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,8,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,8,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,9,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,9,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,10,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,10,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,11,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,11,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2025,12,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2025,12,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,1,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,1,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,2,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,2,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,3,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,3,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,91382,BRUNO ALBUQUERQUE TOLEDO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,4,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,4,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,5,EM,9779,GALBA NOVAIS DE CASTRO JUNIOR,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,5,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,6,EM,9779,GALBA NOVAIS DE CASTRO JUNIOR,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3988,JOSE RONALDO MEDEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,6,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,7,EM,9779,GALBA NOVAIS DE CASTRO JUNIOR,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,10053,JUDSON CABRAL DE SANTANA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,7,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,10083,ELIDA RACHEL MIRANDA SOUZA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,8,EM,9779,GALBA NOVAIS DE CASTRO JUNIOR,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,10053,JUDSON CABRAL DE SANTANA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,8,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5247,ANDRE LUIZ PEREIRA DA SILVA FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,9408,ANGELA MARIA LIRA DE JESUS GARROTE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,75330,ANTONIO RIBEIRO DE ALBUQUERQUE,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3121,BRENO COUTO DE ALBUQUERQUE MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,6916,CARLA DANTAS LIMA E SILVA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3124,CIBELE CORADO DE MOURA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5211,CLAUDIO ALEXANDRE AYRES DA COSTA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,10083,ELIDA RACHEL MIRANDA SOUZA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5213,FERNANDO SOARES PEREIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3127,FLAVIA MARIA SILVA CAVALCANTE DE OLIVEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5212,GABRIELA CRISTINA GONCALVES DA SILVA CORDEIRO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34744.64
+2026,9,EM,9779,GALBA NOVAIS DE CASTRO JUNIOR,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5196,GEORGE RAPOSO MAIA NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,91381,GILVAN GOMES BARROS FILHO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,90073,INACIO LOIOLA DAMASCENO FREITAS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3120,JOAO EDUARDO MARTINS COELHO DA PAZ,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,91385,JOSE FRANCISCO CERQUEIRA TENORIO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5207,JOSE WANDERLEY NETO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,10053,JUDSON CABRAL DE SANTANA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3122,LUIZ ALBERTO ALVES TEIXEIRA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,87595,MARCELO VICTOR CORREIA DOS SANTOS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,92890,MARCOS ANTONIO DE OLIVEIRA BARBOSA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3125,MARIA DE FATIMA MOREIRA CANUTO ROCHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,4954,MESAQUE DA SILVA PADILHA,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,4873,REMI VASCONCELOS CALHEIROS,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,87583,RICARDO PEREIRA MELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,5208,ROSEMARY MIRANDA DAVINO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64
+2026,9,EM,3129,SILVIO ROGERIO DIAS CAMELO,DEPUTADO ESTADUAL,Subsídio / diferença de subsídio / função de confiança ou cargo comissionado,34774.64

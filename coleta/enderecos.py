@@ -124,6 +124,10 @@ def executar():
             cam = f"{novo[jid]}/{slug(pid)}"
         ocupar(pid, cam)
 
+    # os deputados estaduais foram publicados primeiro pelo id (/est-35-300607): o id continua valendo e leva ao nome
+    for pid, cam in novo.items():
+        if pid.startswith("est-") and cam != pid:
+            antigos.setdefault(pid, pid)
     # endereços que mudaram continuam valendo (vão para o novo); os que alguém ocupou agora deixam de ser antigos
     for pid, cam in registro.items():
         if pid in novo and novo[pid] != cam and cam not in ocupado:

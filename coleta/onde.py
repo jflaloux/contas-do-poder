@@ -38,7 +38,7 @@ SO_O_QUE_FALTA = False
 SO_BRASIL = {
     "vereadores": {"belo_horizonte", "fortaleza", "maceio", "manaus", "natal", "porto_alegre", "rio_de_janeiro", "sao_luis"},
     "prefeituras": {"natal"},
-    "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs"},
+    "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs"},  # pr, rn, pi, pa, ac, rr, mt abrem de fora
     "folhas": {"AL", "AM", "CE", "MA", "PA", "PB", "PI", "RJ", "RN", "SE"},
     "tce": set(),
     "federal": set(),

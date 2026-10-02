@@ -9,9 +9,10 @@ O levantamento do que cada Assembleia publica está em dados/referencia/assemble
 from .. import onde
 from ..util import TempoEsgotado, log
 from ..vereadores import comum as vc
-from . import ap, ba, ce, comum, es, go, mg, ms, pb, pe, rj, ro, rs, sc, se, sp, to
+from . import ac, al, am, ap, ba, ce, comum, df, es, go, ma, mg, ms, mt, pa, pb, pe, pi, pr, rj, rn, ro, rr, rs, sc, se, sp, to
 
-ESTADOS = [sp, mg, rj, ba, pe, ce, pb, go, sc, ms, ro, to, se, es, rs, ap]
+# as 27; a ordem é a do site (a primeira abre a seção)
+ESTADOS = [sp, mg, rj, ba, pe, ce, pb, go, sc, ms, ro, to, se, es, rs, ap, df, am, ma, pr, rn, pi, pa, ac, al, rr, mt]
 
 
 def coletar():
@@ -21,6 +22,7 @@ def coletar():
         try:
             with onde.registrar("assembleias", estado):
                 estado.coletar()
+                vc.limpar_cpfs(estado.PASTA)  # CPF no nome de fornecedor MEI, no histórico...
         except TempoEsgotado:
             raise
         except Exception as e:  # noqa: BLE001 — uma Assembleia fora do ar não para as outras

@@ -59,3 +59,10 @@ Atualização de 01/10/2026 (tarde)
   (TSE 2022). Nos dois, o salário é o da lei (subsidio_folha = false) e a verba é nota a nota (verba_por_nota = true).
 - MG vai até jul/2026 e RJ até mai/2026: os meses seguintes ainda não estão completos na fonte (as notas em
   meta.estados.XX.verba_notas explicam). Vale mostrar meta.estados.XX.ultimo_mes na página do estado.
+
+ATUALIZAÇÃO (02/10/2026, chat dos dados): as 27 Assembleias estão em site/dados/assembleias.json (1.191 deputados,
+1.064 no cargo). As 11 novas: DF, AM, MA, PR, RN, PI, PA, AC, AL, RR e MT, com as notas de cada uma em meta.estados[uf].
+Sem verba: RN, AC, AL e MT (o motivo está na nota de cada estado); RN e AC, só o subsídio da lei. 339 fotos novas (TSE
+2022). Os deputados estaduais agora têm endereço pelo nome em enderecos.json, e o endereço pelo id (/est-35-300607) foi
+para "antigos", como vocês pediram (continua valendo e leva ao nome). Nomes de fornecedores MEI vinham com o CPF do dono:
+o número saiu de todas as páginas (registro em correcoes.json).
