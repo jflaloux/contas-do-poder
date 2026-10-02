@@ -14,3 +14,6 @@ publicar/
 
 # Notas pessoais (imprensa, decisões): ficam só no computador
 NOTAS-PRIVADAS.md
+
+# Recados entre as conversas do site e dos dados (TAREFA-SITE-*, TAREFA-DADOS-*): ficam só no computador
+TAREFA-*.txt
