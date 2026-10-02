@@ -148,10 +148,26 @@ def _cargo(funcao):
     return "Outros (servidor à disposição, sem função informada)" if normalizar_nome(funcao) in ("", "SEM INFORMACAO") else comum.titulo(funcao)
 
 
+def _ler_verba():
+    """verba.csv, ou None se não existe ou está vazio (a Câmara fora do ar não pode tirar a cidade do site)."""
+    try:
+        vb = pd.read_csv(PASTA / "verba.csv")
+    except (FileNotFoundError, pd.errors.EmptyDataError):
+        return None
+    return vb if len(vb) else None
+
+
 def verba():
-    """Verba Indenizatória: tipo de despesa × mês, por vereador e ano (o ano corrente é baixado de novo)."""
+    """Verba Indenizatória: tipo de despesa × mês, por vereador e ano (o ano corrente é baixado de novo). Quando a página
+    de um ano ou de um vereador dá erro, ficam as linhas que já estavam gravadas (o erro vai para verba_erros.csv)."""
     ate = comum.ultimo_mes_fechado()
+    antes = _ler_verba()
+    antes = antes if antes is not None else pd.DataFrame(columns=["ano", "mes", "token", "nome", "tipo", "apresentado", "valor"])
     linhas, erros = [], []
+
+    def manter(ano, token=None):
+        g = antes[(antes.ano == ano) & ((antes.token.astype(str) == str(token)) if token is not None else True)]
+        linhas.extend(g.to_dict("records"))
     for ano in range(INICIO // 100, ate // 100 + 1):
         dias = 5 if ano == ate // 100 else None
         try:
@@ -161,6 +177,7 @@ def verba():
         except Exception as e:  # noqa: BLE001 — a página do ano fora do ar: segue com os outros anos
             log(f"  Recife: a lista da verba de {ano} não abriu ({e})")
             erros.append({"ano": ano, "token": "", "nome": ""})
+            manter(ano)
             continue
         for v in lista:
             try:
@@ -170,6 +187,7 @@ def verba():
             except Exception as e:  # noqa: BLE001 — a página de um vereador pode dar erro no site da Câmara
                 log(f"  Recife: verba de {v['title']} em {ano} não abriu ({e})")
                 erros.append({"ano": ano, "token": v["token"], "nome": v["title"].strip()})
+                manter(ano, v["token"])
                 continue
             dados = d.get("data") or {}
             totais = {normalizar_nome(t.get("descricao")): t for t in dados.get("totals") or []}
@@ -232,7 +250,7 @@ def montar(tipos):
     fv = pd.read_csv(PASTA / "folha_vereadores.csv").fillna("") if (PASTA / "folha_vereadores.csv").exists() else pd.DataFrame(columns=["ano", "mes", "nome", "funcao", "valor"])
     fg = pd.read_csv(PASTA / "folha_gabinetes.csv") if (PASTA / "folha_gabinetes.csv").exists() else pd.DataFrame(columns=["ano", "mes", "lotacao", "pessoas", "custo"])
     fc = pd.read_csv(PASTA / "cargos_gabinetes.csv") if (PASTA / "cargos_gabinetes.csv").exists() else pd.DataFrame(columns=["ano", "mes", "lotacao", "cargo", "pessoas"])
-    vb = pd.read_csv(PASTA / "verba.csv") if (PASTA / "verba.csv").exists() else None
+    vb = _ler_verba()
     tse = comum.candidatos_tse("PE", "Recife")
     linhas_v = []
     for r in mand.itertuples():
