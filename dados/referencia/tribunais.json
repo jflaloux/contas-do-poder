@@ -30,8 +30,7 @@
    "exterior": true,
    "potencial_folha": "baixo",
    "potencial_despesas": "baixo",
-   "como_ler": "Nada aberto; pedido pela LAI dos dados do SIAP.",
-   "obs": "O catálogo do Power BI Report Server responde sem autenticação."
+   "como_ler": "Nada aberto; pedido pela LAI dos dados do SIAP."
   },
   {
    "uf": "AM",
@@ -46,8 +45,7 @@
    "exterior": false,
    "potencial_folha": "baixo",
    "potencial_despesas": "baixo",
-   "como_ler": "Nada aberto.",
-   "obs": "O site tinha links de spam injetados em 01/10/2026."
+   "como_ler": "Nada aberto."
   },
   {
    "uf": "AP",
@@ -197,8 +195,7 @@
    "exterior": false,
    "potencial_folha": "médio",
    "potencial_despesas": "baixo",
-   "como_ler": "Consulta ao Power BI (querydata), filtrando por órgão; guardar cada competência.",
-   "obs": "O modelo publicado do Power BI tem colunas de CPF completo e PIS (risco pela LGPD)."
+   "como_ler": "Consulta ao Power BI (querydata), filtrando por órgão; guardar cada competência."
   },
   {
    "uf": "PB",
