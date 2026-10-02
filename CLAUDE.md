@@ -36,12 +36,15 @@ armadilhas que não estão escritas em outro lugar.
 
 ## Onde e como rodar
 
-- Vários portais de estados e capitais só abrem de dentro do Brasil. Esses robôs rodam no Mac do Jean-François; o
+- Vários portais de estados e capitais só abrem de dentro do Brasil. Esses robôs rodam num computador no Brasil; o
   GitHub Actions roda nos EUA e pega só o que abre de fora. Quem roda o quê está em `coleta/onde.py` (`SO_BRASIL` e o
   histórico de cada fonte em `dados/processados/coletas_*.json`); a rodada do Mac é `rotina/semana-brasil.sh`
   (README, "Duas rodadas"). Robô novo que só abre do Brasil: o nome dele em `SO_BRASIL`. Grupo novo de fontes: o laço
   de `coletar()` com `onde.pular(...)` e `with onde.registrar(...)`, como em `coleta/vereadores/__init__.py`, e o
   grupo em `coletar.py rodada_brasil()` e em `coleta/situacao.py`.
+- No Mac, os robôs rodam com `.venv/bin/python` (criado por `rotina/instalar-mac.sh`), não com o `python3` do sistema.
+  Dependência nova no `requirements.txt`: rodar também `.venv/bin/pip install -r requirements.txt`, ou a rodada do
+  Brasil falha (em 02/10/2026, a Assembleia da PB parou por falta do odfpy no `.venv`).
 - `dados/processados/situacao.md` (`python3 coletar.py situacao`) mostra cada fonte: último mês, última coleta certa,
   erro. Atraso que é da própria fonte vai em `ATRASOS_CONHECIDOS` (`coleta/situacao.py`), com o motivo.
 - No Cowork, `git status` cria `.git/index.lock` e, sem permissão para apagar arquivos na pasta, não consegue tirar
@@ -55,18 +58,43 @@ armadilhas que não estão escritas em outro lugar.
 - Para ver o site: `python3 coletar.py site && node publicacao/gerar.mjs && node publicacao/servir.mjs`
   (http://localhost:8000).
 
-## Duas conversas ao mesmo tempo
+## Equipe: um orquestrador e três agentes
 
-Às vezes há duas conversas trabalhando no projeto: uma cuida dos dados, a outra do site. Para não pisar uma na outra:
+O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o trabalho entre três agentes
+(definidos em `.claude/agents/`). Cada agente cuida dos próprios arquivos:
 
-- **Dados**: `coleta/`, `dados/`, `coletar.py`, `site/dados/*.json` (gerados por `python3 coletar.py site`) e
-  `site/fotos/`. É também quem roda os robôs.
-- **Site**: `site/app.js`, `site/estilo.css`, `site/index.html`, `publicacao/`. Não roda robôs. Para ver o site, usa
-  os dados que já estão em `site/dados/`.
-- Se uma conversa precisar mexer num arquivo da outra (um texto do site que fala de dados, por exemplo), avisa o
-  Jean-François em vez de editar.
+| Agente | Cuida de | Arquivos |
+|---|---|---|
+| `dados` | Robôs, coleta, base e os JSON que o site lê. É quem roda os robôs. | `coleta/`, `dados/`, `coletar.py`, `rotina/`, `.github/`, `requirements.txt`, `site/dados/*.json` (gerados por `python3 coletar.py site`), `site/fotos/` |
+| `site` | Páginas, visual e publicação. Não roda robôs: usa os dados que já estão em `site/dados/`. | `site/app.js`, `site/estilo.css`, `site/index.html`, `site/_headers`, `site/robots.txt`, `site/favicon.svg`, `site/og.png`, `publicacao/` |
+| `divulgacao` | Imprensa, parcerias e avisos a órgãos: pesquisa contatos e escreve rascunhos. Nunca envia nada. | `NOTAS-PRIVADAS.md` (seção "Imprensa e parcerias"), `RASCUNHOS-DIVULGACAO.md` |
+
+- `README.md`: cada agente atualiza a parte do próprio trabalho. `PLANO.md` e as seções "Onde estamos" e "Pendências"
+  do `NOTAS-PRIVADAS.md`: o orquestrador.
+- Recados entre agentes: `TAREFA-SITE-*.txt` (do `dados` para o `site`) e `TAREFA-DADOS-*.txt` (do `site` para o
+  `dados`), fora do Git. Arquivo de outro agente não se edita: diga na resposta o que precisa.
 - Commit só dos próprios arquivos (`git add <arquivos>`, nunca `git add -A`), um de cada vez. Antes, confira que não
-  existe `.git/index.lock`: se existir, a outra conversa está fazendo commit.
+  existe `.git/index.lock`: se existir, outro agente está fazendo commit.
+- Ao terminar, cada agente responde ao orquestrador em poucas linhas: o que fez, arquivos e commit, o que falta, o que
+  precisa do Jean-François ou de outro agente.
+
+### Para o orquestrador (a sessão principal; os agentes ignoram esta parte)
+
+- Não faça o trabalho: entenda o pedido, passe ao agente certo e junte as respostas. Ler arquivos para responder a
+  uma pergunta rápida, sim; editar código, rodar robôs ou escrever e-mails, não.
+- O agente não vê esta conversa: mande um pedido completo (o que, por quê, quais arquivos, quando está pronto).
+- Chame o agente pelo nome (`site`, `dados`, `divulgacao`). Quando for continuação do mesmo assunto, mande a mensagem
+  ao agente que já fez a primeira parte em vez de começar outro: ele lembra o que fez e gasta menos.
+- Trabalho independente (uma página nova e um robô novo), em paralelo. Quando um depende do outro, em sequência: o
+  `dados` prepara os dados e escreve um `TAREFA-SITE-*.txt`; depois o `site` faz a página.
+- Assunto que pode virar notícia (dado novo, correção, achado nas folhas): pergunte ao Jean-François se quer que a
+  `divulgacao` prepare algo.
+- Rascunho de e-mail da `divulgacao`: mostre o texto inteiro ao Jean-François, sem resumir.
+- Peça o OK do Jean-François antes de: enviar qualquer coisa (e-mail, formulário, post: quem envia é ele), `git push`,
+  mudança no Cloudflare ou no DNS, e qualquer nova exceção ao robots.txt.
+- No fim de um bloco de trabalho, peça a cada agente usado que guarde na memória dele o que aprendeu. Regra ou
+  armadilha que vale para qualquer pessoa vai para este arquivo.
+- Para o Jean-François, respostas curtas: o que ficou pronto e o que precisa dele.
 
 ## Git e publicação
 
@@ -123,9 +151,12 @@ armadilhas que não estão escritas em outro lugar.
 - Assembleias: o deputado licenciado (secretário de Estado, por exemplo) costuma continuar na folha com o subsídio (PR,
   PI, PA): estar na folha não é estar no cargo. Use um sinal de exercício (gabinete com comissionados no PR, notas da
   verba no PI, verba ou gabinete no PA).
-- ALRN (RN): a API do Portal da Transparência só responde com um JWT fixo escrito no JavaScript da página, com usuário e
-  senha dentro: é credencial, não usar. A lista de parlamentares (api-transparencialegislativa) é aberta, mas traz CPF
-  e data de nascimento: ler só nome, vigência e partido.
+- ALRN (RN): a API do Portal da Transparência exige autenticação e não é usada (verba e folha ficam de fora). A lista
+  de parlamentares (api-transparencialegislativa) é aberta, mas traz CPF e data de nascimento: ler só nome, vigência e
+  partido.
+- Problema de segurança de um órgão (dados pessoais expostos, credencial no código, site invadido): não descrever em
+  arquivo que vai para o Git (código, README, PLANO, este arquivo, `dados/referencia/`) nem no site enquanto o órgão não
+  for avisado. O registro fica em `NOTAS-PRIVADAS.md`; no público, só "exige autenticação" ou "não usamos".
 - Alema (MA): JSF/PrimeFaces; o número de cada parlamentar só sai do clique (AJAX) no nome da lista, e o robô guarda o
   número (`dados/assembleias/ma/parlamentares.csv`). O robots.txt responde 403, que a sessão trata como "sem robots.txt"
   (RFC 9309).
@@ -152,4 +183,6 @@ armadilhas que não estão escritas em outro lugar.
   primeiro algarismo do subsídio (",10.37"). MPF: usar o endereço sem www; o ODS é lido sem odfpy.
 - Cloudflare Pages (plano gratuito): no máximo 20.000 arquivos e 2.000 redirecionamentos. Em 02/10/2026: ~13.900
   arquivos e 811 redirecionamentos. Nada de página por pessoa abaixo dos tribunais superiores nem para o interior
-  (vereadores do interior ficam na página da cidade). Ver TAREFA-SITE-limites-cloudflare.txt.
+  (vereadores do interior ficam na página da cidade). O `gerar.mjs` avisa a partir de 18.000 arquivos ou 1.800
+  redirecionamentos e falha acima do limite. Se faltar espaço: juntar os arquivos por pessoa (`dados/pessoa/<id>.json`,
+  ~2.650) em pedaços por estado e grupo, o que libera ~2.500 arquivos.

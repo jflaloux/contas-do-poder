@@ -17,3 +17,10 @@ NOTAS-PRIVADAS.md
 
 # Recados entre as conversas do site e dos dados (TAREFA-SITE-*, TAREFA-DADOS-*): ficam só no computador
 TAREFA-*.txt
+
+# Claude Code: memória de cada agente e ajustes pessoais (ficam só no computador)
+.claude/agent-memory-local/
+.claude/settings.local.json
+
+# Rascunhos de e-mail do agente de divulgação: ficam só no computador
+RASCUNHOS-DIVULGACAO.md

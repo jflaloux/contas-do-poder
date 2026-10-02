@@ -71,7 +71,7 @@ Cada número tem link para a fonte oficial.
 - [x] Colegas e ranking numa seção só; detalhe dos gastos no contracheque; guia com o governo federal — Claude
 - [x] Judiciário, prova de conceito: levantamento do STF, STJ, TST, STM, TSE, CNJ, TJs e PGR, com amostra conferida (`dados/referencia/judiciario.json`) — Claude
 - [x] Judiciário, passo 1: ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês desde jan/2025 (STJ, TST, CNJ e PGR pela fonte oficial; STF, STM e TSE pelo DadosJusBr), em dados/judiciario/ e site/dados/judiciario.json — Claude
-- [ ] Judiciário no site: página /judiciario e página de pessoa (TAREFA-SITE-judiciario.txt) — Agente de Site
+- [x] Judiciário no site: página /judiciario e página de pessoa — Agente de Site
 - [ ] Judiciário: se um robô oficial (STJ, TST, CNJ, PGR) quebrar, o órgão passa a vir do DadosJusBr sozinho, com aviso na situação — Claude
 - [ ] Judiciário: exceção ao robots.txt da consulta do STF (egesp-portal) e do STM (rem_web), depois da conversa com o advogado — Jean-François
 - [x] Contato com o DadosJusBr (Transparência Brasil): observações sobre os dados e propostas de troca (02/10/2026) — Jean-François
@@ -105,24 +105,28 @@ Cada número tem link para a fonte oficial.
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [x] Vereadores, passo 3: Paraíba e Ceará pela folha nos Tribunais de Contas (vereadores, prefeito, vice e, na PB, secretários; `coleta/tce/`, `site/dados/interior/<uf>.json`) — Claude
 - [ ] Tribunais de Contas, próximos: ES, PE e RJ (valor por cargo) — Claude
-- [ ] Site: vereadores, prefeito e vice nas páginas das cidades da PB e do CE (`TAREFA-SITE-interior.txt`) — chat do site
+- [x] Site: vereadores, prefeito e vice nas páginas das cidades da PB e do CE — chat do site
 - [x] Índice de acesso aos salários dos governadores: 26 estados com nota, cada uma com a prova (`dados/indice/governadores.json`,
   mantido à mão → `site/dados/indice.json`). MT a conferir: a consulta de servidores não abriu em 01/10/2026 — Claude
-- [ ] Página `/indice` no site, publicada já, sem esperar a eleição (decisão de 01/10/2026) — chat do site
+- [x] Página `/indice` no site, publicada já, sem esperar a eleição (decisão de 01/10/2026) — chat do site
 - [x] Deputados estaduais, passo 1: SP (Alesp), PE (Alepe) e MS (Alems): subsídio da lei e verba com fornecedores, em
   `site/dados/assembleias.json`; levantamento das 27 em `dados/referencia/assembleias.json` — Claude
-- [ ] Deputados estaduais no site: página, busca, seção na página do estado (texto em TAREFA-SITE-deputados-estaduais.txt) — chat do site
+- [x] Deputados estaduais no site: página, busca, seção na página do estado — chat do site
 - [x] Deputados estaduais, passo 2: BA, CE, PB, GO, SC, RO, TO, SE, ES, RS e AP (ES, RS e AP rodam no Mac, no Brasil) — Claude
-- [x] Deputados estaduais, passo 3: as 11 que faltavam (DF, AM, MA, PR, RN, PI, PA, AC, AL, RR, MT); as 27 com robô. Sem verba: RN (chave fixa no código), AC e MT (não publicam), AL (formulário escaneado) — Claude
+- [x] Deputados estaduais, passo 3: as 11 que faltavam (DF, AM, MA, PR, RN, PI, PA, AC, AL, RR, MT); as 27 com robô. Sem verba: RN (a API exige autenticação), AC e MT (não publicam), AL (formulário escaneado) — Claude
   AC (só salário); MG e RJ só com exceção ao robots.txt (decisão do Jean-François); PR e MT têm CAPTCHA — Claude
 - [x] Fotos do TSE (candidaturas de 2022 e 2024, dados abertos CC BY) para deputados estaduais, vereadores, prefeitos, vices e governadores sem foto — Claude
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
+- [ ] Avisos do site (02/10/2026): Assembleias com 1.064 deputados "no cargo" para 1.059 cadeiras; equipe vazia no MT, RR e
+  PA; RR com mediana de 80 pessoas por gabinete; funções faltando no STJ (presidência), TST e STM — Agente de Dados
+- [ ] Página "frescor dos dados": até quando vai cada fonte (versão pública de `situacao.json` em `site/dados/`; depois a
+  página) — Agente de Dados, depois Agente de Site
 
 ## Fase 3 — Testes e confiabilidade
 
 - [ ] Página "Como calculamos" — Claude rascunha, você revisa
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você
-- [ ] Uma conversa com advogado (linguagem, LGPD) — Você
+- [ ] Uma conversa com advogado (linguagem, LGPD) — Você (sem data: não no futuro próximo, 02/10/2026)
 - [x] Canal para pedir correção de dados: "Encontrou um erro?" em cada página (primeiro a fonte, depois o e-mail) e a lista
   pública em /correcoes — Claude
 - [x] Conferência dos robots.txt de todos os sites usados; a sessão dos robôs agora bloqueia o que é proibido e respeita
@@ -138,6 +142,8 @@ Cada número tem link para a fonte oficial.
 - [x] Atualização automática semanal (GitHub Actions), com trava se a conferência falhar — Claude
 - [ ] Primeira execução no GitHub: ver se os sites do governo aceitam os servidores do GitHub — Você (botão "Run workflow")
 - [x] Cloudflare Pages conectado ao repositório (build `node publicacao/gerar.mjs`, pasta `publicar`) e domínio contasdopoder.com — Você
+- [x] Cópias fora do repositório: Zenodo (DOI de todas as versões 10.5281/zenodo.23109646) e Software Heritage (02/10/2026) — Você e Claude
+- [ ] Espelho no Codeberg: cada `git push` vai para o GitHub e para o Codeberg (o Codeberg não aceita espelho que puxa sozinho) — Você
 - [ ] Divulgação: Reddit (r/brdev) e primeiros e-mails a jornalistas e organizações em 30/09; o resto depois da eleição — Você
 
 ## Tecnologia
