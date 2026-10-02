@@ -1,412 +1,410 @@
 data,gabinete,cargo,pessoas
-2026-09-30,1,Assessor,2
-2026-09-30,1,Assessor especial,1
-2026-09-30,1,Assessor-chefe,1
-2026-09-30,1,Assistente I,10
-2026-09-30,1,Auxiliar de Gabinete,7
-2026-09-30,1,Consultor,1
-2026-09-30,1,Oficial de Gabinete,6
-2026-09-30,2,Assessor,2
-2026-09-30,2,Assessor especial,1
-2026-09-30,2,Assessor-chefe,1
-2026-09-30,2,Assistente I,5
-2026-09-30,2,Auxiliar de Gabinete,7
-2026-09-30,2,Consultor,1
-2026-09-30,2,Oficial de Gabinete,6
-2026-09-30,3,Assessor,5
-2026-09-30,3,Assessor especial,1
-2026-09-30,3,Assistente I,5
-2026-09-30,3,Auxiliar de Gabinete,5
-2026-09-30,3,Consultor,1
-2026-09-30,3,Oficial de Gabinete,3
-2026-09-30,4,Assessor,2
-2026-09-30,4,Assessor especial,1
-2026-09-30,4,Assessor-chefe,1
-2026-09-30,4,Assistente I,2
-2026-09-30,4,Auxiliar de Gabinete,7
-2026-09-30,4,Consultor,1
-2026-09-30,4,Oficial de Gabinete,6
-2026-09-30,5,Assessor,5
-2026-09-30,5,Assessor especial,1
-2026-09-30,5,Assessor-chefe,1
-2026-09-30,5,Assistente I,5
-2026-09-30,5,Auxiliar de Gabinete,7
-2026-09-30,5,Consultor,1
-2026-09-30,5,Oficial de Gabinete,6
-2026-09-30,5,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,6,Assessor,7
-2026-09-30,6,Assessor especial,1
-2026-09-30,6,Assessor-chefe,1
-2026-09-30,6,Assistente I,7
-2026-09-30,6,Auxiliar de Gabinete,6
-2026-09-30,6,Consultor,1
-2026-09-30,6,Oficial de Gabinete,5
-2026-09-30,6,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,7,Assessor,2
-2026-09-30,7,Assessor especial,1
-2026-09-30,7,Assessor-chefe,1
-2026-09-30,7,Assistente I,8
-2026-09-30,7,Auxiliar de Gabinete,7
-2026-09-30,7,Consultor,1
-2026-09-30,7,Oficial de Gabinete,6
-2026-09-30,7,Servidor cedido por outro órgão (sem cargo em comissão),4
-2026-09-30,8,Assessor,2
-2026-09-30,8,Assessor especial,1
-2026-09-30,8,Assessor-chefe,1
-2026-09-30,8,Assistente I,3
-2026-09-30,8,Auxiliar de Gabinete,7
-2026-09-30,8,Consultor,1
-2026-09-30,8,Oficial de Gabinete,6
-2026-09-30,9,Assessor,2
-2026-09-30,9,Assessor especial,1
-2026-09-30,9,Assessor-chefe,1
-2026-09-30,9,Assistente I,12
-2026-09-30,9,Auxiliar de Gabinete,7
-2026-09-30,9,Consultor,1
-2026-09-30,9,Oficial de Gabinete,6
-2026-09-30,9,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,10,Assessor,2
-2026-09-30,10,Assessor especial,1
-2026-09-30,10,Assessor-chefe,1
-2026-09-30,10,Assistente I,2
-2026-09-30,10,Auxiliar de Gabinete,7
-2026-09-30,10,Consultor,1
-2026-09-30,10,Oficial de Gabinete,6
-2026-09-30,10,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,10,Servidor efetivo da Câmara (sem cargo em comissão),2
-2026-09-30,11,Assessor,2
-2026-09-30,11,Assessor especial,1
-2026-09-30,11,Assessor-chefe,1
-2026-09-30,11,Assistente I,12
-2026-09-30,11,Auxiliar de Gabinete,7
-2026-09-30,11,Consultor,1
-2026-09-30,11,Oficial de Gabinete,6
-2026-09-30,11,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,11,Servidor efetivo da Câmara (sem cargo em comissão),2
-2026-09-30,12,Assessor,12
-2026-09-30,12,Assessor especial,1
-2026-09-30,12,Assessor-chefe,1
-2026-09-30,12,Assistente I,2
-2026-09-30,12,Auxiliar de Gabinete,7
-2026-09-30,12,Consultor,1
-2026-09-30,12,Oficial de Gabinete,6
-2026-09-30,12,Servidor cedido por outro órgão (sem cargo em comissão),4
-2026-09-30,13,Assessor,6
-2026-09-30,13,Assessor especial,1
-2026-09-30,13,Assessor-chefe,1
-2026-09-30,13,Assistente I,7
-2026-09-30,13,Auxiliar de Gabinete,7
-2026-09-30,13,Consultor,1
-2026-09-30,13,Oficial de Gabinete,6
-2026-09-30,13,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,14,Assessor,7
-2026-09-30,14,Assessor especial,1
-2026-09-30,14,Assessor-chefe,1
-2026-09-30,14,Assistente I,4
-2026-09-30,14,Auxiliar de Gabinete,7
-2026-09-30,14,Consultor,1
-2026-09-30,14,Oficial de Gabinete,6
-2026-09-30,14,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,15,Assessor,7
-2026-09-30,15,Assessor especial,1
-2026-09-30,15,Assessor-chefe,1
-2026-09-30,15,Assistente I,7
-2026-09-30,15,Auxiliar de Gabinete,7
-2026-09-30,15,Consultor,1
-2026-09-30,15,Oficial de Gabinete,6
-2026-09-30,15,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,15,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,16,Assessor,2
-2026-09-30,16,Assessor especial,1
-2026-09-30,16,Assessor-chefe,1
-2026-09-30,16,Assistente I,7
-2026-09-30,16,Auxiliar de Gabinete,7
-2026-09-30,16,Consultor,1
-2026-09-30,16,Oficial de Gabinete,6
-2026-09-30,16,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,16,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,17,Assessor,2
-2026-09-30,17,Assessor especial,1
-2026-09-30,17,Assessor-chefe,1
-2026-09-30,17,Assistente I,10
-2026-09-30,17,Auxiliar de Gabinete,7
-2026-09-30,17,Consultor,1
-2026-09-30,17,Oficial de Gabinete,6
-2026-09-30,17,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,17,Servidor efetivo da Câmara (sem cargo em comissão),3
-2026-09-30,18,Assessor,2
-2026-09-30,18,Assessor especial,1
-2026-09-30,18,Assessor-chefe,1
-2026-09-30,18,Assistente I,7
-2026-09-30,18,Auxiliar de Gabinete,7
-2026-09-30,18,Consultor,1
-2026-09-30,18,Oficial de Gabinete,6
-2026-09-30,18,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,18,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,19,Assessor,12
-2026-09-30,19,Assessor especial,1
-2026-09-30,19,Assessor-chefe,1
-2026-09-30,19,Assistente I,2
-2026-09-30,19,Auxiliar de Gabinete,7
-2026-09-30,19,Consultor,1
-2026-09-30,19,Oficial de Gabinete,6
-2026-09-30,20,Assessor,10
-2026-09-30,20,Assessor especial,1
-2026-09-30,20,Assessor-chefe,1
-2026-09-30,20,Assistente I,2
-2026-09-30,20,Auxiliar de Gabinete,7
-2026-09-30,20,Consultor,1
-2026-09-30,20,Oficial de Gabinete,6
-2026-09-30,21,Assessor,2
-2026-09-30,21,Assessor especial,1
-2026-09-30,21,Assessor-chefe,1
-2026-09-30,21,Assistente I,7
-2026-09-30,21,Auxiliar de Gabinete,7
-2026-09-30,21,Consultor,1
-2026-09-30,21,Oficial de Gabinete,6
-2026-09-30,21,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,21,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,22,Assessor,7
-2026-09-30,22,Assessor especial,1
-2026-09-30,22,Assessor-chefe,1
-2026-09-30,22,Assistente I,4
-2026-09-30,22,Auxiliar de Gabinete,7
-2026-09-30,22,Consultor,1
-2026-09-30,22,Oficial de Gabinete,6
-2026-09-30,22,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,22,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,23,Assessor,6
-2026-09-30,23,Assessor especial,1
-2026-09-30,23,Assessor-chefe,1
-2026-09-30,23,Assistente I,6
-2026-09-30,23,Auxiliar de Gabinete,7
-2026-09-30,23,Consultor,1
-2026-09-30,23,Oficial de Gabinete,6
-2026-09-30,23,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,24,Assessor,2
-2026-09-30,24,Assessor especial,1
-2026-09-30,24,Assessor-chefe,1
-2026-09-30,24,Assistente I,12
-2026-09-30,24,Auxiliar de Gabinete,7
-2026-09-30,24,Consultor,1
-2026-09-30,24,Oficial de Gabinete,6
-2026-09-30,24,Servidor cedido por outro órgão (sem cargo em comissão),4
-2026-09-30,25,Assessor,12
-2026-09-30,25,Assessor especial,1
-2026-09-30,25,Assessor-chefe,1
-2026-09-30,25,Assistente I,2
-2026-09-30,25,Auxiliar de Gabinete,7
-2026-09-30,25,Consultor,1
-2026-09-30,25,Oficial de Gabinete,6
-2026-09-30,25,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,26,Assessor,5
-2026-09-30,26,Assessor especial,1
-2026-09-30,26,Assessor-chefe,1
-2026-09-30,26,Assistente I,5
-2026-09-30,26,Auxiliar de Gabinete,7
-2026-09-30,26,Consultor,1
-2026-09-30,26,Oficial de Gabinete,6
-2026-09-30,26,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,27,Assessor,2
-2026-09-30,27,Assessor especial,1
-2026-09-30,27,Assessor-chefe,1
-2026-09-30,27,Assistente I,12
-2026-09-30,27,Auxiliar de Gabinete,7
-2026-09-30,27,Consultor,1
-2026-09-30,27,Oficial de Gabinete,6
-2026-09-30,27,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,28,Assessor,2
-2026-09-30,28,Assessor especial,1
-2026-09-30,28,Assessor-chefe,1
-2026-09-30,28,Assistente I,6
-2026-09-30,28,Auxiliar de Gabinete,6
-2026-09-30,28,Consultor,1
-2026-09-30,28,Oficial de Gabinete,6
-2026-09-30,28,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,28,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,29,Assessor,2
-2026-09-30,29,Assessor especial,1
-2026-09-30,29,Assessor-chefe,1
-2026-09-30,29,Assistente I,6
-2026-09-30,29,Auxiliar de Gabinete,7
-2026-09-30,29,Consultor,1
-2026-09-30,29,Oficial de Gabinete,6
-2026-09-30,29,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,30,Assessor,2
-2026-09-30,30,Assessor especial,1
-2026-09-30,30,Assessor-chefe,1
-2026-09-30,30,Assistente I,7
-2026-09-30,30,Auxiliar de Gabinete,7
-2026-09-30,30,Consultor,1
-2026-09-30,30,Oficial de Gabinete,6
-2026-09-30,31,Assessor,5
-2026-09-30,31,Assessor especial,1
-2026-09-30,31,Assessor-chefe,1
-2026-09-30,31,Assistente I,7
-2026-09-30,31,Auxiliar de Gabinete,7
-2026-09-30,31,Consultor,1
-2026-09-30,31,Oficial de Gabinete,6
-2026-09-30,31,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,31,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,32,Assessor,3
-2026-09-30,32,Assessor especial,1
-2026-09-30,32,Assessor-chefe,1
-2026-09-30,32,Assistente I,3
-2026-09-30,32,Auxiliar de Gabinete,7
-2026-09-30,32,Consultor,1
-2026-09-30,32,Oficial de Gabinete,6
-2026-09-30,32,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,33,Assessor,2
-2026-09-30,33,Assessor especial,1
-2026-09-30,33,Assessor-chefe,1
-2026-09-30,33,Assistente I,2
-2026-09-30,33,Auxiliar de Gabinete,7
-2026-09-30,33,Consultor,1
-2026-09-30,33,Oficial de Gabinete,6
-2026-09-30,33,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,34,Assessor,12
-2026-09-30,34,Assessor especial,1
-2026-09-30,34,Assessor-chefe,1
-2026-09-30,34,Assistente I,2
-2026-09-30,34,Auxiliar de Gabinete,7
-2026-09-30,34,Consultor,1
-2026-09-30,34,Oficial de Gabinete,6
-2026-09-30,34,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,35,Assessor,12
-2026-09-30,35,Assessor especial,1
-2026-09-30,35,Assessor-chefe,1
-2026-09-30,35,Assistente I,2
-2026-09-30,35,Auxiliar de Gabinete,7
-2026-09-30,35,Consultor,1
-2026-09-30,35,Oficial de Gabinete,6
-2026-09-30,36,Assessor,2
-2026-09-30,36,Assessor especial,1
-2026-09-30,36,Assessor-chefe,1
-2026-09-30,36,Assistente I,6
-2026-09-30,36,Auxiliar de Gabinete,7
-2026-09-30,36,Consultor,1
-2026-09-30,36,Oficial de Gabinete,6
-2026-09-30,36,Servidor efetivo da Câmara (sem cargo em comissão),4
-2026-09-30,37,Assessor,5
-2026-09-30,37,Assessor especial,1
-2026-09-30,37,Assessor-chefe,1
-2026-09-30,37,Assistente I,5
-2026-09-30,37,Auxiliar de Gabinete,7
-2026-09-30,37,Consultor,1
-2026-09-30,37,Oficial de Gabinete,6
-2026-09-30,38,Assessor,2
-2026-09-30,38,Assessor especial,1
-2026-09-30,38,Assessor-chefe,1
-2026-09-30,38,Assistente I,12
-2026-09-30,38,Auxiliar de Gabinete,7
-2026-09-30,38,Consultor,1
-2026-09-30,38,Oficial de Gabinete,6
-2026-09-30,38,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,39,Assessor,5
-2026-09-30,39,Assessor especial,1
-2026-09-30,39,Assessor-chefe,1
-2026-09-30,39,Assistente I,4
-2026-09-30,39,Auxiliar de Gabinete,7
-2026-09-30,39,Consultor,1
-2026-09-30,39,Oficial de Gabinete,5
-2026-09-30,39,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,39,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,40,Assessor,2
-2026-09-30,40,Assessor especial,1
-2026-09-30,40,Assessor-chefe,1
-2026-09-30,40,Assistente I,2
-2026-09-30,40,Auxiliar de Gabinete,7
-2026-09-30,40,Consultor,1
-2026-09-30,40,Oficial de Gabinete,6
-2026-09-30,40,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,40,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,41,Assessor,4
-2026-09-30,41,Assessor especial,1
-2026-09-30,41,Assessor-chefe,1
-2026-09-30,41,Assistente I,1
-2026-09-30,41,Auxiliar de Gabinete,6
-2026-09-30,41,Consultor,1
-2026-09-30,41,Oficial de Gabinete,6
-2026-09-30,42,Assessor,7
-2026-09-30,42,Assessor especial,1
-2026-09-30,42,Assessor-chefe,1
-2026-09-30,42,Assistente I,7
-2026-09-30,42,Auxiliar de Gabinete,7
-2026-09-30,42,Consultor,1
-2026-09-30,42,Oficial de Gabinete,6
-2026-09-30,43,Assessor,7
-2026-09-30,43,Assessor especial,1
-2026-09-30,43,Assessor-chefe,1
-2026-09-30,43,Assistente I,5
-2026-09-30,43,Auxiliar de Gabinete,7
-2026-09-30,43,Consultor,1
-2026-09-30,43,Oficial de Gabinete,6
-2026-09-30,43,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,43,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,44,Assessor,7
-2026-09-30,44,Assessor especial,1
-2026-09-30,44,Assessor-chefe,1
-2026-09-30,44,Assistente I,7
-2026-09-30,44,Auxiliar de Gabinete,7
-2026-09-30,44,Consultor,1
-2026-09-30,44,Oficial de Gabinete,6
-2026-09-30,44,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,45,Assessor,4
-2026-09-30,45,Assessor especial,1
-2026-09-30,45,Assessor-chefe,1
-2026-09-30,45,Assistente I,3
-2026-09-30,45,Auxiliar de Gabinete,6
-2026-09-30,45,Consultor,1
-2026-09-30,45,Oficial de Gabinete,6
-2026-09-30,46,Assessor,5
-2026-09-30,46,Assessor especial,1
-2026-09-30,46,Assessor-chefe,1
-2026-09-30,46,Assistente I,6
-2026-09-30,46,Auxiliar de Gabinete,7
-2026-09-30,46,Consultor,1
-2026-09-30,46,Oficial de Gabinete,6
-2026-09-30,46,Servidor cedido por outro órgão (sem cargo em comissão),3
-2026-09-30,46,Servidor efetivo da Câmara (sem cargo em comissão),3
-2026-09-30,47,Assessor,2
-2026-09-30,47,Assessor especial,1
-2026-09-30,47,Assessor-chefe,1
-2026-09-30,47,Assistente I,10
-2026-09-30,47,Auxiliar de Gabinete,7
-2026-09-30,47,Consultor,1
-2026-09-30,47,Oficial de Gabinete,6
-2026-09-30,47,Servidor cedido por outro órgão (sem cargo em comissão),6
-2026-09-30,48,Assessor,5
-2026-09-30,48,Assessor especial,1
-2026-09-30,48,Assessor-chefe,1
-2026-09-30,48,Assistente I,6
-2026-09-30,48,Auxiliar de Gabinete,7
-2026-09-30,48,Consultor,1
-2026-09-30,48,Oficial de Gabinete,6
-2026-09-30,48,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,49,Assessor,12
-2026-09-30,49,Assessor especial,1
-2026-09-30,49,Assessor-chefe,1
-2026-09-30,49,Assistente I,2
-2026-09-30,49,Auxiliar de Gabinete,7
-2026-09-30,49,Consultor,1
-2026-09-30,49,Oficial de Gabinete,6
-2026-09-30,49,Servidor cedido por outro órgão (sem cargo em comissão),1
-2026-09-30,49,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,50,Assessor,2
-2026-09-30,50,Assessor especial,1
-2026-09-30,50,Assessor-chefe,1
-2026-09-30,50,Assistente I,12
-2026-09-30,50,Auxiliar de Gabinete,7
-2026-09-30,50,Consultor,1
-2026-09-30,50,Oficial de Gabinete,6
-2026-09-30,50,Servidor cedido por outro órgão (sem cargo em comissão),2
-2026-09-30,50,Servidor efetivo da Câmara (sem cargo em comissão),1
-2026-09-30,51,Assessor,2
-2026-09-30,51,Assessor especial,1
-2026-09-30,51,Assessor-chefe,1
-2026-09-30,51,Assistente I,7
-2026-09-30,51,Auxiliar de Gabinete,7
-2026-09-30,51,Consultor,1
-2026-09-30,51,Oficial de Gabinete,6
-2026-09-30,51,Servidor cedido por outro órgão (sem cargo em comissão),5
-2026-09-30,51,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,1,Assessor,2
+2026-10-02,1,Assessor especial,1
+2026-10-02,1,Assessor-chefe,1
+2026-10-02,1,Assistente I,10
+2026-10-02,1,Auxiliar de Gabinete,7
+2026-10-02,1,Consultor,1
+2026-10-02,1,Oficial de Gabinete,6
+2026-10-02,2,Assessor,2
+2026-10-02,2,Assessor especial,1
+2026-10-02,2,Assessor-chefe,1
+2026-10-02,2,Assistente I,5
+2026-10-02,2,Auxiliar de Gabinete,7
+2026-10-02,2,Consultor,1
+2026-10-02,2,Oficial de Gabinete,6
+2026-10-02,3,Assessor,5
+2026-10-02,3,Assessor especial,1
+2026-10-02,3,Assistente I,5
+2026-10-02,3,Auxiliar de Gabinete,5
+2026-10-02,3,Consultor,1
+2026-10-02,3,Oficial de Gabinete,3
+2026-10-02,4,Assessor,2
+2026-10-02,4,Assessor especial,1
+2026-10-02,4,Assessor-chefe,1
+2026-10-02,4,Assistente I,2
+2026-10-02,4,Auxiliar de Gabinete,7
+2026-10-02,4,Consultor,1
+2026-10-02,4,Oficial de Gabinete,6
+2026-10-02,5,Assessor,5
+2026-10-02,5,Assessor especial,1
+2026-10-02,5,Assessor-chefe,1
+2026-10-02,5,Assistente I,5
+2026-10-02,5,Auxiliar de Gabinete,7
+2026-10-02,5,Consultor,1
+2026-10-02,5,Oficial de Gabinete,6
+2026-10-02,5,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,6,Assessor,7
+2026-10-02,6,Assessor especial,1
+2026-10-02,6,Assessor-chefe,1
+2026-10-02,6,Assistente I,7
+2026-10-02,6,Auxiliar de Gabinete,6
+2026-10-02,6,Consultor,1
+2026-10-02,6,Oficial de Gabinete,5
+2026-10-02,6,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,7,Assessor,2
+2026-10-02,7,Assessor especial,1
+2026-10-02,7,Assessor-chefe,1
+2026-10-02,7,Assistente I,8
+2026-10-02,7,Auxiliar de Gabinete,7
+2026-10-02,7,Consultor,1
+2026-10-02,7,Oficial de Gabinete,6
+2026-10-02,7,Servidor cedido por outro órgão (sem cargo em comissão),4
+2026-10-02,8,Assessor,2
+2026-10-02,8,Assessor especial,1
+2026-10-02,8,Assessor-chefe,1
+2026-10-02,8,Assistente I,3
+2026-10-02,8,Auxiliar de Gabinete,7
+2026-10-02,8,Consultor,1
+2026-10-02,8,Oficial de Gabinete,6
+2026-10-02,9,Assessor,2
+2026-10-02,9,Assessor especial,1
+2026-10-02,9,Assessor-chefe,1
+2026-10-02,9,Assistente I,12
+2026-10-02,9,Auxiliar de Gabinete,7
+2026-10-02,9,Consultor,1
+2026-10-02,9,Oficial de Gabinete,6
+2026-10-02,9,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,10,Assessor,2
+2026-10-02,10,Assessor especial,1
+2026-10-02,10,Assessor-chefe,1
+2026-10-02,10,Assistente I,2
+2026-10-02,10,Auxiliar de Gabinete,7
+2026-10-02,10,Consultor,1
+2026-10-02,10,Oficial de Gabinete,6
+2026-10-02,10,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,10,Servidor efetivo da Câmara (sem cargo em comissão),2
+2026-10-02,11,Assessor,2
+2026-10-02,11,Assessor especial,1
+2026-10-02,11,Assessor-chefe,1
+2026-10-02,11,Assistente I,12
+2026-10-02,11,Auxiliar de Gabinete,7
+2026-10-02,11,Consultor,1
+2026-10-02,11,Oficial de Gabinete,6
+2026-10-02,11,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,11,Servidor efetivo da Câmara (sem cargo em comissão),2
+2026-10-02,12,Assessor,12
+2026-10-02,12,Assessor especial,1
+2026-10-02,12,Assessor-chefe,1
+2026-10-02,12,Assistente I,2
+2026-10-02,12,Auxiliar de Gabinete,7
+2026-10-02,12,Consultor,1
+2026-10-02,12,Oficial de Gabinete,6
+2026-10-02,12,Servidor cedido por outro órgão (sem cargo em comissão),4
+2026-10-02,13,Assessor,6
+2026-10-02,13,Assessor especial,1
+2026-10-02,13,Assessor-chefe,1
+2026-10-02,13,Assistente I,7
+2026-10-02,13,Auxiliar de Gabinete,7
+2026-10-02,13,Consultor,1
+2026-10-02,13,Oficial de Gabinete,6
+2026-10-02,14,Assessor,7
+2026-10-02,14,Assessor especial,1
+2026-10-02,14,Assessor-chefe,1
+2026-10-02,14,Assistente I,4
+2026-10-02,14,Auxiliar de Gabinete,7
+2026-10-02,14,Consultor,1
+2026-10-02,14,Oficial de Gabinete,6
+2026-10-02,14,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,15,Assessor,7
+2026-10-02,15,Assessor especial,1
+2026-10-02,15,Assessor-chefe,1
+2026-10-02,15,Assistente I,7
+2026-10-02,15,Auxiliar de Gabinete,7
+2026-10-02,15,Consultor,1
+2026-10-02,15,Oficial de Gabinete,6
+2026-10-02,15,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,15,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,16,Assessor,2
+2026-10-02,16,Assessor especial,1
+2026-10-02,16,Assessor-chefe,1
+2026-10-02,16,Assistente I,7
+2026-10-02,16,Auxiliar de Gabinete,7
+2026-10-02,16,Consultor,1
+2026-10-02,16,Oficial de Gabinete,6
+2026-10-02,16,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,16,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,17,Assessor,2
+2026-10-02,17,Assessor especial,1
+2026-10-02,17,Assessor-chefe,1
+2026-10-02,17,Assistente I,10
+2026-10-02,17,Auxiliar de Gabinete,7
+2026-10-02,17,Consultor,1
+2026-10-02,17,Oficial de Gabinete,6
+2026-10-02,17,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,17,Servidor efetivo da Câmara (sem cargo em comissão),3
+2026-10-02,18,Assessor,2
+2026-10-02,18,Assessor especial,1
+2026-10-02,18,Assessor-chefe,1
+2026-10-02,18,Assistente I,7
+2026-10-02,18,Auxiliar de Gabinete,7
+2026-10-02,18,Consultor,1
+2026-10-02,18,Oficial de Gabinete,6
+2026-10-02,18,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,18,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,19,Assessor,12
+2026-10-02,19,Assessor especial,1
+2026-10-02,19,Assessor-chefe,1
+2026-10-02,19,Assistente I,2
+2026-10-02,19,Auxiliar de Gabinete,7
+2026-10-02,19,Consultor,1
+2026-10-02,19,Oficial de Gabinete,6
+2026-10-02,20,Assessor,10
+2026-10-02,20,Assessor especial,1
+2026-10-02,20,Assessor-chefe,1
+2026-10-02,20,Assistente I,2
+2026-10-02,20,Auxiliar de Gabinete,7
+2026-10-02,20,Consultor,1
+2026-10-02,20,Oficial de Gabinete,6
+2026-10-02,21,Assessor,2
+2026-10-02,21,Assessor especial,1
+2026-10-02,21,Assessor-chefe,1
+2026-10-02,21,Assistente I,7
+2026-10-02,21,Auxiliar de Gabinete,7
+2026-10-02,21,Consultor,1
+2026-10-02,21,Oficial de Gabinete,6
+2026-10-02,21,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,21,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,22,Assessor,7
+2026-10-02,22,Assessor especial,1
+2026-10-02,22,Assessor-chefe,1
+2026-10-02,22,Assistente I,4
+2026-10-02,22,Auxiliar de Gabinete,7
+2026-10-02,22,Consultor,1
+2026-10-02,22,Oficial de Gabinete,6
+2026-10-02,22,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,22,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,23,Assessor,6
+2026-10-02,23,Assessor especial,1
+2026-10-02,23,Assessor-chefe,1
+2026-10-02,23,Assistente I,6
+2026-10-02,23,Auxiliar de Gabinete,7
+2026-10-02,23,Consultor,1
+2026-10-02,23,Oficial de Gabinete,6
+2026-10-02,23,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,24,Assessor,2
+2026-10-02,24,Assessor especial,1
+2026-10-02,24,Assessor-chefe,1
+2026-10-02,24,Assistente I,12
+2026-10-02,24,Auxiliar de Gabinete,7
+2026-10-02,24,Consultor,1
+2026-10-02,24,Oficial de Gabinete,6
+2026-10-02,24,Servidor cedido por outro órgão (sem cargo em comissão),4
+2026-10-02,25,Assessor,12
+2026-10-02,25,Assessor especial,1
+2026-10-02,25,Assessor-chefe,1
+2026-10-02,25,Assistente I,2
+2026-10-02,25,Auxiliar de Gabinete,7
+2026-10-02,25,Consultor,1
+2026-10-02,25,Oficial de Gabinete,6
+2026-10-02,25,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,26,Assessor,5
+2026-10-02,26,Assessor especial,1
+2026-10-02,26,Assessor-chefe,1
+2026-10-02,26,Assistente I,5
+2026-10-02,26,Auxiliar de Gabinete,7
+2026-10-02,26,Consultor,1
+2026-10-02,26,Oficial de Gabinete,6
+2026-10-02,26,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,27,Assessor,2
+2026-10-02,27,Assessor especial,1
+2026-10-02,27,Assessor-chefe,1
+2026-10-02,27,Assistente I,12
+2026-10-02,27,Auxiliar de Gabinete,7
+2026-10-02,27,Consultor,1
+2026-10-02,27,Oficial de Gabinete,6
+2026-10-02,27,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,28,Assessor,2
+2026-10-02,28,Assessor especial,1
+2026-10-02,28,Assessor-chefe,1
+2026-10-02,28,Assistente I,6
+2026-10-02,28,Auxiliar de Gabinete,6
+2026-10-02,28,Consultor,1
+2026-10-02,28,Oficial de Gabinete,6
+2026-10-02,28,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,28,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,29,Assessor,2
+2026-10-02,29,Assessor especial,1
+2026-10-02,29,Assessor-chefe,1
+2026-10-02,29,Assistente I,6
+2026-10-02,29,Auxiliar de Gabinete,7
+2026-10-02,29,Consultor,1
+2026-10-02,29,Oficial de Gabinete,6
+2026-10-02,29,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,30,Assessor,2
+2026-10-02,30,Assessor especial,1
+2026-10-02,30,Assessor-chefe,1
+2026-10-02,30,Assistente I,7
+2026-10-02,30,Auxiliar de Gabinete,7
+2026-10-02,30,Consultor,1
+2026-10-02,30,Oficial de Gabinete,6
+2026-10-02,31,Assessor,5
+2026-10-02,31,Assessor especial,1
+2026-10-02,31,Assessor-chefe,1
+2026-10-02,31,Assistente I,7
+2026-10-02,31,Auxiliar de Gabinete,7
+2026-10-02,31,Consultor,1
+2026-10-02,31,Oficial de Gabinete,6
+2026-10-02,31,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,31,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,32,Assessor,3
+2026-10-02,32,Assessor especial,1
+2026-10-02,32,Assessor-chefe,1
+2026-10-02,32,Assistente I,3
+2026-10-02,32,Auxiliar de Gabinete,7
+2026-10-02,32,Consultor,1
+2026-10-02,32,Oficial de Gabinete,6
+2026-10-02,32,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,33,Assessor,2
+2026-10-02,33,Assessor especial,1
+2026-10-02,33,Assessor-chefe,1
+2026-10-02,33,Assistente I,2
+2026-10-02,33,Auxiliar de Gabinete,7
+2026-10-02,33,Consultor,1
+2026-10-02,33,Oficial de Gabinete,6
+2026-10-02,33,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,34,Assessor,12
+2026-10-02,34,Assessor especial,1
+2026-10-02,34,Assessor-chefe,1
+2026-10-02,34,Assistente I,2
+2026-10-02,34,Auxiliar de Gabinete,7
+2026-10-02,34,Consultor,1
+2026-10-02,34,Oficial de Gabinete,6
+2026-10-02,34,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,35,Assessor,12
+2026-10-02,35,Assessor especial,1
+2026-10-02,35,Assessor-chefe,1
+2026-10-02,35,Assistente I,2
+2026-10-02,35,Auxiliar de Gabinete,7
+2026-10-02,35,Consultor,1
+2026-10-02,35,Oficial de Gabinete,6
+2026-10-02,36,Assessor,2
+2026-10-02,36,Assessor especial,1
+2026-10-02,36,Assessor-chefe,1
+2026-10-02,36,Assistente I,6
+2026-10-02,36,Auxiliar de Gabinete,7
+2026-10-02,36,Consultor,1
+2026-10-02,36,Oficial de Gabinete,6
+2026-10-02,36,Servidor efetivo da Câmara (sem cargo em comissão),4
+2026-10-02,37,Assessor,5
+2026-10-02,37,Assessor especial,1
+2026-10-02,37,Assessor-chefe,1
+2026-10-02,37,Assistente I,5
+2026-10-02,37,Auxiliar de Gabinete,7
+2026-10-02,37,Consultor,1
+2026-10-02,37,Oficial de Gabinete,6
+2026-10-02,38,Assessor,2
+2026-10-02,38,Assessor especial,1
+2026-10-02,38,Assessor-chefe,1
+2026-10-02,38,Assistente I,12
+2026-10-02,38,Auxiliar de Gabinete,7
+2026-10-02,38,Consultor,1
+2026-10-02,38,Oficial de Gabinete,6
+2026-10-02,38,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,39,Assessor,5
+2026-10-02,39,Assessor especial,1
+2026-10-02,39,Assessor-chefe,1
+2026-10-02,39,Assistente I,4
+2026-10-02,39,Auxiliar de Gabinete,7
+2026-10-02,39,Consultor,1
+2026-10-02,39,Oficial de Gabinete,5
+2026-10-02,39,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,39,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,40,Assessor,2
+2026-10-02,40,Assessor especial,1
+2026-10-02,40,Assessor-chefe,1
+2026-10-02,40,Assistente I,2
+2026-10-02,40,Auxiliar de Gabinete,7
+2026-10-02,40,Consultor,1
+2026-10-02,40,Oficial de Gabinete,6
+2026-10-02,40,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,40,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,41,Assessor,4
+2026-10-02,41,Assessor especial,1
+2026-10-02,41,Assessor-chefe,1
+2026-10-02,41,Assistente I,1
+2026-10-02,41,Auxiliar de Gabinete,6
+2026-10-02,41,Consultor,1
+2026-10-02,41,Oficial de Gabinete,6
+2026-10-02,42,Assessor,7
+2026-10-02,42,Assessor especial,1
+2026-10-02,42,Assessor-chefe,1
+2026-10-02,42,Assistente I,7
+2026-10-02,42,Auxiliar de Gabinete,7
+2026-10-02,42,Consultor,1
+2026-10-02,42,Oficial de Gabinete,6
+2026-10-02,43,Assessor,7
+2026-10-02,43,Assessor especial,1
+2026-10-02,43,Assessor-chefe,1
+2026-10-02,43,Assistente I,5
+2026-10-02,43,Auxiliar de Gabinete,7
+2026-10-02,43,Consultor,1
+2026-10-02,43,Oficial de Gabinete,6
+2026-10-02,43,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,43,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,44,Assessor,7
+2026-10-02,44,Assessor especial,1
+2026-10-02,44,Assessor-chefe,1
+2026-10-02,44,Assistente I,7
+2026-10-02,44,Auxiliar de Gabinete,7
+2026-10-02,44,Consultor,1
+2026-10-02,44,Oficial de Gabinete,6
+2026-10-02,44,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,45,Assessor,4
+2026-10-02,45,Assessor especial,1
+2026-10-02,45,Assessor-chefe,1
+2026-10-02,45,Assistente I,3
+2026-10-02,45,Auxiliar de Gabinete,6
+2026-10-02,45,Consultor,1
+2026-10-02,45,Oficial de Gabinete,6
+2026-10-02,46,Assessor,5
+2026-10-02,46,Assessor especial,1
+2026-10-02,46,Assessor-chefe,1
+2026-10-02,46,Assistente I,6
+2026-10-02,46,Auxiliar de Gabinete,7
+2026-10-02,46,Consultor,1
+2026-10-02,46,Oficial de Gabinete,6
+2026-10-02,46,Servidor cedido por outro órgão (sem cargo em comissão),3
+2026-10-02,46,Servidor efetivo da Câmara (sem cargo em comissão),3
+2026-10-02,47,Assessor,2
+2026-10-02,47,Assessor especial,1
+2026-10-02,47,Assessor-chefe,1
+2026-10-02,47,Assistente I,10
+2026-10-02,47,Auxiliar de Gabinete,7
+2026-10-02,47,Consultor,1
+2026-10-02,47,Oficial de Gabinete,6
+2026-10-02,47,Servidor cedido por outro órgão (sem cargo em comissão),5
+2026-10-02,48,Assessor,5
+2026-10-02,48,Assessor especial,1
+2026-10-02,48,Assessor-chefe,1
+2026-10-02,48,Assistente I,6
+2026-10-02,48,Auxiliar de Gabinete,7
+2026-10-02,48,Consultor,1
+2026-10-02,48,Oficial de Gabinete,6
+2026-10-02,48,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,49,Assessor,12
+2026-10-02,49,Assessor especial,1
+2026-10-02,49,Assessor-chefe,1
+2026-10-02,49,Assistente I,2
+2026-10-02,49,Auxiliar de Gabinete,7
+2026-10-02,49,Consultor,1
+2026-10-02,49,Oficial de Gabinete,6
+2026-10-02,49,Servidor cedido por outro órgão (sem cargo em comissão),1
+2026-10-02,49,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,50,Assessor,2
+2026-10-02,50,Assessor especial,1
+2026-10-02,50,Assessor-chefe,1
+2026-10-02,50,Assistente I,12
+2026-10-02,50,Auxiliar de Gabinete,7
+2026-10-02,50,Consultor,1
+2026-10-02,50,Oficial de Gabinete,6
+2026-10-02,50,Servidor cedido por outro órgão (sem cargo em comissão),2
+2026-10-02,50,Servidor efetivo da Câmara (sem cargo em comissão),1
+2026-10-02,51,Assessor,2
+2026-10-02,51,Assessor especial,1
+2026-10-02,51,Assessor-chefe,1
+2026-10-02,51,Assistente I,7
+2026-10-02,51,Auxiliar de Gabinete,7
+2026-10-02,51,Consultor,1
+2026-10-02,51,Oficial de Gabinete,6
+2026-10-02,51,Servidor cedido por outro órgão (sem cargo em comissão),5

@@ -1,0 +1,385 @@
+{
+ "assembleias/ac": {
+  "ultima_tentativa": "2026-10-02T15:35:56",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:56"
+ },
+ "assembleias/al": {
+  "ultima_tentativa": "2026-10-02T15:36:01",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:36:01"
+ },
+ "assembleias/am": {
+  "ultima_tentativa": "2026-10-02T15:35:36",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:36"
+ },
+ "assembleias/ap": {
+  "ultima_tentativa": "2026-10-02T15:34:42",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:34:42"
+ },
+ "assembleias/ba": {
+  "ultima_tentativa": "2026-10-02T15:31:25",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:25"
+ },
+ "assembleias/ce": {
+  "ultima_tentativa": "2026-10-02T15:31:36",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:36"
+ },
+ "assembleias/df": {
+  "ultima_tentativa": "2026-10-02T15:35:10",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:10"
+ },
+ "assembleias/es": {
+  "ultima_tentativa": "2026-10-02T15:31:57",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:57"
+ },
+ "assembleias/go": {
+  "ultima_tentativa": "2026-10-02T15:31:37",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:37"
+ },
+ "assembleias/ma": {
+  "ultima_tentativa": "2026-10-02T15:35:43",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:43"
+ },
+ "assembleias/mg": {
+  "ultima_tentativa": "2026-10-02T15:31:19",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:19"
+ },
+ "assembleias/ms": {
+  "ultima_tentativa": "2026-10-02T15:31:40",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:40"
+ },
+ "assembleias/mt": {
+  "ultima_tentativa": "2026-10-02T15:41:46",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:41:46"
+ },
+ "assembleias/pa": {
+  "ultima_tentativa": "2026-10-02T15:35:55",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:55"
+ },
+ "assembleias/pb": {
+  "ultima_tentativa": "2026-10-02T15:31:37",
+  "falhas": 1,
+  "ultimo_erro": "ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package.",
+  "ultima_falha": "2026-10-02T15:31:37"
+ },
+ "assembleias/pe": {
+  "ultima_tentativa": "2026-10-02T15:31:28",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:28"
+ },
+ "assembleias/pi": {
+  "ultima_tentativa": "2026-10-02T15:35:46",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:46"
+ },
+ "assembleias/pr": {
+  "ultima_tentativa": "2026-10-02T15:35:44",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:44"
+ },
+ "assembleias/rj": {
+  "ultima_tentativa": "2026-10-02T15:31:22",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:22"
+ },
+ "assembleias/rn": {
+  "ultima_tentativa": "2026-10-02T15:35:46",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:35:46"
+ },
+ "assembleias/ro": {
+  "ultima_tentativa": "2026-10-02T15:31:40",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:40"
+ },
+ "assembleias/rr": {
+  "ultima_tentativa": "2026-10-02T15:36:01",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:36:01"
+ },
+ "assembleias/rs": {
+  "ultima_tentativa": "2026-10-02T15:32:48",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:32:48"
+ },
+ "assembleias/sc": {
+  "ultima_tentativa": "2026-10-02T15:31:39",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:39"
+ },
+ "assembleias/se": {
+  "ultima_tentativa": "2026-10-02T15:31:51",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:51"
+ },
+ "assembleias/sp": {
+  "ultima_tentativa": "2026-10-02T15:31:16",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:16"
+ },
+ "assembleias/to": {
+  "ultima_tentativa": "2026-10-02T15:31:41",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:31:41"
+ },
+ "folhas/AC": {
+  "ultima_tentativa": "2026-10-02T15:42:03",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:42:03"
+ },
+ "folhas/AL": {
+  "ultima_tentativa": "2026-10-02T15:42:07",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:42:07"
+ },
+ "folhas/AM": {
+  "ultima_tentativa": "2026-10-02T15:42:13",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:42:13"
+ },
+ "folhas/BA": {
+  "ultima_tentativa": "2026-10-02T15:42:15",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:42:15"
+ },
+ "folhas/CE": {
+  "ultima_tentativa": "2026-10-02T15:42:39",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:42:39"
+ },
+ "folhas/DF": {
+  "ultima_tentativa": "2026-10-02T15:43:50",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:43:50"
+ },
+ "folhas/ES": {
+  "ultima_tentativa": "2026-10-02T15:44:04",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:44:04"
+ },
+ "folhas/GO": {
+  "ultima_tentativa": "2026-10-02T15:45:08",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:45:08"
+ },
+ "folhas/MA": {
+  "ultima_tentativa": "2026-10-02T15:45:42",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:45:42"
+ },
+ "folhas/MG": {
+  "ultima_tentativa": "2026-10-02T15:45:55",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:45:55"
+ },
+ "folhas/MS": {
+  "ultima_tentativa": "2026-10-02T15:46:53",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:46:53"
+ },
+ "folhas/PA": {
+  "ultima_tentativa": "2026-10-02T15:46:57",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:46:57"
+ },
+ "folhas/PB": {
+  "ultima_tentativa": "2026-10-02T15:47:22",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:47:22"
+ },
+ "folhas/PE": {
+  "ultima_tentativa": "2026-10-02T15:47:41",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:47:41"
+ },
+ "folhas/PI": {
+  "ultima_tentativa": "2026-10-02T15:48:29",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:48:29"
+ },
+ "folhas/PR": {
+  "ultima_tentativa": "2026-10-02T15:48:33",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:48:33"
+ },
+ "folhas/RJ": {
+  "ultima_tentativa": "2026-10-02T15:48:47",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:48:47"
+ },
+ "folhas/RN": {
+  "ultima_tentativa": "2026-10-02T15:48:48",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:48:48"
+ },
+ "folhas/RO": {
+  "ultima_tentativa": "2026-10-02T15:49:42",
+  "falhas": 1,
+  "ultimo_erro": "HTTPError: 404 Client Error: Not Found for url: https://transparencia.api.ro.gov.br/api/v1/remuneracao-servidor?Ano=2026&Mes=10&Cargo=GOVERNADOR&Page=1&PageSize=100",
+  "ultima_falha": "2026-10-02T15:49:42"
+ },
+ "folhas/RR": {
+  "ultima_tentativa": "2026-10-02T15:50:04",
+  "falhas": 1,
+  "ultimo_erro": "ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90)",
+  "ultima_falha": "2026-10-02T15:50:04"
+ },
+ "folhas/RS": {
+  "ultima_tentativa": "2026-10-02T15:57:05",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:57:05"
+ },
+ "folhas/SC": {
+  "ultima_tentativa": "2026-10-02T15:57:10",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:57:10"
+ },
+ "folhas/SE": {
+  "ultima_tentativa": "2026-10-02T15:57:48",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:57:48"
+ },
+ "folhas/SP": {
+  "ultima_tentativa": "2026-10-02T15:58:24",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:58:24"
+ },
+ "prefeituras/campo_grande": {
+  "ultima_tentativa": "2026-10-02T15:30:28",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:30:28"
+ },
+ "prefeituras/curitiba": {
+  "ultima_tentativa": "2026-10-02T15:30:07",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:30:07"
+ },
+ "prefeituras/fortaleza": {
+  "ultima_tentativa": "2026-10-02T15:26:55",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:26:55"
+ },
+ "prefeituras/natal": {
+  "ultima_tentativa": "2026-10-02T15:30:18",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:30:18"
+ },
+ "prefeituras/porto_alegre": {
+  "ultima_tentativa": "2026-10-02T15:28:21",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:28:21"
+ },
+ "prefeituras/recife": {
+  "ultima_tentativa": "2026-10-02T15:26:43",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:26:43"
+ },
+ "prefeituras/rio": {
+  "ultima_tentativa": "2026-10-02T15:26:27",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:26:27"
+ },
+ "prefeituras/salvador": {
+  "ultima_tentativa": "2026-10-02T15:29:22",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:29:22"
+ },
+ "prefeituras/sp": {
+  "ultima_tentativa": "2026-10-02T15:26:27",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:26:27"
+ },
+ "prefeituras/vitoria": {
+  "ultima_tentativa": "2026-10-02T15:27:53",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:27:53"
+ },
+ "tce/ce": {
+  "ultima_tentativa": "2026-10-02T15:58:38",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:58:38"
+ },
+ "tce/pb": {
+  "ultima_tentativa": "2026-10-02T15:58:37",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:58:37"
+ },
+ "vereadores/aracaju": {
+  "ultima_tentativa": "2026-10-02T15:25:45",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:25:45"
+ },
+ "vereadores/belo_horizonte": {
+  "ultima_tentativa": "2026-10-02T14:45:56",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T14:45:56"
+ },
+ "vereadores/boa_vista": {
+  "ultima_tentativa": "2026-10-02T15:25:51",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:25:51"
+ },
+ "vereadores/fortaleza": {
+  "ultima_tentativa": "2026-10-02T14:49:03",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T14:49:03"
+ },
+ "vereadores/goiania": {
+  "ultima_tentativa": "2026-10-02T15:06:13",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:06:13"
+ },
+ "vereadores/maceio": {
+  "ultima_tentativa": "2026-10-02T15:09:02",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:09:02"
+ },
+ "vereadores/manaus": {
+  "ultima_tentativa": "2026-10-02T15:10:13",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:10:13"
+ },
+ "vereadores/natal": {
+  "ultima_tentativa": "2026-10-02T15:16:00",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:16:00"
+ },
+ "vereadores/porto_alegre": {
+  "ultima_tentativa": "2026-10-02T15:18:59",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:18:59"
+ },
+ "vereadores/recife": {
+  "ultima_tentativa": "2026-10-02T15:19:35",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:19:35"
+ },
+ "vereadores/rio_de_janeiro": {
+  "ultima_tentativa": "2026-10-02T14:45:19",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T14:45:19"
+ },
+ "vereadores/sao_luis": {
+  "ultima_tentativa": "2026-10-02T15:25:41",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T15:25:41"
+ },
+ "vereadores/sp": {
+  "ultima_tentativa": "2026-10-02T14:45:06",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-02T14:45:06"
+ }
+}

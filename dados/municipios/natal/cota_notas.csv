@@ -2306,7 +2306,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,1,55,Aldo Clemente,29/01/2026,Extração de Cópias Reprográficas e Digitais,AM Serviços e Loc. de Eq. de Informática,04.999.366/0001-77,R97149,350.0
 2026,1,67,Anne Lagartixa,31/01/2026,Consultoria e Assessoria na Área de Comunicação,084 COMUNICACAO E MARKETING LTDA,30.436.906/0001-14,250,4600.0
 2026,1,67,Anne Lagartixa,30/01/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1605,1837.43
-2026,1,67,Anne Lagartixa,26/01/2026,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,n/a,5500.0
+2026,1,67,Anne Lagartixa,26/01/2026,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,,5500.0
 2026,1,67,Anne Lagartixa,04/02/2026,Consultoria e Assessoria Jurídica,RICARDO MUNIZ DE SOUZA SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.490.524/0001-95,83,10000.0
 2026,1,57,Brisa Bracchi,05/02/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,66970229016160,0003227659,157.97
 2026,1,57,Brisa Bracchi,05/02/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÕES S.A,66970229016160,0003157188,157.97
@@ -2665,7 +2665,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,3,67,Anne Lagartixa,31/03/2026,Consultoria e Assessoria na Área de Comunicação,084 COMUNICACAO E MARKETING LTDA,30.436.906/0001-14,0000000265,4600.0
 2026,3,67,Anne Lagartixa,30/03/2026,Consultoria e Assessoria Jurídica,VANUTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,65.359.742/0001-53,0000000002,10000.0
 2026,3,67,Anne Lagartixa,31/03/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1691,1897.69
-2026,3,67,Anne Lagartixa,23/03/2026,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,N/A,5500.0
+2026,3,67,Anne Lagartixa,23/03/2026,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,,5500.0
 2026,3,57,Brisa Bracchi,31/03/2026,"Confecção de Comenda, Medalha, Placa, Diploma",ACRILART LTDA ME,02625717000154,029518,1041.3
 2026,3,57,Brisa Bracchi,31/03/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001551432,202.91
 2026,3,57,Brisa Bracchi,27/03/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001548051,260.04
