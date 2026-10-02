@@ -625,6 +625,16 @@ de ministro do STF (R$ 46.366,19 desde fev/2025). As sete fontes abrem de fora d
 Desembargadores e juízes não entram: seriam milhares de páginas (o limite do Cloudflare Pages no plano gratuito é de
 20.000 arquivos).
 
+No site: uma página por pessoa e órgão (`k: "t"`; `/alexandre-de-moraes`, `/carmen-lucia-ministra-tse`), como a de um
+deputado, e `/judiciario` com os 7 órgãos (quem está no cargo, o último mês e a média desde jan/2025, quem saiu e, no
+CNJ, quem integra o conselho pago pelo próprio tribunal). O total do mês é o bruto, antes do abate-teto; as diárias
+ficam à parte, fora do total, como na fonte. A seção "Contracheque de cada mês" abre cada mês com as partes como a fonte
+separa ("—" quando ela não separa), o nome de cada parcela quando a fonte dá, a nota do mês (\*) e o link do arquivo
+daquele mês. A posição e a mediana comparam só dentro do mesmo órgão, e não no CNJ nem no TSE: lá, quem vem de um
+tribunal recebe só a diferença ou a gratificação, e os valores não são comparáveis entre si. Para não passar do limite
+de arquivos, não há arquivo por pessoa: o `gerar.mjs` grava a lista leve em `dados/indice/judiciario.json` (sem o mês a
+mês, com o último mês de cada um) e o app baixa o `judiciario.json` inteiro ao abrir uma página do Judiciário.
+
 ## Robôs e robots.txt
 
 Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
@@ -713,6 +723,9 @@ seguem o mesmo desenho.
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+  Judiciário (desde 02/10/2026): `ver_judiciario` (abriu `/judiciario`, com a origem); `ver_parlamentar`, `trocar_periodo`
+  e `compartilhar` com `casa: judiciario`; `abrir_detalhe` com `categoria: mes_judiciario` (abriu um mês do contracheque);
+  `abrir_lista` com `judiciario_sairam_<SIGLA>`. No evento `velocidade`, `pagina` pode ser `judiciario`.
   Dados abertos (desde 02/10/2026): `ver_dados_abertos` (abriu `/dados-abertos`, com a origem) e `baixar_dados` (clicou
   num arquivo da página, com o `arquivo`); os links para o GitHub e o Internet Archive saem como `abrir_github` e
   `abrir_fonte` com `onde: dados-abertos`. No evento `velocidade`, `pagina` pode ser `dados_abertos`.
@@ -810,9 +823,8 @@ para lá.
 
 Cópias fora do repositório (a fazer uma vez, pelo dono da conta):
 
-1. **Zenodo** (CERN): entrar em zenodo.org com a conta do GitHub, em "GitHub" ligar o repositório e publicar uma
-   versão (release) no GitHub, por exemplo uma por mês. Cada versão vira uma cópia permanente, com DOI. O DOI (e o
-   selo) entram em `COPIAS` e aqui.
+1. **Zenodo** (CERN): feito em 02/10/2026 (DOI 10.5281/zenodo.23109647, a versão `2026-10`). Cada versão (release)
+   publicada no GitHub vira uma cópia permanente, com DOI: uma por mês.
 2. **Software Heritage**: em archive.softwareheritage.org, "Save code now" com o endereço do repositório; o Zenodo
    também manda cada versão para lá.
 3. **Espelho**: um repositório no Codeberg ou no GitLab que espelha este (pull mirror), atualizado sozinho.

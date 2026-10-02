@@ -37,6 +37,12 @@ const PRE = ler("prefeituras.json", { meta: { cidades: {} }, p: [] });
 const ASS = ler("assembleias.json", { meta: { estados: {} }, p: [] });
 const deputadosEstaduais = (ASS.p || []).map((p) => ({ ...p, k: "a" }));
 const GOV = ler("governadores.json", { e: [] });
+// Judiciário (tribunais superiores, CNJ e PGR): uma página por pessoa e órgão, com k = "t"; o mês a mês (t, tc, ti, nm)
+// fica só em dados/judiciario.json, que o app baixa ao abrir uma página do Judiciário (sem arquivo por pessoa: o
+// Cloudflare Pages tem limite de arquivos). A lista leve, sem ele, vai em dados/indice/judiciario.json
+const JUD = ler("judiciario.json", { meta: { orgaos: {} }, p: [] });
+const ORGAOS_J = (JUD.meta && JUD.meta.orgaos) || {};
+const judiciario = (JUD.p || []).map((p) => ({ ...p, k: "t" }));
 const MUN = ler("municipios.json", { m: [] });
 const END = ler("enderecos.json", { p: {}, antigos: {} });
 // interior: a folha que cada município manda ao Tribunal de Contas do estado (site/dados/interior/<uf>.json; hoje PB e
@@ -63,7 +69,7 @@ const esc = (t) => String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const ultimoMes = D.meta.ultimo_mes;
 // o último mês com dados: o da Câmara, da Prefeitura ou da Assembleia da pessoa (cada uma publica num ritmo) ou o geral
 const ultimoDe = (p) => ((!p ? null : p.k === "v" ? (CAM.meta.cidades || {})[p.cid] : p.k === "p" ? (PRE.meta.cidades || {})[p.cid]
-  : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : p.k === "g" ? { ultimo_mes: p.um } : null) || {}).ultimo_mes || ultimoMes;
+  : p.k === "a" ? ((ASS.meta || {}).estados || {})[p.uf] : p.k === "g" ? { ultimo_mes: p.um } : p.k === "t" ? ORGAOS_J[p.org] : null) || {}).ultimo_mes || ultimoMes;
 const quando = (k, p) => { const u = ultimoDe(p); return String(Math.floor(u / 100)) === k ? `Em ${k} (até ${MESES[(u % 100) - 1]})` : `Em ${k}`; };
 const dataBR = (d) => String(d || "").split("-").reverse().join("/"); // "2026-10-01" → "01/10/2026"
 const num = (v, casas = 0) => v.toLocaleString("pt-BR", { maximumFractionDigits: casas, minimumFractionDigits: casas });
@@ -189,7 +195,8 @@ const governadores = GOV.e.length ? pessoasGovernadores() : [];
 
 // arquivos que o app.js baixa ao abrir qualquer página: o navegador começa a baixar junto com o app.js
 const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json",
-  ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : []), ...(governadores.length ? ["/dados/indice/governadores-pessoas.json"] : [])];
+  ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : []), ...(governadores.length ? ["/dados/indice/governadores-pessoas.json"] : []),
+  ...(judiciario.length ? ["/dados/indice/judiciario.json"] : [])];
 const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
 
 // ------------------------------------------------------------------ os números da abertura
@@ -205,6 +212,7 @@ function numerosHTML() {
     numero(noCargo(D.p, (p) => p.k === "d" || p.k === "s"), "deputados e senadores no cargo"),
     numero(noCargo(D.p, (p) => p.k === "e"), "no governo federal"),
     GOV.e.length ? numero(GOV.e.length, "governadores") : "",
+    judiciario.length ? numero(noCargo(judiciario, () => true), "nos tribunais superiores, no CNJ e na PGR") : "",
     ests.length ? numero(noCargo(deputadosEstaduais, () => true), ests.length === 1 ? `deputados estaduais ${deUF(ests[0])}` : `deputados estaduais em ${ests.length} estados`) : "",
     camaras.length ? numero(noCargo(CAM.p, () => true), camaras.length === 1 ? `vereadores ${nomeCid(camaras[0])}` : `vereadores em ${camaras.length} capitais`) : "",
     prefs.length ? numero(noCargo(PRE.p, () => true), prefs.length === 1 ? "na Prefeitura" : `nas prefeituras de ${prefs.length} capitais`) : "",
@@ -254,9 +262,9 @@ const paginas = []; // [caminho, html]
 // ------------------------------------------------------------------ políticos
 const cidades = { ...(CAM.meta.cidades || {}), ...(PRE.meta.cidades || {}) };
 const estados = (ASS.meta && ASS.meta.estados) || {};
-const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais, ...governadores];
+const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais, ...governadores, ...judiciario];
 // quem só tem o que vai para o bolso (a Prefeitura e o governo do estado não publicam os gastos por pessoa)
-const soBolso = (p) => p.k === "p" || p.k === "g";
+const soBolso = (p) => p.k === "p" || p.k === "g" || p.k === "t"; // Judiciário: as diárias ficam à parte, fora do total
 const porId = new Map(pessoas.map((p) => [p.id, p]));
 function periodoPadrao(p) {
   if (p.per["2025"] && p.per["2025"].m >= 1) return "2025";
@@ -269,10 +277,13 @@ function rotuloPessoa(p) {
   if (p.k === "p") return /Prefeit/.test(p.g) || !cid ? p.g : `${p.g} · Prefeitura ${deCidade(p.cid, cid.n)}`;
   if (p.k === "a") return `${p.g} ${deUF(p.uf)}${p.pt ? ` · ${p.pt}` : ""}`;
   if (p.k === "g") return `${p.g}${p.pt ? ` · ${p.pt}` : ""}`;
+  if (p.k === "t") return p.g;
   if (p.k === "e") return `${p.g}${p.pt ? ` · ${p.pt}` : ""}`;
   return `${p.g}${p.pt || p.uf ? ` · ${[p.pt, p.uf].filter(Boolean).join("-")}` : ""}`;
 }
 const GASTOS = { d: "em gastos do mandato (cota parlamentar e outros)", s: "em gastos do mandato (cota parlamentar e outros)", e: "em viagens oficiais", j: "em gastos dos cargos", v: "com a verba do gabinete", a: "com a verba do gabinete" };
+// Judiciário: a folha do órgão (ou a cópia dela no DadosJusBr)
+const fonteJ = (p) => { const o = ORGAOS_J[p.org] || {}; return `da folha ${o.sigla === "PGR" ? "do MPF" : `do ${o.sigla || p.org}`}${o.via === "DadosJusBr" ? " (via DadosJusBr)" : ""}`; };
 const FONTE = { d: "da Câmara dos Deputados", s: "do Senado Federal", e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" };
 // o mesmo topo de contracheque que o app.js desenha (secContracheque/resumoTopo), com os números do período padrão
 const partidoUF = (p) => {
@@ -281,15 +292,16 @@ const partidoUF = (p) => {
   if (p.k === "v") return `${p.pt || "sem partido"} · ${(cid || {}).n || "vereador"}`;
   if (p.k === "p") return p.pt || `Prefeitura ${cid ? deCidade(p.cid, cid.n) : ""}`;
   if (p.k === "a" || p.k === "g") return p.pt ? `${p.pt}-${p.uf}` : p.uf;
+  if (p.k === "t") return (ORGAOS_J[p.org] || {}).n || p.org;
   return `${p.pt || "sem partido"}-${p.uf}`;
 };
-const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "gastos do cargo", g: "gastos do cargo" })[p.k] || "gastos do mandato";
+const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "gastos do cargo", g: "gastos do cargo", t: "diárias" })[p.k] || "gastos do mandato";
 // governador sem a folha (Amapá, Mato Grosso e Tocantins): o salário da lei, e não o que foi pago
 const rotuloValor = (p) => (p.k === "g" && p.fonte === "lei" ? "Salário do cargo por mês" : soBolso(p) ? "Recebe por mês" : "Custo por mês");
 const nomeK = (k, p) => quando(k, p).replace(/^Em/, "em");
 function previaPessoa(p, k, r, texto) {
   const foto = p.f ? `<img src="${esc(daRaiz(p.f))}" alt="" referrerpolicy="no-referrer">` : "";
-  const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
+  const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo", t: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
   let resumo = "";
   if (r) {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
@@ -331,20 +343,21 @@ for (const p of pessoas) {
   else {
     const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
     const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "a" ? `da ${(estados[p.uf] || {}).casa || "Assembleia Legislativa"}`
-      : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : FONTE[p.k];
+      : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : p.k === "t" ? fonteJ(p) : FONTE[p.k];
     // no Congresso e no governo federal, o bolso tem também o 13º (vereador e deputado estadual com o salário da lei, não)
-    const bolso = ["d", "s", "e", "j"].includes(p.k) ? "salário, 13º e auxílios" : "salário e auxílios";
+    const bolso = ["d", "s", "e", "j"].includes(p.k) ? "salário, 13º e auxílios" : p.k === "t" ? "bruto, antes do abate-teto" : "salário e auxílios";
     // governador que era vice no período (ou teve os dois cargos nele): diz em qual cargo
     const gk = p.k === "g" ? (p.gp || {})[k] : null, grupoG = gk === "gv" ? "vice-governadores" : "governadores";
     const como = p.k !== "g" ? "" : gk === null ? " (como vice e como governador)" : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
     if (p.k === "g" && p.fonte === "lei") texto = `${rotulo}. ${quando(k, p)}${como}, o salário oficial do cargo foi de ${reais(gm)} por mês, em média (bruto), pelos dias no cargo. O Estado não publica a folha de pagamento em dados abertos. Com a fonte de cada valor.`;
     else if (p.k === "g") texto = `${rotulo}. ${quando(k, p)}${como}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${deUF(p.uf)}. Veja mês a mês${gk ? ` e compare com os outros ${grupoG}` : ""}.`;
     else if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
+    else if (p.k === "t") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto, antes do abate-teto), pela folha ${fonteJ(p).replace(/^da folha /, "")}${cm ? `, mais ${reais(cm)} por mês em diárias de viagem` : ""}. Veja o contracheque de cada mês, com o link da fonte.`;
     else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (${bolso}, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
     else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (${bolso}) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
   const titulo = `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
-  const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : [];
+  const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : p.k === "t" ? ["/dados/judiciario.json"] : [];
   paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false })]);
 }
 
@@ -469,6 +482,25 @@ if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
 }
 
 
+// ------------------------------------------------------------------ Judiciário (/judiciario)
+// Os 7 órgãos (STF, STJ, TST, STM, TSE, CNJ e PGR), com quem está no cargo e a média por mês desde jan/2025; o app.js
+// desenha a mesma página com o último mês de cada um e quem saiu
+if (judiciario.length) {
+  const mesTxt = (m) => `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}`;
+  const lide = "Quanto recebe quem está no topo da Justiça: os ministros do STF, do STJ, do TST, do STM e do TSE, os conselheiros do CNJ e o procurador-geral da República. Mês a mês desde jan/2025, pela folha de pagamento de cada órgão, com o link da fonte de cada mês.";
+  const bloco = ([sigla, o]) => {
+    const ps = judiciario.filter((p) => p.org === sigla && p.x).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
+    const linha = (p) => {
+      const r = p.per.leg, med = r && r.mg ? r.g / r.mg : 0;
+      return `<li><a href="/${esc(END.p[p.id] || p.id)}">${esc(p.n)}</a> <small>${esc(p.g)}${med ? ` · ${esc(reais(med))} por mês, em média, desde jan/2025` : ""}</small></li>`;
+    };
+    return `<h2 class="h3">${esc(o.n)} (${esc(sigla)})</h2><p class="discreto">${ps.length} no cargo · dados até ${mesTxt(o.ultimo_mes)}${o.via === "DadosJusBr" ? " · via DadosJusBr" : ""}</p><ul class="lista">${ps.map(linha).join("")}</ul>`;
+  };
+  const corpo = '<section class="bloco" id="judiciario" aria-labelledby="t-judiciario"><p class="rotulo">Justiça</p><h1 id="t-judiciario" class="titulo-pagina">Judiciário</h1>'
+    + `<p class="lide">${esc(lide)}</p>${Object.entries(ORGAOS_J).map(bloco).join("")}</section>`;
+  paginas.push(["judiciario", pagina("judiciario", "Judiciário: quanto recebem os ministros dos tribunais superiores, o CNJ e a PGR | Contas do Poder", lide, corpo, { extras: ["/dados/judiciario.json"] })]);
+}
+
 // ------------------------------------------------------------------ dados abertos (/dados-abertos)
 // Os dados não dependem deste site: as cópias públicas (COPIAS) e cada arquivo de site/dados/, com o tamanho e a
 // impressão digital (SHA-256), para qualquer cópia poder ser conferida. O manifesto (publicar/dados/manifesto.json) é
@@ -477,6 +509,7 @@ if (IDX && Array.isArray(IDX.estados) && IDX.estados.length) {
 const COPIAS = [
   { nome: "GitHub", url: "https://github.com/jflaloux/contas-do-poder", texto: "O código do site, os robôs que coletam os dados e os próprios dados, com o histórico de cada mudança." },
   { nome: "Pacote completo (ZIP)", url: "https://github.com/jflaloux/contas-do-poder/archive/refs/heads/main.zip", texto: "Tudo o que está no GitHub num arquivo só, na versão mais recente." },
+  { nome: "Zenodo (CERN), com DOI", url: "https://doi.org/10.5281/zenodo.23109647", texto: "Cópia permanente de cada versão publicada no GitHub (a primeira, de 02/10/2026), guardada pelo CERN, com um DOI que não muda." },
   { nome: "Internet Archive", url: "https://web.archive.org/web/*/contasdopoder.com/*", texto: "As páginas do site guardadas pelo Wayback Machine, com a data de cada cópia." },
 ];
 const DESCRICAO_ARQ = {
@@ -557,6 +590,15 @@ for (const [arq, dados] of [["dados.json", D], ["camaras.json", CAM], ["assemble
   }
 }
 // governadores e vices (ver pessoasGovernadores): a lista sem o mês a mês, e o arquivo de cada um
+// Judiciário: a lista sem o mês a mês (que fica em dados/judiciario.json), com o último mês de cada um (u)
+if (judiciario.length) {
+  fs.writeFileSync(path.join(SAIDA, "dados", "indice", "judiciario.json"), JSON.stringify({
+    // sem a lista dos nomes das parcelas e sem o link de cada mês (só servem ao detalhe, no arquivo inteiro)
+    meta: { ...Object.fromEntries(Object.entries(JUD.meta).filter(([k]) => k !== "tipos")),
+      orgaos: Object.fromEntries(Object.entries(ORGAOS_J).map(([s, o]) => [s, Object.fromEntries(Object.entries(o).filter(([k]) => k !== "fonte_mes"))])) },
+    p: JUD.p.map(({ t, tc, ti, nm, dt, ...resto }) => { const u = (t || []).filter((x) => x[1]).pop(); return { ...resto, ...(u ? { u: [u[0], u[1]] } : {}) }; }),
+  }));
+}
 if (governadores.length) {
   fs.writeFileSync(path.join(SAIDA, "dados", "indice", "governadores-pessoas.json"), JSON.stringify({
     meta: { inicio: Math.min(...governadores.map((p) => p.ini)), ultimo_mes: Math.max(...governadores.map((p) => p.um)), categorias: CATS_G },
