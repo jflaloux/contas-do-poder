@@ -11,8 +11,8 @@ da Câmara, do Senado e do Portal da Transparência. E também, sempre pela font
   do gabinete e equipe, onde a Assembleia publica.
 - **Judiciário**: os ministros do STF, STJ, TST, STM e TSE, os conselheiros do CNJ e o procurador-geral da República,
   mês a mês desde jan/2025.
-- **Capitais**: cada vereador de 12 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
-  Manaus, Natal, Porto Alegre, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove (São Paulo,
+- **Capitais**: cada vereador de 13 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
+  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove (São Paulo,
   Recife, Fortaleza, Vitória, Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do
   Rio de Janeiro.
 - **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
@@ -147,11 +147,48 @@ O site é estático (HTML, CSS e JavaScript, sem instalar nada): `site/index.htm
 site estático. Para os links de compartilhamento apontarem para o endereço certo, preencha
 `<meta name="endereco-do-site">` no `index.html` quando o site tiver domínio.
 
+### Testes do site (`publicacao/testes/`)
+
+```bash
+node publicacao/gerar.mjs                       # os testes leem publicar/
+node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
+```
+
+Abre 21 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+prefeitura, deputado estadual, governador e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
+tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`; e um endereço que não existe) no
+Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
+console, sem exceção, sem arquivo que falta, título, um só `h1`, o "Carregando…" fora, sem rolagem horizontal e o que
+cada página precisa mostrar), **CLS** (até 0,1) e **axe-core** (nenhuma violação de acessibilidade, contraste incluído).
+O LCP e o tempo de cada página saem no relatório, sem valer como falha. Os pedidos a sites de fora (Google Analytics e
+fontes) são bloqueados: o teste não conta visita no Analytics nem precisa de internet. Termina com código 1 se algo
+falhar. Leva uns 5 minutos (as páginas de pessoa esperam o desenho da imagem de compartilhamento, que sem as fontes do
+Google demora ~6 s).
+
+- `--completo`: os 4 perfis (celular e computador, claro e escuro) em vez de 2.
+- `--paginas=atualizacao,indice`: só essas (os nomes estão em `PAGINAS`, no `rodar.mjs`).
+- `--url=http://localhost:8000`: usa um servidor que já está rodando (`node publicacao/servir.mjs`).
+- `--capturas=/tmp/capturas`: guarda uma imagem de cada página e perfil.
+
+**Sem instalar nada no projeto.** Não há `package.json` na raiz nem em outra pasta: o Cloudflare Pages só roda
+`node publicacao/gerar.mjs`, que não muda, e nada de `publicacao/testes/` entra em `publicar/`. Os testes usam só o Node
+(22 ou mais novo) e o Chrome que já estiver no computador (ou o executável indicado na variável `CHROME`), pelo
+protocolo DevTools (`cdp.mjs`). A única peça de fora é o **axe-core** (versão 4.10.2): sem ele, o teste roda o resto e
+avisa que o axe não rodou. Para ter o axe, rode uma vez `node publicacao/testes/rodar.mjs --baixar-axe`: ele baixa o
+arquivo `axe.min.js` (~0,5 MB, do cdnjs) para `~/.cache/contas-do-poder/`, mostra o SHA-256 e segue; o arquivo fica
+fora do repositório. Para conferir a baixa, ponha o SHA-256 mostrado em `AXE_SHA256` (variável de ambiente ou no
+`rodar.mjs`). Quem já tem o axe aponta `AXE_JS` para o `axe.min.js`.
+
+Lighthouse (desempenho no celular), à parte, com o servidor local rodando:
+`npx lighthouse http://localhost:8000/judiciario --form-factor=mobile --only-categories=performance --view`
+(o `npx` baixa o Lighthouse na hora; a nota varia de uma rodada para outra e, no servidor local, não mede a internet).
+
 ## Pastas
 
 | Pasta | O que tem |
 |---|---|
 | `site/` | O site. `site/fotos/` tem as fotos oficiais reduzidas (240×320, WebP, ~8 KB cada) |
+| `publicacao/` | `gerar.mjs` (monta `publicar/`), `servir.mjs` (servidor local) e `testes/` (testes do site) |
 | `coleta/` | Código dos robôs (`camara.py`, `senado.py`, `executivo.py`, `fotos.py`, `fotos_tse.py`, `municipios.py`, `governadores.py`, `vereadores/`, `prefeituras/`), da base unificada (`padronizar.py`) e da conferência (`conferir.py`) |
 | `dados/governadores/` | O salário de cada governador e vice, com a fonte de cada valor (mantido à mão), e em `folha/` o mês a mês pela folha de cada estado |
 | `dados/municipios/` | Cidades, custo das câmaras, vereadores eleitos e, por capital, as linhas das folhas da Câmara e da Prefeitura |
