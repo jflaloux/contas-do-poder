@@ -128,6 +128,103 @@ def _menos(am, n):
     return menos_meses(am, n)
 
 
+# Quem está em exercício hoje. A folha e a verba dizem quem recebeu em cada mês, mas não quem está no cargo: o titular
+# licenciado (secretário de Estado, licença de saúde) pode continuar na folha, o suplente pode ficar na folha do mês em
+# que o titular voltou, e quem não prestou contas nos últimos meses continua no cargo. Onde a Assembleia publica a lista
+# de quem está em exercício, ela decide o "no cargo" de hoje (aplicar_hoje); a folha e a verba dizem desde quando.
+EM_EXERCICIO = "em_exercicio.csv"
+
+
+def gravar_em_exercicio(pasta, nomes, vagas, fonte):
+    """Grava a lista oficial de quem está em exercício hoje (nomes como a Assembleia escreve). Só grava se a lista parece
+    inteira (entre 80% e 120% das vagas): uma página quebrada não tira ninguém do cargo nem põe ninguém."""
+    import time
+    nomes = sorted({" ".join(str(n).split()) for n in nomes if str(n).strip()})
+    if not (0.8 * vagas <= len(nomes) <= 1.2 * vagas):
+        log(f"  lista de quem está em exercício com {len(nomes)} nomes para {vagas} vagas: fica a que já estava gravada")
+        return
+    with open(pasta / EM_EXERCICIO, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["nome", "visto_em", "fonte"])
+        for n in nomes:
+            w.writerow([n, time.strftime("%Y-%m-%d"), fonte])
+
+
+def ler_em_exercicio(pasta):
+    """[nomes] da lista oficial gravada, ou None (sem lista: o "no cargo" sai só da folha e da verba)."""
+    arq = pasta / EM_EXERCICIO
+    if not arq.exists():
+        return None
+    with open(arq, encoding="utf-8") as f:
+        return [l["nome"] for l in csv.DictReader(f)] or None
+
+
+def casar_em_exercicio(nomes, ver, uf, apelidos=None):
+    """{codigo: True/False} de cada pessoa de `ver` (dicts com codigo, nome, nome_civil) pela lista oficial `nomes`
+    (o nome parlamentar, comparado com o nome, o nome civil e o nome de urna do TSE; `apelidos`: {nome da lista: nome
+    civil} para quem mudou de nome parlamentar)."""
+    apelidos = {normalizar_nome(k): v for k, v in (apelidos or {}).items()}
+    nomes = [re.sub(r"[´'`’]", "", apelidos.get(normalizar_nome(n), n)) for n in nomes]  # "Kaká D´Ávila" = "Kaká dÁvila"
+    tse = tse_2022(uf)
+    alvos = {}
+    for v in ver:
+        t = achar(v["nome"], tse) or {}
+        for n in {v["nome"], v.get("nome_civil") or "", t.get("urna", ""), t.get("nome", "")} - {""}:
+            alvos.setdefault(normalizar_nome(re.sub(r"[´'`’]", "", n)), {"nome": v.get("nome_civil") or v["nome"], "urna": v["nome"], "eleito": "eleito", "mat": v["codigo"]})
+    atual, sem = {}, []
+    for n in nomes:
+        a = achar(n, alvos)
+        if a:
+            atual[a["mat"]] = True
+        else:
+            sem.append(n)
+    if sem:
+        log(f"  {uf}: em exercício pela lista da Assembleia, sem dados nossos: {', '.join(sem)}")
+    return {v["codigo"]: atual.get(v["codigo"], False) for v in ver}
+
+
+def aplicar_hoje(mandatos, atual, ultimo_dado, fins=None, folga=2, pagos=()):
+    """Acerta os períodos (lista de dicts codigo/inicio/fim, fim "" = no cargo) pela lista oficial de hoje. Quem está fora
+    da lista e em `pagos` (o licenciado que continua recebendo da Casa) fica com o período aberto: quem tira essa pessoa
+    do "no cargo" é cfg["fora_hoje"] (fora_hoje(atual)), no vereadores.comum.montar.
+    - na lista e sem período aberto: está no cargo, só não aparece nos últimos meses. Se o último período acabou há até
+      `folga` meses do último mês com dados, ele fica aberto; se acabou antes, um período novo começa no último mês com
+      dados (o tempo no meio, sem dado nenhum, fica de fora, como antes);
+    - fora da lista e com período aberto: o período fecha na data que a Assembleia publica (`fins`, {codigo: "AAAA-MM-DD"})
+      ou, sem ela, no fim do último mês com dados.
+    Sem lista (atual None), nada muda."""
+    from calendar import monthrange
+    if not atual:
+        return mandatos
+    fins = fins or {}
+    a, m = divmod(int(ultimo_dado), 100)
+    fim_dados = f"{a}-{m:02d}-{monthrange(a, m)[1]:02d}"
+    limite = _menos(int(ultimo_dado), folga + 1)
+    por_cod = {}
+    for p in mandatos:
+        por_cod.setdefault(p["codigo"], []).append(p)
+    for cod, ps in por_cod.items():
+        if cod not in atual:
+            continue
+        ps.sort(key=lambda p: p["inicio"])
+        aberto = [p for p in ps if not (isinstance(p["fim"], str) and p["fim"].strip())]
+        if (atual[cod] or cod in pagos) and not aberto:  # no cargo, ou licenciado e recebendo: o período continua
+            if int(str(ps[-1]["fim"])[:7].replace("-", "")) >= limite:
+                ps[-1]["fim"] = ""
+            else:
+                mandatos.append({**ps[-1], "inicio": f"{a}-{m:02d}-01", "fim": ""})
+        elif not atual[cod] and aberto and cod not in pagos:
+            for p in aberto:
+                fim = fins.get(cod) or fim_dados
+                p["fim"] = max(fim, p["inicio"])
+    return mandatos
+
+
+def fora_hoje(atual):
+    """Para cfg["fora_hoje"]: os códigos que a lista oficial não mostra em exercício hoje."""
+    return {c for c, a in (atual or {}).items() if not a}
+
+
 def codigo_de(nome, tse_info):
     """Número estável para quem não tem matrícula nos dados abertos: o SQ do candidato no TSE (ou um CRC do nome)."""
     import zlib

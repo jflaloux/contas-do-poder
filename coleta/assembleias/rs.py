@@ -9,7 +9,9 @@ Fontes (Portal da Transparência da ALRS, transparencia.al.rs.gov.br; só abre d
   indenizatórias, abono, terço de férias, 13º). Descontos e líquido não são guardados.
 - Nome completo, gênero e eleito/suplente: TSE (eleição de 2022); partido: candidatura de 2026 no TSE.
 Quem está no cargo: os meses na folha como deputado (o titular licenciado sai da folha, mas o gabinete continua na lista de
-cotas); para quem a busca da folha não acha, os meses com gabinete na lista.
+cotas); para quem a busca da folha não acha, os meses com gabinete na lista. Quem está no cargo hoje: a lista de deputados
+do site da ALRS (https://ww4.al.rs.gov.br/deputados, que lê LISTA): o suplente pode estar na folha do mês em que o titular
+voltou.
 """
 import html as H
 import re
@@ -44,7 +46,8 @@ CFG = {
                     "continuam no nome do gabinete dele, e o suplente que assume aparece sem cota."],
     "pagina": "https://ww4.al.rs.gov.br/deputados",
     "notas": ["Quem está no cargo: os meses na folha como deputado; para quem a busca da folha não acha pelo nome, os meses com "
-              "gabinete na lista de cotas. Sem folha, o salário é o subsídio da lei.",
+              "gabinete na lista de cotas. Sem folha, o salário é o subsídio da lei. Quem está no cargo hoje: a lista de deputados "
+              "do site da ALRS.",
               "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
     "fontes": {"verba": f"{SITE}/parlamentares/gastos", "folha": f"{SITE}/pessoal/remuneracao-servidores-parlamentares"},
 }
@@ -94,6 +97,17 @@ def _tse(nome, tse):
     return comum.achar(nome, tse) or comum.achar(re.sub(r"\b([dD])([AÁEÉIÍOÓUÚ])", r"\1 \2", nome), tse) or {}
 
 
+LISTA = "https://ww4.al.rs.gov.br:5000/listarDestaqueDeputados"  # o que a página https://ww4.al.rs.gov.br/deputados usa
+
+
+def _em_exercicio():
+    """Nomes da lista de deputados do site da ALRS (quem está em exercício hoje)."""
+    verificar_prazo()
+    d = _sessao().get(LISTA, timeout=60).json()
+    lista = d if isinstance(d, list) else next((v for v in d.values() if isinstance(v, list)), [])
+    return [x.get("nomeDeputado", "") for x in lista]
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     try:  # de fora do Brasil o portal não responde: desiste logo (o site usa o que já está gravado)
@@ -101,6 +115,12 @@ def coletar():
     except Exception as e:  # noqa: BLE001
         log(f"  ALRS: o portal não abriu ({type(e).__name__}); fica o que já estava gravado (este robô roda no Brasil)")
         return
+    try:
+        comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], "https://ww4.al.rs.gov.br/deputados")
+    except TempoEsgotado:
+        raise
+    except Exception as e:  # noqa: BLE001 — sem a lista, fica a que já estava gravada
+        log(f"  ALRS: a lista de deputados não abriu ({type(e).__name__}); fica a já gravada")
     meses = _meses()
     arq_g, arq_v, arq_f, arq_id = PASTA / "gabinetes.csv", PASTA / "cota_rubricas.csv", PASTA / "folha_deputados.csv", PASTA / "funcionais.csv"
     gab = pd.read_csv(arq_g) if arq_g.exists() else pd.DataFrame(columns=["ano", "mes", "codigo", "nome"])
@@ -265,6 +285,10 @@ def montar(tipos):
             per = [(i, f or f"{fim // 100}-{fim % 100:02d}-28") for i, f in per]
         for i, f in per:
             mandatos.append({"codigo": codigo, "inicio": i, "fim": f})
+    lista, atual = comum.ler_em_exercicio(PASTA), None  # quem está no cargo hoje; a folha diz desde quando
+    if lista:
+        atual = comum.casar_em_exercicio(lista, ver, UF)
+        mandatos = comum.aplicar_hoje(mandatos, atual, ultimo_dado, folga=1)
     ganha = []
     for r in fol.itertuples():
         c = cod_nome.get(r.nome)
@@ -276,5 +300,5 @@ def montar(tipos):
     d = cot[(cot.rubrica != "") & (cot.valor.abs() >= 0.005)]
     desp = pd.DataFrame({"ano": d.ano, "mes": d.mes, "codigo": d.codigo.map(cod_gab), "tipo": d.rubrica.map(_tipo), "fornecedor": "",
                          "cnpj_cpf": "", "valor": d.valor}).dropna(subset=["codigo"])
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), fora_hoje=comum.fora_hoje(atual))
     return vc.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos), ganha=pd.DataFrame(ganha, columns=["ano", "mes", "codigo", "categoria", "valor"]), despesas=desp)

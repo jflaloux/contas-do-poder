@@ -13,6 +13,8 @@ import io
 import re
 import time
 
+from calendar import monthrange
+
 import pandas as pd
 
 from ..config import CACHE, DADOS
@@ -38,7 +40,8 @@ CFG = {
     "verba_notas": ["Entra o total da VIAP paga na folha do mês. A ALPB publica as notas de cada mês num arquivo por deputado, que ainda "
                     "não entram aqui (sem os fornecedores)."],
     "pagina": "https://www.al.pb.leg.br/deputados",
-    "notas": ["Quem estava no cargo em cada mês: quem está na planilha dos eletivos da folha do mês.",
+    "notas": ["Quem estava no cargo em cada mês: quem está na planilha dos eletivos da folha do mês. Quem recebeu só parte do "
+              "subsídio no último mês publicado, depois de um mês inteiro, saiu nesse mês (o suplente, quando o titular volta).",
               "A ALPB não publicou a planilha de julho de 2025: nesse mês vale o subsídio da lei, e a VIAP fica sem valor.",
               "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
     "fontes": {"folha": PAGINA, "verba": "https://www.al.pb.leg.br/transparencia/deputados/viap-v2",
@@ -131,7 +134,16 @@ def montar(tipos):
         ver.append({"codigo": int(mat), "nome": nome, "nome_civil": vc.titulo(t.get("nome") or civil), "partido": partidos.get(normalizar_nome(civil), ""),
                     "genero": t.get("genero") or ("F" if feminino(civil) else "M"), "eleito": t.get("eleito", ""), "pagina": CFG["pagina"]})
         meses_g = set(g.ano * 100 + g.mes)
-        for i, fim in comum.periodos(list(meses_g), ultimo_dado, ultimo, folga=1):
+        per = comum.periodos(list(meses_g), ultimo_dado, ultimo, folga=1)
+        # quem estava no mês anterior e recebeu só parte do subsídio no último mês saiu nesse mês (o suplente, quando o
+        # titular volta): o período fecha no dia que o valor pago diz, e não fica aberto como se estivesse no cargo
+        u = g[g.ano * 100 + g.mes == ultimo_dado]
+        if len(u) and vc.menos_meses(ultimo_dado, 1) in meses_g and float(u.subsidio.iloc[0]) < 0.95 * subsidio_lei(ultimo_dado):
+            a, m = divmod(ultimo_dado, 100)
+            dias = monthrange(a, m)[1]
+            dia = min(dias - 1, max(1, round(float(u.subsidio.iloc[0]) / subsidio_lei(ultimo_dado) * dias)))
+            per = [(i, fim or f"{a}-{m:02d}-{dia:02d}") for i, fim in per]
+        for i, fim in per:
             mandatos.append({"codigo": int(mat), "inicio": i, "fim": fim})
         for am in sorted(meses_sem):  # mês sem planilha entre dois meses com o deputado: vale o subsídio da lei
             if vc.menos_meses(am, 1) in meses_g and vc.mes_seguinte(am) in meses_g:

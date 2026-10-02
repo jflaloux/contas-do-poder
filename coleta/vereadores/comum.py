@@ -396,7 +396,9 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
             continue
         periodos = sorted((date.fromisoformat(str(i)[:10]), date.fromisoformat(str(f)[:10]) if isinstance(f, str) and f.strip() else None)
                           for i, f in zip(g.inicio, g.fim.fillna("") if "fim" in g else [""] * len(g)))
-        no_cargo = any(f is None or f >= HOJE for _, f in periodos)
+        # fora_hoje: quem a lista oficial da Casa não mostra em exercício hoje, mas continua recebendo (o titular
+        # licenciado): o período segue aberto (o dinheiro continua) e a pessoa não conta como no cargo
+        no_cargo = any(f is None or f >= HOJE for _, f in periodos) and codigo not in cfg.get("fora_hoje", ())
         dias_total = sum(dias_no_mes(periodos, a, m) for a, m in lista_meses)
         if dias_total < cfg.get("min_dias", 15) and not no_cargo:
             continue  # ficou só uns dias (para uma votação, por exemplo): fica fora da lista

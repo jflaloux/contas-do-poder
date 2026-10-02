@@ -243,9 +243,10 @@ def _coletar_equipe(hoje, recente):
             eq.sort_values(["ano", "mes", "gabinete"]).to_csv(PASTA / "equipe.csv", index=False)
         ult = max(x["ano"] for x in lotados) if lotados else None
         cargos = pd.DataFrame([x for x in lotados if x["ano"] == ult and normalizar_nome(x["situacao"]) == "ATIVO"])
-        if len(cargos):
+        if len(cargos):  # a lista do ano como estava quando foi lida (ano e mês da leitura: o "equipe em" do site)
+            lida = time.localtime((C / f"lotados_{ult}.json").stat().st_mtime) if (C / f"lotados_{ult}.json").exists() else hoje
             cargos.groupby(["lotacao", "cargo"]).size().reset_index(name="pessoas").rename(columns={"lotacao": "gabinete"}) \
-                .to_csv(PASTA / "equipe_cargos.csv", index=False)
+                .assign(ano=lida.tm_year, mes=lida.tm_mon).to_csv(PASTA / "equipe_cargos.csv", index=False)
 
 
 _PREFIXOS = re.compile(r"^(GAB(INETE)?\s+)?(DO\s+)?(DEP(UTADO|UTADA)?\.?\s+)", re.I)
@@ -367,11 +368,17 @@ def montar(tipos):
         eq = eq.dropna(subset=["codigo"])
         eq = eq[eq.ano * 100 + eq.mes <= ultimo_dado]
         equipe = pd.DataFrame({"ano": eq.ano, "mes": eq.mes, "codigo": eq.codigo.astype(int), "pessoas": eq.pessoas, "custo": eq.custo})
+    equipe_em = ""
     if (PASTA / "equipe_cargos.csv").exists():
         cg = pd.read_csv(PASTA / "equipe_cargos.csv")
         cg["codigo"] = cg.gabinete.map(dono)
         cg = cg.dropna(subset=["codigo"])
         cargos = cg.groupby([cg.codigo.astype(int), "cargo"]).pessoas.sum().reset_index().rename(columns={"codigo": "codigo"})
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+        # o mês da lista de servidores lida (sem ele, nos arquivos antigos, o último mês da equipe)
+        am = int(cg.ano.max()) * 100 + int(cg[cg.ano == cg.ano.max()].mes.max()) if "mes" in cg and len(cg) else \
+            (int((equipe.ano * 100 + equipe.mes).max()) if equipe is not None and len(equipe) else 0)
+        am = min(am, ultimo_dado) if am else 0
+        equipe_em = f"{am % 100:02d}/{am // 100}" if am else ""
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), equipe_em=equipe_em)
     return vc.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos),
                      ganha=pd.DataFrame(ganha, columns=["ano", "mes", "codigo", "categoria", "valor"]), equipe=equipe, cargos=cargos)

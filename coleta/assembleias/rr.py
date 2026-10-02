@@ -62,7 +62,9 @@ CFG = {
                     "O que passou da cota do mês e não foi ressarcido entra como valor negativo, para o total ser a despesa indenizada no mês.",
                     "A página com os meses até ago/2025 não respondeu (erro 504): a verba começa em set/2025."],
     "equipe_nota": ("Equipe: servidores do setor do gabinete do deputado (\"GAB DEP ...\") na planilha mensal de servidores da ALE-RR, sem "
-                    "o custo. Quem trabalha para o deputado em outro setor (Mesa, lideranças) fica de fora."),
+                    "o custo. Entram todos os lotados no setor: comissionados (a maioria, \"Auxiliar de Gabinete\"), servidores cedidos "
+                    "por outros órgãos e os do gabinete regional. Quem trabalha para o deputado em outro setor (Mesa, lideranças) "
+                    "fica de fora."),
     "pagina": "https://al.rr.leg.br/deputados-estaduais-2023/",
     "notas": ["Quem está no cargo: os deputados na folha do mês (até set/2025) e com o arquivo da verba indenizatória no mês (desde set/2025).",
               "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
@@ -636,11 +638,15 @@ def montar(tipos):
             log(f"  ALE-RR: gabinetes sem deputado: {sem}")
         eq = eq.dropna(subset=["codigo"])
         equipe = pd.DataFrame({"ano": eq.ano, "mes": eq.mes, "codigo": eq.codigo.astype(int), "pessoas": eq.pessoas, "custo": ""})
+    equipe_em = ""
     if (PASTA / "equipe_cargos.csv").exists():
         cg = pd.read_csv(PASTA / "equipe_cargos.csv")
+        if len(cg):  # os cargos são os da planilha de servidores do mês mais recente
+            am = int((cg.ano * 100 + cg.mes).max())
+            equipe_em = f"{am % 100:02d}/{am // 100}"
         cg["codigo"] = cg.gabinete.map(dono)
         cg = cg.dropna(subset=["codigo"])
         cargos = cg.assign(codigo=cg.codigo.astype(int)).groupby(["codigo", "cargo"]).pessoas.sum().reset_index()
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), equipe_em=equipe_em)
     return vc.montar(cfg, tipos, pd.DataFrame(ver), mand, ganha=pd.DataFrame(ganha, columns=["ano", "mes", "codigo", "categoria", "valor"]),
                      despesas=pd.DataFrame(desp, columns=["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"]), equipe=equipe, cargos=cargos)

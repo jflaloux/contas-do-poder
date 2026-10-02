@@ -7,7 +7,9 @@ Fontes (Portal da Transparência da Alap; só abre de dentro do Brasil, então e
 - Folha: a "Consulta remuneratória de deputados" (pagina.php?pg=deputado_consulta) e a página de cada deputado no mês
   (pg=exibir_servidor): só os rendimentos (subsídio, GFE, auxílio-alimentação e outros); descontos e líquido não são guardados.
 - Nome completo, gênero e eleito/suplente: TSE (eleição de 2022); partido: candidatura de 2026 no TSE.
-Quem está no cargo: os gabinetes da CEAP do mês (o nome do gabinete é o do deputado).
+Quem está no cargo: os gabinetes da CEAP do mês (o nome do gabinete é o do deputado). Quem está no cargo hoje: a lista de
+parlamentares da página inicial da Alap (https://www.al.ap.gov.br/): a CEAP do último mês pode ainda não ter o gabinete de
+quem prestou contas depois.
 """
 import html as H
 import re
@@ -40,7 +42,8 @@ CFG = {
     "verba_regra": "Cota mensal para despesas do mandato, reembolsadas com nota fiscal.",
     "verba_notas": ["A Alap publica a CEAP por gabinete, mês e elemento de despesa, com o CNPJ, a empresa, a nota e o valor."],
     "pagina": "https://www.al.ap.leg.br/",
-    "notas": ["Quem está no cargo: os gabinetes da CEAP de cada mês; quem está na folha como deputado sem gabinete na CEAP entra pelos meses na folha.",
+    "notas": ["Quem está no cargo: os gabinetes da CEAP de cada mês; quem está na folha como deputado sem gabinete na CEAP entra pelos meses na folha. "
+              "Quem está no cargo hoje: a lista de parlamentares da página inicial da Alap.",
               "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
     "fontes": {"verba": f"{SITE}pagina.php?pg=ceap", "folha": f"{SITE}pagina.php?pg=deputado_consulta"},
 }
@@ -111,6 +114,16 @@ def _detalhe(t):
     return saida
 
 
+LISTA = "https://www.al.ap.gov.br/"
+
+
+def _em_exercicio():
+    """Nomes da lista de parlamentares da página inicial da Alap (quem está em exercício hoje)."""
+    verificar_prazo()
+    t = _sessao().get(LISTA, timeout=60).text
+    return sorted({H.unescape(n) for n in re.findall(r'exibir_parlamentar&(?:amp;)?iddeputado=\d+" title="([^"]+)"', t)})
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     try:  # de fora do Brasil o portal não responde: desiste logo (o site usa o que já está gravado)
@@ -118,6 +131,12 @@ def coletar():
     except Exception as e:  # noqa: BLE001
         log(f"  Alap: o portal não abriu ({type(e).__name__}); fica o que já estava gravado (este robô roda no Brasil)")
         return
+    try:
+        comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], LISTA)
+    except TempoEsgotado:
+        raise
+    except Exception as e:  # noqa: BLE001 — sem a lista, fica a que já estava gravada
+        log(f"  Alap: a lista de parlamentares não abriu ({type(e).__name__}); fica a já gravada")
     meses = _meses()
     arq_g, arq_v, arq_f = PASTA / "gabinetes.csv", PASTA / "ceap_notas.csv", PASTA / "folha_deputados.csv"
     velho = lambda arq: not arq.exists() or time.time() - arq.stat().st_mtime > 86400
@@ -295,6 +314,10 @@ def montar(tipos):
     d = ceap[(ceap.elemento != "") & (ceap.valor.abs() >= 0.005)]
     desp = pd.DataFrame({"ano": d.ano, "mes": d.mes, "codigo": d.gabinete.map(cod_gab), "tipo": d.elemento.map(_tipo),
                          "fornecedor": d.fornecedor, "cnpj_cpf": d.cnpj_cpf, "valor": d.valor}).dropna(subset=["codigo"])
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+    lista, atual = comum.ler_em_exercicio(PASTA), None  # quem está no cargo hoje; a CEAP e a folha dizem desde quando
+    if lista:
+        atual = comum.casar_em_exercicio(lista, ver, UF)
+        mandatos = comum.aplicar_hoje(mandatos, atual, ultimo_dado, folga=1)
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), fora_hoje=comum.fora_hoje(atual))
     return vc.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos),
                      ganha=pd.DataFrame(ganha, columns=["ano", "mes", "codigo", "categoria", "valor"]), despesas=desp)

@@ -8,7 +8,9 @@ Fontes (Portal da Transparência da Alece, https://transparencia.al.ce.gov.br/, 
 - Verba de Desempenho Parlamentar (VDP), empenho por empenho (descrição, CNPJ, credor, valor), em CSV:
   https://transparencia.al.ce.gov.br/despesas/verba-desempenho-parlamentar/csv?mes=MM&ano=AAAA
 - Nome completo, gênero e eleito/suplente: TSE (eleição de 2022); partido: candidatura de 2026 no TSE.
-Quem esteve no cargo em cada mês: quem está na folha do mês com a categoria "DEPUTADOS".
+Quem esteve no cargo em cada mês: quem está na folha do mês com a categoria "DEPUTADOS". O titular licenciado
+(secretário de Estado, licença de saúde) pode continuar na folha: quem está no cargo hoje sai da página de deputados
+da Alece (https://www.al.ce.gov.br/deputados), que marca os licenciados e lista os suplentes em exercício.
 """
 import csv
 import io
@@ -42,7 +44,8 @@ CFG = {
     "verba_notas": ["A Alece publica a VDP empenho por empenho (não nota fiscal por nota fiscal), com o credor e o CNPJ."],
     "pagina": "https://www.al.ce.gov.br/deputados",
     "notas": ["Quem estava no cargo em cada mês: quem aparece na folha do mês com a categoria \"DEPUTADOS\" (titulares e suplentes "
-              "em exercício).", "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
+              "em exercício). O titular licenciado pode continuar recebendo pela Alece: quem está no cargo hoje é quem a página de "
+              "deputados da Alece mostra em exercício (sem os licenciados) e os suplentes em exercício.", "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
     "fontes": {"folha": f"{BASE}/gestao-de-pessoas/pessoal", "verba": f"{BASE}/despesas/verba-desempenho-parlamentar",
                "subsidio": f"{BASE}/uploads/estrutura_remuneratoria/YuihxetEr86nWb3jQ0XLfOcxvijZ3SjnmVsS7mWJ.txt"},
 }
@@ -82,8 +85,27 @@ def _meses():
     return [a * 100 + m for a in range(INICIO // 100, h.tm_year + 1) for m in range(1, 13) if INICIO <= a * 100 + m < h.tm_year * 100 + h.tm_mon]
 
 
+def _em_exercicio():
+    """Nomes de quem está em exercício hoje na página de deputados da Alece: os titulares sem a marca de licenciado e os
+    suplentes em exercício."""
+    import html as H
+    verificar_prazo()
+    t = _sessao().get(CFG["pagina"], timeout=120).text
+    nomes = []
+    for classe, nome in re.findall(r'<div\s+class="deputado_card([^"]*)"[^>]*>.*?deputado_card--nome[^>]*>\s*<a[^>]*>(.*?)</a>', t, flags=re.S):
+        if "licenciado" not in classe:
+            nomes.append(" ".join(H.unescape(re.sub(r"<[^>]+>", "", nome)).split()))
+    return nomes
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
+    try:
+        comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], CFG["pagina"])
+    except TempoEsgotado:
+        raise
+    except Exception as e:  # noqa: BLE001 — sem a lista, fica a que já estava gravada
+        log(f"  Alece: a página de deputados não abriu ({type(e).__name__}); fica a lista de quem está em exercício já gravada")
     folha, verba = [], []
     meses = _meses()
     for am in meses:
@@ -182,6 +204,11 @@ def montar(tipos):
     if sem:
         log(f"  Alece: VDP sem deputado da folha: {', '.join(sem)}")
     desp = vdp[vdp.deputado.isin(cod_vdp)].assign(codigo=lambda d: d.deputado.map(cod_vdp), tipo=lambda d: d.descricao.map(_tipo)) if len(vdp) else None
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+    lista, atual = comum.ler_em_exercicio(PASTA), None
+    if lista:  # o licenciado que continua na folha do último mês: período aberto (recebe), fora do "no cargo"
+        atual = comum.casar_em_exercicio(lista, ver, UF, APELIDOS_VDP)
+        pagos = set(folha[folha.ano * 100 + folha.mes == ultimo_dado].matricula.astype(int))
+        mandatos = comum.aplicar_hoje(mandatos, atual, ultimo_dado, pagos=pagos)
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), fora_hoje=comum.fora_hoje(atual))
     return vc.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos), ganha=pd.DataFrame(ganha),
                      despesas=desp[["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"]] if desp is not None else None)

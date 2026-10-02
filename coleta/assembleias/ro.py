@@ -6,7 +6,9 @@ https://transparencia.al.ro.leg.br/Deputados/VerbaIndenizatoria/?categoria=&ano=
 (a página da remuneração pede nome e e-mail de quem consulta: não é usada).
 - Subsídio: Lei 5.530/2023 (R$ 33.006,39 desde fev/2024 e R$ 34.774,64 desde fev/2025).
 - Nome completo, gênero e eleito/suplente: TSE (eleição de 2022); partido: candidatura de 2026 no TSE.
-Quem esteve no cargo em cada mês sai dos meses com prestação de contas (o cabeçalho de cada lote diz o deputado).
+Quem esteve no cargo em cada mês sai dos meses com prestação de contas (o cabeçalho de cada lote diz o deputado); quem
+está no cargo hoje, da lista de deputados do site da ALE-RO (https://www.al.ro.leg.br/deputados/perfil/). A lista de
+gabinetes da página da verba guarda o gabinete do suplente depois que o titular volta: serve só para baixar a verba.
 """
 import html as H
 import re
@@ -39,7 +41,7 @@ CFG = {
     "verba_notas": ["Cada mês pode ter um lote principal e um complementar; os dois entram no mês.",
                     "Os reembolsos de saúde não têm o prestador publicado: aparecem só com o valor."],
     "pagina": "https://transparencia.al.ro.leg.br/",
-    "notas": ["Quem está no cargo hoje: a lista de gabinetes da página da verba. Desde quando: os meses com prestação de contas.",
+    "notas": ["Quem está no cargo hoje: a lista de deputados do site da ALE-RO. Desde quando: os meses com prestação de contas.",
               "Partido: o da candidatura de 2026 no TSE. Quem não é candidato em 2026 aparece sem partido."],
     "fontes": {"verba": PAGINA, "subsidio": "https://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11274/lei_5530.pdf"},
 }
@@ -96,9 +98,26 @@ def _meses():
     return [a * 100 + m for a in range(INICIO // 100, h.tm_year + 1) for m in range(1, 13) if INICIO <= a * 100 + m < h.tm_year * 100 + h.tm_mon]
 
 
+LISTA = "https://www.al.ro.leg.br/deputados/perfil/"
+
+
+def _em_exercicio():
+    """Nomes da lista de deputados do site da ALE-RO (quem está em exercício hoje)."""
+    verificar_prazo()
+    t = _sessao().get(LISTA, timeout=120).text
+    return [" ".join(H.unescape(re.sub(r"<[^>]+>", "", n)).split())
+            for n in re.findall(r'<a href="/deputados/perfil/[^"]+">\s*<div class="font-bold[^"]*">(.*?)</div>', t, flags=re.S)]
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     (C / "paginas").mkdir(parents=True, exist_ok=True)
+    try:
+        comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], LISTA)
+    except TempoEsgotado:
+        raise
+    except Exception as e:  # noqa: BLE001 — sem a lista, fica a que já estava gravada
+        log(f"  ALE-RO: a lista de deputados não abriu ({type(e).__name__}); fica a já gravada")
     gabs = _gabinetes()
     if len(gabs) >= 20:
         pd.DataFrame(gabs, columns=["gabinete", "nome"]).assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "gabinetes.csv", index=False)
@@ -141,9 +160,6 @@ def montar(tipos):
     partidos = comum.partido_2026(UF)
     ultimo = vc.ultimo_mes_fechado()
     ultimo_dado = int((v.ano * 100 + v.mes).max())
-    gabs = pd.read_csv(PASTA / "gabinetes.csv").fillna("") if (PASTA / "gabinetes.csv").exists() else pd.DataFrame(columns=["gabinete", "nome"])
-    # a lista de gabinetes da página tem quem está no cargo hoje ("DEPUTADA CLÁUDIA DE JESUS")
-    hoje = {normalizar_nome(re.sub(r"^DEPUTAD[OA]\s+", "", n, flags=re.I)) for n in gabs.nome}
     ver, mandatos, cods = [], [], {}
     for nome, g in v.groupby("deputado"):
         t = comum.achar(nome, tse) or {}
@@ -153,15 +169,12 @@ def montar(tipos):
                     "partido": partidos.get(normalizar_nome(t.get("nome", "")), "") if t else "",
                     "genero": t.get("genero") or ("F" if re.match(r"^Deputada", nome) or feminino(nome) else "M"), "eleito": t.get("eleito", ""),
                     "pagina": CFG["pagina"]})
-        meses_g = list(g.ano * 100 + g.mes)
-        atual = normalizar_nome(nome) in hoje if hoje else None
-        if atual:
-            meses_g = sorted(set(meses_g) | {ultimo_dado})
-        per = comum.periodos(meses_g, ultimo_dado, ultimo)
-        if atual is False:
-            per = [(i, f or f"{max(meses_g) // 100}-{max(meses_g) % 100:02d}-28") for i, f in per]
-        for i, f in per:
+        for i, f in comum.periodos(list(g.ano * 100 + g.mes), ultimo_dado, ultimo):
             mandatos.append({"codigo": codigo, "inicio": i, "fim": f})
+    lista, atual = comum.ler_em_exercicio(PASTA), None  # quem está no cargo hoje; os meses com prestação dizem desde quando
+    if lista:
+        atual = comum.casar_em_exercicio(lista, ver, UF)
+        mandatos = comum.aplicar_hoje(mandatos, atual, ultimo_dado)
     desp = v.assign(codigo=v.deputado.map(cods))
-    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado))
+    cfg = dict(CFG, ultimo_mes=min(ultimo, ultimo_dado), fora_hoje=comum.fora_hoje(atual))
     return vc.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos), despesas=desp[["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"]])
