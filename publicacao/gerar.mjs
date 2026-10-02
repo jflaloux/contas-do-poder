@@ -512,6 +512,7 @@ const COPIAS = [
   { nome: "Pacote completo (ZIP)", url: "https://github.com/jflaloux/contas-do-poder/archive/refs/heads/main.zip", texto: "Tudo o que está no GitHub num arquivo só, na versão mais recente." },
   { nome: "Zenodo (CERN), com DOI", url: "https://doi.org/10.5281/zenodo.23109646", texto: "Cópia permanente de cada versão publicada no GitHub (a primeira, de 02/10/2026), guardada pelo CERN. O DOI não muda e leva sempre à versão mais nova." },
   { nome: "Software Heritage", url: "https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/jflaloux/contas-do-poder", texto: "Arquivo universal de código-fonte, mantido pela Inria e apoiado pela Unesco. Guarda o repositório com o histórico de cada mudança (primeira cópia em 02/10/2026); o endereço mostra a cópia mais nova." },
+  { nome: "Codeberg", url: "https://codeberg.org/jflaloux/contas-do-poder", texto: "Cópia do repositório numa plataforma europeia sem fins lucrativos, fora do GitHub (a primeira, de 02/10/2026). Cada versão vai para o GitHub e para o Codeberg ao mesmo tempo." },
   { nome: "Internet Archive", url: "https://web.archive.org/web/*/contasdopoder.com/*", texto: "As páginas do site guardadas pelo Wayback Machine, com a data de cada cópia." },
 ];
 const DESCRICAO_ARQ = {

@@ -846,8 +846,9 @@ Cópias fora do repositório (a fazer uma vez, pelo dono da conta):
 2. **Software Heritage**: feito em 02/10/2026 (primeira cópia). `COPIAS` usa o endereço sem data
    (`archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/jflaloux/contas-do-poder`), que mostra
    a cópia mais nova; o Zenodo também manda cada versão para lá.
-3. **Espelho**: a fazer, no Codeberg, recebendo cada `git push` junto com o GitHub (o Codeberg desativou os espelhos
-   que puxam sozinhos, pull mirror, e no GitLab isso é recurso pago). Quando existir, o endereço entra em `COPIAS`.
+3. **Espelho no Codeberg**: feito em 02/10/2026 (https://codeberg.org/jflaloux/contas-do-poder). Cada `git push` manda
+   a versão para o GitHub e para o Codeberg ao mesmo tempo; não é um espelho que se atualiza sozinho (o Codeberg
+   desativou os espelhos que puxam sozinhos, pull mirror, e no GitLab isso é recurso pago). Está em `COPIAS`.
 4. **Internet Archive**: "Save Page Now" (web.archive.org/save) nas páginas principais.
 5. **Contas**: verificação em duas etapas no GitHub, no Cloudflare e no registro do domínio; bloqueio de transferência
    do domínio ligado.
