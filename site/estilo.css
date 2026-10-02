@@ -199,10 +199,20 @@ p { margin: 0; }
   /* com os deputados estaduais, são 6 números: uma linha só, um pouco mais larga */
   .numeros:has(> .numero:nth-child(6)) { grid-template-columns: repeat(6, minmax(0, 1fr)); max-width: 1000px; }
 }
-.numero { background: var(--banda-2); border-radius: 12px; padding: 12px 14px; display: grid; gap: 2px; align-content: start; }
+.numero { background: var(--banda-2); border-radius: 12px; padding: 12px 14px; display: grid; gap: 2px; align-content: start; color: inherit; text-decoration: none; border: 1px solid transparent; }
 .numero strong { font-family: var(--display); font-weight: 600; font-size: 2.1rem; line-height: 1; color: var(--banda-ink); }
 .numero span { font-size: .88rem; line-height: 1.3; color: var(--banda-ink-2); }
+/* cada número leva ao grupo dele: a seta diz que dá para tocar */
+.numero span::after { content: "\00a0→"; color: var(--banda-ganha); }
+a.numero:hover { border-color: var(--banda-ganha); }
+a.numero:focus-visible { outline: 2px solid var(--banda-ganha); outline-offset: 2px; }
 .numeros__data { grid-column: 1 / -1; font-size: .88rem; color: var(--banda-ink-3); margin-top: 2px; }
+/* 7 números: no celular, 3 por linha e a data ao lado do último; no computador, 4 por linha e a data no lugar do 8º */
+.numeros:has(> .numero:nth-child(7)) .numeros__data { grid-column: span 2; align-self: end; margin-top: 0; }
+@media (min-width: 761px) {
+  .numeros:has(> .numero:nth-child(7)) { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1000px; }
+  .numeros:has(> .numero:nth-child(7)) .numeros__data { grid-column: span 1; }
+}
 
 /* escolha */
 .escolha { display: grid; gap: 12px; }

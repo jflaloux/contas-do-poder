@@ -723,6 +723,11 @@ seguem o mesmo desenho.
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+  Números da abertura (desde 02/10/2026): cada um leva ao seu grupo e manda `abrir_numero` com o `grupo`
+  (`deputados_senadores`, `governo`, `governadores`, `judiciario`, `deputados_estaduais`, `vereadores`, `prefeituras`):
+  o ranking já no grupo (deputados estaduais do estado escolhido ou de SP; vereadores e prefeituras de SP), a lista do
+  governo aberta, os 27 governadores ou a página `/judiciario`. Na página inicial, o Judiciário mostra os presidentes
+  dos tribunais e o PGR e, apagados, os outros ministros do STF (`abrir_lista` com `judiciario_stf`).
   Judiciário (desde 02/10/2026): `ver_judiciario` (abriu `/judiciario`, com a origem); `ver_parlamentar`, `trocar_periodo`
   e `compartilhar` com `casa: judiciario`; `abrir_detalhe` com `categoria: mes_judiciario` (abriu um mês do contracheque);
   `abrir_lista` com `judiciario_sairam_<SIGLA>`. No evento `velocidade`, `pagina` pode ser `judiciario`.

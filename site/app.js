@@ -2471,6 +2471,41 @@
   // ================================================================== seções gerais
   const pastaCurta = (g) => (/^Presidente/.test(g) ? "Presidente" : /^Vice/.test(g) ? "Vice-presidente"
     : /^Advogad/.test(g) ? "Advocacia-Geral da União" : g.replace(/^Ministr[oa](-chefe)?\s+(d[aoe]s?|de)\s+/, ""));
+  // Uma grade só: os principais e, logo depois, os outros. Fechada, ela mostra a primeira linha dos outros apagada,
+  // cortada por um degradê, para mostrar que há mais; tocar nela ou no botão abre a lista. Os de trás ficam inertes
+  // (fora do Tab e dos leitores de tela) até a lista abrir. grade.abrir() abre (o guia e os números da abertura usam).
+  function gradePrevia({ id, topo, resto, rotulo, lista, secao }) {
+    const grade = h("div", { class: "pessoas-lista pessoas-lista--governo", id }, topo, resto);
+    const botao = resto.length ? h("button", { type: "button", class: "pessoas-abrir", "aria-controls": id }) : null;
+    // fechada, a altura vai até o fim da última linha dos principais, mais um pedaço dos outros (a parte apagada):
+    // medida depois do desenho e de novo quando a largura muda (de 1 a 3 colunas). Antes da medida, vale a do estilo.
+    let largura = 0;
+    const ajustar = () => {
+      if (!grade.classList.contains("pessoas-lista--fechada") || !grade.isConnected || !topo.length) return;
+      const g = grade.getBoundingClientRect();
+      if (!g.width) return;
+      grade.style.maxHeight = `${Math.ceil(Math.max(...topo.map((a) => a.getBoundingClientRect().bottom)) - g.top + 46)}px`;
+    };
+    if (typeof ResizeObserver !== "undefined") {
+      const ro = new ResizeObserver(() => { const w = grade.clientWidth; if (w && w !== largura) { largura = w; ajustar(); } });
+      ro.observe(grade); observadores.push(ro);
+    }
+    const fechar = (sim) => {
+      grade.classList.toggle("pessoas-lista--fechada", sim);
+      if (sim) ajustar(); else grade.style.maxHeight = "";
+      resto.forEach((a) => {
+        a.inert = sim; a.classList.toggle("pessoa-linha--previa", sim);
+        if (sim) { a.setAttribute("tabindex", "-1"); a.setAttribute("aria-hidden", "true"); } else { a.removeAttribute("tabindex"); a.removeAttribute("aria-hidden"); }
+      });
+      if (botao) { botao.setAttribute("aria-expanded", String(!sim)); botao.textContent = sim ? rotulo : "Mostrar menos"; }
+    };
+    grade.abrir = () => { if (grade.classList.contains("pessoas-lista--fechada")) { fechar(false); evento("abrir_lista", { lista }); } };
+    // fechada, um toque no meio dos apagados também abre (os links inertes não recebem o toque)
+    grade.addEventListener("click", (ev) => { if (grade.classList.contains("pessoas-lista--fechada") && !ev.target.closest("a:not([inert])")) grade.abrir(); });
+    if (botao) botao.addEventListener("click", () => { if (grade.classList.contains("pessoas-lista--fechada")) grade.abrir(); else { fechar(true); irPara(secao); } });
+    fechar(resto.length > 0);
+    return [grade, botao];
+  }
   function secGoverno() {
     const ordem = { pr: 0, vp: 1, mi: 2 };
     const atuais = S.D.p.filter((p) => p.k === "e" && p.x).sort((a, b) => ordem[a.tp] - ordem[b.tp] || a.n.localeCompare(b.n, "pt-BR"));
@@ -2478,25 +2513,8 @@
     const ate = meta().ultimo_mes_executivo;
     const linha = (p) => pessoaLinha(p, pastaCurta(p.g), urlPessoa(p), () => { S.origem = "governo"; });
     const topo = atuais.filter((p) => p.tp !== "mi"), mins = atuais.filter((p) => p.tp === "mi");
-    // uma grade só: o presidente e o vice e, logo depois, os ministros. Fechada, ela mostra a primeira linha de
-    // ministros apagada, cortada por um degradê, para mostrar que há mais; tocar nela ou no botão abre a lista. Os
-    // ministros fechados ficam inertes (fora do Tab e dos leitores de tela) até a lista abrir.
-    const itensMin = mins.map(linha);
-    const grade = h("div", { class: "pessoas-lista pessoas-lista--governo", id: "lista-governo" }, topo.map(linha), itensMin);
-    const botao = mins.length ? h("button", { type: "button", class: "pessoas-abrir", "aria-controls": "lista-governo" }) : null;
-    const fechar = (sim) => {
-      grade.classList.toggle("pessoas-lista--fechada", sim);
-      itensMin.forEach((a) => {
-        a.inert = sim; a.classList.toggle("pessoa-linha--previa", sim);
-        if (sim) { a.setAttribute("tabindex", "-1"); a.setAttribute("aria-hidden", "true"); } else { a.removeAttribute("tabindex"); a.removeAttribute("aria-hidden"); }
-      });
-      if (botao) { botao.setAttribute("aria-expanded", String(!sim)); botao.textContent = sim ? `Ver os ${mins.length} ministros` : "Mostrar menos"; }
-    };
-    grade.abrir = () => { if (grade.classList.contains("pessoas-lista--fechada")) { fechar(false); evento("abrir_lista", { lista: "ministros" }); } };
-    // fechada, um toque no meio dos ministros apagados também abre (os links inertes não recebem o toque)
-    grade.addEventListener("click", (ev) => { if (grade.classList.contains("pessoas-lista--fechada") && !ev.target.closest("a:not([inert])")) grade.abrir(); });
-    if (botao) botao.addEventListener("click", () => { if (grade.classList.contains("pessoas-lista--fechada")) grade.abrir(); else { fechar(true); irPara("governo"); } });
-    fechar(mins.length > 0);
+    // o presidente e o vice e, apagados, os ministros
+    const [grade, botao] = gradePrevia({ id: "lista-governo", topo: topo.map(linha), resto: mins.map(linha), rotulo: `Ver os ${mins.length} ministros`, lista: "ministros", secao: "governo" });
     return h("section", { class: "bloco", id: "governo" },
       h("p", { class: "rotulo" }, "Governo federal"),
       h("h2", null, "Presidente, vice e ministros"),
@@ -2859,18 +2877,27 @@
       h("ul", { class: "lista nota" }, (M.notas || []).map((n) => h("li", null, n))),
       h("div", { style: "display:grid;gap:16px" }, Object.entries(M.orgaos || {}).map(bloco)));
   }
-  // chamada na página inicial: os 7 órgãos, cada um com quantos estão no cargo
+  // na página inicial, como o governo federal: os presidentes dos tribunais e o procurador-geral e, apagados, os outros
+  // ministros do STF; embaixo, os 7 órgãos
   function secJudiciarioInicio() {
     const M = JUD.meta;
     if (!M || !M.orgaos) return null;
-    const n = S.D.p.filter((q) => q.k === "t" && q.x).length;
+    const ordem = Object.keys(M.orgaos), no = S.D.p.filter((q) => q.k === "t" && q.x);
+    const preside = (q) => (q.fn || []).some(([f, , ate]) => !ate && f === `Presidente do ${q.org}`);
+    const topo = no.filter((q) => preside(q) || q.org === "PGR").sort((a, b) => ordem.indexOf(a.org) - ordem.indexOf(b.org));
+    const stf = no.filter((q) => q.org === "STF" && !topo.includes(q)).sort((a, b) => a.n.localeCompare(b.n, "pt-BR"));
+    const ultimo = (q) => q.u || (() => { const x = (q.t || []).filter((y) => y[1]).pop(); return x ? [x[0], x[1]] : null; })();
+    // no TSE, só a gratificação (o salário vem do tribunal de origem): o valor diz isso
+    const linha = (q) => { const u = ultimo(q); return pessoaLinha(q, [funcoesAtuais(q) || q.g, u ? `${reais(u[1])} em ${fmtMes(u[0])}${q.org === "TSE" ? " (só o que o TSE paga)" : ""}` : null].filter(Boolean).join(" · "), urlDe(q.id), () => { S.origem = "inicio_judiciario"; }); };
+    const [grade, botao] = gradePrevia({ id: "lista-judiciario", topo: topo.map(linha), resto: stf.map(linha), rotulo: `Ver os outros ${stf.length} ministros do STF`, lista: "judiciario_stf", secao: "judiciario-inicio" });
     return h("section", { class: "bloco", id: "judiciario-inicio" },
       h("p", { class: "rotulo" }, "Justiça"),
-      h("h2", null, "Quanto recebe o topo do Judiciário"),
-      h("p", { class: "discreto" }, `Os ${n} ministros dos tribunais superiores, conselheiros do CNJ e o procurador-geral da República: o bruto de cada mês desde jan/2025, pela folha de cada órgão, parte por parte.`),
-      h("div", { class: "lista-estado__grupo" }, Object.entries(M.orgaos).map(([sigla, o]) => h("a", { class: "pessoa-chip", href: `/judiciario#jud-${sigla.toLowerCase()}`, onclick: () => { S.origem = "inicio"; } },
-        sigla, h("small", null, `${S.D.p.filter((q) => q.k === "t" && q.org === sigla && q.x).length} no cargo`)))),
-      h("p", null, h("a", { href: "/judiciario", onclick: () => { S.origem = "inicio"; } }, "Ver os 7 órgãos, pessoa por pessoa →")));
+      h("h2", null, "Os presidentes dos tribunais superiores e o procurador-geral"),
+      h("p", { class: "discreto" }, `Toque num nome para ver o bruto de cada mês desde jan/2025, parte por parte, pela folha de cada órgão. São ${no.length} pessoas no cargo nos tribunais superiores, no CNJ e na PGR.`),
+      h("div", { class: "cartao" }, grade, botao),
+      h("div", { class: "lista-estado__grupo", style: "margin-top:12px" }, Object.entries(M.orgaos).map(([sigla]) => h("a", { class: "pessoa-chip", href: `/judiciario#jud-${sigla.toLowerCase()}`, onclick: () => { S.origem = "inicio"; } },
+        sigla, h("small", null, `${no.filter((q) => q.org === sigla).length} no cargo`)))),
+      h("p", null, h("a", { href: "/judiciario", onclick: () => { S.origem = "inicio"; } }, `Ver os ${no.length}, órgão por órgão\u00a0→`)));
   }
 
   // ================================================================== Assembleia Legislativa (na página do estado)
@@ -3122,22 +3149,53 @@
     }
     ligarBusca(campo, sug, (p) => { S.origem = "busca_topo"; escolher(p.id); }, null, true, "busca_topo");
   }
+  // Os números da abertura levam ao grupo: o ranking já no grupo (deputados, deputados estaduais do estado escolhido ou
+  // de SP, vereadores, prefeituras), a lista do governo federal aberta, os 27 governadores, a página do Judiciário
+  const ALVO_NUMERO = { d: "/#ranking", e: "/#governo", g: "/#governadores", t: "/judiciario", a: "/#ranking", v: "/#ranking", p: "/#ranking" };
+  const NOME_NUMERO = { d: "deputados_senadores", e: "governo", g: "governadores", t: "judiciario", a: "deputados_estaduais", v: "vereadores", p: "prefeituras" };
+  function abrirNumero(grupo) {
+    evento("abrir_numero", { grupo: NOME_NUMERO[grupo] });
+    if (grupo === "t") { S.origem = "numeros"; navegar("/judiciario"); return; }
+    if (S.sel || S.gov || S.cidade || S.extra) { navegar(ALVO_NUMERO[grupo]); return; } // os números só aparecem na página inicial
+    if (grupo === "e") { const l = $("#lista-governo"); if (l && l.abrir) l.abrir(); irPara("governo"); return; }
+    if (grupo === "g") {
+      const b = [...document.querySelectorAll("#governadores button")].find((x) => /^Ver os \d+ governadores/.test(x.textContent));
+      if (b) b.click();
+      irPara("governadores");
+      return;
+    }
+    // o ranking, já no grupo: refaz só a seção
+    const R = S.rank;
+    if (R.casa !== grupo) {
+      Object.assign(R, { casa: grupo, metrica: "custo", uf: "", completo: false });
+      if (grupo === "a") { const a = assembleiaUF(S.ufLista || "SP") || assembleiaUF("SP"); if (a && a.cod) R.cid = a.cod; }
+      if (grupo === "v" && camaraDe(SP)) R.cid = SP;
+      if (grupo === "p" && prefeituraDe(SP)) R.cid = SP;
+    }
+    const sec = $("#ranking");
+    if (sec) sec.replaceWith(secRanking(null, null));
+    irPara("ranking");
+  }
   function montarCabecalho() {
     const D = S.D, noCargo = D.p.filter((p) => p.x).length;
     // os números da abertura, em blocos sobre a faixa escura
     const chips = $("#chips-info");
     chips.textContent = "";
-    const numero = (n, texto) => h("p", { class: "numero" }, h("strong", null, n.toLocaleString("pt-BR")), h("span", null, texto)); // 1.064
+    // cada número leva ao grupo dele (abrirNumero); o href serve a quem abre em outra aba
+    const numero = (n, texto, grupo) => h("a", { class: "numero", href: ALVO_NUMERO[grupo], onclick: (ev) => {
+      if (ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.button) return;
+      ev.preventDefault(); abrirNumero(grupo);
+    } }, h("strong", null, n.toLocaleString("pt-BR")), h("span", null, texto)); // 1.064
     const nVer = D.p.filter((p) => p.x && p.k === "v").length, nPref = D.p.filter((p) => p.x && p.k === "p").length;
     const nEst = D.p.filter((p) => p.x && p.k === "a").length, ests = estadosAssembleia().length;
     add(chips,
-      numero(D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length, "deputados e senadores no cargo"),
-      numero(D.p.filter((p) => p.x && p.k === "e").length, "no governo federal"),
-      GOV.e.length ? numero(GOV.e.length, "governadores") : null,
-      D.p.some((q) => q.k === "t") ? numero(D.p.filter((q) => q.k === "t" && q.x).length, "nos tribunais superiores, no CNJ e na PGR") : null,
-      ests ? numero(nEst, ests === 1 ? `deputados estaduais ${deUF(estadosAssembleia()[0].uf)}` : `deputados estaduais em ${ests} estados`) : null,
-      cidadesCamara().length ? numero(nVer, cidadesCamara().length === 1 ? `vereadores ${deCid(cidadesCamara()[0].cod)}` : `vereadores em ${cidadesCamara().length} capitais`) : null,
-      cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`) : null,
+      numero(D.p.filter((p) => p.x && (p.k === "d" || p.k === "s")).length, "deputados e senadores no cargo", "d"),
+      numero(D.p.filter((p) => p.x && p.k === "e").length, "no governo federal", "e"),
+      GOV.e.length ? numero(GOV.e.length, "governadores", "g") : null,
+      D.p.some((q) => q.k === "t") ? numero(D.p.filter((q) => q.k === "t" && q.x).length, "nos tribunais superiores, no CNJ e na PGR", "t") : null,
+      ests ? numero(nEst, ests === 1 ? `deputados estaduais ${deUF(estadosAssembleia()[0].uf)}` : `deputados estaduais em ${ests} estados`, "a") : null,
+      cidadesCamara().length ? numero(nVer, cidadesCamara().length === 1 ? `vereadores ${deCid(cidadesCamara()[0].cod)}` : `vereadores em ${cidadesCamara().length} capitais`, "v") : null,
+      cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`, "p") : null,
       h("p", { class: "numeros__data" }, `Dados até ${MESES[mesAtual() - 1]}/${anoAtual()} · atualizado em ${D.meta.atualizado}`));
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));

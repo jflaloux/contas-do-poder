@@ -203,19 +203,20 @@ const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel=
 // Os mesmos blocos que o app.js põe em #chips-info (montarCabecalho), já no HTML: assim a abertura tem a altura certa
 // desde o começo e não cresce quando o app.js chega (a página não pula). Mudando o texto lá, mude aqui.
 function numerosHTML() {
-  const numero = (n, texto) => `<p class="numero"><strong>${n.toLocaleString("pt-BR")}</strong><span>${esc(texto)}</span></p>`; // 1.064
+  // cada número leva ao grupo dele (como no app.js: ALVO_NUMERO)
+  const numero = (n, texto, href) => `<a class="numero" href="${href}"><strong>${n.toLocaleString("pt-BR")}</strong><span>${esc(texto)}</span></a>`; // 1.064
   const noCargo = (xs, f) => xs.filter((p) => p.x && f(p)).length;
   const camaras = Object.entries(CAM.meta.cidades || {}), prefs = Object.entries(PRE.meta.cidades || {});
   const ests = [...new Set(deputadosEstaduais.map((p) => p.uf))].filter((uf) => ((ASS.meta || {}).estados || {})[uf]);
   const nomeCid = ([cod, c]) => deCidade(cod, c.n);
   return [
-    numero(noCargo(D.p, (p) => p.k === "d" || p.k === "s"), "deputados e senadores no cargo"),
-    numero(noCargo(D.p, (p) => p.k === "e"), "no governo federal"),
-    GOV.e.length ? numero(GOV.e.length, "governadores") : "",
-    judiciario.length ? numero(noCargo(judiciario, () => true), "nos tribunais superiores, no CNJ e na PGR") : "",
-    ests.length ? numero(noCargo(deputadosEstaduais, () => true), ests.length === 1 ? `deputados estaduais ${deUF(ests[0])}` : `deputados estaduais em ${ests.length} estados`) : "",
-    camaras.length ? numero(noCargo(CAM.p, () => true), camaras.length === 1 ? `vereadores ${nomeCid(camaras[0])}` : `vereadores em ${camaras.length} capitais`) : "",
-    prefs.length ? numero(noCargo(PRE.p, () => true), prefs.length === 1 ? "na Prefeitura" : `nas prefeituras de ${prefs.length} capitais`) : "",
+    numero(noCargo(D.p, (p) => p.k === "d" || p.k === "s"), "deputados e senadores no cargo", "/#ranking"),
+    numero(noCargo(D.p, (p) => p.k === "e"), "no governo federal", "/#governo"),
+    GOV.e.length ? numero(GOV.e.length, "governadores", "/#governadores") : "",
+    judiciario.length ? numero(noCargo(judiciario, () => true), "nos tribunais superiores, no CNJ e na PGR", "/judiciario") : "",
+    ests.length ? numero(noCargo(deputadosEstaduais, () => true), ests.length === 1 ? `deputados estaduais ${deUF(ests[0])}` : `deputados estaduais em ${ests.length} estados`, "/#ranking") : "",
+    camaras.length ? numero(noCargo(CAM.p, () => true), camaras.length === 1 ? `vereadores ${nomeCid(camaras[0])}` : `vereadores em ${camaras.length} capitais`, "/#ranking") : "",
+    prefs.length ? numero(noCargo(PRE.p, () => true), prefs.length === 1 ? "na Prefeitura" : `nas prefeituras de ${prefs.length} capitais`, "/#ranking") : "",
     `<p class="numeros__data">${esc(`Dados até ${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)} · atualizado em ${D.meta.atualizado}`)}</p>`,
   ].join("");
 }
