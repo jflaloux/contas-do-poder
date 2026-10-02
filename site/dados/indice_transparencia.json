@@ -2,7 +2,7 @@
  "meta": {
   "titulo": "Índice de Transparência dos estados",
   "pergunta": "Dá para saber, pela fonte oficial de cada Estado, quanto ganham e quanto custam os seus políticos?",
-  "conferido_em": "2026-10-01",
+  "conferido_em": "2026-10-02",
   "como": [
    "Quatro blocos para cada Estado: o governo (salário do governador e do vice), a Assembleia Legislativa (salário, verba do gabinete e equipe de cada deputado estadual), a prefeitura da capital (prefeito, vice e secretários) e a Câmara Municipal da capital (salário, verba e equipe de cada vereador). No DF, que não tem prefeitura nem vereadores, valem só os dois primeiros.",
    "Cada bloco tem duas dimensões, de 0 a 1: completude (o que a fonte mostra) e facilidade (como dá para obter). Cada dimensão é a média dos seus critérios; o índice do bloco é a média harmônica das duas, então uma fonte completa que é difícil de usar, ou fácil de usar que mostra pouco, não tem nota alta.",
@@ -500,7 +500,7 @@
    "nome": "Alagoas",
    "capital": "Maceió",
    "indice": null,
-   "indice_parcial": 0.756957,
+   "indice_parcial": 0.76452,
    "blocos_com_nota": 3,
    "blocos_que_valem": 4,
    "blocos": {
@@ -555,13 +555,13 @@
      "fonte": "https://transparencia.al.gov.br/pessoal/servidores/"
     },
     "assembleia": {
-     "indice": 0.705882,
-     "completude": 0.666667,
+     "indice": 0.728571,
+     "completude": 0.708333,
      "facilidade": 0.75,
      "criterios": {
       "salario": {
-       "v": 0.5,
-       "prova": "Só o valor do subsídio na lei (Lei 9.056/2023)"
+       "v": 0.75,
+       "prova": "Folha de cada deputado na relação nominal (páginas, letra por letra): subsídio, vantagens, indenizações e abate-teto"
       },
       "verba_deputado": {
        "v": 1,
@@ -585,8 +585,8 @@
        "link": "https://sapl.al.al.leg.br/media/sapl/public/normajuridica/2023/2750/lei_no_9.056_de_8_de_novembro_de_2023.pdf"
       },
       "formato": {
-       "v": 0,
-       "prova": "PDF escaneado (imagem)"
+       "v": 0.5,
+       "prova": "Páginas HTML (folha) e PDF escaneado (verba)"
       },
       "acesso": {
        "v": 1,
@@ -597,8 +597,8 @@
        "prova": "Sem CAPTCHA, login ou CPF"
       },
       "robos_exterior": {
-       "v": 1,
-       "prova": "O robots.txt permite; abre de fora do Brasil"
+       "v": 0.5,
+       "prova": "O robots.txt permite; a VIAP abre de fora do Brasil, mas a folha só abre do Brasil"
       }
      },
      "a_conferir": [],
@@ -2741,7 +2741,7 @@
    "nome": "Mato Grosso",
    "capital": "Cuiabá",
    "indice": null,
-   "indice_parcial": 0.60558,
+   "indice_parcial": 0.765239,
    "blocos_com_nota": 3,
    "blocos_que_valem": 4,
    "blocos": {
@@ -2796,13 +2796,13 @@
      "fonte": "https://consultas.transparencia.mt.gov.br/pessoal/servidores_ativos/"
     },
     "assembleia": {
-     "indice": 0.277778,
-     "completude": 0.25,
-     "facilidade": 0.3125,
+     "indice": 0.756757,
+     "completude": 0.666667,
+     "facilidade": 0.875,
      "criterios": {
       "salario": {
-       "v": 0.5,
-       "prova": "Só o valor do subsídio na lei (Lei 12.011/2023); a folha antiga em PDF pede nome, e-mail e CPF"
+       "v": 1,
+       "prova": "Folha de cada deputado no portal da transparência da ALMT (Elotech), mês a mês, com as rubricas (subsídio, auxílio saúde, 13º)"
       },
       "verba_deputado": {
        "v": 0,
@@ -2813,12 +2813,12 @@
        "prova": "Sem notas da verba"
       },
       "equipe": {
-       "v": 0,
-       "prova": "Não achamos a equipe de cada gabinete"
+       "v": 1,
+       "prova": "Servidores lotados em cada gabinete ('GAB DEP'), com os vencimentos"
       },
       "historico": {
-       "v": 0,
-       "prova": "Sem verba publicada, não há histórico"
+       "v": 1,
+       "prova": "Folha desde jul/2022 no portal atual"
       },
       "lei": {
        "v": 1,
@@ -2826,16 +2826,16 @@
        "link": "https://www.al.mt.gov.br/norma-juridica/urn:lex:br;mato.grosso:estadual:lei.ordinaria:2023-01-13;12011"
       },
       "formato": {
-       "v": 0,
-       "prova": "PDF e portal em JavaScript"
+       "v": 0.75,
+       "prova": "O JSON que o portal usa; a folha antiga (até jan/2022) em PDF"
       },
       "acesso": {
-       "v": 0.25,
-       "prova": "Só pelo portal"
+       "v": 0.75,
+       "prova": "API sem documentação (a que o portal usa), sem login"
       },
       "sem_barreira": {
-       "v": 0,
-       "prova": "Nome, e-mail e CPF na folha; reCAPTCHA no portal; a API pede login"
+       "v": 1,
+       "prova": "Sem CAPTCHA, login ou CPF no portal atual (o reCAPTCHA do sistema não aparece para a ALMT); só a folha antiga, até jan/2022, pede nome, e-mail e CPF"
       },
       "robos_exterior": {
        "v": 1,
@@ -2956,7 +2956,7 @@
    "uf": "PA",
    "nome": "Pará",
    "capital": "Belém",
-   "indice": 0.645715,
+   "indice": 0.695101,
    "indice_parcial": null,
    "blocos_com_nota": 4,
    "blocos_que_valem": 4,
@@ -3012,13 +3012,13 @@
      "fonte": "https://www.sistemas.pa.gov.br/portaltransparencia/servidores"
     },
     "assembleia": {
-     "indice": 0.572727,
-     "completude": 0.583333,
-     "facilidade": 0.5625,
+     "indice": 0.77027,
+     "completude": 0.791667,
+     "facilidade": 0.75,
      "criterios": {
       "salario": {
-       "v": 0.5,
-       "prova": "Só o valor do subsídio no Decreto Legislativo 1/2023"
+       "v": 0.75,
+       "prova": "Folha de cada deputado no sistema de pessoal (sigep), pela busca do nome: remuneração, férias, 13º, pecúnia, redutor"
       },
       "verba_deputado": {
        "v": 1,
@@ -3029,8 +3029,8 @@
        "prova": "Só o valor pago ao deputado no mês, sem fornecedor"
       },
       "equipe": {
-       "v": 0,
-       "prova": "Não achamos a equipe de cada gabinete"
+       "v": 1,
+       "prova": "Assessores de cada gabinete e o total pago, desde abr/2026"
       },
       "historico": {
        "v": 1,
@@ -3042,12 +3042,12 @@
        "link": "https://bancodeleis.alepa.pa.gov.br/arquivos/lei01_2023_18125.pdf"
       },
       "formato": {
-       "v": 0,
-       "prova": "Painel"
+       "v": 0.5,
+       "prova": "Painel (verba) e páginas HTML (folha)"
       },
       "acesso": {
-       "v": 0.25,
-       "prova": "Só pelo painel"
+       "v": 0.5,
+       "prova": "A verba pelo JSON do painel; a folha só lendo as páginas do sigep"
       },
       "sem_barreira": {
        "v": 1,
@@ -3804,7 +3804,7 @@
    "uf": "PR",
    "nome": "Paraná",
    "capital": "Curitiba",
-   "indice": 0.743699,
+   "indice": 0.804949,
    "indice_parcial": null,
    "blocos_com_nota": 4,
    "blocos_que_valem": 4,
@@ -3860,9 +3860,9 @@
      "fonte": "https://www.transparencia.pr.gov.br/pte/pessoal/servidores/poderexecutivo/remuneracao"
     },
     "assembleia": {
-     "indice": 0.525,
+     "indice": 0.77,
      "completude": 0.875,
-     "facilidade": 0.375,
+     "facilidade": 0.6875,
      "criterios": {
       "salario": {
        "v": 0.75,
@@ -3890,16 +3890,16 @@
        "link": "http://webservices.assembleia.pr.leg.br/api/public/norma-legal/58812"
       },
       "formato": {
-       "v": 0.5,
-       "prova": "Páginas HTML"
+       "v": 0.75,
+       "prova": "Páginas HTML (folha, equipe) e XLSX (pagamentos da verba)"
       },
       "acesso": {
-       "v": 0,
-       "prova": "A verba só clicando (reCAPTCHA)"
+       "v": 0.5,
+       "prova": "Folha e equipe em páginas; os pagamentos da verba pela exportação da Consulta de despesa; as notas só clicando (reCAPTCHA)"
       },
       "sem_barreira": {
-       "v": 0,
-       "prova": "reCAPTCHA na consulta da verba"
+       "v": 0.5,
+       "prova": "reCAPTCHA nas notas da verba; os pagamentos ao deputado saem sem CAPTCHA"
       },
       "robos_exterior": {
        "v": 1,
@@ -4652,7 +4652,7 @@
    "uf": "RR",
    "nome": "Roraima",
    "capital": "Boa Vista",
-   "indice": 0.810544,
+   "indice": 0.848531,
    "indice_parcial": null,
    "blocos_com_nota": 4,
    "blocos_que_valem": 4,
@@ -4708,13 +4708,13 @@
      "fonte": "https://www.transparencia.rr.gov.br/remuneracoes"
     },
     "assembleia": {
-     "indice": 0.65,
-     "completude": 0.541667,
+     "indice": 0.801948,
+     "completude": 0.791667,
      "facilidade": 0.8125,
      "criterios": {
       "salario": {
-       "v": 0,
-       "prova": "A folha dos deputados não é publicada e não achamos a lei"
+       "v": 0.5,
+       "prova": "Folha (total de proventos) só de jan a set/2025; hoje, só o valor da lei (Lei 1.789/2023)"
       },
       "verba_deputado": {
        "v": 1,
@@ -4733,8 +4733,8 @@
        "prova": "Desde set/2025 neste portal"
       },
       "lei": {
-       "v": 0,
-       "prova": "Não achamos a lei do subsídio"
+       "v": 1,
+       "prova": "Lei 1.789/2023 (base de atos do TJRR)"
       },
       "formato": {
        "v": 0.75,

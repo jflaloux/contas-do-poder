@@ -1,6 +1,6 @@
 {
  "_sobre": "Notas do bloco Assembleia do Índice de Transparência: dá para saber, pela fonte oficial, quanto cada deputado estadual recebe e quanto gasta da verba do gabinete? Mantido à mão, estado por estado, a partir do levantamento em dados/referencia/assembleias.json e do que os robôs conseguem ler. Cada critério é [nota, prova]; nota null = a conferir.",
- "conferido_em": "2026-10-01",
+ "conferido_em": "2026-10-02",
  "estados": {
   "AC": {
    "salario": [
@@ -46,8 +46,8 @@
   },
   "AL": {
    "salario": [
-    0.5,
-    "Só o valor do subsídio na lei (Lei 9.056/2023)"
+    0.75,
+    "Folha de cada deputado na relação nominal (páginas, letra por letra): subsídio, vantagens, indenizações e abate-teto"
    ],
    "verba_deputado": [
     1,
@@ -70,8 +70,8 @@
     "Lei 9.056/2023"
    ],
    "formato": [
-    0,
-    "PDF escaneado (imagem)"
+    0.5,
+    "Páginas HTML (folha) e PDF escaneado (verba)"
    ],
    "acesso": [
     1,
@@ -82,8 +82,8 @@
     "Sem CAPTCHA, login ou CPF"
    ],
    "robos_exterior": [
-    1,
-    "O robots.txt permite; abre de fora do Brasil"
+    0.5,
+    "O robots.txt permite; a VIAP abre de fora do Brasil, mas a folha só abre do Brasil"
    ]
   },
   "AM": {
@@ -508,8 +508,8 @@
   },
   "MT": {
    "salario": [
-    0.5,
-    "Só o valor do subsídio na lei (Lei 12.011/2023); a folha antiga em PDF pede nome, e-mail e CPF"
+    1,
+    "Folha de cada deputado no portal da transparência da ALMT (Elotech), mês a mês, com as rubricas (subsídio, auxílio saúde, 13º)"
    ],
    "verba_deputado": [
     0,
@@ -520,28 +520,28 @@
     "Sem notas da verba"
    ],
    "equipe": [
-    0,
-    "Não achamos a equipe de cada gabinete"
+    1,
+    "Servidores lotados em cada gabinete ('GAB DEP'), com os vencimentos"
    ],
    "historico": [
-    0,
-    "Sem verba publicada, não há histórico"
+    1,
+    "Folha desde jul/2022 no portal atual"
    ],
    "lei": [
     1,
     "Lei 12.011/2023"
    ],
    "formato": [
-    0,
-    "PDF e portal em JavaScript"
+    0.75,
+    "O JSON que o portal usa; a folha antiga (até jan/2022) em PDF"
    ],
    "acesso": [
-    0.25,
-    "Só pelo portal"
+    0.75,
+    "API sem documentação (a que o portal usa), sem login"
    ],
    "sem_barreira": [
-    0,
-    "Nome, e-mail e CPF na folha; reCAPTCHA no portal; a API pede login"
+    1,
+    "Sem CAPTCHA, login ou CPF no portal atual (o reCAPTCHA do sistema não aparece para a ALMT); só a folha antiga, até jan/2022, pede nome, e-mail e CPF"
    ],
    "robos_exterior": [
     1,
@@ -550,8 +550,8 @@
   },
   "PA": {
    "salario": [
-    0.5,
-    "Só o valor do subsídio no Decreto Legislativo 1/2023"
+    0.75,
+    "Folha de cada deputado no sistema de pessoal (sigep), pela busca do nome: remuneração, férias, 13º, pecúnia, redutor"
    ],
    "verba_deputado": [
     1,
@@ -562,8 +562,8 @@
     "Só o valor pago ao deputado no mês, sem fornecedor"
    ],
    "equipe": [
-    0,
-    "Não achamos a equipe de cada gabinete"
+    1,
+    "Assessores de cada gabinete e o total pago, desde abr/2026"
    ],
    "historico": [
     1,
@@ -574,12 +574,12 @@
     "Decreto Legislativo 1/2023"
    ],
    "formato": [
-    0,
-    "Painel"
+    0.5,
+    "Painel (verba) e páginas HTML (folha)"
    ],
    "acesso": [
-    0.25,
-    "Só pelo painel"
+    0.5,
+    "A verba pelo JSON do painel; a folha só lendo as páginas do sigep"
    ],
    "sem_barreira": [
     1,
@@ -742,16 +742,16 @@
     "Lei 21.348/2022"
    ],
    "formato": [
-    0.5,
-    "Páginas HTML"
+    0.75,
+    "Páginas HTML (folha, equipe) e XLSX (pagamentos da verba)"
    ],
    "acesso": [
-    0,
-    "A verba só clicando (reCAPTCHA)"
+    0.5,
+    "Folha e equipe em páginas; os pagamentos da verba pela exportação da Consulta de despesa; as notas só clicando (reCAPTCHA)"
    ],
    "sem_barreira": [
-    0,
-    "reCAPTCHA na consulta da verba"
+    0.5,
+    "reCAPTCHA nas notas da verba; os pagamentos ao deputado saem sem CAPTCHA"
    ],
    "robos_exterior": [
     1,
@@ -886,8 +886,8 @@
   },
   "RR": {
    "salario": [
-    0,
-    "A folha dos deputados não é publicada e não achamos a lei"
+    0.5,
+    "Folha (total de proventos) só de jan a set/2025; hoje, só o valor da lei (Lei 1.789/2023)"
    ],
    "verba_deputado": [
     1,
@@ -906,8 +906,8 @@
     "Desde set/2025 neste portal"
    ],
    "lei": [
-    0,
-    "Não achamos a lei do subsídio"
+    1,
+    "Lei 1.789/2023 (base de atos do TJRR)"
    ],
    "formato": [
     0.75,
