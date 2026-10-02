@@ -921,3 +921,20 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .compartilhar-bloco--so-texto .compartilhar-bloco__links { grid-column: 1 / -1; margin: 0; }
 @media (max-width: 560px) { .compartilhar-bloco__links { grid-column: 1 / -1; margin: 0; } }
 .compartilhar-bloco__links a, .compartilhar-bloco__links .link-botao { display: inline-block; padding: 4px 0; min-height: 24px; }
+
+/* interior (folha que cada município manda ao Tribunal de Contas): uma pessoa por linha, sem página própria; o valor
+   típico à direita e, embaixo, a série mês a mês em colunas pequenas (sem eixo: o valor está no texto) */
+.folha-lista { display: grid; gap: 0 22px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); margin-top: 6px; }
+.folha-linha {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "texto valor" "serie serie";
+  gap: 4px 12px; padding: 10px 0; border-bottom: 1px solid var(--line);
+}
+.folha-linha__texto { grid-area: texto; display: grid; min-width: 0; line-height: 1.3; }
+.folha-linha__texto small { color: var(--ink-2); font-size: .82rem; }
+.folha-linha__valor { grid-area: valor; display: grid; justify-items: end; line-height: 1.25; font-variant-numeric: tabular-nums; }
+.folha-linha__valor small { color: var(--ink-2); font-size: .76rem; }
+.mini-serie { grid-area: serie; display: block; width: 100%; height: 14px; }
+.mini-serie rect { fill: var(--ganha); fill-opacity: .7; }
+.tabela-int td:first-child { white-space: normal; min-width: 11rem; }
+.tabela-int td:nth-child(2) { white-space: normal; min-width: 8rem; color: var(--ink-2); }
+.tabela-int td:nth-child(2), .tabela-int th:nth-child(2) { text-align: left; }

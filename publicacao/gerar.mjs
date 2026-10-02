@@ -38,6 +38,12 @@ const deputadosEstaduais = (ASS.p || []).map((p) => ({ ...p, k: "a" }));
 const GOV = ler("governadores.json", { e: [] });
 const MUN = ler("municipios.json", { m: [] });
 const END = ler("enderecos.json", { p: {}, antigos: {} });
+// interior: a folha que cada município manda ao Tribunal de Contas do estado (site/dados/interior/<uf>.json; hoje PB e
+// CE). Vai inteiro para publicar/ (o app baixa o do estado ao abrir uma cidade dele); aqui, a lista dos estados vai
+// numa <meta> de cada página (o app não baixa o que não existe) e o valor típico do vereador, no texto da cidade
+const PASTA_INT = path.join(SITE, "dados", "interior");
+const UFS_INT = fs.existsSync(PASTA_INT) ? fs.readdirSync(PASTA_INT).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
+const INTERIOR = Object.fromEntries(UFS_INT.map((u) => [u.toUpperCase(), ler(`interior/${u}.json`, null)]).filter(([, d]) => d && d.m));
 let MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8"); // com os números da abertura: ver numerosHTML
 const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/) || [])[1] || "https://contasdopoder.com/").replace(/\/+$/, "");
 
@@ -204,6 +210,7 @@ function numerosHTML() {
     `<p class="numeros__data">${esc(`Dados até ${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)} · atualizado em ${D.meta.atualizado}`)}</p>`,
   ].join("");
 }
+MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
@@ -355,17 +362,34 @@ for (const e of GOV.e) {
 }
 
 // ------------------------------------------------------------------ cidades (as 5.570 câmaras municipais)
+// o valor típico de um vereador pela folha do interior: a mediana, entre os vereadores na folha do último mês, da
+// mediana dos meses com valor nos últimos 12 de cada um (o mesmo cálculo do app.js, tipicoInt)
+const medianaN = (xs) => { const a = xs.filter((x) => x != null).sort((x, y) => x - y); const m = Math.floor(a.length / 2); return !a.length ? null : a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
+function vereadorInterior(cod, uf) {
+  const d = INTERIOR[uf], c = d && d.m[String(cod)];
+  if (!c || !c.v || !c.v.length || (CAM.meta.cidades || {})[cod]) return null;
+  const M = d.meta, limite = (() => { const t = Math.floor(M.ultimo_mes / 100) * 12 + (M.ultimo_mes % 100) - 13; return Math.floor(t / 12) * 100 + (t % 12) + 1; })();
+  const tipico = (q) => {
+    const s = q.t.flatMap(([v, n]) => Array(n).fill(v)).map((v, i) => { const t = Math.floor(M.inicio / 100) * 12 + (M.inicio % 100) - 1 + i; return [Math.floor(t / 12) * 100 + (t % 12) + 1, v]; }).filter(([, v]) => v != null);
+    const ult = s.filter(([m]) => m > limite);
+    return medianaN((ult.length ? ult : s).map(([, v]) => v));
+  };
+  const agora = c.v.filter((q) => q.x);
+  return { med: medianaN(agora.map(tipico)), n: agora.length, tribunal: M.tribunal, prefeitura: !(PRE.meta.cidades || {})[cod] && (c.pf || []).some((q) => q.x) };
+}
 const vistos = new Set();
 for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
   const caminho = `cidade/${slugTxt(n)}-${uf.toLowerCase()}`;
   if (vistos.has(caminho)) continue; // não acontece (o nome não se repete no mesmo estado), mas não pode sobrescrever
   vistos.add(caminho);
   const de = deCidade(cod, n);
-  const extras = [CAM.meta.cidades && CAM.meta.cidades[cod] ? "quanto recebe e quanto gasta cada vereador" : null,
-    PRE.meta.cidades && PRE.meta.cidades[cod] ? "quanto recebem o prefeito, o vice e os secretários" : null].filter(Boolean);
+  const vi = vereadorInterior(cod, uf);
+  const extras = [CAM.meta.cidades && CAM.meta.cidades[cod] ? "quanto recebe e quanto gasta cada vereador" : vi ? "quanto recebe cada vereador em cada mês" : null,
+    PRE.meta.cidades && PRE.meta.cidades[cod] ? "quanto recebem o prefeito, o vice e os secretários" : vi && vi.prefeitura ? "quanto recebem o prefeito e o vice" : null].filter(Boolean);
   const texto = (custo > 0
     ? `Em ${ano}, a Câmara Municipal ${de} (${uf}) custou ${reais(custo)}: ${reais(custo / 12)} por mês${pop ? `, ${reais(custo / pop)} por habitante no ano` : ""}${nv ? `, com ${nv} vereadores` : ""}.`
     : `O gasto da Câmara Municipal ${de} (${uf}) não aparece nas contas entregues ao Tesouro Nacional.`)
+    + (vi && vi.med ? ` Um vereador recebe ${reais(vi.med)} por mês (valor típico, bruto, na folha que a Câmara manda ao ${vi.tribunal}).` : "")
     + ` Veja o teto do salário do vereador${extras.length ? `, ${extras.join(" e ")}` : ""} e compare com as outras cidades.`;
   const titulo = `Câmara Municipal ${de} (${uf}): quanto custa | Contas do Poder`;
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto))]);

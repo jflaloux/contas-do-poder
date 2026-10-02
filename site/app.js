@@ -1120,10 +1120,10 @@
     // (fora das capitais com vereador por vereador), só o teto, sem o salário médio ao lado
     const anoSm = (CID.meta || {}).salario_medio_ano, real = salarioReal(c);
     y = linhasImagem(t, y + respiro(t), real ? (c.sm > 0 ? "SALÁRIO DO VEREADOR E SALÁRIO MÉDIO DA CIDADE" : "SALÁRIO DE CADA VEREADOR") : "TETO DO SALÁRIO DE UM VEREADOR DAQUI", [
-      real ? (real.folha ? ["vereador, mediana de 2025 (folha da Câmara)", reais(real.v)] : [`vereador, desde ${fmtMes(real.desde)}`, reaisC(real.v)])
+      real ? (real.tribunal ? [`vereador, valor típico (folha enviada ao ${real.tribunal})`, reais(real.v)] : real.folha ? ["vereador, mediana de 2025 (folha da Câmara)", reais(real.v)] : [`vereador, desde ${fmtMes(real.desde)}`, reaisC(real.v)])
         : ["no máximo, pela Constituição (o salário pode ser menor)", reais(tetoVereador(c.pop))],
       real && c.sm > 0 ? [`salário médio na cidade em ${anoSm} (IBGE)`, reais(c.sm)] : null].filter(Boolean), 40, C.ganha);
-    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos: ${listaE(["Tesouro Nacional (Siconfi)", "TSE", real ? "Câmara Municipal" : null, real && c.sm > 0 ? "IBGE" : null].filter(Boolean))}`);
+    rodapeImagem(t, "VEJA OS DETALHES E COMPARE COM OUTRAS CIDADES EM", urlCidade(c), `Dados abertos: ${listaE(["Tesouro Nacional (Siconfi)", "TSE", real ? real.tribunal || "Câmara Municipal" : null, real && c.sm > 0 ? "IBGE" : null].filter(Boolean))}`);
     return y;
     });
   }
@@ -2019,7 +2019,7 @@
     return null;
   }
   // Tribunal de contas que fiscaliza as prefeituras (BA, GO e PA têm um só para os municípios)
-  const tribunal = (uf) => (["BA", "GO", "PA"].includes(uf) ? `Tribunal de Contas dos Municípios do Estado de ${ESTADOS[uf]}` : `Tribunal de Contas do Estado de ${ESTADOS[uf]}`);
+  const tribunal = (uf) => (["BA", "GO", "PA"].includes(uf) ? `Tribunal de Contas dos Municípios do Estado ${deUF(uf)}` : `Tribunal de Contas do Estado ${deUF(uf)}`);
   const busca = (q) => `https://www.google.com/search?q=${encodeURIComponent(q)}`;
   function cobrarCidade(c, prob, med) {
     const ano = anoRecente();
@@ -2059,19 +2059,168 @@
     return [
       `*Câmara Municipal de ${c.n} (${c.uf})*`,
       temCusto(c) ? `Custa *${compacto(c.custo / 12)} por mês* (${reaisC(porHabMes(c))} por habitante, por mês), com ${c.nv} vereadores.` : `${c.nv} vereadores.`,
-      real ? (real.folha ? `Um vereador recebe ${reais(real.v)} por mês pela folha da Câmara (mediana de 2025).` : `Cada vereador recebe ${reaisC(real.v)} por mês (desde ${fmtMes(real.desde)}).`)
+      real ? (real.tribunal ? `Um vereador recebe ${reais(real.v)} por mês (valor típico, bruto, na folha que a Câmara manda ao ${real.tribunal}).` : real.folha ? `Um vereador recebe ${reais(real.v)} por mês pela folha da Câmara (mediana de 2025).` : `Cada vereador recebe ${reaisC(real.v)} por mês (desde ${fmtMes(real.desde)}).`)
         : `Um vereador daqui pode ganhar até ${reais(tetoVereador(c.pop))} por mês: é o teto da Constituição, e o salário fixado pela Câmara pode ser menor.`,
       real && c.sm > 0 ? `O salário médio na cidade era de ${reais(c.sm)} por mês em ${(CID.meta || {}).salario_medio_ano} (IBGE).` : null,
       "",
-      `Dados abertos oficiais ${listaE(["do Tesouro Nacional", "do TSE", real ? "da Câmara Municipal" : null, real && c.sm > 0 ? "do IBGE" : null].filter(Boolean))}.`,
+      `Dados abertos oficiais ${listaE(["do Tesouro Nacional", "do TSE", real ? (real.tribunal ? `do ${real.tribunal}` : "da Câmara Municipal") : null, real && c.sm > 0 ? "do IBGE" : null].filter(Boolean))}.`,
       `Veja a da sua cidade: ${link || "Contas do Poder"}`,
     ].filter((x) => x !== null).join("\n");
+  }
+  // ================================================================== interior: a folha que cada município manda ao Tribunal de Contas
+  // dados/interior/<uf>.json (hoje Paraíba e Ceará, da coleta/tce/): os vereadores, o prefeito, o vice e, na Paraíba, os
+  // secretários de cada cidade, com o valor bruto de cada mês. Sem página nem arquivo por pessoa (são milhares, e o
+  // Cloudflare Pages tem limite de arquivos): tudo fica na página da cidade. O arquivo do estado só é baixado ao abrir
+  // uma cidade dele. Quais estados têm o arquivo: <meta name="dados-interior"> (o publicacao/gerar.mjs lista a pasta);
+  // sem ela (site/ aberto sem o gerar.mjs), o app tenta baixar. A capital com dados próprios (camaras.json,
+  // prefeituras.json, como Fortaleza) usa os dela.
+  const INT = { pedidos: {}, dados: {} };
+  function carregarInterior(uf) {
+    const u = (uf || "").toLowerCase(), m = document.querySelector('meta[name="dados-interior"]');
+    if (!u || (m && !m.content.split(/\s+/).includes(u))) return Promise.resolve(null);
+    if (!INT.pedidos[u]) INT.pedidos[u] = lerJSON(`/dados/interior/${u}.json`).then((d) => (d && d.m ? (INT.dados[uf] = d) : null), () => null);
+    return INT.pedidos[u];
+  }
+  // a cidade no arquivo do estado, com a meta do arquivo junto (ou null)
+  const interiorDe = (c) => { const d = INT.dados[c.uf], x = d && d.m[String(c.cod)]; return x ? { ...x, meta: d.meta } : null; };
+  // o cargo como está na folha, em minúsculas ("V E R E A D O R", de algumas câmaras, sem os espaços)
+  const cargoFolha = (g) => (/^(\S )+\S$/.test(g || "") ? g.replace(/ /g, "") : g || "").toLowerCase();
+  const mesMais = (m, i) => { const t = Math.floor(m / 100) * 12 + (m % 100) - 1 + i; return Math.floor(t / 12) * 100 + (t % 12) + 1; };
+  // t: [[valor, meses seguidos], ...] desde meta.inicio → [[aaaamm, valor ou null], ...]
+  const serieInt = (q, meta) => q.t.flatMap(([v, n]) => Array(n).fill(v)).map((v, i) => [mesMais(meta.inicio, i), v]);
+  const comValor = (q, meta) => serieInt(q, meta).filter(([, v]) => v !== null);
+  // o valor típico: a mediana dos meses com valor nos últimos 12 (um mês sozinho pode ter 13º, férias ou atrasados);
+  // quem não aparece nos últimos 12, a mediana dos meses em que aparece
+  function tipicoInt(q, meta) {
+    const s = comValor(q, meta), ult = s.filter(([m]) => m > mesMais(meta.ultimo_mes, -12));
+    return mediana((ult.length ? ult : s).map(([, v]) => v));
+  }
+  // quando a pessoa aparece na folha: "de jan/2025 a mar/2026", "em mai/2025" ou "em 5 meses, entre jan/2025 e mar/2026"
+  function mesesInt(q, meta) {
+    const s = comValor(q, meta);
+    if (!s.length) return "";
+    const a = s[0][0], b = s[s.length - 1][0];
+    let corridos = 1;
+    for (let m = a; m < b; m = mesMais(m, 1)) corridos++;
+    return a === b ? `em ${fmtMes(a)}` : s.length === corridos ? `de ${fmtMes(a)} a ${fmtMes(b)}` : `em ${s.length} meses, entre ${fmtMes(a)} e ${fmtMes(b)}`;
+  }
+  // a série em colunas pequenas, sem eixo (o valor está ao lado, em texto); mês sem valor fica sem coluna
+  function miniSerie(serie) {
+    const W = 100, H = 22, max = Math.max(1, ...serie.map(([, v]) => v || 0)), bw = W / serie.length;
+    const svg = s("svg", { class: "mini-serie", viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "none", "aria-hidden": "true" });
+    serie.forEach(([, v], i) => { if (v) { const a = Math.max(1, (v / max) * H); svg.append(s("rect", { x: (i * bw + bw * 0.15).toFixed(2), y: (H - a).toFixed(2), width: (bw * 0.7).toFixed(2), height: a.toFixed(2) })); } });
+    return svg;
+  }
+  // nome no feminino ou no masculino pelo gênero do TSE (gn); sem ele, o cargo neutro
+  const cargoInt = (q, f, m, neutro) => (q.gn === "F" ? f : q.gn === "M" ? m : neutro);
+  // uma pessoa da folha: nome, cargo e partido (só quando o nome casou com o TSE), o valor típico e a série
+  function linhaInt(q, meta, cargo, teto) {
+    const tip = tipicoInt(q, meta), serie = serieInt(q, meta);
+    const sub = [cargo, q.pt, teto && tip > teto + 1 ? "passa do teto" : null, q.x ? null : mesesInt(q, meta)].filter(Boolean).join(" · ");
+    return h("div", { class: "folha-linha" },
+      h("span", { class: "folha-linha__texto" }, h("span", { class: "pessoa-linha__nome" }, q.n), sub ? h("small", null, sub) : null),
+      h("span", { class: "folha-linha__valor" }, h("strong", null, tip ? reais(tip) : "—"), h("small", null, "por mês, típico")),
+      miniSerie(serie));
+  }
+  // os valores de cada mês, em tabela (pessoas nas linhas, meses nas colunas)
+  function tabelaInt(pessoas, meta, rotulo) {
+    const meses = serieInt(pessoas[0], meta).map(([m]) => m);
+    return h("details", { class: "tabela" }, h("summary", null, "Ver os valores de cada mês em tabela"),
+      rolagem(rotulo, h("table", { class: "tabela-int" },
+        h("thead", null, h("tr", null, h("th", null, "Nome"), h("th", null, "Cargo na folha"), meses.map((m) => h("th", { class: "num" }, fmtMes(m))))),
+        h("tbody", null, pessoas.map((q) => h("tr", null,
+          h("td", null, q.n, q.nc ? h("small", { class: "tabela-gov__obs" }, q.nc) : null), h("td", null, cargoFolha(q.g)),
+          serieInt(q, meta).map(([, v]) => h("td", { class: "num" }, v === null ? "—" : num(v, 0)))))))));
+  }
+  // meses em trechos: "mai/2025", "jul/2025 a dez/2025 e fev/2026"
+  function mesesTxt(ms) {
+    const trechos = [];
+    for (const m of [...(ms || [])].sort((a, b) => a - b)) {
+      const u = trechos[trechos.length - 1];
+      if (u && mesMais(u[1], 1) === m) u[1] = m; else trechos.push([m, m]);
+    }
+    return listaE(trechos.map(([a, b]) => (a === b ? fmtMes(a) : `${fmtMes(a)} a ${fmtMes(b)}`)));
+  }
+  // a Câmara: o valor típico de um vereador, o teto, a comparação com a cidade e a lista, um a um
+  function vereadoresInterior(c) {
+    const ic = !camaraDe(c.cod) && interiorDe(c);
+    if (!ic || !ic.v || !ic.v.length) return null;
+    const M = ic.meta, teto = c.pop ? tetoVereador(c.pop) : null;
+    const agora = ic.v.filter((q) => q.x), sairam = ic.v.filter((q) => !q.x);
+    const med = mediana(agora.map((q) => tipicoInt(q, M)).filter(Boolean));
+    const acima = teto ? agora.filter((q) => tipicoInt(q, M) > teto + 1) : [];
+    const cargo = (q) => (q.pr ? "Presidente da Câmara" : cargoInt(q, "Vereadora", "Vereador", ""));
+    const partidos = {};
+    agora.forEach((q) => { if (q.pt) partidos[q.pt] = (partidos[q.pt] || 0) + 1; });
+    const semPt = agora.filter((q) => !q.pt).length, mulheres = agora.filter((q) => q.gn === "F").length;
+    const mesUc = ic.uc ? fmtMes(ic.uc) : "";
+    return [
+      h("div", { class: "estatisticas" },
+        med ? estatistica("Valor típico de um vereador", reais(med), `por mês, bruto: a mediana dos ${agora.length} vereadores na folha (cada um, nos últimos 12 meses)`) : null,
+        teto ? estatistica("Teto do salário do vereador", `até ${reais(teto)}`, "por mês hoje, pela Constituição") : null,
+        estatSalarioMedio(c),
+        med ? comparaSalarioMedio(c, med, "O valor típico do vereador") : null,
+        med ? estatisticaPop(med / smDoAno(anoAtual())) : null),
+      notaTeto(c, faixaDe(c.pop)),
+      acima.length ? h("p", { class: "nota" }, `Para ${acima.length === agora.length ? `os ${agora.length} vereadores` : `${acima.length} dos ${agora.length} vereadores`}${acima.some((q) => q.pr) && acima.length < agora.length ? ` (${acima.some((q) => !q.pr) ? "entre eles, o presidente da Câmara" : acima.length === 1 ? "o presidente da Câmara" : "presidentes da Câmara"})` : ""}, o valor bruto típico informado ao Tribunal passa do teto de ${reais(teto)}.`) : null,
+      h("h2", { class: "h3" }, `Os ${agora.length} vereadores na folha${mesUc ? ` de ${mesUc}` : ""}`),
+      h("p", { class: "discreto pequeno" }, [Object.entries(partidos).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([pt, n]) => `${pt} ${n}`).join(" · "),
+        semPt ? `partido não identificado ${semPt}` : null].filter(Boolean).join(" · ") + `${mulheres ? ` — ${mulheres} ${mulheres === 1 ? "mulher" : "mulheres"} de ${agora.length}` : ""}. Valor bruto de cada mês, como a Câmara informou ao ${M.tribunal}.`),
+      h("div", { class: "folha-lista" }, agora.map((q) => linhaInt(q, M, cargo(q), teto))),
+      sairam.length ? listaFechada(`Também passaram pela Câmara no período (${sairam.length})`, `interior_sairam_${c.uf}`,
+        h("div", { class: "folha-lista" }, sairam.map((q) => linhaInt(q, M, cargo(q), teto)))) : null,
+      tabelaInt([...agora, ...sairam], M, "Vereadores, mês a mês"),
+      h("ul", { class: "lista nota" },
+        h("li", null, M.nota),
+        (M.notas || []).filter((n) => !/^Secretários/.test(n)).map((n) => h("li", null, n)),
+        ic.sc ? h("li", null, `A Câmara ainda não tinha mandado ao Tribunal a folha de ${mesesTxt(ic.sc)}.`) : null,
+        ic.zc ? h("li", null, `A folha da Câmara de ${mesesTxt(ic.zc)} chegou sem vereadores.`) : null,
+        h("li", null, "O número de vereadores na folha pode ser diferente do número de cadeiras: suplente que assumiu no meio do mês (os dois aparecem, cada um com uma parte), vereador licenciado que continua na folha."),
+        h("li", null, "Fonte: ", h("a", { href: M.url, target: "_blank", rel: "noopener" }, `${M.tribunal}, dados abertos ↗`), `, folha até ${fmtMes(M.ultimo_mes)}. `,
+          ic.f ? [h("a", { href: ic.f, target: "_blank", rel: "noopener" }, `Ver a folha de ${c.n} na fonte ↗`), "."] : null)),
+    ];
+  }
+  // a Prefeitura: o prefeito, o vice e, na Paraíba, os secretários
+  function secPrefeituraInterior(c) {
+    const ic = !prefeituraDe(c.cod) && interiorDe(c);
+    if (!ic || ![...(ic.pf || []), ...(ic.vp || []), ...(ic.sec || [])].length) return null;
+    const M = ic.meta, mesUp = ic.up ? fmtMes(ic.up) : fmtMes(M.ultimo_mes);
+    const pf = (ic.pf || []).filter((q) => q.x), vp = (ic.vp || []).filter((q) => q.x), sec = (ic.sec || []).filter((q) => q.x);
+    const sairam = [...(ic.pf || []), ...(ic.vp || []), ...(ic.sec || [])].filter((q) => !q.x);
+    const cargoPf = (q) => cargoInt(q, "Prefeita", "Prefeito", "Prefeito(a)"), cargoVp = (q) => cargoInt(q, "Vice-prefeita", "Vice-prefeito", "Vice-prefeito(a)");
+    const cargoDe = (q) => ((ic.pf || []).includes(q) ? cargoPf(q) : (ic.vp || []).includes(q) ? cargoVp(q) : maiuscula(cargoFolha(q.g)));
+    const medSec = mediana(sec.map((q) => tipicoInt(q, M)).filter(Boolean));
+    return h("section", { class: "bloco", id: "prefeitura" },
+      h("p", { class: "rotulo" }, "Prefeitura"),
+      h("h2", null, `Quanto recebem o prefeito${sec.length ? ", o vice e os secretários" : " e o vice"} ${deCidade(c)}`),
+      h("p", { class: "discreto" }, `Pela folha de pagamento que a Prefeitura manda ao ${M.tribunal}, com o nome de cada um. Valor bruto de cada mês, desde ${fmtMes(M.inicio)}.`),
+      h("article", { class: "cartao" },
+        !pf.length ? h("p", { class: "nota" }, `O prefeito não aparece na folha que a Prefeitura mandou ao Tribunal de Contas em ${mesUp}.`) : null,
+        !vp.length ? h("p", { class: "nota" }, `O vice-prefeito não aparece na folha que a Prefeitura mandou ao Tribunal de Contas em ${mesUp}.`) : null,
+        pf.length || vp.length ? h("div", { class: "folha-lista" }, [...pf.map((q) => linhaInt(q, M, cargoPf(q))), ...vp.map((q) => linhaInt(q, M, cargoVp(q)))]) : null,
+        medSec ? h("div", { class: "estatisticas", style: "margin-top:12px" }, estatistica("Secretário municipal", reais(medSec), `por mês, típico (a mediana dos ${sec.length} na folha)`)) : null,
+        sec.length ? listaFechada(`Secretários municipais (${sec.length})`, `interior_secretarios_${c.uf}`, h("div", { class: "folha-lista" }, sec.map((q) => linhaInt(q, M, cargoDe(q))))) : null,
+        sairam.length ? listaFechada(`Também passaram pela Prefeitura no período (${sairam.length})`, `interior_sairam_prefeitura_${c.uf}`,
+          h("div", { class: "folha-lista" }, sairam.map((q) => linhaInt(q, M, cargoDe(q))))) : null,
+        tabelaInt([...pf, ...vp, ...sec, ...sairam], M, "Prefeitura, mês a mês"),
+        h("ul", { class: "lista nota" },
+          h("li", null, M.nota),
+          sec.length ? h("li", null, (M.notas || []).find((n) => /^Secretários/.test(n)) || "A lista de secretários pode estar incompleta.") : null,
+          ic.sp ? h("li", null, `A Prefeitura ainda não tinha mandado ao Tribunal a folha de ${mesesTxt(ic.sp)}.`) : null,
+          ic.zp ? h("li", null, `A folha da Prefeitura de ${mesesTxt(ic.zp)} chegou sem prefeito, vice nem secretário.`) : null,
+          h("li", null, "Só o que cada um recebe: os gastos por pessoa (carro oficial, viagens, equipe) não estão na folha."),
+          h("li", null, "Fonte: ", h("a", { href: M.url, target: "_blank", rel: "noopener" }, `${M.tribunal}, dados abertos ↗`), `, folha até ${fmtMes(M.ultimo_mes)}. Partido: TSE, eleição de 2024.`))));
   }
   // O salário de verdade de um vereador da cidade, onde a Câmara publica (capitais com vereador por vereador): o
   // subsídio de hoje, igual para todos, ou, onde vem da folha, a mediana do que foi para o bolso em 2025. Nas outras
   // cidades só existe o teto da Constituição, e o site não compara o teto com nada: o salário pode ser bem menor.
   function salarioReal(c) {
     const cam = camaraDe(c.cod);
+    const ic = !cam && interiorDe(c);
+    if (ic && ic.v && ic.v.length) {
+      const med = mediana(ic.v.filter((q) => q.x).map((q) => tipicoInt(q, ic.meta)).filter(Boolean));
+      return med ? { v: med, ano: anoAtual(), oQue: "o valor típico do vereador", folha: true, tribunal: ic.meta.tribunal } : null;
+    }
     if (!cam) return null;
     const sub = (cam.subsidio || [])[(cam.subsidio || []).length - 1];
     if (sub && !cam.subsidio_folha) return { v: sub[1], ano: anoAtual(), oQue: "o salário de hoje", desde: sub[0], folha: false };
@@ -2131,9 +2280,14 @@
     const lugar = ((abaixo + Math.max(0, outras - abaixo - acima) / 2) / outras) * 100;
     return { faixa, mesmos, med, outras, pct, pctMais, lugar };
   }
+  // o teto da Constituição para o salário do vereador da cidade (com a folha do interior, sem a frase do "não comparamos")
+  function notaTeto(c, faixa, semFolha) {
+    return h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. Esse é o teto: o salário de cada vereador é fixado pela própria Câmara e pode ser menor.${semFolha ? " Como ainda não há uma fonte nacional com esse salário, aqui não comparamos o teto com o salário médio da cidade." : ""}`);
+  }
   function secCidade(c) {
     const tem = temCusto(c) || c.suspeito;
-    const detalhe = vereadoresDaCidade(c);
+    const detalhe = vereadoresDaCidade(c) || vereadoresInterior(c);
+    const ic = !camaraDe(c.cod) && interiorDe(c);
     const prob = problemaCidade(c);
     if (prob) evento("ver_problema_cidade", { cidade: c.n, uf: c.uf, problema: prob.tipo });
     const { faixa, mesmos, med, outras, pct, pctMais } = comparacaoCidade(c);
@@ -2173,17 +2327,18 @@
         prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
         prob ? cobrarCidade(c, prob, med) : null,
         tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
-        tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades de ${ESTADOS[c.uf]} com dados.`) : null,
+        tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades ${deUF(c.uf)} com dados.`) : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [h("div", { class: "estatisticas" },
           estatistica("Salário máximo do vereador", `até ${reais(teto)}`, "por mês hoje, pela Constituição"),
           estatSalarioMedio(c)),
-        h("p", { class: "nota" }, `A Constituição (art. 29) deixa uma cidade com ${nomeFaixa(faixa)} pagar ao vereador até ${num(CID.meta.faixas_teto[faixa][1] * 100, 0)}% do salário do deputado estadual, que é no máximo ${reais(CID.meta.teto_deputado_estadual)}. Esse é o teto: o salário de cada vereador é fixado pela própria Câmara e pode ser menor. Como ainda não há uma fonte nacional com esse salário, aqui não comparamos o teto com o salário médio da cidade.`),
+        notaTeto(c, faixa, true),
         h("h2", { class: "h3" }, `Os ${c.nv} vereadores eleitos em 2024`), lista],
         fimCompartilhar(spec),
         h("ul", { class: "lista nota" },
           h("li", null, `Custo da Câmara: tudo o que ela gastou em ${c.ano || "no ano"} (salários de vereadores e servidores, prédio, contratos), segundo as contas que a prefeitura entregou ao Tesouro Nacional (Siconfi, função Legislativa). Não é o salário de cada vereador.`),
-          detalhe ? h("li", null, "Vereadores: quem ocupa cada gabinete hoje, com os suplentes que assumiram, segundo a própria Câmara. Salário, verba do gabinete e equipe de cada um vêm dos dados abertos da Câmara Municipal.")
+          ic ? h("li", null, `Vereadores: quem aparece na folha que a Câmara manda ao ${ic.meta.tribunal || tribunal(c.uf)}, mês a mês desde ${fmtMes(ic.meta.inicio)}.`)
+          : detalhe ? h("li", null, "Vereadores: quem ocupa cada gabinete hoje, com os suplentes que assumiram, segundo a própria Câmara. Salário, verba do gabinete e equipe de cada um vêm dos dados abertos da Câmara Municipal.")
             : h("li", null, "Vereadores: eleitos em 2024, segundo o TSE. Quem assumiu depois (suplentes) ainda não aparece."))));
   }
   // Prefeitura: prefeito, vice, secretários (e subprefeitos, em São Paulo), com link para cada um
@@ -3465,14 +3620,18 @@
     if (S.cidade) {
       document.title = "Câmara Municipal · Contas do Poder";
       const espera = esperar("Carregando a câmara…");
+      // a lista das cidades e, nas cidades de um estado com o arquivo do interior (PB, CE), a folha dele
       carregarCidades().then(() => {
+        const c = /^cid-\d+$/.test(S.cidade) ? CID.porId.get(S.cidade) : CID.porSlug.get(S.cidade);
+        return c && !(camaraDe(c.cod) && prefeituraDe(c.cod)) ? carregarInterior(c.uf) : null;
+      }).then(() => {
         if (!espera.isConnected) return; // já foi para outra página
         const c = /^cid-\d+$/.test(S.cidade) ? CID.porId.get(S.cidade) : CID.porSlug.get(S.cidade);
         if (!c) { falhou(espera, "Cidade não encontrada."); return; }
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        trocar(espera, ...[secCidade(c), secPrefeitura(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
+        trocar(espera, ...[secCidade(c), secPrefeitura(c) || secPrefeituraInterior(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
           secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
           secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "resumo", "cidades", "entenda", "fontes"]);

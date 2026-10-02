@@ -568,6 +568,17 @@ site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 18
 - **Site**: um arquivo por estado, `site/dados/interior/pb.json` e `ce.json` (~700 KB cada, ~100 KB com gzip), com a
   série mensal de cada pessoa, quem está no cargo (está na folha do último mês da cidade) e o partido; formato em
   `TAREFA-SITE-interior.txt`. `coleta/situacao.py` lê o `ultimo_mes` de cada um (`tce/pb`, `tce/ce`).
+- **Na página da cidade** (`vereadoresInterior` e `secPrefeituraInterior` no `site/app.js`): sem página nem arquivo
+  por pessoa (são milhares, e o Cloudflare Pages tem limite de arquivos). O arquivo do estado só é baixado ao abrir uma
+  cidade dele; o `gerar.mjs` põe a lista dos estados com arquivo numa `<meta name="dados-interior">` de cada página. No
+  lugar dos eleitos do TSE e do teto sozinho: o valor típico de um vereador (a mediana, entre os vereadores na folha do
+  último mês, da mediana dos meses com valor nos últimos 12 de cada um, porque um mês sozinho pode ter 13º, férias ou
+  atrasados), o teto da Constituição, o salário médio da cidade (IBGE) e o "ganha mais que X%"; depois, cada vereador
+  numa linha (cargo, partido quando casou com o TSE, "passa do teto" quando o valor típico passa, o valor típico e a
+  série mês a mês em colunas pequenas), quem passou pela Câmara no período, a tabela de todos os meses e as notas (meses
+  sem folha, folha sem vereadores). Na seção "Prefeitura", o prefeito e o vice (ou a frase de que não aparecem na folha
+  do último mês) e, na Paraíba, os secretários. A capital com dados próprios (Fortaleza) usa os dela; João Pessoa usa
+  estes. O valor típico também entra no texto da página pronta, no texto para compartilhar e na imagem da cidade.
 - **Ago/2026**: Paraíba, 2.200 vereadores em 222 das 223 câmaras (valor mediano R$ 6.950), 218 prefeitos, 211 vices e
   1.446 secretários em 188 cidades; Ceará, 2.238 vereadores em 182 das 184 câmaras (mediano R$ 10.400), 178 prefeitos e
   167 vices. Em algumas cidades o prefeito não aparece na folha. O número de vereadores de um mês pode passar o de
@@ -697,6 +708,8 @@ seguem o mesmo desenho.
   Deputados estaduais (sem evento novo): `ver_parlamentar` e `compartilhar` com `casa: deputado estadual` e, na
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
+  Interior da Paraíba e do Ceará (desde 02/10/2026, sem evento novo): `abrir_lista` com `interior_sairam_<UF>`
+  (vereadores que passaram pela Câmara), `interior_secretarios_<UF>` e `interior_sairam_prefeitura_<UF>`.
   Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
   `compartilhar` com `casa: governador`; na origem, `governador` (o link da página do estado para a da pessoa); e
   `ver_governador` com a origem `pessoa_governador` (o link da página da pessoa para a do estado).
