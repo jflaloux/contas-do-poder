@@ -51,25 +51,25 @@ duas rodadas por semana:
 | Rodada | Onde | Quando | O que faz |
 |---|---|---|---|
 | Exterior | GitHub Actions | terça, 8h17 | Tudo o que abre de fora (`CONTAS_ONDE=exterior`) |
-| Brasil | Mac do Jean-François (`rotina/semana-brasil.sh`, pelo launchd) | terça, 13h07 (ou quando o Mac acordar; tenta de novo nos dias seguintes) | `python3 coletar.py brasil`: as fontes que só abrem do Brasil e as que falharam de fora nesta semana; refaz os arquivos do site a partir dos CSVs; commit só dos dados e push |
+| Brasil | Um computador no Brasil (`rotina/semana-brasil.sh`, pelo launchd do macOS) | terça, 13h07 (ou quando o computador estiver ligado; tenta de novo nos dias seguintes) | `python3 coletar.py brasil`: as fontes que só abrem do Brasil e as que falharam de fora nesta semana; refaz os arquivos do site a partir dos CSVs; commit só dos dados e push |
 
 - **Quem roda o quê** (`coleta/onde.py`): a lista `SO_BRASIL` e o histórico de cada fonte. Cada rodada anota, por
   fonte, a última tentativa, o último sucesso, as falhas seguidas e o erro, num arquivo só seu
   (`dados/processados/coletas_exterior.json` e `coletas_brasil.json`, para as duas não brigarem no Git). Uma fonte que
-  falha de fora passa sozinha para o Mac na mesma semana; depois de 2 falhas de fora, o GitHub deixa de tentar (e tenta
+  falha de fora passa sozinha para a rodada do Brasil na mesma semana; depois de 2 falhas de fora, o GitHub deixa de tentar (e tenta
   de novo uma vez por mês).
 - **Situação das fontes** (`python3 coletar.py situacao`, no fim de cada rodada): `dados/processados/situacao.md`,
   com o último mês no site, a última coleta certa e onde, e o último erro de cada fonte. "falhando" = a última
   tentativa falhou; "atrasada" = 3 meses ou mais atrás do último mês fechado; "atrasada (fonte)" = o atraso é da própria
   fonte (Minas e São Paulo publicam a folha com meses de atraso, por exemplo). No GitHub, o relatório aparece no resumo
-  de cada execução; no Mac, as fontes com problema viram um aviso na Central de Notificações.
+  de cada execução; na rodada do Brasil, as fontes com problema viram um aviso na Central de Notificações do macOS.
 - **Conflitos**: os CSVs de cada rodada são de fontes diferentes; os arquivos do site saem dos CSVs. Se as duas rodadas
   mexerem no mesmo arquivo do site, a segunda fica com a versão da outra e refaz os arquivos (`python3 coletar.py
   montar`, que só monta, sem coletar).
-- **Commits feitos à mão**: se houver commits esperando o push do Jean-François, a rodada do Brasil faz o seu commit
+- **Commits feitos à mão**: se houver commits esperando o push, a rodada do Brasil faz o seu commit
   mas não envia nada (avisa). Se houver mudança sem commit nos arquivos de dados ou no código, ela não roda (avisa e
   tenta no dia seguinte).
-- **Instalar no Mac** (uma vez): `bash rotina/instalar-mac.sh` (cria o `.venv`, instala as dependências e o
+- **Instalar a rodada do Brasil** (uma vez, num computador com macOS): `bash rotina/instalar-mac.sh` (cria o `.venv`, instala as dependências e o
   agendamento). Rodar na hora: `bash rotina/semana-brasil.sh --agora`. O registro de cada rodada fica em
   `~/Library/Logs/ContasDoPoder/`.
 
@@ -347,9 +347,9 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 | Mato Grosso do Sul | Portal da Transparência da Alems: CSV anual da CEAP | Subsídio da lei (Lei 6.016/2022); CEAP nota a nota, com CNPJ e comprovante. Sem lista de deputados aberta: quem está no cargo sai dos meses com notas. Partido: o da candidatura de 2026 no TSE |
 | Tocantins | Portal da Transparência da Aleto: a pesquisa da Verba Indenizatória (CODAP), que devolve um PDF por deputado e mês | Subsídio da lei (Lei 4.073/2022); CODAP nota a nota (emitente, CNPJ, valor), lida do PDF. O PDF não tem a categoria: ela sai do nome do emitente (posto, hotel, escritório de advocacia...). O total do mês é o valor ressarcido do PDF. A folha tem hCaptcha e não entra. Quem está no cargo: a lista de deputados da página |
 | Sergipe | Portal da Transparência da Alese: o PDF mensal da folha de pagamento e o PDF mensal do ressarcimento dos deputados | Rendimentos da folha (subsídio, "outras verbas", 13º, auxílio; sem descontos nem líquido); ressarcimento por deputado e categoria (sem fornecedor), no mês da competência; equipe do gabinete (pessoas lotadas e soma dos rendimentos, sem nomes). Quem está no cargo: quem está na folha |
-| Espírito Santo | Portal da Transparência da Ales (só abre do Brasil: roda no Mac): o que a página das cotas parlamentares usa, por gabinete e mês | Subsídio da lei (Lei 11.766/2022), desde fev/2025; cota por rubrica (diárias, passagens, divulgação, consultorias, aluguel), sem fornecedor. Quem está no cargo: os meses em que a página tem a tabela do gabinete (o titular licenciado fica sem tabela) |
-| Rio Grande do Sul | Portal da Transparência da ALRS (só abre do Brasil: roda no Mac): o que as páginas "Gastos | Cotas" e "Remuneração de Servidores e Parlamentares" usam | Folha de cada deputado (remuneração bruta, parcelas indenizatórias, terço de férias, 13º; sem descontos), pela busca do nome completo do TSE; cota por gabinete, mês e rubrica (sem fornecedor). Quem está no cargo: os meses na folha (o titular licenciado sai da folha, mas o gabinete continua na lista de cotas e a cota fica no nome dele) |
-| Amapá | Portal da Transparência da Alap (só abre do Brasil: roda no Mac): o que as páginas da CEAP e da consulta remuneratória de deputados usam | Folha de cada deputado (subsídio, GFE, auxílio-alimentação; sem descontos); CEAP por gabinete e mês, nota a nota (CNPJ, empresa, nota, valor). Quem está no cargo: os gabinetes da CEAP do mês (e, para quem não tem gabinete, os meses na folha) |
+| Espírito Santo | Portal da Transparência da Ales (só abre do Brasil: entra na rodada do Brasil): o que a página das cotas parlamentares usa, por gabinete e mês | Subsídio da lei (Lei 11.766/2022), desde fev/2025; cota por rubrica (diárias, passagens, divulgação, consultorias, aluguel), sem fornecedor. Quem está no cargo: os meses em que a página tem a tabela do gabinete (o titular licenciado fica sem tabela) |
+| Rio Grande do Sul | Portal da Transparência da ALRS (só abre do Brasil: entra na rodada do Brasil): o que as páginas "Gastos | Cotas" e "Remuneração de Servidores e Parlamentares" usam | Folha de cada deputado (remuneração bruta, parcelas indenizatórias, terço de férias, 13º; sem descontos), pela busca do nome completo do TSE; cota por gabinete, mês e rubrica (sem fornecedor). Quem está no cargo: os meses na folha (o titular licenciado sai da folha, mas o gabinete continua na lista de cotas e a cota fica no nome dele) |
+| Amapá | Portal da Transparência da Alap (só abre do Brasil: entra na rodada do Brasil): o que as páginas da CEAP e da consulta remuneratória de deputados usam | Folha de cada deputado (subsídio, GFE, auxílio-alimentação; sem descontos); CEAP por gabinete e mês, nota a nota (CNPJ, empresa, nota, valor). Quem está no cargo: os gabinetes da CEAP do mês (e, para quem não tem gabinete, os meses na folha) |
 
 - Nome civil, gênero e eleito/suplente: arquivo de candidatos de 2022 do TSE (`consulta_cand_2022.zip`, ~4 MB, no
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as
@@ -459,7 +459,7 @@ um para cada fonte, com as mesmas duas dimensões:
 
 As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json`, `assembleias.json`, `prefeituras.json` e
 `camaras.json` (mantidas à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de
-um servidor nos EUA, e o resto, do Brasil, pelo Mac e pelo Chrome). As capitais sem robô foram levantadas em
+um servidor nos EUA, e o resto, do Brasil, por um computador e um navegador comuns). As capitais sem robô foram levantadas em
 01/10/2026. A nota da lei do governador vem de `dados/governadores/governadores.json`. A folha do Mato Grosso pede
 CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. Em 01/10/2026: 25
 estados com índice geral e 2 com um bloco a conferir (prefeituras de Maceió e de Cuiabá, cujas consultas são muito
