@@ -510,7 +510,8 @@ if (judiciario.length) {
 const COPIAS = [
   { nome: "GitHub", url: "https://github.com/jflaloux/contas-do-poder", texto: "O código do site, os robôs que coletam os dados e os próprios dados, com o histórico de cada mudança." },
   { nome: "Pacote completo (ZIP)", url: "https://github.com/jflaloux/contas-do-poder/archive/refs/heads/main.zip", texto: "Tudo o que está no GitHub num arquivo só, na versão mais recente." },
-  { nome: "Zenodo (CERN), com DOI", url: "https://doi.org/10.5281/zenodo.23109647", texto: "Cópia permanente de cada versão publicada no GitHub (a primeira, de 02/10/2026), guardada pelo CERN, com um DOI que não muda." },
+  { nome: "Zenodo (CERN), com DOI", url: "https://doi.org/10.5281/zenodo.23109646", texto: "Cópia permanente de cada versão publicada no GitHub (a primeira, de 02/10/2026), guardada pelo CERN. O DOI não muda e leva sempre à versão mais nova." },
+  { nome: "Software Heritage", url: "https://archive.softwareheritage.org/browse/origin/?origin_url=https://github.com/jflaloux/contas-do-poder", texto: "Arquivo universal de código-fonte, mantido pela Inria e apoiado pela Unesco. Guarda o repositório com o histórico de cada mudança (primeira cópia em 02/10/2026); o endereço mostra a cópia mais nova." },
   { nome: "Internet Archive", url: "https://web.archive.org/web/*/contasdopoder.com/*", texto: "As páginas do site guardadas pelo Wayback Machine, com a data de cada cópia." },
 ];
 const DESCRICAO_ARQ = {
