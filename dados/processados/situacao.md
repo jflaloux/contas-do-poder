@@ -1,26 +1,37 @@
-# Situação das fontes (01/10/2026 22:45, rodada: brasil)
+# Situação das fontes (02/10/2026 17:27, rodada: brasil)
 
-Último mês fechado: 09/2026. 67 fontes: 60 ok, 5 com o atraso da própria fonte, 2 atrasadas, 0 falhando.
+Último mês fechado: 09/2026. 79 fontes: 71 ok, 7 com o atraso da própria fonte, 1 atrasadas, 0 falhando.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| prefeituras/campo_grande | atrasada | 02/2026 | — | — |  |
 | prefeituras/recife | atrasada | 06/2026 | — | — |  |
+| assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | — | — | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 05/2026 | — | — | a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas |
 | folhas/MG | atrasada (fonte) | 03/2026 | — | — | a Secretaria de Planejamento publica a folha com alguns meses de atraso |
 | folhas/PA (só do Brasil) | atrasada (fonte) | 03/2026 | — | — | desde abr/2026 a consulta não mostra quem tem mandato eletivo |
 | folhas/RJ (só do Brasil) | atrasada (fonte) | 03/2026 | — | — | desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago |
 | folhas/SP | atrasada (fonte) | 04/2026 | — | — | o Estado publica a série histórica com alguns meses de atraso |
+| prefeituras/campo_grande | atrasada (fonte) | 02/2026 | — | — | a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026) |
+| assembleias/ac | ok | 09/2026 | — | — |  |
+| assembleias/al (só do Brasil) | ok | 09/2026 | — | — |  |
+| assembleias/am (só do Brasil) | ok | 08/2026 | — | — |  |
 | assembleias/ap (só do Brasil) | ok | 08/2026 | — | — |  |
 | assembleias/ba | ok | 09/2026 | — | — |  |
 | assembleias/ce | ok | 09/2026 | — | — |  |
+| assembleias/df (só do Brasil) | ok | 08/2026 | — | — |  |
 | assembleias/es (só do Brasil) | ok | 08/2026 | — | — |  |
 | assembleias/go (só do Brasil) | ok | 07/2026 | — | — |  |
 | assembleias/mg | ok | 07/2026 | — | — |  |
 | assembleias/ms | ok | 09/2026 | — | — |  |
+| assembleias/mt | ok | 09/2026 | — | — |  |
+| assembleias/pa | ok | 08/2026 | — | — |  |
 | assembleias/pb | ok | 07/2026 | — | — |  |
 | assembleias/pe | ok | 08/2026 | — | — |  |
+| assembleias/pi | ok | 07/2026 | — | — |  |
+| assembleias/pr | ok | 09/2026 | — | — |  |
+| assembleias/rn | ok | 09/2026 | — | — |  |
 | assembleias/ro | ok | 09/2026 | — | — |  |
+| assembleias/rr | ok | 07/2026 | — | — |  |
 | assembleias/rs (só do Brasil) | ok | 08/2026 | — | — |  |
 | assembleias/sc | ok | 09/2026 | — | — |  |
 | assembleias/se | ok | 08/2026 | — | — |  |
@@ -57,17 +68,18 @@
 | prefeituras/salvador | ok | 08/2026 | — | — |  |
 | prefeituras/sp | ok | 08/2026 | — | — |  |
 | prefeituras/vitoria | ok | 08/2026 | — | — |  |
+| tce/ce | ok | 08/2026 | — | — |  |
 | tce/pb | ok | 08/2026 | — | — |  |
 | vereadores/aracaju | ok | 09/2026 | — | — |  |
-| vereadores/belo_horizonte (só do Brasil) | ok | 08/2026 | — | — |  |
+| vereadores/belo_horizonte (só do Brasil) | ok | 09/2026 | — | — |  |
 | vereadores/boa_vista | ok | 08/2026 | — | — |  |
 | vereadores/fortaleza (só do Brasil) | ok | 08/2026 | — | — |  |
 | vereadores/goiania | ok | 08/2026 | — | — |  |
-| vereadores/maceio (só do Brasil) | ok | 08/2026 | — | — |  |
+| vereadores/maceio (só do Brasil) | ok | 09/2026 | — | — |  |
 | vereadores/manaus (só do Brasil) | ok | 08/2026 | — | — |  |
 | vereadores/natal (só do Brasil) | ok | 07/2026 | — | — |  |
 | vereadores/porto_alegre (só do Brasil) | ok | 08/2026 | — | — |  |
 | vereadores/recife | ok | 08/2026 | — | — |  |
-| vereadores/rio_de_janeiro (só do Brasil) | ok | 08/2026 | — | — |  |
+| vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | — | — |  |
 | vereadores/sao_luis (só do Brasil) | ok | 08/2026 | — | — |  |
-| vereadores/sp | ok | 08/2026 | — | — |  |
+| vereadores/sp | ok | 09/2026 | — | — |  |

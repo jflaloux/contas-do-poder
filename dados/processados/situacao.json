@@ -1,17 +1,7 @@
 {
- "gerado_em": "2026-10-01T22:45:55",
+ "gerado_em": "2026-10-02T17:27:12",
  "ultimo_mes_fechado": 202609,
  "fontes": [
-  {
-   "fonte": "prefeituras/campo_grande",
-   "situacao": "atrasada",
-   "ultimo_mes": 202602,
-   "meses_atras": 7,
-   "ultimo_sucesso": null,
-   "onde": null,
-   "so_brasil": false,
-   "erro": null
-  },
   {
    "fonte": "prefeituras/recife",
    "situacao": "atrasada",
@@ -21,6 +11,16 @@
    "onde": null,
    "so_brasil": false,
    "erro": null
+  },
+  {
+   "fonte": "assembleias/ma",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202605,
+   "meses_atras": 4,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados"
   },
   {
    "fonte": "assembleias/rj",
@@ -73,6 +73,46 @@
    "erro": "o Estado publica a série histórica com alguns meses de atraso"
   },
   {
+   "fonte": "prefeituras/campo_grande",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202602,
+   "meses_atras": 7,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)"
+  },
+  {
+   "fonte": "assembleias/ac",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/al",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/am",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
+   "erro": null
+  },
+  {
    "fonte": "assembleias/ap",
    "situacao": "ok",
    "ultimo_mes": 202608,
@@ -100,6 +140,16 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/df",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": true,
    "erro": null
   },
   {
@@ -143,6 +193,26 @@
    "erro": null
   },
   {
+   "fonte": "assembleias/mt",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/pa",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
    "fonte": "assembleias/pb",
    "situacao": "ok",
    "ultimo_mes": 202607,
@@ -163,10 +233,50 @@
    "erro": null
   },
   {
+   "fonte": "assembleias/pi",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/pr",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/rn",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
    "fonte": "assembleias/ro",
    "situacao": "ok",
    "ultimo_mes": 202609,
    "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/rr",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
@@ -533,6 +643,16 @@
    "erro": null
   },
   {
+   "fonte": "tce/ce",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": null,
+   "onde": null,
+   "so_brasil": false,
+   "erro": null
+  },
+  {
    "fonte": "tce/pb",
    "situacao": "ok",
    "ultimo_mes": 202608,
@@ -555,8 +675,8 @@
   {
    "fonte": "vereadores/belo_horizonte",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": true,
@@ -595,8 +715,8 @@
   {
    "fonte": "vereadores/maceio",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": true,
@@ -645,8 +765,8 @@
   {
    "fonte": "vereadores/rio_de_janeiro",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": true,
@@ -665,8 +785,8 @@
   {
    "fonte": "vereadores/sp",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,

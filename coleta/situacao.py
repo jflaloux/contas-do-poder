@@ -22,6 +22,7 @@ ATRASOS_CONHECIDOS = {
     "folhas/PA": "desde abr/2026 a consulta não mostra quem tem mandato eletivo",
     "folhas/RJ": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago",
     "assembleias/rj": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas",
+    "assembleias/ma": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados",
     "prefeituras/campo_grande": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)",
 }
 SAIDA_MD = PROCESSADOS / "situacao.md"

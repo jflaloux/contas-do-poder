@@ -116,3 +116,27 @@ armadilhas que não estão escritas em outro lugar.
 - Alepe (PE): as notas da verba vêm uma prestação por pedido; o robô baixa no máximo 400 por vez (as que faltam
   entram com o total, sem detalhe).
 - Prefeitura do Rio: o CSV mensal não tem o cargo; só prefeito e vice entram, pelo nome dos eleitos de 2024.
+- CPF solto em texto livre: o MEI tem como razão social "NOME 12345678901", e algumas fontes põem o CPF no histórico do
+  pagamento (Alep) ou no nome do beneficiário (Aleam). `vereadores/comum.limpar_cpfs(pasta)` roda depois de cada coleta
+  das capitais e das Assembleias, e `comum.empresa()` tira o número do nome no site. Fonte nova com texto livre: varrer
+  os CSVs por 11 dígitos antes do commit.
+- Assembleias: o deputado licenciado (secretário de Estado, por exemplo) costuma continuar na folha com o subsídio (PR,
+  PI, PA): estar na folha não é estar no cargo. Use um sinal de exercício (gabinete com comissionados no PR, notas da
+  verba no PI, verba ou gabinete no PA).
+- ALRN (RN): a API do Portal da Transparência só responde com um JWT fixo escrito no JavaScript da página, com usuário e
+  senha dentro: é credencial, não usar. A lista de parlamentares (api-transparencialegislativa) é aberta, mas traz CPF
+  e data de nascimento: ler só nome, vigência e partido.
+- Alema (MA): JSF/PrimeFaces; o número de cada parlamentar só sai do clique (AJAX) no nome da lista, e o robô guarda o
+  número (`dados/assembleias/ma/parlamentares.csv`). O robots.txt responde 403, que a sessão trata como "sem robots.txt"
+  (RFC 9309).
+- CLDF (DF): o arquivo de fev/2026 no CKAN é cópia do de jun/2025 (o robô deixa o mês de fora); o 13º vem em folhas à
+  parte (002 e 003, adiantamento; 016, dezembro).
+- ALE-AL: a lista da folha leva ~18 s por letra, e a letra sem nomes (X) devolve a lista do A. A VIAP é imagem, com o
+  total corrigido à mão: não publicar por OCR.
+- ALMT: o portal Elotech carrega o script do reCAPTCHA, mas ele só aparece em entidades integradas ao Oxy
+  (`isIntegradoOxy` em `configuracoes-gerais`): conferir antes de rodar. A api.al.mt.gov.br pede login e não é usada.
+- TCE-CE: a API limita quem lê muito (em 02/10/2026, depois de ~3 h com 3 pedidos por vez, parou de responder ao Mac por
+  ~12 min): 2 pedidos por vez, com pausa. O CPF cifrado só liga folha e cadastro na memória; nunca é gravado.
+- Cowork: a ligação com o Mac cai (em 02/10/2026, por ~13 h) e, antes de cair, o limite de cada comando encurta (de ~150
+  s para ~20 s); chamadas em paralelo se derrubam. Rode os robôs em partes curtas (`definir_prazo(70)` com `timeout 85`),
+  um por vez. Depois que a ligação volta, a permissão de apagar arquivos na pasta precisa ser pedida de novo.

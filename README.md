@@ -352,15 +352,28 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 | Espírito Santo | Portal da Transparência da Ales (só abre do Brasil: entra na rodada do Brasil): o que a página das cotas parlamentares usa, por gabinete e mês | Subsídio da lei (Lei 11.766/2022), desde fev/2025; cota por rubrica (diárias, passagens, divulgação, consultorias, aluguel), sem fornecedor. Quem está no cargo: os meses em que a página tem a tabela do gabinete (o titular licenciado fica sem tabela) |
 | Rio Grande do Sul | Portal da Transparência da ALRS (só abre do Brasil: entra na rodada do Brasil): o que as páginas "Gastos | Cotas" e "Remuneração de Servidores e Parlamentares" usam | Folha de cada deputado (remuneração bruta, parcelas indenizatórias, terço de férias, 13º; sem descontos), pela busca do nome completo do TSE; cota por gabinete, mês e rubrica (sem fornecedor). Quem está no cargo: os meses na folha (o titular licenciado sai da folha, mas o gabinete continua na lista de cotas e a cota fica no nome dele) |
 | Amapá | Portal da Transparência da Alap (só abre do Brasil: entra na rodada do Brasil): o que as páginas da CEAP e da consulta remuneratória de deputados usam | Folha de cada deputado (subsídio, GFE, auxílio-alimentação; sem descontos); CEAP por gabinete e mês, nota a nota (CNPJ, empresa, nota, valor). Quem está no cargo: os gabinetes da CEAP do mês (e, para quem não tem gabinete, os meses na folha) |
+| Distrito Federal | Dados abertos da CLDF (CKAN; só abre do Brasil: entra na rodada do Brasil): o CSV mensal do quadro demonstrativo de pessoal; o quadro mensal consolidado da verba indenizatória (PDF) | Folha de cada deputado (subsídio, 13º, auxílios, acertos; sem descontos); verba por deputado, mês e categoria (sem fornecedor); equipe do gabinete (pessoas lotadas no gabinete e a soma dos rendimentos, sem nomes). Quem está no cargo: quem está na folha do mês. Fev/2026: o arquivo publicado é cópia do de jun/2025, e vale o subsídio da lei (Decreto Legislativo 2.383/2022) |
+| Amazonas | Portal da Transparência da Aleam (só abre do Brasil: entra na rodada do Brasil): o CSV do botão "Exportar para CSV" da página da cota parlamentar, por deputado e mês | Subsídio da lei (Lei 4.729/2018, ratificado pela Lei 8.161/2026); CEAP nota a nota (beneficiário, CNPJ, verba, valor reembolsado). A consulta de vencimentos nominal não devolve resultado. Quem está no cargo: os meses com resumo da CEAP |
+| Maranhão | Portal da Transparência da Alema (só abre do Brasil: entra na rodada do Brasil): a consulta de verbas por competência e a página de cada deputado no mês | Subsídio da lei (Lei 11.876/2023); CEAP por deputado, mês e inciso (sem fornecedor), pelo valor ressarcido (o que passa dos limites aparece à parte). Quem está no cargo: os meses em que o deputado aparece na consulta. O site vai até o último mês em que 80% dos deputados já prestaram contas |
+| Paraná | Portal da Transparência da Alep: o que as páginas "Parlamentares" e "Comissionados" usam e a exportação da "Consulta de despesa" (pagamentos do SIAFIC) | Folha de cada deputado (subsídio, 1/3 de férias, vantagens transitórias, benefícios, menos o redutor; sem descontos); verba de ressarcimento pelos pagamentos ao próprio deputado, por natureza e mês do pagamento (sem fornecedor: as notas estão na consulta com reCAPTCHA, que não é lida); equipe: comissionados lotados em cada gabinete (sem custo). Quem está no cargo: os gabinetes com comissionados no mês (o titular licenciado continua na folha) |
+| Rio Grande do Norte | Lista de deputados do sistema legislativo da ALRN (Transparência Legislativa) e a página de deputados | Subsídio da lei (Lei 11.315/2022). Verba e folha não entram: o Portal da Transparência só responde com uma chave fixa escrita no código da página (credencial, não usada). Quem está no cargo: a lista atual (24), desde jan/2025; partido: a filiação em vigor na ALRN |
+| Piauí | Portal da Transparência da Alepi: as consultas da verba indenizatória e da remuneração | Folha de cada deputado pela busca do nome (subsídio, gratificação, férias, 13º; sem previdência e IR); verba indenizatória nota a nota, por subcota (o fornecedor só está no PDF de cada nota). Quem está no cargo: os meses com notas da verba (o licenciado continua na folha). O site vai até o último mês com a verba de 80% dos deputados |
+| Pará | Portal da Transparência da Alepa: o JSON do painel da verba indenizatória e o que as páginas "Remuneração de Pessoal", "Relação de Pessoal" e "Verba de Gabinete" usam | Folha de cada deputado pela matrícula (remuneração, férias, 13º adiantado, pecúnia, menos o redutor; sem descontos); verba indenizatória e indenização de transporte por mês (sem fornecedor; o imposto retido volta para o valor do auxílio); equipe: assessores e total pago por gabinete, desde abr/2026. Quem está no cargo: os meses com verba ou gabinete (o licenciado continua na folha) |
+| Acre | Portal da Transparência da Aleac: a lista de servidores (cargo "Deputado estadual"); a página Deputados do site da Aleac | Subsídio da lei (Lei 4.136/2023), proporcional aos dias no cargo. A consulta da folha não traz valores e a verba não é publicada por deputado. Quem está no cargo: admissão e exoneração na lista de servidores (a lista não mostra licenças: até 09/03/2026, 25 deputados para 24 vagas) |
+| Alagoas | Portal da Transparência da ALE-AL (só abre do Brasil: entra na rodada do Brasil): a relação nominal da folha, letra por letra, e o detalhe de cada deputado | Folha de cada deputado (subsídio, vantagens, indenizações e vantagens eventuais, menos o abate-teto; sem descontos). A VIAP sai em formulário escaneado, com o total corrigido à mão, e fica de fora. Quem está no cargo: quem está na folha do mês com subsídio |
+| Roraima | Portal da Transparência da ALE-RR: o que as páginas da verba indenizatória e de gestão de pessoal usam (arquivos por pasta) | Folha (total de proventos e 13º) de jan a set/2025; depois, o subsídio da lei (Lei 1.789/2023). Verba por deputado e item desde set/2025 (sem fornecedor; o que passou da cota entra negativo). Equipe: pessoas no setor "GAB DEP" de cada mês (sem custo). Quem está no cargo: a folha e os meses com a verba |
+| Mato Grosso | Portal da Transparência da ALMT (Elotech): o que a página de servidores usa | Folha de cada deputado (subsídio, auxílio saúde, 13º; sem descontos); equipe lotada no gabinete ("GAB DEP"), com a soma dos vencimentos. Verba não publicada por deputado. Quem está no cargo: admissão e exoneração de cada matrícula, sem os meses sem subsídio (o titular licenciado) |
 
 - Nome civil, gênero e eleito/suplente: arquivo de candidatos de 2022 do TSE (`consulta_cand_2022.zip`, ~4 MB, no
   cache). O nome parlamentar é casado com o nome de urna (igual, compatível ou, por último, o único eleito com as
   mesmas palavras, sem títulos como "Dr." ou "Cel.").
-- O que cada uma das 27 Assembleias publica (verba, folha, equipe, subsídio, barreiras) está em
-  `dados/referencia/assembleias.json`. As outras têm barreira (CAPTCHA, token) ou só PDF; ver o levantamento. PR: CAPTCHA.
-  Próximos candidatos (levantados do Brasil): DF (folha mensal em CSV com a lotação do gabinete; notas da verba em
-  XLSX, só de parte dos gabinetes), AM (cota por beneficiário, formulário sem CAPTCHA) e MA (total da CEAP por
-  categoria, página por deputado e mês).
+- As 27 Assembleias têm robô desde 02/10/2026. O que cada uma publica (verba, folha, equipe, subsídio, barreiras) está
+  em `dados/referencia/assembleias.json`; onde falta uma parte, o motivo está na tabela acima. Sem folha aberta, vale o
+  subsídio da lei (como em SP e MG); a verba não entra em 4 (RN, AC, AL e MT).
+- Deputado licenciado (secretário de Estado, por exemplo) costuma continuar na folha da Assembleia (PR, PI, PA): estar
+  na folha não é estar no cargo, e o robô usa outro sinal (gabinete com comissionados, notas da verba).
+- CPF solto em texto (nome de fornecedor MEI, histórico do pagamento) sai depois de cada coleta
+  (`vereadores/comum.limpar_cpfs`, também para as capitais).
 - No site, o deputado estadual é o tipo `a` (Assembleia): o `app.js` e o `gerar.mjs` trocam o `k` "e" do arquivo, que no
   site é o governo federal. A página de cada um é a mesma do vereador (salário, verba do gabinete mês a mês, para onde
   foi o dinheiro, equipe onde a Assembleia publica, as notas e as fontes de `meta.estados[uf]`), e ele só se compara com
@@ -497,7 +510,7 @@ responsáveis diferentes e que a nota é da fonte, não de quem está no cargo. 
 só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
-## Tribunais de Contas (prova de conceito)
+## Tribunais de Contas: vereadores, prefeitos e vices do interior (Paraíba e Ceará)
 
 Os municípios mandam a folha e as despesas ao Tribunal de Contas do estado; alguns tribunais abrem esses dados para
 todos os municípios de uma vez. Um robô por tribunal cobriria todas as câmaras e prefeituras do estado, em vez de um
@@ -514,10 +527,46 @@ robô por Câmara. O levantamento dos 26 tribunais que fiscalizam municípios (o
 - **Nada aberto ou atrás de barreira:** Amazonas, Amapá, Rondônia, Alagoas, Sergipe, Mato Grosso, Mato Grosso do Sul,
   Santa Catarina (bloqueio de robôs), Minas Gerais (reCAPTCHA na API), Bahia (TCM-BA, reCAPTCHA) e Piauí (sem valores).
 
-Prova feita na Paraíba: o arquivo de 2026 do TCE-PB (68 MB, CSV em ZIP, atualizado todo dia) tem, em ago/2026, 1.817
-vereadores de 203 das 223 câmaras, com valor mediano de R$ 6.950 por mês (de R$ 4.000 a R$ 20.864,78). O resumo por
-município, sem nomes, está em `dados/referencia/tce_pb_vereadores_202608.csv`. Os valores vêm no formato brasileiro
-(ponto de milhar, vírgula decimal, sem zeros à direita: "9.300" é R$ 9.300,00).
+Robô `coleta/tce/` (`python3 coletar.py tce`; um estado só, em partes: `python3 -m coleta.tce ce 150`; só os arquivos do
+site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 184 do Ceará, mês a mês desde janeiro de 2025:
+
+- **O que guarda**: só os vereadores (pagos pela Câmara), o prefeito, o vice e, na Paraíba, os secretários municipais:
+  uma linha por pessoa, órgão e mês, com o valor bruto e, onde a fonte separa, as partes (salário, 13º, férias, outros),
+  em `dados/municipios_tce/<uf>/<ano>.csv` (vai para o Git). `fontes.csv` diz, para cada cidade, órgão e mês, quantas
+  linhas a folha tinha no Tribunal (0 = o município ainda não tinha mandado) e o endereço da fonte. Nunca o CPF (nem
+  mascarado, nem cifrado), nem os descontos, nem o líquido. O robô lê só os meses que faltam, os que vieram vazios e os
+  2 últimos de novo.
+- **Paraíba (TCE-PB)**: o arquivo do estado no Portal de Dados Abertos ("Servidores", um ZIP por ano, ~70 MB em 2026,
+  atualizado todo dia), baixado só quando muda (ETag); o ano que não mudou não é lido de novo. Valor bruto do mês, sem as
+  rubricas (não separa 13º e férias), no formato brasileiro sem zeros à direita ("9.300" é R$ 9.300,00). Vereador:
+  unidade gestora da Câmara e cargo de vereador, escrito de muitos jeitos (assessores de vereador ficam de fora); prefeito
+  e vice pelo cargo; secretário só quando o cargo diz "secretário municipal" ou "secretário de" uma pasta (adjunto,
+  executivo e escolar ficam de fora; a lista de cada cidade pode estar incompleta). Dezembro de 2025 não está nos
+  arquivos do Tribunal (o de 2025 vai até novembro). O link de cada cidade é o arquivo dela no portal.
+- **Ceará (TCE-CE)**: API de Dados Abertos do SIM (sem login nem chave; até 1.000 registros por pedido). Por município e
+  mês, a folha da Câmara e a do gabinete do prefeito (cada item pago, com o CPF cifrado e o vínculo), ligadas ao
+  cadastro (nome e cargo) pelo CPF cifrado só na memória, durante a leitura. Vereador: cargo eletivo (vínculo "L") na
+  folha da Câmara ou cargo de vereador no cadastro; o tipo de cargo 58 sozinho não basta (há câmaras que o usam para
+  funcionários) e conselheiro tutelar fica de fora. Bruto = soma dos itens pagos, com o 13º separado. O nome vem do
+  cadastro, com até 40 letras. Secretários ficam de fora: o valor deles está na folha de cada secretaria, com milhares de
+  pessoas, e a API não filtra por pessoa. Ritmo: 2 pedidos por vez, com pausa, até 250 tarefas por rodada; o robô para
+  quando 5 municípios seguidos dão erro (em 02/10/2026, depois de ~3 horas da primeira leitura com 3 pedidos por vez, os
+  endereços do TCE-CE pararam de responder ao Mac por ~12 minutos).
+- **Partido**: o da eleição de 2024 (TSE, o arquivo de candidatos do passo 1), só quando o nome da folha é o de um único
+  candidato da cidade (igual, ou só com outra grafia: Souza/Sousa, sem o "de"); homônimos ficam sem partido. Sem fotos
+  nesta etapa.
+- **Site**: um arquivo por estado, `site/dados/interior/pb.json` e `ce.json` (~700 KB cada, ~100 KB com gzip), com a
+  série mensal de cada pessoa, quem está no cargo (está na folha do último mês da cidade) e o partido; formato em
+  `TAREFA-SITE-interior.txt`. `coleta/situacao.py` lê o `ultimo_mes` de cada um (`tce/pb`, `tce/ce`).
+- **Ago/2026**: Paraíba, 2.200 vereadores em 222 das 223 câmaras (valor mediano R$ 6.950), 218 prefeitos, 211 vices e
+  1.446 secretários em 188 cidades; Ceará, 2.238 vereadores em 182 das 184 câmaras (mediano R$ 10.400), 178 prefeitos e
+  167 vices. Em algumas cidades o prefeito não aparece na folha. O número de vereadores de um mês pode passar o de
+  cadeiras (suplente que assumiu no meio do mês, licenciado que continua na folha).
+- **Onde roda**: as duas fontes abrem de fora do Brasil (conferido em 02/10/2026) e rodam no GitHub Actions.
+- **Conferido** (02/10/2026): 3 vereadores e 1 prefeito por estado batem com o arquivo da cidade no TCE-PB (ago/2026) e
+  com a API do TCE-CE lida à parte (jul/2026).
+- A prova de 01/10/2026 (resumo de ago/2026 por município, sem nomes) continua em
+  `dados/referencia/tce_pb_vereadores_202608.csv`.
 
 ## Judiciário (prova de conceito)
 

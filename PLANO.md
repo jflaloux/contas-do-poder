@@ -94,9 +94,14 @@ Cada número tem link para a fonte oficial.
 - [x] E-mail contato@contasdopoder.com (Cloudflare Email Routing; envio pelo Gmail como contato@) — Jean-François
 - [x] Governadores: leis achadas e lidas no texto oficial: SE (9.136/2022), RS (15.940/2023), MA (12.282/2024), RJ (6.651/2013),
   PR (19.901/2019 e 21.348/2022); GO pela cadeia de reajustes desde a Lei 17.254/2011 — Claude
+- [x] Governadores com página própria: id por pessoa, endereço pelo nome, fotos (TAREFA-SITE-governadores-como-pessoas.txt) — Claude
+- [x] Governadores: levantamento das viagens (diárias e passagens) nos 27 estados (`dados/referencia/viagens_governadores.json`) — Claude
+- [ ] Governadores: robôs das viagens, começando por AM, MG, SP, PB e SE — Claude
 - [ ] Governadores: AL (só leis de revisão geral em percentual; o valor de ago/2026 sem lei achada) e RN (lei não localizada) — Claude
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
-- [ ] Vereadores, passo 3: estados cujo tribunal de contas publica a folha — Claude
+- [x] Vereadores, passo 3: Paraíba e Ceará pela folha nos Tribunais de Contas (vereadores, prefeito, vice e, na PB, secretários; `coleta/tce/`, `site/dados/interior/<uf>.json`) — Claude
+- [ ] Tribunais de Contas, próximos: ES, PE e RJ (valor por cargo) — Claude
+- [ ] Site: vereadores, prefeito e vice nas páginas das cidades da PB e do CE (`TAREFA-SITE-interior.txt`) — chat do site
 - [x] Índice de acesso aos salários dos governadores: 26 estados com nota, cada uma com a prova (`dados/indice/governadores.json`,
   mantido à mão → `site/dados/indice.json`). MT a conferir: a consulta de servidores não abriu em 01/10/2026 — Claude
 - [ ] Página `/indice` no site, publicada já, sem esperar a eleição (decisão de 01/10/2026) — chat do site
@@ -104,7 +109,7 @@ Cada número tem link para a fonte oficial.
   `site/dados/assembleias.json`; levantamento das 27 em `dados/referencia/assembleias.json` — Claude
 - [ ] Deputados estaduais no site: página, busca, seção na página do estado (texto em TAREFA-SITE-deputados-estaduais.txt) — chat do site
 - [x] Deputados estaduais, passo 2: BA, CE, PB, GO, SC, RO, TO, SE, ES, RS e AP (ES, RS e AP rodam no Mac, no Brasil) — Claude
-- [ ] Deputados estaduais, passo 3: MA (JSF), AM e DF (a levantar do Brasil), PA (painel), PI (ScriptCase), RR (PDF/ODT), AL (PDF de imagem),
+- [x] Deputados estaduais, passo 3: as 11 que faltavam (DF, AM, MA, PR, RN, PI, PA, AC, AL, RR, MT); as 27 com robô. Sem verba: RN (chave fixa no código), AC e MT (não publicam), AL (formulário escaneado) — Claude
   AC (só salário); MG e RJ só com exceção ao robots.txt (decisão do Jean-François); PR e MT têm CAPTCHA — Claude
 - [x] Fotos do TSE (candidaturas de 2022 e 2024, dados abertos CC BY) para deputados estaduais, vereadores, prefeitos, vices e governadores sem foto — Claude
 - [ ] Índice: conferir o MT quando o portal voltar — Claude
@@ -159,5 +164,5 @@ Cada número tem link para a fonte oficial.
 - [x] Índice: blocos atrás de CAPTCHA ou bloqueio conferidos no Chrome (Câmaras de Florianópolis, Campo Grande, BH e Cuiabá; prefeituras de BH e São Luís) — Jean-François e Claude
 - [ ] Índice: prefeituras de Maceió e Cuiabá (consultas muito lentas; falta ver prefeito, vice e secretários) — Claude
 - [x] Prova de conceito: os 26 Tribunais de Contas que fiscalizam municípios (dados/referencia/tribunais.json; prova na Paraíba) — Claude
-- [ ] Robôs estaduais de vereadores pelos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API) primeiro; depois ES, PE e RJ (valor por cargo) — Claude
+- [x] Robôs dos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API), com vereadores, prefeito, vice e (PB) secretários, mês a mês desde jan/2025 — Claude
 - [ ] Pedir acesso: token da API do TCM-GO, chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide
