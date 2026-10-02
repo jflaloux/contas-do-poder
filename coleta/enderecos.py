@@ -28,6 +28,9 @@ from .util import log
 ARQ = RAIZ / "site" / "dados" / "enderecos.json"
 FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json", "assembleias.json")]
 GOVERNADORES = RAIZ / "site" / "dados" / "governadores.json"
+# código IBGE das UFs cujos deputados estaduais foram publicados pelo id antes de ganhar o endereço pelo nome:
+# SP, MG, RJ, BA, PE, CE, PB, GO, SC, MS, RO, TO, SE, ES, RS e AP
+EST_PELO_ID = {"35", "31", "33", "29", "26", "23", "25", "52", "42", "50", "11", "17", "28", "32", "43", "16"}
 # primeiros pedaços de endereço que não podem ser nome de político (pastas e rotas do site)
 RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes"}
 # quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, governadores, prefeituras,
@@ -124,10 +127,13 @@ def executar():
             cam = f"{novo[jid]}/{slug(pid)}"
         ocupar(pid, cam)
 
-    # os deputados estaduais foram publicados primeiro pelo id (/est-35-300607): o id continua valendo e leva ao nome
+    # os deputados estaduais dos 16 primeiros estados foram publicados pelo id (/est-35-300607) até 02/10/2026: o id
+    # continua valendo e leva ao nome. Os dos outros 11 estados já entraram com o nome, e o id não vira redirecionamento
+    # (o _redirects do Cloudflare Pages aceita no máximo 2.000)
     for pid, cam in novo.items():
-        if pid.startswith("est-") and cam != pid:
+        if pid.startswith("est-") and cam != pid and pid.split("-")[1] in EST_PELO_ID:
             antigos.setdefault(pid, pid)
+    antigos = {c: pid for c, pid in antigos.items() if not (c == pid and pid.startswith("est-") and pid.split("-")[1] not in EST_PELO_ID)}
     # endereços que mudaram continuam valendo (vão para o novo); os que alguém ocupou agora deixam de ser antigos
     for pid, cam in registro.items():
         if pid in novo and novo[pid] != cam and cam not in ocupado:
