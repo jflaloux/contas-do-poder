@@ -3,12 +3,24 @@
 **Site: [contasdopoder.com](https://contasdopoder.com)**
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
-da Câmara, do Senado e do Portal da Transparência. E também o salário de cada governador e vice (pela lei de cada
-estado), a Câmara Municipal de cada cidade, cada vereador de treze capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza,
-Goiânia, Maceió, Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove capitais (São Paulo, Recife, Fortaleza, Vitória,
-Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do Rio de Janeiro, e os deputados estaduais de
-São Paulo, Minas Gerais, Rio de Janeiro, Bahia, Pernambuco, Ceará, Paraíba, Goiás, Santa Catarina, Mato Grosso do Sul,
-Rondônia, Tocantins, Sergipe, Espírito Santo, Rio Grande do Sul e Amapá.
+da Câmara, do Senado e do Portal da Transparência. E também, sempre pela fonte oficial de cada um:
+
+- **Governadores e vices** dos 27 estados: o salário pela lei de cada estado e, onde a folha é pública, o que cada um
+  recebe, mês a mês.
+- **Deputados estaduais e distritais** das 27 Assembleias Legislativas (26 estados e o Distrito Federal): salário, verba
+  do gabinete e equipe, onde a Assembleia publica.
+- **Judiciário**: os ministros do STF, STJ, TST, STM e TSE, os conselheiros do CNJ e o procurador-geral da República,
+  mês a mês desde jan/2025.
+- **Capitais**: cada vereador de 12 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
+  Manaus, Natal, Porto Alegre, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove (São Paulo,
+  Recife, Fortaleza, Vitória, Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do
+  Rio de Janeiro.
+- **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
+  Tribunal de Contas do estado.
+- **Todas as 5.569 cidades**: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e os
+  vereadores eleitos em 2024 (TSE).
+- O **Índice de Transparência**: a nota de cada fonte de cada estado, critério por critério.
+
 Um projeto [Contas do Brasil](https://contasdobrasil.com), criado por [Jean-François Laloux](https://laloux.me)
 ([GitHub](https://github.com/jflaloux)). Projeto de código aberto (licença MIT): sugestões e correções são bem-vindas
 nas issues.
