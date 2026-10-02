@@ -376,7 +376,7 @@ for (const e of GOV.e) {
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Governo ${deUF(e.uf)}`, e.gov.n, texto))]);
 }
 
-// ------------------------------------------------------------------ cidades (as 5.570 câmaras municipais)
+// ------------------------------------------------------------------ cidades (as 5.569 câmaras municipais)
 // o valor típico de um vereador pela folha do interior: a mediana, entre os vereadores na folha do último mês, da
 // mediana dos meses com valor nos últimos 12 de cada um (o mesmo cálculo do app.js, tipicoInt)
 const medianaN = (xs) => { const a = xs.filter((x) => x != null).sort((x, y) => x - y); const m = Math.floor(a.length / 2); return !a.length ? null : a.length % 2 ? a[m] : (a[m - 1] + a[m]) / 2; };
@@ -521,11 +521,12 @@ const DESCRICAO_ARQ = {
   "prefeituras.json": "Prefeito, vice e secretários das capitais com a folha aberta: o que cada um recebe, mês a mês.",
   "assembleias.json": "Deputados estaduais e distritais: salário, verba do gabinete e equipe, mês a mês.",
   "governadores.json": "Governadores e vices: o salário do cargo (com a lei de cada valor), quem governou desde 2023 e a folha mês a mês.",
-  "municipios.json": "As 5.570 cidades: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e o salário médio (IBGE).",
+  "municipios.json": "As 5.569 cidades: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e o salário médio (IBGE).",
   "indice_transparencia.json": "O Índice de Transparência: a nota de cada fonte de cada estado, critério por critério, com a prova.",
   "judiciario.json": "Judiciário (tribunais superiores, CNJ e PGR), ainda fora das páginas do site.",
   "enderecos.json": "O endereço de cada página do site (e os endereços antigos, que redirecionam).",
   "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
+  "situacao.json": "A situação de cada fonte: até que mês vão os dados, quando foram lidos pela última vez e o motivo de qualquer atraso (página Atualização dos dados).",
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]
   || (/^interior\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(9, 11).toUpperCase()] || a}: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao Tribunal de Contas, mês a mês.` : "")
@@ -555,9 +556,56 @@ const tamanhoTxt = (b) => (b >= 1048576 ? `${(b / 1048576).toFixed(1).replace(".
     + `<p class="lide">${esc(lide)}</p><h2 class="h3">Onde estão as cópias</h2><ul class="copias">`
     + COPIAS.map((c) => `<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.nome)}&nbsp;↗</a> <span>${esc(c.texto)}</span></li>`).join("")
     + `</ul><h2 class="h3">Os arquivos de dados</h2><table class="tabela-gov tabela-dados"><thead><tr><th>Arquivo e impressão digital (SHA-256)</th><th class="num">Tamanho</th></tr></thead><tbody>`
-    + MANIFESTO.arquivos.map(linha).join("") + "</tbody></table></section>";
+    + MANIFESTO.arquivos.map(linha).join("") + '</tbody></table><p class="nota">Até que mês vão os dados de cada fonte e quando foram lidos pela última vez: <a href="/atualizacao">atualização dos dados</a>.</p></section>';
   const titulo = "Dados abertos: baixe tudo | Contas do Poder";
   paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"] })]);
+}
+
+// ------------------------------------------------------------------ atualização dos dados (/atualizacao, de site/dados/situacao.json)
+// Cada fonte do site: até que mês vão os dados e a situação da última leitura. A frase de cada situação vem pronta do
+// arquivo (feito pelo robô no fim de cada rodada). Mesma página do app.js (secAtualizacao), para quem não roda JavaScript.
+const SIT = ler("situacao.json", null);
+if (SIT && (SIT.fontes || []).length) {
+  const sit = SIT.situacoes || {}, fontes = SIT.fontes;
+  const mes = (m) => `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}`;
+  const conta = {};
+  fontes.forEach((f) => { conta[f.situacao] = (conta[f.situacao] || 0) + 1; });
+  const quando = SIT.gerado_em ? dataBR(String(SIT.gerado_em).slice(0, 10)) : "";
+  const fechado = SIT.ultimo_mes_fechado ? mes(SIT.ultimo_mes_fechado) : "";
+  // a frase pronta começa, às vezes, com o próprio rótulo ("Atraso da própria fonte: ..."): ao lado do rótulo, só o motivo
+  const motivo = (f) => { const r = `${sit[f.situacao] || ""}: `, t = f.texto || ""; const m = t.startsWith(r) ? t.slice(r.length) : t; return m.charAt(0).toUpperCase() + m.slice(1); };
+  const linha = (f) => `<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}&nbsp;↗</a>`
+    + (f.via ? `<small class="tabela-gov__obs">Dados pelo ${esc(f.via)}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}</small>` : "") + "</td>"
+    + `<td data-rotulo="Dados até">${f.ultimo_mes ? mes(f.ultimo_mes) : "—"}</td>`
+    + `<td data-rotulo="Última coleta">${f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"}</td>`
+    + `<td data-rotulo="Situação"><span class="${f.situacao === "em_dia" ? "etiqueta" : "etiqueta etiqueta--estimativa"}">${esc(sit[f.situacao] || f.situacao)}</span>`
+    + (f.situacao !== "em_dia" && f.texto ? `<small class="tabela-gov__obs">${esc(motivo(f))}</small>` : "") + "</td></tr>";
+  const tabela = (nome, lista) => `<table class="tabela-atualizacao"><caption class="visualmente-oculto">${esc(nome)}</caption>`
+    + "<thead><tr><th>Fonte</th><th>Dados até</th><th>Última coleta</th><th>Situação</th></tr></thead>"
+    + `<tbody>${lista.map(linha).join("")}</tbody></table>`;
+  const fora = fontes.filter((f) => f.situacao !== "em_dia");
+  const lide = "Cada órgão publica os dados no seu ritmo. Aqui está, fonte por fonte, até que mês vão os números do site e quando foram lidos pela última vez.";
+  const corpo = '<section class="bloco" id="atualizacao" aria-labelledby="t-atualizacao"><p class="rotulo">Transparência do site</p>'
+    + '<h1 id="t-atualizacao" class="titulo-pagina">Atualização dos dados</h1>'
+    + `<p class="lide">${esc(lide)}</p>`
+    + '<div class="estatisticas">' + Object.keys(sit).filter((s) => conta[s]).map((s) =>
+      `<div class="estatistica"><span class="rotulo">${esc(sit[s])}</span><span class="estatistica__valor">${conta[s]}</span><span class="estatistica__comp">${conta[s] === 1 ? "fonte" : "fontes"}</span></div>`).join("") + "</div>"
+    + `<p class="discreto pequeno">${[quando ? `Lista refeita em ${quando}.` : "", fechado ? `O último mês fechado é ${fechado}.` : ""].filter(Boolean).join(" ")}</p>`
+    + (fora.length ? `<h2 class="h3">Fontes que não estão em dia</h2><p class="discreto">Cada uma também aparece no grupo dela, mais abaixo.</p>${tabela("Fontes que não estão em dia", fora)}` : "")
+    + (SIT.grupos || []).map((g) => {
+      const lista = fontes.filter((f) => f.grupo === g.id);
+      return lista.length ? `<h2 class="h3">${esc(g.nome)} (${lista.length})</h2>${tabela(g.nome, lista)}` : "";
+    }).join("")
+    + '<h2 class="h3">Como ler esta página</h2><ul class="lista">'
+    + "<li><strong>Dados até: </strong>o último mês com dados no site.</li>"
+    + "<li><strong>Última coleta: </strong>o dia da última leitura da fonte que deu certo. O traço (—) quer dizer que ainda não há registro dessa leitura.</li>"
+    + `<li><strong>${esc(sit.em_dia || "Em dia")}: </strong>os dados vão até menos de 3 meses antes do último mês fechado${fechado ? ` (${fechado})` : ""}. Várias fontes publicam cada mês com 1 ou 2 meses de atraso, e isso conta como em dia.</li>`
+    + `<li><strong>${esc(sit.atraso_fonte || "Atraso da própria fonte")}: </strong>o órgão publica com atraso ou deixou de mostrar o dado; o motivo está ao lado.</li>`
+    + `<li><strong>${esc(sit.atrasada || "Atrasada")}: </strong>os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido.</li>`
+    + `<li><strong>${esc(sit.falhou || "A coleta falhou")}: </strong>a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.</li></ul>`
+    + '<p class="nota">Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
+  const titulo = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
+  paginas.push(["atualizacao", pagina("atualizacao", titulo, lide, corpo, { extras: ["/dados/situacao.json"] })]);
 }
 
 // ------------------------------------------------------------------ grava

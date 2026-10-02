@@ -131,7 +131,7 @@ inteiros de `site/dados/`.
 Para a página não pular enquanto carrega: o texto pronto fica na tela até o `app.js` ter a versão completa (aí uma
 troca pela outra); os números do topo da página inicial já vêm no HTML; enquanto a fonte Barlow não chega, o site usa
 uma fonte do sistema ajustada às medidas dela (`Barlow Reserva` no `estilo.css`); e cada gráfico é desenhado antes da
-primeira pintura (`aoRedimensionar` no `app.js`). A lista das 5.570 cidades (`municipios.json`) só é baixada nas páginas que
+primeira pintura (`aoRedimensionar` no `app.js`). A lista das 5.569 cidades (`municipios.json`) só é baixada nas páginas que
 mostram câmaras municipais (a inicial e a de cada cidade) ou quando a pessoa toca no campo de busca.
 
 ## Ver o site no seu computador
@@ -762,6 +762,9 @@ seguem o mesmo desenho.
   Dados abertos (desde 02/10/2026): `ver_dados_abertos` (abriu `/dados-abertos`, com a origem) e `baixar_dados` (clicou
   num arquivo da página, com o `arquivo`); os links para o GitHub e o Internet Archive saem como `abrir_github` e
   `abrir_fonte` com `onde: dados-abertos`. No evento `velocidade`, `pagina` pode ser `dados_abertos`.
+  Atualização dos dados (desde 02/10/2026): `ver_atualizacao` (abriu `/atualizacao`, com a origem), `baixar_dados` com
+  `situacao.json` e `abrir_fonte` com `onde: atualizacao` (clicou no link de uma fonte). No evento `velocidade`,
+  `pagina` pode ser `atualizacao`.
   Interior da Paraíba e do Ceará (desde 02/10/2026, sem evento novo): `abrir_lista` com `interior_sairam_<UF>`
   (vereadores que passaram pela Câmara), `interior_secretarios_<UF>` e `interior_sairam_prefeitura_<UF>`.
   Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
@@ -868,6 +871,21 @@ Cópias fora do repositório (a fazer uma vez, pelo dono da conta):
 4. **Internet Archive**: "Save Page Now" (web.archive.org/save) nas páginas principais.
 5. **Contas**: verificação em duas etapas no GitHub, no Cloudflare e no registro do domínio; bloqueio de transferência
    do domínio ligado.
+
+## Atualização dos dados (`/atualizacao`)
+
+A página mostra, para cada uma das fontes do site, até que mês vão os dados (`Dados até`), o dia da última coleta que
+deu certo e a situação: em dia, atraso da própria fonte (com o motivo), atrasada ou coleta que falhou. Lê
+`site/dados/situacao.json`, a versão pública de `dados/processados/situacao.json` (feita pelo agente dos dados no fim de
+cada rodada, sem erro técnico nem caminho de arquivo); a frase de cada situação vem pronta do arquivo. O `gerar.mjs`
+faz a mesma página em HTML (`publicar/atualizacao.html`) e o `app.js` a redesenha (`secAtualizacao`). Ligada ao rodapé
+de todas as páginas e a `/dados-abertos`. O endereço é fixo: o nome `atualizacao` tem de estar em
+`RESERVADOS` de `coleta/enderecos.py` (os nomes de página que nenhuma pessoa pode ter). Custo no Cloudflare Pages: 2 arquivos
+(`atualizacao.html` e `dados/situacao.json`).
+
+Nas páginas das Assembleias (`secAssembleia`), quando os deputados no cargo são em número diferente das cadeiras, uma
+nota diz só o que a fonte mostra (`notaCadeiras`): Goiás (uma vaga aberta desde 26/09/2026) e Alagoas (a folha paga mais
+subsídios do que há cadeiras) têm texto próprio, que some quando os números voltam a bater.
 
 ## Licença
 

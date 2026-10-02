@@ -1,7 +1,7 @@
 /* Contas do Poder. Um projeto Contas do Brasil.
    Site estático: lê os arquivos de site/dados/ (feitos por `python3 coletar.py`) e monta a página no navegador.
-   Endereços: /nome-do-politico (site/dados/enderecos.json, ou o id), /governador/sp, /cidade/sao-paulo-sp, /indice e
-   /correcoes; o período vai em ?periodo=2025 (ou ?periodo=mandato) e a seção, em #. Os endereços antigos com #
+   Endereços: /nome-do-politico (site/dados/enderecos.json, ou o id), /governador/sp, /cidade/sao-paulo-sp, /indice,
+   /correcoes, /judiciario, /dados-abertos e /atualizacao; o período vai em ?periodo=2025 (ou ?periodo=mandato) e a seção, em #. Os endereços antigos com #
    (/#dep-220639~2025) levam para os novos. publicacao/gerar.mjs faz uma página pronta para cada endereço. */
 "use strict";
 (() => {
@@ -89,7 +89,7 @@
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
-        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
+        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
       lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
     };
     const ver = (tipo, f, extra) => {
@@ -489,7 +489,7 @@
   }
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
     let itens = [], ativo = -1;
-    // a lista das 5.570 cidades (dados/municipios.json) só é baixada quando a pessoa começa a buscar: quem só abre a
+    // a lista das 5.569 cidades (dados/municipios.json) só é baixada quando a pessoa começa a buscar: quem só abre a
     // página de um político não precisa dela. Se chegar depois que a pessoa já digitou, a lista de sugestões se refaz.
     if (comCidades) {
       const pedir = () => carregarCidades().then(() => { if (input.value.trim() && document.activeElement === input) input.dispatchEvent(new Event("input")); }, () => {});
@@ -2026,7 +2026,7 @@
   }
   const irParaCidade = (c, de) => { S.origem = de; navegar(urlCidade(c)); };
   // O que há de errado com os dados de uma cidade (null = nada)
-  // o ano mais recente das contas: calculado uma vez (problemaCidade roda para as 5.570 cidades, e recalcular aqui a cada
+  // o ano mais recente das contas: calculado uma vez (problemaCidade roda para as 5.569 cidades, e recalcular aqui a cada
   // chamada deixava a página da cidade e a inicial meio segundo travadas)
   const anoRecente = () => CID.anoRecente || (CID.anoRecente = CID.m.reduce((a, c) => Math.max(a, c.ano || 0), 0));
   function problemaCidade(c) {
@@ -2461,7 +2461,7 @@
     carregarCidades().then(desenhar, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
     add(sec, h("p", { class: "rotulo" }, "Vereadores"),
       h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
-      h("p", { class: "discreto" }, `As 5.568 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${cidadesCamara().length ? `. Em ${listaE(cidadesCamara().map((c) => c.n))}, já dá para ver cada vereador` : ""}.`),
+      h("p", { class: "discreto" }, `As 5.569 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${cidadesCamara().length ? `. Em ${listaE(cidadesCamara().map((c) => c.n))}, já dá para ver cada vereador` : ""}.`),
       h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-cidade" }, "Procurar cidade"), input, sug),
       destaqueCapitais(atual),
       corpo);
@@ -2905,6 +2905,19 @@
   // e de quem saiu, e o que a Assembleia publica. Estado que ainda não está no arquivo: só o aviso e o link para o Índice.
   // O salário do deputado estadual pode ir até 75% do do deputado federal (Constituição, art. 27, § 2º).
   const SUBSIDIO_FEDERAL = 46366.19;
+  // Quando o número de deputados no cargo é diferente do de cadeiras: só o que a fonte mostra, sem juízo. Os casos
+  // conhecidos (GO e AL, 02/10/2026) têm texto próprio, que só aparece enquanto os números forem esses; os outros
+  // usam a frase geral.
+  function notaCadeiras(a, agora, todos) {
+    const n = agora.length, v = a.vagas;
+    if (!v || n === v) return null;
+    if (a.uf === "GO" && n === v - 1) {
+      const f = todos.find((q) => !q.x && q.n === "Amilton Filho" && ((q.oc || []).slice(-1)[0] || [])[1] === "20260926");
+      if (f) return `A Assembleia tem ${v} cadeiras e ${n} deputados no cargo: há uma vaga aberta desde 26/09/2026. A lista de deputados fora do exercício da Alego registra o falecimento de ${f.n} nessa data, e o suplente ainda não tomou posse.`;
+    }
+    if (a.uf === "AL" && n > v) return `A folha da ALE-AL de ${fmtMes(a.ultimo_mes)} paga o subsídio a ${n} deputados para ${v} cadeiras; a Assembleia não publica quem está licenciado.`;
+    return `A Assembleia tem ${v} cadeiras e, pelos dados da fonte, ${n} ${n === 1 ? "deputado está" : "deputados estão"} no cargo.`;
+  }
   function secAssembleia(uf) {
     const a = assembleiaUF(uf);
     const linkIndice = h("a", { href: `/indice#indice-${uf.toLowerCase()}`, onclick: () => { S.origem = "assembleia"; } }, `Ver o que a ${casaUF(uf)} ${deUF(uf)} publica, no Índice de Transparência\u00a0→`);
@@ -2934,6 +2947,7 @@
       h("p", { class: "rotulo" }, `${casaUF(uf).replace(/^Assembleia$/, "Assembleia Legislativa")}`),
       h("h2", { id: "t-assembleia" }, `Quanto ganham e quanto custam os ${agora.length} ${depUF(uf)} ${deUF(uf)}`),
       h("p", { class: "discreto" }, `Pelos dados que a própria ${casaUF(uf)} publica: o salário, a verba do gabinete mês a mês${todos.some((q) => q.eq) || a.equipe_custo ? " e a equipe" : ""} de cada deputado. ${ateTxt}.`),
+      notaCadeiras(a, agora, todos) ? h("p", { class: "nota" }, notaCadeiras(a, agora, todos)) : null,
       h("article", { class: "cartao assembleia" },
         h("div", { class: "estatisticas" },
           sub && !a.subsidio_folha ? estatistica("Salário de cada deputado", reaisC(sub[1]), `por mês desde ${fmtMes(sub[0])}, fixado em lei${Math.abs(sub[1] - teto) < 1 ? ", o máximo que a Constituição permite" : ""}`)
@@ -3248,7 +3262,7 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { "dados-abertos": "Dados abertos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
@@ -3429,8 +3443,8 @@
       return;
     }
     S.cidadeVista = null;
-    // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos e /judiciario
-    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "judiciario") {
+    // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos, /atualizacao e /judiciario
+    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "judiciario") {
       if (extraAntes !== caminho) evento(`ver_${caminho.replace(/-/g, "_")}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
@@ -3587,6 +3601,7 @@
       tabela(principais, "Arquivos de dados"),
       porEstado.length ? h("details", { class: "tabela" }, h("summary", null, `Vereadores eleitos em 2024, um arquivo por estado (${porEstado.length})`), tabela(porEstado, "Vereadores eleitos, por estado")) : null,
       h("p", { class: "nota" }, "A lista, com a data e as impressões digitais: ", h("a", { href: "/dados/manifesto.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "manifesto.json" }) }, "manifesto.json"), "."),
+      h("p", { class: "nota" }, "Até que mês vão os dados de cada fonte e quando foram lidos pela última vez: ", h("a", { href: "/atualizacao" }, "atualização dos dados"), "."),
       h("h2", { class: "h3" }, "Como conferir uma cópia"),
       h("p", null, "Baixou um destes arquivos de outro lugar? Calcule a impressão digital dele e compare com a desta página, da mesma data. Se for igual, o arquivo é idêntico."),
       h("ul", { class: "lista" },
@@ -3601,6 +3616,62 @@
       h("h2", { class: "h3" }, "Licenças"),
       h("p", null, "O código (o site e os robôs) é livre, sob a licença MIT. Os dados podem ser reutilizados sob a licença ",
         h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0 ↗"), ", citando \"Contas do Poder\" e as fontes originais."));
+  }
+
+  // ------------------------------------------------------------------ atualização dos dados
+  // /atualizacao: para cada fonte do site, até que mês vão os dados e se a última leitura deu certo. Os dados vêm de
+  // dados/situacao.json (refeito pelo robô no fim de cada rodada); a frase de cada situação já vem pronta do arquivo.
+  // publicacao/gerar.mjs faz a mesma página em HTML, para quem não roda JavaScript.
+  let situacaoPedida = null;
+  function carregarSituacao() {
+    if (!situacaoPedida) {
+      situacaoPedida = lerJSON("/dados/situacao.json");
+      situacaoPedida.catch(() => { situacaoPedida = null; }); // se falhar, tenta de novo na próxima vez
+    }
+    return situacaoPedida;
+  }
+  function secAtualizacao(SIT) {
+    const fontes = SIT.fontes || [], sit = SIT.situacoes || {}, ordem = Object.keys(sit);
+    const conta = {};
+    fontes.forEach((f) => { conta[f.situacao] = (conta[f.situacao] || 0) + 1; });
+    const quando = SIT.gerado_em ? dataBR(String(SIT.gerado_em).slice(0, 10)) : "";
+    const fechado = SIT.ultimo_mes_fechado ? fmtMes(SIT.ultimo_mes_fechado) : "";
+    const etiqueta = (f) => h("span", { class: f.situacao === "em_dia" ? "etiqueta" : "etiqueta etiqueta--estimativa" }, sit[f.situacao] || f.situacao);
+    // a frase pronta começa, às vezes, com o próprio rótulo ("Atraso da própria fonte: ..."): ao lado do rótulo, só o motivo
+    const motivo = (f) => { const r = `${sit[f.situacao] || ""}: `, t = f.texto || ""; const m = t.startsWith(r) ? t.slice(r.length) : t; return m.charAt(0).toUpperCase() + m.slice(1); };
+    const linha = (f) => h("tr", null,
+      h("td", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome}\u00a0↗`),
+        f.via ? h("small", { class: "tabela-gov__obs" }, `Dados pelo ${f.via}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}`) : null),
+      h("td", { "data-rotulo": "Dados até" }, f.ultimo_mes ? fmtMes(f.ultimo_mes) : "—"),
+      h("td", { "data-rotulo": "Última coleta" }, f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"),
+      h("td", { "data-rotulo": "Situação" }, etiqueta(f), f.situacao !== "em_dia" && f.texto ? h("small", { class: "tabela-gov__obs" }, motivo(f)) : null));
+    const tabela = (nome, lista) => h("table", { class: "tabela-atualizacao" },
+      h("caption", { class: "visualmente-oculto" }, nome),
+      h("thead", null, h("tr", null, h("th", null, "Fonte"), h("th", null, "Dados até"), h("th", null, "Última coleta"), h("th", null, "Situação"))),
+      h("tbody", null, lista.map(linha)));
+    const fora = fontes.filter((f) => f.situacao !== "em_dia");
+    return h("section", { class: "bloco", id: "atualizacao", "aria-labelledby": "t-atualizacao" },
+      h("p", { class: "rotulo" }, "Transparência do site"),
+      h("h1", { id: "t-atualizacao", class: "titulo-pagina" }, "Atualização dos dados"),
+      h("p", { class: "lide" }, "Cada órgão publica os dados no seu ritmo. Aqui está, fonte por fonte, até que mês vão os números do site e quando foram lidos pela última vez."),
+      h("div", { class: "estatisticas" }, ordem.filter((s) => conta[s]).map((s) => estatistica(sit[s], String(conta[s]), conta[s] === 1 ? "fonte" : "fontes"))),
+      h("p", { class: "discreto pequeno" }, [quando ? `Lista refeita em ${quando}.` : null, fechado ? `O último mês fechado é ${fechado}.` : null].filter(Boolean).join(" ")),
+      fora.length ? [h("h2", { class: "h3" }, "Fontes que não estão em dia"), h("p", { class: "discreto" }, "Cada uma também aparece no grupo dela, mais abaixo."), tabela("Fontes que não estão em dia", fora)] : null,
+      (SIT.grupos || []).map((g) => {
+        const lista = fontes.filter((f) => f.grupo === g.id);
+        return lista.length ? [h("h2", { class: "h3" }, `${g.nome} (${lista.length})`), tabela(g.nome, lista)] : null;
+      }),
+      h("h2", { class: "h3" }, "Como ler esta página"),
+      h("ul", { class: "lista" },
+        h("li", null, h("strong", null, "Dados até: "), "o último mês com dados no site."),
+        h("li", null, h("strong", null, "Última coleta: "), "o dia da última leitura da fonte que deu certo. O traço (—) quer dizer que ainda não há registro dessa leitura."),
+        h("li", null, h("strong", null, `${sit.em_dia || "Em dia"}: `), `os dados vão até menos de 3 meses antes do último mês fechado${fechado ? ` (${fechado})` : ""}. Várias fontes publicam cada mês com 1 ou 2 meses de atraso, e isso conta como em dia.`),
+        h("li", null, h("strong", null, `${sit.atraso_fonte || "Atraso da própria fonte"}: `), "o órgão publica com atraso ou deixou de mostrar o dado; o motivo está ao lado."),
+        h("li", null, h("strong", null, `${sit.atrasada || "Atrasada"}: `), "os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido."),
+        h("li", null, h("strong", null, `${sit.falhou || "A coleta falhou"}: `), "a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.")),
+      h("p", { class: "nota" }, "Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: ",
+        h("a", { href: "/dados/situacao.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "situacao.json" }) }, "situacao.json"),
+        ". Os arquivos de dados e as cópias públicas estão em ", h("a", { href: "/dados-abertos" }, "dados abertos"), "."));
   }
 
   // ------------------------------------------------------------------ Índice de Transparência dos estados
@@ -3876,6 +3947,18 @@
         navSecoes(["dados-abertos", "entenda", "fontes"]);
         rolarPendente();
       }, () => falhou(espera, "Não foi possível carregar a lista dos arquivos. Os dados e o código estão em github.com/jflaloux/contas-do-poder."));
+      return;
+    }
+    if (S.extra === "atualizacao") {
+      document.title = "Atualização dos dados · Contas do Poder";
+      const espera = esperar("Carregando a situação das fontes…");
+      navSecoes(["entenda", "fontes"]);
+      carregarSituacao().then((SIT) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        trocar(espera, secAtualizacao(SIT));
+        navSecoes(["atualizacao", "entenda", "fontes"]);
+        rolarPendente();
+      }, () => falhou(espera, "Não foi possível carregar a situação das fontes. Os dados e o código estão em github.com/jflaloux/contas-do-poder."));
       return;
     }
     if (S.extra === "indice") {
