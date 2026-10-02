@@ -70,10 +70,11 @@
   "ultimo_sucesso": "2026-10-02T15:35:55"
  },
  "assembleias/pb": {
-  "ultima_tentativa": "2026-10-02T15:31:37",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-02T19:39:14",
+  "falhas": 0,
   "ultimo_erro": "ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package.",
-  "ultima_falha": "2026-10-02T15:31:37"
+  "ultima_falha": "2026-10-02T15:31:37",
+  "ultimo_sucesso": "2026-10-02T19:39:14"
  },
  "assembleias/pe": {
   "ultima_tentativa": "2026-10-02T15:31:28",
@@ -233,10 +234,10 @@
   "ultimo_sucesso": "2026-10-02T19:14:20"
  },
  "folhas/RR": {
-  "ultima_tentativa": "2026-10-02T15:50:04",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-02T19:39:22",
+  "falhas": 2,
   "ultimo_erro": "ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90)",
-  "ultima_falha": "2026-10-02T15:50:04"
+  "ultima_falha": "2026-10-02T19:39:22"
  },
  "folhas/RS": {
   "ultima_tentativa": "2026-10-02T15:57:05",

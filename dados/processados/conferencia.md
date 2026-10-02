@@ -1,4 +1,4 @@
-# Conferência dos dados — 01/10/2026 13:35
+# Conferência dos dados — 02/10/2026 19:49
 
 ## 1. Cobertura
 
@@ -98,20 +98,20 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Câmaras municipais com custo no arquivo do site | 5446 | 5000 | OK |
 | Vereadores eleitos no arquivo do site | 58153 | 55000 | OK |
 | Vereadores de São Paulo no cargo (camaras.json) | 55 | 46 | OK |
-| Vereadores de São Paulo com gastos do gabinete no mês retrasado | 58 | 33 | OK |
+| Vereadores de São Paulo com gastos do gabinete no mês retrasado | 56 | 33 | OK |
 | Vereadores de Rio de Janeiro no cargo (camaras.json) | 51 | 43 | OK |
 | Vereadores de Belo Horizonte no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Fortaleza no cargo (camaras.json) | 44 | 36 | OK |
 | Vereadores de Fortaleza com gastos do gabinete no mês retrasado | 43 | 25 | OK |
 | Vereadores de Goiânia no cargo (camaras.json) | 37 | 31 | OK |
-| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 37 | 22 | OK |
+| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 33 | 22 | OK |
 | Vereadores de Maceió no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Manaus no cargo (camaras.json) | 41 | 34 | OK |
-| Vereadores de Manaus com gastos do gabinete no mês retrasado | 40 | 24 | OK |
+| Vereadores de Manaus com gastos do gabinete no mês retrasado | 41 | 24 | OK |
 | Vereadores de Natal no cargo (camaras.json) | 29 | 24 | OK |
 | Vereadores de Natal com gastos do gabinete no mês retrasado | 29 | 17 | OK |
-| Vereadores de Porto Alegre no cargo (camaras.json) | 35 | 29 | OK |
-| Vereadores de Porto Alegre com gastos do gabinete no mês retrasado | 30 | 21 | OK |
+| Vereadores de Porto Alegre no cargo (camaras.json) | 34 | 29 | OK |
+| Vereadores de Porto Alegre com gastos do gabinete no mês retrasado | 28 | 21 | OK |
 | Vereadores de Recife no cargo (camaras.json) | 41 | 33 | OK |
 | Vereadores de São Luís no cargo (camaras.json) | 31 | 26 | OK |
 | Vereadores de Aracaju no cargo (camaras.json) | 25 | 20 | OK |
@@ -142,19 +142,30 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Assembleia RJ: deputados estaduais no cargo | 70 | 63 | OK |
 | Assembleia BA: deputados estaduais no cargo | 63 | 56 | OK |
 | Assembleia PE: deputados estaduais no cargo | 49 | 44 | OK |
-| Assembleia CE: deputados estaduais no cargo | 49 | 41 | OK |
-| Assembleia PB: deputados estaduais no cargo | 37 | 32 | OK |
-| Assembleia GO: deputados estaduais no cargo | 39 | 36 | OK |
-| Assembleia SC: deputados estaduais no cargo | 42 | 36 | OK |
+| Assembleia CE: deputados estaduais no cargo | 46 | 41 | OK |
+| Assembleia PB: deputados estaduais no cargo | 36 | 32 | OK |
+| Assembleia GO: deputados estaduais no cargo | 40 | 36 | OK |
+| Assembleia SC: deputados estaduais no cargo | 40 | 36 | OK |
 | Assembleia MS: deputados estaduais no cargo | 24 | 21 | OK |
-| Assembleia RO: deputados estaduais no cargo | 25 | 21 | OK |
+| Assembleia RO: deputados estaduais no cargo | 24 | 21 | OK |
 | Assembleia TO: deputados estaduais no cargo | 24 | 21 | OK |
 | Assembleia SE: deputados estaduais no cargo | 24 | 21 | OK |
 | Assembleia ES: deputados estaduais no cargo | 30 | 27 | OK |
-| Assembleia RS: deputados estaduais no cargo | 56 | 49 | OK |
-| Assembleia AP: deputados estaduais no cargo | 22 | 21 | OK |
+| Assembleia RS: deputados estaduais no cargo | 55 | 49 | OK |
+| Assembleia AP: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia DF: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia AM: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia MA: deputados estaduais no cargo | 42 | 37 | OK |
+| Assembleia PR: deputados estaduais no cargo | 54 | 48 | OK |
+| Assembleia RN: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia PI: deputados estaduais no cargo | 30 | 27 | OK |
+| Assembleia PA: deputados estaduais no cargo | 41 | 36 | OK |
+| Assembleia AC: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia AL: deputados estaduais no cargo | 28 | 24 | OK |
+| Assembleia RR: deputados estaduais no cargo | 24 | 21 | OK |
+| Assembleia MT: deputados estaduais no cargo | 24 | 21 | OK |
 | Governadores no arquivo do site | 27 | 27 | OK |
-| Governadores com o valor da lei, da folha ou da tabela oficial | 26 | 18 | OK |
+| Governadores com o valor da lei, da folha ou da tabela oficial | 27 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
 | Governo federal: com salário em 07/2026 | 40 | 25 | OK |
 | Deputados com salário em 08/2026 | 528 | 480 | OK |

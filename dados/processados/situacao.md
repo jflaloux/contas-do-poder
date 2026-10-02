@@ -1,12 +1,10 @@
-# Situação das fontes (02/10/2026 19:16, rodada: brasil)
+# Situação das fontes (02/10/2026 19:51, rodada: brasil)
 
-Último mês fechado: 09/2026. 86 fontes: 76 ok, 7 com o atraso da própria fonte, 1 atrasadas, 2 falhando.
+Último mês fechado: 09/2026. 86 fontes: 77 ok, 8 com o atraso da própria fonte, 0 atrasadas, 1 falhando.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| assembleias/pb | falhando | 07/2026 | — | — | ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package. |
 | folhas/RR | falhando | 07/2026 | — | — | ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90) |
-| prefeituras/recife | atrasada | 06/2026 | 2026-10-02 | brasil |  |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas |
 | folhas/MG | atrasada (fonte) | 03/2026 | 2026-10-02 | brasil | a Secretaria de Planejamento publica a folha com alguns meses de atraso |
@@ -14,6 +12,7 @@
 | folhas/RJ (só do Brasil) | atrasada (fonte) | 03/2026 | 2026-10-02 | brasil | desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago |
 | folhas/SP | atrasada (fonte) | 04/2026 | 2026-10-02 | brasil | o Estado publica a série histórica com alguns meses de atraso |
 | prefeituras/campo_grande | atrasada (fonte) | 02/2026 | 2026-10-02 | brasil | a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026) |
+| prefeituras/recife | atrasada (fonte) | 06/2026 | 2026-10-02 | brasil | o arquivo de 2026 no portal de dados abertos da Prefeitura vai até jun/2026 (atualizado pela última vez em 26/06/2026, c |
 | assembleias/ac | ok | 09/2026 | 2026-10-02 | brasil |  |
 | assembleias/al (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | assembleias/am (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
@@ -27,6 +26,7 @@
 | assembleias/ms | ok | 09/2026 | 2026-10-02 | brasil |  |
 | assembleias/mt | ok | 09/2026 | 2026-10-02 | brasil |  |
 | assembleias/pa | ok | 08/2026 | 2026-10-02 | brasil |  |
+| assembleias/pb | ok | 07/2026 | 2026-10-02 | brasil |  |
 | assembleias/pe | ok | 08/2026 | 2026-10-02 | brasil |  |
 | assembleias/pi | ok | 07/2026 | 2026-10-02 | brasil |  |
 | assembleias/pr | ok | 09/2026 | 2026-10-02 | brasil |  |
@@ -86,7 +86,7 @@
 | vereadores/manaus (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/natal (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
 | vereadores/porto_alegre (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
-| vereadores/recife | ok | — | 2026-10-02 | brasil |  |
+| vereadores/recife | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/sao_luis (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-02 | brasil |  |

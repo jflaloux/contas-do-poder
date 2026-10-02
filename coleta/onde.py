@@ -116,11 +116,14 @@ def registrar(grupo, fonte):
         _gravar(LUGAR, dados)
         raise
     except Exception as e:  # noqa: BLE001
+        if not item.get("falhas"):  # a primeira falha depois de um sucesso: "a coleta falhou desde" na página pública
+            item["primeira_falha"] = item["ultima_tentativa"]
         item["falhas"] = item.get("falhas", 0) + 1
         item["ultimo_erro"] = f"{type(e).__name__}: {e}"[:300]
         item["ultima_falha"] = item["ultima_tentativa"]
         _gravar(LUGAR, dados)
         raise
     item["falhas"] = 0
+    item.pop("primeira_falha", None)
     item["ultimo_sucesso"] = item["ultima_tentativa"]
     _gravar(LUGAR, dados)

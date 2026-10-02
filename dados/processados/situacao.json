@@ -1,17 +1,7 @@
 {
- "gerado_em": "2026-10-02T19:16:37",
+ "gerado_em": "2026-10-02T19:51:24",
  "ultimo_mes_fechado": 202609,
  "fontes": [
-  {
-   "fonte": "assembleias/pb",
-   "situacao": "falhando",
-   "ultimo_mes": 202607,
-   "meses_atras": 2,
-   "ultimo_sucesso": null,
-   "onde": null,
-   "so_brasil": false,
-   "erro": "ImportError: `Import odfpy` failed.  Use pip or conda to install the odfpy package."
-  },
   {
    "fonte": "folhas/RR",
    "situacao": "falhando",
@@ -20,17 +10,8 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": "2026-10-02T19:39:22",
    "erro": "ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90)"
-  },
-  {
-   "fonte": "prefeituras/recife",
-   "situacao": "atrasada",
-   "ultimo_mes": 202606,
-   "meses_atras": 3,
-   "ultimo_sucesso": "2026-10-02T15:26:43",
-   "onde": "brasil",
-   "so_brasil": false,
-   "erro": null
   },
   {
    "fonte": "assembleias/ma",
@@ -40,6 +21,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:43",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados"
   },
   {
@@ -50,6 +32,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:22",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas"
   },
   {
@@ -60,6 +43,7 @@
    "ultimo_sucesso": "2026-10-02T15:45:55",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": "a Secretaria de Planejamento publica a folha com alguns meses de atraso"
   },
   {
@@ -70,6 +54,7 @@
    "ultimo_sucesso": "2026-10-02T15:46:57",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": "desde abr/2026 a consulta não mostra quem tem mandato eletivo"
   },
   {
@@ -80,6 +65,7 @@
    "ultimo_sucesso": "2026-10-02T15:48:47",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago"
   },
   {
@@ -90,6 +76,7 @@
    "ultimo_sucesso": "2026-10-02T15:58:24",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": "o Estado publica a série histórica com alguns meses de atraso"
   },
   {
@@ -100,7 +87,19 @@
    "ultimo_sucesso": "2026-10-02T15:30:28",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)"
+  },
+  {
+   "fonte": "prefeituras/recife",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202606,
+   "meses_atras": 3,
+   "ultimo_sucesso": "2026-10-02T15:26:43",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": "o arquivo de 2026 no portal de dados abertos da Prefeitura vai até jun/2026 (atualizado pela última vez em 26/06/2026, conferido em 02/10/2026)"
   },
   {
    "fonte": "assembleias/ac",
@@ -110,6 +109,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:56",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -120,6 +120,7 @@
    "ultimo_sucesso": "2026-10-02T15:36:01",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -130,6 +131,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:36",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -140,6 +142,7 @@
    "ultimo_sucesso": "2026-10-02T15:34:42",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -150,6 +153,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:25",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -160,6 +164,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:36",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -170,6 +175,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:10",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -180,6 +186,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:57",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -190,6 +197,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:37",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -200,6 +208,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:19",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -210,6 +219,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:40",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -220,6 +230,7 @@
    "ultimo_sucesso": "2026-10-02T15:41:46",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -230,6 +241,18 @@
    "ultimo_sucesso": "2026-10-02T15:35:55",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/pb",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": "2026-10-02T19:39:14",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -240,6 +263,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:28",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -250,6 +274,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:46",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -260,6 +285,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:44",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -270,6 +296,7 @@
    "ultimo_sucesso": "2026-10-02T15:35:46",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -280,6 +307,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:40",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -290,6 +318,7 @@
    "ultimo_sucesso": "2026-10-02T15:36:01",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -300,6 +329,7 @@
    "ultimo_sucesso": "2026-10-02T15:32:48",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -310,6 +340,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:39",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -320,6 +351,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:51",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -330,6 +362,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:16",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -340,6 +373,7 @@
    "ultimo_sucesso": "2026-10-02T15:31:41",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -350,6 +384,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -360,6 +395,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -370,6 +406,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -380,6 +417,7 @@
    "ultimo_sucesso": "2026-10-02T15:42:03",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -390,6 +428,7 @@
    "ultimo_sucesso": "2026-10-02T15:42:07",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -400,6 +439,7 @@
    "ultimo_sucesso": "2026-10-02T15:42:13",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -410,6 +450,7 @@
    "ultimo_sucesso": "2026-10-02T15:42:15",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -420,6 +461,7 @@
    "ultimo_sucesso": "2026-10-02T15:42:39",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -430,6 +472,7 @@
    "ultimo_sucesso": "2026-10-02T15:43:50",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -440,6 +483,7 @@
    "ultimo_sucesso": "2026-10-02T15:44:04",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -450,6 +494,7 @@
    "ultimo_sucesso": "2026-10-02T15:45:08",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -460,6 +505,7 @@
    "ultimo_sucesso": "2026-10-02T15:45:42",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -470,6 +516,7 @@
    "ultimo_sucesso": "2026-10-02T15:46:53",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -480,6 +527,7 @@
    "ultimo_sucesso": "2026-10-02T15:47:22",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -490,6 +538,7 @@
    "ultimo_sucesso": "2026-10-02T15:47:41",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -500,6 +549,7 @@
    "ultimo_sucesso": "2026-10-02T15:48:29",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -510,6 +560,7 @@
    "ultimo_sucesso": "2026-10-02T15:48:33",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -520,6 +571,7 @@
    "ultimo_sucesso": "2026-10-02T15:48:48",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -530,6 +582,7 @@
    "ultimo_sucesso": "2026-10-02T19:14:20",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -540,6 +593,7 @@
    "ultimo_sucesso": "2026-10-02T15:57:05",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -550,6 +604,7 @@
    "ultimo_sucesso": "2026-10-02T15:57:10",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -560,6 +615,7 @@
    "ultimo_sucesso": "2026-10-02T15:57:48",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -570,6 +626,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -580,6 +637,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -590,6 +648,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -600,6 +659,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -610,6 +670,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -620,6 +681,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -630,6 +692,7 @@
    "ultimo_sucesso": null,
    "onde": null,
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -640,6 +703,7 @@
    "ultimo_sucesso": "2026-10-02T15:30:07",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -650,6 +714,7 @@
    "ultimo_sucesso": "2026-10-02T15:26:55",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -660,6 +725,7 @@
    "ultimo_sucesso": "2026-10-02T15:30:18",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -670,6 +736,7 @@
    "ultimo_sucesso": "2026-10-02T15:28:21",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -680,6 +747,7 @@
    "ultimo_sucesso": "2026-10-02T15:26:27",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -690,6 +758,7 @@
    "ultimo_sucesso": "2026-10-02T15:29:22",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -700,6 +769,7 @@
    "ultimo_sucesso": "2026-10-02T15:26:27",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -710,6 +780,7 @@
    "ultimo_sucesso": "2026-10-02T15:27:53",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -720,6 +791,7 @@
    "ultimo_sucesso": "2026-10-02T15:58:38",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -730,6 +802,7 @@
    "ultimo_sucesso": "2026-10-02T15:58:37",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -740,6 +813,7 @@
    "ultimo_sucesso": "2026-10-02T15:25:45",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -750,6 +824,7 @@
    "ultimo_sucesso": "2026-10-02T14:45:56",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -760,6 +835,7 @@
    "ultimo_sucesso": "2026-10-02T15:25:51",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -770,6 +846,7 @@
    "ultimo_sucesso": "2026-10-02T14:49:03",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -780,6 +857,7 @@
    "ultimo_sucesso": "2026-10-02T15:06:13",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -790,6 +868,7 @@
    "ultimo_sucesso": "2026-10-02T15:09:02",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -800,6 +879,7 @@
    "ultimo_sucesso": "2026-10-02T15:10:13",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -810,6 +890,7 @@
    "ultimo_sucesso": "2026-10-02T15:16:00",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -820,16 +901,18 @@
    "ultimo_sucesso": "2026-10-02T15:18:59",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
    "fonte": "vereadores/recife",
    "situacao": "ok",
-   "ultimo_mes": null,
-   "meses_atras": null,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": "2026-10-02T15:19:35",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -840,6 +923,7 @@
    "ultimo_sucesso": "2026-10-02T14:45:19",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -850,6 +934,7 @@
    "ultimo_sucesso": "2026-10-02T15:25:41",
    "onde": "brasil",
    "so_brasil": true,
+   "falha_desde": null,
    "erro": null
   },
   {
@@ -860,6 +945,7 @@
    "ultimo_sucesso": "2026-10-02T14:45:06",
    "onde": "brasil",
    "so_brasil": false,
+   "falha_desde": null,
    "erro": null
   }
  ]

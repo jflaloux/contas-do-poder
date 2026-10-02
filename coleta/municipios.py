@@ -187,7 +187,7 @@ SALARIO_MEDIO = PASTA / "salario_medio.csv"
 
 def salario_medio():
     """Salário médio mensal dos trabalhadores formais de cada cidade (IBGE, Cadastro Central de Empresas, tabela 9509 do
-    SIDRA): em reais e em salários mínimos, do ano mais recente. Uma consulta só, para as 5.570 cidades; de novo a cada
+    SIDRA): em reais e em salários mínimos, do ano mais recente. Uma consulta só, para os 5.570 municípios do IBGE (com Brasília e Fernando de Noronha); de novo a cada
     30 dias (o IBGE publica um ano novo por vez)."""
     if SALARIO_MEDIO.exists() and time.time() - SALARIO_MEDIO.stat().st_mtime < 30 * 86400:
         return
