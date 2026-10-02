@@ -244,7 +244,9 @@ def _serie(e):
                 ultimo["decimo"] -= antes
                 ultimo["bruto"] -= antes
                 ultimo["marca"] += "a"
-        # mês da saída: o último mês no cargo, com o valor bem acima do normal (férias não tiradas, 13º proporcional)
+        # mês da saída: o último mês no cargo, com o valor bem acima do normal (férias não tiradas, 13º proporcional).
+        # Alguns estados pagam os acertos nos meses antes da saída (Paraíba, 2026: duas vezes 4/3 do subsídio, em fev e
+        # mar, antes da renúncia em abril); por isso valem também os 2 meses antes. O 13º separado na folha não conta
         for tp in {l["tp"] for l in ls}:
             do_cargo = sorted((l for l in ls if l["tp"] == tp), key=lambda l: l["am"])
             o = e["ocupantes"][do_cargo[-1]["i"]] if do_cargo[-1]["i"] is not None else None
@@ -253,7 +255,7 @@ def _serie(e):
             valores = sorted(l["bruto"] - l["redutor"] for l in do_cargo)
             normal = valores[len(valores) // 2]
             for l in do_cargo[-2:]:
-                if l["am"] >= _menos(_mes(o["ate"]), 0) and l["bruto"] - l["redutor"] > 1.5 * normal:
+                if l["am"] >= _menos(_mes(o["ate"]), 2) and l["bruto"] - l["redutor"] - (l["decimo"] or 0) > 1.5 * normal:
                     l["marca"] += "s"
     r2 = lambda v: None if v is None else round(v, 2)
     return [[l["am"], l["tp"], l["i"], r2(l["bruto"] - l["redutor"]), *[r2(l[k]) for k in partes], r2(l["redutor"]), l["marca"]]
