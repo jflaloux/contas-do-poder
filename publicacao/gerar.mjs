@@ -43,7 +43,7 @@ const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/
 
 // ------------------------------------------------------------------ textos (os mesmos do site)
 const ESTADOS = { AC: "Acre", AL: "Alagoas", AM: "Amazonas", AP: "Amapá", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MG: "Minas Gerais", MS: "Mato Grosso do Sul", MT: "Mato Grosso", PA: "Pará", PB: "Paraíba", PE: "Pernambuco", PI: "Piauí", PR: "Paraná", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RO: "Rondônia", RR: "Roraima", RS: "Rio Grande do Sul", SC: "Santa Catarina", SE: "Sergipe", SP: "São Paulo", TO: "Tocantins" };
-const ART_UF = { AC: "o", AP: "o", AM: "o", BA: "a", CE: "o", DF: "o", ES: "o", MA: "o", MT: "o", MS: "o", PA: "o", PB: "a", PR: "o", PI: "o", RJ: "o", RN: "o", RS: "o", TO: "o" };
+const ART_UF = { AC: "o", AP: "o", AM: "o", BA: "a", CE: "o", DF: "o", ES: "o", MA: "o", PA: "o", PB: "a", PR: "o", PI: "o", RJ: "o", RN: "o", RS: "o", TO: "o" }; // "de Mato Grosso", como no nome oficial
 const COM_ARTIGO = new Set([2611606, 3304557]); // do Recife, do Rio de Janeiro
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 const deUF = (uf) => (ART_UF[uf] ? `d${ART_UF[uf]} ${ESTADOS[uf]}` : `de ${ESTADOS[uf]}`);
@@ -189,7 +189,7 @@ const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel=
 // Os mesmos blocos que o app.js põe em #chips-info (montarCabecalho), já no HTML: assim a abertura tem a altura certa
 // desde o começo e não cresce quando o app.js chega (a página não pula). Mudando o texto lá, mude aqui.
 function numerosHTML() {
-  const numero = (n, texto) => `<p class="numero"><strong>${n}</strong><span>${esc(texto)}</span></p>`;
+  const numero = (n, texto) => `<p class="numero"><strong>${n.toLocaleString("pt-BR")}</strong><span>${esc(texto)}</span></p>`; // 1.064
   const noCargo = (xs, f) => xs.filter((p) => p.x && f(p)).length;
   const camaras = Object.entries(CAM.meta.cidades || {}), prefs = Object.entries(PRE.meta.cidades || {});
   const ests = [...new Set(deputadosEstaduais.map((p) => p.uf))].filter((uf) => ((ASS.meta || {}).estados || {})[uf]);
@@ -349,7 +349,7 @@ for (const e of GOV.e) {
   const pos = ordemGov.findIndex((x) => x.uf === e.uf) + 1;
   const texto = `${cargo} ${deUF(e.uf)}: ${e.gov.n}${e.gov.pt ? ` (${e.gov.pt})` : ""}. O salário do cargo é de ${reais(e.v[0])} por mês, bruto, o ${pos}º maior entre os 27 estados.`
     + `${e.vv ? ` O do vice é de ${reais(e.vv[0])}.` : ""}${e.m && e.m.length ? " Veja também o que foi pago mês a mês, pela folha de pagamento do Estado." : ""}`
-    + `${estados[e.uf] ? ` E quanto ganha e quanto custa cada um dos ${deputadosEstaduais.filter((p) => p.uf === e.uf && p.x).length} deputados estaduais.` : ""} Com a fonte de cada valor.`;
+    + `${estados[e.uf] ? ` E quanto ganha e quanto custa cada um dos ${deputadosEstaduais.filter((p) => p.uf === e.uf && p.x).length} ${e.uf === "DF" ? "deputados distritais" : "deputados estaduais"}.` : ""} Com a fonte de cada valor.`;
   const titulo = `Salário do governador ${deUF(e.uf)} (${e.gov.n}) | Contas do Poder`;
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Governo ${deUF(e.uf)}`, e.gov.n, texto))]);
 }
