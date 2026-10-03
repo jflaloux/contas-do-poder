@@ -951,6 +951,9 @@ destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada
   e-mail como"). Os rascunhos só vão para a conta em que `contato@contasdopoder.com` é o endereço principal (ou a conta
   informada em `--conta`); numa conta em que ele é só um alias, como uma conta pessoal, o script para e diz como refazer
   a autorização (`--nova-autorizacao`, que guarda o token antigo como `gmail-token.json.antigo`).
+- `--conta=<conta do projeto>`: para quando o endereço principal da conta do projeto não é `contato@contasdopoder.com`
+  (ele é um alias verificado dela). Rodado uma vez com tudo certo, a conta fica gravada em
+  `~/.config/contas-do-poder/conta-do-projeto` e as próximas vezes não precisam dele; outra conta é recusada.
 - Uma vez: `.venv/bin/pip install -r rotina/requirements-gmail.txt` (só no computador que cria os rascunhos) e uma
   credencial OAuth do Google Cloud do tipo "App para computador", num projeto da organização do Workspace, com a tela de
   permissão "Interno" (sem o aviso de app não verificado e sem nova autorização a cada 7 dias). O JSON fica em
