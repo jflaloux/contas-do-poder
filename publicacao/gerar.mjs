@@ -51,6 +51,12 @@ const END = ler("enderecos.json", { p: {}, antigos: {} });
 const PASTA_INT = path.join(SITE, "dados", "interior");
 const UFS_INT = fs.existsSync(PASTA_INT) ? fs.readdirSync(PASTA_INT).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
 const INTERIOR = Object.fromEntries(UFS_INT.map((u) => [u.toUpperCase(), ler(`interior/${u}.json`, null)]).filter(([, d]) => d && d.m));
+// interior por cargo (ES, PE, RJ): o Tribunal de Contas só publica o total pago a cada cargo e quantas pessoas estavam nele
+// (site/dados/interior-cargo/<uf>.json, outro formato que o de interior/). Mesma ideia: a lista dos estados numa <meta>, e a
+// média por vereador (sempre "em média") no texto da cidade
+const PASTA_CARGO = path.join(SITE, "dados", "interior-cargo");
+const UFS_CARGO = fs.existsSync(PASTA_CARGO) ? fs.readdirSync(PASTA_CARGO).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
+const CARGO = Object.fromEntries(UFS_CARGO.map((u) => [u.toUpperCase(), ler(`interior-cargo/${u}.json`, null)]).filter(([, d]) => d && d.m));
 let MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8"); // com os números da abertura: ver numerosHTML
 const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/) || [])[1] || "https://contasdopoder.com/").replace(/\/+$/, "");
 
@@ -231,7 +237,7 @@ function numerosHTML() {
     numero(`${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)}`, `último mês dos dados · atualizado em ${DATA_ATUALIZADA.slice(8, 10)}/${DATA_ATUALIZADA.slice(5, 7)}`, "/atualizacao"),
   ].join("");
 }
-MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
+MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
@@ -438,12 +444,16 @@ for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
   vistos.add(caminho);
   const de = deCidade(cod, n);
   const vi = vereadorInterior(cod, uf);
-  const extras = [CAM.meta.cidades && CAM.meta.cidades[cod] ? "quanto recebe e quanto gasta cada vereador" : vi ? "quanto recebe cada vereador em cada mês" : null,
-    PRE.meta.cidades && PRE.meta.cidades[cod] ? "quanto recebem o prefeito, o vice e os secretários" : vi && vi.prefeitura ? "quanto recebem o prefeito e o vice" : null].filter(Boolean);
+  // ES, PE, RJ: o total pago ao cargo de vereador e a média por pessoa (nunca "o vereador recebe"); prefeito e vice só no ES e em PE
+  const dc = CARGO[uf], cg = dc && !(CAM.meta.cidades || {})[cod] ? dc.m[String(cod)] : null;
+  const cgPref = dc && !(PRE.meta.cidades || {})[cod] && dc.m[String(cod)] && (dc.meta.papeis || []).includes("prefeito") && (dc.m[String(cod)].pf || dc.m[String(cod)].vp);
+  const extras = [CAM.meta.cidades && CAM.meta.cidades[cod] ? "quanto recebe e quanto gasta cada vereador" : vi ? "quanto recebe cada vereador em cada mês" : cg && cg.c ? "quanto a Câmara paga ao cargo de vereador" : null,
+    PRE.meta.cidades && PRE.meta.cidades[cod] ? "quanto recebem o prefeito, o vice e os secretários" : vi && vi.prefeitura ? "quanto recebem o prefeito e o vice" : cgPref ? "quanto a Prefeitura paga ao prefeito e ao vice" : null].filter(Boolean);
   const texto = (custo > 0
     ? `Em ${ano}, a Câmara Municipal ${de} (${uf}) custou ${reais(custo)}: ${reais(custo / 12)} por mês${pop ? `, ${reais(custo / pop)} por habitante no ano` : ""}${nv ? `, com ${nv} vereadores` : ""}.`
     : `O gasto da Câmara Municipal ${de} (${uf}) não aparece nas contas entregues ao Tesouro Nacional.`)
     + (vi && vi.med ? ` Um vereador recebe ${reais(vi.med)} por mês (valor típico, bruto, na folha que a Câmara manda ao ${vi.tribunal}).` : "")
+    + (!vi && cg && cg.c && cg.c.vm ? ` Em média, a Câmara paga ${reais(cg.c.vm)} por ${(dc.meta.papeis || []).includes("prefeito") ? "vereador" : "agente político"} por mês (o total pago ao cargo dividido pelas pessoas no cargo, pelo que informa ao ${dc.meta.tribunal}).` : "")
     + ` Veja o teto do salário do vereador${extras.length ? `, ${extras.join(" e ")}` : ""} e compare com as outras cidades.`;
   const titulo = `Câmara Municipal ${de} (${uf}): quanto custa | Contas do Poder`;
   paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto, destaqueCidade(cod, n, pop, custo)))]);
@@ -569,6 +579,7 @@ const DESCRICAO_ARQ = {
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]
   || (/^interior\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(9, 11).toUpperCase()] || a}: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao Tribunal de Contas, mês a mês.` : "")
+  || (/^interior-cargo\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(15, 17).toUpperCase()] || a}: ${a.startsWith("interior-cargo/rj") ? "total pago aos agentes políticos de cada Câmara" : "total pago ao cargo de vereador, prefeito e vice de cada cidade"} e quantas pessoas estavam no cargo, mês a mês, pela folha que o município manda ao Tribunal de Contas (o tribunal não publica o valor de cada pessoa).` : "")
   || (/^vereadores\/([A-Z]{2})\.json$/.test(a) ? `Vereadores eleitos em 2024 em cada cidade ${deUF(a.slice(11, 13))} (TSE).` : "");
 function manifesto() {
   const arquivos = [];

@@ -965,7 +965,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .folha-linha__texto { grid-area: texto; display: grid; min-width: 0; line-height: 1.3; }
 .folha-linha__texto small { color: var(--ink-2); font-size: .82rem; }
 .folha-linha__valor { grid-area: valor; display: grid; justify-items: end; line-height: 1.25; font-variant-numeric: tabular-nums; }
-.folha-linha__valor small { color: var(--ink-2); font-size: .76rem; }
+.folha-linha__valor small { color: var(--ink-2); font-size: .76rem; max-width: 16em; text-align: right; }
 .mini-serie { grid-area: serie; display: block; width: 100%; height: 14px; }
 .mini-serie rect { fill: var(--ganha); fill-opacity: .7; }
 .tabela-int td:first-child { white-space: normal; min-width: 11rem; }

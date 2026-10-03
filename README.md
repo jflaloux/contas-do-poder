@@ -1127,6 +1127,23 @@ hospedagem no Cloudflare Pages. A base legal escrita é o legítimo interesse (L
 "Contas do Poder (contato@contasdopoder.com)": se o nome do responsável entrar, é só mudar o `sobre.json`. Mudou algo
 dessa lista (um serviço novo, um cookie, outro dado coletado)? Atualize o `sobre.json` junto, com a data. O texto é simples e deve ser revisto por quem responde pelo site antes de cada mudança publicada.
 
+## Interior do ES, de PE e do RJ na página da cidade (valor por cargo)
+
+Nesses três estados o Tribunal de Contas só publica o **total pago a um cargo** e **quantas pessoas** estavam nele, não o
+valor de cada pessoa (`site/dados/interior-cargo/<uf>.json`, outro formato que o de `interior/`, da Paraíba e do Ceará: não
+misturar as pastas). A página da cidade diz o que isso é: "em média, o total pago ao cargo dividido por N pessoas", nunca "o
+vereador recebe". Por isso, para essa média: sem o selo "passa do teto", sem "ganha mais que X%", sem comparação com cidades
+de outro tipo e sem página nem arquivo por pessoa (o app só baixa o arquivo do estado da cidade aberta; a lista dos estados
+vai em `<meta name="dados-interior-cargo">`, posta pelo `gerar.mjs`; o Cloudflare não ganha nenhum arquivo além dos 3 do
+dados). No `app.js`: `vereadoresCargo` (a Câmara: a média por vereador, o total do último mês e quantas pessoas, quem está
+no cargo no ES e em PE, o teto só como referência, a tabela mês a mês com o 13º, as férias e a parte indenizatória no ES)
+e `secPrefeituraCargo` (prefeito e vice no ES e em PE: com uma pessoa só no cargo, o total é o valor dela). No RJ a fonte diz
+"agente político" e não tem nomes (continua a lista dos eleitos do TSE). Cidade sem o valor típico (`vm`), como Cariacica
+(23 pessoas para 19 cadeiras), mostra só o total e a quantidade. Recife (`camaras.json`) e Vitória (`prefeituras.json`, só
+o prefeito) usam os dados próprios. O texto da página pronta e o de compartilhar dizem "em média" e o tribunal. O teste do site
+tem uma cidade de cada estado (Vitória, Cariacica, Abreu e Lima, Águas Belas e Laje do Muriaé) e falha se aparecer "passa do
+teto" ou "ganha mais que" nelas.
+
 ## Atualização dos dados (`/atualizacao`)
 
 A página mostra, para cada uma das fontes do site, até que mês vão os dados (`Dados até`), o dia da última coleta que

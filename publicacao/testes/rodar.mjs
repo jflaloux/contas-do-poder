@@ -65,6 +65,13 @@ const PAGINAS = [
   { nome: "cidade-capital", url: "/cidade/sao-paulo-sp" },
   { nome: "cidade-interior", url: "/cidade/abaiara-ce" },
   { nome: "cidade-pequena", url: "/cidade/acrelandia-ac" },
+  // ES, PE e RJ: o Tribunal de Contas só publica o total pago ao cargo (e quantas pessoas): sempre "em média", nunca o salário
+  // de alguém, sem "passa do teto" nem "ganha mais que X%"
+  { nome: "cidade-es-vitoria", url: "/cidade/vitoria-es", ter: [["#cidade .pessoa-chip--fixo", 15]], texto: [/em média, por vereador/i, /total pago ao cargo/i], sem: [/passa do teto/i, /ganha mais que/i] },
+  { nome: "cidade-es-cariacica", url: "/cidade/cariacica-es", ter: [["#cidade .pessoa-chip--fixo", 15], ["#prefeitura .folha-linha", 2]], texto: [/23 pessoas no cargo de vereador/i, /não representa um vereador/i], sem: [/em média, por vereador/i, /passa do teto/i, /ganha mais que/i] },
+  { nome: "cidade-pe-abreu-e-lima", url: "/cidade/abreu-e-lima-pe", ter: [["#cidade .pessoa-chip--fixo", 10], ["#prefeitura .folha-linha", 2]], texto: [/em média, por vereador/i, /13 pessoas no cargo de vereador/i, /R\$ 26\.000/], sem: [/passa do teto/i, /ganha mais que/i] },
+  { nome: "cidade-pe-aguas-belas", url: "/cidade/aguas-belas-pe", ter: [["#cidade .pessoa-chip--fixo", 10]], texto: [/presidente da Câmara/i, /13 pessoas/i], sem: [/passa do teto/i, /ganha mais que/i] },
+  { nome: "cidade-rj-laje-do-muriae", url: "/cidade/laje-do-muriae-rj", ter: [["#cidade .pessoa-chip--fixo", 5]], texto: [/12 pessoas como agente político/i, /a fonte não tem os nomes/i], sem: [/em média, por/i, /passa do teto/i, /ganha mais que/i] },
   { nome: "governador-com-viagens", url: ENDERECOS["gov-mg-mateus-simoes"] ? `/${ENDERECOS["gov-mg-mateus-simoes"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 2], ["#viagens details table", 1]] },
   { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
@@ -161,7 +168,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
-        contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length) };
+        contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
+        textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n") };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
     if (m.h1 !== 1) falhas.push(`${m.h1} títulos h1 visíveis (deve ser 1)`);
@@ -169,6 +177,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     if (m.cookies) falhas.push(`o site criou cookies (a página /sobre diz que não usa cookies próprios): ${m.cookies.slice(0, 80)}`);
     if (m.sobra > 1) falhas.push(`rolagem horizontal: a página é ${m.sobra} px mais larga que a tela`);
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
+    (pg.texto || []).forEach((re) => { if (!re.test(m.textoCidade)) falhas.push(`o texto da cidade não tem ${re}`); });
+    (pg.sem || []).forEach((re) => { if (re.test(m.textoCidade)) falhas.push(`o texto da cidade não podia ter ${re}`); });
     if (pg.url.startsWith("/cidade/")) {
       // o parágrafo em destaque vai pronto no HTML (gerar.mjs, destaqueCidade) para a primeira pintura: tem de ser igual ao do app.js
       try {
