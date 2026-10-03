@@ -80,6 +80,9 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
   existe `.git/index.lock`: se existir, outro agente está fazendo commit.
 - Ao terminar, cada agente responde ao orquestrador em poucas linhas: o que fez, arquivos e commit, o que falta, o que
   precisa do Jean-François ou de outro agente.
+- Painel dos agentes (só no Mac, fora do Git): http://localhost:4777 mostra o que cada agente está fazendo, a partir dos
+  hooks em `.claude/settings.local.json` (`.claude/painel/`). Escreva a descrição de cada comando (campo `description`
+  do Bash) em português e em poucas palavras: é ela que aparece no painel.
 
 ### Para o orquestrador (a sessão principal; os agentes ignoram esta parte)
 
