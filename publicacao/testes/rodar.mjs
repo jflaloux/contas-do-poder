@@ -51,6 +51,14 @@ const lerDados = (arq) => JSON.parse(fs.readFileSync(path.join(SITE, "dados", ar
 const ENDERECOS = lerDados("enderecos.json").p;
 const primeiro = (prefixo) => { const id = Object.keys(ENDERECOS).filter((k) => k.startsWith(prefixo)).sort()[0]; return id ? `/${ENDERECOS[id]}` : null; };
 // o que cada página tem de ter (seletor e quantidade mínima); sem "ter", só valem as conferências comuns
+// o primeiro (por id) que recebeu 13º em 2025 (dados.json): a linha do 13º só existe para quem recebeu
+const primeiroCom13 = (prefixo) => {
+  try {
+    const D = lerDados("dados.json");
+    const id = D.p.filter((p) => p.id.startsWith(prefixo) && p.per && p.per["2025"] && (p.per["2025"].cats || {}).decimo_terceiro > 0).map((p) => p.id).sort()[0];
+    return id && ENDERECOS[id] ? `/${ENDERECOS[id]}` : null;
+  } catch { return null; }
+};
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -81,6 +89,8 @@ const PAGINAS = [
       return f;
     })()` },
   { nome: "deputado-federal", url: primeiro("dep-") },
+  // o 13º no contracheque é "média por mês" e diz a conta (total do período ÷ meses): conferido num deputado que recebeu 13º
+  { nome: "deputado-13o", url: primeiroCom13("dep-"), contem: [/13º salário \(média por mês\)/i, /R\$ [\d.]+ de 13º pagos .*divididos pelos \d+ meses com pagamento/i, /para somar com o resto do mês/i] },
   { nome: "senador", url: primeiro("sen-") },
   { nome: "ministro", url: primeiro("exe-") },
   { nome: "ministro-deputado", url: primeiro("jun-") },
@@ -197,7 +207,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
-        textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n") };
+        textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
+        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "" };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
     if (m.h1 !== 1) falhas.push(`${m.h1} títulos h1 visíveis (deve ser 1)`);
@@ -207,6 +218,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
     (pg.texto || []).forEach((re) => { if (!re.test(m.textoCidade)) falhas.push(`o texto da cidade não tem ${re}`); });
     (pg.sem || []).forEach((re) => { if (re.test(m.textoCidade)) falhas.push(`o texto da cidade não podia ter ${re}`); });
+    (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     if (pg.url.startsWith("/cidade/")) {
       // o parágrafo em destaque vai pronto no HTML (gerar.mjs, destaqueCidade) para a primeira pintura: tem de ser igual ao do app.js
       try {

@@ -286,6 +286,20 @@
     return anos.length ? anos[anos.length - 1] : "leg";
   }
   const nomeCat = (k) => (meta().categorias[k] || { nome: k }).nome;
+  // O 13º e as férias são pagos de uma vez ou em parcelas, num ou noutro mês. Na lista "item por item, por mês" todo valor é a
+  // média por mês do período: o total do período ÷ os meses do período com pagamento (r.mg; num ano inteiro, ÷ 12). Por isso
+  // essas duas linhas dizem "média por mês" e, embaixo, a conta e quando o órgão paga.
+  const MEDIA_PAGA = new Set(["decimo_terceiro", "ferias"]);
+  const nomeMedia = (c) => (c === "decimo_terceiro" ? `${nomeCat(c)} (média por mês)` : nomeCat(c).replace(/ \((.*)\)$/, " (média por mês; $1)"));
+  function explicaMedia(p, r, c, k) {
+    const nome = c === "ferias" ? "férias" : "13º";
+    const quando = c === "ferias" ? "As férias (o terço constitucional e a indenização) entram no mês em que são pagas."
+      : p.k === "d" ? "A Câmara paga o 13º em duas parcelas, em junho e dezembro."
+      : p.k === "s" ? "Nos dados do Senado, o 13º aparece em junho e no fim do ano."
+      : p.k === "e" || p.k === "j" ? "Nos dados do governo federal, o 13º aparece em junho e no fim do ano."
+      : "O 13º é pago de uma vez ou em parcelas, nos meses que o órgão define (são os meses mais altos do mês a mês).";
+    return `${reais(r.cats[c] || 0)} de ${nome} pagos ${nomePeriodo(k, false)}, divididos pelos ${r.mg} meses com pagamento do período${/^\d{4}$/.test(k) ? (r.mg === 12 ? ` (o ${nome} do ano ÷ 12)` : " (o período não tem 12 meses)") : ""}. ${quando} Aqui ele aparece dividido pelos meses do período, para somar com o resto do mês.`;
+  }
   const plural = (g) => {
     const t = tipoG(g), c = infoG(g);
     if (t === "v") return `vereadores ${deCid(cidG(g) || SP)}`;
@@ -1643,7 +1657,8 @@
         const valor = h("span", { class: "item__valor" }, `${meta().rateio[c] ? "≈ " : ""}${reais(porMes(r, c))}`);
         const selo = seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`);
         const det = detalheCat(p, k, c);
-        if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c)), valor, selo);
+        const explica = MEDIA_PAGA.has(c) ? h("span", { class: "item__detalhe" }, explicaMedia(p, r, c, k)) : null;
+        if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, MEDIA_PAGA.has(c) ? nomeMedia(c) : nomeCat(c)), valor, explica, selo);
         const vpm = c === "viagens_oficiais" ? viagensPorMes(p, k) : null;
         return h("details", { class: "item-abre", ontoggle: (e) => { if (e.target.open) evento("abrir_detalhe", { categoria: c, casa: casaTxt(p) }); } },
           h("summary", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c), h("span", { class: "item__abre" }, "detalhe")), valor, selo),

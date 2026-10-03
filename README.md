@@ -178,7 +178,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 24 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 26 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -264,6 +264,13 @@ Para dar para comparar, o site mostra tudo **por mês**:
 - A cota por tipo (passagens, aluguel de carros, combustível...) aparece como média por mês: o total de cada
   tipo no período dividido pelos mesmos meses da cota no contracheque, com a parte (%) de cada tipo.
   Exemplo: cota de R$ 38.920 por mês, dos quais R$ 12.798 (33%) com aluguel de carros.
+- O 13º salário (e, no Judiciário, as férias) é pago de uma vez ou em parcelas, mas na lista "item por item, por mês" todo
+  valor é a média por mês do período: o total do período dividido pelos meses do período com pagamento (`mg`; num ano
+  inteiro, o 13º do ano ÷ 12; no ano em curso ou num mandato que começou no meio do ano, ÷ os meses que há). Por isso a
+  linha se chama "13º salário (média por mês)" e traz embaixo a conta ("R$ 46.366 de 13º pagos em 2025, divididos pelos 12
+  meses com pagamento do período") e quando o órgão paga (Câmara: junho e dezembro; Senado e governo federal: o que os
+  dados mostram, junho e fim do ano; os outros: "nos meses que o órgão define"). O texto está em `explicaMedia`, no `app.js`;
+  o teste do site confere a linha num deputado que recebeu 13º.
 
 ## Governo federal (presidente, vice e ministros)
 
