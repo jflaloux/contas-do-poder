@@ -257,12 +257,28 @@ input:focus, select:focus { outline: none; border-color: var(--accent); box-shad
 }
 .sugestao:hover, .sugestao:focus-visible, .sugestao[aria-selected="true"] { background: var(--accent-soft); }
 .sugestao small { color: var(--ink-2); display: block; }
-.secoes { display: flex; flex-wrap: wrap; gap: 8px; }
+/* lista das seções da página: uma linha só em qualquer largura. Se não couber, rola para o lado; a borda esmaece e, com mouse,
+   aparece uma seta (o app.js põe em data-mais da caixa o lado onde há mais: "esq", "dir" ou os dois) */
+.secoes-caixa { position: relative; min-width: 0; max-width: 100%; }
+.secoes { display: flex; flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 3px 3px 5px; margin: -3px -3px -5px; scroll-behavior: smooth; }
+.secoes::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { .secoes { scroll-behavior: auto; } }
 .secoes button {
   font: inherit; font-size: .9rem; color: var(--ink); background: var(--paper); border: 1px solid var(--line);
-  border-radius: 999px; padding: 6px 13px; cursor: pointer; min-height: 36px;
+  border-radius: 999px; padding: 6px 13px; cursor: pointer; min-height: 36px; flex: none; white-space: nowrap;
 }
 .secoes button:hover { border-color: var(--accent); color: var(--accent); }
+.secoes-caixa[data-mais~="dir"] .secoes { -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(90deg, #000 calc(100% - 72px), transparent); }
+.secoes-caixa[data-mais~="esq"] .secoes { -webkit-mask-image: linear-gradient(270deg, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(270deg, #000 calc(100% - 72px), transparent); }
+.secoes-caixa[data-mais~="esq"][data-mais~="dir"] .secoes { -webkit-mask-image: linear-gradient(90deg, transparent, #000 72px, #000 calc(100% - 72px), transparent); mask-image: linear-gradient(90deg, transparent, #000 72px, #000 calc(100% - 72px), transparent); }
+.secoes__seta { display: none; position: absolute; top: 0; z-index: 2; width: 36px; height: 36px; padding: 0; border-radius: 999px; border: 1px solid var(--line); background: var(--paper);
+  color: var(--ink); font: inherit; font-size: 1.35rem; line-height: 1; cursor: pointer; box-shadow: var(--sombra); }
+.secoes__seta--esq { left: 0; }
+.secoes__seta--dir { right: 0; }
+.secoes__seta:hover { border-color: var(--accent); color: var(--accent); }
+@media (hover: hover) and (pointer: fine) {
+  .secoes-caixa[data-mais~="dir"] .secoes__seta--dir, .secoes-caixa[data-mais~="esq"] .secoes__seta--esq { display: grid; place-items: center; }
+}
 .lista-estado { display: grid; gap: 10px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--raio); padding: 14px; }
 .lista-estado__grupo { display: flex; flex-wrap: wrap; gap: 6px; }
 .pessoa-chip {
@@ -337,6 +353,11 @@ a.fonte:hover { border-color: var(--accent); }
 .chave--ganha { background: var(--ganha); }
 .chave--custa { background: var(--custa); }
 .chave--equipe { background: var(--equipe); }
+.chave--unico { background: var(--ink-3); }
+/* pagamento pago de uma vez (ajuda de custo), à parte, fora da média por mês */
+.unico { margin-top: 14px; border-top: 1px dashed var(--line); padding-bottom: 4px; }
+.unico .item { border-bottom: 0; }
+.unico .item__valor { color: var(--ink-2); }
 .equipe-resumo { margin-top: 14px; border-top: 1px dashed var(--line); padding-bottom: 4px; }
 .selo-comp { font-family: var(--body); font-weight: 600; font-size: .78rem; border: 1.5px solid currentColor; border-radius: 999px; padding: 0 7px; line-height: 1.5; }
 /* acima ou abaixo da mediana: seta e tom neutro (sem verde/vermelho de bom/ruim) */
@@ -692,19 +713,16 @@ input[type="search"] { line-height: 1.5; }
 .interna .abertura, .interna #rotulo-escolha, .interna .escolha__linha, .interna #lista-estado { display: none; }
 .interna .escolha { gap: 0; margin-block: -12px -18px; }
 /* a lista das seções já tem a altura dos botões antes de o app.js preenchê-la (a página não desce quando eles aparecem) */
-.interna .secoes { min-height: 36px; }
+.interna .secoes { min-height: 44px; } /* 36 do botão + 8 do respiro (as margens negativas devolvem o espaço) */
 .interna #entenda .grade-cartoes, .interna #fontes .grade-cartoes { display: none; }
 .titulo-pagina { font-size: clamp(2.3rem, 7vw, 3.4rem); max-width: 10.87em; }
 /* resumo pronto (HTML do gerar.mjs) e prévia enquanto o detalhe carrega */
 .conta__texto { padding: 14px 22px 0; color: var(--ink-2); font-size: .92rem; max-width: 42.4em; }
 .conta > .carregando { padding: 12px 22px 20px; margin: 0; font-size: .9rem; }
 
-/* seções da página: no celular, uma linha só que rola para o lado (em vez de 3 ou 4 linhas de botões) */
+/* seções da página no celular: a lista vai até a borda da tela */
 @media (max-width: 760px) {
-  .secoes { flex-wrap: nowrap; overflow-x: auto; margin-inline: -16px; padding: 2px 16px 6px; scrollbar-width: none;
-    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
-  .secoes::-webkit-scrollbar { display: none; }
-  .secoes button { flex: none; }
+  .secoes { margin-inline: -16px; padding: 2px 16px 6px; margin-block: 0; }
   .interna .secoes { min-height: 44px; }
 }
 
@@ -725,6 +743,8 @@ input[type="search"] { line-height: 1.5; }
 .resumo-parte--ganha strong { color: var(--banda-ganha); }
 .resumo-parte--custa strong { color: var(--banda-custa); }
 .resumo-sm { color: var(--banda-ink-2); font-size: 1rem; margin-top: 6px; }
+.resumo-unico { color: var(--banda-ink-2); font-size: .9rem; line-height: 1.4; margin-top: 8px; max-width: 36em; }
+.resumo-unico strong { color: var(--banda-ink); font-weight: 600; }
 /* período sem pagamentos (ou governador que não aparece na folha): texto claro sobre o fundo escuro do topo */
 .conta__resumo-principal > .discreto { color: var(--banda-ink-2); }
 .conta__resumo .item__detalhe { color: var(--banda-ink-2); margin-top: 2px; }

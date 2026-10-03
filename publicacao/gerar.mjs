@@ -317,12 +317,21 @@ const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "g
 // governador sem a folha (Amapá, Mato Grosso e Tocantins): o salário da lei, e não o que foi pago
 const rotuloValor = (p) => (p.k === "g" && p.fonte === "lei" ? "Salário do cargo por mês" : soBolso(p) ? "Recebe por mês" : "Custo por mês");
 const nomeK = (k, p) => quando(k, p).replace(/^Em/, "em");
+// pagamento único (ver UNICOS no app.js): a ajuda de custo de deputado e senador, paga de uma vez, fica fora do "por mês"
+const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"] };
+const somaUnicos = (p, k, r) => {
+  const q = p.k === "j" ? porId.get(((p.cg || [])[1] || {}).id) : p;
+  const lista = q && UNICOS[q.k];
+  if (!lista) return 0;
+  const cats = q === p ? r.cats : ((q.per || {})[k] || {}).cats || {};
+  return lista.reduce((s, c) => s + (cats[c] || 0), 0);
+};
 function previaPessoa(p, k, r, texto) {
   const foto = p.f ? `<img src="${esc(daRaiz(p.f))}" alt="" referrerpolicy="no-referrer">` : "";
   const rotulo = { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo", t: "Contracheque do cargo" }[p.k] || "Contracheque do mandato";
   let resumo = "";
   if (r) {
-    const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
+    const gm = r.mg ? (r.g - somaUnicos(p, k, r)) / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
     // a barra dividida (bolso e gastos) e o valor embaixo de cada pedaço, como no app.js (resumoTopo)
     const parte = `${(gm + cm > 0 ? (gm / (gm + cm)) * 100 : 100).toFixed(1)}%`;
     const partes = soBolso(p)
@@ -359,7 +368,7 @@ for (const p of pessoas) {
   if (!r && p.k === "g") texto = `${rotulo}. Não há pagamentos a ${p.n} na folha de pagamento ${deUF(p.uf)} publicada até ${MESES[(p.um % 100) - 1]}/${Math.floor(p.um / 100)}. Veja o salário do cargo e as notas sobre o estado.`;
   else if (!r) texto = `${rotulo}. Veja quanto recebe e quanto custa por mês, com números oficiais.`;
   else {
-    const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
+    const gm = r.mg ? (r.g - somaUnicos(p, k, r)) / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;
     const fonte = p.k === "v" ? `da ${(cidades[p.cid] || {}).casa || "Câmara Municipal"}` : p.k === "a" ? `da ${(estados[p.uf] || {}).casa || "Assembleia Legislativa"}`
       : p.k === "p" ? `da Prefeitura ${deCidade(p.cid, (cidades[p.cid] || {}).n || "")}` : p.k === "t" ? fonteJ(p) : FONTE[p.k];
     // no Congresso e no governo federal, o bolso tem também o 13º (vereador e deputado estadual com o salário da lei, não)

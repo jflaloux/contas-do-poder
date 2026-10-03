@@ -89,6 +89,27 @@ const PAGINAS = [
       return f;
     })()` },
   { nome: "deputado-federal", url: primeiro("dep-") },
+  // ajuda de custo (paga de uma vez) fora do "por mês" e da comparação: quem tem poucos meses e a ajuda da posse não sobe no ranking só por ela.
+  // Tiago Dimas (5 meses em 2025, ajuda de R$ 46.366 em set/2025) já foi o 9º de 554; André Abdon, o 1º. A largura de 900 px é a em que o
+  // menu das seções do deputado não cabe: tem de ficar numa linha só, rolando para o lado, com o aviso de que há mais.
+  { nome: "deputado-ajuda-de-custo-tiago-dimas", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 900,
+    contem: [/Fora desta média: ajuda de custo de R\$ 46\.366, paga de uma vez em set\/2025\. Contando com ela, seriam R\$ [\d.]+ por mês/, /Pago de uma vez, fora da média por mês/i,
+      /somaria R\$ 9\.273 por mês, bem mais do que pesaria em quem teve os 12 meses do ano/, /\((?!(?:[1-9]|10)º)\d+º de \d+\)/],
+    semContem: [/\(9º de \d+\)/],
+    depois: `(() => {
+      const f = [], proibidos = ["André Abdon", "Professora Marcivania", "Rafael Fera", "Fatima Pelaes", "Fabiano Cazeca", "Elmano Férrer", "Tiago Dimas"];
+      const topo = document.querySelector("#ranking .rank-lista");
+      if (!topo) return ["não achei a lista dos maiores no ranking"];
+      const nomes = [...topo.querySelectorAll(".rank__nome")].map((e) => e.firstChild.textContent.trim());
+      const subiu = nomes.filter((n) => proibidos.includes(n));
+      if (subiu.length) f.push("entre os maiores custos por mês só por causa da ajuda de custo da posse: " + subiu.join(", "));
+      return f;
+    })()` },
+  { nome: "deputado-ajuda-de-custo-andre-abdon", url: ENDERECOS["dep-178831"] ? `/${ENDERECOS["dep-178831"]}` : null,
+    contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /\(1º de \d+\)/] },
+  // 2 meses de mandato: fora do ranking (mínimo de 3 meses), com a ajuda de custo à parte e sem posição
+  { nome: "deputado-ajuda-de-custo-elmano-ferrer", url: ENDERECOS["dep-234406"] ? `/${ENDERECOS["dep-234406"]}` : null,
+    contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /Custa mais que \d+% dos deputados/] },
   // o 13º no contracheque é "média por mês" e diz a conta (total do período ÷ meses): conferido num deputado que recebeu 13º
   // presença e projetos (atividade.json): "X de Y", sem porcentagem; Câmara por dia de sessão e Senado por votação nominal, nunca juntos
   { nome: "deputado-atividade", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null,
@@ -186,7 +207,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     await Promise.all([cmd("Page.enable"), cmd("Runtime.enable"), cmd("Log.enable"), cmd("Network.enable")]);
     // nada de fora: o teste não pode contar visita no Google Analytics nem depender de internet
     await cmd("Fetch.enable", { patterns: [{ urlPattern: "*" }] });
-    await cmd("Emulation.setDeviceMetricsOverride", { width: perfil.largura, height: perfil.altura, deviceScaleFactor: perfil.escala, mobile: perfil.mobile });
+    await cmd("Emulation.setDeviceMetricsOverride", { width: pg.largura && !perfil.mobile ? pg.largura : perfil.largura, height: perfil.altura, deviceScaleFactor: perfil.escala, mobile: perfil.mobile });
     await cmd("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: perfil.tema }] });
     await cmd("Page.addScriptToEvaluateOnNewDocument", { source: INICIO });
     const carregou = new Promise((ok) => { const f = eventos((m) => { if (m === "Page.loadEventFired") { f(); ok(); } }); });
@@ -215,7 +236,10 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
-        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "" };
+        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
+        // a lista das seções: uma linha só (os botões com o mesmo topo); se não cabe, rola e a caixa avisa onde há mais (data-mais)
+        menu: (() => { const nav = document.querySelector("#secoes"), bs = nav ? [...nav.querySelectorAll("button")] : []; if (!bs.length) return null;
+          const caixa = nav.parentElement; return { linhas: new Set(bs.map((b) => Math.round(b.getBoundingClientRect().top))).size, rola: nav.scrollWidth > nav.clientWidth + 1, mais: caixa.dataset.mais || "", esq: nav.scrollLeft > 4 }; })() };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
     if (m.h1 !== 1) falhas.push(`${m.h1} títulos h1 visíveis (deve ser 1)`);
@@ -228,6 +252,11 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.atividade || []).forEach((re) => { if (!re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não tem ${re}`); });
     (pg.semAtividade || []).forEach((re) => { if (re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não podia ter ${re}`); });
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
+    (pg.semContem || []).forEach((re) => { if (re.test(m.textoContracheque)) falhas.push(`o contracheque não podia ter ${re}`); });
+    if (m.menu) {
+      if (m.menu.linhas > 1) falhas.push(`o menu das seções ficou em ${m.menu.linhas} linhas (tem de ser uma só, com rolagem para o lado)`);
+      if (m.menu.rola && !/dir/.test(m.menu.mais) && !m.menu.esq) falhas.push("o menu das seções rola para o lado mas não avisa que há mais (data-mais)");
+    }
     if (pg.url.startsWith("/cidade/")) {
       // o parágrafo em destaque vai pronto no HTML (gerar.mjs, destaqueCidade) para a primeira pintura: tem de ser igual ao do app.js
       try {

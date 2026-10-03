@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 28 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 36 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -295,6 +295,23 @@ Para dar para comparar, o site mostra tudo **por mês**:
   meses com pagamento do período") e quando o órgão paga (Câmara: junho e dezembro; Senado e governo federal: o que os
   dados mostram, junho e fim do ano; os outros: "nos meses que o órgão define"). O texto está em `explicaMedia`, no `app.js`;
   o teste do site confere a linha num deputado que recebeu 13º.
+- **Pagamento único (ajuda de custo de deputado e senador):** a ajuda de custo é paga de uma vez (na posse, por exemplo; nos
+  dados, 1 a 3 salários por ano), e não todo mês. Dividida pelos meses do período, pesaria muito mais em quem teve poucos meses
+  (Tiago Dimas, 5 meses em 2025: R$ 46.366 ÷ 5 = R$ 9.273 por mês, contra ÷ 12 de quem teve o ano inteiro) e faria quem entrou no
+  meio do ano parecer mais caro: antes, o 1º do ranking de 2025 era um deputado com 5 meses e a ajuda da posse. Por isso a
+  categoria `ajuda_de_custo` de `d` e `s` (`UNICOS` e `unicosDe`, no `app.js`; o `gerar.mjs` repete a conta na prévia de cada
+  página) **sai do "por mês"** (`resumo`: `gm`, `tm`) e, daí, da mediana, da posição, do selo ▲/▼, do ranking, do "Comparar" e
+  do "salários mínimos por mês". Ela aparece à parte: uma linha no topo do contracheque ("Fora desta média: ajuda de custo de
+  R$ 46.366, paga de uma vez em set/2025. Contando com ela, seriam R$ 104.990 por mês.") e um bloco "Pago de uma vez, fora
+  da média por mês" depois do custo por mês, com o total do período e a conta ("dividido pelos 5 meses, somaria R$ 9.273 por
+  mês"). O mês vem do mês a mês (`mesDoUnico`: o mês cujo total passa do salário médio do ano por cerca do valor pago; só com
+  um mês só, senão a frase diz "em poucos meses do período"). O mês a mês e o "Custo total no período" continuam como a fonte
+  mostra (somam a ajuda). Quem foi ministro e parlamentar ("tudo junto"): só a parte do mandato sai; a ajuda de custo de
+  ministro (valores pequenos e mensais, ou uma posse) a fonte não separa e fica como está (em 2025, 1 ministro com 3 meses ou
+  mais passa de 0,7 salário). Deputados estaduais e vereadores: sem categoria de pagamento único nos dados (em 2025, só 3 casos
+  em cada grupo com `auxilios` ou `outros_rendimentos` acima de 0,7 salário e menos de 12 meses, que podem ser férias ou
+  indenização): ficam como estão. Se o `dados` separar uma categoria como "paga de uma vez" em outro grupo, é só pôr a chave em
+  `UNICOS` (nos dois arquivos).
 
 ## Governo federal (presidente, vice e ministros)
 
@@ -955,6 +972,15 @@ cache de 1 ano em `_headers`; licença SIL OFL 1.1 em `site/fontes/OFL.txt`, "Th
 nada ao Google Fonts). Mudou um arquivo de letra? Mude também o nome, por causa do cache. Tema claro e escuro em
 `site/estilo.css` (variáveis no começo do arquivo); o ícone (`site/favicon.svg`) e a prévia do link (`site/og.png`)
 seguem o mesmo desenho.
+
+A lista das seções da página (Contracheque, Mês a mês, Equipe, Gastos, Presença e projetos, Ranking...; `navSecoes`, no
+`app.js`, `#secoes-caixa` no `index.html`) fica numa linha só em qualquer largura. Os rótulos são curtos para caber na coluna
+do computador (1.048 px) em todo tipo de página, a partir de 1080 px (o do deputado é o mais longo: 10 botões). Se não couber
+(tela menor), rola para o lado: a borda esmaece, e com mouse aparece uma
+seta (‹ ›) no lado onde há mais (`data-mais="esq dir"` na caixa, atualizado no scroll, no resize e quando as letras carregam;
+as setas não entram na ordem do teclado, que já rola a lista ao focar um botão). O teste confere, em toda página com a lista,
+que os botões têm o mesmo topo e que, se a lista rola, a caixa avisa; a página do Tiago Dimas é aberta a 900 px, onde o menu
+do deputado não cabe. Se acrescentar uma seção ou alongar um rótulo, conferir a largura de 1080 px (antes de deixar rolar).
 
 ## Compartilhamento e medição
 

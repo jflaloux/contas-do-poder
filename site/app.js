@@ -234,13 +234,46 @@
   const periodos = (p) => { const anos = meta().anos.filter((a) => p.per[a] && p.per[a].m > 0); return p.k === "g" && anos.length <= 1 ? anos : [...anos, "leg"]; };
   // Resumo de um período. "Custo total" = o que vai para o bolso (ganha) + os gastos do mandato (custa).
   // A equipe do gabinete (dinheiro que vai para outras pessoas) fica separada.
+  // Pagamento único: a ajuda de custo de deputados e senadores é paga de uma vez (na posse, por exemplo), e não todo mês: nos dados, 1 a 3
+  // salários por ano. Dividida pelos meses do período, pesaria muito mais em quem teve poucos meses (R$ 46.366 ÷ 5 meses = R$ 9.273 por
+  // mês; para quem teve o ano inteiro, ÷ 12 = R$ 3.864) e faria parecer mais caro quem entrou no meio do ano. Por isso fica fora do "por mês"
+  // e de toda comparação (mediana, posição, ranking, selo ▲/▼) e aparece à parte, com o valor e o mês. O mês a mês continua como a fonte
+  // mostra. Quem foi ministro e parlamentar ("dois cargos"): só a parte do mandato (a ajuda de custo de ministro é outra coisa: valores
+  // pequenos e mensais ou uma posse, e a fonte não separa).
+  const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"] };
+  function unicosDe(p, k, cats) {
+    const q = p.k === "j" ? S.porId.get(((p.cg || [])[1] || {}).id) : p;
+    const lista = q && UNICOS[q.k];
+    if (!lista) return null;
+    const fonte = q === p ? cats : (q.per[k] || {}).cats || {};
+    const out = {};
+    for (const c of lista) if (fonte[c]) out[c] = fonte[c];
+    return Object.keys(out).length ? out : null;
+  }
+  const somaUnicos = (p, k, cats) => { const u = unicosDe(p, k, cats); return u ? Object.values(u).reduce((a, b) => a + b, 0) : 0; };
+  // em que mês o pagamento único caiu: o mês cujo total passa do salário médio do ano por cerca do valor pago (só se for um mês só e o
+  // período for um ano, ou o mandato todo com a ajuda num ano só; senão, sem o mês)
+  function mesDoUnico(p, k) {
+    const q = p.k === "j" ? S.porId.get(((p.cg || [])[1] || {}).id) : p;
+    if (!q || !q.t) return null;
+    const anos = (k === "leg" ? meta().anos : [k]).filter((a) => q.per[a] && q.per[a].cats && q.per[a].cats.ajuda_de_custo);
+    if (anos.length !== 1) return null;
+    const x = q.per[anos[0]], a = x.cats.ajuda_de_custo, sal = x.mg ? (x.cats.salario || 0) / x.mg : 0;
+    if (!(a > 0) || !(sal > 0)) return null;
+    const cand = q.t.filter(([m, g]) => String(Math.floor(m / 100)) === anos[0] && g > 0 && g - sal >= 0.9 * a && g - sal <= 1.1 * a);
+    return cand.length === 1 ? fmtMes(cand[0][0]) : null;
+  }
+  const comoUnico = (v, mes) => (mes ? `paga de uma vez em ${mes}` : "paga em poucos meses do período, e não todo mês");
   function resumo(p, k) {
     const r = p && p.per[k];
     const aParte = p && p.k === "t"; // Judiciário: as diárias ficam fora do total
     if (!r || !r.m) return null;
-    const gm = r.mg ? r.g / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, em = r.me ? r.e / r.me : 0;
+    const unicos = unicosDe(p, k, r.cats), unico = unicos ? Object.values(unicos).reduce((a, b) => a + b, 0) : 0;
+    const gm = r.mg ? (r.g - unico) / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, em = r.me ? r.e / r.me : 0;
+    let catsMes = r.cats; // as categorias que entram no "por mês" (sem o pagamento único)
+    if (unicos) { catsMes = { ...r.cats }; for (const [c, v] of Object.entries(unicos)) { catsMes[c] -= v; if (Math.abs(catsMes[c]) < 0.5) delete catsMes[c]; } }
     return {
-      m: r.m, mg: r.mg, mc: r.mc, me: r.me, g: r.g, c: r.c, e: r.e, cats: r.cats,
+      m: r.m, mg: r.mg, mc: r.mc, me: r.me, g: r.g, c: r.c, e: r.e, cats: r.cats, catsMes, unico, unicos,
       gm, cm, em, tm: aParte ? gm : gm + cm,
       pessoas: r.mp ? r.pm / r.mp : 0, pessoasHoje: r.pu, porPessoa: r.pm ? (r.ep ?? r.e) / r.pm : 0,
     };
@@ -272,7 +305,7 @@
     const anos = k === "leg" ? meta().anos : [k];
     const um = (chave, meses) => {
       let soma = 0, n = 0;
-      for (const a of anos) { const r = p.per[a]; if (!r || !r[meses]) continue; soma += r[chave] / meta().salario_minimo[a]; n += r[meses]; }
+      for (const a of anos) { const r = p.per[a]; if (!r || !r[meses]) continue; soma += (r[chave] - (chave === "g" ? somaUnicos(p, a, r.cats) : 0)) / meta().salario_minimo[a]; n += r[meses]; }
       return n ? soma / n : 0;
     };
     if (campo === "g") return um("g", "mg");
@@ -1567,9 +1600,21 @@
           h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, "para o bolso")),
           h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))),
       h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
-      seloComp(r.tm, C.tm, `vs. mediana dos ${plural(C.g || grupo(p))}`));
+      seloComp(r.tm, C.tm, `vs. mediana dos ${plural(C.g || grupo(p))}`),
+      // ajuda de custo (paga de uma vez): fora desta média e da comparação, com o valor e o que a média seria com ela
+      r.unico ? h("p", { class: "resumo-unico" }, r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
+        h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
+        `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null);
     // à direita (no computador): a posição entre os colegas
     return h("div", { class: "conta__resumo" }, principal, pos ? h("div", { class: "conta__resumo-lado" }, blocoPosicao(p, k, pos)) : null);
+  }
+  // a linha do pagamento único, na lista: o que é, quando caiu e por que fica fora do "por mês" e da comparação
+  function textoUnico(p, k, r, v) {
+    if (v < 0) return "Valor negativo na fonte (devolução ou acerto de uma ajuda de custo anterior). É o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas.";
+    const c = comoUnico(v, mesDoUnico(p, k)).replace(/^./, (x) => x.toUpperCase());
+    if (!r.mg) return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês e da comparação com os colegas.`;
+    const pesa = r.mg <= 8 && /^\d{4}$/.test(k) ? `, bem mais do que pesaria em quem teve os 12 meses do ano (${reais(v / 12)})` : "";
+    return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas porque não se repete todo mês: dividido pelos ${r.mg} ${r.mg === 1 ? "mês" : "meses"} do período, somaria ${reais(v / r.mg)} por mês${pesa}.`;
   }
   function secContracheque(p, k) {
     const r = resumo(p, k), C = colegasDe(p, k), pos = posicao(p, k);
@@ -1652,10 +1697,11 @@
     if (!r) add(valores, h("p", { class: "discreto", style: "padding:16px 22px" }, "Sem pagamentos registrados neste período."));
     else {
       const txtMed = `mediana dos ${plural(C.g || grupo(p))}`;
-      const rateados = Object.keys(r.cats).filter((c) => meta().rateio[c]);
-      const linhas = (ordem) => ordem.filter((c) => r.cats[c]).map((c) => {
-        const valor = h("span", { class: "item__valor" }, `${meta().rateio[c] ? "≈ " : ""}${reais(porMes(r, c))}`);
-        const selo = seloComp(porMes(r, c), C.cat[c], `vs. ${txtMed}`);
+      const rm = { ...r, cats: r.catsMes }; // sem o pagamento único: ele vem à parte, depois do custo por mês
+      const rateados = Object.keys(rm.cats).filter((c) => meta().rateio[c]);
+      const linhas = (ordem) => ordem.filter((c) => rm.cats[c]).map((c) => {
+        const valor = h("span", { class: "item__valor" }, `${meta().rateio[c] ? "≈ " : ""}${reais(porMes(rm, c))}`);
+        const selo = seloComp(porMes(rm, c), C.cat[c], `vs. ${txtMed}`);
         const det = detalheCat(p, k, c);
         const explica = MEDIA_PAGA.has(c) ? h("span", { class: "item__detalhe" }, explicaMedia(p, r, c, k)) : null;
         if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, MEDIA_PAGA.has(c) ? nomeMedia(c) : nomeCat(c)), valor, explica, selo);
@@ -1687,6 +1733,10 @@
           h("strong", null, soBolso(p) ? "Total por mês" : "Custo por mês"),
           h("span", { class: "total__valor" }, reais(r.tm)),
           h("span", { class: "item__detalhe" }, leiG(p) ? "o salário oficial do cargo" : p.k === "t" ? "bruto, antes do abate-teto; as diárias ficam à parte" : soBolso(p) ? "tudo para o bolso" : `${reais(r.gm)} para o bolso + ${reais(r.cm)} em ${gastosNome(p).toLowerCase()}`)),
+        r.unico ? h("div", { class: "unico" },
+          titulo("Pago de uma vez, fora da média por mês", "unico"),
+          Object.entries(r.unicos).map(([c, v]) => h("div", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c)), h("span", { class: "item__valor" }, reais(v)),
+            h("span", { class: "item__detalhe" }, textoUnico(p, k, r, v))))) : null,
         r.em ? h("div", { class: "equipe-resumo" },
           titulo("À parte: equipe do gabinete (vai para outras pessoas)", "equipe"),
           h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
@@ -2074,7 +2124,8 @@
           h("div", { class: "acoes" },
             h("a", { href: urlDe(o.id), class: "pequeno", onclick: () => { S.origem = "comparar"; } }, `Ver o contracheque de ${o.n}`),
             h("button", { type: "button", class: "link-botao pequeno", onclick: () => { S.outro = null; render(); irPara("comparar"); } }, "Tirar da comparação")),
-          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa.") : null);
+          (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa.") : null,
+          r1.unico || r2.unico ? h("p", { class: "nota" }, "A ajuda de custo, paga de uma vez, fica fora de “Vai para o bolso” e de “Custo por mês”: aparece à parte, na página de cada um.") : null);
       }
     }
     return card;
@@ -3334,6 +3385,7 @@
         h("ul", { class: "lista nota" },
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
+          (R.casa === "d" || R.casa === "s") && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "A ajuda de custo, paga de uma vez (na posse, por exemplo), não entra no valor por mês: dividida por poucos meses, faria parecer mais caro quem teve menos meses no período. Ela aparece à parte, na página de cada pessoa.") : null,
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,
           R.casa === "p" ? h("li", null, `Prefeitura ${deCid(R.cid)}: prefeito, vice, secretários municipais${R.cid === SP ? " e subprefeitos" : ""}. Só o que recebem: a Prefeitura não publica os gastos por pessoa. Servidores cedidos por outro órgão ficam de fora.`) : null,
           R.casa === "v" ? h("li", null, `Vereadores ${deCid(R.cid)}: ${(infoG(G()) || {}).subsidio_folha ? "o salário vem da folha de pagamento da Câmara" : "o salário é o mesmo para todos; o que muda é quanto cada um usa da verba do gabinete"}. Suplentes entram pelos meses em que ocuparam o gabinete. Vereadores de cidades diferentes não se comparam aqui: cada Câmara tem as suas regras.`) : null,
@@ -3535,10 +3587,29 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe", cota: "Gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
+    // uma linha só em qualquer largura: o que não couber rola para o lado, com a borda esmaecida e (com mouse) uma seta no lado onde há mais
+    const caixa = nav.parentElement;
+    const atualizar = () => {
+      const sobra = nav.scrollWidth - nav.clientWidth, esq = nav.scrollLeft > 4, dir = nav.scrollLeft < sobra - 4;
+      const lados = [esq ? "esq" : "", dir ? "dir" : ""].filter(Boolean).join(" ");
+      if (lados) caixa.dataset.mais = lados; else delete caixa.dataset.mais;
+    };
+    nav.onscroll = atualizar;
+    const rolar = (sentido) => nav.scrollBy({ left: sentido * Math.max(160, nav.clientWidth * 0.7) });
+    const setas = caixa.querySelectorAll(".secoes__seta");
+    if (setas[0]) setas[0].onclick = () => rolar(-1);
+    if (setas[1]) setas[1].onclick = () => rolar(1);
+    if (!navSecoes.ligado) {
+      navSecoes.ligado = true;
+      window.addEventListener("resize", () => navSecoes.atualizar && navSecoes.atualizar());
+    }
+    navSecoes.atualizar = atualizar;
+    atualizar();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(atualizar);
   }
 
   // ================================================================== guia passo a passo
