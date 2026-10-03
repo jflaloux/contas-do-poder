@@ -96,10 +96,12 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
 - Assunto que pode virar notícia (dado novo, correção, achado nas folhas): pergunte ao Jean-François se quer que a
   `divulgacao` prepare algo.
 - Rascunho de e-mail da `divulgacao`: mostre o texto inteiro ao Jean-François, sem resumir.
-- Rascunhos no Gmail: `rotina/rascunhos_gmail.py` lê o `RASCUNHOS-DIVULGACAO.md` (cada bloco com a caixa ```email:
-  para, cc, assunto) e cria ou atualiza os rascunhos com De: contato@ e links diretos; nunca envia. Quem roda é o
-  Jean-François (a credencial do Google fica no Mac dele). Não grave rascunhos pela ferramenta de Gmail da sessão: ela
-  põe o remetente pessoal e troca os links por redirecionamentos do Google.
+- E-mails da divulgação: o `divulgacao` escreve no `RASCUNHOS-DIVULGACAO.md` (caixa ```email: para, cc, assunto,
+  a-partir-de, responde-a). Quem envia é o Jean-François, pelo botão Enviar do painel (http://localhost:4777), com a
+  confirmação numa janela do macOS; o envio sai pela conta do projeto (`rotina/enviar_gmail.py`) e fica em
+  `ENVIOS-CONTATO.jsonl` (fora do Git). Nenhum agente envia: a trava `.claude/painel/guarda.mjs` (hook) recusa
+  qualquer tentativa. Respostas recebidas: `rotina/caixa_gmail.py` copia a caixa para `CAIXA-CONTATO/` (fora do Git).
+  Não use a ferramenta de Gmail da sessão para rascunhos: ela põe o remetente pessoal e troca os links.
 - Peça o OK do Jean-François antes de: enviar qualquer coisa (e-mail, formulário, post: quem envia é ele), `git push`,
   mudança no Cloudflare ou no DNS, e qualquer nova exceção ao robots.txt.
 - No fim de um bloco de trabalho, peça a cada agente usado que guarde na memória dele o que aprendeu. Regra ou
