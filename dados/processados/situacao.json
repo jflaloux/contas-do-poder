@@ -1,18 +1,7 @@
 {
- "gerado_em": "2026-10-02T19:51:24",
+ "gerado_em": "2026-10-03T14:54:51",
  "ultimo_mes_fechado": 202609,
  "fontes": [
-  {
-   "fonte": "folhas/RR",
-   "situacao": "falhando",
-   "ultimo_mes": 202607,
-   "meses_atras": 2,
-   "ultimo_sucesso": null,
-   "onde": null,
-   "so_brasil": false,
-   "falha_desde": "2026-10-02T19:39:22",
-   "erro": "ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90)"
-  },
   {
    "fonte": "assembleias/ma",
    "situacao": "atrasada (fonte)",
@@ -580,6 +569,17 @@
    "ultimo_mes": 202609,
    "meses_atras": 0,
    "ultimo_sucesso": "2026-10-02T19:14:20",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "folhas/RR",
+   "situacao": "ok",
+   "ultimo_mes": 202607,
+   "meses_atras": 2,
+   "ultimo_sucesso": "2026-10-03T14:54:32",
    "onde": "brasil",
    "so_brasil": false,
    "falha_desde": null,

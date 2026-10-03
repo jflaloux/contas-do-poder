@@ -532,7 +532,7 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 | PE | Dados abertos, "Remuneração de servidores" | CSV mensal; a governadora é achada pelo nome (recebe como procuradora) |
 | PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses; exceção ao robots.txt) |
 | RO | API do Portal da Transparência | Por cargo e mês, com as rubricas; o 13º numa folha à parte |
-| RR | API do Portal da Transparência | Por nome e mês, com os lançamentos |
+| RR | API do Portal da Transparência | Por nome e mês, com os lançamentos. Em 02 e 03/10/2026 a API respondeu 504 por mais de um dia (a coleta falhou; o site manteve o último dado); voltou no dia 03 |
 | SC | Dados abertos, "Remuneração dos servidores" | CSV mensal só com o bruto; o Estado só mantém os meses recentes |
 | SP | Portal da Transparência, "Remuneração" | Arquivo do mês e série histórica (.rar, lida com `libarchive-c`) |
 

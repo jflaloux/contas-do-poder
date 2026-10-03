@@ -234,10 +234,11 @@
   "ultimo_sucesso": "2026-10-02T19:14:20"
  },
  "folhas/RR": {
-  "ultima_tentativa": "2026-10-02T19:39:22",
-  "falhas": 2,
+  "ultima_tentativa": "2026-10-03T14:54:32",
+  "falhas": 0,
   "ultimo_erro": "ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90)",
-  "ultima_falha": "2026-10-02T19:39:22"
+  "ultima_falha": "2026-10-02T19:39:22",
+  "ultimo_sucesso": "2026-10-03T14:54:32"
  },
  "folhas/RS": {
   "ultima_tentativa": "2026-10-02T15:57:05",

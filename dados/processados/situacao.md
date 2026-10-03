@@ -1,10 +1,9 @@
-# Situação das fontes (02/10/2026 19:51, rodada: brasil)
+# Situação das fontes (03/10/2026 14:54, rodada: brasil)
 
-Último mês fechado: 09/2026. 86 fontes: 77 ok, 8 com o atraso da própria fonte, 0 atrasadas, 1 falhando.
+Último mês fechado: 09/2026. 86 fontes: 78 ok, 8 com o atraso da própria fonte, 0 atrasadas, 0 falhando.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| folhas/RR | falhando | 07/2026 | — | — | ReadTimeout: HTTPSConnectionPool(host='api.transparencia.rr.gov.br', port=443): Read timed out. (read timeout=90) |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas |
 | folhas/MG | atrasada (fonte) | 03/2026 | 2026-10-02 | brasil | a Secretaria de Planejamento publica a folha com alguns meses de atraso |
@@ -57,6 +56,7 @@
 | folhas/PR | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/RN (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | folhas/RO | ok | 09/2026 | 2026-10-02 | brasil |  |
+| folhas/RR | ok | 07/2026 | 2026-10-03 | brasil |  |
 | folhas/RS | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/SC | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/SE (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
