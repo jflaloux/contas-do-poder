@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-03T18:32:42",
+ "gerado_em": "2026-10-03T19:37:25",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -36,28 +36,6 @@
    "erro": "a Secretaria de Planejamento publica a folha com alguns meses de atraso"
   },
   {
-   "fonte": "folhas/PA",
-   "situacao": "atrasada (fonte)",
-   "ultimo_mes": 202603,
-   "meses_atras": 6,
-   "ultimo_sucesso": "2026-10-02T15:46:57",
-   "onde": "brasil",
-   "so_brasil": true,
-   "falha_desde": null,
-   "erro": "desde abr/2026 a consulta não mostra quem tem mandato eletivo"
-  },
-  {
-   "fonte": "folhas/RJ",
-   "situacao": "atrasada (fonte)",
-   "ultimo_mes": 202603,
-   "meses_atras": 6,
-   "ultimo_sucesso": "2026-10-02T15:48:47",
-   "onde": "brasil",
-   "so_brasil": true,
-   "falha_desde": null,
-   "erro": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago"
-  },
-  {
    "fonte": "folhas/SP",
    "situacao": "atrasada (fonte)",
    "ultimo_mes": 202604,
@@ -69,17 +47,6 @@
    "erro": "o Estado publica a série histórica com alguns meses de atraso"
   },
   {
-   "fonte": "prefeituras/campo_grande",
-   "situacao": "atrasada (fonte)",
-   "ultimo_mes": 202602,
-   "meses_atras": 7,
-   "ultimo_sucesso": "2026-10-02T15:30:28",
-   "onde": "brasil",
-   "so_brasil": false,
-   "falha_desde": null,
-   "erro": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)"
-  },
-  {
    "fonte": "prefeituras/recife",
    "situacao": "atrasada (fonte)",
    "ultimo_mes": 202606,
@@ -89,6 +56,39 @@
    "so_brasil": false,
    "falha_desde": null,
    "erro": "o arquivo de 2026 no portal de dados abertos da Prefeitura vai até jun/2026 (atualizado pela última vez em 26/06/2026, conferido em 02/10/2026)"
+  },
+  {
+   "fonte": "folhas/PA",
+   "situacao": "congelada",
+   "ultimo_mes": 202603,
+   "meses_atras": 6,
+   "ultimo_sucesso": "2026-10-02T15:46:57",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": "desde abr/2026 a consulta pública da folha do Estado não mostra quem tem mandato eletivo"
+  },
+  {
+   "fonte": "folhas/RJ",
+   "situacao": "congelada",
+   "ultimo_mes": 202603,
+   "meses_atras": 6,
+   "ultimo_sucesso": "2026-10-02T15:48:47",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": "desde mar/2026 o governador em exercício é o presidente do Tribunal de Justiça, pago pelo Tribunal, e o cargo de vice está vago"
+  },
+  {
+   "fonte": "prefeituras/campo_grande",
+   "situacao": "congelada",
+   "ultimo_mes": 202602,
+   "meses_atras": 7,
+   "ultimo_sucesso": "2026-10-02T15:30:28",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": "a consulta da Prefeitura não traz a folha depois de fev/2026"
   },
   {
    "fonte": "assembleias/ac",
@@ -361,6 +361,17 @@
    "meses_atras": 1,
    "ultimo_sucesso": "2026-10-02T15:31:41",
    "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "federal/atividade",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": null,
+   "onde": null,
    "so_brasil": false,
    "falha_desde": null,
    "erro": null

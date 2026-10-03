@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-03T18:32:42-03:00",
+ "gerado_em": "2026-10-03T19:37:25-03:00",
  "semana": "2026-09-29",
  "anterior": null,
  "lugares": [
@@ -10,17 +10,18 @@
  "continua": [],
  "quebrou_e_voltou": [],
  "totais": {
-  "atrasada (fonte)": 8,
-  "ok": 86
+  "atrasada (fonte)": 5,
+  "congelada": 3,
+  "ok": 87
  },
  "historico": [
   {
    "semana": "2026-09-29",
-   "atualizado_em": "2026-10-03T18:32:42-03:00",
+   "atualizado_em": "2026-10-03T19:37:25-03:00",
    "lugares": [
     "brasil"
    ],
-   "fontes": 94,
+   "fontes": 95,
    "problemas": {},
    "teve_problema": [
     "assembleias/pb",

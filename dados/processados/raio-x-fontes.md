@@ -13,6 +13,12 @@ As 91 fontes de `site/dados/situacao.json`, uma por uma: como o robô lê, onde 
 
 ### As 5 mudanças que mais reduzem a manutenção
 
+Aprovadas e feitas em 03/10/2026: rodada do Brasil mensal, a partir da terceira terça-feira, pulando as fontes em dia
+(`rotina/semana-brasil.sh`, `coleta/onde.py`); folhas do PA e do RJ e Prefeitura de Campo Grande congeladas
+(`CONGELADAS` em `coleta/onde.py`); a regra da folha de governador no README e no mecanismo de congelar; plano de queda
+das 17 fontes de risco alto em `dados/referencia/plano-de-queda.json` e `pip install -r requirements.txt` no começo da
+rodada do Mac; reserva pelos Tribunais de Contas (`RESERVAS_TCE` em `coleta/situacao.py`).
+
 1. **Rodada do Brasil mensal e "pular quem está em dia".** Uma fonte que já tem o último mês fechado não tem nada novo até o mês seguinte fechar: pular essas fontes nas rodadas do meio do mês corta cerca de 3/4 das execuções (e das falhas passageiras a olhar). Com isso, a rodada do Mac (30 fontes só do Brasil) pode ser mensal: o Mac precisa estar ligado uma terça por mês, não toda semana. Exceção: as fontes que publicam mais de uma vez por mês (Câmara, Senado, CEAP de MS, SC e SP, TCE-PB) seguem semanais no GitHub.
 2. **Congelar o que a fonte parou de publicar**, com "dados até X" no site e uma conferência a cada 3 meses: folha do Pará (até mar/2026), folha do Rio de Janeiro (até mar/2026) e Prefeitura de Campo Grande (até fev/2026). Hoje esses robôs rodam toda semana sem trazer nada.
 3. **Governadores: a lei é o número, a folha é complemento.** O subsídio dos 27 já vem da lei; os 24 robôs de folha só acrescentam 13º, férias e abate-teto de 2 pessoas cada. Regra: folha de governador que quebrar e não se consertar em cerca de 1 hora fica congelada, sem prejuízo para a comparação entre estados, que usa a lei.

@@ -62,17 +62,41 @@ até `coleta/config.py` ser atualizado para a nova legislatura.
 ### Duas rodadas: nos EUA e no Brasil
 
 Vários portais de estados e capitais só abrem de dentro do Brasil, e o GitHub Actions roda nos EUA. Por isso há
-duas rodadas por semana:
+duas rodadas: a do GitHub, toda semana, e a do Brasil, uma vez por mês (desde 03/10/2026; antes era semanal).
 
 | Rodada | Onde | Quando | O que faz |
 |---|---|---|---|
-| Exterior | GitHub Actions | terça, 8h17 | Tudo o que abre de fora (`CONTAS_ONDE=exterior`) |
-| Brasil | Um computador no Brasil (`rotina/semana-brasil.sh`, pelo launchd do macOS) | terça, 13h07 (ou quando o computador estiver ligado; tenta de novo nos dias seguintes) | `python3 coletar.py brasil`: as fontes que só abrem do Brasil e as que falharam de fora nesta semana; refaz os arquivos do site a partir dos CSVs; commit só dos dados e push |
+| Exterior | GitHub Actions | toda terça, 8h17 | Tudo o que abre de fora (`CONTAS_ONDE=exterior`), menos as fontes congeladas |
+| Brasil | Um computador no Brasil (`rotina/semana-brasil.sh`, pelo launchd do macOS, que chama o script todo dia às 13h07) | uma vez por mês, a partir da terceira terça-feira (a primeira terça depois do dia 14), às 13h07; se o computador estiver desligado, no primeiro dia em que estiver ligado. Próximas: 20/10, 17/11 e 15/12/2026 | `pip install -r requirements.txt`; `python3 coletar.py brasil`: as fontes que só abrem do Brasil e as que falharam de fora, menos as congeladas e as que já estão em dia (o último mês fechado já está no site); refaz os arquivos do site a partir dos CSVs; commit só dos dados e push |
+
+A rodada do Brasil é mensal porque quase todas as fontes que só abrem do Brasil publicam uma vez por mês: com a
+terceira terça-feira, a folha do mês anterior já saiu na maioria delas, e o computador precisa estar ligado um dia por
+mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um mês).
+
+- **Fontes congeladas** (`CONGELADAS` em `coleta/onde.py`): a fonte parou de publicar o que o site mostra. O site fica
+  com o último dado, a página de atualização diz "Congelada: dados até ..." com o motivo, e o robô só tenta de novo a
+  cada 90 dias (se a fonte voltar, a situação avisa, e ela sai da lista à mão). Desde 03/10/2026: a folha do Pará (dados
+  até mar/2026: a consulta pública não mostra mais quem tem mandato eletivo), a folha do Rio de Janeiro (dados até
+  mar/2026: o governador em exercício é o presidente do Tribunal de Justiça, pago pelo Tribunal) e a Prefeitura de
+  Campo Grande (dados até fev/2026: a consulta não traz a folha depois disso).
+- **Folha de governador é complemento da lei**: o subsídio dos 27 governadores e vices vem da lei, e o site o mostra
+  sempre; a folha só acrescenta 13º, férias e abate-teto. Folha de governador que quebrar e cujo conserto passar de
+  cerca de 1 hora é congelada, e o site fica com o valor da lei.
+- **Plano de queda** (`dados/referencia/plano-de-queda.json`): o que fazer quando quebra cada uma das 17 fontes de
+  risco alto do raio-X (`dados/processados/raio-x-fontes.md`). A regra geral é a mesma: o robô que falha não apaga o
+  último dado bom, e o conserto só vale se couber em cerca de 1 hora; passou disso, a fonte é congelada. O relatório de
+  situação mostra o plano ao lado de cada fonte que falhar.
+- **Tribunal de Contas como reserva das capitais que ele cobre** (`RESERVAS_TCE` em `coleta/situacao.py`): Câmara e
+  Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara do Recife (TCE-PE) e Prefeitura de Vitória (TCE-ES),
+  as duas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
+  frente dela, a chave `reservas` de `site/dados/situacao.json` marca a reserva como ativa, e a página da cidade usa o
+  arquivo do tribunal, com o aviso pronto (`aviso`: no TCE-PE e no TCE-ES, que o valor é o total pago ao cargo, não o
+  salário de cada pessoa).
 
 - **Quem roda o quê** (`coleta/onde.py`): a lista `SO_BRASIL` e o histórico de cada fonte. Cada rodada anota, por
   fonte, a última tentativa, o último sucesso, as falhas seguidas e o erro, num arquivo só seu
   (`dados/processados/coletas_exterior.json` e `coletas_brasil.json`, para as duas não brigarem no Git). Uma fonte que
-  falha de fora passa sozinha para a rodada do Brasil na mesma semana; depois de 2 falhas de fora, o GitHub deixa de tentar (e tenta
+  falha de fora passa sozinha para a rodada do Brasil seguinte; depois de 2 falhas de fora, o GitHub deixa de tentar (e tenta
   de novo uma vez por mês).
 - **Situação das fontes** (`python3 coletar.py situacao`, no fim de cada rodada): `dados/processados/situacao.md`,
   com o último mês no site, a última coleta certa e onde, e o último erro de cada fonte. "falhando" = a última
@@ -823,7 +847,7 @@ vice), o total é o valor dela. Robôs `coleta/tce/es.py`, `pe.py` e `rj.py`, co
   vínculo baixados de novo; PE, Abreu e Lima e Afogados da Ingazeira contra a página do Tome Conta; RJ, contra a
   consulta da API por município.
 - **Onde roda**: as três fontes abriam de fora do Brasil no levantamento de 01/10/2026; rodam no GitHub Actions e, se
-  falharem de fora, a rodada do Brasil as pega na mesma semana.
+  falharem de fora, a rodada do Brasil seguinte (mensal) as pega.
 
 ## Judiciário
 

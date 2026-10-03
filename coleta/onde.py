@@ -13,8 +13,11 @@ quantas falhas seguidas e o último erro. É daí que sai o relatório de situa�
 Quem roda o quê:
 - exterior: tudo, menos as fontes de SO_BRASIL e as que falharam nas 2 últimas tentativas de fora e funcionam do
   Brasil (essas o exterior tenta de novo uma vez por mês, para ver se voltaram a abrir de fora);
-- brasil (python3 coletar.py brasil): as fontes de SO_BRASIL, as que falharam na última tentativa de fora e as que
-  nunca rodaram de fora. Assim, o que deixar de abrir no exterior passa sozinho para a rodada do Brasil na mesma semana.
+- brasil (python3 coletar.py brasil, uma vez por mês: ver rotina/semana-brasil.sh): as fontes de SO_BRASIL, as que
+  falharam na última tentativa de fora e as que nunca rodaram de fora, menos as que já estão em dia (o último mês
+  fechado já está no site: não há nada novo até o mês seguinte fechar). Assim, o que deixar de abrir no exterior passa
+  sozinho para a rodada do Brasil seguinte.
+- congeladas (CONGELADAS): nenhuma das duas rodadas, a não ser uma tentativa a cada 90 dias, para ver se a fonte voltou.
 
 O lugar vem da variável CONTAS_ONDE ("exterior" ou "brasil"); sem ela, é "exterior" dentro do GitHub Actions e
 "brasil" no resto (o computador no Brasil e o Cowork).
@@ -45,6 +48,24 @@ SO_BRASIL = {
     "judiciario": set(),  # as sete fontes abrem de fora (conferido em 02/10/2026)
     "federal": set(),
 }
+
+
+# Fontes congeladas: a fonte parou de publicar o que o site mostra. O site fica com o último dado ("dados até"), a
+# situação diz "congelada" com o motivo, e o robô só tenta de novo a cada REVER_CONGELADA_DIAS dias, para ver se voltou
+# (se voltar, a situação avisa, e a fonte sai daqui à mão).
+# Regra das folhas dos governadores: a folha é complemento do subsídio fixado em lei, que o site mostra sempre. Folha
+# que quebrar e cujo conserto passar de cerca de 1 hora entra aqui, e o site fica com o valor da lei.
+# O que fazer quando cada fonte de risco alto quebra: dados/referencia/plano-de-queda.json.
+CONGELADAS = {
+    "folhas/PA": {"desde": "2026-10-03", "ate": 202603,
+                  "motivo": "desde abr/2026 a consulta pública da folha do Estado não mostra quem tem mandato eletivo"},
+    "folhas/RJ": {"desde": "2026-10-03", "ate": 202603,
+                  "motivo": "desde mar/2026 o governador em exercício é o presidente do Tribunal de Justiça, pago pelo "
+                            "Tribunal, e o cargo de vice está vago"},
+    "prefeituras/campo_grande": {"desde": "2026-10-03", "ate": 202602,
+                                 "motivo": "a consulta da Prefeitura não traz a folha depois de fev/2026"},
+}
+REVER_CONGELADA_DIAS = 90
 
 
 def _arquivo(lugar):
@@ -86,11 +107,48 @@ def precisa_brasil(ch):
     return not fora or fora.get("falhas", 0) > 0
 
 
+def _ultima_tentativa(ch):
+    datas = [c.get("ultima_tentativa") for c in (ler(lugar).get(ch, {}) for lugar in LUGARES) if c.get("ultima_tentativa")]
+    return datetime.fromisoformat(max(datas)) if datas else None
+
+
+def congelada(ch):
+    """True se a fonte está congelada e não é a vez de tentar de novo (uma vez a cada REVER_CONGELADA_DIAS dias)."""
+    if ch not in CONGELADAS:
+        return False
+    ultima = _ultima_tentativa(ch)
+    return bool(ultima) and datetime.now() - ultima < timedelta(days=REVER_CONGELADA_DIAS)
+
+
+_meses_no_site = None
+
+
+def em_dia(ch):
+    """True se o último mês fechado já está no site para esta fonte (até o mês seguinte fechar, não há nada novo)."""
+    global _meses_no_site
+    if _meses_no_site is None:
+        from .situacao import _ultimos_meses
+        from .vereadores.comum import ultimo_mes_fechado
+        _meses_no_site = (_ultimos_meses(), ultimo_mes_fechado())
+    meses, fechado = _meses_no_site
+    return bool(meses.get(ch)) and meses[ch] >= fechado
+
+
 def pular(grupo, fonte):
     """True se esta rodada deve pular a fonte (e diz por quê no log)."""
     ch = chave(grupo, fonte)
+    if congelada(ch):
+        log(f"  {ch}: congelada ({CONGELADAS[ch]['motivo']}); tenta de novo a cada {REVER_CONGELADA_DIAS} dias")
+        return True
     if LUGAR == "brasil":
-        return SO_O_QUE_FALTA and not precisa_brasil(ch)
+        if not SO_O_QUE_FALTA:
+            return False
+        if not precisa_brasil(ch):
+            return True
+        if em_dia(ch):
+            log(f"  {ch}: já está em dia (o último mês fechado já está no site); fica para a rodada do mês que vem")
+            return True
+        return False
     if _so_brasil(ch):
         log(f"  {ch}: só abre do Brasil, fica para a rodada do Brasil")
         return True

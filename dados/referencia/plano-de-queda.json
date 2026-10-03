@@ -1,0 +1,74 @@
+{
+ "sobre": "O que fazer quando quebra cada fonte de risco alto do raio-X (dados/processados/raio-x-fontes.md). Regra geral: o robô que falha não apaga o último dado bom; conserto só se couber em cerca de 1 hora; passou disso, a fonte vai para onde.CONGELADAS (o site mostra 'dados até' e, onde houver, o valor da lei ou a reserva). Folha de governador: a lei é o número, a folha é complemento. O relatório de situação (dados/processados/situacao.md) mostra o plano ao lado de cada fonte que falhar.",
+ "atualizado_em": "2026-10-03",
+ "fontes": [
+  {
+   "fonte": "judiciario/cnj",
+   "se_quebrar": "sem reserva (o DadosJusBr não bate com a página do CNJ); conferir se só mudou o formato dos números; passou de 1 hora, congelar com os meses já lidos"
+  },
+  {
+   "fonte": "folhas/MA",
+   "se_quebrar": "o subsídio do governador e do vice segue pela lei; passou de 1 hora, congelar a folha"
+  },
+  {
+   "fonte": "folhas/PA",
+   "se_quebrar": "congelada desde 03/10/2026 (dados até mar/2026); vale a lei"
+  },
+  {
+   "fonte": "folhas/RJ",
+   "se_quebrar": "congelada desde 03/10/2026 (dados até mar/2026); vale a lei; o governador em exercício recebe pelo Tribunal de Justiça (folha do TJ-RJ no DadosJusBr, ainda não usada)"
+  },
+  {
+   "fonte": "folhas/RN",
+   "se_quebrar": "se for limite de pedidos (429), aumentar a pausa uma vez; senão, o subsídio segue pela lei; passou de 1 hora, congelar a folha"
+  },
+  {
+   "fonte": "assembleias/al",
+   "se_quebrar": "usar o subsídio da lei, como nas Assembleias que não publicam a folha; passou de 1 hora, congelar a folha"
+  },
+  {
+   "fonte": "assembleias/ap",
+   "se_quebrar": "congelar só a parte que quebrou (CEAP ou folha); se for a folha, usar o subsídio da lei"
+  },
+  {
+   "fonte": "assembleias/df",
+   "se_quebrar": "a folha vem do CKAN (arquivo aberto, mais estável); se quebrar o PDF da verba, congelar só a verba"
+  },
+  {
+   "fonte": "assembleias/ma",
+   "se_quebrar": "a verba fica até o último mês lido (o subsídio já é o da lei); passou de 1 hora, congelar a verba"
+  },
+  {
+   "fonte": "assembleias/pa",
+   "se_quebrar": "congelar só a parte que quebrou (painel da verba, equipe ou folha); se for a folha, usar o subsídio da lei"
+  },
+  {
+   "fonte": "assembleias/rr",
+   "se_quebrar": "a verba fica até o último mês lido (o subsídio já é o da lei desde out/2025); passou de 1 hora, congelar a verba"
+  },
+  {
+   "fonte": "assembleias/rs",
+   "se_quebrar": "congelar só a parte que quebrou (cotas ou folha); se for a folha, usar o subsídio da lei"
+  },
+  {
+   "fonte": "vereadores/maceio",
+   "se_quebrar": "usar o subsídio fixado em lei; a VIAP e a equipe ficam até o último mês lido; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/belo_horizonte",
+   "se_quebrar": "o subsídio e o auxílio-alimentação já são os da lei; o custeio e a presença ficam até o último mês lido; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/recife",
+   "se_quebrar": "a folha tem reserva no TCE-PE (valor por cargo, automática pela situação); a verba fica até o último mês lido"
+  },
+  {
+   "fonte": "vereadores/rio_de_janeiro",
+   "se_quebrar": "o subsídio segue pelo valor dos contracheques (R$ 26.080,98); o resto fica até o último mês lido; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "prefeituras/campo_grande",
+   "se_quebrar": "congelada desde 03/10/2026 (dados até fev/2026)"
+  }
+ ]
+}

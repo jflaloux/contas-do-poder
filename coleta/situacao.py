@@ -27,14 +27,11 @@ SITE = RAIZ / "site" / "dados"
 ATRASOS_CONHECIDOS = {
     "folhas/MG": "a Secretaria de Planejamento publica a folha com alguns meses de atraso",
     "folhas/SP": "o Estado publica a série histórica com alguns meses de atraso",
-    "folhas/PA": "desde abr/2026 a consulta não mostra quem tem mandato eletivo",
-    "folhas/RJ": "desde mar/2026 o governador em exercício é pago pelo Tribunal de Justiça, e o cargo de vice está vago",
     "assembleias/rj": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas",
     "assembleias/ma": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados",
     "judiciario/stf": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/stm": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/tse": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
-    "prefeituras/campo_grande": "a consulta da Prefeitura não traz a folha depois de fev/2026 (conferido em 01/10/2026)",
     "prefeituras/recife": "o arquivo de 2026 no portal de dados abertos da Prefeitura vai até jun/2026 (atualizado pela última vez em "
                           "26/06/2026, conferido em 02/10/2026)",
 }
@@ -114,9 +111,14 @@ def executar():
         fora_do_site = um is None and ch.split("/")[0] in NO_SITE
         falhando = falhando or fora_do_site
         atraso = _meses_entre(um, fechado) if um else None
-        situacao = ("falhando" if falhando else "atrasada (fonte)" if atraso is not None and atraso >= 3 and ch in ATRASOS_CONHECIDOS
+        situacao = ("congelada" if ch in onde.CONGELADAS else
+                    "falhando" if falhando else "atrasada (fonte)" if atraso is not None and atraso >= 3 and ch in ATRASOS_CONHECIDOS
                     else "atrasada" if atraso is not None and atraso >= 3 else "ok")
         erro = next((c.get("ultimo_erro") for lugar, c in tent.items() if c.get("falhas", 0) > 0), None)
+        if situacao == "congelada":
+            cg = onde.CONGELADAS[ch]
+            erro = cg["motivo"] + (f" (ATENÇÃO: a última coleta trouxe mês depois de {cg['ate']}: a fonte pode ter voltado; "
+                                   "tirar de onde.CONGELADAS)" if um and um > cg["ate"] else "")
         if fora_do_site and not erro:
             erro = "não entrou no arquivo do site (a montagem falhou: ver o log da rodada)"
         falhas = [c.get("primeira_falha") or c.get("ultima_falha") for c in tent.values() if c.get("falhas", 0) > 0]
@@ -124,7 +126,7 @@ def executar():
                        "ultimo_sucesso": ultimo_ok[0] if ultimo_ok else None, "onde": ultimo_ok[1] if ultimo_ok else None,
                        "so_brasil": onde._so_brasil(ch), "falha_desde": min([f for f in falhas if f], default=None) if falhando else None,
                        "erro": erro or (ATRASOS_CONHECIDOS.get(ch) if situacao == "atrasada (fonte)" else None)})
-    ordem = {"falhando": 0, "atrasada": 1, "atrasada (fonte)": 2, "ok": 3}
+    ordem = {"falhando": 0, "atrasada": 1, "atrasada (fonte)": 2, "congelada": 3, "ok": 4}
     linhas.sort(key=lambda l: (ordem[l["situacao"]], l["fonte"]))
     problemas = [l for l in linhas if l["situacao"] in ("falhando", "atrasada")]
     SAIDA_JSON.write_text(json.dumps({"gerado_em": datetime.now().isoformat(timespec="seconds"), "ultimo_mes_fechado": fechado,
@@ -134,12 +136,15 @@ def executar():
     md = [f"# Situação das fontes ({datetime.now():%d/%m/%Y %H:%M}, rodada: {onde.LUGAR})", "",
           f"Último mês fechado: {fmt(fechado)}. {len(linhas)} fontes: {sum(l['situacao'] == 'ok' for l in linhas)} ok, "
           f"{sum(l['situacao'] == 'atrasada (fonte)' for l in linhas)} com o atraso da própria fonte, "
-          f"{sum(l['situacao'] == 'atrasada' for l in linhas)} atrasadas, {sum(l['situacao'] == 'falhando' for l in linhas)} falhando.", "",
-          *_md_rodada(resumo),
+          f"{sum(l['situacao'] == 'atrasada' for l in linhas)} atrasadas, {sum(l['situacao'] == 'falhando' for l in linhas)} falhando, "
+          f"{sum(l['situacao'] == 'congelada' for l in linhas)} congeladas.", "",
+          *_md_rodada(resumo), *_md_reservas(linhas),
           "| Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |", "|---|---|---|---|---|---|"]
+    planos = _planos()
     for l in linhas:
+        plano = f" Plano de queda: {planos[l['fonte']]}" if l["situacao"] in ("falhando", "atrasada") and l["fonte"] in planos else ""
         md.append(f"| {l['fonte']}{' (só do Brasil)' if l['so_brasil'] else ''} | {l['situacao']} | {fmt(l['ultimo_mes'])} | "
-                  f"{(l['ultimo_sucesso'] or '—')[:10]} | {l['onde'] or '—'} | {(l['erro'] or '').replace('|', '/')[:120]} |")
+                  f"{(l['ultimo_sucesso'] or '—')[:10]} | {l['onde'] or '—'} | {(l['erro'] or '').replace('|', '/')[:120]}{plano.replace('|', '/')} |")
     SAIDA_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
     publicar(linhas, fechado, resumo)
     log(f"Situação das fontes: {len(linhas)} fontes, {len(problemas)} com problema (dados/processados/situacao.md)")
@@ -270,6 +275,61 @@ def _nomes_e_links():
     return saida
 
 
+PLANOS = RAIZ / "dados" / "referencia" / "plano-de-queda.json"
+
+
+def _planos():
+    """{fonte: o que fazer quando quebra}, de dados/referencia/plano-de-queda.json (as fontes de risco alto)."""
+    try:
+        return {p["fonte"]: p["se_quebrar"] for p in json.loads(PLANOS.read_text(encoding="utf-8"))["fontes"]}
+    except (OSError, ValueError, KeyError):
+        return {}
+
+
+# Tribunal de Contas como reserva das capitais que ele cobre: quando a fonte própria falha, ou quando o tribunal tem 2
+# meses ou mais à frente dela, a página da cidade usa o arquivo do tribunal ("reservas" em site/dados/situacao.json).
+# "pessoa": o valor de cada pessoa (TCE-CE); "cargo": o total pago ao cargo (TCE-PE, TCE-ES), que não é o salário de cada um.
+RESERVAS_TCE = {
+    "vereadores/fortaleza": {"tribunal": "TCE-CE", "arquivo": "interior/ce.json", "cid": "2304400", "tipo": "pessoa", "parte": "camara"},
+    "prefeituras/fortaleza": {"tribunal": "TCE-CE", "arquivo": "interior/ce.json", "cid": "2304400", "tipo": "pessoa", "parte": "prefeitura"},
+    "vereadores/recife": {"tribunal": "TCE-PE", "arquivo": "interior-cargo/pe.json", "cid": "2611606", "tipo": "cargo", "parte": "camara"},
+    "prefeituras/vitoria": {"tribunal": "TCE-ES", "arquivo": "interior-cargo/es.json", "cid": "3205309", "tipo": "cargo", "parte": "prefeitura"},
+}
+AVISO_RESERVA = {
+    "pessoa": "A fonte própria não está em dia: estes valores são os que a {casa} informou ao {tribunal}, pessoa por pessoa.",
+    "cargo": "A fonte própria não está em dia: estes valores são o total pago ao cargo, como a {casa} informou ao {tribunal}; "
+             "não é o salário de cada pessoa.",
+}
+
+
+def reservas_tce(linhas):
+    """{fonte: {tribunal, arquivo, cid, tipo, parte, ativa, motivo, ate, aviso}} das capitais com reserva no tribunal."""
+    por_fonte = {l["fonte"]: l for l in linhas}
+    saida = {}
+    for ch, r in RESERVAS_TCE.items():
+        l = por_fonte.get(ch, {})
+        cidade = _ler(r["arquivo"]).get("m", {}).get(r["cid"], {})
+        ate = cidade.get("uc" if r["parte"] == "camara" else "up")
+        proprio = l.get("ultimo_mes")
+        if l.get("situacao") == "falhando":
+            motivo = "a coleta da fonte própria falhou"
+        elif ate and (not proprio or _meses_entre(proprio, ate) >= 2):
+            motivo = "o tribunal tem meses mais recentes que a fonte própria"
+        else:
+            motivo = None
+        casa = "Câmara Municipal" if r["parte"] == "camara" else "Prefeitura"
+        saida[ch] = {**r, "ativa": bool(motivo and ate), "motivo": motivo, "ate": ate,
+                     "aviso": AVISO_RESERVA[r["tipo"]].format(casa=casa, tribunal=r["tribunal"])}
+    return saida
+
+
+def _md_reservas(linhas):
+    ativas = {k: v for k, v in reservas_tce(linhas).items() if v["ativa"]}
+    if not ativas:
+        return []
+    return ["Reserva pelo Tribunal de Contas em uso: " + ", ".join(f"{k} ({v['tribunal']}, {v['motivo']})" for k, v in ativas.items()) + ".", ""]
+
+
 def publicar(linhas, fechado, resumo=None):
     """site/dados/situacao.json, para a página pública "frescor dos dados": de cada fonte, o nome, o grupo, o link oficial,
     o último mês com dados no site, a data da última coleta certa e a situação em palavras neutras. Nada interno: sem a
@@ -289,6 +349,10 @@ def publicar(linhas, fechado, resumo=None):
         elif s == "atrasada (fonte)":
             motivo = ATRASOS_CONHECIDOS[l["fonte"]]
             sit, texto = "atraso_fonte", f"Atraso da própria fonte: {motivo[0].lower() + motivo[1:]}."
+        elif s == "congelada":
+            cg = onde.CONGELADAS[l["fonte"]]
+            sit, texto = "congelada", (f"Congelada: dados até {fmt_mes(cg['ate'])}. {cg['motivo'][0].upper() + cg['motivo'][1:]}. "
+                                       "O site mostra o último dado publicado; a coleta tenta de novo a cada três meses.")
         elif s == "atrasada":
             sit, texto = "atrasada", f"Os dados vão até {fmt_mes(l['ultimo_mes'])}, {l['meses_atras']} meses antes do último mês fechado."
         else:
@@ -300,8 +364,9 @@ def publicar(linhas, fechado, resumo=None):
     fontes.sort(key=lambda f: (ordem.get(f["grupo"], 99), f["uf"] or "", f["nome"]))
     dados = {"gerado_em": datetime.now(FUSO).isoformat(timespec="seconds"), "ultimo_mes_fechado": fechado,
              "grupos": [{"id": g, "nome": n} for g, n in GRUPOS if any(f["grupo"] == g for f in fontes)],
-             "situacoes": {"em_dia": "Em dia", "atraso_fonte": "Atraso da própria fonte", "atrasada": "Atrasada", "falhou": "A coleta falhou"},
-             "fontes": fontes}
+             "situacoes": {"em_dia": "Em dia", "atraso_fonte": "Atraso da própria fonte", "atrasada": "Atrasada", "falhou": "A coleta falhou",
+                           "congelada": "Congelada"},
+             "fontes": fontes, "reservas": reservas_tce(linhas)}
     if resumo:
         ids = {f["id"] for f in fontes}
         dados["rodada"] = {"semana": resumo["semana"], "anterior": resumo["anterior"],

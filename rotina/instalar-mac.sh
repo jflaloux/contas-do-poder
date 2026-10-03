@@ -1,7 +1,8 @@
 #!/bin/bash
-# Instala a rodada semanal do Brasil num computador com macOS (uma vez só): o ambiente Python do projeto (.venv) e um agendamento do
-# launchd que chama rotina/semana-brasil.sh todo dia às 13h07 (ele só trabalha uma vez por semana, depois da rodada do
-# GitHub de terça). Se o Mac estiver dormindo nessa hora, o launchd roda quando ele acordar.
+# Instala a rodada mensal do Brasil num computador com macOS (uma vez só): o ambiente Python do projeto (.venv) e um agendamento do
+# launchd que chama rotina/semana-brasil.sh todo dia às 13h07 (ele só trabalha uma vez por mês, a partir da terceira
+# terça-feira do mês, depois da rodada do GitHub daquela manhã). Se o Mac estiver dormindo nessa hora, o launchd roda
+# quando ele acordar.
 #
 # Uso:          bash rotina/instalar-mac.sh
 # Rodar agora:  bash rotina/semana-brasil.sh --agora
@@ -39,5 +40,5 @@ cat > "$PLIST" <<PLISTEOF
 PLISTEOF
 launchctl bootout "gui/$(id -u)/$ROTULO" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PLIST"
-echo "Instalado: todo dia às 13h07 o Mac confere se já rodou nesta semana."
+echo "Instalado: todo dia às 13h07 o Mac confere se já rodou neste mês (a rodada é a partir da terceira terça-feira)."
 echo "Para rodar agora: bash rotina/semana-brasil.sh --agora"

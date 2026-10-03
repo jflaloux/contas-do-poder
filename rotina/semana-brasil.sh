@@ -1,18 +1,20 @@
 #!/bin/bash
-# Rodada semanal do Brasil: roda num computador no Brasil, com macOS (launchd, ver rotina/instalar-mac.sh) e pega as fontes que só
-# abrem de dentro do Brasil, depois da rodada do GitHub Actions (terça de manhã, nos EUA).
+# Rodada mensal do Brasil: roda num computador no Brasil, com macOS (launchd, ver rotina/instalar-mac.sh) e pega as fontes que só
+# abrem de dentro do Brasil (e as que falharam de fora), depois da rodada do GitHub Actions (semanal, terça de manhã, nos EUA).
 #
-# O launchd chama este script todo dia às 13h07; ele só trabalha uma vez por semana, depois da rodada do GitHub de
-# terça, e tenta de novo nos dias seguintes se o Mac estava desligado ou se algo deu errado.
+# O launchd chama este script todo dia às 13h07; ele só trabalha uma vez por mês, a partir da terceira terça-feira (a
+# primeira terça depois do dia 14, às 11h, depois da rodada do GitHub daquela manhã: a folha do mês anterior já saiu na
+# maioria das fontes), e tenta de novo nos dias seguintes se o Mac estava desligado ou se algo deu errado.
 #
 #   1. confere que não há mudança sem commit nos arquivos de dados (se houver, alguém está trabalhando: tenta amanhã);
-#   2. git pull (traz o que o GitHub coletou);
-#   3. python coletar.py brasil (coleta/onde.py diz o que rodar; os arquivos do site são refeitos a partir dos CSVs);
+#   2. git pull (traz o que o GitHub coletou) e instala o que faltar do requirements.txt no .venv;
+#   3. python coletar.py brasil (coleta/onde.py diz o que rodar: pula as fontes congeladas e as que já estão em dia;
+#      os arquivos do site são refeitos a partir dos CSVs);
 #   4. commit só dos dados e push. Se o push conflitar com outra rodada, refaz os arquivos do site e tenta de novo.
 #   5. avisa no Mac (Central de Notificações) o resultado: primeiro o que quebrou desde a rodada anterior
 #      (dados/processados/rodada-resumo.json), depois as fontes com problema (dados/processados/situacao.md).
 #
-# Uso à mão: rotina/semana-brasil.sh --agora   (ignora o "uma vez por semana")
+# Uso à mão: rotina/semana-brasil.sh --agora   (ignora o "uma vez por mês")
 #            rotina/semana-brasil.sh --sem-push (faz o commit, mas não envia)
 set -uo pipefail
 
@@ -35,19 +37,25 @@ echo "=== $(date '+%d/%m/%Y %H:%M') ==="
 AGORA=0; PUSH=1
 for a in "$@"; do [ "$a" = "--agora" ] && AGORA=1; [ "$a" = "--sem-push" ] && PUSH=0; done
 
-# uma vez por semana: depois da terça às 11h (a rodada do GitHub começa às 8h17 e leva até ~1h30)
-if [ "$AGORA" = 0 ] && [ -f "$ESTADO/ultima-rodada" ]; then
+# uma vez por mês: a partir da terceira terça-feira (a primeira terça depois do dia 14) às 11h (a rodada do GitHub
+# começa às 8h17 e leva até ~1h30)
+if [ "$AGORA" = 0 ]; then
   if ! "$PY" - "$ESTADO/ultima-rodada" <<'PYEOF'
-import sys
+import os, sys
 from datetime import datetime, timedelta
-ultima = datetime.fromisoformat(open(sys.argv[1]).read().strip())
+
+def terca(ano, mes):
+    d = datetime(ano, mes, 15, 11)
+    return d + timedelta(days=(1 - d.weekday()) % 7)
+
 agora = datetime.now()
-terca = (agora - timedelta(days=(agora.weekday() - 1) % 7)).replace(hour=11, minute=0, second=0, microsecond=0)
-if terca > agora:
-    terca -= timedelta(days=7)
-sys.exit(0 if ultima < terca else 1)
+vez = terca(agora.year, agora.month)
+if vez > agora:  # a deste mês ainda não chegou: vale a do mês passado
+    vez = terca(agora.year - (agora.month == 1), 12 if agora.month == 1 else agora.month - 1)
+ultima = datetime.fromisoformat(open(sys.argv[1]).read().strip()) if os.path.exists(sys.argv[1]) else datetime(2000, 1, 1)
+sys.exit(0 if ultima < vez else 1)
 PYEOF
-  then echo "Já rodou nesta semana."; exit 0; fi
+  then echo "Já rodou neste mês (a próxima é a partir da terceira terça-feira do mês que vem)."; exit 0; fi
 fi
 
 if [ -f .git/index.lock ] || [ -n "$(git status --porcelain --untracked-files=no -- "${DADOS[@]}" coleta coletar.py)" ]; then
@@ -62,6 +70,8 @@ if [ "$ESPERANDO" -gt 0 ] && [ "$PUSH" = 1 ]; then
   PUSH=0; echo "$ESPERANDO commits esperando o push: a rodada faz o commit, mas não envia."
 fi
 git pull --rebase --quiet || { git rebase --abort 2>/dev/null; avisar "Rodada parou" "git pull falhou; veja $LOG"; exit 1; }
+# o mesmo ambiente das duas rodadas: o que faltar do requirements.txt (em 02/10/2026 uma fonte falhou só por isso)
+"$REPO/.venv/bin/pip" install --quiet --disable-pip-version-check -r requirements.txt || avisar "Aviso" "pip install falhou; a rodada segue; veja $LOG"
 
 "$PY" coletar.py brasil
 STATUS=$?
@@ -103,7 +113,7 @@ r = json.load(open("dados/processados/rodada-resumo.json"))
 nomes = lambda l: ", ".join(i["fonte"] for i in l[:5])
 q, v, c = r["quebrou"], r["voltou"], r["continua"]
 if q:
-    print(f"Rodada feita: {len(q)} quebraram desde a semana passada|{nomes(q)}")
+    print(f"Rodada feita: {len(q)} quebraram desde a rodada anterior|{nomes(q)}")
 elif r["anterior"] and c:
     print(f"Rodada feita: nada quebrou de novo, {len(c)} continuam com problema|{nomes(c)}")
 elif v:
