@@ -111,7 +111,8 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
 - Commits com a identidade `Jean-François Laloux <jeanfrancois@laloux.me>`. Quem faz o `git push` é o Jean-François.
 - Cada push publica o site no Cloudflare Pages (build `node publicacao/gerar.mjs`, pasta `publicar`).
 - Mudança de DNS ou de configuração no Cloudflare: só com o OK dele.
-- Contato público: contato@contasdopoder.com (Cloudflare Email Routing, chega na caixa dele).
+- Contato público: contato@contasdopoder.com, caixa própria do projeto no Google Workspace (desde 03/10/2026; MX, SPF,
+  DKIM e DMARC no DNS do Cloudflare). Os rascunhos de e-mail são criados nessa conta, e quem envia é o Jean-François.
 
 ## Como acrescentar
 
