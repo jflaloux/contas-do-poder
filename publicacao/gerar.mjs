@@ -265,9 +265,9 @@ function pagina(caminho, titulo, descricao, corpo, { extras = [], carregando = t
   }
   return html;
 }
-const resumoHTML = (rotulo, nome, texto) =>
+const resumoHTML = (rotulo, nome, texto, extra = "") =>
   `<article class="cartao conta"><div class="conta__topo"><div><p class="rotulo">${esc(rotulo)}</p><h1 class="conta__nome">${esc(nome)}</h1></div></div>`
-  + `<p class="conta__texto">${esc(texto)}</p></article>`;
+  + `<p class="conta__texto">${esc(texto)}</p>${extra}</article>`;
 
 const paginas = []; // [caminho, html]
 
@@ -403,6 +403,34 @@ function vereadorInterior(cod, uf) {
   const agora = c.v.filter((q) => q.x);
   return { med: medianaN(agora.map(tipico)), n: agora.length, tribunal: M.tribunal, prefeitura: !(PRE.meta.cidades || {})[cod] && (c.pf || []).some((q) => q.x) };
 }
+// O parágrafo em destaque da página da cidade (o mesmo texto do app.js, secCidade): vai pronto no HTML, porque é o maior
+// bloco de texto da página. Se ele só chegasse com o app.js (a página espera uns 600 KB de dados), o LCP (o momento em que
+// a parte principal aparece) passaria da primeira pintura, ~0,8 s, para ~4,7 s no celular com rede lenta. O teste do site
+// confere que o texto pronto e o do app.js são iguais.
+const FAIXAS = (MUN.meta || {}).faixas_teto || [];
+const faixaDe = (pop) => FAIXAS.findIndex(([lim]) => lim === null || pop <= lim);
+const porHabMes = (custo, pop) => custo / pop / 12;
+const reaisC = (v) => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" }).replace(/ /g, " ");
+const nomeFaixa = (i) => {
+  const ant = i ? FAIXAS[i - 1][0] : 0, lim = FAIXAS[i][0];
+  const num = (v) => v.toLocaleString("pt-BR", { maximumFractionDigits: 0 });
+  return lim === null ? `mais de ${num(ant)} habitantes` : i === 0 ? `até ${num(lim)} habitantes` : `entre ${num(ant + 1)} e ${num(lim)} habitantes`;
+};
+const medianaCid = (xs) => medianaN(xs);
+const medFaixa = FAIXAS.map((_, i) => medianaCid(MUN.m.filter((r) => r[6] > 0 && r[3] > 0 && faixaDe(r[3]) === i).map((r) => porHabMes(r[6], r[3]))));
+const temCustoCid = (r) => r[6] > 0 && r[3] > 0 && !(porHabMes(r[6], r[3]) < 0.3 * medFaixa[faixaDe(r[3])]); // sem o "suspeito" do app.js
+const valoresFaixa = FAIXAS.map((_, i) => MUN.m.filter((r) => temCustoCid(r) && faixaDe(r[3]) === i).map((r) => porHabMes(r[6], r[3])));
+function destaqueCidade(cod, n, pop, custo) {
+  if (!FAIXAS.length || !(custo > 0 && pop > 0) || !temCustoCid([cod, n, "", pop, 0, 0, custo])) return "";
+  const faixa = faixaDe(pop), vs = valoresFaixa[faixa], meu = porHabMes(custo, pop);
+  if (vs.length <= 1) return "";
+  const outras = Math.max(1, vs.length - 1);
+  let abaixo = 0, acima = 0;
+  for (const v of vs) { if (v < meu) abaixo++; else if (v > meu) acima++; }
+  const pct = Math.floor((abaixo / outras) * 100), pctMais = Math.floor((acima / outras) * 100);
+  const texto = `Por habitante, a Câmara ${deCidade(cod, n)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(medianaCid(vs))} por habitante, por mês.`;
+  return `<div class="cidade__corpo"><p class="destaque">${esc(texto)}</p></div>`;
+}
 const vistos = new Set();
 for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
   const caminho = `cidade/${slugTxt(n)}-${uf.toLowerCase()}`;
@@ -418,7 +446,7 @@ for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
     + (vi && vi.med ? ` Um vereador recebe ${reais(vi.med)} por mês (valor típico, bruto, na folha que a Câmara manda ao ${vi.tribunal}).` : "")
     + ` Veja o teto do salário do vereador${extras.length ? `, ${extras.join(" e ")}` : ""} e compare com as outras cidades.`;
   const titulo = `Câmara Municipal ${de} (${uf}): quanto custa | Contas do Poder`;
-  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto))]);
+  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto, destaqueCidade(cod, n, pop, custo)))]);
 }
 
 // ------------------------------------------------------------------ correções (/correcoes, de site/dados/correcoes.json)

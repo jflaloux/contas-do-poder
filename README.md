@@ -145,6 +145,16 @@ uma fonte do sistema ajustada às medidas dela (`Barlow Reserva` no `estilo.css`
 primeira pintura (`aoRedimensionar` no `app.js`). A lista das 5.569 cidades (`municipios.json`) só é baixada nas páginas que
 mostram câmaras municipais (a inicial e a de cada cidade) ou quando a pessoa toca no campo de busca.
 
+**Página de cidade (desempenho).** O gráfico de pontos (`graficoPontos`, onde cada colega é um ponto) desenha todos os pontos
+num único `<path>` (um círculo por subcaminho, no mesmo sentido: onde se sobrepõem, a mancha fica de uma cor só), e não um
+`<circle>` por pessoa: nas 2.376 cidades de 10 a 50 mil habitantes eram milhares de elementos. O texto alternativo
+(`aria-label`), a dica ao passar o ponteiro e o clique continuam iguais. O parágrafo em destaque ("Por habitante, a Câmara
+custa mais/menos que X% das outras cidades...") já vem no HTML (`destaqueCidade`, no `gerar.mjs`, com o mesmo texto do
+`secCidade`): é o maior bloco de texto da página, e, se só chegasse com o `app.js` (que espera ~600 KB de dados), o LCP
+passaria da primeira pintura para o fim do carregamento. O teste do site confere que o texto pronto e o do `app.js` são
+iguais. Medida no celular simulado (1,6 Mbps, 150 ms, CPU 4x): cidade pequena, LCP de 4,8 s para 0,8 s, nós do DOM de 3.158 para
+800 e TBT de 29 para 19 ms; cidade média, LCP de 4,8 s para 0,84 s (a capital já era 0,84 s).
+
 ## Ver o site no seu computador
 
 ```bash

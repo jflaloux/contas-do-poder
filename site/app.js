@@ -710,8 +710,13 @@
         tx.textContent = textos[i]; svg.append(tx);
       });
       const pos = pares.map((p) => { const d = pilha.get(p.id); return { ...p, cx: d.cx, cy: meio + d.k * passoY }; });
+      // todos os pontos num único <path> (um círculo por subcaminho, no mesmo sentido: onde se sobrepõem, a mancha fica de uma
+      // cor só, como o grupo com opacidade fazia): 1 elemento no lugar de milhares (as 2.376 cidades de 10 a 50 mil habitantes)
       const grupo = s("g", { class: "pontos" });
-      for (const p of pos) if (p.id !== euId) grupo.append(s("circle", { class: "ponto", cx: p.cx, cy: p.cy, r: raio }));
+      const diam = raio * 2;
+      let tracado = "";
+      for (const p of pos) if (p.id !== euId) tracado += `M${(p.cx + raio).toFixed(1)} ${p.cy.toFixed(1)}a${raio} ${raio} 0 1 0 ${-diam} 0a${raio} ${raio} 0 1 0 ${diam} 0`;
+      grupo.append(s("path", { class: "ponto", d: tracado }));
       svg.append(grupo);
       // a mediana: linha tracejada, com o nome embaixo do nome da pessoa
       const med = mediana(vs);

@@ -3,8 +3,13 @@
      Para refazer: abra este arquivo no navegador, deixe a área .og com 1200×630 e salve como PNG (por exemplo, com o
      Playwright: page.locator(".og").screenshot()). Depois, reduza para 128 cores (o PNG cai de ~57 KB para ~22 KB). -->
 <html lang="pt-BR"><head><meta charset="utf-8"><title>Prévia de link</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+/* as letras do próprio site (site/fontes/, licença OFL): abra este arquivo de dentro da pasta publicacao/ */
+@font-face{font-family:"Barlow Condensed";font-weight:600;src:url("../site/fontes/barlow-condensed-600-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-weight:700;src:url("../site/fontes/barlow-condensed-700-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-weight:400;src:url("../site/fontes/barlow-400-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-weight:600;src:url("../site/fontes/barlow-600-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-weight:700;src:url("../site/fontes/barlow-700-latin.woff2") format("woff2")}
 body{margin:0}
 .og{width:1200px;height:630px;box-sizing:border-box;background:#0f2b3c;color:#f1f6f8;font-family:Barlow,sans-serif;position:relative;overflow:hidden}
 .topo{padding:52px 72px 0;display:flex;flex-direction:column;gap:30px}

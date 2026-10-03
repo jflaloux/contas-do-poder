@@ -169,6 +169,15 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     if (m.cookies) falhas.push(`o site criou cookies (a página /sobre diz que não usa cookies próprios): ${m.cookies.slice(0, 80)}`);
     if (m.sobra > 1) falhas.push(`rolagem horizontal: a página é ${m.sobra} px mais larga que a tela`);
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
+    if (pg.url.startsWith("/cidade/")) {
+      // o parágrafo em destaque vai pronto no HTML (gerar.mjs, destaqueCidade) para a primeira pintura: tem de ser igual ao do app.js
+      try {
+        const html = await (await fetch(base + pg.url)).text();
+        const pronto = ((/<p class="destaque">([^<]*)<\/p>/.exec(html) || [])[1] || "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"');
+        const vivo = await avaliar(`(document.querySelector("#cidade p.destaque") || {}).textContent || ""`);
+        if (pronto !== vivo) falhas.push(`o destaque pronto no HTML difere do do app.js: "${pronto.slice(0, 90)}" x "${vivo.slice(0, 90)}"`);
+      } catch (e) { falhas.push(`não consegui conferir o destaque da cidade: ${e.message}`); }
+    }
     if (m.cls > LIMITE_CLS) falhas.push(`CLS ${m.cls.toFixed(3)} (o limite é ${LIMITE_CLS})`);
     if ([...externos].some((h) => /googletagmanager|google-analytics/.test(h))) falhas.push("o site pediu o Google Analytics fora da produção (o gtag só pode carregar em contasdopoder.com)");
     if (externos.size) falhas.push(`o site pediu algo de fora (as letras e tudo o mais são do próprio site): ${[...externos].join(", ")}`);
