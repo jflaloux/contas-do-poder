@@ -814,9 +814,7 @@
     return new Promise((ok) => { const img = new Image(); img.onload = () => ok(img); img.onerror = () => ok(null); img.src = src; });
   }
   async function esperarFontes() {
-    // as fontes carregam sem travar a página (index.html): espera a folha de estilo delas, por no máximo 3 s
-    const css = document.querySelector('link[href*="fonts.googleapis.com/css2"][media="print"]');
-    if (css) await new Promise((ok) => { css.addEventListener("load", ok, { once: true }); setTimeout(ok, 3000); });
+    // as letras são do próprio site (estilo.css: @font-face, font-display: swap): pede cada uma e espera, por no máximo 3 s
     try { await Promise.all(['700 64px "Barlow Condensed"', '600 60px "Barlow Condensed"', '600 30px "Barlow"', '400 24px "Barlow"', '700 24px "Barlow"'].map((f) => document.fonts.load(f))); } catch (e) { /* usa a fonte do sistema */ }
   }
   // a tela com o fundo, a faixa e a marca; devolve o contexto e as peças de desenho

@@ -3,7 +3,8 @@
 **Site: [contasdopoder.com](https://contasdopoder.com)**
 
 Quanto ganha e quanto custa cada deputado federal, senador, ministro e o presidente, por mês, com números oficiais
-da Câmara, do Senado e do Portal da Transparência. E também, sempre pela fonte oficial de cada um:
+da Câmara, do Senado e do Portal da Transparência. Um projeto independente e sem fins lucrativos, que não é de nenhum
+órgão do governo. E também, sempre pela fonte oficial de cada um:
 
 - **Governadores e vices** dos 27 estados: o salário pela lei de cada estado e, onde a folha é pública, o que cada um
   recebe, mês a mês.
@@ -144,6 +145,9 @@ python3 coletar.py site       # gera site/dados/ a partir da base
 node publicacao/gerar.mjs     # monta publicar/, como o Cloudflare Pages
 node publicacao/servir.mjs    # depois abra http://localhost:8000
 ```
+
+O servidor local (`servir.mjs`) imita o Cloudflare Pages: endereços sem `.html`, redirecionamentos e compressão gzip do texto
+(os dados em JSON ficam ~5 vezes menores, como no site de verdade).
 
 O site é estático (HTML, CSS e JavaScript, sem instalar nada): `site/index.html`, `site/estilo.css`,
 `site/app.js`, os dados em `site/dados/dados.json` e as fotos em `site/fotos/`. Dá para hospedar de graça em qualquer serviço de
@@ -845,7 +849,10 @@ compartilhar) e, nos dados, sempre as mesmas cores: verde-água para o que vai p
 mandato e azul-acinzentado para a equipe do gabinete (nas barras, nos gráficos, no índice e na imagem). O logo é uma
 rosca com essas duas partes da conta (bolso e gastos), ao lado do nome: em duas linhas no celular, numa linha só no
 computador e na imagem para compartilhar. Letras: Barlow Condensed nos
-títulos e números e Barlow no texto (Google Fonts, sem travar a primeira pintura). Tema claro e escuro em
+títulos e números e Barlow no texto, hospedadas no próprio site (`site/fontes/`: woff2 só de latin e latin-ext, pesos
+400, 600 e 700 da Barlow e 600 e 700 da Barlow Condensed, `font-display: swap`, preload das usadas na primeira tela,
+cache de 1 ano em `_headers`; licença SIL OFL 1.1 em `site/fontes/OFL.txt`, "The Barlow Project Authors"; o site não pede
+nada ao Google Fonts). Mudou um arquivo de letra? Mude também o nome, por causa do cache. Tema claro e escuro em
 `site/estilo.css` (variáveis no começo do arquivo); o ícone (`site/favicon.svg`) e a prévia do link (`site/og.png`)
 seguem o mesmo desenho.
 
@@ -1039,8 +1046,8 @@ o `app.js` o lê (`secSobre`) e o `gerar.mjs` faz com ele a página pronta em HT
 só existe `[texto](endereço)`, para links. Está no rodapé de todas as páginas e em `/dados-abertos`. O que a página afirma
 e onde conferir: sem cookies próprios (nenhum `document.cookie` nem armazenamento no `app.js`; o teste `rodar.mjs` confere
 que o site não cria cookies; os do Google Analytics só existem em `contasdopoder.com`), medição só em produção
-(`index.html`), CPF e fornecedor pessoa física como no `CLAUDE.md`, letras vindas do Google Fonts (`index.html`) e hospedagem
-no Cloudflare Pages. A base legal escrita é o legítimo interesse (LGPD, art. 7º, IX). Quem é o controlador aparece como
+(`index.html`), CPF e fornecedor pessoa física como no `CLAUDE.md`, letras do próprio site (`site/fontes/`, nada pedido ao Google; o teste confere que o site não pede nada de fora) e
+hospedagem no Cloudflare Pages. A base legal escrita é o legítimo interesse (LGPD, art. 7º, IX). Quem é o controlador aparece como
 "Contas do Poder (contato@contasdopoder.com)": se o nome do responsável entrar, é só mudar o `sobre.json`. Mudou algo
 dessa lista (um serviço novo, um cookie, outro dado coletado)? Atualize o `sobre.json` junto, com a data. O texto é simples e deve ser revisto por quem responde pelo site antes de cada mudança publicada.
 

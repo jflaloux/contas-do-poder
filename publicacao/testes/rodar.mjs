@@ -160,7 +160,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     const m = await avaliar(`(() => {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,
-        cookies: document.cookie, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
+        cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length) };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
@@ -171,6 +171,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
     if (m.cls > LIMITE_CLS) falhas.push(`CLS ${m.cls.toFixed(3)} (o limite é ${LIMITE_CLS})`);
     if ([...externos].some((h) => /googletagmanager|google-analytics/.test(h))) falhas.push("o site pediu o Google Analytics fora da produção (o gtag só pode carregar em contasdopoder.com)");
+    if (externos.size) falhas.push(`o site pediu algo de fora (as letras e tudo o mais são do próprio site): ${[...externos].join(", ")}`);
+    if (m.letras < 2) falhas.push(`as letras do site não carregaram (${m.letras} arquivos de letra prontos; esperava 2 ou mais)`);
 
     let violacoes = null;
     if (axe) {

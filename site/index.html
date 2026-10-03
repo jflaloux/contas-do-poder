@@ -34,12 +34,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <!-- Endereço público do site, usado nos links de compartilhamento. Vazio = não mostra link. -->
 <meta name="endereco-do-site" content="https://contasdopoder.com/">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- fontes sem travar a primeira pintura: o texto aparece com a fonte do sistema e troca quando a fonte chega -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap"></noscript>
+<!-- letras no próprio site (estilo.css, font-display: swap): as usadas na primeira tela já vêm pedidas -->
+<link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-condensed-700-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-condensed-600-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-400-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-600-latin.woff2" crossorigin>
 <link rel="stylesheet" href="/estilo.css">
 </head>
 <body>

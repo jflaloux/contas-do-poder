@@ -8,7 +8,8 @@
       "h": "O que é",
       "c": [
         { "p": "O Contas do Poder reúne dados públicos oficiais sobre quanto ganham e quanto custam os agentes públicos do Brasil: deputados federais, senadores, ministros, governadores, deputados estaduais, vereadores, prefeitos e ministros dos tribunais superiores, entre outros. Cada número vem de uma fonte oficial e traz o link dela." },
-        { "p": "O site não é de nenhum órgão do governo. O código é aberto (licença MIT) e os dados podem ser reutilizados sob a licença CC BY 4.0, citando “Contas do Poder” e as fontes originais. O site não tem anúncios, não cobra nada e não pede cadastro. Confira os valores na fonte antes de tirar conclusões." }
+        { "p": "O Contas do Poder é um projeto independente e sem fins lucrativos. O site não é de nenhum órgão do governo. O código é aberto (licença MIT) e os dados podem ser reutilizados sob a licença CC BY 4.0, citando “Contas do Poder” e as fontes originais. O site não tem anúncios, não cobra nada e não pede cadastro. Confira os valores na fonte antes de tirar conclusões." },
+        { "p": "As letras do site são a Barlow e a Barlow Condensed (The Barlow Project Authors), licença SIL Open Font License 1.1, guardadas no próprio site." }
       ]
     },
     {
@@ -33,7 +34,7 @@
         { "p": "O site mede o uso com o Google Analytics, do Google. O que é medido: as páginas vistas e alguns eventos de uso, como abrir a página de um político, trocar o período, abrir a lista de uma fonte, compartilhar uma página e a velocidade com que a página carrega no aparelho. Como em qualquer visita, o Google Analytics também recebe dados técnicos: aparelho e navegador, idioma, localização aproximada (calculada pelo endereço de rede) e de onde a pessoa veio." },
         { "p": "Para que serve: saber o que é usado e melhorar o site. Não vendemos dados, não há anúncios e o site não pede nome, e-mail nem cadastro." },
         { "p": "Cookies: o site não usa cookies próprios. O Google Analytics usa cookies (como o _ga) para reconhecer o mesmo navegador entre uma visita e outra." },
-        { "p": "Outros serviços: as letras do site vêm do Google Fonts, e o navegador as pede ao Google, que recebe o endereço de rede da visita, como em qualquer pedido na internet. O site é publicado pelo Cloudflare Pages." },
+        { "p": "Outros serviços: o site é publicado pelo Cloudflare Pages. As letras são do próprio site: o navegador não pede nada ao Google para mostrá-las." },
         { "p": "Por que podemos medir: a base legal é o legítimo interesse (Lei Geral de Proteção de Dados, art. 7º, IX). Precisamos saber o que é usado para manter e melhorar um site gratuito de dados públicos, e a medição se limita a isso." },
         { "p": "Como não ser medido: use um bloqueador de rastreadores ou a proteção do seu navegador (o site funciona igual), ou instale a [extensão de desativação do Google Analytics](https://tools.google.com/dlpage/gaoptout), oferecida pelo próprio Google. Como o Google trata os dados: [política de privacidade do Google](https://policies.google.com/privacy)." }
       ]
