@@ -4,6 +4,8 @@ Uso:
     python3 coletar.py camara          # só a Câmara
     python3 coletar.py senado          # só o Senado
     python3 coletar.py executivo       # presidente, vice e ministros (Portal da Transparência)
+    python3 coletar.py atividade       # deputados federais e senadores: presença e projetos apresentados desde 01/02/2023
+                                       # (dados abertos da Câmara e do Senado), em site/dados/atividade.json (dados/atividade/)
     python3 coletar.py municipios      # câmaras municipais: custo (Tesouro) e vereadores eleitos (TSE)
     python3 coletar.py vereadores      # capitais (São Paulo, Rio, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre,
                                        # Recife, São Luís, Aracaju, Boa Vista): cada vereador,
@@ -31,7 +33,7 @@ Uso:
                                        # aos vereadores no Rio de Janeiro (site/dados/interior-cargo/<uf>.json)
     python3 coletar.py judiciario      # ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês
                                        # (dados/judiciario/, site/dados/judiciario.json)
-    python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + assembleias + tce
+    python3 coletar.py tudo            # camara + senado + executivo + atividade + municipios + vereadores + prefeituras + governadores + assembleias + tce
                                        # + judiciario + indice
                                        # + renda + padronizar + fotos + site + situacao
     python3 coletar.py montar          # só refaz os arquivos do site das capitais, Assembleias e governadores (sem coletar),
@@ -48,7 +50,7 @@ Uso:
 import argparse
 import sys
 
-from coleta import (assembleias, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
+from coleta import (assembleias, atividade, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
                     judiciario, renda, senado, site, situacao, tce, vereadores)
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
@@ -57,6 +59,7 @@ ETAPAS = {
     "camara": camara.coletar,
     "senado": senado.coletar,
     "executivo": executivo.coletar,
+    "atividade": atividade.coletar,
     "municipios": municipios.coletar,
     "vereadores": vereadores.coletar,
     "vereadores_sp": vereadores.coletar,  # nome antigo (quando só havia São Paulo)
@@ -75,7 +78,7 @@ ETAPAS = {
     "situacao": situacao.executar,
 }
 # etapas de uma fonte só (federais): a tentativa e o resultado vão para dados/processados/coletas_<lugar>.json
-FEDERAIS = {"camara", "senado", "executivo", "municipios", "renda"}
+FEDERAIS = {"camara", "senado", "executivo", "atividade", "municipios", "renda"}
 
 
 def montar():
@@ -112,7 +115,7 @@ def main():
             "Atualize coleta/config.py para a nova legislatura antes de coletar de novo.")
         sys.exit(5)
     definir_prazo(args.tempo_max)
-    etapas = (["camara", "senado", "executivo", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "tce", "judiciario", "indice", "renda", "padronizar",
+    etapas = (["camara", "senado", "executivo", "atividade", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "tce", "judiciario", "indice", "renda", "padronizar",
                "fotos", "site", "situacao"]
               if args.etapa == "tudo" else [args.etapa])
     try:

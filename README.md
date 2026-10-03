@@ -297,6 +297,47 @@ ministro fica só na página de ministro (sai da página de deputado/senador, em
 ministro + parlamentar = tudo junto. Cada opção mostra o custo dele por mês, e o quadro "Como a conta fecha" põe
 as três visões lado a lado em totais do período, com os meses de cada cargo.
 
+## Deputados federais e senadores: presença e projetos
+
+Robô `coleta/atividade.py` (`python3 coletar.py atividade`, na rodada do GitHub), só com os dados abertos oficiais da
+Câmara e do Senado, desde o início da legislatura (01/02/2023). Sem nota e sem ranking: os números de cada pessoa, com a
+fonte. Saída: `site/dados/atividade.json` (por pessoa, `dep-<id>` e `sen-<código>`) e `dados/atividade/` (cada dia de
+presença da Câmara, cada voto do Senado só com a situação, e os totais por pessoa, em CSV).
+
+- **Presença na Câmara**: o serviço "ListarPresencasDia" dos dados abertos da Câmara
+  (`www.camara.leg.br/SitCamaraWS/sessoesreunioes.asmx`), um pedido por dia com sessão deliberativa no Plenário (os
+  dias saem do arquivo anual de eventos; os dias de sessão preparatória, posse e eleição da Mesa, também contam). Para cada deputado em exercício no dia: presença, ausência justificada (com
+  o motivo: missão autorizada, licença para tratamento de saúde, decisão da Mesa...) ou ausência. É a conta por dia que
+  a Câmara usa. Leva ~10 s por dia: o que já foi lido fica em `dados/atividade/camara-presenca-AAAA.csv`, e a cada
+  rodada só os dias novos e os dos últimos 45 dias (a justificativa pode entrar depois) são pedidos de novo. O serviço
+  identifica o deputado pela carteira parlamentar; o id dos dados abertos vem da matrícula do serviço "ObterDeputados"
+  (é o mesmo número) ou, para quem saiu, do nome e da UF (`dados/atividade/camara-carteiras.csv`, com o jeito de cada
+  ligação).
+- **Presença no Senado**: os dados abertos do Senado não trazem a presença por sessão. Trazem, em cada votação nominal
+  do Plenário (`/dadosabertos/votacao`), a situação de cada um dos 81 senadores em exercício: votou, presente sem
+  registrar voto, presidindo, ausente com motivo registrado (atividade parlamentar, missão, licença...) ou não
+  compareceu. Por isso, no Senado a conta é por votação nominal, não por dia: não comparar com a Câmara. O sentido do
+  voto (sim, não) não é guardado.
+- **Projetos**: os que podem virar norma, apresentados desde 01/02/2023: projeto de lei (PL), de lei complementar
+  (PLP), proposta de emenda à Constituição (PEC), projeto de decreto legislativo (PDL) e projeto de resolução (PRC na
+  Câmara, PRS no Senado). Requerimentos, indicações, emendas e pareceres ficam de fora. Na Câmara, pelos arquivos anuais
+  de proposições e de autores (`dadosabertos.camara.leg.br/arquivos/`); no Senado, por `/dadosabertos/processo?codigoParlamentarAutor=`.
+  Primeiro autor e coautores contam à parte. Na Câmara, quem só apoia (as assinaturas que a PEC precisa) não conta como
+  coautor; no Senado, a PEC lista como autores todos os que assinaram.
+- **Virou norma**: a situação "Transformado em Norma Jurídica" da própria Casa (lei, lei complementar, emenda
+  constitucional, decreto legislativo ou resolução). Conta só o projeto que virou norma ele mesmo: quando vários
+  tramitam juntos, a norma fica com o projeto principal.
+- **Homenagem ou data** (regra da ementa, `EMENTA_HOMENAGEM` em `coleta/atividade.py`, a mesma nas duas Casas): projeto
+  que dá nome a bem público (rodovia, ponte, aeroporto...), institui data comemorativa (dia, semana, mês, campanha de
+  mês com cor, feriado, inclusão em calendário oficial ou turístico), inscreve nome no Livro dos Heróis e Heroínas da
+  Pátria, confere título honorífico (capital nacional, patrono, símbolo), institui prêmio, medalha ou diploma, reconhece
+  utilidade pública ou declara patrimônio ou manifestação cultural. Os demais ficam em "os demais projetos". Conferida
+  com o tema "Homenagens e Datas Comemorativas" que a própria Câmara dá às proposições (projetos de 2023 a out/2026):
+  dos 1.776 com esse tema, a regra marca 1.489 (84%); dos 1.559 que a regra marca, 1.489 (96%) têm o tema. A diferença
+  vem sobretudo de selos, campanhas e símbolos que a Câmara põe no tema e a regra deixa de fora, e de projetos que
+  ainda não têm tema.
+- **Conferência** (03/10/2026, 5 deputados e 5 senadores): ver a seção "O que já foi conferido".
+
 ## Câmaras municipais (vereadores), passo 1
 
 Robô `coleta/municipios.py`, para as 5.569 câmaras:
@@ -1030,8 +1071,10 @@ Veja `metadados.json` → `pendencias`. As principais:
   de pessoal de gabinete de cada deputado e o
   [Decreto Legislativo 172/2022](https://www2.camara.leg.br/legin/fed/decleg/2022/decretolegislativo-172-21-dezembro-2022-793529-publicacaooriginal-166604-pl.html)
   (subsídio).
-- Senado: [dados abertos legislativos](https://legis.senado.leg.br/dadosabertos/docs/) e
-  [administrativos](https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html).
+- Câmara, presença e projetos: [serviço de presença por dia](https://www.camara.leg.br/SitCamaraWS/sessoesreunioes.asmx)
+  e [arquivos anuais de eventos, proposições, autores e temas](https://dadosabertos.camara.leg.br/swagger/api.html#staticfile).
+- Senado: [dados abertos legislativos](https://legis.senado.leg.br/dadosabertos/docs/) (inclui as votações nominais e
+  os processos de cada autor) e [administrativos](https://adm.senado.gov.br/adm-dadosabertos/swagger-ui/index.html).
 - Governadores: leis e decretos legislativos das assembleias, diários oficiais, folhas de pagamento e tabelas
   oficiais dos estados (o link de cada valor está em `dados/governadores/governadores.json`).
 - Prefeituras: [São Paulo](https://dados.prefeitura.sp.gov.br/dataset/remuneracao-servidores-prefeitura-de-sao-paulo),

@@ -85,6 +85,10 @@ def _ultimos_meses():
     for f in ("camara", "senado"):
         um[f"federal/{f}"] = dados.get("ultimo_mes")
     um["federal/executivo"] = dados.get("ultimo_mes_executivo")
+    atv = _ler("atividade.json").get("meta", {})
+    datas = [d for d in (atv.get("camara_presenca_ate"), atv.get("senado_votacoes_ate")) if d]
+    if datas:  # presença e projetos: o último dia com sessão (Câmara) ou votação nominal (Senado), o mais antigo dos dois
+        um["federal/atividade"] = int(min(datas)[:7].replace("-", ""))
     for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
         um[f"judiciario/{sigla.lower()}"] = m.get("ultimo_mes")
     for pasta in ("interior", "interior-cargo"):  # valor de cada pessoa (PB, CE) e valor por cargo (ES, PE, RJ)
@@ -248,6 +252,8 @@ def _nomes_e_links():
     saida["federal/camara"] = ("Câmara dos Deputados", None, fontes.get("camara_api"))
     saida["federal/senado"] = ("Senado Federal", None, fontes.get("senado_legis"))
     saida["federal/executivo"] = ("Governo federal (presidente, vice e ministros): Portal da Transparência", None, fontes.get("portal_transparencia"))
+    saida["federal/atividade"] = ("Presença e projetos de deputados federais e senadores (dados abertos da Câmara e do Senado)", None,
+                                  "https://dadosabertos.camara.leg.br/swagger/api.html")
     for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
         saida[f"judiciario/{sigla.lower()}"] = (m.get("n") or sigla, None, m.get("fonte"))
         if m.get("via") and m["via"] != "oficial":
