@@ -941,19 +941,26 @@ subsídios do que há cadeiras) têm texto próprio, que some quando os números
 
 ## Rascunhos de e-mail no Gmail (`rotina/rascunhos_gmail.py`)
 
-Cria ou atualiza, no Gmail de quem roda, os rascunhos de um arquivo Markdown de rascunhos (por padrão
-`RASCUNHOS-DIVULGACAO.md`, fora do Git). **Não envia nada**: só cria e atualiza rascunhos, e quem envia é a pessoa, no
-Gmail. Cada e-mail sai com o remetente `contato@contasdopoder.com` (o script confere antes, em "Enviar e-mail como", que o
-endereço está na conta e verificado), em texto puro e HTML, com links diretos (sem redirecionamento). Um rascunho com o
-mesmo destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada bloco está no começo do script.
+Cria ou atualiza os rascunhos de um arquivo Markdown de rascunhos (por padrão `RASCUNHOS-DIVULGACAO.md`, fora do Git)
+no Gmail da conta do projeto, no Google Workspace (a conta cujo endereço principal é `contato@contasdopoder.com`).
+**Não envia nada**: só cria e atualiza rascunhos, e quem envia é a pessoa, no Gmail. Cada e-mail sai com o remetente
+`contato@contasdopoder.com`, em texto puro e HTML, com links diretos (sem redirecionamento). Um rascunho com o mesmo
+destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada bloco está no começo do script.
 
+- Conta certa: antes de qualquer gravação, o script confere em que conta o token está (`users.getProfile` e "Enviar
+  e-mail como"). Os rascunhos só vão para a conta em que `contato@contasdopoder.com` é o endereço principal (ou a conta
+  informada em `--conta`); numa conta em que ele é só um alias, como uma conta pessoal, o script para e diz como refazer
+  a autorização (`--nova-autorizacao`, que guarda o token antigo como `gmail-token.json.antigo`).
 - Uma vez: `.venv/bin/pip install -r rotina/requirements-gmail.txt` (só no computador que cria os rascunhos) e uma
-  credencial OAuth do Google Cloud do tipo "App para computador", salva em `~/.config/contas-do-poder/gmail-credencial.json`
-  (fora do repositório). Na primeira vez, o navegador pede a autorização; o token fica na mesma pasta.
-- `.venv/bin/python rotina/rascunhos_gmail.py` mostra o que faria; `--teste` cria um rascunho só, para a própria conta;
-  `--criar` grava; `--so=3,7` escolhe os blocos; `--sem-gmail --mostrar=7` mostra o e-mail montado sem conectar.
-- Escopos: `gmail.compose` (rascunhos; o Google não tem escopo de rascunho que não permita também enviar, por isso o
-  código não chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`) e
+  credencial OAuth do Google Cloud do tipo "App para computador", num projeto da organização do Workspace, com a tela de
+  permissão "Interno" (sem o aviso de app não verificado e sem nova autorização a cada 7 dias). O JSON fica em
+  `~/.config/contas-do-poder/gmail-credencial.json` (fora do repositório). Na primeira vez, o navegador pede a
+  autorização: escolher a conta do projeto. O token fica na mesma pasta.
+- `.venv/bin/python rotina/rascunhos_gmail.py` mostra o que faria; `--teste` cria um rascunho só, para a própria conta
+  (ou para `--para-teste`); `--criar` grava; `--so=3,7` escolhe os blocos; `--sem-gmail --mostrar=7` mostra o e-mail
+  montado sem conectar.
+- Escopos: `gmail.compose` (rascunhos e a conta do token; o Google não tem escopo de rascunho que não permita também
+  enviar, por isso o código não chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`) e
   `gmail.settings.basic` (ler a lista de remetentes).
 
 ## Licença

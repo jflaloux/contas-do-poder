@@ -39,7 +39,10 @@ linhas "- **Para:**" e "- **Assunto:**": o primeiro endereço do "Para" é o des
 é comentário. Um "Para" que não começa com um endereço fica de fora (o script não adivinha).
 
 Credencial (fora do repositório, em ~/.config/contas-do-poder/): gmail-credencial.json (o arquivo do cliente OAuth "App
-para computador" baixado do Google Cloud) e gmail-token.json (criado na primeira autorização, no navegador).
+para computador" baixado do Google Cloud) e gmail-token.json (criado na primeira autorização, no navegador, com a conta
+do projeto). Antes de gravar, o script confere em que conta o token está (users.getProfile e "Enviar e-mail como"): os
+rascunhos só vão para a conta do projeto, a que tem o remetente como endereço principal (ou a de --conta). Token de
+outra conta: para e diz como refazer a autorização (--nova-autorizacao).
 Escopos: gmail.compose (criar, ler e atualizar rascunhos; o Google não tem um escopo de rascunho que não permita também
 enviar) e gmail.settings.basic (ler a lista de remetentes; não dá acesso ao conteúdo dos e-mails).
 Dependências só no .venv do computador que cria os rascunhos: .venv/bin/pip install -r rotina/requirements-gmail.txt
@@ -329,8 +332,9 @@ def montar(r, remetente, nome_remetente="", para=None, prefixo=""):
 
 
 # ------------------------------------------------------------------------------------------------------- Gmail
-def sessao(config):
-    """Sessão autorizada no Gmail (abre o navegador na primeira vez). A credencial e o token ficam em `config`."""
+def sessao(config, nova=False, conta=""):
+    """Sessão autorizada no Gmail (abre o navegador na primeira vez, com a escolha de conta). A credencial e o token ficam
+    em `config`. Com `nova`, o token que existe vira gmail-token.json.antigo e a autorização é feita de novo."""
     try:
         from google.auth.transport.requests import AuthorizedSession, Request
         from google.oauth2.credentials import Credentials
@@ -339,6 +343,8 @@ def sessao(config):
         sys.exit("Faltam as bibliotecas do Google: .venv/bin/pip install -r rotina/requirements-gmail.txt")
     cred_arq, token_arq = config / "gmail-credencial.json", config / "gmail-token.json"
     cred = None
+    if nova and token_arq.exists():
+        token_arq.replace(token_arq.with_suffix(".json.antigo"))
     if token_arq.exists():
         cred = Credentials.from_authorized_user_file(str(token_arq), ESCOPOS)
     if cred and cred.expired and cred.refresh_token:
@@ -346,7 +352,9 @@ def sessao(config):
     if not cred or not cred.valid or not set(ESCOPOS) <= set(cred.scopes or []):
         if not cred_arq.exists():
             sys.exit(f"Falta a credencial OAuth em {cred_arq} (o arquivo JSON do cliente \"App para computador\" do Google Cloud).")
-        cred = InstalledAppFlow.from_client_secrets_file(str(cred_arq), ESCOPOS).run_local_server(port=0)
+        print("Abrindo o navegador para a autorização: escolha a conta do projeto (a que envia como " + REMETENTE + ").")
+        extra = {"login_hint": conta} if conta else {}
+        cred = InstalledAppFlow.from_client_secrets_file(str(cred_arq), ESCOPOS).run_local_server(port=0, prompt="select_account", **extra)
     config.mkdir(parents=True, exist_ok=True)
     token_arq.write_text(cred.to_json(), encoding="utf-8")
     os.chmod(token_arq, 0o600)
@@ -362,17 +370,30 @@ def _pedir(s, metodo, caminho, **kw):
     return r.json() if r.content else {}
 
 
-def remetente_ok(s, endereco):
-    """(nome de exibição, endereço principal da conta). Para se o endereço não estiver na conta e verificado."""
+REFAZER = ("Para refazer a autorização com a conta certa: .venv/bin/python rotina/rascunhos_gmail.py --nova-autorizacao "
+           "(o token atual vira gmail-token.json.antigo; no navegador, escolha a conta do projeto).")
+
+
+def remetente_ok(s, endereco, conta_esperada=""):
+    """(nome de exibição, conta do token). Confere, antes de qualquer gravação, que o token é da conta do projeto:
+    - `endereco` está em "Enviar e-mail como" como endereço principal ou como alias verificado;
+    - a conta do token (users.getProfile) é a do projeto: `endereco` é o principal dela, ou ela é `conta_esperada`
+      (--conta). Uma conta em que `endereco` é só um alias (a conta pessoal, por exemplo) não recebe rascunhos.
+    Para com uma mensagem clara se algo não bater; nada é gravado."""
+    conta = _pedir(s, "GET", "/profile").get("emailAddress", "")
     lista = _pedir(s, "GET", "/settings/sendAs").get("sendAs", [])
-    principal = next((x["sendAsEmail"] for x in lista if x.get("isPrimary")), None)
-    for x in lista:
-        if x.get("sendAsEmail", "").lower() == endereco.lower():
-            if x.get("isPrimary") or x.get("verificationStatus") == "accepted":
-                return x.get("displayName") or "", principal
-            sys.exit(f"{endereco} está na conta, mas não verificado (situação: {x.get('verificationStatus')}). "
-                     "Confira em Gmail > Configurações > Contas > Enviar e-mail como. Nenhum rascunho foi criado.")
-    sys.exit(f"{endereco} não está em \"Enviar e-mail como\" desta conta do Gmail ({principal}). Nenhum rascunho foi criado.")
+    x = next((x for x in lista if x.get("sendAsEmail", "").lower() == endereco.lower()), None)
+    if x is None:
+        sys.exit(f"O token é da conta {conta}, que não tem {endereco} em \"Enviar e-mail como\". Nenhum rascunho foi criado.\n{REFAZER}")
+    if not (x.get("isPrimary") or x.get("verificationStatus") == "accepted"):
+        sys.exit(f"{endereco} está na conta {conta}, mas não verificado (situação: {x.get('verificationStatus')}). "
+                 f"Nenhum rascunho foi criado.")
+    if conta_esperada and conta.lower() != conta_esperada.lower():
+        sys.exit(f"O token é da conta {conta}, e não de {conta_esperada} (--conta). Nenhum rascunho foi criado.\n{REFAZER}")
+    if not (x.get("isPrimary") or conta.lower() == endereco.lower() or conta_esperada):
+        sys.exit(f"O token é da conta {conta}, onde {endereco} é só um alias. Os rascunhos ficam na conta do projeto, onde "
+                 f"{endereco} é o endereço principal. Nenhum rascunho foi criado.\n{REFAZER}")
+    return x.get("displayName") or "", conta
 
 
 def _chave(para, assunto):
@@ -432,6 +453,10 @@ def main(argv=None, sessao_fn=None):
     ap.add_argument("--sem-gmail", action="store_true", help="não conecta: só lê o arquivo e monta os e-mails")
     ap.add_argument("--mostrar", default="", help="mostra o e-mail montado (MIME) do rascunho com esse número ou nome")
     ap.add_argument("--config", default=str(CONFIG), help="pasta da credencial e do token")
+    ap.add_argument("--conta", default=os.environ.get("CONTAS_GMAIL_CONTA", ""),
+                    help="a conta do Google em que os rascunhos ficam (se não for informada: a conta cujo endereço principal é o remetente)")
+    ap.add_argument("--nova-autorizacao", action="store_true", help="refaz a autorização no navegador (o token atual vira .antigo)")
+    ap.add_argument("--para-teste", default="", help="destinatário do rascunho de --teste (padrão: a própria conta)")
     a = ap.parse_args(argv)
 
     todos = ler(a.arquivo, a.com_copias_opcionais)
@@ -439,21 +464,21 @@ def main(argv=None, sessao_fn=None):
     validos = [r for r in escolhidos if not r.fora]
     if a.teste:
         validos = validos[:1]
-    s = None if a.sem_gmail else (sessao_fn or sessao)(Path(a.config))
+    s = None if a.sem_gmail else (sessao_fn or sessao)(Path(a.config), a.nova_autorizacao, a.conta)
     nome, principal = ("", None)
     por_chave, por_para = {}, {}
     if s is not None:
-        nome, principal = remetente_ok(s, a.de)
+        nome, principal = remetente_ok(s, a.de, a.conta)
         por_chave, por_para = rascunhos_existentes(s)
     print(f"Arquivo: {a.arquivo}: {len(todos)} blocos, {len(escolhidos)} escolhidos, {len(validos)} com e-mail."
-          + ("" if s is None else f" Remetente: {formataddr((nome, a.de)) if nome else a.de}."))
+          + ("" if s is None else f" Conta: {principal}. Remetente: {formataddr((nome, a.de)) if nome else a.de}."))
     for r in (validos if a.teste else escolhidos):  # no teste, só o rascunho de teste (o primeiro escolhido)
         rotulo = f"{r.numero}." if r.numero is not None else "-"
         print(f"\n{rotulo} {r.titulo}  [formato {r.formato}]")
         if r.fora:
             print(f"   fica de fora: {r.fora}")
             continue
-        para = [principal] if a.teste else r.para
+        para = [a.para_teste or principal] if a.teste else r.para
         prefixo = "[TESTE] " if a.teste else ""
         print(f"   Para: {', '.join(para)}" + ("" if a.teste or not r.cc else f"   Cc: {', '.join(r.cc)}"))
         print(f"   Assunto: {prefixo}{r.assunto}")
