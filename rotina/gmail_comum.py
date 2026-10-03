@@ -41,8 +41,9 @@ def _escopos_do_token(arq):
 
 
 def sessao(config, nova=False, conta="", script="rascunhos_gmail.py"):
-    """Sessão autorizada no Gmail. Abre o navegador (com a escolha de conta) só na primeira vez ou com `nova` (aí o token
-    que existe vira gmail-token.json.antigo). Um token sem todos os ESCOPOS não é usado: para e diz o que rodar."""
+    """Sessão autorizada no Gmail. Só na primeira vez ou com `nova` (aí o token que existe vira gmail-token.json.antigo),
+    imprime o endereço da autorização numa linha própria, para colar no Chrome da conta do projeto (o script não abre
+    navegador). Um token sem todos os ESCOPOS não é usado: para e diz o que rodar."""
     config = Path(config)
     cred_arq, token_arq = config / "gmail-credencial.json", config / "gmail-token.json"
     if nova and token_arq.exists():
@@ -64,9 +65,14 @@ def sessao(config, nova=False, conta="", script="rascunhos_gmail.py"):
     if not cred or not cred.valid:
         if not cred_arq.exists():
             sys.exit(f"Falta a credencial OAuth em {cred_arq} (o arquivo JSON do cliente \"App para computador\" do Google Cloud).")
-        print("Abrindo o navegador para a autorização: escolha a conta do projeto (a que envia como " + REMETENTE + ").")
+        # o navegador aberto pelo script deu erro 400 do Google; o endereço colado no Chrome da conta do projeto funciona
         extra = {"login_hint": conta} if conta else {}
-        cred = InstalledAppFlow.from_client_secrets_file(str(cred_arq), ESCOPOS).run_local_server(port=0, prompt="select_account", **extra)
+        cred = InstalledAppFlow.from_client_secrets_file(str(cred_arq), ESCOPOS).run_local_server(
+            port=0, open_browser=False, prompt="select_account",
+            authorization_prompt_message=("\nCopie este endereço e cole no Chrome em que a conta do projeto está aberta; escolha a "
+                                          "conta do projeto (a que envia como " + REMETENTE + "); ao final, a página de localhost "
+                                          "avisa que terminou.\n\n{url}\n"),
+            success_message="A autorização terminou. Pode fechar esta aba e voltar ao terminal.", **extra)
     config.mkdir(parents=True, exist_ok=True)
     token_arq.write_text(cred.to_json(), encoding="utf-8")
     os.chmod(token_arq, 0o600)
