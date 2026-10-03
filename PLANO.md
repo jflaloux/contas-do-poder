@@ -143,7 +143,7 @@ Cada número tem link para a fonte oficial.
 - [ ] Primeira execução no GitHub: ver se os sites do governo aceitam os servidores do GitHub — Você (botão "Run workflow")
 - [x] Cloudflare Pages conectado ao repositório (build `node publicacao/gerar.mjs`, pasta `publicar`) e domínio contasdopoder.com — Você
 - [x] Cópias fora do repositório: Zenodo (DOI de todas as versões 10.5281/zenodo.23109646) e Software Heritage (02/10/2026) — Você e Claude
-- [ ] Espelho no Codeberg: cada `git push` vai para o GitHub e para o Codeberg (o Codeberg não aceita espelho que puxa sozinho) — Você
+- [x] Espelho no Codeberg (03/10/2026): cada `git push` vai para o GitHub e para o Codeberg — Você
 - [ ] Divulgação: Reddit (r/brdev) e primeiros e-mails a jornalistas e organizações em 30/09; o resto depois da eleição — Você
 
 ## Tecnologia
