@@ -22,6 +22,7 @@ Formato de cada bloco do arquivo (um "## " por rascunho):
     cc: outro@dominio, mais@dominio
     assunto: O assunto, numa linha
     responde-a: id da conversa   (opcional: resposta dentro da conversa; o id está no arquivo da conversa em CAIXA-CONTATO/)
+    a-partir-de: AAAA-MM-DD      (opcional: antes dessa data, horário de Brasília, o painel não libera o envio)
     ```
 
     (notas livres, que não vão no e-mail)
@@ -93,6 +94,7 @@ class Rascunho:
     formato: str = ""
     fora: str = ""  # motivo de ficar de fora (sem destinatário, sem assunto...)
     responde_a: str = ""  # id da conversa (thread) do Gmail: o rascunho é uma resposta dentro dela
+    a_partir_de: str = ""  # AAAA-MM-DD: antes dessa data, o painel não libera o envio (enviar_gmail.py)
     avisos: list = field(default_factory=list)
 
 
@@ -179,6 +181,9 @@ def _bloco(cabeca, linhas, com_opcionais):
         r.cc_opcional = _enderecos(campos.get("cc-opcional", ""))
         r.assunto = campos.get("assunto", "")
         r.responde_a = re.sub(r"[^0-9A-Za-z]", "", campos.get("responde-a", ""))
+        r.a_partir_de = campos.get("a-partir-de", "").strip()
+        if r.a_partir_de and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", r.a_partir_de):
+            r.avisos.append(f'"a-partir-de" fora do formato AAAA-MM-DD: {r.a_partir_de}')
         texto = next((i for i, l in enumerate(linhas) if re.match(r"^\*\*texto\*\*\s*$", l.strip(), flags=re.I)), None)
         r.corpo = _corpo(linhas, texto if texto is not None else fim + 1)
         if texto is None:

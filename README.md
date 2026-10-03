@@ -943,7 +943,8 @@ subsídios do que há cadeiras) têm texto próprio, que some quando os números
 
 Cria ou atualiza os rascunhos de um arquivo Markdown de rascunhos (por padrão `RASCUNHOS-DIVULGACAO.md`, fora do Git)
 no Gmail da conta do projeto, no Google Workspace (a conta cujo endereço principal é `contato@contasdopoder.com`).
-**Não envia nada**: só cria e atualiza rascunhos, e quem envia é a pessoa, no Gmail. Cada e-mail sai com o remetente
+**Este script não envia nada**: só cria e atualiza rascunhos. O envio é pelo painel dos agentes, com a aprovação de
+quem envia (seção "Envio aprovado no painel", abaixo). Cada e-mail sai com o remetente
 `contato@contasdopoder.com`, em texto puro e HTML, com links diretos (sem redirecionamento). Um rascunho com o mesmo
 destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada bloco está no começo do script.
 
@@ -965,11 +966,28 @@ destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada
 - `responde-a: <id da conversa>` na caixa ```email do bloco: o rascunho é uma resposta dentro da conversa (mesma thread,
   com In-Reply-To e References da última mensagem e o assunto com "Re:"). O id está no arquivo da conversa, na cópia
   local da caixa (seção abaixo).
-- Escopos (os mesmos da cópia da caixa, em `rotina/gmail_comum.py`, para uma autorização servir aos dois scripts):
-  `gmail.compose` (rascunhos; o Google não tem escopo de rascunho que não permita também enviar, por isso o código não
-  chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`), `gmail.settings.basic` (ler a
-  lista de remetentes) e `gmail.readonly` (ler as conversas). Um token antigo, sem algum deles, não é usado: o script
-  pede `--nova-autorizacao`.
+- `a-partir-de: AAAA-MM-DD` na caixa ```email: antes dessa data (horário de Brasília), o painel não libera o envio.
+- Escopos (os mesmos da cópia da caixa e do envio, em `rotina/gmail_comum.py`, para uma autorização servir a todos):
+  `gmail.compose` (rascunhos e o envio aprovado; o Google não tem escopo de rascunho que não permita também enviar),
+  `gmail.settings.basic` (ler a lista de remetentes) e `gmail.readonly` (ler as conversas). Toda chamada à API passa por
+  `gmail_comum.pedir`, que recusa qualquer endereço terminado em `/send`; a única exceção é `enviar_aprovado`, usada só
+  pelo envio aprovado no painel. Um token antigo, sem algum dos escopos, não é usado: o script pede
+  `--nova-autorizacao`.
+
+## Envio aprovado no painel (`rotina/enviar_gmail.py`)
+
+Quem envia é a pessoa que aprova, no painel dos agentes (`.claude/painel/`, só no computador): o painel mostra cada
+e-mail pronto (os blocos com a caixa ```email do arquivo de rascunhos), a pessoa clica em Enviar e confirma numa janela
+do macOS, e só então o painel chama este script com a variável de aprovação no ambiente. Sem ela, o script recusa. Os
+agentes não enviam: uma trava do Claude Code (`.claude/painel/guarda.mjs`) recusa qualquer comando de envio.
+
+- `--listar`: JSON com os e-mails prontos, cada um com o hash do que vai sair (remetente, destinatários, assunto, texto,
+  HTML e conversa). `--enviar=<hash>` relê o arquivo e só envia se o hash for o mesmo (texto mudado = aprovar de novo),
+  se a data `a-partir-de` já chegou e se o e-mail não está no log; `--enviados` mostra os últimos 50 envios.
+- Log: `ENVIOS-CONTATO.jsonl` na raiz, fora do Git, uma linha por envio (data, hash, bloco, destinatários, assunto, id
+  da mensagem e da conversa). O script não edita o arquivo de rascunhos.
+- Mesma conta do projeto, mesmo token (a conta pessoal é recusada). Sem autorização válida, o script não abre
+  autorização nenhuma: diz para rodar `caixa_gmail.py --nova-autorizacao` no terminal.
 
 ## Cópia local da caixa do Gmail (`rotina/caixa_gmail.py`)
 

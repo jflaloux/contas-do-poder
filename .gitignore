@@ -28,5 +28,9 @@ RASCUNHOS-DIVULGACAO.md
 # Cópia local da caixa do Gmail do projeto (rotina/caixa_gmail.py): fica só no computador
 CAIXA-CONTATO/
 
+# Log dos envios aprovados no painel (rotina/enviar_gmail.py) e a trava contra envio duplo: ficam só no computador
+ENVIOS-CONTATO.jsonl
+ENVIOS-CONTATO.jsonl.lock
+
 # Painel dos agentes (http://localhost:4777): só no computador
 .claude/painel/

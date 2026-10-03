@@ -1,16 +1,18 @@
-"""Parte comum dos scripts do Gmail da conta do projeto (rotina/rascunhos_gmail.py e rotina/caixa_gmail.py).
+"""Parte comum dos scripts do Gmail da conta do projeto (rotina/rascunhos_gmail.py, caixa_gmail.py e enviar_gmail.py).
 
-- sessao(): a autorização OAuth (credencial e token fora do repositório, em ~/.config/contas-do-poder/). Os dois scripts
-  pedem o mesmo conjunto de escopos, para uma autorização servir aos dois. Um token sem algum deles (de uma versão antiga)
+- sessao(): a autorização OAuth (credencial e token fora do repositório, em ~/.config/contas-do-poder/). Os scripts
+  pedem o mesmo conjunto de escopos, para uma autorização servir a todos. Um token sem algum deles (de uma versão antiga)
   não é usado: o script para e diz para refazer a autorização (--nova-autorizacao).
-- pedir(): toda chamada à API passa por aqui, e aqui se recusa qualquer endereço terminado em /send. Nenhum script envia
-  e-mail, marca como lido, arquiva ou apaga.
+- pedir(): toda chamada à API passa por aqui, e aqui se recusa qualquer endereço terminado em /send. Nenhum script marca
+  como lido, arquiva ou apaga. A única exceção ao envio é enviar_aprovado(), usada só por enviar_gmail.py, que só envia
+  com a variável APROVACAO=1 no ambiente (o painel dos agentes a põe depois da confirmação de quem aprova, numa janela
+  do macOS).
 - conta_ok(): confere, antes de ler ou gravar qualquer coisa, que o token é da conta do projeto (users.getProfile e
   "Enviar e-mail como"). A conta pessoal de quem roda é recusada.
 
-Escopos: gmail.compose (rascunhos; o Google não tem escopo de rascunho que não permita também enviar),
-gmail.settings.basic (a lista de remetentes) e gmail.readonly (ler a caixa e as conversas). Nada de gmail.modify nem
-gmail.send.
+Escopos: gmail.compose (rascunhos e o envio aprovado no painel; o Google não tem escopo de rascunho que não permita
+também enviar), gmail.settings.basic (a lista de remetentes) e gmail.readonly (ler a caixa e as conversas). Nada de
+gmail.modify.
 """
 import json
 import os
@@ -40,7 +42,7 @@ def _escopos_do_token(arq):
     return set(esc.split() if isinstance(esc, str) else esc)
 
 
-def sessao(config, nova=False, conta="", script="rascunhos_gmail.py"):
+def sessao(config, nova=False, conta="", script="rascunhos_gmail.py", interativo=True):
     """Sessão autorizada no Gmail. Só na primeira vez ou com `nova` (aí o token que existe vira gmail-token.json.antigo),
     imprime o endereço da autorização numa linha própria, para colar no Chrome da conta do projeto (o script não abre
     navegador). Um token sem todos os ESCOPOS não é usado: para e diz o que rodar."""
@@ -63,6 +65,8 @@ def sessao(config, nova=False, conta="", script="rascunhos_gmail.py"):
     if cred and cred.expired and cred.refresh_token:
         cred.refresh(Request())
     if not cred or not cred.valid:
+        if not interativo:  # chamado pelo painel: sem terminal para colar o endereço da autorização
+            sys.exit("Sem autorização válida no Gmail. No terminal: .venv/bin/python rotina/caixa_gmail.py --nova-autorizacao")
         if not cred_arq.exists():
             sys.exit(f"Falta a credencial OAuth em {cred_arq} (o arquivo JSON do cliente \"App para computador\" do Google Cloud).")
         # o navegador aberto pelo script deu erro 400 do Google; o endereço colado no Chrome da conta do projeto funciona
@@ -86,6 +90,20 @@ def pedir(s, metodo, caminho, **kw):
     r = s.request(metodo, API + caminho, timeout=60, **kw)
     if r.status_code >= 400:
         raise RuntimeError(f"Gmail {metodo} {caminho}: {r.status_code} {r.text[:300]}")
+    return r.json() if r.content else {}
+
+
+APROVACAO = "CDP_PAINEL_APROVADO"  # posta pelo painel dos agentes depois da confirmação de quem aprova o envio
+
+
+def enviar_aprovado(s, mensagem):
+    """A única chamada de envio dos scripts do Gmail (só enviar_gmail.py a usa): users.messages.send, com a mensagem
+    {"raw": ..., "threadId": ...}. Recusa sem APROVACAO=1 no ambiente."""
+    if os.environ.get(APROVACAO) != "1":
+        raise RuntimeError("envio recusado: falta a aprovação do painel (" + APROVACAO + "=1)")
+    r = s.request("POST", API + "/messages/send", timeout=60, json=mensagem)
+    if r.status_code >= 400:
+        raise RuntimeError(f"Gmail POST /messages/send: {r.status_code} {r.text[:300]}")
     return r.json() if r.content else {}
 
 
