@@ -742,12 +742,14 @@ vice), o total é o valor dela. Robôs `coleta/tce/es.py`, `pe.py` e `rj.py`, co
   (o robô faz o mesmo pedido que a página, `PessoalFolhaPagamento!paginaVisualizarAjax`, com todos os cargos numa
   página), e a lista de nomes de cada cargo (página de detalhes, sem valor por pessoa). A lista das câmaras e
   prefeituras vem da API de Dados Abertos do TCE-PE (`UnidadesJurisdicionadas`). O robots.txt não proíbe nada; um
-  pedido por vez, com pausa, até 2.000 pedidos por rodada (a primeira leitura levou umas 3 horas). O servidor do Tome
+  pedido por vez, com pausa, até 2.000 pedidos por rodada (a semana normal pede ~1.000; a primeira leitura, desde
+  jan/2025, levou ~3 horas e ~10.000 pedidos, em 03/10/2026). O servidor do Tome
   Conta não manda o certificado intermediário: `util.ca_com_intermediario` completa a cadeia com o intermediário que o
   próprio certificado indica, conferido com as raízes do certifi (a verificação nunca é desligada). Na página de
   detalhes, com a "data de atualização" da unidade preenchida a lista volta vazia: o robô manda esse campo vazio. O
   presidente da Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a quantidade do papel é a de nomes
-  diferentes. Não separa 13º nem férias.
+  diferentes. Muitos municípios põem códigos no nome do cargo ("PREFEITO EX1", "PREFEITO - P0216", "PPREFEITO",
+  "CV VEREADOR"): `cargo._letras` tira os códigos antes de reconhecer o cargo. Não separa 13º nem férias.
 - **Rio de Janeiro (TCE-RJ, 91 municípios; a capital tem o próprio Tribunal de Contas do Município)**: a "Situação
   Funcional" da API do Portal de Dados Abertos (`dados.tcerj.tc.br/api/v1/situacao_funcional`, uma consulta por ano):
   por unidade e mês, cada situação funcional com a quantidade e a remuneração somada, sem nomes. Vereadores: "Agente
@@ -765,8 +767,13 @@ vice), o total é o valor dela. Robôs `coleta/tce/es.py`, `pe.py` e `rj.py`, co
   da cidade). `coleta/situacao.py` lê o `ultimo_mes` de cada um (`tce/es`, `tce/pe`, `tce/rj`).
 - **Ago/2026**: Espírito Santo, 893 pessoas no cargo de vereador nas 78 câmaras (63 com tantas pessoas quanto
   cadeiras), valor típico por vereador mediano de R$ 8.002 (67 câmaras com o valor típico), 75 prefeitos e 66 vices com
-  valor; Rio de Janeiro, 1.042 agentes políticos em 79 das 91 câmaras (as outras ainda não tinham mandado o mês),
-  mediano de R$ 10.021 (73 câmaras).
+  valor; Pernambuco, 2.000 pessoas no cargo de vereador em 174 das 176 câmaras com a folha de agosto (163 com tantas
+  pessoas quanto cadeiras), mediano de R$ 11.062 (168 câmaras), prefeito em 151 e vice em 145 das 159 prefeituras com
+  a folha de agosto; Rio de Janeiro, 1.042 agentes políticos em 79 das 91 câmaras (as outras ainda não tinham mandado
+  o mês), mediano de R$ 10.021 (73 câmaras).
+- **Conferido** (03/10/2026): ES, Vitória, Colatina e Afonso Cláudio (ago/2026) contra o arquivo de vantagens e o de
+  vínculo baixados de novo; PE, Abreu e Lima e Afogados da Ingazeira contra a página do Tome Conta; RJ, contra a
+  consulta da API por município.
 - **Onde roda**: as três fontes abriam de fora do Brasil no levantamento de 01/10/2026; rodam no GitHub Actions e, se
   falharem de fora, a rodada do Brasil as pega na mesma semana.
 

@@ -114,28 +114,51 @@ def gravar(uf, linhas, blocos, nomes=None, blocos_nomes=None, manter_data=False)
 
 # ---------------------------------------------------------------- cargos
 _PRESIDENTE = re.compile(r"PRESIDENTE(A|OA)?((DA|DE)?CAMARA(MUNICIPAL)?)?")
+_PREFEITO = re.compile(r"(VICE)?PREF(EI|E|I)T(O|A|OA|OS)(MUNICIPAL|MUNCIPAL|MUNICIAL|CONSTITUCIONAL|ELETIVO|ELEITO)?"
+                       r"(EMEXERCICIO|INTERINO|INTERINA)?")
+
+
+def _letras(cargo):
+    """O cargo só com as letras, sem os códigos que alguns municípios põem junto ao nome (PE): "PREFEITO EX1",
+    "PREFEITO - P0216", "PREFEITO (102C)", "001PREFEITO 0010165", "VICE-PREFEITO EMP 01", "CV VEREADOR", "CARGO
+    VEREADOR", "1C VEREADOR" -> "PREFEITO", "VICEPREFEITO", "VEREADOR". Devolve as formas a testar: essa e, quando o
+    cargo começa com uma letra solta grudada ("PPREFEITO", "AVICE-PREFEITO", "FVEREADOR"), também sem ela."""
+    t = normalizar_nome(cargo)
+    t = re.sub(r"\([^)]*\)", " ", t)
+    t = re.sub(r"\b\d+(?=[A-Z])", "", t)      # 001PREFEITO -> PREFEITO
+    t = re.sub(r"\b\w*\d\w*\b", " ", t)       # tokens com algarismo: EX1, P0216, 0063
+    t = re.sub(r"^\s*(CARGO|CV)\s+", "", t)
+    t = re.sub(r"\s+EMP\s*$", "", t)
+    letras = re.sub(r"[^A-Z]", "", t)
+    formas = [letras]
+    if re.match(r"^[A-Z](PREFE|VICEPREFE|VERE)", letras):
+        formas.append(letras[1:])
+    return formas
 
 
 def papel_camara(cargo):
     """"vereador" quando o cargo é o de vereador ou o de presidente da Câmara ("PRESIDENTE", "PRESIDENTE(A) DA CÂMARA";
-    ver comum.eh_vereador); senão None."""
-    if comum.eh_vereador(cargo, eletivo=True) or _PRESIDENTE.fullmatch(comum.so_letras(cargo)):
+    ver comum.eh_vereador), também com os códigos que alguns municípios põem junto (_letras); senão None."""
+    if comum.eh_vereador(cargo, eletivo=True):
         return "vereador"
+    for f in _letras(cargo):
+        if comum._VEREADOR.match(f) or _PRESIDENTE.fullmatch(f) or comum._PRESIDENTE_CAMARA.fullmatch(f):
+            return "vereador"
     return None
 
 
-_PREFEITO = re.compile(r"(VICE)?PREFEIT(O|A|OA)(MUNICIPAL|MUNCIPAL|MUNICIAL|CONSTITUCIONAL|ELETIVO|ELEITO)?"
-                       r"(EMEXERCICIO|INTERINO|INTERINA)?")
-
-
 def papel_prefeitura(cargo):
-    """"prefeito" ou "vice" (comum.papel_prefeitura, e também "PREFEITO MUNICIPAL EM EXERCÍCIO" e "Prefeito
-    Muncipal", como algumas prefeituras escrevem); senão None."""
+    """"prefeito" ou "vice" (comum.papel_prefeitura e também "PREFEITO MUNICIPAL EM EXERCÍCIO", "Prefeito Muncipal",
+    "VICE PREFETO" e os cargos com código junto: _letras); senão None. Não pega quem trabalha para o prefeito
+    ("ASSESSOR ESPECIAL DO PREFEITO") nem o subprefeito."""
     p = comum.papel_prefeitura(cargo)
     if p:
         return p
-    m = _PREFEITO.fullmatch(comum.so_letras(cargo))
-    return ("vice" if m.group(1) else "prefeito") if m else None
+    for f in _letras(cargo):
+        m = _PREFEITO.fullmatch(f)
+        if m:
+            return "vice" if m.group(1) else "prefeito"
+    return None
 
 
 def limpar_cargo(cargo):
@@ -288,7 +311,8 @@ def montar_site(uf, cfg):
                                    or [comum.INICIO]))
     meses_ = comum.meses(inicio, ultimo)
     df = df[df.ano_mes.isin(meses_)] if len(df) else df
-    nomes = nomes[nomes.ano_mes.isin(meses_)] if len(nomes) else nomes
+    # os nomes podem ser de um mês depois de ultimo_mes (o último que a cidade já mandou): pm diz o mês
+    nomes = nomes[nomes.ano_mes >= inicio] if len(nomes) else nomes
     candidatos = comum.tse(uf)
     cad = cadeiras()
     m = {}
