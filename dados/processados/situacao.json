@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-03T15:10:14",
+ "gerado_em": "2026-10-03T18:32:42",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -795,11 +795,44 @@
    "erro": null
   },
   {
+   "fonte": "tce/es",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": "2026-10-03T17:13:03",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
    "fonte": "tce/pb",
    "situacao": "ok",
    "ultimo_mes": 202608,
    "meses_atras": 1,
    "ultimo_sucesso": "2026-10-02T15:58:37",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "tce/pe",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": "2026-10-03T18:12:30",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "tce/rj",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": "2026-10-03T17:13:00",
    "onde": "brasil",
    "so_brasil": false,
    "falha_desde": null,

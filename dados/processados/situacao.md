@@ -1,6 +1,8 @@
-# Situação das fontes (03/10/2026 15:10, rodada: brasil)
+# Situação das fontes (03/10/2026 18:32, rodada: brasil)
 
-Último mês fechado: 09/2026. 91 fontes: 83 ok, 8 com o atraso da própria fonte, 0 atrasadas, 0 falhando.
+Último mês fechado: 09/2026. 94 fontes: 86 ok, 8 com o atraso da própria fonte, 0 atrasadas, 0 falhando.
+
+Rodada da semana de 29/09/2026: a primeira com resumo (sem rodada anterior para comparar).
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
@@ -76,7 +78,10 @@
 | prefeituras/sp | ok | 08/2026 | 2026-10-02 | brasil |  |
 | prefeituras/vitoria | ok | 08/2026 | 2026-10-02 | brasil |  |
 | tce/ce | ok | 08/2026 | 2026-10-02 | brasil |  |
+| tce/es | ok | 08/2026 | 2026-10-03 | brasil |  |
 | tce/pb | ok | 08/2026 | 2026-10-02 | brasil |  |
+| tce/pe | ok | 08/2026 | 2026-10-03 | brasil |  |
+| tce/rj | ok | 08/2026 | 2026-10-03 | brasil |  |
 | vereadores/aracaju | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/belo_horizonte (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/boa_vista | ok | 08/2026 | 2026-10-02 | brasil |  |
