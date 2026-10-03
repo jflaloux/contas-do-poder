@@ -72,7 +72,7 @@ Cada número tem link para a fonte oficial.
 - [x] Judiciário, prova de conceito: levantamento do STF, STJ, TST, STM, TSE, CNJ, TJs e PGR, com amostra conferida (`dados/referencia/judiciario.json`) — Claude
 - [x] Judiciário, passo 1: ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês desde jan/2025 (STJ, TST, CNJ e PGR pela fonte oficial; STF, STM e TSE pelo DadosJusBr), em dados/judiciario/ e site/dados/judiciario.json — Claude
 - [x] Judiciário no site: página /judiciario e página de pessoa — Agente de Site
-- [ ] Judiciário: se um robô oficial (STJ, TST, CNJ, PGR) quebrar, o órgão passa a vir do DadosJusBr sozinho, com aviso na situação — Claude
+- [x] Judiciário: STJ e PGR vêm do DadosJusBr nos meses em que o robô oficial falhar (TST e CNJ não: o DadosJusBr não bate com a fonte) — Agente de Dados
 - [ ] Judiciário: exceção ao robots.txt da consulta do STF (egesp-portal) e do STM (rem_web), depois da conversa com o advogado — Jean-François
 - [x] Contato com o DadosJusBr (Transparência Brasil): observações sobre os dados e propostas de troca (02/10/2026) — Jean-François
 - [ ] TCU; presidentes de estatais — depois
@@ -100,8 +100,10 @@ Cada número tem link para a fonte oficial.
   PR (19.901/2019 e 21.348/2022); GO pela cadeia de reajustes desde a Lei 17.254/2011 — Claude
 - [x] Governadores com página própria: id por pessoa, endereço pelo nome, fotos (TAREFA-SITE-governadores-como-pessoas.txt) — Claude
 - [x] Governadores: levantamento das viagens (diárias e passagens) nos 27 estados (`dados/referencia/viagens_governadores.json`) — Claude
-- [ ] Governadores: robôs das viagens, começando por AM, MG, SP, PB e SE — Claude
-- [ ] Governadores: AL (só leis de revisão geral em percentual; o valor de ago/2026 sem lei achada) e RN (lei não localizada) — Claude
+- [x] Governadores: robôs das viagens de AM, MG, SP, PB e SE, desde jan/2025, na rodada semanal (03/10/2026) — Agente de Dados
+- [ ] Governadores: viagens no site (TAREFA-SITE-viagens-governadores.txt) — Agente de Site
+- [ ] Governadores: viagens dos outros estados (ver dados/referencia/viagens_governadores.json) — Agente de Dados
+- [ ] Governadores: AL (revisões gerais 9.551/2025 e 9.852/2026 citadas; falta a lei do valor base e a de ago/2026) e RN (só a Lei 8.259/2002, arquivo fora do ar) — Agente de Dados
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [x] Vereadores, passo 3: Paraíba e Ceará pela folha nos Tribunais de Contas (vereadores, prefeito, vice e, na PB, secretários; `coleta/tce/`, `site/dados/interior/<uf>.json`) — Claude
 - [ ] Tribunais de Contas, próximos: ES, PE e RJ (valor por cargo) — Claude
