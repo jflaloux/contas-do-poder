@@ -499,9 +499,9 @@
    "uf": "AL",
    "nome": "Alagoas",
    "capital": "Maceió",
-   "indice": null,
-   "indice_parcial": 0.76452,
-   "blocos_com_nota": 3,
+   "indice": 0.790574,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -605,8 +605,8 @@
      "fonte": "https://www.al.al.leg.br/transparencia/orcamento-e-financas/viap-verba-indenizatoria-de-atividade-parlamentar"
     },
     "prefeitura": {
-     "indice": null,
-     "completude": null,
+     "indice": 0.868735,
+     "completude": 0.933333,
      "facilidade": 0.8125,
      "criterios": {
       "nome": {
@@ -618,16 +618,16 @@
        "prova": "Colunas de cargo e vínculo na consulta."
       },
       "no_cargo_hoje": {
-       "v": null,
-       "prova": "A conferir: a busca pelo nome do prefeito em jun/2026 voltou vazia e os meses anteriores não responderam a tempo."
+       "v": 1,
+       "prova": "Conferido em 03/10/2026: o prefeito Rodrigo Cunha (era o vice e assumiu em 05/04/2026, com a renúncia de JHC) aparece com o cargo 'PREFEITO' nas folhas de ago e set/2026, o mês mais recente; o cargo de vice ficou vago. A busca antiga pelo nome de JHC voltou vazia porque ele já não estava no cargo."
       },
       "partes": {
        "v": 0.6,
        "prova": "A consulta separa vencimento, benefícios, comissão, redutor e eventuais; 13º e férias só no arquivo aberto sem nomes."
       },
       "secretarios": {
-       "v": null,
-       "prova": "A conferir: não há filtro por cargo e as consultas não responderam a tempo."
+       "v": 1,
+       "prova": "Conferido em 03/10/2026, pelos nomes publicados no site da prefeitura (maceio.al.gov.br): os secretários de Desenvolvimento Social, de Turismo e de Estratégias Disruptivas e Economia Digital aparecem com o cargo 'SECRETARIO (A)', a secretaria e o pagamento na folha de set/2026. Não há filtro por cargo: a busca é pelo nome, e cada uma levou de 3 a 5 minutos."
       },
       "historico": {
        "v": 1,
@@ -650,10 +650,7 @@
        "prova": "Sem robots.txt e abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "no_cargo_hoje",
-      "secretarios"
-     ],
+     "a_conferir": [],
      "cidade": "Maceió",
      "fonte": "https://www.transparencia.maceio.al.gov.br/transparencia/pages/servidores.faces?i=4"
     },
@@ -708,9 +705,7 @@
      "fonte": "https://www.maceio.al.leg.br/transparencia/portal/folhax"
     }
    },
-   "a_conferir": [
-    "prefeitura"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "AM",
@@ -2740,9 +2735,9 @@
    "uf": "MT",
    "nome": "Mato Grosso",
    "capital": "Cuiabá",
-   "indice": null,
-   "indice_parcial": 0.765239,
-   "blocos_com_nota": 3,
+   "indice": 0.796832,
+   "indice_parcial": null,
+   "blocos_com_nota": 4,
    "blocos_que_valem": 4,
    "blocos": {
     "governo": {
@@ -2846,8 +2841,8 @@
      "fonte": "https://www.al.mt.gov.br/parlamento/verba-indenizatoria"
     },
     "prefeitura": {
-     "indice": null,
-     "completude": null,
+     "indice": 0.891608,
+     "completude": 0.85,
      "facilidade": 0.9375,
      "criterios": {
       "nome": {
@@ -2867,8 +2862,8 @@
        "prova": "Mostra o básico, o 13º em folha própria e a verba indenizatória em folha própria; férias e abate-teto não aparecem à parte."
       },
       "secretarios": {
-       "v": null,
-       "prova": "A conferir: há uma folha de verba indenizatória de agentes políticos e secretários, mas as amostras não mostraram os secretários pelo cargo."
+       "v": 0.5,
+       "prova": "Conferido em 03/10/2026, pelos nomes da página oficial das secretarias (cuiaba.mt.gov.br/secretarias): os secretários de Assistência Social, Comunicação, Economia e Educação aparecem em ago e set/2026, com o órgão, a lotação e o pagamento, mas com o cargo 'COMISSÃO GDA', o mesmo dos outros comissionados. O que os separa é a 'Folha V.I. - Agentes políticos e secretários municipais', não o cargo."
       },
       "historico": {
        "v": 1,
@@ -2891,9 +2886,7 @@
        "prova": "Sem robots.txt e abre de fora do Brasil."
       }
      },
-     "a_conferir": [
-      "secretarios"
-     ],
+     "a_conferir": [],
      "cidade": "Cuiabá",
      "fonte": "https://transparencia.cuiaba.mt.gov.br/portaltransparencia/transparencia/"
     },
@@ -2948,9 +2941,7 @@
      "fonte": "https://www.gp.srv.br/transparencia_cuiabacm/servlet/folha_pagamento_v2?1"
     }
    },
-   "a_conferir": [
-    "prefeitura"
-   ]
+   "a_conferir": []
   },
   {
    "uf": "PA",

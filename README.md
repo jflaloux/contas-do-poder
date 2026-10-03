@@ -692,10 +692,14 @@ As notas, com a prova de cada uma, ficam em `dados/indice/governadores.json`, `a
 `camaras.json` (mantidas à mão: o que a fonte mostra e o que o robô consegue; "abre de fora do Brasil" foi conferido de
 um servidor nos EUA, e o resto, do Brasil, por um computador e um navegador comuns). As capitais sem robô foram levantadas em
 01/10/2026. A nota da lei do governador vem de `dados/governadores/governadores.json`. A folha do Mato Grosso pede
-CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. Em 01/10/2026: 25
-estados com índice geral e 2 com um bloco a conferir (prefeituras de Maceió e de Cuiabá, cujas consultas são muito
-lentas). Os blocos atrás de CAPTCHA (Câmara de Belo Horizonte, prefeitura de São Luís) foram conferidos à mão, com o
-CAPTCHA resolvido por uma pessoa; o robô não lê essas consultas. O
+CAPTCHA: foi conferida à mão (o CAPTCHA resolvido por uma pessoa), e o robô não lê essa consulta. Desde 03/10/2026 os
+27 estados têm índice geral: os dois últimos blocos a conferir, as prefeituras de Maceió e de Cuiabá, foram fechados
+buscando na folha de cada uma os nomes do prefeito e de secretários publicados no site oficial da prefeitura. Em Maceió
+não há filtro por cargo, e cada busca pelo nome leva de 3 a 5 minutos (o prefeito é Rodrigo Cunha desde 05/04/2026, e o
+cargo de vice ficou vago); em Cuiabá, os secretários vêm com o cargo "COMISSÃO GDA", o mesmo dos outros comissionados, e
+só a folha da verba indenizatória de agentes políticos e secretários os separa. Os blocos atrás de CAPTCHA (Câmara de
+Belo Horizonte, prefeitura de São Luís) foram conferidos à mão, com o CAPTCHA resolvido por uma pessoa; o robô não lê
+essas consultas. O
 índice mede o acesso aos dados dessas quatro fontes, não a transparência do Estado como um todo, e é uma nota da
 fonte, não de quem está no cargo. A passagem da página para os 4 blocos está em `TAREFA-SITE-indice-4-blocos.txt`.
 

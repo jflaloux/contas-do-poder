@@ -58,16 +58,16 @@
     "Colunas de cargo e vínculo na consulta."
    ],
    "no_cargo_hoje": [
-    null,
-    "A conferir: a busca pelo nome do prefeito em jun/2026 voltou vazia e os meses anteriores não responderam a tempo."
+    1,
+    "Conferido em 03/10/2026: o prefeito Rodrigo Cunha (era o vice e assumiu em 05/04/2026, com a renúncia de JHC) aparece com o cargo 'PREFEITO' nas folhas de ago e set/2026, o mês mais recente; o cargo de vice ficou vago. A busca antiga pelo nome de JHC voltou vazia porque ele já não estava no cargo."
    ],
    "partes": [
     0.6,
     "A consulta separa vencimento, benefícios, comissão, redutor e eventuais; 13º e férias só no arquivo aberto sem nomes."
    ],
    "secretarios": [
-    null,
-    "A conferir: não há filtro por cargo e as consultas não responderam a tempo."
+    1,
+    "Conferido em 03/10/2026, pelos nomes publicados no site da prefeitura (maceio.al.gov.br): os secretários de Desenvolvimento Social, de Turismo e de Estratégias Disruptivas e Economia Digital aparecem com o cargo 'SECRETARIO (A)', a secretaria e o pagamento na folha de set/2026. Não há filtro por cargo: a busca é pelo nome, e cada uma levou de 3 a 5 minutos."
    ],
    "historico": [
     1,
@@ -509,8 +509,8 @@
     "Mostra o básico, o 13º em folha própria e a verba indenizatória em folha própria; férias e abate-teto não aparecem à parte."
    ],
    "secretarios": [
-    null,
-    "A conferir: há uma folha de verba indenizatória de agentes políticos e secretários, mas as amostras não mostraram os secretários pelo cargo."
+    0.5,
+    "Conferido em 03/10/2026, pelos nomes da página oficial das secretarias (cuiaba.mt.gov.br/secretarias): os secretários de Assistência Social, Comunicação, Economia e Educação aparecem em ago e set/2026, com o órgão, a lotação e o pagamento, mas com o cargo 'COMISSÃO GDA', o mesmo dos outros comissionados. O que os separa é a 'Folha V.I. - Agentes políticos e secretários municipais', não o cargo."
    ],
    "historico": [
     1,
