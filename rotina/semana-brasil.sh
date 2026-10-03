@@ -9,7 +9,8 @@
 #   2. git pull (traz o que o GitHub coletou);
 #   3. python coletar.py brasil (coleta/onde.py diz o que rodar; os arquivos do site são refeitos a partir dos CSVs);
 #   4. commit só dos dados e push. Se o push conflitar com outra rodada, refaz os arquivos do site e tenta de novo.
-#   5. avisa no Mac (Central de Notificações) o resultado e as fontes com problema (dados/processados/situacao.md).
+#   5. avisa no Mac (Central de Notificações) o resultado: primeiro o que quebrou desde a rodada anterior
+#      (dados/processados/rodada-resumo.json), depois as fontes com problema (dados/processados/situacao.md).
 #
 # Uso à mão: rotina/semana-brasil.sh --agora   (ignora o "uma vez por semana")
 #            rotina/semana-brasil.sh --sem-push (faz o commit, mas não envia)
@@ -26,7 +27,7 @@ exec >>"$LOG" 2>&1
 export CONTAS_ONDE=brasil PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
 # o que o commit leva (só dados e arquivos do site gerados a partir deles)
 DADOS=(dados/municipios dados/municipios_tce dados/assembleias dados/governadores dados/processados/coletas_brasil.json
-       dados/processados/situacao.md dados/processados/situacao.json site/dados site/fotos)
+       dados/processados/situacao.md dados/processados/situacao.json dados/processados/rodada-resumo.json site/dados site/fotos)
 
 avisar() { osascript -e "display notification \"$2\" with title \"Contas do Poder\" subtitle \"$1\"" >/dev/null 2>&1 || true; echo "AVISO: $1 — $2"; }
 
@@ -81,7 +82,7 @@ else
         # conflito: só pode ser nos arquivos do site gerados (os CSVs de cada rodada são de fontes diferentes); fica a
         # versão de lá, e os arquivos do site são refeitos a partir dos CSVs juntos
         CONFLITOS=$(git diff --name-only --diff-filter=U)
-        if echo "$CONFLITOS" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/situacao)'; then
+        if echo "$CONFLITOS" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/(situacao|rodada-resumo))'; then
           git rebase --abort; avisar "Rodada parou" "conflito do Git fora dos arquivos gerados: $CONFLITOS"; exit 1
         fi
         echo "$CONFLITOS" | xargs git checkout --ours --
@@ -95,8 +96,24 @@ else
 fi
 
 "$PY" -c "from datetime import datetime; print(datetime.now().isoformat(timespec='seconds'))" > "$ESTADO/ultima-rodada"
+# o que mudou desde a rodada anterior (vazio na primeira rodada com resumo): "título|fontes"
+NOVIDADE=$("$PY" - <<'PYEOF' 2>/dev/null
+import json
+r = json.load(open("dados/processados/rodada-resumo.json"))
+nomes = lambda l: ", ".join(i["fonte"] for i in l[:5])
+q, v, c = r["quebrou"], r["voltou"], r["continua"]
+if q:
+    print(f"Rodada feita: {len(q)} quebraram desde a semana passada|{nomes(q)}")
+elif r["anterior"] and c:
+    print(f"Rodada feita: nada quebrou de novo, {len(c)} continuam com problema|{nomes(c)}")
+elif v:
+    print(f"Rodada feita: {len(v)} voltaram e nenhuma quebrou|{nomes(v)}")
+PYEOF
+)
 PROBLEMAS=$(grep -cE '\| (falhando|atrasada) \|' dados/processados/situacao.md 2>/dev/null || echo 0)
-if [ "$PROBLEMAS" -gt 0 ]; then
+if [ -n "$NOVIDADE" ]; then
+  avisar "${NOVIDADE%%|*}" "${NOVIDADE#*|}"
+elif [ "$PROBLEMAS" -gt 0 ]; then
   avisar "Rodada feita, $PROBLEMAS fontes com problema" "$(grep -E '\| (falhando|atrasada) \|' dados/processados/situacao.md | cut -d'|' -f2 | tr -s ' ' | head -5 | tr '\n' ',')"
 else
   avisar "Rodada feita" "Todas as fontes em dia."

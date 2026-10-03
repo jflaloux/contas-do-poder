@@ -6,9 +6,17 @@ ou Brasil) e a última falha. Sai em dados/processados/situacao.md (e .json), no
   fonte: Minas e São Paulo, por exemplo, publicam a folha com alguns meses de atraso);
 - "ok".
 Na rodada do GitHub, o relatório aparece no resumo da execução; na do Brasil, as fontes com problema viram um aviso.
+
+Resumo da rodada (dados/processados/rodada-resumo.json): o que quebrou desde a rodada anterior, o que voltou e o que
+continua com problema ("falhando" ou "atrasada"; o atraso da própria fonte não conta). A rodada é a semana que começa
+na terça (a do GitHub, de manhã, e a do Brasil, à tarde ou nos dias seguintes, são a mesma rodada): rodar de novo na
+mesma semana atualiza a rodada da semana, e a comparação é sempre com o fim da semana anterior. O arquivo guarda o
+histórico das últimas 26 rodadas, para ver quais fontes dão trabalho (dados/processados/raio-x-fontes.md).
 """
 import json
-from datetime import datetime
+from collections import Counter
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
 
 from . import onde
 from .config import PROCESSADOS, RAIZ
@@ -33,6 +41,10 @@ ATRASOS_CONHECIDOS = {
 SAIDA_MD = PROCESSADOS / "situacao.md"
 SAIDA_JSON = PROCESSADOS / "situacao.json"
 SAIDA_SITE = SITE / "situacao.json"  # a versão pública (página "frescor dos dados"): sem erro técnico nem onde rodou
+SAIDA_RODADA = PROCESSADOS / "rodada-resumo.json"
+RODADAS_NO_HISTORICO = 26
+PROBLEMAS = ("falhando", "atrasada")  # "atrasada (fonte)" não é problema do robô
+FUSO = ZoneInfo("America/Sao_Paulo")
 GRUPOS = [("federal", "Governo federal e Congresso"), ("judiciario", "Judiciário"), ("folhas", "Governadores"),
           ("viagens", "Viagens dos governadores"),
           ("assembleias", "Assembleias Legislativas"), ("vereadores", "Câmaras Municipais das capitais"),
@@ -113,21 +125,100 @@ def executar():
     problemas = [l for l in linhas if l["situacao"] in ("falhando", "atrasada")]
     SAIDA_JSON.write_text(json.dumps({"gerado_em": datetime.now().isoformat(timespec="seconds"), "ultimo_mes_fechado": fechado,
                                       "fontes": linhas}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    resumo = resumir_rodada(linhas)
     fmt = lambda am: f"{am % 100:02d}/{am // 100}" if am else "—"
     md = [f"# Situação das fontes ({datetime.now():%d/%m/%Y %H:%M}, rodada: {onde.LUGAR})", "",
           f"Último mês fechado: {fmt(fechado)}. {len(linhas)} fontes: {sum(l['situacao'] == 'ok' for l in linhas)} ok, "
           f"{sum(l['situacao'] == 'atrasada (fonte)' for l in linhas)} com o atraso da própria fonte, "
           f"{sum(l['situacao'] == 'atrasada' for l in linhas)} atrasadas, {sum(l['situacao'] == 'falhando' for l in linhas)} falhando.", "",
+          *_md_rodada(resumo),
           "| Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |", "|---|---|---|---|---|---|"]
     for l in linhas:
         md.append(f"| {l['fonte']}{' (só do Brasil)' if l['so_brasil'] else ''} | {l['situacao']} | {fmt(l['ultimo_mes'])} | "
                   f"{(l['ultimo_sucesso'] or '—')[:10]} | {l['onde'] or '—'} | {(l['erro'] or '').replace('|', '/')[:120]} |")
     SAIDA_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
-    publicar(linhas, fechado)
+    publicar(linhas, fechado, resumo)
     log(f"Situação das fontes: {len(linhas)} fontes, {len(problemas)} com problema (dados/processados/situacao.md)")
     for l in problemas:
         log(f"  {l['fonte']}: {l['situacao']}" + (f" ({l['erro'][:100]})" if l["erro"] else f" (último mês {fmt(l['ultimo_mes'])})"))
+    log(f"Rodada da semana de {_dia(resumo['semana'])}" + (f", comparada com a de {_dia(resumo['anterior'])}" if resumo["anterior"] else "")
+        + f": {len(resumo['quebrou'])} quebraram, {len(resumo['voltou'])} voltaram, {len(resumo['continua'])} continuam "
+        "(dados/processados/rodada-resumo.json)")
     return len(problemas)
+
+
+def _dia(iso):
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}" if iso else "—"
+
+
+def _semana(agora):
+    """A rodada a que um momento pertence: a terça-feira em que a semana dela começa (de quarta a segunda, a terça
+    anterior)."""
+    d = agora.date()
+    return (d - timedelta(days=(d.weekday() - 1) % 7)).isoformat()
+
+
+def resumir_rodada(linhas, agora=None):
+    """Grava dados/processados/rodada-resumo.json e devolve o resumo: quebrou (com problema agora e sem problema no fim
+    da rodada anterior), voltou (o contrário), continua (com problema nas duas) e quebrou_e_voltou (teve problema em
+    alguma execução desta semana, mas não agora nem no fim da anterior). Uma fonte nova que já entra com problema conta
+    como "quebrou". Sem rodada anterior no histórico, as quatro listas ficam vazias."""
+    agora = agora or datetime.now(FUSO)
+    try:
+        antes = json.loads(SAIDA_RODADA.read_text(encoding="utf-8")) if SAIDA_RODADA.exists() else {}
+    except ValueError:
+        antes = {}
+    historico = [h for h in antes.get("historico", []) if isinstance(h, dict) and h.get("semana")]
+    semana = _semana(agora)
+    desta = next((h for h in historico if h["semana"] == semana), {})
+    anteriores = sorted((h for h in historico if h["semana"] < semana), key=lambda h: h["semana"])
+    base = anteriores[-1] if anteriores else None
+    problemas = {l["fonte"]: l["situacao"] for l in linhas if l["situacao"] in PROBLEMAS}
+    teve = sorted(set(problemas) | set(desta.get("teve_problema", [])))
+    entrada = {"semana": semana, "atualizado_em": agora.isoformat(timespec="seconds"),
+               "lugares": sorted(set(desta.get("lugares", [])) | {onde.LUGAR}), "fontes": len(linhas),
+               "problemas": dict(sorted(problemas.items())), "teve_problema": teve}
+    historico = (anteriores + [entrada])[-RODADAS_NO_HISTORICO:]
+    antes_prob = (base or {}).get("problemas", {})
+    por_fonte = {l["fonte"]: l for l in linhas}
+
+    def item(f):
+        l = por_fonte[f]
+        return {"fonte": f, "situacao": l["situacao"], "desde": l.get("falha_desde"), "ultimo_mes": l.get("ultimo_mes"),
+                "erro": (l.get("erro") or "")[:200] or None}
+    comparar = base is not None  # na primeira rodada com resumo não há com o que comparar: as listas ficam vazias
+    resumo = {
+        "gerado_em": entrada["atualizado_em"],
+        "semana": semana,
+        "anterior": base["semana"] if base else None,
+        "lugares": entrada["lugares"],
+        "quebrou": [item(f) for f in sorted(problemas) if comparar and f not in antes_prob],
+        "voltou": [{"fonte": f, "antes": antes_prob[f], "situacao": por_fonte[f]["situacao"] if f in por_fonte else "fora da lista"}
+                   for f in sorted(antes_prob) if f not in problemas],
+        "continua": [item(f) for f in sorted(problemas) if comparar and f in antes_prob],
+        "quebrou_e_voltou": [f for f in teve if comparar and f not in problemas and f not in antes_prob],
+        "totais": dict(Counter(l["situacao"] for l in linhas)),
+        "historico": historico,
+    }
+    SAIDA_RODADA.write_text(json.dumps(resumo, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return resumo
+
+
+def _md_rodada(resumo):
+    """As linhas do situacao.md sobre a rodada (o que mudou desde a anterior)."""
+    if not resumo["anterior"]:
+        return [f"Rodada da semana de {_dia(resumo['semana'])}: a primeira com resumo (sem rodada anterior para comparar).", ""]
+    md = [f"Desde a rodada anterior (semana de {_dia(resumo['anterior'])}):", ""]
+    for chave, nome in (("quebrou", "Quebrou"), ("voltou", "Voltou"), ("continua", "Continua com problema")):
+        itens = resumo[chave]
+        if chave == "voltou":
+            texto = ", ".join(f"{i['fonte']} (agora: {i['situacao']})" for i in itens)
+        else:
+            texto = ", ".join(f"{i['fonte']} ({i['situacao']}" + (f" desde {_dia(i['desde'])}" if i.get("desde") else "") + ")" for i in itens)
+        md.append(f"- {nome}: {texto or 'nada'}.")
+    if resumo["quebrou_e_voltou"]:
+        md.append(f"- Quebrou e voltou nesta semana: {', '.join(resumo['quebrou_e_voltou'])}.")
+    return md + [""]
 
 
 def _nomes_e_links():
@@ -173,10 +264,11 @@ def _nomes_e_links():
     return saida
 
 
-def publicar(linhas, fechado):
+def publicar(linhas, fechado, resumo=None):
     """site/dados/situacao.json, para a página pública "frescor dos dados": de cada fonte, o nome, o grupo, o link oficial,
     o último mês com dados no site, a data da última coleta certa e a situação em palavras neutras. Nada interno: sem a
-    mensagem de erro, o caminho de arquivo nem onde a coleta rodou."""
+    mensagem de erro, o caminho de arquivo nem onde a coleta rodou. Com o resumo da rodada, a chave "rodada": a semana,
+    a anterior e os ids das fontes que quebraram, voltaram e continuam com problema (os nomes estão em "fontes")."""
     fmt_mes = lambda am: f"{am % 100:02d}/{am // 100}"
     fmt_dia = lambda iso: f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}"
     info = _nomes_e_links()
@@ -200,9 +292,12 @@ def publicar(linhas, fechado):
                        "ultima_coleta": (l["ultimo_sucesso"] or "")[:10] or None, "situacao": sit, "texto": texto})
     ordem = {g: i for i, (g, _) in enumerate(GRUPOS)}
     fontes.sort(key=lambda f: (ordem.get(f["grupo"], 99), f["uf"] or "", f["nome"]))
-    from zoneinfo import ZoneInfo
-    dados = {"gerado_em": datetime.now(ZoneInfo("America/Sao_Paulo")).isoformat(timespec="seconds"), "ultimo_mes_fechado": fechado,
+    dados = {"gerado_em": datetime.now(FUSO).isoformat(timespec="seconds"), "ultimo_mes_fechado": fechado,
              "grupos": [{"id": g, "nome": n} for g, n in GRUPOS if any(f["grupo"] == g for f in fontes)],
              "situacoes": {"em_dia": "Em dia", "atraso_fonte": "Atraso da própria fonte", "atrasada": "Atrasada", "falhou": "A coleta falhou"},
              "fontes": fontes}
+    if resumo:
+        ids = {f["id"] for f in fontes}
+        dados["rodada"] = {"semana": resumo["semana"], "anterior": resumo["anterior"],
+                           **{k: [i["fonte"] for i in resumo[k] if i["fonte"] in ids] for k in ("quebrou", "voltou", "continua")}}
     SAIDA_SITE.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")

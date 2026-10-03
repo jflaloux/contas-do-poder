@@ -1,0 +1,34 @@
+{
+ "gerado_em": "2026-10-03T18:00:54-03:00",
+ "semana": "2026-09-29",
+ "anterior": null,
+ "lugares": [
+  "brasil"
+ ],
+ "quebrou": [],
+ "voltou": [],
+ "continua": [],
+ "quebrou_e_voltou": [],
+ "totais": {
+  "atrasada (fonte)": 8,
+  "ok": 86
+ },
+ "historico": [
+  {
+   "semana": "2026-09-29",
+   "atualizado_em": "2026-10-03T18:00:54-03:00",
+   "lugares": [
+    "brasil"
+   ],
+   "fontes": 94,
+   "problemas": {},
+   "teve_problema": [
+    "assembleias/pb",
+    "folhas/RO",
+    "folhas/RR",
+    "prefeituras/recife",
+    "vereadores/recife"
+   ]
+  }
+ ]
+}

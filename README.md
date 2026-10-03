@@ -80,6 +80,13 @@ duas rodadas por semana:
   fonte (Minas e São Paulo publicam a folha com meses de atraso, por exemplo). No GitHub, o relatório aparece no resumo
   de cada execução; na rodada do Brasil, as fontes com problema viram um aviso na Central de Notificações do macOS.
   Uma cidade ou um estado que não entrou no arquivo do site (a montagem falhou) também aparece como "falhando".
+- **Resumo da rodada** (`dados/processados/rodada-resumo.json`, refeito junto com o relatório): o que quebrou desde a
+  rodada anterior, o que voltou e o que continua com problema ("falhando" ou "atrasada"; o atraso da própria fonte não
+  conta), mais o histórico das últimas 26 rodadas. A rodada é a semana que começa na terça: a do GitHub e a do Brasil
+  são a mesma, e rodar de novo na mesma semana só atualiza a semana; a comparação é sempre com o fim da semana anterior.
+  Aparece no começo do `situacao.md`, no aviso do Mac e, só com os ids e as datas, na chave `rodada` do
+  `site/dados/situacao.json`. O histórico serve para o raio-X das fontes (`dados/processados/raio-x-fontes.md`: tipo
+  de acesso, onde roda, problemas já vistos, tamanho, cobertura, risco e recomendação de cada fonte).
 - **Frescor dos dados** (`site/dados/situacao.json`, refeito junto com o relatório): a versão pública, para o site. De
   cada fonte, o nome, o grupo, o link oficial, o último mês com dados no site, a data da última coleta certa e a
   situação em palavras neutras ("Em dia"; "Atraso da própria fonte", com o motivo de `ATRASOS_CONHECIDOS`; "A coleta
