@@ -315,10 +315,25 @@
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:58:38"
  },
+ "tce/es": {
+  "ultima_tentativa": "2026-10-03T17:13:03",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T17:13:03"
+ },
  "tce/pb": {
   "ultima_tentativa": "2026-10-02T15:58:37",
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:58:37"
+ },
+ "tce/pe": {
+  "ultima_tentativa": "2026-10-03T18:12:30",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T18:12:30"
+ },
+ "tce/rj": {
+  "ultima_tentativa": "2026-10-03T17:13:00",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T17:13:00"
  },
  "vereadores/aracaju": {
   "ultima_tentativa": "2026-10-02T15:25:45",
