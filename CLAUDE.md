@@ -146,6 +146,8 @@ armadilhas que não estão escritas em outro lugar.
   saem pelo nome. TST: o leiaute muda de um mês para outro, jun/2025 veio em MacRoman, e aposentado aparece como INATIVO
   ou APOSENTADO. CNJ: mês com dois dígitos; a página mistura números em formato americano e brasileiro e às vezes perde o
   primeiro algarismo do subsídio (",10.37"). MPF: usar o endereço sem www; o ODS é lido sem odfpy.
+- Interior: dado que não é por pessoa (o valor por cargo dos Tribunais de Contas de ES, PE e RJ) vai em
+  `site/dados/interior-cargo/`, nunca em `site/dados/interior/`: o site lê essa pasta como valor por pessoa (PB e CE).
 - Cloudflare Pages (plano gratuito): no máximo 20.000 arquivos e 2.000 redirecionamentos. Em 02/10/2026: ~13.900
   arquivos e 811 redirecionamentos. Nada de página por pessoa abaixo dos tribunais superiores nem para o interior
   (vereadores do interior ficam na página da cidade). O `gerar.mjs` avisa a partir de 18.000 arquivos ou 1.800
