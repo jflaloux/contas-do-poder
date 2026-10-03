@@ -1043,6 +1043,11 @@ seguem o mesmo desenho.
 - Cota do Senado: nossa soma bate **ao centavo** com o total oficial em 324 de 324 comparações (senador × ano).
 - Cota da Câmara: 37 de 40 comparações da amostra batem ao centavo; as outras 3 diferem até 1,5%.
 - Auxílio-moradia da Câmara em 2026: bate ao centavo com o total do site.
+- Presença e projetos (03/10/2026; deputados Laura Carneiro, Zucco, André Fufuca, Marcelo Nilo e Augusto Puppio;
+  senadores Alan Rick, Paulo Paim, Renan Filho, Augusta Brito e Damares Alves): a presença na Câmara bate dia a dia com
+  o serviço oficial por deputado (`ListarPresencasParlamentar`); as votações do Senado batem ano a ano com a consulta por
+  senador; primeiro autor e normas batem com a API da Câmara (autores e situação de cada proposição) e, no Senado, com
+  o serviço de autorias do senador e a norma gerada no detalhe de cada processo.
 
 ## Pendências conhecidas
 

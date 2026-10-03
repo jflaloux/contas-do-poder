@@ -1,0 +1,648 @@
+carteira;id_deputado;nome;uf;ligado_por
+1;220538;Albuquerque;RR;matrícula
+2;220539;Defensor Stélio Dener;RR;matrícula
+3;220540;Duda Ramos;RR;matrícula
+4;220537;Helena Lima;RR;matrícula
+5;160531;Jhonatan de Jesus;RR;nome e UF
+6;204479;Nicoletti;RR;matrícula
+7;180214;Pastor Diniz;RR;matrícula
+8;220536;Zé Haroldo Cathedral;RR;matrícula
+9;220577;Augusto Pupio;AP;nome parecido e UF
+10;204379;Acácio Favacho;AP;matrícula
+11;220573;Dorinaldo Malafaia;AP;matrícula
+12;220578;Josenildo;AP;matrícula
+14;220580;Professora Goreth;AP;nome e UF
+15;220579;Silvia Waiãpi;AP;nome e UF
+16;160591;Vinicius Gurgel;AP;matrícula
+17;220575;Sonize Barbosa;AP;nome e UF
+18;204495;Airton Faleiro;PA;matrícula
+19;220676;Andreia Siqueira;PA;matrícula
+20;220675;Antônio Doido;PA;matrícula
+21;74075;Elcione Barbalho;PA;matrícula
+22;178908;Delegado Éder Mauro;PA;matrícula
+23;204496;Celso Sabino;PA;matrícula
+25;220673;Delegado Caveira;PA;matrícula
+26;74079;José Priante;PA;matrícula
+27;220671;Dilvanda Faro;PA;matrícula
+28;220674;Dra. Alessandra Haber;PA;matrícula
+29;204497;Júnior Ferrari;PA;matrícula
+30;204498;Olival Marques;PA;matrícula
+31;220672;Henderson Pinto;PA;matrícula
+32;220677;Keniston Braga;PA;matrícula
+33;178910;Joaquim Passarinho;PA;matrícula
+34;74084;Raimundo Santos;PA;matrícula
+35;153423;Renilce Nicodemos;PA;matrícula
+36;204572;Capitão Alberto Neto;AM;matrícula
+37;220714;Adail Filho;AM;matrícula
+38;74090;Átila Lins;AM;matrícula
+39;74356;Silas Câmara;AM;matrícula
+40;220715;Amom Mandel;AM;matrícula
+41;220712;Fausto Santos Jr.;AM;matrícula
+42;220713;Saullo Vianna;AM;matrícula
+43;204557;Sidney Leite;AM;matrícula
+44;220608;Cristiane Lopes;RO;matrícula
+45;204378;Coronel Chrisóstomo;RO;matrícula
+46;178954;Lucio Mosquini;RO;matrícula
+47;220610;Dr. Fernando Máximo;RO;matrícula
+48;220600;Lebrão;RO;nome e UF
+49;220609;Maurício Carvalho;RO;matrícula
+50;204360;Silvia Cristina;RO;matrícula
+51;220597;Thiago Flores;RO;matrícula
+52;123756;Antônia Lúcia;AC;matrícula
+53;220590;Coronel Ulysses;AC;matrícula
+54;220589;Eduardo Velloso;AC;matrícula
+55;220587;Gerlen Diniz;AC;nome e UF
+56;220591;Meire Serafim;AC;matrícula
+57;220588;Roberto Duarte;AC;matrícula
+58;104552;Socorro Neri;AC;matrícula
+59;220592;Zezinho Barbary;AC;matrícula
+60;178993;Carlos Henrique Gaguim;TO;matrícula
+61;220542;Alexandre Guimarães;TO;matrícula
+62;220544;Antonio Andrade;TO;matrícula
+63;204364;Eli Borges;TO;matrícula
+64;220545;Filipe Martins;TO;matrícula
+65;141480;Lázaro Botelho;TO;nome e UF
+66;137070;Vicentinho Júnior;TO;matrícula
+67;220543;Ricardo Ayres;TO;matrícula
+68;178881;Aluisio Mendes;MA;matrícula
+70;141408;Cleber Verde;MA;matrícula
+71;220707;Amanda Gentil;MA;matrícula
+72;178882;André Fufuca;MA;matrícula
+73;220689;Detinha;MA;matrícula
+74;220686;Duarte;MA;matrícula
+75;220681;Fábio Macedo;MA;matrícula
+76;215043;Josivaldo JP;MA;matrícula
+77;220687;Márcio Honaiser;MA;matrícula
+78;204563;Josimar Maranhãozinho;MA;matrícula
+79;178886;Juscelino Filho;MA;matrícula
+80;204574;Junior Lourenço;MA;matrícula
+81;178887;Rubens Pereira Júnior;MA;matrícula
+82;81055;Márcio Jerry;MA;matrícula
+83;204566;Marreca Filho;MA;matrícula
+84;204570;Pastor Gil;MA;matrícula
+85;122974;Pedro Lucas Fernandes;MA;matrícula
+86;73806;Roseana Sarney;MA;nome e UF
+87;204549;AJ Albuquerque;CE;matrícula
+88;220657;André Fernandes;CE;matrícula
+89;133439;André Figueiredo;CE;matrícula
+90;204488;Célio Studart;CE;matrícula
+91;62881;Danilo Forte;CE;matrícula
+92;204481;Dr. Jaziel;CE;matrícula
+93;204541;Eduardo Bismarck;CE;matrícula
+94;220659;Dayany do Capitão;CE;nome e UF
+95;204533;Idilvan Alencar;CE;matrícula
+96;74454;Eunício Oliveira;CE;matrícula
+97;143632;Domingos Neto;CE;matrícula
+98;178866;Luizianne Lins;CE;matrícula
+99;220656;Fernanda Pessoa;CE;matrícula
+100;204550;Júnior Mano;CE;matrícula
+101;141464;José Airton Félix Cirilo;CE;matrícula
+102;204486;Mauro Benevides Filho;CE;matrícula
+103;141470;José Guimarães;CE;nome e UF
+104;220658;Luiz Gastão;CE;matrícula
+105;204489;Robério Monteiro;CE;matrícula
+106;178997;Moses Rodrigues;CE;matrícula
+107;220661;Matheus Noronha;CE;matrícula
+108;220660;Yury do Paredão;CE;matrícula
+109;123086;Átila Lira;PI;matrícula
+110;191923;Flávio Nogueira;PI;matrícula
+111;220699;Castro Neto;PI;matrícula
+112;220688;Dr. Francisco;PI;matrícula
+113;220700;Florentino Neto;PI;matrícula
+114;74317;Júlio Cesar;PI;matrícula
+115;204431;Marcos Aurélio Sampaio;PI;matrícula
+117;220697;Jadyel Alencar;PI;matrícula
+118;66385;Julio Arcoverde;PI;matrícula
+119;204445;Fernando Mineiro;RN;matrícula
+120;109429;Benes Leocádio;RN;matrícula
+121;220627;Paulinho Freire;RN;nome e UF
+122;204473;General Girão;RN;matrícula
+123;220624;Robinson Faria;RN;matrícula
+124;141459;João Maia;RN;matrícula
+125;220621;Sargento Gonçalves;RN;matrícula
+126;204453;Natália Bonavides;RN;matrícula
+127;74467;Damião Feliciano;PB;matrícula
+128;220574;Cabo Gilberto Silva;PB;matrícula
+129;160527;Aguinaldo Ribeiro;PB;matrícula
+130;74041;Luiz Couto;PB;matrícula
+131;220585;Mersinho Lucena;PB;matrícula
+132;160674;Hugo Motta;PB;matrícula
+133;204394;Gervásio Maia;PB;matrícula
+134;220584;Murilo Galdino;PB;matrícula
+135;160629;Romero Rodrigues;PB;nome e UF
+136;74043;Wellington Roberto;PB;matrícula
+137;160635;Ruy Carneiro;PB;matrícula
+138;74044;Wilson Santiago;PB;matrícula
+139;204423;André Ferreira;PE;matrícula
+140;220665;Clarissa Tércio;PE;matrícula
+141;160665;Augusto Coutinho;PE;matrícula
+142;204426;Carlos Veras;PE;matrícula
+143;88256;Clodoaldo Magalhães;PE;matrícula
+144;220666;Coronel Meira;PE;matrícula
+145;72442;Felipe Carreras;PE;matrícula
+146;92699;Fernando Monteiro;PE;matrícula
+147;204427;Fernando Rodolfo;PE;matrícula
+148;220663;Eriberto Medeiros;PE;matrícula
+149;220664;Guilherme Uchoa;PE;matrícula
+150;74478;Luciano Bivar;PE;matrícula
+151;220670;Iza Arruda;PE;matrícula
+152;220662;Lucas Ramos;PE;matrícula
+153;220669;Lula da Fonte;PE;matrícula
+154;73801;Renildo Calheiros;PE;matrícula
+155;160642;Pastor Eurico;PE;matrícula
+156;141421;Eduardo da Fonte;PE;matrícula
+157;220668;Maria Arraes;PE;matrícula
+158;141431;Fernando Coelho Filho;PE;matrícula
+159;74428;Mendonça Filho;PE;matrícula
+160;204425;Silvio Costa Filho;PE;matrícula
+161;220667;Pedro Campos;PE;matrícula
+162;160541;Arthur Lira;AL;matrícula
+163;157130;Túlio Gadêlha;PE;matrícula
+164;91228;Waldemar Oliveira;PE;matrícula
+165;204436;Isnaldo Bulhões Jr.;AL;matrícula
+166;220576;Alfredo Gaspar;AL;matrícula
+167;220582;Daniel Barbosa;AL;matrícula
+168;220583;Delegado Fabio Costa;AL;matrícula
+169;178843;Marx Beltrão;AL;matrícula
+170;171617;Paulão;AL;nome e UF
+172;220581;Luciano Amaral;AL;matrícula
+173;220586;Rafael Brito;AL;matrícula
+174;220561;Delegada Katarina;SE;matrícula
+175;220563;Icaro de Valmir;SE;matrícula
+176;165470;Rodrigo Valadares;SE;matrícula
+177;220560;Thiago de Joaldo;SE;matrícula
+178;171623;Fabio Reis;SE;matrícula
+179;178970;João Daniel;SE;matrícula
+180;74057;Alice Portugal;BA;matrícula
+181;204408;Gustinho Ribeiro;SE;matrícula
+182;160508;Afonso Florence;BA;matrícula
+183;220564;Yandra Moura;SE;matrícula
+184;69871;Bacelar;BA;matrícula
+185;139285;Lídice da Mata;BA;matrícula
+186;74537;Claudio Cajado;BA;matrícula
+187;141458;João Carlos Bacelar;BA;matrícula
+188;74060;Daniel Almeida;BA;matrícula
+189;160553;Antonio Brito;BA;matrícula
+190;220690;Capitão Alden;BA;matrícula
+191;204560;Adolfo Viana;BA;matrícula
+192;160600;Arthur Oliveira Maia;BA;matrícula
+193;220692;Dal Barreto;BA;matrícula
+194;204571;Alex Santana;BA;nome e UF
+195;160666;Félix Mendonça Júnior;BA;matrícula
+196;220691;Diego Coronel;BA;matrícula
+197;220708;Gabriel Nunes;BA;matrícula
+198;178854;Elmar Nascimento;BA;matrícula
+199;220696;Ivoneide Caetano;BA;matrícula
+200;92102;Leur Lomanto Júnior;BA;matrícula
+201;74550;João Leão;BA;nome e UF
+202;209189;Joseildo Ramos;BA;matrícula
+203;74554;José Rocha;BA;matrícula
+204;178857;Jorge Solla;BA;matrícula
+205;80815;Léo Prates;BA;nome e UF
+206;204573;Otto Alencar Filho;BA;nome e UF
+207;204553;Pastor Sargento Isidório;BA;matrícula
+208;178858;Mário Negromonte Jr.;BA;matrícula
+209;220703;Neto Carletto;BA;matrícula
+210;74574;Paulo Magalhães;BA;matrícula
+211;204567;Raimundo Costa;BA;matrícula
+212;150418;Márcio Marinho;BA;matrícula
+213;73808;Sérgio Brito;BA;matrícula
+214;220694;Ricardo Maia;BA;matrícula
+215;178860;Paulo Azi;BA;matrícula
+216;220693;Roberta Roma;BA;matrícula
+217;204559;Zé Neto;BA;matrícula
+218;160610;Valmir Assunção;BA;matrícula
+219;160569;Waldenor Pereira;BA;matrícula
+220;220695;Rogéria Santos;BA;matrícula
+221;74646;Aécio Neves;MG;matrícula
+222;107970;Ana Paula Leão;MG;matrícula
+223;204515;André Janones;MG;matrícula
+224;220632;Ana Pimentel;MG;matrícula
+225;204520;Junio Amaral;MG;matrícula
+226;210989;Bruno Farias;MG;matrícula
+227;204512;Delegado Marcelo Freitas;MG;matrícula
+228;160588;Diego Andrade;MG;matrícula
+229;204518;Dr. Frederico;MG;matrícula
+230;206018;Célia Xakriabá;MG;matrícula
+231;160599;Dimas Fabiano;MG;matrícula
+232;220629;Dandara;MG;matrícula
+233;160758;Domingos Sávio;MG;matrícula
+234;161550;Emidinho Madeira;MG;matrícula
+235;179000;Marcelo Álvaro Antônio;MG;matrícula
+236;220625;Delegada Ione;MG;matrícula
+237;220623;Duda Salabert;MG;matrícula
+238;141487;Luiz Fernando Faria;MG;matrícula
+239;74158;Mário Heringer;MG;matrícula
+240;204482;Euclydes Pettersen;MG;matrícula
+241;220628;Mauricio do Vôlei;MG;matrícula
+242;160640;Eros Biondini;MG;matrícula
+243;74585;Lincoln Portela;MG;matrícula
+244;204494;Fred Costa;MG;matrícula
+245;178895;Misael Varella;MG;matrícula
+246;204491;Gilberto Abramo;MG;matrícula
+247;178896;Newton Cardoso Jr;MG;matrícula
+248;198197;Greyce Elias;MG;matrícula
+249;74160;Patrus Ananias;MG;matrícula
+250;171786;Miguel Ângelo;MG;matrícula
+251;160510;Luis Tibé;MG;matrícula
+252;220622;Nely Aquino;MG;matrícula
+253;74156;Leonardo Monteiro;MG;matrícula
+254;204539;Hercílio Coelho Diniz;MG;matrícula
+255;204508;Igor Timo;MG;matrícula
+256;98057;Lafayette de Andrada;MG;matrícula
+257;209787;Nikolas Ferreira;MG;matrícula
+258;220630;Pedro Aihara;MG;matrícula
+259;160556;Padre João;MG;matrícula
+260;204492;Paulo Guedes;MG;matrícula
+261;204524;Pinheirinho;MG;matrícula
+262;204480;Rogério Correia;MG;matrícula
+263;141516;Paulo Abi-Ackel;MG;matrícula
+264;220626;Rafael Simoes;MG;matrícula
+265;220620;Rosângela Reis;MG;matrícula
+266;204517;Zé Vitor;MG;matrícula
+267;92776;Stefano Aguiar;MG;matrícula
+268;141531;Rodrigo de Castro;MG;matrícula
+269;74159;Odair Cunha;MG;nome e UF
+270;160518;Weliton Prado;MG;matrícula
+271;160632;Zé Silva;MG;matrícula
+272;74161;Reginaldo Lopes;MG;matrícula
+273;220631;Samuel Viana;MG;matrícula
+274;178871;Evair Vieira de Melo;ES;matrícula
+275;204356;Amaro Neto;ES;matrícula
+276;204355;Da Vitoria;ES;matrícula
+277;220528;Dr. Victor Linhalis;ES;matrícula
+278;220529;Gilson Daniel;ES;matrícula
+279;178873;Helder Salomão;ES;matrícula
+280;160517;Paulo Foletto;ES;matrícula
+281;220526;Gilvan da Federal;ES;matrícula
+282;220527;Jack Rocha;ES;matrícula
+283;220530;Messias Donato;ES;matrícula
+284;220605;Bandeira de Mello;RJ;matrícula
+285;204460;Carlos Jordy;RJ;matrícula
+286;178937;Altineu Côrtes;RJ;matrícula
+287;220612;Bebeto;RJ;matrícula
+288;204476;Chiquinho Brazão;RJ;nome e UF
+289;204462;Chris Tonietto;RJ;matrícula
+290;160512;Aureo Ribeiro;RJ;matrícula
+291;73701;Benedita da Silva;RJ;matrícula
+292;74171;Chico Alencar;RJ;matrícula
+293;220603;Dani Cunha;RJ;matrícula
+294;220614;Daniel Soranz;RJ;matrícula
+295;220619;Delegado Ramagem;RJ;nome e UF
+296;204459;Daniela do Waguinho;RJ;matrícula
+297;220602;Dimas Gadelha;RJ;matrícula
+298;204450;Doutor Luizinho;RJ;matrícula
+299;220611;General Pazuello;RJ;matrícula
+300;205550;Jorge Braz;RJ;matrícula
+301;74253;Julio Lopes;RJ;matrícula
+302;204456;Gutemberg Reis;RJ;matrícula
+303;204444;Helio Lopes;RJ;matrícula
+304;152605;Glauber Braga;RJ;matrícula
+305;74848;Jandira Feghali;RJ;matrícula
+306;141450;Hugo Leal;RJ;matrícula
+307;74856;Laura Carneiro;RJ;matrícula
+308;204457;Juninho do Pneu;RJ;matrícula
+309;74858;Lindbergh Farias;RJ;matrícula
+310;220616;Luciano Vieira;RJ;nome e UF
+311;204455;Luiz Lima;RJ;matrícula
+312;220599;Marcelo Crivella;RJ;matrícula
+313;160161;Marcelo Queiroz;RJ;matrícula
+314;122158;Pedro Paulo;RJ;matrícula
+315;178943;Marcos Soares;RJ;matrícula
+316;220604;Marcos Tavares;RJ;matrícula
+317;204441;Otoni de Paula;RJ;matrícula
+318;220607;Max Lemos;RJ;matrícula
+319;220617;Murillo Gouvea;RJ;matrícula
+320;220615;Pastor Henrique Vieira;RJ;matrícula
+321;220606;Reimont;RJ;matrícula
+322;220613;Roberto Monteiro;RJ;matrícula
+323;204464;Talíria Petrone;RJ;matrícula
+324;220618;Sargento Portugal;RJ;matrícula
+325;178945;Rosangela Gomes;RJ;matrícula
+326;220598;Tarcísio Motta;RJ;matrícula
+327;220601;Washington Quaquá;RJ;nome e UF
+328;178946;Soraya Santos;RJ;matrícula
+329;178947;Sóstenes Cavalcante;RJ;matrícula
+330;178989;Renata Abreu;SP;nome e UF
+331;178972;Alex Manente;SP;matrícula
+332;74696;Alberto Mourão;SP;nome e UF
+333;204528;Adriana Ventura;SP;matrícula
+334;160545;Alexandre Leite;SP;matrícula
+335;220638;Antonio Carlos Rodrigues;SP;matrícula
+336;73433;Arlindo Chinaglia;SP;matrícula
+337;204501;Alencar Santana;SP;matrícula
+338;74262;Carlos Sampaio;SP;matrícula
+339;141391;Arnaldo Jardim;SP;matrícula
+340;220635;Bruno Ganem;SP;matrícula
+341;204503;Alexandre Padilha;SP;nome e UF
+342;178975;Baleia Rossi;SP;matrícula
+343;220642;Delegado Bruno Lima;SP;matrícula
+344;204531;Guilherme Derrite;SP;matrícula
+345;220649;Delegado da Cunha;SP;matrícula
+346;178829;Capitão Augusto;SP;matrícula
+347;73441;Celso Russomanno;SP;matrícula
+348;220652;Delegado Palumbo;SP;matrícula
+349;74273;Jefferson Campos;SP;matrícula
+350;204507;Carla Zambelli;SP;nome e UF
+351;204504;Cezinha de Madureira;SP;matrícula
+352;92346;Eduardo Bolsonaro;SP;nome e UF
+353;220654;Delegado Paulo Bilynskyj;SP;matrícula
+354;220645;Erika Hilton;SP;matrícula
+355;66828;Fausto Pinato;SP;matrícula
+356;204511;David Soares;SP;matrícula
+357;220653;Fábio Teruel;SP;matrícula
+358;220646;Felipe Becari;SP;matrícula
+359;220639;Guilherme Boulos;SP;nome e UF
+360;74270;Gilberto Nascimento;SP;matrícula
+361;141456;Jilmar Tatto;SP;matrícula
+362;160548;Jonas Donizette;SP;matrícula
+363;220640;Juliana Cardoso;SP;matrícula
+364;162067;Kiko Celeguim;SP;matrícula
+365;220636;Luiz Marinho;SP;nome e UF
+366;204536;Kim Kataguiri;SP;matrícula
+367;204485;Luiz Carlos Motta;SP;matrícula
+368;204526;Luiz Philippe de Orleans e Bragança;SP;matrícula
+369;204522;Marco Bertaiolli;SP;nome e UF
+370;178983;Marcio Alvino;SP;matrícula
+371;74784;Luiza Erundina;SP;matrícula
+372;220648;Marangoni;SP;matrícula
+373;204506;Marcos Pereira;SP;matrícula
+374;204540;Maria Rosas;SP;matrícula
+375;154178;Milton Vieira;SP;matrícula
+376;141488;Paulo Teixeira;SP;matrícula
+377;220634;Marcelo Lima;SP;nome e UF
+378;178985;Miguel Lombardi;SP;matrícula
+379;160601;Pr. Marco Feliciano;SP;matrícula
+380;160558;Paulo Freire Costa;SP;matrícula
+381;220637;Marina Silva;SP;matrícula
+382;178986;Nilto Tatto;SP;matrícula
+383;220655;Mario Frias;SP;matrícula
+384;220647;Mauricio Neves;SP;matrícula
+385;220650;Paulo Alexandre Barbosa;SP;matrícula
+386;220633;Ricardo Salles;SP;matrícula
+387;213274;Ricardo Silva;SP;nome e UF
+388;204525;Rosana Valle;SP;matrícula
+389;220641;Rodrigo Gambale;SP;matrícula
+390;73604;Rui Falcão;SP;matrícula
+391;204535;Sâmia Bomfim;SP;matrícula
+392;160976;Tiririca;SP;matrícula
+393;204534;Tabata Amaral;SP;matrícula
+394;220644;Rosângela Moro;SP;matrícula
+395;220651;Simone Marquetto;SP;matrícula
+396;220643;Sônia Guajajara;SP;matrícula
+397;141555;Vinicius Carvalho;SP;matrícula
+398;141398;Carlos Zarattini;SP;matrícula
+399;178992;Vitor Lippi;SP;matrícula
+400;220593;Abilio Brunini;MT;nome e UF
+401;204474;Juarez Costa;MT;matrícula
+402;220596;Amália Barros;MT;nome e UF
+403;198783;Emanuel Pinheiro Neto;MT;matrícula
+404;204472;José Medeiros;MT;matrícula
+405;220594;Coronel Assis;MT;matrícula
+406;220595;Coronel Fernanda;MT;matrícula
+407;160575;Erika Kokay;DF;matrícula
+408;178905;Fabio Garcia;MT;matrícula
+409;204374;Bia Kicis;DF;matrícula
+410;73579;Alberto Fraga;DF;matrícula
+411;220534;Fred Linhares;DF;matrícula
+412;204372;Julio Cesar Ribeiro;DF;matrícula
+413;220531;Gilvan Maximo;DF;nome e UF
+414;220533;Prof. Reginaldo Veras;DF;matrícula
+415;220532;Rafael Prudente;DF;matrícula
+416;121948;Adriano do Baldy;GO;matrícula
+417;178876;Célio Silveira;GO;matrícula
+418;220571;Daniel Agrobom;GO;matrícula
+419;220565;Delegada Adriana Accorsi;GO;matrícula
+420;204412;Dr. Zacharias Calil;GO;matrícula
+421;220570;Ismael Alexandrino;GO;matrícula
+422;160598;Flávia Morais;GO;matrícula
+423;220568;Gustavo Gayer;GO;matrícula
+424;220567;Jeferson Rodrigues;GO;matrícula
+425;74371;Rubens Otoni;GO;matrícula
+426;204419;Glaustin da Fokus;GO;matrícula
+427;220566;Lêda Borges;GO;matrícula
+428;204391;José Nelto;GO;matrícula
+429;220572;Marussa Boldrin;GO;matrícula
+430;220569;Silvye Alves;GO;matrícula
+431;166402;Magda Mofatto;GO;matrícula
+432;204390;Professor Alcides;GO;matrícula
+433;204358;Beto Pereira;MS;matrícula
+434;141411;Dagoberto Nogueira;MS;matrícula
+435;204351;Dr. Luiz Ovando;MS;matrícula
+436;220548;Camila Jara;MS;matrícula
+437;74374;Geraldo Resende;MS;matrícula
+438;74376;Vander Loubet;MS;matrícula
+439;220547;Marcos Pollon;MS;matrícula
+440;220546;Rodolfo Nogueira;MS;matrícula
+441;178927;Aliel Machado;PR;matrícula
+442;220698;Beto Preto;PR;matrícula
+443;220683;Beto Richa;PR;matrícula
+444;220704;Carol Dartora;PR;matrícula
+445;220701;Delegado Matheus Laiola;PR;matrícula
+446;204398;Felipe Francischini;PR;matrícula
+447;178929;Diego Garcia;PR;matrícula
+448;220705;Deltan Dallagnol;PR;nome e UF
+449;132504;Enio Verri;PR;nome e UF
+450;204411;Filipe Barros;PR;matrícula
+451;107283;Gleisi Hoffmann;PR;matrícula
+452;73768;Dilceu Sperafico;PR;matrícula
+453;178832;Leandre;PR;matrícula
+454;204410;Luisa Canziani;PR;matrícula
+455;204396;Vermelho;PR;matrícula
+456;220702;Geraldo Mendes;PR;matrícula
+457;178931;Luciano Ducci;PR;matrícula
+458;220706;Padovani;PR;nome e UF
+459;162332;Luiz Nishimori;PR;matrícula
+460;220685;Paulo Litro;PR;matrícula
+461;204395;Pedro Lupion;PR;matrícula
+462;73788;Ricardo Barros;PR;matrícula
+463;220682;Tadeu Veneri;PR;matrícula
+464;204387;Sargento Fahur;PR;matrícula
+465;160621;Sandro Alex;PR;matrícula
+466;74383;Giacobo;PR;nome e UF
+467;178933;Sergio Souza;PR;matrícula
+468;160592;Zeca Dirceu;PR;matrícula
+469;220684;Tião Medeiros;PR;matrícula
+470;178934;Toninho Wandscheer;PR;matrícula
+471;220556;Ana Paula Lima;SC;matrícula
+472;98148;Cobalchini;SC;matrícula
+473;204361;Carlos Chiodini;SC;matrícula
+474;204369;Caroline de Toni;SC;matrícula
+475;220557;Daniela Reinehr;SC;matrícula
+476;204367;Daniel Freitas;SC;matrícula
+477;164360;Carmen Zanotto;SC;nome e UF
+478;98615;Ismael;SC;matrícula
+479;204368;Fabio Schiochet;SC;matrícula
+480;204365;Gilson Marques;SC;matrícula
+481;160604;Pedro Uczai;SC;matrícula
+482;214694;Jorge Goetten;SC;matrícula
+483;220559;Julia Zanatta;SC;matrícula
+484;161440;Pezenti;SC;matrícula
+485;204362;Ricardo Guidi;SC;matrícula
+486;160559;Alceu Moreira;RS;matrícula
+487;136811;Afonso Hamm;RS;matrícula
+488;220558;Zé Trovão;SC;matrícula
+489;204388;Bibo Nunes;RS;matrícula
+490;178835;Afonso Motta;RS;matrícula
+491;204409;Daniel Trzeciak;RS;matrícula
+492;178962;Carlos Gomes;RS;matrícula
+493;178963;Covatti Filho;RS;matrícula
+494;220554;Alexandre Lindenmeyer;RS;matrícula
+495;160552;Danrlei de Deus Hinterholz;RS;matrícula
+496;204407;Fernanda Melchionna;RS;matrícula
+497;73692;Osmar Terra;RS;matrícula
+498;220549;Any Ortiz;RS;matrícula
+499;160538;Bohn Gass;RS;matrícula
+500;141485;Luiz Carlos Busato;RS;matrícula
+501;204404;Lucas Redecker;RS;matrícula
+502;160673;Giovani Cherini;RS;matrícula
+503;156190;Marcel van Hattem;RS;matrícula
+504;178964;Heitor Schuch;RS;matrícula
+505;220555;Daiana Santos;RS;matrícula
+506;133810;Marcelo Moraes;RS;matrícula
+507;160535;Marcon;RS;matrícula
+508;74398;Maria do Rosário;RS;matrícula
+509;220553;Denise Pessôa;RS;matrícula
+510;220551;Franciane Bayer;RS;matrícula
+511;220550;Mauricio Marcon;RS;matrícula
+512;220552;Tenente Coronel Zucco;RS;matrícula
+513;74400;Paulo Pimenta;RS;matrícula
+514;204406;Pedro Westphalen;RS;matrícula
+515;179001;Márcio Biolchi;RS;matrícula
+516;73486;Pompeo de Mattos;RS;matrícula
+517;204416;Sanderson;RS;matrícula
+518;188097;Merlong Solano;PI;matrícula
+519;221328;Adilson Barroso;SP;matrícula
+520;178987;Orlando Silva;SP;matrícula
+521;221338;Professora Luciene Cavalcante;SP;matrícula
+522;221339;Dr Benjamim;MA;nome e UF
+523;178966;Geovania de Sá;SC;matrícula
+524;221329;Ricardo Abrão;RJ;matrícula
+525;73531;Ivan Valente;SP;nome e UF
+526;74283;Vicentinho;SP;nome e UF
+527;221378;Reginete Bispo;RS;nome e UF
+528;74141;Josias Gomes;BA;nome e UF
+529;221148;Alfredinho;SP;matrícula
+530;219585;Marco Brasil;PR;nome e UF
+531;205476;Charles Fernandes;BA;matrícula
+532;222142;Coronel Telhada;SP;nome e UF
+533;222429;Luis Carlos Gomes;RJ;nome e UF
+534;204448;Luiz Antônio Corrêa;RJ;nome e UF
+535;223128;Rodrigo Estacho;PR;nome e UF
+536;74299;Leônidas Cristino;CE;nome e UF
+537;103758;Luciano Azevedo;RS;nome e UF
+538;89536;Prof. Paulo Fernando;DF;nome e UF
+539;224117;Gabriel Mota;RR;matrícula
+540;224333;Welter;PR;matrícula
+541;205865;Reinhold Stephanes;PR;nome e UF
+542;138286;Luciano Alves;PR;nome e UF
+543;204433;Marcelo Calero;RJ;nome e UF
+544;225386;Renan Ferreirinha;RJ;nome e UF
+545;143942;Caio Vianna;RJ;nome e UF
+546;217480;Jones Moura;RJ;nome e UF
+547;225727;Flavinha;MT;nome e UF
+548;225730;Enfermeira Ana Paula;CE;nome e UF
+549;73778;Luiz Carlos Hauly;PR;matrícula
+550;226075;Priscila Costa;CE;matrícula
+551;218086;Ely Santos;SP;nome e UF
+552;226179;Gisela Simona;MT;nome e UF
+553;178909;Hélio Leite;PA;nome e UF
+554;116379;Darci de Matos;SC;nome e UF
+555;226410;Márcio Correa;GO;nome e UF
+556;226553;Eliane Braz;CE;nome e UF
+557;226708;Dr. Allan Garcês;MA;nome e UF
+558;204422;Ossesio Silva;PE;nome e UF
+559;226837;Saulo Pedroso;SP;matrícula
+560;163321;Ronaldo Nogueira;RS;nome e UF
+561;227275;Mariana Carvalho;MA;nome e UF
+562;141518;Paulinho da Força;SP;matrícula
+563;227310;Silvio Antonio;MA;nome e UF
+564;128760;Paulo Marinho Jr;MA;nome e UF
+565;227324;Henrique Júnior;MA;nome e UF
+566;227323;Luciano Galego;MA;nome e UF
+567;227370;Felipe Saliba;MG;nome e UF
+568;100689;Hildo do Candango;GO;nome e UF
+569;227401;Dr Fabio Rueda;AC;nome e UF
+570;182146;Wolmer Araújo;MA;nome e UF
+571;227433;Douglas Viegas;SP;nome e UF
+572;115200;Raniery Paulino;PB;nome e UF
+573;74095;Pauderney Avelino;AM;nome e UF
+574;227660;Nitinho;SE;nome e UF
+575;227800;Duarte Gonçalves Jr;MG;nome e UF
+576;223398;Ulisses Guimarães;MG;nome e UF
+577;228042;Naumi Amorim;CE;nome e UF
+578;228272;Délio Pinheiro;MG;nome e UF
+579;171139;Loreny;SP;nome e UF
+580;227991;Dr Flávio;RJ;matrícula
+581;228616;Dr. Remy Soares;MA;nome e UF
+582;178884;Hildo Rocha;MA;matrícula
+583;204449;Nelson Barbudo;MT;matrícula
+584;228797;Júlio Oliveira;TO;nome e UF
+585;228837;Juliana Kolankiewicz;MT;nome e UF
+586;228941;Daniel José;SP;nome e UF
+587;229069;Capitão Samuel;SE;nome e UF
+588;229082;Lucyana Genésio;MA;nome e UF
+589;122195;Leonardo Gadelha;PB;matrícula
+590;229112;Pedro Jr;TO;nome e UF
+591;229106;Carla Ayres;SC;nome e UF
+592;212625;Dr. Gonçalo;MA;nome e UF
+593;220008;Eliza Virgínia;PB;nome e UF
+594;229225;Michele Collins;PE;nome parecido e UF
+595;229259;Pedro Tourinho;SP;nome e UF
+596;74052;Bosco Costa;SE;nome e UF
+597;68720;Fábio Henrique;SE;nome e UF
+598;229333;Gláucia Santiago;MG;nome e UF
+599;229432;Luiz Fernando Vampiro;SC;nome e UF
+600;229585;Elisangela Araujo;BA;nome e UF
+601;229939;Newton Bonin;PR;nome e UF
+602;230088;Dra. Mayra Pinheiro;CE;nome e UF
+603;230177;Tadeu Oliveira;CE;nome e UF
+604;175765;Ribamar Silva;SP;matrícula
+605;230768;Zé Adriano;AC;matrícula
+606;230764;Ivan Júnior;MA;nome e UF
+607;230767;Rodrigo da Zaeli;MT;matrícula
+608;230762;Pastor Claudio Mariano;PA;nome e UF
+609;230765;Enfermeira Rejane;RJ;matrícula
+610;213762;Carla Dickson;RN;matrícula
+611;230957;João Cury;SP;matrícula
+612;208297;Katia Dias;MG;nome e UF
+613;231911;Lenir de Assis;PR;nome e UF
+614;160561;Missionário José Olimpio;SP;matrícula
+615;204376;Coronel Armando;SC;nome e UF
+616;233218;Nelinho Freitas;CE;nome e UF
+617;204514;Coronel Tadeu;SP;nome e UF
+618;141533;Rodrigo Rollemberg;DF;matrícula
+619;233594;Rafael Fera;RO;matrícula
+620;143084;Tiago Dimas;TO;matrícula
+621;204353;Aline Gurgel;AP;matrícula
+622;178831;André Abdon;AP;matrícula
+623;233592;Paulo Lemos;AP;matrícula
+624;160641;Professora Marcivania;AP;matrícula
+625;233598;Samuel Santos;GO;nome e UF
+626;74065;Fatima Pelaes;AP;nome e UF
+627;234310;Ricardo Galvão;SP;nome e UF
+628;234388;Fabiano Cazeca;MG;nome e UF
+629;234406;Elmano Férrer;PI;nome e UF
+630;234253;Lucas Abrahao;AP;nome e UF
+631;77003;Sergio Santos Rodrigues;MG;nome e UF
+632;234673;Vanderlan Alves;CE;nome e UF
+633;234788;Heloísa Helena;RJ;nome e UF
+634;234840;Cristiano Furlan;AP;nome e UF
+635;129618;Gorete Pereira;CE;nome e UF
+636;235088;Ribeiro Neto;MA;nome e UF
+637;222565;Soldado Noelio;CE;nome e UF
+638;235620;Ilacir Bicalho;MG;nome e UF
+639;235712;Vavá;MG;nome e UF
+640;235776;Sérgio Turra;RS;nome e UF
+641;204558;Marcelo Nilo;BA;matrícula
+642;235800;Jorge Araújo;BA;matrícula
+643;235869;João Carlos;AM;nome e UF
+644;74295;Inácio Arruda;CE;matrícula
+645;225846;Itamar Paim;PR;matrícula
+646;236284;Glaycon Franco;MG;nome e UF
+647;236375;Marcos Braz;RJ;matrícula
+648;236423;Valdir Trindade;PB;nome e UF
+649;236518;Santin Roveda;PR;matrícula
+650;154700;Paulo Soares;SP;matrícula
+651;74140;José Carlos Araújo;BA;matrícula
+652;194260;Nivaldo Albuquerque;AL;matrícula
