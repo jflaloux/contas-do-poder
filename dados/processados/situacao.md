@@ -1,6 +1,6 @@
-# Situação das fontes (03/10/2026 14:54, rodada: brasil)
+# Situação das fontes (03/10/2026 15:10, rodada: brasil)
 
-Último mês fechado: 09/2026. 86 fontes: 78 ok, 8 com o atraso da própria fonte, 0 atrasadas, 0 falhando.
+Último mês fechado: 09/2026. 91 fontes: 83 ok, 8 com o atraso da própria fonte, 0 atrasadas, 0 falhando.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
@@ -90,3 +90,8 @@
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/sao_luis (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-02 | brasil |  |
+| viagens/AM (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
+| viagens/MG | ok | 09/2026 | 2026-10-03 | brasil |  |
+| viagens/PB (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
+| viagens/SE (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
+| viagens/SP | ok | 09/2026 | 2026-10-03 | brasil |  |

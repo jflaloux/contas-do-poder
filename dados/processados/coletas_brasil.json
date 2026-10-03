@@ -384,5 +384,30 @@
   "ultima_tentativa": "2026-10-02T14:45:06",
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T14:45:06"
+ },
+ "viagens/AM": {
+  "ultima_tentativa": "2026-10-03T15:09:49",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T15:09:49"
+ },
+ "viagens/MG": {
+  "ultima_tentativa": "2026-10-03T15:09:49",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T15:09:49"
+ },
+ "viagens/PB": {
+  "ultima_tentativa": "2026-10-03T15:09:52",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T15:09:52"
+ },
+ "viagens/SE": {
+  "ultima_tentativa": "2026-10-03T15:09:52",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T15:09:52"
+ },
+ "viagens/SP": {
+  "ultima_tentativa": "2026-10-03T15:09:52",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-03T15:09:52"
  }
 }

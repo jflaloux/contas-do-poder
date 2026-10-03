@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-03T14:54:51",
+ "gerado_em": "2026-10-03T15:10:14",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -943,6 +943,61 @@
    "ultimo_mes": 202609,
    "meses_atras": 0,
    "ultimo_sucesso": "2026-10-02T14:45:06",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "viagens/AM",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-03T15:09:49",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "viagens/MG",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-03T15:09:49",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "viagens/PB",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-03T15:09:52",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "viagens/SE",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-03T15:09:52",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "viagens/SP",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-03T15:09:52",
    "onde": "brasil",
    "so_brasil": false,
    "falha_desde": null,

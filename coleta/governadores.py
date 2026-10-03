@@ -308,6 +308,8 @@ def executar(baixar_fotos=True):
             from .folhas_estaduais import ESTADOS, NOTAS
             saida[-1]["m"] = m
             saida[-1]["mf"] = {"u": ESTADOS[uf].FONTE, "nota": NOTAS.get(uf, "")}
+        from . import viagens_governadores
+        viagens_governadores.anexar(saida[-1], e)  # e.vg e e.vgf, onde o estado publica as viagens por pessoa
     _fotos([x for x in saida], baixar_fotos)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "mes": agora,
                       "fonte": "https://github.com/jflaloux/contas-do-poder/blob/main/dados/governadores/governadores.json"},
@@ -324,6 +326,7 @@ def executar(baixar_fotos=True):
 
 
 def coletar():
-    from . import folhas_estaduais
+    from . import folhas_estaduais, viagens_governadores
     folhas_estaduais.coletar()  # o mês a mês pela folha dos estados em que ela abre
+    viagens_governadores.coletar()  # as viagens (diárias e passagens), onde o estado publica por pessoa
     executar(baixar_fotos=True)

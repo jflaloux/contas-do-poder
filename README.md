@@ -545,6 +545,32 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
   fora do ar no período eleitoral).
 
+### Viagens dos governadores e vices (`coleta/viagens_governadores/`)
+
+Os "gastos do cargo" dos governadores, como nos ministros: as viagens a serviço (diárias e passagens), onde o Estado
+publica por pessoa. O levantamento dos 27 estados está em `dados/referencia/viagens_governadores.json`; os robôs
+começam pelos que publicam com o nome, em formato aberto. Cada um grava `dados/governadores/viagens/<uf>.csv` (vai para
+o Git), uma linha por viagem: datas, nome e cargo como a fonte escreve, destino, diárias, passagens, outros, devoluções e
+a fonte. Nada de CPF (as respostas que o trazem mascarado não são lidas nesse campo) nem o texto livre do motivo.
+
+| Estado | Fonte | O que entra |
+|---|---|---|
+| AM | Portal da Transparência, "Diárias e Passagens" (o serviço do SCDP que a página usa, por órgão e mês; só abre do Brasil) | Diárias e passagens por solicitação; voos da Casa Militar aparecem com valor zero (o custo do avião oficial não é publicado) |
+| MG | Dados abertos, conjunto "viagens" (CKAN; trechos do SCDP, ~42 MB) | Diárias e passagens por documento de viagem, somando os trechos; trechos aéreos sem valor de passagem são, em geral, no avião oficial |
+| PB | API de dados abertos, `/remuneracao/diarias` (só do Brasil) | Diárias por empenho, valor pago; as passagens são empenhadas a agências, sem o nome do passageiro |
+| SE | Portal da Transparência, relatório de diárias (Casa Civil e Gabinete do Vice; só do Brasil) | Diárias por viagem, valor pago; as passagens não são publicadas por pessoa |
+| SP | Portal da Transparência, gastos individualizados com diárias e passagens aéreas | Diárias e passagens item por item; os itens da mesma pessoa no mesmo dia são uma viagem; seguro-viagem em "outros" |
+
+- No site (`site/dados/governadores.json`), em cada estado com robô: `e.vg = [[aaaamm, índice em e.oc, diárias,
+  passagens, outros, devoluções, número de viagens], ...]` e `e.vgf = {"u", "nota", "desde", "ate"}`. O mês é o do
+  início da viagem; a viagem é da pessoa no cargo que ela ocupava naquele dia (quem foi vice e depois governador tem as
+  duas partes). `ate` é o último mês lido na última coleta que deu certo (`dados/governadores/viagens/lidos.json`).
+- Os nomes procurados são os do arquivo curado (`folha_nome`, `civil`) e, onde a fonte escreve o nome inteiro, os de
+  `NOMES_FONTE` (`coleta/viagens_governadores/__init__.py`): ao mudar o governador, acrescentar o nome novo.
+- `python3 -m coleta.viagens_governadores [UF ...]` coleta e anexa ao `governadores.json`; `--so-anexar` só anexa ao
+  arquivo que existe, sem refazer o resto. Na rodada semanal, `coletar.py governadores` (e a rodada do Brasil) coleta e
+  monta junto com a folha.
+
 ## Índice de Transparência dos estados
 
 `python3 coletar.py indice` (também roda no `tudo`) gera `site/dados/indice_transparencia.json`: para cada Estado, uma

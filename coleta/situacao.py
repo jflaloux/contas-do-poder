@@ -34,6 +34,7 @@ SAIDA_MD = PROCESSADOS / "situacao.md"
 SAIDA_JSON = PROCESSADOS / "situacao.json"
 SAIDA_SITE = SITE / "situacao.json"  # a versão pública (página "frescor dos dados"): sem erro técnico nem onde rodou
 GRUPOS = [("federal", "Governo federal e Congresso"), ("judiciario", "Judiciário"), ("folhas", "Governadores"),
+          ("viagens", "Viagens dos governadores"),
           ("assembleias", "Assembleias Legislativas"), ("vereadores", "Câmaras Municipais das capitais"),
           ("prefeituras", "Prefeituras das capitais"), ("tce", "Interior (Tribunais de Contas)")]
 # grupos cuja fonte tem de aparecer no arquivo do site: sem o último mês lá, a montagem falhou (a cidade ou o estado saiu do site)
@@ -66,6 +67,8 @@ def _ultimos_meses():
     for e in _ler("governadores.json").get("e", []):
         if e.get("m"):
             um[f"folhas/{e['uf']}"] = max(l[0] for l in e["m"])
+        if e.get("vgf", {}).get("ate"):  # viagens: o último mês lido (pode não ter viagem nenhuma)
+            um[f"viagens/{e['uf']}"] = e["vgf"]["ate"]
     dados = _ler("dados.json").get("meta", {})
     for f in ("camara", "senado"):
         um[f"federal/{f}"] = dados.get("ultimo_mes")
@@ -147,6 +150,8 @@ def _nomes_e_links():
     for e in _ler("governadores.json").get("e", []):
         saida[f"folhas/{e['uf']}"] = (f"Folha de pagamento do governo do estado ({estados.get(e['uf'], e['uf'])})", e["uf"],
                                       (e.get("folha") or {}).get("u"))
+        if e.get("vgf"):
+            saida[f"viagens/{e['uf']}"] = (f"Viagens do governador e do vice ({estados.get(e['uf'], e['uf'])})", e["uf"], e["vgf"].get("u"))
     fontes = _ler("dados.json").get("meta", {}).get("fontes", {})
     saida["federal/camara"] = ("Câmara dos Deputados", None, fontes.get("camara_api"))
     saida["federal/senado"] = ("Senado Federal", None, fontes.get("senado_legis"))
