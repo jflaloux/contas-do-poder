@@ -717,6 +717,14 @@ trocadas. Em jul/2026, para dois ministros, a coluna "Férias" do STF traz um va
 subtraem; aqui ele entra com sinal negativo. Onde há fonte oficial aberta (STJ, TST, CNJ e MPF), ela vale: cada número
 tem o link do arquivo oficial do mês, e o DadosJusBr não dá esse link.
 
+Reserva: se o robô oficial do STJ ou do PGR falhar, os meses que ele ainda não leu vêm do DadosJusBr
+(`dadosjusbr.reserva`), marcados em `fontes.csv` pelo endereço do pacote; o `meta.orgaos` do site passa a dizer "oficial e
+DadosJusBr", com uma nota que lista esses meses, e a situação da fonte mostra a falha. Quando a fonte oficial volta, ela relê
+esses meses. Conferido em 03/10/2026: no STJ (jun/2026), 32 de 33 ministros com o mesmo valor (um com R$ 55 de diferença nas
+indenizações); no PGR (ago/2026), igual. TST e CNJ ficam sem reserva: o pacote do DadosJusBr não bate com a fonte oficial
+(no TST, metade dos ministros com valores diferentes e a folha suplementar à parte; no CNJ, gratificações que a página do
+CNJ não mostra).
+
 Quem está no TSE vindo do STF ou do STJ, e quem integra o CNJ vindo de um tribunal, recebe o salário no tribunal de
 origem: cada página mostra só o que aquele órgão paga, as páginas da mesma pessoa se ligam ("rel") e nada é somado duas
 vezes. Parcelas que os tribunais classificam como indenizatórias (por exemplo PVTAC e GECJAO, Resolução Conjunta

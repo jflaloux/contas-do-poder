@@ -131,7 +131,9 @@ def a_fazer(orgao, disponiveis):
     vazios = {int(x["ano_mes"]) for x in f if str(x.get("pessoas")) in ("0", "")}  # a fonte pode publicar depois
     limite = (datetime.now() - timedelta(days=DIAS_RELER)).strftime("%Y-%m-%dT%H:%M")
     ultimos = set(disp[-REFAZER:]) | vazios
-    return [m for m in disp if m not in lidos or (m in ultimos and lidos[m] < limite)]
+    # meses que vieram da reserva (DadosJusBr) num órgão com fonte oficial: a fonte oficial relê sempre
+    reserva = {int(x["ano_mes"]) for x in f if orgao in ("STJ", "TST", "CNJ", "PGR") and "dadosjusbr" in (x.get("url") or "")}
+    return [m for m in disp if m not in lidos or m in reserva or (m in ultimos and lidos[m] < limite)]
 
 
 # ---------------------------------------------------------------- números

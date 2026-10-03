@@ -2,7 +2,10 @@
 conselheiros do CNJ e o Procurador-Geral da República (ver o README, "Judiciário").
 
 Cada fonte é um módulo desta pasta: stj, tst, cnj e pgr leem a fonte oficial; dadosjusbr lê o STF, o STM e o TSE pelo
-DadosJusBr (CC BY 4.0), enquanto a fonte oficial não abre para o robô. `coletar()` de cada um grava em
+DadosJusBr (CC BY 4.0), enquanto a fonte oficial não abre para o robô. Reserva: se o robô oficial do STJ ou do PGR falhar,
+os meses que ele ainda não leu vêm do DadosJusBr (dadosjusbr.reserva), marcados em fontes.csv pelo endereço; quando a
+fonte oficial volta, ela relê esses meses. TST e CNJ ficam sem reserva (o pacote do DadosJusBr não bate com a fonte
+oficial: ver dadosjusbr.RESERVA). `coletar()` de cada um grava em
 dados/judiciario/<orgao>/ (vai para o Git) só os meses que faltam (e os 2 últimos de novo). `executar_site()` junta
 tudo com a composição (dados/judiciario/composicao.json, mantida à mão) em site/dados/judiciario.json. Uma fonte fora
 do ar não para as outras: o site usa o que já estava gravado. Cada fonte é uma chave em coleta/onde.py
@@ -41,6 +44,13 @@ def coletar():
             raise
         except Exception as e:  # noqa: BLE001 — uma fonte fora do ar não para as outras
             log(f"  Judiciário {m.__name__.upper()}: a coleta falhou ({e}); o site usa o que já estava gravado")
+            if m.__name__.upper() in dadosjusbr.RESERVA:  # os meses que faltam vêm do DadosJusBr, até a fonte oficial voltar
+                try:
+                    dadosjusbr.reserva(m.__name__.upper())
+                except TempoEsgotado:
+                    raise
+                except Exception as e2:  # noqa: BLE001
+                    log(f"  Judiciário {m.__name__.upper()}: a reserva pelo DadosJusBr também falhou ({e2})")
     executar_site()
 
 

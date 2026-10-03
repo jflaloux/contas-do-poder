@@ -231,15 +231,22 @@ def montar():
                 **({"obs": m["obs"]} if m.get("obs") else {}), **({"desde_antes": 1} if ini is None else {}),
             })
         fonte_mes = {str(int(f["ano_mes"])): f["url"] for f in fontes if int(f["pessoas"] or 0)}
+        # reserva: meses de um órgão com fonte oficial que vieram do DadosJusBr (a fonte oficial não abriu)
+        reserva = sorted(int(f["ano_mes"]) for f in fontes if VIA[org] == "oficial" and "dadosjusbr" in (f.get("url") or "")
+                         and int(f["pessoas"] or 0))
+        via = "oficial e DadosJusBr" if reserva else VIA[org]
+        notas_org = NOTAS.get(org, []) + ([
+            f"Meses que vieram do DadosJusBr (licença CC BY 4.0), porque a fonte oficial não abriu para o robô: "
+            f"{', '.join(f'{m % 100:02d}/{m // 100}' for m in reserva)}. Voltam a vir da fonte oficial quando ela abrir."] if reserva else [])
         metas[org] = {
             "n": oc.get("nome", org), "sigla": org, "vagas": oc.get("vagas"), "no_cargo": no_cargo, "inicio": comum.INICIO,
-            "ultimo_mes": ultimo, "anos": [str(a) for a in sorted({am // 100 for am in janela})], "via": VIA[org],
+            "ultimo_mes": ultimo, "anos": [str(a) for a in sorted({am // 100 for am in janela})], "via": via,
             "fonte": FONTE[org], "composicao": oc.get("pagina"), "fonte_mes": fonte_mes, "meses_sem_dados": sem_dados,
-            "notas": NOTAS.get(org, []), "fora": comp.get("fora", {}).get(org, []),
+            "notas": notas_org, "fora": comp.get("fora", {}).get(org, []),
             **({"sem_folha": [{"id": c["id"], "funcao": c["funcao"], "de": _am(c.get("de")), "ate": _am(c.get("ate"))}
                               for c in comp.get("cnj_sem_folha", [])]} if org == "CNJ" else {}),
             "fontes": {"folha": FONTE[org], "composicao": oc.get("pagina"),
-                       **({"dadosjusbr": "https://dadosjusbr.org", "licenca": "CC BY 4.0 (DadosJusBr)"} if VIA[org] == "DadosJusBr" else {})},
+                       **({"dadosjusbr": "https://dadosjusbr.org", "licenca": "CC BY 4.0 (DadosJusBr)"} if VIA[org] == "DadosJusBr" or reserva else {})},
         }
     return metas, pessoas, tipos
 
