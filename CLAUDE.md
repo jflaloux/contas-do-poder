@@ -97,8 +97,8 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
   `divulgacao` prepare algo.
 - Rascunho de e-mail da `divulgacao`: mostre o texto inteiro ao Jean-François, sem resumir.
 - E-mails da divulgação: o `divulgacao` escreve no `RASCUNHOS-DIVULGACAO.md` (caixa ```email: para, cc, assunto,
-  a-partir-de, responde-a). Quem envia é o Jean-François, pelo botão Enviar do painel (http://localhost:4777), com a
-  confirmação numa janela do macOS; o envio sai pela conta do projeto (`rotina/enviar_gmail.py`) e fica em
+  a-partir-de, responde-a). Quem envia é o Jean-François, pelo botão Enviar do painel (http://localhost:4777; 8 s para
+  desfazer); o envio sai pela conta do projeto (`rotina/enviar_gmail.py`) e fica em
   `ENVIOS-CONTATO.jsonl` (fora do Git). Nenhum agente envia: a trava `.claude/painel/guarda.mjs` (hook) recusa
   qualquer tentativa. Respostas recebidas: `rotina/caixa_gmail.py` copia a caixa para `CAIXA-CONTATO/` (fora do Git).
   Não use a ferramenta de Gmail da sessão para rascunhos: ela põe o remetente pessoal e troca os links.
