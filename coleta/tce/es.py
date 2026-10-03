@@ -273,7 +273,7 @@ def coletar():
     nomes = [{"cod_ibge": int(c), "orgao": o, "ano_mes": int(am), "papel": p, "nome": n, "cargo": cg}
              for c, o, am, p, n, cg in zip(vinc.cod_ibge, vinc.orgao, vinc.ano_mes, vinc.papel, vinc.nome, vinc.cargo)]
     blocos_nomes = {(b["cod_ibge"], b["orgao"], b["ano_mes"]) for b in blocos if b["ano_mes"] in meses_vinc}
-    n, nb = cargo.gravar(UF, linhas, blocos, nomes, blocos_nomes)
+    n, nb = cargo.gravar(UF, linhas, blocos, nomes, blocos_nomes, manter_data=True)
     log(f"  TCE-ES: {len(linhas)} linhas (cidade, órgão, mês e cargo) em {nb} blocos, {len(nomes)} nomes; "
         f"{len(sem_valor)} com pessoas no cargo e sem valor no mês (entram sem valor)")
     if erros:

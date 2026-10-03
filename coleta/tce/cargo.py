@@ -67,11 +67,13 @@ def _trocar(velho, novo, chaves, colunas):
     return pd.concat(partes, ignore_index=True).astype({"cod_ibge": int, "ano_mes": int})
 
 
-def gravar(uf, linhas, blocos, nomes=None, blocos_nomes=None):
+def gravar(uf, linhas, blocos, nomes=None, blocos_nomes=None, manter_data=False):
     """Troca, nos arquivos do estado, os blocos lidos agora (cidade, órgão, mês) pelas linhas novas. linhas: [dict com
     COLUNAS]; blocos: [dict com comum.FONTES]; nomes: [dict com NOMES], só nos blocos de `blocos_nomes` (o padrão: os
     mesmos de `blocos`; num bloco lido sem os nomes, os nomes gravados antes ficam). Um bloco lido vazio não apaga o que
-    já estava gravado de outro mês. Devolve (linhas gravadas, blocos gravados)."""
+    já estava gravado de outro mês. `manter_data`: o bloco lido de novo sem mudança fica com a data da leitura anterior
+    (ES e RJ, que leem todos os meses toda vez; no PE, não, porque a data decide o que ler de novo). Devolve (linhas
+    gravadas, blocos gravados)."""
     if not blocos:
         return 0, 0
     novos = pd.DataFrame(blocos, columns=comum.FONTES).drop_duplicates(comum.CHAVE, keep="last")
@@ -88,6 +90,19 @@ def gravar(uf, linhas, blocos, nomes=None, blocos_nomes=None):
         comum._escrever(dn.drop_duplicates(), comum.pasta(uf) / "nomes.csv", NOMES,
                         ["cod_ibge", "orgao", "ano_mes", "papel", "nome"])
     fontes = comum.ler_fontes(uf)
+    if len(fontes) and manter_data:
+        # bloco lido de novo sem mudança (mesmas linhas na fonte, mesmas pessoas, mesmo endereço): fica a data da
+        # leitura anterior, para o arquivo não mudar inteiro a cada rodada (ES e RJ leem todos os meses toda vez)
+        antes = {(int(c), o, int(m)): (n, p, u, q) for c, o, m, n, p, u, q in
+                 zip(fontes.cod_ibge, fontes.orgao, fontes.ano_mes, fontes.linhas_fonte, fontes.pessoas, fontes.url,
+                     fontes.lido_em)}
+        quando = []
+        for c, o, m, n, p, u, q in zip(novos.cod_ibge, novos.orgao, novos.ano_mes, novos.linhas_fonte, novos.pessoas,
+                                       novos.url, novos.lido_em):
+            a = antes.get((int(c), o, int(m)))
+            igual = a and int(a[0] or 0) == int(n or 0) and int(a[1] or 0) == int(p or 0) and a[2] == u
+            quando.append(a[3] if igual else q)
+        novos = novos.assign(lido_em=quando)
     if len(fontes):
         tem = [(int(c), o, int(m)) in chaves for c, o, m in zip(fontes.cod_ibge, fontes.orgao, fontes.ano_mes)]
         fontes = fontes[[not t for t in tem]]

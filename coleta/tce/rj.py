@@ -103,7 +103,7 @@ def coletar():
                                "url": f"{API}?ano={am // 100}&jsonfull=true", "lido_em": agora})
     if sem:
         log(f"  TCE-RJ: {len(sem)} entes sem código do IBGE: {', '.join(sorted(map(str, sem)))}")
-    n, nb = cargo.gravar(UF, linhas, blocos)
+    n, nb = cargo.gravar(UF, linhas, blocos, manter_data=True)
     log(f"  TCE-RJ: {len(linhas)} linhas (Câmara e mês) em {nb} blocos")
     return len(linhas)
 

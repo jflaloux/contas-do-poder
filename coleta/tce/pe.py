@@ -43,7 +43,7 @@ NATUREZA = {"Câmara Municipal": "camara", "Prefeitura Municipal": "prefeitura"}
 # nomes que o TCE-PE escreve diferente do IBGE (chave do nome no TCE -> nome no IBGE)
 NOMES_DIFERENTES = {"BELEM DE SAO FRANCISCO": "Belém do São Francisco", "SAO CAETANO": "São Caitano"}
 PAUSA = 0.5          # segundos entre os pedidos ao Tome Conta (um por vez)
-MAX_PEDIDOS = 2000   # pedidos por rodada
+MAX_PEDIDOS = 2000   # pedidos por rodada (a semana normal: os 2 últimos meses e os que vieram vazios, ~1.000)
 FALHAS_MAX = 5       # blocos seguidos com erro: para (o tribunal pode estar bloqueando) e a fonte fica como falhando
 _CPF = re.compile(r"\*{3}\.?\d{3}\.?\d{3}-?\*{2}|\d{3}\.?\d{3}\.?\d{3}-?\d{2}")
 _s = None
@@ -206,23 +206,33 @@ def coletar():
                 papel = cargo.papel_camara(cg) if o == "camara" else cargo.papel_prefeitura(cg)
                 if papel:
                     por_papel.setdefault(papel, []).append((cg, q, v, href))
-            # os nomes: no mês mais recente com o cargo em cada cidade e órgão e, nos outros meses, quando o papel tem
-            # mais de um cargo (o presidente da Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a
-            # quantidade do papel é a de nomes diferentes, e não a soma dos cargos)
-            ultimo = bool(por_papel) and am >= ult_nomes.get((c, o), 0)
+            # os nomes: no mês mais recente com o cargo em cada cidade e órgão (uma vez: a releitura semanal do mesmo
+            # mês não pede os nomes de novo) e, nos outros meses, quando o papel tem mais de um cargo (o presidente da
+            # Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a quantidade do papel é a de nomes
+            # diferentes, e não a soma dos cargos)
+            ultimo = bool(por_papel) and am > ult_nomes.get((c, o), 0)
             lidos = False
             for papel, lista in por_papel.items():
                 pessoas = None
                 if ultimo or len(lista) > 1:
-                    ns = []
+                    ns, falhou = [], False
                     for cg, q, v, href in lista:
                         if href:
-                            ns += [(n, cgn or cg) for n, cgn in nomes(href)]
                             pedidos += 1
-                    ls_nomes.extend({"cod_ibge": c, "orgao": o, "ano_mes": am, "papel": papel, "nome": n, "cargo": cg}
-                                    for n, cg in dict.fromkeys(ns))
-                    lidos = True
-                    pessoas = len({n for n, _ in ns}) or None
+                            try:
+                                ns += [(n, cgn or cg) for n, cgn in nomes(href)]
+                            except TempoEsgotado:
+                                raise
+                            except Exception as e:  # noqa: BLE001 — sem a lista, fica a quantidade da tabela
+                                log(f"  TCE-PE {nome_cid} ({o}, {am}): a lista de nomes de {cg} não veio ({e})")
+                                falhou = True
+                    if falhou:  # os nomes gravados antes (se houver) ficam; volta a tentar na próxima rodada
+                        ultimo = False
+                    else:
+                        ls_nomes.extend({"cod_ibge": c, "orgao": o, "ano_mes": am, "papel": papel, "nome": n,
+                                         "cargo": cg} for n, cg in dict.fromkeys(ns))
+                        lidos = True
+                        pessoas = len({n for n, _ in ns}) or None
                 linhas.append({"cod_ibge": c, "municipio": nome_cid, "orgao": o, "ano_mes": am, "papel": papel,
                                "cargo": " / ".join(dict.fromkeys(cg for cg, *_ in lista)),
                                "quantidade": pessoas or sum(q for _, q, _, _ in lista),
