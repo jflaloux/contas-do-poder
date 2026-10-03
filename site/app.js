@@ -3167,11 +3167,19 @@
   }
   // Os números da abertura levam ao grupo: o ranking já no grupo (deputados, deputados estaduais do estado escolhido ou
   // de SP, vereadores, prefeituras), a lista do governo federal aberta, os 27 governadores, a página do Judiciário
-  const ALVO_NUMERO = { d: "/#ranking", e: "/#governo", g: "/#governadores", t: "/judiciario", a: "/#ranking", v: "/#ranking", p: "/#ranking" };
-  const NOME_NUMERO = { d: "deputados_senadores", e: "governo", g: "governadores", t: "judiciario", a: "deputados_estaduais", v: "vereadores", p: "prefeituras" };
+  // O 8º quadro ("x": o último mês dos dados e quando foram atualizados) leva à página /atualizacao
+  const ALVO_NUMERO = { d: "/#ranking", e: "/#governo", g: "/#governadores", t: "/judiciario", a: "/#ranking", v: "/#ranking", p: "/#ranking", x: "/atualizacao" };
+  const NOME_NUMERO = { d: "deputados_senadores", e: "governo", g: "governadores", t: "judiciario", a: "deputados_estaduais", v: "vereadores", p: "prefeituras", x: "atualizacao" };
+  // Quando os dados foram gerados pela última vez, "DD/MM/AAAA": o publicacao/gerar.mjs põe a data mais recente entre os
+  // arquivos de dados em <meta name="dados-atualizados">; sem ele (site sem o build), a data do dados.json
+  function atualizadoEm() {
+    const m = document.querySelector('meta[name="dados-atualizados"]');
+    return m && /^\d{4}-\d{2}-\d{2}$/.test(m.content) ? dataBR(m.content) : D_atualizado();
+  }
+  const D_atualizado = () => String((S.D && S.D.meta && S.D.meta.atualizado) || "");
   function abrirNumero(grupo) {
     evento("abrir_numero", { grupo: NOME_NUMERO[grupo] });
-    if (grupo === "t") { S.origem = "numeros"; navegar("/judiciario"); return; }
+    if (grupo === "t" || grupo === "x") { S.origem = "numeros"; navegar(ALVO_NUMERO[grupo]); return; }
     if (S.sel || S.gov || S.cidade || S.extra) { navegar(ALVO_NUMERO[grupo]); return; } // os números só aparecem na página inicial
     if (grupo === "e") { const l = $("#lista-governo"); if (l && l.abrir) l.abrir(); irPara("governo"); return; }
     if (grupo === "g") {
@@ -3212,7 +3220,7 @@
       ests ? numero(nEst, ests === 1 ? `deputados estaduais ${deUF(estadosAssembleia()[0].uf)}` : `deputados estaduais em ${ests} estados`, "a") : null,
       cidadesCamara().length ? numero(nVer, cidadesCamara().length === 1 ? `vereadores ${deCid(cidadesCamara()[0].cod)}` : `vereadores em ${cidadesCamara().length} capitais`, "v") : null,
       cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`, "p") : null,
-      h("p", { class: "numeros__data" }, `Dados até ${MESES[mesAtual() - 1]}/${anoAtual()} · atualizado em ${D.meta.atualizado}`));
+      numero(`${MESES[mesAtual() - 1]}/${anoAtual()}`, `último mês dos dados · atualizado em ${atualizadoEm().slice(0, 5)}`, "x")); // o mesmo texto do gerar.mjs
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
     ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); }, null, true);
@@ -3244,7 +3252,7 @@
         `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
         h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte:\u00a0IBGE\u00a0↗"));
     }
-    $("#gerado-em").textContent = `Gerado em ${D.meta.atualizado}.`;
+    $("#gerado-em").textContent = `Gerado em ${atualizadoEm()}.`;
   }
   function listaEstado() {
     const caixa = $("#lista-estado");

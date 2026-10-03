@@ -199,6 +199,16 @@ const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dad
   ...(judiciario.length ? ["/dados/indice/judiciario.json"] : [])];
 const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
 
+// ------------------------------------------------------------------ quando os dados foram gerados
+// A data mais recente ("AAAA-MM-DD") entre os arquivos de dados e a situacao.json (refeita no fim de cada rodada): é o
+// "atualizado em" dos números da abertura e do rodapé. O app.js a lê de <meta name="dados-atualizados">.
+const DATA_ATUALIZADA = (() => {
+  const brutas = [D.meta, CAM.meta, PRE.meta, ASS.meta, JUD.meta, GOV.meta, ler("situacao.json", {})].map((m) => String((m && m.gerado_em) || "").slice(0, 10));
+  const datas = brutas.filter((d) => /^\d{4}-\d{2}-\d{2}$/.test(d)).sort();
+  if (datas.length) return datas[datas.length - 1];
+  return String(D.meta.atualizado || "").split("/").reverse().join("-"); // "01/10/2026" -> "2026-10-01"
+})();
+
 // ------------------------------------------------------------------ os números da abertura
 // Os mesmos blocos que o app.js põe em #chips-info (montarCabecalho), já no HTML: assim a abertura tem a altura certa
 // desde o começo e não cresce quando o app.js chega (a página não pula). Mudando o texto lá, mude aqui.
@@ -217,10 +227,11 @@ function numerosHTML() {
     ests.length ? numero(noCargo(deputadosEstaduais, () => true), ests.length === 1 ? `deputados estaduais ${deUF(ests[0])}` : `deputados estaduais em ${ests.length} estados`, "/#ranking") : "",
     camaras.length ? numero(noCargo(CAM.p, () => true), camaras.length === 1 ? `vereadores ${nomeCid(camaras[0])}` : `vereadores em ${camaras.length} capitais`, "/#ranking") : "",
     prefs.length ? numero(noCargo(PRE.p, () => true), prefs.length === 1 ? "na Prefeitura" : `nas prefeituras de ${prefs.length} capitais`, "/#ranking") : "",
-    `<p class="numeros__data">${esc(`Dados até ${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)} · atualizado em ${D.meta.atualizado}`)}</p>`,
+    // o 8º quadro leva à página de atualização dos dados (no app.js: o número "x")
+    numero(`${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)}`, `último mês dos dados · atualizado em ${DATA_ATUALIZADA.slice(8, 10)}/${DATA_ATUALIZADA.slice(5, 7)}`, "/atualizacao"),
   ].join("");
 }
-MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n</head>`);
+MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");

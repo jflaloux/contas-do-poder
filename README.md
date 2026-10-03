@@ -839,7 +839,10 @@ seguem o mesmo desenho.
   origem, `assembleia` (a lista da página do estado); `ranking` com `casa: assembleia_<UF>`; `abrir_lista` com
   `assembleia_<UF>` e `assembleia_sairam_<UF>`; `guia` com `etapa: assembleia_<UF>`.
   Números da abertura (desde 02/10/2026): cada um leva ao seu grupo e manda `abrir_numero` com o `grupo`
-  (`deputados_senadores`, `governo`, `governadores`, `judiciario`, `deputados_estaduais`, `vereadores`, `prefeituras`):
+  (`deputados_senadores`, `governo`, `governadores`, `judiciario`, `deputados_estaduais`, `vereadores`, `prefeituras` e,
+  desde 03/10/2026, `atualizacao`: o 8º quadro, "último mês dos dados · atualizado em DD/MM", que leva a `/atualizacao`;
+  a data é a mais recente entre os arquivos de dados e a `situacao.json`, posta pelo `gerar.mjs` em
+  `<meta name="dados-atualizados">`, e é a mesma do "Gerado em" do rodapé):
   o ranking já no grupo (deputados estaduais do estado escolhido ou de SP; vereadores e prefeituras de SP), a lista do
   governo aberta, os 27 governadores ou a página `/judiciario`. Na página inicial, o Judiciário mostra os presidentes
   dos tribunais e o PGR e, apagados, os outros ministros do STF (`abrir_lista` com `judiciario_stf`).
