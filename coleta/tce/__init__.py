@@ -1,22 +1,29 @@
 """Tribunais de Contas: vereadores, prefeito, vice e (onde a folha diz o cargo) secretários de todos os municípios de um
 estado, mês a mês, pela folha de pagamento que cada município manda ao Tribunal de Contas do estado (ver o README,
-"Tribunais de Contas"). Hoje: Paraíba (TCE-PB, 223 municípios) e Ceará (TCE-CE, 184).
+"Tribunais de Contas"). Dois tipos de fonte:
 
-Cada módulo cuida de um tribunal: `coletar()` grava em dados/municipios_tce/<uf>/ (vai para o Git) só as linhas
-desses cargos, dos meses que faltam (e os 2 últimos de novo); `montar()` escreve site/dados/interior/<uf>.json, um
-arquivo por estado, para o site só baixar o estado da cidade aberta. Um tribunal fora do ar não para o outro: o site
-usa o que já estava gravado. Cada tribunal é uma fonte em coleta/onde.py ("tce/pb", "tce/ce"): as duas abrem de fora
-do Brasil (conferido em 01/10/2026), então rodam no GitHub Actions; se uma falhar de fora, a rodada do Brasil a pega na mesma semana.
+- valor de cada pessoa: Paraíba (TCE-PB, 223 municípios) e Ceará (TCE-CE, 184), em comum.py, com o site em
+  site/dados/interior/<uf>.json;
+- valor por cargo (o total pago ao cargo e quantas pessoas estavam nele, sem o valor de cada uma): Espírito Santo
+  (TCE-ES, 78), Pernambuco (TCE-PE, 184) e Rio de Janeiro (TCE-RJ, 91, só vereadores), em cargo.py, com o site em
+  site/dados/interior-cargo/<uf>.json (outra pasta, porque o formato é outro).
 
-Uso: python3 coletar.py tce            (os dois estados e o site)
+Cada módulo cuida de um tribunal: `coletar()` grava em dados/municipios_tce/<uf>/ (vai para o Git) só o que interessa,
+dos meses que faltam (e os 2 últimos de novo); `montar()` escreve o arquivo do estado no site, para o site só baixar o
+estado da cidade aberta. Um tribunal fora do ar não para o outro: o site usa o que já estava gravado. Cada tribunal é
+uma fonte em coleta/onde.py ("tce/pb", "tce/ce", "tce/es", "tce/pe", "tce/rj"). PB e CE abrem de fora do Brasil
+(conferido em 01/10/2026) e rodam no GitHub Actions; ES, PE e RJ abriam de fora no levantamento de 01/10/2026; se uma
+fonte falhar de fora, a rodada do Brasil a pega na mesma semana.
+
+Uso: python3 coletar.py tce            (os cinco estados e o site)
      python3 -m coleta.tce ce 150      (um estado só, com tempo máximo, para rodar em partes)
      python3 -m coleta.tce site        (só os arquivos do site, com o que já está gravado)
 """
 from .. import onde
 from ..util import TempoEsgotado, log
-from . import ce, comum, pb
+from . import ce, comum, es, pb, pe, rj
 
-ESTADOS = {m.UF: m for m in (pb, ce)}
+ESTADOS = {m.UF: m for m in (pb, ce, es, pe, rj)}
 
 
 def coletar():
@@ -39,7 +46,7 @@ def executar_site():
         try:
             saida = m.montar()
             if saida:
-                comum.checar(uf, saida)
+                getattr(m, "checar", comum.checar)(uf, saida)
         except Exception as e:  # noqa: BLE001
             import traceback
             log(f"  TCE {uf}: não deu para montar o arquivo do site ({e})\n{traceback.format_exc(limit=3)}")

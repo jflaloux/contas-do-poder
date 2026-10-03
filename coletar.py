@@ -26,7 +26,9 @@ Uso:
     python3 coletar.py situacao        # relatório de cada fonte: último mês no site, última coleta certa, falhas
                                        # (dados/processados/situacao.md)
     python3 coletar.py tce             # Tribunais de Contas: vereadores, prefeito, vice e (PB) secretários de todas as cidades da
-                                       # Paraíba e do Ceará, mês a mês (dados/municipios_tce/, site/dados/interior/<uf>.json)
+                                       # Paraíba e do Ceará, mês a mês (dados/municipios_tce/, site/dados/interior/<uf>.json);
+                                       # o total pago ao cargo de vereador, prefeito e vice no Espírito Santo e em Pernambuco, e
+                                       # aos vereadores no Rio de Janeiro (site/dados/interior-cargo/<uf>.json)
     python3 coletar.py judiciario      # ministros do STF, STJ, TST, STM e TSE, conselheiros do CNJ e o PGR, mês a mês
                                        # (dados/judiciario/, site/dados/judiciario.json)
     python3 coletar.py tudo            # camara + senado + executivo + municipios + vereadores + prefeituras + governadores + assembleias + tce

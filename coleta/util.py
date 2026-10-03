@@ -219,6 +219,59 @@ def _sessao():
     return _local.s
 
 
+def ca_com_intermediario(host, nome):
+    """Arquivo de certificados (as raízes do certifi mais um certificado intermediário) para um servidor que não manda o
+    intermediário (cadeia incompleta). O intermediário vem do endereço "CA Issuers" (AIA) do próprio certificado do
+    servidor e só entra se for o emissor desse certificado, for assinado por uma das raízes do certifi, estiver na
+    validade e for de uma autoridade certificadora. A verificação do certificado nunca é desligada (regra do CLAUDE.md):
+    o certificado do servidor é lido só para achar o endereço do intermediário, e todos os pedidos verificam a cadeia com
+    este arquivo. Fica em dados/cache/certificados/<nome>.pem, refeito a cada 30 dias.
+    Uso: sessao.verify = ca_com_intermediario("tomeconta.tce.pe.gov.br", "tcepe")."""
+    import ssl
+    import warnings
+    from datetime import datetime, timezone
+
+    import certifi
+    from cryptography import x509
+    from cryptography.hazmat.primitives.serialization import Encoding
+    from cryptography.x509.oid import AuthorityInformationAccessOID
+
+    from .config import CACHE
+    destino = CACHE / "certificados" / f"{nome}.pem"
+    raizes_pem = Path(certifi.where()).read_bytes()
+    if cache_valido(destino, 30) and destino.read_bytes().startswith(raizes_pem[:4096]):
+        return str(destino)
+    folha = x509.load_pem_x509_certificate(ssl.get_server_certificate((host, 443), timeout=30).encode())
+    aia = folha.extensions.get_extension_for_class(x509.AuthorityInformationAccess).value
+    url = next(d.access_location.value for d in aia if d.access_method == AuthorityInformationAccessOID.CA_ISSUERS)
+    der = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=60).content
+    inter = x509.load_der_x509_certificate(der) if not der.lstrip().startswith(b"-----") else x509.load_pem_x509_certificate(der)
+    assinado = False
+    for bloco in re.findall(rb"-----BEGIN CERTIFICATE-----.+?-----END CERTIFICATE-----", raizes_pem, re.S):
+        try:
+            with warnings.catch_warnings():  # uma ou outra raiz antiga do certifi tem número de série fora da norma
+                warnings.simplefilter("ignore")
+                raiz = x509.load_pem_x509_certificate(bloco)
+            if raiz.subject != inter.issuer:
+                continue
+            inter.verify_directly_issued_by(raiz)
+            assinado = True
+            break
+        except Exception:  # noqa: BLE001 — outra raiz com o mesmo nome, ou raiz que não se lê
+            continue
+    agora = datetime.now(timezone.utc)
+    ca = inter.extensions.get_extension_for_class(x509.BasicConstraints).value.ca
+    if not (assinado and ca and inter.subject == folha.issuer
+            and inter.not_valid_before_utc <= agora <= inter.not_valid_after_utc):
+        raise RuntimeError(f"o certificado intermediário de {host} ({url}) não confere com as raízes do certifi")
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    tmp = destino.with_suffix(".tmp")
+    tmp.write_bytes(raizes_pem.rstrip(b"\n") + b"\n\n# intermediario de " + host.encode() + b": " + url.encode() + b"\n"
+                    + inter.public_bytes(Encoding.PEM))
+    tmp.replace(destino)
+    return str(destino)
+
+
 def baixar(url, params=None, tentativas=4, timeout=90, **kw):
     """GET com novas tentativas em caso de erro temporário."""
     verificar_prazo()

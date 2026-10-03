@@ -17,6 +17,9 @@ da Câmara, do Senado e do Portal da Transparência. E também, sempre pela font
   Rio de Janeiro.
 - **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
   Tribunal de Contas do estado.
+- **Interior do Espírito Santo, de Pernambuco e do Rio de Janeiro**: quanto cada Câmara paga ao cargo de vereador e
+  quantas pessoas estão nele (no Espírito Santo e em Pernambuco, também o prefeito e o vice), pelo que o município manda
+  ao Tribunal de Contas, que nesses estados não publica o valor de cada pessoa.
 - **Todas as 5.569 cidades**: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e os
   vereadores eleitos em 2024 (TSE).
 - O **Índice de Transparência**: a nota de cada fonte de cada estado, critério por critério.
@@ -618,7 +621,7 @@ responsáveis diferentes e que a nota é da fonte, não de quem está no cargo. 
 só na hora de mostrar. Há link para o índice no cabeçalho do site, na lista dos
 governadores e na página de cada estado (`/indice#indice-sp` abre o estado).
 
-## Tribunais de Contas: vereadores, prefeitos e vices do interior (Paraíba e Ceará)
+## Tribunais de Contas: vereadores, prefeitos e vices do interior
 
 Os municípios mandam a folha e as despesas ao Tribunal de Contas do estado; alguns tribunais abrem esses dados para
 todos os municípios de uma vez. Um robô por tribunal cobriria todas as câmaras e prefeituras do estado, em vez de um
@@ -629,7 +632,7 @@ robô por Câmara. O levantamento dos 26 tribunais que fiscalizam municípios (o
   e Ceará (TCE-CE, API documentada com cada item da folha). Também, com ressalvas: Maranhão (valor por pessoa, sem
   nome), Pará (TCM-PA, Power BI, só o mês corrente) e Goiás (TCM-GO, só com token da API).
 - **Valor por cargo (total da câmara ÷ número de vereadores):** Espírito Santo (CSV), Pernambuco (Tome Conta) e Rio de
-  Janeiro (por situação funcional).
+  Janeiro (por situação funcional). Robôs desde 03/10/2026: ver "Valor por cargo", abaixo.
 - **Só despesas (empenhos com credor e CNPJ):** São Paulo, Paraná, Rio Grande do Sul (só do Brasil), Tocantins, Rio
   Grande do Norte e, em parte, Acre e Roraima.
 - **Nada aberto ou atrás de barreira:** Amazonas, Amapá, Rondônia, Alagoas, Sergipe, Mato Grosso, Mato Grosso do Sul,
@@ -686,6 +689,65 @@ site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 18
   com a API do TCE-CE lida à parte (jul/2026).
 - A prova de 01/10/2026 (resumo de ago/2026 por município, sem nomes) continua em
   `dados/referencia/tce_pb_vereadores_202608.csv`.
+
+### Valor por cargo: Espírito Santo, Pernambuco e Rio de Janeiro
+
+Nesses três estados o Tribunal publica, para cada Câmara ou Prefeitura e cada mês, o total pago a um cargo (ou a uma
+situação funcional) e quantas pessoas estavam nele, e não o valor de cada pessoa. Dá para saber quanto a Câmara pagou
+ao cargo de vereador e a média por pessoa, mas não quanto cada vereador recebeu: o presidente da Câmara, quem entrou ou
+saiu no meio do mês e quem recebeu 13º ou férias ficam somados aos outros. Quando o cargo tem uma pessoa só (prefeito,
+vice), o total é o valor dela. Robôs `coleta/tce/es.py`, `pe.py` e `rj.py`, com a parte comum em `coleta/tce/cargo.py`
+(no mesmo `python3 coletar.py tce`; um estado só: `python3 -m coleta.tce pe 150`), mês a mês desde janeiro de 2025:
+
+- **O que guarda**, em `dados/municipios_tce/<uf>/` (vai para o Git): `cargos.csv`, uma linha por cidade, órgão, mês e
+  papel (vereador, prefeito ou vice), com o cargo como a fonte escreve, a quantidade de pessoas, o total bruto (antes
+  dos descontos) e, onde a fonte separa, a parte indenizatória, o 13º e as férias; `nomes.csv`, quem estava no cargo
+  (só o nome e o cargo; ES: todos os meses; PE: o último mês de cada cidade e os meses em que o papel tem mais de um
+  cargo; RJ: a fonte não tem nomes); `fontes.csv`, como na Paraíba e no Ceará. Nunca o CPF: ES e PE mostram o CPF
+  mascarado, que não é lido.
+- **Espírito Santo (TCE-ES, 78 municípios)**: dois arquivos do conjunto "Área temática: pessoal" no Portal de Dados
+  Abertos do estado (CKAN, achados pela página do conjunto, com os 10 s de pausa que o robots.txt pede), atualizados
+  todo dia: "Vantagens e descontos" (ZIP por semestre, ~10 a 30 MB: o valor somado por unidade, mês, cargo, vínculo e
+  verba, sem nomes) e "Vínculo" (CSV por trimestre, ~200 MB: cada pessoa com vínculo em cada mês). Do primeiro sai o
+  total (as vantagens do vínculo "Cargo político derivado de mandato eletivo"), do segundo a quantidade e os nomes (o
+  vínculo "Eletivo"). Cada arquivo só é baixado quando muda (ETag; o armazenamento responde 304), e só um extrato pequeno
+  fica no cache. O CSV de vantagens tem o cargo sem aspas, às vezes com ";" ou quebra de linha dentro (o robô monta cada
+  registro pelas 4 primeiras e as 5 últimas colunas). Cada município classifica as verbas do seu jeito (a Câmara de
+  Vitória lança o subsídio como "Outros adicionais"): o total é a soma de todas as vantagens; 13º, férias e a parte
+  indenizatória (auxílio-alimentação e outras) ficam separados quando a verba diz. Em três cidades o prefeito está no
+  vínculo eletivo e o arquivo de vantagens não tem valor para o cargo (entra sem valor).
+- **Pernambuco (TCE-PE, 184 municípios)**: o Tome Conta (`tomeconta.tce.pe.gov.br/dados/`, "Servidores"), com o que
+  cada município manda ao Tribunal pelo Sagres: por unidade e mês, cada cargo com a quantidade e o total das vantagens
+  (o robô faz o mesmo pedido que a página, `PessoalFolhaPagamento!paginaVisualizarAjax`, com todos os cargos numa
+  página), e a lista de nomes de cada cargo (página de detalhes, sem valor por pessoa). A lista das câmaras e
+  prefeituras vem da API de Dados Abertos do TCE-PE (`UnidadesJurisdicionadas`). O robots.txt não proíbe nada; um
+  pedido por vez, com pausa, até 2.000 pedidos por rodada (a primeira leitura levou umas 3 horas). O servidor do Tome
+  Conta não manda o certificado intermediário: `util.ca_com_intermediario` completa a cadeia com o intermediário que o
+  próprio certificado indica, conferido com as raízes do certifi (a verificação nunca é desligada). Na página de
+  detalhes, com a "data de atualização" da unidade preenchida a lista volta vazia: o robô manda esse campo vazio. O
+  presidente da Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a quantidade do papel é a de nomes
+  diferentes. Não separa 13º nem férias.
+- **Rio de Janeiro (TCE-RJ, 91 municípios; a capital tem o próprio Tribunal de Contas do Município)**: a "Situação
+  Funcional" da API do Portal de Dados Abertos (`dados.tcerj.tc.br/api/v1/situacao_funcional`, uma consulta por ano):
+  por unidade e mês, cada situação funcional com a quantidade e a remuneração somada, sem nomes. Vereadores: "Agente
+  Político" na unidade da Câmara; em uns 2 de cada 3 municípios a quantidade é a das cadeiras, nos outros passa um pouco
+  ou fica diferente. Prefeito e vice ficam de fora: na Prefeitura, "Agente Político" junta o prefeito, o vice e os
+  secretários.
+- **Valor típico por pessoa** (`vm`): a mediana do total dividido pela quantidade, entre os últimos 12 meses, só nos
+  meses em que a quantidade é a esperada (as cadeiras eleitas em 2024, para vereadores; 1, para prefeito e vice) e sem
+  13º nem férias (onde a fonte separa; onde não separa, sem dezembro), com pelo menos 3 meses assim. Sem isso, o site
+  mostra só o total e a quantidade. No Espírito Santo também sem a parte indenizatória (`vmr`), que é o que se compara
+  com o teto da Constituição. Para vereadores é uma média, e não o salário de um vereador.
+- **Site**: um arquivo por estado em `site/dados/interior-cargo/<uf>.json` (outra pasta, porque o formato é outro;
+  os campos estão em `CAMPOS`, em `cargo.py`), com, por cidade, as cadeiras, a série mensal de quantidade e total de
+  cada papel, o valor típico e os nomes do último mês (com o partido de 2024 quando o nome casa com um único candidato
+  da cidade). `coleta/situacao.py` lê o `ultimo_mes` de cada um (`tce/es`, `tce/pe`, `tce/rj`).
+- **Ago/2026**: Espírito Santo, 893 pessoas no cargo de vereador nas 78 câmaras (63 com tantas pessoas quanto
+  cadeiras), valor típico por vereador mediano de R$ 8.002 (67 câmaras com o valor típico), 75 prefeitos e 66 vices com
+  valor; Rio de Janeiro, 1.042 agentes políticos em 79 das 91 câmaras (as outras ainda não tinham mandado o mês),
+  mediano de R$ 10.021 (73 câmaras).
+- **Onde roda**: as três fontes abriam de fora do Brasil no levantamento de 01/10/2026; rodam no GitHub Actions e, se
+  falharem de fora, a rodada do Brasil as pega na mesma semana.
 
 ## Judiciário
 

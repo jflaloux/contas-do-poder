@@ -75,10 +75,11 @@ def _ultimos_meses():
     um["federal/executivo"] = dados.get("ultimo_mes_executivo")
     for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
         um[f"judiciario/{sigla.lower()}"] = m.get("ultimo_mes")
-    for arq in sorted((SITE / "interior").glob("*.json")) if (SITE / "interior").exists() else []:
-        meta = _ler(f"interior/{arq.name}").get("meta", {})
-        if meta.get("ultimo_mes"):
-            um[f"tce/{arq.stem}"] = meta["ultimo_mes"]
+    for pasta in ("interior", "interior-cargo"):  # valor de cada pessoa (PB, CE) e valor por cargo (ES, PE, RJ)
+        for arq in sorted((SITE / pasta).glob("*.json")) if (SITE / pasta).exists() else []:
+            meta = _ler(f"{pasta}/{arq.name}").get("meta", {})
+            if meta.get("ultimo_mes"):
+                um[f"tce/{arq.stem}"] = meta["ultimo_mes"]
     return um
 
 
@@ -160,10 +161,15 @@ def _nomes_e_links():
         saida[f"judiciario/{sigla.lower()}"] = (m.get("n") or sigla, None, m.get("fonte"))
         if m.get("via") and m["via"] != "oficial":
             saida[f"via:judiciario/{sigla.lower()}"] = m["via"]
-    for arq in sorted((SITE / "interior").glob("*.json")) if (SITE / "interior").exists() else []:
-        meta = _ler(f"interior/{arq.name}").get("meta", {})
-        saida[f"tce/{arq.stem}"] = (f"{meta.get('tribunal') or 'Tribunal de Contas'}: vereadores, prefeitos e vices do interior ({estados.get(meta.get('uf'), meta.get('uf'))})",
-                                    meta.get("uf"), meta.get("url"))
+    for pasta in ("interior", "interior-cargo"):
+        for arq in sorted((SITE / pasta).glob("*.json")) if (SITE / pasta).exists() else []:
+            meta = _ler(f"{pasta}/{arq.name}").get("meta", {})
+            quem = "vereadores, prefeitos e vices do interior"
+            if meta.get("tipo") == "cargo":
+                quem = ("total pago aos cargos de vereador, prefeito e vice no interior" if "prefeito" in meta.get("papeis", [])
+                        else "total pago aos vereadores no interior")
+            saida[f"tce/{arq.stem}"] = (f"{meta.get('tribunal') or 'Tribunal de Contas'}: {quem} ({estados.get(meta.get('uf'), meta.get('uf'))})",
+                                        meta.get("uf"), meta.get("url"))
     return saida
 
 
