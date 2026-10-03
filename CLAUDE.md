@@ -61,60 +61,12 @@ armadilhas que não estão escritas em outro lugar.
   Nunca rode o build enquanto os testes rodam (o build limpa `publicar/`), nem com outro agente fazendo build ao
   mesmo tempo. O Google Analytics só carrega em contasdopoder.com: testes e prévias não contam visitas.
 
-## Equipe: um orquestrador e três agentes
-
-O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o trabalho entre três agentes
-(definidos em `.claude/agents/`). Cada agente cuida dos próprios arquivos:
-
-| Agente | Cuida de | Arquivos |
-|---|---|---|
-| `dados` | Robôs, coleta, base e os JSON que o site lê. É quem roda os robôs. | `coleta/`, `dados/`, `coletar.py`, `rotina/`, `.github/`, `requirements.txt`, `site/dados/*.json` (gerados por `python3 coletar.py site`), `site/fotos/` |
-| `site` | Páginas, visual e publicação. Não roda robôs: usa os dados que já estão em `site/dados/`. | `site/app.js`, `site/estilo.css`, `site/index.html`, `site/_headers`, `site/robots.txt`, `site/favicon.svg`, `site/og.png`, `publicacao/` |
-| `divulgacao` | Imprensa, parcerias e avisos a órgãos: pesquisa contatos e escreve rascunhos. Nunca envia nada. | `NOTAS-PRIVADAS.md` (seção "Imprensa e parcerias"), `RASCUNHOS-DIVULGACAO.md` |
-
-- `README.md`: cada agente atualiza a parte do próprio trabalho. `PLANO.md` e as seções "Onde estamos" e "Pendências"
-  do `NOTAS-PRIVADAS.md`: o orquestrador.
-- Recados entre agentes: `TAREFA-SITE-*.txt` (do `dados` para o `site`) e `TAREFA-DADOS-*.txt` (do `site` para o
-  `dados`), fora do Git. Arquivo de outro agente não se edita: diga na resposta o que precisa.
-- Commit só dos próprios arquivos (`git add <arquivos>`, nunca `git add -A`), um de cada vez. Antes, confira que não
-  existe `.git/index.lock`: se existir, outro agente está fazendo commit.
-- Ao terminar, cada agente responde ao orquestrador em poucas linhas: o que fez, arquivos e commit, o que falta, o que
-  precisa do Jean-François ou de outro agente.
-- Painel dos agentes (só no Mac, fora do Git): http://localhost:4777 mostra o que cada agente está fazendo, a partir dos
-  hooks em `.claude/settings.local.json` (`.claude/painel/`). Escreva a descrição de cada comando (campo `description`
-  do Bash) em português e em poucas palavras: é ela que aparece no painel.
-
-### Para o orquestrador (a sessão principal; os agentes ignoram esta parte)
-
-- Não faça o trabalho: entenda o pedido, passe ao agente certo e junte as respostas. Ler arquivos para responder a
-  uma pergunta rápida, sim; editar código, rodar robôs ou escrever e-mails, não.
-- O agente não vê esta conversa: mande um pedido completo (o que, por quê, quais arquivos, quando está pronto).
-- Chame o agente pelo nome (`site`, `dados`, `divulgacao`). Quando for continuação do mesmo assunto, mande a mensagem
-  ao agente que já fez a primeira parte em vez de começar outro: ele lembra o que fez e gasta menos.
-- Trabalho independente (uma página nova e um robô novo), em paralelo. Quando um depende do outro, em sequência: o
-  `dados` prepara os dados e escreve um `TAREFA-SITE-*.txt`; depois o `site` faz a página.
-- Assunto que pode virar notícia (dado novo, correção, achado nas folhas): pergunte ao Jean-François se quer que a
-  `divulgacao` prepare algo.
-- Rascunho de e-mail da `divulgacao`: mostre o texto inteiro ao Jean-François, sem resumir.
-- E-mails da divulgação: o `divulgacao` escreve no `RASCUNHOS-DIVULGACAO.md` (caixa ```email: para, cc, assunto,
-  a-partir-de, responde-a). Quem envia é o Jean-François, pelo botão Enviar do painel (http://localhost:4777; 8 s para
-  desfazer); o envio sai pela conta do projeto (`rotina/enviar_gmail.py`) e fica em
-  `ENVIOS-CONTATO.jsonl` (fora do Git). Nenhum agente envia: a trava `.claude/painel/guarda.mjs` (hook) recusa
-  qualquer tentativa. Respostas recebidas: `rotina/caixa_gmail.py` copia a caixa para `CAIXA-CONTATO/` (fora do Git).
-  Não use a ferramenta de Gmail da sessão para rascunhos: ela põe o remetente pessoal e troca os links.
-- Peça o OK do Jean-François antes de: enviar qualquer coisa (e-mail, formulário, post: quem envia é ele), `git push`,
-  mudança no Cloudflare ou no DNS, e qualquer nova exceção ao robots.txt.
-- No fim de um bloco de trabalho, peça a cada agente usado que guarde na memória dele o que aprendeu. Regra ou
-  armadilha que vale para qualquer pessoa vai para este arquivo.
-- Para o Jean-François, respostas curtas: o que ficou pronto e o que precisa dele.
-
 ## Git e publicação
 
 - Commits com a identidade `Jean-François Laloux <jeanfrancois@laloux.me>`. Quem faz o `git push` é o Jean-François.
 - Cada push publica o site no Cloudflare Pages (build `node publicacao/gerar.mjs`, pasta `publicar`).
 - Mudança de DNS ou de configuração no Cloudflare: só com o OK dele.
-- Contato público: contato@contasdopoder.com, caixa própria do projeto no Google Workspace (desde 03/10/2026; MX, SPF,
-  DKIM e DMARC no DNS do Cloudflare). Os rascunhos de e-mail são criados nessa conta, e quem envia é o Jean-François.
+- Contato público: contato@contasdopoder.com.
 
 ## Como acrescentar
 
@@ -205,3 +157,7 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
 - "No cargo" nas Assembleias: estar na folha ou nas notas da verba no último mês não basta (licenciados continuam
   recebendo; suplentes saem quando o titular volta; quem ainda não lançou a verba some). Use a lista de quem está em
   exercício que a própria Assembleia publica (e a de afastamentos, com as datas, em GO).
+
+## Regras internas (só no computador do projeto)
+
+@CLAUDE.local.md

@@ -11,26 +11,3 @@ dados/processados/lancamentos.csv
 
 # O que o Cloudflare Pages publica (node publicacao/gerar.mjs recria a partir de site/)
 publicar/
-
-# Notas pessoais (imprensa, decisões): ficam só no computador
-NOTAS-PRIVADAS.md
-
-# Recados entre as conversas do site e dos dados (TAREFA-SITE-*, TAREFA-DADOS-*): ficam só no computador
-TAREFA-*.txt
-
-# Claude Code: memória de cada agente e ajustes pessoais (ficam só no computador)
-.claude/agent-memory-local/
-.claude/settings.local.json
-
-# Rascunhos de e-mail do agente de divulgação: ficam só no computador
-RASCUNHOS-DIVULGACAO.md
-
-# Cópia local da caixa do Gmail do projeto (rotina/caixa_gmail.py): fica só no computador
-CAIXA-CONTATO/
-
-# Log dos envios aprovados no painel (rotina/enviar_gmail.py) e a trava contra envio duplo: ficam só no computador
-ENVIOS-CONTATO.jsonl
-ENVIOS-CONTATO.jsonl.lock
-
-# Painel dos agentes (http://localhost:4777): só no computador
-.claude/painel/
