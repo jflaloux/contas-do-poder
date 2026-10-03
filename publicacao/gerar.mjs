@@ -237,7 +237,12 @@ function numerosHTML() {
     numero(`${MESES[(ultimoMes % 100) - 1]}/${Math.floor(ultimoMes / 100)}`, `último mês dos dados · atualizado em ${DATA_ATUALIZADA.slice(8, 10)}/${DATA_ATUALIZADA.slice(5, 7)}`, "/atualizacao"),
   ].join("");
 }
-MODELO = MODELO.replace(/<\/head>/, `<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
+// situação das fontes (situacao.json): as congeladas (o app diz "Folha até ...: a fonte parou de publicar") e os códigos das cidades que
+// têm uma reserva pelo Tribunal de Contas (o app só lê a situação nelas)
+const SITUACAO0 = ler("situacao.json", { fontes: [], reservas: {} });
+const FONTES_CONGELADAS = (SITUACAO0.fontes || []).filter((f) => f.situacao === "congelada" && f.ultimo_mes).map((f) => `${f.id}:${f.ultimo_mes}`).join(" ");
+const CIDS_RESERVA = [...new Set(Object.values(SITUACAO0.reservas || {}).map((r) => String(r.cid)))].join(" ");
+MODELO = MODELO.replace(/<\/head>/, `<meta name="fontes-congeladas" content="${esc(FONTES_CONGELADAS)}">\n<meta name="reservas-tce" content="${esc(CIDS_RESERVA)}">\n<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
@@ -639,7 +644,7 @@ if (SIT && (SIT.fontes || []).length) {
     + (f.via ? `<small class="tabela-gov__obs">Dados pelo ${esc(f.via)}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}</small>` : "") + "</td>"
     + `<td data-rotulo="Dados até">${f.ultimo_mes ? mes(f.ultimo_mes) : "—"}</td>`
     + `<td data-rotulo="Última coleta">${f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"}</td>`
-    + `<td data-rotulo="Situação"><span class="${f.situacao === "em_dia" ? "etiqueta" : "etiqueta etiqueta--estimativa"}">${esc(sit[f.situacao] || f.situacao)}</span>`
+    + `<td data-rotulo="Situação"><span class="${f.situacao === "em_dia" ? "etiqueta" : f.situacao === "congelada" ? "etiqueta etiqueta--fora" : "etiqueta etiqueta--estimativa"}">${esc(sit[f.situacao] || f.situacao)}</span>`
     + (f.situacao !== "em_dia" && f.texto ? `<small class="tabela-gov__obs">${esc(motivo(f))}</small>` : "") + "</td></tr>";
   const tabela = (nome, lista) => `<table class="tabela-atualizacao"><caption class="visualmente-oculto">${esc(nome)}</caption>`
     + "<thead><tr><th>Fonte</th><th>Dados até</th><th>Última coleta</th><th>Situação</th></tr></thead>"
@@ -662,6 +667,7 @@ if (SIT && (SIT.fontes || []).length) {
     + "<li><strong>Última coleta: </strong>o dia da última leitura da fonte que deu certo. O traço (—) quer dizer que ainda não há registro dessa leitura.</li>"
     + `<li><strong>${esc(sit.em_dia || "Em dia")}: </strong>os dados vão até menos de 3 meses antes do último mês fechado${fechado ? ` (${fechado})` : ""}. Várias fontes publicam cada mês com 1 ou 2 meses de atraso, e isso conta como em dia.</li>`
     + `<li><strong>${esc(sit.atraso_fonte || "Atraso da própria fonte")}: </strong>o órgão publica com atraso ou deixou de mostrar o dado; o motivo está ao lado.</li>`
+    + `<li><strong>${esc(sit.congelada || "Congelada")}: </strong>a fonte parou de publicar o que o site mostra; o site fica com o último dado e a coleta tenta de novo a cada três meses.</li>`
     + `<li><strong>${esc(sit.atrasada || "Atrasada")}: </strong>os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido.</li>`
     + `<li><strong>${esc(sit.falhou || "A coleta falhou")}: </strong>a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.</li></ul>`
     + '<p class="nota">Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';

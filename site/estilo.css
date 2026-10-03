@@ -375,6 +375,8 @@ a.fonte:hover { border-color: var(--accent); }
 .nota { font-size: .9rem; color: var(--ink-2); max-width: 42.4em; }
 /* rosa só para dado que falta ou que a fonte não publica; explicação e fato vão na caixa neutra */
 .aviso { font-size: .9rem; background: var(--alerta-soft); color: var(--alerta-ink); border-radius: 10px; padding: 10px 12px; }
+/* link dentro do aviso (rosa): o verde dos links não tem contraste sobre ele; usa a cor do texto, sublinhada */
+.aviso a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 .caixa-nota { font-size: .9rem; background: var(--bg); color: var(--ink-2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
 .caixa-nota strong { color: var(--ink); }
 

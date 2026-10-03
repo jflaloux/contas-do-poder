@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 36 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 45 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1239,6 +1239,29 @@ de todas as páginas e a `/dados-abertos`. O endereço é fixo: o nome `atualiza
 Nas páginas das Assembleias (`secAssembleia`), quando os deputados no cargo são em número diferente das cadeiras, uma
 nota diz só o que a fonte mostra (`notaCadeiras`): Goiás (uma vaga aberta desde 26/09/2026) e Alagoas (a folha paga mais
 subsídios do que há cadeiras) têm texto próprio, que some quando os números voltam a bater.
+
+### Fontes congeladas e reserva pelo Tribunal de Contas (do `situacao.json`)
+
+Dois usos do mesmo arquivo (`site/dados/situacao.json`), sem arquivo novo:
+
+- **Congelada** (`situacao: "congelada"`): a fonte parou de publicar o que o site mostra (hoje, a folha do Pará e a do Rio de
+  Janeiro, até mar/2026, e a Prefeitura de Campo Grande, até fev/2026). Em `/atualizacao` a situação tem a etiqueta cinza
+  (`etiqueta--fora`, sem a cor de alerta: é um estado conhecido, não uma falha) e entra no "Como ler". Nas páginas afetadas
+  (governador e vice do PA e do RJ, a página do estado e a Prefeitura de Campo Grande, na seção e na página da pessoa) uma linha diz
+  "Folha até mar/2026: a fonte parou de publicar. O site mostra o último dado publicado (ver Atualização dos dados)" (`linhaCongelada`).
+  O `gerar.mjs` põe a lista em `<meta name="fontes-congeladas" content="folhas/PA:202603 ...">` (id da fonte e último mês), e
+  o `app.js` a lê dali: não pede o `situacao.json` à toa. A linha some sozinha quando a fonte deixa de estar congelada.
+- **Reserva pelo Tribunal de Contas** (`reservas`, no mesmo arquivo): quando a coleta da fonte própria de uma capital falha ou
+  fica atrás do tribunal, `ativa: true` faz a página da cidade usar o arquivo do tribunal no lugar da fonte própria, com um
+  aviso (`avisoReserva`: "Dados do TCE-CE", o motivo, "vão até <mês>" e o link do tribunal). Hoje: Fortaleza (Câmara e Prefeitura,
+  `interior/ce.json`, valor por pessoa), Câmara do Recife (`interior-cargo/pe.json`) e Prefeitura de Vitória
+  (`interior-cargo/es.json`), as duas últimas com valor por cargo: "em média", sem "passa do teto" nem "ganha mais que", e
+  nunca valor por pessoa e por cargo na mesma conta. O `situacao.json` só é lido nas cidades de
+  `<meta name="reservas-tce">` (os códigos, postos pelo `gerar.mjs`) e o arquivo do tribunal só é baixado com a reserva ativa.
+  Hoje todas estão com `ativa: false`; o teste liga uma por vez com dados simulados (`simularReservas`, no `rodar.mjs`, que
+  responde o pedido do arquivo sem mexer em `site/dados/`; a Câmara do Recife ganha um vereador de mentira) e confere o
+  aviso, o texto de cada tipo e o que não pode aparecer. Também confere que as páginas afetadas dizem "Folha até..." e que a
+  de São Paulo (fonte em dia) não diz.
 
 ## Licença
 

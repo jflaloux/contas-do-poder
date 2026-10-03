@@ -59,6 +59,22 @@ const primeiroCom13 = (prefixo) => {
     return id && ENDERECOS[id] ? `/${ENDERECOS[id]}` : null;
   } catch { return null; }
 };
+// Reserva pelo Tribunal de Contas (situacao.json, "reservas"): hoje nenhuma está ligada, então o teste liga à mão, só na página
+// que está sendo testada (o pedido do arquivo é respondido aqui, sem mexer em site/dados/). O de Recife ganha um vereador de
+// mentira (o arquivo de PE não tem a Câmara do Recife).
+const simularReservas = (chaves, comRecife) => (caminho) => {
+  if (caminho === "/dados/situacao.json") {
+    const s = lerDados("situacao.json");
+    for (const k of chaves) { s.reservas[k].ativa = true; s.reservas[k].motivo = "a coleta da fonte própria falhou"; }
+    return JSON.stringify(s);
+  }
+  if (comRecife && caminho === "/dados/interior-cargo/pe.json") {
+    const d = lerDados("interior-cargo/pe.json");
+    d.m["2611606"] = { ...d.m["2611606"], cad: 37, c: d.m["2600054"].c, zc: undefined };
+    return JSON.stringify(d);
+  }
+  return null;
+};
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -112,6 +128,21 @@ const PAGINAS = [
     contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /Custa mais que \d+% dos deputados/] },
   // o 13º no contracheque é "média por mês" e diz a conta (total do período ÷ meses): conferido num deputado que recebeu 13º
   // presença e projetos (atividade.json): "X de Y", sem porcentagem; Câmara por dia de sessão e Senado por votação nominal, nunca juntos
+  // fontes congeladas (situacao.json): a página diz "Folha até mar/2026: a fonte parou de publicar" (PA e RJ: governador; Campo Grande: Prefeitura)
+  { nome: "governador-pa-congelada", url: primeiro("gov-pa-"), pagina: [/folha até mar\/2026: a fonte parou de publicar/i] },
+  { nome: "estado-pa-congelada", url: "/governador/pa", pagina: [/folha até mar\/2026: a fonte parou de publicar/i] },
+  { nome: "estado-rj-congelada", url: "/governador/rj", pagina: [/folha até mar\/2026: a fonte parou de publicar/i] },
+  { nome: "cidade-campo-grande-congelada", url: "/cidade/campo-grande-ms", pagina: [/folha até fev\/2026: a fonte parou de publicar/i] },
+  { nome: "governador-sp-sem-congelada", url: primeiro("gov-sp-"), semPagina: [/a fonte parou de publicar/i] },
+  // capital sem reserva ligada: a fonte própria, sem o aviso do tribunal
+  { nome: "cidade-fortaleza-fonte-propria", url: "/cidade/fortaleza-ce", semPagina: [/dados do tce-ce/i] },
+  // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
+  { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
+    pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
+  { nome: "reserva-recife-cargo", url: "/cidade/recife-pe", simular: simularReservas(["vereadores/recife"], true),
+    pagina: [/dados do tce-pe\./i, /não é o salário de cada pessoa/i, /em média, por vereador/i, /total pago ao cargo/i], semPagina: [/valor típico de um vereador/i], sem: [/ganha mais que/i, /passa do teto/i] },
+  { nome: "reserva-vitoria-prefeitura-cargo", url: "/cidade/vitoria-es", simular: simularReservas(["prefeituras/vitoria"]),
+    pagina: [/dados do tce-es\./i, /quanto a prefeitura paga ao prefeito e ao vice/i, /não é o salário de cada pessoa/i], semPagina: [/quanto recebem o prefeito, os secretários/i] },
   { nome: "deputado-atividade", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null,
     atividade: [/teve presença em \d+ dos \d+ dias com sessão deliberativa no plenário em que estava no mandato/i, /ausências justificadas: \d+/i, /homenagens e datas/i, /viraram norma/i, /como contamos|homenagem ou data: projeto cuja ementa/i],
     semAtividade: [/%/, /votações nominais/i, /mais produtiv|menos produtiv/i] },
@@ -199,7 +230,9 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
       else if (h === local && /\.(json|js|css|webp|png|svg)$/.test(caminho) && /text\/html/.test(r.mimeType || "")) falhas.push(`arquivo que não existe (veio uma página HTML): ${caminho}`);
     } else if (metodo === "Fetch.requestPaused") {
       const h = new URL(p.request.url).host;
-      if (h === local || /^(data|blob):/.test(p.request.url)) cmd("Fetch.continueRequest", { requestId: p.requestId }).catch(() => {});
+      const simulado = h === local && pg.simular ? pg.simular(new URL(p.request.url).pathname) : null;
+      if (simulado) cmd("Fetch.fulfillRequest", { requestId: p.requestId, responseCode: 200, responseHeaders: [{ name: "Content-Type", value: "application/json" }], body: Buffer.from(simulado).toString("base64") }).catch(() => {});
+      else if (h === local || /^(data|blob):/.test(p.request.url)) cmd("Fetch.continueRequest", { requestId: p.requestId }).catch(() => {});
       else { externos.add(h); cmd("Fetch.failRequest", { requestId: p.requestId, errorReason: "BlockedByClient" }).catch(() => {}); }
     }
   });
@@ -236,7 +269,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
-        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
+        textoPagina: (document.querySelector("#app") || {}).innerText || "", textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
         // a lista das seções: uma linha só (os botões com o mesmo topo); se não cabe, rola e a caixa avisa onde há mais (data-mais)
         menu: (() => { const nav = document.querySelector("#secoes"), bs = nav ? [...nav.querySelectorAll("button")] : []; if (!bs.length) return null;
           const caixa = nav.parentElement; return { linhas: new Set(bs.map((b) => Math.round(b.getBoundingClientRect().top))).size, rola: nav.scrollWidth > nav.clientWidth + 1, mais: caixa.dataset.mais || "", esq: nav.scrollLeft > 4 }; })() };
@@ -251,6 +284,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.sem || []).forEach((re) => { if (re.test(m.textoCidade)) falhas.push(`o texto da cidade não podia ter ${re}`); });
     (pg.atividade || []).forEach((re) => { if (!re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não tem ${re}`); });
     (pg.semAtividade || []).forEach((re) => { if (re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não podia ter ${re}`); });
+    (pg.pagina || []).forEach((re) => { if (!re.test(m.textoPagina)) falhas.push(`a página não tem ${re}`); });
+    (pg.semPagina || []).forEach((re) => { if (re.test(m.textoPagina)) falhas.push(`a página não podia ter ${re}`); });
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     (pg.semContem || []).forEach((re) => { if (re.test(m.textoContracheque)) falhas.push(`o contracheque não podia ter ${re}`); });
     if (m.menu) {
