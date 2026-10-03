@@ -127,6 +127,11 @@ Cada número tem link para a fonte oficial.
 
 ## Fase 3 — Testes e confiabilidade
 
+- [ ] Manutenção (raio-X de 03/10/2026, aprovado): rodada do Brasil mensal; congelar folhas do PA e do RJ e a Prefeitura
+  de Campo Grande; folha de governador como complemento da lei; plano de queda das 17 fontes de risco alto; Tribunal de
+  Contas como reserva de Fortaleza, Câmara do Recife e Vitória — Agente de Dados
+- [ ] Refazer o raio-X das fontes no fim de novembro, com o histórico das rodadas — Agente de Dados
+
 - [ ] Página "Como calculamos" — Claude rascunha, você revisa
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você
 - [ ] Uma conversa com advogado (linguagem, LGPD) — Você (sem data: não no futuro próximo, 02/10/2026)

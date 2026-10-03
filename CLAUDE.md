@@ -45,6 +45,10 @@ armadilhas que não estão escritas em outro lugar.
 - No Mac, os robôs rodam com `.venv/bin/python` (criado por `rotina/instalar-mac.sh`), não com o `python3` do sistema.
   Dependência nova no `requirements.txt`: rodar também `.venv/bin/pip install -r requirements.txt`, ou a rodada do
   Brasil falha (em 02/10/2026, a Assembleia da PB parou por falta do odfpy no `.venv`).
+- Fonte nova só entra se: cobre 100 pessoas ou mais com um robô só; ou é API documentada ou arquivo aberto que abre de
+  fora do Brasil; ou completa algo que o site já mostra, com o plano de queda escrito antes. Fonte que só abre do
+  Brasil conta como portal frágil; nada de robô de portal frágil para 1 ou 2 pessoas quando a lei já dá o número
+  (decisão do Jean-François, 03/10/2026; ver `dados/processados/raio-x-fontes.md`).
 - `dados/processados/situacao.md` (`python3 coletar.py situacao`) mostra cada fonte: último mês, última coleta certa,
   erro. Atraso que é da própria fonte vai em `ATRASOS_CONHECIDOS` (`coleta/situacao.py`), com o motivo.
 - No Cowork, `git status` cria `.git/index.lock` e, sem permissão para apagar arquivos na pasta, não consegue tirar
