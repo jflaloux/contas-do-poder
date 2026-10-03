@@ -57,6 +57,9 @@ armadilhas que não estão escritas em outro lugar.
   lenta passa do limite.
 - Para ver o site: `python3 coletar.py site && node publicacao/gerar.mjs && node publicacao/servir.mjs`
   (http://localhost:8000).
+- Testes do site: `node publicacao/gerar.mjs` e depois `node publicacao/testes/rodar.mjs` (README, "Testes do site").
+  Nunca rode o build enquanto os testes rodam (o build limpa `publicar/`), nem com outro agente fazendo build ao
+  mesmo tempo. O Google Analytics só carrega em contasdopoder.com: testes e prévias não contam visitas.
 
 ## Equipe: um orquestrador e três agentes
 
@@ -90,6 +93,10 @@ O Jean-François conversa com uma sessão só, o **orquestrador**, que divide o 
 - Assunto que pode virar notícia (dado novo, correção, achado nas folhas): pergunte ao Jean-François se quer que a
   `divulgacao` prepare algo.
 - Rascunho de e-mail da `divulgacao`: mostre o texto inteiro ao Jean-François, sem resumir.
+- Rascunhos no Gmail: `rotina/rascunhos_gmail.py` lê o `RASCUNHOS-DIVULGACAO.md` (cada bloco com a caixa ```email:
+  para, cc, assunto) e cria ou atualiza os rascunhos com De: contato@ e links diretos; nunca envia. Quem roda é o
+  Jean-François (a credencial do Google fica no Mac dele). Não grave rascunhos pela ferramenta de Gmail da sessão: ela
+  põe o remetente pessoal e troca os links por redirecionamentos do Google.
 - Peça o OK do Jean-François antes de: enviar qualquer coisa (e-mail, formulário, post: quem envia é ele), `git push`,
   mudança no Cloudflare ou no DNS, e qualquer nova exceção ao robots.txt.
 - No fim de um bloco de trabalho, peça a cada agente usado que guarde na memória dele o que aprendeu. Regra ou
