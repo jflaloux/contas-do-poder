@@ -65,6 +65,8 @@ const PAGINAS = [
   { nome: "cidade-capital", url: "/cidade/sao-paulo-sp" },
   { nome: "cidade-interior", url: "/cidade/abaiara-ce" },
   { nome: "cidade-pequena", url: "/cidade/acrelandia-ac" },
+  { nome: "governador-com-viagens", url: ENDERECOS["gov-mg-mateus-simoes"] ? `/${ENDERECOS["gov-mg-mateus-simoes"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 2], ["#viagens details table", 1]] },
+  { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },
   { nome: "judiciario", url: "/judiciario", ter: [["#judiciario", 1]] },

@@ -157,8 +157,8 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 22 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
-prefeitura, deputado estadual, governador e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
+Abre 24 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
 console, sem exceção, sem arquivo que falta, título, um só `h1`, o "Carregando…" fora, sem rolagem horizontal, sem cookies
@@ -924,6 +924,11 @@ seguem o mesmo desenho.
   Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
   `compartilhar` com `casa: governador`; na origem, `governador` (o link da página do estado para a da pessoa); e
   `ver_governador` com a origem `pessoa_governador` (o link da página da pessoa para a do estado).
+  Viagens do governador e do vice (desde 03/10/2026): a seção "Viagens" da página da pessoa (`secViagensG`, só nos estados
+  com `e.vgf`: AM, MG, PB, SE e SP) lê `e.vg`/`e.vgf` de `governadores.json` (nenhum arquivo novo); diárias e passagens
+  ficam à parte do que vai para o bolso, só dentro do mesmo estado (sem comparação nem ranking entre estados), e o
+  `abrir_detalhe` com `categoria: viagens_governador` conta a abertura da tabela mês a mês. Quem não tem viagem na
+  fonte mostra "a fonte não mostra viagem"; as colunas de passagens e de outros só aparecem onde a fonte as tem.
 - **Velocidade nos aparelhos de quem visita** (desde 01/10/2026): o evento `velocidade`, um por visita, enviado quando a
   pessoa sai da página ou troca de aba pela primeira vez. Leva os três números que o Google usa para dizer se um site é
   rápido (Core Web Vitals), medidos pelo próprio navegador: `lcp_ms` (quando o maior bloco de texto ou imagem da primeira

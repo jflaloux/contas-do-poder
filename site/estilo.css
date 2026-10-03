@@ -960,6 +960,13 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 #dados-abertos code { padding: 1px 6px; }
 pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
 
+/* viagens do governador e do vice: nada passa da largura da tela (as tabelas rolam por dentro) */
+#viagens > * { min-width: 0; }
+#viagens h2 { overflow-wrap: anywhere; }
+#viagens table { font-size: .84rem; }
+#viagens th, #viagens td { padding-inline: 6px; }
+#viagens th:first-child, #viagens td:first-child { padding-left: 0; }
+
 /* /atualizacao: cada fonte, até que mês vão os dados e a situação. No celular, cada linha vira um bloco com os rótulos. */
 .tabela-atualizacao th, .tabela-atualizacao td { text-align: left; white-space: normal; vertical-align: top; padding: 10px 14px 10px 0; }
 .tabela-atualizacao th:first-child, .tabela-atualizacao td:first-child { width: 40%; }
