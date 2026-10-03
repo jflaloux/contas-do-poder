@@ -962,9 +962,28 @@ destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada
 - `.venv/bin/python rotina/rascunhos_gmail.py` mostra o que faria; `--teste` cria um rascunho só, para a própria conta
   (ou para `--para-teste`); `--criar` grava; `--so=3,7` escolhe os blocos; `--sem-gmail --mostrar=7` mostra o e-mail
   montado sem conectar.
-- Escopos: `gmail.compose` (rascunhos e a conta do token; o Google não tem escopo de rascunho que não permita também
-  enviar, por isso o código não chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`) e
-  `gmail.settings.basic` (ler a lista de remetentes).
+- `responde-a: <id da conversa>` na caixa ```email do bloco: o rascunho é uma resposta dentro da conversa (mesma thread,
+  com In-Reply-To e References da última mensagem e o assunto com "Re:"). O id está no arquivo da conversa, na cópia
+  local da caixa (seção abaixo).
+- Escopos (os mesmos da cópia da caixa, em `rotina/gmail_comum.py`, para uma autorização servir aos dois scripts):
+  `gmail.compose` (rascunhos; o Google não tem escopo de rascunho que não permita também enviar, por isso o código não
+  chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`), `gmail.settings.basic` (ler a
+  lista de remetentes) e `gmail.readonly` (ler as conversas). Um token antigo, sem algum deles, não é usado: o script
+  pede `--nova-autorizacao`.
+
+## Cópia local da caixa do Gmail (`rotina/caixa_gmail.py`)
+
+Só leitura: baixa as mensagens da conta do projeto (recebidas e enviadas; sem rascunhos, spam e lixeira) e grava uma
+conversa por arquivo Markdown em `CAIXA-CONTATO/`, na raiz, fora do Git (`.gitignore`), com nome que ordena por data. Não
+envia, não marca como lido, não arquiva e não apaga nada no Gmail; nada da pasta vai para o Git nem para o site.
+
+- Cada mensagem: De, Para, Cc, Data, Assunto, os nomes dos anexos (nenhum é baixado) e o texto puro, sem o texto citado
+  das respostas. Sequências com cara de CPF e de número de cartão são mascaradas na cópia. O começo de cada arquivo traz
+  o id da conversa, para o `responde-a:` dos rascunhos.
+- Incremental: o ponto da última leitura fica em `~/.config/contas-do-poder/caixa-estado.json`; `--desde=AAAA-MM-DD`
+  refaz a partir de uma data. No fim, um resumo: quantas conversas novas e quais respondem a e-mails do projeto.
+- Mesma credencial, mesmo token e mesma conta do projeto dos rascunhos (a conta pessoal é recusada).
+  `.venv/bin/python rotina/caixa_gmail.py` baixa o que é novo.
 
 ## Licença
 

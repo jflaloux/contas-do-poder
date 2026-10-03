@@ -25,5 +25,8 @@ TAREFA-*.txt
 # Rascunhos de e-mail do agente de divulgação: ficam só no computador
 RASCUNHOS-DIVULGACAO.md
 
+# Cópia local da caixa do Gmail do projeto (rotina/caixa_gmail.py): fica só no computador
+CAIXA-CONTATO/
+
 # Painel dos agentes (http://localhost:4777): só no computador
 .claude/painel/

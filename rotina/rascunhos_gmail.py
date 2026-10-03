@@ -21,6 +21,7 @@ Formato de cada bloco do arquivo (um "## " por rascunho):
     para: endereco@dominio
     cc: outro@dominio, mais@dominio
     assunto: O assunto, numa linha
+    responde-a: id da conversa   (opcional: resposta dentro da conversa; o id está no arquivo da conversa em CAIXA-CONTATO/)
     ```
 
     (notas livres, que não vão no e-mail)
@@ -44,8 +45,12 @@ do projeto). Antes de gravar, o script confere em que conta o token está (users
 rascunhos só vão para a conta do projeto: a de --conta (gravada em conta-do-projeto, na mesma pasta, no primeiro uso
 que dá certo) ou, sem conta gravada, a que tem o remetente como endereço principal. Token de outra conta: para e diz o
 que fazer (--conta, se a conta é a do projeto; --nova-autorizacao, se não é).
-Escopos: gmail.compose (criar, ler e atualizar rascunhos; o Google não tem um escopo de rascunho que não permita também
-enviar) e gmail.settings.basic (ler a lista de remetentes; não dá acesso ao conteúdo dos e-mails).
+Com "responde-a", o rascunho é uma resposta dentro da conversa (threadId, In-Reply-To e References da última mensagem):
+o assunto é o da conversa com "Re:", e o destinatário, se não houver "para:", é quem escreveu por último (Reply-To ou
+From). Um rascunho que já está na conversa é atualizado.
+Escopos (os mesmos de caixa_gmail.py, em gmail_comum.py): gmail.compose (rascunhos; o Google não tem um escopo de
+rascunho que não permita também enviar), gmail.settings.basic (a lista de remetentes) e gmail.readonly (ler a conversa a
+que o rascunho responde).
 Dependências só no .venv do computador que cria os rascunhos: .venv/bin/pip install -r rotina/requirements-gmail.txt
 """
 import argparse
@@ -62,15 +67,15 @@ from email.policy import SMTP
 from email.utils import formataddr, getaddresses
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import gmail_comum as gc  # noqa: E402  (autorização, conta do projeto e a trava contra envio, iguais às de caixa_gmail.py)
+from gmail_comum import API, CONFIG, ESCOPOS, REMETENTE  # noqa: E402,F401
+
 RAIZ = Path(__file__).resolve().parent.parent
 ARQUIVO = RAIZ / "RASCUNHOS-DIVULGACAO.md"
-CONFIG = Path.home() / ".config" / "contas-do-poder"
-REMETENTE = "contato@contasdopoder.com"  # o contato público do projeto (o From de todos os rascunhos)
 # endereços do projeto que viram link mesmo escritos sem https:// (com ou sem caminho). Os de fora só viram link
 # escritos por inteiro, com https:// (o script não adivinha se o site precisa de "www.")
 NOSSOS = ("contasdopoder.com", "github.com/jflaloux/contas-do-poder")
-ESCOPOS = ["https://www.googleapis.com/auth/gmail.compose", "https://www.googleapis.com/auth/gmail.settings.basic"]
-API = "https://gmail.googleapis.com/gmail/v1/users/me"
 
 EMAIL = r"[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}"
 RE_EMAIL = re.compile(EMAIL)
@@ -87,6 +92,7 @@ class Rascunho:
     corpo: list = field(default_factory=list)  # linhas do corpo, como estão no arquivo
     formato: str = ""
     fora: str = ""  # motivo de ficar de fora (sem destinatário, sem assunto...)
+    responde_a: str = ""  # id da conversa (thread) do Gmail: o rascunho é uma resposta dentro dela
     avisos: list = field(default_factory=list)
 
 
@@ -172,6 +178,7 @@ def _bloco(cabeca, linhas, com_opcionais):
         r.para, r.cc = _enderecos(campos.get("para", "")), _enderecos(campos.get("cc", ""))
         r.cc_opcional = _enderecos(campos.get("cc-opcional", ""))
         r.assunto = campos.get("assunto", "")
+        r.responde_a = re.sub(r"[^0-9A-Za-z]", "", campos.get("responde-a", ""))
         texto = next((i for i, l in enumerate(linhas) if re.match(r"^\*\*texto\*\*\s*$", l.strip(), flags=re.I)), None)
         r.corpo = _corpo(linhas, texto if texto is not None else fim + 1)
         if texto is None:
@@ -198,9 +205,9 @@ def _bloco(cabeca, linhas, com_opcionais):
             r.fora = 'o "Para" não começa com um endereço de e-mail (formulário ou endereço a conferir)'
     if com_opcionais:
         r.cc += r.cc_opcional
-    if not r.fora and not r.para:
+    if not r.fora and not r.para and not r.responde_a:
         r.fora = "sem destinatário"
-    if not r.fora and not r.assunto:
+    if not r.fora and not r.assunto and not r.responde_a:
         r.fora = "sem assunto"
     if not r.fora and not r.corpo:
         r.fora = "sem corpo"
@@ -319,14 +326,18 @@ def html_do_corpo(linhas):
     return '<!DOCTYPE html>\n<html><head><meta charset="utf-8"></head><body>\n' + "\n".join(partes) + "\n</body></html>\n"
 
 
-def montar(r, remetente, nome_remetente="", para=None, prefixo=""):
-    """O e-mail (multipart/alternative, UTF-8): texto puro e HTML."""
+def montar(r, remetente, nome_remetente="", para=None, prefixo="", assunto=None, resposta=None):
+    """O e-mail (multipart/alternative, UTF-8): texto puro e HTML. Com `resposta` (de conversa()), os cabeçalhos
+    In-Reply-To e References, para o Gmail e o destinatário guardarem a mensagem na mesma conversa."""
     msg = EmailMessage(policy=SMTP)
     msg["From"] = formataddr((nome_remetente, remetente)) if nome_remetente else remetente
     msg["To"] = ", ".join(para if para is not None else r.para)
-    if r.cc and para is None:
+    if r.cc and (para is None or resposta):
         msg["Cc"] = ", ".join(r.cc)
-    msg["Subject"] = prefixo + r.assunto
+    msg["Subject"] = prefixo + (assunto if assunto is not None else r.assunto)
+    if resposta and resposta.get("in_reply_to"):
+        msg["In-Reply-To"] = resposta["in_reply_to"]
+        msg["References"] = resposta["references"]
     msg.set_content(texto_puro(r.corpo), subtype="plain", charset="utf-8", cte="quoted-printable")
     msg.add_alternative(html_do_corpo(r.corpo), subtype="html", charset="utf-8", cte="quoted-printable")
     return msg
@@ -334,81 +345,36 @@ def montar(r, remetente, nome_remetente="", para=None, prefixo=""):
 
 # ------------------------------------------------------------------------------------------------------- Gmail
 def sessao(config, nova=False, conta=""):
-    """Sessão autorizada no Gmail (abre o navegador na primeira vez, com a escolha de conta). A credencial e o token ficam
-    em `config`. Com `nova`, o token que existe vira gmail-token.json.antigo e a autorização é feita de novo."""
-    try:
-        from google.auth.transport.requests import AuthorizedSession, Request
-        from google.oauth2.credentials import Credentials
-        from google_auth_oauthlib.flow import InstalledAppFlow
-    except ImportError:
-        sys.exit("Faltam as bibliotecas do Google: .venv/bin/pip install -r rotina/requirements-gmail.txt")
-    cred_arq, token_arq = config / "gmail-credencial.json", config / "gmail-token.json"
-    cred = None
-    if nova and token_arq.exists():
-        token_arq.replace(token_arq.with_suffix(".json.antigo"))
-    if token_arq.exists():
-        cred = Credentials.from_authorized_user_file(str(token_arq), ESCOPOS)
-    if cred and cred.expired and cred.refresh_token:
-        cred.refresh(Request())
-    if not cred or not cred.valid or not set(ESCOPOS) <= set(cred.scopes or []):
-        if not cred_arq.exists():
-            sys.exit(f"Falta a credencial OAuth em {cred_arq} (o arquivo JSON do cliente \"App para computador\" do Google Cloud).")
-        print("Abrindo o navegador para a autorização: escolha a conta do projeto (a que envia como " + REMETENTE + ").")
-        extra = {"login_hint": conta} if conta else {}
-        cred = InstalledAppFlow.from_client_secrets_file(str(cred_arq), ESCOPOS).run_local_server(port=0, prompt="select_account", **extra)
-    config.mkdir(parents=True, exist_ok=True)
-    token_arq.write_text(cred.to_json(), encoding="utf-8")
-    os.chmod(token_arq, 0o600)
-    return AuthorizedSession(cred)
+    return gc.sessao(config, nova, conta, script="rascunhos_gmail.py")
 
 
-def _pedir(s, metodo, caminho, **kw):
-    if re.search(r"/send(\b|$)", caminho) or caminho.rstrip("/").endswith("send"):
-        raise RuntimeError("este script não envia e-mails")
-    r = s.request(metodo, API + caminho, timeout=60, **kw)
-    if r.status_code >= 400:
-        raise RuntimeError(f"Gmail {metodo} {caminho}: {r.status_code} {r.text[:300]}")
-    return r.json() if r.content else {}
-
-
-COMANDO_NOVA = (".venv/bin/python rotina/rascunhos_gmail.py --nova-autorizacao (o token atual vira gmail-token.json.antigo; "
-                "no navegador, escolha a conta do projeto)")
-REFAZER = "Para refazer a autorização com a conta do projeto: " + COMANDO_NOVA + "."
-CONTA_ARQ = "conta-do-projeto"  # na pasta da credencial: a conta do projeto, gravada no primeiro uso com --conta
+_pedir = gc.pedir  # recusa qualquer caminho terminado em /send
 
 
 def remetente_ok(s, endereco, conta_arg="", config=None):
-    """(nome de exibição, conta do token). Confere, antes de qualquer gravação, que o token é da conta do projeto:
-    - `endereco` está em "Enviar e-mail como" como endereço principal ou como alias verificado;
-    - a conta do token (users.getProfile) é a do projeto: a de --conta, ou a gravada em `config`/conta-do-projeto, ou,
-      sem nenhuma das duas, a conta em que `endereco` é o endereço principal.
-    Com --conta e tudo certo, a conta fica gravada (permissão 600) e as próximas vezes não precisam de --conta; uma
-    conta diferente da gravada (a pessoal, por exemplo) é recusada. Para com uma mensagem clara; nada é gravado no Gmail."""
-    arq = Path(config) / CONTA_ARQ if config else None
-    gravada = arq.read_text(encoding="utf-8").strip() if arq and arq.exists() else ""
-    esperada = conta_arg or gravada
-    conta = _pedir(s, "GET", "/profile").get("emailAddress", "")
-    lista = _pedir(s, "GET", "/settings/sendAs").get("sendAs", [])
-    x = next((x for x in lista if x.get("sendAsEmail", "").lower() == endereco.lower()), None)
-    if x is None:
-        sys.exit(f"O token é da conta {conta}, que não tem {endereco} em \"Enviar e-mail como\". Nenhum rascunho foi criado.\n{REFAZER}")
-    if not (x.get("isPrimary") or x.get("verificationStatus") == "accepted"):
-        sys.exit(f"{endereco} está na conta {conta}, mas não verificado (situação: {x.get('verificationStatus')}). "
-                 f"Nenhum rascunho foi criado.")
-    if esperada and conta.lower() != esperada.lower():
-        origem = "--conta" if conta_arg else f"a conta do projeto gravada em {arq}"
-        sys.exit(f"O token é da conta {conta}, e não de {esperada} ({origem}). Nenhum rascunho foi criado.\n{REFAZER}")
-    if not esperada and not (x.get("isPrimary") or conta.lower() == endereco.lower()):
-        sys.exit(f"O token é da conta {conta}, em que {endereco} é um alias verificado, não o endereço principal. Nenhum "
-                 f"rascunho foi criado.\nSe esta é a conta do projeto, rode uma vez com --conta={conta}: a conta fica "
-                 f"gravada e as próximas vezes não precisam disso.\nSe não é (uma conta pessoal, por exemplo), refaça a "
-                 f"autorização: {COMANDO_NOVA}.")
-    if conta_arg and arq and conta_arg.lower() != gravada.lower():
-        arq.parent.mkdir(parents=True, exist_ok=True)
-        arq.write_text(conta + "\n", encoding="utf-8")
-        os.chmod(arq, 0o600)
-        print(f"Conta do projeto gravada em {arq}: {conta} (as próximas vezes não precisam de --conta).")
-    return x.get("displayName") or "", conta
+    return gc.conta_ok(s, endereco, conta_arg, config, script="rascunhos_gmail.py", nada="Nenhum rascunho foi criado.")
+
+
+def conversa(s, thread_id, nossos):
+    """Dados para responder dentro de uma conversa: o assunto com "Re:", o Message-ID e as References da última mensagem
+    (sem os rascunhos) e o destinatário (Reply-To ou From da última mensagem que não é nossa; se todas são nossas, o
+    To da última)."""
+    d = _pedir(s, "GET", f"/threads/{thread_id}", params=[("format", "metadata")] + [
+        ("metadataHeaders", h) for h in ("From", "To", "Reply-To", "Subject", "Message-ID", "References")])
+    msgs = [m for m in d.get("messages", []) if "DRAFT" not in (m.get("labelIds") or [])]
+    if not msgs:
+        raise RuntimeError(f"a conversa {thread_id} não tem mensagens")
+    cab = lambda m: {h["name"].lower(): h["value"] for h in m.get("payload", {}).get("headers", [])}
+    ultima = cab(msgs[-1])
+    deles = [cab(m) for m in msgs if not any(a.lower() in nossos for _, a in getaddresses([cab(m).get("from", "")]))]
+    if deles:
+        alvo = [a for _, a in getaddresses([deles[-1].get("reply-to") or deles[-1].get("from", "")]) if a]
+    else:
+        alvo = [a for _, a in getaddresses([ultima.get("to", "")]) if a]
+    assunto = re.sub(r"^\s*((re|res|enc|fwd?)\s*:\s*)+", "", ultima.get("subject", ""), flags=re.I)
+    mid = ultima.get("message-id", "")
+    return {"assunto": "Re: " + assunto, "para": alvo, "in_reply_to": mid,
+            "references": " ".join(x for x in (ultima.get("references", ""), mid) if x).strip()}
 
 
 def _chave(para, assunto):
@@ -416,8 +382,8 @@ def _chave(para, assunto):
 
 
 def rascunhos_existentes(s):
-    """{(destinatários, assunto): [ids]} e {destinatário: [(id, assunto)]} dos rascunhos da conta."""
-    por_chave, por_para, token = {}, {}, None
+    """{(destinatários, assunto): [ids]}, {destinatário: [(id, assunto)]} e {conversa: [ids]} dos rascunhos da conta."""
+    por_chave, por_para, por_conversa, token = {}, {}, {}, None
     while True:
         d = _pedir(s, "GET", "/drafts", params={"maxResults": 500, **({"pageToken": token} if token else {})})
         for x in d.get("drafts", []):
@@ -428,16 +394,19 @@ def rascunhos_existentes(s):
             por_chave.setdefault(_chave(para, assunto), []).append(x["id"])
             for a in para:
                 por_para.setdefault(a.lower(), []).append((x["id"], assunto))
+            if m.get("message", {}).get("threadId"):
+                por_conversa.setdefault(m["message"]["threadId"], []).append(x["id"])
         token = d.get("nextPageToken")
         if not token:
-            return por_chave, por_para
+            return por_chave, por_para, por_conversa
 
 
-def gravar(s, msg, id_existente=None):
+def gravar(s, msg, id_existente=None, conversa_id=None):
     raw = base64.urlsafe_b64encode(msg.as_bytes()).decode("ascii")
+    mensagem = {"raw": raw, **({"threadId": conversa_id} if conversa_id else {})}
     if id_existente:
-        return _pedir(s, "PUT", f"/drafts/{id_existente}", json={"id": id_existente, "message": {"raw": raw}})
-    return _pedir(s, "POST", "/drafts", json={"message": {"raw": raw}})
+        return _pedir(s, "PUT", f"/drafts/{id_existente}", json={"id": id_existente, "message": mensagem})
+    return _pedir(s, "POST", "/drafts", json={"message": mensagem})
 
 
 # --------------------------------------------------------------------------------------------------------- main
@@ -482,10 +451,10 @@ def main(argv=None, sessao_fn=None):
         validos = validos[:1]
     s = None if a.sem_gmail else (sessao_fn or sessao)(Path(a.config), a.nova_autorizacao, a.conta)
     nome, principal = ("", None)
-    por_chave, por_para = {}, {}
+    por_chave, por_para, por_conversa = {}, {}, {}
     if s is not None:
         nome, principal = remetente_ok(s, a.de, a.conta, a.config)
-        por_chave, por_para = rascunhos_existentes(s)
+        por_chave, por_para, por_conversa = rascunhos_existentes(s)
     print(f"Arquivo: {a.arquivo}: {len(todos)} blocos, {len(escolhidos)} escolhidos, {len(validos)} com e-mail."
           + ("" if s is None else f" Conta: {principal}. Remetente: {formataddr((nome, a.de)) if nome else a.de}."))
     for r in (validos if a.teste else escolhidos):  # no teste, só o rascunho de teste (o primeiro escolhido)
@@ -494,15 +463,30 @@ def main(argv=None, sessao_fn=None):
         if r.fora:
             print(f"   fica de fora: {r.fora}")
             continue
-        para = [a.para_teste or principal] if a.teste else r.para
+        resposta, assunto = None, r.assunto
+        if r.responde_a:
+            if s is None:
+                print(f"   resposta na conversa {r.responde_a}: o destinatário e o assunto saem da conversa (sem conectar, não lidos)")
+            else:
+                resposta = conversa(s, r.responde_a, {a.de.lower(), (principal or "").lower()})
+                assunto = resposta["assunto"]
+                print(f"   resposta na conversa {r.responde_a}")
+        para = [a.para_teste or principal] if a.teste else (r.para or (resposta or {}).get("para") or [])
         prefixo = "[TESTE] " if a.teste else ""
-        print(f"   Para: {', '.join(para)}" + ("" if a.teste or not r.cc else f"   Cc: {', '.join(r.cc)}"))
-        print(f"   Assunto: {prefixo}{r.assunto}")
+        if resposta and a.teste:
+            resposta = None  # o teste não entra na conversa
+        print(f"   Para: {', '.join(para) or '(sai da conversa)'}" + ("" if a.teste or not r.cc else f"   Cc: {', '.join(r.cc)}"))
+        print(f"   Assunto: {prefixo}{assunto or '(sai da conversa)'}")
         for av in r.avisos:
             print(f"   atenção: {av}")
         acao, id_ = "cria", None
-        if s is not None:
-            ids = por_chave.get(_chave(para, prefixo + r.assunto), [])
+        if s is not None and resposta:
+            ids = por_conversa.get(r.responde_a, [])
+            if ids:
+                acao, id_ = "atualiza (rascunho que já está na conversa)", ids[0]
+            print(f"   Gmail: {acao}" + (f" o rascunho {id_}" if id_ else " uma resposta nova na conversa"))
+        elif s is not None:
+            ids = por_chave.get(_chave(para, prefixo + assunto), [])
             if ids:
                 acao, id_ = "atualiza", ids[0]
                 if len(ids) > 1:
@@ -516,9 +500,9 @@ def main(argv=None, sessao_fn=None):
                         print("   atenção: já há rascunho para esse destinatário com outro assunto: "
                               + "; ".join(f'"{x}"' for _, x in outros[:3]) + " (com --mesmo-destinatario, atualiza se for um só)")
             print(f"   Gmail: {acao}" + (f" o rascunho {id_}" if id_ else " um rascunho novo"))
-        msg = montar(r, a.de, nome, para=para if a.teste else None, prefixo=prefixo)
+        msg = montar(r, a.de, nome, para=para if (a.teste or resposta) else None, prefixo=prefixo, assunto=assunto, resposta=resposta)
         if (a.criar or a.teste) and s is not None:
-            g = gravar(s, msg, id_)
+            g = gravar(s, msg, id_, r.responde_a if resposta else None)
             print(f"   gravado: rascunho {g.get('id')}")
     if a.mostrar:
         r = next(iter(escolher([x for x in todos if not x.fora], a.mostrar)), None)
