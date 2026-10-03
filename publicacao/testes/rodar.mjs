@@ -4,13 +4,15 @@
 //      terminada (sem "Carregando…"), sem rolagem horizontal e o que cada página tem de mostrar;
 //   2. CLS (quanto a página pula enquanto carrega): até 0,1 ("bom", pelo Google);
 //   3. axe-core (acessibilidade, contraste incluído): nenhuma violação. O axe não vem com o repositório: veja --baixar-axe.
+//   4. Google Analytics só em produção: o gtag carrega em contasdopoder.com e www.contasdopoder.com e em mais nenhum endereço.
 // O LCP e o tempo de cada página saem no relatório, sem valer como falha.
 //
 // Uso (da raiz do repositório; antes, node publicacao/gerar.mjs):
 //   node publicacao/testes/rodar.mjs                   roda tudo, com o servidor local (publicacao/servir.mjs) numa porta própria
 //   node publicacao/testes/rodar.mjs --completo        os 4 perfis (celular e computador, claro e escuro) em vez de 2
 //   node publicacao/testes/rodar.mjs --paginas=atualizacao,indice     só estas (nomes da lista abaixo)
-//   node publicacao/testes/rodar.mjs --url=http://localhost:8000      usa um servidor que já está rodando
+//   node publicacao/testes/rodar.mjs --analytics       com --paginas, roda também a conferência do Google Analytics (sem --paginas ela já roda; --sem-analytics a corta)
+//   node publicacao/testes/rodar.mjs --url=http://localhost:8000      usa um servidor que já está rodando (a conferência do Analytics só roda em localhost)
 //   node publicacao/testes/rodar.mjs --capturas=/tmp/capturas         guarda uma imagem de cada página
 //   node publicacao/testes/rodar.mjs --baixar-axe      baixa o axe-core (uma vez) para o cache e roda
 // Precisa só do Node (22 ou mais novo) e do Chrome. Nenhum pacote do npm; nada disso entra no build do Cloudflare Pages.
@@ -29,7 +31,7 @@ const arg = (nome) => { const a = process.argv.find((x) => x === `--${nome}` || 
 // ------------------------------------------------------------------ axe-core
 const AXE_VERSAO = "4.10.2";
 const AXE_URL = `https://cdnjs.cloudflare.com/ajax/libs/axe-core/${AXE_VERSAO}/axe.min.js`;
-const AXE_SHA256 = process.env.AXE_SHA256 || ""; // depois da primeira baixa, cole aqui o valor que o teste mostra: aí ele confere o arquivo
+const AXE_SHA256 = process.env.AXE_SHA256 || "b511cd9dec01c76f4b2ad1723b66b6db37d4c2eb4ed199076e1829d9ee7b75e3"; // do axe.min.js 4.10.2 do cdnjs, baixado em 02/10/2026; a baixa só grava o arquivo se bater
 const AXE_ARQ = process.env.AXE_JS || path.join(os.homedir(), ".cache", "contas-do-poder", `axe-core-${AXE_VERSAO}.min.js`);
 async function baixarAxe() {
   console.log(`Baixando o axe-core ${AXE_VERSAO} de ${AXE_URL} para ${AXE_ARQ}`);
@@ -163,6 +165,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     if (m.sobra > 1) falhas.push(`rolagem horizontal: a página é ${m.sobra} px mais larga que a tela`);
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
     if (m.cls > LIMITE_CLS) falhas.push(`CLS ${m.cls.toFixed(3)} (o limite é ${LIMITE_CLS})`);
+    if ([...externos].some((h) => /googletagmanager|google-analytics/.test(h))) falhas.push("o site pediu o Google Analytics fora da produção (o gtag só pode carregar em contasdopoder.com)");
 
     let violacoes = null;
     if (axe) {
@@ -185,6 +188,46 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
   }
 }
 
+// ------------------------------------------------------------------ Google Analytics só em produção
+// O Chrome do teste leva estes nomes ao servidor local (HOSTS_ANALYTICS, em principal()): o gtag tem de carregar em
+// contasdopoder.com e www.contasdopoder.com e em mais nenhum endereço (localhost, prévias do Cloudflare Pages, nomes parecidos).
+const HOSTS_ANALYTICS = [["contasdopoder.com", true], ["www.contasdopoder.com", true], ["localhost", false], ["127.0.0.1", false], ["xcontasdopoder.com", false], ["contasdopoder.com.exemplo.com", false]];
+const REGRAS_DNS = `--host-resolver-rules=${HOSTS_ANALYTICS.filter(([h]) => /\.com/.test(h)).map(([h]) => `MAP ${h} 127.0.0.1`).join(", ")}`;
+async function testarAnalytics(nav, base) {
+  const porta = new URL(base).port, resultados = [];
+  for (const [host, ligado] of HOSTS_ANALYTICS) {
+    const falhas = [], pagina = await nav.novaPagina(), externos = new Set();
+    const parar = pagina.eventos((metodo, p) => {
+      if (metodo !== "Fetch.requestPaused") return;
+      const h = new URL(p.request.url).host;
+      if (h.replace(/:\d+$/, "") === host || /^(data|blob):/.test(p.request.url)) pagina.cmd("Fetch.continueRequest", { requestId: p.requestId }).catch(() => {});
+      else { externos.add(h); pagina.cmd("Fetch.failRequest", { requestId: p.requestId, errorReason: "BlockedByClient" }).catch(() => {}); }
+    });
+    try {
+      await Promise.all([pagina.cmd("Page.enable"), pagina.cmd("Runtime.enable"), pagina.cmd("Network.enable")]);
+      await pagina.cmd("Fetch.enable", { patterns: [{ urlPattern: "*" }] });
+      await pagina.cmd("Network.setCacheDisabled", { cacheDisabled: true });
+      const carregou = new Promise((ok) => { const f = pagina.eventos((m) => { if (m === "Page.loadEventFired") { f(); ok(); } }); });
+      await pagina.cmd("Page.navigate", { url: `http://${host}:${porta}/` });
+      await carregou; await espera(2500);
+      const r = await pagina.avaliar(`({ gtag: typeof gtag, camadas: (window.dataLayer || []).map((x) => x[0]), titulo: document.title })`);
+      const pediu = externos.has("www.googletagmanager.com");
+      if (ligado) {
+        if (r.gtag !== "function") falhas.push("o gtag não existe, e em produção deveria");
+        if (!r.camadas.includes("js") || !r.camadas.includes("config")) falhas.push(`o dataLayer não tem "js" e "config" (tem: ${r.camadas.join(", ") || "nada"})`);
+        if (!pediu) falhas.push("não pediu o gtag.js ao googletagmanager.com");
+      } else {
+        if (r.gtag !== "undefined") falhas.push("o gtag existe, e fora da produção não deveria");
+        if (r.camadas.length) falhas.push(`o dataLayer tem eventos (${r.camadas.join(", ")})`);
+        if ([...externos].some((h) => /googletagmanager|google-analytics/.test(h))) falhas.push("pediu o Google Analytics");
+      }
+      if (!/Contas do Poder/.test(r.titulo)) falhas.push(`a página não abriu (título "${r.titulo}")`);
+    } catch (e) { falhas.push(e.message); } finally { parar(); await pagina.fechar(); }
+    resultados.push({ host, ligado, falhas });
+  }
+  return resultados;
+}
+
 // ------------------------------------------------------------------ servidor local e relatório
 async function subirServidor() {
   const porta = 8700 + Math.floor(Math.random() * 200);
@@ -194,19 +237,35 @@ async function subirServidor() {
     proc.on("exit", (c) => erro(new Error(`o servidor local saiu (código ${c}); a porta ${porta} está ocupada?`)));
     setTimeout(() => erro(new Error("o servidor local não subiu em 10 s")), 10000);
   });
-  return { base: `http://localhost:${porta}`, parar: () => proc.kill() };
+  return { base: `http://localhost:${porta}`, parar: () => proc.kill(), vivo: () => proc.exitCode === null && proc.signalCode === null };
+}
+
+// Antes de cada página (e depois de qualquer falha): o servidor segue de pé e a página inicial abre? Se não, para tudo com
+// um aviso claro, em vez de deixar cada página falhar por conta própria. A causa mais comum é o build (gerar.mjs) rodando
+// ao mesmo tempo: ele apaga e refaz publicar/, de onde o servidor lê.
+async function verificarServidor(servidor) {
+  const parou = (motivo) => new Error(`${motivo} Se o build (node publicacao/gerar.mjs) rodou ao mesmo tempo, espere ele terminar e rode os testes de novo: ele apaga e refaz publicar/.`);
+  if (servidor.vivo && !servidor.vivo()) throw parou("O servidor local parou no meio dos testes.");
+  let r;
+  try { r = await fetch(`${servidor.base}/`, { signal: AbortSignal.timeout(5000) }); }
+  catch (e) { throw parou(`Não consegui falar com o servidor (${e.message}).`); }
+  if (r.status !== 200) throw parou(`O servidor respondeu ${r.status} à página inicial (publicar/ vazia ou sendo refeita?).`);
 }
 
 async function principal() {
   if (arg("baixar-axe")) await baixarAxe();
-  const axe = fs.existsSync(AXE_ARQ) ? fs.readFileSync(AXE_ARQ, "utf8") : null;
+  let axe = fs.existsSync(AXE_ARQ) ? fs.readFileSync(AXE_ARQ, "utf8") : null;
+  if (axe && AXE_SHA256 && crypto.createHash("sha256").update(axe).digest("hex") !== AXE_SHA256 && !process.env.AXE_JS) {
+    console.log(`O arquivo ${AXE_ARQ} não tem a impressão digital esperada (AXE_SHA256): não vou usá-lo. Apague-o e rode com --baixar-axe.`);
+    axe = null;
+  }
   if (!arg("url") && !fs.existsSync(path.join(PUBLICAR, "index.html"))) throw new Error("Falta a pasta publicar/: rode antes node publicacao/gerar.mjs");
   const filtro = arg("paginas") && String(arg("paginas")).split(",");
   const paginas = filtro ? PAGINAS.filter((p) => filtro.includes(p.nome)) : PAGINAS;
   if (!paginas.length) throw new Error(`nenhuma página com esse nome. Nomes: ${PAGINAS.map((p) => p.nome).join(", ")}`);
 
   const servidor = arg("url") ? { base: String(arg("url")).replace(/\/$/, ""), parar() {} } : await subirServidor();
-  const nav = await abrirNavegador();
+  const nav = await abrirNavegador([REGRAS_DNS]);
   const sair = async () => { await nav.fechar(); servidor.parar(); };
   process.on("SIGINT", async () => { await sair(); process.exit(130); });
   console.log(`Servidor: ${servidor.base} · Chrome: ${nav.exe}`);
@@ -216,11 +275,23 @@ async function principal() {
   try {
     for (const pg of paginas) {
       for (const perfil of PERFIS) {
+        await verificarServidor(servidor).catch((e) => { throw new Error(`${e.message} Parei antes de ${pg.nome} (${perfil.nome}), com ${resultados.length} conferências feitas.`); });
         const r = await testar(nav, servidor.base, pg, perfil, axe, arg("capturas"));
         resultados.push(r);
         const marca = r.falhas.length ? "FALHOU" : "ok    ";
         console.log(`${marca} ${pg.nome.padEnd(22)} ${perfil.nome.padEnd(18)} CLS ${r.cls === null ? "—" : r.cls.toFixed(3)}  LCP ${r.lcp ? (r.lcp / 1000).toFixed(1) + " s" : "—"}  axe ${r.axe === null ? "—" : r.axe}  ${(r.ms / 1000).toFixed(1)} s`);
         r.falhas.forEach((f) => console.log(`         - ${f}`));
+        if (r.falhas.length) await verificarServidor(servidor).catch((e) => { throw new Error(`${e.message} A falha acima de ${pg.nome} (${perfil.nome}) pode ser consequência disso.`); });
+      }
+    }
+
+    if (!arg("sem-analytics") && (!filtro || arg("analytics")) && /^http:\/\/localhost:\d+$/.test(servidor.base)) {
+      await verificarServidor(servidor);
+      console.log("\nGoogle Analytics só em produção:");
+      for (const a of await testarAnalytics(nav, servidor.base)) {
+        resultados.push({ pg: { nome: `analytics ${a.host}` }, perfil: { nome: "-" }, falhas: a.falhas, cls: null, lcp: null, axe: null, externos: [], ms: 0 });
+        console.log(`${a.falhas.length ? "FALHOU" : "ok    "} ${a.host.padEnd(32)} ${a.ligado ? "gtag ligado (produção)" : "gtag desligado"}`);
+        a.falhas.forEach((f) => console.log(`         - ${f}`));
       }
     }
   } finally { await sair(); }

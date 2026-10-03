@@ -17,11 +17,21 @@ try {
 } catch { /* sem redirecionamentos */ }
 const arquivo = (rel) => { const a = path.join(PASTA, rel); return a.startsWith(PASTA) && fs.existsSync(a) && fs.statSync(a).isFile() ? a : null; };
 
+// publicar/ vazia ou arquivo que some no meio da leitura (o gerar.mjs apaga e refaz a pasta): 503 com aviso, sem derrubar o servidor
+const indisponivel = (res, texto) => {
+  if (!res.headersSent) res.writeHead(503, { "Content-Type": "text/plain; charset=utf-8", "Retry-After": "5" });
+  res.end(`${texto}\n`);
+};
 http.createServer((req, res) => {
-  const url = new URL(req.url, "http://x");
-  const rel = decodeURIComponent(url.pathname);
-  if (redir.has(rel)) { res.writeHead(301, { Location: redir.get(rel) + url.search }); res.end(); return; }
-  const a = arquivo(rel) || arquivo(`${rel.replace(/\/$/, "")}.html`) || arquivo(path.join(rel, "index.html")) || arquivo("index.html");
-  res.writeHead(200, { "Content-Type": TIPOS[path.extname(a)] || "application/octet-stream" });
-  fs.createReadStream(a).pipe(res);
+  try {
+    const url = new URL(req.url, "http://x");
+    const rel = decodeURIComponent(url.pathname);
+    if (redir.has(rel)) { res.writeHead(301, { Location: redir.get(rel) + url.search }); res.end(); return; }
+    const a = arquivo(rel) || arquivo(`${rel.replace(/\/$/, "")}.html`) || arquivo(path.join(rel, "index.html")) || arquivo("index.html");
+    if (!a) { indisponivel(res, "publicar/ está vazia ou sendo refeita (node publicacao/gerar.mjs). Espere o build terminar e tente de novo."); return; }
+    res.writeHead(200, { "Content-Type": TIPOS[path.extname(a)] || "application/octet-stream" });
+    fs.createReadStream(a).on("error", () => indisponivel(res, "O arquivo sumiu durante a leitura (o build está refazendo publicar/?).")).pipe(res);
+  } catch (e) {
+    indisponivel(res, `Pedido inválido ou erro no servidor local: ${e.message}`);
+  }
 }).listen(PORTA, () => console.log(`http://localhost:${PORTA} (pasta publicar/)`));

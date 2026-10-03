@@ -18,12 +18,12 @@ const CAMINHOS = [
 export const achar = () => CAMINHOS.find((c) => fs.existsSync(c)) || null;
 export const espera = (ms) => new Promise((r) => setTimeout(r, ms));
 
-export async function abrirNavegador() {
+export async function abrirNavegador(extras = []) {
   const exe = achar();
   if (!exe) throw new Error("Não achei o Chrome: instale o Google Chrome ou aponte a variável CHROME para o executável.");
   const perfil = fs.mkdtempSync(path.join(os.tmpdir(), "contas-testes-chrome-"));
   const proc = spawn(exe, ["--headless=new", "--remote-debugging-port=0", `--user-data-dir=${perfil}`, "--no-first-run",
-    "--no-default-browser-check", "--disable-extensions", "--disable-gpu", "about:blank"], { stdio: "ignore" });
+    "--no-default-browser-check", "--disable-extensions", "--disable-gpu", ...extras, "about:blank"], { stdio: "ignore" });
   const arq = path.join(perfil, "DevToolsActivePort");
   for (let i = 0; i < 100 && !fs.existsSync(arq); i++) await espera(100);
   if (!fs.existsSync(arq)) { proc.kill(); throw new Error("O Chrome não abriu a porta de controle."); }
