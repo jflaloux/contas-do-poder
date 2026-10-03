@@ -154,11 +154,12 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 21 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 22 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
-tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`; e um endereço que não existe) no
+tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
-console, sem exceção, sem arquivo que falta, título, um só `h1`, o "Carregando…" fora, sem rolagem horizontal e o que
+console, sem exceção, sem arquivo que falta, título, um só `h1`, o "Carregando…" fora, sem rolagem horizontal, sem cookies
+próprios (a página `/sobre` diz que o site não usa) e o que
 cada página precisa mostrar), **CLS** (até 0,1), **axe-core** (nenhuma violação de acessibilidade, contraste incluído) e o
 **Google Analytics só em produção** (ver "Compartilhamento e medição").
 O LCP e o tempo de cada página saem no relatório, sem valer como falha. Os pedidos a sites de fora (as fontes do
@@ -817,6 +818,8 @@ seguem o mesmo desenho.
   Atualização dos dados (desde 02/10/2026): `ver_atualizacao` (abriu `/atualizacao`, com a origem), `baixar_dados` com
   `situacao.json` e `abrir_fonte` com `onde: atualizacao` (clicou no link de uma fonte). No evento `velocidade`,
   `pagina` pode ser `atualizacao`.
+  Sobre e privacidade (desde 03/10/2026): `ver_sobre` (abriu `/sobre`, com a origem); o link da extensão de desativação do
+  Google Analytics sai como `abrir_fonte` com `onde: sobre` (ou o id da seção). No evento `velocidade`, `pagina` pode ser `sobre`.
   Interior da Paraíba e do Ceará (desde 02/10/2026, sem evento novo): `abrir_lista` com `interior_sairam_<UF>`
   (vereadores que passaram pela Câmara), `interior_secretarios_<UF>` e `interior_sairam_prefeitura_<UF>`.
   Governadores e vices como pessoas (desde 02/10/2026, sem evento novo): `ver_parlamentar`, `trocar_periodo` e
@@ -923,6 +926,19 @@ Cópias fora do repositório (a fazer uma vez, pelo dono da conta):
 4. **Internet Archive**: "Save Page Now" (web.archive.org/save) nas páginas principais.
 5. **Contas**: verificação em duas etapas no GitHub, no Cloudflare e no registro do domínio; bloqueio de transferência
    do domínio ligado.
+
+## Sobre e privacidade (`/sobre`)
+
+Texto curto, em linguagem neutra, para quem quer saber o que é o site, que dados das pessoas ele mostra, o que o Google
+Analytics mede, como não ser medido e como pedir correção ou retirada. O texto está em `site/sobre.json` (uma fonte só):
+o `app.js` o lê (`secSobre`) e o `gerar.mjs` faz com ele a página pronta em HTML (`publicar/sobre.html`); dentro do texto
+só existe `[texto](endereço)`, para links. Está no rodapé de todas as páginas e em `/dados-abertos`. O que a página afirma
+e onde conferir: sem cookies próprios (nenhum `document.cookie` nem armazenamento no `app.js`; o teste `rodar.mjs` confere
+que o site não cria cookies; os do Google Analytics só existem em `contasdopoder.com`), medição só em produção
+(`index.html`), CPF e fornecedor pessoa física como no `CLAUDE.md`, letras vindas do Google Fonts (`index.html`) e hospedagem
+no Cloudflare Pages. A base legal escrita é o legítimo interesse (LGPD, art. 7º, IX). Quem é o controlador aparece como
+"Contas do Poder (contato@contasdopoder.com)": se o nome do responsável entrar, é só mudar o `sobre.json`. Mudou algo
+dessa lista (um serviço novo, um cookie, outro dado coletado)? Atualize o `sobre.json` junto, com a data. O texto é simples e deve ser revisto por quem responde pelo site antes de cada mudança publicada.
 
 ## Atualização dos dados (`/atualizacao`)
 

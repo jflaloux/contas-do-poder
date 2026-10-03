@@ -1,0 +1,58 @@
+{
+  "titulo": "Sobre o Contas do Poder",
+  "lide": "Esta página diz o que é o site, que dados ele usa, o que mede das visitas e como pedir uma correção ou a retirada de um dado.",
+  "atualizado": "03/10/2026",
+  "blocos": [
+    {
+      "id": "o-que-e",
+      "h": "O que é",
+      "c": [
+        { "p": "O Contas do Poder reúne dados públicos oficiais sobre quanto ganham e quanto custam os agentes públicos do Brasil: deputados federais, senadores, ministros, governadores, deputados estaduais, vereadores, prefeitos e ministros dos tribunais superiores, entre outros. Cada número vem de uma fonte oficial e traz o link dela." },
+        { "p": "O site não é de nenhum órgão do governo. O código é aberto (licença MIT) e os dados podem ser reutilizados sob a licença CC BY 4.0, citando “Contas do Poder” e as fontes originais. O site não tem anúncios, não cobra nada e não pede cadastro. Confira os valores na fonte antes de tirar conclusões." }
+      ]
+    },
+    {
+      "id": "dados-das-pessoas",
+      "h": "Os dados das pessoas",
+      "c": [
+        { "p": "O site mostra só agentes públicos e só dados que a lei manda publicar, como a remuneração, que a Lei de Acesso à Informação (Lei 12.527/2011) manda divulgar. O site descreve o que a fonte oficial mostra, sem adjetivos e sem acusações. As regras:" },
+        { "ul": [
+          "só dados públicos oficiais, cada um com o link da fonte;",
+          "CPF: nunca o número inteiro. Só aparece mascarado, como a fonte oficial já o publica, e só de agente público, para separar pessoas com o mesmo nome;",
+          "fornecedor pessoa física: nenhum CPF, nem mascarado;",
+          "os descontos pessoais da folha (pensão, empréstimo, imposto de cada um) não são guardados;",
+          "fotos só com licença livre ou autorização, com o crédito."
+        ] },
+        { "p": "Como os dados são lidos e onde estão as cópias: [dados abertos](/dados-abertos). Até que mês vai cada fonte: [atualização dos dados](/atualizacao)." }
+      ]
+    },
+    {
+      "id": "privacidade",
+      "h": "Privacidade e medição das visitas",
+      "c": [
+        { "p": "O site mede o uso com o Google Analytics, do Google. O que é medido: as páginas vistas e alguns eventos de uso, como abrir a página de um político, trocar o período, abrir a lista de uma fonte, compartilhar uma página e a velocidade com que a página carrega no aparelho. Como em qualquer visita, o Google Analytics também recebe dados técnicos: aparelho e navegador, idioma, localização aproximada (calculada pelo endereço de rede) e de onde a pessoa veio." },
+        { "p": "Para que serve: saber o que é usado e melhorar o site. Não vendemos dados, não há anúncios e o site não pede nome, e-mail nem cadastro." },
+        { "p": "Cookies: o site não usa cookies próprios. O Google Analytics usa cookies (como o _ga) para reconhecer o mesmo navegador entre uma visita e outra." },
+        { "p": "Outros serviços: as letras do site vêm do Google Fonts, e o navegador as pede ao Google, que recebe o endereço de rede da visita, como em qualquer pedido na internet. O site é publicado pelo Cloudflare Pages." },
+        { "p": "Por que podemos medir: a base legal é o legítimo interesse (Lei Geral de Proteção de Dados, art. 7º, IX). Precisamos saber o que é usado para manter e melhorar um site gratuito de dados públicos, e a medição se limita a isso." },
+        { "p": "Como não ser medido: use um bloqueador de rastreadores ou a proteção do seu navegador (o site funciona igual), ou instale a [extensão de desativação do Google Analytics](https://tools.google.com/dlpage/gaoptout), oferecida pelo próprio Google. Como o Google trata os dados: [política de privacidade do Google](https://policies.google.com/privacy)." }
+      ]
+    },
+    {
+      "id": "correcao-e-retirada",
+      "h": "Correção e retirada",
+      "c": [
+        { "p": "Viu um número errado? Confira na fonte, pelo link da página. Se a fonte mostra outro valor, o erro é nosso: use o “Encontrou um erro?” no fim da página ou escreva para o contato abaixo. Corrigimos e registramos o que mudou na [lista de correções](/correcoes). Se a fonte mostra o mesmo valor, quem pode corrigir é o órgão que publicou." },
+        { "p": "Pedido de retirada: escreva para o contato abaixo, dizendo qual página e o motivo. Cada pedido é avaliado caso a caso. O que a fonte oficial publica sobre um agente público, em regra, fica no site, com o link da fonte. Se a fonte corrigir ou retirar o dado, o site em geral acompanha na atualização seguinte (os dados são lidos de novo toda semana)." }
+      ]
+    },
+    {
+      "id": "contato",
+      "h": "Contato e responsável",
+      "c": [
+        { "p": "Contato: [contato@contasdopoder.com](mailto:contato@contasdopoder.com)." },
+        { "p": "Responsável pelo site e pelo tratamento dos dados de que trata esta página: Contas do Poder (contato@contasdopoder.com)." }
+      ]
+    }
+  ]
+}

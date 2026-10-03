@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 // Testes do site: abre cada tipo de página no Chrome (celular e computador, tema claro e escuro) e confere
 //   1. funcional: sem erro no console, sem exceção, sem arquivo que não carrega (404), título, um só h1, página
-//      terminada (sem "Carregando…"), sem rolagem horizontal e o que cada página tem de mostrar;
+//      terminada (sem "Carregando…"), sem rolagem horizontal, sem cookies próprios (a /sobre diz que não há) e o que cada
+//      página tem de mostrar;
 //   2. CLS (quanto a página pula enquanto carrega): até 0,1 ("bom", pelo Google);
 //   3. axe-core (acessibilidade, contraste incluído): nenhuma violação. O axe não vem com o repositório: veja --baixar-axe.
 //   4. Google Analytics só em produção: o gtag carrega em contasdopoder.com e www.contasdopoder.com e em mais nenhum endereço.
@@ -70,6 +71,7 @@ const PAGINAS = [
   { nome: "indice", url: "/indice", ter: [["#indice", 1]] },
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10]] },
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1]] },
+  { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1]] },
   { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]] },
   { nome: "endereco-inexistente", url: "/pagina-que-nao-existe" },
 ].filter((p) => p.url);
@@ -156,12 +158,13 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     const m = await avaliar(`(() => {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,
-        sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
+        cookies: document.cookie, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length) };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
     if (m.h1 !== 1) falhas.push(`${m.h1} títulos h1 visíveis (deve ser 1)`);
     if (m.carregando) falhas.push('o "Carregando…" continua na tela');
+    if (m.cookies) falhas.push(`o site criou cookies (a página /sobre diz que não usa cookies próprios): ${m.cookies.slice(0, 80)}`);
     if (m.sobra > 1) falhas.push(`rolagem horizontal: a página é ${m.sobra} px mais larga que a tela`);
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
     if (m.cls > LIMITE_CLS) falhas.push(`CLS ${m.cls.toFixed(3)} (o limite é ${LIMITE_CLS})`);

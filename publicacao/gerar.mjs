@@ -556,7 +556,7 @@ const tamanhoTxt = (b) => (b >= 1048576 ? `${(b / 1048576).toFixed(1).replace(".
     + `<p class="lide">${esc(lide)}</p><h2 class="h3">Onde estão as cópias</h2><ul class="copias">`
     + COPIAS.map((c) => `<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.nome)}&nbsp;↗</a> <span>${esc(c.texto)}</span></li>`).join("")
     + `</ul><h2 class="h3">Os arquivos de dados</h2><table class="tabela-gov tabela-dados"><thead><tr><th>Arquivo e impressão digital (SHA-256)</th><th class="num">Tamanho</th></tr></thead><tbody>`
-    + MANIFESTO.arquivos.map(linha).join("") + '</tbody></table><p class="nota">Até que mês vão os dados de cada fonte e quando foram lidos pela última vez: <a href="/atualizacao">atualização dos dados</a>.</p></section>';
+    + MANIFESTO.arquivos.map(linha).join("") + '</tbody></table><p class="nota">Até que mês vão os dados de cada fonte e quando foram lidos pela última vez: <a href="/atualizacao">atualização dos dados</a>. O que o site é, a privacidade e como pedir uma correção: <a href="/sobre">sobre e privacidade</a>.</p></section>';
   const titulo = "Dados abertos: baixe tudo | Contas do Poder";
   paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"] })]);
 }
@@ -606,6 +606,24 @@ if (SIT && (SIT.fontes || []).length) {
     + '<p class="nota">Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
   const titulo = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
   paginas.push(["atualizacao", pagina("atualizacao", titulo, lide, corpo, { extras: ["/dados/situacao.json"] })]);
+}
+
+// ------------------------------------------------------------------ sobre e privacidade (/sobre, de site/sobre.json)
+// O texto fica em site/sobre.json (o app.js lê o mesmo arquivo): aqui, a página pronta em HTML. Dentro do texto só há
+// [texto](endereço), para links.
+{
+  let SB = null;
+  try { SB = JSON.parse(fs.readFileSync(path.join(SITE, "sobre.json"), "utf8")); } catch { /* sem a página */ }
+  if (SB && (SB.blocos || []).length) {
+    const comLinks = (txt) => esc(txt).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => (/^https?:/.test(u)
+      ? `<a href="${u}" target="_blank" rel="noopener">${t}&nbsp;↗</a>` : `<a href="${u}">${t}</a>`));
+    const corpo = '<section class="bloco" id="sobre" aria-labelledby="t-sobre"><p class="rotulo">Transparência do site</p>'
+      + `<h1 id="t-sobre" class="titulo-pagina">${esc(SB.titulo)}</h1><p class="lide">${esc(SB.lide)}</p>`
+      + SB.blocos.map((b) => `<h2 class="h3" id="${esc(b.id)}">${esc(b.h)}</h2>` + (b.c || []).map((x) => (x.ul
+        ? `<ul class="lista">${x.ul.map((li) => `<li>${comLinks(li)}</li>`).join("")}</ul>` : `<p>${comLinks(x.p)}</p>`)).join("")).join("")
+      + (SB.atualizado ? `<p class="nota">Atualizado em ${esc(SB.atualizado)}.</p>` : "") + "</section>";
+    paginas.push(["sobre", pagina("sobre", "Sobre e privacidade | Contas do Poder", SB.lide, corpo, { carregando: false })]);
+  }
 }
 
 // ------------------------------------------------------------------ grava
