@@ -883,6 +883,15 @@ seguem o mesmo desenho.
   em foto brasileira). Quem não tem foto aparece com as iniciais. No crédito (contracheque e imagem), "via Wikimedia
   Commons" só quando a foto vem de lá; a da candidatura (vereadores e deputados estaduais) vem do Portal de Dados
   Abertos do TSE.
+- **Fotos de quem ainda não tem** (`coleta/fotos_faltam.py`, em 03/10/2026; `python3 -m coleta.fotos_faltam lista`
+  mostra quem falta): Judiciário, governo federal, governadores, deputados estaduais, vereadores e prefeituras. Primeiro o
+  Wikidata: item de um ser humano brasileiro, com foto, cujo nome é o curto ou o civil da pessoa e com o cargo ou a
+  profissão do grupo (juiz, jurista, ministro, político...); dois itens assim (homônimos) = sem foto. A licença é conferida
+  no Commons (CC BY, CC BY-SA, CC0, domínio público e a predefinição "Attribution", uso livre com crédito; nunca ND); foto
+  mais larga que alta sai do centro, com "recortada" no crédito, e as fotos novas foram conferidas a olho (as de grupo
+  em que não dá para saber quem é a pessoa ficam em `RECUSADAS`). Depois, o TSE: a candidatura de 2024 (vereador,
+  prefeito, vice) ou de 2022 (de governador a deputado), quando o nome civil é exatamente o de um único candidato do
+  lugar. Nos arquivos do site, só `f` e `fc` mudam (`preencher()`).
 - **Google Analytics só em produção** (desde 03/10/2026): o `<head>` do `index.html` só carrega o gtag quando o endereço
   é `contasdopoder.com` (com ou sem `www`). Em `localhost`, nas prévias do Cloudflare Pages (`*.pages.dev`) e nos testes o
   gtag nem existe: nenhuma visita e nenhum evento (nem o `velocidade`, que nem começa a medir) vão para o Analytics. Em
