@@ -180,7 +180,7 @@ Cada número tem link para a fonte oficial.
 - Você quer mexer no código ou prefere cuidar só das decisões e da divulgação?
 - [x] Índice de Transparência com 4 blocos: governo, Assembleia, prefeitura e Câmara da capital (01/10/2026) — Claude
 - [x] Índice: blocos atrás de CAPTCHA ou bloqueio conferidos no Chrome (Câmaras de Florianópolis, Campo Grande, BH e Cuiabá; prefeituras de BH e São Luís) — Jean-François e Claude
-- [ ] Índice: prefeituras de Maceió e Cuiabá (consultas muito lentas; falta ver prefeito, vice e secretários) — Claude
+- [x] Índice: prefeituras de Maceió e Cuiabá conferidas em 03/10/2026; os 27 estados com nota geral — Agente de Dados
 - [x] Prova de conceito: os 26 Tribunais de Contas que fiscalizam municípios (dados/referencia/tribunais.json; prova na Paraíba) — Claude
 - [x] Robôs dos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API), com vereadores, prefeito, vice e (PB) secretários, mês a mês desde jan/2025 — Claude
 - [ ] Pedir acesso: token da API do TCM-GO, chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide
