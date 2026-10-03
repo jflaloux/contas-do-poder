@@ -53,6 +53,33 @@ const primeiro = (prefixo) => { const id = Object.keys(ENDERECOS).filter((k) => 
 // o que cada página tem de ter (seletor e quantidade mínima); sem "ter", só valem as conferências comuns
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
+  // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
+  { nome: "descobrir-passo-2", url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      document.querySelector("#abrir-guia").click(); await esp(300);
+      [...document.querySelectorAll("#guia .ufs button")].find((b) => b.textContent === "SP").click(); await esp(400);
+      const d = document.querySelector("#guia");
+      if (!d.open) f.push("o popup não abriu");
+      if (!d.getAttribute("aria-labelledby") || !document.getElementById(d.getAttribute("aria-labelledby"))) f.push("o popup não tem título ligado (aria-labelledby)");
+      if (!/passo 2 de 2/i.test(d.innerText)) f.push("não está no passo 2");
+      const todos = [d, ...d.querySelectorAll("*")];
+      const lado = todos.filter((e) => e.clientWidth > 0 && e.scrollWidth > e.clientWidth + 1).map((e) => e.tagName + "." + e.className);
+      if (lado.length) f.push("rola para o lado dentro do popup: " + lado.slice(0, 3).join(", "));
+      const aninhadas = [...d.querySelectorAll("*")].filter((e) => { const o = getComputedStyle(e).overflowY; return (o === "auto" || o === "scroll") && e.scrollHeight > e.clientHeight + 1; }).map((e) => e.className);
+      if (aninhadas.length) f.push("rolagem dentro da rolagem do popup: " + aninhadas.join(", "));
+      const sem = [...d.querySelectorAll("input, button")].filter((e) => !(e.getAttribute("aria-label") || e.innerText.trim() || e.getAttribute("title") || e.placeholder)).length;
+      if (sem) f.push(sem + " campos ou botões sem nome acessível");
+      const antes = d.querySelectorAll(".sugestao").length, mais = d.querySelector(".guia__mais");
+      if (!mais) f.push('não achei o "Ver todos os N" do grupo de deputados');
+      else {
+        mais.click(); await esp(200);
+        if (d.querySelectorAll(".sugestao").length <= antes) f.push('"Ver todos" não mostrou mais nomes');
+        if (!d.contains(document.activeElement) || document.activeElement.tagName !== "BUTTON") f.push("o foco saiu do popup ao abrir o grupo");
+      }
+      const filtro = d.querySelector("#guia-filtro");
+      if (!filtro || !filtro.getAttribute("aria-label")) f.push("o campo de filtro não tem rótulo");
+      return f;
+    })()` },
   { nome: "deputado-federal", url: primeiro("dep-") },
   { nome: "senador", url: primeiro("sen-") },
   { nome: "ministro", url: primeiro("exe-") },
@@ -164,6 +191,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     await avaliar(`window.scrollTo(0, document.documentElement.scrollHeight)`); await espera(600);
     await avaliar(`window.scrollTo(0, 0)`); await espera(400);
 
+    if (pg.depois) (await avaliar(pg.depois)).forEach((x) => falhas.push(x));
     const m = await avaliar(`(() => {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,

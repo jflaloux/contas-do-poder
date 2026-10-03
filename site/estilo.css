@@ -496,7 +496,10 @@ td.num { font-family: var(--mono); }
 .ufs { display: grid; grid-template-columns: repeat(auto-fill, minmax(62px, 1fr)); gap: 6px; }
 .ufs button { font: inherit; font-weight: 600; cursor: pointer; padding: 9px 0; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); }
 .ufs button:hover { border-color: var(--accent); color: var(--accent); }
-.guia__lista { display: grid; gap: 4px; max-height: 44vh; overflow: auto; }
+/* sem rolagem própria: a única rolagem do popup é a dele (ver listaGuia, no app.js: "Ver todos os N") */
+.guia__lista { display: grid; gap: 4px; }
+.guia__mais { font: inherit; font-weight: 600; cursor: pointer; padding: 10px 12px; border-radius: 10px; border: 1px dashed var(--line); background: var(--bg); color: var(--accent); }
+.guia__mais:hover { border-color: var(--accent); background: var(--accent-soft); }
 .guia__rodape { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: .9rem; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }

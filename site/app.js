@@ -3472,29 +3472,45 @@
             h("span", null, h("strong", null, "Câmara da sua cidade"), h("small", null, "Vereadores e quanto custa a Câmara")), h("span", { "aria-hidden": "true" }, "→"))),
         h("div", { class: "guia__rodape" }, h("button", { type: "button", class: "link-botao", onclick: () => { evento("guia", { etapa: "pulou" }); fechar(); } }, "Pular e ver o painel")));
     };
+    // As listas do popup não têm rolagem própria: a única rolagem é a do popup (uma lista que rola dentro de uma janela que já rola
+    // prende o dedo no celular). Cada grupo mostra os primeiros e um botão "Ver todos os N"; com o filtro preenchido, mostra todos
+    // os que casam. Ao abrir um grupo, o foco vai para o primeiro nome novo. grupos(q): [[id, título, itens]]; botao(p): o botão.
+    const LIMITE_GUIA = 8;
+    const listaGuia = (grupos, botao) => {
+      const lista = h("div", { class: "guia__lista" }), abertos = new Set();
+      let consulta = "";
+      const pintar = (q, foco) => {
+        consulta = q || "";
+        lista.textContent = "";
+        let novo = null;
+        for (const [id, titulo, itens] of grupos(q)) {
+          if (!itens.length) continue;
+          lista.append(h("p", { class: "rotulo", style: "margin-top:8px" }, `${titulo} (${itens.length})`));
+          const tudo = !!q || abertos.has(id) || itens.length <= LIMITE_GUIA + 2;
+          itens.slice(0, tudo ? itens.length : LIMITE_GUIA).forEach((p, i) => { const b = botao(p); lista.append(b); if (foco === id && i === LIMITE_GUIA) novo = b; });
+          if (!tudo) lista.append(h("button", { type: "button", class: "guia__mais", "aria-expanded": "false", onclick: () => { abertos.add(id); pintar(consulta, id); } },
+            `Ver todos os ${itens.length} (${titulo.toLowerCase()})`));
+        }
+        if (!lista.children.length) lista.append(h("p", { class: "discreto pequeno" }, "Ninguém encontrado."));
+        if (novo) novo.focus();
+      };
+      return { lista, pintar };
+    };
     // quem não é eleito por estado: presidente, vice e ministros (depois, outros grupos)
     const passoGoverno = () => {
       evento("guia", { etapa: "governo" });
       corpo.textContent = "";
       const ordem = { pr: 0, vp: 1, mi: 2 };
       const pessoas = S.D.p.filter((p) => p.k === "e" && p.x).sort((a, b) => ordem[a.tp] - ordem[b.tp] || a.n.localeCompare(b.n, "pt-BR"));
-      const lista = h("div", { class: "guia__lista" });
-      const pintar = (q) => {
-        lista.textContent = "";
+      const { lista, pintar } = listaGuia((q) => {
         const itens = pessoas.filter((p) => !q || buscaTexto(p).includes(semAcento(q)));
-        for (const [grupo, titulo] of [[["pr", "vp"], "Presidente e vice"], [["mi"], "Ministros"]]) {
-          const g = itens.filter((p) => grupo.includes(p.tp));
-          if (!g.length) continue;
-          lista.append(h("p", { class: "rotulo", style: "margin-top:8px" }, `${titulo} (${g.length})`));
-          g.forEach((p) => lista.append(h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.origem = "guia"; escolher(p.id); } },
-            avatar(p, "p"), h("span", null, p.n, h("small", null, p.g)))));
-        }
-        if (!lista.children.length) lista.append(h("p", { class: "discreto pequeno" }, "Ninguém encontrado."));
-      };
+        return [["pv", "Presidente e vice", itens.filter((p) => ["pr", "vp"].includes(p.tp))], ["mi", "Ministros", itens.filter((p) => p.tp === "mi")]];
+      }, (p) => h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.origem = "guia"; escolher(p.id); } },
+        avatar(p, "p"), h("span", null, p.n, h("small", null, p.g))));
       add(corpo, topo(2),
         h("h2", { id: "guia-titulo" }, "Governo federal"),
         h("p", { class: "discreto" }, "Presidente, vice e ministros no cargo hoje. Toque num nome para ver quanto ganha e quanto custa."),
-        h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou ministério", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
+        h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou ministério", "aria-label": "Filtrar por nome ou ministério", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
         lista,
         h("div", { class: "guia__rodape" },
           h("button", { type: "button", class: "link-botao", onclick: passo1 }, "← Voltar"),
@@ -3505,18 +3521,11 @@
       evento("guia", { etapa: "estado", uf });
       corpo.textContent = "";
       const doEstado = S.D.p.filter((p) => p.uf === uf && p.x).sort((a, b) => a.k.localeCompare(b.k) * -1 || a.n.localeCompare(b.n, "pt-BR"));
-      const lista = h("div", { class: "guia__lista" });
-      const pintar = (q) => {
-        lista.textContent = "";
+      const { lista, pintar } = listaGuia((q) => {
         const itens = doEstado.filter((p) => !q || buscaTexto(p).includes(semAcento(q)));
-        for (const [casa, titulo] of [["s", "Senadores"], ["d", "Deputados federais"]]) {
-          const grupo = itens.filter((p) => p.k === casa);
-          if (!grupo.length) continue;
-          lista.append(h("p", { class: "rotulo", style: "margin-top:8px" }, `${titulo} (${grupo.length})`));
-          grupo.forEach((p) => lista.append(h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.ufLista = uf; S.origem = "guia"; escolher(p.id); } },
-            avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}`)))));
-        }
-      };
+        return [["s", "Senadores", itens.filter((p) => p.k === "s")], ["d", "Deputados federais", itens.filter((p) => p.k === "d")]];
+      }, (p) => h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.ufLista = uf; S.origem = "guia"; escolher(p.id); } },
+        avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}`))));
       add(corpo, topo(2),
         h("h2", { id: "guia-titulo" }, `Seus representantes: ${ESTADOS[uf]}`),
         h("p", { class: "discreto" }, "Toque num nome para ver o contracheque do mandato."),
@@ -3530,7 +3539,7 @@
           return h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: `capital_${cod}` }); fechar(); S.origem = "guia"; navegar(urlDe(`cid-${cod}`)); } },
             h("span", null, h("strong", null, `Mora ${COM_ARTIGO.has(cod) ? "no" : "em"} ${c.n}?`), h("small", null, `Veja também ${listaE(partes)} da capital, um a um`)), h("span", { "aria-hidden": "true" }, "→"));
         }),
-        h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou partido", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
+        h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou partido", "aria-label": "Filtrar por nome ou partido", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
         lista,
         h("div", { class: "guia__rodape" },
           h("button", { type: "button", class: "link-botao", onclick: passo1 }, "← Outro estado"),
