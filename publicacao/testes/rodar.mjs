@@ -90,6 +90,13 @@ const PAGINAS = [
     })()` },
   { nome: "deputado-federal", url: primeiro("dep-") },
   // o 13º no contracheque é "média por mês" e diz a conta (total do período ÷ meses): conferido num deputado que recebeu 13º
+  // presença e projetos (atividade.json): "X de Y", sem porcentagem; Câmara por dia de sessão e Senado por votação nominal, nunca juntos
+  { nome: "deputado-atividade", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null,
+    atividade: [/teve presença em \d+ dos \d+ dias com sessão deliberativa no plenário em que estava no mandato/i, /ausências justificadas: \d+/i, /homenagens e datas/i, /viraram norma/i, /como contamos|homenagem ou data: projeto cuja ementa/i],
+    semAtividade: [/%/, /votações nominais/i, /mais produtiv|menos produtiv/i] },
+  { nome: "senador-atividade", url: ENDERECOS["sen-5672"] ? `/${ENDERECOS["sen-5672"]}` : null,
+    atividade: [/das \d+ votações nominais no plenário em que estava no mandato: presente em \d+/i, /o senado não publica a presença por sessão/i, /na pec, o senado lista como autores todos os que assinaram/i],
+    semAtividade: [/%/, /dias com sessão deliberativa/i, /mais produtiv|menos produtiv/i] },
   { nome: "deputado-13o", url: primeiroCom13("dep-"), contem: [/13º salário \(média por mês\)/i, /R\$ [\d.]+ de 13º pagos .*divididos pelos \d+ meses com pagamento/i, /para somar com o resto do mês/i] },
   { nome: "senador", url: primeiro("sen-") },
   { nome: "ministro", url: primeiro("exe-") },
@@ -208,7 +215,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
-        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "" };
+        textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "" };
     })()`);
     if (!/Contas do Poder/.test(m.titulo)) falhas.push(`título sem "Contas do Poder": "${m.titulo}"`);
     if (m.h1 !== 1) falhas.push(`${m.h1} títulos h1 visíveis (deve ser 1)`);
@@ -218,6 +225,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.ter || []).forEach(([sel, minimo], i) => { if (m.contagens[i] < minimo) falhas.push(`esperava ${minimo} de "${sel}" e achei ${m.contagens[i]}`); });
     (pg.texto || []).forEach((re) => { if (!re.test(m.textoCidade)) falhas.push(`o texto da cidade não tem ${re}`); });
     (pg.sem || []).forEach((re) => { if (re.test(m.textoCidade)) falhas.push(`o texto da cidade não podia ter ${re}`); });
+    (pg.atividade || []).forEach((re) => { if (!re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não tem ${re}`); });
+    (pg.semAtividade || []).forEach((re) => { if (re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não podia ter ${re}`); });
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     if (pg.url.startsWith("/cidade/")) {
       // o parágrafo em destaque vai pronto no HTML (gerar.mjs, destaqueCidade) para a primeira pintura: tem de ser igual ao do app.js

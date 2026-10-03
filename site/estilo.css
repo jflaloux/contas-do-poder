@@ -987,6 +987,20 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 #dados-abertos code { padding: 1px 6px; }
 pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0; }
 
+/* projetos da presença e projetos (deputados e senadores): tabela larga no computador; no celular, um bloco por tipo, com os rótulos */
+.tabela-projetos td { vertical-align: top; }
+.tabela-projetos td .tabela-gov__obs { margin-top: 2px; }
+@media (max-width: 640px) {
+  .tabela-projetos, .tabela-projetos tbody, .tabela-projetos tr, .tabela-projetos td { display: block; }
+  .tabela-projetos thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabela-projetos tr { padding: 12px 0; border-bottom: 1px solid var(--line-2); }
+  .tabela-projetos td { padding: 3px 0; border: 0; text-align: left; }
+  .tabela-projetos td.num { text-align: left; }
+  .tabela-projetos td[data-rotulo] { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0 12px; }
+  .tabela-projetos td[data-rotulo]::before { content: attr(data-rotulo); grid-row: 1 / span 2; color: var(--ink-2); font-size: .85rem; align-self: center; }
+  .tabela-projetos td[data-rotulo] > * { grid-column: 2; text-align: right; }
+}
+
 /* viagens do governador e do vice: nada passa da largura da tela (as tabelas rolam por dentro) */
 #viagens > * { min-width: 0; }
 #viagens h2 { overflow-wrap: anywhere; }

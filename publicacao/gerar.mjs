@@ -375,7 +375,8 @@ for (const p of pessoas) {
     else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (${bolso}) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
   const titulo = `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
-  const extras = separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : p.k === "t" ? ["/dados/judiciario.json"] : [];
+  const extras = [...(separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : p.k === "t" ? ["/dados/judiciario.json"] : []),
+    ...(p.k === "d" || p.k === "s" ? ["/dados/atividade.json"] : [])]; // presença e projetos (um arquivo, só nessas páginas)
   paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false })]);
 }
 
@@ -575,6 +576,7 @@ const DESCRICAO_ARQ = {
   "judiciario.json": "Judiciário (tribunais superiores, CNJ e PGR), ainda fora das páginas do site.",
   "enderecos.json": "O endereço de cada página do site (e os endereços antigos, que redirecionam).",
   "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
+  "atividade.json": "Presença no Plenário e projetos de cada deputado federal e senador desde fev/2023: X de Y, sem nota nem ranking, com a fonte (a Câmara conta por dia de sessão e o Senado por votação nominal: contas diferentes).",
   "situacao.json": "A situação de cada fonte: até que mês vão os dados, quando foram lidos pela última vez e o motivo de qualquer atraso (página Atualização dos dados).",
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]

@@ -1910,6 +1910,84 @@
     }
     return itens.sort((a, b) => b[1] - a[1]).slice(0, n);
   }
+  // ================================================================== presença e projetos (deputados federais e senadores)
+  // site/dados/atividade.json (um arquivo; só é lido na página de deputado federal, de senador e de quem foi ministro e parlamentar):
+  // desde 01/02/2023, pelos dados abertos oficiais. Presença: na Câmara, por DIA com sessão deliberativa no Plenário; no Senado, por
+  // VOTAÇÃO NOMINAL (os dados abertos do Senado não trazem a presença por sessão). As duas contas são diferentes: nunca lado a
+  // lado nem comparadas. Projetos: PL, PLP, PEC, PDL e projeto de resolução, como primeiro autor (separando "homenagem ou data" dos
+  // demais, com os que viraram norma de cada grupo) e como coautor. "X de Y", sem porcentagem, sem cor, sem ranking, sem média
+  // do grupo e sem somar os tipos num total de projetos.
+  const ATIV = { pedido: null, dados: null };
+  function carregarAtividade() {
+    if (!ATIV.pedido) ATIV.pedido = lerJSON("/dados/atividade.json").then((d) => (ATIV.dados = d && d.p ? d : null), () => null);
+    return ATIV.pedido;
+  }
+  // o registro é o do parlamentar (dep-<id> ou sen-<código>); na página de "tudo junto" (ministro e parlamentar), o do mandato
+  const idAtividade = (p) => (p.k === "d" || p.k === "s" ? p.id : p.k === "j" && p.cg && p.cg[1] ? p.cg[1].id : null);
+  const pedidoAtividade = (p) => (idAtividade(p) ? carregarAtividade() : null);
+  // "Licença para Tratamento de Saúde" → "licença para tratamento de saúde" (Mesa, Casa e País continuam com maiúscula)
+  const minuscula1 = (t) => String(t || "").toLowerCase().replace(/\b(mesa|casa|país)\b/g, (x) => x.charAt(0).toUpperCase() + x.slice(1));
+  function secAtividade(p) {
+    const id = idAtividade(p);
+    if (!id) return null;
+    if (!ATIV.dados) { // ainda não chegou: um espaço no lugar, trocado quando chegar
+      const vaga = h("section", { class: "bloco", id: "atividade" }, h("p", { class: "discreto" }, "Carregando a presença e os projetos…"));
+      carregarAtividade().then(() => { if (vaga.isConnected) { const nova = secAtividade(p); if (nova) vaga.replaceWith(nova); else vaga.remove(); } });
+      return vaga;
+    }
+    const A = ATIV.dados, r = A.p[id], M = A.meta;
+    if (!r || (!r.pr && !r.pj)) return null;
+    const senado = String(id).startsWith("sen-");
+    const desde = `${MESES[Number(M.desde.slice(5, 7)) - 1]}/${M.desde.slice(0, 4)}`;
+    const motivos = (pm) => Object.entries(pm || {}).sort((a, b) => b[1] - a[1]).map(([m, n]) => `${minuscula1(m)}: ${n}`).join("; ");
+    const fonteA = (txt, url) => h("a", { href: url, target: "_blank", rel: "noopener" }, `${txt}\u00a0↗`);
+    // ---- presença
+    let presenca = null;
+    if (r.pr) {
+      const pr = r.pr, mot = motivos(r.pm);
+      const porAno = Object.entries(r.pa || {}).sort(([a], [b]) => a.localeCompare(b)).filter(([, v]) => v && v[0]);
+      presenca = [
+        h("h3", { class: "h3" }, senado ? "Presença nas votações nominais do Plenário" : "Presença nos dias de sessão do Plenário"),
+        senado
+          ? h("p", null, `Das ${num(pr[0], 0)} votações nominais no Plenário em que estava no mandato: presente em ${num(pr[1], 0)} (votou, presidiu ou registrou presença sem votar), ausente com motivo registrado em ${num(pr[2], 0)}${mot ? ` (${mot})` : ""}, não compareceu em ${num(pr[3], 0)}${pr[4] ? `; outra situação em ${num(pr[4], 0)}` : ""}.`)
+          : h("p", null, `Teve presença em ${num(pr[1], 0)} dos ${num(pr[0], 0)} dias com sessão deliberativa no Plenário em que estava no mandato. Ausências justificadas: ${num(pr[2], 0)}${mot ? ` (${mot})` : ""}. Ausências sem justificativa: ${num(pr[3], 0)}.`),
+        porAno.length > 1 ? h("p", { class: "discreto pequeno" }, `Por ano, presença em ${senado ? "votações" : "dias com sessão"}: `, porAno.map(([ano, v], i) => [i ? " · " : "", `${ano}: ${num(v[1], 0)} de ${num(v[0], 0)}`])) : null,
+        h("p", { class: "nota" }, senado ? "O Senado não publica a presença por sessão nos dados abertos: esta conta é por votação nominal, e não por dia de sessão." : "Esta conta é por dia com sessão deliberativa no Plenário, pela presença que a própria Câmara registra.",
+          ` Dados até ${dataBR(senado ? M.senado_votacoes_ate : M.camara_presenca_ate)}. Fonte: `, fonteA(senado ? "dados abertos do Senado (votações)" : "Câmara dos Deputados (presença por dia)", senado ? M.fontes.senado_votacoes : M.fontes.camara_presenca), "."),
+      ];
+    }
+    // ---- projetos
+    const tipos = Object.keys(M.tipos || {}).filter((t) => r.pj && r.pj[t] && r.pj[t].some((v) => v));
+    const cel = (rot, n, v) => h("td", { class: "num", "data-rotulo": rot }, h("strong", null, num(n, 0)), h("small", { class: "tabela-gov__obs" }, v ? `${num(v, 0)} ${v === 1 ? "virou norma" : "viraram norma"}` : "nenhum virou norma"));
+    const nj = (r.nj || []).slice().sort((a, b) => String(b[3]).localeCompare(String(a[3])));
+    const linkNorma = (cod) => (senado ? M.fontes.senado_materia : M.fontes.camara_proposicao).replace("{codigo}", encodeURIComponent(cod));
+    const projetos = tipos.length || nj.length ? [
+      h("h3", { class: "h3" }, "Projetos apresentados desde " + desde),
+      h("p", { class: "discreto" }, "Projetos que podem virar norma, como primeiro autor e como coautor, separados por tipo (um projeto de homenagem e uma emenda à Constituição não são a mesma coisa, por isso não há um total). \"Os demais\" são os que não são homenagem ou data."),
+      // no celular cada tipo vira um bloco com os rótulos (sem rolagem para o lado): ver .tabela-projetos, no estilo.css
+      tipos.length ? h("table", { class: "tabela-gov tabela-projetos" }, h("caption", { class: "visualmente-oculto" }, "Projetos por tipo"),
+        h("thead", null, h("tr", null, h("th", null, "Tipo"), h("th", { class: "num" }, "Como primeiro autor"), h("th", { class: "num" }, "Homenagens e datas"), h("th", { class: "num" }, "Os demais"), h("th", { class: "num" }, "Como coautor"))),
+        h("tbody", null, tipos.map((t) => { const [pa, hom, norma, normaHom, co] = r.pj[t];
+          return h("tr", null, h("td", null, h("strong", null, t), h("small", { class: "tabela-gov__obs" }, M.tipos[t])),
+            h("td", { class: "num", "data-rotulo": "Como primeiro autor" }, num(pa, 0)), cel("Homenagens e datas", hom, normaHom), cel("Os demais", pa - hom, norma - normaHom), h("td", { class: "num", "data-rotulo": "Como coautor" }, num(co, 0))); }))) : null,
+      nj.length ? h("details", { class: "tabela", ontoggle: (ev) => { if (ev.target.open) evento("abrir_detalhe", { categoria: "atividade_normas", casa: casaTxt(p) }); } },
+        h("summary", null, `Ver os ${nj.length} que viraram norma (como primeiro autor)`),
+        h("ul", { class: "lista" }, nj.map(([ident, cod, hom, data]) => h("li", null, fonteA(ident, linkNorma(cod)), " ",
+          h("small", { class: "discreto" }, [data ? dataBR(data) : null, hom ? "homenagem ou data" : null].filter(Boolean).join(" · ")))))) : null,
+      h("ul", { class: "lista nota" },
+        h("li", null, M.regra_homenagem),
+        h("li", null, "Conta o projeto que virou norma ele mesmo; quando vários tramitam juntos, a norma fica com o principal."),
+        senado ? h("li", null, "Na PEC, o Senado lista como autores todos os que assinaram: por isso o número de coautor de PEC é alto.") : null,
+        h("li", null, `Tipos: PL (projeto de lei), PLP (lei complementar), PEC (emenda à Constituição), PDL (decreto legislativo) e projeto de resolução (${senado ? "PRS" : "PRC"}). Situação dos projetos em ${dataBR(String(M.gerado_em).slice(0, 10))}. Fontes: `,
+          senado ? fonteA("dados abertos do Senado (projetos)", M.fontes.senado_projetos.replace("?codigoParlamentarAutor={codigo}", "")) : [fonteA("projetos", M.fontes.camara_projetos), ", ", fonteA("autores", M.fontes.camara_autores)], ".")),
+    ] : null;
+    if (!presenca && !projetos) return null;
+    return h("section", { class: "bloco", id: "atividade", "aria-labelledby": "t-atividade" },
+      h("p", { class: "rotulo" }, `No mandato desde ${desde}`),
+      h("h2", { id: "t-atividade" }, "Presença e projetos"),
+      h("p", { class: "discreto" }, `Os números como os dados abertos oficiais trazem, sem nota nem comparação. ${senado ? "Senador" : p.k === "j" ? "Parlamentar" : "Deputado federal"}: só o tempo em que estava no mandato conta.`),
+      h("article", { class: "cartao" }, presenca, projetos));
+  }
   function secCota(p, k) {
     const r = resumo(p, k);
     if (!r) return null;
@@ -3457,7 +3535,7 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", viagens: "Viagens", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe do gabinete", cota: "Detalhe dos gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Colegas e ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
@@ -4144,7 +4222,7 @@
         Object.assign($("#previa", app).dataset, { id: p.id, k });
       }
       navSecoes(["entenda", "fontes"]);
-      carregarDetalhe(p).then(() => { if (S.sel === p.id) render(); }, () => {
+      Promise.all([carregarDetalhe(p), pedidoAtividade(p)]).then(() => { if (S.sel === p.id) render(); }, () => {
         if (S.sel !== p.id) return;
         const st = $("#previa .carregando", app);
         if (st) { st.textContent = "Não foi possível carregar o mês a mês. "; st.append(h("button", { type: "button", class: "link-botao", onclick: () => render() }, "Tentar de novo")); }
@@ -4269,8 +4347,8 @@
       // gastos dele como R$ 0, quando eles só não são publicados); a lista dos 27 está na página do estado
       app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
         : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
-        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]).filter(Boolean));
-      navSecoes(["contracheque", "mes-a-mes", "viagens", "meses-jud", "equipe", "cota", "ranking", "comparar", "resumo", "entenda", "fontes"]);
+        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]).filter(Boolean));
+      navSecoes(["contracheque", "mes-a-mes", "viagens", "meses-jud", "equipe", "cota", "atividade", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       botaoFlutuante(specPessoa(p, k), "#contracheque .conta__resumo");
     } else {
       document.title = "Contas do Poder";

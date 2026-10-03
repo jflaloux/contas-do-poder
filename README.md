@@ -178,7 +178,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 26 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 28 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1138,6 +1138,21 @@ que o site não cria cookies; os do Google Analytics só existem em `contasdopod
 hospedagem no Cloudflare Pages. A base legal escrita é o legítimo interesse (LGPD, art. 7º, IX). Quem é o controlador aparece como
 "Contas do Poder (contato@contasdopoder.com)": se o nome do responsável entrar, é só mudar o `sobre.json`. Mudou algo
 dessa lista (um serviço novo, um cookie, outro dado coletado)? Atualize o `sobre.json` junto, com a data. O texto é simples e deve ser revisto por quem responde pelo site antes de cada mudança publicada.
+
+## Presença e projetos na página do deputado federal e do senador
+
+Um bloco "Presença e projetos" (`secAtividade`, no `app.js`), lido de `site/dados/atividade.json` (um arquivo; o `gerar.mjs` o põe
+em `<link rel="preload">` só nas páginas de deputado e senador; a página de "tudo junto" de quem foi ministro usa o registro
+do mandato). Regras do bloco: "X de Y", sem porcentagem, sem cor, sem ranking, sem média do grupo e sem somar os tipos num total
+de projetos. A **presença da Câmara** é por dia com sessão deliberativa no Plenário e a do **Senado**, por votação nominal
+(o Senado não publica a presença por sessão nos dados abertos): nunca aparecem lado a lado nem se comparam, e o texto de cada
+casa diz qual é a conta ("em que estava no mandato": suplente e ex-ministro têm poucos dias). Os **projetos** (PL, PLP, PEC, PDL e
+projeto de resolução, desde 01/02/2023) vão em tabela por tipo, separando "homenagens e datas" dos "demais", cada grupo com os que
+viraram norma; a lista dos que viraram norma tem o link de cada um e a marca "homenagem ou data" em texto. Uma nota diz a regra de
+"homenagem ou data" (vem do `meta.regra_homenagem`), que a norma fica com o projeto principal e, no Senado, que a PEC lista como
+autores todos os que assinaram. No celular a tabela vira um bloco por tipo (`.tabela-projetos`), sem rolagem para o lado. O teste
+do site confere um deputado (Laura Carneiro) e um senador (Alan Rick): os textos de cada casa, que não há "%" e que a conta de uma
+casa não aparece na outra.
 
 ## Interior do ES, de PE e do RJ na página da cidade (valor por cargo)
 
