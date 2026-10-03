@@ -924,6 +924,23 @@ Nas páginas das Assembleias (`secAssembleia`), quando os deputados no cargo sã
 nota diz só o que a fonte mostra (`notaCadeiras`): Goiás (uma vaga aberta desde 26/09/2026) e Alagoas (a folha paga mais
 subsídios do que há cadeiras) têm texto próprio, que some quando os números voltam a bater.
 
+## Rascunhos de e-mail no Gmail (`rotina/rascunhos_gmail.py`)
+
+Cria ou atualiza, no Gmail de quem roda, os rascunhos de um arquivo Markdown de rascunhos (por padrão
+`RASCUNHOS-DIVULGACAO.md`, fora do Git). **Não envia nada**: só cria e atualiza rascunhos, e quem envia é a pessoa, no
+Gmail. Cada e-mail sai com o remetente `contato@contasdopoder.com` (o script confere antes, em "Enviar e-mail como", que o
+endereço está na conta e verificado), em texto puro e HTML, com links diretos (sem redirecionamento). Um rascunho com o
+mesmo destinatário e o mesmo assunto é atualizado, não duplicado. O formato de cada bloco está no começo do script.
+
+- Uma vez: `.venv/bin/pip install -r rotina/requirements-gmail.txt` (só no computador que cria os rascunhos) e uma
+  credencial OAuth do Google Cloud do tipo "App para computador", salva em `~/.config/contas-do-poder/gmail-credencial.json`
+  (fora do repositório). Na primeira vez, o navegador pede a autorização; o token fica na mesma pasta.
+- `.venv/bin/python rotina/rascunhos_gmail.py` mostra o que faria; `--teste` cria um rascunho só, para a própria conta;
+  `--criar` grava; `--so=3,7` escolhe os blocos; `--sem-gmail --mostrar=7` mostra o e-mail montado sem conectar.
+- Escopos: `gmail.compose` (rascunhos; o Google não tem escopo de rascunho que não permita também enviar, por isso o
+  código não chama nenhuma função de envio e recusa qualquer endereço da API terminado em `/send`) e
+  `gmail.settings.basic` (ler a lista de remetentes).
+
 ## Licença
 
 - Código: MIT (arquivo `LICENSE`).

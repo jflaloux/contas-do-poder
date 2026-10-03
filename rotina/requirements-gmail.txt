@@ -1,0 +1,4 @@
+# Só para rotina/rascunhos_gmail.py, no .venv do computador de quem cria os rascunhos (não entra no GitHub Actions):
+#   .venv/bin/pip install -r rotina/requirements-gmail.txt
+google-auth>=2.20
+google-auth-oauthlib>=1.0
