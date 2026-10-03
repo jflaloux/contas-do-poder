@@ -159,9 +159,10 @@ prefeitura, deputado estadual, governador e pessoa do Judiciário; cidade de cap
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
 console, sem exceção, sem arquivo que falta, título, um só `h1`, o "Carregando…" fora, sem rolagem horizontal e o que
-cada página precisa mostrar), **CLS** (até 0,1) e **axe-core** (nenhuma violação de acessibilidade, contraste incluído).
-O LCP e o tempo de cada página saem no relatório, sem valer como falha. Os pedidos a sites de fora (Google Analytics e
-fontes) são bloqueados: o teste não conta visita no Analytics nem precisa de internet. Termina com código 1 se algo
+cada página precisa mostrar), **CLS** (até 0,1), **axe-core** (nenhuma violação de acessibilidade, contraste incluído) e o
+**Google Analytics só em produção** (ver "Compartilhamento e medição").
+O LCP e o tempo de cada página saem no relatório, sem valer como falha. Os pedidos a sites de fora (as fontes do
+Google) são bloqueados: o teste não precisa de internet e, fora da produção, o site nem pede o Google Analytics. Termina com código 1 se algo
 falhar. Leva uns 5 minutos (as páginas de pessoa esperam o desenho da imagem de compartilhamento, que sem as fontes do
 Google demora ~6 s).
 
@@ -169,15 +170,22 @@ Google demora ~6 s).
 - `--paginas=atualizacao,indice`: só essas (os nomes estão em `PAGINAS`, no `rodar.mjs`).
 - `--url=http://localhost:8000`: usa um servidor que já está rodando (`node publicacao/servir.mjs`).
 - `--capturas=/tmp/capturas`: guarda uma imagem de cada página e perfil.
+- `--analytics` / `--sem-analytics`: a conferência do Google Analytics roda no fim (só no servidor local); com `--paginas`
+  ela só roda se pedida.
+
+**Não rode o build e os testes ao mesmo tempo:** o `gerar.mjs` apaga e refaz `publicar/`, de onde o servidor local lê. Se
+isso acontecer, os testes percebem (o servidor devolve 503 enquanto `publicar/` está vazia), param com um aviso e não
+seguem falhando página por página; é só esperar o build e rodar de novo.
 
 **Sem instalar nada no projeto.** Não há `package.json` na raiz nem em outra pasta: o Cloudflare Pages só roda
 `node publicacao/gerar.mjs`, que não muda, e nada de `publicacao/testes/` entra em `publicar/`. Os testes usam só o Node
 (22 ou mais novo) e o Chrome que já estiver no computador (ou o executável indicado na variável `CHROME`), pelo
 protocolo DevTools (`cdp.mjs`). A única peça de fora é o **axe-core** (versão 4.10.2): sem ele, o teste roda o resto e
 avisa que o axe não rodou. Para ter o axe, rode uma vez `node publicacao/testes/rodar.mjs --baixar-axe`: ele baixa o
-arquivo `axe.min.js` (~0,5 MB, do cdnjs) para `~/.cache/contas-do-poder/`, mostra o SHA-256 e segue; o arquivo fica
-fora do repositório. Para conferir a baixa, ponha o SHA-256 mostrado em `AXE_SHA256` (variável de ambiente ou no
-`rodar.mjs`). Quem já tem o axe aponta `AXE_JS` para o `axe.min.js`.
+arquivo `axe.min.js` (~0,5 MB, do cdnjs) para `~/.cache/contas-do-poder/` e só o grava se o SHA-256 bater com o do
+`rodar.mjs` (`AXE_SHA256`, do arquivo 4.10.2 baixado em 02/10/2026); o arquivo fica fora do repositório. Quem já tem o
+axe aponta `AXE_JS` para o `axe.min.js`. Para trocar de versão, mude `AXE_VERSAO` e `AXE_SHA256` (o teste mostra o
+SHA-256 da baixa nova).
 
 Lighthouse (desempenho no celular), à parte, com o servidor local rodando:
 `npx lighthouse http://localhost:8000/judiciario --form-factor=mobile --only-categories=performance --view`
@@ -771,6 +779,13 @@ seguem o mesmo desenho.
   em foto brasileira). Quem não tem foto aparece com as iniciais. No crédito (contracheque e imagem), "via Wikimedia
   Commons" só quando a foto vem de lá; a da candidatura (vereadores e deputados estaduais) vem do Portal de Dados
   Abertos do TSE.
+- **Google Analytics só em produção** (desde 03/10/2026): o `<head>` do `index.html` só carrega o gtag quando o endereço
+  é `contasdopoder.com` (com ou sem `www`). Em `localhost`, nas prévias do Cloudflare Pages (`*.pages.dev`) e nos testes o
+  gtag nem existe: nenhuma visita e nenhum evento (nem o `velocidade`, que nem começa a medir) vão para o Analytics. Em
+  produção nada muda: mesma tag, mesma configuração, mesmos eventos. `publicacao/testes/rodar.mjs` confere os dois lados
+  (o gtag carrega em `contasdopoder.com` e `www.contasdopoder.com` e em mais nenhum nome, e nenhuma página testada pede o
+  Google Analytics). Visitas de `localhost` que chegaram antes dessa data ficam nos relatórios com o nome de host
+  `localhost`: dá para filtrar.
 - **Google Analytics** (`G-MK65PM0MCZ`). Eventos: `ver_parlamentar` (com a origem: busca, busca_topo, guia, estado,
   ranking, comparar, link ou navegação), `trocar_periodo`, `compartilhar` (método: enviar_imagem, copiar_imagem,
   baixar_imagem, whatsapp, copiar_texto ou copiar_link; `conteudo`: parlamentar, governador ou cidade; `onde`: topo,

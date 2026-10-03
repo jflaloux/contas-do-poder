@@ -69,6 +69,8 @@
   let observadores = [];
 
   // ================================================================== Google Analytics (só se o gtag estiver carregado)
+  // O index.html só carrega o gtag em contasdopoder.com (com ou sem www): em localhost, nas prévias *.pages.dev e nos
+  // testes ele não existe, e nenhum evento sai (nem o "velocidade", que nem começa a medir).
   const evento = (nome, params = {}) => { try { if (typeof gtag === "function") gtag("event", nome, params); } catch (e) { /* segue sem medir */ } };
 
   // ------------------------------------------------------------------ velocidade medida no aparelho de quem visita
@@ -85,7 +87,7 @@
   // não mede todos) só não manda aquele; página aberta em segundo plano não manda nada (os números não valeriam).
   const VEL = (() => {
     const tipos = (typeof PerformanceObserver !== "undefined" && PerformanceObserver.supportedEntryTypes) || [];
-    if (!tipos.length || document.visibilityState === "hidden") return null;
+    if (!tipos.length || document.visibilityState === "hidden" || typeof gtag !== "function") return null;
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"

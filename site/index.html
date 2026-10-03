@@ -2,13 +2,19 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MK65PM0MCZ"></script>
+<!-- Google tag (gtag.js), só em produção: contasdopoder.com, com ou sem www. Em localhost, nas prévias do Cloudflare
+     Pages (*.pages.dev) e nos testes o gtag nem carrega, e o app.js (evento) não envia nada, porque o gtag não existe. -->
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-MK65PM0MCZ');
+  if (/^(www\.)?contasdopoder\.com$/.test(location.hostname)) {
+    var gtm = document.createElement("script");
+    gtm.async = true;
+    gtm.src = "https://www.googletagmanager.com/gtag/js?id=G-MK65PM0MCZ";
+    document.head.appendChild(gtm);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { dataLayer.push(arguments); };
+    gtag("js", new Date());
+    gtag("config", "G-MK65PM0MCZ");
+  }
 </script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Contas do Poder</title>
