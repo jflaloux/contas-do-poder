@@ -172,6 +172,20 @@ const PAGINAS = [
   { nome: "cidade-pe-aguas-belas", url: "/cidade/aguas-belas-pe", ter: [["#cidade .pessoa-chip--fixo", 10]], texto: [/presidente da Câmara/i, /13 pessoas/i], sem: [/passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-rj-laje-do-muriae", url: "/cidade/laje-do-muriae-rj", ter: [["#cidade .pessoa-chip--fixo", 5]], texto: [/12 pessoas como agente político/i, /a fonte não tem os nomes/i], sem: [/em média, por/i, /passa do teto/i, /ganha mais que/i] },
   { nome: "governador-com-viagens", url: ENDERECOS["gov-mg-mateus-simoes"] ? `/${ENDERECOS["gov-mg-mateus-simoes"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 2], ["#viagens details table", 1]] },
+  // governador em exercício pago pelo tribunal (RJ, e.ot em governadores.json): "recebe pelo Tribunal de Justiça, onde é desembargador", nunca "salário de
+  // governador"; só os meses no governo, com a fonte de cada mês, o crédito do DadosJusBr (CC BY 4.0) e as diárias à parte (fora do recebido)
+  { nome: "governador-rj-pelo-tribunal", url: ENDERECOS["gov-rj-ricardo-couto"] ? `/${ENDERECOS["gov-rj-ricardo-couto"]}` : null,
+    pagina: [/Recebe pelo Tribunal de Justiça, onde é desembargador/, /Não recebe o subsídio de governador: recebe pelo Tribunal de Justiça/, /licença CC BY 4\.0/, /R\$\s[0-9.]+,[0-9]{2} brutos[^.]*antes dos descontos/, /Diárias, à parte/, /Dados do mês \(zip\)/],
+    semPagina: [/Nenhum pagamento na folha/, /Sem pagamentos registrados/, /(recebe|ganha|salário d[eo] governador:?)\sR\$/i, /Folha até [a-z]{3}\/20[0-9]{2}: a fonte parou de publicar/],
+    ter: [["#contracheque .tj-mes", 1]],
+    depois: `(() => { const f = [], num = (t) => Number(t.replace(/[^0-9,]/g, "").replace(",", ".")); const cartoes = [...document.querySelectorAll(".tj-mes")];
+      if (!cartoes.length) return ["não achei os cartões do mês"];
+      for (const c of cartoes) { const rec = num(c.querySelector(".tj-mes__recebido strong").textContent), soma = [...c.querySelectorAll(".tj-mes__partes dd")].reduce((a, d) => a + num(d.textContent), 0);
+        if (Math.abs(rec - soma) > 0.05) f.push(c.querySelector(".tj-mes__mes").textContent + ": o recebido (" + rec + ") não é a soma das partes (" + soma.toFixed(2) + "); as diárias ficam fora"); }
+      return f; })()` },
+  { nome: "estado-rj-pelo-tribunal", url: "/governador/rj", ter: [["#governador .tj-mes", 1]],
+    pagina: [/Recebe pelo Tribunal de Justiça, onde é desembargador/, /o governador em exercício não recebe esse valor/, /licença CC BY 4\.0/, /Folha até mar\/2026: a fonte parou de publicar/], semPagina: [/Ganha mais que/] },
+  { nome: "estado-sp-sem-tribunal", url: "/governador/sp", semPagina: [/Recebe pelo Tribunal de Justiça/, /não recebe esse valor/] },
   { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },

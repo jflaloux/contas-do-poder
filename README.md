@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 46 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 49 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -667,6 +667,17 @@ manda ao Painel de Remuneração dos Magistrados do CNJ), com o mesmo leitor e a
 nunca; diárias à parte). Só os meses no governo: `dados/governadores/outro_orgao/rj.csv` e, no site, `e.ot` do estado
 em `governadores.json` (com a fonte de cada mês e os meses que faltam no DadosJusBr: mar/2026). A folha do Estado do Rio
 segue congelada até mar/2026 (Cláudio Castro). Roda na etapa `governadores`, no GitHub.
+
+No site (`otDe` e `blocoTJ`, no `app.js`; `gerar.mjs` para o texto da página pronta): a página do estado e a da pessoa (Ricardo Couto)
+mostram o bloco "Recebe pelo Tribunal de Justiça, onde é desembargador", com um cartão por mês no governo (abr a ago/2026): o
+recebido bruto em destaque, as parcelas que tiveram valor (subsídio, vantagens, 13º, férias, indenizações), as diárias à parte
+(fora do recebido), o link do pacote do DadosJusBr de cada mês, o crédito (CC BY 4.0) e os meses sem a folha do tribunal. Regras:
+nunca chamar isso de "salário de governador" e não pôr esse valor no lugar do subsídio da lei (`e.v`, R$ 21.868,14, que ele não
+recebe: continua na comparação entre os 27 estados, rotulado "Subsídio do cargo de governador" e com a frase de que o governador
+em exercício não o recebe; o "ganha mais que X%" some nesse caso). Na página dele não há "Nenhum pagamento na folha" nem "Folha até
+mar/2026" (ele não está na folha do Estado): o topo diz que não recebe o subsídio e o que recebeu no último mês. Os meses de Cláudio
+Castro continuam vindo da folha do Estado. O teste confere o texto, que o recebido é a soma das partes (sem as diárias) e que
+outro estado não tem o bloco.
 
 ### Viagens dos governadores e vices (`coleta/viagens_governadores/`)
 

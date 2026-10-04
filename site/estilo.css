@@ -1043,6 +1043,23 @@ pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere;
   .tabela-projetos td[data-rotulo] > * { grid-column: 2; text-align: right; }
 }
 
+/* governador em exercício que recebe pelo tribunal (blocoTJ): o bloco, e a tabela mês a mês (no celular, um bloco por mês, com os rótulos) */
+.bloco-tj { display: grid; gap: 12px; }
+.bloco-tj--dentro { padding: 20px 22px; }
+/* um cartão por mês: o recebido em destaque, as partes que tiveram valor e, à parte, as diárias */
+.tj-meses { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); gap: 10px; }
+.tj-mes { display: grid; gap: 6px; align-content: start; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.tj-mes p { margin: 0; }
+.tj-mes__mes small { color: var(--ink-2); font-size: .8rem; }
+.tj-mes__recebido { display: grid; gap: 0; }
+.tj-mes__recebido strong { font-family: var(--display); font-size: 1.6rem; line-height: 1.1; }
+.tj-mes__partes { margin: 0; display: grid; gap: 2px; font-size: .9rem; }
+.tj-mes__partes > div { display: flex; justify-content: space-between; gap: 10px; }
+.tj-mes__partes dt { color: var(--ink-2); }
+.tj-mes__partes dd { margin: 0; }
+.tj-mes__diarias { display: flex; justify-content: space-between; gap: 10px; font-size: .9rem; color: var(--ink-2); border-top: 1px dashed var(--line); padding-top: 6px; }
+.tj-mes__fonte { font-size: .82rem; }
+
 /* viagens do governador e do vice: nada passa da largura da tela (as tabelas rolam por dentro) */
 #viagens > * { min-width: 0; }
 #viagens h2 { overflow-wrap: anywhere; }

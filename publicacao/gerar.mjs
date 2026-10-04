@@ -372,7 +372,10 @@ for (const p of pessoas) {
   const r = k && p.per[k];
   const rotulo = rotuloPessoa(p);
   let texto;
-  if (!r && p.k === "g") texto = `${rotulo}. Não há pagamentos a ${p.n} na folha de pagamento ${deUF(p.uf)} publicada até ${MESES[(p.um % 100) - 1]}/${Math.floor(p.um / 100)}. Veja o salário do cargo e as notas sobre o estado.`;
+  const otG = !r && p.k === "g" ? (GOV.e.find((x) => x.uf === p.uf) || {}) : {};
+  const otU = otG.ot && otG.oc[otG.ot.i] && otG.oc[otG.ot.i].id === p.id ? otG.ot.m[otG.ot.m.length - 1] : null;
+  if (otU) texto = `${rotulo}. ${p.n} governa ${deUF(p.uf)} em exercício desde ${otG.oc[otG.ot.i].de.split("-").reverse().join("/")}. Não recebe o subsídio de governador: recebe pelo ${otG.ot.orgao}, onde é ${otG.ot.como}. Em ${MESES[(otU[0] % 100) - 1]}/${Math.floor(otU[0] / 100)}, ${reais(otU[1])} brutos, antes dos descontos (folha do tribunal, copiada pelo DadosJusBr, licença CC BY 4.0).`;
+  else if (!r && p.k === "g") texto = `${rotulo}. Não há pagamentos a ${p.n} na folha de pagamento ${deUF(p.uf)} publicada até ${MESES[(p.um % 100) - 1]}/${Math.floor(p.um / 100)}. Veja o salário do cargo e as notas sobre o estado.`;
   else if (!r) texto = `${rotulo}. Veja quanto recebe e quanto custa por mês, com números oficiais.`;
   else {
     const gm = r.mg ? (r.g - somaUnicos(p, k, r)) / r.mg : 0, cm = r.mc ? r.c / r.mc : 0;

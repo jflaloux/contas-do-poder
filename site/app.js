@@ -1509,6 +1509,13 @@
     const leis = leiG(p) ? e.h.filter((x) => p.cg.some(([c]) => c === x[0]) && x[1] <= p.um
       && !e.h.some((y) => y[0] === x[0] && y[1] > x[1] && y[1] <= p.ini)) : [];
     const pos = r && posicao(p, k);
+    const ot = otDe(p);
+    if (ot) return [ // governador em exercício pago pelo tribunal: nada da folha do Estado (ele não está nela)
+      h("p", { class: "nota" }, `${maiuscula(cargos.join("; "))}.`),
+      (e.notas || []).map((n) => h("p", { class: "nota" }, n)),
+      h("p", { class: "nota" }, `Dados do tribunal até ${fmtMes(ot.m[ot.m.length - 1][0])}.`),
+      h("p", { class: "nota" }, h("a", { href: urlGov(p.uf), onclick: () => { S.origem = "pessoa_governador"; } }, `O salário do cargo ${deUF(p.uf)}, a comparação com os outros estados e a Assembleia\u00a0→`)),
+    ];
     return [
       h("p", { class: "nota" }, `${maiuscula(cargos.join("; "))}.`),
       linhaCongelada(`folhas/${p.uf}`),
@@ -1584,6 +1591,13 @@
   // o que importa na primeira tela do celular: o período, o custo por mês, de onde ele vem e a posição entre os colegas
   function resumoTopo(p, k, r, C, pos, trocar) {
     const pil = periodos(p).length ? pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período") : null;
+    const ot = !r && otDe(p);
+    if (ot) { // governador em exercício pago pelo tribunal: o que ele recebe lá, em fatos, e onde ver mês a mês
+      const u = ot.m[ot.m.length - 1];
+      return h("div", { class: "conta__resumo" }, h("div", { class: "conta__resumo-principal" }, pil,
+        h("p", { class: "discreto" }, `Não recebe o subsídio de governador: recebe pelo ${ot.orgao}, onde é ${ot.como}.`),
+        u ? h("p", { class: "discreto" }, `Em ${fmtMes(u[0])}, ${reaisC(u[1])} brutos, antes dos descontos (folha do tribunal, copiada pelo DadosJusBr). Mês a mês, abaixo.`) : null));
+    }
     if (!r) return h("div", { class: "conta__resumo" }, h("div", { class: "conta__resumo-principal" }, pil, h("p", { class: "discreto" }, p.k === "g" && !periodos(p).length
       ? `Nenhum pagamento na folha ${deUF(p.uf)} publicada até ${fmtMes(p.um)}.` : "Sem pagamentos registrados neste período.")));
     const recebe = soBolso(p), smT = sm(emSalariosMinimos(p, k, "t"));
@@ -1634,7 +1648,8 @@
         h("p", { class: "rotulo" }, { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo", t: "Contracheque do cargo" }[p.k] || "Contracheque do mandato"),
         h("h1", { class: "conta__nome" }, p.n),
         h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
-      p.o ? h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, p.k === "g" ? (leiG(p) ? "Fonte\u00a0do\u00a0salário\u00a0↗" : "Folha\u00a0de\u00a0pagamento\u00a0↗") : "Página\u00a0oficial\u00a0↗") : null),
+      otDe(p) ? h("a", { href: otDe(p).u, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Folha\u00a0do\u00a0tribunal\u00a0↗")
+        : p.o ? h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, p.k === "g" ? (leiG(p) ? "Fonte\u00a0do\u00a0salário\u00a0↗" : "Folha\u00a0de\u00a0pagamento\u00a0↗") : "Página\u00a0oficial\u00a0↗") : null),
       resumoTopo(p, k, r, C, pos, trocar));
     const lado = h("div", { class: "conta__lado" });
     if (r) {
@@ -1701,8 +1716,10 @@
     const cargos = barraCargos(p, k) || barraRel(p, k);
     if (cargos) card.append(cargos);
     if (!lado.children.length) lado.hidden = true;
-    const valores = h("div", { class: "conta__valores" }, h("p", { class: "passo", style: "padding:20px 22px 0" }, "Item por item, por mês"));
-    if (!r) add(valores, h("p", { class: "discreto", style: "padding:16px 22px" }, "Sem pagamentos registrados neste período."));
+    const otp = !r && otDe(p);
+    const valores = h("div", { class: "conta__valores" }, otp ? null : h("p", { class: "passo", style: "padding:20px 22px 0" }, "Item por item, por mês"));
+    if (otp) add(valores, blocoTJ(GOV.porUF[p.uf], true));
+    else if (!r) add(valores, h("p", { class: "discreto", style: "padding:16px 22px" }, "Sem pagamentos registrados neste período."));
     else {
       const txtMed = `mediana dos ${plural(C.g || grupo(p))}`;
       const rm = { ...r, cats: r.catsMes }; // sem o pagamento único: ele vem à parte, depois do custo por mês
@@ -2987,6 +3004,32 @@
   }
   // mês a mês pela folha do Estado: e.m = [[aaaamm, tp, índice em e.oc, recebido, salário, 13º, férias, auxílios, outros, abate-teto, marca]]
   const PARTES_GOV = [[4, "Salário"], [5, "13º"], [6, "Férias"], [7, "Auxílios"], [8, "Outros"]];
+  // Governador em exercício que não recebe o subsídio do cargo, e sim de outro órgão (Rio de Janeiro: o presidente do Tribunal de
+  // Justiça, desembargador, desde 23/03/2026). Vem em governadores.json, no estado, como `ot` (a folha do tribunal, copiada pelo DadosJusBr,
+  // CC BY 4.0). Nunca é "salário de governador": é o que ele recebe pelo tribunal, só nos meses em que governa, bruto, com a fonte de cada
+  // mês e as diárias à parte. O valor da lei (e.v) continua sendo o do cargo, que ele não recebe: fica na comparação entre os estados.
+  const otDe = (p) => { const e = p && p.k === "g" ? GOV.porUF[p.uf] : null; return e && e.ot && e.oc[e.ot.i] && e.oc[e.ot.i].id === p.id ? e.ot : null; };
+  function blocoTJ(e, dentro) {
+    const ot = e.ot, o = e.oc[ot.i], ult = ot.m[ot.m.length - 1];
+    if (!ult) return null;
+    // um cartão por mês (e não uma tabela de 8 colunas, que não cabe na coluna do contracheque nem no celular): o recebido em
+    // destaque, as partes que tiveram valor no mês e, à parte, as diárias; a fonte de cada mês embaixo
+    const partes = [["Subsídio", 2], ["Vantagens", 3], ["13º", 4], ["Férias", 5], ["Indenizações", 6]];
+    const tabela = h("ul", { class: "tj-meses", "aria-label": `O que ${o.n} recebeu pelo ${ot.orgao}, mês a mês` }, ot.m.map((x) => h("li", { class: "tj-mes" },
+      h("p", { class: "tj-mes__mes" }, h("strong", null, fmtMes(x[0])), x[8] ? h("small", null, " só parte do mês no governo") : null),
+      h("p", { class: "tj-mes__recebido" }, h("span", { class: "rotulo" }, "Recebido (bruto)"), h("strong", null, reaisC(x[1]))),
+      h("dl", { class: "tj-mes__partes" }, partes.filter(([, i]) => x[i]).map(([t, i]) => h("div", null, h("dt", null, t), h("dd", null, reaisC(x[i]))))),
+      x[7] ? h("p", { class: "tj-mes__diarias" }, h("span", null, "Diárias, à parte"), h("span", { class: "num" }, reaisC(x[7]))) : null,
+      x[9] ? h("p", { class: "tj-mes__fonte" }, h("a", { href: x[9], target: "_blank", rel: "noopener" }, "Dados do mês (zip)\u00a0↗")) : null)));
+    return h("div", { class: `bloco-tj${dentro ? " bloco-tj--dentro" : ""}`, id: "recebe-tribunal" },
+      h("h2", { class: "h3" }, `Recebe pelo ${ot.orgao.replace(/ do Estado d[eo] .*$/, "")}, onde é ${ot.como}`),
+      h("p", { style: "margin:0" }, `${o.n} governa ${deUF(e.uf)} em exercício desde ${fmtData(o.de)}. Não recebe o subsídio de governador: continua recebendo pelo ${ot.orgao}, onde é ${ot.como}. `,
+        `Em ${fmtMes(ult[0])}, ${reaisC(ult[1])} brutos (antes dos descontos), dos quais ${reaisC(ult[2])} de subsídio de ${ot.como}.`),
+      tabela,
+      h("p", { class: "nota", style: "margin:0" }, "Valores brutos da folha do tribunal, antes dos descontos. Recebido = subsídio + vantagens (pessoais, eventuais e abono de permanência) + 13º + férias + indenizações; as diárias ficam à parte e não entram no recebido. As parcelas sem valor no mês não aparecem. São só os meses em que governa.",
+        ot.falta && ot.falta.length ? ` Sem a folha do tribunal na cópia do DadosJusBr: ${mesesTxt(ot.falta)}.` : ""),
+      h("p", { class: "nota", style: "margin:0" }, `Fonte: ${ot.credito}. `, h("a", { href: ot.u, target: "_blank", rel: "noopener" }, "DadosJusBr\u00a0↗")));
+  }
   function blocoMensalGov(e) {
     if (!e.m || !e.m.length) return null;
     const temVice = e.m.some((x) => x[1] === "vice");
@@ -3080,10 +3123,11 @@
         // colegas de um parlamentar). O vice e os secretários vêm depois, num bloco próprio: o salário deles sai da mesma
         // lei, e a folha do Estado traz os dois, mas a página é do governador.
         h("div", { class: "estatisticas" },
-          estatistica(`Salário ${fem ? "da governadora" : "do governador"}`, reaisC(e.v[0]), `por mês, bruto, ${e.v[2] === "imprensa" ? `valor de ${fmtMes(e.v[1])}` : `desde ${fmtMes(e.v[1])}`}`),
+          estatistica(e.ot ? `Subsídio do cargo ${fem ? "da governadora" : "do governador"}` : `Salário ${fem ? "da governadora" : "do governador"}`, reaisC(e.v[0]), `por mês, bruto, ${e.v[2] === "imprensa" ? `valor de ${fmtMes(e.v[1])}` : `desde ${fmtMes(e.v[1])}`}${e.ot ? "; o governador em exercício não recebe esse valor (veja abaixo)" : ""}`),
           estatistica("Em salários mínimos", `${num(e.v[0] / sm, 1)}`, `salários mínimos de ${reais(sm)}`),
-          estatisticaPop(e.v[0] / sm)),
-        e.recebe ? h("p", { class: "caixa-nota" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
+          e.ot ? null : estatisticaPop(e.v[0] / sm)), // com o governador em exercício pago por outro órgão, "ganha mais que X%" seria sobre um valor que ele não recebe
+        e.ot ? blocoTJ(e) : null,
+        e.recebe && !e.ot ? h("p", { class: "caixa-nota" }, h("strong", null, `${e.recebe.texto}${e.recebe.bruto ? `: ${reaisC(e.recebe.bruto)} brutos em ${mesTxt(e.recebe.mes)}` : ""}. `),
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
