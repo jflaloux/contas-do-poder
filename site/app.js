@@ -359,6 +359,22 @@
   // "tudo junto" (dois cargos): a casa do cargo no Congresso, para os avisos de deputado/senador
   const casaBase = (p) => (p.k === "j" ? (S.porId.get(p.cg[1].id) || {}).k : p.k);
   const fmtMes = (m) => (m ? `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}` : "");
+  // Limite mensal da verba do gabinete (camaras.json, meta.cidades[cod]): `verba_mes` = {ano: valor em vigor no último mês do ano}; `verba_vigencia` =
+  // [[desde AAAAMM, valor], ...], só quando há mais de uma vigência. Só quando o limite muda no meio de um ano (uma vigência que não começa em janeiro) o
+  // texto diz cada valor com o período; sem o campo, ou com mudança só na virada do ano, vale o texto por ano de sempre (verba_mes).
+  const vigenciasVerba = (c, ano) => {
+    const v = (Array.isArray(c && c.verba_vigencia) ? c.verba_vigencia : []).filter((x) => Array.isArray(x) && x[0] > 190000 && x[0] % 100 >= 1 && x[0] % 100 <= 12 && Number.isFinite(x[1])).sort((a, b) => a[0] - b[0]);
+    return v.length > 1 && v.slice(1).some(([de]) => de % 100 !== 1 && (!ano || Math.floor(de / 100) === ano)) ? v : null; // com `ano`, só se a mudança no meio do ano foi nesse ano
+  };
+  // "R$ 100,00 por mês de jan a ago/2025 e R$ 120,00 desde set/2025"; com `ano`, só as vigências que tocam esse ano
+  const textoVigenciasVerba = (v, { ano, porMes } = {}) => {
+    const mesAntes = (m) => (m % 100 === 1 ? m - 89 : m - 1);
+    const seg = v.map(([de, val], i) => ({ de, val, fim: v[i + 1] ? mesAntes(v[i + 1][0]) : null }))
+      .filter((x) => !ano || (x.de <= ano * 100 + 12 && (x.fim === null || x.fim >= ano * 100 + 1)));
+    const partes = seg.map((x, i) => `${reais(x.val)}${porMes && i === 0 ? " por mês" : ""} ${x.fim === null ? `desde ${fmtMes(x.de)}`
+      : x.fim === x.de ? `em ${fmtMes(x.de)}` : Math.floor(x.de / 100) === Math.floor(x.fim / 100) ? `de ${MESES[(x.de % 100) - 1]} a ${fmtMes(x.fim)}` : `de ${fmtMes(x.de)} a ${fmtMes(x.fim)}`}`);
+    return partes.length > 1 ? `${partes.slice(0, -1).join(", ")} e ${partes[partes.length - 1]}` : partes[0] || "";
+  };
   const cargoNoMes = (p, aaaamm) => { const f = (p.tr || []).find(([a, b]) => aaaamm >= a && aaaamm <= b); return f ? f[2] : null; };
   const nomeRel = (id) => { const q = S.porId.get(id); return !q ? "" : q.k === "g" ? `${nomeCargoG(q.tp, q.fem)} ${deUF(q.uf)}` : q.g.toLowerCase(); };
   function mediana(xs) {
@@ -2189,7 +2205,8 @@
         if (lim) estat.push(estatistica("Do limite", `${num((g.det.total / lim) * 100, 0)}%`, `usou ${reais(g.det.total)} de ${reais(lim)} ${nomePeriodo(k, false)}`));
         const vms = Object.entries(c.verba_mes || {});
         const vm = vms.length && vms.every(([, v]) => Math.abs(v - vms[0][1]) < 1) ? reais(vms[0][1]) : vms.map(([a, v]) => `${reais(v)} em ${a}`).join(" e ");
-        notas.push(`${c.verba_nome ? `${c.verba_nome}. ` : ""}${vm ? `Cada ${cargoCurto(p)} pode gastar até ${vm} por mês. ` : ""}${c.verba_regra || ""}`.trim());
+        const vig = vigenciasVerba(c); // limite que mudou no meio do ano: cada valor com o período
+        notas.push(`${c.verba_nome ? `${c.verba_nome}. ` : ""}${vig ? `Cada ${cargoCurto(p)} pode gastar até ${textoVigenciasVerba(vig, { porMes: true })}. ` : vm ? `Cada ${cargoCurto(p)} pode gastar até ${vm} por mês. ` : ""}${c.verba_regra || ""}`.trim());
         const sobra = sobraVerba(p, k);
         if (sobra.length) notas.push(sobra.map(([a, v]) => `Em ${a}, sobraram ${reais(v)} da verba de ${p.n}, que voltaram para a ${nomeCasa(p)}.`).join(" "));
         notas.push(...(c.verba_notas || []));
@@ -2753,7 +2770,7 @@
       // numa linha à parte: o custo do mandato (salário + verba) e a equipe
       h("div", { class: "estatisticas" },
         C.n ? estatistica("Custo típico de um vereador", reais(C.tm), "por mês em 2025: salário + verba do gabinete (mediana)") : null,
-        C.n && C.cm ? estatistica("Verba do gabinete usada", reais(C.cm), `por mês em 2025 (mediana)${(cam.verba_mes || {})["2025"] ? `, de até ${reais(cam.verba_mes["2025"])}` : ""}`) : null,
+        C.n && C.cm ? estatistica("Verba do gabinete usada", reais(C.cm), `por mês em 2025 (mediana)${vigenciasVerba(cam, 2025) ? `, de até ${textoVigenciasVerba(vigenciasVerba(cam, 2025), { ano: 2025 })}` : (cam.verba_mes || {})["2025"] ? `, de até ${reais(cam.verba_mes["2025"])}` : ""}`) : null,
         C.n && C.em ? estatistica("Equipe de um gabinete", reais(C.em), `por mês em 2025 (mediana), à parte: vai para os assessores`) : null),
       (cam.notas || []).map((n) => h("p", { class: "nota" }, n)),
       h("h2", { class: "h3" }, `Os ${agora.length} vereadores no cargo, um a um`),

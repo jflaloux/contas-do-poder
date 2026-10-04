@@ -84,6 +84,17 @@ const simularReservas = (chaves, comRecife) => (caminho) => {
 const FONTES_SIT = (lerDados("situacao.json") || { fontes: [] }).fontes || [];
 const reEsc = (t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const simularRodada = (rodada) => (caminho) => { if (caminho !== "/dados/situacao.json") return null; const s = lerDados("situacao.json"); s.rodada = rodada; return JSON.stringify(s); };
+// Limite da verba do gabinete por vigência (camaras.json, meta.cidades[cod].verba_vigencia = [[desde AAAAMM, valor], ...]): só quando o limite muda no meio de
+// um ano o texto diz cada valor com o período; sem o campo, ou com mudança só na virada do ano, fica o texto por ano de sempre. Os dados são simulados (São Paulo)
+const simularVerba = (verbaMes, vigencia) => (caminho) => {
+  if (caminho !== "/dados/indice/camaras.json" && caminho !== "/dados/camaras.json") return null;
+  const d = lerDados("camaras.json"), c = d.meta.cidades["3550308"];
+  c.verba_mes = verbaMes; if (vigencia) c.verba_vigencia = vigencia; else delete c.verba_vigencia;
+  return JSON.stringify(d);
+};
+const VER_SP = Object.keys(ENDERECOS).filter((k) => k.startsWith("ver-3550308-")).sort()[0];
+const VERBA_ANOS = { 2025: 34706.25, 2026: 36018.75 };
+const VERBA_TEXTO_ANOS = [/Cada vereador pode gastar até R\$\s34\.706 em 2025 e R\$\s36\.019 em 2026 por mês\./];
 // Valor de governador, vice ou secretário cuja origem é "imprensa" (governadores.json): a fonte aparece como notícia, com o nome do veículo e a norma
 // que ela cita ("não foi localizada"); se o link é de órgão público (.gov.br), não é notícia e o texto da fonte fica como está. O teste simula os dados
 // para não depender de o `dados` ainda ter ou não um caso assim.
@@ -325,6 +336,20 @@ const PAGINAS = [
   { nome: "governador-fonte-imprensa-do-governador", url: "/governador/sp",
     simular: simularImprensa((es) => { const e = es.find((x) => x.uf === "SP"); e.v = [e.v[0], e.v[1], "imprensa", "Lei nº 1.234, de 05/03/2020", "https://jornal.exemplo.com.br/lei"]; }),
     pagina: [/De onde vem o valor: Só pela imprensa/, /notícia \(jornal\.exemplo\.com\.br\); a norma, Lei nº 1\.234\/2020, não foi localizada\./, /Ver\sa\snotícia/] },
+  // verba por vigência: sem o campo e com mudança só na virada do ano o texto não muda; com mudança em setembro, cada valor com o período
+  { nome: "verba-sem-vigencia-vereador", url: VER_SP ? `/${ENDERECOS[VER_SP]}` : null, simular: simularVerba(VERBA_ANOS, null), pagina: VERBA_TEXTO_ANOS, semPagina: [/desde jan\/20/, /por mês de jan a/] },
+  { nome: "verba-sem-vigencia-cidade", url: "/cidade/sao-paulo-sp", simular: simularVerba(VERBA_ANOS, null), pagina: [/por mês em 2025 \(mediana\), de até R\$\s34\.706(?! de| e)/], semPagina: [/desde jan\/20/] },
+  { nome: "verba-vigencia-na-virada-do-ano", url: VER_SP ? `/${ENDERECOS[VER_SP]}` : null, simular: simularVerba(VERBA_ANOS, [[202501, 34706.25], [202601, 36018.75]]), pagina: VERBA_TEXTO_ANOS, semPagina: [/desde jan\/20/, /por mês de jan a/] },
+  { nome: "verba-vigencia-na-virada-do-ano-cidade", url: "/cidade/sao-paulo-sp", simular: simularVerba(VERBA_ANOS, [[202501, 34706.25], [202601, 36018.75]]), pagina: [/por mês em 2025 \(mediana\), de até R\$\s34\.706(?! de| e)/], semPagina: [/desde jan\/20/] },
+  { nome: "verba-vigencia-em-setembro", url: VER_SP ? `/${ENDERECOS[VER_SP]}` : null, simular: simularVerba({ 2025: 120, 2026: 120 }, [[202501, 100], [202509, 120]]),
+    pagina: [/Cada vereador pode gastar até R\$\s100 por mês de jan a ago\/2025 e R\$\s120 desde set\/2025\./], semPagina: [/R\$\s120 em 2025/, /por mês\. por mês/] },
+  { nome: "verba-vigencia-em-setembro-cidade", url: "/cidade/sao-paulo-sp", simular: simularVerba({ 2025: 120, 2026: 120 }, [[202501, 100], [202509, 120]]),
+    pagina: [/por mês em 2025 \(mediana\), de até R\$\s100 de jan a ago\/2025 e R\$\s120 desde set\/2025/] },
+  { nome: "verba-vigencia-tres-valores", url: VER_SP ? `/${ENDERECOS[VER_SP]}` : null, simular: simularVerba({ 2025: 120, 2026: 130 }, [[202501, 100], [202509, 120], [202601, 130]]),
+    pagina: [/Cada vereador pode gastar até R\$\s100 por mês de jan a ago\/2025, R\$\s120 de set a dez\/2025 e R\$\s130 desde jan\/2026\./] },
+  // mudança em 2026 (e não em 2025): o texto de 2025 na página da cidade não leva o período
+  { nome: "verba-vigencia-so-em-2026-cidade", url: "/cidade/sao-paulo-sp", simular: simularVerba({ 2025: 100, 2026: 120 }, [[202501, 100], [202603, 120]]),
+    pagina: [/por mês em 2025 \(mediana\), de até R\$\s100(?! de| e)/], semPagina: [/de jan a/] },
   { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },
