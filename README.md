@@ -345,6 +345,29 @@ ministro fica só na página de ministro (sai da página de deputado/senador, em
 ministro + parlamentar = tudo junto. Cada opção mostra o custo dele por mês, e o quadro "Como a conta fecha" põe
 as três visões lado a lado em totais do período, com os meses de cada cargo.
 
+## Bens declarados na candidatura (TSE)
+
+Robô `coleta/bens.py` (`python3 coletar.py bens`, na rodada do GitHub): os bens que quem está no cargo declarou à
+Justiça Eleitoral ao se candidatar, pelo [Portal de Dados Abertos do TSE](https://dadosabertos.tse.jus.br/dataset/candidatos-2022)
+(arquivos `bem_candidato_<ano>` e `consulta_cand_<ano>`, licença CC BY, com o crédito, como nas fotos). Eleições
+ordinárias de 2022 (deputados federais e estaduais, senadores eleitos em 2022, governadores e vices), 2018 (senadores
+eleitos em 2018: o ano e o papel, titular ou suplente, vêm do mandato no Senado) e 2024 (prefeitos, vices e vereadores
+das capitais e das cidades do interior que o site mostra com os nomes: CE, PB, ES e PE). Nada de 2026.
+
+- **Ligação com a pessoa**: o mesmo critério das fotos do TSE: o nome civil exatamente igual ao de um único candidato
+  do mesmo cargo e lugar (UF; em 2024, também a cidade) ou, sem ele, o nome de urna exatamente igual ao de um único
+  candidato. Nos governadores, o nome civil vem do arquivo curado (`civil` ou `folha_nome`). Homônimo ou dúvida fica sem.
+- **O que se guarda** (`dados/bens/declaracoes.csv`): o ano, o total, o número de itens e o total por tipo (imóveis,
+  veículos, aplicações e depósitos, participações em empresas, outros), pelo código do tipo de bem que o TSE usa; o
+  número da candidatura (SQ) e o lugar, para o link da página do candidato no DivulgaCandContas. Nunca a descrição de
+  cada bem (endereços, contas, nomes de terceiros) nem o CPF: a coluna de CPF do arquivo de candidatos não é lida. Os
+  únicos números de 11 dígitos no arquivo são SQs de candidatura. Quem foi ligado a uma candidatura sem bens no arquivo do TSE entra
+  com 0 itens. `dados/bens/resumo.json`: quantos no cargo, com declaração e sem, por grupo e motivo.
+- **No site, só a partir de 26/10/2026** (regra eleitoral): a etapa `site` só grava `site/dados/bens.json` (quem tem
+  página) e `site/dados/bens-interior/<uf>.json` (pela cidade e pelo nome) a partir dessa data. Neutro: sem ranking,
+  sem comparação entre pessoas e sem "evolução" entre eleições; autodeclarado na candidatura, em geral pelo valor de
+  aquisição, não de mercado.
+
 ## Deputados federais e senadores: presença e projetos
 
 Robô `coleta/atividade.py` (`python3 coletar.py atividade`, na rodada do GitHub), só com os dados abertos oficiais da

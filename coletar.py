@@ -23,6 +23,8 @@ Uso:
                                        # trimestre novo
     python3 coletar.py padronizar      # junta tudo na base unificada
     python3 coletar.py fotos           # baixa as fotos que faltam para site/fotos/
+    python3 coletar.py bens            # bens declarados ao TSE na candidatura por quem está no cargo (dados/bens/); o
+                                       # arquivo do site sai na etapa "site", e só a partir de 26/10/2026
     python3 coletar.py conferir        # compara nossos números com os sites oficiais
     python3 coletar.py site            # gera site/dados/dados.json
     python3 coletar.py situacao        # relatório de cada fonte: último mês no site, última coleta certa, falhas
@@ -35,7 +37,7 @@ Uso:
                                        # (dados/judiciario/, site/dados/judiciario.json)
     python3 coletar.py tudo            # camara + senado + executivo + atividade + municipios + vereadores + prefeituras + governadores + assembleias + tce
                                        # + judiciario + indice
-                                       # + renda + padronizar + fotos + site + situacao
+                                       # + renda + padronizar + fotos + bens + site + situacao
     python3 coletar.py montar          # só refaz os arquivos do site das capitais, Assembleias e governadores (sem coletar),
                                        # os endereços e o relatório de situação
     python3 coletar.py brasil          # a rodada do Brasil (rotina/semana-brasil.sh): só as fontes que o exterior não
@@ -50,10 +52,16 @@ Uso:
 import argparse
 import sys
 
-from coleta import (assembleias, atividade, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
+from coleta import (assembleias, atividade, bens, camara, conferir, enderecos, executivo, fotos, governadores, indice, municipios, onde, padronizar, prefeituras,
                     judiciario, renda, senado, site, situacao, tce, vereadores)
 from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
 from coleta.util import TempoEsgotado, definir_prazo, log
+
+def _site():
+    resultado = site.executar()
+    bens.exportar_site()  # os bens declarados ao TSE só vão para o site a partir de 26/10/2026 (regra eleitoral)
+    return resultado
+
 
 ETAPAS = {
     "camara": camara.coletar,
@@ -74,7 +82,8 @@ ETAPAS = {
     "padronizar": padronizar.executar,
     "fotos": fotos.coletar,
     "conferir": conferir.executar,
-    "site": site.executar,
+    "bens": bens.coletar,
+    "site": _site,
     "situacao": situacao.executar,
 }
 # etapas de uma fonte só (federais): a tentativa e o resultado vão para dados/processados/coletas_<lugar>.json
@@ -116,7 +125,7 @@ def main():
         sys.exit(5)
     definir_prazo(args.tempo_max)
     etapas = (["camara", "senado", "executivo", "atividade", "municipios", "vereadores", "prefeituras", "governadores", "assembleias", "tce", "judiciario", "indice", "renda", "padronizar",
-               "fotos", "site", "situacao"]
+               "fotos", "bens", "site", "situacao"]
               if args.etapa == "tudo" else [args.etapa])
     try:
         if args.etapa in ("brasil", "montar"):
