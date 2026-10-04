@@ -186,7 +186,8 @@ def coletar():
                 lan = lan[~lan.orcamento.isin(feitos)]
             novos = pd.DataFrame([x for _, s in res for x in s])
             lan = pd.concat([lan, novos]) if len(novos) else lan
-            if not len(lan) or gravar_csv(lan.sort_values(["deputado", "orcamento", "data"]), arq_l):
+            ordem = [c for c in ("deputado", "orcamento", "data") if c in lan.columns]
+            if gravar_csv(lan.sort_values(ordem) if ordem else lan, arq_l):  # o vazio também passa pela comparação
                 for b in feitos:  # os orçamentos só contam como lidos se os lançamentos foram gravados
                     lido[b] = hoje
         gravar_csv(orc.assign(lido_em=orc.orcamento.map(lambda b: lido.get(b, ""))).sort_values(["deputado", "mes"]), arq_o)

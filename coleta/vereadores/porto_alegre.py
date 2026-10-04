@@ -31,7 +31,7 @@ from datetime import date, timedelta
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, gravar_varios, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 4314902
@@ -205,9 +205,11 @@ def qbm():
         tot = trocar(tot, pd.DataFrame(t_l))
         PASTA.mkdir(parents=True, exist_ok=True)
         ordem = ["ano", "mes", "setor_id"]
-        if not (gravar_csv(gab.sort_values(ordem), ARQ_GAB) and gravar_csv(lanc.sort_values(ordem + ["data", "id"]), ARQ_LANC)
-                and gravar_csv(tot.sort_values(ordem), ARQ_TOT)):
-            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
+        # os lançamentos, os totais e os gabinetes do mês (o controle: os meses em camara_qbm_gabinetes.csv não são
+        # baixados de novo), juntos e o controle por último: recusados, nenhum muda e o mês é lido de novo
+        if not gravar_varios([(lanc.sort_values(ordem + ["data", "id"]), ARQ_LANC), (tot.sort_values(ordem), ARQ_TOT),
+                              (gab.sort_values(ordem), ARQ_GAB)]):
+            break
         log(f"  Porto Alegre: QBM de {mes} ({len(setores)} gabinetes, {len(l_l)} lançamentos)")
 
 

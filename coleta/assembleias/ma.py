@@ -28,7 +28,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, gravar_varios, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -234,8 +234,8 @@ def coletar():
             if len(ids) > antes:
                 par = pd.DataFrame([{"id": i, "nome": n, "visto_em": hoje} for n, i in ids.items()])
                 gravar_csv(par.sort_values(["id", "nome"]), arq_p)
-            if gravar_csv(lis.sort_values(["ano", "mes", "nome"]), arq_l):  # a competência só conta como lida se a lista foi gravada
-                gravar_csv(comp.sort_values(["ano", "mes"]), arq_c)
+            # a lista e a competência lida (o controle, por último) juntas: recusada, nenhuma muda
+            gravar_varios([(lis.sort_values(["ano", "mes", "nome"]), arq_l), (comp.sort_values(["ano", "mes"]), arq_c)])
     finally:
         log(f"  Alema: consulta de {feitos} competências feita agora; {len(ids)} parlamentares conhecidos")
     # 2. a página de cada deputado no mês: quem ainda não foi lido, e os 4 últimos meses de novo uma vez por dia
@@ -259,10 +259,12 @@ def coletar():
         novos_i = pd.DataFrame([{"ano": am // 100, "mes": am % 100, "id": n, "inciso": c, "descricao": ds, "valor": v}
                                 for am, n, d in res for c, ds, v in d[1]], columns=["ano", "mes", "id", "inciso", "descricao", "valor"])
         fora = lambda df: df[[(int(a) * 100 + int(m), int(i)) not in chave for a, m, i in zip(df.ano, df.mes, df.id)]] if len(df) else df
-        cme = pd.concat([fora(cme), novos_m])
-        cin = pd.concat([fora(cin), novos_i]) if len(novos_i) else fora(cin)
-        if gravar_csv(cme.sort_values(["ano", "mes", "id"]), arq_m):
-            gravar_csv(cin.sort_values(["ano", "mes", "id", "inciso"]), arq_i)
+        cme_n = pd.concat([fora(cme), novos_m])
+        cin_n = pd.concat([fora(cin), novos_i]) if len(novos_i) else fora(cin)
+        # os incisos e os meses lidos (ceap_meses.csv, com o "lido_em": o controle, por último) juntos: recusados,
+        # nenhum muda e os meses são pedidos de novo
+        if gravar_varios([(cin_n.sort_values(["ano", "mes", "id", "inciso"]), arq_i), (cme_n.sort_values(["ano", "mes", "id"]), arq_m)]):
+            cme, cin = cme_n, cin_n
     try:
         with ThreadPoolExecutor(SIMULTANEOS) as ex:
             for k in range(0, len(pedir), SIMULTANEOS * 10):  # em lotes, gravando depois de cada lote

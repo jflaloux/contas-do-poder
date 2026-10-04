@@ -136,8 +136,10 @@ def coletar():
                 notas = notas[[k not in chave for k in zip(notas.ano, notas.mes, notas.id)]]
             novos = pd.DataFrame([x for _, _, s in res for x in s])
             notas = pd.concat([notas, novos]) if len(novos) else notas
-            # os pedidos só contam como feitos se as notas foram gravadas (util.gravar_com pode recusar)
-            if not len(notas) or gravar_csv(notas.sort_values(["ano", "mes", "id", "tipo", "data"]), arq_v):
+            # os pedidos só contam como feitos se as notas foram gravadas (util.gravar_com pode recusar; o resultado vazio
+            # também passa pela comparação)
+            ordem = [c for c in ("ano", "mes", "id", "tipo", "data") if c in notas.columns]
+            if gravar_csv(notas.sort_values(ordem) if ordem else notas, arq_v):
                 for am, i, _ in res:
                     feitos[(am // 100, am % 100, i)] = hoje
                 gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "id": i, "pedido_em": p} for (a, m, i), p in sorted(feitos.items())]), arq_m)

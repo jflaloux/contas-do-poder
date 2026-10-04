@@ -24,7 +24,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, gravar_varios, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -197,13 +197,17 @@ def _gravar(resultados, ids, res, desp, par, hoje):
         if novos_r:
             nr = pd.DataFrame(novos_r)
             chave = set(zip(nr.ano, nr.mes, nr.id))
-            res = pd.concat([res[[k not in chave for k in zip(res.ano, res.mes, res.id)]], nr]) if len(res) else nr
-            _csv(res.sort_values(["ano", "mes", "id"]), arq_r)
+            res_n = pd.concat([res[[k not in chave for k in zip(res.ano, res.mes, res.id)]], nr]) if len(res) else nr
             nd = pd.DataFrame(novos_d, columns=["ano", "mes", "id", "lote", "documento", "emissao", "verba", "detalhamento", "beneficiario", "cnpj_cpf",
                                                "valor_bruto", "glosa", "valor"])
-            desp = desp[[k not in chave for k in zip(desp.ano, desp.mes, desp.id)]] if len(desp) else desp
-            desp = pd.concat([desp, nd]) if len(desp) and len(nd) else (nd if not len(desp) else desp)
-            _csv(desp.sort_values(["ano", "mes", "id", "emissao", "documento"]), arq_d)
+            desp_n = desp[[k not in chave for k in zip(desp.ano, desp.mes, desp.id)]] if len(desp) else desp
+            desp_n = pd.concat([desp_n, nd]) if len(desp_n) and len(nd) else (nd if not len(desp_n) else desp_n)
+            # as despesas e o resumo (que diz o que já foi lido) juntos, o resumo por último: recusado, nenhum muda e os
+            # meses são pedidos de novo na próxima rodada
+            if not gravar_varios([(desp_n.sort_values(["ano", "mes", "id", "emissao", "documento"]), arq_d),
+                                  (res_n.sort_values(["ano", "mes", "id"]), arq_r)]):
+                return res, desp, par
+            res, desp = res_n, desp_n
         for i, (nome, civil) in nomes.items():
             antes = par[par.id == i]
             civil = civil or (antes.nome_civil.iloc[0] if len(antes) else "")

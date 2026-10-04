@@ -31,7 +31,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, gravar_varios, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -408,10 +408,14 @@ def _coletar_verba():
         i_ = pd.concat([estado["itens"], pd.DataFrame(novos_i)], ignore_index=True) if novos_i else estado["itens"]
         novos_i.clear()
         # se a ALE-RR trocou o arquivo de um deputado e mês, vale o último lido
-        m_ = _gravar(m_, arq_m, ["ano", "mes", "deputado"], ["ano", "mes", "deputado"])
+        m_ = m_.drop_duplicates(["ano", "mes", "deputado"], keep="last")
         i_ = i_[i_.arquivo.map(_id).isin({_id(x) for x in m_.arquivo})]
-        gravar_csv(i_.sort_values(["ano", "mes", "deputado", "item"]), arq_i)
-        estado.update(meses=m_, itens=i_, gravados=len(novos_m))
+        # os itens e os meses lidos (verba_meses.csv, o controle, por último) juntos: recusados, nenhum muda e os
+        # arquivos são lidos de novo na próxima rodada
+        if gravar_varios([(i_.sort_values(["ano", "mes", "deputado", "item"]), arq_i),
+                          (m_.sort_values(["ano", "mes", "deputado"]), arq_m)]):
+            estado.update(meses=m_, itens=i_)
+        estado.update(gravados=len(novos_m))
     try:
         for chave, (caminho, nome, link, ext) in por_chave.items():
             if len(novos_m) - estado["gravados"] >= 10:

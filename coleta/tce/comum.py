@@ -118,12 +118,15 @@ def gravar(uf, linhas, blocos):
     novas = pd.DataFrame(linhas, columns=COLUNAS)
     novas = novas[[t for t in tem(novas)]] if len(novas) else novas
     juntas = [x.astype({c: float for c in ["valor_bruto"] + PARTES}) for x in (velhas, novas) if len(x)]
-    if juntas:
-        df = pd.concat(juntas, ignore_index=True).astype({"cod_ibge": int, "ano_mes": int})
-        gravados = [_escrever(g, pasta(uf) / f"{ano}.csv", COLUNAS, ["cod_ibge", "orgao", "ano_mes", "papel", "nome"])
-                    for ano, g in df.groupby(df.ano_mes // 100)]
-        if not all(gravados):  # recusado por perda de cobertura: os blocos não contam como lidos (são lidos de novo)
-            return 0, 0
+    df = (pd.concat(juntas, ignore_index=True).astype({"cod_ibge": int, "ano_mes": int}) if juntas
+          else pd.DataFrame(columns=COLUNAS).astype({"cod_ibge": int, "ano_mes": int}))
+    # cada ano que já tinha arquivo ou que tem linhas agora, inclusive o que ficaria vazio (o vazio também passa pela
+    # comparação de util.gravar_com)
+    anos = {int(a) for a in df.ano_mes // 100} | {int(a.stem) for a in pasta(uf).glob("[0-9][0-9][0-9][0-9].csv")}
+    gravados = [_escrever(df[df.ano_mes // 100 == ano], pasta(uf) / f"{ano}.csv", COLUNAS,
+                          ["cod_ibge", "orgao", "ano_mes", "papel", "nome"]) for ano in sorted(anos)]
+    if not all(gravados):  # recusado por perda de cobertura: os blocos não contam como lidos (são lidos de novo)
+        return 0, 0
     fontes = ler_fontes(uf)
     if len(fontes):
         fontes = fontes[[not t for t in tem(fontes)]]

@@ -102,6 +102,10 @@ def executar():
             _viagens(tmp, caso)
             _tce_pe(tmp, caso)
             _tce_es(tmp, caso)
+            _conteudo(tmp, caso)
+            _juntos(tmp, caso)
+            _tce_vazio(tmp, caso)
+            _formatos(tmp, caso)
         finally:
             util._arquivo_eventos, util._eventos = arquivo_eventos, eventos
             onde._arquivo, onde.LUGAR = arquivo_coletas, lugar
@@ -182,6 +186,87 @@ def _tce_es(tmp, caso):
         except RuntimeError:
             recusou = True
         caso(f"TCE-ES: vínculo {nome}: recusa e o extrato anterior fica", (recusou, arq.read_text() == antes), (True, True))
+
+
+def _conteudo(tmp, caso):
+    """O conteúdo, não só a contagem: valor que vira zero ou vazio, série esvaziada, cidade que some de dentro de "m"."""
+    arq = tmp / "conteudo.csv"
+    base = _folha([202601, 202602], 30)
+    util.gravar_csv(base, arq)
+    caso("valores: as mesmas pessoas e meses, com valor zero: recusa", util.gravar_csv(base.assign(valor=0.0), arq), False)
+    caso("valores: as mesmas pessoas e meses, com valor vazio: recusa", util.gravar_csv(base.assign(valor=""), arq), False)
+    caso("valores: um valor corrigido para zero (de 60): grava",
+         util.gravar_csv(base.assign(valor=[0.0] + [1000.0] * 59), arq), True)
+    js = tmp / "dados.json"
+    p = [{"id": f"d{i}", "k": "d", "t": [[202601, 10.0]], "per": {"2026": {"g": 1}}} for i in range(40)]
+    util.gravar_json(js, {"meta": {}, "p": p}, grupo="k")
+    caso("JSON: séries \"t\" esvaziadas, as mesmas pessoas: recusa",
+         util.gravar_json(js, {"meta": {}, "p": [{**x, "t": []} for x in p]}, grupo="k"), False)
+    caso("JSON: \"per\" esvaziado, as mesmas pessoas: recusa",
+         util.gravar_json(js, {"meta": {}, "p": [{**x, "per": {}} for x in p]}, grupo="k"), False)
+    ce = tmp / "ce.json"
+    m = {str(2300000 + i): {"ver": [["A", 1]], "pre": [["B", 2]]} for i in range(184)}
+    util.gravar_json(ce, {"meta": {}, "m": m})
+    caso("JSON: uma cidade some de dentro de \"m\": recusa",
+         util.gravar_json(ce, {"meta": {}, "m": {k: v for k, v in m.items() if k != "2300005"}}), False)
+    v = tmp / "vereadores_uf.json"
+    cidades = {str(1200000 + i): [["N", "P", "F"]] * 9 for i in range(50)}
+    util.gravar_json(v, cidades)
+    caso("JSON: de 50 para 51 cidades (chaves com listas): grava",
+         util.gravar_json(v, {**cidades, "1200999": [["N", "P", "F"]] * 9}), True)
+
+
+def _juntos(tmp, caso):
+    """Dados e controle juntos (gravar_varios): se os detalhes são recusados, o controle não avança."""
+    det, ctl = tmp / "despesas.csv", tmp / "resumo.csv"
+    util.gravar_varios([(_folha([202601, 202602], 30), det), (pd.DataFrame({"ano": [2026, 2026], "mes": [1, 2]}), ctl)])
+    antes = ctl.read_text()
+    ok = util.gravar_varios([(_folha([202601], 30), det), (pd.DataFrame({"ano": [2026] * 3, "mes": [1, 2, 3]}), ctl)])
+    caso("juntos: detalhes recusados, o controle (gravado por último) não muda", (ok, ctl.read_text() == antes), (False, True))
+
+
+def _tce_vazio(tmp, caso):
+    """TCE: blocos lidos de novo que voltam vazios passam pela comparação, e os blocos não contam como lidos."""
+    from .tce import comum as tc
+    pasta = tc.PASTA
+    tc.PASTA = tmp / "tce_vazio"
+    try:
+        linhas = [{"cod_ibge": 2900000 + c, "municipio": f"C{c}", "orgao": "camara", "ano_mes": 202601, "nome": f"V{c}-{i}",
+                   "cargo": "VEREADOR", "papel": "vereador", "valor_bruto": 1000.0} for c in range(10) for i in range(9)]
+        blocos = [{"cod_ibge": 2900000 + c, "orgao": "camara", "ano_mes": 202601, "linhas_fonte": 9, "pessoas": 9, "url": "x",
+                   "lido_em": "2026-10-01T00:00"} for c in range(10)]
+        tc.gravar("BA", linhas, blocos)
+        fontes_antes = tc.pasta("BA").joinpath("fontes.csv").read_text()
+        r = tc.gravar("BA", [], [{**b, "lido_em": "2026-10-04T00:00", "linhas_fonte": 0, "pessoas": 0} for b in blocos])
+        caso("TCE: os blocos voltam vazios: recusa e as fontes (o controle) não mudam",
+             (r, tc.pasta("BA").joinpath("fontes.csv").read_text() == fontes_antes), ((0, 0), True))
+    finally:
+        tc.PASTA = pasta
+
+
+def _formatos(tmp, caso):
+    """Arquivo corrompido, mês em outro formato e o grupo do dados.json para a situação."""
+    import gzip
+    a = tmp / "invalido.json"
+    a.write_text("{quebrado")
+    caso("JSON: o anterior e o novo inválidos: recusa", util.gravar_texto(a, "{também quebrado", tipo="json"), False)
+    caso("JSON sem anterior e inválido: recusa", util.gravar_texto(tmp / "novo_invalido.json", "{x", tipo="json"), False)
+    gz = tmp / "base.csv.gz"
+    gz.write_bytes(b"\x1f\x8b isto nao e gzip")
+    caso("gzip anterior corrompido: não derruba e grava", util.gravar_csv(_folha([202601], 30), gz), True)
+    gz.write_bytes(gzip.compress(b"ano,mes,nome\n2026,1,A\n")[:15])
+    util.gravar_csv(_folha([202601], 30), tmp / "bom.csv.gz")
+    ruim = tmp / "bom.csv.gz"
+    caso("gzip novo corrompido: recusa",
+         util.gravar_com(ruim, lambda t: Path(t).write_bytes(b"\x1f\x8b corrompido"), tipo="csv"), False)
+    m = tmp / "mes.csv"
+    util.gravar_csv(pd.DataFrame({"ano": [2026] * 30, "mes": ["08"] * 30, "nome": [f"N{i}" for i in range(30)], "valor": 1.0}), m)
+    caso("mês \"08\" vira \"2026-08\" na coluna do mês: grava",
+         util.gravar_csv(pd.DataFrame({"ano": [2026] * 30, "mes": ["2026-08"] * 30, "nome": [f"N{i}" for i in range(30)],
+                                       "valor": 1.0}), m), True)
+    from . import situacao
+    fontes = situacao._fontes_da_recusa("site/dados/dados.json", {"perdas": [["p/k=s", 105, 0, "itens"]]})
+    caso("dados.json pelo tipo (grupo \"k\"): a recusa vai para o Senado na situação", fontes, ["federal/senado"])
 
 
 if __name__ == "__main__":
