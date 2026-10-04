@@ -401,8 +401,10 @@ def montar(tipos):
     atuais = gab[gab.fim == ""].groupby("gabinete").codigo.last().to_dict()
     cargos = pd.DataFrame([{"codigo": atuais[g], "cargo": _cargo(c), "pessoas": int(n)} for g, c, n in zip(eq.gabinete, eq.cargo, eq.pessoas) if g in atuais])
     cfg = dict(CFG, ultimo_mes=ate, equipe_em=eq.data.iloc[0] if len(eq) else "")
-    creditos = anual[anual.credito > 0]
-    cfg["verba_mes"] = {str(int(a)): round(float(g.credito.max()) / sum(1 for x in comum.meses(cfg["inicio"], ate) if x[0] == a), 2) for a, g in creditos.groupby("ano")}
+    # a verba de cada mês: o crédito mensal mais comum do ano na fonte (não a média do ano, que cai quando o último mês
+    # ainda está creditado só em parte: em set/2026 a fonte tinha metade do crédito, e a média dava R$ 34.017,71)
+    creditos = verba[(verba.movimento == "credito") & (verba.valor > 0) & (verba.ano * 100 + verba.mes <= ate)]
+    cfg["verba_mes"] = {str(int(a)): round(float(g.valor.round(2).mode().max()), 2) for a, g in creditos.groupby("ano")}
     ver2 = pd.DataFrame({"codigo": ver.codigo, "nome": ver.nome, "nome_civil": ver.nome_civil.where(ver.nome_civil != "", ver.nome_cmsp),
                          "partido": ver.partido, "genero": ver.genero, "eleito": ver.eleito, "pagina": ver.pagina})
     mand = pd.DataFrame({"codigo": gab.codigo, "inicio": gab.inicio, "fim": gab.fim, "gabinete": gab.gabinete})
