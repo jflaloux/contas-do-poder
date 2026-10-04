@@ -683,7 +683,7 @@
    ],
    "robos_exterior": [
     0.5,
-    "O robots.txt não permite robôs em /pte; abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
+    "O robots.txt pede que robôs não leiam /pte (é um pedido, não um bloqueio: a consulta abre normalmente); abre de fora do Brasil (conferido em 30/09/2026 de um servidor fora do Brasil)"
    ]
   },
   "RJ": {
