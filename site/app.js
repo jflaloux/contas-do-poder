@@ -3175,7 +3175,7 @@
           h("li", null, e.mf.nota),
           ls.some((x) => x[10].includes("s")) ? h("li", null, "Quem deixa o cargo recebe os acertos (férias não tiradas, às vezes de vários anos, e o 13º proporcional) no mês da saída ou nos meses logo antes dela. Esses meses ficam fora da média.") : null,
           ls.some((x) => x[10].includes("a")) ? h("li", null, "Parte do 13º é paga adiantada no meio do ano, e a folha de dezembro traz o 13º inteiro e desconta o adiantamento. Aqui, dezembro já aparece sem o adiantamento, para o 13º não contar duas vezes.") : null,
-          h("li", null, "Fonte: ", h("a", { href: e.mf.u, target: "_blank", rel: "noopener" }, `folha de pagamento ${deUF(e.uf)}`), `, mês a mês desde ${fmtMes(e.m[0][0])}. O robô confere toda semana.`)));
+          h("li", null, "Fonte: ", h("a", { href: e.mf.u, target: "_blank", rel: "noopener" }, `folha de pagamento ${deUF(e.uf)}`), `, mês a mês desde ${fmtMes(e.m[0][0])}. O robô confere a cada rodada de atualização.`)));
       graficoColunas(caixa, pontos, [{ k: "s", cls: "seg-ganha" }, { k: "x", cls: "seg-extra" }],
         (p) => [...p.xs.map((x) => h("div", null, h("strong", null, nomeOc(x[2])), `: ${reaisC(x[3])}`, x[10].includes("s") ? " (saída, com os acertos)" : "")),
           ...PARTES_GOV.filter(([k]) => p.xs.some((x) => x[k])).map(([k, n]) => h("div", { class: "pequeno" }, `${n}: ${reaisC(p.xs.reduce((a, x) => a + (x[k] || 0), 0))}`)),
@@ -3254,7 +3254,7 @@
         sec.length ? h("details", { class: "tabela" }, h("summary", null, "Secretários de Estado"), rolagem("Secretários de Estado", h("table", { class: "tabela-gov" }, h("tbody", null, sec.map(linhaHist))))) : null,
         h("p", { class: "nota" }, "\"Desde\" é o mês em que o valor passou a valer. Quando a fonte é só a imprensa, é o mês a que o valor se refere."),
         h("h2", { class: "h3" }, "Dá para conferir na folha de pagamento?"),
-        h("p", { style: "margin:0" }, e.m ? (congeladas()[`folhas/${e.uf}`] ? "Sim, até onde o Estado publicou: a folha traz o nome de cada servidor (veja o mês a mês acima)." : "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê toda semana: veja o mês a mês acima.") : FOLHA_GOV[e.folha.s]),
+        h("p", { style: "margin:0" }, e.m ? (congeladas()[`folhas/${e.uf}`] ? "Sim, até onde o Estado publicou: a folha traz o nome de cada servidor (veja o mês a mês acima)." : "Sim. O Estado publica a folha com o nome de cada servidor, e o robô lê a cada rodada de atualização: veja o mês a mês acima.") : FOLHA_GOV[e.folha.s]),
         linhaCongelada(`folhas/${e.uf}`),
         e.folha.c && !e.m ? h("p", { class: "nota", style: "margin:0" }, `Na folha de ${mesTxt(e.folha.c.mes)}, ${tituloCase(e.folha.c.nome)} aparece com ${reaisC(e.folha.c.bruto)} brutos${Math.abs(e.folha.c.bruto - e.v[0]) > 1 ? " (o valor do mês pode incluir 13º, férias, acertos ou descontos; veja as notas)" : ", o mesmo valor do subsídio"}.`) : null,
         e.folha.u ? h("p", { class: "nota", style: "margin:0" }, h("a", { href: e.folha.u, target: "_blank", rel: "noopener" }, `Folha de pagamento ${deUF(e.uf)}\u00a0↗`)) : null,
@@ -4158,7 +4158,7 @@
         h("li", null, "Linux: ", cmd("sha256sum dados.json")),
         h("li", null, "Mac: ", cmd("shasum -a 256 dados.json")),
         h("li", null, "Windows (PowerShell): ", cmd("Get-FileHash dados.json"))),
-      h("p", { class: "nota" }, "Os arquivos mudam a cada atualização (toda semana). As versões anteriores ficam no histórico do GitHub, com a data de cada mudança."),
+      h("p", { class: "nota" }, "Os arquivos mudam a cada atualização (toda semana, e uma vez por mês para as fontes que só abrem do Brasil). As versões anteriores ficam no histórico do GitHub, com a data de cada mudança."),
       h("h2", { class: "h3" }, "Como refazer tudo do zero"),
       h("p", null, "Os robôs leem de novo as fontes oficiais, e o resultado pode ser comparado com o deste site:"),
       h("pre", { class: "codigo" }, "git clone https://github.com/jflaloux/contas-do-poder\ncd contas-do-poder\npip3 install -r requirements.txt\npython3 coletar.py tudo\nnode publicacao/gerar.mjs"),
@@ -4286,7 +4286,7 @@
         h("li", null, h("strong", null, `${sit.congelada || "Congelada"}: `), "a fonte parou de publicar o que o site mostra; o site fica com o último dado e a coleta tenta de novo a cada três meses."),
         h("li", null, h("strong", null, `${sit.atrasada || "Atrasada"}: `), "os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido."),
         h("li", null, h("strong", null, `${sit.falhou || "A coleta falhou"}: `), "a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.")),
-      h("p", { class: "nota" }, "Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: ",
+      h("p", { class: "nota" }, "Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte que parou de publicar é tentada de novo a cada três meses. Esta lista em JSON, para quem quiser conferir ou reaproveitar: ",
         h("a", { href: "/dados/situacao.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "situacao.json" }) }, "situacao.json"),
         ". Os arquivos de dados e as cópias públicas estão em ", h("a", { href: "/dados-abertos" }, "dados abertos"), "."));
   }
@@ -4459,7 +4459,7 @@
               [["completude", "Completude: o que a fonte mostra"], ["facilidade", "Facilidade: como dá para obter"]].map(([d, titulo]) => h("div", null,
                 h("h4", null, titulo),
                 h("dl", { class: "indice-criterios" }, (b.criterios || []).filter((c) => c.dimensao === d).map((c) => [h("dt", null, c.nome), h("dd", null, c.como_pontua)]))))))),
-          h("p", { class: "nota" }, "Os dados do índice, com todas as notas e provas: ", h("a", { href: "/dados/indice_transparencia.json" }, "indice_transparencia.json"), ". O robô confere as fontes toda semana."))),
+          h("p", { class: "nota" }, "Os dados do índice, com todas as notas e provas: ", h("a", { href: "/dados/indice_transparencia.json" }, "indice_transparencia.json"), ". O robô confere as fontes a cada rodada de atualização."))),
     ];
   }
 

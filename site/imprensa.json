@@ -22,7 +22,7 @@
         {
           "ul": [
             "só dados públicos oficiais, cada número com o link da fonte, e a conta do que é bolso, gasto do mandato e equipe do gabinete explicada em cada página;",
-            "os dados são lidos de novo toda semana. A página [Atualização dos dados](/atualizacao) mostra, fonte por fonte, até que mês vão os números, quando foram lidos pela última vez e o motivo de qualquer atraso;",
+            "os robôs leem os dados de novo: toda semana, as fontes que abrem de fora do Brasil; uma vez por mês, as que só abrem do Brasil; a cada três meses, a fonte que parou de publicar. A página [Atualização dos dados](/atualizacao) mostra, fonte por fonte, até que mês vão os números, quando foram lidos pela última vez e o motivo de qualquer atraso;",
             "as regras para os dados das pessoas (o que se guarda e o que nunca se guarda, como CPF e descontos da folha) e a medição das visitas estão em [Sobre e privacidade](/sobre);",
             "os arquivos de dados, o código e as cópias públicas, verificáveis fora do site, estão em [Dados abertos](/dados-abertos)."
           ]

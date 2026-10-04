@@ -1292,7 +1292,12 @@ Prefeitura, quantos estados têm a folha mês a mês e quais ficam de fora, os e
 `site/` é aberto sem o build. O número de câmaras da seção de vereadores do `app.js` vem do arquivo das cidades. Os textos de `DESCRICAO_ARQ`
 (`/dados-abertos`) que citam contagem usam os dados também. O que não dá para gerar (a razão de cada estado ficar sem folha, o que cada capital publica) fica
 escrito à mão, e o `regras.mjs` falha se os dados mudarem de um jeito que o texto fixo não prevê (por exemplo, outro estado entrar em `interior/`). Assunto novo com
-número no texto: um `<span data-dado>` e uma linha em `VALORES_DADO`, e o teste.
+número no texto: um `<span data-dado>` e uma linha em `VALORES_DADO`, e o teste. A pendência da verba que uma Câmara não deixa ler (`<li id="pendencia-verba">`, "O que ainda falta") também vem dos dados: `verba-fora`, calculado
+pelo `gerar.mjs` com o `verba_fora` de cada cidade em `camaras.json` (hoje Maceió e Recife, 2025 e 2026), e o `<li>` sai do HTML quando nenhuma cidade tem. O teste confere a
+cobertura que existe DE VERDADE (nenhum vereador dessas cidades tem despesa `c` nos anos de fora; e nenhuma cidade com `verba_nome` e sem despesa fica sem a pendência),
+e não o limite legal da verba (`verba_mes`, que existe mesmo sem despesas: a pendência do Recife saiu por engano em 04/10/2026 por isso). A frequência de atualização escrita nos textos
+(`/imprensa`, `/sobre`, `/atualizacao`, `/dados-abertos`, notas das páginas de estado e do índice) segue a de verdade: as fontes que abrem de fora do Brasil, toda semana (GitHub, terça);
+as que só abrem do Brasil, uma vez por mês; a fonte congelada, a cada três meses; na dúvida, "a cada rodada de atualização"
 
 ## Presença e projetos na página do deputado federal e do senador
 

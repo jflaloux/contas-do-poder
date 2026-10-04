@@ -104,8 +104,15 @@ const VALORES_DADO = (() => {
     "n-capitais-prefeituras": extenso(prefeituras.length), "capitais-prefeituras": listaE(prefeituras),
     "n-folha": String(comFolha.length), "sem-folha": listaE(semFolha),
     "interior-cargo-estados": maiuscula1(listaE(ufsCargo.map(emUF))), "interior-cargo-estados-baixo": listaE(ufsCargo.map(emUF)),
+    // a verba que uma Câmara não deixa ler (camaras.json, meta de cada cidade, `verba_fora`: os anos em que a verba fica de fora de todos os vereadores
+    // da cidade, porque a Câmara não publica completa ou a consulta dá erro). Sem nenhuma cidade assim, a pendência some (ver abaixo)
+    "verba-fora": (() => {
+      const fora = Object.values((CAM.meta && CAM.meta.cidades) || {}).filter((c) => (c.verba_fora || []).length).sort((x, y) => x.n.localeCompare(y.n, "pt-BR"));
+      return fora.length ? `Verba das Câmaras (${fora.map((c) => `${c.n}: ${listaE(c.verba_fora)}`).join("; ")}): a Câmara não publica a verba completa ou a consulta dela no site dá erro nesses anos. Para não comparar vereadores com e sem a verba, ela fica de fora de todos eles nos anos indicados (cada página de cidade diz o motivo). O robô tenta de novo a cada rodada de atualização.` : "";
+    })(),
   };
 })();
+if (VALORES_DADO["verba-fora"] === "") MODELO = MODELO.replace(/\s*<li id="pendencia-verba">[\s\S]*?<\/li>/, ""); // nenhuma Câmara com verba de fora: sem a pendência
 MODELO = MODELO.replace(/<span data-dado="([a-z0-9-]+)">([^<]*)<\/span>/g, (todo, chave, reserva) => `<span data-dado="${chave}">${VALORES_DADO[chave] !== undefined ? String(VALORES_DADO[chave]).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : reserva}</span>`);
 const semAcento = (t) => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const slugTxt = (t) => semAcento(t).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
@@ -743,7 +750,7 @@ if (SIT && (SIT.fontes || []).length) {
     + `<li><strong>${esc(sit.congelada || "Congelada")}: </strong>a fonte parou de publicar o que o site mostra; o site fica com o último dado e a coleta tenta de novo a cada três meses.</li>`
     + `<li><strong>${esc(sit.atrasada || "Atrasada")}: </strong>os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido.</li>`
     + `<li><strong>${esc(sit.falhou || "A coleta falhou")}: </strong>a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.</li></ul>`
-    + '<p class="nota">Os robôs leem as fontes toda semana. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
+    + '<p class="nota">Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte que parou de publicar é tentada de novo a cada três meses. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
   const titulo = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
   paginas.push(["atualizacao", pagina("atualizacao", titulo, lide, corpo, { extras: ["/dados/situacao.json"] })]);
 }

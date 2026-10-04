@@ -83,7 +83,8 @@ console.log("\n-- Textos com contagens e coberturas: o que está escrito é o qu
   confere("o texto fixo \"Na Paraíba e no Ceará\" (valor por pessoa) ainda é verdade: só PB e CE em interior/", mesmos(lista("interior"), ["PB", "CE"]), lista("interior").join(","));
   const cargo = lista("interior-cargo"), nomeUF = { ES: "Espírito Santo", PE: "Pernambuco", RJ: "Rio de Janeiro" };
   confere("os estados \"por cargo\" do texto são os de interior-cargo/", cargo.every((u) => (valor("interior-cargo-estados") || "").includes(nomeUF[u] || "?")) && nomes(valor("interior-cargo-estados")).length === cargo.length, `${valor("interior-cargo-estados")} x ${cargo}`);
-  confere("todo <span data-dado> do index.html tem valor calculado no gerar.mjs (nenhum ficou com o valor de reserva sem conferir)", ["n-cidades", "n-vereadores", "n-capitais-camaras", "capitais-camaras", "n-capitais-prefeituras", "capitais-prefeituras", "n-folha", "sem-folha", "interior-cargo-estados", "interior-cargo-estados-baixo"].length >= new Set(spans.map(([c]) => c)).size && spans.every(([c]) => ["n-cidades", "n-vereadores", "n-capitais-camaras", "capitais-camaras", "n-capitais-prefeituras", "capitais-prefeituras", "n-folha", "sem-folha", "interior-cargo-estados", "interior-cargo-estados-baixo"].includes(c)), spans.map(([c]) => c).join(","));
+  const CHAVES = ["n-cidades", "n-vereadores", "n-capitais-camaras", "capitais-camaras", "n-capitais-prefeituras", "capitais-prefeituras", "n-folha", "sem-folha", "interior-cargo-estados", "interior-cargo-estados-baixo", "verba-fora"];
+  confere("todo <span data-dado> do index.html é uma chave que o gerar.mjs calcula (nenhum ficou só com o valor de reserva, sem conferência)", spans.every(([c]) => CHAVES.includes(c)) && CHAVES.every((c) => spans.some(([k]) => k === c) || c === "verba-fora"), spans.map(([c]) => c).join(","));
   // a página "Para a imprensa": pronta no HTML (sem JavaScript), com os links, a licença e o modelo de citação, e sem nome de pessoa nem o usuário do GitHub
   const imprensa = fs.existsSync(path.join(PUBLICAR, "imprensa.html")) ? fs.readFileSync(path.join(PUBLICAR, "imprensa.html"), "utf8") : "";
   const miolo = (/<section class="bloco" id="imprensa"[\s\S]*?<\/section>/.exec(imprensa) || [""])[0]; // só a página (o resto é o modelo comum, com o rodapé e as fontes)
@@ -93,7 +94,19 @@ console.log("\n-- Textos com contagens e coberturas: o que está escrito é o qu
   // texto velho que já foi corrigido: não pode voltar
   const dadosAbertos = fs.readFileSync(path.join(PUBLICAR, "dados-abertos.html"), "utf8");
   confere("a descrição de judiciario.json não diz mais que está fora das páginas do site", !/fora das páginas do site/.test(dadosAbertos) && !/fora das páginas do site/.test(html), "ainda tem o texto velho");
-  confere("a pendência velha do Recife (verba que dava erro) saiu, já que a Câmara do Recife está com a verba nos dados", !/Câmara Municipal do Recife: a consulta da Verba Indenizatória/.test(html) && Object.keys((lerDados("camaras.json").meta.cidades["2611606"] || {}).verba_mes || {}).length > 0, "pendência ainda no texto ou sem verba nos dados");
+  // A pendência da verba das Câmaras (Recife e Maceió: `verba_fora`): confere a cobertura que existe DE VERDADE (as despesas dos vereadores), e não o limite
+  // legal da verba (`verba_mes`, que existe mesmo quando as despesas faltam: foi assim que a pendência do Recife saiu por engano em 04/10/2026).
+  {
+    const CAMS = lerDados("camaras.json"), ver = CAMS.p.filter((p) => p.k === "v");
+    const gastoDe = (cod) => ver.filter((p) => String(p.cid) === String(cod)).filter((p) => Object.entries(p.per).some(([a, r]) => a !== "leg" && (r.c || 0) > 0)).length;
+    const fora = Object.entries(CAMS.meta.cidades).filter(([, c]) => (c.verba_fora || []).length);
+    const pend = (/<li id="pendencia-verba">[\s\S]*?<\/li>/.exec(html) || [""])[0];
+    confere(`a pendência da verba está na página inicial quando alguma Câmara tem verba fora (${fora.map(([, c]) => c.n).join(", ") || "nenhuma"}) e some quando nenhuma tem`, (fora.length > 0) === (pend !== ""), `${fora.length} cidades, pendência ${pend ? "presente" : "ausente"}`);
+    confere("a pendência diz o nome de cada Câmara e os anos que ficam de fora", fora.every(([, c]) => pend.includes(c.n) && c.verba_fora.every((a) => pend.includes(a))), pend.slice(0, 200));
+    confere("e é verdade: nessas cidades NENHUM vereador tem despesa (c) nos anos de fora (a verba existe só como limite)", fora.every(([cod, c]) => ver.filter((p) => String(p.cid) === cod).every((p) => c.verba_fora.every((a) => !((p.per[a] || {}).c > 0)))), fora.map(([cod, c]) => `${c.n}: ${gastoDe(cod)} com despesa`).join("; "));
+    const semAviso = Object.entries(CAMS.meta.cidades).filter(([cod, c]) => c.verba_nome && !(c.verba_fora || []).length && gastoDe(cod) === 0);
+    confere("e o contrário: cidade que tem verba (verba_nome) e nenhum vereador com despesa, mas sem verba_fora, não pode existir (seria uma falta sem aviso)", semAviso.length === 0, semAviso.map(([, c]) => c.n).join(", "));
+  }
 }
 
 // ------------------------------------------------------------------ 2) casos inventados, num build à parte
@@ -126,10 +139,28 @@ const CASOS = [
 ];
 const novos = CASOS.map(([id, nome, , ano, aj]) => { const p = caso(id, nome, molde, ano); if (aj) p.aj = aj; return p; });
 // um senador com pagamento único (a regra vale para os dois)
+// "tudo junto" (ministro e deputado) INVENTADO, com a ajuda de custo DIFERENTE nos dois cargos (ministro R$ 9.000, deputado R$ 46.366): só a do mandato sai do "por mês".
+// (O caso de verdade, André Fufuca, tem a mesma ajuda, R$ 39.293, no conjunto e no mandato: uma conta que tirasse a ajuda inteira do conjunto daria o mesmo número.)
+const moldeMin = D.p.find((p) => p.k === "e" && p.tp === "mi" && p.x), moldeJ = D.p.find((p) => p.id === "jun-215400");
+const depDC = caso("dep-9990008", "Zzcaso Dois Cargos Parlamentar", molde, { m: 6, mg: 6, mc: 6, me: 6, cats: { salario: 278196, ajuda_de_custo: 46366, decimo_terceiro: 23183, cota_parlamentar: 240000, assessores_gabinete: 700000 } });
+const minDC = caso("exe-9990009", "Zzcaso Dois Cargos Ministro", moldeMin, { m: 6, mg: 6, mc: 6, me: 0, cats: { salario: 324563, ajuda_de_custo: 9000, decimo_terceiro: 27000, viagens_oficiais: 120000 } });
+minDC.c = 120000; minDC.per["2025"].c = 120000; minDC.per.leg = minDC.per["2025"]; minDC.tp = "mi"; delete minDC.per["2025"].cats.cota_parlamentar;
+minDC.t = minDC.t.map(([mes, g]) => [mes - 6, g, Math.round(120000 / 6), 0, 0, 0]);   // o ministério vem antes: jan a jun de 2025
+const juntoDC = JSON.parse(JSON.stringify(moldeJ));
+{
+  const a = minDC.per["2025"], b = depDC.per["2025"], cats = {};
+  for (const [k, v] of [...Object.entries(a.cats), ...Object.entries(b.cats)]) cats[k] = (cats[k] || 0) + v;
+  const r = { m: 12, mg: 12, mc: 12, me: 6, g: a.g + b.g, c: a.c + b.c, e: b.e, pm: b.pm, mp: b.mp, pu: b.pu, ep: b.ep, cats };
+  delete juntoDC.aj; delete juntoDC.nv; delete juntoDC.im;
+  Object.assign(juntoDC, { id: "jun-9990008", n: "Zzcaso Dois Cargos", nc: "Zzcaso Dois Cargos", f: null, x: 1, per: { "2025": r, leg: r }, t: [...minDC.t, ...depDC.t], dt: {},
+    tr: [[202501, 202506, "e"], [202507, 202512, "d"]], cg: [{ id: minDC.id, g: "Ministro do Esporte", x: 0, de: 202501, ate: 202506, ex: 6 }, { id: depDC.id, g: "Deputado federal", x: 1, de: 202507, ate: 202512, ex: 6 }] });
+  depDC.j = juntoDC.id; minDC.j = juntoDC.id;
+  minDC.n = "Zzcaso Dois Cargos"; depDC.n = "Zzcaso Dois Cargos"; // o mesmo nome nos três, como na vida real
+}
 const senador = caso("sen-9990007", "Zzcaso Senador Unico", moldeS, { m: 6, mg: 6, mc: 6, me: 6, cats: { salario: 278196, ajuda_de_custo: 46366, decimo_terceiro: 23183, cota_parlamentar: 230000, assessores_gabinete: 700000 } });
 senador.aj = { "2025": [[202507, 46366]], leg: [[202507, 46366]] };
-const todos = [...novos, senador];
-const slugs = Object.fromEntries([...CASOS.map(([id, , slug]) => [id, `zzcaso-${slug}`]), ["sen-9990007", "zzcaso-senador-unico"]]);
+const todos = [...novos, senador, depDC, minDC, juntoDC];
+const slugs = Object.fromEntries([...CASOS.map(([id, , slug]) => [id, `zzcaso-${slug}`]), ["sen-9990007", "zzcaso-senador-unico"], ["jun-9990008", "zzcaso-dois-cargos"], ["dep-9990008", "zzcaso-dois-cargos/deputado"], ["exe-9990009", "zzcaso-dois-cargos/ministro"]]);
 fs.writeFileSync(path.join(DADOS_T, "dados.json"), JSON.stringify({ ...D, p: [...D.p, ...todos] }));
 fs.writeFileSync(path.join(DADOS_T, "enderecos.json"), JSON.stringify({ ...END, p: { ...END.p, ...slugs } }));
 const build = spawnSync(process.execPath, [path.join(RAIZ, "publicacao", "gerar.mjs")], { env: { ...process.env, GERAR_SAIDA: SAIDA_T, GERAR_DADOS: DADOS_T }, encoding: "utf8", cwd: RAIZ });
@@ -160,7 +191,7 @@ try {
     await pg.cmd("Network.setBlockedURLs", { urls: ["*googletagmanager.com*", "*google-analytics.com*"] });
     await pg.cmd("Emulation.setDeviceMetricsOverride", { width: 1280, height: 900, deviceScaleFactor: 1, mobile: false });
     await pg.cmd("Page.navigate", { url: `http://localhost:${PORTA}${caminho}` });
-    for (let i = 0; i < 80; i++) { await espera(250); if (await pg.avaliar(`!!document.querySelector(${JSON.stringify(esperaSel)}) && !document.querySelector(".carregando")`).catch(() => false)) break; }
+    for (let i = 0; i < 120; i++) { await espera(250); if (await pg.avaliar(`!!document.querySelector(${JSON.stringify(esperaSel)}) && !document.querySelector(".carregando")`).catch(() => false)) break; }
     await espera(500);
     return pg;
   };
@@ -203,6 +234,21 @@ try {
   const LS = await lerPagina(pgS), espS = String(esperado(senador));
   confere(`${senador.n}: a regra vale para o senador (topo ${espS}, nota da ajuda, mês da fonte)`, digitos(LS.topo) === espS && /paga de uma vez em jul\/2025/.test(LS.nota), JSON.stringify([LS.topo, LS.nota]));
   await pgS.fechar();
+
+  console.log("\n-- Dois cargos inventados, com a ajuda de custo diferente em cada cargo");
+  {
+    const R25 = juntoDC.per["2025"], certo = esperado(juntoDC);
+    const errado = Math.round((R25.g - R25.cats.ajuda_de_custo) / R25.mg + R25.c / R25.mc);          // a conta errada: tirar a ajuda INTEIRA do conjunto (ministro + deputado)
+    const semTirar = Math.round(R25.g / R25.mg + R25.c / R25.mc);                                   // e a errada de não tirar nada
+    confere(`o caso é forte: a conta certa (${certo}) difere da que tira a ajuda inteira do conjunto (${errado}) e da que não tira nada (${semTirar}) por mais de R$ 500`, Math.abs(certo - errado) >= 500 && Math.abs(certo - semTirar) >= 500, `${certo} ${errado} ${semTirar}`);
+    confere("no registro do conjunto a ajuda é a soma dos dois cargos (55.366), e no do mandato é só a do deputado (46.366)", R25.cats.ajuda_de_custo === 55366 && depDC.per["2025"].cats.ajuda_de_custo === 46366 && minDC.per["2025"].cats.ajuda_de_custo === 9000, JSON.stringify([R25.cats.ajuda_de_custo, depDC.per["2025"].cats.ajuda_de_custo, minDC.per["2025"].cats.ajuda_de_custo]));
+    const pg = await abrir(`/${slugs[juntoDC.id]}`);
+    const L = await lerPagina(pg);
+    confere(`${juntoDC.n}: a página mostra ${certo} (só a ajuda do mandato, R$ 46.366, sai do por mês)`, digitos(L.topo) === String(certo), `${L.topo} (a conta errada daria ${errado})`);
+    confere("a nota fala da ajuda do mandato (R$ 46.366), nunca da soma dos dois cargos (R$ 55.366)", /ajuda de custo de R\$\s46\.366/.test(L.nota) && !/55\.366/.test(L.nota), L.nota);
+    confere("o \"Custo por mês\" no fim da lista é o mesmo", digitos(L.total) === String(certo), L.total);
+    await pg.fechar();
+  }
 
   console.log("\n-- Dois cargos (ministro e parlamentar), de verdade: a página e a conta dizem o mesmo");
   const j = D.p.find((p) => p.k === "j" && p.per["2023"] && unicoDe(p, "2023", porIdT) > 0 && END.p[p.id]);

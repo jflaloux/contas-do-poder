@@ -44,7 +44,7 @@
       "h": "Correção e retirada",
       "c": [
         { "p": "Viu um número errado? Confira na fonte, pelo link da página. Se a fonte mostra outro valor, o erro é nosso: use o “Encontrou um erro?” no fim da página ou escreva para o contato abaixo. Corrigimos e registramos o que mudou na [lista de correções](/correcoes). Se a fonte mostra o mesmo valor, quem pode corrigir é o órgão que publicou." },
-        { "p": "Pedido de retirada: escreva para o contato abaixo, dizendo qual página e o motivo. Cada pedido é avaliado caso a caso. O que a fonte oficial publica sobre um agente público, em regra, fica no site, com o link da fonte. Se a fonte corrigir ou retirar o dado, o site em geral acompanha na atualização seguinte (os dados são lidos de novo toda semana)." }
+        { "p": "Pedido de retirada: escreva para o contato abaixo, dizendo qual página e o motivo. Cada pedido é avaliado caso a caso. O que a fonte oficial publica sobre um agente público, em regra, fica no site, com o link da fonte. Se a fonte corrigir ou retirar o dado, o site em geral acompanha na atualização seguinte (os robôs leem as fontes de novo toda semana ou uma vez por mês, conforme a fonte: veja a [Atualização dos dados](/atualizacao))." }
       ]
     },
     {
