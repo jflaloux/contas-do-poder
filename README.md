@@ -359,7 +359,10 @@ das capitais e das cidades do interior que o site mostra com os nomes: CE, PB, E
   candidato. Nos governadores, o nome civil vem do arquivo curado (`civil` ou `folha_nome`). Homônimo ou dúvida fica sem.
 - **O que se guarda** (`dados/bens/declaracoes.csv`): o ano, o total, o número de itens e o total por tipo (imóveis,
   veículos, aplicações e depósitos, participações em empresas, outros), pelo código do tipo de bem que o TSE usa; o
-  número da candidatura (SQ) e o lugar, para o link da página do candidato no DivulgaCandContas. Nunca a descrição de
+  número da candidatura (SQ) e o lugar, para o link da página do candidato no DivulgaCandContas
+  (`#/candidato/{REGIÃO}/{UF}/{código da eleição}/{SQ}/{ano}/{UE}`; região sem acento, como CENTROOESTE; UE = a UF em
+  2018 e 2022, o código TSE do município em 2024; conferido num navegador em 03/10/2026 com um senador de 2018, um
+  deputado federal de GO de 2022 e um vereador de Porto Alegre de 2024). Nunca a descrição de
   cada bem (endereços, contas, nomes de terceiros) nem o CPF: a coluna de CPF do arquivo de candidatos não é lida. Os
   únicos números de 11 dígitos no arquivo são SQs de candidatura. Quem foi ligado a uma candidatura sem bens no arquivo do TSE entra
   com 0 itens. `dados/bens/resumo.json`: quantos no cargo, com declaração e sem, por grupo e motivo.
