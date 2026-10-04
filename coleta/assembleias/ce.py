@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -130,8 +130,8 @@ def coletar():
                     continue
                 verba.append({"ano": am // 100, "mes": am % 100, "deputado": " ".join(l[0].split()), "empenho": l[2].strip(), "descricao": " ".join(l[3].split()),
                               "cnpj_cpf": vc.mascarar(l[4]), "fornecedor": " ".join(l[5].split()), "valor": num(l[6])})
-    pd.DataFrame(folha).sort_values(["ano", "mes", "nome"]).to_csv(PASTA / "folha_deputados.csv", index=False)
-    pd.DataFrame(verba).sort_values(["ano", "mes", "deputado", "empenho"]).to_csv(PASTA / "vdp_empenhos.csv", index=False)
+    gravar_csv(pd.DataFrame(folha).sort_values(["ano", "mes", "nome"]), PASTA / "folha_deputados.csv")
+    gravar_csv(pd.DataFrame(verba).sort_values(["ano", "mes", "deputado", "empenho"]), PASTA / "vdp_empenhos.csv")
     log(f"  Alece: {len(folha)} contracheques de deputados e {len(verba)} empenhos da VDP desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

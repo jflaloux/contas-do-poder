@@ -17,7 +17,7 @@ from datetime import date
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2408102
@@ -165,7 +165,7 @@ def coletar():
             continue
         cache.write_text(json.dumps(novas, ensure_ascii=False), encoding="utf-8")
         linhas = pd.concat([linhas[linhas.aaaamm.astype(int) != am], pd.DataFrame(novas, columns=COLUNAS)], ignore_index=True)
-        linhas.sort_values(["aaaamm", "tp", "nome", "folha"]).to_csv(LINHAS, index=False)
+        gravar_csv(linhas.sort_values(["aaaamm", "tp", "nome", "folha"]), LINHAS)
         log(f"  Prefeitura do Natal: {am % 100:02d}/{am // 100} ({len(novas)} contracheques)")
 
 

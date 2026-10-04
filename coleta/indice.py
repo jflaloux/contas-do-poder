@@ -17,7 +17,7 @@ Saída: site/dados/indice_transparencia.json.
 import json
 
 from .config import DADOS, RAIZ
-from .util import log, salvar_json
+from .util import gravar_json, log
 
 CURADO = DADOS / "indice" / "governadores.json"
 GOVERNADORES = DADOS / "governadores" / "governadores.json"
@@ -220,7 +220,7 @@ def executar():
         },
         "estados": estados,
     }
-    salvar_json(SAIDA_TRANSPARENCIA, saida)
+    gravar_json(SAIDA_TRANSPARENCIA, saida, compacto=False, indent=1)
     com = [e for e in estados if e["indice"] is not None]
     log(f"Índice de Transparência: site/dados/indice_transparencia.json — {len(com)} estados com nota geral, "
         f"{len(estados) - len(com)} com algum bloco a conferir")

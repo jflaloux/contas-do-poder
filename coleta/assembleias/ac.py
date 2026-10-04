@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -89,8 +89,8 @@ def coletar():
     if len(deps) < 20:
         log(f"  Aleac: a lista de servidores trouxe só {len(deps)} deputados; fica o que já estava gravado")
         return
-    pd.DataFrame(deps).assign(visto_em=time.strftime("%Y-%m-%d")).sort_values(["admissao", "nome"]) \
-        .to_csv(PASTA / "deputados.csv", index=False)
+    gravar_csv(pd.DataFrame(deps).assign(visto_em=time.strftime("%Y-%m-%d")).sort_values(["admissao", "nome"]),
+               PASTA / "deputados.csv")
     try:
         site = _site()
     except TempoEsgotado:
@@ -99,7 +99,7 @@ def coletar():
         log(f"  Aleac: a página de deputados não abriu ({type(e).__name__}); fica a lista que já estava gravada")
         site = []
     if len(site) >= 20:
-        pd.DataFrame(site, columns=["nome_parlamentar", "pagina"]).to_csv(PASTA / "deputados_site.csv", index=False)
+        gravar_csv(pd.DataFrame(site, columns=["nome_parlamentar", "pagina"]), PASTA / "deputados_site.csv")
     log(f"  Aleac: {len(deps)} deputados na lista de servidores ({sum(1 for x in deps if not x['exoneracao'])} sem exoneração); "
         f"{len(site)} na página de deputados")
 

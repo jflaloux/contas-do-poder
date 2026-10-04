@@ -19,7 +19,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -120,7 +120,7 @@ def coletar():
         log(f"  ALE-RO: a lista de deputados não abriu ({type(e).__name__}); fica a já gravada")
     gabs = _gabinetes()
     if len(gabs) >= 20:
-        pd.DataFrame(gabs, columns=["gabinete", "nome"]).assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "gabinetes.csv", index=False)
+        gravar_csv(pd.DataFrame(gabs, columns=["gabinete", "nome"]).assign(visto_em=time.strftime("%Y-%m-%d")), PASTA / "gabinetes.csv")
     meses = _meses()
     fila = []
     for am in meses:
@@ -146,7 +146,7 @@ def coletar():
                     linhas += _ler(arq.read_text(encoding="utf-8"), am, gab)
         df = pd.DataFrame(linhas)
         if len(df):
-            df.sort_values(["ano", "mes", "gabinete", "lote", "data"]).to_csv(PASTA / "verba_notas.csv", index=False)
+            gravar_csv(df.sort_values(["ano", "mes", "gabinete", "lote", "data"]), PASTA / "verba_notas.csv")
         faltam = sum(1 for am in meses for gab, _ in gabs if not (C / "paginas" / f"{am}_{gab}.html").exists())
         log(f"  ALE-RO: {len(gabs)} gabinetes, {len(df)} notas, {faltam} páginas (gabinete e mês) ainda por baixar")
 

@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..prefeituras.comum import feminino
 from ..vereadores import comum as vc
 from . import comum
@@ -82,7 +82,7 @@ def coletar():
     deps = deps.assign(visto_em=hoje)
     # quem saiu continua na tabela (com a última data em que estava na lista), para o nome e o partido
     todos = pd.concat([deps, antigos[~antigos.Matricula.isin(deps.Matricula)]], ignore_index=True)
-    todos.sort_values("Matricula").to_csv(PASTA / "deputados.csv", index=False)
+    gravar_csv(todos.sort_values("Matricula"), PASTA / "deputados.csv")
     linhas = []
     for ano in range(INICIO // 100, int(time.strftime("%Y")) + 1):
         recente = ano >= int(time.strftime("%Y")) - (1 if int(time.strftime("%m")) <= 2 else 0)
@@ -93,7 +93,7 @@ def coletar():
                            "valor": float(r.get("Valor") or 0)})
     verba = pd.DataFrame(linhas)
     verba = verba[verba.ano * 100 + verba.mes >= INICIO]
-    verba.sort_values(["ano", "mes", "matricula", "tipo", "fornecedor"]).to_csv(PASTA / "verba_gabinete.csv", index=False)
+    gravar_csv(verba.sort_values(["ano", "mes", "matricula", "tipo", "fornecedor"]), PASTA / "verba_gabinete.csv")
     log(f"  Alesp: {len(deps)} deputados em exercício, {len(verba)} linhas de verba de gabinete desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

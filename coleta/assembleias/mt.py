@@ -27,7 +27,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -130,7 +130,7 @@ def coletar():
                  for x in _lista(ano, cargo="DEPUTADO") if "DEPUTADO" in normalizar_nome(x.get("descricaoCargo") or "")]
         if len(novos) >= 20:
             deps = pd.concat([deps[deps.ano != str(ano)], pd.DataFrame(novos)])
-    deps.sort_values(["ano", "nome", "matricula"]).to_csv(arq_d, index=False)
+    gravar_csv(deps.sort_values(["ano", "nome", "matricula"]), arq_d)
     # 2. folha de cada deputado: dados financeiros do ano e proventos de cada mês e folha
     fol = pd.read_csv(arq_f, dtype={"matricula": str}) if arq_f.exists() else pd.DataFrame(columns=COLS_FOLHA)
     feitos = {(int(a), int(m), str(x), int(t)) for a, m, x, t in zip(fol.ano, fol.mes, fol.matricula, fol.tipo_folha)}
@@ -164,7 +164,7 @@ def coletar():
         f = estado["fol"]
         chave = set(zip(novos.ano, novos.mes, novos.matricula.astype(str), novos.tipo_folha))
         f = pd.concat([f[[k not in chave for k in zip(f.ano, f.mes, f.matricula.astype(str), f.tipo_folha)]], novos])
-        f.sort_values(["ano", "mes", "nome", "matricula", "tipo_folha", "rubrica"]).to_csv(arq_f, index=False)
+        gravar_csv(f.sort_values(["ano", "mes", "nome", "matricula", "tipo_folha", "rubrica"]), arq_f)
         estado.update(fol=f, gravados=len(res))
     try:
         with ThreadPoolExecutor(SIMULTANEOS) as ex:
@@ -240,13 +240,13 @@ def _coletar_equipe(hoje, recente):
                 linhas[k][1] += v
         eq = pd.DataFrame([{"ano": a, "mes": m, "gabinete": g, "pessoas": p, "custo": round(c, 2)} for (a, m, g), (p, c) in linhas.items()])
         if len(eq):
-            eq.sort_values(["ano", "mes", "gabinete"]).to_csv(PASTA / "equipe.csv", index=False)
+            gravar_csv(eq.sort_values(["ano", "mes", "gabinete"]), PASTA / "equipe.csv")
         ult = max(x["ano"] for x in lotados) if lotados else None
         cargos = pd.DataFrame([x for x in lotados if x["ano"] == ult and normalizar_nome(x["situacao"]) == "ATIVO"])
         if len(cargos):  # a lista do ano como estava quando foi lida (ano e mês da leitura: o "equipe em" do site)
             lida = time.localtime((C / f"lotados_{ult}.json").stat().st_mtime) if (C / f"lotados_{ult}.json").exists() else hoje
-            cargos.groupby(["lotacao", "cargo"]).size().reset_index(name="pessoas").rename(columns={"lotacao": "gabinete"}) \
-                .assign(ano=lida.tm_year, mes=lida.tm_mon).to_csv(PASTA / "equipe_cargos.csv", index=False)
+            gravar_csv(cargos.groupby(["lotacao", "cargo"]).size().reset_index(name="pessoas").rename(columns={"lotacao": "gabinete"})
+                       .assign(ano=lida.tm_year, mes=lida.tm_mon), PASTA / "equipe_cargos.csv")
 
 
 _PREFIXOS = re.compile(r"^(GAB(INETE)?\s+)?(DO\s+)?(DEP(UTADO|UTADA)?\.?\s+)", re.I)

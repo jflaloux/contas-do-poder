@@ -24,7 +24,7 @@ from datetime import date, datetime
 import pandas as pd
 
 from ..config import HOJE, RAIZ
-from ..util import TempoEsgotado, baixar, log, normalizar_nome
+from ..util import TempoEsgotado, baixar, gravar_json, gravar_linhas, log, normalizar_nome
 
 FOTOS = RAIZ / "site" / "fotos"
 SAIDA = RAIZ / "site" / "dados" / "camaras.json"
@@ -192,9 +192,7 @@ def limpar_cpfs(pasta):
                         if len(d) == 12 and re.fullmatch(r"[\d.\-/ ]+", linha[j]) and (cpf_valido(d[:11]) or cpf_valido(d[1:])):
                             linha[j] = ""
                             mudou += 1
-        if mudou:
-            with open(arq, "w", encoding="utf-8", newline="") as f:
-                csv.writer(f, lineterminator="\n").writerows(linhas)
+        if mudou and gravar_linhas(arq, None, linhas, dicionarios=False, lineterminator="\n"):
             total += mudou
     return total
 
@@ -621,7 +619,6 @@ def escrever(resultados, tipos, baixar_fotos=True):
         },
         "p": todas,
     }
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(resultados)} cidades, {len(todas)} vereadores)")
+    if gravar_json(SAIDA, dados):  # cidade que sumiu ou perdeu muita gente: fica o arquivo anterior (util.gravar_com)
+        log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(resultados)} cidades, {len(todas)} vereadores)")
     return dados

@@ -27,7 +27,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -227,11 +227,12 @@ def coletar():
                 if nome != "verba" and not novos:
                     continue  # mês ainda sem dados publicados
                 df = pd.concat([df[~((df.ano.astype(int) == am // 100) & (df.mes.astype(int) == am % 100))], pd.DataFrame(novos, dtype=str)])
-                df.sort_values([c for c in ("ano", "mes", "nome", "lotacao", "credor", "cargo") if c in df.columns]).to_csv(arq, index=False)
+                if not gravar_csv(df.sort_values([c for c in ("ano", "mes", "nome", "lotacao", "credor", "cargo") if c in df.columns]), arq):
+                    break  # recusado por perda de cobertura (util.gravar_com): fica o que estava, e o mês é lido de novo
                 if nome == "verba":
                     lidos = pd.read_csv(PASTA / "ressarcimento_meses.csv") if (PASTA / "ressarcimento_meses.csv").exists() else pd.DataFrame(columns=["ano", "mes"])
                     lidos = pd.concat([lidos, pd.DataFrame([{"ano": am // 100, "mes": am % 100}])]).drop_duplicates()
-                    lidos.sort_values(["ano", "mes"]).to_csv(PASTA / "ressarcimento_meses.csv", index=False)
+                    gravar_csv(lidos.sort_values(["ano", "mes"]), PASTA / "ressarcimento_meses.csv")
                 feitos_agora += 1
         finally:
             log(f"  Alep: {nome}, {feitos_agora} de {len(pedir)} meses lidos agora")

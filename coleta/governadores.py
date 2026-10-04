@@ -27,7 +27,7 @@ import re
 from datetime import date, datetime
 
 from .config import DADOS, RAIZ
-from .util import TempoEsgotado, log, normalizar_nome
+from .util import TempoEsgotado, gravar_json, log, normalizar_nome
 
 ARQUIVO = DADOS / "governadores" / "governadores.json"
 SAIDA = RAIZ / "site" / "dados" / "governadores.json"
@@ -316,8 +316,7 @@ def executar(baixar_fotos=True):
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "mes": agora,
                       "fonte": "https://github.com/jflaloux/contas-do-poder/blob/main/dados/governadores/governadores.json"},
              "e": saida}
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    gravar_json(SAIDA, dados)  # um estado que sumiu: fica o arquivo anterior (util.gravar_com)
     vals = sorted(x["v"][0] for x in saida)
     conf = {}
     for x in saida:

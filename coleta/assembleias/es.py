@@ -18,7 +18,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -100,7 +100,7 @@ def coletar():
     ativos = _setores("/Transparencia/SetoresAtivosDiv")
     todos = _setores("/Transparencia/SetoresTodosDiv")
     if len(ativos) >= 25:
-        pd.DataFrame(ativos, columns=["gabinete", "nome"]).assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "gabinetes_ativos.csv", index=False)
+        gravar_csv(pd.DataFrame(ativos, columns=["gabinete", "nome"]).assign(visto_em=time.strftime("%Y-%m-%d")), PASTA / "gabinetes_ativos.csv")
     meses = _meses()
     arq = PASTA / "cota_rubricas.csv"
     feito = pd.read_csv(arq).fillna("") if arq.exists() else pd.DataFrame(columns=["ano", "mes", "gabinete"])
@@ -126,7 +126,7 @@ def coletar():
             if novos:
                 anos = pd.concat([anos[[k not in {(g, a) for g, a, _ in novos} for k in zip(anos.gabinete, anos.ano)]],
                                   pd.DataFrame(novos, columns=["gabinete", "ano", "total"])])
-                anos.sort_values(["gabinete", "ano"]).to_csv(arq_anos, index=False)
+                gravar_csv(anos.sort_values(["gabinete", "ano"]), arq_anos)
         com_gasto = {(int(g), int(a)) for g, a, t in zip(anos.gabinete, anos.ano, anos.total) if t and float(t) > 0}
         nomes = dict(todos)
         pedir = []
@@ -158,7 +158,7 @@ def coletar():
                 if len(feito):
                     feito = feito[[k not in chave for k in zip(feito.ano, feito.mes, feito.gabinete)]]
                 feito = pd.concat([feito, novos])
-                feito.sort_values(["ano", "mes", "gabinete", "rubrica"]).to_csv(arq, index=False)
+                gravar_csv(feito.sort_values(["ano", "mes", "gabinete", "rubrica"]), arq)
             log(f"  Ales: {len(resultados)} de {len(pedir)} meses de gabinete pedidos agora; {len(feito)} linhas")
 
 

@@ -305,10 +305,325 @@ def cache_valido(caminho: Path, max_idade_dias=None):
 
 
 def salvar_json(caminho: Path, dados):
+    """Cache e arquivos de controle (troca de uma vez, sem comparar). Arquivo de dados: gravar_json."""
     caminho.parent.mkdir(parents=True, exist_ok=True)
     tmp = caminho.with_suffix(caminho.suffix + ".tmp")
     tmp.write_text(json.dumps(dados, ensure_ascii=False, indent=1), encoding="utf-8")
     tmp.replace(caminho)
+
+
+# ---------------------------------------------------------------- gravação segura
+# Todo arquivo de dados (dados/ e site/dados/; cache e controle ficam de fora) é gravado por gravar_csv, gravar_json,
+# gravar_texto ou gravar_com. O novo vai para um arquivo temporário ao lado, é comparado com o anterior e só troca o
+# anterior se não perder cobertura grande. Recusa (fica o anterior, a falha vai para a situação, a rodada segue):
+#   - o novo vem vazio e o anterior tinha linhas;
+#   - um mês (CSV) ou um grupo (JSON: cidade, estado, órgão) que existia some;
+#   - um mês ou grupo perde mais de 20% das entidades (pessoas, gabinetes, municípios), com pelo menos 3 a menos;
+#   - um mês ou grupo perde mais da metade das linhas, com pelo menos 10 a menos.
+# Redução legítima: quem chama passa motivo="..." (nunca por padrão); a redução vai para o log com o motivo.
+# Arquivo "retrato" (só o último mês, como cargos_gabinetes.csv): com um mês só antes e depois, compara sem o mês.
+PERDA_ENTIDADES, MINIMO_ENTIDADES = 0.2, 3
+PERDA_LINHAS, MINIMO_LINHAS = 0.5, 10
+# entidade de cada linha: a primeira destas colunas que existe no arquivo anterior e no novo (sem nenhuma: as linhas)
+COLUNAS_ENTIDADE = ("cod_ibge", "id_deputado", "id_senador", "codigo_senador", "id_politico", "id_portal", "id_cota",
+                    "id_funcional", "vereador_id", "setor_id", "id", "matricula", "gabinete", "deputado", "vereador",
+                    "parlamentar", "nome", "token", "lotacao", "codigo", "chave", "carteira", "referencia", "orcamento",
+                    "processo", "docid")
+COLUNAS_MES = ("ano_mes", "aaaamm", "competencia", "mes_referencia")  # além de "ano" + "mes" e, por último, "data"
+GRUPOS_JSON = ("cid", "org", "uf", "k")  # nos JSON do site, a lista "p" se divide por cidade, órgão, estado ou tipo
+_fonte_atual = None  # a fonte em coleta (onde.registrar põe e tira), para a falha ir para a fonte certa
+_recusas = []  # recusas desta execução: [{"arquivo", "fonte", "perdas"}]
+_eventos = None  # dados/processados/recusas_<lugar>.json, lido uma vez
+
+
+class _Ilegivel(Exception):
+    pass
+
+
+def _rel(caminho):
+    from .config import RAIZ
+    try:
+        return str(Path(caminho).resolve().relative_to(RAIZ))
+    except ValueError:
+        return str(caminho)
+
+
+def _aaaamm(serie):
+    """'2026-08', '202608', '08/2026', '15/08/2026', '2026-08-15' -> 202608 (float; NaN quando não é mês)."""
+    import pandas as pd
+    s = serie.astype(str).str.strip()
+    out = pd.Series(float("nan"), index=s.index)
+    for rx, a, m in ((r"^(\d{4})-?(\d{2})(?:\D|$|\d{2}$)", 0, 1), (r"^(?:\d{1,2}/)?(\d{1,2})/(\d{4})", 1, 0)):
+        x = s.str.extract(rx)
+        if x.shape[1] < 2:
+            continue
+        ano, mes = pd.to_numeric(x[a], errors="coerce"), pd.to_numeric(x[m], errors="coerce")
+        ok = out.isna() & ano.between(1990, 2100) & mes.between(1, 12)
+        out[ok] = ano[ok] * 100 + mes[ok]
+    return out
+
+
+def _ler_tabela(caminho, sep=None):
+    import pandas as pd
+    if sep is None:
+        import gzip
+        abrir = gzip.open if str(caminho).endswith(".gz") else open
+        with abrir(caminho, "rt", encoding="utf-8", errors="replace") as f:
+            cab = f.readline()
+        sep = ";" if cab.count(";") > cab.count(",") else ","
+    try:
+        return pd.read_csv(caminho, sep=sep, dtype=str, keep_default_na=False, low_memory=False, encoding="utf-8",
+                           encoding_errors="replace")
+    except pd.errors.EmptyDataError:
+        return pd.DataFrame()
+    except (pd.errors.ParserError, UnicodeError, OSError) as e:
+        raise _Ilegivel(str(e)) from e
+
+
+def _colunas_mes(df, comuns, mes=None):
+    cols = {c.lower(): c for c in df.columns if c in comuns}
+    if mes:
+        return _aaaamm(df[mes]) if mes in df.columns else None
+    if "ano" in cols and "mes" in cols:
+        import pandas as pd
+        return pd.to_numeric(df[cols["ano"]], errors="coerce") * 100 + pd.to_numeric(df[cols["mes"]], errors="coerce")
+    for c in (*COLUNAS_MES, "data"):
+        if c in cols:
+            return _aaaamm(df[cols[c]])
+    return None
+
+
+def _cobertura_csv(df, comuns, mes=None, entidade=None, retrato=False):
+    """{grupo (mês ou "arquivo"): (entidades, linhas)}."""
+    if not len(df):
+        return {}
+    ent = entidade if entidade in comuns else next((c for c in COLUNAS_ENTIDADE if c in comuns), None)
+    meses = None if retrato else _colunas_mes(df, comuns, mes)
+    chave = df[ent] if ent else df.astype(str).agg("|".join, axis=1)
+    if meses is None:
+        return {"arquivo": (int(chave.nunique()), len(df))}
+    g = chave.groupby(meses.fillna(0).astype(int))
+    n, t = g.nunique(), g.size()
+    return {int(k): (int(n[k]), int(t[k])) for k in n.index}
+
+
+def _cobertura_json(dados, grupo=None, chaves=None):
+    """{grupo: quantidade}: a lista "p" (e outras listas de objetos) por cidade, órgão, estado ou tipo; outras listas e
+    dicionários pelo tamanho; um dicionário com muitas chaves (ids, municípios), pelo número de chaves. chaves: só estas
+    chaves do primeiro nível contam (as outras podem encolher sem aviso)."""
+    out = {}
+    if chaves and isinstance(dados, dict):
+        dados = {k: v for k, v in dados.items() if k in chaves}
+
+    def lista(nome, v):
+        objetos = [x for x in v[:300] if isinstance(x, dict)]
+        ch = None
+        if objetos and len(objetos) == len(v[:300]):
+            ch = grupo or next((g for g in GRUPOS_JSON if sum(g in x for x in objetos) >= 0.8 * len(objetos)), None)
+        if ch:
+            for x in v:
+                k = f"{nome}/{ch}={x.get(ch)}" if nome else f"{ch}={x.get(ch)}"
+                out[k] = out.get(k, 0) + 1
+        else:
+            out[nome or "lista"] = len(v)
+
+    if isinstance(dados, list):
+        lista("", dados)
+    elif isinstance(dados, dict):
+        itens = [(k, v) for k, v in dados.items() if k not in ("meta", "_sobre") and isinstance(v, (list, dict))]
+        if len(itens) > 50:
+            out["chaves"] = len(itens)
+        for k, v in itens if len(itens) <= 50 else []:
+            if isinstance(v, list):
+                lista(k, v)
+            else:
+                out[k] = len(v)
+    return out
+
+
+def _cobertura(caminho, tipo, comuns=None, **opcoes):
+    if tipo == "json":
+        try:
+            dados = json.loads(Path(caminho).read_text(encoding="utf-8"))
+        except (ValueError, UnicodeError) as e:
+            raise _Ilegivel(str(e)) from e
+        return {k: (v, v) for k, v in _cobertura_json(dados, opcoes.get("grupo"), opcoes.get("chaves")).items()}
+    df = _ler_tabela(caminho, opcoes.get("sep"))
+    return _cobertura_csv(df, df.columns if comuns is None else comuns, opcoes.get("mes"), opcoes.get("entidade"),
+                          opcoes.get("retrato", False))
+
+
+def _nome_grupo(g):
+    if isinstance(g, int):
+        return "sem mês" if g == 0 else f"mês {g % 100:02d}/{g // 100}"
+    return "o arquivo" if g == "arquivo" else g
+
+
+def perdas_de_cobertura(antes, depois, tipo="csv", **opcoes):
+    """Compara o arquivo anterior com o novo. Devolve [(grupo, antes, depois, unidade)] (vazia: pode trocar).
+    opcoes: mes (coluna do mês), entidade (coluna da entidade), retrato (compara sem o mês), grupo (JSON), sep (CSV)."""
+    comuns = None
+    if tipo == "csv":
+        try:
+            ca = list(_ler_tabela(antes, opcoes.get("sep")).columns)
+        except _Ilegivel:
+            return []  # o anterior não se lê: não há com o que comparar
+        cn = list(_ler_tabela(depois, opcoes.get("sep")).columns)
+        comuns = [c for c in cn if c in ca]
+    try:
+        a = _cobertura(antes, tipo, comuns, **opcoes)
+    except _Ilegivel:
+        return []
+    d = _cobertura(depois, tipo, comuns, **opcoes)  # o novo ilegível: _Ilegivel sobe (recusa)
+    unidade = "linhas" if tipo == "csv" else "itens"
+    if a and not d:
+        return [("arquivo", sum(t for _, t in a.values()), 0, unidade)]
+    if tipo == "csv" and not opcoes.get("retrato") and len(a) == 1 and len(d) == 1 and set(a) != set(d) \
+            and all(isinstance(k, int) and k for k in (*a, *d)) and max(d) > max(a):
+        # retrato do último mês (só um mês antes e depois): compara sem o mês
+        sem_mes = {k: v for k, v in opcoes.items() if k != "retrato"}
+        a = _cobertura(antes, tipo, comuns, retrato=True, **sem_mes)
+        d = _cobertura(depois, tipo, comuns, retrato=True, **sem_mes)
+    perdas = []
+    for g, (ea, la) in sorted(a.items(), key=lambda x: str(x[0])):
+        ed, ld = d.get(g, (0, 0))
+        if la and not ld:
+            perdas.append((g, la, 0, unidade))
+        elif ea - ed >= MINIMO_ENTIDADES and ed < (1 - PERDA_ENTIDADES) * ea:
+            perdas.append((g, ea, ed, "entidades" if tipo == "csv" else "itens"))
+        elif la - ld >= MINIMO_LINHAS and ld < (1 - PERDA_LINHAS) * la:
+            perdas.append((g, la, ld, "linhas"))
+    return perdas
+
+
+def _texto_perdas(perdas, n=3):
+    t = "; ".join(u if g == "ilegível" else f"{_nome_grupo(g)}: {a} para {d} {u}" for g, a, d, u in perdas[:n])
+    return t + (f" (e mais {len(perdas) - n})" if len(perdas) > n else "")
+
+
+def _arquivo_eventos(lugar):
+    from .config import PROCESSADOS
+    return PROCESSADOS / f"recusas_{lugar}.json"
+
+
+def _lugar():
+    import os
+    return os.environ.get("CONTAS_ONDE") or ("exterior" if os.environ.get("GITHUB_ACTIONS") else "brasil")
+
+
+def ler_recusas():
+    """{arquivo: último evento} juntando os dois lugares: o evento mais recente vale ("recusado" ou "aceito")."""
+    juntos = {}
+    for lugar in ("exterior", "brasil"):
+        arq = _arquivo_eventos(lugar)
+        try:
+            d = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {}
+        except ValueError:
+            d = {}
+        for k, ev in d.items():
+            if k not in juntos or ev.get("quando", "") > juntos[k].get("quando", ""):
+                juntos[k] = {**ev, "lugar": lugar}
+    return juntos
+
+
+def _anotar(rel, evento):
+    """Guarda a recusa (ou o aceite de um arquivo que tinha sido recusado) em dados/processados/recusas_<lugar>.json."""
+    global _eventos
+    lugar = _lugar()
+    arq = _arquivo_eventos(lugar)
+    if _eventos is None:
+        try:
+            _eventos = json.loads(arq.read_text(encoding="utf-8")) if arq.exists() else {}
+        except ValueError:
+            _eventos = {}
+    if evento["estado"] == "aceito":
+        ultimo = ler_recusas().get(rel)
+        if not ultimo or ultimo["estado"] != "recusado":
+            return
+    _eventos[rel] = evento
+    arq.parent.mkdir(parents=True, exist_ok=True)
+    arq.write_text(json.dumps(dict(sorted(_eventos.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+
+
+def gravar_com(caminho, escrever, *, motivo=None, tipo=None, **opcoes):
+    """Grava um arquivo de dados com segurança: escrever(tmp) grava o novo num arquivo temporário ao lado; se não perde
+    cobertura grande (ver acima) ou se `motivo` explica a redução, o novo troca o anterior. Devolve True se trocou; se
+    recusou, o anterior fica, a recusa vai para o log, para a situação (e para a fonte em coleta) e a função devolve
+    False, sem erro: a rodada segue. tipo: "csv" ou "json" (sem ele, pela extensão; .gz conta como csv)."""
+    from datetime import datetime
+    caminho = Path(caminho)
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    tipo = tipo or ("json" if caminho.suffix == ".json" else "csv")
+    tmp = caminho.parent / f".novo.{caminho.name}"
+    rel = _rel(caminho)
+    try:
+        escrever(tmp)
+        perdas = []
+        if caminho.exists() and caminho.stat().st_size:
+            try:
+                perdas = perdas_de_cobertura(caminho, tmp, tipo, **opcoes)
+            except _Ilegivel as e:
+                perdas = [("ilegível", 0, 0, f"o novo arquivo não se lê ({str(e)[:80]})")]
+        agora = datetime.now().isoformat(timespec="seconds")
+        if perdas and not motivo:
+            texto = _texto_perdas(perdas)
+            log(f"  RECUSADO por perda de cobertura: {rel}: {texto}. Fica o arquivo anterior.")
+            _recusas.append({"arquivo": rel, "fonte": _fonte_atual, "perdas": perdas, "texto": texto})
+            _anotar(rel, {"estado": "recusado", "quando": agora, "fonte": _fonte_atual, "texto": texto,
+                          "perdas": [[str(g), a, d, u] for g, a, d, u in perdas[:20]]})
+            return False
+        if perdas:
+            log(f"  {rel}: redução aceita ({motivo}): {_texto_perdas(perdas)}")
+        tmp.replace(caminho)
+        _anotar(rel, {"estado": "aceito", "quando": agora, "fonte": _fonte_atual})
+        return True
+    finally:
+        if tmp.exists():
+            tmp.unlink()
+
+
+def gravar_csv(df, caminho, *, motivo=None, mes=None, entidade=None, retrato=False, **to_csv):
+    """DataFrame -> CSV pela gravação segura. to_csv: os argumentos do DataFrame.to_csv (index=False por padrão)."""
+    to_csv.setdefault("index", False)
+    return gravar_com(caminho, lambda tmp: df.to_csv(tmp, **to_csv), motivo=motivo, tipo="csv", mes=mes,
+                      entidade=entidade, retrato=retrato, sep=to_csv.get("sep"))
+
+
+def gravar_linhas(caminho, campos, linhas, *, delimiter=",", motivo=None, dicionarios=True, extrasaction="raise",
+                  lineterminator="\r\n", **opcoes):
+    """Lista de dicionários (ou de listas, com dicionarios=False) -> CSV (módulo csv) pela gravação segura."""
+    import csv
+
+    def escrever(tmp):
+        with open(tmp, "w", encoding="utf-8", newline="") as f:
+            if dicionarios:
+                w = csv.DictWriter(f, fieldnames=campos, delimiter=delimiter, extrasaction=extrasaction,
+                                   lineterminator=lineterminator)
+                w.writeheader()
+            else:
+                w = csv.writer(f, delimiter=delimiter, lineterminator=lineterminator)
+                if campos:
+                    w.writerow(campos)
+            w.writerows(linhas)
+    return gravar_com(caminho, escrever, motivo=motivo, tipo="csv", sep=delimiter, **opcoes)
+
+
+def gravar_texto(caminho, texto, *, motivo=None, tipo=None, **opcoes):
+    """Texto já pronto (JSON ou CSV) pela gravação segura."""
+    return gravar_com(caminho, lambda tmp: Path(tmp).write_text(texto, encoding="utf-8"), motivo=motivo, tipo=tipo,
+                      **opcoes)
+
+
+def gravar_json(caminho, dados, *, compacto=True, indent=None, final="", motivo=None, **opcoes):
+    """Objeto -> JSON pela gravação segura. compacto: sem espaços (os arquivos do site); senão, com `indent`."""
+    texto = (json.dumps(dados, ensure_ascii=False, separators=(",", ":")) if compacto and indent is None
+             else json.dumps(dados, ensure_ascii=False, indent=indent)) + final
+    return gravar_texto(caminho, texto, motivo=motivo, tipo="json", **opcoes)
+
+
+def recusas_desde(marca, fonte=None):
+    """As recusas desta execução a partir da posição `marca` (de len(util._recusas)), só as da fonte, se dada."""
+    return [r for r in _recusas[marca:] if fonte is None or r["fonte"] == fonte]
 
 
 def ler_json(caminho: Path):

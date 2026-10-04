@@ -34,7 +34,7 @@ import zipfile
 import pandas as pd
 
 from ..config import HOJE
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, recursos_ckan, verificar_prazo
+from ..util import TempoEsgotado, _sessao, _texto_perdas, log, normalizar_nome, perdas_de_cobertura, recursos_ckan, verificar_prazo
 from . import cargo, comum
 
 UF = "ES"
@@ -169,17 +169,40 @@ def atualizar(tipo, nome, url):
         bruto.unlink()
         return True
     log(f"  TCE-ES: {nome} ({bruto.stat().st_size / 1e6:.0f} MB, atualizado em {r.headers.get('Last-Modified')})")
-    if tipo == "vantagens":
-        el, ct = extrair_vantagens(bruto)
-        el.to_csv(extratos[0], index=False)
-        ct.to_csv(extratos[1], index=False)
-    else:
-        extrair_vinculo(bruto).to_csv(extratos[0], index=False)
-    bruto.unlink()  # o arquivo grande não fica no cache: só o extrato
+    try:
+        trocar_extratos(nome, list(zip(extrair_vantagens(bruto) if tipo == "vantagens" else [extrair_vinculo(bruto)],
+                                       extratos)))
+    finally:
+        bruto.unlink()  # o arquivo grande não fica no cache: só o extrato
     estado = _estado()
     estado[nome] = {"etag": etag, "modificado": r.headers.get("Last-Modified"), "lido_em": comum.agora()}
     (CACHE / "arquivos.json").write_text(json.dumps(estado, indent=1))
     return True
+
+
+def trocar_extratos(nome, novos, entidade="esfera"):
+    """Troca os extratos do arquivo (todos ou nenhum). Extrato vazio é falha (o arquivo do Tribunal veio só com o
+    cabeçalho); extrato que perde cobertura em relação ao anterior (um mês que some, mais de 20% dos municípios de um
+    mês) também: o erro sobe, e quem chama fica com o extrato anterior (ou deixa os meses como estavam)."""
+    vazios = [arq.name for df, arq in novos if not len(df)]
+    if vazios:
+        raise RuntimeError(f"{nome}: o arquivo veio sem linhas ({', '.join(vazios)})")
+    tmps = []
+    try:
+        for df, arq in novos:
+            tmp = arq.parent / f".novo.{arq.name}"
+            df.to_csv(tmp, index=False)
+            tmps.append((tmp, arq))
+        perdas = [p for tmp, arq in tmps if arq.exists()
+                  for p in perdas_de_cobertura(arq, tmp, entidade=entidade if "esfera" in pd.read_csv(tmp, nrows=0).columns else None)]
+        if perdas:
+            raise RuntimeError(f"{nome}: o extrato novo perde cobertura ({_texto_perdas(perdas)})")
+        for tmp, arq in tmps:
+            tmp.replace(arq)
+    finally:
+        for tmp, _ in tmps:
+            if tmp.exists():
+                tmp.unlink()
 
 
 # ---------------------------------------------------------------- montagem

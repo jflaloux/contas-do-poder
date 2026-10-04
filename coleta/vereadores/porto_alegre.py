@@ -31,7 +31,7 @@ from datetime import date, timedelta
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 4314902
@@ -159,7 +159,7 @@ def vereadores():
         velho = velho[~velho.id.isin(api.id)].assign(atual=False, em_exercicio=False, licenciado=False, substituindo="")
         api = pd.concat([api, velho[api.columns]], ignore_index=True)
     PASTA.mkdir(parents=True, exist_ok=True)
-    api.sort_values("id").to_csv(ARQ_VER, index=False)
+    gravar_csv(api.sort_values("id"), ARQ_VER)
     log(f"  Porto Alegre: {int(api.atual.sum())} vereadores na lista de hoje ({len(api)} gravados)")
     return api
 
@@ -205,9 +205,9 @@ def qbm():
         tot = trocar(tot, pd.DataFrame(t_l))
         PASTA.mkdir(parents=True, exist_ok=True)
         ordem = ["ano", "mes", "setor_id"]
-        gab.sort_values(ordem).to_csv(ARQ_GAB, index=False)
-        lanc.sort_values(ordem + ["data", "id"]).to_csv(ARQ_LANC, index=False)
-        tot.sort_values(ordem).to_csv(ARQ_TOT, index=False)
+        if not (gravar_csv(gab.sort_values(ordem), ARQ_GAB) and gravar_csv(lanc.sort_values(ordem + ["data", "id"]), ARQ_LANC)
+                and gravar_csv(tot.sort_values(ordem), ARQ_TOT)):
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
         log(f"  Porto Alegre: QBM de {mes} ({len(setores)} gabinetes, {len(l_l)} lançamentos)")
 
 

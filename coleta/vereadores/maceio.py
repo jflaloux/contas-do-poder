@@ -29,7 +29,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2704302
@@ -150,7 +150,7 @@ def lista_site():
                        "licenciado": 0, "atual": 0, "foto": img.group(1) if img else "", "pagina": f"{SITE}/vereadores/{numero}"})
     df = pd.DataFrame(linhas)
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "site_vereadores.csv", index=False)
+    gravar_csv(df, PASTA / "site_vereadores.csv")
     log(f"  Maceió: {int(df.atual.sum())} vereadores na página da Câmara ({int(df.licenciado.sum())} licenciados) e {int((df.atual == 0).sum())} suplentes fora dela")
     return df
 
@@ -210,7 +210,7 @@ def folha():
     fl = pd.DataFrame(lotacoes, columns=["ano", "mes", "lotacao", "pessoas", "bruto", "abono", "eventuais"])
     if not len(fl):
         raise RuntimeError("a folha por lotação veio vazia")
-    fl.to_csv(arq_l, index=False)
+    gravar_csv(fl, arq_l)
     log(f"  Maceió: folha por lotação, {len(fl)} linhas ({fl.lotacao.nunique()} lotações)")
 
     if not shutil.which("pdftotext"):
@@ -235,8 +235,8 @@ def folha():
                      pd.DataFrame([{"ano": a, "mes": m, "nome": n, "cargo": c, "remuneracao": r, "abono": ab, "eventuais": ev}
                                    for n, c, r, ab, ev in linhas], columns=fv.columns))
         fn = _juntar(fn[(fn.ano * 100 + fn.mes) != am], pd.DataFrame([{"ano": a, "mes": m, "registros": registros, "total": total}]))
-        fv.sort_values(["ano", "mes", "nome"]).to_csv(arq_v, index=False)
-        fn.sort_values(["ano", "mes"]).to_csv(arq_n, index=False)
+        if not (gravar_csv(fv.sort_values(["ano", "mes", "nome"]), arq_v) and gravar_csv(fn.sort_values(["ano", "mes"]), arq_n)):
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava, e o mês é lido de novo
         if registros:
             log(f"  Maceió: folha nominal dos vereadores de {m:02d}/{a} ({registros} vereadores)")
 
@@ -263,7 +263,7 @@ def folha():
             conta[k] = conta.get(k, 0) + 1
         linhas_c += [{"ano": a, "mes": m, "lotacao": lot, "cargo": k, "pessoas": n} for k, n in conta.items()]
     if linhas_c:
-        pd.DataFrame(linhas_c).to_csv(arq_c, index=False)
+        gravar_csv(pd.DataFrame(linhas_c), arq_c)
         log(f"  Maceió: cargos de {len(gabinetes)} gabinetes em {m:02d}/{a}")
 
 
@@ -325,7 +325,7 @@ def viap():
                            "gastos": _valor(c[2]), "glosadas": _valor(c[3]), "excesso": _valor(c[4]), "indenizado": _valor(c[5]),
                            "pdf": pdf.group(1) if pdf else ""})
     vi = pd.DataFrame(linhas, columns=["vereador_id", "vereador", "ano", "mes", "saldo_anterior", "gastos", "glosadas", "excesso", "indenizado", "pdf"])
-    vi.sort_values(["vereador_id", "ano", "mes"]).to_csv(PASTA / "viap.csv", index=False)
+    gravar_csv(vi.sort_values(["vereador_id", "ano", "mes"]), PASTA / "viap.csv")
     log(f"  Maceió: VIAP, {len(vi)} meses de {vi.vereador_id.nunique()} vereadores")
 
 

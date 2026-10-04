@@ -25,7 +25,7 @@ from datetime import date, timedelta
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 3106200
@@ -127,7 +127,7 @@ def lista_site():
     if len(df) < 30:
         raise RuntimeError(f"a página de vereadores trouxe só {len(df)} nomes")
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "site_vereadores.csv", index=False)
+    gravar_csv(df, PASTA / "site_vereadores.csv")
     log(f"  Belo Horizonte: {len(df)} vereadores na página da Câmara")
     return df
 
@@ -167,8 +167,8 @@ def presenca():
         linhas += lido or []
         meses_l.append({"ano": a, "mes": m, "publicado": 1 if lido else 0})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(linhas, columns=["ano", "mes", "nome", "dias", "codigos"]).to_csv(arq, index=False)
-    pd.DataFrame(meses_l, columns=["ano", "mes", "publicado"]).to_csv(arq_m, index=False)
+    if gravar_csv(pd.DataFrame(linhas, columns=["ano", "mes", "nome", "dias", "codigos"]), arq):
+        gravar_csv(pd.DataFrame(meses_l, columns=["ano", "mes", "publicado"]), arq_m)
     log(f"  Belo Horizonte: presença de {sum(x['publicado'] for x in meses_l)} meses ({len(linhas)} linhas vereador × mês)")
 
 
@@ -231,11 +231,12 @@ def custeio():
             novas_t.append({"ano": a, "mes": m, **x})
         vt = pd.concat([vt[(vt.ano.astype(int) * 100 + vt.mes.astype(int)) != am] if len(vt) else vt, pd.DataFrame(novas_t, columns=col_t)], ignore_index=True)
         vi = pd.concat([vi[(vi.ano.astype(int) * 100 + vi.mes.astype(int)) != am] if len(vi) else vi, pd.DataFrame(novas_i, columns=col_i)], ignore_index=True)
-        meses_ok.add(am)
         PASTA.mkdir(parents=True, exist_ok=True)  # grava mês a mês: se o tempo acabar, a próxima rodada continua daqui
-        vt.sort_values(["ano", "mes", "nome"]).to_csv(arq_t, index=False)
-        vi.sort_values(["ano", "mes", "nome", "despesa"], kind="stable").to_csv(arq_i, index=False)
-        pd.DataFrame({"aaaamm": sorted(meses_ok)}).to_csv(PASTA / "custeio_meses.csv", index=False)
+        if not (gravar_csv(vt.sort_values(["ano", "mes", "nome"]), arq_t)
+                and gravar_csv(vi.sort_values(["ano", "mes", "nome", "despesa"], kind="stable"), arq_i)):
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava, e o mês é lido de novo
+        meses_ok.add(am)
+        gravar_csv(pd.DataFrame({"aaaamm": sorted(meses_ok)}), PASTA / "custeio_meses.csv")
         soma = f"{sum(x['total'] for x in totais):_.2f}".replace(".", ",").replace("_", ".")
         log(f"  Belo Horizonte: custeio de {m:02d}/{a}: {len(totais)} vereadores, R$ {soma}")
 

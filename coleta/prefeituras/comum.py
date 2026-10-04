@@ -27,7 +27,7 @@ from datetime import datetime
 import pandas as pd
 
 from ..config import CACHE, RAIZ
-from ..util import TempoEsgotado, log, normalizar_nome
+from ..util import TempoEsgotado, gravar_json, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "prefeituras.json"
 FOTOS = RAIZ / "site" / "fotos"
@@ -396,8 +396,7 @@ def escrever(resultados, baixar_fotos=True):
             log(f"  {novas} fotos novas das prefeituras (candidatura de 2024 no TSE)")
     _por_fotos(todas, metas)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "tipos": [], "categorias": {}, "cidades": metas}, "p": todas}
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    gravar_json(SAIDA, dados)  # cidade que sumiu ou perdeu muita gente: fica o arquivo anterior (util.gravar_com)
     for meta, ps in resultados:
         n = Counter(p["tp"] for p in ps if p["x"])
         sub = f", {n['sb']} subprefeitos" if n["sb"] else ""

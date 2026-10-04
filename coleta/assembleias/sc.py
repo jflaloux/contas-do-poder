@@ -20,7 +20,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -106,7 +106,7 @@ def coletar():
         comum.gravar_em_exercicio(PASTA, _em_exercicio(), CFG["vagas"], LISTA)
         nf = _na_folha()
         if len(nf) >= 30:
-            nf.to_csv(PASTA / "na_folha.csv", index=False)
+            gravar_csv(nf, PASTA / "na_folha.csv")
     except TempoEsgotado:
         raise
     except Exception as e:  # noqa: BLE001
@@ -127,7 +127,7 @@ def coletar():
                            "valor": num(r.get("Valor"))})
     df = pd.DataFrame(linhas)
     df = df[(df.ano * 100 + df.mes >= INICIO) & (df.deputado != "")]
-    df.sort_values(["ano", "mes", "deputado", "verba", "descricao"]).to_csv(PASTA / "gastos_gabinete.csv", index=False)
+    gravar_csv(df.sort_values(["ano", "mes", "deputado", "verba", "descricao"]), PASTA / "gastos_gabinete.csv")
     log(f"  Alesc: {len(df)} gastos de gabinete de {df.deputado.nunique()} deputados desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

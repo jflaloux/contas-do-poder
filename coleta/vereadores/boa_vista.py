@@ -18,7 +18,7 @@ from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 1400100
@@ -131,7 +131,7 @@ def coletar():
     finally:
         if res:
             feito = pd.concat([feito, pd.DataFrame([x for r in res for x in r])])
-            feito.sort_values(["ano", "mes", "vereador", "despesa"]).to_csv(arq, index=False)
+            gravar_csv(feito.sort_values(["ano", "mes", "vereador", "despesa"]), arq)
         log(f"  Boa Vista: {len(res)} de {len(pedir)} quadros da verba baixados agora")
 
 

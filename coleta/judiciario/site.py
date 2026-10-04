@@ -16,7 +16,7 @@ from calendar import monthrange
 from datetime import datetime
 
 from ..config import RAIZ
-from ..util import log, normalizar_nome
+from ..util import gravar_json, log, normalizar_nome
 from . import comum
 
 SAIDA = RAIZ / "site" / "dados" / "judiciario.json"
@@ -289,8 +289,7 @@ def escrever(baixar_fotos=True, limite_fotos=40):
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "tipos": tipos,
                       "categorias": CATEGORIAS, "partes": PARTES_SITE, "notas": NOTAS_GERAIS, "orgaos": metas},
              "p": pessoas}
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(metas)} órgãos, {len(pessoas)} páginas, "
+    if gravar_json(SAIDA, dados):  # um órgão que sumiu ou perdeu muita gente: fica o arquivo anterior (util.gravar_com)
+        log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(metas)} órgãos, {len(pessoas)} páginas, "
         f"{sum(p['x'] for p in pessoas)} no cargo)")
     return dados

@@ -10,7 +10,7 @@ import time
 
 import pandas as pd
 
-from ..util import TempoEsgotado, baixar, log, verificar_prazo
+from ..util import TempoEsgotado, baixar, gravar_csv, log, verificar_prazo
 
 
 def _get(base, caminho, params=None, pausa=2):
@@ -72,5 +72,5 @@ def parlamentares(base, ids, arquivo, pausa=2, maximo=None):
     tabela = pd.concat([antigos, pd.DataFrame(novos)], ignore_index=True) if novos else antigos
     if novos:
         arquivo.parent.mkdir(parents=True, exist_ok=True)
-        tabela.to_csv(arquivo, index=False)
+        gravar_csv(tabela, arquivo)
     return tabela

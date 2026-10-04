@@ -161,13 +161,26 @@ def pular(grupo, fonte):
     return False
 
 
+def _falhou(item, erro):
+    if not item.get("falhas"):  # a primeira falha depois de um sucesso: "a coleta falhou desde" na página pública
+        item["primeira_falha"] = item["ultima_tentativa"]
+    item["falhas"] = item.get("falhas", 0) + 1
+    item["ultimo_erro"] = erro[:300]
+    item["ultima_falha"] = item["ultima_tentativa"]
+
+
 @contextmanager
 def registrar(grupo, fonte):
-    """Anota a tentativa e o resultado (o erro não sai daqui: quem chama decide se a falha para os outros)."""
+    """Anota a tentativa e o resultado (o erro não sai daqui: quem chama decide se a falha para os outros). Uma gravação
+    recusada por perda de cobertura (util.gravar_com) durante a coleta conta como falha da fonte, sem erro: o arquivo
+    anterior fica e a rodada segue."""
+    from . import util
     ch = chave(grupo, fonte)
     dados = ler(LUGAR)
     item = dados.setdefault(ch, {})
     item["ultima_tentativa"] = _agora()
+    antes, util._fonte_atual = util._fonte_atual, ch
+    marca = len(util._recusas)
     try:
         yield
     except TempoEsgotado:
@@ -175,14 +188,18 @@ def registrar(grupo, fonte):
         _gravar(LUGAR, dados)
         raise
     except Exception as e:  # noqa: BLE001
-        if not item.get("falhas"):  # a primeira falha depois de um sucesso: "a coleta falhou desde" na página pública
-            item["primeira_falha"] = item["ultima_tentativa"]
-        item["falhas"] = item.get("falhas", 0) + 1
-        item["ultimo_erro"] = f"{type(e).__name__}: {e}"[:300]
-        item["ultima_falha"] = item["ultima_tentativa"]
+        _falhou(item, f"{type(e).__name__}: {e}")
         _gravar(LUGAR, dados)
         raise
-    item["falhas"] = 0
-    item.pop("primeira_falha", None)
-    item["ultimo_sucesso"] = item["ultima_tentativa"]
+    finally:
+        util._fonte_atual = antes
+    recusas = util.recusas_desde(marca, ch)
+    if recusas:
+        _falhou(item, "Recusado por perda de cobertura (fica o arquivo anterior): "
+                + "; ".join(f"{r['arquivo']}: {r['texto']}" for r in recusas))
+        log(f"  {ch}: falha anotada (gravação recusada por perda de cobertura)")
+    else:
+        item["falhas"] = 0
+        item.pop("primeira_falha", None)
+        item["ultimo_sucesso"] = item["ultima_tentativa"]
     _gravar(LUGAR, dados)

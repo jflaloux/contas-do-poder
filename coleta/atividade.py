@@ -41,7 +41,7 @@ from datetime import date, datetime, timedelta
 import requests
 
 from .config import CACHE, DADOS, HOJE, INICIO_LEGISLATURA, RAIZ
-from .util import baixar, cache_valido, dormir, ler_json, log, salvar_json
+from .util import baixar, cache_valido, dormir, gravar_json, gravar_linhas, ler_json, log, salvar_json
 
 INICIO = date(INICIO_LEGISLATURA[0], INICIO_LEGISLATURA[1], 1)
 C = CACHE / "atividade"
@@ -146,10 +146,8 @@ def _carteiras(vistos):
             else:
                 log(f"Atividade: carteira {c} ({nome}, {uf}) sem deputado correspondente; fica de fora")
         SAIDA.mkdir(parents=True, exist_ok=True)
-        with open(arq, "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, ["carteira", "id_deputado", "nome", "uf", "ligado_por"], delimiter=";")
-            w.writeheader()
-            w.writerows(sorted(guardado.values(), key=lambda l: int(l["carteira"])))
+        gravar_linhas(arq, ["carteira", "id_deputado", "nome", "uf", "ligado_por"],
+                      sorted(guardado.values(), key=lambda l: int(l["carteira"])), delimiter=";")
     return {c: l["id_deputado"] for c, l in guardado.items()}
 
 
@@ -217,10 +215,8 @@ def camara_presenca():
     total = defaultdict(lambda: defaultdict(lambda: [0, 0, 0, 0]))
     motivos = defaultdict(Counter)
     for ano, linhas in por_ano.items():
-        with open(SAIDA / f"camara-presenca-{ano}.csv", "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, ["data", "carteira", "id_deputado", "frequencia", "justificativa"], delimiter=";")
-            w.writeheader()
-            w.writerows(sorted(linhas, key=lambda l: (l["data"], int(l["carteira"]))))
+        gravar_linhas(SAIDA / f"camara-presenca-{ano}.csv", ["data", "carteira", "id_deputado", "frequencia", "justificativa"],
+                      sorted(linhas, key=lambda l: (l["data"], int(l["carteira"]))), delimiter=";")
         for l in linhas:
             if not l["id_deputado"]:
                 continue
@@ -373,10 +369,8 @@ def senado_presenca():
                                "codigo_senador": cod, "situacao": "votou" if sig in ("Sim", "Não", "Abstenção", "Votou") else sig})
         if linhas:
             SAIDA.mkdir(parents=True, exist_ok=True)
-            with open(SAIDA / f"senado-votacoes-{ano}.csv", "w", encoding="utf-8", newline="") as f:
-                w = csv.DictWriter(f, ["data", "votacao", "materia", "codigo_senador", "situacao"], delimiter=";")
-                w.writeheader()
-                w.writerows(linhas)
+            gravar_linhas(SAIDA / f"senado-votacoes-{ano}.csv", ["data", "votacao", "materia", "codigo_senador", "situacao"],
+                          linhas, delimiter=";")
     log(f"Atividade: {n} votações nominais no Plenário do Senado desde {INICIO:%d/%m/%Y}, {len(total)} senadores")
     return total, motivos, ultima
 
@@ -443,10 +437,7 @@ def senado_projetos(senadores):
 # ---------------------------------------------------------------- montagem
 def _gravar_csv(nome, campos, linhas):
     SAIDA.mkdir(parents=True, exist_ok=True)
-    with open(SAIDA / nome, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f, delimiter=";")
-        w.writerow(campos)
-        w.writerows(linhas)
+    gravar_linhas(SAIDA / nome, campos, linhas, delimiter=";", dicionarios=False)
 
 
 def coletar():
@@ -516,7 +507,7 @@ def coletar():
                            "nacional, patrono, símbolo), institui prêmio, medalha ou diploma, reconhece utilidade pública "
                            "ou declara patrimônio ou manifestação cultural. Os demais projetos ficam em \"os demais\".",
     }
-    SITE.write_text(json.dumps({"meta": meta, "p": pessoas}, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    gravar_json(SITE, {"meta": meta, "p": pessoas}, final="\n")
     log(f"Atividade: {sum(1 for k in pessoas if k.startswith('dep-'))} deputados e {sum(1 for k in pessoas if k.startswith('sen-'))} "
         f"senadores em {SITE.relative_to(RAIZ)}")
     if _FALHAS:

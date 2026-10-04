@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -98,7 +98,7 @@ def coletar():
     if len(linhas) < 20:
         log(f"  ALRN: a lista veio com {len(linhas)} deputados; fica o que já estava gravado")
         return
-    pd.DataFrame(linhas).sort_values("nome").to_csv(arq, index=False)
+    gravar_csv(pd.DataFrame(linhas).sort_values("nome"), arq)
     log(f"  ALRN: {len(linhas)} deputados na lista")
 
 

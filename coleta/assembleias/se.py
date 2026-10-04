@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum, se_folha
 
@@ -161,10 +161,10 @@ def coletar():
             feitos_v.add(am)
     finally:
         if len(dep):
-            dep.sort_values(["ano", "mes", "nome"]).to_csv(arq_d, index=False)
-            gab.astype({"pessoas": int}).sort_values(["ano", "mes", "lotacao"]).to_csv(arq_g, index=False)
+            gravar_csv(dep.sort_values(["ano", "mes", "nome"]), arq_d)
+            gravar_csv(gab.astype({"pessoas": int}).sort_values(["ano", "mes", "lotacao"]), arq_g)
         if len(ver):
-            ver.sort_values(["pagamento", "item"]).to_csv(arq_v, index=False)
+            gravar_csv(ver.sort_values(["pagamento", "item"]), arq_v)
         log(f"  Alese: {len(feitos_f)} folhas e {len(feitos_v)} ressarcimentos desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

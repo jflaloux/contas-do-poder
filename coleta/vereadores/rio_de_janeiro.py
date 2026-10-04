@@ -44,7 +44,7 @@ import pandas as pd
 import requests
 
 from ..config import CACHE, DADOS, HOJE, USER_AGENT
-from ..util import SessaoEducada, TempoEsgotado, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import SessaoEducada, TempoEsgotado, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 3304557
@@ -331,8 +331,8 @@ def vereadores():
             per.append({"codigo": cvd, "inicio": ini, "fim": fim})
     df = pd.DataFrame(linhas)
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "vereadores.csv", index=False)
-    pd.DataFrame(per, columns=["codigo", "inicio", "fim"]).to_csv(PASTA / "mandatos.csv", index=False)
+    gravar_csv(df, PASTA / "vereadores.csv")
+    gravar_csv(pd.DataFrame(per, columns=["codigo", "inicio", "fim"]), PASTA / "mandatos.csv")
     sem = df[~df.codigo.isin({x["codigo"] for x in per})].nome.tolist()
     log(f"  Rio de Janeiro: {len(df)} vereadores na legislatura ({len(atuais)} no cargo hoje), {len(per)} períodos no cargo"
         + (f"; sem período: {', '.join(sem)}" if sem else ""))
@@ -350,7 +350,7 @@ def gabinetes():
             linhas.append({"nucleo": nucleo, "gabinete": int(num.group(1)), "titular": str(r[2]).strip(),
                            "suplente": str(r[3]).strip() if len(r) > 3 else ""})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(linhas).to_csv(PASTA / "gabinetes.csv", index=False)
+    gravar_csv(pd.DataFrame(linhas), PASTA / "gabinetes.csv")
     log(f"  Rio de Janeiro: {len(linhas)} gabinetes")
 
 
@@ -442,7 +442,7 @@ def alimentacao():
         if abs(soma - total) > 0.05:
             log(f"  Rio de Janeiro: alimentação {m:02d}/{a} ({t}) soma {soma:.2f}, mas a planilha diz {total:.2f}")
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "alimentacao.csv", index=False)
+    gravar_csv(df, PASTA / "alimentacao.csv")
     log(f"  Rio de Janeiro: vale-alimentação, {len(df)} linhas ({len(set(zip(df.ano, df.mes)))} meses)")
 
 
@@ -483,8 +483,8 @@ def combustivel():
         if abs(soma - total) > 0.05:
             log(f"  Rio de Janeiro: combustível {m:02d}/{a} soma {soma:.2f}, mas a planilha diz {total:.2f}")
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "combustivel.csv", index=False)
-    pd.DataFrame(precos, columns=["ano", "mes", "preco_anp"]).drop_duplicates(["ano", "mes"]).to_csv(PASTA / "combustivel_preco_anp.csv", index=False)
+    gravar_csv(df, PASTA / "combustivel.csv")
+    gravar_csv(pd.DataFrame(precos, columns=["ano", "mes", "preco_anp"]).drop_duplicates(["ano", "mes"]), PASTA / "combustivel_preco_anp.csv")
     meses_com = sorted({(a, m) for a, m, t in conferencia if t})
     log(f"  Rio de Janeiro: combustível, {len(df)} linhas" + (f", até {meses_com[-1][1]:02d}/{meses_com[-1][0]}" if meses_com else ""))
 
@@ -519,7 +519,7 @@ def equipe():
     del dados
     df = pd.DataFrame([{"data": HOJE.isoformat(), "gabinete": g, "cargo": c, "pessoas": n} for (g, c), n in sorted(contagem.items())])
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(arq, index=False)
+    gravar_csv(df, arq)
     log(f"  Rio de Janeiro: {int(df.pessoas.sum()) if len(df) else 0} servidores em {df.gabinete.nunique() if len(df) else 0} gabinetes")
 
 
@@ -634,7 +634,8 @@ def contracheques():
                 linhas.append({"ano": ano, "mes": mes, "codigo": codigo, "nome_civil": nome, "rubrica": k, "valor": v})
     df = pd.DataFrame(linhas, columns=["ano", "mes", "codigo", "nome_civil", "rubrica", "valor"]).sort_values(["codigo", "ano", "mes", "rubrica"])
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "contracheques.csv", index=False)
+    gravar_csv(df, PASTA / "contracheques.csv",  # amostra para conferir o subsídio, não o dado do site
+               motivo="amostra de conferência: os meses conferidos mudam com os mandatos e com as consultas que abrem")
     outros = sorted(set(df.rubrica) - {"subsidio", "nao_encontrado"})
     # meses inteiros no cargo: o bruto tem de ser o subsídio (senão, avisa)
     mand = pd.read_csv(PASTA / "mandatos.csv", dtype=str).fillna("")

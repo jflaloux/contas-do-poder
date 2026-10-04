@@ -22,7 +22,7 @@ import re
 from datetime import datetime, timedelta
 
 from ..config import DADOS
-from ..util import log, normalizar_nome
+from ..util import gravar_linhas, log, normalizar_nome
 
 PASTA = DADOS / "judiciario"
 COMPOSICAO = PASTA / "composicao.json"
@@ -81,14 +81,9 @@ def _num(v):
     return "" if v is None or v == "" else f"{float(v):.2f}"
 
 
-def _escrever(caminho, linhas, colunas):
-    caminho.parent.mkdir(parents=True, exist_ok=True)
-    tmp = caminho.with_suffix(".tmp")
-    with open(tmp, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=colunas, extrasaction="ignore")
-        w.writeheader()
-        w.writerows(linhas)
-    tmp.replace(caminho)
+def _escrever(caminho, linhas, colunas, motivo=None):
+    """Gravação segura (util.gravar_com): devolve False se recusou (fica o arquivo anterior)."""
+    return gravar_linhas(caminho, colunas, linhas, extrasaction="ignore", motivo=motivo)
 
 
 def linha(orgao, ano_mes, nome, cargo, lotacao, partes, diarias=None, itens=None, fonte="", nota=""):
@@ -115,7 +110,8 @@ def gravar(orgao, linhas, lidos):
             if k in ("nome", "lotacao", "itens", "nota") and re.search(r"(?<!\d)\d{11}(?!\d)|\d{3}\.\d{3}\.\d{3}-\d{2}", str(v)):
                 raise ValueError(f"{orgao}: um número de 11 dígitos apareceu em {k} ({l['nome']}); nada foi gravado")
     todas = sorted(velhas + novas, key=lambda l: (int(l["ano_mes"]), normalizar_nome(l["nome"])))
-    _escrever(pasta(orgao) / "folha.csv", todas, COLUNAS)
+    if not _escrever(pasta(orgao) / "folha.csv", todas, COLUNAS):
+        return 0  # recusado por perda de cobertura: a folha e as fontes ficam como estavam (os meses são lidos de novo)
     f = [x for x in ler_fontes(orgao) if int(x["ano_mes"]) not in meses_lidos]
     f += [{"orgao": orgao, "ano_mes": int(x["ano_mes"]), "pessoas": x["pessoas"], "url": x["url"], "lido_em": agora()} for x in lidos]
     _escrever(pasta(orgao) / "fontes.csv", sorted(f, key=lambda x: int(x["ano_mes"])), FONTES)

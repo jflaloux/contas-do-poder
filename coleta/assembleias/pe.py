@@ -19,7 +19,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -78,8 +78,8 @@ def coletar():
     (C / "notas").mkdir(parents=True, exist_ok=True)
     em_exercicio = _json(ABERTOS)
     todos = _json(f"{API}/dep/deputados.php", {"leg": "-16"})
-    pd.DataFrame(todos)[["id", "nome", "partido"]].to_csv(PASTA / "deputados_alepe.csv", index=False)
-    pd.DataFrame(em_exercicio).rename(columns={"nomeParlamentar": "nome"}).assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "em_exercicio.csv", index=False)
+    gravar_csv(pd.DataFrame(todos)[["id", "nome", "partido"]], PASTA / "deputados_alepe.csv")
+    gravar_csv(pd.DataFrame(em_exercicio).rename(columns={"nomeParlamentar": "nome"}).assign(visto_em=time.strftime("%Y-%m-%d")), PASTA / "em_exercicio.csv")
     # prestações de contas, mês a mês (os meses antigos ficam no cache)
     prest_arq = PASTA / "verba_prestacoes.csv"
     antigas = pd.read_csv(prest_arq, dtype={"docid": str}) if prest_arq.exists() else pd.DataFrame(columns=["ano", "mes", "docid", "tipo", "deputado", "total"])
@@ -96,7 +96,7 @@ def coletar():
         nv = pd.DataFrame(novas)
         refeitos = set(nv.ano * 100 + nv.mes)
         antigas = pd.concat([antigas[~(antigas.ano * 100 + antigas.mes).isin(refeitos)], nv], ignore_index=True)
-    antigas.sort_values(["ano", "mes", "deputado", "docid"]).to_csv(prest_arq, index=False)
+    gravar_csv(antigas.sort_values(["ano", "mes", "deputado", "docid"]), prest_arq)
     # rubricas (nome de cada número), por ano
     rubricas = {}
     for ano in sorted({am // 100 for am in meses}):
@@ -125,7 +125,7 @@ def coletar():
                                "tipo": rubricas.get((int(p.ano), int(n.get("rubrica") or 0)), "Outras despesas"),
                                "fornecedor": (n.get("empresa") or "").strip(), "cnpj_cpf": vc.mascarar(n.get("cnpj") or ""), "data": n.get("data", ""),
                                "valor": num(n.get("valor"))})
-        pd.DataFrame(linhas).sort_values(["ano", "mes", "deputado", "docid", "data"]).to_csv(PASTA / "verba_notas.csv", index=False)
+        gravar_csv(pd.DataFrame(linhas).sort_values(["ano", "mes", "deputado", "docid", "data"]), PASTA / "verba_notas.csv")
         faltam = sum(1 for p in antigas.itertuples() if not (C / "notas" / f"{p.docid}.json").exists())
         log(f"  Alepe: {len(em_exercicio)} deputados em exercício, {len(antigas)} prestações, {baixadas} com notas baixadas agora, {faltam} ainda sem notas")
 

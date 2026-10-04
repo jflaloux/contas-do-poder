@@ -23,7 +23,7 @@ import re
 import unicodedata
 
 from .config import RAIZ
-from .util import log
+from .util import gravar_json, log
 
 ARQ = RAIZ / "site" / "dados" / "enderecos.json"
 FONTES = [RAIZ / "site" / "dados" / f for f in ("dados.json", "camaras.json", "prefeituras.json", "assembleias.json", "judiciario.json")]
@@ -143,8 +143,10 @@ def executar():
             antigos[cam] = pid
     antigos = {c: pid for c, pid in antigos.items() if c not in ocupado}
     saidos = {pid: cam for pid, cam in registro.items() if pid not in pessoas}
-    ARQ.write_text(json.dumps({"p": dict(sorted(novo.items())), "antigos": dict(sorted(antigos.items())),
-                               "saidos": dict(sorted(saidos.items()))}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    # "saidos" encolhe quando alguém volta; "p" e "antigos" só encolhem por engano ou por mudança feita de propósito no código
+    if not gravar_json(ARQ, {"p": dict(sorted(novo.items())), "antigos": dict(sorted(antigos.items())),
+                             "saidos": dict(sorted(saidos.items()))}, chaves=("p", "antigos")):
+        return
     mudaram = sum(1 for pid, cam in registro.items() if pid in novo and novo[pid] != cam)
     log(f"Endereços: {len(novo)} páginas de políticos ({len(novo) - len([p for p in novo if p in registro])} novas, "
         f"{mudaram} mudaram, {len(antigos)} endereços antigos redirecionados)")

@@ -16,7 +16,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2800308
@@ -152,10 +152,10 @@ def coletar():
     finally:
         if novos_f:
             fol = pd.concat([fol, pd.DataFrame(novos_f)])
-            fol.sort_values(["ano", "mes", "nome"]).to_csv(arq_f, index=False)
+            gravar_csv(fol.sort_values(["ano", "mes", "nome"]), arq_f)
         if novos_v:
             vae = pd.concat([vae, pd.DataFrame(novos_v)])
-            vae.sort_values(["ano", "mes", "nome"]).to_csv(arq_v, index=False)
+            gravar_csv(vae.sort_values(["ano", "mes", "nome"]), arq_v)
         log(f"  Aracaju: {len(novos_f)} linhas de folha e {len(novos_v)} da VAEP novas")
 
 

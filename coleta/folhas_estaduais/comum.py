@@ -12,7 +12,7 @@ import re
 import pandas as pd
 
 from ..config import DADOS
-from ..util import log, normalizar_nome
+from ..util import gravar_csv, log, normalizar_nome
 from ..vereadores.comum import menos_meses, meses, ultimo_mes_fechado
 
 PASTA = DADOS / "governadores" / "folha"
@@ -34,8 +34,9 @@ def ler(uf):
     return pd.read_csv(a) if a.exists() else pd.DataFrame(columns=COLUNAS)
 
 
-def gravar(uf, linhas, meses_feitos):
-    """Troca, no arquivo do estado, os meses processados agora pelas linhas novas."""
+def gravar(uf, linhas, meses_feitos, motivo=None):
+    """Troca, no arquivo do estado, os meses processados agora pelas linhas novas (gravação segura: se a fonte trouxe
+    bem menos do que o gravado, fica o arquivo anterior, que é o que volta)."""
     velhas = ler(uf)
     # a mesma pessoa pode aparecer duas vezes na lista de ocupantes (a vice que vira governadora): linhas iguais contam uma vez
     novas = pd.DataFrame(linhas, columns=COLUNAS).drop_duplicates()
@@ -43,7 +44,8 @@ def gravar(uf, linhas, meses_feitos):
         velhas = velhas[~velhas.aaaamm.isin(set(meses_feitos))]
     df = pd.concat([velhas, novas], ignore_index=True) if len(velhas) else novas
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.sort_values(["aaaamm", "tp", "nome"]).to_csv(arquivo(uf), index=False)
+    if not gravar_csv(df.sort_values(["aaaamm", "tp", "nome"]), arquivo(uf), motivo=motivo):
+        return ler(uf)
     return df
 
 

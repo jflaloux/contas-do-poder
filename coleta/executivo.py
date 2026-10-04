@@ -26,7 +26,7 @@ import pandas as pd
 import requests
 
 from .config import ANOS, BRUTOS, DADOS, meses_da_legislatura
-from .util import _sessao, cache_valido, ler_json, log, normalizar_nome, numero_br, salvar_json, verificar_prazo
+from .util import _sessao, cache_valido, gravar_json, ler_json, log, normalizar_nome, numero_br, salvar_json, verificar_prazo
 
 BASE = "https://portaldatransparencia.gov.br/download-de-dados"
 C = DADOS / "portal_transparencia"
@@ -154,7 +154,8 @@ def _mes(ano, mes):
         _avisar_bloqueio()
         return None  # sem os jetons o mês fica incompleto: tenta de novo na próxima vez
     dados = {"ano": ano, "mes": mes, "pessoas": pessoas}
-    salvar_json(arq, dados)
+    if not gravar_json(arq, dados, compacto=False, indent=1):  # vai para o Git: recusado, fica o anterior
+        return ler_json(arq)
     return dados
 
 
@@ -195,7 +196,8 @@ def _viagens(ano, quem):
         s["devolucao"] += numero_br(r[i["VALOR DEVOLUCAO"]]) or 0.0
     saida = [{"id": k[0], "ano": k[1], "mes": k[2], **{c: round(v, 2) if isinstance(v, float) else v for c, v in s.items()}}
              for k, s in sorted(soma.items())]
-    salvar_json(arq, {"quem": chave_quem, "linhas": saida})
+    if not gravar_json(arq, {"quem": chave_quem, "linhas": saida}, compacto=False, indent=1):  # vai para o Git
+        return ler_json(arq)["linhas"]
     return saida
 
 

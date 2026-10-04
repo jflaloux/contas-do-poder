@@ -24,7 +24,7 @@ import time
 
 from . import fotos as F
 from .config import RAIZ
-from .util import TempoEsgotado, log, normalizar_nome
+from .util import TempoEsgotado, gravar_json, log, normalizar_nome
 
 SITE = RAIZ / "site" / "dados"
 # o que o cargo (P39) ou a profissão (P106) do item precisa ter, por grupo
@@ -142,7 +142,7 @@ def baixar_commons(pid, qid, arquivo):
     dados = F.ler_json(F.CREDITOS)
     dados["fotos"][pid] = {"wikidata": qid, "arquivo": arquivo, **{k: f[k] for k in ("autor", "licenca", "url_licenca", "pagina")},
                            **({"cortada": True} if larga else {})}
-    F.salvar_json(F.CREDITOS, dados)
+    F.salvar_creditos(dados)
     return None
 
 
@@ -175,7 +175,7 @@ def wikidata(grupos=None, limite=None, forcar=False):
                 dados = F.ler_json(F.CREDITOS)
                 dados.setdefault("procurado_em", {})[p["id"]] = hoje
                 tentou = dados["procurado_em"]
-                F.salvar_json(F.CREDITOS, dados)
+                F.salvar_creditos(dados)
                 log(f"  {grupo} {p['n']}: {'foto nova' if motivo is None else motivo} ({time.time() - t0:.0f} s)")
                 if motivo is None:
                     novas.setdefault(grupo, []).append(p["id"])
@@ -256,8 +256,7 @@ def preencher():
     for arq in ("dados.json", "assembleias.json", "camaras.json", "prefeituras.json"):
         d = json.loads((SITE / arq).read_text(encoding="utf-8"))
         n = sum(acerto(p) for p in d["p"] if arq != "dados.json" or p["k"] == "e")
-        if n:
-            (SITE / arq).write_text(json.dumps(d, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        if n and gravar_json(SITE / arq, d, **({"grupo": "uf"} if arq == "assembleias.json" else {})):
             mudou[arq] = n
     g = json.loads((SITE / "governadores.json").read_text(encoding="utf-8"))
     n = 0
@@ -265,8 +264,7 @@ def preencher():
         for o in [e["gov"], e.get("vice"), *e["oc"]]:
             if o:
                 n += acerto(o)
-    if n:
-        (SITE / "governadores.json").write_text(json.dumps(g, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    if n and gravar_json(SITE / "governadores.json", g):
         mudou["governadores.json"] = n
     from .judiciario import site as jsite
     antes = sum(1 for p in json.loads((SITE / "judiciario.json").read_text(encoding="utf-8"))["p"] if p.get("f"))

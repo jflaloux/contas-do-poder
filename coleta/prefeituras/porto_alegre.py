@@ -13,7 +13,7 @@ import time
 import pandas as pd
 
 from ..config import DADOS
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 4314902
@@ -114,7 +114,7 @@ def coletar():
                                     "eventuais": comum.num(r.get("OUTRAS REMUNERACOES EVENTUAIS")), "abate_teto": comum.num(r.get("ABATE TETO")),
                                     "jetons": comum.num(r.get("JETONS"))})
             linhas = pd.concat([linhas[~((linhas.aaaamm == am) & (linhas.folha == tipo))], pd.DataFrame(achados, columns=COLUNAS)], ignore_index=True)
-            linhas.sort_values(["aaaamm", "folha", "tp", "nome"]).to_csv(LINHAS, index=False)
+            gravar_csv(linhas.sort_values(["aaaamm", "folha", "tp", "nome"]), LINHAS)
             log(f"  Prefeitura de Porto Alegre: {m:02d}/{a} {tipo.lower()} ({len(achados)} linhas)")
 
 

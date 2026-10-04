@@ -31,7 +31,7 @@ from datetime import datetime, timedelta
 import pandas as pd
 
 from ..config import CACHE, DADOS, RAIZ
-from ..util import log, normalizar_nome
+from ..util import gravar_csv, gravar_json, log, normalizar_nome
 
 PASTA = DADOS / "municipios_tce"
 CACHE_TCE = CACHE / "tce"
@@ -99,11 +99,9 @@ def ler_fontes(uf):
     return _ler_csv(pasta(uf) / "fontes.csv", FONTES)
 
 
-def _escrever(df, caminho, colunas, ordem):
-    caminho.parent.mkdir(parents=True, exist_ok=True)
-    tmp = caminho.with_suffix(".tmp")
-    df[colunas].sort_values(ordem).to_csv(tmp, index=False, float_format="%.2f")
-    tmp.replace(caminho)
+def _escrever(df, caminho, colunas, ordem, motivo=None):
+    """Gravação segura (util.gravar_csv): devolve False se recusou (fica o arquivo anterior)."""
+    return gravar_csv(df[colunas].sort_values(ordem), caminho, float_format="%.2f", motivo=motivo)
 
 
 def gravar(uf, linhas, blocos):
@@ -122,8 +120,10 @@ def gravar(uf, linhas, blocos):
     juntas = [x.astype({c: float for c in ["valor_bruto"] + PARTES}) for x in (velhas, novas) if len(x)]
     if juntas:
         df = pd.concat(juntas, ignore_index=True).astype({"cod_ibge": int, "ano_mes": int})
-        for ano, g in df.groupby(df.ano_mes // 100):
-            _escrever(g, pasta(uf) / f"{ano}.csv", COLUNAS, ["cod_ibge", "orgao", "ano_mes", "papel", "nome"])
+        gravados = [_escrever(g, pasta(uf) / f"{ano}.csv", COLUNAS, ["cod_ibge", "orgao", "ano_mes", "papel", "nome"])
+                    for ano, g in df.groupby(df.ano_mes // 100)]
+        if not all(gravados):  # recusado por perda de cobertura: os blocos não contam como lidos (são lidos de novo)
+            return 0, 0
     fontes = ler_fontes(uf)
     if len(fontes):
         fontes = fontes[[not t for t in tem(fontes)]]
@@ -483,11 +483,9 @@ def montar_site(uf, cfg):
              "m": m}
     SITE.mkdir(parents=True, exist_ok=True)
     destino = SITE / f"{uf.lower()}.json"
-    tmp = destino.with_suffix(".tmp")
-    tmp.write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    tmp.replace(destino)
-    log(f"TCE {uf}: {destino.relative_to(RAIZ)} ({destino.stat().st_size / 1e3:.0f} KB, {len(m)} cidades, "
-        f"último mês {ultimo})")
+    if gravar_json(destino, saida):
+        log(f"TCE {uf}: {destino.relative_to(RAIZ)} ({destino.stat().st_size / 1e3:.0f} KB, {len(m)} cidades, "
+            f"último mês {ultimo})")
     return saida
 
 

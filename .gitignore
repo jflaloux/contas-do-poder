@@ -5,7 +5,8 @@ __pycache__/
 .venv/
 .DS_Store
 
-# Intermediários que os robôs recriam
+# Intermediários que os robôs recriam (e o arquivo temporário da gravação segura, util.gravar_com)
+.novo.*
 dados/brutos/
 dados/processados/lancamentos.csv
 

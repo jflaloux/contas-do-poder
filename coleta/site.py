@@ -30,7 +30,7 @@ import pandas as pd
 
 from . import enderecos
 from .config import BRUTOS, PROCESSADOS, RAIZ
-from .util import ler_json, log, normalizar_nome
+from .util import gravar_json, ler_json, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "dados.json"
 FOTOS = RAIZ / "site" / "fotos"
@@ -152,7 +152,7 @@ def _em_exercicio(id_num, legislatura):
     """Meses (AAAAMM) em que o deputado estava em exercício na legislatura, pelo histórico da Câmara (posse, licença,
     afastamento, reassunção...). O histórico fica guardado em dados/referencia/camara_historico.json."""
     from .config import LEGISLATURA
-    from .util import baixar, salvar_json
+    from .util import baixar
     guardado = ler_json(HISTORICO) if HISTORICO.exists() else {}
     if str(id_num) not in guardado:
         try:
@@ -162,7 +162,7 @@ def _em_exercicio(id_num, legislatura):
             return None
         guardado[str(id_num)] = [[x["dataHora"][:10], x.get("idLegislatura"), x.get("situacao")] for x in d]
         HISTORICO.parent.mkdir(parents=True, exist_ok=True)
-        salvar_json(HISTORICO, guardado)
+        gravar_json(HISTORICO, guardado, compacto=False, indent=1)
     evs = sorted((dt, sit) for dt, leg, sit in guardado[str(id_num)] if leg == (legislatura or LEGISLATURA) and sit)
     meses, dentro, desde = set(), False, None
     fim = int(datetime.now().strftime("%Y%m"))
@@ -443,9 +443,8 @@ def executar():
         },
         "p": saida,
     }
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
+    if gravar_json(SAIDA, dados):  # um tipo de político que sumiu ou perdeu muita gente: fica o arquivo anterior
+        log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
     _municipios()
     enderecos.executar()  # o endereço de cada página (contasdopoder.com/nome), depois de todos os arquivos prontos
 
@@ -491,7 +490,7 @@ def _municipios():
                        _r(c.custo) if c is not None else None, int(c.ano) if c is not None else None,
                        round(float(sal[r.cod_ibge]), 2) if r.cod_ibge in sal and pd.notna(sal[r.cod_ibge]) else None])
     saida = RAIZ / "site" / "dados" / "municipios.json"
-    saida.write_text(json.dumps({
+    gravar_json(saida, {
         "meta": {"teto_deputado_estadual": round(SUBSIDIO_DEPUTADO_FEDERAL * 0.75, 2), "faixas_teto": [[f if f != float("inf") else None, pct] for f, pct in FAIXAS_TETO],
                  "fonte_custo": "Tesouro Nacional (Siconfi), Declaração de Contas Anuais, função Legislativa, despesas liquidadas",
                  "fonte_vereadores": "TSE, eleitos em 2024",
@@ -499,7 +498,7 @@ def _municipios():
                  "fonte_salario_medio": "IBGE, Cadastro Central de Empresas (CEMPRE): salário médio mensal do pessoal assalariado "
                                         "das empresas e outras organizações formais da cidade (inclui órgãos públicos), em reais do ano",
                  "link_salario_medio": "https://sidra.ibge.gov.br/tabela/9509"},
-        "m": linhas}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+        "m": linhas})
     if ver is not None:
         pasta_v = RAIZ / "site" / "dados" / "vereadores"
         pasta_v.mkdir(parents=True, exist_ok=True)
@@ -507,5 +506,5 @@ def _municipios():
         ver["uf"] = ver.cod_ibge.map(uf_de)
         for uf, g in ver[ver.uf.notna()].groupby("uf"):
             por = {str(c): [[n.title(), pt, gn] for n, pt, gn in zip(gg.nome_urna, gg.partido, gg.genero)] for c, gg in g.groupby("cod_ibge")}
-            (pasta_v / f"{uf}.json").write_text(json.dumps(por, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+            gravar_json(pasta_v / f"{uf}.json", por)
     log(f"Site: câmaras municipais — {len(linhas)} cidades, {saida.stat().st_size / 1e3:.0f} KB")

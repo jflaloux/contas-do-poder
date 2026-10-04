@@ -34,7 +34,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS, HOJE, RAIZ
 from ..fotos import _ajustar
-from ..util import TempoEsgotado, _sessao, baixar, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, baixar, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 
 COD_IBGE = 3550308
 LEGISLATURA = 19               # 2025–2028
@@ -90,7 +90,7 @@ def gabinetes():
               for x in _splegis("OcupacaoGabineteJSON") if x["legislatura"] == LEGISLATURA]
     df = pd.DataFrame(linhas).sort_values(["gabinete", "inicio"])
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "gabinetes.csv", index=False)
+    gravar_csv(df, PASTA / "gabinetes.csv")
     return df
 
 
@@ -126,7 +126,7 @@ def _candidatos():
                 linhas.append({"nome_urna": l["NM_URNA_CANDIDATO"].strip(), "nome": l["NM_CANDIDATO"].strip(),
                                "partido": l["SG_PARTIDO"], "genero": l["DS_GENERO"][:1], "situacao": l["DS_SIT_TOT_TURNO"]})
     df = pd.DataFrame(linhas).sort_values("nome_urna")
-    df.to_csv(arq, index=False)
+    gravar_csv(df, arq)
     return df.fillna("")
 
 
@@ -215,7 +215,7 @@ def vereadores(gab):
             "pagina": c.get("pagina", ""), "foto": c.get("foto", ""),
         })
     df = pd.DataFrame(linhas)
-    df.to_csv(arq, index=False)
+    gravar_csv(df, arq)
     sem = df[df.genero == ""].nome_cmsp.tolist()
     if sem:
         log(f"  Vereadores SP sem correspondência no TSE: {', '.join(sem)}")
@@ -294,8 +294,8 @@ def gastos(ate):
                           "valor": round(float(x.get("VALOR") or 0), 2)})
     d = pd.DataFrame(desp)
     v = pd.DataFrame(verba)
-    d.to_csv(PASTA / "despesas.csv", index=False)
-    v.to_csv(PASTA / "verba.csv", index=False)
+    gravar_csv(d, PASTA / "despesas.csv")
+    gravar_csv(v, PASTA / "verba.csv")
     log(f"Vereadores SP: {len(d)} notas de gastos do gabinete até {ate[1]:02d}/{ate[0]} ({d.valor.sum() / 1e6:.1f} milhões)")
     return d, v
 
@@ -316,7 +316,7 @@ def equipe():
         if m and not cargo.startswith("VEREADOR"):
             cont[(int(m.group(1)), cargo)] += 1
     df = pd.DataFrame([{"data": data, "gabinete": g, "cargo": c, "pessoas": n} for (g, c), n in sorted(cont.items())])
-    df.to_csv(PASTA / "equipe.csv", index=False)
+    gravar_csv(df, PASTA / "equipe.csv")
     return df
 
 

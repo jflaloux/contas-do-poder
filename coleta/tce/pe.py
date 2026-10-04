@@ -153,6 +153,20 @@ def nomes(href):
     return saida
 
 
+class ListaIncompleta(RuntimeError):
+    """A lista de nomes de um cargo veio vazia ou com bem menos nomes do que a quantidade da tabela."""
+
+
+def nomes_do_cargo(href, quantidade, ler=None):
+    """[(nome, cargo)] de um cargo, conferidos com a quantidade da tabela: lista vazia (com gente no cargo) ou com menos
+    da metade dos nomes é falha (ListaIncompleta), como a página que não abre; os nomes gravados antes ficam."""
+    ns = (ler or nomes)(href)
+    distintos = len({n for n, _ in ns})
+    if quantidade and (not distintos or distintos < 0.5 * quantidade):
+        raise ListaIncompleta(f"a lista veio com {distintos} nomes para {quantidade} pessoas no cargo")
+    return ns
+
+
 def disponiveis():
     """Os meses desde jan/2025 até o mês passado (o mês que o município ainda não mandou vem vazio e é lido de novo)."""
     ate = comum.mes_mais(HOJE.year * 100 + HOJE.month, -1)
@@ -224,7 +238,7 @@ def coletar():
             # Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a quantidade do papel é a de nomes
             # diferentes, e não a soma dos cargos)
             ultimo = bool(por_papel) and am > ult_nomes.get((c, o), 0)
-            lidos = False
+            lidos, algum_falhou, nomes_bloco = False, False, []
             for papel, lista in por_papel.items():
                 pessoas = None
                 if ultimo or len(lista) > 1:
@@ -233,18 +247,18 @@ def coletar():
                         if href:
                             pedidos += 1
                             try:
-                                ns += [(n, cgn or cg) for n, cgn in nomes(href)]
+                                ns += [(n, cgn or cg) for n, cgn in nomes_do_cargo(href, q)]
                             except TempoEsgotado:
                                 raise
-                            except Exception as e:  # noqa: BLE001 — sem a lista, fica a quantidade da tabela
+                            except Exception as e:  # noqa: BLE001 — sem a lista (ou com a lista vazia ou incompleta)
                                 log(f"  TCE-PE {nome_cid} ({o}, {am}): a lista de nomes de {cg} não veio ({e})")
                                 falhou = True
                     if falhou:  # os nomes gravados antes (se houver) ficam; volta a tentar na próxima rodada
-                        ultimo = False
+                        ultimo, algum_falhou = False, True
                         pessoas = q_antes.get((c, o, am, papel))  # e a quantidade gravada antes, se houver
                     else:
-                        ls_nomes.extend({"cod_ibge": c, "orgao": o, "ano_mes": am, "papel": papel, "nome": n,
-                                         "cargo": cg} for n, cg in dict.fromkeys(ns))
+                        nomes_bloco.extend({"cod_ibge": c, "orgao": o, "ano_mes": am, "papel": papel, "nome": n,
+                                            "cargo": cg} for n, cg in dict.fromkeys(ns))
                         lidos = True
                         pessoas = len({n for n, _ in ns}) or None
                 linhas.append({"cod_ibge": c, "municipio": nome_cid, "orgao": o, "ano_mes": am, "papel": papel,
@@ -252,7 +266,8 @@ def coletar():
                                "quantidade": pessoas or sum(q for _, q, _, _ in lista),
                                "valor_total": round(sum(v or 0 for _, _, v, _ in lista), 2), "indenizatorio": None,
                                "decimo": None, "ferias": None, "unidade": None})
-            if lidos:
+            if lidos and not algum_falhou:  # um cargo sem a lista: os nomes do bloco inteiro ficam como estavam
+                ls_nomes.extend(nomes_bloco)
                 bl_nomes.append((c, o, am))
             if ultimo:
                 ult_nomes[(c, o)] = am

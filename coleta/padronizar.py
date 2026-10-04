@@ -23,7 +23,7 @@ from datetime import datetime
 import pandas as pd
 
 from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA, ULTIMO_MES
-from .util import ler_json, log, normalizar_nome, salvar_json
+from .util import gravar_csv, gravar_json, ler_json, log, normalizar_nome, salvar_json
 
 SALARIO_MINIMO = {2023: 1320.00, 2024: 1412.00, 2025: 1518.00, 2026: 1621.00}
 
@@ -549,12 +549,13 @@ def executar():
     lanc = [l for l in lanc if l["id_politico"] in ids]
 
     PROCESSADOS.mkdir(parents=True, exist_ok=True)
-    salvar_json(PROCESSADOS / "politicos.json", politicos)
-    pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"]) \
-        .to_csv(PROCESSADOS / "lancamentos.csv.gz", index=False)
+    # a base unificada: se um tipo de político ou um mês some (util.gravar_com), fica a anterior e o site é montado com ela
+    gravar_json(PROCESSADOS / "politicos.json", politicos, compacto=False, indent=1)
+    gravar_csv(pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"]),
+               PROCESSADOS / "lancamentos.csv.gz")
     equipe = _equipe(ids)
-    equipe.to_csv(PROCESSADOS / "equipe.csv", index=False)
-    salvar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe))
+    gravar_csv(equipe, PROCESSADOS / "equipe.csv")
+    gravar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe), compacto=False, indent=1)
     salvar_json(PROCESSADOS / "metadados.json", {
         "gerado_em": datetime.now().isoformat(timespec="seconds"),
         "legislatura": LEGISLATURA,

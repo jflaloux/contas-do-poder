@@ -20,7 +20,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -154,7 +154,7 @@ def coletar():
                  for v, n in re.findall(r'<option value="(\d+)"[^>]*>([^<]+)</option>', t)]
         if novos:
             gab = pd.concat([gab[~((gab.ano == am // 100) & (gab.mes == am % 100))], pd.DataFrame(novos)])
-    gab.sort_values(["ano", "mes", "nome"]).to_csv(arq_g, index=False)
+    gravar_csv(gab.sort_values(["ano", "mes", "nome"]), arq_g)
     # 2. CEAP de cada gabinete e mês (resumo e detalhe)
     feitos = set(zip(ceap.ano, ceap.mes, ceap.gabinete))
     pedir = [(int(a), int(m), int(g)) for a, m, g in zip(gab.ano, gab.mes, gab.gabinete)
@@ -182,7 +182,7 @@ def coletar():
         if len(novos):
             chave = set(zip(novos.ano, novos.mes, novos.gabinete))
             ceap = pd.concat([ceap[[k not in chave for k in zip(ceap.ano, ceap.mes, ceap.gabinete)]], novos])
-            ceap.sort_values(["ano", "mes", "gabinete", "elemento"]).to_csv(arq_v, index=False)
+            gravar_csv(ceap.sort_values(["ano", "mes", "gabinete", "elemento"]), arq_v)
         log(f"  Alap: CEAP de {len(res)} de {len(pedir)} gabinetes e meses pedida agora")
     # 3. folha dos deputados de cada mês
     feitos = set(zip(fol.ano, fol.mes))
@@ -212,7 +212,7 @@ def coletar():
                 fol = pd.concat([fol[~((fol.ano == am // 100) & (fol.mes == am % 100))], pd.DataFrame(linhas)])
     finally:
         if res:
-            fol.sort_values(["ano", "mes", "nome", "rubrica"]).to_csv(arq_f, index=False)
+            gravar_csv(fol.sort_values(["ano", "mes", "nome", "rubrica"]), arq_f)
         log(f"  Alap: folha, {len(res)} linhas novas")
 
 

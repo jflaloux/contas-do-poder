@@ -86,6 +86,19 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   risco alto do raio-X (`dados/processados/raio-x-fontes.md`). A regra geral é a mesma: o robô que falha não apaga o
   último dado bom, e o conserto só vale se couber em cerca de 1 hora; passou disso, a fonte é congelada. O relatório de
   situação mostra o plano ao lado de cada fonte que falhar.
+- **Gravação segura** (`gravar_csv`, `gravar_json`, `gravar_linhas` e `gravar_com` em `coleta/util.py`, desde
+  04/10/2026): todo arquivo de dados (`dados/` e `site/dados/`) é gravado primeiro num arquivo temporário ao lado
+  (`.novo.<nome>`, fora do Git) e comparado com o anterior. Fica o anterior quando o novo vem vazio, quando um mês (nos
+  CSVs) ou uma cidade, estado ou órgão (nos JSON do site) que existia some, quando um mês ou grupo perde mais de 20% das
+  entidades (pessoas, gabinetes, municípios; com pelo menos 3 a menos) ou mais da metade das linhas (com pelo menos 10 a
+  menos). A recusa não para a rodada: vai para o log, para `dados/processados/recusas_<lugar>.json` e para a situação
+  ("falhando", com "recusado por perda de cobertura, N para M"), e a fonte em coleta é marcada como falha. Arquivo que
+  guarda só o último mês (um mês antes, outro depois) é comparado sem o mês. Redução legítima passa só com
+  `motivo="..."` escrito no código de quem grava (hoje, só a amostra de contracheques do Rio). Onde há um arquivo de
+  controle ao lado ("meses lidos"), ele só é gravado depois que o dado foi aceito, para o mês ser lido de novo. Fora da
+  regra: cache de downloads (`dados/cache/`), os intermediários do governo federal em `dados/brutos/` (refeitos do zero
+  a cada rodada; a proteção fica em `dados/processados/` e no `dados.json`), os arquivos de controle e de situação e as
+  fotos. Testes: `python3 -m coleta.testes_gravacao` (31 casos inventados, numa pasta temporária).
 - **Tribunal de Contas como reserva das capitais que ele cobre** (`RESERVAS_TCE` em `coleta/situacao.py`): Câmara e
   Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara do Recife (TCE-PE) e Prefeitura de Vitória (TCE-ES),
   as duas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à

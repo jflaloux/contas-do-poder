@@ -28,7 +28,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -233,9 +233,9 @@ def coletar():
             feitos += 1
             if len(ids) > antes:
                 par = pd.DataFrame([{"id": i, "nome": n, "visto_em": hoje} for n, i in ids.items()])
-                par.sort_values(["id", "nome"]).to_csv(arq_p, index=False)
-            lis.sort_values(["ano", "mes", "nome"]).to_csv(arq_l, index=False)
-            comp.sort_values(["ano", "mes"]).to_csv(arq_c, index=False)
+                gravar_csv(par.sort_values(["id", "nome"]), arq_p)
+            if gravar_csv(lis.sort_values(["ano", "mes", "nome"]), arq_l):  # a competência só conta como lida se a lista foi gravada
+                gravar_csv(comp.sort_values(["ano", "mes"]), arq_c)
     finally:
         log(f"  Alema: consulta de {feitos} competências feita agora; {len(ids)} parlamentares conhecidos")
     # 2. a página de cada deputado no mês: quem ainda não foi lido, e os 4 últimos meses de novo uma vez por dia
@@ -261,8 +261,8 @@ def coletar():
         fora = lambda df: df[[(int(a) * 100 + int(m), int(i)) not in chave for a, m, i in zip(df.ano, df.mes, df.id)]] if len(df) else df
         cme = pd.concat([fora(cme), novos_m])
         cin = pd.concat([fora(cin), novos_i]) if len(novos_i) else fora(cin)
-        cme.sort_values(["ano", "mes", "id"]).to_csv(arq_m, index=False)
-        cin.sort_values(["ano", "mes", "id", "inciso"]).to_csv(arq_i, index=False)
+        if gravar_csv(cme.sort_values(["ano", "mes", "id"]), arq_m):
+            gravar_csv(cin.sort_values(["ano", "mes", "id", "inciso"]), arq_i)
     try:
         with ThreadPoolExecutor(SIMULTANEOS) as ex:
             for k in range(0, len(pedir), SIMULTANEOS * 10):  # em lotes, gravando depois de cada lote

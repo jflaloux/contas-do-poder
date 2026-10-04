@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -125,7 +125,7 @@ def coletar():
         linhas.append({"id": d["id"], "nome": " ".join((d.get("nickname") or d["name"]).split()), "nome_completo": " ".join(d["name"].split()),
                        "partido": (hoje.get(i) or {}).get("partido") or (d.get("party") or {}).get("code", ""),
                        "com_mandato": int(bool(d.get("has_mandate"))), "id_alerj": i or "", "em_exercicio": int(i is not None)})
-    pd.DataFrame(linhas).sort_values("nome").to_csv(PASTA / "deputados.csv", index=False)
+    gravar_csv(pd.DataFrame(linhas).sort_values("nome"), PASTA / "deputados.csv")
     if sum(x["em_exercicio"] for x in linhas) < 65:
         log(f"Alerj: só {sum(x['em_exercicio'] for x in linhas)} deputados em exercício achados no DOCIGP (o site tem {len(hoje)}); confira")
     # orçamentos (um por deputado e mês) e os lançamentos publicados de cada um
@@ -154,9 +154,8 @@ def coletar():
                 orcs = [o for o in orcs if int(o["deputado"]) != dep] + r
                 lidos_dep[dep] = time.strftime("%Y-%m-%d")
     finally:
-        if orcs:
-            pd.DataFrame(orcs).assign(lido_em=lambda x: x.orcamento.map(lambda b: lido.get(b, ""))).sort_values(["deputado", "mes"]).to_csv(arq_o, index=False)
-        pd.DataFrame(list(lidos_dep.items()), columns=["deputado", "lido_em"]).to_csv(arq_q, index=False)
+        if not orcs or gravar_csv(pd.DataFrame(orcs).assign(lido_em=lambda x: x.orcamento.map(lambda b: lido.get(b, ""))).sort_values(["deputado", "mes"]), arq_o):
+            gravar_csv(pd.DataFrame(list(lidos_dep.items()), columns=["deputado", "lido_em"]), arq_q)
     orc = pd.DataFrame(orcs)
     orc = orc[orc.mes.str.replace("-", "").astype(int) >= INICIO]
     pedir = [(int(o.deputado), int(o.orcamento)) for o in orc.itertuples()
@@ -187,11 +186,10 @@ def coletar():
                 lan = lan[~lan.orcamento.isin(feitos)]
             novos = pd.DataFrame([x for _, s in res for x in s])
             lan = pd.concat([lan, novos]) if len(novos) else lan
-            if len(lan):
-                lan.sort_values(["deputado", "orcamento", "data"]).to_csv(arq_l, index=False)
-            for b in feitos:
-                lido[b] = hoje
-        orc.assign(lido_em=orc.orcamento.map(lambda b: lido.get(b, ""))).sort_values(["deputado", "mes"]).to_csv(arq_o, index=False)
+            if not len(lan) or gravar_csv(lan.sort_values(["deputado", "orcamento", "data"]), arq_l):
+                for b in feitos:  # os orçamentos só contam como lidos se os lançamentos foram gravados
+                    lido[b] = hoje
+        gravar_csv(orc.assign(lido_em=orc.orcamento.map(lambda b: lido.get(b, ""))).sort_values(["deputado", "mes"]), arq_o)
         log(f"  Alerj: {len(deps)} deputados, {len(orc)} orçamentos mensais; lançamentos de {len(res)} de {len(pedir)} pedidos agora")
 
 

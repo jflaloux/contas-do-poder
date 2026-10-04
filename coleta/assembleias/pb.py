@@ -19,7 +19,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -100,7 +100,7 @@ def coletar():
             linhas.append({"ano": am // 100, "mes": am % 100, "matricula": mat.replace(".0", ""), "nome": str(r[2]).strip(), "lotacao": str(r[4]).strip(),
                            "cargo": str(r[5]).strip(), "subsidio": num(r[6]), "indenizatoria": num(r[7])})
     df = pd.DataFrame(linhas)
-    df.sort_values(["ano", "mes", "nome"]).to_csv(PASTA / "folha_eletivos.csv", index=False)
+    gravar_csv(df.sort_values(["ano", "mes", "nome"]), PASTA / "folha_eletivos.csv")
     log(f"  ALPB: {len(df)} linhas da folha dos eletivos, {df.matricula.nunique()} deputados desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

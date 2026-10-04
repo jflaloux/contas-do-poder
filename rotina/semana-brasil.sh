@@ -80,6 +80,8 @@ if [ $STATUS -ne 0 ]; then
 fi
 
 git add -- "${DADOS[@]}" 2>/dev/null
+# gravações recusadas por perda de cobertura (coleta/util.py, gravar_com): só existe depois da primeira recusa
+[ -f dados/processados/recusas_brasil.json ] && git add -- dados/processados/recusas_brasil.json
 if git diff --cached --quiet; then
   echo "Nada mudou."
 else

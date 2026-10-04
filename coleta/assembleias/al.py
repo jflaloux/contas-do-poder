@@ -26,7 +26,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -214,7 +214,7 @@ def coletar():
         if linhas:
             tp = valor.split("|")[1]
             fol = pd.concat([fol[~((fol.ano == a) & (fol.mes == m) & (fol.folha == tp))], pd.DataFrame(linhas)])
-            fol.sort_values(["ano", "mes", "folha", "nome", "rubrica"]).to_csv(arq, index=False)
+            gravar_csv(fol.sort_values(["ano", "mes", "folha", "nome", "rubrica"]), arq)
         log(f"  ALE-AL: {nome_comp}: {len(pessoas)} deputados na folha")
 
 

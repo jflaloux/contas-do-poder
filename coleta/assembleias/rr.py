@@ -31,7 +31,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -331,7 +331,7 @@ def coletar():
 
 def _gravar(df, arq, chave, ordem):
     df = df.drop_duplicates(chave, keep="last")
-    df.sort_values(ordem).to_csv(arq, index=False)
+    gravar_csv(df.sort_values(ordem), arq)
     return df
 
 
@@ -410,7 +410,7 @@ def _coletar_verba():
         # se a ALE-RR trocou o arquivo de um deputado e mês, vale o último lido
         m_ = _gravar(m_, arq_m, ["ano", "mes", "deputado"], ["ano", "mes", "deputado"])
         i_ = i_[i_.arquivo.map(_id).isin({_id(x) for x in m_.arquivo})]
-        i_.sort_values(["ano", "mes", "deputado", "item"]).to_csv(arq_i, index=False)
+        gravar_csv(i_.sort_values(["ano", "mes", "deputado", "item"]), arq_i)
         estado.update(meses=m_, itens=i_, gravados=len(novos_m))
     try:
         for chave, (caminho, nome, link, ext) in por_chave.items():
@@ -521,8 +521,8 @@ def _coletar_pessoal():
     if ultimo is not None:
         am, g = ultimo
         cargo = g.cargo.map(lambda x: re.sub(r"^[A-Z]{1,5}-?[IVXL\d]+\s+", "", " ".join(str(x).split())).strip() or "Sem cargo informado")
-        g.assign(c=cargo).groupby(["gab", "c"]).size().reset_index().set_axis(["gabinete", "cargo", "pessoas"], axis=1) \
-            .assign(ano=am // 100, mes=am % 100).to_csv(PASTA / "equipe_cargos.csv", index=False)
+        gravar_csv(g.assign(c=cargo).groupby(["gab", "c"]).size().reset_index().set_axis(["gabinete", "cargo", "pessoas"], axis=1)
+                   .assign(ano=am // 100, mes=am % 100), PASTA / "equipe_cargos.csv")
     log(f"  ALE-RR: equipe e folha da página nova lidas (último mês da planilha de servidores: {ultimo[0] if ultimo else '-'})")
 
 

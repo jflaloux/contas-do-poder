@@ -22,7 +22,7 @@ from collections import Counter, defaultdict
 import pandas as pd
 
 from ..config import DADOS
-from ..util import TempoEsgotado, _sessao, baixar, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, baixar, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD_IBGE = 3550308
@@ -140,9 +140,10 @@ def coletar_remuneracao():
             log(f"Prefeitura SP: remuneração de {a['aaaamm'] % 100:02d}/{a['aaaamm'] // 100}")
             achados = _ler_mes(a["aaaamm"], a["url"])
             linhas = pd.concat([linhas[linhas.aaaamm != a["aaaamm"]], pd.DataFrame(achados, columns=COLUNAS)], ignore_index=True)
+            if not gravar_csv(linhas.sort_values(["aaaamm", "tp", "nome"]), LINHAS):
+                break  # recusado por perda de cobertura (util.gravar_com): fica o que estava, e o mês é lido de novo
             feitos[a["aaaamm"]] = a["id"]
-            linhas.sort_values(["aaaamm", "tp", "nome"]).to_csv(LINHAS, index=False)
-            pd.DataFrame(sorted(feitos.items()), columns=["aaaamm", "id"]).to_csv(ARQUIVOS, index=False)
+            gravar_csv(pd.DataFrame(sorted(feitos.items()), columns=["aaaamm", "id"]), ARQUIVOS)
             time.sleep(1)
     except TempoEsgotado:
         raise

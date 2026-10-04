@@ -23,7 +23,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -141,7 +141,7 @@ def _coletar_verba(meses):
     # a leitura passou do mês mais antigo pedido (ou chegou ao fim): os meses a partir dele estão completos
     novos = novos[am >= desde]
     vb = pd.concat([vb[(vb.ano * 100 + vb.mes) < desde] if len(vb) else vb, novos])
-    vb.sort_values(["ano", "mes", "parlamentar", "subcota", "valor"]).to_csv(arq, index=False)
+    gravar_csv(vb.sort_values(["ano", "mes", "parlamentar", "subcota", "valor"]), arq)
     log(f"  Alepi: verba, {len(novos)} notas desde {desde}")
 
 
@@ -255,9 +255,9 @@ def _coletar_folha(meses, alvos_nomes):
         if buscas:
             chave = {(b["ano"], b["mes"], b["folha"], b["busca"]) for b in buscas}
             bus = pd.concat([bus[[k not in chave for k in zip(bus.ano, bus.mes, bus.folha, bus.busca)]], pd.DataFrame(buscas)])
-            bus.sort_values(["ano", "mes", "folha", "busca"]).to_csv(arq_b, index=False)
             fol = pd.concat([fol[[k not in chave for k in zip(fol.ano, fol.mes, fol.folha, fol.busca)]], pd.DataFrame(novas, columns=fol.columns)])
-            fol.sort_values(["ano", "mes", "folha", "nome", "rubrica"]).to_csv(arq, index=False)
+            if gravar_csv(fol.sort_values(["ano", "mes", "folha", "nome", "rubrica"]), arq):  # as buscas só contam se a folha foi gravada
+                gravar_csv(bus.sort_values(["ano", "mes", "folha", "busca"]), arq_b)
         log(f"  Alepi: folha, {len(buscas)} de {len(pedir)} buscas feitas agora ({len(novas)} linhas)")
 
 

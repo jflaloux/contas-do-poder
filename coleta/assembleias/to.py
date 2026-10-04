@@ -19,7 +19,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -151,7 +151,7 @@ def coletar():
     (C / "pdf").mkdir(parents=True, exist_ok=True)
     nomes, tipo = _deputados()
     if len(nomes) >= 20:
-        pd.DataFrame({"nome": nomes}).assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "em_exercicio.csv", index=False)
+        gravar_csv(pd.DataFrame({"nome": nomes}).assign(visto_em=time.strftime("%Y-%m-%d")), PASTA / "em_exercicio.csv")
     else:
         nomes = list(pd.read_csv(PASTA / "em_exercicio.csv").nome) if (PASTA / "em_exercicio.csv").exists() else nomes
     meses = _meses()
@@ -203,7 +203,7 @@ def coletar():
                                    "valor": round(ress - soma, 2), "ajuste": 1})
         df = pd.DataFrame(linhas)
         if len(df):
-            df.sort_values(["ano", "mes", "deputado", "data"]).to_csv(PASTA / "codap_notas.csv", index=False)
+            gravar_csv(df.sort_values(["ano", "mes", "deputado", "data"]), PASTA / "codap_notas.csv")
         log(f"  Aleto: {len(nomes)} deputados, {len(df)} linhas da CODAP ({len(fila)} pesquisas na fila desta rodada)")
 
 

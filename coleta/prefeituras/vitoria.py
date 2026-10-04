@@ -11,7 +11,7 @@ import time
 import pandas as pd
 
 from ..config import DADOS
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 3205309
@@ -92,7 +92,7 @@ def coletar():
                 achados.append({"aaaamm": am, "tp": tp, "nome": x["NomeServidor"].strip(), "cargo": x["Cargo"].strip(), "quadro": (x.get("Quadro") or "").strip(),
                                 "secretaria": (x.get("Secretaria") or "").strip(), "bruta": comum.num(x.get("RemuneracaoBruta"))})
         linhas = pd.concat([linhas[linhas.aaaamm != am], pd.DataFrame(achados, columns=COLUNAS)], ignore_index=True)
-        linhas.sort_values(["aaaamm", "tp", "nome"]).to_csv(LINHAS, index=False)
+        gravar_csv(linhas.sort_values(["aaaamm", "tp", "nome"]), LINHAS)
         log(f"  Prefeitura de Vitória: {am % 100:02d}/{am // 100} ({len(achados)} linhas)")
         time.sleep(2)
 

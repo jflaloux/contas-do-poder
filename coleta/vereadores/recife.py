@@ -19,7 +19,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2611606
@@ -93,7 +93,7 @@ def mandatos():
         x["titular"] = x["titular"] or i.get("mandato") == "Titular"
     df = pd.DataFrame(list(linhas.values()))
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "mandatos.csv", index=False)
+    gravar_csv(df, PASTA / "mandatos.csv")
     comum.fotos(COD, [(r.parlamentar, r.foto) for r in df.itertuples() if r.foto])
     return df
 
@@ -127,13 +127,14 @@ def folha():
         fg = pd.concat([fg[(fg.ano * 100 + fg.mes) != am], pd.DataFrame(g_linhas)], ignore_index=True)
         ultimo = (a, m, gab)
         PASTA.mkdir(parents=True, exist_ok=True)
-        fv.to_csv(arq_v, index=False)
-        fg.to_csv(arq_g, index=False)
+        if not (gravar_csv(fv, arq_v) and gravar_csv(fg, arq_g)):
+            ultimo = cargos_ultimo = None
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
         log(f"  Recife: folha de {m:02d}/{a} ({len(d)} pessoas, {len(ver)} linhas de vereador)")
     if ultimo:
         a, m, gab = ultimo
         cargos = gab.groupby([gab["LOTACAO SECRETARIA/DIRETORIA"].str.strip(), gab.FUNCAO.str.strip().map(_cargo)]).size()
-        pd.DataFrame([{"ano": a, "mes": m, "lotacao": l, "cargo": c, "pessoas": int(n)} for (l, c), n in cargos.items()]).to_csv(arq_c, index=False)
+        gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": l, "cargo": c, "pessoas": int(n)} for (l, c), n in cargos.items()]), arq_c)
 
 
 _CARGOS = [(r"COORD\s*GAB", "Assessor parlamentar (coordenação do gabinete)"), (r"COORD\s*LEG", "Assessor parlamentar (coordenação legislativa)"),
@@ -205,7 +206,8 @@ def verba():
                         linhas.append({"ano": ano, "mes": m, "token": v["token"], "nome": v["title"].strip(), "tipo": it["descricao"].strip(),
                                        "apresentado": x, "valor": round(x * fator, 2)})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(linhas).to_csv(PASTA / "verba.csv", index=False)
+    gravar_csv(pd.DataFrame(linhas), PASTA / "verba.csv")
+    # registro de erros da consulta (controle, não dado): encolher é bom, troca sem comparar
     pd.DataFrame(erros, columns=["ano", "token", "nome"]).to_csv(PASTA / "verba_erros.csv", index=False)
     log(f"  Recife: verba indenizatória, {len(linhas)} linhas (tipo × mês)")
 

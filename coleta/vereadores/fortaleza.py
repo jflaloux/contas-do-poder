@@ -18,7 +18,7 @@ from urllib.parse import quote
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum, sapl
 
 COD = 2304400
@@ -95,8 +95,8 @@ def folha():
                                                                          "exoneracao": (x.get("data_exoneracao") or "")[:10]} for x in ver])], ignore_index=True)
         fs = pd.concat([fs[(fs.ano * 100 + fs.mes) != am], pd.DataFrame([{"ano": a, "mes": m, "valor": round(valor, 2)}])], ignore_index=True)
         PASTA.mkdir(parents=True, exist_ok=True)
-        fv.to_csv(arq_v, index=False)
-        fs.sort_values(["ano", "mes"]).to_csv(arq_s, index=False)
+        if not (gravar_csv(fv, arq_v) and gravar_csv(fs.sort_values(["ano", "mes"]), arq_s)):
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
         log(f"  Fortaleza: folha de {m:02d}/{a} ({len(ver)} vereadores, subsídio R$ {valor:,.2f})")
 
 
@@ -131,7 +131,7 @@ def sdp():
                 itens.append({"ano": a, "mes": m, "nome": nome, "item": (i.get("especificacao") or "").strip(), "fornecedor": (i.get("credor") or "").strip(),
                               "cnpj_cpf": comum.mascarar(i.get("cnpj")), "valor": float(i.get("valor_total") or 0), "saldo": i.get("saldo")})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(itens).to_csv(arq, index=False)
+    gravar_csv(pd.DataFrame(itens), arq)
     log(f"  Fortaleza: {len(itens)} itens do SDP")
 
 
@@ -155,7 +155,7 @@ def coletar():
     leg = sapl.legislatura_atual(BASE_SAPL, pausa=60)
     mand = sapl.mandatos(BASE_SAPL, leg["id"], pausa=60)
     PASTA.mkdir(parents=True, exist_ok=True)
-    mand.to_csv(PASTA / "mandatos.csv", index=False)
+    gravar_csv(mand, PASTA / "mandatos.csv")
     folha()
     sdp()
     fotos_sapl(mand, maximo=6)  # no máximo 6 por semana: o SAPL pede 60 s entre pedidos

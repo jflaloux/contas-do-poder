@@ -32,7 +32,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .config import ANOS, BRUTOS, CACHE, DADOS, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES, meses_da_legislatura
-from .util import BloqueadoRobots, TempoEsgotado, baixar, cache_valido, ler_json, log, normalizar_nome, numero_br, salvar_json
+from .util import BloqueadoRobots, TempoEsgotado, baixar, cache_valido, gravar_csv, ler_json, log, normalizar_nome, numero_br, salvar_json
 
 API = "https://dadosabertos.camara.leg.br/api/v2"
 SITE = "https://www.camara.leg.br"
@@ -451,7 +451,8 @@ def remuneracao(lista):
         df = pd.concat([guardado[[k not in refeitos for k in zip(guardado.id_deputado, guardado.ano)]],
                         pd.DataFrame(novas, columns=guardado.columns)], ignore_index=True)
         df = df.sort_values(["id_deputado", "ano", "mes"])
-        df.to_csv(arq, index=False)
+        if not gravar_csv(df, arq):  # recusado por perda de cobertura (util.gravar_com): fica o guardado
+            df = pd.read_csv(arq)
         df["calculado"] = False
         log(f"Câmara: salários ok ({len(df)} meses)")
     except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
@@ -539,7 +540,8 @@ def detalhe(rem):
                                   pd.DataFrame(novas, columns=COLUNAS_DETALHE)], ignore_index=True)
             guardado = guardado.sort_values(["id_deputado", "ano", "mes"])
             CONGELADO.mkdir(parents=True, exist_ok=True)
-            guardado.to_csv(arq, index=False)
+            if not gravar_csv(guardado, arq):  # recusado por perda de cobertura (util.gravar_com): fica o guardado
+                guardado = pd.read_csv(arq)
         guardado.to_csv(BRUTOS / "camara_remuneracao_detalhe.csv", index=False)
     cobertos = set(zip(guardado.id_deputado, guardado.ano * 100 + guardado.mes))
     falta = [am for t in meses for am in [t[1]] if t not in cobertos]
@@ -613,8 +615,8 @@ def pessoal(lista, rem):
     if len(df) < 0.8 * len(pd.read_csv(arq)) if arq.exists() else False:  # o cache sumiu: não troca o guardado por menos
         log("Câmara: equipes com menos meses que o guardado (cache incompleto?); fica o que está em dados/camara/pessoal.csv")
         df = pd.read_csv(arq)
-    else:
-        df.sort_values(["id_deputado", "ano", "mes"]).to_csv(arq, index=False)
+    elif not gravar_csv(df.sort_values(["id_deputado", "ano", "mes"]), arq):  # util.gravar_com recusou: fica o guardado
+        df = pd.read_csv(arq)
     df.to_csv(BRUTOS / "camara_pessoal.csv", index=False)
     log(f"Câmara: tamanho das equipes ok ({len(df)} meses)")
 

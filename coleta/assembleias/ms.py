@@ -17,7 +17,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -88,7 +88,7 @@ def coletar():
                            "valor": comum_num(r.get("Valor (R$)")), "comprovante": (r.get("Comprovante") or "").strip()})
     notas = pd.DataFrame(linhas)
     notas = notas[notas.ano * 100 + notas.mes >= INICIO]
-    notas.sort_values(["ano", "mes", "deputado", "data", "fornecedor"]).to_csv(PASTA / "ceap_notas.csv", index=False)
+    gravar_csv(notas.sort_values(["ano", "mes", "deputado", "data", "fornecedor"]), PASTA / "ceap_notas.csv")
     log(f"  Alems: {len(notas)} notas da CEAP de {notas.deputado.nunique()} deputados desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

@@ -27,7 +27,7 @@ from datetime import datetime
 
 from .config import DADOS
 from .padronizar import SALARIO_MINIMO
-from .util import _sessao, ler_json, log, salvar_json, verificar_prazo
+from .util import _sessao, gravar_json, ler_json, log, verificar_prazo
 
 BASE = "https://ftp.ibge.gov.br/Trabalho_e_Rendimento/Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/Trimestral/Microdados"
 FONTE = "https://www.ibge.gov.br/estatisticas/sociais/trabalho/9173-pesquisa-nacional-por-amostra-de-domicilios-continua-trimestral.html?t=microdados"
@@ -121,6 +121,6 @@ def executar(forcar=False):
         "p999_sm": quantil(0.999),
         "grade": [[x, m] for x, m in zip(GRADE, menos)],
     }
-    salvar_json(SAIDA, dados)
+    gravar_json(SAIDA, dados, compacto=False, indent=1)
     log(f"Renda (PNAD): {dados['pessoas'] / 1e6:.1f} milhões de pessoas; mediana {dados['mediana_sm']} SM, "
         f"1% mais bem pagos acima de {dados['p99_sm']} SM ({SAIDA.relative_to(DADOS.parent)})")

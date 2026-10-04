@@ -14,7 +14,7 @@ import zipfile
 from datetime import datetime
 
 from ..config import CACHE, RAIZ
-from ..util import TempoEsgotado, baixar, log, normalizar_nome
+from ..util import TempoEsgotado, baixar, gravar_json, gravar_linhas, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "assembleias.json"
 TSE = "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2022.zip"
@@ -143,11 +143,8 @@ def gravar_em_exercicio(pasta, nomes, vagas, fonte):
     if not (0.8 * vagas <= len(nomes) <= 1.2 * vagas):
         log(f"  lista de quem está em exercício com {len(nomes)} nomes para {vagas} vagas: fica a que já estava gravada")
         return
-    with open(pasta / EM_EXERCICIO, "w", newline="", encoding="utf-8") as f:
-        w = csv.writer(f)
-        w.writerow(["nome", "visto_em", "fonte"])
-        for n in nomes:
-            w.writerow([n, time.strftime("%Y-%m-%d"), fonte])
+    gravar_linhas(pasta / EM_EXERCICIO, ["nome", "visto_em", "fonte"],
+                  [[n, time.strftime("%Y-%m-%d"), fonte] for n in nomes], dicionarios=False)
 
 
 def ler_em_exercicio(pasta):
@@ -281,7 +278,6 @@ def escrever(resultados, tipos, baixar_fotos=True):
                       "categorias": {"verba_gabinete": {"grupo": "custa", "nome": "Verba do gabinete"}},
                       "estados": {meta["uf"]: meta for meta, ps in resultados if ps}},
              "p": todas}
-    SAIDA.parent.mkdir(parents=True, exist_ok=True)
-    SAIDA.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(resultados)} estados, {len(todas)} deputados)")
+    if gravar_json(SAIDA, dados, grupo="uf"):  # estado que sumiu ou perdeu muita gente: fica o arquivo anterior
+        log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(resultados)} estados, {len(todas)} deputados)")
     return dados

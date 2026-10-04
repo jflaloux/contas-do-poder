@@ -16,7 +16,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 4106902
@@ -139,7 +139,7 @@ def coletar():
                 continue
             cache.write_text("\n".join(f"{x['nome']};{x['cargo']};{x['bruta']}" for x in novas), encoding="utf-8")
             linhas = pd.concat([linhas[linhas.aaaamm.astype(int) != am], pd.DataFrame(novas, columns=COLUNAS)], ignore_index=True)
-            linhas.sort_values(["aaaamm", "tp", "nome"]).to_csv(LINHAS, index=False)
+            gravar_csv(linhas.sort_values(["aaaamm", "tp", "nome"]), LINHAS)
             feitos.add(am)
             log(f"  Prefeitura de Curitiba: {am % 100:02d}/{am // 100} ({len(novas)} pessoas)")
 

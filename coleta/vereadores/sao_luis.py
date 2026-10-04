@@ -21,7 +21,7 @@ import time
 import pandas as pd
 
 from ..config import DADOS
-from ..util import _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2111300
@@ -178,15 +178,15 @@ def folha():
         fg = pd.concat([x for x in (fg[fg.referencia.astype(str) != rotulo], pd.DataFrame(g_linhas)) if len(x)], ignore_index=True)
         fr = pd.concat([x for x in (fr[fr.referencia.astype(str) != rotulo], pd.DataFrame([{"referencia": rotulo, "ano": a, "mes": m, "linhas": len(linhas)}])) if len(x)],
                        ignore_index=True)
-        fv.to_csv(arq_v, index=False)
-        fg.to_csv(arq_g, index=False)
-        fr.to_csv(arq_r, index=False)
+        if not (gravar_csv(fv, arq_v) and gravar_csv(fg, arq_g) and gravar_csv(fr, arq_r)):
+            ultimo = None
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava, e a folha é lida de novo
         if m <= 12 and (ultimo is None or a * 100 + m >= ultimo[0] * 100 + ultimo[1]):
             ultimo = (a, m, cargos)
         log(f"  São Luís: folha de {rotulo} ({len(linhas)} linhas, {len(v_linhas)} de vereador, {len(g_linhas)} gabinete × vínculo)")
     if ultimo:
         a, m, cargos = ultimo
-        pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": len(q)} for k, q in sorted(cargos.items())]).to_csv(arq_c, index=False)
+        gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": len(q)} for k, q in sorted(cargos.items())]), arq_c)
 
 
 def coletar():

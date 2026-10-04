@@ -20,7 +20,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -98,7 +98,7 @@ def coletar():
                        "partido": d.get("partido", ""), "situacao": d.get("situacao", ""), "codigo_situacao": d.get("codigoSituacao", ids[i]),
                        "inicio_situacao": _data(d.get("inicioSituacao")), "tipo_mandato": d.get("tipoMandato", "")})
     if linhas:
-        pd.DataFrame(linhas).sort_values("nome").to_csv(arq_d, index=False)
+        gravar_csv(pd.DataFrame(linhas).sort_values("nome"), arq_d)
     # 2. verba de cada deputado e mês (os dois últimos meses são pedidos de novo uma vez por semana)
     meses = _meses()
     arq_v, arq_m = PASTA / "verba_notas.csv", PASTA / "verba_meses.csv"
@@ -136,11 +136,11 @@ def coletar():
                 notas = notas[[k not in chave for k in zip(notas.ano, notas.mes, notas.id)]]
             novos = pd.DataFrame([x for _, _, s in res for x in s])
             notas = pd.concat([notas, novos]) if len(novos) else notas
-            if len(notas):
-                notas.sort_values(["ano", "mes", "id", "tipo", "data"]).to_csv(arq_v, index=False)
-            for am, i, _ in res:
-                feitos[(am // 100, am % 100, i)] = hoje
-            pd.DataFrame([{"ano": a, "mes": m, "id": i, "pedido_em": p} for (a, m, i), p in sorted(feitos.items())]).to_csv(arq_m, index=False)
+            # os pedidos só contam como feitos se as notas foram gravadas (util.gravar_com pode recusar)
+            if not len(notas) or gravar_csv(notas.sort_values(["ano", "mes", "id", "tipo", "data"]), arq_v):
+                for am, i, _ in res:
+                    feitos[(am // 100, am % 100, i)] = hoje
+                gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "id": i, "pedido_em": p} for (a, m, i), p in sorted(feitos.items())]), arq_m)
         log(f"  ALMG: verba de {len(res)} de {len(pedir)} deputados e meses pedida agora")
 
 

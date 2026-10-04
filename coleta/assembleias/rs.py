@@ -22,7 +22,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -142,7 +142,7 @@ def coletar():
                      for x in lista if re.match(r"Gabinete\s+(da\s+|do\s+)?Dep", x["nomeCota"], flags=re.I)]
             if novos:
                 gab = pd.concat([gab[~((gab.ano == am // 100) & (gab.mes == am % 100))], pd.DataFrame(novos)])
-        gab.sort_values(["ano", "mes", "nome"]).to_csv(arq_g, index=False)
+        gravar_csv(gab.sort_values(["ano", "mes", "nome"]), arq_g)
         # 2. cota de cada gabinete e mês
         feitos = set(zip(cot.ano, cot.mes, cot.codigo))
         pedir = [(int(a), int(m), int(c)) for a, m, c in zip(gab.ano, gab.mes, gab.codigo)
@@ -164,7 +164,7 @@ def coletar():
             if len(novos):
                 chave = set(zip(novos.ano, novos.mes, novos.codigo))
                 cot = pd.concat([cot[[k not in chave for k in zip(cot.ano, cot.mes, cot.codigo)]], novos])
-                cot.sort_values(["ano", "mes", "codigo", "rubrica"]).to_csv(arq_v, index=False)
+                gravar_csv(cot.sort_values(["ano", "mes", "codigo", "rubrica"]), arq_v)
             log(f"  ALRS: cotas de {len(res)} de {len(pedir)} gabinetes e meses pedidas agora")
         # 3. número funcional de cada deputado (busca pelo nome completo do TSE) e a folha de cada mês
         tse = comum.tse_2022(UF)
@@ -201,7 +201,7 @@ def coletar():
                         break
                 ids = pd.concat([ids, pd.DataFrame([{"nome": n, "nome_busca": busca, "id_funcional": escolhido, "cargo": cargo}])])
         finally:
-            ids.to_csv(arq_id, index=False)
+            gravar_csv(ids, arq_id)
         feitos = set(zip(fol.ano, fol.mes, fol.id_funcional.astype(str)))
         quem = [(n, str(i)) for n, i in zip(ids.nome, ids.id_funcional) if str(i)]
         meses_de = {n: sorted(set(g.ano * 100 + g.mes)) for n, g in gab.groupby("nome")}
@@ -229,7 +229,7 @@ def coletar():
             if len(novos):
                 chave = set(zip(novos.ano, novos.mes, novos.id_funcional.astype(str)))
                 fol = pd.concat([fol[[k not in chave for k in zip(fol.ano, fol.mes, fol.id_funcional.astype(str))]], novos])
-                fol.sort_values(["ano", "mes", "nome"]).to_csv(arq_f, index=False)
+                gravar_csv(fol.sort_values(["ano", "mes", "nome"]), arq_f)
             log(f"  ALRS: folha de {len(res)} de {len(pedir)} deputados e meses pedida agora")
 
 

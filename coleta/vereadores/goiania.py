@@ -19,7 +19,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 5208707
@@ -91,7 +91,7 @@ def lista_site():
                        "partido": partido})
     df = pd.DataFrame(linhas).drop_duplicates("pagina")
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "site_vereadores.csv", index=False)
+    gravar_csv(df, PASTA / "site_vereadores.csv")
     log(f"  Goiânia: {len(df)} vereadores na página da Câmara")
     return df
 
@@ -128,12 +128,13 @@ def folha():
                         pd.DataFrame([{"ano": a, "mes": m, "lotacao": k, "pessoas": len(pessoas.get(k, ())), "custo": round(c, 2)} for k, c in gab.items()])], ignore_index=True)
         ultimo = (a, m, cargos)
         PASTA.mkdir(parents=True, exist_ok=True)
-        fv.to_csv(arq_v, index=False)
-        fg.to_csv(arq_g, index=False)
+        if not (gravar_csv(fv, arq_v) and gravar_csv(fg, arq_g)):
+            ultimo = cargos_ultimo = None
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
         log(f"  Goiânia: folha de {m:02d}/{a} ({len(linhas)} linhas, {len(v_linhas)} de vereador)")
     if ultimo:
         a, m, cargos = ultimo
-        pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": comum.titulo(k[1]), "pessoas": n} for k, n in cargos.items()]).to_csv(arq_c, index=False)
+        gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": comum.titulo(k[1]), "pessoas": n} for k, n in cargos.items()]), arq_c)
 
 
 def _valor_livre(t):
@@ -179,7 +180,7 @@ def ceap():
             linhas.append({"ano": ano, "mes": mes, "nome": nome, "tipo": tipo, "apresentado": v,  # sem o nº do processo: às vezes traz um CPF
                            "valor": round(v * pago / soma, 2)})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(linhas).to_csv(PASTA / "ceap.csv", index=False)
+    gravar_csv(pd.DataFrame(linhas), PASTA / "ceap.csv")
     log(f"  Goiânia: CEAP, {len(linhas)} linhas (tipo × mês){f', {sem_tipo} sem detalhe' if sem_tipo else ''}")
 
 

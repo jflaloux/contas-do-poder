@@ -25,7 +25,7 @@ import re
 import pandas as pd
 
 from ..config import DADOS, RAIZ
-from ..util import log, normalizar_nome
+from ..util import gravar_json, log, normalizar_nome
 from . import comum
 
 SITE = RAIZ / "site" / "dados" / "interior-cargo"
@@ -82,13 +82,15 @@ def gravar(uf, linhas, blocos, nomes=None, blocos_nomes=None, manter_data=False)
                  chaves, COLUNAS)
     if len(df):
         df = df.astype({c: float for c in VALORES + ["quantidade"]})
-    comum._escrever(df, comum.pasta(uf) / "cargos.csv", COLUNAS, ORDEM)
+    if not comum._escrever(df, comum.pasta(uf) / "cargos.csv", COLUNAS, ORDEM):
+        return 0, 0  # recusado por perda de cobertura: os blocos não contam como lidos (são lidos de novo)
     if nomes is not None:
         ch_n = chaves if blocos_nomes is None else {(int(c), o, int(m)) for c, o, m in blocos_nomes}
         dn = _trocar(ler_nomes(uf), [n for n in nomes if (int(n["cod_ibge"]), n["orgao"], int(n["ano_mes"])) in ch_n],
                      ch_n, NOMES)
-        comum._escrever(dn.drop_duplicates(), comum.pasta(uf) / "nomes.csv", NOMES,
-                        ["cod_ibge", "orgao", "ano_mes", "papel", "nome"])
+        if not comum._escrever(dn.drop_duplicates(), comum.pasta(uf) / "nomes.csv", NOMES,
+                               ["cod_ibge", "orgao", "ano_mes", "papel", "nome"]):
+            return 0, 0
     fontes = comum.ler_fontes(uf)
     if len(fontes) and manter_data:
         # bloco lido de novo sem mudança (mesmas linhas na fonte, mesmas pessoas, mesmo endereço): fica a data da
@@ -366,11 +368,9 @@ def montar_site(uf, cfg):
              "m": m}
     SITE.mkdir(parents=True, exist_ok=True)
     destino = SITE / f"{uf.lower()}.json"
-    tmp = destino.with_suffix(".tmp")
-    tmp.write_text(json.dumps(saida, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
-    tmp.replace(destino)
-    log(f"TCE {uf}: {destino.relative_to(RAIZ)} ({destino.stat().st_size / 1e3:.0f} KB, {len(m)} cidades, "
-        f"último mês {ultimo})")
+    if gravar_json(destino, saida):
+        log(f"TCE {uf}: {destino.relative_to(RAIZ)} ({destino.stat().st_size / 1e3:.0f} KB, {len(m)} cidades, "
+            f"último mês {ultimo})")
     return saida
 
 

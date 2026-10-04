@@ -17,7 +17,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, log, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, verificar_prazo
 from . import comum, sapl
 
 COD = 2408102
@@ -96,8 +96,8 @@ def cota():
                 notas.append({"ano": a, "mes": m, "id_cota": v["id"], "nome": nome, "data": cel[0], "item": cel[2], "fornecedor": cel[3],
                               "cnpj_cpf": comum.mascarar(cel[4]), "documento": cel[5], "valor": _valor(cel[7])})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(notas).to_csv(arq_n, index=False)
-    pd.DataFrame(ativos).to_csv(arq_m, index=False)
+    if gravar_csv(pd.DataFrame(notas), arq_n):
+        gravar_csv(pd.DataFrame(ativos), arq_m)
     log(f"  Natal: {len(notas)} notas da cota")
 
 
@@ -110,7 +110,7 @@ def lista_site():
         linhas.append({"pagina": pagina, "foto": foto.strip("'\" "), "nome": html_lib.unescape(nome).strip(), "partido": html_lib.unescape(partido).strip()})
     df = pd.DataFrame(linhas).drop_duplicates("pagina")
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PASTA / "site_vereadores.csv", index=False)
+    gravar_csv(df, PASTA / "site_vereadores.csv")
     log(f"  Natal: {len(df)} vereadores na página da Câmara")
     return df
 
@@ -120,7 +120,7 @@ def coletar():
     leg = sapl.legislatura_atual(BASE_SAPL, pausa=60)
     mand = sapl.mandatos(BASE_SAPL, leg["id"], pausa=60)
     PASTA.mkdir(parents=True, exist_ok=True)
-    mand.to_csv(PASTA / "mandatos.csv", index=False)
+    gravar_csv(mand, PASTA / "mandatos.csv")
     cota()
 
 

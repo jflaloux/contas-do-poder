@@ -102,7 +102,7 @@ def baixar(ano, uf, alvos):
     except Exception as e:  # noqa: BLE001 — foto é opcional
         log(f"  fotos do TSE ({ano}, {uf}): {e}")
     finally:
-        F.salvar_json(F.CREDITOS, dados)
+        F.salvar_creditos(dados)
     return novas
 
 

@@ -30,7 +30,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -204,7 +204,7 @@ def coletar():
     if velho(arq_v):
         v = _verba()
         if len(v):
-            v.to_csv(arq_v, index=False)
+            gravar_csv(v, arq_v)
             log(f"  Alepa: verba indenizatória, {len(v)} liquidações desde {INICIO // 100}")
     # 2. equipe: verba de gabinete de cada mês
     eq = pd.read_csv(arq_e) if arq_e.exists() else pd.DataFrame(columns=["ano", "mes", "gabinete", "assessores", "total"])
@@ -219,14 +219,14 @@ def coletar():
         if novos and ref and int(ref.group(2)) == am // 100:
             antes = eq[~((eq.ano == am // 100) & (eq.mes == am % 100))]
             eq = pd.concat([antes, pd.DataFrame(novos)]) if len(antes) else pd.DataFrame(novos)
-            eq.sort_values(["ano", "mes", "gabinete"]).to_csv(arq_e, index=False)
+            gravar_csv(eq.sort_values(["ano", "mes", "gabinete"]), arq_e)
     # 3. deputados (relação de pessoal, cargo DEPUTADO ESTADUAL)
     if velho(arq_d):
         t = _pedir("POST", SIGEP + "frame_relacaopessoal.php", data={"b_nome": "", "b_cargo": "DEPUTADO ESTADUAL", "b_lotacao": ""}).text
         dep = [{"matricula": c[0], "nome": c[1], "admissao": c[2], "exoneracao": c[3], "situacao": c[-1]}
                for c, _ in _linhas(t) if len(c) >= 9 and c[0].isdigit() and "DEPUTAD" in normalizar_nome(c[5])]
         if dep:
-            pd.DataFrame(dep).to_csv(arq_d, index=False)
+            gravar_csv(pd.DataFrame(dep), arq_d)
     if not arq_d.exists():
         return
     dep = pd.read_csv(arq_d, dtype=str).fillna("")
@@ -276,14 +276,16 @@ def coletar():
         if buscas:
             chave = {(b["ano"], b["mes"], b["nome"]) for b in buscas}
             bus = pd.concat([bus[[k not in chave for k in zip(bus.ano, bus.mes, bus.nome)]], pd.DataFrame(buscas)])
-            bus.sort_values(["ano", "mes", "nome"]).to_csv(arq_b, index=False)
+            gravou = True
             if novas:
                 # a mesma matrícula no mesmo mês vale uma vez (a busca nova substitui a antiga)
                 nv = pd.DataFrame(novas).drop_duplicates(["ano", "mes", "matricula", "folha"])
                 novos_k = set(zip(nv.ano, nv.mes, nv.matricula))
                 antes = fol[[k not in novos_k for k in zip(fol.ano, fol.mes, fol.matricula.astype(str))]] if len(fol) else fol
                 fol = pd.concat([x for x in (antes, nv) if len(x)])
-                fol.sort_values(["ano", "mes", "nome"]).to_csv(arq_f, index=False)
+                gravou = gravar_csv(fol.sort_values(["ano", "mes", "nome"]), arq_f)
+            if gravou:  # as buscas só contam como feitas se a folha foi gravada (util.gravar_com pode recusar)
+                gravar_csv(bus.sort_values(["ano", "mes", "nome"]), arq_b)
         log(f"  Alepa: folha, {len(buscas)} de {len(pedir)} buscas feitas agora ({len(novas)} contracheques)")
 
 

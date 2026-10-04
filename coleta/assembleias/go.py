@@ -21,7 +21,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -91,10 +91,10 @@ def _situacao_hoje():
     "Deputados fora do exercício": id, nome, tipo, data do afastamento e do retorno)."""
     ex = [{"id": i, "nome": c[0]} for i, c in _linhas("em-exercicio")]
     if 0.8 * CFG["vagas"] <= len(ex) <= 1.2 * CFG["vagas"]:
-        pd.DataFrame(ex).assign(visto_em=time.strftime("%Y-%m-%d"), fonte=PORTAL + "em-exercicio").to_csv(PASTA / comum.EM_EXERCICIO, index=False)
+        gravar_csv(pd.DataFrame(ex).assign(visto_em=time.strftime("%Y-%m-%d"), fonte=PORTAL + "em-exercicio"), PASTA / comum.EM_EXERCICIO)
     af = [{"id": i, "nome": c[0], "tipo": c[1], "afastamento": c[2], "retorno": c[3] if len(c) > 3 else ""} for i, c in _linhas("fora-exercicio") if len(c) >= 3]
     if af:
-        pd.DataFrame(af).to_csv(PASTA / "afastamentos.csv", index=False)
+        gravar_csv(pd.DataFrame(af), PASTA / "afastamentos.csv")
 
 
 def _hoje(ids):
@@ -141,7 +141,7 @@ def coletar():
     if novos:
         nv = pd.DataFrame(novos)
         antigos = pd.concat([antigos[~(antigos.ano * 100 + antigos.mes).isin(set(nv.ano * 100 + nv.mes))], nv], ignore_index=True)
-    antigos.sort_values(["ano", "mes", "nome"]).to_csv(lista_arq, index=False)
+    gravar_csv(antigos.sort_values(["ano", "mes", "nome"]), lista_arq)
     baixadas, partidos = 0, {}
     ultimos = set(meses[-2:])
     fila = []
@@ -179,11 +179,11 @@ def coletar():
                         linhas.append({"ano": p.ano, "mes": p.mes, "id": p.id, "grupo": " ".join(grupo.split()), "subgrupo": " ".join((s.get("descricao") or "").split()),
                                        "fornecedor": (f.get("nome") or "").strip(), "cnpj_cpf": vc.mascarar(f.get("cnpj_cpf") or ""),
                                        "data": (f.get("data") or "")[:10], "numero": f.get("numero", ""), "valor": num(f.get("valor_indenizado"))})
-        pd.DataFrame(linhas).sort_values(["ano", "mes", "id", "data"]).to_csv(PASTA / "verba_notas.csv", index=False)
+        gravar_csv(pd.DataFrame(linhas).sort_values(["ano", "mes", "id", "data"]), PASTA / "verba_notas.csv")
         if partidos:
             antigo = pd.read_csv(PASTA / "partidos.csv") if (PASTA / "partidos.csv").exists() else pd.DataFrame(columns=["id", "partido"])
             juntos = {**dict(zip(antigo.id, antigo.partido)), **partidos}
-            pd.DataFrame(sorted(juntos.items()), columns=["id", "partido"]).to_csv(PASTA / "partidos.csv", index=False)
+            gravar_csv(pd.DataFrame(sorted(juntos.items()), columns=["id", "partido"]), PASTA / "partidos.csv")
         faltam = sum(1 for p in antigos.itertuples() if not (C / "prestacoes" / f"{p.ano}{p.mes:02d}_{p.id}.json").exists())
         log(f"  Alego: {antigos.id.nunique()} deputados com prestação desde {INICIO % 100:02d}/{INICIO // 100}, {baixadas} prestações baixadas agora, {faltam} faltando")
 

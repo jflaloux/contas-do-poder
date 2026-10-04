@@ -24,7 +24,7 @@ import zipfile
 from .config import DADOS, RAIZ
 from .judiciario import comum as JC
 from .judiciario import dadosjusbr as DJ
-from .util import log
+from .util import gravar_json, gravar_linhas, log
 
 PASTA = DADOS / "governadores" / "outro_orgao"
 SITE = RAIZ / "site" / "dados" / "governadores.json"
@@ -101,10 +101,7 @@ def coletar():
             r["parcial"] = 1 if am == de and not o["de"].endswith("-01") else 0
             lidos[am] = r
         PASTA.mkdir(parents=True, exist_ok=True)
-        with open(arquivo(uf), "w", encoding="utf-8", newline="") as f:
-            w = csv.DictWriter(f, COLUNAS)
-            w.writeheader()
-            w.writerows(lidos[am] for am in sorted(lidos))
+        gravar_linhas(arquivo(uf), COLUNAS, [lidos[am] for am in sorted(lidos)])
         if lidos:
             log(f"  {uf}: {caso['ocupante']} pela folha do {caso['dadosjusbr']} (DadosJusBr), {len(lidos)} meses "
                 f"({min(lidos)} a {max(lidos)}), lidos agora {len(fazer)}")
@@ -149,5 +146,5 @@ def so_anexar():
         if e["uf"] in CASOS and curado[e["uf"]].get("recebe"):
             e["recebe"] = curado[e["uf"]]["recebe"]
             e["notas"] = curado[e["uf"]].get("notas") or []
-    SITE.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    gravar_json(SITE, dados)
     log(f"Site: {SITE.relative_to(RAIZ)}: pagamento pelo órgão de origem anexado em {', '.join(e['uf'] for e in dados['e'] if 'ot' in e)}")

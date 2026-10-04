@@ -16,7 +16,7 @@ import time
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import _sessao, cache_valido, log, normalizar_nome, verificar_prazo
+from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum, sapl
 
 COD = 1302603
@@ -112,12 +112,13 @@ def folha():
                         pd.DataFrame([{"ano": a, "mes": m, "lotacao": k, "pessoas": n, "custo": round(c, 2)} for k, (n, c) in gab.items()])], ignore_index=True)
         cargos_ultimo = (a, m, cargos)
         PASTA.mkdir(parents=True, exist_ok=True)
-        fv.to_csv(arq_v, index=False)
-        fg.to_csv(arq_g, index=False)
+        if not (gravar_csv(fv, arq_v) and gravar_csv(fg, arq_g)):
+            ultimo = cargos_ultimo = None
+            break  # recusado por perda de cobertura (util.gravar_com): fica o que estava
         log(f"  Manaus: folha de {m:02d}/{a} ({len(infos)} pessoas)")
     if cargos_ultimo:
         a, m, cargos = cargos_ultimo
-        pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": n} for k, n in cargos.items()]).to_csv(arq_c, index=False)
+        gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": n} for k, n in cargos.items()]), arq_c)
 
 
 def ceap():
@@ -142,8 +143,8 @@ def ceap():
                               "fornecedor": (n.get("fornecedor") or "").strip(), "cnpj_cpf": comum.mascarar(n.get("cnpj")), "documento": n.get("numero_documento"),
                               "valor": float(n.get("valor") or 0)})
     PASTA.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(notas).to_csv(PASTA / "ceap_notas.csv", index=False)
-    pd.DataFrame(resumo).to_csv(PASTA / "ceap_resumo.csv", index=False)
+    gravar_csv(pd.DataFrame(notas), PASTA / "ceap_notas.csv")
+    gravar_csv(pd.DataFrame(resumo), PASTA / "ceap_resumo.csv")
     log(f"  Manaus: {len(notas)} notas da CEAP")
 
 
@@ -151,7 +152,7 @@ def coletar():
     leg = sapl.legislatura_atual(BASE_SAPL)
     mand = sapl.mandatos(BASE_SAPL, leg["id"])
     PASTA.mkdir(parents=True, exist_ok=True)
-    mand.to_csv(PASTA / "mandatos.csv", index=False)
+    gravar_csv(mand, PASTA / "mandatos.csv")
     par = sapl.parlamentares(BASE_SAPL, list(mand.parlamentar.unique()), PASTA / "sapl_parlamentares.csv")
     comum.fotos(COD, [(int(i), f) for i, f in zip(par["id"], par["fotografia"]) if f])
     folha()

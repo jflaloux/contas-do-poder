@@ -13,7 +13,7 @@ import re
 import pandas as pd
 
 from ..config import CACHE, DADOS
-from ..util import cache_valido, log, normalizar_nome, recursos_ckan
+from ..util import cache_valido, gravar_csv, log, normalizar_nome, recursos_ckan
 from . import comum
 
 COD = 2611606
@@ -79,7 +79,7 @@ def coletar():
     if len(velhas):  # um ano que sumiu do portal continua com o que já estava gravado
         novas = pd.concat([velhas[~(velhas.aaaamm // 100).isin(set(novas.aaaamm // 100))], novas], ignore_index=True)
     PASTA.mkdir(parents=True, exist_ok=True)
-    novas.sort_values(["aaaamm", "tp", "nome"]).to_csv(LINHAS, index=False)
+    gravar_csv(novas.sort_values(["aaaamm", "tp", "nome"]), LINHAS)
 
 
 def _pasta(unidade):

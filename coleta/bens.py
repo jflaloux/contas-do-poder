@@ -27,7 +27,7 @@ from collections import Counter, defaultdict
 from datetime import date
 
 from .config import CACHE, DADOS, RAIZ
-from .util import baixar, cache_valido, log, normalizar_nome, salvar_json
+from .util import baixar, cache_valido, gravar_json, gravar_linhas, log, normalizar_nome
 
 TSE = "https://cdn.tse.jus.br/estatistica/sead/odsele"
 C = CACHE / "bens"
@@ -273,13 +273,11 @@ def _coletar():
                        "link": LINK.format(regiao=REGIOES[uf], uf=uf, eleicao=DIVULGA[ano], sq=sq, ano=ano, ue=ue)})
     SAIDA.mkdir(parents=True, exist_ok=True)
     campos = ["chave", "grupo", "uf", "ano", "sq", "cargo_tse", "ue", "municipio", "itens", "total", *GRUPOS, "link"]
-    with open(SAIDA / "declaracoes.csv", "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, campos)
-        w.writeheader()
-        w.writerows(sorted(linhas, key=lambda l: (l["grupo"], l["chave"])))
+    if not gravar_linhas(SAIDA / "declaracoes.csv", campos, sorted(linhas, key=lambda l: (l["grupo"], l["chave"]))):
+        return 0  # recusado por perda de cobertura (util.gravar_com): fica o arquivo anterior
     resumo = {"gerado_em": date.today().isoformat(), "fonte": [PAGINA.format(ano=a) for a in sorted(ELEICOES)],
               "grupos": {g: dict(c) for g, c in sorted(contagem.items())}}
-    salvar_json(SAIDA / "resumo.json", resumo)
+    gravar_json(SAIDA / "resumo.json", resumo, compacto=False, indent=1)
     for g, c in sorted(contagem.items()):
         log(f"Bens declarados, {g}: {c['no cargo']} no cargo, {c['com declaração']} com declaração")
     return len(linhas)
@@ -308,8 +306,7 @@ def exportar_site(hoje=None):
             # (eleicao[ano]), o SQ, o ano e a UE
             "link": LINK, "eleicao": {str(a): c for a, c in DIVULGA.items()}, "regiao": REGIOES}
     pessoas = {l["chave"]: reg(l) for l in linhas if "|" not in l["chave"]}
-    (SITE / "bens.json").write_text(json.dumps({"meta": meta, "p": pessoas}, ensure_ascii=False, separators=(",", ":")) + "\n",
-                                    encoding="utf-8")
+    gravar_json(SITE / "bens.json", {"meta": meta, "p": pessoas}, final="\n")
     interior = defaultdict(lambda: defaultdict(dict))
     for l in linhas:
         if "|" in l["chave"]:
@@ -318,7 +315,6 @@ def exportar_site(hoje=None):
     pasta = SITE / "bens-interior"
     pasta.mkdir(exist_ok=True)
     for uf, m in interior.items():
-        (pasta / f"{uf}.json").write_text(json.dumps({"meta": meta, "m": m}, ensure_ascii=False, separators=(",", ":")) + "\n",
-                                          encoding="utf-8")
+        gravar_json(pasta / f"{uf}.json", {"meta": meta, "m": m}, final="\n")
     log(f"Bens declarados: {len(pessoas)} pessoas em site/dados/bens.json e o interior de {', '.join(sorted(interior)).upper()}")
     return True

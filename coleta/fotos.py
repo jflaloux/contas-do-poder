@@ -23,7 +23,7 @@ from io import BytesIO
 from PIL import Image
 
 from .config import PARALELO, PROCESSADOS, RAIZ
-from .util import TempoEsgotado, baixar, ler_json, log, salvar_json
+from .util import TempoEsgotado, baixar, gravar_json, ler_json, log
 
 PASTA = RAIZ / "site" / "fotos"
 CREDITOS = PASTA / "creditos.json"
@@ -217,11 +217,16 @@ def _governo_commons(politicos, limite=None):
             except Exception as e:  # noqa: BLE001 — foto é opcional
                 log(f"  foto de {p['nome']}: {e}")
             finally:
-                salvar_json(CREDITOS, dados)
+                salvar_creditos(dados)
     except WikimediaLimitou:
         log("  A Wikimedia pediu para ir mais devagar; o resto das fotos fica para a próxima vez.")
-    salvar_json(CREDITOS, dados)
+    salvar_creditos(dados)
     return novas
+
+
+def salvar_creditos(dados):
+    """site/fotos/creditos.json pela gravação segura: crédito que some deixaria foto sem autor e licença."""
+    return gravar_json(CREDITOS, dados, compacto=False, indent=1)
 
 
 def coletar():

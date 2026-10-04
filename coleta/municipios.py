@@ -28,7 +28,7 @@ import pandas as pd
 import requests
 
 from .config import CACHE, DADOS, HOJE
-from .util import TempoEsgotado, _sessao, baixar, cache_valido, ler_json, log, normalizar_nome, salvar_json, verificar_prazo
+from .util import TempoEsgotado, _sessao, baixar, cache_valido, gravar_csv, ler_json, log, normalizar_nome, salvar_json, verificar_prazo
 
 SICONFI = "https://apidatalake.tesouro.gov.br/ords/siconfi/tt"
 TSE = "https://cdn.tse.jus.br/estatistica/sead/odsele/consulta_cand/consulta_cand_2024.zip"
@@ -54,7 +54,8 @@ def municipios():
                         "populacao": x.get("populacao")} for x in itens if x.get("esfera") == "M"])
     df = df.sort_values(["uf", "nome"])
     PASTA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(arq, index=False)
+    if not gravar_csv(df, arq):  # recusado por perda de cobertura (util.gravar_com): fica a lista anterior
+        return pd.read_csv(arq, dtype={"cod_ibge": int})
     return df
 
 
@@ -102,7 +103,7 @@ def custos(muni):
             chaves = {(n["cod_ibge"], n["ano"]) for n in novos}
             velhos = feitos[[(int(c), int(a)) not in chaves for c, a in zip(feitos.cod_ibge, feitos.ano)]] if len(feitos) else None
             feitos = pd.DataFrame(novos) if velhos is None or velhos.empty else pd.concat([velhos, pd.DataFrame(novos)], ignore_index=True)
-            feitos.sort_values(["cod_ibge", "ano"]).to_csv(CUSTOS, index=False)
+            gravar_csv(feitos.sort_values(["cod_ibge", "ano"]), CUSTOS)
             novos.clear()
 
     ex = ThreadPoolExecutor(6)
@@ -167,7 +168,7 @@ def vereadores(muni):
     v = v[v.cod_ibge.notna()].astype({"cod_ibge": int})
     v = v.sort_values(["cod_ibge", "nome_urna"])[["cod_ibge", "nome_urna", "nome", "partido", "genero"]]
     PASTA.mkdir(parents=True, exist_ok=True)
-    v.to_csv(arq, index=False)
+    gravar_csv(v, arq)
     log(f"Vereadores: {len(v)} eleitos em {v.cod_ibge.nunique()} cidades")
     return v
 
@@ -199,7 +200,7 @@ def salario_medio():
         r["salario_medio_reais" if x["D2C"] == "10143" else "salario_medio_sm"] = float(x["V"])
     if len(linhas) < 5000:
         raise ValueError(f"salário médio do IBGE: só {len(linhas)} cidades")
-    pd.DataFrame(list(linhas.values())).sort_values("cod_ibge").to_csv(SALARIO_MEDIO, index=False)
+    gravar_csv(pd.DataFrame(list(linhas.values())).sort_values("cod_ibge"), SALARIO_MEDIO)
     log(f"  Salário médio dos trabalhadores formais (IBGE, CEMPRE): {len(linhas)} cidades")
 
 

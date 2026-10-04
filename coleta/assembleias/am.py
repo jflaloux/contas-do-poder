@@ -24,7 +24,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -174,7 +174,7 @@ def coletar():
 
 
 def _csv(df, arq):
-    df.to_csv(arq, index=False)
+    gravar_csv(df, arq)
 
 
 def _gravar(resultados, ids, res, desp, par, hoje):

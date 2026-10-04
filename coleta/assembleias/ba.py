@@ -20,7 +20,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..prefeituras.comum import feminino, num
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -84,7 +84,7 @@ def coletar():
     C.mkdir(parents=True, exist_ok=True)
     deps = _deputados()
     if len(deps) >= 50:
-        deps.assign(visto_em=time.strftime("%Y-%m-%d")).to_csv(PASTA / "em_exercicio.csv", index=False)
+        gravar_csv(deps.assign(visto_em=time.strftime("%Y-%m-%d")), PASTA / "em_exercicio.csv")
     meses = _meses()
     linhas = []
     for am in meses:
@@ -105,7 +105,7 @@ def coletar():
             linhas.append({"ano": am // 100, "mes": am % 100, "processo": str(r[col["N° PROCESSO"]]).strip(), "nf": str(r[col["N° NF"]]).strip(),
                            "deputado": " ".join(dep.split()), "categoria": str(r[col["CATEGORIA"]]).strip(), "valor": num(r[col["VALOR (R$)"]])})
     df = pd.DataFrame(linhas)
-    df.sort_values(["ano", "mes", "deputado", "processo"]).to_csv(PASTA / "verba_processos.csv", index=False)
+    gravar_csv(df.sort_values(["ano", "mes", "deputado", "processo"]), PASTA / "verba_processos.csv")
     log(f"  ALBA: {len(deps)} deputados em exercício, {len(df)} processos da verba desde {INICIO % 100:02d}/{INICIO // 100}")
 
 

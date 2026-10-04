@@ -15,7 +15,7 @@ import time
 import pandas as pd
 
 from ..config import DADOS
-from ..util import TempoEsgotado, _sessao, log, normalizar_nome, recursos_ckan, verificar_prazo
+from ..util import TempoEsgotado, _sessao, gravar_csv, log, normalizar_nome, recursos_ckan, verificar_prazo
 from . import comum
 
 COD = 2304400
@@ -117,7 +117,7 @@ def coletar():
             continue
         achados = _ler(am, url)
         linhas = pd.concat([linhas[linhas.aaaamm != am], pd.DataFrame(achados, columns=COLUNAS)], ignore_index=True)
-        linhas.sort_values(["aaaamm", "tp", "nome"]).to_csv(LINHAS, index=False)
+        gravar_csv(linhas.sort_values(["aaaamm", "tp", "nome"]), LINHAS)
         log(f"  Prefeitura de Fortaleza: {am % 100:02d}/{am // 100} ({len(achados)} linhas)")
         time.sleep(2)
 

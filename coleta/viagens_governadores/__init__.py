@@ -16,7 +16,7 @@ import sys
 
 from .. import onde
 from ..config import DADOS, RAIZ
-from ..util import TempoEsgotado, log, normalizar_nome
+from ..util import TempoEsgotado, gravar_json, log, normalizar_nome
 from . import am, comum, mg, pb, se, sp
 
 ESTADOS = {"AM": am, "MG": mg, "PB": pb, "SE": se, "SP": sp}
@@ -82,6 +82,6 @@ def so_anexar():
     curado = _curado()
     for e in dados["e"]:
         anexar(e, curado[e["uf"]])
-    SITE.write_text(json.dumps(dados, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    gravar_json(SITE, dados)
     log(f"Site: {SITE.relative_to(RAIZ)}: viagens anexadas em {', '.join(e['uf'] for e in dados['e'] if 'vg' in e)}")
 

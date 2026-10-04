@@ -25,7 +25,7 @@ import pandas as pd
 
 from ..config import DADOS
 from ..prefeituras.comum import feminino
-from ..util import TempoEsgotado, _sessao, dormir, log, normalizar_nome, recursos_ckan, verificar_prazo
+from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, recursos_ckan, verificar_prazo
 from ..vereadores import comum as vc
 from . import comum
 
@@ -190,10 +190,11 @@ def _coletar_folha(meses):
             dormir(1)
     finally:
         if novos:
-            dep.sort_values(["ano", "mes", "nome", "folha"]).to_csv(arq_d, index=False)
-            gab.sort_values(["ano", "mes", "lotacao"]).to_csv(arq_g, index=False)
-            car.sort_values(["ano", "mes", "lotacao", "cargo"]).to_csv(arq_c, index=False)
-            lid.sort_values(["ano", "mes"]).to_csv(arq_m, index=False)
+            # os meses lidos (folha_meses.csv) só contam se a folha foi gravada (util.gravar_com pode recusar)
+            if (gravar_csv(dep.sort_values(["ano", "mes", "nome", "folha"]), arq_d)
+                    and gravar_csv(gab.sort_values(["ano", "mes", "lotacao"]), arq_g)
+                    and gravar_csv(car.sort_values(["ano", "mes", "lotacao", "cargo"]), arq_c)):
+                gravar_csv(lid.sort_values(["ano", "mes"]), arq_m)
         log(f"  CLDF: folha de {novos} meses lida agora; {len(set(zip(dep.ano, dep.mes)))} meses com deputados")
 
 
@@ -346,8 +347,8 @@ def _coletar_verba(meses):
             lidos += 1
     finally:
         if lidos:
-            ver.sort_values(["ano", "mes", "deputado", "coluna"]).to_csv(arq_v, index=False)
-            pdfs.sort_values(["ano", "mes"]).to_csv(arq_p, index=False)
+            if gravar_csv(ver.sort_values(["ano", "mes", "deputado", "coluna"]), arq_v):
+                gravar_csv(pdfs.sort_values(["ano", "mes"]), arq_p)
         log(f"  CLDF: quadro da verba de {lidos} meses lido agora; {len(pdfs)} meses gravados")
 
 

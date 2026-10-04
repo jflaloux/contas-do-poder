@@ -20,7 +20,7 @@ from zoneinfo import ZoneInfo
 
 from . import onde
 from .config import PROCESSADOS, RAIZ
-from .util import log
+from .util import ler_recusas, log
 
 SITE = RAIZ / "site" / "dados"
 # atrasos que a própria fonte explica (não são falha do robô): aparecem como "atrasada (fonte)"
@@ -96,20 +96,82 @@ def _ultimos_meses():
     return um
 
 
+_FEDERAL = {"d": "federal/camara", "s": "federal/senado", "e": "federal/executivo", "j": "federal/executivo"}
+_PASTAS = [("dados/governadores/folha/", "folhas", str.upper), ("dados/governadores/viagens/", "viagens", str.upper),
+           ("dados/assembleias/", "assembleias", str.lower), ("dados/judiciario/", "judiciario", str.lower),
+           ("dados/municipios_tce/", "tce", str.lower), ("site/dados/interior/", "tce", str.lower),
+           ("site/dados/interior-cargo/", "tce", str.lower)]
+
+
+def _fontes_da_recusa(arquivo, ev):
+    """As fontes (ids da situação) a que uma gravação recusada pertence: a fonte em coleta, quando a recusa foi durante
+    a coleta; senão, pelo caminho do arquivo e, nos arquivos do site, pelos grupos que perderam cobertura."""
+    if ev.get("fonte"):
+        return [ev["fonte"]]
+    from . import prefeituras, vereadores
+    grupos = [str(p[0]) for p in ev.get("perdas") or []]
+    valor = lambda g: g.split("=", 1)[1] if "=" in g else None
+    if arquivo in ("site/dados/camaras.json", "site/dados/prefeituras.json"):
+        mods = vereadores.CIDADES if "camaras" in arquivo else prefeituras.CIDADES
+        por_cod = {str(m.CFG["cod"]): onde.chave("vereadores" if "camaras" in arquivo else "prefeituras", m) for m in mods}
+        return sorted({por_cod[valor(g)] for g in grupos if valor(g) in por_cod})
+    if arquivo == "site/dados/assembleias.json":
+        return sorted({f"assembleias/{valor(g).lower()}" for g in grupos if valor(g)})
+    if arquivo == "site/dados/judiciario.json":
+        return sorted({f"judiciario/{valor(g).lower()}" for g in grupos if valor(g)})
+    if arquivo == "site/dados/governadores.json":
+        return sorted({f"folhas/{valor(g).upper()}" for g in grupos if valor(g)})
+    if arquivo == "site/dados/dados.json":
+        return sorted({_FEDERAL[valor(g)] for g in grupos if valor(g) in _FEDERAL})
+    if arquivo == "site/dados/atividade.json" or arquivo.startswith("dados/atividade/"):
+        return ["federal/atividade"]
+    if arquivo.startswith("dados/camara/"):
+        return ["federal/camara"]
+    if arquivo.startswith("dados/portal_transparencia/"):
+        return ["federal/executivo"]
+    if arquivo.startswith("dados/municipios/"):
+        partes = arquivo.split("/")
+        if len(partes) > 3:
+            return [f"{'prefeituras' if 'prefeitura' in partes[3] else 'vereadores'}/{partes[2]}"]
+    for pasta, grupo, caixa in _PASTAS:
+        if arquivo.startswith(pasta):
+            nome = arquivo[len(pasta):].split("/")[0].split(".")[0]
+            return [f"{grupo}/{caixa(nome)}"]
+    return []
+
+
+def recusas_ativas():
+    """{fonte: [texto]} e [textos sem fonte] das gravações recusadas por perda de cobertura que ainda não foram
+    resolvidas (o último evento do arquivo, nos dois lugares, é a recusa)."""
+    por_fonte, sem_fonte = {}, []
+    for arquivo, ev in sorted(ler_recusas().items()):
+        if ev.get("estado") != "recusado":
+            continue
+        texto = f"{arquivo}: {ev.get('texto', '')} (em {ev.get('quando', '')[:10]})"
+        fontes = _fontes_da_recusa(arquivo, ev)
+        for f in fontes:
+            por_fonte.setdefault(f, []).append((texto, ev.get("quando")))
+        if not fontes:
+            sem_fonte.append(texto)
+    return por_fonte, sem_fonte
+
+
 def executar():
     from .vereadores.comum import ultimo_mes_fechado
     fechado = ultimo_mes_fechado()
     coletas = {lugar: onde.ler(lugar) for lugar in onde.LUGARES}
     meses = _ultimos_meses()
+    recusas, recusas_sem_fonte = recusas_ativas()
     linhas = []
-    for ch in sorted(set(meses) | set(coletas["exterior"]) | set(coletas["brasil"])):
+    for ch in sorted(set(meses) | set(coletas["exterior"]) | set(coletas["brasil"]) | set(recusas)):
         tent = {lugar: coletas[lugar].get(ch) for lugar in onde.LUGARES if coletas[lugar].get(ch)}
         sucessos = [(c["ultimo_sucesso"], lugar) for lugar, c in tent.items() if c.get("ultimo_sucesso")]
         ultimo_ok = max(sucessos) if sucessos else None
         falhando = bool(tent) and all(c.get("falhas", 0) > 0 for c in tent.values())
         um = meses.get(ch)
         fora_do_site = um is None and ch.split("/")[0] in NO_SITE
-        falhando = falhando or fora_do_site
+        recusada = ch in recusas  # gravação recusada por perda de cobertura (util.gravar_com): fica o dado anterior
+        falhando = falhando or fora_do_site or recusada
         atraso = _meses_entre(um, fechado) if um else None
         situacao = ("congelada" if ch in onde.CONGELADAS else
                     "falhando" if falhando else "atrasada (fonte)" if atraso is not None and atraso >= 3 and ch in ATRASOS_CONHECIDOS
@@ -121,7 +183,11 @@ def executar():
                                    "tirar de onde.CONGELADAS)" if um and um > cg["ate"] else "")
         if fora_do_site and not erro:
             erro = "não entrou no arquivo do site (a montagem falhou: ver o log da rodada)"
+        if recusada and not (erro or "").startswith("Recusado"):
+            erro = "Recusado por perda de cobertura (fica o dado anterior): " + "; ".join(t for t, _ in recusas[ch]) + \
+                   (f". {erro}" if erro else "")
         falhas = [c.get("primeira_falha") or c.get("ultima_falha") for c in tent.values() if c.get("falhas", 0) > 0]
+        falhas += [q for _, q in recusas.get(ch, [])]
         linhas.append({"fonte": ch, "situacao": situacao, "ultimo_mes": um, "meses_atras": atraso,
                        "ultimo_sucesso": ultimo_ok[0] if ultimo_ok else None, "onde": ultimo_ok[1] if ultimo_ok else None,
                        "so_brasil": onde._so_brasil(ch), "falha_desde": min([f for f in falhas if f], default=None) if falhando else None,
@@ -139,6 +205,8 @@ def executar():
           f"{sum(l['situacao'] == 'atrasada' for l in linhas)} atrasadas, {sum(l['situacao'] == 'falhando' for l in linhas)} falhando, "
           f"{sum(l['situacao'] == 'congelada' for l in linhas)} congeladas.", "",
           *_md_rodada(resumo), *_md_reservas(linhas),
+          *([f"Gravações recusadas por perda de cobertura sem fonte conhecida (fica o arquivo anterior): {'; '.join(recusas_sem_fonte)}", ""]
+            if recusas_sem_fonte else []),
           "| Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |", "|---|---|---|---|---|---|"]
     planos = _planos()
     for l in linhas:
