@@ -310,6 +310,8 @@ def executar(baixar_fotos=True):
             saida[-1]["mf"] = {"u": ESTADOS[uf].FONTE, "nota": NOTAS.get(uf, "")}
         from . import viagens_governadores
         viagens_governadores.anexar(saida[-1], e)  # e.vg e e.vgf, onde o estado publica as viagens por pessoa
+        from . import governadores_tribunal
+        governadores_tribunal.anexar(saida[-1], e)  # e.ot: governador em exercício pago pelo órgão de origem (RJ)
     _fotos([x for x in saida], baixar_fotos)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "mes": agora,
                       "fonte": "https://github.com/jflaloux/contas-do-poder/blob/main/dados/governadores/governadores.json"},
@@ -329,4 +331,9 @@ def coletar():
     from . import folhas_estaduais, viagens_governadores
     folhas_estaduais.coletar()  # o mês a mês pela folha dos estados em que ela abre
     viagens_governadores.coletar()  # as viagens (diárias e passagens), onde o estado publica por pessoa
+    from . import governadores_tribunal
+    try:
+        governadores_tribunal.coletar()  # governador em exercício pago pelo órgão de origem (RJ: TJ-RJ, pelo DadosJusBr)
+    except Exception as e:  # noqa: BLE001 — sem a folha do tribunal, o site fica com os meses já lidos
+        log(f"Governadores: a folha do órgão de origem falhou ({e}); o site fica com os meses já lidos")
     executar(baixar_fotos=True)

@@ -658,6 +658,16 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 - Nos outros 16 estados, a folha nominal não abriu para o robô (bloqueio, painel Power BI, chave de acesso, portal
   fora do ar no período eleitoral).
 
+### Governador em exercício pago pelo órgão de origem (`coleta/governadores_tribunal.py`)
+
+No Rio de Janeiro, desde 23/03/2026 o governador em exercício é o presidente do Tribunal de Justiça, Ricardo Couto de
+Castro, que continua recebendo pelo Tribunal, onde é desembargador, e não o subsídio de governador. O que ele recebe
+vem da folha do TJ-RJ copiada pelo [DadosJusBr](https://dadosjusbr.org) (licença CC BY 4.0, a planilha que o tribunal
+manda ao Painel de Remuneração dos Magistrados do CNJ), com o mesmo leitor e as mesmas partes do Judiciário (descontos
+nunca; diárias à parte). Só os meses no governo: `dados/governadores/outro_orgao/rj.csv` e, no site, `e.ot` do estado
+em `governadores.json` (com a fonte de cada mês e os meses que faltam no DadosJusBr: mar/2026). A folha do Estado do Rio
+segue congelada até mar/2026 (Cláudio Castro). Roda na etapa `governadores`, no GitHub.
+
 ### Viagens dos governadores e vices (`coleta/viagens_governadores/`)
 
 Os "gastos do cargo" dos governadores, como nos ministros: as viagens a serviço (diárias e passagens), onde o Estado
