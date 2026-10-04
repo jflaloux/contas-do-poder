@@ -138,6 +138,24 @@ const PAGINAS = [
     })()` },
   // sem os arquivos de bens (hoje não existem; só a partir de 26/10/2026): nada aparece, nem título, e o app nem pede o arquivo
   { nome: "deputado-federal", url: primeiro("dep-"), semPagina: [/bens declarados/i, /Justiça Eleitoral/] },
+  // arquivo que FALTA (404) ou vem quebrado: a seção diz que não deu para carregar (atividade) ou some (bens, que é opcional), e para de pedir
+  // (antes, a seção se recriava e pedia o arquivo de novo, em ciclo, e a página podia travar). O limite de pedidos pega o ciclo.
+  { nome: "atividade-arquivo-ausente", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null, falhasEsperadas: ["/dados/atividade.json"], maxPedidos: { "/dados/atividade.json": 4 },
+    simular: (c) => (c === "/dados/atividade.json" ? { status: 404, corpo: "não achei" } : null),
+    atividade: [/Não foi possível carregar a presença e os projetos agora\./, /Tentar de novo/], semAtividade: [/Carregando a presença e os projetos/, /dias com sessão deliberativa/],
+    depois: `(async () => { const f = []; const b = document.querySelector("#atividade button"); if (!b) return ["sem o botão Tentar de novo"]; const n0 = performance.getEntriesByName(location.origin + "/dados/atividade.json").length;
+      b.click(); await new Promise((r) => setTimeout(r, 1200)); if (!document.querySelector("#atividade")) f.push("a seção de atividade sumiu depois de Tentar de novo");
+      if (/Carregando a presença/.test(document.querySelector("#atividade").innerText)) f.push("depois de Tentar de novo a seção ficou carregando sem fim"); return f; })()` },
+  { nome: "atividade-arquivo-quebrado", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null, maxPedidos: { "/dados/atividade.json": 4 },
+    simular: (c) => (c === "/dados/atividade.json" ? JSON.stringify({ meta: {} }) : null), atividade: [/Não foi possível carregar a presença e os projetos agora\./], semAtividade: [/Carregando a presença e os projetos/] },
+  { nome: "senador-atividade-arquivo-ausente", url: ENDERECOS["sen-5672"] ? `/${ENDERECOS["sen-5672"]}` : null, falhasEsperadas: ["/dados/atividade.json"], maxPedidos: { "/dados/atividade.json": 4 },
+    simular: (c) => (c === "/dados/atividade.json" ? { status: 404, corpo: "" } : null), atividade: [/Não foi possível carregar a presença e os projetos agora\./] },
+  { nome: "bens-arquivo-ausente", url: `/${ENDERECOS[BENS_FALSOS.dep]}`, metas: { "dados-bens": "br" }, falhasEsperadas: ["/dados/bens.json"], maxPedidos: { "/dados/bens.json": 4 },
+    simular: (c) => (c === "/dados/bens.json" ? { status: 404, corpo: "" } : null), semPagina: [/Bens declarados/i, /Justiça Eleitoral/, /Carregando/] },
+  { nome: "bens-arquivo-quebrado", url: `/${ENDERECOS[BENS_FALSOS.dep]}`, metas: { "dados-bens": "br" }, maxPedidos: { "/dados/bens.json": 4 },
+    simular: (c) => (c === "/dados/bens.json" ? "isto não é JSON" : null), semPagina: [/Bens declarados/i] },
+  { nome: "bens-cidade-arquivo-ausente", url: "/cidade/abaiara-ce", metas: { "dados-bens": "ce" }, falhasEsperadas: ["/dados/bens-interior/ce.json"], maxPedidos: { "/dados/bens-interior/ce.json": 4 },
+    simular: (c) => (c === "/dados/bens-interior/ce.json" ? { status: 404, corpo: "" } : null), semPagina: [/Bens declarados/i] },
   // bens declarados ao TSE (arquivos simulados): texto neutro, aviso de que é autodeclarado e não é valor de mercado, link para o TSE, crédito, e nada de
   // ranking, comparação, evolução ou "mais rico"; só tipo e valor; o bloco fica à parte, depois da comparação e antes do "Compartilhar"
   { nome: "bens-deputado", recorte: "#bens", url: `/${ENDERECOS[BENS_FALSOS.dep]}`, metas: { "dados-bens": "br" }, simular: simularBens(),
@@ -200,6 +218,22 @@ const PAGINAS = [
   ...[["senador", "sen-", 980], ["ministro", "exe-", 980], ["governador", "gov-", 980], ["judiciario-pessoa", "jud-", 980], ["vereador-capital", "ver-", 1080], ["prefeitura", "pre-", 1080], ["deputado-estadual", "est-", 1080]]
     .map(([nome, prefixo, largura]) => ({ nome: `${nome}-topo-${largura}`, url: primeiro(prefixo), largura })),
   { nome: "deputado-topo-980", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 980, contem: [/Equivale a \d+ salários mínimos por mês/, /\d+º de \d+ · /] },
+  // o MÊS da ajuda de custo vem do campo "aj" de dados.json (o mês de cada pagamento, como a folha registra); o site não estima mais (a estimativa
+  // pelo mês a mês errava: Lafayette de Andrada recebeu em fev/2023 e a página dizia dezembro; Luiz Carlos Hauly, em jul/2023, e aparecia dezembro).
+  // Sem "aj" na pessoa ou no período: "no período", sem mês. Vários pagamentos: os meses (ou "N pagamentos").
+  { nome: "deputado-ajuda-mes-lafayette-fev-2023", url: ENDERECOS["dep-98057"] ? `/${ENDERECOS["dep-98057"]}?periodo=2023` : null,
+    contem: [/Fora desta média: ajuda de custo de R\$ 39\.293, paga de uma vez em fev\/2023\./, /Paga de uma vez em fev\/2023: é o total do período/], semContem: [/dez\/2023/, /no período\./] },
+  { nome: "deputado-ajuda-mes-hauly-jul-2023", url: ENDERECOS["dep-73778"] ? `/${ENDERECOS["dep-73778"]}?periodo=mandato` : null,
+    contem: [/Fora desta média: ajuda de custo de R\$ 41\.651, paga de uma vez em jul\/2023\./], semContem: [/dez\/2023/, /no período\./] },
+  { nome: "deputado-ajuda-mes-hauly-ano", url: ENDERECOS["dep-73778"] ? `/${ENDERECOS["dep-73778"]}?periodo=2023` : null,
+    contem: [/Fora desta média: ajuda de custo de R\$ 41\.651, paga de uma vez em jul\/2023\./], semContem: [/dez\/2023/] },
+  // dados simulados: sem "aj" (não diz o mês, nunca estima), dois pagamentos (lista os meses) e muitos pagamentos ("N pagamentos")
+  ...[["sem-aj", (p) => { delete p.aj; }, [/paga de uma vez no período\./], [/paga de uma vez em [a-z]{3}\/20/i, /paga em [a-z]{3}\/20/i]],
+    ["dois-pagamentos", (p) => { p.aj = { 2023: [[202302, 20000], [202307, 19293]], leg: [[202302, 20000], [202307, 19293]] }; }, [/paga em fev\/2023 e jul\/2023\./], [/no período\./]],
+    ["cinco-pagamentos", (p) => { p.aj = { 2023: [202301, 202302, 202303, 202304, 202305].map((m) => [m, 7000]), leg: [] }; }, [/paga em 5 pagamentos\./], [/no período\./]]]
+    .map(([nome, muda, contem, semContem]) => ({ nome: `deputado-ajuda-mes-simulado-${nome}`, url: ENDERECOS["dep-98057"] ? `/${ENDERECOS["dep-98057"]}?periodo=2023` : null,
+      simular: (c) => { if (c !== "/dados/indice/dados.json" && c !== "/dados/dados.json") return null; const d = lerDados("dados.json"); muda(d.p.find((x) => x.id === "dep-98057")); return JSON.stringify(d); },
+      contem: [/Fora desta média: ajuda de custo de R\$ 39\.293, /, ...contem], semContem })),
   { nome: "deputado-ajuda-de-custo-andre-abdon", url: ENDERECOS["dep-178831"] ? `/${ENDERECOS["dep-178831"]}` : null,
     contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /(?<![0-9])1º de [0-9]+ · /] },
   // 2 meses de mandato: fora do ranking (mínimo de 3 meses), com a ajuda de custo à parte e sem posição
@@ -312,7 +346,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
   const { cmd, eventos, avaliar } = pagina;
   const local = new URL(base).host;
   let abertas = 0, ultimaAtividade = Date.now();
-  const externos = new Set(), meus = new Set();
+  const externos = new Set(), meus = new Set(), pedidosPorCaminho = new Map();
   const parar = eventos((metodo, p) => {
     if (metodo === "Runtime.exceptionThrown") {
       const d = p.exceptionDetails; falhas.push(`exceção: ${(d.exception && d.exception.description) || d.text}`.split("\n")[0].slice(0, 200));
@@ -322,6 +356,8 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     } else if (metodo === "Log.entryAdded" && p.entry.level === "error") {
       let host = ""; try { host = new URL(p.entry.url).host; } catch { /* sem endereço */ }
       if (host && host !== local) return; // arquivo de fora, que o teste bloqueia
+      let caminhoLog = ""; try { caminhoLog = new URL(p.entry.url).pathname; } catch { /* sem endereço */ }
+      if (caminhoLog && (pg.falhasEsperadas || []).includes(caminhoLog)) return; // o navegador registra o 404 do arquivo que o teste faz faltar
       if (!/ERR_BLOCKED_BY_CLIENT/.test(p.entry.text)) falhas.push(`registro: ${p.entry.text} ${p.entry.url || ""}`.slice(0, 200));
     } else if (metodo === "Network.requestWillBeSent") {
       // só os pedidos ao próprio site contam para "a rede ficou quieta" (os de fora, como os do Google Analytics, são bloqueados)
@@ -332,13 +368,17 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     } else if (metodo === "Network.responseReceived") {
       const r = p.response, h = new URL(r.url).host;
       const caminho = new URL(r.url).pathname;
-      if (h === local && r.status >= 400) falhas.push(`arquivo não carregou (${r.status}): ${caminho}`);
+      if (h === local && r.status >= 400 && (pg.falhasEsperadas || []).includes(caminho)) { /* o teste simula este arquivo ausente */ }
+      else if (h === local && r.status >= 400) falhas.push(`arquivo não carregou (${r.status}): ${caminho}`);
       // o servidor local (como o Cloudflare Pages) devolve a página inicial para o que não existe: um .json que veio como HTML é arquivo que falta
       else if (h === local && /\.(json|js|css|webp|png|svg)$/.test(caminho) && /text\/html/.test(r.mimeType || "")) falhas.push(`arquivo que não existe (veio uma página HTML): ${caminho}`);
     } else if (metodo === "Fetch.requestPaused") {
       const h = new URL(p.request.url).host;
-      const simulado = h === local && pg.simular ? pg.simular(new URL(p.request.url).pathname) : null;
-      if (simulado) cmd("Fetch.fulfillRequest", { requestId: p.requestId, responseCode: 200, responseHeaders: [{ name: "Content-Type", value: "application/json" }], body: Buffer.from(simulado).toString("base64") }).catch(() => {});
+      const caminhoP = h === local ? new URL(p.request.url).pathname : "";
+      if (h === local) pedidosPorCaminho.set(caminhoP, (pedidosPorCaminho.get(caminhoP) || 0) + 1);
+      const simulado = h === local && pg.simular ? pg.simular(caminhoP) : null;
+      // simular() devolve o texto do arquivo (resposta 200) ou { status, corpo }, para simular o arquivo ausente (404) ou quebrado
+      if (simulado) cmd("Fetch.fulfillRequest", { requestId: p.requestId, responseCode: typeof simulado === "object" ? simulado.status : 200, responseHeaders: [{ name: "Content-Type", value: "application/json" }], body: Buffer.from(typeof simulado === "object" ? simulado.corpo || "" : simulado).toString("base64") }).catch(() => {});
       else if (h === local || /^(data|blob):/.test(p.request.url)) cmd("Fetch.continueRequest", { requestId: p.requestId }).catch(() => {});
       else { externos.add(h); cmd("Fetch.failRequest", { requestId: p.requestId, errorReason: "BlockedByClient" }).catch(() => {}); }
     }
@@ -374,6 +414,9 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     await avaliar(`window.scrollTo(0, document.documentElement.scrollHeight)`); await espera(600);
     await avaliar(`window.scrollTo(0, 0)`); await espera(400);
 
+    // limite de pedidos por arquivo (pg.maxPedidos): arquivo que falta não pode ser pedido sem fim (já houve ciclo: a seção se recriava e pedia de novo)
+    await espera(1500); // dá tempo de um ciclo se mostrar
+    for (const [arq, max] of Object.entries(pg.maxPedidos || {})) { const n = pedidosPorCaminho.get(arq) || 0; if (n > max) falhas.push(`${arq} foi pedido ${n} vezes (o limite é ${max}): ciclo de pedidos?`); }
     if (pg.depois) (await avaliar(pg.depois)).forEach((x) => falhas.push(x));
     const m = await avaliar(`(() => {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);

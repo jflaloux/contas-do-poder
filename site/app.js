@@ -251,19 +251,22 @@
     return Object.keys(out).length ? out : null;
   }
   const somaUnicos = (p, k, cats) => { const u = unicosDe(p, k, cats); return u ? Object.values(u).reduce((a, b) => a + b, 0) : 0; };
-  // em que mês o pagamento único caiu: o mês cujo total passa do salário médio do ano por cerca do valor pago (só se for um mês só e o
-  // período for um ano, ou o mandato todo com a ajuda num ano só; senão, sem o mês)
-  function mesDoUnico(p, k) {
+  // Em que mês(es) o pagamento único caiu: SÓ o que a fonte diz. dados.json traz, em cada pessoa, `aj`: {"2023": [[202302, 39293]], "leg": [...]},
+  // o mês de cada pagamento da ajuda de custo como a folha registra (uma chave por ano e "leg" para o período todo). Antes o site estimava o mês
+  // pelo mês a mês e errava (Lafayette de Andrada recebeu em fev/2023 e a página dizia dezembro; Luiz Carlos Hauly, em jul/2023, e aparecia
+  // dezembro). Sem `aj` na pessoa, ou sem o período: não se diz o mês ("no período"), nunca se estima. Quem foi ministro e parlamentar:
+  // a ajuda do mandato (a do parlamentar).
+  function mesesDoUnico(p, k) {
     const q = p.k === "j" ? S.porId.get(((p.cg || [])[1] || {}).id) : p;
-    if (!q || !q.t) return null;
-    const anos = (k === "leg" ? meta().anos : [k]).filter((a) => q.per[a] && q.per[a].cats && q.per[a].cats.ajuda_de_custo);
-    if (anos.length !== 1) return null;
-    const x = q.per[anos[0]], a = x.cats.ajuda_de_custo, sal = x.mg ? (x.cats.salario || 0) / x.mg : 0;
-    if (!(a > 0) || !(sal > 0)) return null;
-    const cand = q.t.filter(([m, g]) => String(Math.floor(m / 100)) === anos[0] && g > 0 && g - sal >= 0.9 * a && g - sal <= 1.1 * a);
-    return cand.length === 1 ? fmtMes(cand[0][0]) : null;
+    const lista = q && q.aj && q.aj[k];
+    if (!Array.isArray(lista)) return [];
+    return [...new Set(lista.filter((x) => Array.isArray(x) && Number.isInteger(x[0])).map((x) => x[0]))].sort((a, b) => a - b);
   }
-  const comoUnico = (v, mes) => (mes ? `paga de uma vez em ${mes}` : "paga em poucos meses do período, e não todo mês");
+  // "paga de uma vez em fev/2023"; vários pagamentos: "paga em fev/2023 e jan/2027" (ou "em N pagamentos", se forem mais de 3); sem o mês: "no período"
+  const comoUnico = (v, meses) => {
+    const ms = meses || [];
+    return ms.length === 1 ? `paga de uma vez em ${fmtMes(ms[0])}` : ms.length > 3 ? `paga em ${ms.length} pagamentos` : ms.length ? `paga em ${listaE(ms.map(fmtMes))}` : "paga de uma vez no período";
+  };
   function resumo(p, k) {
     const r = p && p.per[k];
     const aParte = p && p.k === "t"; // Judiciário: as diárias ficam fora do total
@@ -1619,7 +1622,7 @@
     // ajuda de custo (paga de uma vez): fora desta média e da posição, com o valor e o que a média seria com ela
     const sinal = r.unico ? [h("sup", { class: "resumo-sinal", "aria-hidden": "true" }, "*"), h("span", { class: "visualmente-oculto" }, " (veja a nota ao final)")] : null;
     const nota = r.unico ? h("p", { class: "conta__resumo-nota" }, h("span", { "aria-hidden": "true" }, "* "), r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
-      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
+      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesesDoUnico(p, k))}`,
       `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
     return h("div", { class: "conta__resumo conta__resumo--duas" }, pil,
       h("div", { class: "conta__resumo-numero" },
@@ -1637,7 +1640,7 @@
   // a linha do pagamento único, na lista: o que é, quando caiu e por que fica fora do "por mês" e da comparação
   function textoUnico(p, k, r, v) {
     if (v < 0) return "Valor negativo na fonte (devolução ou acerto de uma ajuda de custo anterior). É o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas.";
-    const c = comoUnico(v, mesDoUnico(p, k)).replace(/^./, (x) => x.toUpperCase());
+    const c = comoUnico(v, mesesDoUnico(p, k)).replace(/^./, (x) => x.toUpperCase());
     if (!r.mg) return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês e da comparação com os colegas.`;
     const pesa = r.mg <= 8 && /^\d{4}$/.test(k) ? `, bem mais do que pesaria em quem teve os 12 meses do ano (${reais(v / 12)})` : "";
     return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas porque não se repete todo mês: dividido pelos ${r.mg} ${r.mg === 1 ? "mês" : "meses"} do período, somaria ${reais(v / r.mg)} por mês${pesa}.`;
@@ -1998,9 +2001,11 @@
   // lado nem comparadas. Projetos: PL, PLP, PEC, PDL e projeto de resolução, como primeiro autor (separando "homenagem ou data" dos
   // demais, com os que viraram norma de cada grupo) e como coautor. "X de Y", sem porcentagem, sem cor, sem ranking, sem média
   // do grupo e sem somar os tipos num total de projetos.
-  const ATIV = { pedido: null, dados: null };
+  // "carregando" e "falhou" são coisas diferentes: com o arquivo ausente (404), com resposta que não é o que se espera ou sem rede, `falhou` fica
+  // true e a seção para de pedir (antes, a promessa resolvia com null, a seção se recriava e agendava a mesma promessa, sem fim)
+  const ATIV = { pedido: null, dados: null, falhou: false };
   function carregarAtividade() {
-    if (!ATIV.pedido) ATIV.pedido = lerJSON("/dados/atividade.json").then((d) => (ATIV.dados = d && d.p ? d : null), () => null);
+    if (!ATIV.pedido) ATIV.pedido = lerJSON("/dados/atividade.json").then((d) => { ATIV.dados = d && d.p ? d : null; ATIV.falhou = !ATIV.dados; return ATIV.dados; }, () => { ATIV.falhou = true; return null; });
     return ATIV.pedido;
   }
   // o registro é o do parlamentar (dep-<id> ou sen-<código>); na página de "tudo junto" (ministro e parlamentar), o do mandato
@@ -2011,6 +2016,11 @@
   function secAtividade(p) {
     const id = idAtividade(p);
     if (!id) return null;
+    if (!ATIV.dados && ATIV.falhou) { // não deu para carregar: uma linha discreta, com um botão para tentar de novo (só quando a pessoa clica)
+      const falha = h("section", { class: "bloco", id: "atividade" }, h("p", { class: "discreto" }, "Não foi possível carregar a presença e os projetos agora. ",
+        h("button", { type: "button", class: "link-botao", onclick: () => { ATIV.pedido = null; ATIV.falhou = false; falha.replaceWith(secAtividade(p)); } }, "Tentar de novo")));
+      return falha;
+    }
     if (!ATIV.dados) { // ainda não chegou: um espaço no lugar, trocado quando chegar
       const vaga = h("section", { class: "bloco", id: "atividade" }, h("p", { class: "discreto" }, "Carregando a presença e os projetos…"));
       carregarAtividade().then(() => { if (vaga.isConnected) { const nova = secAtividade(p); if (nova) vaga.replaceWith(nova); else vaga.remove(); } });
@@ -2077,12 +2087,12 @@
   // Eleitoral não confere. Sem ranking, sem "mais rico", sem média, sem comparação e sem evolução entre eleições; fora da imagem de compartilhar e
   // dos números de destaque; nunca somado aos salários nem aos gastos do cargo (é patrimônio declarado, não dinheiro público).
   // Registro: [ano, total, itens, imóveis, veículos, aplicações e depósitos, participações em empresas, outros, ue, sq]
-  const BENS = { pedidos: {}, dados: {} };
+  const BENS = { pedidos: {}, dados: {}, falhou: {} }; // falhou[chave]: o arquivo não veio (404, rede ou formato errado): para de pedir, e nada aparece
   const temBens = (chave) => ((document.querySelector('meta[name="dados-bens"]') || {}).content || "").split(/\s+/).includes(chave);
   function carregarBens(chave) {
     if (!chave || !temBens(chave)) return Promise.resolve(null);
     if (!BENS.pedidos[chave]) BENS.pedidos[chave] = lerJSON(chave === "br" ? "/dados/bens.json" : `/dados/bens-interior/${chave}.json`)
-      .then((d) => (d && d.meta && (d.p || d.m) ? (BENS.dados[chave] = d) : null), () => null);
+      .then((d) => { if (d && d.meta && (d.p || d.m)) return (BENS.dados[chave] = d); BENS.falhou[chave] = true; return null; }, () => { BENS.falhou[chave] = true; return null; });
     return BENS.pedidos[chave];
   }
   const COM_BENS = ["d", "s", "g", "a", "v", "p"]; // os tipos de pessoa que podem ter o bloco (o id tem de estar em bens.json)
@@ -2106,6 +2116,7 @@
   // a página da pessoa: um bloco à parte, perto do fim
   function secBens(p) {
     if (!COM_BENS.includes(p.k) || !temBens("br")) return null;
+    if (!BENS.dados.br && BENS.falhou.br) return null; // o arquivo não veio: nada na tela (o bloco é opcional) e sem pedir de novo
     if (!BENS.dados.br) { // ainda não chegou: nada na tela, e o bloco entra quando chegar (se a pessoa tiver)
       const vaga = h("section", { class: "bloco", id: "bens", hidden: true });
       carregarBens("br").then(() => { if (vaga.isConnected) { const nova = secBens(p); if (nova) vaga.replaceWith(nova); else vaga.remove(); } });

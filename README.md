@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 73 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 90 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -304,8 +304,10 @@ Para dar para comparar, o site mostra tudo **por mês**:
   do "salários mínimos por mês". Ela aparece à parte: uma linha no topo do contracheque ("Fora desta média: ajuda de custo de
   R$ 46.366, paga de uma vez em set/2025. Contando com ela, seriam R$ 104.990 por mês.") e um bloco "Pago de uma vez, fora
   da média por mês" depois do custo por mês, com o total do período e a conta ("dividido pelos 5 meses, somaria R$ 9.273 por
-  mês"). O mês vem do mês a mês (`mesDoUnico`: o mês cujo total passa do salário médio do ano por cerca do valor pago; só com
-  um mês só, senão a frase diz "em poucos meses do período"). O mês a mês e o "Custo total no período" continuam como a fonte
+  mês"). O mês vem do campo `aj` de cada pessoa em `dados.json` (o mês de cada pagamento, como a folha registra: `{"2023": [[202302,
+  39293]], "leg": [...]}`; `mesesDoUnico`, no `app.js`): "paga de uma vez em fev/2023"; vários pagamentos, "paga em fev/2023 e jul/2023" (ou
+  "paga em N pagamentos", acima de 3); **sem `aj` na pessoa ou no período, o mês é omitido ("paga de uma vez no período"), nunca estimado** (o
+  site estimava pelo mês a mês e errava: Lafayette de Andrada, fev/2023, aparecia como dezembro). O mês a mês e o "Custo total no período" continuam como a fonte
   mostra (somam a ajuda). Quem foi ministro e parlamentar ("tudo junto"): só a parte do mandato sai; a ajuda de custo de
   ministro (valores pequenos e mensais, ou uma posse) a fonte não separa e fica como está (em 2025, 1 ministro com 3 meses ou
   mais passa de 0,7 salário). Deputados estaduais e vereadores: sem categoria de pagamento único nos dados (em 2025, só 3 casos
@@ -1270,7 +1272,7 @@ casa diz qual é a conta ("em que estava no mandato": suplente e ex-ministro tê
 projeto de resolução, desde 01/02/2023) vão em tabela por tipo, separando "homenagens e datas" dos "demais", cada grupo com os que
 viraram norma; a lista dos que viraram norma tem o link de cada um e a marca "homenagem ou data" em texto. Uma nota diz a regra de
 "homenagem ou data" (vem do `meta.regra_homenagem`), que a norma fica com o projeto principal e, no Senado, que a PEC lista como
-autores todos os que assinaram. No celular a tabela vira um bloco por tipo (`.tabela-projetos`), sem rolagem para o lado. O teste
+autores todos os que assinaram. No celular a tabela vira um bloco por tipo (`.tabela-projetos`), sem rolagem para o lado. Se o `atividade.json` não carregar (404, rede ou formato errado), a seção diz "Não foi possível carregar a presença e os projetos agora" com um botão "Tentar de novo" e **para de pedir** (`ATIV.falhou`; "carregando" e "falhou" são coisas diferentes: antes, a promessa resolvia com null, a seção se recriava e pedia de novo, em ciclo, e a página podia travar). Os bens declarados (`BENS.falhou`) somem em silêncio no mesmo caso. Os testes simulam o arquivo ausente (404) e quebrado, e limitam quantas vezes o arquivo é pedido. O teste
 do site confere um deputado (Laura Carneiro) e um senador (Alan Rick): os textos de cada casa, que não há "%" e que a conta de uma
 casa não aparece na outra.
 
