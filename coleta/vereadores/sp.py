@@ -39,7 +39,7 @@ from ..util import TempoEsgotado, _sessao, baixar, cache_valido, gravar_csv, log
 COD_IBGE = 3550308
 LEGISLATURA = 19               # 2025–2028
 INICIO = (2025, 1)
-SUBSIDIO = [((2025, 1), 24754.79), ((2025, 2), 26080.98)]  # (a partir de, valor mensal)
+SUBSIDIO = [((2025, 1), 24754.79), ((2025, 2), 26080.98)]  # (a partir de, valor mensal): Resolução nº 10/2024, art. 1º
 PASTA = DADOS / "municipios" / "sp"
 C = CACHE / "cmsp"
 FOTOS = RAIZ / "site" / "fotos"
@@ -375,7 +375,7 @@ CFG = {
     "credito_foto": "Câmara Municipal de São Paulo", "pagina": f"{SITE_CMSP}/vereadores/membros/",
     "fontes": {"gastos": CONTAS, "gabinetes": f"{SPLEGIS}/OcupacaoGabineteJSON", "funcionarios": FUNCIONARIOS,
                "verba": f"{SITE_CMSP}/transparencia/custos-de-mandato/",
-               "subsidio": "https://www.gazetasp.com.br/politica/vereadores-de-sao-paulo-aprovam-reajuste-salarial-para-mais-de-r-26/1146396"},
+               "subsidio": "https://saopaulo.sp.leg.br/iah/fulltext/resolucoescmsp/RC1024.pdf"},
 }
 
 

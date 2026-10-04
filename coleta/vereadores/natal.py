@@ -29,7 +29,7 @@ C = CACHE / "cmnat"
 REBAIXAR = 3
 CFG = {
     "cod": COD, "n": "Natal", "uf": "RN", "casa": "Câmara Municipal de Natal", "vagas": 29, "inicio": INICIO,
-    "subsidio": [[202501, 26000.0]],
+    "subsidio": [[202501, 26000.0]],  # Lei Promulgada nº 761/2023, art. 2º (legislatura 2025-2028)
     "verba_nome": "Cota para o Exercício da Atividade Parlamentar", "verba_mes": {"2025": 22000.0, "2026": 22000.0},
     "verba_regra": "Reembolso com nota fiscal.",
     "verba_notas": ["As notas entram no mês de referência da prestação de contas."],
@@ -37,7 +37,7 @@ CFG = {
     "credito_foto": "Câmara Municipal de Natal", "pagina": "https://www.cmnat.rn.gov.br/vereadores",
     "notas": ["Sem a folha de pagamento, quem estava no cargo em cada mês vem da prestação de contas da cota: todo mês ela lista os 29 vereadores em exercício (titulares e suplentes que assumiram)."],
     "fontes": {"mandatos": f"{BASE_SAPL}/api/parlamentares/mandato/", "cota": f"{SITE}/verbas-2026",
-               "subsidio": "https://revistaoeste.com/politica/vereadores-de-17-capitais-vao-ter-aumento-salarial-veja-lista/"},
+               "subsidio": "https://sapl.natal.rn.leg.br/media/sapl/public/normajuridica/2023/1549/lp_761.23_integral.pdf"},
 }
 
 
