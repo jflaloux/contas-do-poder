@@ -104,15 +104,12 @@ def titulo(nome):
 # CPF solto num texto: o MEI tem como razão social "NOME 12345678901" (ou "NOME -12345678901", "NOME/123.456.789-01",
 # "2/12345678901", "123456789/01"), e algumas fontes põem o CPF no nome do fornecedor, no histórico do pagamento ou no
 # número do documento. O número sai (regra do projeto: CPF de pessoa física, nunca). Antes e depois do número pode haver
-# hífen, barra, ponto, parêntese ou letra; só não pode haver outro algarismo colado (nem ponto ou hífen seguido de
-# algarismo), para não pegar um pedaço de CNPJ. Separado por espaços ("123 456 789 01"), só com os dígitos
-# verificadores certos (três ou quatro números soltos num texto podem ser outra coisa).
-_CPF_NO_TEXTO = re.compile(r"(?<!\d)(?<!\d[.-])(?:\d{3}\.?\d{3}\.?\d{3}[-/]?\d{2}|(?<!\d )\d{3} \d{3} \d{3}[ -]?\d{2}(?! \d))"
-                           r"(?!\d)(?![./-]\d)")
-# no número do documento de uma nota de empresa, o CPF sai quando vem escrito como CPF (123.456.789-01, 123456789-01),
-# sozinho no campo (11 algarismos e nada mais) ou com rótulo (CPF, "ID do IVA", que é o CPF do cliente na nota da Starlink)
-_CPF_FORMATADO = re.compile(r"^\s*\d{3}\.\d{3}\.\d{3}-\d{2}\s*$|(?<![\d.])\d{9}-\d{2}(?![\d.-])|^\s*\d{11}\s*$")
-_ROTULO_NO_DOC = re.compile(r"\bC\.?P\.?F|\bI\.?V\.?A\b", re.I)
+# hífen, barra (também depois: "123.456.789-01/2026"), ponto, parêntese ou letra; só não pode haver outro algarismo
+# colado (nem ponto ou hífen seguido de algarismo), para não pegar um pedaço de CNPJ. Separado por espaços ou
+# tabulações, um ou mais ("123 456 789 01", "123  456  789  01"), só com os dígitos verificadores certos (três ou quatro
+# números soltos num texto podem ser outra coisa).
+_CPF_NO_TEXTO = re.compile(r"(?<!\d)(?<!\d[.-])(?:\d{3}\.?\d{3}\.?\d{3}[-/]?\d{2}"
+                           r"|(?<!\d[ \t])\d{3}[ \t]+\d{3}[ \t]+\d{3}(?:[ \t]*-[ \t]*|[ \t]+)?\d{2}(?![ \t]+\d))(?!\d)(?![.-]\d)")
 _COLUNAS_TEXTO = re.compile(r"fornec|benefic|nome|emitente|credor|favorec|objeto|descri|histor|interessad|detalh", re.I)
 # número do documento (nota, recibo, boleto): aqui sai só o número que é um CPF válido (os dígitos verificadores batem),
 # para não apagar números de nota comuns; com o rótulo ("CPF:") junto
@@ -137,17 +134,20 @@ def sem_cpf(texto, so_validos=False):
         return texto
 
     def trocar(m):
-        if (so_validos or " " in m.group(0)) and not cpf_valido(m.group(0)):
+        if (so_validos or re.search(r"[ \t]", m.group(0))) and not cpf_valido(m.group(0)):
             return m.group(0)
         return " "
-    partes, fim = [], 0
+    partes, fim, tirou = [], 0, False
     for m in _CPF_NO_TEXTO.finditer(texto):
         novo = trocar(m)
         antes = texto[fim:m.start()]
         if novo == " ":
             antes = _ROTULO_CPF.sub("", antes)
+            tirou = True
         partes += [antes, novo]
         fim = m.end()
+    if not tirou:
+        return texto  # nada saiu: o texto fica como veio
     partes.append(texto[fim:])
     return re.sub(r"\s+", " ", "".join(partes)).replace("( )", "").replace("()", "").strip(" -–:/")
 
@@ -170,14 +170,12 @@ def limpar_cpfs(pasta):
         cnpj = next((j for j, h in enumerate(linhas[0]) if re.search(r"cnpj", h, re.I)), None)
         mudou = 0
         for linha in linhas[1:]:
-            # no número do documento, o CPF só sai quando o fornecedor não é empresa (sem CNPJ na linha) ou quando vem
-            # com o rótulo "CPF": nota de empresa pode ter 11 algarismos que batem com os dígitos de um CPF por acaso
+            # no número do documento, sai todo número de 11 algarismos com os dígitos verificadores de um CPF, mesmo na
+            # nota de uma empresa (privacidade primeiro: o número de uma nota pode bater por acaso e sair junto; decisão
+            # do Jean-François, 04/10/2026, README "CPF")
             empresa_na_linha = cnpj is not None and cnpj < len(linha) and len(re.sub(r"\D", "", linha[cnpj])) == 14
             for j in cols + docs:
                 if j >= len(linha) or not _CPF_NO_TEXTO.search(linha[j]):
-                    continue
-                if j in docs and empresa_na_linha and not _ROTULO_NO_DOC.search(linha[j]) \
-                        and not any(cpf_valido(m.group(0)) for m in _CPF_FORMATADO.finditer(linha[j])):
                     continue
                 novo = sem_cpf(linha[j], so_validos=j in docs)
                 if novo != linha[j]:

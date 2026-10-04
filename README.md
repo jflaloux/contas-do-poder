@@ -621,7 +621,12 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
   na data que a Assembleia publica, em GO); se a pessoa continua recebendo (o licenciado na folha do CE e de SC), o
   período segue e só o "no cargo" muda (`fora_hoje`). Na lista e sem dados nos últimos meses: continua no cargo.
 - CPF solto em texto (nome de fornecedor MEI, histórico do pagamento) sai depois de cada coleta
-  (`vereadores/comum.limpar_cpfs`, também para as capitais).
+  (`vereadores/comum.limpar_cpfs`, também para as capitais): com ou sem pontos, depois de hífen, barra ou parêntese, com
+  sufixo ("/2026"), e separado por espaços ou tabulações (este, só com os dígitos verificadores certos). No número do
+  documento (nota, recibo, boleto), sai todo número de 11 algarismos com os dígitos verificadores de um CPF, mesmo na nota
+  de uma empresa. É uma escolha consciente (decisão do Jean-François, 04/10/2026): privacidade primeiro. Cerca de 1 em
+  11 números de 11 algarismos tem os dígitos de um CPF por acaso, e o número de uma nota pode sair junto; os valores
+  não mudam.
 - No site, o deputado estadual é o tipo `a` (Assembleia): o `app.js` e o `gerar.mjs` trocam o `k` "e" do arquivo, que no
   site é o governo federal. A página de cada um é a mesma do vereador (salário, verba do gabinete mês a mês, para onde
   foi o dinheiro, equipe onde a Assembleia publica, as notas e as fontes de `meta.estados[uf]`), e ele só se compara com

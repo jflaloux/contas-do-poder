@@ -11551,7 +11551,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,6,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,33064,2025-06-22,292.38,292.38
 2025,6,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,33226,2025-06-23,310.55,310.55
 2025,6,26152,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,352747,2025-06-24,264.52,264.52
-2025,6,26152,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,264918008/06/2025,2025-06-08,452.99,301.99
+2025,6,26152,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,2025,2025-06-08,452.99,301.99
 2025,6,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,030670,2025-06-30,3900.0,3900.0
 2025,6,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,030669,2025-06-30,10500.0,10500.0
 2025,6,26152,"Serviços de consultoria, assessoria e pesquisa",Geraldo Cunha Neto Sociedade Individual de Advocacia,32666649000132,0000000289,2025-06-30,5000.0,5000.0
