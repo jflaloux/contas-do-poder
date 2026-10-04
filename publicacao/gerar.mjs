@@ -289,7 +289,10 @@ function numerosHTML() {
 const SITUACAO0 = ler("situacao.json", { fontes: [], reservas: {} });
 const FONTES_CONGELADAS = (SITUACAO0.fontes || []).filter((f) => f.situacao === "congelada" && f.ultimo_mes).map((f) => `${f.id}:${f.ultimo_mes}`).join(" ");
 const CIDS_RESERVA = [...new Set(Object.values(SITUACAO0.reservas || {}).map((r) => String(r.cid)))].join(" ");
-MODELO = MODELO.replace(/<\/head>/, `<meta name="fontes-congeladas" content="${esc(FONTES_CONGELADAS)}">\n<meta name="reservas-tce" content="${esc(CIDS_RESERVA)}">\n${DADOS_BENS ? `<meta name="dados-bens" content="${esc(DADOS_BENS)}">\n` : ""}<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
+// as páginas que têm correção registrada (site/dados/correcoes.json, campo `paginas`: id de político, "governador/uf" ou "cidade/<código IBGE>"): o app só baixa o
+// correcoes.json, para mostrar o aviso no fim da página, nas páginas que estão nesta lista
+const REFS_CORRIGIDAS = [...new Set((((ler("correcoes.json", null) || {}).c) || []).flatMap((c) => c.paginas || []))].filter((r) => /^[A-Za-z0-9/_-]+$/.test(r));
+MODELO = MODELO.replace(/<\/head>/, `<meta name="correcoes-paginas" content="${esc(REFS_CORRIGIDAS.join(" "))}">\n<meta name="fontes-congeladas" content="${esc(FONTES_CONGELADAS)}">\n<meta name="reservas-tce" content="${esc(CIDS_RESERVA)}">\n${DADOS_BENS ? `<meta name="dados-bens" content="${esc(DADOS_BENS)}">\n` : ""}<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
@@ -512,10 +515,12 @@ function destaqueCidade(cod, n, pop, custo) {
   return `<div class="cidade__corpo"><p class="destaque">${esc(texto)}</p></div>`;
 }
 const vistos = new Set();
+const CIDADE_POR_COD = new Map(); // código IBGE -> { caminho, n, uf }: para /correcoes levar até a página da cidade
 for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
   const caminho = `cidade/${slugTxt(n)}-${uf.toLowerCase()}`;
   if (vistos.has(caminho)) continue; // não acontece (o nome não se repete no mesmo estado), mas não pode sobrescrever
   vistos.add(caminho);
+  CIDADE_POR_COD.set(String(cod), { caminho, n, uf, cod });
   const de = deCidade(cod, n);
   const vi = vereadorInterior(cod, uf);
   // ES, PE, RJ: o total pago ao cargo de vereador e a média por pessoa (nunca "o vereador recebe"); prefeito e vice só no ES e em PE
@@ -539,6 +544,8 @@ if (COR) {
   const link = (ref) => {
     const g = /^governador\/([a-z]{2})$/.exec(ref);
     if (g) return `<a href="/${ref}">${esc(`Governo ${deUF(g[1].toUpperCase())}`)}</a>`;
+    const cid = /^cidade\/(\d+)$/.exec(ref); // a página da cidade, pelo código IBGE; código que não existe: sem link (e sem derrubar o build)
+    if (cid) { const c = CIDADE_POR_COD.get(cid[1]); return c ? `<a href="/${esc(c.caminho)}">${esc(`Câmara Municipal ${deCidade(c.cod, c.n)} (${c.uf})`)}</a>` : null; }
     const p = porId.get(ref);
     return p && END.p[ref] ? `<a href="/${esc(END.p[ref])}">${esc(p.n)}</a>` : null;
   };

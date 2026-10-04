@@ -4064,13 +4064,31 @@
     const cg = cargoDe(c), ic = interiorDe(c), M = cg ? cg.meta : ic ? ic.meta : null;
     return [["Declarações das prefeituras ao Tesouro Nacional (Siconfi)", SICONFI], ...(M && M.url ? [[`${M.tribunal}: folha dos municípios`, M.url]] : [])];
   }
-  function blocoErro(nome, fontes) {
+  // O aviso "esta página foi corrigida", no começo do bloco do erro de cada página que tem correção registrada (correcoes.json, campo `paginas`: o id do político,
+  // "governador/uf" ou "cidade/<código IBGE>"). A lista de quem tem correção vem de <meta name="correcoes-paginas"> (o gerar.mjs): só nessas páginas o app baixa o
+  // correcoes.json. Se não carregar, o aviso some em silêncio.
+  const paginasCorrigidas = () => ((document.querySelector('meta[name="correcoes-paginas"]') || {}).content || "").split(/\s+/).filter(Boolean);
+  function avisoCorrecoes(ref) {
+    if (!ref || !paginasCorrigidas().includes(ref)) return null;
+    const caixa = h("div", { class: "caixa-nota correcao-aviso", id: "correcoes-desta-pagina", hidden: true });
+    carregarCorrecoes().then((C) => {
+      const itens = (C.c || []).filter((c) => (c.paginas || []).includes(ref)).sort((a, b) => b.data.localeCompare(a.data));
+      if (!itens.length || !caixa.isConnected) return;
+      caixa.hidden = false;
+      add(caixa, h("p", { style: "margin:0" }, h("strong", null, itens.length === 1 ? "Esta página já foi corrigida." : `Esta página já foi corrigida ${itens.length} vezes.`), " O que estava errado e o que mudou, na ",
+        h("a", { href: "/correcoes" }, "lista de correções"), ":"),
+        h("ul", { class: "lista", style: "margin:6px 0 0" }, itens.map((c) => h("li", null, h("time", { datetime: c.data }, dataBR(c.data)), `: ${c.titulo}.`))));
+    }, () => {});
+    return caixa;
+  }
+  function blocoErro(nome, fontes, ref) {
     const url = `${origem() || location.origin}${location.pathname}${location.search}`;
     const corpo = `Página: ${url}\n\nQual número está diferente (e de qual mês):\n\n\nO que a fonte oficial mostra (com o link):\n\n`;
     const mailto = `mailto:${CONTATO}?subject=${encodeURIComponent(`Erro no Contas do Poder: ${nome}`)}&body=${encodeURIComponent(corpo)}`;
     const links = (fontes || []).filter((f) => f && f[1]);
     return h("section", { class: "bloco", id: "erro", "aria-labelledby": "t-erro" },
       h("div", { class: "cartao erro-aviso" },
+        avisoCorrecoes(ref),
         h("h2", { id: "t-erro" }, "Encontrou um erro nesta página?"),
         h("p", null, h("strong", null, "Primeiro, confira na fonte. "),
           "Os números desta página vêm de fontes oficiais, com o link ao lado de cada bloco", links.length ? ". As principais:" : "."),
@@ -4091,10 +4109,12 @@
     }
     return correcoes;
   }
-  // cada página corrigida: o id de um político ("dep-204558") ou um endereço ("governador/al")
+  // cada página corrigida: o id de um político ("dep-204558") ou um endereço ("governador/al", "cidade/3550308": o código IBGE da cidade)
   function linkCorrigido(ref) {
     const g = /^governador\/([a-z]{2})$/.exec(ref);
     if (g) return GOV.porUF[g[1].toUpperCase()] ? h("a", { href: urlGov(g[1]) }, `Governo ${deUF(g[1].toUpperCase())}`) : null;
+    const cid = /^cidade\/(\d+)$/.exec(ref); // a lista das cidades só é baixada quando a /correcoes tem uma (ver o carregamento); código que não existe: sem link
+    if (cid) { const c = (CID.m || []).find((x) => String(x.cod) === cid[1]); return c ? h("a", { href: urlCidade(c) }, `Câmara Municipal ${deCidade(c)} (${c.uf})`) : null; }
     const p = S.porId.get(ref);
     return p ? h("a", { href: urlDe(ref) }, p.n) : null;
   }
@@ -4538,7 +4558,7 @@
       document.title = "Correções · Contas do Poder";
       const espera = esperar("Carregando as correções…");
       navSecoes(["entenda", "fontes"]);
-      carregarCorrecoes().then((C) => {
+      carregarCorrecoes().then((C) => ((C.c || []).some((c) => (c.paginas || []).some((r) => /^cidade\//.test(r))) ? carregarCidades().then(() => C, () => C) : C)).then((C) => {
         if (!espera.isConnected) return; // já foi para outra página
         trocar(espera, secCorrecoes(C));
         navSecoes(["correcoes", "entenda", "fontes"]);
@@ -4619,7 +4639,7 @@
       document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
       app.append(...[secGovernador(e), secAssembleia(e.uf), assembleiaUF(e.uf) ? secRanking(null, null) : null,
         secCompartilhar(specGov(e), `A imagem e o texto mostram o salário do cargo ${deUF(e.uf)} e de onde vem o valor.`),
-        secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e))].filter(Boolean));
+        secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e), `governador/${e.uf.toLowerCase()}`)].filter(Boolean));
       navSecoes(["governador", "assembleia", "ranking", "resumo", "governadores", "entenda", "fontes"], { assembleia: casaUF(e.uf), ranking: `Ranking da ${casaUF(e.uf)}` });
       botaoFlutuante(specGov(e), "#governador .estatisticas");
       rolarPendente();
@@ -4641,7 +4661,7 @@
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
         trocar(espera, ...[secCidade(c), (usaTribunal("prefeitura", c) ? null : secPrefeitura(c)) || secPrefeituraInterior(c) || secPrefeituraCargo(c), secBensInterior(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
           secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
-          secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
+          secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c), `cidade/${c.cod}`)].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "resumo", "cidades", "entenda", "fontes"]);
         botaoFlutuante(specCidade(c), "#cidade .estatisticas");
         rolarPendente();
@@ -4654,9 +4674,9 @@
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
       // governador e vice: sem gastos por pessoa, equipe, ranking nem a comparação com um parlamentar (que mostraria os
       // gastos dele como R$ 0, quando eles só não são publicados); a lista dos 27 está na página do estado
-      app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
-        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
-        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]).filter(Boolean));
+      app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]
+        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]
+        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]).filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "viagens", "meses-jud", "equipe", "cota", "atividade", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       botaoFlutuante(specPessoa(p, k), "#contracheque .conta__resumo");
     } else {

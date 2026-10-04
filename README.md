@@ -1189,8 +1189,15 @@ do deputado não cabe. Se acrescentar uma seção ou alongar um rótulo, conferi
   outro valor?", que abre ao toque) aparece o e-mail para contato@contasdopoder.com, já com o endereço da página.
 - O que for corrigido entra, à mão, em `site/dados/correcoes.json` e aparece em
   [contasdopoder.com/correcoes](https://contasdopoder.com/correcoes): a data, o que estava errado, o que mudou e as
-  páginas afetadas (`paginas`: o id do político, como `dep-204558`, ou `governador/al`). `publicacao/gerar.mjs` monta
-  a página pronta.
+  páginas afetadas (`paginas`: o id do político, como `dep-204558`, `governador/al` ou `cidade/<código IBGE>`, como
+  `cidade/3550308`). `publicacao/gerar.mjs` monta a página pronta; um código de cidade que não existe fica sem link e
+  não derruba o build.
+- A página afetada avisa o visitante: no começo do bloco "Encontrou um erro?" aparece "Esta página já foi corrigida."
+  (ou "já foi corrigida N vezes"), com a data e o título de cada correção e o link para `/correcoes`. O `gerar.mjs`
+  põe em `index.html` a `<meta name="correcoes-paginas">` com as páginas citadas em `correcoes.json`: só nelas o
+  `app.js` baixa o arquivo (nas outras páginas não há pedido nem aviso). Se o arquivo não carrega, o aviso some sem
+  erro. Testes: `correcoes`, `cidade-com-correcao`, `senador-com-correcao` e `cidade-sem-correcao` no `rodar.mjs`; os
+  três tipos de página e o código inexistente, num build à parte, no `regras.mjs`.
 
 ## O que já foi conferido
 

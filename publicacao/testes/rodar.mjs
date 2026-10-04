@@ -306,7 +306,11 @@ const PAGINAS = [
   { nome: "judiciario", url: "/judiciario", ter: [["#judiciario", 1]] },
   { nome: "indice", url: "/indice", ter: [["#indice", 1]] },
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10]] },
-  { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1]] },
+  { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1], ["ol.correcoes a[href='/cidade/sao-paulo-sp']", 1]] },
+  // correções que apontam para uma página: o aviso "esta página já foi corrigida" no fim da página (cidade pelo código IBGE, pessoa pelo id) e nenhum aviso onde não há
+  { nome: "cidade-com-correcao", url: "/cidade/sao-paulo-sp", pagina: [/Esta página já foi corrigida\./, /Vereadores de São Paulo: a verba do gabinete por mês em 2026/, /04\/10\/2026/], ter: [["#correcoes-desta-pagina:not([hidden]) li", 1]] },
+  { nome: "senador-com-correcao", url: ENDERECOS["sen-4605"] ? `/${ENDERECOS["sen-4605"]}` : null, pagina: [/Esta página já foi corrigida\./, /Ajuda de custo: o mês do pagamento na página de senador de Flávio Dino/] },
+  { nome: "cidade-sem-correcao", url: "/cidade/fortaleza-ce", semPagina: [/Esta página já foi corrigida/], ter: [["#erro", 1]] },
   { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1], ["#sobre a[href='/imprensa']", 1]] },
   // "Para a imprensa": curta e neutra; o método com os links das páginas de transparência, a licença e o modelo de citação, o contato; sem nome de pessoa
   // e sem link para o usuário do GitHub (o código é apontado por /dados-abertos)
