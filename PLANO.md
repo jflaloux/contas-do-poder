@@ -131,6 +131,7 @@ Cada número tem link para a fonte oficial.
   de Campo Grande; folha de governador como complemento da lei; plano de queda das 17 fontes de risco alto; Tribunal de
   Contas como reserva de Fortaleza, Câmara do Recife e Vitória — Agente de Dados
 - [ ] Refazer o raio-X das fontes no fim de novembro, com o histórico das rodadas — Agente de Dados
+- [ ] Bens declarados ao TSE (2018, 2022, 2024), versão neutra, no site a partir de 26/10/2026 — Agente de Dados, depois Agente de Site
 
 - [ ] Página "Como calculamos" — Claude rascunha, você revisa
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você

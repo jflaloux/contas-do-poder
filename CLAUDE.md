@@ -49,6 +49,9 @@ armadilhas que não estão escritas em outro lugar.
   fora do Brasil; ou completa algo que o site já mostra, com o plano de queda escrito antes. Fonte que só abre do
   Brasil conta como portal frágil; nada de robô de portal frágil para 1 ou 2 pessoas quando a lei já dá o número
   (decisão do Jean-François, 03/10/2026; ver `dados/processados/raio-x-fontes.md`).
+- Bens declarados ao TSE (decisão do Jean-François, 03/10/2026): só de quem está no cargo, das candidaturas de 2018,
+  2022 e 2024 (nunca 2026); só o tipo e o valor de cada bem, nunca a descrição; sem ranking, sem comparação e sem
+  "evolução"; com o aviso de que é autodeclarado e costuma ser o valor de aquisição. No site, só a partir de 26/10/2026.
 - `dados/processados/situacao.md` (`python3 coletar.py situacao`) mostra cada fonte: último mês, última coleta certa,
   erro. Atraso que é da própria fonte vai em `ATRASOS_CONHECIDOS` (`coleta/situacao.py`), com o motivo.
 - No Cowork, `git status` cria `.git/index.lock` e, sem permissão para apagar arquivos na pasta, não consegue tirar
