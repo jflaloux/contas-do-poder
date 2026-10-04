@@ -27,9 +27,15 @@ import { createHash } from "node:crypto";
 
 const RAIZ = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SITE = path.join(RAIZ, "site");
-const SAIDA = path.join(RAIZ, "publicar");
+// Só para os testes (publicacao/testes/regras.mjs): GERAR_SAIDA faz o build numa pasta à parte (em vez de publicar/) e GERAR_DADOS aponta uma pasta
+// com arquivos JSON que trocam os de site/dados/ (dados inventados, para conferir as regras). Sem elas, o build é o de sempre.
+const SAIDA = process.env.GERAR_SAIDA ? path.resolve(process.env.GERAR_SAIDA) : path.join(RAIZ, "publicar");
+const DADOS_TESTE = process.env.GERAR_DADOS ? path.resolve(process.env.GERAR_DADOS) : null;
 
-const ler = (arq, padrao) => { try { return JSON.parse(fs.readFileSync(path.join(SITE, "dados", arq), "utf8")); } catch { return padrao; } };
+const ler = (arq, padrao) => {
+  for (const pasta of [DADOS_TESTE, path.join(SITE, "dados")]) { if (!pasta) continue; try { return JSON.parse(fs.readFileSync(path.join(pasta, arq), "utf8")); } catch { /* tenta o próximo */ } }
+  return padrao;
+};
 const D = ler("dados.json");
 const CAM = ler("camaras.json", { meta: { cidades: {} }, p: [] });
 const PRE = ler("prefeituras.json", { meta: { cidades: {} }, p: [] });
@@ -745,6 +751,7 @@ function copiar(de, para) {
 }
 fs.rmSync(SAIDA, { recursive: true, force: true });
 copiar(SITE, SAIDA);
+if (DADOS_TESTE) for (const a of fs.readdirSync(DADOS_TESTE)) if (a.endsWith(".json")) fs.copyFileSync(path.join(DADOS_TESTE, a), path.join(SAIDA, "dados", a)); // dados inventados dos testes
 // dados mais leves (ver o começo do arquivo): o detalhe dos gastos vai com o nome de cada tipo, e não com o índice na
 // lista de tipos do arquivo (as câmaras têm uma lista própria)
 const comNomes = (dt, tipos) => Object.fromEntries(Object.entries(dt || {}).map(([k, cats]) =>

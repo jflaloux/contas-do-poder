@@ -8,7 +8,8 @@ import path from "node:path";
 import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 
-const PASTA = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "publicar");
+// PUBLICAR_DIR: outra pasta no lugar de publicar/ (os testes que fazem um build à parte, com dados inventados)
+const PASTA = process.env.PUBLICAR_DIR ? path.resolve(process.env.PUBLICAR_DIR) : path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "publicar");
 const PORTA = Number(process.env.PORT || process.argv[2] || 8000);
 const TIPOS = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".json": "application/json",
   ".svg": "image/svg+xml", ".png": "image/png", ".webp": "image/webp", ".jpg": "image/jpeg", ".xml": "application/xml", ".txt": "text/plain; charset=utf-8", ".woff2": "font/woff2" };

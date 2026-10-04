@@ -215,6 +215,18 @@ Google) são bloqueados: o teste não precisa de internet e, fora da produção,
 falhar. Leva uns 5 minutos (as páginas de pessoa esperam o desenho da imagem de compartilhamento, que sem as fontes do
 Google demora ~6 s).
 
+- `--rapido`: o modo para o meio do trabalho, uma página de cada tipo em 2 perfis (uns 3 min). `--mudou`: o rápido mais as páginas dos
+  assuntos que o seu `git diff` toca (a tabela `GRUPOS`, no `rodar.mjs`: o diff do código do site, sem contar o próprio teste, casa com
+  um assunto e entram as páginas dele; assunto novo no site = uma linha na tabela). **A suíte completa (`--completo`, sem `--rapido`)
+  continua sendo a que vale antes do commit.** A suíte completa leva ~50 min (mais de 90 tipos de página em 4 perfis).
+- `node publicacao/testes/regras.mjs`: as regras de cálculo com casos inventados e a concordância entre o HTML pronto do `gerar.mjs` e a página
+  do `app.js`. Parte 1 (só Node, precisa do build): em todas as páginas de deputado, senador e "tudo junto" (771), o valor do topo do HTML pronto
+  é o da regra do pagamento único, feita à parte com os números de `dados.json`, e a tabela `UNICOS` é a mesma nos dois códigos. Parte 2
+  (Chrome): um build à parte (`GERAR_SAIDA` e `GERAR_DADOS` do `gerar.mjs`, `PUBLICAR_DIR` do `servir.mjs`; não toca em `publicar/`) com
+  deputados e um senador inventados (2 e 3 meses, pagamento único com e sem o mês na fonte, devolução com valor negativo, ano inteiro) e um
+  "tudo junto" de verdade; em cada um, o HTML pronto, o topo da página, o fim da lista, o ranking (ou "não entra", com menos de 3 meses) e o
+  Comparar dizem o mesmo número, que é o da conta, e a nota diz "paga de uma vez no período" quando a fonte não traz o mês. Rode depois de
+  mexer na regra, no `resumo()` do `app.js` ou na prévia do `gerar.mjs`.
 - `--completo`: os 4 perfis (celular e computador, claro e escuro) em vez de 2.
 - `--paginas=atualizacao,indice`: só essas (os nomes estão em `PAGINAS`, no `rodar.mjs`).
 - `--url=http://localhost:8000`: usa um servidor que já está rodando (`node publicacao/servir.mjs`).

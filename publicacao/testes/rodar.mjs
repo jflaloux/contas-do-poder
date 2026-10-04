@@ -12,6 +12,10 @@
 //   node publicacao/testes/rodar.mjs                   roda tudo, com o servidor local (publicacao/servir.mjs) numa porta própria
 //   node publicacao/testes/rodar.mjs --completo        os 4 perfis (celular e computador, claro e escuro) em vez de 2
 //   node publicacao/testes/rodar.mjs --paginas=atualizacao,indice     só estas (nomes da lista abaixo)
+//   node publicacao/testes/rodar.mjs --rapido          modo rápido, para o meio do trabalho: uma página de cada tipo, 2 perfis (uns 3 min)
+//   node publicacao/testes/rodar.mjs --mudou           o rápido mais as páginas dos assuntos que o seu git diff toca (ver GRUPOS). A suíte
+//                                                      completa (--completo, sem --rapido) continua sendo a que vale antes do commit
+//   node publicacao/testes/regras.mjs                  as regras de cálculo com casos inventados e a concordância entre o HTML pronto e a página
 //   node publicacao/testes/rodar.mjs --analytics       com --paginas, roda também a conferência do Google Analytics (sem --paginas ela já roda; --sem-analytics a corta)
 //   node publicacao/testes/rodar.mjs --url=http://localhost:8000      usa um servidor que já está rodando (a conferência do Analytics só roda em localhost)
 //   node publicacao/testes/rodar.mjs --capturas=/tmp/capturas         guarda uma imagem de cada página
@@ -21,7 +25,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import crypto from "node:crypto";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { abrirNavegador, espera } from "./cdp.mjs";
 
@@ -329,6 +333,46 @@ const TODOS_PERFIS = [
   { nome: "computador-claro", largura: 1280, altura: 800, mobile: false, escala: 1, tema: "light" },
 ];
 const PERFIS = arg("completo") ? TODOS_PERFIS : TODOS_PERFIS.slice(0, 2);
+// Modo rápido: a suíte completa passou de 60 minutos (mais de 90 tipos de página em 4 perfis). No meio do trabalho, --rapido roda uma página de cada
+// tipo e --mudou acrescenta as páginas dos assuntos que o git diff toca. GRUPOS: quando o diff (as linhas mudadas, ou o nome do arquivo) casa com
+// "quando", entram as páginas de teste cujo nome casa com "paginas". Assunto novo no site = uma linha aqui.
+const RAPIDO = ["inicio", "deputado-federal", "senador", "ministro", "governador", "estado", "cidade-capital", "cidade-interior", "atualizacao", "judiciario", "indice", "dados-abertos", "sobre", "correcoes", "deputado-topo-1080"];
+const PESSOAS_TOPO = "topo|deputado|senador|ministro|governador|prefeitura|vereador|judiciario-pessoa";
+const GRUPOS = [
+  { nome: "topo do contracheque", quando: /conta__resumo|resumoTopo|faixaPosicao|posicao-faixa|resumo-valor|conta__topo/, paginas: new RegExp(PESSOAS_TOPO) },
+  { nome: "ajuda de custo e comparações", quando: /unicosDe|UNICOS|mesesDoUnico|comoUnico|somaUnicos|textoUnico|function resumo\(|function colegas|function posicao|secRanking|secComparar/, paginas: /ajuda|topo|deputado-federal|senador|ministro/ },
+  { nome: "menu das seções", quando: /navSecoes|secoes-caixa|\.secoes\b/, paginas: /topo|deputado-federal|senador|cidade|estado|inicio/ },
+  { nome: "presença e projetos", quando: /secAtividade|carregarAtividade|\bATIV\b|atividade\.json/, paginas: /atividade/ },
+  { nome: "bens declarados", quando: /secBens|BENS\b|bens\.json|bens-interior/, paginas: /bens/ },
+  { nome: "atualização, rodada e congeladas", quando: /blocoRodada|secAtualizacao|situacao\.json|linhaCongelada|avisoReserva|RESERVA\b|congelad/, paginas: /atualizacao|congelada|reserva/ },
+  { nome: "cidade e interior", quando: /secCidade|vereadoresInterior|secPrefeitura|vereadoresCargo|carregarInterior|carregarCargo|interior/, paginas: /^cidade|reserva|bens-cidade/ },
+  { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
+  { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
+  { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
+  { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
+  { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },
+  { nome: "carregamento de arquivo que falta", quando: /\bfalhou\b|lerJSON|carregando/i, paginas: /arquivo-ausente|arquivo-quebrado/ },
+];
+function paginasDoRapido() {
+  const nomes = new Set(RAPIDO), motivos = [];
+  const git = (args) => spawnSync("git", args, { cwd: RAIZ, encoding: "utf8" }).stdout || "";
+  // só o que é do site (o próprio teste não conta: ele cita todos os assuntos)
+  const alvo = ["site", "publicacao", ":(exclude)publicacao/testes", ":(exclude)site/dados", ":(exclude)site/fotos", ":(exclude)Claude outputs"];
+  const arquivos = [...git(["diff", "--name-only", "HEAD", "--", ...alvo]).split("\n"), ...git(["ls-files", "--others", "--exclude-standard", "--", ...alvo]).split("\n")].filter(Boolean);
+  const diff = git(["diff", "HEAD", "-U0", "--", ...alvo]).split("\n").filter((l) => /^[+-][^+-]/.test(l)).join("\n") + "\n" + arquivos.join("\n");
+  for (const g of GRUPOS) {
+    if (!g.quando.test(diff)) continue;
+    const achadas = PAGINAS.filter((p) => g.paginas.test(p.nome)).map((p) => p.nome);
+    achadas.forEach((n) => nomes.add(n));
+    motivos.push(`${g.nome} (${achadas.length})`);
+  }
+  // uma página nova ou mudada no próprio teste entra sempre
+  const mudadaNoTeste = git(["diff", "HEAD", "-U0", "--", "publicacao/testes/rodar.mjs"]).split("\n").filter((l) => /^\+\s*\{ nome: "/.test(l)).map((l) => (/nome: "([^"]+)"/.exec(l) || [])[1]).filter((n) => n && PAGINAS.some((p) => p.nome === n));
+  mudadaNoTeste.forEach((n) => nomes.add(n));
+  if (mudadaNoTeste.length) motivos.push(`páginas novas no teste (${mudadaNoTeste.length})`);
+  if (/publicacao\/gerar\.mjs|UNICOS|resumo\(/.test(diff)) motivos.push("rode também node publicacao/testes/regras.mjs (concordância entre o HTML pronto e a página)");
+  return { nomes: [...nomes].filter((n) => PAGINAS.some((p) => p.nome === n)), motivos };
+}
 const LIMITE_CLS = 0.1;
 
 // o que roda antes de qualquer script da página: mede o CLS e o LCP
@@ -415,7 +459,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     await avaliar(`window.scrollTo(0, 0)`); await espera(400);
 
     // limite de pedidos por arquivo (pg.maxPedidos): arquivo que falta não pode ser pedido sem fim (já houve ciclo: a seção se recriava e pedia de novo)
-    await espera(1500); // dá tempo de um ciclo se mostrar
+    if (pg.maxPedidos) await espera(1500); // dá tempo de um ciclo se mostrar (só nas páginas que conferem o número de pedidos)
     for (const [arq, max] of Object.entries(pg.maxPedidos || {})) { const n = pedidosPorCaminho.get(arq) || 0; if (n > max) falhas.push(`${arq} foi pedido ${n} vezes (o limite é ${max}): ciclo de pedidos?`); }
     if (pg.depois) (await avaliar(pg.depois)).forEach((x) => falhas.push(x));
     const m = await avaliar(`(() => {
@@ -588,7 +632,12 @@ async function principal() {
     axe = null;
   }
   if (!arg("url") && !fs.existsSync(path.join(PUBLICAR, "index.html"))) throw new Error("Falta a pasta publicar/: rode antes node publicacao/gerar.mjs");
-  const filtro = arg("paginas") && String(arg("paginas")).split(",");
+  let filtro = arg("paginas") && String(arg("paginas")).split(",");
+  if (!filtro && (arg("rapido") || arg("mudou"))) {
+    if (arg("mudou")) { const r = paginasDoRapido(); filtro = r.nomes; console.log(`Modo rápido (--mudou): ${filtro.length} páginas; assuntos tocados: ${r.motivos.join("; ") || "nenhum além do básico"}.`); }
+    else { filtro = RAPIDO; console.log(`Modo rápido: ${filtro.length} páginas, uma de cada tipo.`); }
+    console.log("A suíte completa (node publicacao/testes/rodar.mjs --completo) é a que vale antes do commit.\n");
+  }
   const paginas = filtro ? PAGINAS.filter((p) => filtro.includes(p.nome)) : PAGINAS;
   if (!paginas.length) throw new Error(`nenhuma página com esse nome. Nomes: ${PAGINAS.map((p) => p.nome).join(", ")}`);
 
