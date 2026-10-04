@@ -192,6 +192,7 @@ def coletar():
     cods = sorted({v[0] for v in cidades.values()})
     vant, cont, vinc, sem = [], [], [], set()
     erros = []
+    vinc_falhou = set()  # meses dos arquivos de vínculo que não baixaram e não têm extrato de antes
     for tipo, ano, parte, nome, url in arquivos():
         try:
             atualizar(tipo, nome, url)
@@ -199,8 +200,14 @@ def coletar():
             raise
         except Exception as e:  # noqa: BLE001 — um arquivo que não baixou deixa os meses dele como estavam
             erros.append(f"{nome}: {e}")
-            log(f"  TCE-ES: {nome} não baixou ({e}); os meses dele ficam como estavam")
-            continue
+            ex = _extratos(nome, tipo)
+            if all(x.exists() for x in ex):  # o extrato da leitura anterior (o último dado bom) continua valendo
+                log(f"  TCE-ES: {nome} não baixou ({e}); fica o extrato da leitura anterior")
+            else:
+                if tipo == "vinculo":
+                    vinc_falhou |= {ano * 100 + m for m in range((parte - 1) * 3 + 1, parte * 3 + 1)}
+                log(f"  TCE-ES: {nome} não baixou ({e}); os meses dele ficam como estavam")
+                continue
         ex = _extratos(nome, tipo)
         if tipo == "vantagens":
             vant.append(pd.read_csv(ex[0], dtype={"cargo": str, "verba": str}))
@@ -237,9 +244,17 @@ def coletar():
     # linhas: uma por cidade, órgão, mês e papel (os cargos do papel juntos: VEREADOR e VEREADOR PRESIDENTE, por exemplo)
     linhas = []
     pessoas = vinc.groupby(["cod_ibge", "orgao", "ano_mes", "papel"]).nome.nunique().to_dict()
+    # meses cujo vínculo não baixou: a quantidade gravada antes continua (não vira "sem quantidade")
+    antes = cargo.ler(UF)
+    q_antes = ({(int(c), o, int(m), p): q for c, o, m, p, q in
+                zip(antes.cod_ibge, antes.orgao, antes.ano_mes, antes.papel, antes.quantidade) if int(m) in vinc_falhou}
+               if vinc_falhou and len(antes) else {})
     for (c, o, am, papel), g in vant.groupby(["cod_ibge", "orgao", "ano_mes", "papel"]):
         nat, verba = g.natureza.fillna(""), g.verba.fillna("").map(normalizar_nome)
         q = pessoas.get((c, o, am, papel))
+        if int(am) in vinc_falhou:
+            q = q_antes.get((int(c), o, int(am), papel))
+            q = None if q is None or pd.isna(q) else int(q)
         linhas.append({"cod_ibge": int(c), "municipio": cidades[comum.chave_cidade(g.esfera.iloc[0])][1], "orgao": o,
                        "ano_mes": int(am), "papel": papel, "cargo": " / ".join(dict.fromkeys(g.cargo)),
                        "quantidade": q if q is not None else (None if int(am) not in meses_vinc else 0),
@@ -259,6 +274,13 @@ def coletar():
                        "ano_mes": int(am), "papel": papel, "cargo": " / ".join(dict.fromkeys(g.cargo)),
                        "quantidade": g.nome.nunique(), "valor_total": None, "indenizatorio": None, "decimo": None,
                        "ferias": None, "unidade": " / ".join(dict.fromkeys(g.ug))})
+    # meses cujo vínculo não baixou: as linhas só de vínculo (pessoas no cargo, sem valor no mês) gravadas antes ficam
+    if vinc_falhou and len(antes):
+        com_linha = {(l["cod_ibge"], l["orgao"], l["ano_mes"], l["papel"]) for l in linhas}
+        for r in antes[antes.ano_mes.astype(int).isin(vinc_falhou) & antes.valor_total.isna()].to_dict("records"):
+            if (int(r["cod_ibge"]), r["orgao"], int(r["ano_mes"]), r["papel"]) not in com_linha:
+                linhas.append({**r, "cod_ibge": int(r["cod_ibge"]), "ano_mes": int(r["ano_mes"]),
+                               "quantidade": None if pd.isna(r["quantidade"]) else int(r["quantidade"])})
     # blocos: todos os meses com a folha de alguém no arquivo de vantagens, para todas as cidades
     ct = cont.groupby(["cod_ibge", "orgao", "ano_mes"]).linhas.sum().to_dict()
     meses_vant = sorted({int(m) for m in cont.ano_mes if int(m) <= ultimo_mes and int(m) >= comum.INICIO})

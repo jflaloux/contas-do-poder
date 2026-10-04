@@ -26,6 +26,8 @@ mascarado não é guardado.
 import re
 import time
 
+import pandas as pd
+
 from bs4 import BeautifulSoup
 
 from ..config import HOJE
@@ -167,6 +169,13 @@ def coletar():
         return 0
     log(f"  TCE-PE: {len(fazer)} blocos (cidade, órgão e mês) a ler; no máximo {MAX_PEDIDOS} pedidos nesta rodada")
     gravados = cargo.ler_nomes(UF)
+    # o que já está gravado: um bloco que agora vem sem nenhum cargo eletivo, ou cuja lista de nomes não veio, não apaga
+    # nem piora o que estava (regra do projeto: robô que falha não apaga o último dado bom)
+    antes = cargo.ler(UF)
+    q_antes = ({(int(c), o, int(m), p): q for c, o, m, p, q in
+                zip(antes.cod_ibge, antes.orgao, antes.ano_mes, antes.papel, antes.quantidade) if not pd.isna(q)}
+               if len(antes) else {})
+    blocos_antes = {(c, o, m) for c, o, m, _ in q_antes}
     ult_nomes = {}
     if len(gravados):
         for (c, o), g in gravados.groupby(["cod_ibge", "orgao"]):
@@ -206,6 +215,10 @@ def coletar():
                 papel = cargo.papel_camara(cg) if o == "camara" else cargo.papel_prefeitura(cg)
                 if papel:
                     por_papel.setdefault(papel, []).append((cg, q, v, href))
+            if not por_papel and (c, o, am) in blocos_antes:
+                log(f"  TCE-PE {nome_cid} ({o}, {am}): veio sem cargos eletivos, e havia; fica o que estava gravado")
+                feitos += 1
+                continue
             # os nomes: no mês mais recente com o cargo em cada cidade e órgão (uma vez: a releitura semanal do mesmo
             # mês não pede os nomes de novo) e, nos outros meses, quando o papel tem mais de um cargo (o presidente da
             # Câmara costuma aparecer como VEREADOR e de novo como PRESIDENTE: a quantidade do papel é a de nomes
@@ -228,6 +241,7 @@ def coletar():
                                 falhou = True
                     if falhou:  # os nomes gravados antes (se houver) ficam; volta a tentar na próxima rodada
                         ultimo = False
+                        pessoas = q_antes.get((c, o, am, papel))  # e a quantidade gravada antes, se houver
                     else:
                         ls_nomes.extend({"cod_ibge": c, "orgao": o, "ano_mes": am, "papel": papel, "nome": n,
                                          "cargo": cg} for n, cg in dict.fromkeys(ns))
