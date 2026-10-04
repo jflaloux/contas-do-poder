@@ -80,6 +80,33 @@ const simularReservas = (chaves, comRecife) => (caminho) => {
 const FONTES_SIT = (lerDados("situacao.json") || { fontes: [] }).fontes || [];
 const reEsc = (t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const simularRodada = (rodada) => (caminho) => { if (caminho !== "/dados/situacao.json") return null; const s = lerDados("situacao.json"); s.rodada = rodada; return JSON.stringify(s); };
+// Bens declarados ao TSE (bens.json e bens-interior/<uf>.json): os arquivos só existem a partir de 26/10/2026, então o teste simula os dois (a
+// <meta name="dados-bens"> entra na página e o arquivo, na resposta do pedido), com pessoas e nomes de verdade dos arquivos do site. Os valores são de
+// mentira. O código da eleição e a região são do formato do DivulgaCandContas (conferido em 03/10/2026).
+const REGIAO_UF = Object.fromEntries(Object.entries({ NORTE: "AC AP AM PA RO RR TO", NORDESTE: "AL BA CE MA PB PE PI RN SE", CENTROOESTE: "DF GO MT MS", SUDESTE: "ES MG RJ SP", SUL: "PR RS SC" })
+  .flatMap(([r, ufs]) => ufs.split(" ").map((u) => [u, r])));
+const META_BENS = { credito: "Fonte: Tribunal Superior Eleitoral (dados abertos das candidaturas), licença CC BY 4.0", licenca: "CC BY 4.0", fontes: {}, regiao: REGIAO_UF,
+  grupos: ["Imóveis", "Veículos", "Aplicações e depósitos", "Participações em empresas", "Outros"], eleicao: { 2018: "2022802018", 2022: "2040602022", 2024: "2045202024" },
+  link: "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/{regiao}/{uf}/{eleicao}/{sq}/{ano}/{ue}" };
+const idDe = (prefixo, i = 0) => Object.keys(ENDERECOS).filter((k) => k.startsWith(prefixo)).sort()[i];
+const BENS_FALSOS = { dep: idDe("dep-"), depSem: idDe("dep-", 1), sen: idDe("sen-"), ver: idDe("ver-"), pre: idDe("pre-"), est: idDe("est-") };
+const simularBens = (interior = {}) => (caminho) => {
+  if (caminho === "/dados/bens.json") {
+    return JSON.stringify({ meta: META_BENS, p: {
+      [BENS_FALSOS.dep]: [2022, 366907.22, 5, 230590, 84000, 52317.22, 0, 0, "XX", "270001234567"], [BENS_FALSOS.depSem]: [2022, 0, 0, 0, 0, 0, 0, 0, "XX", "270007654321"],
+      [BENS_FALSOS.sen]: [2018, 1250000, 1, 0, 0, 1250000, 0, 0, "XX", "260000000001"], [BENS_FALSOS.ver]: [2024, 98500.5, 3, 80000, 18500.5, 0, 0, 0, "3550308", "250002345678"],
+      [BENS_FALSOS.pre]: [2024, 640000, 2, 640000, 0, 0, 0, 0, "2304400", "60001234567"], [BENS_FALSOS.est]: [2022, 15000, 1, 0, 15000, 0, 0, 0, "XX", "180001112223"] } });
+  }
+  const m = /^\/dados\/bens-interior\/([a-z]{2})\.json$/.exec(caminho);
+  return m && interior[m[1]] ? JSON.stringify({ meta: META_BENS, m: interior[m[1]] }) : null;
+};
+// os nomes de uma cidade do interior, como os arquivos do site trazem (a chave é o nome civil, ou o de urna se não houver)
+const nomesInterior = (arq, cod, blocos) => { const d = lerDados(arq).m[String(cod)]; return blocos.flatMap((b) => { const x = d[b]; const l = Array.isArray(x) ? x.filter((q) => q.x === 1) : (x && x.ps) || []; return l.map((q) => q.nc || q.n); }); };
+const BENS_CE = (() => { const [pf, vp, ...v] = [...nomesInterior("interior/ce.json", 2300101, ["pf"]), ...nomesInterior("interior/ce.json", 2300101, ["vp"]), ...nomesInterior("interior/ce.json", 2300101, ["v"])];
+  return { 2300101: { [pf]: [2024, 175500, 4, 145000, 24000, 0, 6500, 0, "13013", "60002313505"], [vp]: [2024, 0, 0, 0, 0, 0, 0, 0, "13013", "60002313506"], [v[0]]: [2024, 52000, 2, 0, 52000, 0, 0, 0, "13013", "60002313507"] } }; })();
+const BENS_ES = (() => { const nomes = nomesInterior("interior-cargo/es.json", 3200102, ["c"]); return { 3200102: { [nomes[2]]: [2024, 310000, 1, 310000, 0, 0, 0, 0, "56170", "80000123456"], [nomes[0]]: [2024, 0, 0, 0, 0, 0, 0, 0, "56170", "80000123457"] } }; })();
+// nada de juízo, ranking, média, comparação ou evolução dentro do bloco (testado só no texto de #bens)
+const SEM_JULGAMENTO_BENS = [/mais rico/i, /\brico\b/i, /patrimônio (cresceu|aumentou|dobrou)/i, /evolução/i, /maior patrimônio/i, /ranking/i, /enriquec/i, /média/i, /mediana/i, /\bcompar/i, /acima d[eoa]/i, /abaixo d[eoa]/i];
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -109,7 +136,47 @@ const PAGINAS = [
       if (!filtro || !filtro.getAttribute("aria-label")) f.push("o campo de filtro não tem rótulo");
       return f;
     })()` },
-  { nome: "deputado-federal", url: primeiro("dep-") },
+  // sem os arquivos de bens (hoje não existem; só a partir de 26/10/2026): nada aparece, nem título, e o app nem pede o arquivo
+  { nome: "deputado-federal", url: primeiro("dep-"), semPagina: [/bens declarados/i, /Justiça Eleitoral/] },
+  // bens declarados ao TSE (arquivos simulados): texto neutro, aviso de que é autodeclarado e não é valor de mercado, link para o TSE, crédito, e nada de
+  // ranking, comparação, evolução ou "mais rico"; só tipo e valor; o bloco fica à parte, depois da comparação e antes do "Compartilhar"
+  { nome: "bens-deputado", recorte: "#bens", url: `/${ENDERECOS[BENS_FALSOS.dep]}`, metas: { "dados-bens": "br" }, simular: simularBens(),
+    pagina: [/Bens declarados à Justiça Eleitoral/, /Na candidatura de 2022, declarou ao TSE bens que somam R\$\s366\.907,22, em 5 itens: imóveis R\$\s230\.590,00; veículos R\$\s84\.000,00; aplicações e depósitos R\$\s52\.317,22\./,
+      /Declaração feita pela própria pessoa ao se candidatar\. Os valores são os informados por ela, em geral o valor de compra, e não o valor de mercado de hoje; a Justiça Eleitoral não confere esses valores\./,
+      /Ver a declaração no TSE/, /Fonte: Tribunal Superior Eleitoral/],
+    semBens: SEM_JULGAMENTO_BENS,
+    depois: `(() => { const f = [], b = document.querySelector("#bens"); if (!b) return ["não achei o bloco #bens"];
+      const a = b.querySelector("a[href*='divulgacandcontas']"); if (!a) f.push("sem o link da declaração no TSE");
+      else if (!/^https:\\/\\/divulgacandcontas\\.tse\\.jus\\.br\\/divulga\\/#\\/candidato\\/(NORTE|NORDESTE|CENTROOESTE|SUDESTE|SUL)\\/[A-Z]{2}\\/2040602022\\/270001234567\\/2022\\/XX$/.test(a.href)) f.push("o link do TSE não segue o modelo: " + a.href);
+      if (a && a.target !== "_blank") f.push("o link do TSE devia abrir em outra aba");
+      const ant = document.querySelector("#comparar"), dep = document.querySelector("#resumo");
+      if (ant && !(ant.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING)) f.push("o bloco de bens devia vir depois da comparação");
+      if (dep && !(b.compareDocumentPosition(dep) & Node.DOCUMENT_POSITION_FOLLOWING)) f.push('o bloco de bens devia vir antes do "Compartilhar"');
+      if (document.querySelector("#contracheque #bens, .conta__resumo #bens")) f.push("os bens não podem entrar no contracheque");
+      if (/\\bbens\\b/i.test((document.querySelector("#contracheque") || {}).innerText || "")) f.push("o contracheque não pode falar de bens");
+      return f; })()` },
+  { nome: "bens-sem-bens", recorte: "#bens", url: `/${ENDERECOS[BENS_FALSOS.depSem]}`, metas: { "dados-bens": "br" }, simular: simularBens(),
+    pagina: [/Na candidatura de 2022, não declarou bens à Justiça Eleitoral\./, /Ver a declaração no TSE/, /Fonte: Tribunal Superior Eleitoral/], semPagina: [/bens que somam/, /em 0 itens/] },
+  { nome: "bens-senador", url: `/${ENDERECOS[BENS_FALSOS.sen]}`, metas: { "dados-bens": "br" }, simular: simularBens(),
+    pagina: [/Na candidatura de 2018, declarou ao TSE bens que somam R\$\s1\.250\.000,00, em 1 item: aplicações e depósitos R\$\s1\.250\.000,00\./] },
+  { nome: "bens-vereador-capital", url: `/${ENDERECOS[BENS_FALSOS.ver]}`, metas: { "dados-bens": "br" }, simular: simularBens(),
+    pagina: [/Na candidatura de 2024, declarou ao TSE bens que somam R\$\s98\.500,50, em 3 itens: imóveis R\$\s80\.000,00; veículos R\$\s18\.500,50\./] },
+  { nome: "bens-prefeitura", url: `/${ENDERECOS[BENS_FALSOS.pre]}`, metas: { "dados-bens": "br" }, simular: simularBens(), pagina: [/Bens declarados à Justiça Eleitoral/, /imóveis R\$\s640\.000,00/] },
+  { nome: "bens-estadual", url: `/${ENDERECOS[BENS_FALSOS.est]}`, metas: { "dados-bens": "br" }, simular: simularBens(), pagina: [/Bens declarados à Justiça Eleitoral/, /veículos R\$\s15\.000,00/] },
+  // quem não tem registro no arquivo (a maioria dos ministros, por exemplo): sem o bloco, mesmo com o arquivo e a <meta>
+  { nome: "bens-pessoa-sem-registro", url: primeiro("exe-"), metas: { "dados-bens": "br" }, simular: simularBens(), semPagina: [/Bens declarados/i] },
+  // cidade do interior (CE): quem está no cargo e tem declaração, prefeito e vice primeiro e os vereadores em ordem alfabética, sem valor nem ordem de ricos
+  { nome: "bens-cidade-ce", recorte: "#bens", url: "/cidade/abaiara-ce", metas: { "dados-bens": "ce" }, simular: simularBens({ ce: BENS_CE }),
+    pagina: [/Bens declarados à Justiça Eleitoral/, /São 3 pessoas no cargo de Abaiara, em ordem alfabética/, /Na candidatura de 2024, declarou ao TSE bens que somam R\$\s175\.500,00, em 4 itens: imóveis R\$\s145\.000,00; veículos R\$\s24\.000,00; participações em empresas R\$\s6\.500,00\./,
+      /Na candidatura de 2024, não declarou bens à Justiça Eleitoral\./, /Ver a declaração no TSE/, /Fonte: Tribunal Superior Eleitoral/], semBens: SEM_JULGAMENTO_BENS,
+    depois: `(() => { const f = [], l = [...document.querySelectorAll("#bens .bens-lista li")]; if (l.length !== 3) return ["esperava 3 pessoas na lista de bens e achei " + l.length];
+      const cargos = l.map((e) => e.querySelector(".bens__nome small").textContent); if (!/^Prefeito/.test(cargos[0]) || !/^Vice-prefeito/.test(cargos[1]) || !/^Vereador/.test(cargos[2])) f.push("a ordem tem de ser prefeito, vice e vereadores: " + cargos.join(" | "));
+      const a = l[0].querySelector("a[href*='divulgacandcontas']"); if (!a || !/\\/NORDESTE\\/CE\\/2045202024\\/60002313505\\/2024\\/13013$/.test(a.href)) f.push("o link da declaração do prefeito não segue o modelo: " + (a && a.href));
+      return f; })()` },
+  { nome: "bens-cidade-es", url: "/cidade/afonso-claudio-es", metas: { "dados-bens": "es" }, simular: simularBens({ es: BENS_ES }),
+    pagina: [/Bens declarados à Justiça Eleitoral/, /São 2 pessoas no cargo de Afonso Cláudio, em ordem alfabética/, /imóveis R\$\s310\.000,00/, /não declarou bens/] },
+  { nome: "bens-cidade-sem-registro", url: "/cidade/acrelandia-ac", metas: { "dados-bens": "ce" }, simular: simularBens({ ce: BENS_CE }), semPagina: [/Bens declarados/i] },
+  { nome: "cidade-interior-sem-bens", url: "/cidade/abaiara-ce", semPagina: [/Bens declarados/i, /Justiça Eleitoral/] },
   // ajuda de custo (paga de uma vez) fora do "por mês" e da comparação: quem tem poucos meses e a ajuda da posse não sobe no ranking só por ela.
   // Tiago Dimas (5 meses em 2025, ajuda de R$ 46.366 em set/2025) já foi o 9º de 554; André Abdon, o 1º. A largura de 900 px é a em que o
   // menu das seções do deputado não cabe: tem de ficar numa linha só, rolando para o lado, com o aviso de que há mais.
@@ -283,6 +350,11 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     await cmd("Emulation.setDeviceMetricsOverride", { width: pg.largura && !perfil.mobile ? pg.largura : perfil.largura, height: perfil.altura, deviceScaleFactor: perfil.escala, mobile: perfil.mobile });
     await cmd("Emulation.setEmulatedMedia", { features: [{ name: "prefers-color-scheme", value: perfil.tema }] });
     await cmd("Page.addScriptToEvaluateOnNewDocument", { source: INICIO });
+    if (pg.metas) { // a <meta> que o gerar.mjs poria se os arquivos existissem (entra assim que o <head> existe, antes do app)
+      await cmd("Page.addScriptToEvaluateOnNewDocument", { source: `(() => { const metas = ${JSON.stringify(Object.entries(pg.metas))}; const poe = () => { if (!document.head) return false;
+        for (const [n, c] of metas) { const m = document.createElement("meta"); m.name = n; m.content = c; document.head.append(m); } return true; };
+        if (!poe()) { const o = new MutationObserver(() => { if (poe()) o.disconnect(); }); o.observe(document, { childList: true, subtree: true }); } })();` });
+    }
     const carregou = new Promise((ok) => { const f = eventos((m) => { if (m === "Page.loadEventFired") { f(); ok(); } }); });
     await cmd("Page.navigate", { url: base + pg.url });
     let relogio;
@@ -309,7 +381,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         cookies: document.cookie, letras: [...document.fonts].filter((f) => f.status === "loaded").length, sobra: document.documentElement.scrollWidth - document.documentElement.clientWidth, carregando: !!document.querySelector(".carregando"),
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
-        textoPagina: (document.querySelector("#app") || {}).innerText || "", textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
+        textoPagina: (document.querySelector("#app") || {}).innerText || "", textoBens: (document.querySelector("#bens") || {}).innerText || "", textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
         // o retângulo escuro do topo (proposta B, ver resumoTopo no app.js): o número e a divisão que o explica; o contexto (salários mínimos,
         // selo, posição); a nota no pé, ligada ao número por um asterisco; "Página oficial" na linha do cargo; sem canto vazio
         topo: (() => { const c = document.querySelector("#contracheque .conta__resumo"); if (!c || !c.querySelector(".resumo-valor")) return null;
@@ -342,6 +414,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.semAtividade || []).forEach((re) => { if (re.test(m.textoAtividade)) falhas.push(`a seção de presença e projetos não podia ter ${re}`); });
     (pg.pagina || []).forEach((re) => { if (!re.test(m.textoPagina)) falhas.push(`a página não tem ${re}`); });
     (pg.semPagina || []).forEach((re) => { if (re.test(m.textoPagina)) falhas.push(`a página não podia ter ${re}`); });
+    (pg.semBens || []).forEach((re) => { if (re.test(m.textoBens)) falhas.push(`o bloco de bens não podia ter ${re}`); });
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     (pg.semContem || []).forEach((re) => { if (re.test(m.textoContracheque)) falhas.push(`o contracheque não podia ter ${re}`); });
     if (m.topo) {
@@ -384,7 +457,9 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
       violacoes.forEach((v) => falhas.push(`axe ${v.id} (${v.impacto}, ${v.n}): ${v.alvo} ${v.html}`));
     }
     if (capturas) {
-      const { data } = await cmd("Page.captureScreenshot", { format: "png", captureBeyondViewport: true });
+      // pg.recorte: só o trecho da página (um seletor), em vez da página inteira
+      const alvo = pg.recorte ? await avaliar(`(() => { const e = document.querySelector(${JSON.stringify(pg.recorte)}); if (!e) return null; const b = e.getBoundingClientRect(); return { x: Math.max(0, b.left - 8), y: b.top + scrollY - 8, width: Math.min(innerWidth, b.width + 16), height: b.height + 16, scale: 1 }; })()`) : null;
+      const { data } = await cmd("Page.captureScreenshot", { format: "png", captureBeyondViewport: true, ...(alvo ? { clip: alvo } : {}) });
       fs.mkdirSync(capturas, { recursive: true });
       fs.writeFileSync(path.join(capturas, `${pg.nome}-${perfil.nome}.png`), Buffer.from(data, "base64"));
     }

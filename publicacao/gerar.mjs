@@ -57,6 +57,13 @@ const INTERIOR = Object.fromEntries(UFS_INT.map((u) => [u.toUpperCase(), ler(`in
 const PASTA_CARGO = path.join(SITE, "dados", "interior-cargo");
 const UFS_CARGO = fs.existsSync(PASTA_CARGO) ? fs.readdirSync(PASTA_CARGO).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
 const CARGO = Object.fromEntries(UFS_CARGO.map((u) => [u.toUpperCase(), ler(`interior-cargo/${u}.json`, null)]).filter(([, d]) => d && d.m));
+// bens declarados à Justiça Eleitoral (site/dados/bens.json e bens-interior/<uf>.json): só existem a partir de 26/10/2026 (regra eleitoral; o robô não
+// os grava antes). Sem eles, nada aparece. Quando existem, a lista do que há ("br" e as UFs do interior) vai numa <meta> de cada página (o app não
+// baixa o que não existe) e a página de quem tem registro põe o arquivo no preload
+const PASTA_BENS = path.join(SITE, "dados", "bens-interior");
+const BENS_GERAL = fs.existsSync(path.join(SITE, "dados", "bens.json")) ? ler("bens.json", null) : null;
+const UFS_BENS = fs.existsSync(PASTA_BENS) ? fs.readdirSync(PASTA_BENS).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
+const DADOS_BENS = [BENS_GERAL && BENS_GERAL.p ? "br" : null, ...UFS_BENS].filter(Boolean).join(" ");
 let MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8"); // com os números da abertura: ver numerosHTML
 const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/) || [])[1] || "https://contasdopoder.com/").replace(/\/+$/, "");
 
@@ -242,7 +249,7 @@ function numerosHTML() {
 const SITUACAO0 = ler("situacao.json", { fontes: [], reservas: {} });
 const FONTES_CONGELADAS = (SITUACAO0.fontes || []).filter((f) => f.situacao === "congelada" && f.ultimo_mes).map((f) => `${f.id}:${f.ultimo_mes}`).join(" ");
 const CIDS_RESERVA = [...new Set(Object.values(SITUACAO0.reservas || {}).map((r) => String(r.cid)))].join(" ");
-MODELO = MODELO.replace(/<\/head>/, `<meta name="fontes-congeladas" content="${esc(FONTES_CONGELADAS)}">\n<meta name="reservas-tce" content="${esc(CIDS_RESERVA)}">\n<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
+MODELO = MODELO.replace(/<\/head>/, `<meta name="fontes-congeladas" content="${esc(FONTES_CONGELADAS)}">\n<meta name="reservas-tce" content="${esc(CIDS_RESERVA)}">\n${DADOS_BENS ? `<meta name="dados-bens" content="${esc(DADOS_BENS)}">\n` : ""}<meta name="dados-interior" content="${UFS_INT.join(" ")}">\n<meta name="dados-interior-cargo" content="${UFS_CARGO.join(" ")}">\n<meta name="dados-atualizados" content="${DATA_ATUALIZADA}">\n</head>`);
 {
   const vazio = '<div class="numeros" id="chips-info"></div>';
   if (!MODELO.includes(vazio)) throw new Error("index.html mudou: não achei o #chips-info vazio");
@@ -401,7 +408,8 @@ for (const p of pessoas) {
   }
   const titulo = `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
   const extras = [...(separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : p.k === "t" ? ["/dados/judiciario.json"] : []),
-    ...(p.k === "d" || p.k === "s" ? ["/dados/atividade.json"] : [])]; // presença e projetos (um arquivo, só nessas páginas)
+    ...(p.k === "d" || p.k === "s" ? ["/dados/atividade.json"] : []), // presença e projetos (um arquivo, só nessas páginas)
+    ...(BENS_GERAL && BENS_GERAL.p && BENS_GERAL.p[p.id] ? ["/dados/bens.json"] : [])]; // bens declarados (só a página de quem tem registro)
   paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false })]);
 }
 
@@ -602,11 +610,13 @@ const DESCRICAO_ARQ = {
   "enderecos.json": "O endereço de cada página do site (e os endereços antigos, que redirecionam).",
   "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
   "atividade.json": "Presença no Plenário e projetos de cada deputado federal e senador desde fev/2023: X de Y, sem nota nem ranking, com a fonte (a Câmara conta por dia de sessão e o Senado por votação nominal: contas diferentes).",
+  "bens.json": "Bens declarados à Justiça Eleitoral (TSE) na candidatura por quem está no cargo e tem página no site: só o tipo e o valor, informados pela própria pessoa (em geral o valor de compra), sem descrição dos bens nem CPF. Sem ranking nem comparação.",
   "situacao.json": "A situação de cada fonte: até que mês vão os dados, quando foram lidos pela última vez e o motivo de qualquer atraso (página Atualização dos dados).",
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]
   || (/^interior\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(9, 11).toUpperCase()] || a}: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao Tribunal de Contas, mês a mês.` : "")
   || (/^interior-cargo\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(15, 17).toUpperCase()] || a}: ${a.startsWith("interior-cargo/rj") ? "total pago aos agentes políticos de cada Câmara" : "total pago ao cargo de vereador, prefeito e vice de cada cidade"} e quantas pessoas estavam no cargo, mês a mês, pela folha que o município manda ao Tribunal de Contas (o tribunal não publica o valor de cada pessoa).` : "")
+  || (/^bens-interior\/([a-z]{2})\.json$/.test(a) ? `${ESTADOS[a.slice(13, 15).toUpperCase()] || a}: bens declarados à Justiça Eleitoral (TSE) na candidatura de 2024 por vereadores, prefeito e vice de cada cidade, pelo nome: só o tipo e o valor, informados pela própria pessoa.` : "")
   || (/^vereadores\/([A-Z]{2})\.json$/.test(a) ? `Vereadores eleitos em 2024 em cada cidade ${deUF(a.slice(11, 13))} (TSE).` : "");
 function manifesto() {
   const arquivos = [];

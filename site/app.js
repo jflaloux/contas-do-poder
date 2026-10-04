@@ -2069,6 +2069,81 @@
       h("p", { class: "discreto" }, `Os números como os dados abertos oficiais trazem, sem nota nem comparação. ${senado ? "Senador" : p.k === "j" ? "Parlamentar" : "Deputado federal"}: só o tempo em que estava no mandato conta.`),
       h("article", { class: "cartao" }, presenca, projetos));
   }
+  // ================================================================== bens declarados à Justiça Eleitoral (TSE)
+  // site/dados/bens.json (quem tem página: dep-, sen-, gov-, est-, ver-, pre-) e site/dados/bens-interior/<uf>.json (CE, PB, ES e PE: vereadores,
+  // prefeito e vice de cada cidade, pelo nome). Só existem a partir de 26/10/2026 (regra eleitoral; o dados não os grava antes): o gerar.mjs põe
+  // <meta name="dados-bens"> com o que existe ("br" e as UFs do interior), e sem ela o app nem pede o arquivo: nada aparece (nem título, nem aviso).
+  // É o que a pessoa DECLAROU ao TSE ao se candidatar: só o tipo e o valor, em geral o valor de compra (e não o de mercado de hoje), e a Justiça
+  // Eleitoral não confere. Sem ranking, sem "mais rico", sem média, sem comparação e sem evolução entre eleições; fora da imagem de compartilhar e
+  // dos números de destaque; nunca somado aos salários nem aos gastos do cargo (é patrimônio declarado, não dinheiro público).
+  // Registro: [ano, total, itens, imóveis, veículos, aplicações e depósitos, participações em empresas, outros, ue, sq]
+  const BENS = { pedidos: {}, dados: {} };
+  const temBens = (chave) => ((document.querySelector('meta[name="dados-bens"]') || {}).content || "").split(/\s+/).includes(chave);
+  function carregarBens(chave) {
+    if (!chave || !temBens(chave)) return Promise.resolve(null);
+    if (!BENS.pedidos[chave]) BENS.pedidos[chave] = lerJSON(chave === "br" ? "/dados/bens.json" : `/dados/bens-interior/${chave}.json`)
+      .then((d) => (d && d.meta && (d.p || d.m) ? (BENS.dados[chave] = d) : null), () => null);
+    return BENS.pedidos[chave];
+  }
+  const COM_BENS = ["d", "s", "g", "a", "v", "p"]; // os tipos de pessoa que podem ter o bloco (o id tem de estar em bens.json)
+  const pedidoBens = (p) => (COM_BENS.includes(p.k) ? carregarBens("br") : null);
+  const nomeTipoBem = (meta, i) => (Array.isArray(meta.grupos) ? meta.grupos : Object.values(meta.grupos || {}))[i] || "";
+  // o link da declaração no DivulgaCandContas: o modelo e os códigos vêm do arquivo (meta.link, meta.regiao, meta.eleicao)
+  function linkBens(meta, reg, uf) {
+    const [ano, , , , , , , , ue, sq] = reg, regiao = (meta.regiao || {})[uf], eleicao = (meta.eleicao || {})[ano];
+    if (!meta.link || !regiao || !eleicao || !sq) return null;
+    return [["regiao", regiao], ["uf", uf], ["eleicao", eleicao], ["sq", sq], ["ano", ano], ["ue", ue]].reduce((u, [k, v]) => u.split(`{${k}}`).join(String(v)), meta.link);
+  }
+  function leituraBens(meta, reg) {
+    const [ano, total, itens] = reg, tipos = [];
+    for (let i = 0; i < 5; i++) if (reg[3 + i] > 0) tipos.push(`${nomeTipoBem(meta, i).toLowerCase()} ${reaisC(reg[3 + i])}`);
+    return { ano, total, itens, tipos, sem: !itens && !total };
+  }
+  const fraseBens = (r) => (r.sem ? `Na candidatura de ${r.ano}, não declarou bens à Justiça Eleitoral.`
+    : `Na candidatura de ${r.ano}, declarou ao TSE bens que somam ${reaisC(r.total)}, em ${r.itens} ${r.itens === 1 ? "item" : "itens"}${r.tipos.length ? `: ${r.tipos.join("; ")}` : ""}.`);
+  const AVISO_BENS = "Declaração feita pela própria pessoa ao se candidatar. Os valores são os informados por ela, em geral o valor de compra, e não o valor de mercado de hoje; a Justiça Eleitoral não confere esses valores.";
+  const linkTSE = (url) => (url ? h("a", { href: url, target: "_blank", rel: "noopener" }, "Ver a declaração no TSE ↗") : null);
+  // a página da pessoa: um bloco à parte, perto do fim
+  function secBens(p) {
+    if (!COM_BENS.includes(p.k) || !temBens("br")) return null;
+    if (!BENS.dados.br) { // ainda não chegou: nada na tela, e o bloco entra quando chegar (se a pessoa tiver)
+      const vaga = h("section", { class: "bloco", id: "bens", hidden: true });
+      carregarBens("br").then(() => { if (vaga.isConnected) { const nova = secBens(p); if (nova) vaga.replaceWith(nova); else vaga.remove(); } });
+      return vaga;
+    }
+    const B = BENS.dados.br, reg = B.p && B.p[p.id];
+    if (!reg) return null;
+    const r = leituraBens(B.meta, reg);
+    return h("section", { class: "bloco", id: "bens", "aria-labelledby": "t-bens" },
+      h("p", { class: "rotulo" }, `Declarado ao se candidatar em ${r.ano}`),
+      h("h2", { id: "t-bens" }, "Bens declarados à Justiça Eleitoral"),
+      h("article", { class: "cartao bens" },
+        h("p", { class: "bens__frase" }, fraseBens(r)),
+        h("p", { class: "nota" }, AVISO_BENS, " ", linkTSE(linkBens(B.meta, reg, p.uf))),
+        B.meta.credito ? h("p", { class: "pequeno discreto" }, B.meta.credito) : null));
+  }
+  // a página da cidade do interior (CE, PB, ES, PE): quem está no cargo e tem declaração, pelo nome como está nos arquivos da cidade; em ordem
+  // alfabética dentro de cada cargo (nunca por valor)
+  function secBensInterior(c) {
+    const uf = (c.uf || "").toLowerCase(), B = BENS.dados[uf], dela = B && B.m && B.m[String(c.cod)];
+    if (!dela) return null;
+    const ic = interiorDe(c), cg = cargoDe(c);
+    const doCargo = (x) => (!x ? [] : Array.isArray(x) ? x.filter((q) => q.x === 1 || q.x === "1") : x.ps || []);
+    const grupos = [["Prefeito", "Prefeita", doCargo(ic ? ic.pf : cg && cg.pf)], ["Vice-prefeito", "Vice-prefeita", doCargo(ic ? ic.vp : cg && cg.vp)],
+      ["Vereador", "Vereadora", doCargo(ic ? ic.v : cg && cg.c)]];
+    const linhas = grupos.flatMap(([m, f, lista]) => [...lista].sort((a, b) => (a.n || "").localeCompare(b.n || "", "pt-BR")).map((q) => [q, q.gn === "F" ? f : m, dela[q.nc || q.n]]))
+      .filter(([, , reg]) => reg);
+    if (!linhas.length) return null;
+    return h("section", { class: "bloco", id: "bens", "aria-labelledby": "t-bens" },
+      h("p", { class: "rotulo" }, `Declarado ao se candidatar em ${linhas[0][2][0]}`),
+      h("h2", { id: "t-bens" }, "Bens declarados à Justiça Eleitoral"),
+      h("article", { class: "cartao bens" },
+        h("p", { class: "nota", style: "margin:0" }, `${AVISO_BENS} São ${linhas.length} ${linhas.length === 1 ? "pessoa" : "pessoas"} no cargo ${deCidade(c)}, em ordem alfabética dentro de cada cargo.`),
+        h("ul", { class: "bens-lista" }, linhas.map(([q, cargo, reg]) => h("li", null,
+          h("p", { class: "bens__nome" }, h("strong", null, q.n), h("small", null, [cargo, q.pt].filter(Boolean).join(" · "))),
+          h("p", { class: "bens__valor" }, fraseBens(leituraBens(B.meta, reg)), " ", linkTSE(linkBens(B.meta, reg, c.uf)))))),
+        B.meta.credito ? h("p", { class: "pequeno discreto" }, B.meta.credito) : null));
+  }
   function secCota(p, k) {
     const r = resumo(p, k);
     if (!r) return null;
@@ -4429,7 +4504,7 @@
         Object.assign($("#previa", app).dataset, { id: p.id, k });
       }
       navSecoes(["entenda", "fontes"]);
-      Promise.all([carregarDetalhe(p), pedidoAtividade(p)]).then(() => { if (S.sel === p.id) render(); }, () => {
+      Promise.all([carregarDetalhe(p), pedidoAtividade(p), pedidoBens(p)]).then(() => { if (S.sel === p.id) render(); }, () => {
         if (S.sel !== p.id) return;
         const st = $("#previa .carregando", app);
         if (st) { st.textContent = "Não foi possível carregar o mês a mês. "; st.append(h("button", { type: "button", class: "link-botao", onclick: () => render() }, "Tentar de novo")); }
@@ -4529,7 +4604,7 @@
       // a lista das cidades e, nas cidades de um estado com o arquivo do interior (PB, CE), a folha dele
       carregarCidades().then(() => {
         const c = /^cid-\d+$/.test(S.cidade) ? CID.porId.get(S.cidade) : CID.porSlug.get(S.cidade);
-        return c ? Promise.all([!(camaraDe(c.cod) && prefeituraDe(c.cod)) ? Promise.all([carregarInterior(c.uf), carregarCargo(c.uf)]) : null, carregarReserva(c)]) : null;
+        return c ? Promise.all([!(camaraDe(c.cod) && prefeituraDe(c.cod)) ? Promise.all([carregarInterior(c.uf), carregarCargo(c.uf), carregarBens((c.uf || "").toLowerCase())]) : null, carregarReserva(c)]) : null;
       }).then(() => {
         if (!espera.isConnected) return; // já foi para outra página
         const c = /^cid-\d+$/.test(S.cidade) ? CID.porId.get(S.cidade) : CID.porSlug.get(S.cidade);
@@ -4537,7 +4612,7 @@
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
         document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
-        trocar(espera, ...[secCidade(c), (usaTribunal("prefeitura", c) ? null : secPrefeitura(c)) || secPrefeituraInterior(c) || secPrefeituraCargo(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
+        trocar(espera, ...[secCidade(c), (usaTribunal("prefeitura", c) ? null : secPrefeitura(c)) || secPrefeituraInterior(c) || secPrefeituraCargo(c), secBensInterior(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
           secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
           secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c))].filter(Boolean));
         navSecoes(["cidade", "prefeitura", "ranking", "resumo", "cidades", "entenda", "fontes"]);
@@ -4553,8 +4628,8 @@
       // governador e vice: sem gastos por pessoa, equipe, ranking nem a comparação com um parlamentar (que mostraria os
       // gastos dele como R$ 0, quando eles só não são publicados); a lista dos 27 está na página do estado
       app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
-        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
-        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]).filter(Boolean));
+        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]
+        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p))]).filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "viagens", "meses-jud", "equipe", "cota", "atividade", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       botaoFlutuante(specPessoa(p, k), "#contracheque .conta__resumo");
     } else {

@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 61 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 73 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1313,6 +1313,27 @@ nenhuma mudança: "Rodada de ...: nenhuma mudança desde a de ...". Sem a chave 
 arquivo de 03/10/2026), o bloco não aparece. O atraso da própria fonte e as fontes congeladas não contam como problema, e a nota
 embaixo diz isso. O teste liga uma rodada de mentira na resposta do arquivo (nomes de fontes reais) e confere o texto, que os links
 levam à linha e que o arquivo real, sem rodada anterior, não mostra o bloco.
+
+### Bens declarados à Justiça Eleitoral (`bens.json` e `bens-interior/<uf>.json`)
+
+Um bloco "Bens declarados à Justiça Eleitoral" (`secBens`, na página da pessoa, e `secBensInterior`, na página da cidade do interior;
+`app.js`) mostra o que a pessoa declarou ao TSE ao se candidatar (2018, 2022 ou 2024, conforme o mandato). **Os arquivos só existem a
+partir de 26/10/2026** (regra eleitoral; o `dados` não os grava antes): o `gerar.mjs` põe `<meta name="dados-bens" content="br ce pb ...">`
+com o que existe (`br` = `bens.json`, e as UFs de `bens-interior/`), e **sem os arquivos nada aparece, nem título nem aviso**, e o app nem
+pede o arquivo (hoje é assim). Com eles: na página de quem tem registro (dep-, sen-, gov-, est-, ver-, pre-), o bloco fica à parte, depois
+de "Comparar" e antes de "Compartilhar", sem botão no menu das seções; o `gerar.mjs` põe `bens.json` no preload só nessas páginas. Na
+cidade do interior (CE, PB, ES, PE; o arquivo do estado só é baixado ao abrir uma cidade dele), uma lista de quem está no cargo e tem
+declaração, prefeito e vice primeiro e os vereadores em ordem alfabética (nunca por valor), ligada pelo nome civil (ou o de urna, se não há
+civil) como está nos arquivos da cidade. Texto: "Na candidatura de 2022, declarou ao TSE bens que somam R$ 366.907,22, em 5 itens: imóveis
+...; veículos ...", só os tipos com valor; sem itens e sem total, "não declarou bens à Justiça Eleitoral"; sempre o aviso ("Declaração feita
+pela própria pessoa ao se candidatar. Os valores são os informados por ela, em geral o valor de compra, e não o valor de mercado de hoje; a
+Justiça Eleitoral não confere esses valores."), o link "Ver a declaração no TSE" (montado do modelo `meta.link` com `meta.regiao`,
+`meta.eleicao` e o `ue` e o `sq` do registro; o formato do DivulgaCandContas é o que vier no arquivo) e o crédito (`meta.credito`). Regras: sem
+ranking, "mais rico", média, comparação nem evolução; fora da imagem de compartilhar e dos números de destaque; nunca somado aos salários nem aos
+gastos; só tipo e valor (sem descrição dos bens nem CPF); quem não deu para ligar a uma candidatura fica sem o bloco. Custo no Cloudflare
+Pages: 5 arquivos novos (`bens.json` e 4 de `bens-interior/`, ~85 a 220 KB cada), de 14.192 para 14.197 de 20.000. O teste simula os arquivos
+(a `<meta>` entra na página e a resposta do pedido é feita no próprio teste, com pessoas e nomes de verdade e valores de mentira; `simularBens`,
+no `rodar.mjs`): confere o texto, o link, a ordem, "não declarou", a ausência de juízo, a página sem registro e a página sem os arquivos.
 
 ### Fontes congeladas e reserva pelo Tribunal de Contas (do `situacao.json`)
 
