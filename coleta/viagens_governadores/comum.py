@@ -93,14 +93,24 @@ def lido_ate(uf):
     return json.loads(LIDOS.read_text(encoding="utf-8")).get(uf) if LIDOS.exists() else None
 
 
+class MenosQueOGravado(RuntimeError):
+    """A fonte trouxe bem menos viagens do que já estava gravado: a coleta falha e o último dado bom fica."""
+
+
 def gravar(uf, linhas):
+    """Grava as viagens do estado (todas desde INICIO) e o mês lido. Se a fonte trouxe bem menos viagens do que já
+    estava gravado (nenhuma, ou menos de 90% menos 2), não grava nada e falha: o último dado bom fica e a situação marca
+    a falha (regra do projeto: robô que falha não apaga o último dado bom)."""
+    unicas = {}
+    for l in linhas:
+        unicas[str(l["id"])] = l
+    antes = len(ler(uf))
+    if antes and len(unicas) < 0.9 * antes - 2:
+        raise MenosQueOGravado(f"a fonte trouxe {len(unicas)} viagens, e {antes} já estavam gravadas: fica o que estava")
     PASTA.mkdir(parents=True, exist_ok=True)
     lidos = json.loads(LIDOS.read_text(encoding="utf-8")) if LIDOS.exists() else {}
     lidos[uf] = ultimo_mes()
     LIDOS.write_text(json.dumps(dict(sorted(lidos.items())), indent=1) + "\n", encoding="utf-8")
-    unicas = {}
-    for l in linhas:
-        unicas[str(l["id"])] = l
     ordem = sorted(unicas.values(), key=lambda l: (l["inicio"], str(l["id"])))
     with open(arquivo(uf), "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=COLUNAS)

@@ -712,6 +712,8 @@ publica por pessoa. O levantamento dos 27 estados está em `dados/referencia/via
 começam pelos que publicam com o nome, em formato aberto. Cada um grava `dados/governadores/viagens/<uf>.csv` (vai para
 o Git), uma linha por viagem: datas, nome e cargo como a fonte escreve, destino, diárias, passagens, outros, devoluções e
 a fonte. Nada de CPF (as respostas que o trazem mascarado não são lidas nesse campo) nem o texto livre do motivo.
+Se a fonte trouxer bem menos viagens do que já estava gravado (nenhuma, ou menos de 90%), ou, em MG, o arquivo de
+favorecidos vier sem os nomes, a coleta falha e o arquivo e o mês lido ficam como estavam (`comum.gravar`).
 
 | Estado | Fonte | O que entra |
 |---|---|---|

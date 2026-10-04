@@ -48,8 +48,8 @@ def coletar(nomes):
     # alguns registros trazem o CPF escrito depois do nome ("NOME - 000.000.000-00"): só a parte do nome conta
     fav["nome"] = fav.nome_anonimizado.fillna("").str.split(" - ").str[0].map(comum.normalizar_nome)
     ids = dict(zip(fav[fav.nome.isin(nomes)].id_favorecido, fav[fav.nome.isin(nomes)].nome))
-    if not ids:
-        return comum.gravar(UF, [])
+    if not ids:  # o arquivo de favorecidos veio sem os nomes (fora do ar, leiaute novo): falha, e fica o que estava gravado
+        raise RuntimeError("nenhum nome do governador ou do vice no arquivo de favorecidos (dm_favorecido_scdp)")
     with gzip.open(pasta / "dm_cidade.csv.gz", "rt", encoding="utf-8-sig", errors="replace") as f:
         cid = pd.read_csv(f, sep=";", dtype=str)
     col_nome = next((c for c in cid.columns if c.lower() in ("nome", "nome_cidade", "cidade")), cid.columns[1])
