@@ -101,13 +101,13 @@ Cada número tem link para a fonte oficial.
 - [x] Governadores com página própria: id por pessoa, endereço pelo nome, fotos (TAREFA-SITE-governadores-como-pessoas.txt) — Claude
 - [x] Governadores: levantamento das viagens (diárias e passagens) nos 27 estados (`dados/referencia/viagens_governadores.json`) — Claude
 - [x] Governadores: robôs das viagens de AM, MG, SP, PB e SE, desde jan/2025, na rodada semanal (03/10/2026) — Agente de Dados
-- [ ] Governadores: viagens no site (TAREFA-SITE-viagens-governadores.txt) — Agente de Site
+- [x] Governadores: viagens no site — Agente de Site
 - [ ] Governadores: viagens dos outros estados (ver dados/referencia/viagens_governadores.json) — Agente de Dados
 - [ ] Governadores: AL (revisões gerais 9.551/2025 e 9.852/2026 citadas; falta a lei do valor base e a de ago/2026) e RN (só a Lei 8.259/2002, arquivo fora do ar) — Agente de Dados
 - [ ] Vereadores de SP: fotos com licença confirmada por escrito pela Câmara; 13º e contracheque (só com CPF, não coletamos) — Jean-François
 - [x] Vereadores, passo 3: Paraíba e Ceará pela folha nos Tribunais de Contas (vereadores, prefeito, vice e, na PB, secretários; `coleta/tce/`, `site/dados/interior/<uf>.json`) — Claude
 - [x] Tribunais de Contas de ES (78 cidades), PE (184) e RJ (91): robôs feitos em 03/10/2026, valor por cargo, jan/2025 a ago/2026 — Agente de Dados
-- [ ] Tribunais de Contas de ES, PE e RJ no site, na página da cidade (TAREFA-SITE-tce-es-pe-rj.txt) — Agente de Site
+- [x] Tribunais de Contas de ES, PE e RJ no site, na página da cidade, como valor por cargo — Agente de Site
 - [x] Site: vereadores, prefeito e vice nas páginas das cidades da PB e do CE — chat do site
 - [x] Índice de acesso aos salários dos governadores: 26 estados com nota, cada uma com a prova (`dados/indice/governadores.json`,
   mantido à mão → `site/dados/indice.json`). MT a conferir: a consulta de servidores não abriu em 01/10/2026 — Claude
