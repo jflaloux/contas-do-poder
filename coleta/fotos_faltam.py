@@ -133,8 +133,8 @@ def baixar_commons(pid, qid, arquivo):
             return "foto panorâmica"
         f = F._commons(arquivo, 900)  # o retrato sai do centro de uma foto mais larga: pega uma versão maior
     time.sleep(1.1)
-    import requests
-    r = requests.get(f["url"], headers=F._ua, timeout=60)
+    from .util import _sessao
+    r = _sessao().get(f["url"], headers=F._ua, timeout=60)  # robots.txt e Crawl-delay pela sessão do projeto
     if r.status_code == 429:
         raise F.WikimediaLimitou()
     r.raise_for_status()

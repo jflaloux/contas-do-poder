@@ -102,10 +102,10 @@ class WikimediaLimitou(Exception):
 
 def _api(url, **params):
     """Consulta à Wikimedia, no máximo ~1 por segundo; 429 = espera o que ela pedir e tenta de novo uma vez."""
-    import requests
+    from .util import _sessao
     for tentativa in range(2):
         time.sleep(1.1)
-        r = requests.get(url, params={**params, "format": "json"}, headers=_ua, timeout=60)
+        r = _sessao().get(url, params={**params, "format": "json"}, headers=_ua, timeout=60)
         if r.status_code == 429:
             if tentativa:
                 raise WikimediaLimitou()
@@ -201,8 +201,8 @@ def _governo_commons(politicos, limite=None):
                 if not escolhida and f["altura"] < 0.95 * f["largura"]:
                     continue  # não é um retrato
                 time.sleep(1.1)
-                import requests
-                r = requests.get(f["url"], headers=_ua, timeout=60)
+                from .util import _sessao
+                r = _sessao().get(f["url"], headers=_ua, timeout=60)  # robots.txt e Crawl-delay pela sessão do projeto
                 if r.status_code == 429:  # a Wikimedia pediu para ir mais devagar: tenta de novo na próxima vez
                     raise WikimediaLimitou()
                 r.raise_for_status()
