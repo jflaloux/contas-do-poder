@@ -119,7 +119,8 @@ armadilhas que não estão escritas em outro lugar.
 - CPF solto em texto livre: o MEI tem como razão social "NOME 12345678901", e algumas fontes põem o CPF no histórico do
   pagamento (Alep) ou no nome do beneficiário (Aleam). `vereadores/comum.limpar_cpfs(pasta)` roda depois de cada coleta
   das capitais e das Assembleias, e `comum.empresa()` tira o número do nome no site. Fonte nova com texto livre: varrer
-  os CSVs por 11 dígitos antes do commit.
+  os CSVs por 11 dígitos antes do commit. O CPF também aparece depois de hífen, barra ou parêntese ("NOME -12345678901")
+  e no número do documento de pagamento a pessoa física (Assembleia do RJ): a varredura confere o dígito verificador.
 - Assembleias: o deputado licenciado (secretário de Estado, por exemplo) costuma continuar na folha com o subsídio (PR,
   PI, PA): estar na folha não é estar no cargo. Use um sinal de exercício (gabinete com comissionados no PR, notas da
   verba no PI, verba ou gabinete no PA).
