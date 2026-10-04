@@ -959,9 +959,11 @@ CNJ não mostra).
 
 Quem está no TSE vindo do STF ou do STJ, e quem integra o CNJ vindo de um tribunal, recebe o salário no tribunal de
 origem: cada página mostra só o que aquele órgão paga, as páginas da mesma pessoa se ligam ("rel") e nada é somado duas
-vezes. Parcelas que os tribunais classificam como indenizatórias (por exemplo PVTAC e GECJAO, Resolução Conjunta
-CNJ/CNMP 14/2026) não entram no cálculo do abate-teto na própria folha; por isso o total do mês pode passar do subsídio
-de ministro do STF (R$ 46.366,19 desde fev/2025). As sete fontes abrem de fora do Brasil (conferido em 02/10/2026).
+vezes. Parcelas que os tribunais classificam como indenizatórias (por exemplo PVTAC e GECJAO, arts. 3º e 5º, b, da
+Resolução Conjunta CNJ/CNMP nº 14/2026, conferida no texto publicado pelo CNMP em 04/10/2026) não entram no cálculo do
+abate-teto na própria folha; por isso o total do mês pode passar do subsídio de ministro do STF (R$ 46.366,19 desde
+fev/2025). Os rótulos das folhas citam a norma de outro jeito: no MPF, a PVTAC vem como "RES. 14/2016/STF/CNMP"; no
+STM, como "RES. 391/2026". As sete fontes abrem de fora do Brasil (conferido em 02/10/2026).
 Desembargadores e juízes não entram: seriam milhares de páginas (o limite do Cloudflare Pages no plano gratuito é de
 20.000 arquivos).
 
