@@ -2,6 +2,18 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-10-04",
+      "titulo": "Fornecedores pessoa física: mais números de CPF tirados",
+      "texto": [
+        "Na verba de gabinete de um deputado estadual de São Paulo, o nome de um fornecedor (microempreendedor individual) vinha com o número do CPF depois de um hífen, um caso que o filtro do dia 02/10 não pegava. O número foi tirado do nome; os valores não mudaram.",
+        "Nos arquivos de dados abertos da verba dos deputados estaduais do Rio de Janeiro (que não aparecem nas páginas do site), o número do documento de alguns pagamentos a pessoas físicas (aluguel de escritório, diárias) era o CPF. O número também foi tirado.",
+        "O filtro passou a tirar o CPF também quando vem depois de hífen, barra ou parêntese, e do número do documento quando o fornecedor não é empresa. O site não publica CPF de fornecedor pessoa física."
+      ],
+      "paginas": [
+        "est-35-300449"
+      ]
+    },
+    {
       "data": "2026-10-02",
       "titulo": "Deputados estaduais: quem está no cargo hoje em sete Assembleias",
       "texto": [

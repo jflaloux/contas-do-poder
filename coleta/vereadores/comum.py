@@ -101,22 +101,54 @@ def titulo(nome):
     return " ".join(w.lower() if w.lower() in _MINUSCULAS and i else w.capitalize() for i, w in enumerate((nome or "").lower().split()))
 
 
-# CPF solto num texto: o MEI tem como razão social "NOME 12345678901", e algumas fontes põem o CPF no nome do
-# fornecedor ou no histórico do pagamento. O número sai (regra do projeto: CPF de pessoa física, nunca)
-_CPF_NO_TEXTO = re.compile(r"(?<![\d./-])\d{3}\.?\d{3}\.?\d{3}-?\d{2}(?![\d./-])")
+# CPF solto num texto: o MEI tem como razão social "NOME 12345678901" (ou "NOME -12345678901", "NOME/123.456.789-01"),
+# e algumas fontes põem o CPF no nome do fornecedor, no histórico do pagamento ou no número do documento. O número sai
+# (regra do projeto: CPF de pessoa física, nunca). Antes e depois do número pode haver hífen, barra, ponto, parêntese ou
+# letra; só não pode haver outro algarismo colado (nem separador seguido de algarismo), para não pegar um pedaço de CNPJ.
+_CPF_NO_TEXTO = re.compile(r"(?<!\d)(?<!\d[./-])\d{3}\.?\d{3}\.?\d{3}-?\d{2}(?!\d)(?![./-]\d)")
 _COLUNAS_TEXTO = re.compile(r"fornec|benefic|nome|emitente|credor|favorec|objeto|descri|histor|interessad|detalh", re.I)
+# número do documento (nota, recibo, boleto): aqui sai só o número que é um CPF válido (os dígitos verificadores batem),
+# para não apagar números de nota comuns; com o rótulo ("CPF:") junto
+_COLUNAS_DOC = re.compile(r"document|^numero$|^num_|^nota$|^nf$|recibo|fatura", re.I)
+_ROTULO_CPF = re.compile(r"\bC\.?P\.?F\.?\s*(n[ºo°.]*)?\s*[:.-]?\s*$", re.I)
 
 
-def sem_cpf(texto):
-    """O texto sem nenhum número com cara de CPF (com ou sem pontos)."""
+def cpf_valido(numero):
+    d = re.sub(r"\D", "", numero or "")
+    if len(d) != 11 or len(set(d)) == 1:
+        return False
+    for n in (9, 10):
+        if (sum(int(d[i]) * (n + 1 - i) for i in range(n)) * 10) % 11 % 10 != int(d[n]):
+            return False
+    return True
+
+
+def sem_cpf(texto, so_validos=False):
+    """O texto sem nenhum número com cara de CPF (com ou sem pontos). so_validos: só os que têm os dígitos
+    verificadores de um CPF (para números de documento, que podem ter 11 algarismos sem ser CPF)."""
     if not isinstance(texto, str) or not _CPF_NO_TEXTO.search(texto):
         return texto
-    return re.sub(r"\s+", " ", _CPF_NO_TEXTO.sub(" ", texto)).replace("( )", "").replace("()", "").strip(" -–")
+
+    def trocar(m):
+        if so_validos and not cpf_valido(m.group(0)):
+            return m.group(0)
+        return " "
+    partes, fim = [], 0
+    for m in _CPF_NO_TEXTO.finditer(texto):
+        novo = trocar(m)
+        antes = texto[fim:m.start()]
+        if novo == " ":
+            antes = _ROTULO_CPF.sub("", antes)
+        partes += [antes, novo]
+        fim = m.end()
+    partes.append(texto[fim:])
+    return re.sub(r"\s+", " ", "".join(partes)).replace("( )", "").replace("()", "").strip(" -–:/")
 
 
 def limpar_cpfs(pasta):
-    """Tira o CPF dos textos livres (fornecedor, nome, histórico...) de todos os CSVs de uma pasta de dados. Roda depois
-    de cada coleta (coleta/vereadores/__init__.py e coleta/assembleias/__init__.py). Devolve quantas células mudaram."""
+    """Tira o CPF dos textos livres (fornecedor, nome, histórico...) e, quando os dígitos verificadores batem, do número
+    do documento, em todos os CSVs de uma pasta de dados. Roda depois de cada coleta (coleta/vereadores/__init__.py e
+    coleta/assembleias/__init__.py). Devolve quantas células mudaram."""
     import csv
     from pathlib import Path
     csv.field_size_limit(10**9)
@@ -127,12 +159,31 @@ def limpar_cpfs(pasta):
         if not linhas:
             continue
         cols = [j for j, h in enumerate(linhas[0]) if _COLUNAS_TEXTO.search(h)]
+        docs = [j for j, h in enumerate(linhas[0]) if _COLUNAS_DOC.search(h) and j not in cols]
+        cnpj = next((j for j, h in enumerate(linhas[0]) if re.search(r"cnpj", h, re.I)), None)
         mudou = 0
         for linha in linhas[1:]:
-            for j in cols:
-                if j < len(linha) and _CPF_NO_TEXTO.search(linha[j]):
-                    linha[j] = sem_cpf(linha[j])
+            # no número do documento, o CPF só sai quando o fornecedor não é empresa (sem CNPJ na linha) ou quando vem
+            # com o rótulo "CPF": nota de empresa pode ter 11 algarismos que batem com os dígitos de um CPF por acaso
+            empresa_na_linha = cnpj is not None and cnpj < len(linha) and len(re.sub(r"\D", "", linha[cnpj])) == 14
+            for j in cols + docs:
+                if j >= len(linha) or not _CPF_NO_TEXTO.search(linha[j]):
+                    continue
+                if j in docs and empresa_na_linha and not re.search(r"\bC\.?P\.?F", linha[j], re.I):
+                    continue
+                novo = sem_cpf(linha[j], so_validos=j in docs)
+                if novo != linha[j]:
+                    linha[j] = novo
                     mudou += 1
+            # documento de pessoa física com um algarismo a mais (o CPF digitado com erro): 12 algarismos em que os 11
+            # primeiros ou os 11 últimos formam um CPF válido
+            if not empresa_na_linha:
+                for j in docs:
+                    if j < len(linha):
+                        d = re.sub(r"\D", "", linha[j])
+                        if len(d) == 12 and re.fullmatch(r"[\d.\-/ ]+", linha[j]) and (cpf_valido(d[:11]) or cpf_valido(d[1:])):
+                            linha[j] = ""
+                            mudou += 1
         if mudou:
             with open(arq, "w", encoding="utf-8", newline="") as f:
                 csv.writer(f, lineterminator="\n").writerows(linhas)
