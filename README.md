@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 49 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 51 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1272,6 +1272,18 @@ de todas as páginas e a `/dados-abertos`. O endereço é fixo: o nome `atualiza
 Nas páginas das Assembleias (`secAssembleia`), quando os deputados no cargo são em número diferente das cadeiras, uma
 nota diz só o que a fonte mostra (`notaCadeiras`): Goiás (uma vaga aberta desde 26/09/2026) e Alagoas (a folha paga mais
 subsídios do que há cadeiras) têm texto próprio, que some quando os números voltam a bater.
+
+### O que mudou nesta rodada (chave `rodada` do `situacao.json`)
+
+No topo de `/atualizacao`, logo abaixo da data da lista (`blocoRodada`, no `app.js`; o `gerar.mjs` faz o mesmo na página pronta), um
+bloco resume a rodada semanal (a que começa na terça) comparada com a anterior, pela chave `rodada` do arquivo (`semana`,
+`anterior`, `quebrou`, `voltou`, `continua`, com ids de `fontes`): "Rodada de 06/10/2026, comparada com a de 29/09/2026:" e três
+itens ("2 fontes passaram a ter problema (...)", "1 voltou (...)", "nenhuma continua com problema"), cada nome com link para a
+linha da fonte na lista (id `fonte-<id>` nas tabelas dos grupos; na lista "não estão em dia" a fonte se repete, então sem id). Sem
+nenhuma mudança: "Rodada de ...: nenhuma mudança desde a de ...". Sem a chave ou com `anterior` nulo (a primeira rodada, o caso do
+arquivo de 03/10/2026), o bloco não aparece. O atraso da própria fonte e as fontes congeladas não contam como problema, e a nota
+embaixo diz isso. O teste liga uma rodada de mentira na resposta do arquivo (nomes de fontes reais) e confere o texto, que os links
+levam à linha e que o arquivo real, sem rodada anterior, não mostra o bloco.
 
 ### Fontes congeladas e reserva pelo Tribunal de Contas (do `situacao.json`)
 

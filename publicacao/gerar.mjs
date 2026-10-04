@@ -645,15 +645,33 @@ if (SIT && (SIT.fontes || []).length) {
   const fechado = SIT.ultimo_mes_fechado ? mes(SIT.ultimo_mes_fechado) : "";
   // a frase pronta começa, às vezes, com o próprio rótulo ("Atraso da própria fonte: ..."): ao lado do rótulo, só o motivo
   const motivo = (f) => { const r = `${sit[f.situacao] || ""}: `, t = f.texto || ""; const m = t.startsWith(r) ? t.slice(r.length) : t; return m.charAt(0).toUpperCase() + m.slice(1); };
-  const linha = (f) => `<tr><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}&nbsp;↗</a>`
+  const idFonte = (id) => `fonte-${String(id).replace(/[^A-Za-z0-9]+/g, "-")}`;
+  // o que mudou na rodada (chave "rodada"): o mesmo texto do app.js (blocoRodada); sem a chave, ou sem rodada anterior, não há bloco
+  const blocoRodada = (() => {
+    const R = SIT.rodada;
+    if (!R || !R.anterior || !R.semana) return "";
+    const porId = new Map(fontes.map((f) => [f.id, f]));
+    const juntar = (ids) => (ids || []).map((id, i, a) => `${porId.get(id) ? `<a href="#${idFonte(id)}">${esc(porId.get(id).nome)}</a>` : esc(id)}${i === a.length - 2 ? " e " : i < a.length - 2 ? ", " : ""}`).join("");
+    const clausula = (ids, zero, um, varios) => `<li>${(ids || []).length === 0 ? zero : `${(ids || []).length === 1 ? um : `${ids.length} ${varios}`} (${juntar(ids)})`}</li>`;
+    const quando = `Rodada de ${dataBR(R.semana)}`, ant = dataBR(R.anterior);
+    const mudou = (R.quebrou || []).length + (R.voltou || []).length + (R.continua || []).length;
+    return '<div class="rodada" id="rodada"><h2 class="h3">O que mudou nesta rodada</h2>'
+      + (mudou === 0 ? `<p style="margin:0">${quando}: nenhuma mudança desde a de ${ant}.</p>`
+        : `<p style="margin:0">${quando}, comparada com a de ${ant}:</p><ul class="lista">`
+          + clausula(R.quebrou, "nenhuma fonte passou a ter problema", "1 fonte passou a ter problema", "fontes passaram a ter problema")
+          + clausula(R.voltou, "nenhuma voltou", "1 voltou", "voltaram")
+          + clausula(R.continua, "nenhuma continua com problema", "1 continua com problema", "continuam com problema") + "</ul>")
+      + '<p class="discreto pequeno" style="margin:0">Problema é a coleta que falhou ou dados atrasados sem motivo conhecido. O atraso da própria fonte e as fontes congeladas não contam.</p></div>';
+  })();
+  const linha = (f, ancora) => `<tr${ancora ? ` id="${idFonte(f.id)}"` : ""}><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}&nbsp;↗</a>`
     + (f.via ? `<small class="tabela-gov__obs">Dados pelo ${esc(f.via)}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}</small>` : "") + "</td>"
     + `<td data-rotulo="Dados até">${f.ultimo_mes ? mes(f.ultimo_mes) : "—"}</td>`
     + `<td data-rotulo="Última coleta">${f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"}</td>`
     + `<td data-rotulo="Situação"><span class="${f.situacao === "em_dia" ? "etiqueta" : f.situacao === "congelada" ? "etiqueta etiqueta--fora" : "etiqueta etiqueta--estimativa"}">${esc(sit[f.situacao] || f.situacao)}</span>`
     + (f.situacao !== "em_dia" && f.texto ? `<small class="tabela-gov__obs">${esc(motivo(f))}</small>` : "") + "</td></tr>";
-  const tabela = (nome, lista) => `<table class="tabela-atualizacao"><caption class="visualmente-oculto">${esc(nome)}</caption>`
+  const tabela = (nome, lista, ancora) => `<table class="tabela-atualizacao"><caption class="visualmente-oculto">${esc(nome)}</caption>`
     + "<thead><tr><th>Fonte</th><th>Dados até</th><th>Última coleta</th><th>Situação</th></tr></thead>"
-    + `<tbody>${lista.map(linha).join("")}</tbody></table>`;
+    + `<tbody>${lista.map((f) => linha(f, ancora)).join("")}</tbody></table>`;
   const fora = fontes.filter((f) => f.situacao !== "em_dia");
   const lide = "Cada órgão publica os dados no seu ritmo. Aqui está, fonte por fonte, até que mês vão os números do site e quando foram lidos pela última vez.";
   const corpo = '<section class="bloco" id="atualizacao" aria-labelledby="t-atualizacao"><p class="rotulo">Transparência do site</p>'
@@ -662,10 +680,11 @@ if (SIT && (SIT.fontes || []).length) {
     + '<div class="estatisticas">' + Object.keys(sit).filter((s) => conta[s]).map((s) =>
       `<div class="estatistica"><span class="rotulo">${esc(sit[s])}</span><span class="estatistica__valor">${conta[s]}</span><span class="estatistica__comp">${conta[s] === 1 ? "fonte" : "fontes"}</span></div>`).join("") + "</div>"
     + `<p class="discreto pequeno">${[quando ? `Lista refeita em ${quando}.` : "", fechado ? `O último mês fechado é ${fechado}.` : ""].filter(Boolean).join(" ")}</p>`
+    + blocoRodada
     + (fora.length ? `<h2 class="h3">Fontes que não estão em dia</h2><p class="discreto">Cada uma também aparece no grupo dela, mais abaixo.</p>${tabela("Fontes que não estão em dia", fora)}` : "")
     + (SIT.grupos || []).map((g) => {
       const lista = fontes.filter((f) => f.grupo === g.id);
-      return lista.length ? `<h2 class="h3">${esc(g.nome)} (${lista.length})</h2>${tabela(g.nome, lista)}` : "";
+      return lista.length ? `<h2 class="h3">${esc(g.nome)} (${lista.length})</h2>${tabela(g.nome, lista, true)}` : "";
     }).join("")
     + '<h2 class="h3">Como ler esta página</h2><ul class="lista">'
     + "<li><strong>Dados até: </strong>o último mês com dados no site.</li>"

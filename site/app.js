@@ -4122,6 +4122,32 @@
     }
     return situacaoPedida;
   }
+  // O que mudou na rodada (situacao.json, chave "rodada", feita pelo dados no fim de cada rodada semanal): fontes que passaram a ter
+  // problema, que voltaram e que continuam com problema, comparadas com a rodada anterior. O atraso da própria fonte não conta como
+  // problema. Sem a chave, ou na primeira rodada ("anterior" nulo, listas vazias), não há bloco. Cada nome leva à linha da fonte na
+  // lista abaixo (id "fonte-<id>"). O mesmo texto está no gerar.mjs (página pronta).
+  const idFonte = (id) => `fonte-${String(id).replace(/[^A-Za-z0-9]+/g, "-")}`;
+  function blocoRodada(SIT) {
+    const R = SIT.rodada;
+    if (!R || !R.anterior || !R.semana) return null;
+    const porId = new Map((SIT.fontes || []).map((f) => [f.id, f]));
+    const juntar = (ids) => {
+      const fs = (ids || []).map((id) => [id, porId.get(id)]);
+      return fs.flatMap(([id, f], i) => [f ? h("a", { href: `#${idFonte(id)}` }, f.nome) : id, i === fs.length - 2 ? " e " : i < fs.length - 2 ? ", " : ""]);
+    };
+    const clausula = (ids, zero, um, varios) => { const n = (ids || []).length; return h("li", null, n === 0 ? zero : [n === 1 ? um : `${n} ${varios}`, " (", juntar(ids), ")"]); };
+    const quando = `Rodada de ${dataBR(R.semana)}`, ant = dataBR(R.anterior);
+    const mudou = (R.quebrou || []).length + (R.voltou || []).length + (R.continua || []).length;
+    return h("div", { class: "rodada", id: "rodada" },
+      h("h2", { class: "h3" }, "O que mudou nesta rodada"),
+      mudou === 0 ? h("p", { style: "margin:0" }, `${quando}: nenhuma mudança desde a de ${ant}.`)
+        : [h("p", { style: "margin:0" }, `${quando}, comparada com a de ${ant}:`),
+          h("ul", { class: "lista" },
+            clausula(R.quebrou, "nenhuma fonte passou a ter problema", "1 fonte passou a ter problema", "fontes passaram a ter problema"),
+            clausula(R.voltou, "nenhuma voltou", "1 voltou", "voltaram"),
+            clausula(R.continua, "nenhuma continua com problema", "1 continua com problema", "continuam com problema"))],
+      h("p", { class: "discreto pequeno", style: "margin:0" }, "Problema é a coleta que falhou ou dados atrasados sem motivo conhecido. O atraso da própria fonte e as fontes congeladas não contam."));
+  }
   function secAtualizacao(SIT) {
     const fontes = SIT.fontes || [], sit = SIT.situacoes || {}, ordem = Object.keys(sit);
     const conta = {};
@@ -4132,16 +4158,16 @@
     const etiqueta = (f) => h("span", { class: f.situacao === "em_dia" ? "etiqueta" : f.situacao === "congelada" ? "etiqueta etiqueta--fora" : "etiqueta etiqueta--estimativa" }, sit[f.situacao] || f.situacao);
     // a frase pronta começa, às vezes, com o próprio rótulo ("Atraso da própria fonte: ..."): ao lado do rótulo, só o motivo
     const motivo = (f) => { const r = `${sit[f.situacao] || ""}: `, t = f.texto || ""; const m = t.startsWith(r) ? t.slice(r.length) : t; return m.charAt(0).toUpperCase() + m.slice(1); };
-    const linha = (f) => h("tr", null,
+    const linha = (f, ancora) => h("tr", { id: ancora ? idFonte(f.id) : null },
       h("td", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome}\u00a0↗`),
         f.via ? h("small", { class: "tabela-gov__obs" }, `Dados pelo ${f.via}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}`) : null),
       h("td", { "data-rotulo": "Dados até" }, f.ultimo_mes ? fmtMes(f.ultimo_mes) : "—"),
       h("td", { "data-rotulo": "Última coleta" }, f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"),
       h("td", { "data-rotulo": "Situação" }, etiqueta(f), f.situacao !== "em_dia" && f.texto ? h("small", { class: "tabela-gov__obs" }, motivo(f)) : null));
-    const tabela = (nome, lista) => h("table", { class: "tabela-atualizacao" },
+    const tabela = (nome, lista, ancora) => h("table", { class: "tabela-atualizacao" },
       h("caption", { class: "visualmente-oculto" }, nome),
       h("thead", null, h("tr", null, h("th", null, "Fonte"), h("th", null, "Dados até"), h("th", null, "Última coleta"), h("th", null, "Situação"))),
-      h("tbody", null, lista.map(linha)));
+      h("tbody", null, lista.map((f) => linha(f, ancora))));
     const fora = fontes.filter((f) => f.situacao !== "em_dia");
     return h("section", { class: "bloco", id: "atualizacao", "aria-labelledby": "t-atualizacao" },
       h("p", { class: "rotulo" }, "Transparência do site"),
@@ -4149,10 +4175,11 @@
       h("p", { class: "lide" }, "Cada órgão publica os dados no seu ritmo. Aqui está, fonte por fonte, até que mês vão os números do site e quando foram lidos pela última vez."),
       h("div", { class: "estatisticas" }, ordem.filter((s) => conta[s]).map((s) => estatistica(sit[s], String(conta[s]), conta[s] === 1 ? "fonte" : "fontes"))),
       h("p", { class: "discreto pequeno" }, [quando ? `Lista refeita em ${quando}.` : null, fechado ? `O último mês fechado é ${fechado}.` : null].filter(Boolean).join(" ")),
+      blocoRodada(SIT),
       fora.length ? [h("h2", { class: "h3" }, "Fontes que não estão em dia"), h("p", { class: "discreto" }, "Cada uma também aparece no grupo dela, mais abaixo."), tabela("Fontes que não estão em dia", fora)] : null,
       (SIT.grupos || []).map((g) => {
         const lista = fontes.filter((f) => f.grupo === g.id);
-        return lista.length ? [h("h2", { class: "h3" }, `${g.nome} (${lista.length})`), tabela(g.nome, lista)] : null;
+        return lista.length ? [h("h2", { class: "h3" }, `${g.nome} (${lista.length})`), tabela(g.nome, lista, true)] : null; // a linha com id só nos grupos (na lista dos que não estão em dia, a fonte se repete)
       }),
       h("h2", { class: "h3" }, "Como ler esta página"),
       h("ul", { class: "lista" },

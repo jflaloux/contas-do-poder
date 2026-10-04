@@ -75,6 +75,11 @@ const simularReservas = (chaves, comRecife) => (caminho) => {
   }
   return null;
 };
+// "O que mudou nesta rodada" (situacao.json, chave "rodada"): o arquivo real ainda não tem rodada anterior (o bloco não aparece), então o teste
+// põe uma de mentira na resposta do arquivo, com fontes de verdade (os nomes saem do próprio arquivo)
+const FONTES_SIT = (lerDados("situacao.json") || { fontes: [] }).fontes || [];
+const reEsc = (t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const simularRodada = (rodada) => (caminho) => { if (caminho !== "/dados/situacao.json") return null; const s = lerDados("situacao.json"); s.rodada = rodada; return JSON.stringify(s); };
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -194,7 +199,21 @@ const PAGINAS = [
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10]] },
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1]] },
   { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1]] },
-  { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]] },
+  { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]], semPagina: [/O que mudou nesta rodada/] },
+  // com rodada anterior: o texto neutro, os nomes das fontes como links para a linha da lista, e nada de "problema" para quem só tem atraso da fonte
+  { nome: "atualizacao-rodada", url: "/atualizacao", ter: [["#rodada li", 3], ["#rodada a[href^='#fonte-']", 3]],
+    simular: FONTES_SIT.length > 4 ? simularRodada({ semana: "2026-10-06", anterior: "2026-09-29", quebrou: [FONTES_SIT[1].id, FONTES_SIT[2].id], voltou: [FONTES_SIT[3].id], continua: [] }) : null,
+    pagina: FONTES_SIT.length > 4 ? [/Rodada de 06\/10\/2026, comparada com a de 29\/09\/2026:/, /2 fontes passaram a ter problema \(/, new RegExp(`${reEsc(FONTES_SIT[1].nome)} e ${reEsc(FONTES_SIT[2].nome)}`),
+      /1 voltou \(/, /nenhuma continua com problema/, /O atraso da própria fonte e as fontes congeladas não contam/] : [],
+    depois: `(async () => { const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const links = [...document.querySelectorAll("#rodada a[href^='#fonte-']")];
+      for (const a of links) if (!document.getElementById(a.getAttribute("href").slice(1))) f.push("o link " + a.getAttribute("href") + " não leva a nenhuma linha da lista");
+      const ids = [...document.querySelectorAll("[id^='fonte-']")].map((e) => e.id); if (new Set(ids).size !== ids.length) f.push("ids de fonte repetidos na página");
+      if (links[0]) { links[0].click(); await esp(700); const alvo = document.getElementById(links[0].getAttribute("href").slice(1)), b = alvo && alvo.getBoundingClientRect();
+        if (!alvo || b.bottom < 0 || b.top > innerHeight) f.push("o link da rodada não levou até a linha da fonte"); if (location.pathname !== "/atualizacao") f.push("o link da rodada saiu da página"); }
+      return f; })()` },
+  { nome: "atualizacao-rodada-sem-mudanca", url: "/atualizacao", simular: simularRodada({ semana: "2026-10-06", anterior: "2026-09-29", quebrou: [], voltou: [], continua: [] }),
+    pagina: [/Rodada de 06\/10\/2026: nenhuma mudança desde a de 29\/09\/2026\./], semPagina: [/passaram a ter problema/] },
   { nome: "endereco-inexistente", url: "/pagina-que-nao-existe" },
 ].filter((p) => p.url);
 

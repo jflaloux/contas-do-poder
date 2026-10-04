@@ -1072,6 +1072,9 @@ pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere;
 .tabela-atualizacao th:first-child, .tabela-atualizacao td:first-child { width: 40%; }
 .tabela-atualizacao td:nth-child(2), .tabela-atualizacao td:nth-child(3) { white-space: nowrap; }
 .tabela-atualizacao .tabela-gov__obs { margin-top: 4px; }
+.tabela-atualizacao tr:target { background: var(--accent-soft); }
+.rodada { display: grid; gap: 8px; }
+.rodada .lista { margin: 0; }
 .tabela-atualizacao td:nth-child(4) .tabela-gov__obs { max-width: 30em; }
 @media (max-width: 640px) {
   .tabela-atualizacao, .tabela-atualizacao tbody, .tabela-atualizacao tr, .tabela-atualizacao td { display: block; }
