@@ -131,7 +131,7 @@
    "vereadores": "sim pelo cargo (sem nome)",
    "despesas": "empenhos, liquidações e pagamentos com credor (CPF/CNPJ), contratos",
    "formato": "API REST JSON (OpenAPI)",
-   "barreiras": "token declarado, mas não exigido em 01/10/2026",
+   "barreiras": "token declarado, mas não exigido em 01/10/2026; o robots.txt da API proíbe tudo (Disallow: /, conferido em 03/10/2026): ler exige uma exceção (remuneração de agente público, LAI)",
    "exterior": true,
    "potencial_folha": "médio",
    "potencial_despesas": "alto",
