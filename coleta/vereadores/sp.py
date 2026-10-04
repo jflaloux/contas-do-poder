@@ -379,6 +379,39 @@ CFG = {
 }
 
 
+def vigencias(por_mes):
+    """{AAAAMM: valor} -> [[desde AAAAMM, valor]]: os meses seguidos com o mesmo valor juntos; uma mudança de um mês só
+    (no último mês, ou entre dois meses com o mesmo valor) é crédito parcial e fica com o valor de antes."""
+    meses = sorted(por_mes)
+    trechos = []
+    for am in meses:
+        if trechos and abs(trechos[-1][2] - por_mes[am]) < 0.01:
+            trechos[-1][1] = am
+        else:
+            trechos.append([am, am, por_mes[am]])
+    limpos = []
+    for i, t in enumerate(trechos):
+        um_mes = t[0] == t[1]
+        ultimo = i == len(trechos) - 1
+        entre_iguais = 0 < i < len(trechos) - 1 and abs(trechos[i - 1][2] - trechos[i + 1][2]) < 0.01
+        if limpos and um_mes and (ultimo or entre_iguais):
+            continue
+        if limpos and abs(limpos[-1][1] - t[2]) < 0.01:
+            continue
+        limpos.append([t[0], round(t[2], 2)])
+    return limpos
+
+
+def valor_por_ano(vigencia, anos):
+    """{ano: o valor em vigor no último mês do ano que está na vigência (ou no começo do ano seguinte)}."""
+    saida = {}
+    for a in anos:
+        em_vigor = [v for desde, v in vigencia if desde <= a * 100 + 12]
+        if em_vigor:
+            saida[a] = em_vigor[-1]
+    return saida
+
+
 def montar(tipos):
     """Lê o que está em dados/municipios/sp/ e devolve (meta, pessoas) pelo formato comum."""
     from . import comum
@@ -401,10 +434,14 @@ def montar(tipos):
     atuais = gab[gab.fim == ""].groupby("gabinete").codigo.last().to_dict()
     cargos = pd.DataFrame([{"codigo": atuais[g], "cargo": _cargo(c), "pessoas": int(n)} for g, c, n in zip(eq.gabinete, eq.cargo, eq.pessoas) if g in atuais])
     cfg = dict(CFG, ultimo_mes=ate, equipe_em=eq.data.iloc[0] if len(eq) else "")
-    # a verba de cada mês: o crédito mensal mais comum do ano na fonte (não a média do ano, que cai quando o último mês
-    # ainda está creditado só em parte: em set/2026 a fonte tinha metade do crédito, e a média dava R$ 34.017,71)
+    # o limite da verba por mês, por vigência: o crédito mais comum entre os vereadores em cada mês (não a média do ano,
+    # que cai quando o último mês ainda está creditado só em parte, nem o mais comum do ano, que esconde um reajuste no
+    # meio do ano). Uma mudança que dura um mês só, no último mês ou entre dois meses iguais, é crédito parcial e não
+    # conta. verba_vigencia: [[desde AAAAMM, valor]]; verba_mes: o valor em vigor no último mês de cada ano
     creditos = verba[(verba.movimento == "credito") & (verba.valor > 0) & (verba.ano * 100 + verba.mes <= ate)]
-    cfg["verba_mes"] = {str(int(a)): round(float(g.valor.round(2).mode().max()), 2) for a, g in creditos.groupby("ano")}
+    cfg["verba_vigencia"] = vigencias({int(a) * 100 + int(m): float(g.valor.round(2).mode().max())
+                                       for (a, m), g in creditos.groupby(["ano", "mes"])})
+    cfg["verba_mes"] = {str(a): v for a, v in valor_por_ano(cfg["verba_vigencia"], sorted({int(a) for a in creditos.ano})).items()}
     ver2 = pd.DataFrame({"codigo": ver.codigo, "nome": ver.nome, "nome_civil": ver.nome_civil.where(ver.nome_civil != "", ver.nome_cmsp),
                          "partido": ver.partido, "genero": ver.genero, "eleito": ver.eleito, "pagina": ver.pagina})
     mand = pd.DataFrame({"codigo": gab.codigo, "inicio": gab.inicio, "fim": gab.fim, "gabinete": gab.gabinete})
