@@ -3235,7 +3235,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,2,28877,Combustível e lubrificante,Auto Posto Vale Verde Ltda.,02337456000177,635885,2025-02-23,323.77,323.77
 2025,2,28877,Combustível e lubrificante,Auto Posto Pedra Azul Ltda.,04465715000170,207311,2025-02-26,155.98,155.98
 2025,2,28877,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,3004157077,2025-01-27,362.05,351.03
-2025,2,28877,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,30004157770,2025-02-27,423.82,415.82
+2025,2,28877,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,,2025-02-27,423.82,415.82
 2025,2,28877,Locação de imóvel e despesas a ele concernentes,Trevisan Empreendimentos e Participações Ltda,23901652000100,00028,2025-02-28,5000.0,5000.0
 2025,2,28877,Locação e fretamento de veículos,Estrela Logística Ltda.,04309564000161,001792,2025-02-28,2400.0,2400.0
 2025,2,28877,Locação e fretamento de veículos,Estrela Logística Ltda.,04309564000161,002975,2025-02-28,4190.0,4190.0
@@ -9092,7 +9092,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,5,26149,"Passagens, hospedagem e alimentação",Transnorte S/A,18472288000162,,2025-05-09,228.52,180.01
 2025,5,26149,"Passagens, hospedagem e alimentação",Epr Via Mineira S/A,55231969000165,SMPUHUL346J2,2025-05-14,38.1,38.1
 2025,5,26149,"Passagens, hospedagem e alimentação",Transleila Transportes e Serviços Ltda.,25412677000320,202500000002458,2025-05-15,180.0,180.0
-2025,5,26149,"Passagens, hospedagem e alimentação",Transnorte S/A,18472288000162,14227246628,2025-05-16,223.45,223.45
+2025,5,26149,"Passagens, hospedagem e alimentação",Transnorte S/A,18472288000162,,2025-05-16,223.45,223.45
 2025,5,26149,"Passagens, hospedagem e alimentação",Autopista Fernao Dias S/A,09326342000170,M1TJKC242L80,2025-05-17,12.0,12.0
 2025,5,26149,"Passagens, hospedagem e alimentação",Pomar Comércio de Alimentos Ltda.,02800052000178,133328,2025-05-26,149.5,149.5
 2025,5,26149,Promoção e participação em eventos,Organização Comercial Roselanche Ltda.,18960914000160,400031,2025-04-25,140.85,140.85
@@ -21958,7 +21958,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,11,4458,Combustível e lubrificante,Rodo Posto Marfim Ltda.,23090628000120,1450484,2025-11-30,243.41,243.41
 2025,11,4458,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024135,2025-11-30,11000.0,11000.0
 2025,11,4458,"Passagens, hospedagem e alimentação",Alan Batista Pires,23000379000135,58,2025-11-07,280.0,280.0
-2025,11,4458,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,70547645600,2025-11-09,387.18,387.18
+2025,11,4458,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,,2025-11-09,387.18,387.18
 2025,11,4458,"Passagens, hospedagem e alimentação",Center Minas Pallace Hotel Ltda.,04930176000101,2025/2327,2025-11-13,150.0,150.0
 2025,11,4458,"Passagens, hospedagem e alimentação",Hotel Lima Oliveira Ltda.,11973696000159,4641/2025,2025-11-14,230.0,230.0
 2025,11,4458,"Passagens, hospedagem e alimentação",Pousada Buganvilias Ltda.,08684622000198,2025/109,2025-11-15,250.0,250.0
@@ -22241,7 +22241,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,11,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1080429,2025-11-19,34.22,34.22
 2025,11,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1081439,2025-11-24,31.59,31.59
 2025,11,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1082473,2025-11-25,51.48,30.13
-2025,11,9673,"Serviços de consultoria, assessoria e pesquisa",Monteiro de Andrade Diniz Galuppo e Viana Advogados Associados,03580846000136,523.142.006-91,2025-11-05,7000.0,7000.0
+2025,11,9673,"Serviços de consultoria, assessoria e pesquisa",Monteiro de Andrade Diniz Galuppo e Viana Advogados Associados,03580846000136,,2025-11-05,7000.0,7000.0
 2025,11,10002,Combustível e lubrificante,Posto de Combustivel Rio Manso Ltda.,04213721000130,608138,2025-11-05,257.94,257.94
 2025,11,10002,Combustível e lubrificante,Rede Ornelas Petroleo Ltda.,51709591000101,80750,2025-11-07,262.78,262.78
 2025,11,10002,Combustível e lubrificante,Auto Posto Almenara Minas Ltda.,49086429000132,13376,2025-11-08,191.36,191.36
@@ -22912,7 +22912,7 @@ ano,mes,id,tipo,emitente,cnpj_cpf,documento,data,valor_despesa,valor
 2025,11,22561,Locação de imóvel e despesas a ele concernentes,Micron Internet Ltda.,07911265000190,5544,2025-11-01,139.9,139.9
 2025,11,22561,Locação de imóvel e despesas a ele concernentes,Energisa Minas Rio - Distribuidora de Energia S/A,19527639000158,013464175,2025-11-17,266.6,266.6
 2025,11,22561,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,016610590,2025-11-23,500.0,142.86
-2025,11,22561,Locação de imóvel e despesas a ele concernentes,Serviço Autonomo de Água e Esgoto,22050561000138,16807112025,2025-11-27,156.71,156.71
+2025,11,22561,Locação de imóvel e despesas a ele concernentes,Serviço Autonomo de Água e Esgoto,22050561000138,,2025-11-27,156.71,156.71
 2025,11,22561,Locação de imóvel e despesas a ele concernentes,Reinaldo Abreu de Souza,,11/2025,2025-11-30,4500.0,4500.0
 2025,11,22561,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005685,2025-11-28,3820.0,3820.0
 2025,11,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,64900,2025-11-28,4200.0,4200.0

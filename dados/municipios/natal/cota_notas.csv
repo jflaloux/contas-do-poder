@@ -3187,7 +3187,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,5,30,Robson Carvalho,29/05/2026,Locação de Veículo Automotor,PAVEL RENT CAR LTDA,42.908.733/0001-79,FATURA 290501,5500.0
 2026,5,30,Robson Carvalho,01/06/2026,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVICOS LTDA,26.917.355/0001-33,2,2700.0
 2026,5,77,Samanda Alves,09/06/2026,Locação de Veículo Automotor,J V FERREIRA-ME,17.104.197/0001-01,FL 001561,4500.0
-2026,5,77,Samanda Alves,09/06/2026,"Provedores de internet, telefonia fixa ou celular",STARLINK BRAZIL SERVICOS DE INTERNET LTDA,40.154.884/0001-53,ID DO IVA: 03442534496,576.0
+2026,5,77,Samanda Alves,09/06/2026,"Provedores de internet, telefonia fixa ou celular",STARLINK BRAZIL SERVICOS DE INTERNET LTDA,40.154.884/0001-53,ID DO IVA,576.0
 2026,5,77,Samanda Alves,08/06/2026,Locação de Equipamentos de Informática,S G M COPIADORAS COMERCIO E SERVICOS LTDA,06.224.460/0001-80,FL 63140,1500.0
 2026,5,77,Samanda Alves,08/06/2026,"Provedores de internet, telefonia fixa ou celular",Alares Internet,02.952.192/0001-61,001900000903733887008034823061,171.56
 2026,5,77,Samanda Alves,02/06/2026,Consultoria e Assessoria na Área de Comunicação,NAO ME KAHLO COMUNICACOES LTDA,39.254.019/0001-08,2600000000005,6000.0
