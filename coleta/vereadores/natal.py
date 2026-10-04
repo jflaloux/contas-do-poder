@@ -29,7 +29,9 @@ C = CACHE / "cmnat"
 REBAIXAR = 3
 CFG = {
     "cod": COD, "n": "Natal", "uf": "RN", "casa": "Câmara Municipal de Natal", "vagas": 29, "inicio": INICIO,
-    "subsidio": [[202501, 26000.0]],  # Lei Promulgada nº 761/2023, art. 2º (legislatura 2025-2028)
+    # Lei Promulgada nº 761/2023: R$ 26.000,00 (art. 2º), mas em jan/2025 até 75% do subsídio do deputado estadual
+    # (art. 6º, parágrafo único), que era R$ 33.006,39 (Lei estadual nº 11.315/2022): R$ 24.754,79
+    "subsidio": [[202501, 24754.79], [202502, 26000.0]],
     "verba_nome": "Cota para o Exercício da Atividade Parlamentar", "verba_mes": {"2025": 22000.0, "2026": 22000.0},
     "verba_regra": "Reembolso com nota fiscal.",
     "verba_notas": ["As notas entram no mês de referência da prestação de contas."],
