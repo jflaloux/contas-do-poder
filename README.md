@@ -648,6 +648,11 @@ mantido à mão, `dados/governadores/governadores.json`, montado estado por esta
 - `subsidio`: uma linha por valor (cargo `gov`, `vice` ou `sec`, mês em que passou a valer, valor bruto, norma,
   link e **confiança**: `lei`, `folha` = conferido na folha do Estado, `tabela` = tabela oficial de remuneração,
   `calculado` = conta nossa a partir da lei, `imprensa` = só a imprensa).
+  No site (`fonteImprensa` no `app.js`), valor com confiança `imprensa` mostra a fonte como "notícia (veículo); a norma,
+  Lei nº X/AAAA, não foi localizada", com o link da notícia, na página do governador (bloco "De onde vem o valor", nota
+  do vice e dos secretários e tabela do histórico). O veículo vem do endereço do link (`VEICULOS` no `app.js`; o que não
+  está lá aparece pelo endereço) e a norma, do campo `norma` ("Lei nº 2.799, de 30/12/2022" vira "Lei nº 2.799/2022").
+  Link de órgão público (`.gov.br`, `.leg.br`, `.jus.br`) não é notícia: fica o texto da fonte como está.
 - `ocupantes`: quem foi governador, vice ou governador em exercício desde 2023, com datas, partido e observações
   (em 2026, 11 governadores deixaram o cargo para disputar a eleição; o Rio e Roraima têm governadores interinos).
 - `folha`: se a folha nominal do Estado abriu para o nosso robô (`aberta`, `painel` Power BI, `token`, `bloqueada`,

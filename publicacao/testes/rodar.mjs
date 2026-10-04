@@ -84,6 +84,14 @@ const simularReservas = (chaves, comRecife) => (caminho) => {
 const FONTES_SIT = (lerDados("situacao.json") || { fontes: [] }).fontes || [];
 const reEsc = (t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const simularRodada = (rodada) => (caminho) => { if (caminho !== "/dados/situacao.json") return null; const s = lerDados("situacao.json"); s.rodada = rodada; return JSON.stringify(s); };
+// Valor de governador, vice ou secretário cuja origem é "imprensa" (governadores.json): a fonte aparece como notícia, com o nome do veículo e a norma
+// que ela cita ("não foi localizada"); se o link é de órgão público (.gov.br), não é notícia e o texto da fonte fica como está. O teste simula os dados
+// para não depender de o `dados` ainda ter ou não um caso assim.
+const simularImprensa = (muda) => (caminho) => { if (caminho !== "/dados/governadores.json") return null; const d = lerDados("governadores.json"); muda(d.e); return JSON.stringify(d); };
+const JORNAL_AP = "https://www.diariodoamapa.com.br/cadernos/politica/publicadas-leis-que-fixam-subsidios-de-deputados-estaduais-e-de-gestores-do-poder-executivo-a-partir-de-janeiro/";
+const IMPRENSA_AP = (es) => { const e = es.find((x) => x.uf === "AP"); e.vs = [18000, 202301, "imprensa", "Lei nº 2.799, de 30/12/2022", JORNAL_AP];
+  e.h = e.h.filter((x) => x[0] !== "sec").concat([["sec", 202301, 18000, "imprensa", "Lei nº 2.799, de 30/12/2022", JORNAL_AP]]);
+  e.vv = [29700, 202301, "imprensa", "valor informado pelo jornal", "https://jornal.exemplo.com.br/noticia"]; };
 // Bens declarados ao TSE (bens.json e bens-interior/<uf>.json): os arquivos só existem a partir de 26/10/2026, então o teste simula os dois (a
 // <meta name="dados-bens"> entra na página e o arquivo, na resposta do pedido), com pessoas e nomes de verdade dos arquivos do site. Os valores são de
 // mentira. O código da eleição e a região são do formato do DivulgaCandContas (conferido em 03/10/2026).
@@ -300,6 +308,23 @@ const PAGINAS = [
   { nome: "estado-rj-pelo-tribunal", url: "/governador/rj", ter: [["#governador .tj-mes", 1]],
     pagina: [/Recebe pelo Tribunal de Justiça, onde é desembargador/, /o governador em exercício não recebe esse valor/, /licença CC BY 4\.0/, /Folha até mar\/2026: a fonte parou de publicar/], semPagina: [/Ganha mais que/] },
   { nome: "estado-sp-sem-tribunal", url: "/governador/sp", semPagina: [/Recebe pelo Tribunal de Justiça/, /não recebe esse valor/] },
+  { nome: "governador-ap-fonte-imprensa", url: "/governador/ap", simular: simularImprensa(IMPRENSA_AP),
+    pagina: [/Secretário de Estado: notícia \(Diário do Amapá\); a norma, Lei nº 2\.799\/2022, não foi localizada\./, /Vice-governador: notícia \(jornal\.exemplo\.com\.br\); a norma não foi localizada\./, /Ver\sa\snotícia/, /R\$\s18\.000,00/],
+    semPagina: [/a norma, valor informado/, /a norma, Lei nº 2\.799, de 30\/12\/2022/],
+    depois: `(() => { const f = [], t = [...document.querySelectorAll("details.tabela")].map((d) => d.textContent).join(" ");
+      if (!/notícia \\(Diário do Amapá\\); a norma, Lei nº 2\\.799\\/2022, não foi localizada/.test(t)) f.push("a tabela dos secretários não traz a fonte como notícia");
+      const a = [...document.querySelectorAll("a")].filter((x) => /diariodoamapa\\.com\\.br/.test(x.href));
+      if (a.length < 2 || a.some((x) => x.target !== "_blank" || !/notícia/.test(x.textContent))) f.push("o link do jornal falta, não abre em outra aba ou não diz que é notícia");
+      return f; })()` },
+  // link de órgão público, mesmo marcado como imprensa: não vira "notícia"
+  { nome: "governador-mt-imprensa-com-link-oficial", url: "/governador/mt",
+    simular: simularImprensa((es) => { const e = es.find((x) => x.uf === "MT"); e.vv = [32353.46, 202501, "imprensa", "Lei nº 10.247/2014 fixa o MESMO subsídio para Governador e Vice (+ RGA)", "https://www.al.mt.gov.br/norma-juridica/lei-10247"]; }),
+    semPagina: [/notícia \(/, /não foi localizada/],
+    depois: `(() => (document.body.textContent.includes("notícia (") ? ["link do governo mostrado como notícia"] : []))()` },
+  // o valor do próprio governador, só pela imprensa: o bloco "De onde vem o valor" diz o mesmo
+  { nome: "governador-fonte-imprensa-do-governador", url: "/governador/sp",
+    simular: simularImprensa((es) => { const e = es.find((x) => x.uf === "SP"); e.v = [e.v[0], e.v[1], "imprensa", "Lei nº 1.234, de 05/03/2020", "https://jornal.exemplo.com.br/lei"]; }),
+    pagina: [/De onde vem o valor: Só pela imprensa/, /notícia \(jornal\.exemplo\.com\.br\); a norma, Lei nº 1\.234\/2020, não foi localizada\./, /Ver\sa\snotícia/] },
   { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },

@@ -3036,6 +3036,21 @@
   const govFem = (e) => !!e.gov.fem;
   const tituloGov = (e) => (e.gov.ex ? (govFem(e) ? "Governadora em exercício" : "Governador em exercício") : govFem(e) ? "Governadora" : "Governador");
   const seloConf = (c) => h("span", { class: `etiqueta conf conf--${c}`, title: CONF[c][1] }, CONF[c][0]);
+  // Valor com a origem "imprensa" (confianca nos dados): quem informa é uma notícia, e a norma que ela cita não foi localizada. A fonte
+  // diz isso com o nome do veículo (pelo endereço do link; o que não está em VEICULOS aparece pelo endereço) e a norma como a notícia a cita
+  // ("Lei nº 2.799, de 30/12/2022" vira "Lei nº 2.799/2022"). Se o link é de um órgão público (.gov.br, .leg.br, .jus.br...), não é notícia:
+  // devolve null e a página mostra o texto da fonte como está.
+  const VEICULOS = { "diariodoamapa.com.br": "Diário do Amapá" };
+  const fonteImprensa = (tipo, texto, url) => {
+    if (tipo !== "imprensa") return null;
+    let host = "";
+    try { host = new URL(url).hostname.replace(/^www\./, ""); } catch (e) { /* sem link válido */ }
+    if (!host || /\.(gov|leg|jus|mp|def|mil)\.br$/.test(host)) return null;
+    const t = String(texto || "").trim().replace(/[.;]+$/, "");
+    const m = /^(.*?\bn[ºo°]\s*[\d.]+)\s*(?:\/\s*(\d{4})|,\s*de\s+\d{1,2}\/\d{1,2}\/(\d{4}))/i.exec(t);
+    const norma = /\b(lei|decreto|resolução|emenda)\b/i.test(t) ? (m ? `${m[1]}/${m[2] || m[3]}` : t) : "";
+    return { texto: `notícia (${VEICULOS[host] || host}); ${norma ? `a norma, ${norma}, não foi localizada` : "a norma não foi localizada"}`, url };
+  };
   const partidoTxt = (o) => (o.pt ? ` (${o.pt})` : "");
   const rankingGov = (campo) => GOV.e.filter((e) => e[campo]).slice().sort((a, b) => b[campo][0] - a[campo][0] || a.uf.localeCompare(b.uf));
   const posGov = (e, campo = "v") => { const r = rankingGov(campo); return { pos: r.filter((x) => x[campo][0] > e[campo][0]).length + 1, n: r.length }; };
@@ -3197,9 +3212,13 @@
     const lado = (o) => o ? h("span", null, `${o.n}${partidoTxt(o)}`) : null;
     const hist = e.h.filter((x) => x[0] !== "sec");
     const sec = e.h.filter((x) => x[0] === "sec");
-    const linhaHist = (x) => h("tr", null,
-      h("td", null, fmtMes(x[1])), h("td", null, cargoTxt(x[0])), h("td", { class: "num" }, reaisC(x[2])), h("td", null, seloConf(x[3])),
-      h("td", { style: "white-space:normal;min-width:16rem" }, x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, "fonte\u00a0↗")));
+    const linhaHist = (x) => {
+      const fi = fonteImprensa(x[3], x[4], x[5]);
+      return h("tr", null,
+        h("td", null, fmtMes(x[1])), h("td", null, cargoTxt(x[0])), h("td", { class: "num" }, reaisC(x[2])), h("td", null, seloConf(x[3])),
+        h("td", { style: "white-space:normal;min-width:16rem" }, fi ? fi.texto : x[4], " ", h("a", { href: x[5], target: "_blank", rel: "noopener" }, fi ? "ver\u00a0a\u00a0notícia\u00a0↗" : "fonte\u00a0↗")));
+    };
+    const fonteGovV = fonteImprensa(e.v[2], e.v[3], e.v[4]);
     const foto = e.gov.fc ? notaCredito(e.gov.fc) : null;
     const caixaGovs = h("div", { class: "grafico" });
     graficoPontos(caixaGovs, e.uf, GOV.e.map((x) => ({ id: x.uf, n: x.gov.n, sub: x.uf, v: x.v[0], url: urlGov(x.uf) })), reais);
@@ -3225,7 +3244,7 @@
           e.recebe.bruto ? "Quem é servidor de carreira pode escolher entre o salário do cargo de origem e o subsídio do cargo político. O valor da folha já tem o desconto do teto." : "") : null,
         h("div", { class: "fonte-gov" },
           h("p", { style: "margin:0" }, h("strong", null, "De onde vem o valor: "), seloConf(e.v[2]), " ", CONF[e.v[2]][1]),
-          h("p", { class: "nota", style: "margin:0" }, e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, "Ver\u00a0a\u00a0fonte\u00a0↗"))),
+          h("p", { class: "nota", style: "margin:0" }, fonteGovV ? fonteGovV.texto : e.v[3], ". ", h("a", { href: e.v[4], target: "_blank", rel: "noopener" }, fonteGovV ? "Ver\u00a0a\u00a0notícia\u00a0↗" : "Ver\u00a0a\u00a0fonte\u00a0↗"))),
         h("h2", { class: "h3" }, `Comparado com os outros governadores`),
         h("p", { class: "destaque", style: "margin:0" }, p.pos === 1 ? `É o maior salário de governador do país${e.v[0] >= 46366 ? ", igual ao teto do funcionalismo (o salário de ministro do STF)" : ""}. A mediana dos 27 estados é ${reais(med)}.`
           : p.pos === p.n ? `É o menor salário de governador do país. A mediana dos 27 estados é ${reais(med)}.`
@@ -3240,6 +3259,11 @@
           e.vs ? estatistica("Secretário de Estado", reaisC(e.vs[0]), `por mês, desde ${fmtMes(e.vs[1])}`) : null) : null,
         !e.vv ? h("p", { style: "margin:0" }, e.vice ? ["Vice: ", linkPessoa(e.vice, `${e.vice.n}${partidoTxt(e.vice)}`), ". Não achamos o valor do salário do cargo."] : "O cargo de vice está vago hoje.") : null,
         e.vv || e.vs ? h("p", { class: "nota", style: "margin:0" }, "A fonte de cada valor está em \"O salário ao longo do tempo\", abaixo.") : null,
+        // valor que só uma notícia informa: a fonte aparece aqui, sem precisar abrir a tabela dos secretários
+        ...[[e.vv, e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador"], [e.vs, "Secretário de Estado"]].map(([v, cargo]) => {
+          const f = v && fonteImprensa(v[2], v[3], v[4]);
+          return f ? h("p", { class: "nota", style: "margin:0" }, h("strong", null, `${cargo}: `), `${f.texto}. `, h("a", { href: f.url, target: "_blank", rel: "noopener" }, "Ver\u00a0a\u00a0notícia\u00a0↗")) : null;
+        }),
         blocoMensalGov(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },
