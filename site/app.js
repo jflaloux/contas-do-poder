@@ -394,18 +394,19 @@
     if (pos.pos === pos.n) return soBolso(p) ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
     return acimaDaMediana(pos) ? `${verbo} mais que ${pos.pct}% dos ${g}` : `${verbo} menos que ${pos.pctMais}% dos ${g}`;
   };
-  // a frase com a posição e, embaixo, a régua dos quatro quartos com o lugar da pessoa, do que menos custa ao que mais
-  // custa. A faixa ("entre os 25% que mais custam") fica só na régua (e no nome dela, para o leitor de tela): na frase,
-  // repetiria o que o desenho já mostra
-  function blocoPosicao(p, k, pos) {
+  // a posição em uma faixa, sem caixa: "212º de 554 · custa mais que 61% dos deputados em 2025" e, embaixo, a régua dos quatro quartos com o
+  // lugar da pessoa, do que menos custa ao que mais custa. A faixa ("entre os 25% que mais custam") fica só na régua (e no nome dela, para o
+  // leitor de tela): na frase, repetiria o que o desenho já mostra
+  function faixaPosicao(p, k, pos) {
     const igual = empatado(pos);
     // no empate, a marca fica no meio do grupo dos empatados
     const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
     const quarto = Math.min(3, Math.floor(lugar / 25));
     const verbo = soBolso(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
     const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
-    return h("div", { class: "destaque destaque--posicao" },
-      h("p", { style: "margin:0" }, igual ? `${fraseposicao(p, pos)} ${nomePeriodo(k, false)}.` : `${fraseposicao(p, pos)} ${nomePeriodo(k, false)} (${pos.pos}º de ${pos.n}).`),
+    const frase = fraseposicao(p, pos), minus = frase.charAt(0).toLowerCase() + frase.slice(1);
+    return h("div", { class: "posicao-faixa" },
+      h("p", { class: "posicao-faixa__frase" }, igual ? `${frase} ${nomePeriodo(k, false)}.` : [h("strong", null, `${pos.pos}º de ${pos.n}`), ` · ${minus} ${nomePeriodo(k, false)}`]),
       h("div", { class: "regua", role: "img", "aria-label": `Posição entre os ${plural(pos.g || grupo(p))}: ${faixa}` },
         h("div", { class: "regua__trilho" }, [0, 1, 2, 3].map((i) => h("span", { class: `regua__quarto${i === quarto ? " regua__quarto--eu" : ""}` })),
           h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
@@ -1603,22 +1604,10 @@
     const recebe = soBolso(p), smT = sm(emSalariosMinimos(p, k, "t"));
     // a barra dividida (bolso e gastos) e, embaixo de cada pedaço, o valor dele (estilo.css: --parte)
     const parte = `${(r.tm > 0 ? (r.gm / r.tm) * 100 : 100).toFixed(1)}%`;
-    // Cada coisa junto do que descreve. O TOTAL (rótulo, número, "N salários mínimos por mês", o selo contra a mediana e o aviso do
-    // pagamento único) fica junto do número grande; a DIVISÃO (a barra e as duas partes, bolso e gastos) vem embaixo, na largura
-    // toda; a POSIÇÃO entre os colegas fica ao lado do total no computador (estilo.css, .conta__resumo--lado) e, no celular, no fim.
-    const total = h("div", { class: "conta__resumo-total" },
-      h("p", { class: "rotulo" }, `${rotuloValor(p)} ${nomePeriodo(k, false)}${comoG(p, k)}`),
-      h("p", { class: "resumo-valor" }, reais(r.tm)),
-      h("div", { class: "resumo-linha" },
-        h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
-        seloComp(r.tm, C.tm, `vs. mediana dos ${plural(C.g || grupo(p))}`)));
-    // ajuda de custo (paga de uma vez): fora desta média e da posição, com o valor e o que a média seria com ela. Vai dentro do quadro
-    // da posição quando ele existe (é dele que ela está fora) e, sem o quadro, embaixo do total
-    const nota = r.unico ? h("p", { class: "resumo-unico" }, r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
-      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
-      `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
-    const bloco = pos ? blocoPosicao(p, k, pos) : null;
-    if (nota) (bloco && pil ? bloco : total).append(nota);
+    // Cada coisa junto do que descreve (proposta B, escolhida em 03/10/2026). Em cima, o período. Depois, à esquerda no computador (a partir
+    // de 980 px), o NÚMERO e a DIVISÃO que o explica (a barra e as duas partes, bolso e gastos); à direita, separado por um fio, o CONTEXTO
+    // (os salários mínimos do total, o selo contra a mediana e a posição entre os colegas); no pé, na largura toda, a nota da ajuda de custo,
+    // ligada ao número por um asterisco. No celular, uma coluna só, nessa ordem.
     const origem = h("div", { class: "conta__resumo-origem" },
       h("div", { class: "resumo-divisao", style: `--parte:${recebe ? "100%" : parte}`, "aria-hidden": "true" },
         h("span", { class: "resumo-divisao__ganha" }), recebe ? null : h("span", { class: "resumo-divisao__custa" })),
@@ -1627,7 +1616,23 @@
         : h("ul", { class: "resumo-partes", style: `--parte:${parte}`, "aria-label": "De onde vem o custo" },
           h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, "para o bolso")),
           h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))));
-    return h("div", { class: `conta__resumo${pos && pil ? " conta__resumo--lado" : ""}` }, pil, total, origem, bloco ? h("div", { class: "conta__resumo-lado" }, bloco) : null);
+    // ajuda de custo (paga de uma vez): fora desta média e da posição, com o valor e o que a média seria com ela
+    const sinal = r.unico ? [h("sup", { class: "resumo-sinal", "aria-hidden": "true" }, "*"), h("span", { class: "visualmente-oculto" }, " (veja a nota ao final)")] : null;
+    const nota = r.unico ? h("p", { class: "conta__resumo-nota" }, h("span", { "aria-hidden": "true" }, "* "), r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
+      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
+      `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
+    return h("div", { class: "conta__resumo conta__resumo--duas" }, pil,
+      h("div", { class: "conta__resumo-numero" },
+        h("p", { class: "rotulo" }, `${rotuloValor(p)} ${nomePeriodo(k, false)}${comoG(p, k)}`),
+        h("p", { class: "resumo-valor" }, reais(r.tm), sinal),
+        origem),
+      h("div", { class: "conta__resumo-contexto" },
+        // com a posição, o grupo já está na frase dela ("... dos integrantes da Prefeitura de Fortaleza"): o rótulo e o selo ficam curtos
+        pos ? h("p", { class: "rotulo conta__resumo-rotulo" }, "Comparado com os colegas") : null,
+        h("div", { class: "resumo-linha" }, h("p", { class: "resumo-sm" }, `Equivale a ${smT} salários mínimos por mês`),
+          seloComp(r.tm, C.tm, pos ? "vs. mediana" : `vs. mediana dos ${plural(C.g || grupo(p))}`)),
+        pos ? faixaPosicao(p, k, pos) : null),
+      nota);
   }
   // a linha do pagamento único, na lista: o que é, quando caiu e por que fica fora do "por mês" e da comparação
   function textoUnico(p, k, r, v) {
@@ -1642,14 +1647,15 @@
     const jj = (p.k === "d" || p.k === "s") && p.j ? S.porId.get(p.j) : null; // deputado/senador que também foi ministro
     const trocar = (novo) => { evento("trocar_periodo", { periodo: novo === "leg" ? "mandato" : novo, casa: casaTxt(p) }); S.periodo = novo; S.rank.periodo = novo; trocarEndereco(urlPessoa(p, novo)); render(); };
     const card = h("article", { class: "cartao conta", id: "contracheque" });
-    add(card, h("div", { class: "conta__topo" },
+    // o link da fonte oficial fica na linha do cargo (e não solto no canto): "Página oficial", "Folha de pagamento", "Fonte do salário"
+    const oficial = otDe(p) ? h("a", { href: otDe(p).u, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Folha\u00a0do\u00a0tribunal\u00a0↗")
+      : p.o ? h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, p.k === "g" ? (leiG(p) ? "Fonte\u00a0do\u00a0salário\u00a0↗" : "Folha\u00a0de\u00a0pagamento\u00a0↗") : "Página\u00a0oficial\u00a0↗") : null;
+    add(card, h("div", { class: "conta__topo conta__topo--pessoa" },
       avatar(p, "g"),
       h("div", null,
         h("p", { class: "rotulo" }, { e: "Contracheque do cargo", j: "Contracheque dos dois cargos, somados", p: "Contracheque do cargo", g: "Contracheque do cargo", t: "Contracheque do cargo" }[p.k] || "Contracheque do mandato"),
         h("h1", { class: "conta__nome" }, p.n),
-        h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p))),
-      otDe(p) ? h("a", { href: otDe(p).u, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, "Folha\u00a0do\u00a0tribunal\u00a0↗")
-        : p.o ? h("a", { href: p.o, target: "_blank", rel: "noopener", class: "pequeno conta__oficial" }, p.k === "g" ? (leiG(p) ? "Fonte\u00a0do\u00a0salário\u00a0↗" : "Folha\u00a0de\u00a0pagamento\u00a0↗") : "Página\u00a0oficial\u00a0↗") : null),
+        h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p), oficial))),
       resumoTopo(p, k, r, C, pos, trocar));
     const lado = h("div", { class: "conta__lado" });
     if (r) {
@@ -4387,7 +4393,7 @@
   function previaPessoa(p) {
     const k = S.periodo || periodoPadrao(p), r = resumo(p, k), C = colegasDe(p, k);
     return h("article", { class: "cartao conta", id: "previa" },
-      h("div", { class: "conta__topo" }, avatar(p, "g"),
+      h("div", { class: "conta__topo conta__topo--pessoa" }, avatar(p, "g"),
         h("div", null, h("p", { class: "rotulo" }, "Contracheque"), h("h1", { class: "conta__nome" }, p.n),
           h("div", { class: "conta__sub" }, h("span", null, `${p.g} · ${partidoUF(p)}`), etiquetaCargo(p)))),
       resumoTopo(p, k, r, C, posicao(p, k), () => {}),

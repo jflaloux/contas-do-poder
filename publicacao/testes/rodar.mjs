@@ -115,8 +115,8 @@ const PAGINAS = [
   // menu das seções do deputado não cabe: tem de ficar numa linha só, rolando para o lado, com o aviso de que há mais.
   { nome: "deputado-ajuda-de-custo-tiago-dimas", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 900,
     contem: [/Fora desta média: ajuda de custo de R\$ 46\.366, paga de uma vez em set\/2025\. Contando com ela, seriam R\$ [\d.]+ por mês/, /Pago de uma vez, fora da média por mês/i,
-      /somaria R\$ 9\.273 por mês, bem mais do que pesaria em quem teve os 12 meses do ano/, /\((?!(?:[1-9]|10)º)\d+º de \d+\)/],
-    semContem: [/\(9º de \d+\)/],
+      /somaria R\$ 9\.273 por mês, bem mais do que pesaria em quem teve os 12 meses do ano/, /(?<![0-9])(?!(?:[1-9]|10)º de )[0-9]+º de [0-9]+ · /],
+    semContem: [/(?<![0-9])9º de [0-9]+ · /],
     depois: `(() => {
       const f = [], proibidos = ["André Abdon", "Professora Marcivania", "Rafael Fera", "Fatima Pelaes", "Fabiano Cazeca", "Elmano Férrer", "Tiago Dimas"];
       const topo = document.querySelector("#ranking .rank-lista");
@@ -126,11 +126,15 @@ const PAGINAS = [
       if (subiu.length) f.push("entre os maiores custos por mês só por causa da ajuda de custo da posse: " + subiu.join(", "));
       return f;
     })()` },
-  // topo escuro no computador de 1080 px: o quadro da posição ao lado do total, com a ajuda de custo dentro dele; sem o quadro (2 meses), o aviso fica junto do total
+  // topo escuro no computador de 1080 px: duas colunas (número e divisão à esquerda, contexto à direita) e a nota da ajuda de custo no pé; sem a posição (2 meses), o contexto só tem os salários mínimos
   { nome: "deputado-topo-1080", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 1080,
-    contem: [/\d+ salários mínimos por mês\s+\S*\d+%\s+vs\. mediana dos deputados/, /Fora desta média: ajuda de custo de R\$ 46\.366/] },
+    contem: [/Equivale a \d+ salários mínimos por mês\s+\S*\d+%\s+vs\. mediana R\$ [0-9.]+/, /Comparado com os colegas/i, /Fora desta média: ajuda de custo de R\$ 46\.366/] },
+  // larguras-limite do topo escuro (980 px é onde viram duas colunas; 1080 px é a do menu das seções): cada tipo de pessoa
+  ...[["senador", "sen-", 980], ["ministro", "exe-", 980], ["governador", "gov-", 980], ["judiciario-pessoa", "jud-", 980], ["vereador-capital", "ver-", 1080], ["prefeitura", "pre-", 1080], ["deputado-estadual", "est-", 1080]]
+    .map(([nome, prefixo, largura]) => ({ nome: `${nome}-topo-${largura}`, url: primeiro(prefixo), largura })),
+  { nome: "deputado-topo-980", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 980, contem: [/Equivale a \d+ salários mínimos por mês/, /\d+º de \d+ · /] },
   { nome: "deputado-ajuda-de-custo-andre-abdon", url: ENDERECOS["dep-178831"] ? `/${ENDERECOS["dep-178831"]}` : null,
-    contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /\(1º de \d+\)/] },
+    contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /(?<![0-9])1º de [0-9]+ · /] },
   // 2 meses de mandato: fora do ranking (mínimo de 3 meses), com a ajuda de custo à parte e sem posição
   { nome: "deputado-ajuda-de-custo-elmano-ferrer", url: ENDERECOS["dep-234406"] ? `/${ENDERECOS["dep-234406"]}` : null,
     contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /Custa mais que \d+% dos deputados/] },
@@ -306,14 +310,21 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
         textoPagina: (document.querySelector("#app") || {}).innerText || "", textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
-        // o retângulo escuro do topo: cada coisa junto do que descreve e sem canto vazio (ver resumoTopo, no app.js)
+        // o retângulo escuro do topo (proposta B, ver resumoTopo no app.js): o número e a divisão que o explica; o contexto (salários mínimos,
+        // selo, posição); a nota no pé, ligada ao número por um asterisco; "Página oficial" na linha do cargo; sem canto vazio
         topo: (() => { const c = document.querySelector("#contracheque .conta__resumo"); if (!c || !c.querySelector(".resumo-valor")) return null;
-          const total = c.querySelector(".conta__resumo-total"), origem = c.querySelector(".conta__resumo-origem"), lado = c.querySelector(".conta__resumo-lado"), valor = c.querySelector(".resumo-valor"), unico = c.querySelector(".resumo-unico");
-          const R = (e) => e.getBoundingClientRect(), duas = !!lado && getComputedStyle(c).gridTemplateAreas !== "none";
-          return { totalOk: !!total && total.contains(valor) && !!total.querySelector(".resumo-sm") && !!total.querySelector(".resumo-linha"),
-            origemSoDivisao: !!origem && !origem.querySelector(".resumo-sm, .selo-comp, .resumo-unico, .resumo-valor"), ordem: !!origem && !!(total.compareDocumentPosition(origem) & Node.DOCUMENT_POSITION_FOLLOWING),
-            unicoNoLugar: !unico || (lado ? lado.contains(unico) : total.contains(unico)), duas,
-            topoLado: duas ? Math.round(R(lado).top - R(total).top) : 0, baseLado: duas ? Math.round(R(lado).bottom - R(total).bottom) : 0, sobrepoe: duas && R(valor).right > R(lado).left + 1,
+          const R = (e) => e.getBoundingClientRect(), num = c.querySelector(".conta__resumo-numero"), ctx = c.querySelector(".conta__resumo-contexto"), origem = c.querySelector(".conta__resumo-origem"),
+            valor = c.querySelector(".resumo-valor"), nota = c.querySelector(".conta__resumo-nota"), oficial = document.querySelector("#contracheque .conta__oficial");
+          const duas = !!num && !!ctx && getComputedStyle(c).gridTemplateAreas !== "none";
+          const ultimo = (e) => { const f = [...e.children].filter((x) => x.getBoundingClientRect().height); return f.length ? R(f[f.length - 1]).bottom : R(e).top; };
+          return { numeroOk: !!num && num.contains(valor) && !!origem && num.contains(origem) && !!origem.querySelector(".resumo-divisao"),
+            contextoOk: !!ctx && !!ctx.querySelector(".resumo-sm") && /salários mínimos por mês/.test(ctx.querySelector(".resumo-sm").textContent),
+            origemSoDivisao: !!origem && !origem.querySelector(".resumo-sm, .selo-comp, .posicao-faixa, .conta__resumo-nota, .resumo-valor"),
+            ordem: !!num && !!ctx && !!(num.compareDocumentPosition(ctx) & Node.DOCUMENT_POSITION_FOLLOWING) && (!nota || !!(ctx.compareDocumentPosition(nota) & Node.DOCUMENT_POSITION_FOLLOWING)),
+            sinalOk: !nota || !!valor.querySelector(".resumo-sinal"), semNotaSemSinal: !!nota || !valor.querySelector(".resumo-sinal"),
+            oficialNaLinha: !oficial || !!oficial.closest(".conta__sub"), duas,
+            topoCtx: duas ? Math.round(R(ctx).top - R(num).top) : 0, sobraCtx: duas ? Math.round(ultimo(ctx) - ultimo(num)) : 0, sobrepoe: duas && R(valor).right > R(ctx).left + 1,
+            fioEsq: duas ? R(ctx).left >= R(num).right : true, notaNoPe: !nota || !duas || R(nota).top >= Math.max(R(num).bottom, R(ctx).bottom) - 1,
             sobraH: [...c.querySelectorAll("*")].filter((e) => e.getBoundingClientRect().width && (R(e).right > R(c).right + 1 || R(e).left < R(c).left - 1)).length }; })(),
         // a lista das seções: uma linha só (os botões com o mesmo topo); se não cabe, rola e a caixa avisa onde há mais (data-mais)
         menu: (() => { const nav = document.querySelector("#secoes"), bs = nav ? [...nav.querySelectorAll("button")] : []; if (!bs.length) return null;
@@ -334,12 +345,18 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     (pg.semContem || []).forEach((re) => { if (re.test(m.textoContracheque)) falhas.push(`o contracheque não podia ter ${re}`); });
     if (m.topo) {
-      if (!m.topo.totalOk) falhas.push("no topo escuro, o número, os salários mínimos e o selo têm de estar juntos (conta__resumo-total)");
-      if (!m.topo.origemSoDivisao) falhas.push("no topo escuro, a divisão bolso e gastos não pode levar o que é do total (salários mínimos, selo, aviso)");
-      if (!m.topo.ordem) falhas.push("no topo escuro, a divisão bolso e gastos tem de vir depois do total");
-      if (!m.topo.unicoNoLugar) falhas.push("o aviso do pagamento único tem de ficar no quadro da posição (ou, sem ele, junto do total)");
-      if (m.topo.duas && (Math.abs(m.topo.topoLado) > 2 || Math.abs(m.topo.baseLado) > 2)) falhas.push(`o quadro da posição não tem a altura do total (topo ${m.topo.topoLado}px, base ${m.topo.baseLado}px): canto vazio`);
-      if (m.topo.sobrepoe) falhas.push("o número grande passa por cima do quadro da posição");
+      if (!m.topo.numeroOk) falhas.push("no topo escuro, o número e a divisão bolso/gastos têm de estar juntos (conta__resumo-numero)");
+      if (!m.topo.contextoOk) falhas.push('no topo escuro, o contexto tem de trazer "Equivale a N salários mínimos por mês" (conta__resumo-contexto)');
+      if (!m.topo.origemSoDivisao) falhas.push("no topo escuro, a divisão bolso e gastos não pode levar o que é do contexto (salários mínimos, selo, posição, nota)");
+      if (!m.topo.ordem) falhas.push("no topo escuro, a ordem tem de ser número, contexto e, por último, a nota");
+      if (!m.topo.sinalOk) falhas.push("a nota do topo não está ligada ao número por um asterisco");
+      if (!m.topo.semNotaSemSinal) falhas.push("há um asterisco no número do topo sem nota");
+      if (!m.topo.oficialNaLinha) falhas.push('o link "Página oficial" tem de ficar na linha do cargo (conta__sub)');
+      if (m.topo.duas && Math.abs(m.topo.topoCtx) > 2) falhas.push(`no computador, o contexto não começa na altura do número (${m.topo.topoCtx}px)`);
+      if (m.topo.duas && !m.topo.fioEsq) falhas.push("no computador, o contexto tem de ficar à direita do número");
+      if (m.topo.duas && m.topo.sobraCtx > 40) falhas.push(`no computador, o contexto passa ${m.topo.sobraCtx}px do fim do número: canto vazio embaixo do número`);
+      if (m.topo.sobrepoe) falhas.push("o número grande passa por cima do contexto");
+      if (!m.topo.notaNoPe) falhas.push("a nota do topo tem de ficar no pé, abaixo do número e do contexto");
       if (m.topo.sobraH) falhas.push(`${m.topo.sobraH} elementos do topo escuro passam da borda`);
     }
     if (m.menu) {

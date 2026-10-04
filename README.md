@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 51 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 61 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1020,17 +1020,20 @@ nada ao Google Fonts). Mudou um arquivo de letra? Mude também o nome, por causa
 `site/estilo.css` (variáveis no começo do arquivo); o ícone (`site/favicon.svg`) e a prévia do link (`site/og.png`)
 seguem o mesmo desenho.
 
-O retângulo escuro do topo do contracheque (`resumoTopo`, no `app.js`; `.conta__resumo`, no `estilo.css`; a prévia pronta do
-`gerar.mjs` segue a mesma ordem) agrupa cada coisa junto do que descreve: o **total** (rótulo, número grande, "N salários
-mínimos por mês" e o selo "vs. mediana", que são do total e ficam logo abaixo do número); a **divisão** (a barra e as duas
-partes, bolso e gastos, na largura toda, embaixo); e a **posição** entre os colegas (o quadro com a frase e a régua, que leva
-dentro o aviso da ajuda de custo paga de uma vez). A partir de 980 px o quadro da posição fica ao lado do total, com a mesma
-altura (sem canto vazio); de 640 a 979 px vira uma faixa larga embaixo da divisão; no celular, uma coluna na ordem total,
-divisão, posição. Sem o quadro (grupo com menos de 5 pessoas, CNJ e TSE, quem só tem o valor da lei), o aviso da ajuda de custo
-fica junto do total. Os "salários mínimos por mês" do total (no retângulo) e "Vai para o bolso: N salários mínimos por mês" (na
-coluna da esquerda do cartão claro) são duas contas diferentes, cada uma com o seu rótulo. O teste confere, em toda página de
-pessoa, que o total fica junto, que a divisão não leva nada do total, a ordem, que o quadro tem a altura do total e que o
-número não passa por cima do quadro.
+O retângulo escuro do topo do contracheque (`resumoTopo`, no `app.js`; `.conta__resumo--duas`, no `estilo.css`; a prévia pronta do
+`gerar.mjs` segue a mesma estrutura) foi desenhado em 03/10/2026, entre duas propostas que o Jean-François viu em captura (uma coluna
+e duas colunas; ficou a de duas). Ordem: a identidade (foto, nome e, na mesma linha do cargo, a etiqueta "No cargo" e o link da fonte
+oficial, "Página oficial", "Folha de pagamento" ou "Fonte do salário"); o período; o **número** (custo por mês, ou "recebe por mês")
+com a **divisão** que o explica logo embaixo (a barra e as duas partes, bolso e gastos, que são a legenda da barra); o **contexto**
+("Comparado com os colegas", "Equivale a N salários mínimos por mês", o selo "vs. mediana" e a posição em faixa, "212º de 554 ·
+custa mais que 61% dos deputados em 2025", com a régua); e, no pé, a **nota** da ajuda de custo paga de uma vez, ligada ao número por
+um asterisco. A partir de 980 px, o número e a divisão ficam à esquerda e o contexto à direita, separado por um fio; abaixo disso (e no
+celular), uma coluna só, nessa ordem. Sem a posição (CNJ, TSE, grupos com menos de 5, quem só tem o valor da lei), o contexto traz só os
+salários mínimos (e o selo, se houver mediana). Os "salários mínimos por mês" do topo (do custo total) e "Vai para o bolso: N salários
+mínimos por mês" (coluna da esquerda do cartão claro) são duas contas, cada uma com o seu rótulo. O teste confere, em toda página de
+pessoa, que o número e a divisão estão juntos, que a divisão não leva nada do contexto, a ordem, o asterisco, o link na linha do cargo e,
+no computador, que o contexto começa na altura do número, fica à direita, não deixa canto vazio embaixo do número, e que a nota fica no
+pé; as larguras 980 e 1080 px têm página própria no teste (cada tipo de pessoa em uma delas).
 
 A lista das seções da página (Contracheque, Mês a mês, Equipe, Gastos, Presença e projetos, Ranking...; `navSecoes`, no
 `app.js`, `#secoes-caixa` no `index.html`) fica numa linha só em qualquer largura. Os rótulos são curtos para caber na coluna

@@ -347,15 +347,21 @@ function previaPessoa(p, k, r, texto) {
         + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
     const gk = p.k === "g" ? (p.gp || {})[k] : undefined;
     const como = gk === undefined ? "" : gk === null ? ` (como vice e como ${CARGO_G.gov[p.fem].toLowerCase()})` : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
-    // a mesma ordem do app.js (resumoTopo): o total (com o salário mínimo) junto do número e, embaixo, a divisão bolso e gastos
-    resumo = `<div class="conta__resumo"><div class="conta__resumo-total"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
-      + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${salMin ? `<div class="resumo-linha"><p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p></div>` : ""}</div>`
-      + `<div class="conta__resumo-origem">${partes}</div></div>`;
+    // a mesma estrutura do app.js (resumoTopo, proposta B): à esquerda o número e a divisão que o explica; à direita (a partir de 980 px) o
+    // contexto, que aqui só tem os salários mínimos (a mediana e a posição vêm com os dados do app)
+    resumo = `<div class="conta__resumo conta__resumo--duas"><div class="conta__resumo-numero"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
+      + `<p class="resumo-valor">${esc(reais(gm + cm))}</p><div class="conta__resumo-origem">${partes}</div></div>`
+      + `<div class="conta__resumo-contexto">${salMin ? `<div class="resumo-linha"><p class="resumo-sm">Equivale a ${smTxt((gm + cm) / salMin)} salários mínimos por mês</p></div>` : ""}</div></div>`;
   }
+  // o link da fonte oficial, na linha do cargo (como no app.js)
+  const otE = !r && p.k === "g" ? (GOV.e.find((x) => x.uf === p.uf) || {}) : {};
+  const otP = otE.ot && otE.oc && otE.oc[otE.ot.i] && otE.oc[otE.ot.i].id === p.id ? otE.ot : null;
+  const oficial = otP ? ["Folha do tribunal", otP.u] : p.o ? [p.k === "g" ? (p.fonte === "lei" ? "Fonte do salário" : "Folha de pagamento") : "Página oficial", p.o] : null;
   return `<article class="cartao conta" id="previa" data-id="${esc(p.id)}" data-k="${esc(k || "")}">`
-    + `<div class="conta__topo"><span class="avatar avatar--g" aria-hidden="true">${esc(iniciais(p.n))}${foto}</span>`
+    + `<div class="conta__topo conta__topo--pessoa"><span class="avatar avatar--g" aria-hidden="true">${esc(iniciais(p.n))}${foto}</span>`
     + `<div><p class="rotulo">${rotulo}</p><h1 class="conta__nome">${esc(p.n)}</h1><div class="conta__sub"><span>${esc(`${p.g} · ${partidoUF(p)}`)}</span>`
-    + `${p.x ? '<span class="etiqueta">No cargo</span>' : '<span class="etiqueta etiqueta--fora">Fora do cargo hoje</span>'}</div></div></div>`
+    + `${p.x ? '<span class="etiqueta">No cargo</span>' : '<span class="etiqueta etiqueta--fora">Fora do cargo hoje</span>'}`
+    + `${oficial ? `<a href="${esc(oficial[1])}" target="_blank" rel="noopener" class="pequeno conta__oficial">${esc(oficial[0]).replace(/ /g, "&nbsp;")}&nbsp;↗</a>` : ""}</div></div></div>`
     + resumo
     + `<p class="conta__texto">${esc(texto)}</p>`
     + '<p class="carregando" role="status">Carregando os números oficiais…</p></article>';

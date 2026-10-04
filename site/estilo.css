@@ -680,11 +680,10 @@ input[type="search"] { line-height: 1.5; }
 .regua__marca { position: absolute; top: 50%; width: 18px; height: 18px; border-radius: 50%; background: var(--ganha); border: 4px solid var(--paper);
   transform: translate(-50%, -50%); box-shadow: 0 0 0 1px var(--ganha); }
 /* a posição, num bloco sobre a faixa escura do contracheque */
-.conta__resumo .destaque { background: var(--banda-2); border: 0; color: var(--banda-ink); border-radius: 14px; padding: 18px 20px; font-family: var(--display); font-size: 1.45rem; font-weight: 600; line-height: 1.15; }
 .conta__resumo .regua { max-width: none; margin-top: 14px; font-family: var(--body); }
 .conta__resumo .regua__quarto { background: var(--banda-linha); }
 .conta__resumo .regua__quarto--eu { background: var(--banda-ganha); opacity: .6; }
-.conta__resumo .regua__marca { background: var(--banda-ganha); border-color: var(--banda-2); box-shadow: none; }
+.conta__resumo .regua__marca { background: var(--banda-ganha); border-color: var(--banda); box-shadow: none; }
 .conta__resumo .regua__legenda { color: var(--banda-ink-3); font-size: .8rem; }
 .regua__legenda { display: flex; justify-content: space-between; font-size: .75rem; font-weight: 500; color: var(--ink-2); }
 
@@ -728,14 +727,17 @@ input[type="search"] { line-height: 1.5; }
   .interna .secoes { min-height: 44px; }
 }
 
-/* topo do contracheque: o período; o total (número grande, salários mínimos e selo, tudo do total); de onde vem (a barra e as duas
-   partes, bolso e gastos); e a posição entre os colegas. Cada coisa fica junto do que descreve. No computador (a partir de
-   980 px, quando o número cabe ao lado do quadro), a posição fica ao lado do total e a divisão ocupa a largura toda embaixo;
-   no resto, uma coluna só, na ordem: período, total, divisão, posição. */
-.conta__resumo { display: grid; gap: 18px 40px; padding: 8px 22px 26px; grid-template-columns: minmax(0, 1fr); }
+/* topo do contracheque: o período; o número e a divisão que o explica (a barra e as duas partes, bolso e gastos); o contexto (salários
+   mínimos, selo contra a mediana e a posição); e, no pé, a nota. No computador (a partir de 980 px) o número e a divisão ficam à esquerda
+   e o contexto à direita, separado por um fio; no resto, uma coluna só, nessa ordem. */
+.conta__resumo { display: grid; gap: 22px 40px; padding: 8px 22px 26px; grid-template-columns: minmax(0, 1fr); align-items: start; }
 .conta__resumo-principal { display: grid; gap: 14px; align-content: start; } /* período sem pagamentos: só as pílulas e a frase */
-.conta__resumo-total { display: grid; gap: 6px; align-content: start; }
+.conta__resumo-numero { display: grid; gap: 6px; align-content: start; }
+.conta__resumo-contexto { display: grid; gap: 16px; align-content: start; }
+.conta__resumo-nota { margin: 0; font-size: .82rem; line-height: 1.45; color: var(--banda-ink-3); border-top: 1px solid var(--banda-linha); padding-top: 12px; }
+.conta__resumo-nota strong { color: var(--banda-ink-2); font-weight: 600; }
 .resumo-valor { font-family: var(--display); font-size: clamp(3.6rem, 17vw, 6.6rem); font-weight: 700; line-height: .92; letter-spacing: -.005em; white-space: nowrap; }
+.resumo-valor sup { font-size: .34em; vertical-align: top; position: relative; top: .2em; margin-left: .08em; color: var(--banda-ink-3); font-weight: 600; }
 /* de onde vem o custo: a barra dividida e, embaixo de cada pedaço, o valor (a coluna acompanha o pedaço, entre 38% e 62%) */
 .resumo-divisao { display: flex; gap: 4px; height: 14px; margin-top: 10px; }
 .resumo-divisao span { border-radius: 3px; min-width: 4px; }
@@ -753,31 +755,30 @@ input[type="search"] { line-height: 1.5; }
 .resumo-sm { color: var(--banda-ink-2); font-size: 1rem; }
 .conta__resumo-origem { display: grid; align-content: start; }
 .conta__resumo-origem .resumo-divisao { margin-top: 0; }
-.resumo-unico { color: var(--banda-ink-2); font-size: .9rem; line-height: 1.4; margin-top: 8px; max-width: 36em; font-family: var(--body); font-weight: 400; }
-.destaque--posicao .resumo-unico { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--banda-linha); max-width: none; }
-.resumo-unico strong { color: var(--banda-ink); font-weight: 600; white-space: nowrap; }
 /* período sem pagamentos (ou governador que não aparece na folha): texto claro sobre o fundo escuro do topo */
 .conta__resumo-principal > .discreto { color: var(--banda-ink-2); }
 .conta__resumo .item__detalhe { color: var(--banda-ink-2); margin-top: 2px; }
 .conta__resumo .selo-comp { color: var(--banda-ink); }
-.conta__resumo-lado { display: grid; gap: 10px; align-content: start; }
-/* de 640 a 979 px: uma coluna, e o quadro da posição vira uma faixa larga (a frase de um lado, a régua do outro) */
-@media (min-width: 640px) and (max-width: 979px) {
-  .conta__resumo .destaque--posicao { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; align-items: center; }
-  .conta__resumo .destaque--posicao .regua { margin-top: 0; }
-}
+/* a posição em faixa, sem caixa */
+.posicao-faixa { display: grid; gap: 4px; }
+.posicao-faixa__frase { margin: 0; font-size: 1.05rem; line-height: 1.3; color: var(--banda-ink-2); }
+.posicao-faixa__frase strong { color: var(--banda-ink); font-family: var(--display); font-size: 1.5rem; font-weight: 600; letter-spacing: .01em; }
+.conta__resumo--duas .conta__resumo-origem .resumo-divisao { margin-top: 14px; }
+.conta__resumo--duas .resumo-linha { margin-top: 0; }
+.conta__resumo-rotulo { margin: 0; }
 @media (min-width: 980px) {
-  .conta__resumo--lado { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); grid-template-areas: "pil pil" "tot lado" "ori ori"; }
-  .conta__resumo--lado > .pilulas { grid-area: pil; }
-  .conta__resumo--lado > .conta__resumo-total { grid-area: tot; align-content: start; }
-  .conta__resumo--lado > .conta__resumo-origem { grid-area: ori; }
-  /* o quadro tem a altura do total, ao lado dele: a frase em cima e a régua embaixo, sem canto vazio */
-  .conta__resumo--lado > .conta__resumo-lado { grid-area: lado; display: flex; }
-  .conta__resumo--lado .destaque--posicao { flex: 1; display: flex; flex-direction: column; }
-  .conta__resumo--lado .destaque--posicao .regua { margin-top: auto; padding-top: 12px; }
+  .conta__resumo--duas { grid-template-columns: minmax(0, 1fr) minmax(0, 400px); grid-template-areas: "per per" "num ctx" "nota nota"; }
+  .conta__resumo--duas > .pilulas { grid-area: per; }
+  .conta__resumo--duas > .conta__resumo-numero { grid-area: num; }
+  .conta__resumo--duas > .conta__resumo-contexto { grid-area: ctx; border-left: 1px solid var(--banda-linha); padding-left: 32px; align-self: stretch; }
+  .conta__resumo--duas > .conta__resumo-nota { grid-area: nota; }
+  .conta__resumo--duas .resumo-valor { font-size: clamp(3.6rem, 17vw, 5.8rem); }
 }
 .conta__oficial { white-space: nowrap; }
-@media (max-width: 760px) { .conta__oficial { grid-column: 2; justify-self: start; } }
+.conta__topo--pessoa { grid-template-columns: auto minmax(0, 1fr); }
+.conta > .conta__topo--pessoa .conta__sub a { color: var(--banda-ink-2); text-decoration: underline; text-underline-offset: 3px; font-size: .9rem; }
+.conta > .conta__topo--pessoa .conta__sub a:hover { color: var(--banda-ink); }
+@media (max-width: 760px) { .conta__topo:not(.conta__topo--pessoa) .conta__oficial { grid-column: 2; justify-self: start; } }
 
 /* lista de pessoas em linhas (governo federal, prefeituras) */
 .pessoas-lista { display: grid; gap: 2px 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
