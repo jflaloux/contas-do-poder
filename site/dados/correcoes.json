@@ -3,6 +3,17 @@
   "c": [
     {
       "data": "2026-10-04",
+      "titulo": "Ajuda de custo: o mês do pagamento na página de senador de Flávio Dino",
+      "texto": [
+        "Na página de senador de Flávio Dino, a nota da ajuda de custo dizia que o valor do mandato (R$ 44.009) tinha sido pago em fev/2023 e fev/2024. Esse valor é só o de fev/2024. A ajuda de custo de fev/2023 (R$ 39.293) foi paga quando ele era ministro e aparece na página que soma os dois cargos.",
+        "Os valores não mudaram; só o mês citado na nota."
+      ],
+      "paginas": [
+        "sen-4605"
+      ]
+    },
+    {
+      "data": "2026-10-04",
       "titulo": "Fornecedores pessoa física: mais números de CPF tirados",
       "texto": [
         "Na verba de gabinete de um deputado estadual de São Paulo, o nome de um fornecedor (microempreendedor individual) vinha com o número do CPF depois de um hífen, um caso que o filtro do dia 02/10 não pegava. O número foi tirado do nome; os valores não mudaram.",
