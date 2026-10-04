@@ -306,7 +306,7 @@ def exportar_site(hoje=None):
             # (eleicao[ano]), o SQ, o ano e a UE
             "link": LINK, "eleicao": {str(a): c for a, c in DIVULGA.items()}, "regiao": REGIOES}
     pessoas = {l["chave"]: reg(l) for l in linhas if "|" not in l["chave"]}
-    gravar_json(SITE / "bens.json", {"meta": meta, "p": pessoas}, final="\n")
+    gravar_json(SITE / "bens.json", {"meta": meta, "p": pessoas}, final="\n", pessoas=("p",))
     interior = defaultdict(lambda: defaultdict(dict))
     for l in linhas:
         if "|" in l["chave"]:

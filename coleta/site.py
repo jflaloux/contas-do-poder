@@ -443,7 +443,7 @@ def executar():
         },
         "p": saida,
     }
-    if gravar_json(SAIDA, dados):  # um tipo de político que sumiu ou perdeu muita gente: fica o arquivo anterior
+    if gravar_json(SAIDA, dados, grupo="k"):  # um tipo de político que sumiu ou perdeu muita gente: fica o anterior
         log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e6:.1f} MB, {len(saida)} políticos)")
     _municipios()
     enderecos.executar()  # o endereço de cada página (contasdopoder.com/nome), depois de todos os arquivos prontos

@@ -363,94 +363,159 @@ def _aaaamm(serie):
     return out
 
 
-def _ler_tabela(caminho, sep=None):
+def _ler_tabela(caminho, sep=None, nrows=None):
+    """O CSV como texto (dtype=str). Arquivo que não se lê (corrompido, gzip quebrado, codificação) -> _Ilegivel."""
+    import gzip
+    import zlib
+
     import pandas as pd
-    if sep is None:
-        import gzip
-        abrir = gzip.open if str(caminho).endswith(".gz") else open
-        with abrir(caminho, "rt", encoding="utf-8", errors="replace") as f:
-            cab = f.readline()
-        sep = ";" if cab.count(";") > cab.count(",") else ","
     try:
+        if sep is None:
+            abrir = gzip.open if str(caminho).endswith(".gz") else open
+            with abrir(caminho, "rt", encoding="utf-8", errors="replace") as f:
+                cab = f.readline()
+            sep = ";" if cab.count(";") > cab.count(",") else ","
         return pd.read_csv(caminho, sep=sep, dtype=str, keep_default_na=False, low_memory=False, encoding="utf-8",
-                           encoding_errors="replace")
+                           encoding_errors="replace", nrows=nrows)
     except pd.errors.EmptyDataError:
         return pd.DataFrame()
-    except (pd.errors.ParserError, UnicodeError, OSError) as e:
-        raise _Ilegivel(str(e)) from e
+    except (pd.errors.ParserError, UnicodeError, OSError, EOFError, zlib.error) as e:
+        raise _Ilegivel(f"{type(e).__name__}: {e}") from e
 
 
 def _colunas_mes(df, comuns, mes=None):
+    """O mês (AAAAMM) de cada linha, pela coluna dada ou pelas de costume ("ano" + "mes", "ano_mes", "aaaamm"...). O
+    formato é normalizado antes ("08", "8" e "2026-08" na coluna "mes" dão o mesmo mês)."""
+    import pandas as pd
     cols = {c.lower(): c for c in df.columns if c in comuns}
     if mes:
         return _aaaamm(df[mes]) if mes in df.columns else None
     if "ano" in cols and "mes" in cols:
-        import pandas as pd
-        return pd.to_numeric(df[cols["ano"]], errors="coerce") * 100 + pd.to_numeric(df[cols["mes"]], errors="coerce")
+        ano = pd.to_numeric(df[cols["ano"]], errors="coerce")
+        m = pd.to_numeric(df[cols["mes"]], errors="coerce")
+        saida = ano * 100 + m.where(m.between(1, 12))
+        completo = _aaaamm(df[cols["mes"]])  # "2026-08" na coluna do mês
+        return saida.fillna(completo)
     for c in (*COLUNAS_MES, "data"):
         if c in cols:
             return _aaaamm(df[cols[c]])
     return None
 
 
-def _cobertura_csv(df, comuns, mes=None, entidade=None, retrato=False):
-    """{grupo (mês ou "arquivo"): (entidades, linhas)}."""
+# colunas que não são valor (códigos, datas, números de documento): fora da conferência de valores
+_NAO_VALOR = re.compile(r"^(ano|mes|ano_mes|aaaamm|competencia|mes_referencia|data\w*|inicio|fim|lido_em|visto_em|"
+                        r"pedido_em|cod\w*|id|id_\w+|\w+_id|matricula|cnpj\w*|cpf\w*|documento|numero|num_\w+|nota|nf|"
+                        r"processo|empenho|docid|orcamento|token|carteira|sq\w*|ue|referencia|lote|folha|tp|parcial|"
+                        r"x|achados|registros|linhas\w*|pessoas)$", re.I)
+
+
+def _colunas_valor(df):
+    """Colunas de valor: as que não são código nem data e têm número em pelo menos 80% das células preenchidas."""
+    import pandas as pd
+    saida = []
+    for c in df.columns:
+        if _NAO_VALOR.match(str(c)):
+            continue
+        s = df[c][df[c].astype(str).str.strip() != ""]
+        if len(s) and pd.to_numeric(s, errors="coerce").notna().mean() >= 0.8:
+            saida.append(c)
+    return saida
+
+
+def _cobertura_csv(df, comuns, mes=None, entidade=None, retrato=False, valores=None):
+    """{grupo (mês ou "arquivo"): (entidades, linhas, {coluna de valor: células com valor diferente de zero})}."""
+    import pandas as pd
     if not len(df):
         return {}
     ent = entidade if entidade in comuns else next((c for c in COLUNAS_ENTIDADE if c in comuns), None)
     meses = None if retrato else _colunas_mes(df, comuns, mes)
     chave = df[ent] if ent else df.astype(str).agg("|".join, axis=1)
-    if meses is None:
-        return {"arquivo": (int(chave.nunique()), len(df))}
-    g = chave.groupby(meses.fillna(0).astype(int))
+    grupo = pd.Series(0, index=df.index) if meses is None else meses.fillna(0).astype(int)
+    g = chave.groupby(grupo)
     n, t = g.nunique(), g.size()
-    return {int(k): (int(n[k]), int(t[k])) for k in n.index}
+    nz = {c: (pd.to_numeric(df[c], errors="coerce").fillna(0).abs() > 0.004).groupby(grupo).sum()
+          for c in (valores or []) if c in df.columns}
+    nome = (lambda k: "arquivo") if meses is None else int
+    return {nome(k): (int(n[k]), int(t[k]), {c: int(s.get(k, 0)) for c, s in nz.items()}) for k in n.index}
 
 
-def _cobertura_json(dados, grupo=None, chaves=None):
-    """{grupo: quantidade}: a lista "p" (e outras listas de objetos) por cidade, órgão, estado ou tipo; outras listas e
-    dicionários pelo tamanho; um dicionário com muitas chaves (ids, municípios), pelo número de chaves. chaves: só estas
-    chaves do primeiro nível contam (as outras podem encolher sem aviso)."""
+def _cheio(v):
+    return not (v is None or v == "" or v == [] or v == {} or (isinstance(v, (int, float)) and not isinstance(v, bool)
+                                                                and abs(v) < 0.004))
+
+
+def _cobertura_json(dados, grupo=None, chaves=None, pessoas=()):
+    """{grupo: (itens, {campo: itens com o campo preenchido})}. Uma lista de objetos ("p") se divide por cidade, órgão,
+    estado ou tipo (GRUPOS_JSON ou `grupo`); um dicionário de dicionários ou de listas (municípios em "m", cidades em
+    vereadores/<uf>.json), por chave: cada chave é um grupo; nos dicionários de pessoas (`pessoas`: os nomes, ou True
+    para o primeiro nível), que podem sair do cargo, conta o número de chaves. Os campos de cada objeto são conferidos
+    (valor que vira vazio ou zero em todos). A mesma estrutura vale para qualquer tamanho. chaves: só estas chaves do
+    primeiro nível contam."""
     out = {}
-    if chaves and isinstance(dados, dict):
-        dados = {k: v for k, v in dados.items() if k in chaves}
+
+    def campos(objs):
+        c = {}
+        for x in objs:
+            if isinstance(x, dict):
+                for k, v in x.items():
+                    c[k] = c.get(k, 0) + (1 if _cheio(v) else 0)
+        return c
 
     def lista(nome, v):
-        objetos = [x for x in v[:300] if isinstance(x, dict)]
+        objs = [x for x in v[:300] if isinstance(x, dict)]
         ch = None
-        if objetos and len(objetos) == len(v[:300]):
-            ch = grupo or next((g for g in GRUPOS_JSON if sum(g in x for x in objetos) >= 0.8 * len(objetos)), None)
+        if objs and len(objs) == len(v[:300]):
+            ch = grupo or next((g for g in GRUPOS_JSON if sum(g in x for x in objs) >= 0.8 * len(objs)), None)
         if ch:
+            por = {}
             for x in v:
-                k = f"{nome}/{ch}={x.get(ch)}" if nome else f"{ch}={x.get(ch)}"
-                out[k] = out.get(k, 0) + 1
+                por.setdefault(f"{nome}/{ch}={x.get(ch)}" if nome else f"{ch}={x.get(ch)}", []).append(x)
+            for k, xs in por.items():
+                out[k] = (len(xs), campos(xs))
         else:
-            out[nome or "lista"] = len(v)
+            out[nome or "lista"] = (len(v), campos(v))
+
+    def dicionario(nome, v, de_pessoas):
+        recipientes = [x for x in v.values() if isinstance(x, (dict, list))]
+        if de_pessoas or not v or len(recipientes) < 0.8 * len(v):
+            out[nome or "chaves"] = (len(v), campos(v.values()))
+            return
+        for k, x in v.items():
+            itens = (sum(1 for y in x.values() if _cheio(y)) if isinstance(x, dict) else len(x)) if isinstance(x, (dict, list)) \
+                else (1 if _cheio(x) else 0)
+            out[f"{nome}/{k}" if nome else str(k)] = (itens, campos(x) if isinstance(x, list) else {})
 
     if isinstance(dados, list):
         lista("", dados)
     elif isinstance(dados, dict):
-        itens = [(k, v) for k, v in dados.items() if k not in ("meta", "_sobre") and isinstance(v, (list, dict))]
-        if len(itens) > 50:
-            out["chaves"] = len(itens)
-        for k, v in itens if len(itens) <= 50 else []:
-            if isinstance(v, list):
-                lista(k, v)
-            else:
-                out[k] = len(v)
+        if chaves:
+            dados = {k: v for k, v in dados.items() if k in chaves}
+        topo = {k: v for k, v in dados.items() if k not in ("meta", "_sobre") and isinstance(v, (list, dict))}
+        if pessoas is True:
+            dicionario("", topo, True)
+        elif topo and all(isinstance(v, dict) for v in topo.values()) and len(topo) > 1 and \
+                not any(k in ("p", "m", "e", "antigos", "estados", "saidos", "fotos") for k in topo):
+            dicionario("", topo, False)  # o primeiro nível é feito de entidades (cidades em vereadores/<uf>.json)
+        else:
+            for k, v in topo.items():
+                if isinstance(v, list):
+                    lista(k, v)
+                else:
+                    dicionario(k, v, k in (pessoas or ()))
     return out
 
 
-def _cobertura(caminho, tipo, comuns=None, **opcoes):
+def _cobertura(caminho, tipo, comuns=None, valores=None, **opcoes):
     if tipo == "json":
         try:
             dados = json.loads(Path(caminho).read_text(encoding="utf-8"))
-        except (ValueError, UnicodeError) as e:
-            raise _Ilegivel(str(e)) from e
-        return {k: (v, v) for k, v in _cobertura_json(dados, opcoes.get("grupo"), opcoes.get("chaves")).items()}
+        except (ValueError, UnicodeError, OSError) as e:
+            raise _Ilegivel(f"{type(e).__name__}: {e}") from e
+        return {k: (n, n, c) for k, (n, c) in
+                _cobertura_json(dados, opcoes.get("grupo"), opcoes.get("chaves"), opcoes.get("pessoas", ())).items()}
     df = _ler_tabela(caminho, opcoes.get("sep"))
     return _cobertura_csv(df, df.columns if comuns is None else comuns, opcoes.get("mes"), opcoes.get("entidade"),
-                          opcoes.get("retrato", False))
+                          opcoes.get("retrato", False), valores)
 
 
 def _nome_grupo(g):
@@ -460,39 +525,54 @@ def _nome_grupo(g):
 
 
 def perdas_de_cobertura(antes, depois, tipo="csv", **opcoes):
-    """Compara o arquivo anterior com o novo. Devolve [(grupo, antes, depois, unidade)] (vazia: pode trocar).
-    opcoes: mes (coluna do mês), entidade (coluna da entidade), retrato (compara sem o mês), grupo (JSON), sep (CSV)."""
-    comuns = None
+    """Compara o arquivo anterior com o novo. Devolve [(grupo, antes, depois, unidade)] (vazia: pode trocar). O novo
+    que não se lê sobe como _Ilegivel (recusa), qualquer que seja o anterior; o anterior que não se lê não impede nada.
+    opcoes: mes (coluna do mês), entidade (coluna da entidade), retrato (compara sem o mês), sep (CSV); grupo, chaves e
+    pessoas (JSON, ver _cobertura_json)."""
+    comuns = valores = None
     if tipo == "csv":
+        novo = _ler_tabela(depois, opcoes.get("sep"))  # o novo primeiro: ilegível, recusa
         try:
-            ca = list(_ler_tabela(antes, opcoes.get("sep")).columns)
+            velho = _ler_tabela(antes, opcoes.get("sep"))
         except _Ilegivel:
             return []  # o anterior não se lê: não há com o que comparar
-        cn = list(_ler_tabela(depois, opcoes.get("sep")).columns)
-        comuns = [c for c in cn if c in ca]
-    try:
-        a = _cobertura(antes, tipo, comuns, **opcoes)
-    except _Ilegivel:
-        return []
-    d = _cobertura(depois, tipo, comuns, **opcoes)  # o novo ilegível: _Ilegivel sobe (recusa)
+        comuns = [c for c in novo.columns if c in velho.columns]
+        valores = [c for c in _colunas_valor(velho) if c in comuns]
+        d = _cobertura_csv(novo, comuns, opcoes.get("mes"), opcoes.get("entidade"), opcoes.get("retrato", False), valores)
+        a = _cobertura_csv(velho, comuns, opcoes.get("mes"), opcoes.get("entidade"), opcoes.get("retrato", False), valores)
+    else:
+        d = _cobertura(depois, tipo, **opcoes)
+        try:
+            a = _cobertura(antes, tipo, **opcoes)
+        except _Ilegivel:
+            return []
     unidade = "linhas" if tipo == "csv" else "itens"
     if a and not d:
-        return [("arquivo", sum(t for _, t in a.values()), 0, unidade)]
+        return [("arquivo", sum(x[1] for x in a.values()), 0, unidade)]
     if tipo == "csv" and not opcoes.get("retrato") and len(a) == 1 and len(d) == 1 and set(a) != set(d) \
             and all(isinstance(k, int) and k for k in (*a, *d)) and max(d) > max(a):
         # retrato do último mês (só um mês antes e depois): compara sem o mês
-        sem_mes = {k: v for k, v in opcoes.items() if k != "retrato"}
-        a = _cobertura(antes, tipo, comuns, retrato=True, **sem_mes)
-        d = _cobertura(depois, tipo, comuns, retrato=True, **sem_mes)
+        a = _cobertura_csv(velho, comuns, None, opcoes.get("entidade"), True, valores)
+        d = _cobertura_csv(novo, comuns, None, opcoes.get("entidade"), True, valores)
     perdas = []
-    for g, (ea, la) in sorted(a.items(), key=lambda x: str(x[0])):
-        ed, ld = d.get(g, (0, 0))
+    for g, (ea, la, va) in sorted(a.items(), key=lambda x: str(x[0])):
+        ed, ld, vd = d.get(g, (0, 0, {}))
         if la and not ld:
             perdas.append((g, la, 0, unidade))
         elif ea - ed >= MINIMO_ENTIDADES and ed < (1 - PERDA_ENTIDADES) * ea:
             perdas.append((g, ea, ed, "entidades" if tipo == "csv" else "itens"))
         elif la - ld >= MINIMO_LINHAS and ld < (1 - PERDA_LINHAS) * la:
             perdas.append((g, la, ld, "linhas"))
+        else:
+            # valores: a coluna (CSV) ou o campo (JSON) que tinha valor e ficou vazio ou zero (campo que deixou de
+            # existir em todos os objetos é mudança de formato, feita no código, e não entra)
+            for c, n in sorted(va.items()):
+                if c not in vd:
+                    continue
+                m = vd[c]
+                if (n >= MINIMO_ENTIDADES and m == 0) or (n - m >= MINIMO_LINHAS and m < (1 - PERDA_LINHAS) * n):
+                    perdas.append((g, n, m, f"com \"{c}\" preenchido"))
+                    break
     return perdas
 
 
@@ -545,41 +625,87 @@ def _anotar(rel, evento):
     arq.write_text(json.dumps(dict(sorted(_eventos.items())), ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
 
+def _preparar(caminho, escrever, motivo, tipo, opcoes):
+    """Grava o novo no temporário e compara com o anterior: {caminho, tmp, rel, perdas, motivo}."""
+    caminho = Path(caminho)
+    caminho.parent.mkdir(parents=True, exist_ok=True)
+    tipo = tipo or ("json" if caminho.suffix == ".json" else "csv")
+    p = {"caminho": caminho, "tmp": caminho.parent / f".novo.{caminho.name}", "rel": _rel(caminho), "motivo": motivo,
+         "perdas": []}
+    escrever(p["tmp"])
+    try:
+        if caminho.exists() and caminho.stat().st_size:
+            p["perdas"] = perdas_de_cobertura(caminho, p["tmp"], tipo, **opcoes)
+        elif tipo == "json":
+            _cobertura(p["tmp"], tipo, **opcoes)  # sem anterior, o novo ainda tem de se ler
+    except _Ilegivel as e:
+        p["perdas"] = [("ilegível", 0, 0, f"o novo arquivo não se lê ({str(e)[:80]})")]
+    return p
+
+
+def _recusar(p, junto=""):
+    from datetime import datetime
+    texto = _texto_perdas(p["perdas"]) + junto
+    log(f"  RECUSADO por perda de cobertura: {p['rel']}: {texto}. Fica o arquivo anterior.")
+    _recusas.append({"arquivo": p["rel"], "fonte": _fonte_atual, "perdas": p["perdas"], "texto": texto})
+    _anotar(p["rel"], {"estado": "recusado", "quando": datetime.now().isoformat(timespec="seconds"),
+                       "fonte": _fonte_atual, "texto": texto,
+                       "perdas": [[str(g), a, d, u] for g, a, d, u in p["perdas"][:20]]})
+
+
+def _trocar(p):
+    from datetime import datetime
+    if p["perdas"]:
+        log(f"  {p['rel']}: redução aceita ({p['motivo']}): {_texto_perdas(p['perdas'])}")
+    p["tmp"].replace(p["caminho"])
+    _anotar(p["rel"], {"estado": "aceito", "quando": datetime.now().isoformat(timespec="seconds"), "fonte": _fonte_atual})
+
+
 def gravar_com(caminho, escrever, *, motivo=None, tipo=None, **opcoes):
     """Grava um arquivo de dados com segurança: escrever(tmp) grava o novo num arquivo temporário ao lado; se não perde
     cobertura grande (ver acima) ou se `motivo` explica a redução, o novo troca o anterior. Devolve True se trocou; se
     recusou, o anterior fica, a recusa vai para o log, para a situação (e para a fonte em coleta) e a função devolve
     False, sem erro: a rodada segue. tipo: "csv" ou "json" (sem ele, pela extensão; .gz conta como csv)."""
-    from datetime import datetime
-    caminho = Path(caminho)
-    caminho.parent.mkdir(parents=True, exist_ok=True)
-    tipo = tipo or ("json" if caminho.suffix == ".json" else "csv")
-    tmp = caminho.parent / f".novo.{caminho.name}"
-    rel = _rel(caminho)
+    p = None
     try:
-        escrever(tmp)
-        perdas = []
-        if caminho.exists() and caminho.stat().st_size:
-            try:
-                perdas = perdas_de_cobertura(caminho, tmp, tipo, **opcoes)
-            except _Ilegivel as e:
-                perdas = [("ilegível", 0, 0, f"o novo arquivo não se lê ({str(e)[:80]})")]
-        agora = datetime.now().isoformat(timespec="seconds")
-        if perdas and not motivo:
-            texto = _texto_perdas(perdas)
-            log(f"  RECUSADO por perda de cobertura: {rel}: {texto}. Fica o arquivo anterior.")
-            _recusas.append({"arquivo": rel, "fonte": _fonte_atual, "perdas": perdas, "texto": texto})
-            _anotar(rel, {"estado": "recusado", "quando": agora, "fonte": _fonte_atual, "texto": texto,
-                          "perdas": [[str(g), a, d, u] for g, a, d, u in perdas[:20]]})
+        p = _preparar(caminho, escrever, motivo, tipo, opcoes)
+        if p["perdas"] and not motivo:
+            _recusar(p)
             return False
-        if perdas:
-            log(f"  {rel}: redução aceita ({motivo}): {_texto_perdas(perdas)}")
-        tmp.replace(caminho)
-        _anotar(rel, {"estado": "aceito", "quando": agora, "fonte": _fonte_atual})
+        _trocar(p)
         return True
     finally:
+        tmp = Path(caminho).parent / f".novo.{Path(caminho).name}"
         if tmp.exists():
             tmp.unlink()
+
+
+def gravar_varios(itens):
+    """Vários arquivos que andam juntos (os dados e o arquivo de controle que diz o que já foi lido): todos ou nenhum.
+    itens: [(DataFrame, caminho) ou (DataFrame, caminho, {argumentos do to_csv, motivo, mes, entidade, retrato})], com
+    o controle por último. Compara todos antes de trocar; se um for recusado, nenhum é trocado (devolve False)."""
+    prep = []
+    try:
+        for item in itens:
+            df, caminho, op = item[0], item[1], dict(item[2]) if len(item) > 2 else {}
+            motivo = op.pop("motivo", None)
+            comp = {k: op.pop(k) for k in ("mes", "entidade", "retrato") if k in op}
+            op.setdefault("index", False)
+            prep.append(_preparar(caminho, lambda tmp, df=df, op=op: df.to_csv(tmp, **op), motivo, "csv",
+                                  {**comp, "sep": op.get("sep")}))
+        ruins = [p for p in prep if p["perdas"] and not p["motivo"]]
+        if ruins:
+            outros = [p["rel"] for p in prep if p not in ruins]
+            for p in ruins:
+                _recusar(p, f" (e não foram trocados: {', '.join(outros)})" if outros else "")
+            return False
+        for p in prep:
+            _trocar(p)
+        return True
+    finally:
+        for p in prep:
+            if p["tmp"].exists():
+                p["tmp"].unlink()
 
 
 def gravar_csv(df, caminho, *, motivo=None, mes=None, entidade=None, retrato=False, **to_csv):

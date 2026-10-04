@@ -154,7 +154,7 @@ def _mes(ano, mes):
         _avisar_bloqueio()
         return None  # sem os jetons o mês fica incompleto: tenta de novo na próxima vez
     dados = {"ano": ano, "mes": mes, "pessoas": pessoas}
-    if not gravar_json(arq, dados, compacto=False, indent=1):  # vai para o Git: recusado, fica o anterior
+    if not gravar_json(arq, dados, compacto=False, indent=1, pessoas=("pessoas",)):  # vai para o Git: recusado, fica o anterior
         return ler_json(arq)
     return dados
 

@@ -23,7 +23,7 @@ from datetime import datetime
 import pandas as pd
 
 from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA, ULTIMO_MES
-from .util import gravar_csv, gravar_json, ler_json, log, normalizar_nome, salvar_json
+from .util import gravar_csv, gravar_json, ler_json, log, normalizar_nome
 
 SALARIO_MINIMO = {2023: 1320.00, 2024: 1412.00, 2025: 1518.00, 2026: 1621.00}
 
@@ -555,8 +555,10 @@ def executar():
                PROCESSADOS / "lancamentos.csv.gz")
     equipe = _equipe(ids)
     gravar_csv(equipe, PROCESSADOS / "equipe.csv")
-    gravar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe), compacto=False, indent=1)
-    salvar_json(PROCESSADOS / "metadados.json", {
+    gravar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe), compacto=False, indent=1, pessoas=True)
+    # metadados: as categorias, os grupos e as fontes não podem sumir; as pendências podem acabar
+    gravar_json(PROCESSADOS / "metadados.json", compacto=False, indent=1,
+                chaves=("categorias", "grupos", "fontes", "fontes_por_lancamento"), dados={
         "gerado_em": datetime.now().isoformat(timespec="seconds"),
         "legislatura": LEGISLATURA,
         "periodo": f"{INICIO_LEGISLATURA[1]:02d}/{INICIO_LEGISLATURA[0]} até hoje",

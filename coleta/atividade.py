@@ -507,7 +507,7 @@ def coletar():
                            "nacional, patrono, símbolo), institui prêmio, medalha ou diploma, reconhece utilidade pública "
                            "ou declara patrimônio ou manifestação cultural. Os demais projetos ficam em \"os demais\".",
     }
-    gravar_json(SITE, {"meta": meta, "p": pessoas}, final="\n")
+    gravar_json(SITE, {"meta": meta, "p": pessoas}, final="\n", pessoas=("p",))
     log(f"Atividade: {sum(1 for k in pessoas if k.startswith('dep-'))} deputados e {sum(1 for k in pessoas if k.startswith('sen-'))} "
         f"senadores em {SITE.relative_to(RAIZ)}")
     if _FALHAS:
