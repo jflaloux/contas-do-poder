@@ -347,8 +347,10 @@ function previaPessoa(p, k, r, texto) {
         + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
     const gk = p.k === "g" ? (p.gp || {})[k] : undefined;
     const como = gk === undefined ? "" : gk === null ? ` (como vice e como ${CARGO_G.gov[p.fem].toLowerCase()})` : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
-    resumo = `<div class="conta__resumo"><div class="conta__resumo-principal"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
-      + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${partes}${salMin ? `<p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p>` : ""}</div></div>`;
+    // a mesma ordem do app.js (resumoTopo): o total (com o salário mínimo) junto do número e, embaixo, a divisão bolso e gastos
+    resumo = `<div class="conta__resumo"><div class="conta__resumo-total"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
+      + `<p class="resumo-valor">${esc(reais(gm + cm))}</p>${salMin ? `<div class="resumo-linha"><p class="resumo-sm">${smTxt((gm + cm) / salMin)} salários mínimos por mês</p></div>` : ""}</div>`
+      + `<div class="conta__resumo-origem">${partes}</div></div>`;
   }
   return `<article class="cartao conta" id="previa" data-id="${esc(p.id)}" data-k="${esc(k || "")}">`
     + `<div class="conta__topo"><span class="avatar avatar--g" aria-hidden="true">${esc(iniciais(p.n))}${foto}</span>`

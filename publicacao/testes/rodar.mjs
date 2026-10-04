@@ -121,6 +121,9 @@ const PAGINAS = [
       if (subiu.length) f.push("entre os maiores custos por mês só por causa da ajuda de custo da posse: " + subiu.join(", "));
       return f;
     })()` },
+  // topo escuro no computador de 1080 px: o quadro da posição ao lado do total, com a ajuda de custo dentro dele; sem o quadro (2 meses), o aviso fica junto do total
+  { nome: "deputado-topo-1080", url: ENDERECOS["dep-143084"] ? `/${ENDERECOS["dep-143084"]}` : null, largura: 1080,
+    contem: [/\d+ salários mínimos por mês\s+\S*\d+%\s+vs\. mediana dos deputados/, /Fora desta média: ajuda de custo de R\$ 46\.366/] },
   { nome: "deputado-ajuda-de-custo-andre-abdon", url: ENDERECOS["dep-178831"] ? `/${ENDERECOS["dep-178831"]}` : null,
     contem: [/Fora desta média: ajuda de custo de R\$ 46\.366/, /Pago de uma vez, fora da média por mês/i], semContem: [/É o maior custo entre os deputados/, /\(1º de \d+\)/] },
   // 2 meses de mandato: fora do ranking (mínimo de 3 meses), com a ajuda de custo à parte e sem posição
@@ -270,6 +273,15 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
         contagens: ${JSON.stringify((pg.ter || []).map(([s]) => s))}.map((s) => document.querySelectorAll(s).length),
         textoCidade: [...document.querySelectorAll("#cidade, #prefeitura")].map((e) => e.innerText).join("\\n"),
         textoPagina: (document.querySelector("#app") || {}).innerText || "", textoContracheque: (document.querySelector("#contracheque") || {}).innerText || "", textoAtividade: (document.querySelector("#atividade") || {}).innerText || "",
+        // o retângulo escuro do topo: cada coisa junto do que descreve e sem canto vazio (ver resumoTopo, no app.js)
+        topo: (() => { const c = document.querySelector("#contracheque .conta__resumo"); if (!c || !c.querySelector(".resumo-valor")) return null;
+          const total = c.querySelector(".conta__resumo-total"), origem = c.querySelector(".conta__resumo-origem"), lado = c.querySelector(".conta__resumo-lado"), valor = c.querySelector(".resumo-valor"), unico = c.querySelector(".resumo-unico");
+          const R = (e) => e.getBoundingClientRect(), duas = !!lado && getComputedStyle(c).gridTemplateAreas !== "none";
+          return { totalOk: !!total && total.contains(valor) && !!total.querySelector(".resumo-sm") && !!total.querySelector(".resumo-linha"),
+            origemSoDivisao: !!origem && !origem.querySelector(".resumo-sm, .selo-comp, .resumo-unico, .resumo-valor"), ordem: !!origem && !!(total.compareDocumentPosition(origem) & Node.DOCUMENT_POSITION_FOLLOWING),
+            unicoNoLugar: !unico || (lado ? lado.contains(unico) : total.contains(unico)), duas,
+            topoLado: duas ? Math.round(R(lado).top - R(total).top) : 0, baseLado: duas ? Math.round(R(lado).bottom - R(total).bottom) : 0, sobrepoe: duas && R(valor).right > R(lado).left + 1,
+            sobraH: [...c.querySelectorAll("*")].filter((e) => e.getBoundingClientRect().width && (R(e).right > R(c).right + 1 || R(e).left < R(c).left - 1)).length }; })(),
         // a lista das seções: uma linha só (os botões com o mesmo topo); se não cabe, rola e a caixa avisa onde há mais (data-mais)
         menu: (() => { const nav = document.querySelector("#secoes"), bs = nav ? [...nav.querySelectorAll("button")] : []; if (!bs.length) return null;
           const caixa = nav.parentElement; return { linhas: new Set(bs.map((b) => Math.round(b.getBoundingClientRect().top))).size, rola: nav.scrollWidth > nav.clientWidth + 1, mais: caixa.dataset.mais || "", esq: nav.scrollLeft > 4 }; })() };
@@ -288,6 +300,15 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     (pg.semPagina || []).forEach((re) => { if (re.test(m.textoPagina)) falhas.push(`a página não podia ter ${re}`); });
     (pg.contem || []).forEach((re) => { if (!re.test(m.textoContracheque)) falhas.push(`o contracheque não tem ${re}`); });
     (pg.semContem || []).forEach((re) => { if (re.test(m.textoContracheque)) falhas.push(`o contracheque não podia ter ${re}`); });
+    if (m.topo) {
+      if (!m.topo.totalOk) falhas.push("no topo escuro, o número, os salários mínimos e o selo têm de estar juntos (conta__resumo-total)");
+      if (!m.topo.origemSoDivisao) falhas.push("no topo escuro, a divisão bolso e gastos não pode levar o que é do total (salários mínimos, selo, aviso)");
+      if (!m.topo.ordem) falhas.push("no topo escuro, a divisão bolso e gastos tem de vir depois do total");
+      if (!m.topo.unicoNoLugar) falhas.push("o aviso do pagamento único tem de ficar no quadro da posição (ou, sem ele, junto do total)");
+      if (m.topo.duas && (Math.abs(m.topo.topoLado) > 2 || Math.abs(m.topo.baseLado) > 2)) falhas.push(`o quadro da posição não tem a altura do total (topo ${m.topo.topoLado}px, base ${m.topo.baseLado}px): canto vazio`);
+      if (m.topo.sobrepoe) falhas.push("o número grande passa por cima do quadro da posição");
+      if (m.topo.sobraH) falhas.push(`${m.topo.sobraH} elementos do topo escuro passam da borda`);
+    }
     if (m.menu) {
       if (m.menu.linhas > 1) falhas.push(`o menu das seções ficou em ${m.menu.linhas} linhas (tem de ser uma só, com rolagem para o lado)`);
       if (m.menu.rola && !/dir/.test(m.menu.mais) && !m.menu.esq) falhas.push("o menu das seções rola para o lado mas não avisa que há mais (data-mais)");

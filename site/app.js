@@ -1583,31 +1583,37 @@
   }
   // o que importa na primeira tela do celular: o período, o custo por mês, de onde ele vem e a posição entre os colegas
   function resumoTopo(p, k, r, C, pos, trocar) {
-    const principal = h("div", { class: "conta__resumo-principal" },
-      periodos(p).length ? pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período") : null);
-    if (!r) return h("div", { class: "conta__resumo" }, add(principal, h("p", { class: "discreto" }, p.k === "g" && !periodos(p).length
+    const pil = periodos(p).length ? pilulas(periodos(p).map((x) => [x, nomePeriodo(x, true)]), k, trocar, "Período") : null;
+    if (!r) return h("div", { class: "conta__resumo" }, h("div", { class: "conta__resumo-principal" }, pil, h("p", { class: "discreto" }, p.k === "g" && !periodos(p).length
       ? `Nenhum pagamento na folha ${deUF(p.uf)} publicada até ${fmtMes(p.um)}.` : "Sem pagamentos registrados neste período.")));
     const recebe = soBolso(p), smT = sm(emSalariosMinimos(p, k, "t"));
     // a barra dividida (bolso e gastos) e, embaixo de cada pedaço, o valor dele (estilo.css: --parte)
     const parte = `${(r.tm > 0 ? (r.gm / r.tm) * 100 : 100).toFixed(1)}%`;
-    add(principal,
+    // Cada coisa junto do que descreve. O TOTAL (rótulo, número, "N salários mínimos por mês", o selo contra a mediana e o aviso do
+    // pagamento único) fica junto do número grande; a DIVISÃO (a barra e as duas partes, bolso e gastos) vem embaixo, na largura
+    // toda; a POSIÇÃO entre os colegas fica ao lado do total no computador (estilo.css, .conta__resumo--lado) e, no celular, no fim.
+    const total = h("div", { class: "conta__resumo-total" },
       h("p", { class: "rotulo" }, `${rotuloValor(p)} ${nomePeriodo(k, false)}${comoG(p, k)}`),
       h("p", { class: "resumo-valor" }, reais(r.tm)),
+      h("div", { class: "resumo-linha" },
+        h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
+        seloComp(r.tm, C.tm, `vs. mediana dos ${plural(C.g || grupo(p))}`)));
+    // ajuda de custo (paga de uma vez): fora desta média e da posição, com o valor e o que a média seria com ela. Vai dentro do quadro
+    // da posição quando ele existe (é dele que ela está fora) e, sem o quadro, embaixo do total
+    const nota = r.unico ? h("p", { class: "resumo-unico" }, r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
+      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
+      `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
+    const bloco = pos ? blocoPosicao(p, k, pos) : null;
+    if (nota) (bloco && pil ? bloco : total).append(nota);
+    const origem = h("div", { class: "conta__resumo-origem" },
       h("div", { class: "resumo-divisao", style: `--parte:${recebe ? "100%" : parte}`, "aria-hidden": "true" },
         h("span", { class: "resumo-divisao__ganha" }), recebe ? null : h("span", { class: "resumo-divisao__custa" })),
       recebe ? h("ul", { class: "resumo-partes resumo-partes--um" }, h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, leiG(p) ? "o salário oficial do cargo" : "tudo para o bolso")),
         p.k === "t" && r.cm ? h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, "em diárias de viagem, à parte (fora do total)")) : null)
         : h("ul", { class: "resumo-partes", style: `--parte:${parte}`, "aria-label": "De onde vem o custo" },
           h("li", { class: "resumo-parte--ganha" }, h("strong", null, reais(r.gm)), h("span", null, "para o bolso")),
-          h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))),
-      h("p", { class: "resumo-sm" }, `${smT} salários mínimos por mês`),
-      seloComp(r.tm, C.tm, `vs. mediana dos ${plural(C.g || grupo(p))}`),
-      // ajuda de custo (paga de uma vez): fora desta média e da comparação, com o valor e o que a média seria com ela
-      r.unico ? h("p", { class: "resumo-unico" }, r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
-        h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesDoUnico(p, k))}`,
-        `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null);
-    // à direita (no computador): a posição entre os colegas
-    return h("div", { class: "conta__resumo" }, principal, pos ? h("div", { class: "conta__resumo-lado" }, blocoPosicao(p, k, pos)) : null);
+          h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))));
+    return h("div", { class: `conta__resumo${pos && pil ? " conta__resumo--lado" : ""}` }, pil, total, origem, bloco ? h("div", { class: "conta__resumo-lado" }, bloco) : null);
   }
   // a linha do pagamento único, na lista: o que é, quando caiu e por que fica fora do "por mês" e da comparação
   function textoUnico(p, k, r, v) {

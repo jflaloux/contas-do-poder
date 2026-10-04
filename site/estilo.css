@@ -728,10 +728,13 @@ input[type="search"] { line-height: 1.5; }
   .interna .secoes { min-height: 44px; }
 }
 
-/* topo do contracheque: período, custo por mês, de onde vem e a posição */
+/* topo do contracheque: o período; o total (número grande, salários mínimos e selo, tudo do total); de onde vem (a barra e as duas
+   partes, bolso e gastos); e a posição entre os colegas. Cada coisa fica junto do que descreve. No computador (a partir de
+   980 px, quando o número cabe ao lado do quadro), a posição fica ao lado do total e a divisão ocupa a largura toda embaixo;
+   no resto, uma coluna só, na ordem: período, total, divisão, posição. */
 .conta__resumo { display: grid; gap: 18px 40px; padding: 8px 22px 26px; grid-template-columns: minmax(0, 1fr); }
-.conta__resumo-principal { display: grid; gap: 6px; align-content: start; }
-.conta__resumo-principal .pilulas { margin-bottom: 14px; }
+.conta__resumo-principal { display: grid; gap: 14px; align-content: start; } /* período sem pagamentos: só as pílulas e a frase */
+.conta__resumo-total { display: grid; gap: 6px; align-content: start; }
 .resumo-valor { font-family: var(--display); font-size: clamp(3.6rem, 17vw, 6.6rem); font-weight: 700; line-height: .92; letter-spacing: -.005em; white-space: nowrap; }
 /* de onde vem o custo: a barra dividida e, embaixo de cada pedaço, o valor (a coluna acompanha o pedaço, entre 38% e 62%) */
 .resumo-divisao { display: flex; gap: 4px; height: 14px; margin-top: 10px; }
@@ -739,22 +742,39 @@ input[type="search"] { line-height: 1.5; }
 .resumo-divisao__ganha { background: var(--banda-ganha); width: var(--parte, 50%); }
 .resumo-divisao__custa { background: var(--banda-custa); flex: 1; }
 .resumo-partes { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 4px; grid-template-columns: minmax(0, clamp(38%, var(--parte, 50%), 62%)) minmax(0, 1fr); color: var(--banda-ink-2); font-size: .95rem; line-height: 1.3; }
-.resumo-partes--um { grid-template-columns: minmax(0, 1fr); }
+.resumo-partes--um { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); } /* quem só recebe: a(s) parte(s) lado a lado, sem coluna vazia */
 .resumo-partes li { display: grid; gap: 2px; align-content: start; }
 .resumo-partes strong { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 6vw, 2.2rem); line-height: 1.05; }
 .resumo-parte--ganha strong { color: var(--banda-ganha); }
 .resumo-parte--custa strong { color: var(--banda-custa); }
-.resumo-sm { color: var(--banda-ink-2); font-size: 1rem; margin-top: 6px; }
-.resumo-unico { color: var(--banda-ink-2); font-size: .9rem; line-height: 1.4; margin-top: 8px; max-width: 36em; }
-.resumo-unico strong { color: var(--banda-ink); font-weight: 600; }
+/* "63 salários mínimos por mês" e o selo "+1% vs. mediana": os dois são do total, numa linha logo abaixo do número */
+.resumo-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin-top: 4px; }
+.resumo-linha .item__detalhe { margin-top: 0; }
+.resumo-sm { color: var(--banda-ink-2); font-size: 1rem; }
+.conta__resumo-origem { display: grid; align-content: start; }
+.conta__resumo-origem .resumo-divisao { margin-top: 0; }
+.resumo-unico { color: var(--banda-ink-2); font-size: .9rem; line-height: 1.4; margin-top: 8px; max-width: 36em; font-family: var(--body); font-weight: 400; }
+.destaque--posicao .resumo-unico { margin: 12px 0 0; padding-top: 12px; border-top: 1px solid var(--banda-linha); max-width: none; }
+.resumo-unico strong { color: var(--banda-ink); font-weight: 600; white-space: nowrap; }
 /* período sem pagamentos (ou governador que não aparece na folha): texto claro sobre o fundo escuro do topo */
 .conta__resumo-principal > .discreto { color: var(--banda-ink-2); }
 .conta__resumo .item__detalhe { color: var(--banda-ink-2); margin-top: 2px; }
 .conta__resumo .selo-comp { color: var(--banda-ink); }
 .conta__resumo-lado { display: grid; gap: 10px; align-content: start; }
-@media (min-width: 761px) {
-  .conta__resumo { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; }
-  .conta__resumo-lado { margin-top: 48px; }
+/* de 640 a 979 px: uma coluna, e o quadro da posição vira uma faixa larga (a frase de um lado, a régua do outro) */
+@media (min-width: 640px) and (max-width: 979px) {
+  .conta__resumo .destaque--posicao { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px 32px; align-items: center; }
+  .conta__resumo .destaque--posicao .regua { margin-top: 0; }
+}
+@media (min-width: 980px) {
+  .conta__resumo--lado { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); grid-template-areas: "pil pil" "tot lado" "ori ori"; }
+  .conta__resumo--lado > .pilulas { grid-area: pil; }
+  .conta__resumo--lado > .conta__resumo-total { grid-area: tot; align-content: start; }
+  .conta__resumo--lado > .conta__resumo-origem { grid-area: ori; }
+  /* o quadro tem a altura do total, ao lado dele: a frase em cima e a régua embaixo, sem canto vazio */
+  .conta__resumo--lado > .conta__resumo-lado { grid-area: lado; display: flex; }
+  .conta__resumo--lado .destaque--posicao { flex: 1; display: flex; flex-direction: column; }
+  .conta__resumo--lado .destaque--posicao .regua { margin-top: auto; padding-top: 12px; }
 }
 .conta__oficial { white-space: nowrap; }
 @media (max-width: 760px) { .conta__oficial { grid-column: 2; justify-self: start; } }
