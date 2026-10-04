@@ -244,7 +244,7 @@ def ca_com_intermediario(host, nome):
     folha = x509.load_pem_x509_certificate(ssl.get_server_certificate((host, 443), timeout=30).encode())
     aia = folha.extensions.get_extension_for_class(x509.AuthorityInformationAccess).value
     url = next(d.access_location.value for d in aia if d.access_method == AuthorityInformationAccessOID.CA_ISSUERS)
-    der = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=60).content
+    der = _sessao().get(url, timeout=60).content  # pela sessão do projeto (robots.txt, User-Agent), como todo pedido
     inter = x509.load_der_x509_certificate(der) if not der.lstrip().startswith(b"-----") else x509.load_pem_x509_certificate(der)
     assinado = False
     for bloco in re.findall(rb"-----BEGIN CERTIFICATE-----.+?-----END CERTIFICATE-----", raizes_pem, re.S):

@@ -44,7 +44,7 @@ import pandas as pd
 import requests
 
 from ..config import CACHE, DADOS, HOJE, USER_AGENT
-from ..util import SessaoEducada, TempoEsgotado, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import SessaoEducada, TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 3304557
@@ -134,7 +134,7 @@ def _ca():
     if cache_valido(destino, 30) and destino.read_bytes().startswith(raizes_pem[:4096]):
         return str(destino)
     verificar_prazo()
-    der = requests.get(INTERMEDIARIO, headers={"User-Agent": USER_AGENT}, timeout=60).content
+    der = _sessao().get(INTERMEDIARIO, timeout=60).content  # pela sessão do projeto (robots.txt, User-Agent)
     pem = _conferir_intermediario(der, raizes_pem, certifi.where())
     destino.parent.mkdir(parents=True, exist_ok=True)
     tmp = destino.with_suffix(".tmp")
