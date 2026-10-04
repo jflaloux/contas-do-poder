@@ -307,7 +307,12 @@ const PAGINAS = [
   { nome: "indice", url: "/indice", ter: [["#indice", 1]] },
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10]] },
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1]] },
-  { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1]] },
+  { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1], ["#sobre a[href='/imprensa']", 1]] },
+  // "Para a imprensa": curta e neutra; o método com os links das páginas de transparência, a licença e o modelo de citação, o contato; sem nome de pessoa
+  // e sem link para o usuário do GitHub (o código é apontado por /dados-abertos)
+  { nome: "imprensa", url: "/imprensa", ter: [["#imprensa h2", 5], ["#imprensa a[href='/sobre']", 1], ["#imprensa a[href='/atualizacao']", 1], ["#imprensa a[href='/correcoes']", 1], ["#imprensa a[href='/dados-abertos']", 1], ["#imprensa a[href^='mailto:contato@contasdopoder.com']", 1]],
+    pagina: [/Para a imprensa/, /sem adjetivos, sem juízo e sem acusações/, /CC BY 4\.0/, /Contas do Poder \(contasdopoder\.com\), a partir de <fonte oficial>, consultado em <data>\./, /Erro nosso é corrigido e registrado/, /contato@contasdopoder\.com/],
+    semPagina: [/Laloux|Jean-François|jflaloux|github\.com/i] },
   { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]], semPagina: [/O que mudou nesta rodada/] },
   // com rodada anterior: o texto neutro, os nomes das fontes como links para a linha da lista, e nada de "problema" para quem só tem atraso da fonte
   { nome: "atualizacao-rodada", url: "/atualizacao", ter: [["#rodada li", 3], ["#rodada a[href^='#fonte-']", 3]],

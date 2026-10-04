@@ -202,7 +202,7 @@ node publicacao/gerar.mjs                       # os testes leem publicar/
 node publicacao/testes/rodar.mjs                # sobe o servidor local numa porta própria e roda tudo
 ```
 
-Abre 90 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
+Abre 91 tipos de página (a inicial; deputado federal, senador, ministro, ministro que também é deputado, vereador,
 prefeitura, deputado estadual, governador (com e sem viagens) e pessoa do Judiciário; cidade de capital, do interior e pequena; estado; os
 tribunais; `/judiciario`, `/indice`, `/dados-abertos`, `/correcoes`, `/atualizacao`, `/sobre`; e um endereço que não existe) no
 Chrome, no celular (390 px, tema claro) e no computador (1280 px, tema escuro), e confere: **funcional** (sem erro no
@@ -1272,6 +1272,27 @@ que o site não cria cookies; os do Google Analytics só existem em `contasdopod
 hospedagem no Cloudflare Pages. A base legal escrita é o legítimo interesse (LGPD, art. 7º, IX). Quem é o controlador aparece como
 "Contas do Poder (contato@contasdopoder.com)": se o nome do responsável entrar, é só mudar o `sobre.json`. Mudou algo
 dessa lista (um serviço novo, um cookie, outro dado coletado)? Atualize o `sobre.json` junto, com a data. O texto é simples e deve ser revisto por quem responde pelo site antes de cada mudança publicada.
+
+## Para a imprensa (`/imprensa`)
+
+Página curta e neutra para quem vai citar os dados (pedido do revisor externo, aprovado em 04/10/2026): o que é o site, o método em poucas
+linhas com os links de `/sobre`, `/atualizacao`, `/correcoes` e `/dados-abertos`, a licença CC BY 4.0 e o modelo de citação ("Contas do Poder
+(contasdopoder.com), a partir de <fonte oficial>, consultado em <data>."), o contato, que o site descreve o que as fontes mostram, sem juízo, e que
+erros são corrigidos e registrados. Sem o nome de ninguém e sem link para o usuário do GitHub: o código é apontado por `/dados-abertos`. Mesmo
+mecanismo da `/sobre`: o texto está em `site/imprensa.json` (mesmo formato; `secSobre(IM, "imprensa")` no `app.js`, e o `gerar.mjs` faz `publicar/imprensa.html`),
+o endereço `imprensa` está em `RESERVADOS` (`coleta/enderecos.py`), a página está no rodapé de todas as páginas e na `/sobre`, e custa 2 arquivos no
+Cloudflare Pages. O `regras.mjs` confere o HTML pronto (links, licença, citação, sem nome e sem GitHub) e o `rodar.mjs` abre a página.
+
+### Textos do site que dependem dos dados (`data-dado`)
+
+Contagens e coberturas escritas à mão envelhecem (o Judiciário continuou "fora das páginas do site" e a Paraíba e o Ceará, os "únicos" do interior, muito depois
+de isso deixar de ser verdade). No `site/index.html`, o que vem dos dados é `<span data-dado="chave">valor de reserva</span>`: o `gerar.mjs`
+(`VALORES_DADO`) troca o valor de reserva pelo que `site/dados/` diz (número de câmaras e de vereadores, as capitais com vereador por vereador e com
+Prefeitura, quantos estados têm a folha mês a mês e quais ficam de fora, os estados do interior "por cargo"), e o valor de reserva vale quando o
+`site/` é aberto sem o build. O número de câmaras da seção de vereadores do `app.js` vem do arquivo das cidades. Os textos de `DESCRICAO_ARQ`
+(`/dados-abertos`) que citam contagem usam os dados também. O que não dá para gerar (a razão de cada estado ficar sem folha, o que cada capital publica) fica
+escrito à mão, e o `regras.mjs` falha se os dados mudarem de um jeito que o texto fixo não prevê (por exemplo, outro estado entrar em `interior/`). Assunto novo com
+número no texto: um `<span data-dado>` e uma linha em `VALORES_DADO`, e o teste.
 
 ## Presença e projetos na página do deputado federal e do senador
 

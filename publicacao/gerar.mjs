@@ -80,6 +80,33 @@ const COM_ARTIGO = new Set([2611606, 3304557]); // do Recife, do Rio de Janeiro
 const MESES = ["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"];
 const deUF = (uf) => (ART_UF[uf] ? `d${ART_UF[uf]} ${ESTADOS[uf]}` : `de ${ESTADOS[uf]}`);
 const deCidade = (cod, n) => (COM_ARTIGO.has(+cod) ? `do ${n}` : `de ${n}`);
+// ------------------------------------------------------------------ textos do index.html que dependem do que há nos dados
+// Contagens e coberturas escritas à mão envelhecem (o Judiciário ficou "fora das páginas do site" e a Paraíba e o Ceará eram os "únicos" do interior
+// muito depois de isso deixar de ser verdade). Em site/index.html, o que vem dos dados é um <span data-dado="chave">valor de reserva</span>: aqui o
+// valor de reserva (que vale quando o site/ é aberto sem o build) é trocado pelo que os arquivos de site/dados/ dizem. O teste publicacao/testes/regras.mjs
+// confere os mesmos números de outro jeito.
+const listaE = (xs) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs[xs.length - 1]}`);
+const EXTENSO = ["zero", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte"];
+const extenso = (n) => (n < EXTENSO.length ? EXTENSO[n] : String(n));
+const emUF = (uf) => deUF(uf).replace(/^de /, "em ").replace(/^do /, "no ").replace(/^da /, "na ");
+const maiuscula1 = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+const VALORES_DADO = (() => {
+  // São Paulo primeiro (quando tem), as outras em ordem alfabética
+  const nomesDe = (meta) => Object.values((meta && meta.cidades) || {}).map((c) => c.n).filter(Boolean).sort((x, y) => (y === "São Paulo") - (x === "São Paulo") || x.localeCompare(y, "pt-BR"));
+  const camaras = nomesDe(CAM.meta), prefeituras = nomesDe(PRE.meta), semSP = camaras.filter((n) => n !== "São Paulo");
+  const comFolha = (GOV.e || []).filter((e) => e.m && e.m.length), semFolha = (GOV.e || []).filter((e) => !(e.m && e.m.length)).map((e) => ESTADOS[e.uf]);
+  const totalVereadores = (MUN.m || []).reduce((s, r) => s + (r[5] || 0), 0);
+  const ufsCargo = fs.existsSync(path.join(SITE, "dados", "interior-cargo")) ? fs.readdirSync(path.join(SITE, "dados", "interior-cargo")).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2).toUpperCase()).sort() : [];
+  return {
+    "n-cidades": (MUN.m || []).length.toLocaleString("pt-BR"),
+    "n-vereadores": `${Math.round(totalVereadores / 1000)} mil`,
+    "n-capitais-camaras": extenso(semSP.length), "capitais-camaras": listaE(semSP),
+    "n-capitais-prefeituras": extenso(prefeituras.length), "capitais-prefeituras": listaE(prefeituras),
+    "n-folha": String(comFolha.length), "sem-folha": listaE(semFolha),
+    "interior-cargo-estados": maiuscula1(listaE(ufsCargo.map(emUF))), "interior-cargo-estados-baixo": listaE(ufsCargo.map(emUF)),
+  };
+})();
+MODELO = MODELO.replace(/<span data-dado="([a-z0-9-]+)">([^<]*)<\/span>/g, (todo, chave, reserva) => `<span data-dado="${chave}">${VALORES_DADO[chave] !== undefined ? String(VALORES_DADO[chave]).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : reserva}</span>`);
 const semAcento = (t) => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const slugTxt = (t) => semAcento(t).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 const fmt = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
@@ -610,9 +637,9 @@ const DESCRICAO_ARQ = {
   "prefeituras.json": "Prefeito, vice e secretários das capitais com a folha aberta: o que cada um recebe, mês a mês.",
   "assembleias.json": "Deputados estaduais e distritais: salário, verba do gabinete e equipe, mês a mês.",
   "governadores.json": "Governadores e vices: o salário do cargo (com a lei de cada valor), quem governou desde 2023 e a folha mês a mês.",
-  "municipios.json": "As 5.569 cidades: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e o salário médio (IBGE).",
+  "municipios.json": `As ${(MUN.m || []).length.toLocaleString("pt-BR")} cidades: o gasto da Câmara Municipal (Siconfi), a população, o número de vereadores e o salário médio (IBGE).`,
   "indice_transparencia.json": "O Índice de Transparência: a nota de cada fonte de cada estado, critério por critério, com a prova.",
-  "judiciario.json": "Judiciário (tribunais superiores, CNJ e PGR), ainda fora das páginas do site.",
+  "judiciario.json": "Judiciário (STF, STJ, TST, STM, TSE, CNJ e PGR): quanto recebe quem está no cargo e quem saiu, mês a mês desde jan/2025, pela folha de cada órgão, com as diárias à parte.",
   "enderecos.json": "O endereço de cada página do site (e os endereços antigos, que redirecionam).",
   "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
   "atividade.json": "Presença no Plenário e projetos de cada deputado federal e senador desde fev/2023: X de Y, sem nota nem ranking, com a fonte (a Câmara conta por dia de sessão e o Senado por votação nominal: contas diferentes).",
@@ -724,18 +751,19 @@ if (SIT && (SIT.fontes || []).length) {
 // ------------------------------------------------------------------ sobre e privacidade (/sobre, de site/sobre.json)
 // O texto fica em site/sobre.json (o app.js lê o mesmo arquivo): aqui, a página pronta em HTML. Dentro do texto só há
 // [texto](endereço), para links.
-{
+// /imprensa (site/imprensa.json): o mesmo formato, a página "Para a imprensa".
+for (const [nomePagina, tituloPagina] of [["sobre", "Sobre e privacidade"], ["imprensa", "Para a imprensa"]]) {
   let SB = null;
-  try { SB = JSON.parse(fs.readFileSync(path.join(SITE, "sobre.json"), "utf8")); } catch { /* sem a página */ }
+  try { SB = JSON.parse(fs.readFileSync(path.join(SITE, `${nomePagina}.json`), "utf8")); } catch { /* sem a página */ }
   if (SB && (SB.blocos || []).length) {
     const comLinks = (txt) => esc(txt).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => (/^https?:/.test(u)
       ? `<a href="${u}" target="_blank" rel="noopener">${t}&nbsp;↗</a>` : `<a href="${u}">${t}</a>`));
-    const corpo = '<section class="bloco" id="sobre" aria-labelledby="t-sobre"><p class="rotulo">Transparência do site</p>'
-      + `<h1 id="t-sobre" class="titulo-pagina">${esc(SB.titulo)}</h1><p class="lide">${esc(SB.lide)}</p>`
+    const corpo = `<section class="bloco" id="${nomePagina}" aria-labelledby="t-${nomePagina}"><p class="rotulo">Transparência do site</p>`
+      + `<h1 id="t-${nomePagina}" class="titulo-pagina">${esc(SB.titulo)}</h1><p class="lide">${esc(SB.lide)}</p>`
       + SB.blocos.map((b) => `<h2 class="h3" id="${esc(b.id)}">${esc(b.h)}</h2>` + (b.c || []).map((x) => (x.ul
         ? `<ul class="lista">${x.ul.map((li) => `<li>${comLinks(li)}</li>`).join("")}</ul>` : `<p>${comLinks(x.p)}</p>`)).join("")).join("")
       + (SB.atualizado ? `<p class="nota">Atualizado em ${esc(SB.atualizado)}.</p>` : "") + "</section>";
-    paginas.push(["sobre", pagina("sobre", "Sobre e privacidade | Contas do Poder", SB.lide, corpo, { carregando: false })]);
+    paginas.push([nomePagina, pagina(nomePagina, `${tituloPagina} | Contas do Poder`, SB.lide, corpo, { carregando: false })]);
   }
 }
 

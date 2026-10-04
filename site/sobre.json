@@ -1,7 +1,7 @@
 {
   "titulo": "Sobre o Contas do Poder",
   "lide": "Esta página diz o que é o site, que dados ele usa, o que mede das visitas e como pedir uma correção ou a retirada de um dado.",
-  "atualizado": "03/10/2026",
+  "atualizado": "04/10/2026",
   "blocos": [
     {
       "id": "o-que-e",
@@ -51,7 +51,7 @@
       "id": "contato",
       "h": "Contato e responsável",
       "c": [
-        { "p": "Contato: [contato@contasdopoder.com](mailto:contato@contasdopoder.com)." },
+        { "p": "Contato: [contato@contasdopoder.com](mailto:contato@contasdopoder.com). Para jornalistas, há uma página com o resumo do método, a licença e como citar: [Para a imprensa](/imprensa)." },
         { "p": "Responsável pelo site e pelo tratamento dos dados de que trata esta página: Contas do Poder (contato@contasdopoder.com)." }
       ]
     }

@@ -6,6 +6,7 @@
 //
 // 1) Concordância no site de verdade (só Node): para cada deputado, senador e "tudo junto" com página, o valor do topo do HTML pronto
 //    (publicar/<endereço>.html) é o que a regra manda (conta feita aqui, de outro jeito, com os números de site/dados/dados.json). Precisa do build.
+// 1b) Textos com contagens e coberturas (index.html): o que está escrito é o que os dados dizem.
 // 2) Casos inventados (Chrome): um build à parte (GERAR_SAIDA/GERAR_DADOS, sem tocar em publicar/) com deputados e um senador inventados: poucos meses
 //    (2 e 3), pagamento único com e sem o mês na fonte, devolução (valor negativo) e mais um "tudo junto" de verdade; em cada um, o HTML pronto, a
 //    página, o ranking e o Comparar dizem o mesmo número, que é o da conta feita aqui.
@@ -58,6 +59,41 @@ if (!fs.existsSync(path.join(PUBLICAR, "index.html"))) { console.log("publicar/ 
   const tabApp = /const UNICOS = (\{[^}]*\});/.exec(fs.readFileSync(path.join(SITE, "app.js"), "utf8")), tabGerar = /const UNICOS = (\{[^}]*\});/.exec(fs.readFileSync(path.join(RAIZ, "publicacao", "gerar.mjs"), "utf8"));
   const norm = (m) => m && JSON.stringify(Function(`return ${m[1]}`)());
   confere("a tabela UNICOS é a mesma no app.js e no gerar.mjs", !!tabApp && !!tabGerar && norm(tabApp) === norm(tabGerar), `${tabApp && tabApp[1]} x ${tabGerar && tabGerar[1]}`);
+}
+
+// ------------------------------------------------------------------ 1b) textos do index.html que dependem dos dados
+console.log("\n-- Textos com contagens e coberturas: o que está escrito é o que os dados dizem");
+{
+  const html = fs.readFileSync(path.join(PUBLICAR, "index.html"), "utf8");
+  const spans = [...html.matchAll(/<span data-dado="([a-z0-9-]+)">([^<]*)<\/span>/g)].map((m) => [m[1], m[2].replace(/&amp;/g, "&")]);
+  const valor = (k) => (spans.find(([c]) => c === k) || [])[1];
+  const nomes = (t) => String(t || "").split(/, | e /).filter(Boolean);
+  const nomesMeta = (arq) => Object.values(lerDados(arq).meta.cidades).map((c) => c.n).filter(Boolean);
+  const MUN = lerDados("municipios.json").m, GOV = lerDados("governadores.json").e;
+  const mesmos = (a, b) => JSON.stringify([...a].sort()) === JSON.stringify([...b].sort());
+  confere("o número de câmaras no texto é o de municipios.json", valor("n-cidades") === MUN.length.toLocaleString("pt-BR"), `${valor("n-cidades")} x ${MUN.length}`);
+  confere("o número de vereadores no texto é o da soma de municipios.json (em milhares)", valor("n-vereadores") === `${Math.round(MUN.reduce((t, r) => t + (r[5] || 0), 0) / 1000)} mil`, valor("n-vereadores"));
+  const cam = nomesMeta("camaras.json").filter((n) => n !== "São Paulo"), pre = nomesMeta("prefeituras.json");
+  confere("as capitais com vereador por vereador (fora São Paulo) são as de camaras.json, e o número por extenso bate", mesmos(nomes(valor("capitais-camaras")), cam) && valor("n-capitais-camaras") === ["", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove", "vinte"][cam.length], `${valor("capitais-camaras")} (${valor("n-capitais-camaras")}) x ${cam.length}`);
+  confere("as capitais com Prefeitura são as de prefeituras.json, e o número por extenso bate", mesmos(nomes(valor("capitais-prefeituras")), pre) && valor("n-capitais-prefeituras") === ["", "uma", "duas", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze"][pre.length], `${valor("capitais-prefeituras")} (${valor("n-capitais-prefeituras")}) x ${pre.length}`);
+  const semFolha = GOV.filter((e) => !(e.m && e.m.length)).map((e) => e.uf);
+  confere("os estados com a folha mês a mês são os de governadores.json (número e quem fica de fora)", valor("n-folha") === String(GOV.length - semFolha.length) && mesmos(nomes(valor("sem-folha")), semFolha.map((u) => ({ AP: "Amapá", MT: "Mato Grosso", TO: "Tocantins" })[u] || u)), `${valor("n-folha")}; fora: ${valor("sem-folha")} x ${semFolha}`);
+  // o interior: o texto fixo fala em "Paraíba e Ceará" (valor por pessoa); o resto (ES, PE, RJ) vem da pasta interior-cargo/
+  const lista = (pasta) => fs.readdirSync(path.join(SITE, "dados", pasta)).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2).toUpperCase());
+  confere("o texto fixo \"Na Paraíba e no Ceará\" (valor por pessoa) ainda é verdade: só PB e CE em interior/", mesmos(lista("interior"), ["PB", "CE"]), lista("interior").join(","));
+  const cargo = lista("interior-cargo"), nomeUF = { ES: "Espírito Santo", PE: "Pernambuco", RJ: "Rio de Janeiro" };
+  confere("os estados \"por cargo\" do texto são os de interior-cargo/", cargo.every((u) => (valor("interior-cargo-estados") || "").includes(nomeUF[u] || "?")) && nomes(valor("interior-cargo-estados")).length === cargo.length, `${valor("interior-cargo-estados")} x ${cargo}`);
+  confere("todo <span data-dado> do index.html tem valor calculado no gerar.mjs (nenhum ficou com o valor de reserva sem conferir)", ["n-cidades", "n-vereadores", "n-capitais-camaras", "capitais-camaras", "n-capitais-prefeituras", "capitais-prefeituras", "n-folha", "sem-folha", "interior-cargo-estados", "interior-cargo-estados-baixo"].length >= new Set(spans.map(([c]) => c)).size && spans.every(([c]) => ["n-cidades", "n-vereadores", "n-capitais-camaras", "capitais-camaras", "n-capitais-prefeituras", "capitais-prefeituras", "n-folha", "sem-folha", "interior-cargo-estados", "interior-cargo-estados-baixo"].includes(c)), spans.map(([c]) => c).join(","));
+  // a página "Para a imprensa": pronta no HTML (sem JavaScript), com os links, a licença e o modelo de citação, e sem nome de pessoa nem o usuário do GitHub
+  const imprensa = fs.existsSync(path.join(PUBLICAR, "imprensa.html")) ? fs.readFileSync(path.join(PUBLICAR, "imprensa.html"), "utf8") : "";
+  const miolo = (/<section class="bloco" id="imprensa"[\s\S]*?<\/section>/.exec(imprensa) || [""])[0]; // só a página (o resto é o modelo comum, com o rodapé e as fontes)
+  confere("/imprensa existe no HTML pronto, com os quatro links, a licença, o modelo de citação e o contato", ["/sobre", "/atualizacao", "/correcoes", "/dados-abertos"].every((l) => miolo.includes(`href="${l}"`)) && /CC BY 4\.0/.test(miolo) && /consultado em &lt;data&gt;/.test(miolo) && /mailto:contato@contasdopoder\.com/.test(miolo), imprensa ? "faltam links ou texto" : "imprensa.html não existe");
+  confere("/imprensa não tem o nome de ninguém nem o usuário do GitHub", imprensa !== "" && !/Laloux|Jean-François|jflaloux|github\.com/i.test(miolo), "achei nome ou github");
+  confere("a /imprensa está ligada no rodapé de toda página e na /sobre", /href="\/imprensa"/.test(html) && /href="\/imprensa"/.test(fs.readFileSync(path.join(PUBLICAR, "sobre.html"), "utf8")), "sem o link");
+  // texto velho que já foi corrigido: não pode voltar
+  const dadosAbertos = fs.readFileSync(path.join(PUBLICAR, "dados-abertos.html"), "utf8");
+  confere("a descrição de judiciario.json não diz mais que está fora das páginas do site", !/fora das páginas do site/.test(dadosAbertos) && !/fora das páginas do site/.test(html), "ainda tem o texto velho");
+  confere("a pendência velha do Recife (verba que dava erro) saiu, já que a Câmara do Recife está com a verba nos dados", !/Câmara Municipal do Recife: a consulta da Verba Indenizatória/.test(html) && Object.keys((lerDados("camaras.json").meta.cidades["2611606"] || {}).verba_mes || {}).length > 0, "pendência ainda no texto ou sem verba nos dados");
 }
 
 // ------------------------------------------------------------------ 2) casos inventados, num build à parte

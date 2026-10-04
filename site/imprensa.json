@@ -1,0 +1,63 @@
+{
+  "titulo": "Para a imprensa",
+  "lide": "Para quem vai citar ou usar os dados do Contas do Poder: o que é o site, como os dados são tratados, a licença e como citar, e o contato.",
+  "atualizado": "04/10/2026",
+  "blocos": [
+    {
+      "id": "o-que-e",
+      "h": "O que é o site",
+      "c": [
+        {
+          "p": "O Contas do Poder reúne dados públicos oficiais sobre quanto ganham e quanto custam os agentes públicos do Brasil: deputados federais, senadores, ministros, governadores, deputados estaduais, vereadores, prefeitos e ministros dos tribunais superiores, entre outros. Cada número vem de uma fonte oficial e traz o link dela."
+        },
+        {
+          "p": "O site descreve o que as fontes mostram, sem adjetivos, sem juízo e sem acusações. Quando o dado de uma fonte parece estranho, o site mostra o que a fonte mostra; quem investiga é a imprensa. É um projeto independente e sem fins lucrativos, sem anúncios, e não é de nenhum órgão do governo."
+        }
+      ]
+    },
+    {
+      "id": "metodo",
+      "h": "O método, em poucas linhas",
+      "c": [
+        {
+          "ul": [
+            "só dados públicos oficiais, cada número com o link da fonte, e a conta do que é bolso, gasto do mandato e equipe do gabinete explicada em cada página;",
+            "os dados são lidos de novo toda semana. A página [Atualização dos dados](/atualizacao) mostra, fonte por fonte, até que mês vão os números, quando foram lidos pela última vez e o motivo de qualquer atraso;",
+            "as regras para os dados das pessoas (o que se guarda e o que nunca se guarda, como CPF e descontos da folha) e a medição das visitas estão em [Sobre e privacidade](/sobre);",
+            "os arquivos de dados, o código e as cópias públicas, verificáveis fora do site, estão em [Dados abertos](/dados-abertos)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "erros",
+      "h": "Erros e correções",
+      "c": [
+        {
+          "p": "Erro nosso é corrigido e registrado, com a data e o que mudou, na [lista de correções](/correcoes). Se a fonte oficial mostra o mesmo valor, quem pode corrigir é o órgão que a publicou."
+        }
+      ]
+    },
+    {
+      "id": "licenca-e-citacao",
+      "h": "Licença e como citar",
+      "c": [
+        {
+          "p": "Os dados podem ser reutilizados sob a licença [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.pt-br), citando “Contas do Poder” e a fonte oficial de cada número."
+        },
+        {
+          "p": "Modelo de citação: “Contas do Poder (contasdopoder.com), a partir de <fonte oficial>, consultado em <data>.” Troque <fonte oficial> pela fonte que a página da pessoa indica e <data> pelo dia em que você consultou."
+        }
+      ]
+    },
+    {
+      "id": "contato",
+      "h": "Contato",
+      "c": [
+        {
+          "p": "[contato@contasdopoder.com](mailto:contato@contasdopoder.com). Para conferir um número, abra a página da pessoa e siga o link da fonte; para uma dúvida sobre o método ou um pedido de correção, escreva para o contato."
+        }
+      ]
+    }
+  ]
+}

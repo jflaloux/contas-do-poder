@@ -1,7 +1,7 @@
 /* Contas do Poder. Um projeto Contas do Brasil.
    Site estático: lê os arquivos de site/dados/ (feitos por `python3 coletar.py`) e monta a página no navegador.
    Endereços: /nome-do-politico (site/dados/enderecos.json, ou o id), /governador/sp, /cidade/sao-paulo-sp, /indice,
-   /correcoes, /judiciario, /dados-abertos, /atualizacao e /sobre; o período vai em ?periodo=2025 (ou ?periodo=mandato) e a seção, em #. Os endereços antigos com #
+   /correcoes, /judiciario, /dados-abertos, /atualizacao, /sobre e /imprensa; o período vai em ?periodo=2025 (ou ?periodo=mandato) e a seção, em #. Os endereços antigos com #
    (/#dep-220639~2025) levam para os novos. publicacao/gerar.mjs faz uma página pronta para cada endereço. */
 "use strict";
 (() => {
@@ -91,7 +91,7 @@
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
-        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "sobre" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
+        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
       lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
     };
     const ver = (tipo, f, extra) => {
@@ -2939,10 +2939,12 @@
             h("div", { class: "lista-estado__grupo" }, comProblema.map((c) => h("a", { class: "pessoa-chip", href: urlCidade(c), onclick: () => { S.origem = "lista_problemas"; } }, c.n, h("small", null, problemaCidade(c).curto)))));
         })());
     };
-    carregarCidades().then(desenhar, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
+    // o número de câmaras vem do arquivo das cidades (o gerar.mjs põe o mesmo número no HTML pronto); até ele chegar, fica o do HTML
+    const nCamaras = h("span", null, ((document.querySelector('[data-dado="n-cidades"]') || {}).textContent || "").trim() || "5.569");
+    carregarCidades().then(() => { if (CID.m && CID.m.length) nCamaras.textContent = num(CID.m.length, 0); desenhar(); }, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
     add(sec, h("p", { class: "rotulo" }, "Vereadores"),
       h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
-      h("p", { class: "discreto" }, `As 5.569 câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${cidadesCamara().length ? `. Em ${listaE(cidadesCamara().map((c) => c.n))}, já dá para ver cada vereador` : ""}.`),
+      h("p", { class: "discreto" }, "As ", nCamaras, ` câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${cidadesCamara().length ? `. Em ${listaE(cidadesCamara().map((c) => c.n))}, já dá para ver cada vereador` : ""}.`),
       h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-cidade" }, "Procurar cidade"), input, sug),
       destaqueCapitais(atual),
       corpo);
@@ -3780,7 +3782,7 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe", cota: "Gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", imprensa: "Para a imprensa", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe", cota: "Gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
@@ -3989,8 +3991,8 @@
       return;
     }
     S.cidadeVista = null;
-    // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos, /atualizacao, /sobre e /judiciario
-    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "sobre" || caminho === "judiciario") {
+    // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos, /atualizacao, /sobre, /imprensa e /judiciario
+    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" || caminho === "judiciario") {
       if (extraAntes !== caminho) evento(`ver_${caminho.replace(/-/g, "_")}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
@@ -4166,18 +4168,20 @@
         h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0 ↗"), ", citando \"Contas do Poder\" e as fontes originais."));
   }
 
-  // ------------------------------------------------------------------ sobre e privacidade
+  // ------------------------------------------------------------------ sobre e privacidade, para a imprensa
   // /sobre: o que é o site, os dados das pessoas, a privacidade (Google Analytics), correção e retirada, contato. O texto
   // está em site/sobre.json (uma fonte só: o publicacao/gerar.mjs faz com ele a página pronta em HTML). Dentro do texto, só
   // existe um recurso: [texto](endereço), para links. O texto é conferido pelo Jean-François antes de ir ao ar.
-  let sobrePedido = null;
-  function carregarSobre() {
-    if (!sobrePedido) {
-      sobrePedido = lerJSON("/sobre.json");
-      sobrePedido.catch(() => { sobrePedido = null; }); // se falhar, tenta de novo na próxima vez
+  // /imprensa: o mesmo formato, em site/imprensa.json (o que é o site, o método em poucas linhas, licença e como citar, contato).
+  const textosPedidos = {};
+  function carregarTexto(nome) {
+    if (!textosPedidos[nome]) {
+      textosPedidos[nome] = lerJSON(`/${nome}.json`);
+      textosPedidos[nome].catch(() => { textosPedidos[nome] = null; }); // se falhar, tenta de novo na próxima vez
     }
-    return sobrePedido;
+    return textosPedidos[nome];
   }
+  const carregarSobre = () => carregarTexto("sobre");
   function textoComLinks(txt) {
     const partes = [], re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
     let i = 0, m;
@@ -4190,10 +4194,10 @@
     if (i < txt.length) partes.push(txt.slice(i));
     return partes;
   }
-  function secSobre(SB) {
-    return h("section", { class: "bloco", id: "sobre", "aria-labelledby": "t-sobre" },
+  function secSobre(SB, id = "sobre") {
+    return h("section", { class: "bloco", id, "aria-labelledby": `t-${id}` },
       h("p", { class: "rotulo" }, "Transparência do site"),
-      h("h1", { id: "t-sobre", class: "titulo-pagina" }, SB.titulo),
+      h("h1", { id: `t-${id}`, class: "titulo-pagina" }, SB.titulo),
       h("p", { class: "lide" }, SB.lide),
       (SB.blocos || []).map((b) => [
         h("h2", { class: "h3", id: b.id }, b.h),
@@ -4570,6 +4574,18 @@
         if (!espera.isConnected) return; // já foi para outra página
         trocar(espera, secSobre(SB));
         navSecoes(["sobre", "entenda", "fontes"]);
+        rolarPendente();
+      }, () => falhou(espera, "Não foi possível carregar a página. Escreva para contato@contasdopoder.com."));
+      return;
+    }
+    if (S.extra === "imprensa") {
+      document.title = "Para a imprensa · Contas do Poder";
+      const espera = esperar("Carregando…");
+      navSecoes(["entenda", "fontes"]);
+      carregarTexto("imprensa").then((IM) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        trocar(espera, secSobre(IM, "imprensa"));
+        navSecoes(["imprensa", "entenda", "fontes"]);
         rolarPendente();
       }, () => falhou(espera, "Não foi possível carregar a página. Escreva para contato@contasdopoder.com."));
       return;
