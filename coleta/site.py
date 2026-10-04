@@ -231,6 +231,28 @@ def _sem_pagamento_fora_do_mandato(lanc):
     return pd.concat([lanc[~tirar], *extra], ignore_index=True) if extra else lanc[~tirar]
 
 
+def ajudas_de_custo(lanc):
+    """{id: {"AAAA": [[aaaamm, valor], ...], "leg": [...]}}: o mês de cada pagamento da ajuda de custo (e das outras
+    verbas indenizatórias de pagamento único, categoria ajuda_de_custo), como a folha registra. É o mês real do
+    pagamento, para o site não precisar estimar (campo "aj" em dados.json)."""
+    a = lanc[(lanc.categoria == "ajuda_de_custo") & lanc.mes.notna()]
+    if not len(a):
+        return {}
+    g = a.groupby(["id_politico", "ano", "mes"]).valor.sum()
+    saida = {}
+    for (pid, ano, mes), v in g.items():
+        if abs(v) < 1:
+            continue
+        am = int(ano) * 100 + int(mes)
+        d = saida.setdefault(pid, {})
+        d.setdefault(str(int(ano)), []).append([am, _r(v)])
+        d.setdefault("leg", []).append([am, _r(v)])
+    for d in saida.values():
+        for k in d:
+            d[k].sort()
+    return saida
+
+
 def executar():
     politicos = ler_json(PROCESSADOS / "politicos.json")
     meta = ler_json(PROCESSADOS / "metadados.json")
@@ -329,6 +351,7 @@ def executar():
             "cats": {k: _r(v) for k, v in cat.items() if abs(v) >= 1},
         }
 
+    aj = ajudas_de_custo(lanc)
     cats_idx = set(cats.index.droplevel(2))
     anos = sorted(int(a) for a in lanc["ano"].unique())
     por_pol = {pid: mm for pid, mm in mensal.groupby("id_politico")}
@@ -372,6 +395,8 @@ def executar():
 
         if p["casa"] == "junto":
             saida.append(_item_junto(p, per, serie, dt, nv, mm))
+            if aj.get(pid):
+                saida[-1]["aj"] = aj[pid]
             continue
         item = {"id": pid, "k": {"camara": "d", "senado": "s", "executivo": "e"}[p["casa"]], "n": p["nome"], "nc": p.get("nome_civil"),
                 "g": p["cargo"], "pt": p.get("partido"), "uf": p.get("uf"),
@@ -391,6 +416,8 @@ def executar():
             item["rel"] = p["relacionado"]
         if pid in junto_de:
             item["j"] = junto_de[pid]
+        if aj.get(pid):
+            item["aj"] = aj[pid]
         if p["casa"] == "camara" and p.get("imovel_funcional_dias"):
             item["im"] = p["imovel_funcional_dias"]
         if p["casa"] == "senado" and p.get("imovel_funcional"):
