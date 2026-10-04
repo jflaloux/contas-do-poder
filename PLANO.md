@@ -130,6 +130,9 @@ Cada número tem link para a fonte oficial.
 - [ ] Manutenção (raio-X de 03/10/2026, aprovado): rodada do Brasil mensal; congelar folhas do PA e do RJ e a Prefeitura
   de Campo Grande; folha de governador como complemento da lei; plano de queda das 17 fontes de risco alto; Tribunal de
   Contas como reserva de Fortaleza, Câmara do Recife e Vitória — Agente de Dados
+- [x] Gravação segura em todos os robôs (04/10/2026): o arquivo novo só troca o anterior se não vier vazio nem perder
+  cobertura ou conteúdo; a recusa aparece na situação — Agente de Dados
+- [ ] Primeira rodada de verdade com a gravação segura: conferir se aparece recusa falsa — Agente de Dados
 - [ ] Refazer o raio-X das fontes no fim de novembro, com o histórico das rodadas — Agente de Dados
 - [x] Bens declarados ao TSE (2018, 2022, 2024), versão neutra: dados e página prontos, dormentes até 26/10/2026 — Agentes de Dados e de Site
 - [ ] 27/10/2026: conferir que a rodada gravou bens.json e bens-interior/, que o bloco aparece e que os links do TSE abrem — Agente de Site
