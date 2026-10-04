@@ -32,7 +32,7 @@ GOVERNADORES = RAIZ / "site" / "dados" / "governadores.json"
 # SP, MG, RJ, BA, PE, CE, PB, GO, SC, MS, RO, TO, SE, ES, RS e AP
 EST_PELO_ID = {"35", "31", "33", "29", "26", "23", "25", "52", "42", "50", "11", "17", "28", "32", "43", "16"}
 # primeiros pedaços de endereço que não podem ser nome de político (pastas e rotas do site)
-RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes", "judiciario", "dados-abertos", "indice", "atualizacao"}
+RESERVADOS = {"cidade", "governador", "dados", "fotos", "entenda", "fontes", "sobre", "busca", "ranking", "correcoes", "judiciario", "dados-abertos", "indice", "atualizacao", "imprensa"}
 # quem fica com o nome quando dois chegam juntos: "tudo junto", Congresso, governo federal, governadores, prefeituras,
 # câmaras, Assembleias (os deputados estaduais, "est-", também têm k "e")
 PRIORIDADE = {"j": 0, "d": 1, "s": 2, "e": 3, "g": 4, "p": 5, "v": 6, "t": 8}
