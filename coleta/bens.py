@@ -40,7 +40,14 @@ CREDITO = "Tribunal Superior Eleitoral, Portal de Dados Abertos (declarações d
 # eleições ordinárias de cada ano (CD_ELEICAO nos arquivos do TSE) e o código da mesma eleição no DivulgaCandContas
 ELEICOES = {2018: {"297", "298"}, 2022: {"546", "547"}, 2024: {"619", "620"}}
 DIVULGA = {2018: "2022802018", 2022: "2040602022", 2024: "2045202024"}
-LINK = "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/{ano}/{eleicao}/{ue}/{sq}"
+# a página do candidato: região (maiúsculas, sem acento), UF, código da eleição, SQ, ano e UE (a UF nas eleições gerais,
+# o código TSE do município em 2024), formato conferido num navegador em 03/10/2026
+LINK = "https://divulgacandcontas.tse.jus.br/divulga/#/candidato/{regiao}/{uf}/{eleicao}/{sq}/{ano}/{ue}"
+REGIOES = {**{u: "NORTE" for u in ("AC", "AM", "AP", "PA", "RO", "RR", "TO")},
+           **{u: "NORDESTE" for u in ("AL", "BA", "CE", "MA", "PB", "PE", "PI", "RN", "SE")},
+           **{u: "CENTROOESTE" for u in ("DF", "GO", "MS", "MT")},
+           **{u: "SUDESTE" for u in ("ES", "MG", "RJ", "SP")},
+           **{u: "SUL" for u in ("PR", "RS", "SC")}}
 # tipo de bem (código da Receita Federal usado pelo TSE) -> grupo; o resto é "outros"
 GRUPOS = ["imoveis", "veiculos", "aplicacoes", "participacoes", "outros"]
 NOMES_GRUPOS = {"imoveis": "Imóveis", "veiculos": "Veículos", "aplicacoes": "Aplicações e depósitos",
@@ -263,7 +270,7 @@ def _coletar():
         linhas.append({"chave": chave, "grupo": grupo, "uf": uf, "ano": ano, "sq": sq, "cargo_tse": cargo, "ue": ue,
                        "municipio": nm_ue if ano == 2024 else "", "itens": d["itens"], "total": round(d["total"], 2),
                        **{g: round(d[g], 2) for g in GRUPOS},
-                       "link": LINK.format(ano=ano, eleicao=DIVULGA[ano], ue=ue, sq=sq)})
+                       "link": LINK.format(regiao=REGIOES[uf], uf=uf, eleicao=DIVULGA[ano], sq=sq, ano=ano, ue=ue)})
     SAIDA.mkdir(parents=True, exist_ok=True)
     campos = ["chave", "grupo", "uf", "ano", "sq", "cargo_tse", "ue", "municipio", "itens", "total", *GRUPOS, "link"]
     with open(SAIDA / "declaracoes.csv", "w", encoding="utf-8", newline="") as f:
@@ -297,8 +304,9 @@ def exportar_site(hoje=None):
             "campos": ["ano da eleição", "total declarado (R$)", "número de itens", *[NOMES_GRUPOS[g] for g in GRUPOS],
                        "ue (o lugar da candidatura no TSE)", "sq (o número da candidatura no TSE)"],
             "grupos": NOMES_GRUPOS,
-            # a página do candidato no DivulgaCandContas: LINK com o ano, o código da eleição no DivulgaCandContas, ue e sq
-            "link": LINK, "eleicao": {str(a): c for a, c in DIVULGA.items()}}
+            # a página do candidato no DivulgaCandContas: LINK com a região da UF (regiao), a UF, o código da eleição
+            # (eleicao[ano]), o SQ, o ano e a UE
+            "link": LINK, "eleicao": {str(a): c for a, c in DIVULGA.items()}, "regiao": REGIOES}
     pessoas = {l["chave"]: reg(l) for l in linhas if "|" not in l["chave"]}
     (SITE / "bens.json").write_text(json.dumps({"meta": meta, "p": pessoas}, ensure_ascii=False, separators=(",", ":")) + "\n",
                                     encoding="utf-8")
