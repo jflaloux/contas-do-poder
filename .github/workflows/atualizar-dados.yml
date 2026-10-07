@@ -4,7 +4,8 @@
 # Roda nos EUA: as fontes que só abrem do Brasil ficam para a rodada do Brasil (rotina/semana-brasil.sh, terça à tarde);
 # coleta/onde.py diz quem roda o quê, e dados/processados/situacao.md mostra a situação de cada fonte.
 # O Cloudflare Pages publica o site sozinho a cada mudança no repositório.
-# Se a conferência falhar, nada é salvo: o site anterior continua no ar e o GitHub manda um e-mail avisando.
+# Se a conferência (ou o padronizar, ou o site) falhar, nada é salvo, o trabalho da coleta fica num artefato e a rodada pode ser
+# retomada em minutos ("retomar" + run_id no Run workflow). Se a conferência falhar, nada é salvo: o site anterior continua no ar e o GitHub manda um e-mail avisando.
 #
 # Cada etapa da coleta roda num passo próprio, por rotina/etapa-github.sh, com tempo máximo: a etapa que demora
 # demais para sozinha, grava o que já pegou e a rodada segue (o resto é lido na próxima, os robôs retomam de onde
@@ -20,9 +21,20 @@ on:
     # Semanal, e não mensal, porque o GitHub apaga o cache de downloads que fica 7 dias sem uso.
     - cron: "17 11 * * 2"
   workflow_dispatch: # botão "Run workflow", para rodar na hora
+    inputs:
+      retomar:
+        description: "Retomar uma rodada que não salvou: restaura o trabalho dela e roda só padronizar, site, conferência e salvar"
+        type: boolean
+        default: false
+      run_id:
+        description: "Com retomar: o número da rodada que não salvou (está no resumo dela e na URL da execução)"
+        type: string
+        default: ""
 
 permissions:
   contents: write
+  actions: read   # baixar o artefato de outra rodada (retomar)
+  issues: write   # abrir a issue quando duas rodadas seguidas não salvam
 
 concurrency:
   group: atualizar-dados
@@ -30,6 +42,7 @@ concurrency:
 
 env:
   CONTAS_ONDE: exterior
+  RETOMAR: ${{ inputs.retomar && 'true' || 'false' }}
 
 jobs:
   atualizar:
@@ -62,6 +75,21 @@ jobs:
           path: dados/cache
           key: downloads-${{ github.run_id }}
           restore-keys: downloads-
+
+      - name: Retomar - baixar o trabalho da rodada que não salvou
+        if: ${{ inputs.retomar }}
+        uses: actions/download-artifact@v4
+        with:
+          name: trabalho-da-rodada
+          path: ${{ runner.temp }}/retomada
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ github.token }}
+
+      - name: Retomar - restaurar o trabalho (recusa se a main mudou os mesmos arquivos)
+        if: ${{ inputs.retomar }}
+        run: |
+          chmod +x rotina/*.sh
+          rotina/retomar-trabalho.sh "$RUNNER_TEMP/retomada"
 
       - name: Conferir que a legislatura não terminou
         run: |
@@ -142,26 +170,34 @@ jobs:
           key: downloads-${{ github.run_id }}
 
       - name: Conferir com os sites oficiais (trava se algo estiver errado)
+        id: conferir
         run: |
+          # o motivo de não salvar vai para o resumo (rotina/avisar-rodada.sh)
+          falhou() { echo "$1" | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
           # sem a base unificada e os arquivos do site, não há o que conferir nem salvar
           if grep -Eq '^(padronizar|site) ([1-9][0-9]*) | 5 [0-9]+$' "$RUNNER_TEMP/etapas.txt"; then
-            echo "Padronizar ou gerar o site falhou, ou uma etapa recusou rodar (código 5, fim da legislatura): nada será salvo."
-            grep -E '^(padronizar|site) |^[a-z]+ 5 ' "$RUNNER_TEMP/etapas.txt"
-            exit 1
+            falhou "$(grep -E '^(padronizar|site) [1-9]|^[a-z]+ 5 ' "$RUNNER_TEMP/etapas.txt" | head -3 | tr '\n' ';') padronizar ou gerar o site falhou, ou uma etapa recusou rodar (código 5, fim da legislatura)"
           fi
-          python coletar.py conferir --max-alertas 8
+          # mais de 3 etapas com erro de verdade: algo sistêmico (rede, código); não se salva nada
+          COM_ERRO=$(awk '$2 !~ /^(0|3|124)$/ && $2 != "pulada-por-tempo"' "$RUNNER_TEMP/etapas.txt" | wc -l)
+          if [ "$COM_ERRO" -gt 3 ]; then
+            falhou "$COM_ERRO etapas terminaram com erro: algo está errado com a rodada, nada será salvo"
+          fi
+          python coletar.py conferir --max-alertas 8 || falhou "a conferência com os sites oficiais passou do limite de alertas (veja dados/processados/conferencia.md, anexado à execução)"
 
       - name: Situação das fontes (no resumo desta execução)
         if: always()
         run: cat dados/processados/situacao.md >> "$GITHUB_STEP_SUMMARY" || true
 
       - name: Salvar os números novos no repositório
+        id: salvar
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add dados/processados dados/portal_transparencia dados/municipios dados/municipios_tce dados/judiciario dados/governadores dados/camara dados/atividade dados/bens dados/assembleias dados/referencia/renda_trabalho.json site/dados site/fotos
           if git diff --cached --quiet; then
             echo "Nada mudou desde a última atualização."
+            touch "$RUNNER_TEMP/salvo"
             exit 0
           fi
           git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
@@ -176,16 +212,16 @@ jobs:
               echo "$CONFLITOS" | xargs git checkout --ours --
               echo "$CONFLITOS" | xargs git add --
               GIT_EDITOR=true git rebase --continue
-              python coletar.py montar || { echo "Os arquivos do site não foram refeitos depois do rebase: nada será enviado."; exit 1; }
+              python coletar.py montar || { echo "Os arquivos do site não foram refeitos depois do rebase: nada será enviado." | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
               git add dados/processados site/dados site/fotos
               git diff --cached --quiet || git commit -m "Arquivos do site refeitos depois das duas rodadas"
             fi
             # a árvore que vai ser enviada (depois do rebase e do montar) passa de novo pela conferência
-            python coletar.py conferir --max-alertas 8 || { echo "A conferência da árvore final falhou: nada será enviado."; exit 1; }
-            git push && exit 0
+            python coletar.py conferir --max-alertas 8 || { echo "A conferência da árvore final (depois de trazer o que a rodada do Brasil enviou) falhou: nada será enviado." | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
+            git push && { touch "$RUNNER_TEMP/salvo"; exit 0; }
             echo "Push recusado (tentativa $tentativa): outra rodada enviou antes; trazendo o que ela enviou."
           done
-          echo "O push não saiu depois de 3 tentativas."; exit 1
+          echo "O push não saiu depois de 3 tentativas." | tee "$RUNNER_TEMP/motivo.txt"; exit 1
 
       - name: Guardar o relatório da conferência
         if: always()
@@ -194,6 +230,27 @@ jobs:
           name: conferencia
           path: dados/processados/conferencia.md
           if-no-files-found: ignore
+
+      - name: Guardar o trabalho da coleta (só se a rodada não salvou)
+        if: always()
+        run: |
+          chmod +x rotina/*.sh
+          rotina/guardar-trabalho.sh
+
+      - name: Enviar o trabalho da coleta como artefato (14 dias; nunca vai para a main)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: trabalho-da-rodada
+          path: ${{ runner.temp }}/trabalho
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Resumo e aviso (diz por que nada foi salvo e como retomar)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: rotina/avisar-rodada.sh
 
       - name: Avisar das etapas que deram erro (depois de salvar)
         if: always()

@@ -69,6 +69,26 @@ O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda 
 Se a conferência falhar, **nada é salvo**: o site anterior continua no ar e o GitHub manda um e-mail. O relatório da
 conferência fica anexado em cada execução.
 
+**Rede de segurança** (para uma falha tardia não jogar fora horas de coleta):
+- Se a rodada **não salva** (padronizar, site ou conferência falhou, mais de 3 etapas com erro de verdade, ou o job estourou), o
+  passo `rotina/guardar-trabalho.sh` empacota o que a coleta produziu (arquivos de `dados/` e `site/dados/` alterados ou
+  novos, mais `dados/brutos`) e o workflow o envia como **artefato** `trabalho-da-rodada` (14 dias; nunca vai para a
+  `main`). Os downloads vão no cache à parte. O site no ar não muda: só o `git push` do passo de salvar publica, e ele só
+  roda depois da conferência (e da conferência de novo sobre a árvore final).
+- **Retomar:** Actions > Atualizar dados > Run workflow, marcar `retomar` e pôr em `run_id` o número da rodada que não
+  salvou (está no resumo dela e na URL). O workflow baixa o artefato, restaura (`rotina/retomar-trabalho.sh` recusa se a
+  `main` mudou, desde então, algum dos mesmos arquivos de `dados/`, por exemplo por causa da rodada do Brasil), pula as
+  etapas de coleta e roda só padronizar, site, situação, conferência e salvar, com a mesma conferência final. Leva minutos.
+  Use a retomada depois de consertar o código na `main` (o conserto vem do checkout; o trabalho, do artefato).
+- **Aviso:** o resumo da execução diz numa linha "NADA FOI SALVO: motivo" e como retomar (`rotina/avisar-rodada.sh`);
+  se a rodada anterior também não salvou, abre uma issue no repositório ("A rodada semanal de dados falhou duas vezes
+  seguidas"; as seguintes viram comentário nela).
+- **Fila:** `concurrency` com `cancel-in-progress: false`: uma rodada nova (agendada, manual ou retomada) espera a que está
+  em andamento, sem cancelá-la.
+- Os testes rápidos do início (pandas, gravação, disjuntor) param a rodada em segundos se o código está quebrado. Um
+  "ensaio" de padronizar + site com os dados do Git não é possível: o `padronizar` lê `dados/brutos`, que não vai para o
+  Git (a coleta da Câmara o gera). Testes da rede de segurança: `python3 -m coleta.testes_rodada`.
+
 A primeira rodada com o cache de downloads vazio (ou depois de um mês sem rodar) é a mais longa: só a Câmara leva
 perto de 1h40 para ler as páginas de cada deputado, os Tribunais de Contas levam uns 80 minutos e as Assembleias uns 45
 (medido em 07/10/2026 numa cópia limpa do repositório, sem cache, com as etapas em paralelo); vereadores, prefeituras e

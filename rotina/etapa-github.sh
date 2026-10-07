@@ -6,7 +6,8 @@
 #   <etapa>     nome da etapa do coletar.py (camara, senado, tce...)
 #   <minutos>   tempo máximo desta etapa; ela para sozinha (coletar.py --tempo-max), grava o que já pegou e a rodada
 #               continua; o resto é lido na próxima rodada (os robôs retomam de onde pararam)
-#   essencial   etapa que não pode ser pulada nem encurtada pelo prazo geral (padronizar, site, situacao)
+#   essencial   etapa que não pode ser pulada nem encurtada pelo prazo geral (padronizar, site, situacao); é a única que roda
+#               numa rodada retomada (RETOMAR=true)
 #
 # O prazo geral da rodada vem da variável PRAZO_FIM (segundos desde 1970), posta pelo workflow no começo (325 min depois
 # do início): a etapa normal recebe no máximo o que sobra até esse prazo, deixando RESERVA_MIN (70) minutos para as
@@ -25,6 +26,13 @@ MINUTOS="${2:?minutos}"
 ESSENCIAL="${3:-}"
 RESERVA_MIN="${RESERVA_MIN:-70}"
 ANOTACOES="${RUNNER_TEMP:-/tmp}/etapas.txt"
+
+# RETOMAR=true (workflow, "retomar"): o trabalho da coleta veio de uma rodada que não salvou (rotina/retomar-trabalho.sh); só as
+# etapas essenciais rodam (padronizar, site, situacao), e as outras ficam como estavam
+if [ "${RETOMAR:-false}" = "true" ] && [ -z "$ESSENCIAL" ]; then
+  echo "Etapa $ETAPA não roda: rodada retomada (o trabalho da coleta já está aqui)."
+  exit 0
+fi
 
 agora=$(date +%s)
 limite=$((MINUTOS * 60))

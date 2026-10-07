@@ -1,5 +1,6 @@
-"""Testes de rotina/etapa-github.sh (tempo de cada etapa, prazo geral, códigos de saída) e do passo de conferência do
-workflow, com um `python` e um `timeout` de mentira num PATH temporário. Não coleta nada nem abre a internet.
+"""Testes de rotina/etapa-github.sh (tempo de cada etapa, prazo geral, códigos de saída, rodada retomada), do passo de
+conferência do workflow, da rede de segurança (guardar-trabalho.sh, retomar-trabalho.sh, avisar-rodada.sh) e da conta do
+orçamento, com um `python`, um `timeout` e um `gh` de mentira num PATH temporário. Não coleta nada nem abre a internet.
 
     python3 -m coleta.testes_rodada
 """
@@ -81,8 +82,175 @@ def executar():
         r = subprocess.run(["grep", "-Eq", gate], input=linha + "\n", text=True)
         caso(f"gate com {linha!r}", (r.returncode == 0) == deve)
 
+    rede_de_seguranca(texto, caso)
+
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
+
+
+def _passo(texto, nome):
+    """O script `run` do passo do workflow cujo nome começa com `nome` (sem a indentação do YAML)."""
+    m = re.search(r"- name: " + re.escape(nome) + r"[^\n]*\n(?:        [^\n]*\n)*?        run: \|\n((?:          [^\n]*\n|\n)+)", texto)
+    return re.sub(r"^          ", "", m.group(1), flags=re.M)
+
+
+def _git(cwd, *args):
+    return subprocess.run(["git", *args], cwd=cwd, capture_output=True, text=True, check=True).stdout.strip()
+
+
+def rede_de_seguranca(texto, caso):
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        bin_ = tmp / "bin"
+        bin_.mkdir()
+        # python de mentira (sai com STUB_RC), gh de mentira (grava os comandos; responde a conclusão da rodada anterior)
+        (bin_ / "python").write_text('#!/bin/bash\nexit "${STUB_RC:-0}"\n')
+        (bin_ / "gh").write_text('#!/bin/bash\necho "$@" >> "$RUNNER_TEMP/gh.txt"\n'
+                                 'case "$1 $2" in\n"run list") echo "${GH_ANTERIOR:-success}";;\n'
+                                 '"issue list") echo "${GH_ISSUE:-}";;\nesac\n')
+        for f in bin_.iterdir():
+            f.chmod(0o755)
+        temp = tmp / "temp"
+        temp.mkdir()
+        env = {**os.environ, "PATH": f"{bin_}:{os.environ['PATH']}", "RUNNER_TEMP": str(temp), "GITHUB_RUN_ID": "123",
+               "GITHUB_STEP_SUMMARY": str(temp / "resumo.md"), "GITHUB_REPOSITORY": "o/r", "GH_TOKEN": "x"}
+
+        def sh(script, cwd=RAIZ, **extra):
+            return subprocess.run(["bash", "-c", script], cwd=cwd, env={**env, **extra}, capture_output=True, text=True)
+
+        def limpar():
+            for f in temp.iterdir():
+                if f.is_file():
+                    f.unlink()
+                else:
+                    subprocess.run(["rm", "-rf", str(f)])
+
+        # --- o passo "Conferir com os sites oficiais": motivo gravado, e nada é salvo nos casos ruins
+        passo = _passo(texto, "Conferir com os sites oficiais")
+        for etapas, rc, deve_falhar, parte in (
+                ("camara 0 100\npadronizar 0 5\nsite 0 5", 0, False, ""),
+                ("camara 3 100\ntce 124 100\nbens pulada-por-tempo 0\npadronizar 0 5", 0, False, ""),
+                ("camara 0 1\npadronizar 1 2\nsite 0 5", 0, True, "padronizar"),
+                ("camara 0 1\npadronizar 0 2\nsite 2 5", 0, True, "site"),
+                ("camara 5 1\nsenado 5 1\npadronizar 0 2", 0, True, "legislatura"),
+                ("a 1 1\nb 1 1\nc 2 1\nd 1 1\npadronizar 0 2\nsite 0 2", 0, True, "4 etapas terminaram com erro"),
+                ("a 1 1\nb 1 1\nc 2 1\npadronizar 0 2\nsite 0 2", 0, False, ""),
+                ("camara 0 1\npadronizar 0 2\nsite 0 5", 4, True, "limite de alertas")):
+            limpar()
+            (temp / "etapas.txt").write_text(etapas + "\n")
+            r = sh(passo, STUB_RC=str(rc))
+            motivo = (temp / "motivo.txt").read_text() if (temp / "motivo.txt").exists() else ""
+            caso(f"conferir {etapas.splitlines()[:2]} rc={rc}: {'recusa' if deve_falhar else 'passa'}", (r.returncode != 0) == deve_falhar)
+            caso(f"conferir {etapas.splitlines()[:2]}: motivo certo ({parte!r})", (parte in motivo) if deve_falhar else motivo == "")
+
+        # --- guardar / retomar, num repositório de mentira
+        repo = tmp / "repo"
+        repo.mkdir()
+        _git(repo, "init", "-q")
+        _git(repo, "config", "user.email", "t@t")
+        _git(repo, "config", "user.name", "t")
+        for arq, conteudo in (("dados/a.csv", "1\n"), ("dados/b.csv", "1\n"), ("site/dados/x.json", "{}"), (".gitignore", "dados/brutos/\n")):
+            (repo / arq).parent.mkdir(parents=True, exist_ok=True)
+            (repo / arq).write_text(conteudo)
+        _git(repo, "add", "-A")
+        _git(repo, "commit", "-q", "-m", "base")
+        # a rodada que falhou: alterou a.csv, criou c.csv e um bruto (ignorado), e não salvou
+        (repo / "dados/a.csv").write_text("2\n")
+        (repo / "dados/c.csv").write_text("novo\n")
+        (repo / "dados/brutos").mkdir()
+        (repo / "dados/brutos/camara.csv").write_text("bruto\n")
+        limpar()
+        sh(f"cd {repo} && bash {RAIZ}/rotina/guardar-trabalho.sh", cwd=repo)
+        pacote = temp / "trabalho"
+        caso("guardar: faz o pacote e o base.txt", (pacote / "trabalho.tgz").exists() and (pacote / "base.txt").exists())
+        base = (pacote / "base.txt").read_text()
+        caso("guardar: base.txt traz o commit e os arquivos alterados e novos", base.startswith("base ") and "dados/a.csv" in base and "dados/c.csv" in base)
+        caso("guardar: não traz o que não mudou", "dados/b.csv" not in base)
+        caso("guardar: o bruto vai no pacote, mas fora do base.txt", "brutos" not in base)
+        limpar()
+        (temp / "salvo").write_text("")
+        sh(f"cd {repo} && bash {RAIZ}/rotina/guardar-trabalho.sh", cwd=repo)
+        caso("guardar: se a rodada salvou, não guarda nada", not (temp / "trabalho").exists())
+
+        # retomar numa cópia limpa da main
+        limpar()
+        sh(f"cd {repo} && bash {RAIZ}/rotina/guardar-trabalho.sh", cwd=repo)
+        nova = tmp / "nova"
+        subprocess.run(["git", "clone", "-q", str(repo), str(nova)], check=True, capture_output=True)
+        (nova / ".git/info").mkdir(exist_ok=True)
+        r = sh(f"cd {nova} && bash {RAIZ}/rotina/retomar-trabalho.sh {temp / 'trabalho'}", cwd=nova)
+        caso("retomar: restaura sem conflito", r.returncode == 0 and (nova / "dados/a.csv").read_text() == "2\n"
+             and (nova / "dados/c.csv").exists() and (nova / "dados/brutos/camara.csv").exists())
+        # a main mudou o mesmo arquivo de dados desde então: recusa e não mexe
+        (nova / "dados/a.csv").write_text("3\n")
+        (nova / "dados/c.csv").unlink()
+        _git(nova, "config", "user.email", "t@t")
+        _git(nova, "config", "user.name", "t")
+        _git(nova, "commit", "-q", "-am", "outra rodada mexeu em a.csv")
+        r = sh(f"cd {nova} && bash {RAIZ}/rotina/retomar-trabalho.sh {temp / 'trabalho'}", cwd=nova)
+        caso("retomar: recusa se a main mudou o mesmo arquivo", r.returncode != 0 and "dados/a.csv" in r.stdout and (nova / "dados/a.csv").read_text() == "3\n")
+        # mudança só em arquivo gerado (site/dados) não conta como conflito
+        (repo / "site/dados/x.json").write_text('{"a":1}')
+        limpar()
+        sh(f"cd {repo} && bash {RAIZ}/rotina/guardar-trabalho.sh", cwd=repo)
+        outra = tmp / "outra"
+        subprocess.run(["git", "clone", "-q", str(repo), str(outra)], check=True, capture_output=True)
+        # (o clone traz o HEAD da base, sem as alterações do repo de origem, que não foram commitadas)
+        (outra / "site/dados/x.json").write_text('{"b":2}')
+        _git(outra, "config", "user.email", "t@t")
+        _git(outra, "config", "user.name", "t")
+        _git(outra, "commit", "-q", "-am", "x.json refeito pela outra rodada")
+        r = sh(f"cd {outra} && bash {RAIZ}/rotina/retomar-trabalho.sh {temp / 'trabalho'}", cwd=outra)
+        caso("retomar: arquivo gerado (site/dados) alterado na main não é conflito", r.returncode == 0)
+
+        # --- avisar-rodada: resumo e issue
+        def avisar(salvou=False, motivo="", artefato=True, anterior="success", issue=""):
+            limpar()
+            if salvou:
+                (temp / "salvo").write_text("")
+            if motivo:
+                (temp / "motivo.txt").write_text(motivo)
+            if artefato:
+                (temp / "trabalho").mkdir()
+                (temp / "trabalho/trabalho.tgz").write_text("x")
+            r = sh(f"bash {RAIZ}/rotina/avisar-rodada.sh", GH_ANTERIOR=anterior, GH_ISSUE=issue)
+            resumo = (temp / "resumo.md").read_text() if (temp / "resumo.md").exists() else ""
+            gh = (temp / "gh.txt").read_text() if (temp / "gh.txt").exists() else ""
+            return r.returncode, resumo, gh
+
+        rc, resumo, gh = avisar(salvou=True)
+        caso("aviso: rodada salva diz isso e não abre issue", rc == 0 and "Rodada salva" in resumo and gh == "")
+        rc, resumo, gh = avisar(motivo="a conferência passou do limite")
+        caso("aviso: não salvou diz o motivo e como retomar", rc == 0 and "NADA FOI SALVO" in resumo and "a conferência passou do limite" in resumo
+             and "retomar" in resumo and "run_id = 123" in resumo)
+        caso("aviso: anterior boa, não abre issue", "issue create" not in gh and "issue comment" not in gh)
+        rc, resumo, gh = avisar(motivo="x", anterior="failure")
+        caso("aviso: duas seguidas sem salvar abre a issue", "issue create" in gh)
+        rc, resumo, gh = avisar(motivo="x", anterior="failure", issue="7")
+        caso("aviso: issue aberta recebe comentário em vez de outra", "issue comment 7" in gh and "issue create" not in gh)
+        rc, resumo, gh = avisar(motivo="x", artefato=False)
+        caso("aviso: sem artefato não manda retomar", "run_id" not in resumo and "Não havia trabalho" in resumo)
+        limpar()
+        r = sh(f"bash {RAIZ}/rotina/avisar-rodada.sh", GH_TOKEN="")
+        caso("aviso: sem token, só o resumo", r.returncode == 0)
+
+    # a rodada retomada: só as etapas essenciais rodam
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        (tmp / "bin").mkdir()
+        (tmp / "bin/python").write_text('#!/bin/bash\necho "$@" >> "$RUNNER_TEMP/chamadas.txt"\n')
+        (tmp / "bin/timeout").write_text('#!/bin/bash\n[ "$1" = "-k" ] && shift 2\nshift\nexec "$@"\n')
+        for f in (tmp / "bin").iterdir():
+            f.chmod(0o755)
+        env = {**os.environ, "PATH": f"{tmp / 'bin'}:{os.environ['PATH']}", "RUNNER_TEMP": str(tmp), "RETOMAR": "true"}
+        for etapa, ess in (("camara", ""), ("tce", ""), ("padronizar", "essencial"), ("site", "essencial")):
+            subprocess.run(["bash", str(SCRIPT), etapa, "10", ess], cwd=RAIZ, env=env, capture_output=True, text=True)
+        chamadas = (tmp / "chamadas.txt").read_text()
+        caso("retomada: só padronizar e site rodam", "padronizar" in chamadas and "site" in chamadas and "camara" not in chamadas and "tce" not in chamadas)
+
+    # concurrency: a rodada seguinte espera a em andamento, sem cancelá-la
+    caso("concurrency fila sem cancelar", "group: atualizar-dados" in texto and "cancel-in-progress: false" in texto)
+    caso("o upload do artefato nunca vai para a main (só artefato)", "name: trabalho-da-rodada" in texto and "retention-days: 14" in texto)
 
 
 if __name__ == "__main__":
