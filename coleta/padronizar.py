@@ -20,6 +20,7 @@ salário naquele ano. É uma aproximação: essas linhas ficam com rateado=True 
 """
 from datetime import datetime
 
+import numpy as np
 import pandas as pd
 
 from .config import BRUTOS, CACHE, INICIO_LEGISLATURA, LEGISLATURA, PROCESSADOS, REFERENCIA, ULTIMO_MES
@@ -388,7 +389,7 @@ def _executivo(politicos_congresso, lanc_congresso):
         chave_meses = {(int(a), int(m)) for a, m in zip(cc.ano, cc.mes)}
         qq = quarentena[quarentena.id_portal == p["id"]]
         meses_q = {(int(a), int(m)) for a, m in zip(qq.ano, qq.mes)} - chave_meses
-        rem_q = rem[(rem.id_portal == p["id"]) & [(a, m) in meses_q for a, m in zip(rem.ano, rem.mes)]]
+        rem_q = rem[(rem.id_portal == p["id"]) & np.array([(a, m) in meses_q for a, m in zip(rem.ano, rem.mes)], dtype=bool)]
         total_q = float((rem_q.bruta + rem_q.abate_teto + rem_q.natalina + rem_q.abate_natalina + rem_q.ferias + rem_q.eventuais).sum())
         nn = normalizar_nome(p["nome"])
         par = congresso.get(nn)

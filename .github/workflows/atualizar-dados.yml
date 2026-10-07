@@ -50,6 +50,12 @@ jobs:
           sudo apt-get install -y poppler-utils  # pdftotext, para as folhas em PDF da Câmara de Maceió
           pip install -r requirements.txt
 
+      - name: Testes rápidos do código (param a rodada antes de 2 horas de coleta)
+        run: |
+          python -m coleta.testes_pandas
+          python -m coleta.testes_gravacao
+          python -m coleta.testes_disjuntor
+
       - name: Recuperar os downloads da semana passada
         uses: actions/cache/restore@v4
         with:

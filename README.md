@@ -48,6 +48,9 @@ A primeira coleta faz alguns milhares de consultas e leva uns 20–30 minutos. T
 O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda terça-feira às 8h17**
 (horário de Brasília). Também dá para rodar na hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
 
+0. Antes de tudo, testes rápidos (`coleta/testes_pandas.py`, `testes_gravacao.py`, `testes_disjuntor.py`): se o código está quebrado,
+   a rodada para em segundos e não depois de horas de coleta. O `pandas` está fixado em `>=1.5,<3.1` (`requirements.txt`);
+   o pandas 3 recusa `máscara & lista` e derrubou o `padronizar` em 06/10/2026. No Mac: `.venv/bin/pip install -r requirements.txt`.
 1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior), **uma etapa por passo**
    (`rotina/etapa-github.sh <etapa> <minutos>`): cada etapa tem um tempo máximo e, se estourar, para sozinha, grava o
    que já pegou e a rodada segue (o resto é lido na próxima; os robôs retomam de onde pararam). Há também um prazo
