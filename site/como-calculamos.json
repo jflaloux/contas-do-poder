@@ -1,5 +1,5 @@
 {
-  "publicar": false,
+  "publicar": true,
   "titulo": "Como calculamos",
   "lide": "Esta página explica, em palavras simples, de onde vêm os números do site, como cada conta é feita e o que cada termo quer dizer. Nenhuma conta é escondida: se um número parece estranho, a fonte oficial está a um toque de distância.",
   "atualizado": "07/10/2026",
@@ -27,7 +27,7 @@
           "ul": [
             "**Vai para o bolso**: o que a pessoa recebe. Salário (subsídio), 13º, auxílios e ajuda de custo, sempre em valor bruto, isto é, antes do imposto de renda e da previdência.",
             "**Gastos do mandato**: o que a pessoa gasta no exercício do mandato com dinheiro público. É a cota parlamentar (passagens, combustível, alimentação, escritório no estado, divulgação e outras despesas reembolsadas), mais as diárias de viagens oficiais e outros gastos.",
-            "**Custo total** = vai para o bolso + gastos do mandato. É o que aparece em letras grandes no alto de cada página, com o nome “custo por mês”.",
+            "**Custo total** = vai para o bolso + gastos do mandato. É o número grande no alto de cada página, com o nome “custo total por mês”. Logo acima dele, uma frase diz as duas partes (“Recebe X por mês, bruto, e usa mais Y em gastos do mandato”).",
             "**Equipe do gabinete**: o dinheiro que paga as pessoas que trabalham para o parlamentar. Fica à parte, porque não vai para o bolso dele: vai para outras pessoas. O site mostra quanto custa por mês, quantas pessoas são e a média por pessoa."
           ]
         },
@@ -128,7 +128,7 @@
             "**Parcela indenizatória**: a que o órgão classifica como ressarcimento de despesa, e não como remuneração. Pela classificação, ela não entra na conta do teto.",
             "**Cota parlamentar**: dinheiro mensal para despesas do mandato (passagens, escritório no estado, combustível, divulgação e outras), reembolsado mediante nota fiscal. O limite varia por estado.",
             "**Verba de gabinete**: dinheiro público para pagar a equipe de assessores do parlamentar. No site, fica à parte do custo da pessoa.",
-            "**Ajuda de custo**: pagamento único, no começo e no fim do mandato, para despesas de mudança e instalação.",
+            "**Ajuda de custo**: pagamento feito de uma vez, em valor igual a um subsídio mensal, a quem toma posse (no começo da legislatura ou quando um suplente assume). O órgão o destina a despesas de mudança e instalação.",
             "**Auxílio-moradia e imóvel funcional**: quem não mora num dos apartamentos funcionais em Brasília pode receber auxílio-moradia.",
             "**Diárias**: o que se paga em viagem a serviço, para cobrir hospedagem e alimentação.",
             "**Jeton**: pagamento por participar de reunião de conselho (no governo federal, de conselhos de empresas e órgãos).",

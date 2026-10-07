@@ -1490,9 +1490,12 @@ Dois usos do mesmo arquivo (`site/dados/situacao.json`), sem arquivo novo:
   deputado federal/senador, do maior para o menor, com a fonte de cada linha; só o salário (subsídio), sem gastos nem equipe.
 - **Blocos recolhidos no celular** (`recolherNoCelular`): "Presença e projetos" e o ranking da página da pessoa ficam num `<details>` fechado até 760 px;
   a escolha fica em `S.recolhido`, e o link para a seção abre o bloco. O `rodar.mjs` abre os `details.recolher` antes de ler o texto.
-- **Como calculamos** (`/como-calculamos`, texto em `site/como-calculamos.json`, mesmo formato do `sobre.json` mais `**negrito**`): só sai com
-  `"publicar": true` no arquivo. Para publicar: o Jean-François revisa o texto; o `dados` põe `como-calculamos` em `RESERVADOS` (`coleta/enderecos.py`);
-  o `site` muda a chave. Enquanto for `false`, nem a página, nem o arquivo, nem os links do rodapé e do "Entenda" vão para `publicar/`.
+- **Como calculamos** (`/como-calculamos`, texto em `site/como-calculamos.json`, mesmo formato do `sobre.json` mais `**negrito**`): publicada em
+  07/10/2026 (`"publicar": true`; texto revisto pelo Jean-François e pelo orquestrador; `como-calculamos` está em `RESERVADOS`). Com `false`, nem a
+  página, nem o arquivo, nem os links do rodapé e do "Entenda" vão para `publicar/`.
+- **Primeira dobra do contracheque** (opção B, 07/10/2026): antes do número grande, a frase "Recebe X por mês, bruto, e usa mais Y em gastos do mandato"
+  (só "Recebe X…" quando não há gastos; "Usa Y…" quando a fonte não traz salário), e o rótulo do número vira "Custo total por mês". Quem só recebe
+  (Prefeitura, governador, Judiciário) fica como era. A mesma regra em `resumoTopo` (`app.js`) e na prévia do `gerar.mjs`.
 
 ## Licença
 
