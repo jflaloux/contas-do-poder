@@ -1,4 +1,4 @@
-# Situação das fontes (07/10/2026 18:17, rodada: exterior)
+# Situação das fontes (07/10/2026 21:48, rodada: exterior)
 
 Último mês fechado: 09/2026. 97 fontes: 89 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
 
@@ -28,7 +28,7 @@ Desde a rodada anterior (semana de 29/09/2026):
 | assembleias/es (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | assembleias/go (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
 | assembleias/mg | ok | 07/2026 | 2026-10-07 | exterior |  |
-| assembleias/ms | ok | 09/2026 | 2026-10-02 | brasil | AttributeError: 'DataFrame' object has no attribute 'ano' |
+| assembleias/ms | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/mt | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/pa | ok | 08/2026 | 2026-10-07 | exterior |  |
 | assembleias/pb | ok | 07/2026 | 2026-10-07 | exterior |  |
@@ -56,7 +56,7 @@ Desde a rodada anterior (semana de 29/09/2026):
 | folhas/CE (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/DF | ok | 08/2026 | 2026-10-07 | exterior |  |
 | folhas/ES | ok | 09/2026 | 2026-10-07 | exterior |  |
-| folhas/GO | ok | 08/2026 | 2026-10-02 | brasil | HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://dadosabertos.go.gov.br/dataset/9cec56e2-8e10-472f-b0 |
+| folhas/GO | ok | 08/2026 | 2026-10-07 | exterior |  |
 | folhas/MA (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | folhas/MS | ok | 08/2026 | 2026-10-07 | exterior |  |
 | folhas/PB (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |

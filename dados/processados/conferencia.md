@@ -1,12 +1,12 @@
-# Conferência dos dados — 07/10/2026 18:17
+# Conferência dos dados — 07/10/2026 21:48
 
 ## 1. Cobertura
 
 - Deputados na base: 648 (em exercício hoje: 513 de 513)
-- Senadores na base: 105 (em exercício hoje: 80 de 81)
+- Senadores na base: 105 (em exercício hoje: 79 de 81)
 - Governo federal na base: 71 (presidente, vice e ministros desde 2023)
 
-**ATENÇÃO: número de parlamentares em exercício diferente do esperado.**
+**ATENÇÃO: número de parlamentares em exercício diferente do esperado.** Senado com número diferente de 3 em: DF (2), MG (2) (vaga à espera do suplente, ou renúncia ainda não refletida na lista).
 
 ## 2. Cota parlamentar da Câmara: nossa soma × página oficial do deputado
 
@@ -25,7 +25,7 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Helena Lima | 2024 | 606,140.66 | 606,140.66 | 0.00 |
 | Helena Lima | 2025 | 646,009.82 | 646,009.82 | 0.00 |
 | Dimas Gadelha | 2024 | 500,001.01 | 500,001.01 | 0.00 |
-| Dimas Gadelha | 2025 | 485,449.64 | 492,919.64 | -7,470.00 |
+| Dimas Gadelha | 2025 | 492,919.64 | 492,919.64 | 0.00 |
 | Da Vitoria | 2024 | 514,642.84 | 514,642.84 | 0.00 |
 | Da Vitoria | 2025 | 536,573.96 | 536,573.96 | 0.00 |
 | Clarissa Tércio | 2024 | 345,146.46 | 345,146.46 | 0.00 |
@@ -33,14 +33,14 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Roberta Roma | 2024 | 475,811.52 | 475,811.52 | -0.00 |
 | Roberta Roma | 2025 | 541,587.42 | 541,587.42 | 0.00 |
 | Ana Pimentel | 2024 | 494,232.46 | 494,232.46 | 0.00 |
-| Ana Pimentel | 2025 | 497,590.11 | 496,300.75 | 1,289.36 |
+| Ana Pimentel | 2025 | 496,300.75 | 496,300.75 | 0.00 |
 | Ana Paula Leão | 2024 | 517,524.92 | 517,524.92 | 0.00 |
-| Ana Paula Leão | 2025 | 513,827.38 | 513,827.38 | 0.00 |
+| Ana Paula Leão | 2025 | 511,868.74 | 513,827.38 | -1,958.64 |
 | Coronel Chrisóstomo | 2024 | 588,712.44 | 588,712.44 | 0.00 |
 | Coronel Chrisóstomo | 2025 | 595,280.14 | 595,280.14 | 0.00 |
 | Gustavo Gayer | 2024 | 427,170.50 | 427,170.50 | 0.00 |
 | Gustavo Gayer | 2025 | 225,537.64 | 225,537.64 | -0.00 |
-| Amanda Gentil | 2024 | 377,822.92 | 383,205.80 | -5,382.88 |
+| Amanda Gentil | 2024 | 377,822.92 | 383,205.80 | -5,382.88 (explicada: mês com saldo negativo que a página não lista) |
 | Amanda Gentil | 2025 | 556,441.95 | 556,441.94 | 0.01 |
 | Gabriel Nunes | 2024 | 566,255.59 | 566,255.59 | 0.00 |
 | Gabriel Nunes | 2025 | 547,458.30 | 547,458.30 | -0.00 |
@@ -53,13 +53,13 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Kiko Celeguim | 2024 | 529,739.97 | 529,739.97 | 0.00 |
 | Kiko Celeguim | 2025 | 525,157.48 | 525,157.48 | 0.00 |
 
-**Resultado: 3 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
+**Resultado: 1 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
 
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
-- Comparações senador × ano: 324
-- **Diferenças de R$ 1 ou mais: 1**
-  - Rodrigo Pacheco 2026: nossa 352,854.88 × oficial 329,429.49
+- Comparações senador × ano: 327
+- **Diferenças de R$ 1 ou mais: 0**
+- Não comparados: 1 senador(es) × ano de quem já saiu do exercício, em que o total da API parou no dia da saída.
 
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
@@ -89,8 +89,8 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
-- Senadores comparados: 80
-- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 33
+- Senadores comparados: 78
+- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 32
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 7. Sanidade (trava a publicação automática)
@@ -175,10 +175,10 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
 | Senadores com salário em 08/2026 | 84 | 75 | OK |
 | Senadores com assessores em 08/2026 | 82 | 60 | OK |
-| Cota da Câmara nos últimos 12 meses (R$ milhões) | 256 | 150 | OK |
+| Cota da Câmara nos últimos 12 meses (R$ milhões) | 259 | 150 | OK |
 | Cota do Senado nos últimos 12 meses (R$ milhões) | 36 | 15 | OK |
 | Parlamentares no arquivo do site | 842 | 700 | OK |
 | Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
 
 ---
-**Total de alertas: 5**
+**Total de alertas: 2**

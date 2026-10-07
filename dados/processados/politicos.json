@@ -13843,7 +13843,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -13872,7 +13872,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -13893,7 +13893,7 @@
   "partido": "PSB",
   "uf": "MA",
   "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6358.jpg",
-  "em_exercicio": false,
+  "em_exercicio": true,
   "pagina_oficial": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6358",
   "data_nascimento": "1984-05-11",
   "naturalidade": "Pinheiro, MA",
@@ -13908,9 +13908,19 @@
     "inicio": "2024-02-21",
     "fim": "2026-07-30",
     "motivo_saida": "Licença com convocação de suplente (sup 120 dias)"
+   },
+   {
+    "inicio": "2026-10-06",
+    "fim": "2026-10-07",
+    "motivo_saida": null
    }
   ],
-  "imovel_funcional": {}
+  "imovel_funcional": {
+   "2023": "Não utilizou",
+   "2024": "Utilizou",
+   "2025": "Utilizou",
+   "2026": "Utilizou"
+  }
  },
  {
   "id": "sen-6366",
@@ -13954,7 +13964,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -13983,7 +13993,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14075,7 +14085,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14167,7 +14177,7 @@
    },
    {
     "inicio": "2026-04-02",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14237,7 +14247,7 @@
    },
    {
     "inicio": "2026-03-31",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14267,7 +14277,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14301,7 +14311,7 @@
    },
    {
     "inicio": "2024-11-16",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14354,7 +14364,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14383,7 +14393,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14412,7 +14422,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14441,7 +14451,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14470,7 +14480,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14499,7 +14509,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14528,7 +14538,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14557,7 +14567,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14586,7 +14596,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14639,7 +14649,7 @@
   "exercicios": [
    {
     "inicio": "2024-12-29",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14668,7 +14678,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14721,7 +14731,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14755,7 +14765,7 @@
    },
    {
     "inicio": "2024-10-18",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14789,7 +14799,7 @@
    },
    {
     "inicio": "2024-10-17",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14818,7 +14828,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14847,7 +14857,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14881,7 +14891,7 @@
    },
    {
     "inicio": "2023-09-04",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14963,7 +14973,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -14992,7 +15002,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15051,7 +15061,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15080,7 +15090,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15133,7 +15143,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15162,7 +15172,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15220,7 +15230,7 @@
    },
    {
     "inicio": "2024-11-30",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15249,7 +15259,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15278,7 +15288,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15307,7 +15317,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15360,7 +15370,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15413,7 +15423,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15442,7 +15452,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15476,7 +15486,7 @@
    },
    {
     "inicio": "2026-09-02",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15549,7 +15559,7 @@
    },
    {
     "inicio": "2026-05-06",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15578,7 +15588,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15599,7 +15609,7 @@
   "partido": "PDT",
   "uf": "DF",
   "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador5979.jpg",
-  "em_exercicio": true,
+  "em_exercicio": false,
   "pagina_oficial": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/5979",
   "data_nascimento": "1971-09-30",
   "naturalidade": "Brasília, DF",
@@ -15607,16 +15617,11 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
-    "motivo_saida": null
+    "fim": "2026-10-03",
+    "motivo_saida": "Licença com convocação de suplente (sup 120 dias)"
    }
   ],
-  "imovel_funcional": {
-   "2023": "Não utilizou",
-   "2024": "Não utilizou",
-   "2025": "Não utilizou",
-   "2026": "Não utilizou"
-  }
+  "imovel_funcional": {}
  },
  {
   "id": "sen-6359",
@@ -15628,7 +15633,7 @@
   "partido": "PSB",
   "uf": "MA",
   "foto": "https://www.senado.leg.br/senadores/img/fotos-oficiais/senador6359.jpg",
-  "em_exercicio": true,
+  "em_exercicio": false,
   "pagina_oficial": "https://www25.senado.leg.br/web/senadores/senador/-/perfil/6359",
   "data_nascimento": "1956-06-29",
   "naturalidade": null,
@@ -15637,15 +15642,10 @@
    {
     "inicio": "2026-08-05",
     "fim": "2026-10-06",
-    "motivo_saida": null
+    "motivo_saida": "Retorno do titular"
    }
   ],
-  "imovel_funcional": {
-   "2023": "Não utilizou",
-   "2024": "Não utilizou",
-   "2025": "Não utilizou",
-   "2026": "Não utilizou"
-  }
+  "imovel_funcional": {}
  },
  {
   "id": "sen-5926",
@@ -15665,7 +15665,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15699,7 +15699,7 @@
    },
    {
     "inicio": "2024-08-07",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15728,7 +15728,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15757,7 +15757,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15786,7 +15786,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15815,7 +15815,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15844,7 +15844,7 @@
   "exercicios": [
    {
     "inicio": "2023-06-12",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -15873,7 +15873,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16009,7 +16009,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16038,7 +16038,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16067,7 +16067,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16096,7 +16096,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16125,7 +16125,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16178,7 +16178,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16207,7 +16207,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16236,7 +16236,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16265,7 +16265,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16304,7 +16304,7 @@
    },
    {
     "inicio": "2026-04-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16334,7 +16334,7 @@
   "exercicios": [
    {
     "inicio": "2026-03-11",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16387,8 +16387,8 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
-    "motivo_saida": null
+    "fim": "2026-09-30",
+    "motivo_saida": "Renúncia"
    }
   ],
   "imovel_funcional": {}
@@ -16416,7 +16416,7 @@
    },
    {
     "inicio": "2024-10-18",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16445,7 +16445,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16479,7 +16479,7 @@
    },
    {
     "inicio": "2026-04-10",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16532,7 +16532,7 @@
   "exercicios": [
    {
     "inicio": "2026-08-11",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16561,7 +16561,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16590,7 +16590,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16619,7 +16619,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16648,7 +16648,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16677,7 +16677,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16706,7 +16706,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16740,7 +16740,7 @@
    },
    {
     "inicio": "2025-10-30",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16769,7 +16769,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16848,7 +16848,7 @@
    },
    {
     "inicio": "2024-10-28",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16877,7 +16877,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16906,7 +16906,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16935,7 +16935,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],
@@ -16964,7 +16964,7 @@
   "exercicios": [
    {
     "inicio": "2023-02-01",
-    "fim": "2026-10-06",
+    "fim": "2026-10-07",
     "motivo_saida": null
    }
   ],

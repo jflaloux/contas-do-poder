@@ -1,338 +1,338 @@
 {
  "assembleias/ac": {
-  "ultima_tentativa": "2026-10-07T17:06:10",
+  "ultima_tentativa": "2026-10-07T21:43:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:06:10"
+  "ultimo_sucesso": "2026-10-07T21:43:17"
  },
  "assembleias/ba": {
-  "ultima_tentativa": "2026-10-07T17:04:01",
+  "ultima_tentativa": "2026-10-07T21:41:23",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:04:01"
+  "ultimo_sucesso": "2026-10-07T21:41:23"
  },
  "assembleias/ce": {
-  "ultima_tentativa": "2026-10-07T17:05:01",
+  "ultima_tentativa": "2026-10-07T21:42:23",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:01"
+  "ultimo_sucesso": "2026-10-07T21:42:23"
  },
  "assembleias/mg": {
-  "ultima_tentativa": "2026-10-07T17:03:31",
+  "ultima_tentativa": "2026-10-07T21:41:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:31"
+  "ultimo_sucesso": "2026-10-07T21:41:13"
  },
  "assembleias/ms": {
-  "ultima_tentativa": "2026-10-07T17:05:22",
-  "primeira_falha": "2026-10-07T17:05:22",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-07T21:42:43",
+  "falhas": 0,
   "ultimo_erro": "AttributeError: 'DataFrame' object has no attribute 'ano'",
-  "ultima_falha": "2026-10-07T17:05:22"
+  "ultima_falha": "2026-10-07T17:05:22",
+  "ultimo_sucesso": "2026-10-07T21:42:43"
  },
  "assembleias/mt": {
-  "ultima_tentativa": "2026-10-07T17:13:07",
+  "ultima_tentativa": "2026-10-07T21:44:03",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:13:07"
+  "ultimo_sucesso": "2026-10-07T21:44:03"
  },
  "assembleias/pa": {
-  "ultima_tentativa": "2026-10-07T17:06:02",
+  "ultima_tentativa": "2026-10-07T21:43:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:06:02"
+  "ultimo_sucesso": "2026-10-07T21:43:15"
  },
  "assembleias/pb": {
-  "ultima_tentativa": "2026-10-07T17:05:03",
+  "ultima_tentativa": "2026-10-07T21:42:25",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:03"
+  "ultimo_sucesso": "2026-10-07T21:42:25"
  },
  "assembleias/pe": {
-  "ultima_tentativa": "2026-10-07T17:04:09",
+  "ultima_tentativa": "2026-10-07T21:41:31",
   "primeira_falha": "2026-10-07T17:04:09",
-  "falhas": 1,
+  "falhas": 2,
   "ultimo_erro": "ConnectionError: o robots.txt de dadosabertos.alepe.pe.gov.br não abriu (site fora do ar ou bloqueado)",
-  "ultima_falha": "2026-10-07T17:04:09"
+  "ultima_falha": "2026-10-07T21:41:31"
  },
  "assembleias/pi": {
-  "ultima_tentativa": "2026-10-07T17:05:52",
+  "ultima_tentativa": "2026-10-07T21:43:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:52"
+  "ultimo_sucesso": "2026-10-07T21:43:05"
  },
  "assembleias/pr": {
-  "ultima_tentativa": "2026-10-07T17:05:49",
+  "ultima_tentativa": "2026-10-07T21:43:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:49"
+  "ultimo_sucesso": "2026-10-07T21:43:01"
  },
  "assembleias/rj": {
-  "ultima_tentativa": "2026-10-07T17:03:35",
+  "ultima_tentativa": "2026-10-07T21:41:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:35"
+  "ultimo_sucesso": "2026-10-07T21:41:17"
  },
  "assembleias/rn": {
-  "ultima_tentativa": "2026-10-07T17:05:52",
+  "ultima_tentativa": "2026-10-07T21:43:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:52"
+  "ultimo_sucesso": "2026-10-07T21:43:05"
  },
  "assembleias/ro": {
-  "ultima_tentativa": "2026-10-07T17:05:22",
+  "ultima_tentativa": "2026-10-07T21:42:44",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:22"
+  "ultimo_sucesso": "2026-10-07T21:42:44"
  },
  "assembleias/rr": {
-  "ultima_tentativa": "2026-10-07T17:06:13",
+  "ultima_tentativa": "2026-10-07T21:43:20",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:06:13"
+  "ultimo_sucesso": "2026-10-07T21:43:20"
  },
  "assembleias/sc": {
-  "ultima_tentativa": "2026-10-07T17:05:17",
+  "ultima_tentativa": "2026-10-07T21:42:39",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:17"
+  "ultimo_sucesso": "2026-10-07T21:42:39"
  },
  "assembleias/se": {
-  "ultima_tentativa": "2026-10-07T17:05:33",
+  "ultima_tentativa": "2026-10-07T21:42:54",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:33"
+  "ultimo_sucesso": "2026-10-07T21:42:54"
  },
  "assembleias/sp": {
-  "ultima_tentativa": "2026-10-07T17:03:30",
+  "ultima_tentativa": "2026-10-07T21:41:06",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:30"
+  "ultimo_sucesso": "2026-10-07T21:41:06"
  },
  "assembleias/to": {
-  "ultima_tentativa": "2026-10-07T17:05:26",
+  "ultima_tentativa": "2026-10-07T21:42:48",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:05:26"
+  "ultimo_sucesso": "2026-10-07T21:42:48"
  },
  "federal/atividade": {
-  "ultima_tentativa": "2026-10-07T16:38:12",
+  "ultima_tentativa": "2026-10-07T21:13:19",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:12"
+  "ultimo_sucesso": "2026-10-07T21:13:19"
  },
  "federal/camara": {
-  "ultima_tentativa": "2026-10-07T16:35:18",
+  "ultima_tentativa": "2026-10-07T21:12:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:35:18"
+  "ultimo_sucesso": "2026-10-07T21:12:15"
  },
  "federal/executivo": {
-  "ultima_tentativa": "2026-10-07T16:35:36",
+  "ultima_tentativa": "2026-10-07T21:12:30",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:35:36"
+  "ultimo_sucesso": "2026-10-07T21:12:30"
  },
  "federal/municipios": {
-  "ultima_tentativa": "2026-10-07T16:38:08",
+  "ultima_tentativa": "2026-10-07T21:13:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:08"
+  "ultimo_sucesso": "2026-10-07T21:13:17"
  },
  "federal/renda": {
-  "ultima_tentativa": "2026-10-07T16:38:11",
+  "ultima_tentativa": "2026-10-07T21:13:18",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:11"
+  "ultimo_sucesso": "2026-10-07T21:13:18"
  },
  "federal/senado": {
-  "ultima_tentativa": "2026-10-07T16:35:35",
+  "ultima_tentativa": "2026-10-07T21:12:29",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:35:35"
+  "ultimo_sucesso": "2026-10-07T21:12:29"
  },
  "folhas/AC": {
-  "ultima_tentativa": "2026-10-07T16:50:13",
+  "ultima_tentativa": "2026-10-07T21:34:36",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:50:13"
+  "ultimo_sucesso": "2026-10-07T21:34:36"
  },
  "folhas/BA": {
-  "ultima_tentativa": "2026-10-07T16:50:18",
+  "ultima_tentativa": "2026-10-07T21:34:42",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:50:18"
+  "ultimo_sucesso": "2026-10-07T21:34:42"
  },
  "folhas/DF": {
-  "ultima_tentativa": "2026-10-07T16:50:26",
+  "ultima_tentativa": "2026-10-07T21:34:51",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:50:26"
+  "ultimo_sucesso": "2026-10-07T21:34:51"
  },
  "folhas/ES": {
-  "ultima_tentativa": "2026-10-07T16:50:40",
+  "ultima_tentativa": "2026-10-07T21:35:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:50:40"
+  "ultimo_sucesso": "2026-10-07T21:35:05"
  },
  "folhas/GO": {
-  "ultima_tentativa": "2026-10-07T16:54:23",
-  "primeira_falha": "2026-10-07T16:54:23",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-07T21:36:37",
+  "falhas": 0,
   "ultimo_erro": "HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://dadosabertos.go.gov.br/dataset/9cec56e2-8e10-472f-b060-d925ba3b29b5/resource/5a09150b-5708-4c09-a094-da432b179c91/download/folhapagamento_202608.csv",
-  "ultima_falha": "2026-10-07T16:54:23"
+  "ultima_falha": "2026-10-07T16:54:23",
+  "ultimo_sucesso": "2026-10-07T21:36:37"
  },
  "folhas/MG": {
-  "ultima_tentativa": "2026-10-07T16:55:48",
+  "ultima_tentativa": "2026-10-07T21:37:16",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:55:48"
+  "ultimo_sucesso": "2026-10-07T21:37:16"
  },
  "folhas/MS": {
-  "ultima_tentativa": "2026-10-07T17:00:24",
+  "ultima_tentativa": "2026-10-07T21:38:19",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:00:24"
+  "ultimo_sucesso": "2026-10-07T21:38:19"
  },
  "folhas/PE": {
-  "ultima_tentativa": "2026-10-07T17:00:29",
+  "ultima_tentativa": "2026-10-07T21:38:24",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:00:29"
+  "ultimo_sucesso": "2026-10-07T21:38:24"
  },
  "folhas/PR": {
-  "ultima_tentativa": "2026-10-07T17:01:47",
+  "ultima_tentativa": "2026-10-07T21:39:21",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:01:47"
+  "ultimo_sucesso": "2026-10-07T21:39:21"
  },
  "folhas/RO": {
-  "ultima_tentativa": "2026-10-07T17:02:03",
+  "ultima_tentativa": "2026-10-07T21:39:37",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:02:03"
+  "ultimo_sucesso": "2026-10-07T21:39:37"
  },
  "folhas/RR": {
-  "ultima_tentativa": "2026-10-07T17:02:07",
+  "ultima_tentativa": "2026-10-07T21:39:41",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:02:07"
+  "ultimo_sucesso": "2026-10-07T21:39:41"
  },
  "folhas/RS": {
-  "ultima_tentativa": "2026-10-07T17:02:16",
+  "ultima_tentativa": "2026-10-07T21:39:49",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:02:16"
+  "ultimo_sucesso": "2026-10-07T21:39:49"
  },
  "folhas/SC": {
-  "ultima_tentativa": "2026-10-07T17:02:23",
+  "ultima_tentativa": "2026-10-07T21:39:56",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:02:23"
+  "ultimo_sucesso": "2026-10-07T21:39:56"
  },
  "folhas/SP": {
-  "ultima_tentativa": "2026-10-07T17:03:03",
+  "ultima_tentativa": "2026-10-07T21:40:34",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:03"
+  "ultimo_sucesso": "2026-10-07T21:40:34"
  },
  "judiciario/cnj": {
-  "ultima_tentativa": "2026-10-07T16:37:26",
+  "ultima_tentativa": "2026-10-07T21:13:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:37:26"
+  "ultimo_sucesso": "2026-10-07T21:13:05"
  },
  "judiciario/pgr": {
-  "ultima_tentativa": "2026-10-07T16:37:54",
+  "ultima_tentativa": "2026-10-07T21:13:12",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:37:54"
+  "ultimo_sucesso": "2026-10-07T21:13:12"
  },
  "judiciario/stf": {
-  "ultima_tentativa": "2026-10-07T16:37:55",
+  "ultima_tentativa": "2026-10-07T21:13:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:37:55"
+  "ultimo_sucesso": "2026-10-07T21:13:13"
  },
  "judiciario/stj": {
-  "ultima_tentativa": "2026-10-07T16:37:08",
+  "ultima_tentativa": "2026-10-07T21:13:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:37:08"
+  "ultimo_sucesso": "2026-10-07T21:13:01"
  },
  "judiciario/stm": {
-  "ultima_tentativa": "2026-10-07T16:38:00",
+  "ultima_tentativa": "2026-10-07T21:13:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:00"
+  "ultimo_sucesso": "2026-10-07T21:13:15"
  },
  "judiciario/tse": {
-  "ultima_tentativa": "2026-10-07T16:38:03",
+  "ultima_tentativa": "2026-10-07T21:13:16",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:03"
+  "ultimo_sucesso": "2026-10-07T21:13:16"
  },
  "judiciario/tst": {
-  "ultima_tentativa": "2026-10-07T16:37:19",
+  "ultima_tentativa": "2026-10-07T21:13:03",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:37:19"
+  "ultimo_sucesso": "2026-10-07T21:13:03"
  },
  "prefeituras/curitiba": {
-  "ultima_tentativa": "2026-10-07T16:49:18",
+  "ultima_tentativa": "2026-10-07T21:34:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:49:18"
+  "ultimo_sucesso": "2026-10-07T21:34:17"
  },
  "prefeituras/fortaleza": {
-  "ultima_tentativa": "2026-10-07T16:45:00",
+  "ultima_tentativa": "2026-10-07T21:30:21",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:45:00"
+  "ultimo_sucesso": "2026-10-07T21:30:21"
  },
  "prefeituras/porto_alegre": {
-  "ultima_tentativa": "2026-10-07T16:47:48",
+  "ultima_tentativa": "2026-10-07T21:32:49",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:47:48"
+  "ultimo_sucesso": "2026-10-07T21:32:49"
  },
  "prefeituras/recife": {
-  "ultima_tentativa": "2026-10-07T16:44:46",
+  "ultima_tentativa": "2026-10-07T21:30:06",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:44:46"
+  "ultimo_sucesso": "2026-10-07T21:30:06"
  },
  "prefeituras/rio": {
-  "ultima_tentativa": "2026-10-07T16:44:44",
+  "ultima_tentativa": "2026-10-07T21:30:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:44:44"
+  "ultimo_sucesso": "2026-10-07T21:30:05"
  },
  "prefeituras/salvador": {
-  "ultima_tentativa": "2026-10-07T16:49:07",
+  "ultima_tentativa": "2026-10-07T21:34:09",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:49:07"
+  "ultimo_sucesso": "2026-10-07T21:34:09"
  },
  "prefeituras/sp": {
-  "ultima_tentativa": "2026-10-07T16:44:42",
+  "ultima_tentativa": "2026-10-07T21:30:02",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:44:42"
+  "ultimo_sucesso": "2026-10-07T21:30:02"
  },
  "prefeituras/vitoria": {
-  "ultima_tentativa": "2026-10-07T16:46:50",
+  "ultima_tentativa": "2026-10-07T21:32:12",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:46:50"
+  "ultimo_sucesso": "2026-10-07T21:32:12"
  },
  "tce/ce": {
-  "ultima_tentativa": "2026-10-07T17:13:38",
+  "ultima_tentativa": "2026-10-07T21:44:32",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:13:38"
+  "ultimo_sucesso": "2026-10-07T21:44:32"
  },
  "tce/es": {
-  "ultima_tentativa": "2026-10-07T17:53:21",
+  "ultima_tentativa": "2026-10-07T21:44:32",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:53:21"
+  "ultimo_sucesso": "2026-10-07T21:44:32"
  },
  "tce/pb": {
-  "ultima_tentativa": "2026-10-07T17:13:34",
+  "ultima_tentativa": "2026-10-07T21:44:29",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:13:34"
+  "ultimo_sucesso": "2026-10-07T21:44:29"
  },
  "tce/pe": {
-  "ultima_tentativa": "2026-10-07T17:55:18",
+  "ultima_tentativa": "2026-10-07T21:46:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:55:18"
+  "ultimo_sucesso": "2026-10-07T21:46:28"
  },
  "tce/rj": {
-  "ultima_tentativa": "2026-10-07T18:15:27",
+  "ultima_tentativa": "2026-10-07T21:46:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T18:15:27"
+  "ultimo_sucesso": "2026-10-07T21:46:28"
  },
  "vereadores/aracaju": {
-  "ultima_tentativa": "2026-10-07T16:43:51",
+  "ultima_tentativa": "2026-10-07T21:29:11",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:43:51"
+  "ultimo_sucesso": "2026-10-07T21:29:11"
  },
  "vereadores/boa_vista": {
-  "ultima_tentativa": "2026-10-07T16:43:58",
+  "ultima_tentativa": "2026-10-07T21:29:19",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:43:58"
+  "ultimo_sucesso": "2026-10-07T21:29:19"
  },
  "vereadores/goiania": {
-  "ultima_tentativa": "2026-10-07T16:38:23",
+  "ultima_tentativa": "2026-10-07T21:13:30",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:23"
+  "ultimo_sucesso": "2026-10-07T21:13:30"
  },
  "vereadores/recife": {
-  "ultima_tentativa": "2026-10-07T16:41:12",
+  "ultima_tentativa": "2026-10-07T21:14:14",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:41:12"
+  "ultimo_sucesso": "2026-10-07T21:14:14"
  },
  "vereadores/sp": {
-  "ultima_tentativa": "2026-10-07T16:38:20",
+  "ultima_tentativa": "2026-10-07T21:13:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T16:38:20"
+  "ultimo_sucesso": "2026-10-07T21:13:28"
  },
  "viagens/MG": {
-  "ultima_tentativa": "2026-10-07T17:03:23",
+  "ultima_tentativa": "2026-10-07T21:40:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:23"
+  "ultimo_sucesso": "2026-10-07T21:40:58"
  },
  "viagens/SP": {
-  "ultima_tentativa": "2026-10-07T17:03:25",
+  "ultima_tentativa": "2026-10-07T21:41:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T17:03:25"
+  "ultimo_sucesso": "2026-10-07T21:41:01"
  }
 }
