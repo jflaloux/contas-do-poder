@@ -104,15 +104,26 @@ def _candidatos(ano, uf):
     return idx, info
 
 
+# Nome civil na candidatura do TSE de quem a base conhece por outro nome (conferido à mão em 07/10/2026: o único candidato
+# do cargo e do Estado com este nome, no arquivo consulta_cand do TSE). Chave: o id da pessoa no site.
+ALIAS_CIVIL = {
+    "dep-198783": "EMANUEL PINHEIRO DA SILVA PRIMO TEIXEIRA",
+    "dep-220664": "GUILHERME ARISTOTELES UCHOA CAVALCANTI PESSOA DE MELO JUNIOR",
+    "dep-160517": "PAULO ROBERTO FOLETTO",
+    "gov-ba-jeronimo-rodrigues": "JERONIMO RODRIGUES SOUZA",
+    "gov-mg-mateus-simoes": "MATEUS SIMOES DE ALMEIDA",
+}
+
+
 def _casar(ano, uf, cargos, pessoa, cidade=None):
-    """(SQ, motivo): o SQ do único candidato com o nome civil (ou, sem ele, o nome de urna) da pessoa, ou (None, por
-    que não)."""
+    """(SQ, motivo): o SQ do único candidato com o nome civil (ou, sem ele, o nome de urna; por último, o nome que o site
+    usa contra os nomes civis do TSE) da pessoa, ou (None, por que não)."""
     idx, _ = _candidatos(ano, uf)
     ue = normalizar_nome(cidade) if cidade else uf
     grupos = [idx[(ue, c)] for c in cargos if (ue, c) in idx]
     if not grupos:
         return None, "cidade não achada no arquivo do TSE" if cidade else "cargo sem candidatos no arquivo"
-    for chave, nome in (("civil", pessoa.get("nc")), ("urna", pessoa.get("n"))):
+    for chave, nome in (("civil", pessoa.get("nc")), ("urna", pessoa.get("n")), ("civil", pessoa.get("n"))):
         if not nome:
             continue
         sqs = sorted({sq for g in grupos for sq in g[chave].get(normalizar_nome(nome), [])})
@@ -248,7 +259,7 @@ def _coletar():
             continue
         sq, motivo, ano = None, "sem o mandato no Senado para saber o ano da eleição", None
         for ano in anos:
-            sq, motivo = _casar(ano, uf, cargos, p, cidade)
+            sq, motivo = _casar(ano, uf, cargos, {**p, "nc": ALIAS_CIVIL.get(chave, p.get("nc"))}, cidade)
             if sq:
                 break
         if not sq:
