@@ -1,0 +1,171 @@
+{
+  "publicar": false,
+  "titulo": "Como calculamos",
+  "lide": "Esta página explica, em palavras simples, de onde vêm os números do site, como cada conta é feita e o que cada termo quer dizer. Nenhuma conta é escondida: se um número parece estranho, a fonte oficial está a um toque de distância.",
+  "atualizado": "07/10/2026",
+  "blocos": [
+    {
+      "id": "em-uma-frase",
+      "h": "Em uma frase",
+      "c": [
+        {
+          "p": "O site pega o que os órgãos públicos publicam sobre cada pessoa (salário, auxílios, despesas do mandato e, quando existe, a equipe do gabinete) e mostra tudo por mês, no mesmo formato, sempre com o link da fonte oficial. Não há estimativa nossa escondida: quando um valor é aproximado, a página diz."
+        },
+        {
+          "p": "O site descreve o que a fonte mostra, sem adjetivos e sem acusações. Quando um dado parece estranho, a página mostra o que a fonte mostra; quem investiga é a imprensa."
+        }
+      ]
+    },
+    {
+      "id": "tres-partes",
+      "h": "As três partes: bolso, gastos do mandato e equipe",
+      "c": [
+        {
+          "p": "Para um deputado federal ou um senador, o contracheque do site separa o dinheiro em três partes:"
+        },
+        {
+          "ul": [
+            "**Vai para o bolso**: o que a pessoa recebe. Salário (subsídio), 13º, auxílios e ajuda de custo, sempre em valor bruto, isto é, antes do imposto de renda e da previdência.",
+            "**Gastos do mandato**: o que a pessoa gasta no exercício do mandato com dinheiro público. É a cota parlamentar (passagens, combustível, alimentação, escritório no estado, divulgação e outras despesas reembolsadas), mais as diárias de viagens oficiais e outros gastos.",
+            "**Custo total** = vai para o bolso + gastos do mandato. É o que aparece em letras grandes no alto de cada página, com o nome “custo por mês”.",
+            "**Equipe do gabinete**: o dinheiro que paga as pessoas que trabalham para o parlamentar. Fica à parte, porque não vai para o bolso dele: vai para outras pessoas. O site mostra quanto custa por mês, quantas pessoas são e a média por pessoa."
+          ]
+        },
+        {
+          "p": "Na Câmara, a equipe é a dos secretários parlamentares que trabalharam em cada mês. No Senado, a equipe é uma estimativa feita a partir da folha de pagamento (os comissionados que aparecem nela); a página do senador avisa disso."
+        },
+        {
+          "p": "O mesmo raciocínio vale para os outros cargos, com o que cada fonte publica: o governador e o vice (salário fixado em lei e, onde a folha abre, o que receberam mês a mês), o deputado estadual (salário e verba do gabinete), o vereador (salário e verba do gabinete, nas capitais com dados por pessoa) e o prefeito, o vice e os secretários (o que recebem). Onde a fonte não publica uma parte, a página não inventa: deixa de mostrá-la e diz por quê."
+        }
+      ]
+    },
+    {
+      "id": "por-mes",
+      "h": "Por que tudo é por mês",
+      "c": [
+        {
+          "p": "Para poder comparar uma pessoa com outra, o site mostra tudo por mês. Quatro detalhes:"
+        },
+        {
+          "ul": [
+            "**Cada média usa os seus próprios meses.** A média do salário usa os meses com salário, a das despesas usa os meses com despesas e a da equipe usa os meses com equipe. Assim, uma licença ou um mês sem lançamento não derruba a conta.",
+            "**13º salário e férias.** São pagos de uma vez ou em parcelas, mas aparecem como média por mês: o total do período dividido pelos meses do período com pagamento. Num ano inteiro, o 13º do ano ÷ 12. A linha “13º salário (média por mês)” traz embaixo a conta e os meses em que o órgão paga.",
+            "**Valores que a fonte só informa por ano.** Alguns auxílios e despesas (como o auxílio-moradia da Câmara e as passagens, os correios e outros gastos do Senado) são publicados só por ano. O site divide o total do ano pelos meses em que a pessoa recebeu salário. O total do ano continua exato; o valor de cada mês é uma aproximação, marcada com ≈.",
+            "**Ajuda de custo.** É paga de uma vez (na posse, por exemplo), e não todo mês. Se fosse dividida pelos poucos meses de quem entrou no meio do ano, faria essa pessoa parecer mais cara do que quem ficou o ano todo. Por isso ela fica fora do valor por mês e aparece à parte, com o total e o mês do pagamento."
+          ]
+        },
+        {
+          "p": "A cota parlamentar por tipo (passagens, aluguel de carros, combustível…) também aparece por mês: o total de cada tipo no período dividido pelos mesmos meses da cota, com a parte de cada tipo em porcentagem."
+        }
+      ]
+    },
+    {
+      "id": "salarios-minimos",
+      "h": "Em salários mínimos",
+      "c": [
+        {
+          "p": "Ao lado dos reais, o site mostra o valor em salários mínimos do ano a que ele se refere, para dar uma régua conhecida. O salário mínimo usado é o de cada ano: R$ 1.320 (2023), R$ 1.412 (2024), R$ 1.518 (2025) e R$ 1.621 (2026)."
+        }
+      ]
+    },
+    {
+      "id": "mediana-e-posicao",
+      "h": "Mediana, posição e comparação",
+      "c": [
+        {
+          "ul": [
+            "**Mediana**: o valor do meio. Se todos fossem postos em fila, do que menos custa ao que mais custa, a mediana é o de quem está no meio: metade tem valor menor, metade tem valor maior. Usamos a mediana, e não a média, porque alguns poucos valores muito altos puxariam a média para cima.",
+            "**Posição**: o lugar da pessoa na fila do mesmo grupo e do mesmo período (por exemplo, “159º de 554 deputados em 2025”). A frase “custa mais que 71% dos deputados” conta quantos do grupo têm valor menor.",
+            "**Comparação só dentro do grupo.** Deputado federal com deputado federal, senador com senador, e assim por diante. A cota parlamentar também é comparada com o limite de cada estado, porque o limite muda de um estado para outro (as passagens custam mais em alguns).",
+            "**Mínimo de meses.** Só entra na lista quem teve pelo menos 3 meses de mandato no período (6, no mandato todo). Quem tem poucos meses teria uma média pouco confiável.",
+            "**Quem já saiu do cargo** aparece com a marca “Fora do cargo hoje”. A posição que está no alto da página conta todos que tiveram mandato no período; a do ranking, mais abaixo, pode ter só quem está no cargo hoje, e a página diz qual das duas é."
+          ]
+        },
+        {
+          "p": "As cores e as setas (▲ e ▼) só dizem se o valor está acima ou abaixo da mediana. Não dizem se é bom ou ruim."
+        }
+      ]
+    },
+    {
+      "id": "ganha-mais-que",
+      "h": "“Ganha mais que X% dos brasileiros que trabalham”",
+      "c": [
+        {
+          "p": "Essa frase compara o que vai para o bolso com a renda das pessoas que trabalham no Brasil. A comparação usa a PNAD Contínua, a pesquisa oficial de emprego e renda do IBGE: o rendimento mensal habitual de todos os trabalhos, bruto, das pessoas ocupadas que têm renda do trabalho. Juntamos os quatro trimestres mais recentes e convertemos cada renda em salários mínimos do seu ano, a mesma régua usada para o político."
+        },
+        {
+          "p": "Do lado do político, entra a média do que vai para o bolso no período escolhido (na página do governador, o salário do cargo). Essa média inclui o 13º, as férias e os auxílios, que a PNAD não conta como renda habitual."
+        },
+        {
+          "p": "Não comparamos com a população inteira, porque ela inclui crianças e quem não tem renda, e o número ficaria inflado. As pesquisas domiciliares também captam mal as rendas mais altas (quem ganha muito responde menos). Por isso o percentual é uma ordem de grandeza, e não um número exato."
+        }
+      ]
+    },
+    {
+      "id": "cada-cargo",
+      "h": "O que muda em cada cargo",
+      "c": [
+        {
+          "ul": [
+            "**Governador e vice**: o salário (subsídio) é fixado por lei em cada estado. Mostramos a lei ou a fonte de cada valor e como o confirmamos: “Lei” (lemos o valor no texto da lei), “Conferido na folha” (o valor aparece na folha de pagamento, com o nome de quem recebe), “Tabela oficial”, “Cálculo nosso” (a lei dá um reajuste em porcentagem e fizemos a conta) e “Só pela imprensa”. Onde a folha abre, o site mostra também o que cada um recebeu em cada mês.",
+            "**Deputado estadual**: o salário vem da lei (ou da folha, onde a Assembleia a publica) e a verba do gabinete, do que cada Assembleia divulga. O que cada Assembleia publica está no [Índice de Transparência](/indice).",
+            "**Vereador**: nas cidades sem dados por pessoa, o site mostra o custo da Câmara (pelas contas que a prefeitura entrega ao Tesouro Nacional) e o teto do salário do vereador, que a Constituição limita pela população da cidade. O teto não é o salário: cada Câmara fixa o seu.",
+            "**Ministros e tribunais superiores**: o valor é o bruto da folha de cada órgão, antes do abate-teto e sem os descontos. As diárias de viagem ficam à parte. Quem está no TSE vindo de outro tribunal recebe o subsídio lá; a página do TSE mostra só o que o TSE paga, e por isso essas pessoas não entram na comparação."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glossario",
+      "h": "Glossário",
+      "c": [
+        {
+          "ul": [
+            "**Bruto**: o valor antes do imposto de renda, da previdência e de outros descontos.",
+            "**Subsídio**: o salário do cargo, em parcela única, fixado em lei.",
+            "**Teto do funcionalismo**: o limite que a Constituição põe para a remuneração de quem é agente público. É o subsídio de ministro do STF (R$ 46.366,19 por mês desde fev/2025).",
+            "**Abate-teto**: quando a soma das parcelas de um mês passa do teto, a folha desconta o que passou. O site mostra o valor antes desse desconto, e por isso o total de um mês pode passar do teto.",
+            "**Parcela indenizatória**: a que o órgão classifica como ressarcimento de despesa, e não como remuneração. Pela classificação, ela não entra na conta do teto.",
+            "**Cota parlamentar**: dinheiro mensal para despesas do mandato (passagens, escritório no estado, combustível, divulgação e outras), reembolsado mediante nota fiscal. O limite varia por estado.",
+            "**Verba de gabinete**: dinheiro público para pagar a equipe de assessores do parlamentar. No site, fica à parte do custo da pessoa.",
+            "**Ajuda de custo**: pagamento único, no começo e no fim do mandato, para despesas de mudança e instalação.",
+            "**Auxílio-moradia e imóvel funcional**: quem não mora num dos apartamentos funcionais em Brasília pode receber auxílio-moradia.",
+            "**Diárias**: o que se paga em viagem a serviço, para cobrir hospedagem e alimentação.",
+            "**Jeton**: pagamento por participar de reunião de conselho (no governo federal, de conselhos de empresas e órgãos).",
+            "**Mediana**: o valor do meio de uma lista ordenada (veja acima).",
+            "**Folha de pagamento**: a lista, com o nome de cada servidor, do que o órgão pagou em cada mês."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "conferencia",
+      "h": "Como conferimos",
+      "c": [
+        {
+          "p": "Os robôs que leem as fontes são comparados com os totais que as próprias fontes publicam. A cota do Senado bate ao centavo com o total oficial em 324 de 324 comparações (senador por ano). Na Câmara, 37 de 40 comparações de uma amostra batem ao centavo; as outras 3 diferem em até 1,5%. O resultado da última conferência e o que ainda falta estão no [código aberto](https://github.com/jflaloux/contas-do-poder)."
+        },
+        {
+          "p": "Até que mês vai cada fonte e quando foi lida pela última vez: [atualização dos dados](/atualizacao). Erros nossos, corrigidos: [correções](/correcoes)."
+        }
+      ]
+    },
+    {
+      "id": "o-que-nao-fazemos",
+      "h": "O que o site não faz",
+      "c": [
+        {
+          "ul": [
+            "Não usa dado que não seja público e oficial, e cada número tem o link da fonte.",
+            "Não guarda CPF inteiro, nem os descontos pessoais da folha (pensão, empréstimo, imposto de cada um). O líquido não é mostrado.",
+            "Não contorna CAPTCHA, login ou bloqueio de robôs: quando um portal bloqueia, o estado fica sem o dado e o [Índice de Transparência](/indice) registra isso.",
+            "Não dá nota a pessoas nem diz se um valor é certo ou errado: mostra o que a fonte mostra e compara só com o mesmo grupo."
+          ]
+        },
+        {
+          "p": "Achou um valor que não bate com a fonte? Use o “Encontrou um erro?” no fim da página, ou escreva para [contato@contasdopoder.com](mailto:contato@contasdopoder.com)."
+        }
+      ]
+    }
+  ]
+}
