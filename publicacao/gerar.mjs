@@ -416,7 +416,10 @@ function previaPessoa(p, k, r, texto) {
     const como = gk === undefined ? "" : gk === null ? ` (como vice e como ${CARGO_G.gov[p.fem].toLowerCase()})` : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
     // a mesma estrutura do app.js (resumoTopo, proposta B): à esquerda o número e a divisão que o explica; à direita (a partir de 980 px) o
     // contexto, que aqui só tem os salários mínimos (a mediana e a posição vêm com os dados do app)
-    resumo = `<div class="conta__resumo conta__resumo--duas"><div class="conta__resumo-numero"><p class="rotulo">${rotuloValor(p)} ${esc(nomeK(k, p))}${esc(como)}</p>`
+    // a frase antes do número (mesma regra do app.js, fraseRecebe): o que recebe e o que usa em gastos, ou só o que existe
+    const frase = soBolso(p) ? "" : gm > 0 && cm > 0 ? `Recebe ${reais(gm)} por mês, bruto, e usa mais ${reais(cm)} em ${gastosNome(p)}.` : gm > 0 ? `Recebe ${reais(gm)} por mês, bruto.`
+      : cm > 0 ? `Usa ${reais(cm)} por mês em ${gastosNome(p)}. A fonte não traz salário neste período.` : "";
+    resumo = `<div class="conta__resumo conta__resumo--duas"><div class="conta__resumo-numero">${frase ? `<p class="resumo-frase">${esc(frase)}</p>` : ""}<p class="rotulo">${soBolso(p) ? rotuloValor(p) : "Custo total por mês"} ${esc(nomeK(k, p))}${esc(como)}</p>`
       + `<p class="resumo-valor">${esc(reais(gm + cm))}</p><div class="conta__resumo-origem">${partes}</div></div>`
       + `<div class="conta__resumo-contexto">${salMin ? `<div class="resumo-linha"><p class="resumo-sm">Equivale a ${smTxt((gm + cm) / salMin)} salários mínimos por mês</p></div>` : ""}</div></div>`;
   }

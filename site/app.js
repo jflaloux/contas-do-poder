@@ -1664,9 +1664,15 @@
     const nota = r.unico ? h("p", { class: "conta__resumo-nota" }, h("span", { "aria-hidden": "true" }, "* "), r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
       h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesesDoUnico(p, k))}`,
       `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
+    // a frase antes do número (proposta B, escolhida em 07/10/2026): o que recebe e o que usa em gastos, ou só o que existe; quem só recebe
+    // (Prefeitura, governador, Judiciário) fica como era. Sempre bruto, e os valores são os mesmos da divisão logo abaixo. A mesma regra no gerar.mjs.
+    const g = gastosNome(p).toLowerCase();
+    const frase = recebe ? "" : r.gm > 0 && r.cm > 0 ? `Recebe ${reais(r.gm)} por mês, bruto, e usa mais ${reais(r.cm)} em ${g}.` : r.gm > 0 ? `Recebe ${reais(r.gm)} por mês, bruto.`
+      : r.cm > 0 ? `Usa ${reais(r.cm)} por mês em ${g}. A fonte não traz salário neste período.` : "";
     return h("div", { class: "conta__resumo conta__resumo--duas" }, pil,
       h("div", { class: "conta__resumo-numero" },
-        h("p", { class: "rotulo" }, `${rotuloValor(p)} ${nomePeriodo(k, false)}${comoG(p, k)}`),
+        frase ? h("p", { class: "resumo-frase" }, frase) : null,
+        h("p", { class: "rotulo" }, `${recebe ? rotuloValor(p) : "Custo total por mês"} ${nomePeriodo(k, false)}${comoG(p, k)}`),
         h("p", { class: "resumo-valor" }, reais(r.tm), sinal),
         origem),
       h("div", { class: "conta__resumo-contexto" },

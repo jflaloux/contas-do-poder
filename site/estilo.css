@@ -1162,3 +1162,6 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
 .cargos-estado { display: grid; gap: 8px; }
 .baixar .acoes { display: flex; flex-wrap: wrap; gap: 8px; }
 .rodape .link-botao { color: var(--banda-ganha); }
+
+/* a frase antes do número grande do contracheque */
+.resumo-frase { margin: 0 0 10px; font-size: 1.2rem; line-height: 1.35; color: var(--banda-ink); font-weight: 500; }
