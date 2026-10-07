@@ -511,7 +511,7 @@ function destaqueCidade(cod, n, pop, custo) {
   let abaixo = 0, acima = 0;
   for (const v of vs) { if (v < meu) abaixo++; else if (v > meu) acima++; }
   const pct = Math.floor((abaixo / outras) * 100), pctMais = Math.floor((acima / outras) * 100);
-  const texto = `Por habitante, a Câmara ${deCidade(cod, n)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(medianaCid(vs))} por habitante, por mês.`;
+  const texto = `Por habitante, a Câmara ${deCidade(cod, n)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${num(outras)} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(medianaCid(vs))} por habitante, por mês.`;
   return `<div class="cidade__corpo"><p class="destaque">${esc(texto)}</p></div>`;
 }
 const vistos = new Set();
@@ -744,7 +744,7 @@ if (SIT && (SIT.fontes || []).length) {
       `<div class="estatistica"><span class="rotulo">${esc(sit[s])}</span><span class="estatistica__valor">${conta[s]}</span><span class="estatistica__comp">${conta[s] === 1 ? "fonte" : "fontes"}</span></div>`).join("") + "</div>"
     + `<p class="discreto pequeno">${[quando ? `Lista refeita em ${quando}.` : "", fechado ? `O último mês fechado é ${fechado}.` : ""].filter(Boolean).join(" ")}</p>`
     + blocoRodada
-    + (fora.length ? `<h2 class="h3">Fontes que não estão em dia</h2><p class="discreto">Cada uma também aparece no grupo dela, mais abaixo.</p>${tabela("Fontes que não estão em dia", fora)}` : "")
+    + (fora.length ? `<h2 class="h3">Fontes que não estão em dia</h2><p class="discreto">Cada uma também aparece no grupo dela, mais abaixo.</p>${tabela("Tabela das fontes que não estão em dia: dados até, última coleta e situação", fora)}` : "")
     + (SIT.grupos || []).map((g) => {
       const lista = fontes.filter((f) => f.grupo === g.id);
       return lista.length ? `<h2 class="h3">${esc(g.nome)} (${lista.length})</h2>${tabela(g.nome, lista, true)}` : "";
@@ -838,13 +838,18 @@ if (governadores.length) {
 }
 fs.writeFileSync(path.join(SAIDA, "dados", "manifesto.json"), JSON.stringify(MANIFESTO, null, 1));
 fs.writeFileSync(path.join(SAIDA, "index.html"), MODELO.replace(/<\/head>/, `${preloads()}\n</head>`));
+// 404.html: o Cloudflare Pages serve este arquivo, com o código 404, para todo endereço que não existe (sem ele, qualquer
+// endereço respondia 200 com a página inicial, e o Google tratava como página de verdade). É a mesma página do app (ele
+// vê o endereço, mostra "Não achamos esta página" e os destaques), com noindex. Toda página do site é um arquivo gerado
+// ou um redirecionamento do _redirects: nenhuma rota depende da página inicial como resposta de reserva.
+fs.writeFileSync(path.join(SAIDA, "404.html"), MODELO.replace(/<\/head>/, `<meta name="robots" content="noindex">\n${preloads()}\n</head>`));
 for (const [caminho, html] of paginas) {
   const arq = path.join(SAIDA, `${caminho}.html`);
   fs.mkdirSync(path.dirname(arq), { recursive: true });
   fs.writeFileSync(arq, html);
 }
 // sitemap.xml: a página inicial e todas as páginas prontas
-const dia = String(D.meta.gerado_em || new Date().toISOString()).slice(0, 10);
+const dia = DATA_ATUALIZADA || String(D.meta.gerado_em || new Date().toISOString()).slice(0, 10); // a mesma data do "atualizado em" da abertura
 const urls = ["", ...paginas.map(([c]) => c)].map((c) => `<url><loc>${esc(`${DOMINIO}/${c}`)}</loc><lastmod>${dia}</lastmod></url>`);
 fs.writeFileSync(path.join(SAIDA, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 // endereços que mudaram (site/dados/enderecos.json, "antigos"): redirecionamento permanente para o atual

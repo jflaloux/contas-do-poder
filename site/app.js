@@ -424,8 +424,11 @@
     const verbo = soBolso(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
     const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
     const frase = fraseposicao(p, pos), minus = frase.charAt(0).toLowerCase() + frase.slice(1);
+    // a posição de cima conta todos que tiveram mandato no período; o ranking, mais abaixo, pode ter só quem está no cargo hoje:
+    // quando o grupo tem gente que já saiu, a frase diz a base (senão, "421º de 572" e "376º de 480" na mesma página parecem erro)
+    const comSaidos = !igual && S.D.p.some((q) => !q.x && !q.ced && grupo(q) === (pos.g || grupo(p)));
     return h("div", { class: "posicao-faixa" },
-      h("p", { class: "posicao-faixa__frase" }, igual ? `${frase} ${nomePeriodo(k, false)}.` : [h("strong", null, `${pos.pos}º de ${pos.n}`), ` · ${minus} ${nomePeriodo(k, false)}`]),
+      h("p", { class: "posicao-faixa__frase" }, igual ? `${frase} ${nomePeriodo(k, false)}.` : [h("strong", null, `${pos.pos}º de ${pos.n}`), ` · ${minus} ${nomePeriodo(k, false)}`, comSaidos ? h("small", { class: "posicao-faixa__base" }, " (conta também quem já saiu do cargo)") : null]),
       h("div", { class: "regua", role: "img", "aria-label": `Posição entre os ${plural(pos.g || grupo(p))}: ${faixa}` },
         h("div", { class: "regua__trilho" }, [0, 1, 2, 3].map((i) => h("span", { class: `regua__quarto${i === quarto ? " regua__quarto--eu" : ""}` })),
           h("span", { class: "regua__marca", style: `left:${lugar.toFixed(1)}%` })),
@@ -2840,7 +2843,7 @@
         c.suspeito ? h("p", { class: "aviso aviso--forte" }, h("strong", null, "Este valor parece errado. "), `É muito menor que o das cidades do mesmo tamanho (mediana de ${reaisC(med)} por habitante, por mês). Provavelmente a Prefeitura informou parte do gasto da Câmara em outra função nas contas enviadas ao Tesouro Nacional. Por isso esta cidade fica fora das comparações.`) : null,
         prob && prob.tipo === "antigo" ? h("p", { class: "aviso" }, h("strong", null, `A Prefeitura ainda não entregou as contas de ${anoRecente()}. `), `Mostramos o gasto de ${c.ano}, o último informado ao Tesouro Nacional.`) : null,
         prob ? cobrarCidade(c, prob, med) : null,
-        tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${outras} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
+        tem && pct !== null ? h("p", { class: "destaque" }, `Por habitante, a Câmara ${deCidade(c)} custa ${pctMais < 50 ? `mais que ${pct}%` : `menos que ${pctMais}%`} das outras ${num(outras)} cidades do mesmo tamanho (${nomeFaixa(faixa)}). A mediana delas é ${reaisC(med)} por habitante, por mês.`) : null,
         tem && posUF >= 0 ? h("p", { class: "discreto" }, `${posUF + 1}ª mais cara por habitante entre as ${doEstado.length} cidades ${deUF(c.uf)} com dados.`) : null,
         tem && mesmos.length > 5 ? h("div", null, h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é uma cidade com ${nomeFaixa(faixa)}: custo da Câmara por habitante, por mês. Toque num ponto para ver qual é.`), caixa) : null,
         detalhe || [cg ? cg.nos : null, cg && cg.comNomes ? null : [h("div", { class: "estatisticas" },
@@ -3051,6 +3054,8 @@
   const fmtData = (s) => (s ? `${s.slice(8, 10)}/${s.slice(5, 7)}/${s.slice(0, 4)}` : "");
   const mesTxt = (s) => (s ? fmtMes(Number(s.slice(0, 4)) * 100 + Number(s.slice(5, 7))) : "");
   const govFem = (e) => !!e.gov.fem;
+  // o mesmo título que o gerar.mjs põe no HTML de cada pessoa (o app não troca o título quando a página já veio pronta)
+  const tituloPessoa = (p) => `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;
   const tituloGov = (e) => (e.gov.ex ? (govFem(e) ? "Governadora em exercício" : "Governador em exercício") : govFem(e) ? "Governadora" : "Governador");
   const seloConf = (c) => h("span", { class: `etiqueta conf conf--${c}`, title: CONF[c][1] }, CONF[c][0]);
   // Valor com a origem "imprensa" (confianca nos dados): quem informa é uma notícia, e a norma que ela cita não foi localizada. A fonte
@@ -3303,7 +3308,7 @@
         e.notas.length ? h("h2", { class: "h3" }, "O que mais saber") : null,
         e.notas.map((n) => h("p", { class: "nota", style: "margin:0" }, n)),
         h("ul", { class: "lista nota" },
-          h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não entram aqui: os três primeiros não são publicados por pessoa, e as diárias e passagens ainda não foram levantadas, estado por estado."),
+          h("li", null, "Subsídio é o salário do cargo, em parcela única, bruto (antes do imposto de renda e da previdência). Muitos estados pagam também 13º e terço de férias ao governador (o STF considera isso compatível com o subsídio). A residência oficial, o carro, a segurança e as viagens do governador são pagos pelo Estado e não entram aqui: os três primeiros não são publicados por pessoa" + (e.vgf ? ". As diárias e as passagens estão na página do governador e na do vice, na seção Viagens." : ", e as diárias e passagens ainda não foram levantadas, estado por estado.")),
           h("li", null, `O subsídio do governador é também o teto salarial dos servidores do Poder Executivo ${deUF(e.uf)} (Constituição, art. 37, XI), a não ser que o Estado adote um teto único, o dos desembargadores. Por isso, um aumento do governador costuma abrir espaço para aumentar outros salários.`),
           h("li", null, "Nenhum governador pode ganhar mais que um ministro do STF (R$ 46.366,19 em 2025 e 2026).")),
         foto));
@@ -3411,7 +3416,7 @@
       return h("article", { class: "cartao", id: `jud-${sigla.toLowerCase()}` },
         h("h2", { class: "h3" }, `${o.n} (${sigla})`),
         h("p", { class: "discreto pequeno", style: "margin:0" }, [`${agora.length} no cargo`, `dados até ${fmtMes(o.ultimo_mes)}`, o.via === "DadosJusBr" ? "fonte: cópia da folha oficial no DadosJusBr" : "fonte: a folha oficial"].join(" · ")),
-        C.n >= POUCOS && C.gm && !SEM_COMPARACAO.has(`t${sigla}`) ? h("div", { class: "estatisticas" }, estatistica("Bruto típico por mês", reais(C.gm), `mediana das médias de ${C.n} pessoas, desde jan/2025`)) : null,
+        C.n >= POUCOS && C.gm && !SEM_COMPARACAO.has(`t${sigla}`) ? h("div", { class: "estatisticas" }, estatistica("Bruto típico por mês", reais(C.gm), `mediana da média mensal de cada uma das ${C.n} pessoas que receberam do órgão desde jan/2025${C.n !== agora.length ? ` (${agora.length} estão no cargo hoje)` : ""}`)) : null,
         listaPessoas(agora.map(linha)),
         pagosFora.length ? [h("p", { class: "rotulo", style: "margin:10px 0 0" }, "Também integram o CNJ, pagos pelo próprio tribunal"),
           listaPessoas(pagosFora.map((x) => { const q = S.porId.get(x.id); return pessoaLinha(q, `${funcaoTxt([x.funcao, x.de, x.ate])} · pago pelo ${q.org}`, urlDe(q.id), () => { S.origem = "judiciario"; }); }))] : null,
@@ -3427,6 +3432,14 @@
       h("h1", { id: "t-judiciario", class: "titulo-pagina" }, "Judiciário"),
       h("p", { class: "lide" }, LIDE_JUD),
       h("ul", { class: "lista nota" }, (M.notas || []).map((n) => h("li", null, n))),
+      h("details", { class: "nota-dobra", id: "jud-termos" }, h("summary", null, "O que significam estes termos"),
+        h("ul", { class: "lista nota" },
+          h("li", null, h("strong", null, "Bruto"), ": o valor antes do imposto de renda, da previdência e de outros descontos."),
+          h("li", null, h("strong", null, "Subsídio"), ": o salário do cargo, em parcela única, fixado em lei."),
+          h("li", null, h("strong", null, "Teto e abate-teto"), ": o teto do funcionalismo é o subsídio de ministro do STF. Quando a soma das parcelas de um mês passa do teto, a folha desconta o que passou, e esse desconto se chama abate-teto. Aqui o valor aparece antes desse desconto."),
+          h("li", null, h("strong", null, "Parcela indenizatória"), ": a que o órgão classifica como ressarcimento de despesa, e não como remuneração. Por essa classificação, ela não entra na conta do teto, e por isso o total do mês pode passar do teto."),
+          h("li", null, h("strong", null, "PVTAC e GECJAO"), ": siglas de parcelas da lista da Resolução Conjunta CNJ/CNMP nº 14/2026. O nome por extenso e a regra de cada uma estão no texto da resolução."),
+          h("li", null, h("strong", null, "Diárias"), ": o que se paga em viagem a serviço (hospedagem e alimentação). Ficam à parte, fora do total do mês."))),
       h("div", { style: "display:grid;gap:16px" }, Object.entries(M.orgaos || {}).map(bloco)));
   }
   // na página inicial, como o governo federal: os presidentes dos tribunais e o procurador-geral e, apagados, os outros
@@ -3607,7 +3620,7 @@
       add(corpo,
         eu >= 0 ? h("div", { class: "estatisticas" },
           estatistica(nomeMetrica(R.metrica, G()), M.fmt(lista[eu].v), med !== null ? `Mediana: ${M.fmt(med)}` : null),
-          estatistica("Posição", `${eu + 1}º`, `de ${lista.length} ${grupoTxt}`)) : null,
+          estatistica("Posição", `${eu + 1}º`, `de ${num(lista.length)} ${grupoTxt}${R.uf && !semUF() ? ` de ${R.uf}` : ""}${R.noCargo ? ", só quem está no cargo hoje" : ""}`)) : null,
         p && eu < 0 ? h("p", { class: "discreto pequeno" }, `${p.n} não entra nesta lista (menos de ${minimo} meses ${R.casa === "e" || R.casa === "p" ? "no cargo" : "de mandato"} no período, valor zero ou outro grupo).`) : null,
         lista.length ? h("div", null,
           h("p", { class: "discreto pequeno", style: "margin:0 0 4px" }, `Cada ponto é um dos ${lista.length} ${ptxt} · ${nomeMetrica(R.metrica, G()).toLowerCase()} · ${nomePeriodo(R.periodo, false, G())}${R.uf && !semUF() ? ` · ${ESTADOS[R.uf]}` : ""}. Passe o mouse ou toque num ponto para ver quem é.`),
@@ -4333,7 +4346,7 @@
       h("div", { class: "estatisticas" }, ordem.filter((s) => conta[s]).map((s) => estatistica(sit[s], String(conta[s]), conta[s] === 1 ? "fonte" : "fontes"))),
       h("p", { class: "discreto pequeno" }, [quando ? `Lista refeita em ${quando}.` : null, fechado ? `O último mês fechado é ${fechado}.` : null].filter(Boolean).join(" ")),
       blocoRodada(SIT),
-      fora.length ? [h("h2", { class: "h3" }, "Fontes que não estão em dia"), h("p", { class: "discreto" }, "Cada uma também aparece no grupo dela, mais abaixo."), tabela("Fontes que não estão em dia", fora)] : null,
+      fora.length ? [h("h2", { class: "h3" }, "Fontes que não estão em dia"), h("p", { class: "discreto" }, "Cada uma também aparece no grupo dela, mais abaixo."), tabela("Tabela das fontes que não estão em dia: dados até, última coleta e situação", fora)] : null,
       (SIT.grupos || []).map((g) => {
         const lista = fontes.filter((f) => f.grupo === g.id);
         return lista.length ? [h("h2", { class: "h3" }, `${g.nome} (${lista.length})`), tabela(g.nome, lista, true)] : null; // a linha com id só nos grupos (na lista dos que não estão em dia, a fonte se repete)
@@ -4570,7 +4583,7 @@
     const p = S.sel ? S.porId.get(S.sel) : null;
     marcarPagina(!!(p || S.gov || S.cidade || S.extra), p ? p.k : S.gov ? "gov" : S.cidade ? "cidade" : S.extra === "indice" || S.extra === "judiciario" ? S.extra : null);
     if (p && !p.t) {
-      document.title = `${p.n} · Contas do Poder`;
+      document.title = tituloPessoa(p);
       // primeira visita: o resumo pronto do HTML (gerar.mjs, no período padrão) fica na tela; trocando de página ou com
       // outro período no endereço, a prévia feita aqui
       const k = S.periodo || periodoPadrao(p), pv = $("#previa", app);
@@ -4596,7 +4609,7 @@
     const trocar = (espera, ...novos) => { if (pronta) pronta.forEach((n) => n.remove()); espera.replaceWith(...novos); };
     const falhou = (espera, texto) => { if (pronta) pronta.forEach((n) => n.remove()); espera.hidden = false; espera.textContent = texto; };
     if (S.extra === "correcoes") {
-      document.title = "Correções · Contas do Poder";
+      document.title = "Correções | Contas do Poder";
       const espera = esperar("Carregando as correções…");
       navSecoes(["entenda", "fontes"]);
       carregarCorrecoes().then((C) => ((C.c || []).some((c) => (c.paginas || []).some((r) => /^cidade\//.test(r))) ? carregarCidades().then(() => C, () => C) : C)).then((C) => {
@@ -4608,7 +4621,7 @@
       return;
     }
     if (S.extra === "judiciario") {
-      document.title = "Judiciário · Contas do Poder";
+      document.title = "Judiciário: quanto recebem os ministros dos tribunais superiores, o CNJ e a PGR | Contas do Poder";
       if (pronta) pronta.forEach((n) => n.remove());
       app.append(secJudiciario());
       navSecoes(["judiciario", "entenda", "fontes"]);
@@ -4616,7 +4629,7 @@
       return;
     }
     if (S.extra === "dados-abertos") {
-      document.title = "Dados abertos · Contas do Poder";
+      document.title = "Dados abertos: baixe tudo | Contas do Poder";
       const espera = esperar("Carregando a lista dos arquivos…");
       navSecoes(["entenda", "fontes"]);
       carregarManifesto().then((M) => {
@@ -4628,7 +4641,7 @@
       return;
     }
     if (S.extra === "sobre") {
-      document.title = "Sobre e privacidade · Contas do Poder";
+      document.title = "Sobre e privacidade | Contas do Poder";
       const espera = esperar("Carregando…");
       navSecoes(["entenda", "fontes"]);
       carregarSobre().then((SB) => {
@@ -4640,7 +4653,7 @@
       return;
     }
     if (S.extra === "imprensa") {
-      document.title = "Para a imprensa · Contas do Poder";
+      document.title = "Para a imprensa | Contas do Poder";
       const espera = esperar("Carregando…");
       navSecoes(["entenda", "fontes"]);
       carregarTexto("imprensa").then((IM) => {
@@ -4652,7 +4665,7 @@
       return;
     }
     if (S.extra === "atualizacao") {
-      document.title = "Atualização dos dados · Contas do Poder";
+      document.title = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
       const espera = esperar("Carregando a situação das fontes…");
       navSecoes(["entenda", "fontes"]);
       carregarSituacao().then((SIT) => {
@@ -4664,7 +4677,7 @@
       return;
     }
     if (S.extra === "indice") {
-      document.title = "Índice de Transparência dos estados · Contas do Poder";
+      document.title = "Índice de Transparência dos estados | Contas do Poder";
       const espera = esperar("Carregando o índice…");
       navSecoes(["entenda", "fontes"]);
       carregarIndice().then((I) => {
@@ -4677,7 +4690,7 @@
     }
     if (S.gov) {
       const e = GOV.porUF[S.gov];
-      document.title = `${tituloGov(e)} ${deUF(e.uf)} · Contas do Poder`;
+      document.title = `Salário do governador ${deUF(e.uf)} (${e.gov.n}) | Contas do Poder`;
       app.append(...[secGovernador(e), secAssembleia(e.uf), assembleiaUF(e.uf) ? secRanking(null, null) : null,
         secCompartilhar(specGov(e), `A imagem e o texto mostram o salário do cargo ${deUF(e.uf)} e de onde vem o valor.`),
         secGovernadores(e), blocoErro(`${tituloGov(e)} ${deUF(e.uf)}`, fontesGov(e), `governador/${e.uf.toLowerCase()}`)].filter(Boolean));
@@ -4699,7 +4712,7 @@
         if (!c) { falhou(espera, "Cidade não encontrada."); return; }
         if (location.pathname !== urlCidade(c)) { trocarEndereco(urlCidade(c) + location.hash); atualizarCanonico(); }
         entrarNaCidade(c);
-        document.title = `Câmara ${deCidade(c)} · Contas do Poder`;
+        document.title = `Câmara Municipal ${deCidade(c)} (${c.uf}): quanto custa | Contas do Poder`;
         trocar(espera, ...[secCidade(c), (usaTribunal("prefeitura", c) ? null : secPrefeitura(c)) || secPrefeituraInterior(c) || secPrefeituraCargo(c), secBensInterior(c), camaraDe(c.cod) || prefeituraDe(c.cod) ? secRanking(null, null) : null,
           secCompartilhar(specCidade(c), `A imagem e o texto mostram o custo da Câmara em ${c.ano}, pelas contas que a prefeitura entregou ao Tesouro Nacional (Siconfi).`),
           secCamaras(c), blocoErro(`${c.n} (${c.uf})`, fontesCidade(c), `cidade/${c.cod}`)].filter(Boolean));
@@ -4711,7 +4724,7 @@
     }
     if (p) {
       const k = S.periodo || periodoPadrao(p);
-      document.title = `${p.n} · Contas do Poder`;
+      document.title = tituloPessoa(p);
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
       // governador e vice: sem gastos por pessoa, equipe, ranking nem a comparação com um parlamentar (que mostraria os
       // gastos dele como R$ 0, quando eles só não são publicados); a lista dos 27 está na página do estado
@@ -4732,6 +4745,14 @@
   window.addEventListener("popstate", () => aplicarEndereco("voltar"));
   window.addEventListener("hashchange", () => aplicarEndereco("voltar"));
   // links internos (href="/..."): troca de página sem recarregar. Ctrl/Cmd+clique e botão do meio abrem em outra aba.
+  // leitor de tela: cada <th> diz se é de coluna (no thead) ou de linha (no tbody). As tabelas são montadas em muitos lugares;
+  // o observador marca as que entram na página (a legenda vem do aria-label da região de rolagem que envolve cada tabela)
+  function escopoTabelas() {
+    const marcar = () => document.querySelectorAll("#app th:not([scope])").forEach((t) => t.setAttribute("scope", t.closest("thead") ? "col" : t.closest("tbody") ? "row" : "col"));
+    let agendado = false;
+    new MutationObserver(() => { if (agendado) return; agendado = true; requestAnimationFrame(() => { agendado = false; marcar(); }); }).observe($("#app"), { childList: true, subtree: true });
+    marcar();
+  }
   function ligarLinksInternos() {
     document.addEventListener("click", (ev) => {
       if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
@@ -4790,6 +4811,7 @@
       D.p.forEach((p) => { const q = (p.k === "p" || p.k === "g") && p.rel && S.porId.get(p.rel); if (q && !q.rel) q.rel = p.id; });
       montarCabecalho();
       ligarLinksInternos();
+      escopoTabelas();
       aplicarEndereco("inicio");
       S.carregado = true;
     })

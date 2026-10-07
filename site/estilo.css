@@ -363,7 +363,7 @@ a.fonte:hover { border-color: var(--accent); }
 /* acima ou abaixo da mediana: seta e tom neutro (sem verde/vermelho de bom/ruim) */
 .selo-comp--acima, .selo-comp--abaixo { color: var(--ink); }
 .selo-comp--igual { color: var(--ink-2); }
-.etiqueta { font-size: .72rem; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
+.etiqueta { font-size: .75rem; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); white-space: nowrap; }
 .etiqueta--fora { background: var(--line-2); color: var(--ink-2); }
 .etiqueta--estimativa { background: var(--alerta-soft); color: var(--alerta-ink); }
 .total { background: var(--accent-soft); padding: 18px 22px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; }
@@ -386,7 +386,7 @@ a.fonte:hover { border-color: var(--accent); }
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .avatar--g { width: 76px; height: 76px; font-size: 1.7rem; }
-.avatar--p { width: 28px; height: 28px; font-size: .7rem; }
+.avatar--p { width: 28px; height: 28px; font-size: .75rem; }
 
 /* estatísticas (como "horas sem luz no ano") */
 .estatisticas { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr)); }
@@ -649,7 +649,7 @@ a.pessoa-chip:hover { border-color: var(--accent); }
 .conf--lei, .conf--folha { background: var(--accent-soft); color: var(--accent); }
 .conf--tabela { background: var(--line-2); color: var(--ink-2); }
 .conf--calculado, .conf--imprensa { background: var(--alerta-soft); color: var(--alerta-ink); }
-.rank__nome .conf { font-size: .66rem; }
+.rank__nome .conf { font-size: .75rem; }
 .rank__obs { color: var(--ink-2) !important; }
 .fonte-gov { border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; display: grid; gap: 6px; background: var(--bg); }
 .tabela-gov td, .tabela-gov th { text-align: left; }
@@ -847,7 +847,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .compartilhar-flutuante {
   position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom)); z-index: 35; width: 78px; height: 66px;
   display: grid; place-items: center; align-content: center; gap: 3px; padding: 0; border: 0; border-radius: 14px; cursor: pointer;
-  font: inherit; font-size: .7rem; font-weight: 700;
+  font: inherit; font-size: .75rem; font-weight: 700;
   background: var(--botao); color: var(--on-botao); box-shadow: 0 6px 20px rgba(8, 22, 31, .35);
 }
 @media (min-width: 761px) { .compartilhar-flutuante { display: none !important; } }
@@ -967,7 +967,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 }
 /* estado com algum bloco a conferir: o índice parcial, menor e mais claro que o geral, com "parcial" embaixo */
 .indice-estado--conferir .indice__valor.indice__valor--parcial { display: grid; justify-items: end; gap: 3px; font-family: var(--display); font-size: 1.45rem; font-weight: 700; color: var(--ink-3); }
-.indice__valor--parcial small { font-family: var(--body); font-size: .72rem; font-weight: 600; line-height: 1; }
+.indice__valor--parcial small { font-family: var(--body); font-size: .75rem; font-weight: 600; line-height: 1; }
 .indice-parciais { margin: 14px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
 /* chamada para o índice, na lista dos governadores */
 .chamada-indice {
@@ -1023,7 +1023,7 @@ label:has(> input[type="checkbox"]) { min-height: 44px; cursor: pointer; }
 .copias li { display: grid; gap: 2px; }
 .copias a { font-weight: 600; }
 .copias span { color: var(--ink-2); font-size: .92rem; }
-.tabela-dados .hash { display: block; margin-top: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .72rem; color: var(--ink-2); word-break: break-all; }
+.tabela-dados .hash { display: block; margin-top: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .75rem; color: var(--ink-2); word-break: break-all; }
 .tabela-dados td:first-child { min-width: 0; }
 .tabela-dados .tabela-gov__obs { max-width: none; }
 #dados-abertos code, pre.codigo { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: .85rem; background: var(--accent-soft); border-radius: 6px; }
@@ -1098,3 +1098,14 @@ pre.codigo { padding: 12px 14px; white-space: pre-wrap; overflow-wrap: anywhere;
   .tabela-atualizacao td:nth-child(4) { padding-top: 6px; }
   .tabela-atualizacao td:nth-child(4)::before { content: none; }
 }
+
+/* ---------- texto e alvos de toque (07/10/2026) ---------- */
+/* o <small> do navegador (0,83 do tamanho de quem o envolve) ficava com ~11,7 px: nunca menos de 12 px */
+small { font-size: max(.75rem, .83em); }
+.posicao-faixa__base { color: var(--banda-ink-2); }
+/* chips e abre-e-fecha com área de toque de ~40 px (o texto não muda de lugar: só a área em volta cresce) */
+.pessoa-chip { min-height: 40px; }
+details > summary { padding-block: 7px; }
+.item-abre > summary, .indice-estado > summary { padding-block: 0; }
+/* link sozinho numa linha (como "Ver os 27 governadores →"): área de toque maior que a linha de texto */
+p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inline-block; padding-block: 8px; }

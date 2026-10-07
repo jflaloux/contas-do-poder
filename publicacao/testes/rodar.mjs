@@ -382,7 +382,13 @@ const PAGINAS = [
       return f; })()` },
   { nome: "atualizacao-rodada-sem-mudanca", url: "/atualizacao", simular: simularRodada({ semana: "2026-10-06", anterior: "2026-09-29", quebrou: [], voltou: [], continua: [] }),
     pagina: [/Rodada de 06\/10\/2026: nenhuma mudança desde a de 29\/09\/2026\./], semPagina: [/passaram a ter problema/] },
-  { nome: "endereco-inexistente", url: "/pagina-que-nao-existe" },
+  // o servidor (como o Cloudflare Pages) responde 404 com o 404.html: a página avisa, sai do índice do Google (noindex) e mostra os destaques
+  { nome: "endereco-inexistente", url: "/pagina-que-nao-existe", falhasEsperadas: ["/pagina-que-nao-existe"], pagina: [/Não achamos esta página/],
+    depois: `(async () => { const f = []; const m = document.querySelector('meta[name="robots"]');
+      if (!m || !/noindex/.test(m.content)) f.push("a página de endereço inexistente não tem noindex");
+      const r = await fetch("/pagina-que-nao-existe", { cache: "no-store" }); if (r.status !== 404) f.push("o servidor respondeu " + r.status + " a um endereço inexistente (esperado 404)");
+      const h = await fetch("/", { cache: "no-store" }); if (h.status !== 200) f.push("a página inicial respondeu " + h.status);
+      return f; })()` },
 ].filter((p) => p.url);
 
 const TODOS_PERFIS = [

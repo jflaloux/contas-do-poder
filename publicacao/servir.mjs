@@ -1,7 +1,7 @@
 // Servidor local para ver o site como o Cloudflare Pages publica (endereços /nome, /cidade/..., /governador/...).
 // Uso: node publicacao/gerar.mjs && node publicacao/servir.mjs   e abra http://localhost:8000
 // Regras do Pages imitadas: arquivo existente; senão /caminho.html; senão /caminho/index.html; senão os
-// redirecionamentos de _redirects; senão o index.html (o app decide o que mostrar).
+// redirecionamentos de _redirects; senão o 404.html (código 404; o app mostra "Não achamos esta página").
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
@@ -31,15 +31,18 @@ http.createServer((req, res) => {
     const url = new URL(req.url, "http://x");
     const rel = decodeURIComponent(url.pathname);
     if (redir.has(rel)) { res.writeHead(301, { Location: redir.get(rel) + url.search }); res.end(); return; }
-    const a = arquivo(rel) || arquivo(`${rel.replace(/\/$/, "")}.html`) || arquivo(path.join(rel, "index.html")) || arquivo("index.html");
+    // como o Pages: o que não existe devolve o 404.html com o código 404 (só sem 404.html, a página inicial)
+    let a = arquivo(rel) || arquivo(`${rel.replace(/\/$/, "")}.html`) || arquivo(path.join(rel, "index.html")), status = 200;
+    if (!a && arquivo("404.html")) { a = arquivo("404.html"); status = 404; }
+    if (!a) a = arquivo("index.html");
     if (!a) { indisponivel(res, "publicar/ está vazia ou sendo refeita (node publicacao/gerar.mjs). Espere o build terminar e tente de novo."); return; }
     const ext = path.extname(a), cabecalhos = { "Content-Type": TIPOS[ext] || "application/octet-stream" };
     const leitura = fs.createReadStream(a).on("error", () => indisponivel(res, "O arquivo sumiu durante a leitura (o build está refazendo publicar/?)."));
     if (COMPRIMIVEL.has(ext) && /\bgzip\b/.test(String(req.headers["accept-encoding"] || ""))) {
-      res.writeHead(200, { ...cabecalhos, "Content-Encoding": "gzip", Vary: "Accept-Encoding" });
+      res.writeHead(status, { ...cabecalhos, "Content-Encoding": "gzip", Vary: "Accept-Encoding" });
       leitura.pipe(zlib.createGzip({ level: 6 })).pipe(res);
     } else {
-      res.writeHead(200, cabecalhos);
+      res.writeHead(status, cabecalhos);
       leitura.pipe(res);
     }
   } catch (e) {
