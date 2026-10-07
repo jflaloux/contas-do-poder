@@ -58,6 +58,7 @@ def c7():
 
 
 ARQ_INTERIOR_TETO = RAIZ / "site" / "dados" / "interior-teto.json"
+MARGEM = 0.01  # 1% de folga: o subsídio do deputado e o valor da folha têm arredondamentos e centavos diferentes
 MESES_TIPICO = 6  # o valor típico é a mediana dos últimos 6 meses, para o 13º, as férias e os atrasados não pesarem
 
 
@@ -102,12 +103,12 @@ def interior_teto(gravar=False):
                     continue
                 avaliados += 1
                 tipico = statistics.median(valores)
-                if tipico > teto + 0.5:
+                if tipico > teto * (1 + MARGEM):
                     acima.append([i, v.get("n", ""), round(tipico, 2), round(max(valores), 2), 1 if v.get("pr") else 0])
             if acima:
                 cidades[ibge] = [teto, avaliados, acima]
         saida["m"][uf] = cidades
-    saida["meta"]["criterio"] = ("Mediana dos últimos 6 meses com valor (mínimo 3) do valor bruto da folha do Tribunal de Contas, "
+    saida["meta"]["criterio"] = ("Mediana dos últimos 6 meses com valor (mínimo 3, e mais de 1% acima do teto) do valor bruto da folha do Tribunal de Contas, "
                                  "para quem está na folha do último mês, contra o percentual do subsídio do deputado estadual "
                                  "fixado na Constituição (art. 29, VI) para a faixa de população da cidade.")
     if gravar:
