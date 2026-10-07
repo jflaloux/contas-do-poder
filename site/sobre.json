@@ -1,7 +1,7 @@
 {
   "titulo": "Sobre o Contas do Poder",
   "lide": "Esta página diz o que é o site, que dados ele usa, o que mede das visitas e como pedir uma correção ou a retirada de um dado.",
-  "atualizado": "04/10/2026",
+  "atualizado": "07/10/2026",
   "blocos": [
     {
       "id": "o-que-e",
@@ -34,6 +34,7 @@
         { "p": "O site mede o uso com o Google Analytics, do Google. O que é medido: as páginas vistas e alguns eventos de uso, como abrir a página de um político, trocar o período, abrir a lista de uma fonte, compartilhar uma página e a velocidade com que a página carrega no aparelho. Como em qualquer visita, o Google Analytics também recebe dados técnicos: aparelho e navegador, idioma, localização aproximada (calculada pelo endereço de rede) e de onde a pessoa veio." },
         { "p": "Para que serve: saber o que é usado e melhorar o site. Não vendemos dados, não há anúncios e o site não pede nome, e-mail nem cadastro." },
         { "p": "Cookies: o site não usa cookies próprios. O Google Analytics usa cookies (como o _ga) para reconhecer o mesmo navegador entre uma visita e outra." },
+        { "p": "Preferências: se você escolher o tema claro ou escuro, o navegador guarda só essa escolha, no próprio aparelho (armazenamento local, que não é cookie). Ela não vai para nenhum servidor e não é usada para medir nada." },
         { "p": "Outros serviços: o site é publicado pelo Cloudflare Pages. As letras são do próprio site: o navegador não pede nada ao Google para mostrá-las." },
         { "p": "Por que podemos medir: a base legal é o legítimo interesse (Lei Geral de Proteção de Dados, art. 7º, IX). Precisamos saber o que é usado para manter e melhorar um site gratuito de dados públicos, e a medição se limita a isso." },
         { "p": "Como não ser medido: use um bloqueador de rastreadores ou a proteção do seu navegador (o site funciona igual), ou instale a [extensão de desativação do Google Analytics](https://tools.google.com/dlpage/gaoptout), oferecida pelo próprio Google. Como o Google trata os dados: [política de privacidade do Google](https://policies.google.com/privacy)." }

@@ -71,6 +71,13 @@ const BENS_GERAL = fs.existsSync(path.join(SITE, "dados", "bens.json")) ? ler("b
 const UFS_BENS = fs.existsSync(PASTA_BENS) ? fs.readdirSync(PASTA_BENS).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2)).sort() : [];
 const DADOS_BENS = [BENS_GERAL && BENS_GERAL.p ? "br" : null, ...UFS_BENS].filter(Boolean).join(" ");
 let MODELO = fs.readFileSync(path.join(SITE, "index.html"), "utf8"); // com os números da abertura: ver numerosHTML
+// /como-calculamos (site/como-calculamos.json): o mesmo formato, mais **negrito**. Só sai quando o texto foi revisado ("publicar": true no
+// arquivo) e o endereço está em RESERVADOS (coleta/enderecos.py); antes disso, nem a página, nem o arquivo, nem o link do rodapé vão para publicar/.
+let COMO_PUBLICADO = false;
+try { COMO_PUBLICADO = JSON.parse(fs.readFileSync(path.join(SITE, "como-calculamos.json"), "utf8")).publicar === true; } catch { /* sem a página */ }
+if (COMO_PUBLICADO && Object.values(END.p || {}).includes("como-calculamos")) throw new Error("uma pessoa já tem o endereço /como-calculamos: ponha o nome em RESERVADOS (coleta/enderecos.py) e refaça os endereços");
+MODELO = MODELO.replace("<!--COMO-ENTENDA-->", COMO_PUBLICADO ? '<li>A explicação completa, com um glossário dos termos: <a href="/como-calculamos">Como calculamos</a>.</li>' : "");
+MODELO = MODELO.replace("<!--COMO-->", COMO_PUBLICADO ? '<a href="/como-calculamos">Como calculamos</a>. ' : "");
 const DOMINIO = ((MODELO.match(/<meta name="endereco-do-site" content="([^"]*)"/) || [])[1] || "https://contasdopoder.com/").replace(/\/+$/, "");
 
 // ------------------------------------------------------------------ textos (os mesmos do site)
@@ -250,7 +257,11 @@ const governadores = GOV.e.length ? pessoasGovernadores() : [];
 const PRELOAD = ["/dados/indice/dados.json", "/dados/indice/camaras.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json",
   ...((ASS.p || []).length ? ["/dados/indice/assembleias.json"] : []), ...(governadores.length ? ["/dados/indice/governadores-pessoas.json"] : []),
   ...(judiciario.length ? ["/dados/indice/judiciario.json"] : [])];
-const preloads = (extras = []) => [...PRELOAD, ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n");
+// Página de deputado, senador ou ministro (leve): só o essencial é baixado de saída; Câmaras, Assembleias, Judiciário e governadores
+// como pessoas vêm sob demanda (app.js: garantirTudo). O app lê <meta name="dados-leve">.
+const PRELOAD_LEVE = ["/dados/indice/dados.json", "/dados/prefeituras.json", "/dados/governadores.json", "/dados/enderecos.json"];
+const preloads = (extras = [], leve = false) => [...(leve ? PRELOAD_LEVE : PRELOAD), ...extras].map((u) => `<link rel="preload" href="${esc(u)}" as="fetch" crossorigin>`).join("\n")
+  + (leve ? '\n<meta name="dados-leve" content="1">' : "");
 
 // ------------------------------------------------------------------ quando os dados foram gerados
 // A data mais recente ("AAAA-MM-DD") entre os arquivos de dados e a situacao.json (refeita no fim de cada rodada): é o
@@ -303,14 +314,20 @@ MODELO = MODELO.replace(/<\/head>/, `<meta name="correcoes-paginas" content="${e
 // troca, no index.html, o título, a descrição, o endereço oficial e as prévias, e põe um resumo em texto no lugar do
 // "Carregando..." (o app.js apaga o resumo quando desenha a página). Toda página daqui é "interna" (body.interna: sem
 // a abertura da página inicial; o título h1 é o do resumo).
-function pagina(caminho, titulo, descricao, corpo, { extras = [], carregando = true } = {}) {
+// Dados estruturados (JSON-LD) neutros: só o que já está escrito na página (nome da página, descrição, de quem ou de que órgão
+// ela trata). Nenhum valor em reais, nenhuma nota nem classificação: o número está na página, com a fonte.
+const jsonLd = (o) => `<script type="application/ld+json">${JSON.stringify(o).replace(/</g, "\\u003c")}</script>`;
+const SITE_LD = { "@type": "WebSite", name: "Contas do Poder", url: `${DOMINIO}/`, inLanguage: "pt-BR" };
+function pagina(caminho, titulo, descricao, corpo, { extras = [], carregando = true, about = null, ld = [], leve = false } = {}) {
   const url = `${DOMINIO}/${caminho}`;
+  const dadosEstruturados = [{ "@context": "https://schema.org", "@type": "WebPage", name: titulo.replace(/ \| Contas do Poder$/, ""), description: descricao, url, inLanguage: "pt-BR", isPartOf: SITE_LD, ...(about ? { about } : {}) },
+    ...ld].map(jsonLd).join("\n");
   const trocas = [
     [/<body>/, '<body class="interna">'],
     // a pergunta da página inicial fica escondida nas páginas internas: sai como parágrafo, para o único h1 ser o nome
     // (o app.js volta a fazer dela um h1 se a pessoa for para a página inicial sem recarregar)
     [/<h1 id="titulo-abertura">([\s\S]*?)<\/h1>/, '<p id="titulo-abertura">$1</p>'],
-    [/<\/head>/, `${preloads(extras)}\n</head>`],
+    [/<\/head>/, `${preloads(extras, leve)}\n${dadosEstruturados}\n</head>`],
     [/<title>[^<]*<\/title>/, `<title>${esc(titulo)}</title>`],
     [/<meta name="description" content="[^"]*">/, `<meta name="description" content="${esc(descricao)}">`],
     [/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${esc(url)}">`],
@@ -453,7 +470,7 @@ for (const p of pessoas) {
   const extras = [...(separados.has(p.id) ? [`/dados/pessoa/${encodeURIComponent(p.id)}.json`] : p.k === "t" ? ["/dados/judiciario.json"] : []),
     ...(p.k === "d" || p.k === "s" ? ["/dados/atividade.json"] : []), // presença e projetos (um arquivo, só nessas páginas)
     ...(BENS_GERAL && BENS_GERAL.p && BENS_GERAL.p[p.id] ? ["/dados/bens.json"] : [])]; // bens declarados (só a página de quem tem registro)
-  paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false })]);
+  paginas.push([caminho, pagina(caminho, titulo, texto, previaPessoa(p, k, r, texto), { extras, carregando: false, about: { "@type": "Person", name: p.n, jobTitle: p.g }, leve: ["d", "s", "e"].includes(p.k) && (!p.rel || /^(dep|sen|exe)-/.test(p.rel)) })]);
 }
 
 // ------------------------------------------------------------------ governadores
@@ -467,7 +484,7 @@ for (const e of GOV.e) {
     + `${e.vv ? ` O do vice é de ${reais(e.vv[0])}.` : ""}${e.m && e.m.length ? " Veja também o que foi pago mês a mês, pela folha de pagamento do Estado." : ""}`
     + `${estados[e.uf] ? ` E quanto ganha e quanto custa cada um dos ${deputadosEstaduais.filter((p) => p.uf === e.uf && p.x).length} ${e.uf === "DF" ? "deputados distritais" : "deputados estaduais"}.` : ""} Com a fonte de cada valor.`;
   const titulo = `Salário do governador ${deUF(e.uf)} (${e.gov.n}) | Contas do Poder`;
-  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Governo ${deUF(e.uf)}`, e.gov.n, texto))]);
+  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Governo ${deUF(e.uf)}`, e.gov.n, texto), { about: { "@type": "Person", name: e.gov.n, jobTitle: `${cargo} ${deUF(e.uf)}` } })]);
 }
 
 // ------------------------------------------------------------------ cidades (as 5.569 câmaras municipais)
@@ -535,7 +552,7 @@ for (const [cod, n, uf, pop, , nv, custo, ano] of MUN.m) {
     + (!vi && cg && cg.c && cg.c.vm ? ` Em média, a Câmara paga ${reais(cg.c.vm)} por ${(dc.meta.papeis || []).includes("prefeito") ? "vereador" : "agente político"} por mês (o total pago ao cargo dividido pelas pessoas no cargo, pelo que informa ao ${dc.meta.tribunal}).` : "")
     + ` Veja o teto do salário do vereador${extras.length ? `, ${extras.join(" e ")}` : ""} e compare com as outras cidades.`;
   const titulo = `Câmara Municipal ${de} (${uf}): quanto custa | Contas do Poder`;
-  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto, destaqueCidade(cod, n, pop, custo)))]);
+  paginas.push([caminho, pagina(caminho, titulo, texto, resumoHTML(`Câmara Municipal · ${ESTADOS[uf] || uf}`, `${n} (${uf})`, texto, destaqueCidade(cod, n, pop, custo)), { about: { "@type": "GovernmentOrganization", name: `Câmara Municipal ${de} (${uf})` } })]);
 }
 
 // ------------------------------------------------------------------ correções (/correcoes, de site/dados/correcoes.json)
@@ -692,7 +709,13 @@ const tamanhoTxt = (b) => (b >= 1048576 ? `${(b / 1048576).toFixed(1).replace(".
     + `</ul><h2 class="h3">Os arquivos de dados</h2><table class="tabela-gov tabela-dados"><thead><tr><th>Arquivo e impressão digital (SHA-256)</th><th class="num">Tamanho</th></tr></thead><tbody>`
     + MANIFESTO.arquivos.map(linha).join("") + '</tbody></table><p class="nota">Até que mês vão os dados de cada fonte e quando foram lidos pela última vez: <a href="/atualizacao">atualização dos dados</a>. O que o site é, a privacidade e como pedir uma correção: <a href="/sobre">sobre e privacidade</a>.</p></section>';
   const titulo = "Dados abertos: baixe tudo | Contas do Poder";
-  paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"] })]);
+  const LD_DATASET = { "@context": "https://schema.org", "@type": "Dataset", name: "Contas do Poder: dados", url: `${DOMINIO}/dados-abertos`, inLanguage: "pt-BR",
+    description: "Quanto ganham e quanto custam agentes públicos do Brasil (Congresso, governo federal, governadores, Assembleias, câmaras municipais e tribunais superiores), por mês, a partir de dados públicos oficiais. Cada arquivo traz o link da fonte.",
+    license: "https://creativecommons.org/licenses/by/4.0/", isAccessibleForFree: true, creator: { "@type": "Organization", name: "Contas do Poder", url: `${DOMINIO}/` },
+    dateModified: DATA_ATUALIZADA, temporalCoverage: "2023-02/..", spatialCoverage: { "@type": "Country", name: "Brasil" },
+    sameAs: COPIAS.map((c) => c.url).filter((u) => /doi\.org/.test(u)),
+    distribution: MANIFESTO.arquivos.filter((a) => !a.arquivo.includes("/")).map((a) => ({ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${DOMINIO}/dados/${a.arquivo}`, name: a.arquivo, contentSize: `${a.bytes} B`, sha256: a.sha256 })) };
+  paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"], ld: [LD_DATASET] })]);
 }
 
 // ------------------------------------------------------------------ atualização dos dados (/atualizacao, de site/dados/situacao.json)
@@ -766,12 +789,12 @@ if (SIT && (SIT.fontes || []).length) {
 // O texto fica em site/sobre.json (o app.js lê o mesmo arquivo): aqui, a página pronta em HTML. Dentro do texto só há
 // [texto](endereço), para links.
 // /imprensa (site/imprensa.json): o mesmo formato, a página "Para a imprensa".
-for (const [nomePagina, tituloPagina] of [["sobre", "Sobre e privacidade"], ["imprensa", "Para a imprensa"]]) {
+for (const [nomePagina, tituloPagina] of [["sobre", "Sobre e privacidade"], ["imprensa", "Para a imprensa"], ...(COMO_PUBLICADO ? [["como-calculamos", "Como calculamos"]] : [])]) {
   let SB = null;
   try { SB = JSON.parse(fs.readFileSync(path.join(SITE, `${nomePagina}.json`), "utf8")); } catch { /* sem a página */ }
   if (SB && (SB.blocos || []).length) {
     const comLinks = (txt) => esc(txt).replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => (/^https?:/.test(u)
-      ? `<a href="${u}" target="_blank" rel="noopener">${t}&nbsp;↗</a>` : `<a href="${u}">${t}</a>`));
+      ? `<a href="${u}" target="_blank" rel="noopener">${t}&nbsp;↗</a>` : `<a href="${u}">${t}</a>`)).replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
     const corpo = `<section class="bloco" id="${nomePagina}" aria-labelledby="t-${nomePagina}"><p class="rotulo">Transparência do site</p>`
       + `<h1 id="t-${nomePagina}" class="titulo-pagina">${esc(SB.titulo)}</h1><p class="lide">${esc(SB.lide)}</p>`
       + SB.blocos.map((b) => `<h2 class="h3" id="${esc(b.id)}">${esc(b.h)}</h2>` + (b.c || []).map((x) => (x.ul
@@ -793,6 +816,7 @@ function copiar(de, para) {
 }
 fs.rmSync(SAIDA, { recursive: true, force: true });
 copiar(SITE, SAIDA);
+if (!COMO_PUBLICADO) fs.rmSync(path.join(SAIDA, "como-calculamos.json"), { force: true }); // texto ainda em revisão: não vai para o site
 if (DADOS_TESTE) for (const a of fs.readdirSync(DADOS_TESTE)) if (a.endsWith(".json")) fs.copyFileSync(path.join(DADOS_TESTE, a), path.join(SAIDA, "dados", a)); // dados inventados dos testes
 // dados mais leves (ver o começo do arquivo): o detalhe dos gastos vai com o nome de cada tipo, e não com o índice na
 // lista de tipos do arquivo (as câmaras têm uma lista própria)
@@ -837,7 +861,8 @@ if (governadores.length) {
   }
 }
 fs.writeFileSync(path.join(SAIDA, "dados", "manifesto.json"), JSON.stringify(MANIFESTO, null, 1));
-fs.writeFileSync(path.join(SAIDA, "index.html"), MODELO.replace(/<\/head>/, `${preloads()}\n</head>`));
+const LD_HOME = [{ "@context": "https://schema.org", ...SITE_LD, description: "Quanto ganha e quanto custa quem te representa, por mês, com números oficiais e o link de cada fonte.", publisher: { "@type": "Organization", name: "Contas do Poder", url: `${DOMINIO}/`, email: "contato@contasdopoder.com", sameAs: ["https://github.com/jflaloux/contas-do-poder"] } }].map(jsonLd).join("\n");
+fs.writeFileSync(path.join(SAIDA, "index.html"), MODELO.replace(/<\/head>/, () => `${preloads()}\n${LD_HOME}\n</head>`));
 // 404.html: o Cloudflare Pages serve este arquivo, com o código 404, para todo endereço que não existe (sem ele, qualquer
 // endereço respondia 200 com a página inicial, e o Google tratava como página de verdade). É a mesma página do app (ele
 // vê o endereço, mostra "Não achamos esta página" e os destaques), com noindex. Toda página do site é um arquivo gerado

@@ -140,7 +140,7 @@ const PAGINAS = [
       const d = document.querySelector("#guia");
       if (!d.open) f.push("o popup não abriu");
       if (!d.getAttribute("aria-labelledby") || !document.getElementById(d.getAttribute("aria-labelledby"))) f.push("o popup não tem título ligado (aria-labelledby)");
-      if (!/passo 2 de 2/i.test(d.innerText)) f.push("não está no passo 2");
+      if (!/passo 2 de 3/i.test(d.innerText)) f.push("não está no passo 2");
       const todos = [d, ...d.querySelectorAll("*")];
       const lado = todos.filter((e) => e.clientWidth > 0 && e.scrollWidth > e.clientWidth + 1).map((e) => e.tagName + "." + e.className);
       if (lado.length) f.push("rola para o lado dentro do popup: " + lado.slice(0, 3).join(", "));
@@ -383,6 +383,106 @@ const PAGINAS = [
   { nome: "atualizacao-rodada-sem-mudanca", url: "/atualizacao", simular: simularRodada({ semana: "2026-10-06", anterior: "2026-09-29", quebrou: [], voltou: [], continua: [] }),
     pagina: [/Rodada de 06\/10\/2026: nenhuma mudança desde a de 29\/09\/2026\./], semPagina: [/passaram a ter problema/] },
   // o servidor (como o Cloudflare Pages) responde 404 com o 404.html: a página avisa, sai do índice do Google (noindex) e mostra os destaques
+  // ---- lote 2 (07/10/2026): carga sob demanda, tema, pular, baixar CSV, dados estruturados, guia (passo 3), cidades, cargos do estado, impressão
+  // página de deputado: só o essencial de saída; Assembleias, Câmaras, Judiciário e governadores vêm ao buscar (ou ao chegar perto do ranking)
+  { nome: "carga-sob-demanda", acao: true, url: primeiro("dep-"), semRolar: true, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const lidos = () => performance.getEntriesByType("resource").map((e) => new URL(e.name).pathname);
+      const resto = ["/dados/indice/assembleias.json", "/dados/indice/camaras.json", "/dados/indice/judiciario.json", "/dados/indice/governadores-pessoas.json"];
+      if (!document.querySelector('meta[name="dados-leve"]')) f.push("a página de deputado não tem <meta name=dados-leve>");
+      const ja = resto.filter((a) => lidos().includes(a)); if (ja.length) f.push("baixou de saída o que devia vir sob demanda: " + ja.join(", "));
+      const campo = document.querySelector("#busca-topo");
+      document.querySelector("#abrir-busca").click(); await esp(200); campo.focus(); await esp(2500);
+      const falta = resto.filter((a) => !lidos().includes(a)); if (falta.length) f.push("a busca não trouxe: " + falta.join(", "));
+      campo.value = "Silva"; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(300);
+      const sug = document.querySelector("#sugestoes-topo").innerText;
+      if (!/Deputad[oa] estadual|Vereador|Governador|Ministro/.test(sug) && !/Deputad[oa] federal|Senador/.test(sug)) f.push("a busca não mostrou ninguém");
+      document.querySelector("#abrir-busca").click();
+      const quem = [...document.querySelectorAll("#ranking .grupo-pilulas button")].map((b) => b.textContent);
+      if (!quem.some((t) => /estaduais/.test(t))) f.push("o ranking não ganhou o grupo dos deputados estaduais depois de carregar tudo: " + quem.join("|"));
+      return f; })()` },
+  { nome: "tema-e-pular", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), raiz = document.documentElement;
+      const b = [...document.querySelectorAll("[data-tema-botao]")].pop(); if (!b) return ["sem botão de tema"];
+      const antes = b.getAttribute("aria-label"); b.click(); await esp(100);
+      const t1 = raiz.dataset.theme; if (t1 !== "light" && t1 !== "dark") f.push("o botão não pôs o tema");
+      if (localStorage.getItem("tema") !== t1) f.push("o tema escolhido não ficou guardado");
+      if (b.getAttribute("aria-label") === antes) f.push("o nome do botão não mudou");
+      b.click(); await esp(100); if (raiz.dataset.theme === t1) f.push("o segundo clique não trocou de novo");
+      localStorage.removeItem("tema"); raiz.removeAttribute("data-theme");
+      const p = document.querySelector("#pular"); if (!p) f.push("sem link de pular"); else { p.click(); await esp(100); if (document.activeElement.id !== "app") f.push("o link de pular não levou o foco ao conteúdo"); }
+      return f; })()` },
+  { nome: "baixar-csv", acao: true, url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
+      HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
+      const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return ["sem o botão Mês a mês (CSV)"];
+      bt.click(); await esp(200);
+      if (!guardados.length) return ["o clique não gerou arquivo"];
+      const t = await guardados[0].text(), ls = t.replace(/^\\ufeff/, "").split("\\r\\n").filter(Boolean);
+      if (!/^pessoa,cargo,mes,vai_para_o_bolso_reais,gastos_do_mandato_reais,equipe_do_gabinete_reais,pessoas_na_equipe,parte_rateada_do_ano_reais,fonte$/.test(ls[0])) f.push("cabeçalho do CSV: " + ls[0]);
+      if (ls.length < 13) f.push("o CSV tem poucas linhas: " + ls.length);
+      if (!/,https?:\\/\\//.test(ls[1] || "")) f.push("a linha do CSV não traz o link da fonte: " + ls[1]);
+      if (!/,\\d{4}-\\d{2},\\d+\\.\\d{2},/.test(ls[1] || "")) f.push("a linha do CSV não tem mês e valor com 2 casas: " + ls[1]);
+      if (/\\d{3}\\.?\\d{3}\\.?\\d{3}-?\\d{2}/.test(t.replace(/\\d+\\.\\d{2}/g, ""))) f.push("o CSV parece ter CPF");
+      const lk = document.querySelector('#baixar a[download]'); if (!lk || !/^\\/dados\\/pessoa\\/[a-z0-9-]+\\.json$/.test(lk.getAttribute("href"))) f.push("sem o link do arquivo completo (JSON)");
+      const rk = [...document.querySelectorAll("#ranking button")].find((x) => /Baixar esta lista/.test(x.textContent)); if (!rk) f.push("sem o botão de baixar o ranking");
+      else { rk.click(); await esp(200); const r = await guardados[guardados.length - 1].text(); if (!/^\\ufeff?posicao,nome,cargo,/.test(r)) f.push("cabeçalho do CSV do ranking: " + r.slice(0, 60)); }
+      return f; })()` },
+  // dados estruturados: JSON válido, neutro (sem valor em reais) e do tipo certo
+  { nome: "json-ld", url: primeiro("dep-"), depois: `(() => { const f = [], ls = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => { try { return JSON.parse(s.textContent); } catch (e) { f.push("JSON-LD inválido"); return {}; } });
+      const w = ls.find((x) => x["@type"] === "WebPage"); if (!w) return ["sem WebPage"]; if (!w.about || w.about["@type"] !== "Person" || !w.about.name) f.push("o WebPage não diz de quem é");
+      if (/R\\$|[0-9]/.test(JSON.stringify(w.about))) f.push("o about do JSON-LD tem valor ou número: tem de ser neutro");
+      if (/aggregateRating|review|rating|award|salary|baseSalary|reviewRating/i.test(JSON.stringify(ls))) f.push("o JSON-LD tem avaliação ou salário: tem de ser neutro"); return f; })()` },
+  { nome: "json-ld-dataset", url: "/dados-abertos", depois: `(() => { const f = [], ls = [...document.querySelectorAll('script[type="application/ld+json"]')].map((s) => JSON.parse(s.textContent));
+      const d = ls.find((x) => x["@type"] === "Dataset"); if (!d) return ["sem Dataset"]; if (!/creativecommons.org\\/licenses\\/by\\/4.0/.test(d.license || "")) f.push("sem a licença CC BY 4.0");
+      if (!(d.distribution || []).length || !d.distribution.every((x) => x.contentUrl && x.sha256)) f.push("a distribuição está incompleta"); return f; })()` },
+  { nome: "guia-passo-3-cidade", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      document.querySelector("#abrir-guia").click(); await esp(300);
+      [...document.querySelectorAll("#guia .ufs button")].find((b) => b.textContent === "SP").click(); await esp(300);
+      const c = document.querySelector("#guia-cidade"); if (!c) return ["sem o campo da cidade no passo 2"];
+      c.focus(); await esp(1500); c.value = "campin"; c.dispatchEvent(new Event("input", { bubbles: true })); await esp(300);
+      const o = [...document.querySelectorAll("#guia .guia__cidades button")]; if (!o.length || !/Campinas/.test(o[0].innerText)) return ["a lista de cidades não achou Campinas: " + o.map((x) => x.innerText).join("|")];
+      o[0].click(); await esp(300); const d = document.querySelector("#guia").innerText;
+      if (!/passo 3 de 3/i.test(d)) f.push("não está no passo 3"); if (!/Câmara Municipal de Campinas/.test(d)) f.push("sem a Câmara da cidade");
+      if (!/Governador|Governo/.test(d)) f.push("sem o governador do estado");
+      const lado = [...document.querySelectorAll("#guia *")].filter((e) => e.clientWidth > 0 && e.scrollWidth > e.clientWidth + 1).length; if (lado) f.push("rola para o lado no passo 3");
+      return f; })()` },
+  { nome: "cidades-ordenar-filtrar", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)); await esp(800);
+      const bt = [...document.querySelectorAll("#cidades button")].find((x) => /Ver as \\d+ cidades/.test(x.textContent)); if (!bt) return ["sem o botão Ver as N cidades"];
+      bt.click(); await esp(300);
+      const o = document.querySelector("#ordem-cidades"), fi = document.querySelector("#filtro-cidades"); if (!o || !fi) return ["sem os controles de ordem e filtro"];
+      o.value = "pop"; o.dispatchEvent(new Event("change", { bubbles: true })); await esp(200);
+      const nomes = () => [...document.querySelectorAll("#cidades .rank-lista .rank__nome")].map((e) => e.firstChild.textContent.trim());
+      if (nomes()[0] !== "São Paulo") f.push("ordenada por habitantes, a primeira devia ser São Paulo: " + nomes()[0]);
+      o.value = "nome"; o.dispatchEvent(new Event("change", { bubbles: true })); await esp(200);
+      const n = nomes(); if (n.slice().sort((a, b) => a.localeCompare(b, "pt-BR")).join() !== n.join()) f.push("a ordem por nome não está em ordem alfabética");
+      fi.value = "campinas"; fi.dispatchEvent(new Event("input", { bubbles: true })); await esp(200);
+      if (!nomes().length || !nomes().every((x) => /campinas/i.test(x))) f.push("o filtro por nome não filtrou: " + nomes().slice(0, 3));
+      if (document.activeElement !== fi && document.activeElement !== document.body) { /* o foco fica no campo ou sai sozinho */ }
+      if (![...document.querySelectorAll("#cidades button")].some((x) => /Baixar esta lista/.test(x.textContent))) f.push("sem o botão de baixar a lista");
+      return f; })()` },
+  { nome: "estado-cargos", url: "/governador/sp", depois: `(() => { const f = [], t = document.querySelector("#cargos-estado table"); if (!t) return ["sem a tabela dos salários dos cargos"];
+      const ls = [...t.querySelectorAll("tbody tr")]; if (ls.length < 3) f.push("poucas linhas: " + ls.length);
+      const v = ls.map((r) => Number(r.children[1].innerText.replace(/[^0-9,]/g, "").replace(",", ".").slice(0, 12)));
+      if (v.some((x, i) => i && x > v[i - 1])) f.push("não está do maior para o menor: " + v.join(" "));
+      ls.forEach((r) => { if (!r.children[2].querySelector("a")) f.push("linha sem link de fonte: " + r.children[0].innerText); });
+      if (/ruim|bom\\b|abusiv|absurd/i.test(t.innerText)) f.push("juízo de valor na tabela"); return f; })()` },
+  { nome: "impressao-abre-os-blocos", acao: true, url: primeiro("dep-"), depois: `(async () => { const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const fechados = () => document.querySelectorAll("#app details:not([open])").length; document.querySelectorAll("#app details").forEach((d) => { d.open = false; });
+      const n = fechados(); if (!n) return ["nenhum bloco recolhido para o teste"];
+      window.dispatchEvent(new Event("beforeprint")); await esp(100); if (fechados()) f.push("a impressão não abriu todos os blocos");
+      window.dispatchEvent(new Event("afterprint")); await esp(100); if (fechados() !== n) f.push("depois de imprimir, os blocos não voltaram ao que eram"); return f; })()` },
+  // /como-calculamos: só existe quando o texto foi revisado ("publicar": true em site/como-calculamos.json); sem ela, o teste não roda
+  { nome: "como-calculamos", url: fs.existsSync(path.join(PUBLICAR, "como-calculamos.html")) ? "/como-calculamos" : null,
+    pagina: [/Em uma frase/, /Glossário/, /Abate-teto/, /Mediana/, /Em salários mínimos/], semPagina: [/\*\*/, /\]\(/], ter: [["#como-calculamos h2", 8], ["#como-calculamos strong", 10]],
+    depois: `(() => { const f = [], t = document.title; if (!/^Como calculamos \\| Contas do Poder$/.test(t)) f.push("título: " + t);
+      const ids = new Set([...document.querySelectorAll("[id]")].map((e) => e.id));
+      document.querySelectorAll("#como-calculamos a[href^='/']").forEach((a) => { if (/^\\/#/.test(a.getAttribute("href"))) return; if (!["/indice", "/atualizacao", "/correcoes"].includes(a.getAttribute("href"))) f.push("link interno desconhecido: " + a.getAttribute("href")); });
+      if (/R\\$ ?[0-9]+[.,][0-9]{3}[.,][0-9]{2}.*(maior|menor|melhor|pior)/i.test(document.querySelector("#como-calculamos").innerText)) f.push("juízo ao lado de valor");
+      return f; })()` },
   { nome: "endereco-inexistente", url: "/pagina-que-nao-existe", falhasEsperadas: ["/pagina-que-nao-existe"], pagina: [/Não achamos esta página/],
     depois: `(async () => { const f = []; const m = document.querySelector('meta[name="robots"]');
       if (!m || !/noindex/.test(m.content)) f.push("a página de endereço inexistente não tem noindex");
@@ -520,13 +620,22 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
       await espera(150);
     }
     // desce até o fim e volta: o que carrega com a rolagem também conta no CLS
-    await avaliar(`window.scrollTo(0, document.documentElement.scrollHeight)`); await espera(600);
-    await avaliar(`window.scrollTo(0, 0)`); await espera(400);
+    if (!pg.semRolar) { // (semRolar: a página que confere o que NÃO foi baixado antes de alguém chegar perto do ranking)
+      await avaliar(`window.scrollTo(0, document.documentElement.scrollHeight)`); await espera(600);
+      await avaliar(`window.scrollTo(0, 0)`); await espera(400);
+    }
 
     // limite de pedidos por arquivo (pg.maxPedidos): arquivo que falta não pode ser pedido sem fim (já houve ciclo: a seção se recriava e pedia de novo)
     if (pg.maxPedidos) await espera(1500); // dá tempo de um ciclo se mostrar (só nas páginas que conferem o número de pedidos)
     for (const [arq, max] of Object.entries(pg.maxPedidos || {})) { const n = pedidosPorCaminho.get(arq) || 0; if (n > max) falhas.push(`${arq} foi pedido ${n} vezes (o limite é ${max}): ciclo de pedidos?`); }
+    // blocos recolhidos no celular (details.recolher): abrem para o teste ler o texto; o pulo de layout de abrir não conta no CLS
+    const cls0 = await avaliar(`window.__m.cls`);
+    await avaliar(`document.querySelectorAll("details.recolher").forEach((d) => { d.open = true; })`); await espera(500);
+    await avaliar(`window.__m.cls = ${Number(cls0) || 0}`);
+    // pg.acao: o teste clica e digita (a pessoa teria dado um clique, o que não conta como pulo de layout); o CLS de antes fica
+    const clsAntes = pg.acao ? Number(await avaliar(`window.__m.cls`)) || 0 : null;
     if (pg.depois) (await avaliar(pg.depois)).forEach((x) => falhas.push(x));
+    if (pg.acao) { await espera(700); await avaliar(`window.__m.cls = ${clsAntes}`); }
     const m = await avaliar(`(() => {
       const visivel = (e) => !!(e.offsetWidth || e.offsetHeight || e.getClientRects().length);
       return { cls: window.__m.cls, lcp: window.__m.lcp, titulo: document.title, h1: [...document.querySelectorAll("h1")].filter(visivel).length,

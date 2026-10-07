@@ -65,6 +65,7 @@
   const S = {
     D: null, porId: new Map(), sel: null, cidade: null, gov: null, extra: null, periodo: null, outro: null, ufLista: "", origem: null, carregado: false,
     rank: { casa: null, metrica: "custo", periodo: null, uf: "", noCargo: true, completo: false },
+    recolhido: {}, // blocos longos da página da pessoa: aberto (true) ou fechado, para não fechar de novo quando a seção é refeita
   };
   let observadores = [];
 
@@ -91,7 +92,7 @@
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
-        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" ? caminho : caminho === "dados-abertos" ? "dados_abertos" : "politico",
+        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" ? caminho : caminho === "como-calculamos" ? "como_calculamos" : caminho === "dados-abertos" ? "dados_abertos" : "politico",
       lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
     };
     const ver = (tipo, f, extra) => {
@@ -516,9 +517,24 @@
   // rola até a seção. Dentro da mesma página, com animação; ao abrir outra página (político, cidade, estado), de uma
   // vez: a animação longa (de lá de baixo da página inicial até o topo) era interrompida por um resto de rolagem do
   // trackpad ou pelo conteúdo que ainda carregava, e a pessoa ficava no pé da página nova
+  // Bloco longo recolhido no celular (aberto no computador): o título e o rótulo ficam à vista, o resto vai para um <details>.
+  // A escolha da pessoa vale enquanto ela fica no site (S.recolhido). Os gráficos se redesenham sozinhos quando a caixa ganha largura.
+  function recolherNoCelular(sec, id, texto) {
+    const cabecas = [...sec.children].filter((n) => n.matches && n.matches("p.rotulo, h2")).slice(0, 2);
+    const resto = [...sec.children].filter((n) => !cabecas.includes(n));
+    if (!resto.length) return sec;
+    const aberto = id in S.recolhido ? S.recolhido[id] : !!(window.matchMedia && matchMedia("(min-width: 761px)").matches);
+    const resumo = h("summary", null, aberto ? "Recolher" : texto);
+    const d = h("details", { class: "recolher", open: aberto }, resumo, resto);
+    d.addEventListener("toggle", () => { S.recolhido[id] = d.open; resumo.textContent = d.open ? "Recolher" : texto; });
+    sec.append(d);
+    return sec;
+  }
   const irPara = (id, deUmaVez) => {
     const e = document.getElementById(id);
     if (!e) return;
+    const dobra = e.querySelector(":scope > details.recolher");
+    if (dobra && !dobra.open) dobra.open = true; // o link de uma seção recolhida abre a seção
     if (!deUmaVez) { e.scrollIntoView({ block: "start" }); return; }
     const raiz = document.documentElement, antes = raiz.style.scrollBehavior;
     raiz.style.scrollBehavior = "auto";
@@ -561,6 +577,11 @@
   }
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
     let itens = [], ativo = -1;
+    // os grupos que a página de um deputado ou senador não baixou (Assembleias, Câmaras, Judiciário) vêm quando a pessoa começa a buscar;
+    // se chegarem depois que ela já digitou, a lista de sugestões se refaz
+    const pedirTudo = () => { if (!S.completo) garantirTudo().then(() => { if (input.value.trim() && document.activeElement === input) input.dispatchEvent(new Event("input")); }); };
+    input.addEventListener("focus", pedirTudo, { once: true });
+    input.addEventListener("input", pedirTudo, { once: true });
     // a lista das 5.569 cidades (dados/municipios.json) só é baixada quando a pessoa começa a buscar: quem só abre a
     // página de um político não precisa dela. Se chegar depois que a pessoa já digitou, a lista de sugestões se refaz.
     if (comCidades) {
@@ -2092,11 +2113,11 @@
           senado ? fonteA("dados abertos do Senado (projetos)", M.fontes.senado_projetos.replace("?codigoParlamentarAutor={codigo}", "")) : [fonteA("projetos", M.fontes.camara_projetos), ", ", fonteA("autores", M.fontes.camara_autores)], ".")),
     ] : null;
     if (!presenca && !projetos) return null;
-    return h("section", { class: "bloco", id: "atividade", "aria-labelledby": "t-atividade" },
+    return recolherNoCelular(h("section", { class: "bloco", id: "atividade", "aria-labelledby": "t-atividade" },
       h("p", { class: "rotulo" }, `No mandato desde ${desde}`),
       h("h2", { id: "t-atividade" }, "Presença e projetos"),
       h("p", { class: "discreto" }, `Os números como os dados abertos oficiais trazem, sem nota nem comparação. ${senado ? "Senador" : p.k === "j" ? "Parlamentar" : "Deputado federal"}: só o tempo em que estava no mandato conta.`),
-      h("article", { class: "cartao" }, presenca, projetos));
+      h("article", { class: "cartao" }, presenca, projetos)), "atividade", "Ver presença e projetos");
   }
   // ================================================================== bens declarados à Justiça Eleitoral (TSE)
   // site/dados/bens.json (quem tem página: dep-, sen-, gov-, est-, ver-, pre-) e site/dados/bens-interior/<uf>.json (CE, PB, ES e PE: vereadores,
@@ -2922,6 +2943,46 @@
         avatarCidade("p"), h("span", null, `${c.n} (${c.uf})`, h("small", null, `${num(c.pop, 0)} habitantes · ${c.nv} vereadores`)))));
       sug.hidden = !sug.children.length;
     });
+    // a lista completa do estado: ordenada por habitante (como antes), pelo custo da Câmara, pela população ou pelo nome, com filtro
+    // pelo nome da cidade e o CSV da lista que está na tela (só esta lista é refeita: o campo não perde o foco)
+    let ordemLista = "hab", filtroLista = "";
+    const ORDENS = { hab: ["Custo por habitante (maior primeiro)", (a, b) => porHabMes(b) - porHabMes(a), (c) => reaisC(porHabMes(c))],
+      custo: ["Custo da Câmara por mês (maior primeiro)", (a, b) => b.custo - a.custo, (c) => compacto(c.custo / 12)],
+      pop: ["Habitantes (mais primeiro)", (a, b) => b.pop - a.pop, (c) => `${num(c.pop, 0)} hab.`],
+      nome: ["Nome (A a Z)", (a, b) => a.n.localeCompare(b.n, "pt-BR"), (c) => reaisC(porHabMes(c))] };
+    function listaCompleta(doEstado, linhaBase) {
+      const caixa = h("div", { class: "rank-lista" });
+      const max = Math.max(...doEstado.map(porHabMes), 0.01);
+      const atualLista = () => { const t = semAcento(filtroLista).trim(); return doEstado.filter((c) => !t || semAcento(c.n).includes(t)).sort(ORDENS[ordemLista][1]); };
+      const titulo = h("h3", null);
+      const pintar = () => {
+        const itens = atualLista();
+        titulo.textContent = `${filtroLista.trim() ? `${itens.length} de ${doEstado.length}` : `As ${doEstado.length}`} cidades de ${ESTADOS[uf]} com dados · ${ORDENS[ordemLista][0].toLowerCase()}`;
+        caixa.textContent = "";
+        itens.forEach((c, i) => {
+          const l = linhaBase(c, i + 1);
+          // o valor mostrado é o da ordem escolhida; a barra segue o custo por habitante
+          const v = l.querySelector(".rank__valor"); if (v) v.textContent = ORDENS[ordemLista][2](c);
+          caixa.append(l);
+        });
+        if (!itens.length) caixa.append(h("p", { class: "discreto pequeno" }, "Nenhuma cidade com esse nome."));
+      };
+      const baixar = () => {
+        const itens = atualLista();
+        const cab = ["posicao", "cidade", "uf", "habitantes", "custo_da_camara_por_mes_reais", "custo_por_habitante_por_mes_reais", "ano_dos_dados", "fonte"];
+        baixarArquivo(`camaras-${uf.toLowerCase()}.csv`, csvTexto(cab, itens.map((c, i) => [i + 1, c.n, c.uf, c.pop, reais2(c.custo / 12), reais2(porHabMes(c)), c.ano,
+          "Tesouro Nacional, Siconfi (função Legislativa)"])), "text/csv", "cidades");
+      };
+      pintar();
+      return h("article", { class: "cartao" }, titulo,
+        h("div", { class: "filtros" },
+          h("div", { class: "campo" }, h("label", { for: "ordem-cidades" }, "Ordenar por"),
+            h("select", { id: "ordem-cidades", onchange: (e) => { ordemLista = e.target.value; evento("ordenar_cidades", { ordem: ordemLista }); pintar(); } }, Object.entries(ORDENS).map(([v, [t]]) => h("option", { value: v, selected: v === ordemLista }, t)))),
+          h("div", { class: "campo" }, h("label", { for: "filtro-cidades" }, "Filtrar pelo nome"),
+            h("input", { type: "search", id: "filtro-cidades", value: filtroLista, placeholder: "Parte do nome", autocomplete: "off", oninput: (e) => { filtroLista = e.target.value; pintar(); } }))),
+        caixa,
+        h("p", { style: "margin:0" }, h("button", { type: "button", class: "botao botao--leve", onclick: baixar }, "Baixar esta lista (CSV)")));
+    }
     const desenhar = () => {
       corpo.textContent = "";
       const todas = CID.m.filter(temCusto);
@@ -2941,8 +3002,7 @@
           estatistica("Por habitante", reaisC(total / pop / 12), "por mês, em média no Brasil"),
           estatistica("Vereadores", num(CID.m.reduce((a, c) => a + c.nv, 0), 0), "eleitos em 2024")),
         h("div", { class: "filtros" }, h("div", { class: "campo" }, h("label", { for: "uf-cidades" }, "Estado"), seletorUF("uf-cidades", uf, (v) => { uf = v || "SP"; completo = false; evento("ver_estado_cidades", { uf }); desenhar(); }, "Escolha o estado"))),
-        doEstado.length && completo ? h("article", { class: "cartao" }, h("h3", null, `As ${doEstado.length} cidades de ${ESTADOS[uf]} com dados, da mais cara à mais barata por habitante`),
-          h("div", { class: "rank-lista" }, doEstado.map((c, i) => linha(c, i + 1)))) : null,
+        doEstado.length && completo ? listaCompleta(doEstado, linha) : null,
         doEstado.length && !completo ? h("div", { class: "duas-colunas" },
           h("article", { class: "cartao" }, h("h3", null, `Mais caras por habitante em ${ESTADOS[uf]}`), h("div", { class: "rank-lista" }, doEstado.slice(0, n).map((c, i) => linha(c, i + 1)))),
           h("article", { class: "cartao" }, h("h3", null, "Mais baratas por habitante"), h("div", { class: "rank-lista" }, doEstado.slice(-n).reverse().map((c, i) => linha(c, doEstado.length - i))))) : null,
@@ -3225,6 +3285,28 @@
       corpo];
   }
   // página de um estado: /governador/sp
+  // Os salários dos cargos do estado, do maior para o menor: o salário (subsídio) bruto do cargo, por mês, como a lei ou a folha
+  // fixam; cada linha com a sua fonte. Não inclui o que cada um gasta com o mandato nem a equipe, e não diz se um valor é muito ou pouco.
+  function blocoCargosEstado(e) {
+    const uf = e.uf, a = assembleiaUF(uf);
+    const link = (url, texto) => (url ? h("a", { href: url, target: "_blank", rel: "noopener" }, `${texto}\u00a0↗`) : "a fonte está na tabela abaixo");
+    const linhas = [];
+    if (e.v) linhas.push({ cargo: tituloGov(e), v: e.v[0], de: e.v[1], fonte: link(e.v[4], e.v[2] === "imprensa" ? "Ver a notícia" : "Lei ou fonte") });
+    if (e.vv) linhas.push({ cargo: e.vice && e.vice.fem ? "Vice-governadora" : "Vice-governador", v: e.vv[0], de: e.vv[1], fonte: link(e.vv[4], e.vv[2] === "imprensa" ? "Ver a notícia" : "Lei ou fonte") });
+    if (e.vs) linhas.push({ cargo: "Secretário de Estado", v: e.vs[0], de: e.vs[1], fonte: link(e.vs[4], e.vs[2] === "imprensa" ? "Ver a notícia" : "Lei ou fonte") });
+    if (a && a.subsidio && a.subsidio.length) { const u = a.subsidio[a.subsidio.length - 1]; linhas.push({ cargo: uf === "DF" ? "Deputado distrital" : "Deputado estadual", v: u[1], de: u[0], fonte: link((a.fontes || {}).subsidio, "Lei") }); }
+    const federal = S.D.p.find((q) => (q.k === "d" || q.k === "s") && q.uf === uf && q.x);
+    if (federal) { const fo = (fontesPessoa(federal) || []).find((f) => f && f[1]); linhas.push({ cargo: "Deputado federal e senador", v: SUBSIDIO_FEDERAL, de: null, fonte: link(fo && fo[1], "Página oficial"), igual: true }); }
+    if (linhas.length < 3) return null;
+    linhas.sort((x, y) => y.v - x.v);
+    return h("div", { class: "cargos-estado", id: "cargos-estado" },
+      h("h2", { class: "h3" }, `Os salários dos cargos ${deUF(uf)}`),
+      h("p", { class: "discreto pequeno", style: "margin:0" }, "Do maior para o menor: o salário (subsídio) bruto de cada cargo, por mês, como a lei ou a folha o fixam. Não inclui o que cada um gasta com o mandato, a equipe do gabinete nem o 13º e os auxílios."),
+      rolagem(`Salários dos cargos ${deUF(uf)}`, h("table", { class: "tabela-gov" },
+        h("thead", null, h("tr", null, h("th", null, "Cargo"), h("th", { class: "num" }, "Por mês"), h("th", null, "Fonte"))),
+        h("tbody", null, linhas.map((l) => h("tr", null, h("td", null, l.cargo, l.igual ? h("small", { class: "tabela-gov__obs" }, "o mesmo em todo o país") : null),
+          h("td", { class: "num" }, reaisC(l.v), l.de ? h("small", { class: "tabela-gov__obs" }, `desde ${fmtMes(l.de)}`) : null), h("td", null, l.fonte)))))));
+  }
   function secGovernador(e) {
     const p = posGov(e), med = mediana(GOV.e.map((x) => x.v[0]));
     const sm = meta().salario_minimo["2026"] || meta().salario_minimo[anoAtual()];
@@ -3287,6 +3369,7 @@
           return f ? h("p", { class: "nota", style: "margin:0" }, h("strong", null, `${cargo}: `), `${f.texto}. `, h("a", { href: f.url, target: "_blank", rel: "noopener" }, "Ver\u00a0a\u00a0notícia\u00a0↗")) : null;
         }),
         blocoMensalGov(e),
+        blocoCargosEstado(e),
         h("h2", { class: "h3" }, "Quem governou desde 2023"),
         rolagem("Quem governou desde 2023", h("table", { class: "tabela-gov" },
           h("thead", null, h("tr", null, ["Quem", "Cargo", "De", "Até"].map((c) => h("th", null, c)))),
@@ -3631,6 +3714,11 @@
         R.completo
           ? h("article", { class: "cartao" }, h("h3", null, "Lista completa"), h("div", { class: "rank-lista" }, lista.map((x, i) => linha(x, i + 1))))
           : lista.length > 2 * n ? h("div", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { R.completo = true; evento("ranking_completo", { casa: nomeGrupo(G()), metrica: R.metrica }); desenhar(); } }, `Ver a lista completa (${lista.length})`)) : null,
+        lista.length ? h("p", { style: "margin:0" }, h("button", { type: "button", class: "botao botao--leve", onclick: () => {
+          const cab = ["posicao", "nome", "cargo", "partido_ou_grupo", "uf", "no_cargo_hoje", `${slugArq(nomeMetrica(R.metrica, G())).replace(/-/g, "_")}${M.fmt === reais ? "_reais" : ""}`, "periodo", "endereco_da_pagina"];
+          const linhasCsv = lista.map((x, i) => [i + 1, x.p.n, x.p.g || "", x.p.pt || sub(x.p), x.p.uf || "", x.p.x ? "sim" : "nao", M.fmt === reais ? reais2(x.v) : x.v, nomePeriodo(R.periodo, false, G()), `${origem() || location.origin}${urlPessoa(x.p, R.periodo)}`]);
+          baixarArquivo(`ranking-${slugArq(nomeGrupo(G()))}-${slugArq(R.metrica)}-${R.periodo === "leg" ? "mandato" : R.periodo}.csv`, csvTexto(cab, linhasCsv), "text/csv", "ranking");
+        } }, "Baixar esta lista (CSV)")) : null,
         h("ul", { class: "lista nota" },
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
@@ -3685,7 +3773,16 @@
         h("input", { type: "checkbox", id: "no-cargo-rank", checked: R.noCargo, onchange: (e) => { R.noCargo = e.target.checked; desenhar(); } }), "Só quem está no cargo hoje"),
       corpo);
     desenhar();
-    return sec;
+    // numa página que só baixou o essencial, os outros grupos (Assembleias, vereadores, Prefeituras) chegam quando a seção está perto
+    // de aparecer, e ela se refaz com todas as opções do "Quem" (antes de a pessoa chegar nela, na maioria das vezes)
+    if (!S.completo) {
+      document.addEventListener("dados-completos", () => { if (sec.isConnected) sec.replaceWith(secRanking(p, k, comoCargo)); }, { once: true });
+      if (typeof IntersectionObserver !== "undefined") {
+        const io = new IntersectionObserver((es) => { if (es.some((e) => e.isIntersecting)) { io.disconnect(); garantirTudo(); } }, { rootMargin: "1600px 0px" });
+        io.observe(sec); observadores.push(io);
+      }
+    }
+    return p ? recolherNoCelular(sec, "ranking", "Ver os colegas e o ranking") : sec;
   }
   function secResumoGeral() {
     const Cd = colegas("d", "2025"), Cs = colegas("s", "2025");
@@ -3764,9 +3861,9 @@
     if (sec) sec.replaceWith(secRanking(null, null));
     irPara("ranking");
   }
-  function montarCabecalho() {
-    const D = S.D, noCargo = D.p.filter((p) => p.x).length;
-    // os números da abertura, em blocos sobre a faixa escura
+  // os números da abertura, em blocos sobre a faixa escura (refeitos quando os outros grupos chegam: ver garantirTudo)
+  function montarChips() {
+    const D = S.D;
     const chips = $("#chips-info");
     chips.textContent = "";
     // cada número leva ao grupo dele (abrirNumero); o href serve a quem abre em outra aba
@@ -3785,6 +3882,10 @@
       cidadesCamara().length ? numero(nVer, cidadesCamara().length === 1 ? `vereadores ${deCid(cidadesCamara()[0].cod)}` : `vereadores em ${cidadesCamara().length} capitais`, "v") : null,
       cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`, "p") : null,
       numero(`${MESES[mesAtual() - 1]}/${anoAtual()}`, `último mês dos dados · atualizado em ${atualizadoEm().slice(0, 5)}`, "x")); // o mesmo texto do gerar.mjs
+  }
+  function montarCabecalho() {
+    const D = S.D;
+    montarChips();
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
     ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); }, null, true);
@@ -3836,7 +3937,7 @@
         `Os ${doEstado.filter((p) => p.k === "a").length} ${depUF(S.ufLista)} ${deUF(S.ufLista)}, um a um →`)) : null));
   }
   function navSecoes(ids, outrosNomes = {}) {
-    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", imprensa: "Para a imprensa", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe", cota: "Gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
+    const nomes = { "dados-abertos": "Dados abertos", atualizacao: "Atualização", sobre: "Sobre", imprensa: "Para a imprensa", "como-calculamos": "Como calculamos", viagens: "Viagens", atividade: "Presença e projetos", judiciario: "Judiciário", "judiciario-inicio": "Judiciário", "meses-jud": "Cada mês", assembleia: "Assembleia", indice: "Índice", "indice-como": "Como funciona", correcoes: "Correções", prefeitura: "A Prefeitura", contracheque: "Contracheque", "mes-a-mes": "Mês a mês", equipe: "Equipe", cota: "Gastos", comparar: "Comparar", tipico: "Parlamentar típico", governo: "Governo federal", governadores: "Governadores", governador: "O governador", cidade: "A Câmara", cidades: "Câmaras municipais", ranking: "Ranking", resumo: "Compartilhar", entenda: "Entenda", fontes: "Fontes" };
     const nav = $("#secoes");
     nav.textContent = "";
     ids.filter((id) => document.getElementById(id)).forEach((id) => nav.append(h("button", { type: "button", onclick: () => irPara(id) }, outrosNomes[id] || nomes[id])));
@@ -3865,9 +3966,10 @@
   // inicio: a sigla de um estado (abre direto na lista dele) ou "governo"; origem: de onde a pessoa abriu
   function abrirGuia(inicio, origem) {
     if (typeof inicio !== "string") inicio = null; // chamado direto pelo clique de um botão
+    if (!S.completo) { garantirTudo().then(() => abrirGuia(inicio, origem)); return; } // o guia lista Assembleias, Câmaras e governadores
     const dlg = $("#guia"), corpo = $("#guia-corpo");
-    const topo = (passo, titulo) => h("div", { class: "guia__topo" },
-      h("p", { class: "rotulo" }, `Passo ${passo} de 2`, h("span", { class: "progresso" }, h("span", { class: "feito" }), h("span", { class: passo === 2 ? "feito" : "" }))),
+    const topo = (passo, total = 3) => h("div", { class: "guia__topo" },
+      h("p", { class: "rotulo" }, `Passo ${passo} de ${total}`, h("span", { class: "progresso" }, Array.from({ length: total }, (_, i) => h("span", { class: i < passo ? "feito" : "" })))),
       h("button", { type: "button", class: "fechar", "aria-label": "Fechar", onclick: () => fechar() }, "×"));
     const fechar = () => { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); };
     const passo1 = () => {
@@ -3920,7 +4022,7 @@
         return [["pv", "Presidente e vice", itens.filter((p) => ["pr", "vp"].includes(p.tp))], ["mi", "Ministros", itens.filter((p) => p.tp === "mi")]];
       }, (p) => h("button", { type: "button", class: "sugestao", onclick: () => { fechar(); S.origem = "guia"; escolher(p.id); } },
         avatar(p, "p"), h("span", null, p.n, h("small", null, p.g))));
-      add(corpo, topo(2),
+      add(corpo, topo(2, 2),
         h("h2", { id: "guia-titulo" }, "Governo federal"),
         h("p", { class: "discreto" }, "Presidente, vice e ministros no cargo hoje. Toque num nome para ver quanto ganha e quanto custa."),
         h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou ministério", "aria-label": "Filtrar por nome ou ministério", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
@@ -3929,6 +4031,41 @@
           h("button", { type: "button", class: "link-botao", onclick: passo1 }, "← Voltar"),
           h("button", { type: "button", class: "link-botao", onclick: () => { fechar(); const g = $("#lista-governo"); if (g && g.abrir) g.abrir(); irPara("governo"); } }, "Ver todos na página")));
       pintar("");
+    };
+    // passo 3 (opcional): a cidade, entre as 5.569. Leva à Câmara da cidade (custo, teto do salário e, onde a fonte publica, cada vereador)
+    // e, nas capitais com dados, à Prefeitura; o governador e a Assembleia do estado também ficam à mão
+    const passo3 = (c) => {
+      evento("guia", { etapa: "cidade", cidade: c.id });
+      corpo.textContent = "";
+      const uf = c.uf, cam = camaraDe(c.cod), pre = prefeituraDe(c.cod), nv = cam ? S.D.p.filter((q) => q.k === "v" && q.x && q.cid === c.cod).length : 0;
+      const opcao = (titulo, texto, ir) => h("button", { type: "button", class: "guia__opcao", onclick: ir },
+        h("span", null, h("strong", null, titulo), h("small", null, texto)), h("span", { "aria-hidden": "true" }, "→"));
+      const va = (destino) => () => { fechar(); S.origem = "guia"; navegar(destino); };
+      add(corpo, topo(3),
+        h("h2", { id: "guia-titulo" }, `${c.n} (${uf})`),
+        h("p", { class: "discreto" }, `${num(c.pop, 0)} habitantes. Escolha o que ver:`),
+        opcao(`Câmara Municipal ${deCidade(c)}`, `Quanto custa por mês, por habitante e o teto do salário do vereador${nv ? `; os ${nv} vereadores, um a um` : ""}`, va(urlCidade(c))),
+        pre ? opcao(`Prefeitura ${deCidade(c)}`, "O prefeito, o vice e os secretários: quanto recebem, mês a mês", va(`${urlCidade(c)}#prefeitura`)) : null,
+        GOV.porUF[uf] ? opcao(`${tituloGov(GOV.porUF[uf])} ${deUF(uf)}`, `${GOV.porUF[uf].gov.n}: o salário e a lei`, va(urlGov(uf))) : null,
+        assembleiaUF(uf) && GOV.porUF[uf] ? opcao(`${maiuscula(depUF(uf))} ${deUF(uf)}`, `Os deputados estaduais, um a um`, va(`${urlGov(uf)}#assembleia`)) : null,
+        h("p", { class: "discreto pequeno" }, "Onde as fontes publicam, a página da cidade mostra também o prefeito, o vice e os vereadores, com o link de cada fonte."),
+        h("div", { class: "guia__rodape" }, h("button", { type: "button", class: "link-botao", onclick: () => passo2(uf) }, `← Voltar a ${ESTADOS[uf]}`)));
+    };
+    // o campo "sua cidade", no passo 2: só as cidades do estado; a lista (dados/municipios.json) só é baixada quando a pessoa clica no campo
+    const campoCidade = (uf) => {
+      const caixa = h("div", { class: "guia__cidades", role: "listbox", "aria-label": `Cidades ${deUF(uf)}` });
+      const pintar = (q) => {
+        caixa.textContent = "";
+        const t = semAcento(q || "").trim();
+        if (t.length < 2 || !CID.m) return;
+        const achadas = CID.m.filter((c) => c.uf === uf && semAcento(c.n).includes(t)).sort((a, b) => (semAcento(a.n).startsWith(t) ? 0 : 1) - (semAcento(b.n).startsWith(t) ? 0 : 1) || b.pop - a.pop).slice(0, 8);
+        if (!achadas.length) { caixa.append(h("p", { class: "discreto pequeno" }, "Nenhuma cidade com esse nome neste estado.")); return; }
+        achadas.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => passo3(c) },
+          avatarCidade("p"), h("span", null, c.n, h("small", null, `${num(c.pop, 0)} habitantes`)))));
+      };
+      const campo = h("input", { type: "search", id: "guia-cidade", placeholder: "Digite o nome da sua cidade", "aria-label": `Procurar a sua cidade ${deUF(uf)}`, autocomplete: "off",
+        oninput: (e) => { if (CID.m) pintar(e.target.value); }, onfocus: () => { carregarCidades().then(() => pintar(campo.value), () => {}); } });
+      return h("div", { class: "guia__cidade" }, h("p", null, h("strong", null, "Ou escolha a sua cidade")), campo, caixa);
     };
     const passo2 = (uf) => {
       evento("guia", { etapa: "estado", uf });
@@ -3952,6 +4089,7 @@
           return h("button", { type: "button", class: "guia__opcao", onclick: () => { evento("guia", { etapa: `capital_${cod}` }); fechar(); S.origem = "guia"; navegar(urlDe(`cid-${cod}`)); } },
             h("span", null, h("strong", null, `Mora ${COM_ARTIGO.has(cod) ? "no" : "em"} ${c.n}?`), h("small", null, `Veja também ${listaE(partes)} da capital, um a um`)), h("span", { "aria-hidden": "true" }, "→"));
         }),
+        campoCidade(uf),
         h("input", { type: "search", id: "guia-filtro", placeholder: "Filtrar por nome ou partido", "aria-label": "Filtrar por nome ou partido", autocomplete: "off", oninput: (e) => pintar(e.target.value) }),
         lista,
         h("div", { class: "guia__rodape" },
@@ -3994,6 +4132,13 @@
   // modo: "inicio" (abriu o site), "nova" (clicou num link), "mesma" (clicou no link da página em que já está),
   // "voltar" (botão voltar/avançar do navegador: quem devolve a rolagem é o navegador)
   function aplicarEndereco(modo) {
+    // outra página que precisa dos grupos que ainda não vieram (a inicial, a de uma cidade, a de um governador...): busca e volta aqui
+    if (!S.completo && !rotaLeve()) {
+      const app = $("#app");
+      if (S.carregado) { app.textContent = ""; app.append(h("p", { class: "carregando" }, "Carregando…")); }
+      garantirTudo().then(() => aplicarEndereco(modo));
+      return;
+    }
     if (converterAntigo() && modo === "voltar") modo = "nova";
     const secao = decodeURIComponent(location.hash.slice(1)) || null;
     if (modo === "voltar" && location.pathname + location.search === ultimoLocal) { if (secao) irPara(secao); return; } // só o # mudou
@@ -4046,7 +4191,7 @@
     }
     S.cidadeVista = null;
     // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos, /atualizacao, /sobre, /imprensa e /judiciario
-    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" || caminho === "judiciario") {
+    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "sobre" || caminho === "imprensa" || caminho === "como-calculamos" || caminho === "judiciario") {
       if (extraAntes !== caminho) evento(`ver_${caminho.replace(/-/g, "_")}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
@@ -4134,6 +4279,39 @@
         h("ul", { class: "lista", style: "margin:6px 0 0" }, itens.map((c) => h("li", null, h("time", { datetime: c.data }, dataBR(c.data)), `: ${c.titulo}.`))));
     }, () => {});
     return caixa;
+  }
+  // Baixar os dados da página: o CSV é montado aqui, no navegador, a partir do que a página já carregou (nada novo no servidor).
+  // Números em reais com ponto decimal e separador ","; BOM no começo para o Excel abrir os acentos.
+  const csvCelula = (v) => { const t = v === null || v === undefined ? "" : String(v); return /[",\n;]/.test(t) ? `"${t.replace(/"/g, '""')}"` : t; };
+  const csvTexto = (cab, linhas) => `\ufeff${[cab, ...linhas].map((l) => l.map(csvCelula).join(",")).join("\r\n")}\r\n`;
+  const reais2 = (v) => (typeof v === "number" ? v.toFixed(2) : "");
+  function baixarArquivo(nome, texto, tipo, evento_) {
+    const url = URL.createObjectURL(new Blob([texto], { type: `${tipo};charset=utf-8` }));
+    const a = h("a", { href: url, download: nome, style: "display:none" });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 4000);
+    evento("baixar_csv", { arquivo: evento_ || nome });
+  }
+  const slugArq = (t) => String(t).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  // a cada mês da pessoa: o que vai para o bolso, os gastos do mandato, a equipe do gabinete e a fonte
+  function csvPessoa(p) {
+    const fonte = ((fontesPessoa(p) || []).find((f) => f && f[1]) || [])[1] || "";
+    const lei = leiG(p);
+    const cab = ["pessoa", "cargo", "mes", lei ? "salario_do_cargo_reais" : "vai_para_o_bolso_reais", ...(soBolso(p) ? [] : ["gastos_do_mandato_reais", "equipe_do_gabinete_reais", "pessoas_na_equipe", "parte_rateada_do_ano_reais"]), "fonte"];
+    const linhas = (p.t || []).filter((t) => t[1] || t[2] || t[3]).map((t) => [p.n, p.g, `${Math.floor(t[0] / 100)}-${String(t[0] % 100).padStart(2, "0")}`, reais2(t[1]),
+      ...(soBolso(p) ? [] : [reais2(t[2]), reais2(t[3]), t[4] || "", reais2(t[5] || 0)]), fonte]);
+    return csvTexto(cab, linhas);
+  }
+  function blocoBaixar(p) {
+    if (!p || !(p.t || []).length) return null;
+    const nome = slugArq(p.n);
+    return h("section", { class: "bloco", id: "baixar", "aria-labelledby": "t-baixar" },
+      h("div", { class: "cartao baixar" },
+        h("h2", { class: "h3", id: "t-baixar" }, "Baixar os dados desta página"),
+        h("p", { class: "pequeno discreto", style: "margin:0" }, "Cada mês, em reais, como a página mostra. Livre para reutilizar (CC BY 4.0), citando “Contas do Poder” e a fonte oficial do arquivo."),
+        h("div", { class: "acoes" },
+          h("button", { type: "button", class: "botao botao--leve", onclick: () => baixarArquivo(`${nome}-mes-a-mes.csv`, csvPessoa(p), "text/csv", `pessoa_${p.k}`) }, "Mês a mês (CSV)"),
+          p.k === "t" ? null : h("a", { class: "botao botao--leve", href: `/dados/pessoa/${encodeURIComponent(p.id)}.json`, download: `${nome}.json`, onclick: () => evento("baixar_dados", { arquivo: `pessoa_${p.k}` }) }, "Arquivo completo (JSON)"))));
   }
   function blocoErro(nome, fontes, ref) {
     const url = `${origem() || location.origin}${location.pathname}${location.search}`;
@@ -4256,11 +4434,13 @@
     return textosPedidos[nome];
   }
   const carregarSobre = () => carregarTexto("sobre");
+  // **negrito** e [texto](endereço): os dois recursos que o texto das páginas aceita
   function textoComLinks(txt) {
-    const partes = [], re = /\[([^\]]+)\]\(([^)\s]+)\)/g;
+    const partes = [], re = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*/g;
     let i = 0, m;
     while ((m = re.exec(txt))) {
       if (m.index > i) partes.push(txt.slice(i, m.index));
+      if (m[3] !== undefined) { partes.push(h("strong", null, m[3])); i = m.index + m[0].length; continue; }
       const fora = /^https?:/.test(m[2]);
       partes.push(h("a", fora ? { href: m[2], target: "_blank", rel: "noopener" } : { href: m[2] }, fora ? `${m[1]}\u00a0↗` : m[1]));
       i = m.index + m[0].length;
@@ -4652,6 +4832,18 @@
       }, () => falhou(espera, "Não foi possível carregar a página. Escreva para contato@contasdopoder.com."));
       return;
     }
+    if (S.extra === "como-calculamos") {
+      document.title = "Como calculamos | Contas do Poder";
+      const espera = esperar("Carregando…");
+      navSecoes(["entenda", "fontes"]);
+      carregarTexto("como-calculamos").then((CC) => {
+        if (!espera.isConnected) return; // já foi para outra página
+        trocar(espera, secSobre(CC, "como-calculamos"));
+        navSecoes(["como-calculamos", "entenda", "fontes"]);
+        rolarPendente();
+      }, () => falhou(espera, "Não foi possível carregar a página. Escreva para contato@contasdopoder.com."));
+      return;
+    }
     if (S.extra === "imprensa") {
       document.title = "Para a imprensa | Contas do Poder";
       const espera = esperar("Carregando…");
@@ -4728,9 +4920,9 @@
       const papel = p.k === "j" ? S.porId.get((p.cg.find((c) => c.x) || p.cg[0]).id) || p : p;
       // governador e vice: sem gastos por pessoa, equipe, ranking nem a comparação com um parlamentar (que mostraria os
       // gastos dele como R$ 0, quando eles só não são publicados); a lista dos 27 está na página do estado
-      app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]
-        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]
-        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secBens(p), secResumo(p, k), blocoErro(p.n, fontesPessoa(p), p.id)]).filter(Boolean));
+      app.append(...(p.k === "t" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secMesesJud(p, k), secResumo(p, k), blocoBaixar(p), blocoErro(p.n, fontesPessoa(p), p.id)]
+        : p.k === "g" ? [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), secViagensG(p), secBens(p), secResumo(p, k), blocoBaixar(p), blocoErro(p.n, fontesPessoa(p), p.id)]
+        : [secContracheque(p, k), blocoCompartilhar(specPessoa(p, k), "depois_contracheque", "Compartilhe este contracheque"), secMensal(p, k), p.k === "v" ? secEquipe(p, k) || secEquipeVereador(p) : secEquipe(p, k), secCota(p, k), secAtividade(p), secRanking(papel, k, p.k === "j"), secComparar(p, k), secBens(p), secResumo(p, k), blocoBaixar(p), blocoErro(p.n, fontesPessoa(p), p.id)]).filter(Boolean));
       navSecoes(["contracheque", "mes-a-mes", "viagens", "meses-jud", "equipe", "cota", "atividade", "ranking", "comparar", "resumo", "entenda", "fontes"]);
       botaoFlutuante(specPessoa(p, k), "#contracheque .conta__resumo");
     } else {
@@ -4753,6 +4945,36 @@
     new MutationObserver(() => { if (agendado) return; agendado = true; requestAnimationFrame(() => { agendado = false; marcar(); }); }).observe($("#app"), { childList: true, subtree: true });
     marcar();
   }
+  // pular para o conteúdo, tema claro/escuro e impressão: não dependem dos dados e funcionam desde o primeiro quadro
+  function ligarConforto() {
+    // o "#app" do link de pular não pode virar um endereço (o app lê o # como seção): o foco vai direto para o conteúdo
+    const pular = $("#pular");
+    if (pular) pular.addEventListener("click", (ev) => { ev.preventDefault(); const a = $("#app"); if (a) { a.focus({ preventScroll: true }); a.scrollIntoView(); } });
+    // tema: o escolhido fica só neste navegador (localStorage, não é cookie); sem escolha, vale o do sistema
+    const raiz = document.documentElement, mq = window.matchMedia ? matchMedia("(prefers-color-scheme: dark)") : null;
+    const escuro = () => (raiz.dataset.theme ? raiz.dataset.theme === "dark" : !!(mq && mq.matches));
+    const botoes = [...document.querySelectorAll("[data-tema-botao]")];
+    const pintar = () => botoes.forEach((b) => {
+      const e = escuro(), explicito = !!raiz.dataset.theme;
+      b.dataset.escuro = e ? "1" : "0";
+      b.setAttribute("aria-label", e ? "Mudar para o tema claro" : "Mudar para o tema escuro");
+      const t = b.querySelector(".tema-texto");
+      if (t) t.textContent = `Tema: ${explicito ? (e ? "escuro" : "claro") : "automático"} (trocar para ${e ? "claro" : "escuro"})`;
+    });
+    botoes.forEach((b) => b.addEventListener("click", () => {
+      const novo = escuro() ? "light" : "dark";
+      raiz.setAttribute("data-theme", novo);
+      try { localStorage.setItem("tema", novo); } catch (e) { /* sem armazenamento: vale até recarregar */ }
+      evento("trocar_tema", { tema: novo === "dark" ? "escuro" : "claro" });
+      pintar();
+    }));
+    if (mq && mq.addEventListener) mq.addEventListener("change", pintar);
+    pintar();
+    // impressão e PDF: os blocos recolhidos abrem para sair no papel e voltam ao que eram depois
+    let abertos = [];
+    window.addEventListener("beforeprint", () => { abertos = [...document.querySelectorAll("#app details:not([open])")]; abertos.forEach((d) => { d.open = true; }); });
+    window.addEventListener("afterprint", () => { abertos.forEach((d) => { d.open = false; }); abertos = []; });
+  }
   function ligarLinksInternos() {
     document.addEventListener("click", (ev) => {
       if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
@@ -4772,43 +4994,80 @@
   // não existe: o r.json() falha e vale o arquivo inteiro.)
   const lerJSON = (u) => fetch(u).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); });
   const leve = (arq) => lerJSON(`/dados/indice/${arq}`).catch(() => lerJSON(`/dados/${arq}`));
-  Promise.all([
-    leve("dados.json"),
+  ligarConforto();
+  // Página de deputado, senador ou ministro (o HTML traz <meta name="dados-leve">): só o essencial vem de saída (deputados, senadores e
+  // governo federal, Prefeituras, governadores e endereços). Câmaras, Assembleias, Judiciário e governadores como pessoas (~200 KB) só
+  // vêm quando alguém precisa deles: ao buscar, ao chegar perto do ranking, ao abrir o guia ou ao ir para outra página (garantirTudo).
+  // Qualquer outra página carrega tudo, como antes.
+  const LEVE = !!document.querySelector('meta[name="dados-leve"]');
+  S.completo = !LEVE;
+  const lerResto = () => Promise.all([
     leve("camaras.json").catch(() => null),
-    lerJSON("/dados/prefeituras.json").catch(() => null),
-    lerJSON("/dados/governadores.json").catch(() => null),
-    lerJSON("/dados/enderecos.json").catch(() => null),
     leve("assembleias.json").catch(() => null),
     lerJSON("/dados/indice/governadores-pessoas.json").catch(() => null),
     leve("judiciario.json").catch(() => null),
+  ]);
+  // põe no S.D o que veio do resto (Câmaras, Assembleias, governadores como pessoas, Judiciário) e refaz as ligações entre as pessoas
+  function integrarResto(D, [camaras, assembleias, govPessoas, judiciario]) {
+    const antes = D.p.length;
+    juntarMunicipal(D, camaras, "cidades");
+    juntarMunicipal(D, assembleias, "estados", "estados", "a");
+    if (govPessoas && GOV.e.length) {
+      GOVP.meta = govPessoas.meta;
+      Object.assign(D.meta.categorias, govPessoas.meta.categorias || {});
+      D.p.push(...govPessoas.p);
+    }
+    // Judiciário: a lista leve (ou, direto de site/, o arquivo inteiro, que já traz o mês a mês)
+    if (judiciario && judiciario.p) {
+      JUD.meta = judiciario.meta;
+      Object.assign(D.meta.categorias, judiciario.meta.categorias || {});
+      judiciario.p.forEach((p) => { p.k = "t"; D.p.push(p); });
+    }
+    // cada Assembleia com o código IBGE do estado (o mesmo do cid de cada deputado)
+    D.p.forEach((p) => { if (p.k === "a" && CAM.estados[p.uf]) { CAM.estados[p.uf].cod = p.cid; CAM.estadosCod[String(p.cid)] = CAM.estados[p.uf]; } });
+    D.p.slice(antes).forEach((p) => S.porId.set(p.id, p));
+    if (judiciario && judiciario.p && judiciario.p.some((p) => p.t)) JUD.completo = Promise.resolve(guardarJudiciario(judiciario));
+    // vereador que está (ou esteve) na Prefeitura: a ligação vem do lado da Prefeitura; faz a volta
+    D.p.forEach((p) => { const q = (p.k === "p" || p.k === "g") && p.rel && S.porId.get(p.rel); if (q && !q.rel) q.rel = p.id; });
+  }
+  let restoPedido = null;
+  function garantirTudo() {
+    if (S.completo) return Promise.resolve();
+    if (!restoPedido) {
+      restoPedido = lerResto().then((r) => {
+        integrarResto(S.D, r);
+        S.completo = true;
+        montarChips(); // os números da abertura, agora com todos os grupos
+        document.dispatchEvent(new Event("dados-completos"));
+      });
+    }
+    return restoPedido;
+  }
+  // a página de agora só precisa do essencial? (deputado, senador ou ministro, sem ligação com alguém de outro grupo)
+  function rotaLeve() {
+    const caminho = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
+    if (!caminho) return false;
+    const id = END.porCaminho.get(caminho) || (S.porId.has(caminho) ? caminho : null) || END.antigos[caminho];
+    const p = id && S.porId.get(id);
+    return !!p && /^(dep|sen|exe)-/.test(p.id) && (!p.rel || S.porId.has(p.rel));
+  }
+  Promise.all([
+    leve("dados.json"),
+    lerJSON("/dados/prefeituras.json").catch(() => null),
+    lerJSON("/dados/governadores.json").catch(() => null),
+    lerJSON("/dados/enderecos.json").catch(() => null),
+    LEVE ? Promise.resolve([null, null, null, null]) : lerResto(),
   ])
-    .then(([D, camaras, prefeituras, governadores, enderecos, assembleias, govPessoas, judiciario]) => {
+    .then(([D, prefeituras, governadores, enderecos, resto]) => {
       if (enderecos) {
         for (const [id, cam] of Object.entries(enderecos.p || {})) { END.porId.set(id, cam); END.porCaminho.set(cam, id); }
         END.antigos = enderecos.antigos || {};
       }
       if (governadores) { GOV.meta = governadores.meta; GOV.e = governadores.e; GOV.e.forEach((e) => { GOV.porUF[e.uf] = e; }); }
-      juntarMunicipal(D, camaras, "cidades");
       juntarMunicipal(D, prefeituras, "prefeituras");
-      juntarMunicipal(D, assembleias, "estados", "estados", "a");
-      if (govPessoas && governadores) {
-        GOVP.meta = govPessoas.meta;
-        Object.assign(D.meta.categorias, govPessoas.meta.categorias || {});
-        D.p.push(...govPessoas.p);
-      }
-      // Judiciário: a lista leve (ou, direto de site/, o arquivo inteiro, que já traz o mês a mês)
-      if (judiciario && judiciario.p) {
-        JUD.meta = judiciario.meta;
-        Object.assign(D.meta.categorias, judiciario.meta.categorias || {});
-        judiciario.p.forEach((p) => { p.k = "t"; D.p.push(p); });
-      }
-      // cada Assembleia com o código IBGE do estado (o mesmo do cid de cada deputado)
-      D.p.forEach((p) => { if (p.k === "a" && CAM.estados[p.uf]) { CAM.estados[p.uf].cod = p.cid; CAM.estadosCod[String(p.cid)] = CAM.estados[p.uf]; } });
       S.D = D;
       D.p.forEach((p) => S.porId.set(p.id, p));
-      if (judiciario && judiciario.p && judiciario.p.some((p) => p.t)) JUD.completo = Promise.resolve(guardarJudiciario(judiciario));
-      // vereador que está (ou esteve) na Prefeitura: a ligação vem do lado da Prefeitura; faz a volta
-      D.p.forEach((p) => { const q = (p.k === "p" || p.k === "g") && p.rel && S.porId.get(p.rel); if (q && !q.rel) q.rel = p.id; });
+      integrarResto(D, resto);
       montarCabecalho();
       ligarLinksInternos();
       escopoTabelas();

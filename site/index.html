@@ -39,10 +39,13 @@
 <link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-condensed-600-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-400-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/fontes/barlow-600-latin.woff2" crossorigin>
+<!-- tema escolhido no botão do cabeçalho ou do rodapé (só guardado neste navegador): aplicado antes da folha de estilo, para a página não piscar -->
+<script>try { var t = localStorage.getItem("tema"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) { /* sem armazenamento: segue o tema do sistema */ }</script>
 <link rel="stylesheet" href="/estilo.css">
 </head>
 <body>
 <!--INICIO-CORPO-->
+<a class="pular" href="#app" id="pular">Pular para o conteúdo</a>
 <header class="cabecalho" id="cabecalho">
   <div class="cabecalho__linha">
     <a class="logo" href="/" aria-label="Contas do Poder, início">
@@ -57,6 +60,10 @@
       <button type="button" class="cabecalho__buscar" id="abrir-busca" aria-expanded="false" aria-controls="busca-topo-caixa">
         <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="m15.5 15.5 5 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
         <span class="cabecalho__buscar-texto">Buscar</span>
+      </button>
+      <button type="button" class="cabecalho__tema" data-tema-botao aria-label="Mudar para o tema escuro" title="Mudar o tema">
+        <svg class="tema-lua" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <svg class="tema-sol" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.3 5.3l1.7 1.7M17 17l1.7 1.7M5.3 18.7 7 17M17 7l1.7-1.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
       </button>
     </div>
   </div>
@@ -164,7 +171,7 @@
           <li>Alguns valores só são informados <strong>por ano</strong>: o auxílio-moradia da Câmara e as passagens, correios e outros gastos do Senado. Dividimos o total do ano pelos meses com salário. É uma aproximação, marcada com ≈.</li>
           <li>A <strong>cota por tipo</strong> (passagens, combustível, aluguel de carros...) também aparece por mês: o total de cada tipo no período dividido pelos meses. Se a cota dá R$ 40 mil por mês e 12% foi com carro, mostramos cerca de R$ 4,8 mil por mês com carro.</li>
           <li><strong>Salários mínimos</strong>: R$ 1.320 (2023), R$ 1.412 (2024), R$ 1.518 (2025) e R$ 1.621 (2026).</li>
-          <li>Conferimos com os sites oficiais: a cota do Senado bate ao centavo em todas as 324 comparações; a da Câmara, em 37 de 40 casos de uma amostra.</li>
+          <li>Conferimos com os sites oficiais: a cota do Senado bate ao centavo em todas as 324 comparações; a da Câmara, em 37 de 40 casos de uma amostra.</li><!--COMO-ENTENDA-->
         </ul>
       </details>
       <details id="entenda-renda"><summary>"Ganha mais que X% dos brasileiros que trabalham"</summary>
@@ -278,8 +285,9 @@
     <p><strong>Fontes oficiais.</strong> Os números vêm de dados públicos da Câmara dos Deputados, do Senado Federal, do governo federal (Portal da Transparência), do Tesouro Nacional, do TSE, dos estados, de Assembleias Legislativas, de câmaras municipais e de prefeituras. Cada página mostra a fonte de cada valor; a lista completa está em <a href="#fontes">Fontes dos dados</a>.</p>
     <p><strong>Achou um valor errado?</strong> Confira na fonte, pelo link da página. Se a fonte mostra outro valor, avise pelo "Encontrou um erro?" no fim de cada página: corrigimos e registramos na <a href="/correcoes">lista de correções</a>. Se o erro estiver na própria fonte, quem corrige é o órgão que publicou (ouvidoria ou pedido pela Lei de Acesso à Informação).</p>
     <p><strong>Código aberto</strong> (licença MIT): <a href="https://github.com/jflaloux/contas-do-poder" target="_blank" rel="noopener">github.com/jflaloux/contas-do-poder</a>. As tabelas podem ser reutilizadas sob a licença <a href="https://creativecommons.org/licenses/by/4.0/deed.pt-br" target="_blank" rel="noopener">CC BY 4.0</a>, citando "Contas do Poder" e as fontes originais. Contato: <a href="mailto:contato@contasdopoder.com">contato@contasdopoder.com</a></p>
-    <p><strong>Os dados não dependem deste site.</strong> Os dados, os robôs que os coletam e o código têm cópias públicas e verificáveis fora daqui: <a href="/dados-abertos">baixe tudo e confira</a>. Até que mês vão os dados de cada fonte: <a href="/atualizacao">atualização dos dados</a>. <a href="/sobre">Sobre e privacidade</a>. <a href="/imprensa">Para a imprensa</a>.</p>
+    <p><strong>Os dados não dependem deste site.</strong> Os dados, os robôs que os coletam e o código têm cópias públicas e verificáveis fora daqui: <a href="/dados-abertos">baixe tudo e confira</a>. Até que mês vão os dados de cada fonte: <a href="/atualizacao">atualização dos dados</a>. <!--COMO--><a href="/sobre">Sobre e privacidade</a>. <a href="/imprensa">Para a imprensa</a>.</p>
     <p>Protótipo: confira os valores na fonte antes de tirar conclusões.</p>
+    <p class="rodape__tema"><button type="button" class="link-botao" data-tema-botao id="tema-rodape"><span class="tema-texto">Tema: automático (trocar para escuro)</span></button></p>
     <p id="gerado-em"></p>
   </footer>
 </div>

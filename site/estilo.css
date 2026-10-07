@@ -1109,3 +1109,56 @@ details > summary { padding-block: 7px; }
 .item-abre > summary, .indice-estado > summary { padding-block: 0; }
 /* link sozinho numa linha (como "Ver os 27 governadores →"): área de toque maior que a linha de texto */
 p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inline-block; padding-block: 8px; }
+
+/* ---------- pular para o conteúdo ---------- */
+.pular { position: absolute; left: 12px; top: -64px; z-index: 100; padding: 10px 16px; border-radius: 10px; background: var(--botao); color: var(--on-botao); font-weight: 700; text-decoration: none; }
+.pular:focus { top: 8px; }
+
+/* ---------- botão do tema (claro/escuro), no cabeçalho e no rodapé ---------- */
+.cabecalho__tema {
+  display: none; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0; cursor: pointer;
+  border: 1px solid var(--banda-linha); border-radius: 12px; background: transparent; color: var(--banda-ink);
+}
+.cabecalho__tema:hover { border-color: var(--banda-ganha); color: var(--banda-ganha); }
+@media (min-width: 561px) { .cabecalho__tema { display: inline-flex; } }
+.cabecalho__tema .tema-sol, .cabecalho__tema .tema-lua { display: none; }
+.cabecalho__tema[data-escuro="1"] .tema-sol { display: block; }
+.cabecalho__tema[data-escuro="0"] .tema-lua { display: block; }
+.rodape__tema { margin-top: 4px; }
+
+/* ---------- impressão e PDF (para a imprensa): sem menus nem botões, em preto sobre branco, com o endereço das fontes ---------- */
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme] {
+    --bg: #fff !important; --paper: #fff !important; --ink: #111 !important; --ink-2: #333 !important; --ink-3: #555 !important;
+    --line: #bbb !important; --line-2: #ddd !important; --accent: #0b5a45 !important; --accent-2: #0b5a45 !important; --accent-soft: #fff !important;
+    --banda: #fff !important; --banda-2: #fff !important; --banda-linha: #bbb !important; --banda-ink: #111 !important; --banda-ink-2: #333 !important;
+    --banda-ink-3: #555 !important; --banda-ganha: #0b6b50 !important; --banda-custa: #8a5200 !important; --banda-equipe: #3b5c75 !important;
+    --escuro: #fff !important; --escuro-ink: #111 !important; --escuro-ink-2: #333 !important; --escuro-line: #bbb !important; --escuro-hi: #0b6b50 !important;
+    --sombra: none !important; color-scheme: light;
+  }
+  html { scroll-behavior: auto; }
+  body { background: #fff; font-size: 11pt; }
+  .pular, .cabecalho, .secoes, .abertura, .compartilhar-flutuante, .guia, dialog, .compartilhar, .compartilhar-bloco, .compartilhar-img, .rodape__tema, .acoes,
+  #resumo, #comparar, .botao, .link-botao, .grupo-pilulas, .filtros, .rolagem + .nota-tabela { display: none !important; }
+  .pagina, main { max-width: none; padding: 0; }
+  .cartao, .conta, .bloco { box-shadow: none; break-inside: avoid; }
+  h1, h2, h3 { break-after: avoid; }
+  .rolagem { overflow: visible; }
+  details > summary { list-style: none; }
+  main a[href^="http"]::after { content: " <" attr(href) ">"; font-size: .78em; color: #333; word-break: break-all; }
+  main a[href^="/"]::after { content: ""; }
+  .rodape { border-top: 1px solid #999; font-size: 9pt; }
+}
+
+/* ---------- blocos recolhidos no celular ---------- */
+.recolher > summary { cursor: pointer; font-weight: 600; color: var(--accent); min-height: 44px; display: flex; align-items: center; }
+.recolher[open] > summary { margin-bottom: 6px; }
+.recolher > summary::marker { color: var(--accent); }
+@media (min-width: 761px) { .recolher > summary { display: none; } }
+
+/* ---------- passo 3 do guia e lista de cidades ---------- */
+.guia__cidade { display: grid; gap: 8px; }
+.guia__cidades { display: grid; gap: 4px; }
+.cargos-estado { display: grid; gap: 8px; }
+.baixar .acoes { display: flex; flex-wrap: wrap; gap: 8px; }
+.rodape .link-botao { color: var(--banda-ganha); }

@@ -1463,6 +1463,37 @@ Dois usos do mesmo arquivo (`site/dados/situacao.json`), sem arquivo novo:
   aviso, o texto de cada tipo e o que não pode aparecer. Também confere que as páginas afetadas dizem "Folha até..." e que a
   de São Paulo (fonte em dia) não diz.
 
+## Conforto, dados estruturados, baixar dados e carga sob demanda (07/10/2026)
+
+- **404 de verdade**: o `gerar.mjs` faz `publicar/404.html` (a página do app com `noindex`); o Cloudflare Pages a serve, com o código 404, para todo
+  endereço que não existe (antes respondia 200 com a página inicial, e o Google tratava como página). Toda página do site é um arquivo gerado ou um
+  redirecionamento do `_redirects`; nenhuma rota depende da página inicial como reserva. O `servir.mjs` faz o mesmo.
+- **Título igual ao do HTML**: o `app.js` põe o mesmo título que o `gerar.mjs` (`tituloPessoa` e os fixos); sem isso, o título mudava assim que o JavaScript rodava.
+- **Pular para o conteúdo** (`#pular`), **tema claro/escuro** (botão no cabeçalho, a partir de 561 px, e no rodapé; a escolha fica só no navegador, em
+  `localStorage` "tema", e é lida por um script no `<head>` antes da folha de estilo; a `/sobre` diz isso) e **impressão** (`@media print` no
+  `estilo.css`: sem menus nem botões, preto sobre branco, endereço das fontes depois de cada link; o `app.js` abre os `<details>` em `beforeprint`).
+- **Dados estruturados (JSON-LD)**, neutros: toda página tem um `WebPage` (nome, descrição, endereço, de quem ou de que órgão trata: `Person` ou
+  `GovernmentOrganization`), a inicial tem `WebSite` e `Organization`, e `/dados-abertos` tem um `Dataset` (CC BY 4.0, cada arquivo com `contentUrl` e
+  `sha256`). Nenhum valor em reais, nota ou classificação (o `rodar.mjs` confere). Feito em `pagina()` do `gerar.mjs`.
+- **Baixar os dados da página**: bloco "Baixar os dados desta página" (`blocoBaixar`) na página de cada pessoa com o mês a mês em CSV (montado no
+  navegador, com a fonte em cada linha, sem CPF) e o link do arquivo completo (`/dados/pessoa/<id>.json`); botão "Baixar esta lista (CSV)" no ranking
+  e na lista de cidades do estado. Nada de arquivo novo no servidor.
+- **Carga sob demanda**: a página de deputado, senador ou ministro (`<meta name="dados-leve">`, posta pelo `gerar.mjs` em `pagina(..., { leve })`) só baixa o
+  essencial de saída (`indice/dados.json`, prefeituras, governadores, endereços). Câmaras, Assembleias, Judiciário e governadores como pessoas
+  (~200 KB comprimidos) vêm por `garantirTudo()`: ao focar a busca, ao chegar a ~1600 px do ranking (que se refaz com os grupos que faltavam), ao
+  abrir o guia e ao ir para qualquer outra página (`aplicarEndereco` espera). Qualquer página que não é de deputado, senador ou ministro carrega
+  tudo, como antes. `rotaLeve()` confere de novo no navegador (pessoa de outro grupo ou com ligação a ele carrega tudo).
+- **Guia, passo 3**: depois do estado, o campo "Ou escolha a sua cidade" (as 5.569, de `municipios.json`, baixado só ao clicar) leva à Câmara da cidade,
+  à Prefeitura (capitais com dados), ao governador e à Assembleia do estado.
+- **Lista de cidades do estado**: ordenar por custo por habitante, custo da Câmara, habitantes ou nome, filtrar pelo nome e baixar em CSV.
+- **Salários dos cargos do estado** (`blocoCargosEstado`, na página do governador): governador, vice, secretário de Estado, deputado estadual e
+  deputado federal/senador, do maior para o menor, com a fonte de cada linha; só o salário (subsídio), sem gastos nem equipe.
+- **Blocos recolhidos no celular** (`recolherNoCelular`): "Presença e projetos" e o ranking da página da pessoa ficam num `<details>` fechado até 760 px;
+  a escolha fica em `S.recolhido`, e o link para a seção abre o bloco. O `rodar.mjs` abre os `details.recolher` antes de ler o texto.
+- **Como calculamos** (`/como-calculamos`, texto em `site/como-calculamos.json`, mesmo formato do `sobre.json` mais `**negrito**`): só sai com
+  `"publicar": true` no arquivo. Para publicar: o Jean-François revisa o texto; o `dados` põe `como-calculamos` em `RESERVADOS` (`coleta/enderecos.py`);
+  o `site` muda a chave. Enquanto for `false`, nem a página, nem o arquivo, nem os links do rodapé e do "Entenda" vão para `publicar/`.
+
 ## Licença
 
 - Código: MIT (arquivo `LICENSE`).
