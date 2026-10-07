@@ -60,7 +60,7 @@
   },
   {
    "fonte": "vereadores/recife",
-   "se_quebrar": "a folha tem reserva no TCE-PE (valor por cargo, automática pela situação); a verba fica até o último mês lido"
+   "se_quebrar": "sem reserva no TCE-PE (ensaio de 07/10/2026: a folha da Câmara do Recife no TCE-PE vem sem nenhum vereador em todos os meses desde jan/2025; a reserva automática da situação só vale com dados do órgão no arquivo do tribunal); a folha e a verba ficam até o último mês lido; passou de 1 hora, congelar"
   },
   {
    "fonte": "vereadores/rio_de_janeiro",
@@ -69,6 +69,10 @@
   {
    "fonte": "prefeituras/campo_grande",
    "se_quebrar": "congelada desde 03/10/2026 (dados até fev/2026)"
+  },
+  {
+   "fonte": "vereadores/fortaleza",
+   "se_quebrar": "reserva automática no TCE-CE, ensaiada em 07/10/2026: a mediana do valor bruto dos vereadores em cada mês sem 13º (todos menos jun/2025, dez/2025 e jun/2026, em que o 13º vem dentro do bruto) é igual ao subsídio_mes.csv da Câmara (R$ 20.139,20 em jan/2025 e R$ 26.080,98 depois); o TCE-CE não traz vice-prefeito de Fortaleza"
   }
  ]
 }

@@ -378,6 +378,10 @@ def reservas_tce(linhas):
         l = por_fonte.get(ch, {})
         cidade = _ler(r["arquivo"]).get("m", {}).get(r["cid"], {})
         ate = cidade.get("uc" if r["parte"] == "camara" else "up")
+        # o tribunal só serve de reserva se a cidade tem dados do órgão no arquivo: o TCE-PE tem "último mês" da Câmara do
+        # Recife (uc), mas a folha dela vem sem nenhum vereador em todos os meses (zc), e não há bloco de vereadores
+        if not any(cidade.get(k) for k in (("v", "c") if r["parte"] == "camara" else ("pf", "vp", "sec", "ps"))):
+            ate = None
         proprio = l.get("ultimo_mes")
         if l.get("situacao") == "falhando":
             motivo = "a coleta da fonte própria falhou"
