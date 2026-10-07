@@ -38,7 +38,8 @@ AGORA=0; PUSH=1
 for a in "$@"; do [ "$a" = "--agora" ] && AGORA=1; [ "$a" = "--sem-push" ] && PUSH=0; done
 
 # uma vez por mês: a partir da terceira terça-feira (a primeira terça depois do dia 14) às 11h (a rodada do GitHub
-# começa às 8h17 e leva até ~1h30)
+# começa às 8h17; a primeira com o cache vazio chega a ~5h, as seguintes são bem mais curtas: se o GitHub ainda
+# estiver salvando, o push é refeito sobre o que ele salvou, como abaixo)
 if [ "$AGORA" = 0 ]; then
   if ! "$PY" - "$ESTADO/ultima-rodada" <<'PYEOF'
 import os, sys

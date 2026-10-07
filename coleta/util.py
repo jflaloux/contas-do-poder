@@ -86,6 +86,63 @@ EXCECOES_ROBOTS = [
 _robots, _robots_trava, _ultimo_pedido, _trava_host = {}, threading.Lock(), {}, {}
 
 
+# ---------------------------------------------------------------- disjuntor por site
+# Um site que para de responder (por queda ou porque bloqueou o nosso endereço) não pode prender a rodada: sem isto, cada
+# um dos milhares de pedidos esperava 90 s, 4 vezes, e a rodada do GitHub de 06/10/2026 passou das 2h30 do limite. Depois
+# de DISJUNTOR_FALHAS falhas de conexão seguidas (sem nenhuma resposta, nem de erro) num site, os pedidos seguintes a ele
+# falham de imediato (HostIndisponivel) durante DISJUNTOR_PAUSA segundos; passado o tempo, um pedido tenta de novo e,
+# se falhar, o site volta a ficar fechado. Não é tentativa de passar por bloqueio: ao contrário, é parar de insistir.
+# A falha chega a quem chamou como erro de conexão comum (a fonte fica "com falha" e continua na próxima rodada).
+DISJUNTOR_FALHAS = 6
+DISJUNTOR_PAUSA = 900
+CONEXAO_TIMEOUT = 20  # segundos para abrir a conexão (a leitura da resposta tem o prazo de cada chamada)
+_disjuntor, _disjuntor_trava = {}, threading.Lock()
+
+
+class HostIndisponivel(requests.exceptions.ConnectionError):
+    """O site não respondeu a vários pedidos seguidos: os próximos nem são tentados por um tempo."""
+
+
+def _disjuntor_antes(origem):
+    with _disjuntor_trava:
+        d = _disjuntor.get(origem)
+        if d and d["aberto_ate"] > time.time():
+            raise HostIndisponivel(f"{origem} não responde (várias falhas seguidas); sem novos pedidos por "
+                                   f"{int((d['aberto_ate'] - time.time()) / 60) + 1} min")
+
+
+def _disjuntor_depois(origem, respondeu):
+    with _disjuntor_trava:
+        d = _disjuntor.setdefault(origem, {"falhas": 0, "aberto_ate": 0})
+        if respondeu:
+            d["falhas"], d["aberto_ate"] = 0, 0
+            return
+        d["falhas"] += 1
+        if d["falhas"] >= DISJUNTOR_FALHAS and d["aberto_ate"] <= time.time():
+            d["aberto_ate"] = time.time() + DISJUNTOR_PAUSA
+            log(f"  {origem}: {d['falhas']} falhas de conexão seguidas; sem novos pedidos por {DISJUNTOR_PAUSA // 60} min")
+
+
+def _pedir(origem, funcao, *args, **kwargs):
+    """Faz o pedido (funcao) com o disjuntor do site e o prazo para abrir a conexão."""
+    _disjuntor_antes(origem)
+    t = kwargs.get("timeout")
+    if t is None:
+        kwargs["timeout"] = (CONEXAO_TIMEOUT, 120)
+    elif isinstance(t, (int, float)):
+        kwargs["timeout"] = (min(CONEXAO_TIMEOUT, t), t)
+    try:
+        r = funcao(*args, **kwargs)
+    except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
+        _disjuntor_depois(origem, False)
+        raise
+    except requests.RequestException:
+        _disjuntor_depois(origem, True)  # o site respondeu (ou abriu a conexão), mas a resposta falhou
+        raise
+    _disjuntor_depois(origem, True)
+    return r
+
+
 def excecao_robots(url):
     """(motivo, pausa) se o endereço está na lista de exceções ao robots.txt; senão None."""
     for comeco, motivo, pausa in EXCECOES_ROBOTS:
@@ -168,15 +225,19 @@ def _robots_de(origem, sessao):
         if origem in _robots:
             return _robots[origem]
     try:
-        r = requests.Session.request(sessao, "GET", f"{origem}/robots.txt", timeout=30, allow_redirects=True)
+        r = _pedir(origem, requests.Session.request, sessao, "GET", f"{origem}/robots.txt", timeout=30, allow_redirects=True)
         if r.status_code >= 500:
             regras = {"regras": [(False, "/")], "atraso": None}  # servidor com erro: não abre nada agora (RFC 9309)
         elif r.status_code >= 400 or "<html" in r.text[:600].lower():
             regras = {"regras": [], "atraso": None}  # sem robots.txt: tudo permitido
         else:
             regras = _regras_robots(r.text)
+    except HostIndisponivel:
+        raise
     except requests.RequestException:
-        regras = {"regras": [(False, "/")], "atraso": None}
+        # robots.txt que não abriu (site fora do ar, ou bloqueio): nada é aberto agora (RFC 9309), mas a resposta não fica
+        # guardada, para o site ser tentado de novo quando voltar; quem pede recebe erro de conexão, não "robots proíbe"
+        return {"regras": [(False, "/")], "atraso": None, "inacessivel": True}
     with _robots_trava:
         _robots[origem] = regras
     return regras
@@ -196,7 +257,9 @@ class SessaoEducada(requests.Session):
             exc = excecao_robots(url)
             if exc:  # exceção: lê mesmo com o robots.txt proibindo, com a pausa (e o Crawl-delay, se houver)
                 _esperar_vez(origem, max(exc[1], regras["atraso"] or 0))
-                return super().request(method, url, *args, **kwargs)
+                return _pedir(origem, super().request, method, url, *args, **kwargs)
+            if regras.get("inacessivel") and not permitido(str(url), regras):
+                raise requests.exceptions.ConnectionError(f"o robots.txt de {u.netloc} não abriu (site fora do ar ou bloqueado)")
             if not permitido(str(url), regras):
                 raise BloqueadoRobots(f"o robots.txt de {u.netloc} não permite robôs em {u.path}")
             if regras["atraso"]:
@@ -207,8 +270,8 @@ class SessaoEducada(requests.Session):
                     if espera > 0:
                         dormir(espera)
                     _ultimo_pedido[origem] = time.time()
-                    return super().request(method, url, *args, **kwargs)
-        return super().request(method, url, *args, **kwargs)
+                    return _pedir(origem, super().request, method, url, *args, **kwargs)
+        return _pedir(origem, super().request, method, url, *args, **kwargs)
 
 
 def _sessao():
@@ -284,6 +347,8 @@ def baixar(url, params=None, tentativas=4, timeout=90, **kw):
                 raise requests.HTTPError(f"HTTP {r.status_code} em {r.url}", response=r)
             r.raise_for_status()
             return r
+        except HostIndisponivel:
+            raise  # o site não responde: não adianta tentar de novo agora
         except requests.HTTPError as e:
             if e.response is not None and e.response.status_code == 404:
                 raise

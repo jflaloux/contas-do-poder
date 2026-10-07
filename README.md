@@ -48,13 +48,35 @@ A primeira coleta faz alguns milhares de consultas e leva uns 20–30 minutos. T
 O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda terça-feira às 8h17**
 (horário de Brasília). Também dá para rodar na hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
 
-1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior).
+1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior), **uma etapa por passo**
+   (`rotina/etapa-github.sh <etapa> <minutos>`): cada etapa tem um tempo máximo e, se estourar, para sozinha, grava o
+   que já pegou e a rodada segue (o resto é lido na próxima; os robôs retomam de onde pararam). Há também um prazo
+   geral de 5h15 para a coleta (`PRAZO_FIM`), deixando 50 minutos para padronizar, montar o site, conferir e salvar:
+   a etapa que não cabe mais é pulada. O limite do job é de 5h50.
 2. Monta a base e o arquivo do site.
 3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`).
 4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site.
+5. No fim, se alguma etapa terminou com erro (não por tempo), a execução termina com erro para o GitHub avisar, mas
+   só depois de salvar o resto. O resumo da execução traz o código e a duração de cada etapa.
 
-Se uma fonte estiver fora do ar ou a conferência falhar, **nada é salvo**: o site anterior continua no ar
-e o GitHub manda um e-mail. O relatório da conferência fica anexado em cada execução.
+Se a conferência falhar, **nada é salvo**: o site anterior continua no ar e o GitHub manda um e-mail. O relatório da
+conferência fica anexado em cada execução.
+
+A primeira rodada com o cache de downloads vazio (ou depois de um mês sem rodar) é a mais longa: só a Câmara leva
+perto de 1h40 para ler as páginas de cada deputado, os Tribunais de Contas levam uns 80 minutos e as Assembleias uns 45
+(medido em 07/10/2026 numa cópia limpa do repositório, sem cache, com as etapas em paralelo); vereadores, prefeituras e
+governadores, uns 10 a 13 minutos cada. As seguintes, com o cache da semana anterior e os CSVs que já estão no Git, são
+bem mais curtas.
+
+**Site que para de responder:** `coleta/util.py` tem um disjuntor por site (`DISJUNTOR_FALHAS`): depois de 6 falhas de
+conexão seguidas (nenhuma resposta, nem de erro) num site, os pedidos seguintes a ele falham na hora por 15 minutos
+(`HostIndisponivel`, que é um erro de conexão comum), e a conexão tem prazo de 20 s para abrir. Sem isso, cada um dos
+milhares de pedidos esperava 90 s, 4 vezes. Foi o que se viu em 07/10/2026, quando o site da Câmara passou a não
+responder ao computador da simulação (e a conexão ficou sem resposta, sem recusa) no meio de uma primeira leitura de
+~7.000 páginas; a rodada de 06/10 do GitHub pode ter passado pelo mesmo. Não é uma forma de passar por bloqueio: é parar
+de insistir. Testes: `python3 -m coleta.testes_disjuntor`. Em 06/10/2026 a rodada
+única da época (`coletar.py tudo`, limite de 2h30) foi cancelada pelo limite sem salvar nada; foi por isso que a
+coleta passou a ser em etapas.
 
 A legislatura atual termina em janeiro de 2027. A partir de fevereiro de 2027 o robô para com um aviso
 até `coleta/config.py` ser atualizado para a nova legislatura.

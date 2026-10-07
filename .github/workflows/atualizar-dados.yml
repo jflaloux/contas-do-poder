@@ -4,8 +4,13 @@
 # Roda nos EUA: as fontes que só abrem do Brasil ficam para a rodada do Brasil (rotina/semana-brasil.sh, terça à tarde);
 # coleta/onde.py diz quem roda o quê, e dados/processados/situacao.md mostra a situação de cada fonte.
 # O Cloudflare Pages publica o site sozinho a cada mudança no repositório.
-# Se uma fonte estiver fora do ar ou a conferência falhar, nada é salvo: o site anterior
-# continua no ar e o GitHub manda um e-mail avisando.
+# Se a conferência falhar, nada é salvo: o site anterior continua no ar e o GitHub manda um e-mail avisando.
+#
+# Cada etapa da coleta roda num passo próprio, por rotina/etapa-github.sh, com tempo máximo: a etapa que demora
+# demais para sozinha, grava o que já pegou e a rodada segue (o resto é lido na próxima, os robôs retomam de onde
+# pararam). Assim uma fonte lenta não impede de conferir e salvar o que as outras trouxeram. Em 06/10/2026 a rodada
+# única ("coletar.py tudo") passou das 2h30 do limite e foi cancelada sem salvar nada. O prazo geral é PRAZO_FIM;
+# o que sobra depois dele (RESERVA_MIN) é para padronizar, montar o site, conferir e salvar.
 
 name: Atualizar dados
 
@@ -29,7 +34,7 @@ env:
 jobs:
   atualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 350  # o máximo do GitHub é 360; o prazo da coleta (PRAZO_FIM) acaba antes, com folga para salvar
     steps:
       - name: Baixar o código
         uses: actions/checkout@v4
@@ -52,8 +57,64 @@ jobs:
           key: downloads-${{ github.run_id }}
           restore-keys: downloads-
 
-      - name: Coletar os dados e montar a base
-        run: python coletar.py tudo
+      - name: Marcar o prazo da coleta
+        run: |
+          echo "PRAZO_FIM=$(( $(date +%s) + 315 * 60 ))" >> "$GITHUB_ENV"
+          chmod +x rotina/etapa-github.sh
+
+      - name: "Coletar: Câmara dos Deputados"
+        run: rotina/etapa-github.sh camara 130
+
+      - name: "Coletar: Senado"
+        run: rotina/etapa-github.sh senado 15
+
+      - name: "Coletar: Presidente, vice e ministros"
+        run: rotina/etapa-github.sh executivo 15
+
+      - name: "Coletar: Judiciário"
+        run: rotina/etapa-github.sh judiciario 20
+
+      - name: "Coletar: Câmaras municipais: custo e vereadores eleitos"
+        run: rotina/etapa-github.sh municipios 15
+
+      - name: "Coletar: Renda (PNAD)"
+        run: rotina/etapa-github.sh renda 45
+
+      - name: "Coletar: Presença e projetos (Câmara e Senado)"
+        run: rotina/etapa-github.sh atividade 40
+
+      - name: "Coletar: Vereadores das capitais"
+        run: rotina/etapa-github.sh vereadores 40
+
+      - name: "Coletar: Prefeituras das capitais"
+        run: rotina/etapa-github.sh prefeituras 30
+
+      - name: "Coletar: Governadores e vices"
+        run: rotina/etapa-github.sh governadores 40
+
+      - name: "Coletar: Assembleias Legislativas"
+        run: rotina/etapa-github.sh assembleias 70
+
+      - name: "Coletar: Índice de Transparência"
+        run: rotina/etapa-github.sh indice 10
+
+      - name: "Coletar: Tribunais de Contas"
+        run: rotina/etapa-github.sh tce 90
+
+      - name: "Coletar: Juntar tudo na base unificada"
+        run: rotina/etapa-github.sh padronizar 60 essencial
+
+      - name: "Coletar: Fotos"
+        run: rotina/etapa-github.sh fotos 30
+
+      - name: "Coletar: Bens declarados ao TSE"
+        run: rotina/etapa-github.sh bens 30
+
+      - name: "Coletar: Gerar os arquivos do site"
+        run: rotina/etapa-github.sh site 30 essencial
+
+      - name: "Coletar: Situação das fontes"
+        run: rotina/etapa-github.sh situacao 10 essencial
 
       - name: Guardar os downloads para a próxima vez
         if: always()
@@ -63,7 +124,14 @@ jobs:
           key: downloads-${{ github.run_id }}
 
       - name: Conferir com os sites oficiais (trava se algo estiver errado)
-        run: python coletar.py conferir --max-alertas 8
+        run: |
+          # sem a base unificada e os arquivos do site, não há o que conferir nem salvar
+          if grep -Eq '^(padronizar|site) ([1-9][0-9]*) ' "$RUNNER_TEMP/etapas.txt"; then
+            echo "A etapa de padronizar ou de gerar o site falhou: nada será salvo."
+            grep -E '^(padronizar|site) ' "$RUNNER_TEMP/etapas.txt"
+            exit 1
+          fi
+          python coletar.py conferir --max-alertas 8
 
       - name: Situação das fontes (no resumo desta execução)
         if: always()
@@ -102,3 +170,20 @@ jobs:
           name: conferencia
           path: dados/processados/conferencia.md
           if-no-files-found: ignore
+
+      - name: Avisar das etapas que deram erro (depois de salvar)
+        if: always()
+        run: |
+          # as etapas não derrubam a rodada (para que o resto seja salvo), mas um erro de verdade (diferente de "acabou o
+          # tempo") faz esta rodada terminar com erro, e o GitHub manda o e-mail
+          {
+            echo "### Etapas da coleta"
+            echo '```'
+            awk '{ printf "%-14s código %-4s %s min\n", $1, $2, int($3 / 60) }' "$RUNNER_TEMP/etapas.txt"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY" || true
+          if awk '$2 !~ /^(0|3|124)$/ && $2 != "pulada-por-tempo" { achou = 1 } END { exit !achou }' "$RUNNER_TEMP/etapas.txt"; then
+            echo "Etapas com erro:"
+            awk '$2 !~ /^(0|3|124)$/ && $2 != "pulada-por-tempo"' "$RUNNER_TEMP/etapas.txt"
+            exit 1
+          fi

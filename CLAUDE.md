@@ -161,6 +161,11 @@ armadilhas que não estão escritas em outro lugar.
   (vereadores do interior ficam na página da cidade). O `gerar.mjs` avisa a partir de 18.000 arquivos ou 1.800
   redirecionamentos e falha acima do limite. Se faltar espaço: juntar os arquivos por pessoa (`dados/pessoa/<id>.json`,
   ~2.650) em pedaços por estado e grupo, o que libera ~2.500 arquivos.
+- Site que para de responder: a sessão (`coleta/util.py`) tem um disjuntor por site (6 falhas de conexão seguidas =
+  15 minutos sem novos pedidos, `HostIndisponivel`) e prazo de 20 s para abrir a conexão; o GitHub Actions roda uma
+  etapa por passo (`rotina/etapa-github.sh <etapa> <minutos>`), cada uma com tempo máximo, e o job tem prazo geral
+  (README, "Atualização automática"). Etapa nova do `tudo`: acrescentar também ao workflow, com o tempo máximo. Não rodar
+  duas etapas ao mesmo tempo na mesma pasta (a gravação do cache e `coletas_*.json` não é segura para isso).
 - Arquivo de dados (em `dados/` ou `site/dados/`) só se grava com `gravar_csv`, `gravar_json` ou `gravar_linhas`
   (`coleta/util.py`), que ficam com o anterior e marcam a falha quando o novo vem vazio ou perde muita cobertura (README,
   "Gravação segura"; redução legítima só com `motivo=` no código de quem grava).
