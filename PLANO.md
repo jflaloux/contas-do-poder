@@ -132,12 +132,17 @@ Cada número tem link para a fonte oficial.
   Contas como reserva de Fortaleza, Câmara do Recife e Vitória — Agente de Dados
 - [x] Gravação segura em todos os robôs (04/10/2026): o arquivo novo só troca o anterior se não vier vazio nem perder
   cobertura ou conteúdo; a recusa aparece na situação — Agente de Dados
-- [ ] Primeira rodada de verdade com a gravação segura: conferir se aparece recusa falsa — Agente de Dados
+- [ ] Primeira rodada de verdade com a gravação segura: rodou em 07/10/2026 (run 37653129237, 1h43, 0 falhando); conferir no conferencia.md se houve recusa falsa — Agente de Dados
+- [x] Rodada do GitHub (07/10/2026): cancelada aos 150 min na primeira (coleta a frio passa de 4 h) e derrubada pelo pandas 3 na segunda (`padronizar`); agora com tempo por etapa, disjuntor por site, conferência repetida sobre a árvore final, testes rápidos no início e trabalho guardado para retomar (revisão externa em andamento) — Agente de Dados
 - [ ] Refazer o raio-X das fontes no fim de novembro, com o histórico das rodadas — Agente de Dados
 - [x] Bens declarados ao TSE (2018, 2022, 2024), versão neutra: dados e página prontos, dormentes até 26/10/2026 — Agentes de Dados e de Site
+- [x] Site, 07/10/2026: 404 de verdade, opção B da primeira dobra ("Recebe X e usa mais Y"; "Custo total por mês"), carga sob demanda, tema claro/escuro, impressão, download CSV, passo "cidade" no guia, JSON-LD — Agente de Site
+- [ ] Interior acima do teto (`site/dados/interior-teto.json`, 215 na PB e 44 no CE, mediana de 6 meses contra a faixa da Constituição): decidir como mostrar, depois de 26/10 (TAREFA-SITE-interior-teto.txt) — Agentes de Dados e de Site
+- [ ] Tribunais de Justiça (DadosJusBr, 27 TJs): parado, o pacote não separa ativos de aposentados (TJ-SP: 761 linhas para ~360 cargos); perguntar à Transparência Brasil ou usar o quadro de cargos — Agente de Dados
+- [ ] C7 (ajuda de custo desde fev/2023): Câmara R$ 25,1 mi líquidos em 626 pagamentos, Senado R$ 2,78 mi em 66 (`python3 -m coleta.analises c7`); decidir se vira pauta — Jean-François
 - [ ] 27/10/2026: conferir que a rodada gravou bens.json e bens-interior/, que o bloco aparece e que os links do TSE abrem — Agente de Site
 
-- [ ] Página "Como calculamos" — Claude rascunha, você revisa
+- [x] Página "Como calculamos" no ar (07/10/2026), com glossário; texto revisado pelo orquestrador por delegação do Jean-François — Agente de Site
 - [ ] Testar com 5 a 10 pessoas não técnicas: acham o político delas e entendem em 30 s? — Você
 - [ ] Uma conversa com advogado (linguagem, LGPD) — Você (sem data: não no futuro próximo, 02/10/2026)
 - [x] Canal para pedir correção de dados: "Encontrou um erro?" em cada página (primeiro a fonte, depois o e-mail) e a lista
@@ -188,4 +193,5 @@ Cada número tem link para a fonte oficial.
 - [x] Índice: prefeituras de Maceió e Cuiabá conferidas em 03/10/2026; os 27 estados com nota geral — Agente de Dados
 - [x] Prova de conceito: os 26 Tribunais de Contas que fiscalizam municípios (dados/referencia/tribunais.json; prova na Paraíba) — Claude
 - [x] Robôs dos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API), com vereadores, prefeito, vice e (PB) secretários, mês a mês desde jan/2025 — Claude
-- [ ] Pedir acesso: token da API do TCM-GO, chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide
+- [x] Token da API do TCM-GO: não vamos pedir (07/10/2026: o órgão exige cadastro no Sistema da Ouvidoria, trabalho demais para o ganho) — Jean-François
+- [ ] Pedir acesso: chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide
