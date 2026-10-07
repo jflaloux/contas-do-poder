@@ -50,3 +50,8 @@ def executar_site():
         except Exception as e:  # noqa: BLE001
             import traceback
             log(f"  TCE {uf}: não deu para montar o arquivo do site ({e})\n{traceback.format_exc(limit=3)}")
+    try:  # vereadores do interior com o valor típico acima do teto da Constituição (PB e CE): site/dados/interior-teto.json
+        from .. import analises
+        analises.interior_teto(gravar=True)
+    except Exception as e:  # noqa: BLE001
+        log(f"  TCE: não deu para montar interior-teto.json ({e})")
