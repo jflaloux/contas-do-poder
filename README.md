@@ -51,13 +51,17 @@ O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda 
 1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior), **uma etapa por passo**
    (`rotina/etapa-github.sh <etapa> <minutos>`): cada etapa tem um tempo máximo e, se estourar, para sozinha, grava o
    que já pegou e a rodada segue (o resto é lido na próxima; os robôs retomam de onde pararam). Há também um prazo
-   geral de 5h15 para a coleta (`PRAZO_FIM`), deixando 50 minutos para padronizar, montar o site, conferir e salvar:
-   a etapa que não cabe mais é pulada. O limite do job é de 5h50.
+   geral (`PRAZO_FIM`, 5h25 depois do início) que deixa 70 minutos para padronizar (30 no máximo), montar o site (15),
+   a situação (5), conferir e salvar: a coleta propriamente dita tem até 4h15, e a etapa que não cabe mais é pulada. O
+   limite do job é de 5h55. Antes da coleta, um passo recusa a rodada se a legislatura terminou (código 5).
 2. Monta a base e o arquivo do site.
 3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`).
-4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site.
-5. No fim, se alguma etapa terminou com erro (não por tempo), a execução termina com erro para o GitHub avisar, mas
-   só depois de salvar o resto. O resumo da execução traz o código e a duração de cada etapa.
+4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site. Se o Git
+   precisar trazer o que a rodada do Brasil enviou (rebase, e `coletar.py montar` quando há conflito), a conferência roda
+   de novo sobre a árvore final antes do `git push`, que tenta até 3 vezes.
+5. No fim, se alguma etapa terminou com erro (não por tempo), ou se a mesma fonte falhou 3 vezes seguidas
+   (`dados/processados/coletas_exterior.json`; as etapas absorvem o erro de cada fonte para as outras seguirem), a
+   execução termina com erro para o GitHub avisar, mas só depois de salvar o resto. O resumo da execução traz o código e a duração de cada etapa.
 
 Se a conferência falhar, **nada é salvo**: o site anterior continua no ar e o GitHub manda um e-mail. O relatório da
 conferência fica anexado em cada execução.
@@ -74,7 +78,7 @@ conexão seguidas (nenhuma resposta, nem de erro) num site, os pedidos seguintes
 milhares de pedidos esperava 90 s, 4 vezes. Foi o que se viu em 07/10/2026, quando o site da Câmara passou a não
 responder ao computador da simulação (e a conexão ficou sem resposta, sem recusa) no meio de uma primeira leitura de
 ~7.000 páginas; a rodada de 06/10 do GitHub pode ter passado pelo mesmo. Não é uma forma de passar por bloqueio: é parar
-de insistir. Testes: `python3 -m coleta.testes_disjuntor`. Em 06/10/2026 a rodada
+de insistir. Um robots.txt que não abre vale como "fechado" por 5 minutos (nem as exceções abrem, porque o Crawl-delay não é conhecido), e erro de certificado não conta como site fora do ar. Testes: `python3 -m coleta.testes_disjuntor` (disjuntor e robots.txt) e `python3 -m coleta.testes_rodada` (tempos, prazo geral e códigos de saída de `rotina/etapa-github.sh`, e a conta do orçamento do workflow). Em 06/10/2026 a rodada
 única da época (`coletar.py tudo`, limite de 2h30) foi cancelada pelo limite sem salvar nada; foi por isso que a
 coleta passou a ser em etapas.
 

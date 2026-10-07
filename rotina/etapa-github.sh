@@ -8,9 +8,11 @@
 #               continua; o resto é lido na próxima rodada (os robôs retomam de onde pararam)
 #   essencial   etapa que não pode ser pulada nem encurtada pelo prazo geral (padronizar, site, situacao)
 #
-# O prazo geral da rodada vem da variável PRAZO_FIM (segundos desde 1970), posta pelo workflow no começo: a etapa
-# normal recebe no máximo o que sobra até esse prazo, deixando RESERVA_MIN minutos para padronizar, montar o site,
-# conferir e salvar. Se não sobra tempo, a etapa é pulada e fica para a próxima rodada.
+# O prazo geral da rodada vem da variável PRAZO_FIM (segundos desde 1970), posta pelo workflow no começo (325 min depois
+# do início): a etapa normal recebe no máximo o que sobra até esse prazo, deixando RESERVA_MIN (70) minutos para as
+# etapas essenciais (padronizar 30 + site 15 + situação 5 = 50 no máximo), a conferência e o Git (~20). Conta do pior caso,
+# com o job em 355 min: coleta termina em 255 min (+3 de margem do timeout), essenciais até 50 (+9 de margem), conferir e
+# salvar ~20: cerca de 340. Se não sobra tempo, a etapa é pulada e fica para a próxima rodada.
 #
 # A etapa que acaba por tempo (código 3, ou 124 do timeout) não é erro. Qualquer outro código de saída é anotado
 # em $RUNNER_TEMP/etapas.txt, e o último passo do workflow (depois de salvar) faz a rodada acabar com erro, para o GitHub avisar,
@@ -21,7 +23,7 @@ set -uo pipefail
 ETAPA="${1:?etapa}"
 MINUTOS="${2:?minutos}"
 ESSENCIAL="${3:-}"
-RESERVA_MIN="${RESERVA_MIN:-50}"
+RESERVA_MIN="${RESERVA_MIN:-70}"
 ANOTACOES="${RUNNER_TEMP:-/tmp}/etapas.txt"
 
 agora=$(date +%s)

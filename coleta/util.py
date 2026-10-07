@@ -133,8 +133,18 @@ def _pedir(origem, funcao, *args, **kwargs):
         kwargs["timeout"] = (min(CONEXAO_TIMEOUT, t), t)
     try:
         r = funcao(*args, **kwargs)
-    except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError):
-        _disjuntor_depois(origem, False)
+    except requests.exceptions.SSLError:
+        _disjuntor_depois(origem, True)  # o servidor respondeu (a falha é de certificado): não é site fora do ar
+        raise
+    except (requests.exceptions.ConnectTimeout, requests.exceptions.ConnectionError) as e:
+        # em redirecionamento, a falha é do endereço do salto que falhou (e.request), não do endereço pedido
+        falhou = origem
+        pedido = getattr(e, "request", None)
+        if pedido is not None and getattr(pedido, "url", None):
+            from urllib.parse import urlsplit
+            u = urlsplit(pedido.url)
+            falhou = f"{u.scheme}://{u.netloc}"
+        _disjuntor_depois(falhou, False)
         raise
     except requests.RequestException:
         _disjuntor_depois(origem, True)  # o site respondeu (ou abriu a conexão), mas a resposta falhou
@@ -220,10 +230,17 @@ def permitido(url, regras):
     return melhor is None or melhor[1]
 
 
+ROBOTS_INACESSIVEL_SEGUNDOS = 300  # um robots.txt que não abriu vale por 5 min (nada é aberto nesse site); depois tenta de novo
+_robots_falhou = {}
+
+
 def _robots_de(origem, sessao):
     with _robots_trava:
         if origem in _robots:
             return _robots[origem]
+        falhou = _robots_falhou.get(origem)
+        if falhou and time.time() - falhou["quando"] < ROBOTS_INACESSIVEL_SEGUNDOS:
+            return falhou["regras"]
     try:
         r = _pedir(origem, requests.Session.request, sessao, "GET", f"{origem}/robots.txt", timeout=30, allow_redirects=True)
         if r.status_code >= 500:
@@ -235,9 +252,13 @@ def _robots_de(origem, sessao):
     except HostIndisponivel:
         raise
     except requests.RequestException:
-        # robots.txt que não abriu (site fora do ar, ou bloqueio): nada é aberto agora (RFC 9309), mas a resposta não fica
-        # guardada, para o site ser tentado de novo quando voltar; quem pede recebe erro de conexão, não "robots proíbe"
-        return {"regras": [(False, "/")], "atraso": None, "inacessivel": True}
+        # robots.txt que não abriu (site fora do ar, ou bloqueio): nada é aberto nesse site (nem as exceções, porque o
+        # Crawl-delay não é conhecido) por ROBOTS_INACESSIVEL_SEGUNDOS, e depois se tenta ler de novo; quem pede recebe
+        # erro de conexão, não "robots proíbe"
+        regras = {"regras": [(False, "/")], "atraso": None, "inacessivel": True}
+        with _robots_trava:
+            _robots_falhou[origem] = {"quando": time.time(), "regras": regras}
+        return regras
     with _robots_trava:
         _robots[origem] = regras
     return regras
@@ -254,12 +275,12 @@ class SessaoEducada(requests.Session):
         origem = f"{u.scheme}://{u.netloc}"
         if not str(url).startswith(APIS_LIBERADAS):
             regras = _robots_de(origem, self)
+            if regras.get("inacessivel"):  # sem ler o robots.txt não há como saber o Crawl-delay: nem a exceção abre
+                raise requests.exceptions.ConnectionError(f"o robots.txt de {u.netloc} não abriu (site fora do ar ou bloqueado)")
             exc = excecao_robots(url)
             if exc:  # exceção: lê mesmo com o robots.txt proibindo, com a pausa (e o Crawl-delay, se houver)
                 _esperar_vez(origem, max(exc[1], regras["atraso"] or 0))
                 return _pedir(origem, super().request, method, url, *args, **kwargs)
-            if regras.get("inacessivel") and not permitido(str(url), regras):
-                raise requests.exceptions.ConnectionError(f"o robots.txt de {u.netloc} não abriu (site fora do ar ou bloqueado)")
             if not permitido(str(url), regras):
                 raise BloqueadoRobots(f"o robots.txt de {u.netloc} não permite robôs em {u.path}")
             if regras["atraso"]:

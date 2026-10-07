@@ -101,7 +101,10 @@ else
         echo "$CONFLITOS" | xargs git checkout --ours --
         echo "$CONFLITOS" | xargs git add --
         GIT_EDITOR=true git rebase --continue || { git rebase --abort; avisar "Rodada parou" "rebase falhou; veja $LOG"; exit 1; }
-        "$PY" coletar.py montar && git add -- "${DADOS[@]}" && { git diff --cached --quiet || git commit --quiet -m "Arquivos do site refeitos depois das duas rodadas"; }
+        # se refazer os arquivos falhar, nada é enviado: o laço não pode seguir e empurrar o conflito resolvido sem refazer
+        "$PY" coletar.py montar || { avisar "Rodada parou" "os arquivos do site não foram refeitos depois do rebase; veja $LOG"; exit 1; }
+        git add -- "${DADOS[@]}" && { git diff --cached --quiet || git commit --quiet -m "Arquivos do site refeitos depois das duas rodadas"; } \
+          || { avisar "Rodada parou" "commit dos arquivos refeitos falhou; veja $LOG"; exit 1; }
       fi
     done
     git status -sb | head -1 | grep -q ahead && { avisar "Rodada sem envio" "o push não foi; veja $LOG"; exit 1; }

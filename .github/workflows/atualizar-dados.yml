@@ -10,7 +10,7 @@
 # demais para sozinha, grava o que já pegou e a rodada segue (o resto é lido na próxima, os robôs retomam de onde
 # pararam). Assim uma fonte lenta não impede de conferir e salvar o que as outras trouxeram. Em 06/10/2026 a rodada
 # única ("coletar.py tudo") passou das 2h30 do limite e foi cancelada sem salvar nada. O prazo geral é PRAZO_FIM;
-# o que sobra depois dele (RESERVA_MIN) é para padronizar, montar o site, conferir e salvar.
+# os últimos RESERVA_MIN (70) minutos dele são para padronizar, montar o site, conferir e salvar (rotina/etapa-github.sh).
 
 name: Atualizar dados
 
@@ -34,7 +34,7 @@ env:
 jobs:
   atualizar:
     runs-on: ubuntu-latest
-    timeout-minutes: 350  # o máximo do GitHub é 360; o prazo da coleta (PRAZO_FIM) acaba antes, com folga para salvar
+    timeout-minutes: 355  # o máximo do GitHub é 360; o orçamento da rodada está em rotina/etapa-github.sh
     steps:
       - name: Baixar o código
         uses: actions/checkout@v4
@@ -57,9 +57,21 @@ jobs:
           key: downloads-${{ github.run_id }}
           restore-keys: downloads-
 
+      - name: Conferir que a legislatura não terminou
+        run: |
+          # coletar.py recusa Câmara, Senado e Executivo (código 5) depois do fim da legislatura; aqui isso para a rodada
+          # antes de coletar e de salvar, e não passa por um passo que só avisa
+          python - <<'PYEOF'
+          import sys
+          from coleta.config import FIM_LEGISLATURA, LEGISLATURA, LEGISLATURA_ENCERRADA
+          if LEGISLATURA_ENCERRADA:
+              print(f"A legislatura {LEGISLATURA} terminou em {FIM_LEGISLATURA[1]:02d}/{FIM_LEGISLATURA[0]}. Atualize coleta/config.py.")
+              sys.exit(5)
+          PYEOF
+
       - name: Marcar o prazo da coleta
         run: |
-          echo "PRAZO_FIM=$(( $(date +%s) + 315 * 60 ))" >> "$GITHUB_ENV"
+          echo "PRAZO_FIM=$(( $(date +%s) + 325 * 60 ))" >> "$GITHUB_ENV"
           chmod +x rotina/etapa-github.sh
 
       - name: "Coletar: Câmara dos Deputados"
@@ -102,7 +114,7 @@ jobs:
         run: rotina/etapa-github.sh tce 90
 
       - name: "Coletar: Juntar tudo na base unificada"
-        run: rotina/etapa-github.sh padronizar 60 essencial
+        run: rotina/etapa-github.sh padronizar 30 essencial
 
       - name: "Coletar: Fotos"
         run: rotina/etapa-github.sh fotos 30
@@ -111,10 +123,10 @@ jobs:
         run: rotina/etapa-github.sh bens 30
 
       - name: "Coletar: Gerar os arquivos do site"
-        run: rotina/etapa-github.sh site 30 essencial
+        run: rotina/etapa-github.sh site 15 essencial
 
       - name: "Coletar: Situação das fontes"
-        run: rotina/etapa-github.sh situacao 10 essencial
+        run: rotina/etapa-github.sh situacao 5 essencial
 
       - name: Guardar os downloads para a próxima vez
         if: always()
@@ -126,9 +138,9 @@ jobs:
       - name: Conferir com os sites oficiais (trava se algo estiver errado)
         run: |
           # sem a base unificada e os arquivos do site, não há o que conferir nem salvar
-          if grep -Eq '^(padronizar|site) ([1-9][0-9]*) ' "$RUNNER_TEMP/etapas.txt"; then
-            echo "A etapa de padronizar ou de gerar o site falhou: nada será salvo."
-            grep -E '^(padronizar|site) ' "$RUNNER_TEMP/etapas.txt"
+          if grep -Eq '^(padronizar|site) ([1-9][0-9]*) | 5 [0-9]+$' "$RUNNER_TEMP/etapas.txt"; then
+            echo "Padronizar ou gerar o site falhou, ou uma etapa recusou rodar (código 5, fim da legislatura): nada será salvo."
+            grep -E '^(padronizar|site) |^[a-z]+ 5 ' "$RUNNER_TEMP/etapas.txt"
             exit 1
           fi
           python coletar.py conferir --max-alertas 8
@@ -144,8 +156,10 @@ jobs:
           git add dados/processados dados/portal_transparencia dados/municipios dados/municipios_tce dados/judiciario dados/governadores dados/camara dados/atividade dados/bens dados/assembleias dados/referencia/renda_trabalho.json site/dados site/fotos
           if git diff --cached --quiet; then
             echo "Nada mudou desde a última atualização."
-          else
-            git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
+            exit 0
+          fi
+          git commit -m "Atualização dos dados: $(date -u +%d/%m/%Y)"
+          for tentativa in 1 2 3; do
             if ! git pull --rebase; then
               # conflito com a rodada do Brasil: só nos arquivos do site gerados a partir dos CSVs. Fica a versão de lá
               # e os arquivos são refeitos com os CSVs das duas rodadas
@@ -156,12 +170,16 @@ jobs:
               echo "$CONFLITOS" | xargs git checkout --ours --
               echo "$CONFLITOS" | xargs git add --
               GIT_EDITOR=true git rebase --continue
-              python coletar.py montar
+              python coletar.py montar || { echo "Os arquivos do site não foram refeitos depois do rebase: nada será enviado."; exit 1; }
               git add dados/processados site/dados site/fotos
               git diff --cached --quiet || git commit -m "Arquivos do site refeitos depois das duas rodadas"
             fi
-            git push
-          fi
+            # a árvore que vai ser enviada (depois do rebase e do montar) passa de novo pela conferência
+            python coletar.py conferir --max-alertas 8 || { echo "A conferência da árvore final falhou: nada será enviado."; exit 1; }
+            git push && exit 0
+            echo "Push recusado (tentativa $tentativa): outra rodada enviou antes; trazendo o que ela enviou."
+          done
+          echo "O push não saiu depois de 3 tentativas."; exit 1
 
       - name: Guardar o relatório da conferência
         if: always()
@@ -187,3 +205,19 @@ jobs:
             awk '$2 !~ /^(0|3|124)$/ && $2 != "pulada-por-tempo"' "$RUNNER_TEMP/etapas.txt"
             exit 1
           fi
+          # fontes que falharam nesta rodada (as etapas absorvem o erro de cada fonte para as outras seguirem): aparecem
+          # no resumo, e 3 falhas seguidas da mesma fonte fazem a execução terminar com erro
+          python - <<'PYEOF'
+          import json, os, sys
+          try:
+              d = json.load(open("dados/processados/coletas_exterior.json"))
+          except (OSError, ValueError):
+              sys.exit(0)
+          f = {k: v for k, v in d.items() if v.get("falhas")}
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as r:
+              r.write("### Fontes com falha desta rodada\n" + "".join(f"- {k}: {v['falhas']} seguida(s): {v.get('ultimo_erro', '')[:120]}\n" for k, v in sorted(f.items())))
+          graves = [k for k, v in f.items() if v["falhas"] >= 3]
+          if graves:
+              print("Fontes com 3 falhas seguidas ou mais:", ", ".join(graves))
+              sys.exit(1)
+          PYEOF
