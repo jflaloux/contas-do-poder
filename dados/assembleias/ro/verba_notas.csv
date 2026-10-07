@@ -14453,7 +14453,6 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,7,20,Ismael Crispin,Principal,Despesas do escritório de apoio,SANDRA DA SILVA DO CARMO,43.445.528/0001-87,31/07/2026,484.71
 2026,7,20,Ismael Crispin,Principal,Despesas do escritório de apoio,GM SCOLARO COMERCIO VAREJISTA,30.359.468/0001-38,31/07/2026,246.54
 2026,7,20,Ismael Crispin,Principal,Despesas do escritório de apoio,SANDRA DA SILVA DO CARMO,43.445.528/0001-87,31/07/2026,132.96
-2026,7,20,Ismael Crispin,Principal,Tecnologia da informação,GABZAP TECNOLOGIA LTDA,59.108.240/0001-57,31/07/2026,0.0
 2026,7,22,Jean Oliveira,Principal,Consultorias,"PORTO RICO CONTABILIDADE EMPRESARIAL LTDA 6149919000128 RUA ALMIRANTE BARROSO, 1193, CENTRO - Porto Velho - RO",,04/08/2026,15000.0
 2026,7,22,Jean Oliveira,Principal,Despesas do escritório de apoio,LUCIANO FUZARI,***.230.872*-**,12/07/2026,2000.0
 2026,7,22,Jean Oliveira,Principal,Reembolso de despesas de saúde,,,14/07/2026,1107.0
@@ -15043,4 +15042,18 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,8,52,Edevaldo Neves,Principal,Consultorias,BARROZO ELHAGE SOCIEDADE INDIVIDUAL DE ADVOCACIA,63.068.732/0001-33,28/08/2026,20000.0
 2026,9,17,Eyder Brasil,Principal,Reembolso de despesas de saúde,,,02/09/2026,2190.0
 2026,9,17,Eyder Brasil,Principal,Reembolso de despesas de saúde,,,05/09/2026,1045.0
+2026,9,30,Alan Queiroz,Principal,Despesas do escritório de apoio,JS SERVIÇOS IMOBILIARIOS LTDA,35.691.649/0001-80,15/09/2026,1698.79
+2026,9,30,Alan Queiroz,Principal,Consultorias,CASSIO ESTEVES JAQUES VIDAL SOC. IND. DE ADVOCACIA,33.906.644/0001-00,28/09/2026,21000.0
+2026,9,30,Alan Queiroz,Principal,Tecnologia da informação,STRATEGIA SERVICOS E CONSULTORIA LTDA,62.242.759/0001-38,28/09/2026,1099.0
+2026,9,30,Alan Queiroz,Principal,Consultorias,OSCAR PIRANI,***.949.519*-**,29/09/2026,6500.0
+2026,9,30,Alan Queiroz,Principal,Despesas do escritório de apoio,MARCELLO JOSIAS DE MOURA FRANÇA,***.822.332*-**,30/09/2026,4000.0
+2026,9,30,Alan Queiroz,Principal,Despesas do escritório de apoio,WELLIGTON DOS REIS SOUZA,58.546.161/0001-65,30/09/2026,1497.74
 2026,9,40,Cássio Gois,Principal,Reembolso de despesas de saúde,,,21/09/2026,1400.0
+2026,9,50,Nim Barroso,Principal,Consultorias,ELIANE CRISTINE DE PAULA,60.167.595/0001-04,25/09/2026,15000.0
+2026,9,50,Nim Barroso,Principal,Consultorias,NILTON CEZAR RIOS,***.582.742*-**,29/09/2026,4000.0
+2026,9,50,Nim Barroso,Principal,Consultorias,FATIMA NAGILA SOCIEDADE INDIVIDUAL DE ADVOCACIA,56.259.148/0001-08,30/09/2026,25000.0
+2026,9,50,Nim Barroso,Principal,Consultorias,CAMILO DE SOUZA PIMENTEL,20.006.618/0001-76,30/09/2026,12000.0
+2026,9,50,Nim Barroso,Principal,Consultorias,NILTON CEZAR RIOS,***.582.742*-**,30/09/2026,8000.0
+2026,9,50,Nim Barroso,Principal,Despesas do escritório de apoio,MARCO ANTONIO FELIX DA ROCHA,***.500.532*-**,30/09/2026,3300.0
+2026,9,52,Edevaldo Neves,Complementar,Consultorias,ULISSES ANTONIO SIVEIRA DA SILVA - ME,11.971.032/0001-50,28/09/2026,15000.0
+2026,9,52,Edevaldo Neves,Complementar,Consultorias,BARROZO ELHAGE SOCIEDADE INDIVIDUAL DE ADVOCACIA,63.068.732/0001-33,29/09/2026,20000.0

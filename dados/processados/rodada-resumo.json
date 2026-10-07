@@ -1,9 +1,9 @@
 {
- "gerado_em": "2026-10-03T19:37:25-03:00",
- "semana": "2026-09-29",
- "anterior": null,
+ "gerado_em": "2026-10-07T15:17:04-03:00",
+ "semana": "2026-10-06",
+ "anterior": "2026-09-29",
  "lugares": [
-  "brasil"
+  "exterior"
  ],
  "quebrou": [],
  "voltou": [],
@@ -12,7 +12,7 @@
  "totais": {
   "atrasada (fonte)": 5,
   "congelada": 3,
-  "ok": 87
+  "ok": 89
  },
  "historico": [
   {
@@ -30,6 +30,16 @@
     "prefeituras/recife",
     "vereadores/recife"
    ]
+  },
+  {
+   "semana": "2026-10-06",
+   "atualizado_em": "2026-10-07T15:17:04-03:00",
+   "lugares": [
+    "exterior"
+   ],
+   "fontes": 97,
+   "problemas": {},
+   "teve_problema": []
   }
  ]
 }

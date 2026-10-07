@@ -25399,7 +25399,10 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,8,Julio Garcia,ALMOXARIFADO,Material de Expediente,,98.88
 2026,8,Julio Garcia,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Esteves Administração de Bens Ltda.,2381.82
 2026,8,Julio Garcia,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,103.26
+2026,8,Julio Garcia,REEMBOLSOS,Escritório de Apoio - Condomínio,CONDOMINIO EDIFICIO METROPOLITAN BUSINESS CENTER,665.4
 2026,8,Julio Garcia,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição SA,115.46
+2026,8,Julio Garcia,REEMBOLSOS,Escritório de Apoio - Internet,Engeplus Telecom LTDA,69.9
+2026,8,Julio Garcia,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,CONDOMINIO EDIFICIO METROPOLITAN BUSINESS CENTER,78.8
 2026,8,Julio Garcia,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,8,Junior Cardoso,ALMOXARIFADO,Material de Expediente,,2249.94
 2026,8,Junior Cardoso,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,51.63
@@ -25770,13 +25773,20 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Alex Brasil,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,31.52
 2026,9,Alex Brasil,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,53.0
 2026,9,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,475.0
+2026,9,Altair Silva,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Ana Caroline Campagnolo,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Ana Paula da Silva (Paulinha),VEÍCULOS,Indenização por utilização de veículo próprio,,9646.1
 2026,9,Antídio Lunelli,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
 2026,9,Antídio Lunelli,REEMBOLSOS,Escritório de Apoio - Condomínio,Condomínio Macatto Center,542.75
 2026,9,Antídio Lunelli,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição S.A,230.92
 2026,9,Antídio Lunelli,REEMBOLSOS,Escritório de Apoio - Internet,Gnet Telecom Serv. de Comunicação Ltda.,99.9
+2026,9,Antídio Lunelli,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Berlanda,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA.,619.0
 2026,9,Berlanda,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,CELESC DISTRIBUIÇÃO S.A.,332.41
 2026,9,Berlanda,REEMBOLSOS,Escritório de Apoio - Locação de móveis e equipamentos,JOAO BARONI INFORMATICA LTDA,1370.0
+2026,9,Berlanda,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Camilo Martins,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Carlos Henrique Lima,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Carlos Humberto Metzner Silva,ALMOXARIFADO,Jornais e Revistas,,924.0
 2026,9,Carlos Humberto Metzner Silva,ALMOXARIFADO,Jornais e Revistas,,478.8
 2026,9,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Condomínio,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,507.95
@@ -25784,6 +25794,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,2976.2
 2026,9,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,62.08
 2026,9,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,66.65
+2026,9,Carlos Humberto Metzner Silva,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Carolline Sardá,DIÁRIAS,Devolução Diária Deputado,,-539.0
 2026,9,Carolline Sardá,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,9,Carolline Sardá,DIÁRIAS,Devolução Diária Funcionário,,-668.0
@@ -25820,22 +25831,33 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1254.86
 2026,9,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,860.51
 2026,9,Fernando Krelling,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,Starlink Brasil,339.0
+2026,9,Fernando Krelling,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Ivan Naatz,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,ROLITA CONSOLI,2491.12
 2026,9,Ivan Naatz,REEMBOLSOS,Despesas gerais - Hospedagem,CASTELMAR EMPREENDIMENTO HOTELEIROS LTDA,297.25
 2026,9,Ivan Naatz,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA.,619.0
 2026,9,Ivan Naatz,REEMBOLSOS,Escritório de Apoio - Condomínio,CONDOMINIO NEUMARKT TRADE AND FINANCIAL CENTER,624.06
 2026,9,Ivan Naatz,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição SA,179.5
 2026,9,Ivan Naatz,REEMBOLSOS,Escritório de Apoio - Internet,Claro NXT Telecomunicações S.A,119.9
 2026,9,Ivan Naatz,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,CONDOMINIO NEUMARKT TRADE AND FINANCIAL CENTER,100.06
+2026,9,Ivan Naatz,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Jair Antonio Miotto,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,Starlink Brasil serviços de Internet LTDA,619.0
+2026,9,Jair Antonio Miotto,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Jerry Edson Comper,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Condomínio,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,438.69
 2026,9,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição S/A,137.55
 2026,9,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,950.0
+2026,9,José Milton Scheffer,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Julio Garcia,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,CELESC,128.91
+2026,9,Julio Garcia,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,875.51
+2026,9,Luciane Carminatti,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Marcius da Silva Machado,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVIÇOS DE INTERNET LTDA,619.0
 2026,9,Marcius da Silva Machado,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,CELESC DISTRIBUIÇÃO S.A,385.41
 2026,9,Marcius da Silva Machado,REEMBOLSOS,Escritório de Apoio - Internet,MHNET TELECOMUNICAÇÕES LTDA,132.09
+2026,9,Marcius da Silva Machado,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Funcionários,,1789.51
 2026,9,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Funcionários,,1789.51
+2026,9,Marcos Luiz Vieira,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,Starlink Brasil Serviços de Internet LTDA,619.0
 2026,9,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Condomínio Imóvel Capital,JULIANA DOS SANTOS BITENCOURT,812.83
 2026,9,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
 2026,9,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distrbuicao S.A,195.85
@@ -25843,20 +25865,29 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,Serviço Autônomo Municipal de Água e Esgoto,68.31
 2026,9,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Telefonia fixa,Unifique Telecomunicações S.A,32.47
 2026,9,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,Serviço Autônomo Municipal de Água e Esgoto,151.92
+2026,9,Marcos da Rosa,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Mario Motta,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,9,Mario Motta,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,9,Mario Motta,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,9,Mario Motta,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Matheus Cadorin,ALMOXARIFADO,Jornais e Revistas,,924.0
 2026,9,Matheus Cadorin,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
 2026,9,Mauricio Peixer,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
 2026,9,Mauricio Peixer,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,Imobiliaria Cleidi Imóveis LTDA,4000.0
+2026,9,Mauricio Peixer,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Maurício José Eskudlark,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Napoleão Bernardes,REEMBOLSOS,Despesas Gerais - Locação de licença de uso de software,ASK TECNOLOGIA E COMUNICACAO LTDA,699.9
 2026,9,Napoleão Bernardes,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTOS E ADM DE IMÓVEIS LTDA,820.0
 2026,9,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,TARUMA EMPREENDIMENTOS  IMOBILIARIOS  LTDA,4100.0
+2026,9,Napoleão Bernardes,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Neodi Saretta,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Oscar Gutz,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,o Ibagy Imóveis Ltda,4712.83
+2026,9,Pedro Baldissera,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,HABITETO S/A,1200.0
+2026,9,Pedro Baldissera,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Pepê Collaço,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,Joares Carlos Ponticelli,4700.0
 2026,9,Pepê Collaço,REEMBOLSOS,Despesas gerais - Telefonia móvel,Telefonica Brasil S.A,220.49
 2026,9,Pepê Collaço,REEMBOLSOS,Escritório de Apoio - Condomínio,Prime Business Center,230.3
+2026,9,Pepê Collaço,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Rodrigo Fachini,DIÁRIAS,Diárias - Deputado,,1617.0
 2026,9,Rodrigo Fachini,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,9,Rodrigo Fachini,DIÁRIAS,Diárias - Funcionários,,2672.0
@@ -25872,9 +25903,12 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,9,Rodrigo Minotto,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZILSERVICOS DE INTERNET LTDA.,619.0
 2026,9,Rodrigo Minotto,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,DUDA IMÓVEIS LTDA,2241.75
+2026,9,Rodrigo Minotto,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
+2026,9,Sergio Motta Ribeiro,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Tiago Zilli,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,Starlink Brazil Serviços de Internet LTDA,339.0
 2026,9,Tiago Zilli,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição S.A.,86.4
 2026,9,Tiago Zilli,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,SAMAE ARARANGUÁ,97.24
+2026,9,Tiago Zilli,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,9,Vicente Caropreso,REEMBOLSOS,Escritório de Apoio - Condomínio,Condomínio Marcatto Center,485.8
 2026,9,Vicente Caropreso,REEMBOLSOS,Escritório de Apoio - Internet,GNET TELECOM SERVIÇOS DE COM LTDA,199.9
 2026,9,Vicente Caropreso,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,Imóveis Planeta Ltda,2389.65
@@ -25885,3 +25919,51 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Volnei Weber,REEMBOLSOS,Escritório de Apoio - Internet,VMAISNET Ltda EPP,115.0
 2026,9,Volnei Weber,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,Rogério dos Santos,1945.82
 2026,9,Volnei Weber,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,Ivan Isoppo da Rosa,2000.0
+2026,10,Alex Brasil,DIÁRIAS,Diárias - Deputado,,5390.0
+2026,10,Alex Brasil,DIÁRIAS,Diárias - Funcionários,,3340.0
+2026,10,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,1334.51
+2026,10,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,1333.86
+2026,10,Altair Silva,PASSAGENS,Passagens Terrestres,,117.54
+2026,10,Ana Caroline Campagnolo,PASSAGENS,Passagens Aéreas - Funcionários,,1133.68
+2026,10,Ana Caroline Campagnolo,PASSAGENS,Passagens Aéreas - Funcionários,,1133.69
+2026,10,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,10,Berlanda,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Carlos Henrique Lima,DIÁRIAS,Diárias - Deputado,,1364.0
+2026,10,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,1836.3
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,1836.31
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,1742.67
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1836.3
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1836.31
+2026,10,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1742.67
+2026,10,Fabiano da Luz,DIÁRIAS,Diárias - Deputado,,1364.0
+2026,10,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1797.71
+2026,10,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1797.71
+2026,10,Ivan Naatz,DIÁRIAS,Devolução Diária Funcionário,,-668.0
+2026,10,Ivan Naatz,DIÁRIAS,Devolução Diária Funcionário,,-668.0
+2026,10,Ivan Naatz,DIÁRIAS,Diárias - Deputado,,2728.0
+2026,10,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,1652.0
+2026,10,Ivan Naatz,PASSAGENS,Passagens Aéreas - Deputado,,1893.11
+2026,10,Ivan Naatz,PASSAGENS,Passagens Aéreas - Deputado,,1893.12
+2026,10,Ivan Naatz,PASSAGENS,Passagens Aéreas - Funcionários,,1893.11
+2026,10,Ivan Naatz,PASSAGENS,Passagens Aéreas - Funcionários,,1893.12
+2026,10,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Junior Cardoso,DIÁRIAS,Diárias - Deputado,,4312.0
+2026,10,Junior Cardoso,DIÁRIAS,Diárias - Funcionários,,2672.0
+2026,10,Junior Cardoso,DIÁRIAS,Diárias - Funcionários,,2672.0
+2026,10,Junior Cardoso,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,10,Marcos Luiz Vieira,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Marcos Luiz Vieira,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,10,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,3427.51
+2026,10,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,3426.86
+2026,10,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,10,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,1336.0

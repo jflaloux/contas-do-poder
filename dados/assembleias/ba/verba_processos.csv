@@ -5727,6 +5727,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,5,208287,84,Júnior Nascimento,Pesquisas,12700.0
 2026,5,210449,65698,Júnior Nascimento,Locação de veículo terrestre,12500.0
 2026,5,209260,78,Kátia Oliveira,Divulgação da  atividade parlamentar,27000.0
+2026,5,209946,31,Kátia Oliveira,Divulgação da  atividade parlamentar,10000.0
 2026,5,209947,230,Kátia Oliveira,Assessorias,9750.0
 2026,5,210110,2026000000025,Kátia Oliveira,Locação de veículo terrestre,12500.0
 2026,5,210392,50,Kátia Oliveira,Consultorias,12500.0
@@ -6412,6 +6413,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,7,211303,202639,Soane Galvão,Divulgação da  atividade parlamentar,30000.0
 2026,7,211304,202640,Soane Galvão,Trabalhos Técnicos,10675.11
 2026,7,211314,2026000000040,Soane Galvão,Assessorias,11200.0
+2026,7,214690,1478,Tiago Correia,Consultorias,6000.0
 2026,7,211281,2602,Vitor Azevedo,Assessorias,8500.0
 2026,7,211283,238,Vitor Azevedo,Assessorias,4000.0
 2026,7,211058,2095,Vitor Bonfim,Consultorias,11000.0
@@ -6542,6 +6544,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,8,213185,102,Manuel Rocha,Pesquisas,12000.0
 2026,8,213454,1651,Manuel Rocha,Trabalhos Técnicos,8000.0
 2026,8,214445,15,Manuel Rocha,Locação de veículo terrestre,14250.0
+2026,8,214480,20,Manuel Rocha,Consultorias,4740.0
 2026,8,214172,65,Marcelinho Veiga,Consultorias,12500.0
 2026,8,214172,120,Marcelinho Veiga,Assessorias,12500.0
 2026,8,214218,148,Marcelinho Veiga,Locação de veículo terrestre,14000.0
@@ -6628,6 +6631,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,8,212604,6,Soane Galvão,Divulgação da  atividade parlamentar,30000.0
 2026,8,212794,2026000000043,Soane Galvão,"Consultorias, assessorias, pesquisas  e trabalhos técnicos",11200.0
 2026,8,212823,11,Soane Galvão,Consultorias,9760.0
+2026,8,214690,1504,Tiago Correia,Consultorias,6000.0
 2026,8,212445,2634,Vitor Azevedo,Assessorias,8500.0
 2026,8,212953,241,Vitor Azevedo,Assessorias,4000.0
 2026,8,212526,77,Vitor Bonfim,Assessorias,9500.0
@@ -6643,8 +6647,11 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,8,213304,1017298835,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,131.99
 2026,8,213934,130,Zé Raimundo Fontes,Locação de veículo terrestre,3600.0
 2026,8,213934,131,Zé Raimundo Fontes,Locação de veículo terrestre,4800.0
+2026,8,214627,03450586-5,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,423.5
+2026,8,214627,992511806,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,514.16
 2026,8,213289,100,Zó,Assessorias,12700.0
 2026,8,213297,895,Zó,Locação de veículo terrestre,3653.71
+2026,9,214510,13,Adolfo Menezes,Assessorias,9600.0
 2026,9,213847,18,Alex da Piatã,Consultorias,12700.0
 2026,9,213848,20,Alex da Piatã,Trabalhos Técnicos,12700.0
 2026,9,213850,219,Alex da Piatã,Assessorias,12700.0
@@ -6704,7 +6711,9 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214072,2026000000051,Laerte do Vando,Pesquisas,12700.0
 2026,9,214179,67,Laerte do Vando,Assessorias,12700.0
 2026,9,214319,169,Laerte do Vando,Consultorias,12700.0
+2026,9,214487,202600000000214,Leandro de Jesus,Locação de veículo terrestre,12500.0
 2026,9,214488,287,Leandro de Jesus,Consultorias,12700.0
+2026,9,214490,288,Leandro de Jesus,Trabalhos Técnicos,12700.0
 2026,9,213795,202600000000065,Luciano Araújo,Consultorias,12400.0
 2026,9,213797,202600000000066,Luciano Araújo,Assessorias,12400.0
 2026,9,214308,781,Luciano Araújo,Locação de veículo terrestre,12400.0
@@ -6720,6 +6729,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213729,1407,Ludmilla Fiscina,Consultorias,5000.0
 2026,9,214423,1676,Manuel Rocha,Consultorias,8000.0
 2026,9,214481,24,Manuel Rocha,Consultorias,4740.0
+2026,9,214484,17,Manuel Rocha,Locação de veículo terrestre,14250.0
 2026,9,213988,784,Marcinho Oliveira,Locação de veículo terrestre,12500.0
 2026,9,214042,1236,Marcinho Oliveira,Assessorias,7500.0
 2026,9,214093,237,Marcinho Oliveira,Consultorias,4350.0
@@ -6746,12 +6756,13 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214251,3989,Niltinho,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,555.0
 2026,9,214252,149,Niltinho,Consultorias,7000.0
 2026,9,214252,148,Niltinho,Assessorias,7000.0
-2026,9,214386,502,Niltinho,Assessorias,4700.0
 2026,9,214386,501,Niltinho,Consultorias,5700.0
+2026,9,214386,502,Niltinho,Assessorias,4700.0
 2026,9,214412,267,Olivia Santana,Assessorias,11500.0
 2026,9,214122,132,Osni Cardoso,Assessorias,11200.0
 2026,9,214123,88,Osni Cardoso,Consultorias,11190.0
 2026,9,214123,3992,Osni Cardoso,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,625.0
+2026,9,214596,63,Osni Cardoso,Locação de veículo terrestre,12545.0
 2026,9,213689,221,Pancadinha,Assessorias,12700.0
 2026,9,213813,21,Pancadinha,Consultorias,12700.0
 2026,9,213814,22,Pancadinha,Trabalhos Técnicos,12700.0
@@ -6765,6 +6776,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214019,116,Paulo Câmara,Consultorias,11500.0
 2026,9,214022,125848,Paulo Câmara,Consultorias,1000.0
 2026,9,214180,785,Paulo Câmara,Locação de veículo terrestre,12500.0
+2026,9,214492,147,Pedro Tavares,Consultorias,8000.0
 2026,9,213710,62,Penalva,Consultorias,11000.0
 2026,9,213711,110,Penalva,Pesquisas,12700.0
 2026,9,213712,521,Penalva,Assessorias,12740.0
@@ -6774,6 +6786,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214088,45,Raimundinho da JR,Trabalhos Técnicos,11000.0
 2026,9,214425,1008,Ricardo Rodrigues,Consultorias,7000.0
 2026,9,214426,3988,Ricardo Rodrigues,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1000.0
+2026,9,214458,23918,Ricardo Rodrigues,Assessorias,11200.0
 2026,9,213718,2228,Roberto Carlos,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,865.0
 2026,9,213459,107,Robinho,Pesquisas,9700.0
 2026,9,213483,944,Robinho,Locação de veículo terrestre,14000.0
@@ -6781,6 +6794,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213568,1,Robinho,Consultorias,12500.0
 2026,9,213737,14863,Robinson Almeida,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,2020.0
 2026,9,213831,2026000000044,Rogério Andrade,Assessorias,12700.0
+2026,9,214779,147,Samuel Junior,Locação de veículo terrestre,12000.0
 2026,9,214227,1282,Sandro Régis,Assessorias,9750.0
 2026,9,214305,782,Sandro Régis,Locação de veículo terrestre,12500.0
 2026,9,213958,26,Soane Galvão,Divulgação da  atividade parlamentar,30000.0
@@ -6793,3 +6807,21 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213934,03011853-2,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,320.9
 2026,9,214114,1039982039,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,131.99
 2026,9,214114,1039982006,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1354.59
+2026,9,214627,09.2026,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,8105.0
+2026,9,214678,910,Zó,Locação de veículo terrestre,3656.71
+2026,9,214682,102,Zó,Assessorias,12700.0
+2026,10,214762,66,Antonio Henrique Júnior,Consultorias,12700.0
+2026,10,214619,20260000000004,Binho Galinha,Consultorias,12650.0
+2026,10,214625,121,Binho Galinha,Trabalhos Técnicos,12700.0
+2026,10,214841,3,Binho Galinha,Assessorias,12600.0
+2026,10,214844,25,Hassan,Trabalhos Técnicos,12000.0
+2026,10,214846,2600000000944,Hassan,Consultorias,8000.0
+2026,10,214702,11,Matheus Ferreira,Trabalhos Técnicos,12700.0
+2026,10,214718,875,Matheus Ferreira,Assessorias,12741.32
+2026,10,214718,876,Matheus Ferreira,Consultorias,12741.32
+2026,10,214830,523,Penalva,Assessorias,12740.0
+2026,10,214835,68,Penalva,Consultorias,11000.0
+2026,10,214527,216,Robinho,Assessorias,12500.0
+2026,10,214578,957,Robinho,Locação de veículo terrestre,14000.0
+2026,10,214699,3,Robinho,Consultorias,12500.0
+2026,10,214760,117,Robinho,Pesquisas,9700.0

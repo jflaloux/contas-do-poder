@@ -1,10 +1,12 @@
-# Conferência dos dados — 02/10/2026 19:49
+# Conferência dos dados — 07/10/2026 18:17
 
 ## 1. Cobertura
 
 - Deputados na base: 648 (em exercício hoje: 513 de 513)
-- Senadores na base: 105 (em exercício hoje: 81 de 81)
+- Senadores na base: 105 (em exercício hoje: 80 de 81)
 - Governo federal na base: 71 (presidente, vice e ministros desde 2023)
+
+**ATENÇÃO: número de parlamentares em exercício diferente do esperado.**
 
 ## 2. Cota parlamentar da Câmara: nossa soma × página oficial do deputado
 
@@ -56,7 +58,8 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
 - Comparações senador × ano: 324
-- **Diferenças de R$ 1 ou mais: 0**
+- **Diferenças de R$ 1 ou mais: 1**
+  - Rodrigo Pacheco 2026: nossa 352,854.88 × oficial 329,429.49
 
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
@@ -66,7 +69,7 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 
 ## 5. Salários mensais acima do subsídio (revisar à mão)
 
-Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
+Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 
 - Fernando Farias — 04/2024: R$ 121,402.81
 - Celso Sabino — 08/2025: R$ 71,112.19
@@ -76,26 +79,26 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 - Delegada Adriana Accorsi — 12/2025: R$ 57,022.65
 - Josenildo — 09/2025: R$ 56,559.03
 - Dorinaldo Malafaia — 06/2026: R$ 50,642.02
+- Waldez Góes — 08/2026: R$ 48,606.69
 - Delegado Éder Mauro — 01/2026: R$ 47,354.26
 - Fernanda Machiaveli — 06/2026: R$ 46,366.21
-- Esther Dweck — 04/2026: R$ 46,366.21
-- Esther Dweck — 05/2026: R$ 46,366.21
-- Esther Dweck — 06/2026: R$ 46,366.21
-- Esther Dweck — 07/2026: R$ 46,366.21
+- Fernanda Machiaveli — 04/2026: R$ 46,366.21
+- Fernanda Machiaveli — 07/2026: R$ 46,366.21
+- Fernanda Machiaveli — 08/2026: R$ 46,366.21
 - Fernanda Machiaveli — 05/2026: R$ 46,366.21
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
-- Senadores comparados: 81
-- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 34
+- Senadores comparados: 80
+- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 33
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 7. Sanidade (trava a publicação automática)
 
 | Checagem | Valor | Mínimo | |
 |---|---:|---:|---|
-| Governo federal: no cargo em 07/2026 | 40 | 30 | OK |
-| Câmaras municipais com custo no arquivo do site | 5446 | 5000 | OK |
+| Governo federal: no cargo em 08/2026 | 40 | 30 | OK |
+| Câmaras municipais com custo no arquivo do site | 5450 | 5000 | OK |
 | Vereadores eleitos no arquivo do site | 58153 | 55000 | OK |
 | Vereadores de São Paulo no cargo (camaras.json) | 55 | 46 | OK |
 | Vereadores de São Paulo com gastos do gabinete no mês retrasado | 56 | 33 | OK |
@@ -104,7 +107,7 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de Fortaleza no cargo (camaras.json) | 44 | 36 | OK |
 | Vereadores de Fortaleza com gastos do gabinete no mês retrasado | 43 | 25 | OK |
 | Vereadores de Goiânia no cargo (camaras.json) | 37 | 31 | OK |
-| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 33 | 22 | OK |
+| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 36 | 22 | OK |
 | Vereadores de Maceió no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Manaus no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Manaus com gastos do gabinete no mês retrasado | 41 | 24 | OK |
@@ -126,7 +129,7 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Prefeitura de Fortaleza: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Fortaleza: secretários na folha do último mês | 49 | 29 | OK |
 | Prefeitura de Vitória: prefeito na folha do último mês | 1 | 1 | OK |
-| Prefeitura de Vitória: secretários na folha do último mês | 13 | 8 | OK |
+| Prefeitura de Vitória: secretários na folha do último mês | 14 | 8 | OK |
 | Prefeitura de Porto Alegre: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Porto Alegre: secretários na folha do último mês | 19 | 11 | OK |
 | Prefeitura de Salvador: prefeito na folha do último mês | 1 | 1 | OK |
@@ -167,7 +170,7 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Governadores no arquivo do site | 27 | 27 | OK |
 | Governadores com o valor da lei, da folha ou da tabela oficial | 27 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
-| Governo federal: com salário em 07/2026 | 40 | 25 | OK |
+| Governo federal: com salário em 08/2026 | 40 | 25 | OK |
 | Deputados com salário em 08/2026 | 528 | 480 | OK |
 | Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
 | Senadores com salário em 08/2026 | 84 | 75 | OK |
@@ -178,4 +181,4 @@ Casos: 17. Podem ser acertos de meses anteriores; confira na página oficial.
 | Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
 
 ---
-**Total de alertas: 3**
+**Total de alertas: 5**

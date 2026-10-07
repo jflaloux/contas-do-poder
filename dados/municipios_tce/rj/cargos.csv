@@ -594,6 +594,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302007,Itaguaí,camara,202605,vereador,Agente Político,11.00,158593.82,,,,CAMARA ITAGUAI
 3302007,Itaguaí,camara,202606,vereador,Agente Político,11.00,158593.82,,,,CAMARA ITAGUAI
 3302007,Itaguaí,camara,202607,vereador,Agente Político,12.00,159074.41,,,,CAMARA ITAGUAI
+3302007,Itaguaí,camara,202608,vereador,Agente Político,11.00,158593.82,,,,CAMARA ITAGUAI
 3302056,Italva,camara,202501,vereador,Agente Político,11.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202502,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202503,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
@@ -1088,6 +1089,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303906,Petrópolis,camara,202605,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202606,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202607,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
+3303906,Petrópolis,camara,202608,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303955,Pinheiral,camara,202501,vereador,Agente Político,11.00,73464.93,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202502,vereador,Agente Político,10.00,70355.31,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202503,vereador,Agente Político,9.00,96753.69,,,,CAMARA PINHEIRAL
@@ -1443,6 +1445,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305000,São João da Barra,camara,202605,vereador,Agente Político,13.00,150040.67,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202606,vereador,Agente Político,13.00,155335.44,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202607,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
+3305000,São João da Barra,camara,202608,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
 3305109,São João de Meriti,camara,202501,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202502,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202503,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
@@ -1502,6 +1505,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305158,São José do Vale do Rio Preto,camara,202605,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202606,vereador,Agente Político,10.00,73420.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202607,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
+3305158,São José do Vale do Rio Preto,camara,202608,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305208,São Pedro da Aldeia,camara,202501,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
 3305208,São Pedro da Aldeia,camara,202502,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
 3305208,São Pedro da Aldeia,camara,202503,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
@@ -1778,6 +1782,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306206,Vassouras,camara,202605,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202606,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202607,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
+3306206,Vassouras,camara,202608,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306305,Volta Redonda,camara,202501,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202502,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202503,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
