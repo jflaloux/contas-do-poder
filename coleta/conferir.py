@@ -114,7 +114,14 @@ def executar():
             f"- Governo federal na base: {sum(p['casa'] == 'executivo' for p in politicos)} (presidente, vice e ministros desde 2023)", ""]
     if sum(p["em_exercicio"] for p in deps) != 513 or sum(p["em_exercicio"] for p in sens) != 81:
         problemas += 1
-        rel.append("**ATENÇÃO: número de parlamentares em exercício diferente do esperado.**\n")
+        # onde falta: Senado = 3 por estado; Câmara = vagas por estado (cadeiras), que não temos aqui; só o Senado é detalhado
+        por_uf = {}
+        for p in sens:
+            por_uf[p["uf"]] = por_uf.get(p["uf"], 0) + int(p["em_exercicio"])
+        fora = {uf: n for uf, n in sorted(por_uf.items()) if n != 3}
+        rel.append("**ATENÇÃO: número de parlamentares em exercício diferente do esperado.**"
+                   + (" Senado com número diferente de 3 em: " + ", ".join(f"{uf} ({n})" for uf, n in fora.items())
+                      + " (vaga à espera do suplente, ou renúncia ainda não refletida na lista)." if fora else "") + "\n")
 
     # 2. Cota da Câmara vs página oficial de cada deputado
     log("Conferência: cota da Câmara vs páginas oficiais (amostra)")
@@ -132,9 +139,15 @@ def executar():
             if oficial is None:
                 continue
             dif = round(nossa - oficial, 2)
-            if abs(dif) >= 1:
+            # a página do deputado não lista o mês em que os créditos e estornos passam dos gastos (saldo negativo), e por isso
+            # o total dela fica acima da soma aritmética: se é só isso, a diferença está explicada
+            meses = cota[(cota.id_politico == p["id"]) & (cota.ano == ano)].groupby("mes").valor.sum()
+            sem_negativos = round(float(meses.clip(lower=0).sum()), 2)
+            explicada = abs(dif) >= 1 and abs(sem_negativos - oficial) < 1
+            if abs(dif) >= 1 and not explicada:
                 difs += 1
-            rel.append(f"| {p['nome']} | {ano} | {nossa:,.2f} | {oficial:,.2f} | {dif:,.2f} |")
+            rel.append(f"| {p['nome']} | {ano} | {nossa:,.2f} | {oficial:,.2f} | {dif:,.2f}"
+                       + (" (explicada: mês com saldo negativo que a página não lista)" if explicada else "") + " |")
     rel += ["", f"**Resultado: {difs} diferença(s) de R$ 1 ou mais.** "
             "(Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)", ""]
     problemas += difs
@@ -143,11 +156,18 @@ def executar():
     log("Conferência: cota do Senado vs API de recursos utilizados")
     rel += ["## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano", ""]
     ceaps_bruto = pd.read_csv(BRUTOS / "senado_ceaps.csv")
-    total, difs_s, exemplos = 0, 0, []
+    total, difs_s, exemplos, ignorados = 0, 0, [], 0
     for p in sens:
         cod = p["id"].split("-")[1]
         for arq in (CACHE / "senado" / "recursos").glob(f"{cod}_*.json"):
             ano = int(arq.stem.split("_")[1])
+            # a API de recursos só responde para quem está em exercício: de quem saiu, o arquivo do ano em andamento fica parado
+            # no dia em que o senador saiu, enquanto a lista da cota (CEAPS) continua recebendo notas. Comparar daria uma
+            # diferença que não é erro (07/10/2026: Rodrigo Pacheco, que renunciou em 30/09, 2026).
+            ceaps_ano = CACHE / "senado" / "ceaps" / f"{ano}.json"
+            if not p["em_exercicio"] and ceaps_ano.exists() and arq.stat().st_mtime < ceaps_ano.stat().st_mtime - 2 * 86400:
+                ignorados += 1
+                continue
             for d in ler_json(arq):
                 oficial = (d.get("cotas") or {}).get("totalValor")
                 if oficial is None:
@@ -159,6 +179,8 @@ def executar():
                     difs_s += 1
                     exemplos.append(f"{p['nome']} {ano}: nossa {nossa:,.2f} × oficial {oficial:,.2f}")
     rel += [f"- Comparações senador × ano: {total}", f"- **Diferenças de R$ 1 ou mais: {difs_s}**"]
+    if ignorados:
+        rel.append(f"- Não comparados: {ignorados} senador(es) × ano de quem já saiu do exercício, em que o total da API parou no dia da saída.")
     rel += [f"  - {e}" for e in exemplos[:15]] + [""]
     problemas += difs_s
 

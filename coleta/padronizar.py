@@ -99,7 +99,44 @@ def _ratear_anuais(L):
 
 
 # ---------------------------------------------------------------- Câmara
+LACUNA_DESDE = 202508  # a partir daqui as passagens da cota (SIGEPA) não estão mais nos dados abertos da Câmara, só no site
 DETALHE_DESDE = None  # primeiro mês (AAAAMM) com o contracheque detalhado de todos os deputados lido
+
+
+def completar_cota_com_site(cota, site, pid):
+    """Lacuna dos dados abertos (desde ago/2025): [(id_deputado, ano, mes, descrição, valor)] que completam a cota com a
+    diferença para o total mensal do site oficial. cota = camara_cota.csv, site = camara_cota_site.csv, pid = os deputados."""
+    saida = []
+    soma_csv = cota.groupby(["id_deputado", "ano", "mes"])["valor"].sum()
+    # A complementação do auxílio-moradia vem negativa nos arquivos e no total mensal do site, mas é um gasto da cota (a página
+    # do deputado soma como positivo, e nós viramos o sinal em camara_cota.csv). Para comparar com o total mensal do site, que
+    # a conta como negativa, soma-se de volta 2 vezes o valor dela (07/10/2026: sem isto, os meses completados pelo site
+    # ficavam com a complementação negativa, e o total do ano ficava abaixo do da página do deputado).
+    compl = (cota[cota.tipo.str.contains("COMPLEMENTAÇÃO DO AUXÍLIO-MORADIA", na=False)]
+             .groupby(["id_deputado", "ano", "mes"])["valor"].sum())
+    # Só se desconta o que o site tem a menos (créditos e estornos) de quem tem o total mensal do site igual ao dos arquivos
+    # nos meses anteriores à lacuna (jan a jul/2025): para alguns deputados a consulta mensal do site deixa de fora um tipo de
+    # despesa que está nos arquivos e na página do deputado (diferença fixa todo mês), e aí o total do site não serve de piso.
+    confiavel = {}
+    for r in site.itertuples():
+        if r.id_deputado in pid and not pd.isna(r.total_site) and 202501 <= r.ano * 100 + r.mes < LACUNA_DESDE:
+            chave = (r.id_deputado, r.ano, r.mes)
+            ok = abs(r.total_site + 2 * compl.get(chave, 0.0) - soma_csv.get(chave, 0.0)) < 1
+            confiavel[r.id_deputado] = confiavel.get(r.id_deputado, True) and ok
+    for r in site.itertuples():
+        if r.id_deputado not in pid or pd.isna(r.total_site):
+            continue
+        chave = (r.id_deputado, r.ano, r.mes)
+        dif = round(r.total_site + 2 * compl.get(chave, 0.0) - soma_csv.get(chave, 0.0), 2)
+        if dif >= 1:
+            saida.append((r.id_deputado, r.ano, r.mes,
+                          "Passagens aéreas e outros itens sem detalhe nos dados abertos (diferença para o site oficial)", dif))
+        elif dif <= -1 and r.ano * 100 + r.mes >= LACUNA_DESDE and confiavel.get(r.id_deputado, False):
+            # a partir de ago/2025 as passagens compradas pelo sistema da Câmara (SIGEPA) só aparecem no site, e isso inclui
+            # os créditos e estornos delas: o total do site fica abaixo da soma dos arquivos
+            saida.append((r.id_deputado, r.ano, r.mes,
+                          "Créditos e estornos de passagens aéreas, só no site oficial (diferença para o site oficial)", dif))
+    return saida
 
 
 def _camara():
@@ -170,16 +207,8 @@ def _camara():
                             "camara_cota"))
 
     # Lacuna dos dados abertos (desde ago/2025): completa com a diferença para o total mensal do site oficial.
-    site = pd.read_csv(BRUTOS / "camara_cota_site.csv")
-    soma_csv = cota.groupby(["id_deputado", "ano", "mes"])["valor"].sum()
-    for r in site.itertuples():
-        if r.id_deputado not in pid or pd.isna(r.total_site):
-            continue
-        dif = round(r.total_site - soma_csv.get((r.id_deputado, r.ano, r.mes), 0.0), 2)
-        if dif >= 1:
-            L.append(_linha(pid[r.id_deputado], r.ano, r.mes, "cota_parlamentar",
-                            "Passagens aéreas e outros itens sem detalhe nos dados abertos (diferença para o site oficial)",
-                            dif, "camara_cota"))
+    for id_dep, ano, mes, descricao, valor in completar_cota_com_site(cota, pd.read_csv(BRUTOS / "camara_cota_site.csv"), pid):
+        L.append(_linha(pid[id_dep], ano, mes, "cota_parlamentar", descricao, valor, "camara_cota"))
 
     mor = pd.read_csv(BRUTOS / "camara_moradia.csv")
     for r in mor.itertuples():
