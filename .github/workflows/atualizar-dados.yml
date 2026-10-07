@@ -33,8 +33,7 @@ on:
 
 permissions:
   contents: write
-  actions: read   # baixar o artefato de outra rodada (retomar)
-  issues: write   # abrir a issue quando duas rodadas seguidas não salvam
+  issues: write   # abrir a issue quando o robô fica mais de uma semana sem salvar
 
 concurrency:
   group: atualizar-dados
@@ -52,6 +51,9 @@ jobs:
       - name: Baixar o código
         uses: actions/checkout@v4
 
+      - name: Marcar o commit em que a rodada começa
+        run: echo "INICIO_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
       - name: Preparar o Python
         uses: actions/setup-python@v5
         with:
@@ -68,6 +70,8 @@ jobs:
           python -m coleta.testes_pandas
           python -m coleta.testes_gravacao
           python -m coleta.testes_disjuntor
+          python -m coleta.testes_fontes
+          python -m coleta.testes_rodada
 
       - name: Recuperar os downloads da semana passada
         uses: actions/cache/restore@v4
@@ -76,20 +80,17 @@ jobs:
           key: downloads-${{ github.run_id }}
           restore-keys: downloads-
 
-      - name: Retomar - baixar o trabalho da rodada que não salvou
+      - name: Retomar - buscar o trabalho da rodada que não salvou (no cache privado do repositório)
         if: ${{ inputs.retomar }}
-        uses: actions/download-artifact@v4
+        uses: actions/cache/restore@v4
         with:
-          name: trabalho-da-rodada
-          path: ${{ runner.temp }}/retomada
-          run-id: ${{ inputs.run_id }}
-          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/trabalho
+          key: trabalho-${{ inputs.run_id }}
+          fail-on-cache-miss: true
 
-      - name: Retomar - restaurar o trabalho (recusa se a main mudou os mesmos arquivos)
+      - name: Retomar - restaurar o trabalho (valida o pacote e recusa se a main mudou os mesmos arquivos)
         if: ${{ inputs.retomar }}
-        run: |
-          chmod +x rotina/*.sh
-          rotina/retomar-trabalho.sh "$RUNNER_TEMP/retomada"
+        run: python -m coleta.retomada restaurar "$RUNNER_TEMP/trabalho"
 
       - name: Conferir que a legislatura não terminou
         run: |
@@ -162,6 +163,26 @@ jobs:
       - name: "Coletar: Situação das fontes"
         run: rotina/etapa-github.sh situacao 5 essencial
 
+      - name: Ponto de retomada - guardar o trabalho da coleta (antes da conferência e do Git)
+        id: pacote
+        if: always()
+        continue-on-error: true
+        run: |
+          # o pacote vai para o cache privado do repositório (não para um artefato: o de repositório público é baixável por qualquer conta)
+          python -m coleta.retomada guardar "$RUNNER_TEMP/trabalho"; rc=$?
+          if [ "$rc" = 0 ]; then echo "pacote=sim" >> "$GITHUB_OUTPUT"
+          elif [ "$rc" = 3 ]; then echo "pacote=nao" >> "$GITHUB_OUTPUT"
+          else exit "$rc"; fi
+
+      - name: Ponto de retomada - enviar o pacote ao cache (chave trabalho-número da rodada)
+        id: guardar_cache
+        if: always() && steps.pacote.outputs.pacote == 'sim'
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/trabalho
+          key: trabalho-${{ github.run_id }}
+
       - name: Guardar os downloads para a próxima vez
         if: always()
         uses: actions/cache/save@v4
@@ -171,6 +192,7 @@ jobs:
 
       - name: Conferir com os sites oficiais (trava se algo estiver errado)
         id: conferir
+        timeout-minutes: 20
         run: |
           # o motivo de não salvar vai para o resumo (rotina/avisar-rodada.sh)
           falhou() { echo "$1" | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
@@ -191,6 +213,7 @@ jobs:
 
       - name: Salvar os números novos no repositório
         id: salvar
+        timeout-minutes: 20
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -205,19 +228,24 @@ jobs:
             if ! git pull --rebase; then
               # conflito com a rodada do Brasil: só nos arquivos do site gerados a partir dos CSVs. Fica a versão de lá
               # e os arquivos são refeitos com os CSVs das duas rodadas
-              CONFLITOS=$(git diff --name-only --diff-filter=U)
-              if echo "$CONFLITOS" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/)'; then
-                echo "Conflito fora dos arquivos gerados: $CONFLITOS"; git rebase --abort; exit 1
+              git diff --name-only --diff-filter=U -z > "$RUNNER_TEMP/conflitos.nul"
+              if tr '\0' '\n' < "$RUNNER_TEMP/conflitos.nul" | grep -qvE '^(site/dados/|site/fotos/creditos.json|dados/processados/)'; then
+                echo "Conflito fora dos arquivos gerados: $(tr '\0' ' ' < "$RUNNER_TEMP/conflitos.nul")" | tee "$RUNNER_TEMP/motivo.txt"; git rebase --abort; exit 1
               fi
-              echo "$CONFLITOS" | xargs git checkout --ours --
-              echo "$CONFLITOS" | xargs git add --
+              xargs -0 git checkout --ours -- < "$RUNNER_TEMP/conflitos.nul"
+              xargs -0 git add -- < "$RUNNER_TEMP/conflitos.nul"
               GIT_EDITOR=true git rebase --continue
               python coletar.py montar || { echo "Os arquivos do site não foram refeitos depois do rebase: nada será enviado." | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
               git add dados/processados site/dados site/fotos
               git diff --cached --quiet || git commit -m "Arquivos do site refeitos depois das duas rodadas"
             fi
             # a árvore que vai ser enviada (depois do rebase e do montar) passa de novo pela conferência
-            python coletar.py conferir --max-alertas 8 || { echo "A conferência da árvore final (depois de trazer o que a rodada do Brasil enviou) falhou: nada será enviado." | tee "$RUNNER_TEMP/motivo.txt"; exit 1; }
+            python coletar.py conferir --max-alertas 8 && rc=0 || rc=$?  # (sem isto, o -e do GitHub sairia aqui, antes de limpar a árvore)
+            # o relatório desta conferência fica fora da árvore (é um arquivo rastreado: deixá-lo mudado faria o próximo pull --rebase falhar)
+            cp dados/processados/conferencia.md "$RUNNER_TEMP/conferencia-final.md"; git checkout -- dados/processados/conferencia.md
+            if [ "$rc" != 0 ]; then
+              echo "A conferência da árvore final (depois de trazer o que a rodada do Brasil enviou) falhou: nada será enviado." | tee "$RUNNER_TEMP/motivo.txt"; exit 1
+            fi
             git push && { touch "$RUNNER_TEMP/salvo"; exit 0; }
             echo "Push recusado (tentativa $tentativa): outra rodada enviou antes; trazendo o que ela enviou."
           done
@@ -228,29 +256,17 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: conferencia
-          path: dados/processados/conferencia.md
-          if-no-files-found: ignore
-
-      - name: Guardar o trabalho da coleta (só se a rodada não salvou)
-        if: always()
-        run: |
-          chmod +x rotina/*.sh
-          rotina/guardar-trabalho.sh
-
-      - name: Enviar o trabalho da coleta como artefato (14 dias; nunca vai para a main)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: trabalho-da-rodada
-          path: ${{ runner.temp }}/trabalho
-          retention-days: 14
+          path: |
+            dados/processados/conferencia.md
+            ${{ runner.temp }}/conferencia-final.md
           if-no-files-found: ignore
 
       - name: Resumo e aviso (diz por que nada foi salvo e como retomar)
         if: always()
         env:
           GH_TOKEN: ${{ github.token }}
-        run: rotina/avisar-rodada.sh
+          TRABALHO_GUARDADO: ${{ steps.guardar_cache.outcome == 'success' && 'sim' || 'nao' }}
+        run: bash rotina/avisar-rodada.sh
 
       - name: Avisar das etapas que deram erro (depois de salvar)
         if: always()

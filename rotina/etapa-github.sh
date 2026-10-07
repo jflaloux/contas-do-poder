@@ -27,7 +27,7 @@ ESSENCIAL="${3:-}"
 RESERVA_MIN="${RESERVA_MIN:-70}"
 ANOTACOES="${RUNNER_TEMP:-/tmp}/etapas.txt"
 
-# RETOMAR=true (workflow, "retomar"): o trabalho da coleta veio de uma rodada que não salvou (rotina/retomar-trabalho.sh); só as
+# RETOMAR=true (workflow, "retomar"): o trabalho da coleta veio de uma rodada que não salvou (coleta/retomada.py); só as
 # etapas essenciais rodam (padronizar, site, situacao), e as outras ficam como estavam
 if [ "${RETOMAR:-false}" = "true" ] && [ -z "$ESSENCIAL" ]; then
   echo "Etapa $ETAPA não roda: rodada retomada (o trabalho da coleta já está aqui)."

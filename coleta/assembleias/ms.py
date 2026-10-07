@@ -72,13 +72,21 @@ def _nome(dep):
     return re.sub(r"^\s*DEP\.?\s*", "", str(dep or ""), flags=re.I).strip()
 
 
+def _registros(texto):
+    """As linhas do CSV da CEAP. Desde 07/10/2026 o arquivo começa com um cabeçalho de 5 linhas (título, "Gerado em...",
+    filtros e uma linha vazia) antes da linha de colunas ("Deputado;Ano;Mês;..."): a leitura começa nessa linha."""
+    linhas = texto.splitlines()
+    ini = next((i for i, l in enumerate(linhas) if l.lstrip('"').startswith("Deputado;")), 0)
+    return list(csv.DictReader(io.StringIO("\n".join(linhas[ini:])), delimiter=";"))
+
+
 def coletar():
     PASTA.mkdir(parents=True, exist_ok=True)
     ano_hoje = int(time.strftime("%Y"))
     linhas = []
     for ano in range(INICIO // 100, ano_hoje + 1):
         texto = _baixar(ano, 3 if ano >= ano_hoje - 1 else 3650).decode("utf-8-sig")
-        for r in csv.DictReader(io.StringIO(texto), delimiter=";"):
+        for r in _registros(texto):
             mes = MESES.get(normalizar_nome(r.get("Mês") or ""))
             if not mes:
                 continue
@@ -86,6 +94,8 @@ def coletar():
                            "fornecedor": (r.get("Fornecedor") or "").strip(), "cnpj_cpf": vc.mascarar(r.get("CPF/CNPJ") or ""),
                            "documento": (r.get("Documento") or "").strip(), "data": (r.get("Emissão") or "").strip(),
                            "valor": comum_num(r.get("Valor (R$)")), "comprovante": (r.get("Comprovante") or "").strip()})
+    if not linhas:
+        raise RuntimeError("Alems: nenhuma nota da CEAP lida (o formato do arquivo mudou?)")
     notas = pd.DataFrame(linhas)
     notas = notas[notas.ano * 100 + notas.mes >= INICIO]
     gravar_csv(notas.sort_values(["ano", "mes", "deputado", "data", "fornecedor"]), PASTA / "ceap_notas.csv")

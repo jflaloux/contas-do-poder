@@ -70,24 +70,36 @@ Se a conferência falhar, **nada é salvo**: o site anterior continua no ar e o 
 conferência fica anexado em cada execução.
 
 **Rede de segurança** (para uma falha tardia não jogar fora horas de coleta):
-- Se a rodada **não salva** (padronizar, site ou conferência falhou, mais de 3 etapas com erro de verdade, ou o job estourou), o
-  passo `rotina/guardar-trabalho.sh` empacota o que a coleta produziu (arquivos de `dados/` e `site/dados/` alterados ou
-  novos, mais `dados/brutos`) e o workflow o envia como **artefato** `trabalho-da-rodada` (14 dias; nunca vai para a
-  `main`). Os downloads vão no cache à parte. O site no ar não muda: só o `git push` do passo de salvar publica, e ele só
-  roda depois da conferência (e da conferência de novo sobre a árvore final).
+- **Ponto de retomada:** depois das etapas essenciais (padronizar, site, situação) e **antes** da conferência e do Git, o
+  passo `python -m coleta.retomada guardar` empacota o que a rodada produziu (arquivos de `dados/` e `site/` diferentes
+  do commit em que a rodada começou, comitados ou não, apagados inclusive, mais `dados/brutos`) e o workflow o envia ao
+  **cache privado do repositório** (chave `trabalho-<número da rodada>`; some se ficar 7 dias sem uso). Não é artefato: o
+  artefato de um repositório público pode ser baixado por qualquer conta do GitHub, e o pacote leva `dados/brutos`
+  (intermediários que não vão para o Git). O único artefato público é o relatório da conferência. Assim, um estouro do
+  limite do job durante a conferência ou o Git não perde a coleta. Os downloads vão no cache de downloads, à parte.
 - **Retomar:** Actions > Atualizar dados > Run workflow, marcar `retomar` e pôr em `run_id` o número da rodada que não
-  salvou (está no resumo dela e na URL). O workflow baixa o artefato, restaura (`rotina/retomar-trabalho.sh` recusa se a
-  `main` mudou, desde então, algum dos mesmos arquivos de `dados/`, por exemplo por causa da rodada do Brasil), pula as
-  etapas de coleta e roda só padronizar, site, situação, conferência e salvar, com a mesma conferência final. Leva minutos.
-  Use a retomada depois de consertar o código na `main` (o conserto vem do checkout; o trabalho, do artefato).
-- **Aviso:** o resumo da execução diz numa linha "NADA FOI SALVO: motivo" e como retomar (`rotina/avisar-rodada.sh`);
-  se a rodada anterior também não salvou, abre uma issue no repositório ("A rodada semanal de dados falhou duas vezes
-  seguidas"; as seguintes viram comentário nela).
+  salvou (está no resumo dela e na URL), depois de consertar o que falhou na `main`. O workflow busca o pacote no cache
+  (falha se não achar) e `coleta/retomada.py restaurar` o valida **antes de extrair** (só arquivos comuns, só em `dados/` e
+  `site/`, sem `..` nem caminho absoluto, os mesmos do manifesto) e **recusa se a `main` mudou, desde o commit de partida,
+  qualquer arquivo que o pacote traz** (por exemplo, a rodada do Brasil enviou outra versão: aí é preciso a rodada
+  completa). As etapas de coleta são puladas; roda padronizar, site, situação, conferência e salvar, com a mesma
+  conferência final. Leva minutos.
+- **Salvar:** só o `git push` publica, e ele só roda depois da conferência, que é repetida sobre a árvore final (depois
+  do rebase e do `montar`); o relatório dessa conferência vai para `conferencia-final.md` fora da árvore (senão o
+  `pull --rebase` seguinte falharia por árvore suja); o push tenta até 3 vezes; conferir e salvar têm 20 minutos cada.
+  Mais de 3 etapas com erro de verdade: nada é salvo. O site no ar não muda se a rodada falha.
+- **Aviso:** o resumo da execução diz numa linha "NADA FOI SALVO: motivo", se o pacote foi guardado (pelo resultado do
+  passo, não por existir arquivo) e como retomar (`rotina/avisar-rodada.sh`). Se a rodada não salvou e o robô não envia
+  nada ao repositório há mais de 9 dias (commits "Atualização dos dados"), abre uma issue ("A rodada semanal de dados não
+  salva nada há mais de uma semana"; as seguintes viram comentário). Falha do `gh` vira aviso na execução, sem abrir issue
+  duplicada.
 - **Fila:** `concurrency` com `cancel-in-progress: false`: uma rodada nova (agendada, manual ou retomada) espera a que está
   em andamento, sem cancelá-la.
-- Os testes rápidos do início (pandas, gravação, disjuntor) param a rodada em segundos se o código está quebrado. Um
-  "ensaio" de padronizar + site com os dados do Git não é possível: o `padronizar` lê `dados/brutos`, que não vai para o
-  Git (a coleta da Câmara o gera). Testes da rede de segurança: `python3 -m coleta.testes_rodada`.
+- Os testes do início (pandas, gravação, disjuntor, fontes, rodada) param a rodada em segundos se o código está quebrado.
+  Um "ensaio" de padronizar + site com os dados do Git não é possível: o `padronizar` lê `dados/brutos`, que não vai
+  para o Git (a coleta da Câmara o gera). `coleta/testes_rodada.py` simula os passos do workflow contra um repositório
+  remoto local (commit, rebase, conferência de novo, push recusado), o pacote (tar cortado, caminhos e links
+  inseguros, conflito) e o aviso (falhas do `gh`).
 
 A primeira rodada com o cache de downloads vazio (ou depois de um mês sem rodar) é a mais longa: só a Câmara leva
 perto de 1h40 para ler as páginas de cada deputado, os Tribunais de Contas levam uns 80 minutos e as Assembleias uns 45
