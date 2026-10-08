@@ -556,7 +556,7 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 | João Pessoa | folha mensal (página da transparência, com nome) + lista de vereadores da Câmara | valor do mês na folha (subsídio de R$ 26.000, Lei 14.702/2022; presidente R$ 32.000) | verba indenizatória, por mês e serviço (contratos e notas em PDF, não lidos) | cargos de gabinete sem o gabinete: não ligada |
 | Teresina | cota do mês (quem recebeu) + lista de vereadores da Câmara | subsídio de R$ 24.754,79 (o valor da folha dos vereadores), pelos dias no cargo | Despesas com Atividade Parlamentar, nota por nota (fornecedor, CNPJ, inciso da Resolução 62/2013) | não publicada |
 | Vitória | folha mensal (API da transparência, com posse e saída) + lista de vereadores da Câmara | total do mês na folha: até o subsídio (R$ 17.681,99) é salário, o resto vai para outros pagamentos; 13º à parte | não existe (a Câmara informa que não tem cota parlamentar desde 2023) | secretários de gabinete sem o gabinete: não ligada |
-| Cuiabá | folha mensal (relatório em PDF) com a linha mensal ou a verba; "afastado" não conta | linha mensal (R$ 38.339,04 para a maioria): até o subsídio (R$ 26.080,98) é salário, o resto (e a gratificação que a folha às vezes separa) vai para outros pagamentos; 13º e rescisões à parte | verba indenizatória de valor fixo (75% da remuneração, Lei 6.910/2023), por mês: na folha até jan/2026, depois em arquivo mensal | não publicada |
+| Cuiabá | folha mensal (relatório em PDF) com a linha mensal ou a verba; "afastado" não conta | linha mensal (R$ 38.339,04 para a maioria), separada pelas leis: subsídio (R$ 26.080,98, Lei 7.038/2024) em salário, auxílio-saúde (12%, Lei 6.758/2022) em auxílios, gratificação de comissão permanente (35%, Lei 6.904/2023) em outros pagamentos; 13º e rescisões à parte; a conversão de férias de jan/2026 (Lei 7.442/2025) como pagamento único | verba indenizatória de valor fixo (75% da remuneração, Lei 6.910/2023), por mês: na folha até jan/2026, depois em arquivo mensal | não publicada |
 
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
@@ -605,6 +605,20 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   o texto da Câmara que não tem verba. A lista do sistema legislativo dá o nome parlamentar, o partido e a foto (ela
   marca 28 "ativos" para 27 cadeiras e não é usada para o "em exercício"). Abre de fora do Brasil. Sem reserva no
   Tribunal de Contas.
+- Pagamento único (`pagamento_unico`, desde 08/10/2026): o que a folha paga de uma vez e não se repete fica fora da média por
+  mês, como a ajuda de custo dos deputados. Em camaras.json, a categoria entra no total e no mês a mês, como a fonte mostra, e
+  a pessoa ganha `aj` (o mês e o valor, no formato do `dados.json`) e `un` (`[aaaamm, valor, nota, link, origem]`, com origem
+  "imprensa" quando quem explica é uma notícia, ou "fonte"). Hoje: Vitória, dez/2025, R$ 215.190,24 a um vereador
+  (`vitoria.PAGAMENTOS_UNICOS`: o pagamento retroativo de subsídios de 2023 e 2024 noticiado pela Folha Vitória, igual às
+  "outras verbas salariais" que a Câmara declarou ao TCE-ES naquele mês); Cuiabá, jan/2026, a diferença da linha mensal que
+  é exatamente 1/3, 2/3 ou um mês de remuneração com 1/3 (coincide com a conversão de férias em dinheiro da Lei 7.442/2025;
+  `cuiaba._conversao_ferias`).
+- Porto Alegre, equipe dos gabinetes (desde 08/10/2026): a folha mensal da Câmara no portal de remunerações
+  (cmpoatransparencia.admrh.inf.br; a página antiga do Portal Transparência parou em set/2024), exportada em CSV por mês
+  (`api/relacaoservidores/csv`, com a sessão de `api/tracking/check-config`; sem identificação nem CAPTCHA). Lotação "GAB. VER.
+  <nome>" casada com o vereador; pessoas e custo bruto (básica, eventuais, indenizatórias, férias e 13º) por gabinete e mês, e
+  os cargos do último mês; sem nomes, deduções nem líquido; o vereador (e o suplente lotado no gabinete) fora da equipe; os
+  meses em que o vereador não estava no cargo ficam de fora.
 - Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.

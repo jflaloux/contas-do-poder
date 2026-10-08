@@ -68,6 +68,17 @@ CFG = {
     "fontes": {"folha": FOLHA_PAGINA, "api": DOC_API, "lista": LISTA, "cotas": COTAS},
 }
 COLUNAS = ["ano", "mes", "matricula", "nome", "admissao", "demissao", "total", "decimo_terceiro", "ferias"]
+# Pagamentos de uma vez que ficam fora da média por mês (categoria pagamento_unico), por (matrícula, mês): o valor, a nota e
+# o link. Dez/2025, matrícula 5035 (Armando Fontoura Borges Filho): a ficha de rendimentos da Câmara dá R$ 253.054,22 de
+# vencimentos, com rubricas de R$ 36.613,98; no arquivo de vantagens do TCE-ES, a Câmara declarou R$ 215.190,24 de "Outras
+# verbas salariais" no cargo de vereador nesse mês (o único mês com essa verba); a Folha Vitória noticiou em 14/01/2026 o
+# pagamento retroativo de R$ 215 mil dos subsídios suspensos no período em que ele esteve preso e afastado (2023-2024).
+PAGAMENTOS_UNICOS = {
+    ("5035", 202512): (215190.24, "Pagamento retroativo de subsídios de 2023 e 2024 (do período em que o vereador esteve "
+                                  "afastado), segundo a imprensa; a folha da Câmara não separa a parcela.",
+                       "https://www.folhavitoria.com.br/politica/vereador-de-vitoria-recebe-r-215-mil-de-salarios-do-periodo-em-que-esteve-afastado-e-preso/",
+                       "imprensa"),
+}
 
 
 def _num(v):
@@ -174,11 +185,11 @@ def coletar():
 
 
 # ---------------------------------------------------------------- montagem
-def _categorias(total, decimo, ferias):
-    """[(categoria, valor)]: o 13º e as férias à parte; do resto, até o subsídio é salário e o que passa dele, outros
-    pagamentos (a folha não separa o auxílio-alimentação)."""
-    resto = round(total - decimo - ferias, 2)
-    saida = []
+def _categorias(total, decimo, ferias, unico=0.0):
+    """[(categoria, valor)]: o 13º, as férias e o pagamento único (PAGAMENTOS_UNICOS) à parte; do resto, até o subsídio é
+    salário e o que passa dele, outros pagamentos (a folha não separa o auxílio-alimentação)."""
+    resto = round(total - decimo - ferias - unico, 2)
+    saida = [("pagamento_unico", unico)] if unico else []
     if decimo:
         saida.append(("decimo_terceiro", decimo))
     if ferias:
@@ -257,12 +268,18 @@ def montar(tipos):
             mandatos.append({"codigo": c, "inicio": i, "fim": f})
     mandatos = _acertar_periodos(mandatos, fol, ultimo, atual)
     comum.fotos(COD, fotos)
-    linhas = []
+    linhas, unicos = [], {}
     for r in fol.itertuples():
-        for cat, val in _categorias(float(r.total), float(r.decimo_terceiro), float(r.ferias)):
+        u = PAGAMENTOS_UNICOS.get((str(r.matricula), int(r.ano) * 100 + int(r.mes)))
+        if u and float(r.total) < u[0]:  # a folha mudou: o pagamento não cabe mais no total do mês, e fica de fora
+            log(f"  Vitória: pagamento único de {r.matricula} em {int(r.mes):02d}/{int(r.ano)} maior que o total do mês; ignorado")
+            u = None
+        for cat, val in _categorias(float(r.total), float(r.decimo_terceiro), float(r.ferias), u[0] if u else 0.0):
             linhas.append({"ano": int(r.ano), "mes": int(r.mes), "codigo": int(r.codigo), "categoria": cat, "valor": val})
+        if u:
+            unicos.setdefault(int(r.codigo), []).append([int(r.ano) * 100 + int(r.mes), *u])
     ganha = pd.DataFrame(linhas, columns=["ano", "mes", "codigo", "categoria", "valor"])
-    cfg = dict(CFG, ultimo_mes=min(ate, ultimo), subsidio_folha=True)
+    cfg = dict(CFG, ultimo_mes=min(ate, ultimo), subsidio_folha=True, unicos=unicos)
     return comum.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos), ganha=ganha)
 
 

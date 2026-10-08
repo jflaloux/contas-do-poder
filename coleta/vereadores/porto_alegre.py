@@ -19,8 +19,14 @@ Fontes (dados abertos da Câmara, sem cadastro; os portais da Câmara só respon
   subsídio de 13º em dezembro: https://www.camarapoa.rs.gov.br/draco/processos/138806/Lei_13575.pdf
 - Nome de urna, nome completo, partido e gênero: TSE (eleição de 2024). O código de cada vereador aqui é o número do
   candidato no TSE (SQ_CANDIDATO), que não muda quando a pessoa sai da lista da Câmara.
-A folha de pagamento e a lista de servidores (transparencia.camarapoa.rs.gov.br/remuneracoes e /pessoas) ainda não são
-lidas (o robots.txt do portal pede que robôs não entrem nessas páginas; desde 08/10/2026 isso não impede a leitura).
+- Equipe de cada gabinete (desde 08/10/2026): a folha de pagamento mensal da Câmara, no portal de remunerações
+  (https://cmpoatransparencia.admrh.inf.br/rhsysportaltransp/#!/relacaoservidoresmes, que substituiu a página
+  transparencia.camarapoa.rs.gov.br/remuneracoes, parada em set/2024): a exportação em CSV do mês
+  (api/relacaoservidores/csv, sem filtro), com nome, cargo, lotação ("GAB. VER. <nome>") e as parcelas brutas
+  (remuneração básica, verbas eventuais, verbas indenizatórias, férias e 13º). A sessão sai de api/tracking/check-config
+  (o portal não pede identificação nem CAPTCHA para a lista; conferido em 08/10/2026). Guardamos só, por gabinete e mês,
+  quantas pessoas e o custo bruto, e os cargos do último mês: nunca nomes, deduções nem o líquido. O vereador (cargo
+  VEREADOR ou VEREADOR SUPLENTE, lotado num gabinete) não conta na equipe.
 """
 import html as html_lib
 import json
@@ -44,6 +50,10 @@ ARQ_VER = PASTA / "camara_vereadores.csv"
 ARQ_GAB = PASTA / "camara_qbm_gabinetes.csv"
 ARQ_LANC = PASTA / "camara_qbm_lancamentos.csv"
 ARQ_TOT = PASTA / "camara_qbm_totais.csv"
+ARQ_EQUIPE = PASTA / "camara_equipe.csv"
+ARQ_CARGOS = PASTA / "camara_equipe_cargos.csv"
+RH = "https://cmpoatransparencia.admrh.inf.br/rhsysportaltransp/"
+RH_PAGINA = f"{RH}#!/relacaoservidoresmes"
 REBAIXAR = 3   # meses mais recentes que ainda podem mudar
 PAUSA = 0.8    # segundos entre pedidos
 SUBSIDIO = 23428.64
@@ -62,16 +72,18 @@ CFG = {
     "salario_nota": ("Subsídio fixado pela Lei 13.575/2023 para 2025 a 2028, igual para o presidente da Câmara e os demais "
                      "vereadores. A lei também prevê o 13º (um subsídio a mais em dezembro), que não entra aqui, e permite "
                      "correção anual por Resolução de Mesa: não achamos nenhuma correção publicada até agora."),
-    "equipe_aviso": "A Câmara publica a equipe de cada gabinete, mas o robô ainda não a lê.",
+    "equipe_nota": ("Servidores lotados no gabinete do vereador na folha de pagamento da Câmara (relação de servidores do mês), "
+                    "com o custo bruto: remuneração básica, verbas eventuais, verbas indenizatórias, férias e 13º, antes dos "
+                    "descontos. O próprio vereador não conta. Os meses em que o vereador não estava no cargo ficam de fora."),
     "credito_foto": "Câmara Municipal de Porto Alegre", "pagina": f"{SITE}/vereadores",
     "notas": ["Quem estava no cargo em cada mês vem da QBM: todo mês cada gabinete em exercício recebe o crédito da quota. "
               "Suplentes que assumiram só por alguns dias, sem gabinete próprio na QBM, não aparecem, e esses dias contam "
               "para o titular.",
-              "A Câmara publica a folha de pagamento e a lista de servidores de cada gabinete no Portal da Transparência; o "
-              "robô ainda não lê essas páginas, por isso a equipe dos gabinetes não aparece aqui."],
+              "A equipe de cada gabinete vem da folha de pagamento mensal da Câmara, pela lotação de cada servidor."],
     "fontes": {"vereadores": f"{SITE}/vereadores", "qbm": QBM_PAGINA, "legislatura": f"{SITE}/legislatura",
                "subsidio": f"{SITE}/draco/processos/138806/Lei_13575.pdf",
-               "qbm_normas": "https://legislacao.camarapoa.rs.gov.br/normas-qbm-quota-mensal-basica-parlamentar-na-camara/"},
+               "qbm_normas": "https://legislacao.camarapoa.rs.gov.br/normas-qbm-quota-mensal-basica-parlamentar-na-camara/",
+               "equipe": RH_PAGINA},
 }
 
 
@@ -223,9 +235,85 @@ def fotos():
     comum.fotos(COD, [(int(c), f) for c, f in zip(com_foto.codigo, com_foto.foto)])  # só as que faltaram
 
 
+_PARCELAS = ["Remuneração Básica (1)", "Verbas Eventuais (2)", "Verbas Indenizatórias (3)", "Férias (4)", "13º Salário (5)"]
+
+
+def _referencias():
+    """{AAAAMM: código da referência} do portal de remunerações (a lista de meses que o próprio portal oferece)."""
+    saida, pagina = {}, 1
+    while pagina <= 10:
+        d = _get(f"{RH}api/lov/referencia", params={"page": pagina, "filtro": "referencia"})
+        for x in d.get("dados") or []:
+            m = re.match(r"(\d{2})/(\d{4})$", str(x.get("descricao") or ""))
+            if m:
+                saida[int(m.group(2)) * 100 + int(m.group(1))] = x["codigo"]
+        if not d.get("hasMore"):
+            break
+        pagina += 1
+    return saida
+
+
+def equipe():
+    """Pessoas e custo bruto de cada gabinete por mês, e os cargos do último mês, pela exportação em CSV da folha mensal
+    do portal de remunerações. Os meses já gravados não são lidos de novo (só os REBAIXAR últimos)."""
+    import csv
+    import io
+    _get(f"{RH}api/tracking/check-config")  # abre a sessão (cookie) que a lista pede
+    refs = _referencias()
+    ate = comum.ultimo_mes_fechado()
+    recentes = comum.menos_meses(ate, REBAIXAR)
+    velha = pd.read_csv(ARQ_EQUIPE) if ARQ_EQUIPE.exists() else pd.DataFrame(columns=["ano", "mes", "lotacao", "pessoas", "custo"])
+    feitos = set(velha.ano * 100 + velha.mes) if len(velha) else set()
+    linhas, cargos_ult = [], None
+    for a, m in comum.meses(INICIO, ate):
+        am = a * 100 + m
+        if am in feitos and am < recentes:
+            linhas += velha[(velha.ano * 100 + velha.mes) == am].to_dict("records")
+            continue
+        if am not in refs:
+            continue
+        params = {"orgao": "null", "cargo": "null", "vinculo": "null", "matricula": "null", "referencia": refs[am]}
+        texto = _get(f"{RH}api/relacaoservidores/csv", C / f"folha_{am}.csv", 5 if am >= recentes else None, params, texto=True)
+        tabela = list(csv.reader(io.StringIO(texto.lstrip("\ufeff")), delimiter=";"))
+        cab = next((i for i, l in enumerate(tabela) if l and l[0] == "Nome"), None)
+        if cab is None:
+            continue
+        col = {h: i for i, h in enumerate(tabela[cab])}
+        if not all(h in col for h in ["Nome", "Cargo", "Lotação"] + _PARCELAS):
+            raise RuntimeError(f"a folha de {m:02d}/{a} veio com outras colunas: {tabela[cab]}")
+        pessoas, custo, cargos = {}, {}, {}
+        for l in tabela[cab + 1:]:
+            if len(l) < len(col) - 1:
+                continue
+            lot = " ".join(l[col["Lotação"]].split()).upper()
+            if not lot.startswith("GAB") or normalizar_nome(l[col["Cargo"]]).startswith("VEREADOR"):  # e "VEREADOR SUPLENTE"
+                continue
+            v = sum(_num(str(l[col[h]]).replace(".", "").replace(",", ".")) for h in _PARCELAS)
+            custo[lot] = custo.get(lot, 0.0) + v
+            nome = normalizar_nome(l[col["Nome"]])
+            pessoas.setdefault(lot, set()).add(nome)
+            cargos.setdefault((lot, " ".join(l[col["Cargo"]].split()).upper()), set()).add(nome)
+        if not pessoas:
+            continue
+        linhas += [{"ano": a, "mes": m, "lotacao": lot, "pessoas": len(q), "custo": round(custo.get(lot, 0.0), 2)}
+                   for lot, q in sorted(pessoas.items())]
+        cargos_ult = (a, m, cargos)
+    df = pd.DataFrame(linhas, columns=["ano", "mes", "lotacao", "pessoas", "custo"])
+    if not len(df):
+        log("  Porto Alegre: a folha do portal de remunerações veio vazia; fica a equipe que estava gravada")
+        return
+    gravar_csv(df.sort_values(["ano", "mes", "lotacao"]), ARQ_EQUIPE)
+    if cargos_ult:
+        a, m, cargos = cargos_ult
+        gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": len(q)}
+                                 for k, q in sorted(cargos.items())], columns=["ano", "mes", "lotacao", "cargo", "pessoas"]), ARQ_CARGOS)
+    log(f"  Porto Alegre: equipe dos gabinetes até {int((df.ano * 100 + df.mes).max())} ({df.lotacao.nunique()} gabinetes)")
+
+
 def coletar():
     vereadores()
     qbm()
+    equipe()
     fotos()
 
 
@@ -393,6 +481,45 @@ def montar(tipos):
     verba["devolvido"] = (verba.credito - verba.gasto).clip(lower=0).where(ano_fechado, 0).round(2)
     verba = verba[["ano", "codigo", "credito", "devolvido"]].astype({"codigo": int})
     mensal = lanc[lanc.cat == "1.1"].groupby("ano").valor.agg(lambda v: v.round(2).mode().iloc[0])
-    cfg = dict(CFG, ultimo_mes=ultimo, verba_mes={str(int(a)): float(v) for a, v in mensal.items()})
+    equipe, cargos, equipe_em = _equipe(ver, mandatos_df, ultimo)
+    cfg = dict(CFG, ultimo_mes=ultimo, verba_mes={str(int(a)): float(v) for a, v in mensal.items()}, equipe_em=equipe_em)
     return comum.montar(cfg, tipos, ver[["codigo", "nome", "nome_civil", "partido", "genero", "eleito", "pagina"]], mandatos_df,
-                        despesas=despesas, verba=verba)
+                        despesas=despesas, verba=verba, equipe=equipe, cargos=cargos)
+
+
+def _equipe(ver, mandatos_df, ultimo):
+    """(equipe, cargos, "MM/AAAA") pela folha mensal: a lotação "GAB. VER. <nome>" casa com o nome do vereador (o parlamentar
+    ou o civil); só os meses em que ele estava no cargo (o gabinete de quem se licenciou continua com o nome dele)."""
+    vazio = (None, None, "")
+    if not ARQ_EQUIPE.exists():
+        return vazio
+    eq = pd.read_csv(ARQ_EQUIPE)
+    eq = eq[(eq.ano * 100 + eq.mes) <= ultimo]
+    fc = pd.read_csv(ARQ_CARGOS) if ARQ_CARGOS.exists() else pd.DataFrame(columns=["ano", "mes", "lotacao", "cargo", "pessoas"])
+    opcoes = [(n, int(c)) for c, n in zip(ver.codigo, ver.nome)] + [(n, int(c)) for c, n in zip(ver.codigo, ver.nome_civil) if n]
+    lot_cod = {}
+    for lot in sorted(set(eq.lotacao) | set(fc.lotacao)):
+        nome = re.sub(r"^GAB\.?\s*(VER\.?\s*(\(A\)\.?)?)?\s*", "", lot).strip()
+        lot_cod[lot] = comum.achar_parecido(nome, opcoes, 0.88)
+    sem = sorted(l for l, c in lot_cod.items() if c is None)
+    if sem:
+        log(f"  Porto Alegre: gabinetes da folha sem vereador identificado (não contados): {', '.join(sem)}")
+    periodos = {}
+    for c, g in mandatos_df.groupby("codigo"):
+        periodos[int(c)] = [(date.fromisoformat(str(i)[:10]), date.fromisoformat(str(f)[:10]) if isinstance(f, str) and f.strip() else None)
+                            for i, f in zip(g.inicio, g.fim.fillna(""))]
+    eq = eq.assign(codigo=eq.lotacao.map(lot_cod))
+    eq = eq[eq.codigo.notna()]
+    no_cargo = [comum.dias_no_mes(periodos.get(int(c), []), int(a), int(m)) > 0 for a, m, c in zip(eq.ano, eq.mes, eq.codigo)]
+    fora = eq[[not x for x in no_cargo]]
+    if len(fora):
+        log(f"  Porto Alegre: equipe de gabinetes em meses sem o vereador no cargo, não contada (R$ {fora.custo.sum():,.2f}, "
+            f"{len(fora)} gabinete-mês)")
+    eq = eq[no_cargo]
+    equipe = eq.groupby(["ano", "mes", "codigo"])[["pessoas", "custo"]].sum().reset_index().astype({"codigo": int})
+    cargos = fc.assign(codigo=fc.lotacao.map(lot_cod))
+    cargos = cargos[cargos.codigo.notna()]
+    cargos = cargos[[comum.dias_no_mes(periodos.get(int(c), []), int(a), int(m)) > 0 for a, m, c in zip(cargos.ano, cargos.mes, cargos.codigo)]]
+    cargos = cargos.groupby(["codigo", "cargo"]).pessoas.sum().reset_index().astype({"codigo": int})
+    em = f"{int(fc.mes.iloc[0]):02d}/{int(fc.ano.iloc[0])}" if len(fc) else ""
+    return equipe, cargos, em

@@ -7,7 +7,7 @@ em site/dados/camaras.json.
 Tabelas de entrada (só `ver` e `mandatos` são obrigatórias):
 - ver:       codigo, nome, nome_civil, partido, genero (M/F), eleito ("eleito"/"suplente"/""), pagina
 - mandatos:  codigo, inicio (AAAA-MM-DD), fim (AAAA-MM-DD ou vazio) e, se houver, gabinete — períodos no cargo
-- ganha:     ano, mes, codigo, categoria (salario, decimo_terceiro, auxilios, outros_rendimentos...), valor
+- ganha:     ano, mes, codigo, categoria (salario, decimo_terceiro, auxilios, outros_rendimentos, pagamento_unico...), valor
              — quando a Câmara publica a folha dos vereadores. Sem ela, usa o subsídio de cfg["subsidio"]
              proporcional aos dias no cargo.
 - despesas:  ano, mes, codigo, tipo (nome curto), fornecedor, cnpj_cpf, valor — a verba do gabinete, nota a nota
@@ -491,6 +491,18 @@ def _vazio(colunas):
     return pd.DataFrame(columns=colunas)
 
 
+def _unicos(lista):
+    """lista: [[aaaamm, valor, texto, url, origem], ...] -> {"aj": {"AAAA": [[aaaamm, valor]], "leg": [...]}, "un": lista}.
+    origem: "imprensa" (o que explica o pagamento é uma notícia) ou "fonte" (a lei ou a própria folha)."""
+    if not lista:
+        return {}
+    aj = {}
+    for am, v, *_ in sorted(lista):
+        aj.setdefault(str(int(am) // 100), []).append([int(am), _r(v)])
+        aj.setdefault("leg", []).append([int(am), _r(v)])
+    return {"aj": aj, "un": [[int(am), round(float(v), 2), texto, url, origem] for am, v, texto, url, origem in sorted(lista)]}
+
+
 def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equipe=None, cargos=None):
     """Devolve (meta da cidade, lista de pessoas)."""
     cod = cfg["cod"]
@@ -648,6 +660,9 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
             "dt": dt,
             "vb": vb,
             "eq": {"n": n_eq, "c": n_cargos} if n_eq and no_cargo else None,
+            # pagamento único (categoria pagamento_unico: retroativo, conversão de férias...): o mês e o valor de cada um, no
+            # mesmo formato do "aj" de dados.json (o site tira da média por mês), e a nota de cada um, com o link
+            **_unicos(cfg.get("unicos", {}).get(codigo)),
         })
     pessoas.sort(key=lambda p: normalizar_nome(p["n"]))
     meta = {
@@ -704,7 +719,8 @@ def escrever(resultados, tipos, baixar_fotos=True):
         "meta": {
             "gerado_em": datetime.now().isoformat(timespec="seconds"),
             "tipos": tipos.lista,
-            "categorias": {"verba_gabinete": {"grupo": "custa", "nome": "Verba do gabinete"}},
+            "categorias": {"verba_gabinete": {"grupo": "custa", "nome": "Verba do gabinete"},
+                           "pagamento_unico": {"grupo": "ganha", "nome": "Pagamento único (fora da média por mês)"}},
             "cidades": {str(m_cod): meta for m_cod, meta in ((ps[0]["cid"] if ps else None, meta) for meta, ps in resultados) if m_cod},
         },
         "p": todas,

@@ -49,6 +49,9 @@ FOLHA_PAGINA = f"{GP}/folha_pagamento_v2?1"
 RELATORIO = f"{GP}/arrelacao_folhapag?"
 VERBA_PAGINA = f"{GP}/informativo?verba_regulamentacao,1"
 ARQUIVO = f"{GP}/apdownload_manutencao?"
+LEI_SUBSIDIO = "https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L70382024.html"
+LEI_GRATIFICACAO = "https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L69042023.html"
+LEI_AUXILIO_SAUDE = "https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L67582022.html"
 LEI_VERBA = ("https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L69102023.html"
              "?identificador=310032003800360038003A004C00")
 SPL = "https://legislativo.camaracuiaba.mt.gov.br"
@@ -62,11 +65,13 @@ SUBSIDIO = [[202501, 24754.79], [202502, 26080.98]]
 CFG = {
     "cod": COD, "n": "Cuiabá", "uf": "MT", "casa": "Câmara Municipal de Cuiabá", "vagas": VAGAS, "inicio": INICIO,
     "subsidio": SUBSIDIO,
-    "salario_nota": ("Valor do mês na folha da Câmara. Até o subsídio (R$ 26.080,98 desde fev/2025; R$ 24.754,79 em jan/2025) é "
-                     "salário; o que a folha paga além dele aparece em outros pagamentos: a folha mensal da maioria dos "
-                     "vereadores é de R$ 38.339,04 e, em alguns meses, separa uma gratificação de R$ 9.128,34 (descrita como "
-                     "gratificação de vereador ou de desempenho em comissões); também as rescisões e as diferenças. O 13º vem à "
-                     "parte."),
+    "salario_nota": ("Valor do mês na folha da Câmara. A linha mensal da maioria dos vereadores (R$ 38.339,04) junta três partes "
+                     "que têm lei: o subsídio (R$ 26.080,98 desde fev/2025; R$ 24.754,79 em jan/2025; Lei 7.038/2024), aqui "
+                     "como salário; a gratificação de desempenho de atividade em comissão permanente (até 35% da remuneração, "
+                     "para quem é titular de duas comissões; Lei 6.904/2023), em outros pagamentos; e o auxílio-saúde (12% do "
+                     "subsídio, indenizatório; Lei 6.758/2022), em auxílios. A folha não separa as partes: a conta é nossa, "
+                     "pelos percentuais das leis. O que não bate com eles, as rescisões e as diferenças ficam em outros "
+                     "pagamentos; o 13º vem à parte."),
     "verba_nome": "Verba indenizatória", "verba_mes": {},
     "verba_regra": ("Valor fixo por mês, pago a cada vereador em exercício: 75% da remuneração mensal (Lei 6.910/2023, com a "
                     "redação da Lei 6.919/2023), para ressarcir despesas da atividade parlamentar. A prestação de contas é por "
@@ -80,7 +85,9 @@ CFG = {
     "notas": ["Quem estava no cargo em cada mês: quem aparece na folha da Câmara no mês com a folha mensal ou com a verba "
               "indenizatória. Quem a folha marca como afastado continua recebendo o subsídio, mas não conta como no cargo.",
               "A Câmara não publica a equipe de cada gabinete."],
-    "fontes": {"folha": FOLHA_PAGINA, "verba": VERBA_PAGINA, "verba_lei": LEI_VERBA, "lista": LISTA},
+    "fontes": {"folha": FOLHA_PAGINA, "verba": VERBA_PAGINA, "verba_lei": LEI_VERBA, "lista": LISTA, "subsidio": LEI_SUBSIDIO,
+               "gratificacao": LEI_GRATIFICACAO, "auxilio_saude": LEI_AUXILIO_SAUDE,
+               "ferias": "https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L74422025.html"},
 }
 COLUNAS_FOLHA = ["ano", "mes", "nome", "descricao", "proventos"]
 COLUNAS_VERBA = ["ano", "mes", "nome", "valor", "fonte"]
@@ -253,6 +260,42 @@ def _reais(v):
     return "R$ " + f"{v:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+LEI_FERIAS = "https://legislativo.camaracuiaba.mt.gov.br/Arquivo/Documents/legislacao/html/L74422025.html"
+FERIAS_EM_DINHEIRO_DESDE = 202601  # Lei 7.442/2025, em vigor em 01/01/2026
+NOTA_FERIAS = ("Na folha mensal, {v} a mais que nos outros meses: {fr} de um mês de remuneração (subsídio mais gratificação) com "
+               "1/3. Coincide com a conversão de férias em dinheiro que a Lei 7.442/2025 permite desde jan/2026 (1/3, 2/3 ou "
+               "30 dias); a folha não diz o que é a parcela.")
+
+
+def _conversao_ferias(resto, sub):
+    """Quantos terços de "um mês de remuneração com 1/3" (subsídio + 35%, vezes 4/3) o resto é: 1, 2 ou 3; senão 0."""
+    mes = sub * 1.35 * 4 / 3
+    for n in (3, 2, 1):
+        if abs(resto - round(mes * n / 3, 2)) < 0.05:
+            return n
+    return 0
+
+
+def _partes_acima(excesso, sub):
+    """O que a linha mensal paga acima do subsídio, pelos percentuais das leis: 35% (gratificação de comissão permanente,
+    Lei 6.904/2023) -> outros pagamentos; 12% (auxílio-saúde, Lei 6.758/2022) -> auxílios; 47% -> os dois; mais que isso,
+    os dois e o resto em outros pagamentos (jan/2026); o que não bate, todo em outros pagamentos."""
+    if excesso < 0.005:
+        return []
+    aux, grat = round(sub * 0.12, 2), round(sub * 0.35, 2)
+    if abs(excesso - grat) < 0.05:
+        return [("outros_rendimentos", excesso)]
+    if excesso >= aux + grat - 0.05:
+        resto = round(excesso - aux - grat, 2)
+        if resto >= 0.005 and _conversao_ferias(resto, sub):  # jan/2026: fora da média (pagamento único)
+            return [("auxilios", aux), ("outros_rendimentos", grat), ("pagamento_unico", resto)]
+        return [("auxilios", aux), ("outros_rendimentos", round(grat + (resto if resto >= 0.005 else 0), 2))]
+    if excesso >= aux - 0.05:
+        resto = round(excesso - aux, 2)
+        return [("auxilios", aux)] + ([("outros_rendimentos", resto)] if resto >= 0.005 else [])
+    return [("outros_rendimentos", excesso)]
+
+
 def _subsidio(am):
     v = 0.0
     for de, valor in SUBSIDIO:
@@ -354,8 +397,10 @@ def montar(tipos):
             mandatos.append({"codigo": c, "inicio": i, "fim": f})
     comum.fotos(COD, fotos)
 
-    # dinheiro: por pessoa e mês, a parte "base" vai até o subsídio como salário, e o resto vai para outros pagamentos
-    linhas = []
+    # dinheiro: por pessoa e mês, a parte "base" (a linha mensal) se separa pelos percentuais das leis: o subsídio é salário,
+    # 12% do subsídio é o auxílio-saúde (auxílios) e 35% a gratificação de comissão permanente (outros pagamentos); o que
+    # não bate com eles vai para outros pagamentos
+    linhas, unicos = [], {}
     pag = fol[fol.tipo != "verba"]
     for (c, am), g in pag.groupby(["codigo", "am"]):
         a, m = divmod(int(am), 100)
@@ -364,8 +409,13 @@ def montar(tipos):
         if base:
             sal = min(base, sub) if base > 0 else base
             linhas.append((a, m, c, "salario", round(sal, 2)))
-            if base - sal >= 0.005:
-                linhas.append((a, m, c, "outros_rendimentos", round(base - sal, 2)))
+            for cat, v in _partes_acima(round(base - sal, 2), sub):
+                if cat == "pagamento_unico" and am < FERIAS_EM_DINHEIRO_DESDE:
+                    cat = "outros_rendimentos"
+                linhas.append((a, m, c, cat, v))
+                if cat == "pagamento_unico":
+                    fr = {3: "o valor", 2: "dois terços", 1: "um terço"}[_conversao_ferias(v, sub)]
+                    unicos.setdefault(int(c), []).append([int(am), v, NOTA_FERIAS.format(v=_reais(v), fr=fr), LEI_FERIAS, "fonte"])
         for cat, gg in g[g.tipo != "base"].groupby("tipo"):
             linhas.append((a, m, c, cat, round(float(gg.proventos.sum()), 2)))
     ganha = pd.DataFrame(linhas, columns=["ano", "mes", "codigo", "categoria", "valor"])
@@ -392,14 +442,17 @@ def montar(tipos):
             if len(g) >= 5:
                 v = float(g.proventos.round(2).mode().iloc[0])
                 n_v = int((g.proventos.round(2) == round(v, 2)).sum())
+                conv = am >= FERIAS_EM_DINHEIRO_DESDE
                 notas.append(f"Em {am % 100:02d}/{am // 100}, a folha mensal de {len(g)} vereadores vem acima dos {_reais(normal)} "
-                             f"dos outros meses ({n_v} com {_reais(v)}); a folha publicada não separa as parcelas. A diferença "
-                             f"aparece em outros pagamentos.")
+                             f"dos outros meses ({n_v} com {_reais(v)}); a folha publicada não separa as parcelas. "
+                             + ("A diferença coincide com a conversão de férias em dinheiro da Lei 7.442/2025 (um mês de "
+                                "remuneração com 1/3, ou parte dele) e fica à parte, como pagamento único, fora da média por mês."
+                                if conv else "A diferença aparece em outros pagamentos."))
     if verba_sem:
         ms = [f"{x % 100:02d}/{x // 100}" for x in verba_sem]
         notas.append("A Câmara não publicou a verba indenizatória de " + (", ".join(ms[:-1]) + " e " + ms[-1] if len(ms) > 1 else ms[0])
                      + ": esses meses ficam sem verba.")
     if ultimo_vb and ultimo_vb < ate:
         notas.append(f"A verba indenizatória está publicada até {ultimo_vb % 100:02d}/{ultimo_vb // 100}; os meses seguintes ainda não têm verba.")
-    cfg = dict(CFG, ultimo_mes=ate, subsidio_folha=True, verba_ate=ultimo_vb, verba_sem=verba_sem, notas=notas)
+    cfg = dict(CFG, ultimo_mes=ate, subsidio_folha=True, verba_ate=ultimo_vb, verba_sem=verba_sem, notas=notas, unicos=unicos)
     return comum.montar(cfg, tipos, pd.DataFrame(ver), pd.DataFrame(mandatos), ganha=ganha, despesas=desp)

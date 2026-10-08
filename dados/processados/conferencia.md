@@ -1,4 +1,4 @@
-# Conferência dos dados — 08/10/2026 14:43
+# Conferência dos dados — 08/10/2026 15:39
 
 ## 1. Cobertura
 
@@ -63,8 +63,8 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
 - Nossa soma 2026: R$ 3,282,518.11
-- Página oficial: R$ 3,282,518.11
-- **OK**
+- Página oficial: R$ 3,661,391.77
+- **DIFERENTE**
 
 ## 5. Salários mensais acima do subsídio (revisar à mão)
 
@@ -191,4 +191,4 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
 
 ---
-**Total de alertas: 2**
+**Total de alertas: 3**
