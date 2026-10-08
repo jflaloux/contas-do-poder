@@ -109,6 +109,28 @@ console.log("\n-- Textos com contagens e coberturas: o que está escrito é o qu
   }
 }
 
+// ------------------------------------------------------------------ 1c) o termo da busca sem resultado que vai ao Google Analytics
+console.log("\n-- Busca sem resultado: só nome vai ao Analytics (lista branca termoMedivel, lida do app.js)");
+{
+  const fonte = fs.readFileSync(path.join(SITE, "app.js"), "utf8");
+  const sem = /  const semAcento = [^\n]*\n/.exec(fonte), fn = /  function termoMedivel\(valor\) \{[\s\S]*?\n  \}\n/.exec(fonte);
+  confere("o app.js tem semAcento e termoMedivel (o teste os lê de lá)", !!sem && !!fn, "não achei no app.js");
+  if (sem && fn) {
+    const termoMedivel = new Function(`${sem[0]}${fn[0]} return termoMedivel;`)();
+    const passa = [["São José dos Campos", "sao jose dos campos"], ["d'Ávila", "d'avila"], ["Dr. João", "dr. joao"], ["  Maria   da  Penha ", "maria da penha"],
+      ["Ana-Maria d’Ávila", "ana-maria d’avila"], ["Luiz Inácio Lula da Silva", "luiz inacio lula da silva"], ["Santa Rita do Passa Quatro", "santa rita do passa quatro"],
+      ["abcdefghij ".repeat(4) + "abcdef", "abcdefghij ".repeat(4) + "abcdef"] /* 50 caracteres */, ["um dois tres quatro cinco seis", "um dois tres quatro cinco seis"] /* 6 palavras */];
+    const barra = ["123.456.789-00", "12345678900", "12 34 56 78 90 1", "1.2.3.4.5.6.7.8.9.0.1", "11 9 8765 4321", "fulano@gmail.com", "https://exemplo.com/a", "joao 13", "lula 2026",
+      "", "  ", "x", "ze", "123", ".ana", "-ana", "a".repeat(26), "um dois tres quatro cinco seis sete" /* 7 palavras */, "abcdefghij ".repeat(4) + "abcdefg" /* 51 caracteres */,
+      "meu cpf é um dois três quatro cinco seis sete oito nove zero um", "rua das flores quinhentos e vinte tres apto trinta", "ana/maria", "ana_maria", "ana, maria", "ana\nmaria?"];
+    const erradosPassa = passa.filter(([e, s]) => termoMedivel(e) !== s).map(([e, s]) => `${JSON.stringify(e)} devia dar ${JSON.stringify(s)} e deu ${JSON.stringify(termoMedivel(e))}`);
+    confere(`os ${passa.length} termos que têm cara de nome passam, sem acento e em minúsculas`, erradosPassa.length === 0, erradosPassa.join(" | "));
+    const erradosBarra = barra.filter((e) => termoMedivel(e) !== null).map((e) => `${JSON.stringify(e)} passou como ${JSON.stringify(termoMedivel(e))}`);
+    confere(`os ${barra.length} termos com número, e-mail, endereço, texto longo, curto ou comprido demais não vão (e não são cortados)`, erradosBarra.length === 0, erradosBarra.join(" | "));
+    confere("medirBuscaVazia usa termoMedivel e não corta o texto (sem slice, sem a regra antiga)", /const termo = termoMedivel\(valor\);/.test(fonte) && !/@\|\\d\{3\}/.test(fonte), "o envio não passa pelo filtro");
+  }
+}
+
 // ------------------------------------------------------------------ 2) casos inventados, num build à parte
 console.log("\n-- Casos inventados (build à parte, sem tocar em publicar/)");
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), "regras-"));

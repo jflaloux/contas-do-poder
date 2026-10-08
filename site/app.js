@@ -561,20 +561,26 @@
     const comNome = !GOVP.meta;
     return GOV.e.filter((e) => { const t = semAcento(`${comNome ? `${e.gov.n} ${e.gov.nc || ""} ` : ""}${ESTADOS[e.uf]} governador governadora`); return termos.every((x) => t.includes(x)); }).slice(0, 2);
   }
-  // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
-  // o que as pessoas procuram e não acham: manda o termo 1,5 s depois de parar de digitar, uma vez por termo. Não manda
-  // nada que pareça e-mail ou número de documento (só nomes de políticos, cidades, cargos...)
+  // o que as pessoas procuram e não acham: manda o termo 1,5 s depois de parar de digitar, uma vez por termo.
+  // Só vai o que tem cara de nome (político, cidade, cargo): letras, espaço, ponto, apóstrofo e hífen, de 3 a 50 caracteres,
+  // até 6 palavras e nenhuma com 26 letras ou mais. O resto (número, e-mail, endereço de site, texto colado) não é enviado,
+  // nem cortado: some. Lista branca de propósito: o Analytics não pode receber CPF, telefone nem texto livre.
+  function termoMedivel(valor) {
+    const t = semAcento(valor).trim().replace(/\s+/g, " ");
+    return /^[a-z][a-z .'’-]{2,49}$/.test(t) && t.split(" ").length <= 6 && !/[a-z]{26,}/.test(t) ? t : null;
+  }
   let buscaTimer = null;
   const buscasMedidas = new Set();
   function medirBuscaVazia(valor) {
     clearTimeout(buscaTimer);
     buscaTimer = setTimeout(() => {
-      const termo = semAcento(valor.trim()).toLowerCase().slice(0, 50);
-      if (termo.length < 3 || buscasMedidas.has(termo) || /@|\d{3}/.test(termo)) return;
+      const termo = termoMedivel(valor);
+      if (!termo || buscasMedidas.has(termo)) return;
       buscasMedidas.add(termo);
       evento("busca_sem_resultado", { termo });
     }, 1500);
   }
+  // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
     let itens = [], ativo = -1;
     // os grupos que a página de um deputado ou senador não baixou (Assembleias, Câmaras, Judiciário) vêm quando a pessoa começa a buscar;

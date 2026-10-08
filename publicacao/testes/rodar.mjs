@@ -79,8 +79,8 @@ const simularReservas = (chaves, comRecife) => (caminho) => {
   }
   return null;
 };
-// "O que mudou nesta rodada" (situacao.json, chave "rodada"): o arquivo real ainda não tem rodada anterior (o bloco não aparece), então o teste
-// põe uma de mentira na resposta do arquivo, com fontes de verdade (os nomes saem do próprio arquivo)
+// "O que mudou nesta rodada" (situacao.json, chave "rodada"): o arquivo real tem rodada desde 07/10/2026; os testes de rodada
+// põem uma de mentira na resposta do arquivo, para o texto não depender do que a rodada real trouxe, com fontes de verdade (os nomes saem do próprio arquivo)
 const FONTES_SIT = (lerDados("situacao.json") || { fontes: [] }).fontes || [];
 const reEsc = (t) => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const simularRodada = (rodada) => (caminho) => { if (caminho !== "/dados/situacao.json") return null; const s = lerDados("situacao.json"); s.rodada = rodada; return JSON.stringify(s); };
@@ -367,7 +367,7 @@ const PAGINAS = [
   { nome: "imprensa", url: "/imprensa", ter: [["#imprensa h2", 5], ["#imprensa a[href='/sobre']", 1], ["#imprensa a[href='/atualizacao']", 1], ["#imprensa a[href='/correcoes']", 1], ["#imprensa a[href='/dados-abertos']", 1], ["#imprensa a[href^='mailto:contato@contasdopoder.com']", 1]],
     pagina: [/Para a imprensa/, /sem adjetivos, sem juízo e sem acusações/, /CC BY 4\.0/, /Contas do Poder \(contasdopoder\.com\), a partir de <fonte oficial>, consultado em <data>\./, /Erro nosso é corrigido e registrado/, /contato@contasdopoder\.com/],
     semPagina: [/Laloux|Jean-François|jflaloux|github\.com/i] },
-  { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]], semPagina: [/O que mudou nesta rodada/] },
+  { nome: "atualizacao", url: "/atualizacao", ter: [["#atualizacao tbody tr", 50], ["#atualizacao .estatistica", 2]] }, // desde 07/10/2026 o arquivo real tem "rodada": o bloco "O que mudou nesta rodada" aparece, e os testes de rodada (simularRodada) cobrem o texto
   // com rodada anterior: o texto neutro, os nomes das fontes como links para a linha da lista, e nada de "problema" para quem só tem atraso da fonte
   { nome: "atualizacao-rodada", url: "/atualizacao", ter: [["#rodada li", 3], ["#rodada a[href^='#fonte-']", 3]],
     simular: FONTES_SIT.length > 4 ? simularRodada({ semana: "2026-10-06", anterior: "2026-09-29", quebrou: [FONTES_SIT[1].id, FONTES_SIT[2].id], voltou: [FONTES_SIT[3].id], continua: [] }) : null,
@@ -411,6 +411,32 @@ const PAGINAS = [
       b.click(); await esp(100); if (raiz.dataset.theme === t1) f.push("o segundo clique não trocou de novo");
       localStorage.removeItem("tema"); raiz.removeAttribute("data-theme");
       const p = document.querySelector("#pular"); if (!p) f.push("sem link de pular"); else { p.click(); await esp(100); if (document.activeElement.id !== "app") f.push("o link de pular não levou o foco ao conteúdo"); }
+      return f; })()` },
+  // busca sem resultado: ao Analytics vai só o que tem cara de nome (termoMedivel, no app.js). Em localhost o gtag não existe: o teste põe um gravador no lugar.
+  // Os termos têm "zzqx" para a busca não achar ninguém; cada termo espera os 1,5 s da pausa antes do envio.
+  { nome: "busca-sem-resultado", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), enviados = [];
+      window.gtag = (...a) => { if (a[0] === "event" && a[1] === "busca_sem_resultado") enviados.push(a[2].termo); };
+      const campo = document.querySelector("#busca"), sug = document.querySelector("#sugestoes"); if (!campo || !sug) return ["sem o campo de busca da página inicial"];
+      campo.focus(); await esp(2500);
+      const digitar = async (v, vai) => {
+        campo.value = v; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(1700);
+        if (!/Ninguém encontrado/.test(sug.innerText)) f.push("a busca achou alguém com " + JSON.stringify(v) + ": o caso não vale");
+        campo.value = ""; campo.dispatchEvent(new Event("input", { bubbles: true }));
+      };
+      await digitar("Zzqx Kwvy");                                   // vai: sem acento, minúsculas
+      await digitar("ZZQX   kwvy");                                 // o mesmo termo de novo: uma vez só
+      await digitar("Zzqx d'Ávila");                                // apóstrofo e acento
+      await digitar("Dr. Zzqx João");                               // ponto
+      await digitar("Zzqx 12 34 56 78 90 1");                       // dígitos em grupos de 1 ou 2 (o filtro antigo deixava passar)
+      await digitar("12 34 56 78 90 1");
+      await digitar("123.456.789-00");
+      await digitar("https://zzqx.exemplo/a");                      // endereço de site
+      await digitar("zzqx@exemplo.com");
+      await digitar("zzqx 13");
+      await digitar("zzqx rua das flores quinhentos e vinte tres apto trinta"); // texto longo colado: some, não é cortado
+      const esperado = ["zzqx kwvy", "zzqx d'avila", "dr. zzqx joao"];
+      if (JSON.stringify(enviados) !== JSON.stringify(esperado)) f.push("foram ao Analytics " + JSON.stringify(enviados) + " e deviam ir " + JSON.stringify(esperado));
       return f; })()` },
   { nome: "baixar-csv", acao: true, url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null, depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -513,6 +539,7 @@ const GRUPOS = [
   { nome: "cidade e interior", quando: /secCidade|vereadoresInterior|secPrefeitura|vereadoresCargo|carregarInterior|carregarCargo|interior/, paginas: /^cidade|reserva|bens-cidade/ },
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
+  { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },
