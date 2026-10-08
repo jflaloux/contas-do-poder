@@ -88,6 +88,8 @@ def _ultimos_meses():
         um["federal/atividade"] = int(min(datas)[:7].replace("-", ""))
     for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
         um[f"judiciario/{sigla.lower()}"] = m.get("ultimo_mes")
+    if um.get("judiciario/stm"):  # a consulta oficial do STM completa o mesmo órgão (coleta/judiciario/stm.py)
+        um["judiciario/stm_oficial"] = um["judiciario/stm"]
     for pasta in ("interior", "interior-cargo"):  # valor de cada pessoa (PB, CE) e valor por cargo (ES, PE, RJ)
         for arq in sorted((SITE / pasta).glob("*.json")) if (SITE / pasta).exists() else []:
             meta = _ler(f"{pasta}/{arq.name}").get("meta", {})
