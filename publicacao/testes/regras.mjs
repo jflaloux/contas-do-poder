@@ -131,6 +131,22 @@ console.log("\n-- Busca sem resultado: só nome vai ao Analytics (lista branca t
   }
 }
 
+// ------------------------------------------------------------------ 1d) o HTML pronto de vereador de Câmara sem a verba lida
+console.log("\n-- Câmara sem a verba na fonte que lemos: o HTML pronto diz \"não publicados\" (a mesma regra do app.js)");
+{
+  const END = lerDados("enderecos.json").p, CAMS = lerDados("camaras.json");
+  const html = (id) => { const arq = path.join(PUBLICAR, `${END[id]}.html`); return fs.existsSync(arq) ? fs.readFileSync(arq, "utf8") : ""; };
+  const primeiroDe = (cod) => CAMS.p.find((p) => p.k === "v" && String(p.cid) === String(cod) && END[p.id]);
+  const nao = Object.entries(CAMS.meta.cidades).filter(([, c]) => !c.verba_nome && !c.sem_verba).map(([cod]) => cod);
+  const com = Object.entries(CAMS.meta.cidades).filter(([, c]) => c.verba_nome).map(([cod]) => cod);
+  const erradas = [];
+  for (const cod of nao) { const p = primeiroDe(cod), h = p ? html(p.id) : "";
+    if (!/resumo-parte--texto"><strong>não publicados<\/strong>/.test(h) || !/Os gastos do mandato não aparecem na fonte que lemos/.test(h) || /em gastos do mandato<\/span>/.test(h)) erradas.push(`${CAMS.meta.cidades[cod].n}: o topo do HTML pronto não diz não publicados`); }
+  for (const cod of com) { const p = primeiroDe(cod), h = p ? html(p.id) : "";
+    if (/resumo-parte--texto/.test(h)) erradas.push(`${CAMS.meta.cidades[cod].n}: tem verba e o HTML pronto diz não publicados`); }
+  confere(`o HTML pronto de ${nao.map((c) => CAMS.meta.cidades[c].n).join(" e ") || "nenhuma cidade"} (sem a verba lida) diz "não publicados", e o das ${com.length} cidades com verba não`, nao.length >= 2 && erradas.length === 0, erradas.join(" | "));
+}
+
 // ------------------------------------------------------------------ 2) casos inventados, num build à parte
 console.log("\n-- Casos inventados (build à parte, sem tocar em publicar/)");
 const TMP = fs.mkdtempSync(path.join(os.tmpdir(), "regras-"));

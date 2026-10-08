@@ -571,7 +571,10 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   do gráfico da página do vereador, com uma nota embaixo; no CSV a célula da verba fica em branco. Os meses de `verba_sem`
   (Cuiabá) seguem o mesmo caminho, com “não publicados” (a Câmara não publicou aquele mês). Onde há `sem_verba` (Vitória), a
   página diz que a Câmara não tem verba de gabinete (a lista de gastos, a imagem de compartilhar e o texto da cidade), com o
-  texto da própria Câmara.
+  texto da própria Câmara. Onde a Câmara não tem a verba na fonte que lemos (`verba_nome` nulo e sem `sem_verba`: São Luís e
+  Aracaju), a página do vereador diz “não publicados” no lugar de R$ 0 em gastos do mandato (topo, lista, tabela mês a mês, dica
+  do gráfico, imagem e texto de compartilhar; no CSV a célula fica em branco), sem dizer que a verba não existe
+  (`verbaNaoLida`, no `app.js`; `semVerbaLida`, no `gerar.mjs`, para o HTML pronto).
   Código de cada vereador: o SQ da candidatura de 2024 no TSE. Reserva: TCE-PB.
 - Teresina (`teresina.py`, desde 08/10/2026): a folha da Câmara não traz o nome de cada vereador, por isso o salário é o
   subsídio que ela mostra para todos (R$ 24.754,79 desde jan/2025, conferido em 08/10/2026), pelos dias no cargo; o

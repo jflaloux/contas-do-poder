@@ -351,6 +351,8 @@ const paginas = []; // [caminho, html]
 
 // ------------------------------------------------------------------ políticos
 const cidades = { ...(CAM.meta.cidades || {}), ...(PRE.meta.cidades || {}) };
+// vereador de Câmara sem a verba na fonte que lemos (verba_nome nulo e sem sem_verba): "não publicados", e não R$ 0 (a mesma regra do app.js, verbaNaoLida). Só o meta das Câmaras: o das Prefeituras, de mesmo código, não tem verba_nome
+const semVerbaLida = (p) => { const c = p.k === "v" ? (CAM.meta.cidades || {})[p.cid] : null; return !!c && !c.verba_nome && !c.sem_verba; };
 const estados = (ASS.meta && ASS.meta.estados) || {};
 const pessoas = [...D.p, ...CAM.p, ...PRE.p, ...deputadosEstaduais, ...governadores, ...judiciario];
 // quem só tem o que vai para o bolso (a Prefeitura e o governo do estado não publicam os gastos por pessoa)
@@ -404,6 +406,8 @@ function previaPessoa(p, k, r, texto) {
   let resumo = "";
   if (r) {
     const gm = r.mg ? (r.g - somaUnicos(p, k, r)) / r.mg : 0, cm = r.mc ? r.c / r.mc : 0, salMin = (D.meta.salario_minimo || {})[k];
+    // Câmara sem a verba na fonte que lemos (verba_nome nulo e sem sem_verba): "não publicados", e não R$ 0 (a mesma regra do app.js, verbaNaoLida)
+    const naoLida = semVerbaLida(p);
     // a barra dividida (bolso e gastos) e o valor embaixo de cada pedaço, como no app.js (resumoTopo)
     const parte = `${(gm + cm > 0 ? (gm / (gm + cm)) * 100 : 100).toFixed(1)}%`;
     const partes = soBolso(p)
@@ -411,13 +415,14 @@ function previaPessoa(p, k, r, texto) {
         + `<ul class="resumo-partes resumo-partes--um"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>tudo para o bolso</span></li></ul>`
       : `<div class="resumo-divisao" style="--parte:${parte}" aria-hidden="true"><span class="resumo-divisao__ganha"></span><span class="resumo-divisao__custa"></span></div>`
         + `<ul class="resumo-partes" style="--parte:${parte}" aria-label="De onde vem o custo"><li class="resumo-parte--ganha"><strong>${esc(reais(gm))}</strong><span>para o bolso</span></li>`
-        + `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`;
+        + (naoLida ? `<li class="resumo-parte--custa resumo-parte--texto"><strong>não publicados</strong><span>${gastosNome(p)}</span></li></ul>`
+          : `<li class="resumo-parte--custa"><strong>${esc(reais(cm))}</strong><span>em ${gastosNome(p)}</span></li></ul>`);
     const gk = p.k === "g" ? (p.gp || {})[k] : undefined;
     const como = gk === undefined ? "" : gk === null ? ` (como vice e como ${CARGO_G.gov[p.fem].toLowerCase()})` : (gk === "gv") !== (p.tp === "vice") ? ` (como ${CARGO_G[gk === "gv" ? "vice" : "gov"][p.fem].toLowerCase()})` : "";
     // a mesma estrutura do app.js (resumoTopo, proposta B): à esquerda o número e a divisão que o explica; à direita (a partir de 980 px) o
     // contexto, que aqui só tem os salários mínimos (a mediana e a posição vêm com os dados do app)
     // a frase antes do número (mesma regra do app.js, fraseRecebe): o que recebe e o que usa em gastos, ou só o que existe
-    const frase = soBolso(p) ? "" : gm > 0 && cm > 0 ? `Recebe ${reais(gm)} por mês, bruto, e usa mais ${reais(cm)} em ${gastosNome(p)}.` : gm > 0 ? `Recebe ${reais(gm)} por mês, bruto.`
+    const frase = soBolso(p) ? "" : naoLida && gm > 0 ? `Recebe ${reais(gm)} por mês, bruto. Os ${gastosNome(p)} não aparecem na fonte que lemos.` : gm > 0 && cm > 0 ? `Recebe ${reais(gm)} por mês, bruto, e usa mais ${reais(cm)} em ${gastosNome(p)}.` : gm > 0 ? `Recebe ${reais(gm)} por mês, bruto.`
       : cm > 0 ? `Usa ${reais(cm)} por mês em ${gastosNome(p)}. A fonte não traz salário neste período.` : "";
     resumo = `<div class="conta__resumo conta__resumo--duas"><div class="conta__resumo-numero">${frase ? `<p class="resumo-frase">${esc(frase)}</p>` : ""}<p class="rotulo">${soBolso(p) ? rotuloValor(p) : "Custo total por mês"} ${esc(nomeK(k, p))}${esc(como)}</p>`
       + `<p class="resumo-valor">${esc(reais(gm + cm))}</p><div class="conta__resumo-origem">${partes}</div></div>`
@@ -466,7 +471,7 @@ for (const p of pessoas) {
     else if (p.k === "g") texto = `${rotulo}. ${quando(k, p)}${como}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${deUF(p.uf)}. Veja mês a mês${gk ? ` e compare com os outros ${grupoG}` : ""}.`;
     else if (p.k === "p") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto), pela folha de pagamento ${fonte}. Veja mês a mês e compare com os colegas.`;
     else if (p.k === "t") texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (bruto, antes do abate-teto), pela folha ${fonteJ(p).replace(/^da folha /, "")}${cm ? `, mais ${reais(cm)} por mês em diárias de viagem` : ""}. Veja o contracheque de cada mês, com o link da fonte.`;
-    else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (${bolso}, bruto). Números oficiais ${fonte}, com o link de cada valor.`;
+    else if (!cm) texto = `${rotulo}. ${quando(k, p)}, recebeu ${reais(gm)} por mês, em média (${bolso}, bruto).${semVerbaLida(p) ? " Os gastos do mandato não aparecem na fonte que lemos." : ""} Números oficiais ${fonte}, com o link de cada valor.`;
     else texto = `${rotulo}. ${quando(k, p)}, custou ${reais(gm + cm)} por mês: ${reais(gm)} para o bolso (${bolso}) e ${reais(cm)} ${GASTOS[p.k]}. Números oficiais ${fonte}, com o link de cada valor.`;
   }
   const titulo = `${p.n}: ${soBolso(p) ? "quanto recebe" : "quanto ganha e quanto custa"} | Contas do Poder`;

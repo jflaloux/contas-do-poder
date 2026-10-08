@@ -333,6 +333,24 @@ const PAGINAS = [
       for (const m of ["2026-02", "2026-04", "2026-09"]) if (!new RegExp("," + m + ",[\\\\d.]+,,").test(csv)) f.push("no CSV, a verba de " + m + " devia ficar em branco");
       if (!/,2026-03,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de 2026-03 devia ter valor");
       return f; })()` },
+  // Câmara sem a verba na fonte que lemos (São Luís e Aracaju: verba_nome nulo, sem sem_verba): "não publicados" no lugar de R$ 0 no topo, na lista, na tabela mês a mês e no CSV
+  ...[["sao-luis", "ver-2111300-"], ["aracaju", "ver-2800308-"]].map(([cidade, prefixo]) => ({ nome: `vereador-${cidade}-gastos-nao-publicados`, acao: true, url: primeiro(prefixo), depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), t = (document.querySelector("#contracheque") || {}).innerText || "";
+      if (!/Os gastos do mandato não aparecem na fonte que lemos/.test(t)) f.push("o topo não diz que os gastos do mandato não aparecem na fonte");
+      if (!/não publicados\\s+gastos do mandato/.test(t)) f.push("a divisão do custo não mostra gastos do mandato: não publicados");
+      if (/R\\$ 0\\s+em gastos do mandato/.test(t) || /\\+ R\\$ 0 em gastos/.test(t)) f.push("ainda mostra R$ 0 em gastos do mandato");
+      if (!/Gastos do mandato\\s+não publicados\\s+Não aparecem na fonte que lemos/.test(t)) f.push("a lista de gastos não diz não publicados");
+      const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      if (!linhas.length) f.push("sem a tabela mês a mês");
+      linhas.forEach((l) => { if (l[2] !== "não publicados" || !/sem os gastos/.test(l[3])) f.push(l[0] + ": a tabela diz " + JSON.stringify(l.slice(2))); });
+      const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
+      HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
+      const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return f.concat(["sem o botão Mês a mês (CSV)"]);
+      bt.click(); await esp(200);
+      const csv = guardados.length ? await guardados[0].text() : "", ls = csv.replace(/^\\ufeff/, "").split("\\r\\n").filter(Boolean).slice(1);
+      if (!ls.length) f.push("o CSV não tem linhas");
+      ls.forEach((l) => { if (!/,\\d{4}-\\d{2},[\\d.]+,,/.test(l)) f.push("no CSV, a verba devia ficar em branco: " + l.slice(0, 80)); });
+      return f; })()` })),
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -604,7 +622,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
-  { nome: "capitais sem verba, com verba atrasada ou com mês faltando (João Pessoa, Teresina, Vitória, Cuiabá)", quando: /verbaPendente|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá/, paginas: /joao-pessoa|teresina|vitoria|cuiaba/ },
+  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },

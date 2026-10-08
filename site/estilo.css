@@ -749,6 +749,7 @@ input[type="search"] { line-height: 1.5; }
 .resumo-partes strong { font-family: var(--display); font-weight: 600; font-size: clamp(1.6rem, 6vw, 2.2rem); line-height: 1.05; }
 .resumo-parte--ganha strong { color: var(--banda-ganha); }
 .resumo-parte--custa strong { color: var(--banda-custa); }
+.resumo-partes .resumo-parte--texto strong { font-size: clamp(1.1rem, 4vw, 1.4rem); line-height: 1.2; } /* "não publicados" no lugar do número: menor, para caber numa linha */
 /* "63 salários mínimos por mês" e o selo "+1% vs. mediana": os dois são do total, numa linha logo abaixo do número */
 .resumo-linha { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; margin-top: 4px; }
 .resumo-linha .item__detalhe { margin-top: 0; }
