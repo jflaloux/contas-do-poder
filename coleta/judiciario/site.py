@@ -234,6 +234,8 @@ def montar():
         reserva = sorted(int(f["ano_mes"]) for f in fontes if VIA[org] == "oficial" and "dadosjusbr" in (f.get("url") or "")
                          and int(f["pessoas"] or 0))
         via = "oficial e DadosJusBr" if reserva else VIA[org]
+        if org == "STM" and any("stm.jus.br" in (f.get("url") or "") and int(f["pessoas"] or 0) for f in fontes):
+            via = "DadosJusBr e consulta oficial"  # os meses que o DadosJusBr não tem vêm da consulta oficial (stm.py)
         notas_org = NOTAS.get(org, []) + ([
             f"Meses que vieram do DadosJusBr (licença CC BY 4.0), porque a fonte oficial não abriu para o robô: "
             f"{', '.join(f'{m % 100:02d}/{m // 100}' for m in reserva)}. Voltam a vir da fonte oficial quando ela abrir."] if reserva else [])

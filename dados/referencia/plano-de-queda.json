@@ -101,6 +101,14 @@
   {
    "fonte": "vereadores/sao_luis",
    "se_quebrar": "a folha do Portal da Remuneração é o principal; a lista do site da Câmara (página, partido, foto) é complemento: se falhar, ficam as gravadas (site_vereadores.csv) e a coleta da folha segue"
+  },
+  {
+   "fonte": "vereadores/rio_branco",
+   "se_quebrar": "robô comum portaltp (vereadores/portaltp.py): portal fora do ar ou com outro formato, fica o que foi gravado e o site até o último mês lido; SAPL fora do ar, ficam os mandatos gravados e o \"no cargo\" sai da folha; sem reserva no Tribunal de Contas; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/porto_velho",
+   "se_quebrar": "robô comum portaltp (vereadores/portaltp.py): portal fora do ar ou com outro formato, fica o que foi gravado e o site até o último mês lido (a verba, até o último mês liquidado); SAPL fora do ar, ficam os mandatos gravados e o \"no cargo\" sai da folha; sem reserva no Tribunal de Contas; passou de 1 hora, congelar"
   }
  ]
 }

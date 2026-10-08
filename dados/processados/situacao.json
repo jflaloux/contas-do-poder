@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-08T14:43:33",
+ "gerado_em": "2026-10-08T17:04:49",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -698,11 +698,22 @@
   {
    "fonte": "judiciario/stm",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": "2026-10-07T21:13:15",
    "onde": "exterior",
    "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "judiciario/stm_oficial",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-08T15:48:40",
+   "onde": "brasil",
+   "so_brasil": true,
    "falha_desde": null,
    "erro": null
   },
@@ -993,12 +1004,34 @@
    "erro": null
   },
   {
+   "fonte": "vereadores/porto_velho",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-08T16:29:55",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
    "fonte": "vereadores/recife",
    "situacao": "ok",
    "ultimo_mes": 202609,
    "meses_atras": 0,
    "ultimo_sucesso": "2026-10-07T21:14:14",
    "onde": "exterior",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/rio_branco",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-08T16:26:53",
+   "onde": "brasil",
    "so_brasil": false,
    "falha_desde": null,
    "erro": null

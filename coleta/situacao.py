@@ -333,6 +333,9 @@ def _nomes_e_links():
         saida[f"judiciario/{sigla.lower()}"] = (m.get("n") or sigla, None, m.get("fonte"))
         if m.get("via") and m["via"] != "oficial":
             saida[f"via:judiciario/{sigla.lower()}"] = m["via"]
+        if sigla == "STM":  # os meses que o DadosJusBr não tem, pela consulta oficial (coleta/judiciario/stm.py)
+            saida["judiciario/stm_oficial"] = ("Superior Tribunal Militar (consulta oficial, meses que faltam no DadosJusBr)", None,
+                                               "https://www2.stm.jus.br/rem_web/index.php/ctrl_remuneracao")
     for pasta in ("interior", "interior-cargo"):
         for arq in sorted((SITE / pasta).glob("*.json")) if (SITE / pasta).exists() else []:
             meta = _ler(f"{pasta}/{arq.name}").get("meta", {})

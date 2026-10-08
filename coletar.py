@@ -8,7 +8,8 @@ Uso:
                                        # (dados abertos da Câmara e do Senado), em site/dados/atividade.json (dados/atividade/)
     python3 coletar.py municipios      # câmaras municipais: custo (Tesouro) e vereadores eleitos (TSE)
     python3 coletar.py vereadores      # capitais (São Paulo, Rio, Belo Horizonte, Fortaleza, Goiânia, Maceió, Manaus, Natal, Porto Alegre,
-                                       # Recife, São Luís, Aracaju, Boa Vista, João Pessoa, Teresina, Vitória, Cuiabá): cada vereador,
+                                       # Recife, São Luís, Aracaju, Boa Vista, João Pessoa, Teresina, Vitória, Cuiabá, Rio Branco,
+                                       # Porto Velho): cada vereador,
                                        # com salário, verba do gabinete e equipe (vereadores_sp é o nome antigo)
     python3 coletar.py prefeituras     # São Paulo, Rio (só prefeito e vice), Recife, Fortaleza, Vitória, Porto Alegre, Salvador,
                                        # Curitiba, Natal e Campo Grande: prefeito, vice e secretários (e subprefeitos, em SP), mês a mês,

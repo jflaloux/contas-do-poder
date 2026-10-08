@@ -12,8 +12,9 @@ da Câmara, do Senado e do Portal da Transparência. Um projeto independente e s
   do gabinete e equipe, onde a Assembleia publica.
 - **Judiciário**: os ministros do STF, STJ, TST, STM e TSE, os conselheiros do CNJ e o procurador-geral da República,
   mês a mês desde jan/2025.
-- **Capitais**: cada vereador de 17 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
-  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju, Boa Vista, João Pessoa, Teresina, Vitória e Cuiabá) e o prefeito, o vice e os secretários de nove (São Paulo,
+- **Capitais**: cada vereador de 19 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
+  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju, Boa Vista, João Pessoa, Teresina, Vitória, Cuiabá, Rio Branco e
+  Porto Velho) e o prefeito, o vice e os secretários de nove (São Paulo,
   Recife, Fortaleza, Vitória, Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do
   Rio de Janeiro.
 - **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
@@ -557,6 +558,8 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 | Teresina | cota do mês (quem recebeu) + lista de vereadores da Câmara | subsídio de R$ 24.754,79 (o valor da folha dos vereadores), pelos dias no cargo | Despesas com Atividade Parlamentar, nota por nota (fornecedor, CNPJ, inciso da Resolução 62/2013) | não publicada |
 | Vitória | folha mensal (API da transparência, com posse e saída) + lista de vereadores da Câmara | total do mês na folha: até o subsídio (R$ 17.681,99) é salário, o resto vai para outros pagamentos; 13º à parte | não existe (a Câmara informa que não tem cota parlamentar desde 2023) | secretários de gabinete sem o gabinete: não ligada |
 | Cuiabá | folha mensal (relatório em PDF) com a linha mensal ou a verba; "afastado" não conta | linha mensal (R$ 38.339,04 para a maioria), separada pelas leis: subsídio (R$ 26.080,98, Lei 7.038/2024) em salário, auxílio-saúde (12%, Lei 6.758/2022) em auxílios, gratificação de comissão permanente (35%, Lei 6.904/2023) em outros pagamentos; 13º e rescisões à parte; a conversão de férias de jan/2026 (Lei 7.442/2025) como pagamento único | verba indenizatória de valor fixo (75% da remuneração, Lei 6.910/2023), por mês: na folha até jan/2026, depois em arquivo mensal | não publicada |
+| Rio Branco | folha mensal (portal portaltp, com o salário base) + mandatos no SAPL | parcelas da folha: salário base (R$ 20.864,78), "outros vencimentos" (a folha não diz o que são), auxílio-alimentação, férias, 13º | não aparece nos dados abertos: fica de fora | pessoas, cargos e custo (centro de custo "GAB VEREADOR <nome>") |
+| Porto Velho | folha mensal (portal portaltp, com o salário base) + mandatos no SAPL | parcelas da folha: salário base (R$ 20.864,78), vantagens pessoais, outras remunerações, indenizações, férias, 13º | liquidações de indenização (3.3.90.93.01) a cada vereador, no mês da liquidação, sem notas | pessoas, cargos e custo (lotação "GAB. <nome>") |
 
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
@@ -612,6 +615,16 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   o texto da Câmara que não tem verba. A lista do sistema legislativo dá o nome parlamentar, o partido e a foto (ela
   marca 28 "ativos" para 27 cadeiras e não é usada para o "em exercício"). Abre de fora do Brasil. Sem reserva no
   Tribunal de Contas.
+- Rio Branco e Porto Velho (desde 08/10/2026): o robô comum das Câmaras com o portal da empresa portaltp
+  (`portaltp.py`; um módulo curto por cidade, `rio_branco.py` e `porto_velho.py`, com o endereço e o jeito de achar o
+  gabinete). A folha do mês sai da exportação em JSON da página "Dados Abertos > Servidores" (`/api/pessoal/api-servidores.aspx`:
+  o endereço documentado devolve a própria página; o JSON vem do formulário de exportação, com o ano, o mês e o formato). Cada
+  servidor traz as rubricas (`nome_remNN`, `valor_remNN`); lemos só as parcelas pagas (nunca o documento, que vem com o CPF
+  mascarado, os descontos, o abate-teto e o líquido), e a soma delas é igual ao "salário bruto" da própria folha. Vereador: o
+  cargo; equipe: o centro de custo (Rio Branco) ou a lotação (Porto Velho) do gabinete, por pessoas e custo, sem nomes. Verba
+  de Porto Velho: as liquidações do mês (`/api/despesas/api-liquidacoes.aspx`) no elemento 3.3.90.93.01 com o vereador como
+  favorecido. Mandatos, nome parlamentar e foto: o SAPL de cada Câmara (Crawl-delay de 60 s: os parlamentares vêm numa lista só).
+  Abrem de fora do Brasil (rodada do GitHub). Sem reserva no Tribunal de Contas.
 - Pagamento único (`pagamento_unico`, desde 08/10/2026): o que a folha paga de uma vez e não se repete fica fora da média por
   mês, como a ajuda de custo dos deputados. Em camaras.json, a categoria entra no total e no mês a mês, como a fonte mostra, e
   a pessoa ganha `aj` (o mês e o valor, no formato do `dados.json`) e `un` (`[aaaamm, valor, nota, link, origem]`, com origem
@@ -1191,6 +1204,7 @@ segue com o que já estava gravado. As APIs da Wikimedia ficam de fora (têm reg
 | Assembleia do Rio de Janeiro (DOCIGP) | todo o portal (`Disallow: /`) | Orçamento mensal e lançamentos publicados da verba de cada gabinete | 0,5 s |
 | Câmara de Vitória (transparência) | todo o site (`Disallow: /`) | Folha dos vereadores, pela API do portal | 1 s |
 | Câmara de Cuiabá (portal da transparência, gp.srv.br) | todo o sistema (`Disallow: /`) | Folha dos vereadores (relatório em PDF) e arquivos da verba indenizatória | 1 s |
+| Câmaras de Rio Branco e Porto Velho (portaltp.com.br) | `/api/` (a exportação) | Folha mensal e liquidações (JSON) | 1,5 s |
 | Câmara de São Luís (site principal) | todo o site (`Disallow: /`) | Lista de vereadores (página, partido e foto) | 1 s |
 | STM (consulta de remuneração) | `/rem_web/` | Ministros ativos, nos meses que o DadosJusBr não tem | 2 s |
 

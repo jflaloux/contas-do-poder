@@ -395,10 +395,21 @@
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:18:59"
  },
+ "vereadores/porto_velho": {
+  "ultima_tentativa": "2026-10-08T16:29:55",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-08T16:29:55"
+ },
  "vereadores/recife": {
   "ultima_tentativa": "2026-10-02T15:19:35",
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:19:35"
+ },
+ "vereadores/rio_branco": {
+  "ultima_tentativa": "2026-10-08T16:26:53",
+  "ultimo_erro": "tempo máximo da rodada (continua na próxima)",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-08T16:26:53"
  },
  "vereadores/rio_de_janeiro": {
   "ultima_tentativa": "2026-10-02T14:45:19",

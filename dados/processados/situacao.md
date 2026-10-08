@@ -1,6 +1,6 @@
-# Situação das fontes (08/10/2026 14:43, rodada: brasil)
+# Situação das fontes (08/10/2026 17:04, rodada: brasil)
 
-Último mês fechado: 09/2026. 101 fontes: 93 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
+Último mês fechado: 09/2026. 104 fontes: 96 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
 
 Desde a rodada anterior (semana de 29/09/2026):
 
@@ -73,7 +73,8 @@ Desde a rodada anterior (semana de 29/09/2026):
 | judiciario/pgr | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/stf | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/stj | ok | 08/2026 | 2026-10-07 | exterior |  |
-| judiciario/stm | ok | 08/2026 | 2026-10-07 | exterior |  |
+| judiciario/stm | ok | 09/2026 | 2026-10-07 | exterior |  |
+| judiciario/stm_oficial (só do Brasil) | ok | 09/2026 | 2026-10-08 | brasil |  |
 | judiciario/tse | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/tst | ok | 08/2026 | 2026-10-07 | exterior |  |
 | prefeituras/curitiba | ok | 09/2026 | 2026-10-07 | exterior |  |
@@ -100,7 +101,9 @@ Desde a rodada anterior (semana de 29/09/2026):
 | vereadores/manaus (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/natal (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
 | vereadores/porto_alegre (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
+| vereadores/porto_velho | ok | 09/2026 | 2026-10-08 | brasil |  |
 | vereadores/recife | ok | 09/2026 | 2026-10-07 | exterior |  |
+| vereadores/rio_branco | ok | 09/2026 | 2026-10-08 | brasil |  |
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/sao_luis (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-07 | exterior |  |

@@ -6,11 +6,11 @@ dados/municipios/<cidade>/ (vai para o Git), e `montar(tipos)` devolve (meta, pe
 """
 from .. import onde
 from ..util import TempoEsgotado, log
-from . import (aracaju, belo_horizonte, boa_vista, comum, cuiaba, fortaleza, goiania, joao_pessoa, maceio, manaus, natal, porto_alegre, recife,
-               rio_de_janeiro, sao_luis, sp, teresina, vitoria)
+from . import (aracaju, belo_horizonte, boa_vista, comum, cuiaba, fortaleza, goiania, joao_pessoa, maceio, manaus, natal, porto_alegre,
+               porto_velho, recife, rio_branco, rio_de_janeiro, sao_luis, sp, teresina, vitoria)
 
 CIDADES = [sp, rio_de_janeiro, belo_horizonte, fortaleza, goiania, maceio, manaus, natal, porto_alegre, recife, sao_luis, aracaju, boa_vista, joao_pessoa,
-           teresina, vitoria, cuiaba]
+           teresina, vitoria, cuiaba, rio_branco, porto_velho]
 
 
 def coletar():
