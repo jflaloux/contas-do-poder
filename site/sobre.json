@@ -32,6 +32,7 @@
       "h": "Privacidade e medição das visitas",
       "c": [
         { "p": "O site mede o uso com o Google Analytics, do Google. O que é medido: as páginas vistas e alguns eventos de uso, como abrir a página de um político, trocar o período, abrir a lista de uma fonte, compartilhar uma página e a velocidade com que a página carrega no aparelho. Como em qualquer visita, o Google Analytics também recebe dados técnicos: aparelho e navegador, idioma, localização aproximada (calculada pelo endereço de rede) e de onde a pessoa veio." },
+        { "p": "Busca: quando a busca por nome não encontra ninguém, o site envia ao Google Analytics o que foi digitado, para sabermos que nomes e cidades faltam na base. Só é enviado o que tem cara de nome (letras, até 6 palavras); o que tem números, e-mail ou endereço de site não é enviado. Mesmo assim, não digite dados pessoais na busca." },
         { "p": "Para que serve: saber o que é usado e melhorar o site. Não vendemos dados, não há anúncios e o site não pede nome, e-mail nem cadastro." },
         { "p": "Cookies: o site não usa cookies próprios. O Google Analytics usa cookies (como o _ga) para reconhecer o mesmo navegador entre uma visita e outra." },
         { "p": "Preferências: se você escolher o tema claro ou escuro, o navegador guarda só essa escolha, no próprio aparelho (armazenamento local, que não é cookie). Ela não vai para nenhum servidor e não é usada para medir nada." },
