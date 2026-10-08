@@ -203,7 +203,7 @@
     "fonte_do_dadosjusbr": "painel do CNJ"
    },
    "como_ler": "Pelo DadosJusBr, filtrando o cargo DESEMBARGADOR; quem preside, pela página do tribunal.",
-   "obs": "Exemplo de tribunal com formulário próprio."
+   "obs": "Exemplo de tribunal com formulário próprio. Pacote do DadosJusBr de ago/2026 (contracheque.csv, conferido em 08/10/2026): as mesmas 3.558 linhas e 761 com a função DESEMBARGADOR (756 com local de trabalho 'TRIBUNAL DE JUSTIÇA'); as colunas 'situacao' e 'matricula' vêm vazias em todas as linhas, e a função não diz se é aposentado. O TJSP diz ter 360 desembargadores (https://www.tjsp.jus.br/QuemSomos): os 761 não são todos cargos em atividade."
   },
   {
    "orgao": "TJMG",
@@ -270,8 +270,8 @@
     "lacunas_em_2026": "mar/2026 falta em 11 TJs (AP, GO, MA, MS, PE, PI, RJ, RN, RO, RR, TO); também fev/2026 (PI, RR, TO), abr/2026 (RO, RR, TO), jan/2026 (RR), mai/2026 (BA) e jun/2026 (AM)",
     "link_arquivo_oficial": "não"
    },
-   "como_ler": "Pelo DadosJusBr (um pacote por TJ e mês), filtrando DESEMBARGADOR; o presidente, pela página de composição de cada tribunal.",
-   "obs": "Não amostrado nesta prova (só cobertura)."
+   "como_ler": "Pelo DadosJusBr (um pacote por TJ e mês), filtrando DESEMBARGADOR; o presidente, pela página de composição de cada tribunal. Só com um sinal de quem está em atividade (ver obs).",
+   "obs": "Não amostrado nesta prova (só cobertura). Conferido em 08/10/2026: nos pacotes de ago/2026 do TJSP e do TJRJ, a coluna 'situacao' do contracheque.csv (versão nova do pacote) vem vazia em todas as linhas; o TJRJ marca o aposentado na função ('DESEMBARGADOR APOSENTADO': 205 desembargadores e 172 aposentados), o TJSP não (761 'DESEMBARGADOR' para 360 cargos)."
   },
   {
    "orgao": "MPF (Procurador-Geral da República)",

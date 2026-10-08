@@ -71,11 +71,11 @@
    "vereadores": "a conferir",
    "despesas": "por favorecido, atrás de reCAPTCHA",
    "formato": "HTML, PDF e XLS (com CAPTCHA)",
-   "barreiras": "reCAPTCHA na folha e nas despesas; API com chave",
+   "barreiras": "reCAPTCHA na consulta de pessoal (pesquisa e exportação em PDF e XLS) e nas despesas; em 08/10/2026 a página de pessoal respondeu com erro (HTTP 500). A API de dados abertos (SIGA, https://siga3.tcm.ba.gov.br/webrun/, documentada em https://www.tcm.ba.gov.br/dados-abertos/) abre sem chave nem cadastro, mas só tem municípios, unidades gestoras, publicidade e multas pagas, sem pessoal (conferido em 08/10/2026)",
    "exterior": false,
-   "potencial_folha": "baixo (alto com chave da API)",
+   "potencial_folha": "baixo (alto com acesso em lote à folha)",
    "potencial_despesas": "baixo",
-   "como_ler": "Pedir chave da API (webservice.tcm.ba.gov.br) ou extração pela LAI."
+   "como_ler": "Pedir pela LAI um serviço da API do SIGA ou um arquivo aberto com a folha dos municípios (a API documentada não tem pessoal e não pede chave)."
   },
   {
    "uf": "CE",
@@ -142,15 +142,15 @@
    "tribunal": "TCE-MG",
    "municipios": 853,
    "portal": "https://dadosabertos.tce.mg.gov.br/",
-   "folha": "não",
-   "vereadores": "não",
+   "folha": "sim, em arquivos (conferido em 08/10/2026): o Portal de Dados Abertos tem a categoria CAPMG (Cadastro de Agentes Públicos, que recebe a folha de todos os agentes políticos e servidores dos municípios desde 2013), com remunerações, pessoas e órgãos por município e em pacote do estado, exercícios de 2018 a 2026 (pacote de remunerações dos 853 municípios: 555 MB em 2024, 258 MB em 2026); campos a conferir",
+   "vereadores": "provável (o CAPMG inclui os agentes políticos; a conferir no arquivo)",
    "despesas": "empenhos e contratos por município, em arquivos (campos a conferir)",
-   "formato": "arquivos via API",
-   "barreiras": "reCAPTCHA para obter a sessão da API",
+   "formato": "arquivos via API, por município ou em pacote do estado",
+   "barreiras": "reCAPTCHA (v3, invisível) para obter a sessão da API; a consulta do CAPMG (https://capmg.tce.mg.gov.br/) também pede reCAPTCHA na entrada do cidadão; sem robots.txt; cadeia TLS incompleta (completar com o intermediário do AIA) (conferido em 08/10/2026)",
    "exterior": true,
-   "potencial_folha": "baixo",
+   "potencial_folha": "alto com acesso em lote sem reCAPTCHA (os arquivos já existem)",
    "potencial_despesas": "baixo",
-   "como_ler": "Só com acesso institucional ou pedido pela LAI."
+   "como_ler": "Pedir ao Tribunal acesso em lote aos pacotes do CAPMG sem o reCAPTCHA (chave da API ou endereço direto)."
   },
   {
    "uf": "MS",
@@ -342,11 +342,11 @@
    "vereadores": "não",
    "despesas": "só painel",
    "formato": "painel",
-   "barreiras": "o bloqueio do site (Akamai) recusa robôs",
+   "barreiras": "o bloqueio do site (Akamai) recusa o robô identificado (403), até nas duas APIs documentadas (conferido em 08/10/2026)",
    "exterior": true,
    "potencial_folha": "baixo",
    "potencial_despesas": "baixo",
-   "como_ler": "Nada aberto; pedir acesso ao e-Sfinge."
+   "como_ler": "Nada aberto sobre pessoal: a página 'APIs de dados abertos' (https://www.tcesc.tc.br/apis-dados-abertos) só tem a lista de municípios e a de unidades gestoras (servicos.tcesc.tc.br/endpoints-portal-transparencia/); pedir acesso ao e-Sfinge."
   },
   {
    "uf": "SE",
