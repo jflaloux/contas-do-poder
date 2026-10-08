@@ -12,8 +12,8 @@ da Câmara, do Senado e do Portal da Transparência. Um projeto independente e s
   do gabinete e equipe, onde a Assembleia publica.
 - **Judiciário**: os ministros do STF, STJ, TST, STM e TSE, os conselheiros do CNJ e o procurador-geral da República,
   mês a mês desde jan/2025.
-- **Capitais**: cada vereador de 15 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
-  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju, Boa Vista, João Pessoa e Teresina) e o prefeito, o vice e os secretários de nove (São Paulo,
+- **Capitais**: cada vereador de 17 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
+  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju, Boa Vista, João Pessoa, Teresina, Vitória e Cuiabá) e o prefeito, o vice e os secretários de nove (São Paulo,
   Recife, Fortaleza, Vitória, Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do
   Rio de Janeiro.
 - **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
@@ -167,7 +167,7 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   fotos. Testes: `python3 -m coleta.testes_gravacao` (46 casos inventados, numa pasta temporária).
 - **Tribunal de Contas como reserva das capitais que ele cobre** (`RESERVAS_TCE` em `coleta/situacao.py`): Câmara e
   Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara de João Pessoa (TCE-PB, valor de cada pessoa), Câmara
-  do Recife (TCE-PE) e Prefeitura de Vitória (TCE-ES), as duas últimas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
+  do Recife (TCE-PE) e Câmara e Prefeitura de Vitória (TCE-ES), as três últimas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
   frente dela, a chave `reservas` de `site/dados/situacao.json` marca a reserva como ativa, e a página da cidade usa o
   arquivo do tribunal, com o aviso pronto (`aviso`: no TCE-PE e no TCE-ES, que o valor é o total pago ao cargo, não o
   salário de cada pessoa).
@@ -537,7 +537,7 @@ Robô `coleta/municipios.py`, para as 5.569 câmaras:
 ## Vereadores das capitais, passo 2
 
 Robô `coleta/vereadores/` (`python3 coletar.py vereadores`; `vereadores_sp` é o nome antigo e faz o mesmo). Um
-arquivo por cidade (`sp.py`, `fortaleza.py`, `goiania.py`, `manaus.py`, `natal.py`, `recife.py`, `joao_pessoa.py`, `teresina.py`...): `coletar()` baixa
+arquivo por cidade (`sp.py`, `fortaleza.py`, `goiania.py`, `manaus.py`, `natal.py`, `recife.py`, `joao_pessoa.py`, `teresina.py`, `vitoria.py`, `cuiaba.py`...): `coletar()` baixa
 os dados abertos da Câmara e grava em `dados/municipios/<cidade>/` (vai para o Git); `montar()` entrega tudo no
 formato comum (`comum.py`), e o robô junta as cidades em `site/dados/camaras.json`. Uma cidade que falhar não
 derruba as outras: o site segue com o que já estava gravado. Vereador só se compara com vereador da mesma cidade
@@ -555,6 +555,8 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 | Boa Vista | quadro mensal da verba de cada vereador (PDF) | subsídio fixado (R$ 20.864,78, Resolução 253/2023) | verba indenizatória, por tipo (o total é o "total pago" do quadro) | não publicada |
 | João Pessoa | folha mensal (página da transparência, com nome) + lista de vereadores da Câmara | valor do mês na folha (subsídio de R$ 26.000, Lei 14.702/2022; presidente R$ 32.000) | verba indenizatória, por mês e serviço (contratos e notas em PDF, não lidos) | cargos de gabinete sem o gabinete: não ligada |
 | Teresina | cota do mês (quem recebeu) + lista de vereadores da Câmara | subsídio de R$ 24.754,79 (o valor da folha dos vereadores), pelos dias no cargo | Despesas com Atividade Parlamentar, nota por nota (fornecedor, CNPJ, inciso da Resolução 62/2013) | não publicada |
+| Vitória | folha mensal (API da transparência, com posse e saída) + lista de vereadores da Câmara | total do mês na folha: até o subsídio (R$ 17.681,99) é salário, o resto vai para outros pagamentos; 13º à parte | não existe (a Câmara informa que não tem cota parlamentar desde 2023) | secretários de gabinete sem o gabinete: não ligada |
+| Cuiabá | folha mensal (relatório em PDF) com a linha mensal ou a verba; "afastado" não conta | linha mensal (R$ 38.339,04 para a maioria): até o subsídio (R$ 26.080,98) é salário, o resto (e a gratificação que a folha às vezes separa) vai para outros pagamentos; 13º e rescisões à parte | verba indenizatória de valor fixo (75% da remuneração, Lei 6.910/2023), por mês: na folha até jan/2026, depois em arquivo mensal | não publicada |
 
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
@@ -580,6 +582,23 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   aparece como "Pessoa física" (o CPF não é guardado). Quem está em exercício hoje: a lista de vereadores da Câmara, que
   separa os licenciados. Código: o SQ da candidatura de 2024 no TSE. Sem reserva no Tribunal de Contas.
 - As duas abrem de fora do Brasil (conferido em 08/10/2026) e rodam com as outras no GitHub Actions.
+- Vitória (`vitoria.py`, desde 08/10/2026): a API documentada do Portal da Transparência da Câmara
+  (`/transparencia/api/servidores`, com `cargo=VEREADOR` e `page_size=100`) dá, por mês, nome, matrícula, posse, saída, o
+  total de rendimentos, o 13º e as férias; o filtro de ano que vale é `ano` (o `competencia_ano` da documentação é
+  ignorado, e a API devolve o ano corrente). A API não separa o subsídio do auxílio-alimentação (a ficha de rendimentos
+  de cada vereador, no HTML, separa): até o subsídio é salário, o resto vai para outros pagamentos. Quem está em
+  exercício hoje: a lista do Processo Legislativo Eletrônico (`camarasempapel.cmv.es.gov.br/api/Vereador`, situação
+  "Ativo"), que traz também o nome civil, o partido e a foto. Não guardamos INSS, IRRF, descontos nem a data de
+  nascimento. Só abre do Brasil (rodada mensal). Código: o SQ da candidatura de 2024. Reserva: TCE-ES (valor por cargo).
+- Cuiabá (`cuiaba.py`, desde 08/10/2026): a folha do portal da transparência (gp.srv.br, sistema GeneXus) sai do
+  relatório em PDF do botão "Visualizar em PDF" (`arrelacao_folhapag`, com o código da competência e o cargo VEREADOR):
+  nome (cortado em 38 letras), descrição da folha e total de proventos; descontos e líquido não são guardados. Até
+  jan/2026, a verba indenizatória vem na própria folha, como linha informativa; depois, nos arquivos mensais da página
+  "Verba indenizatória" (o mês vale pelo texto do arquivo: o arquivo de "09/2026" era o de 08/2026). Os meses sem a verba
+  publicada (fev e abr/2026) vão em `verba_sem` (camaras.json) e não contam na média da verba; `sem_verba` (Vitória) é
+  o texto da Câmara que não tem verba. A lista do sistema legislativo dá o nome parlamentar, o partido e a foto (ela
+  marca 28 "ativos" para 27 cadeiras e não é usada para o "em exercício"). Abre de fora do Brasil. Sem reserva no
+  Tribunal de Contas.
 - Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.

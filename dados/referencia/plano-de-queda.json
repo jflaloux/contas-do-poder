@@ -81,6 +81,14 @@
   {
    "fonte": "vereadores/teresina",
    "se_quebrar": "o subsídio segue pelo valor fixo (R$ 24.754,79, o da folha da Câmara); a cota fica até o último mês lido e, sem o detalhe de um pagamento, entra o valor pago sem as notas; sem reserva no Tribunal de Contas; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/vitoria",
+   "se_quebrar": "reserva automática no TCE-ES (site/dados/interior-cargo/es.json, valor por cargo): se a API da folha da Câmara falhar ou ficar 2 meses atrás, a página da cidade passa a mostrar o valor do TCE-ES, com aviso; a folha e a lista ficam até o último mês lido; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/cuiaba",
+   "se_quebrar": "a folha (relatório em PDF) e a verba ficam até o último mês lido (verba_ate; os meses sem arquivo, \"não publicados\"); sem reserva no Tribunal de Contas (o TCE-MT não tem robô); passou de 1 hora, congelar"
   }
  ]
 }

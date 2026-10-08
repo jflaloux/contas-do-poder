@@ -9,8 +9,9 @@ Fontes:
   número de pessoas e o custo bruto por mês e a contagem de cargos do último mês. Descontos, líquido, CPF, matrícula e
   nomes de servidores não são guardados.
 - Nome de urna, nome completo, partido e gênero: TSE (eleição de 2024).
-Não coletado: o site principal da Câmara tem robots.txt "Disallow: /" — por isso ficam de fora as fotos, a página de
-cada vereador e a verba indenizatória (cota parlamentar), que só são publicadas lá.
+Ainda não coletado: o site principal da Câmara (robots.txt "Disallow: /", que desde 08/10/2026 não impede a leitura) —
+por isso ficam de fora as fotos, a página de cada vereador e a verba indenizatória (cota parlamentar), que só são
+publicadas lá.
 """
 import hashlib
 import html as html_lib
@@ -357,7 +358,7 @@ def montar(tipos):
 
     sub = _subsidio(fv)
     cfg = dict(CFG, ultimo_mes=ultimo, equipe_em=ultimo_eq, subsidio=sub, salario_nota=_salario_nota(fv, sub),
-               notas=["O site principal da Câmara bloqueia robôs (robots.txt), por isso aqui não há fotos, nem a página de cada vereador, "
+               notas=["O robô ainda não lê o site principal da Câmara, por isso aqui não há fotos, nem a página de cada vereador, "
                       "nem a verba indenizatória (cota parlamentar), que só é publicada lá.",
                       "Quem estava no cargo em cada mês vem da folha de pagamento: os vereadores pagos naquele mês (titulares e suplentes que assumiram)."])
     return comum.montar(cfg, tipos, ver, mandatos, ganha=ganha, equipe=equipe, cargos=cargos)

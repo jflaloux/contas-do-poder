@@ -39,7 +39,7 @@ SO_O_QUE_FALTA = False
 # Fontes que não abrem de fora do Brasil (conferido em 01/10/2026 de um servidor nos EUA e de um computador no Brasil). Em dúvida, a fonte
 # fica fora daqui: se falhar no exterior, a rodada do Brasil passa a rodá-la sozinha (ver precisa_brasil).
 SO_BRASIL = {
-    "vereadores": {"belo_horizonte", "fortaleza", "maceio", "manaus", "natal", "porto_alegre", "rio_de_janeiro", "sao_luis"},
+    "vereadores": {"belo_horizonte", "fortaleza", "maceio", "manaus", "natal", "porto_alegre", "rio_de_janeiro", "sao_luis", "vitoria"},
     "prefeituras": {"natal"},
     "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs"},  # pr, rn, pi, pa, ac, rr, mt abrem de fora
     "folhas": {"AL", "AM", "CE", "MA", "PA", "PB", "PI", "RJ", "RN", "SE"},

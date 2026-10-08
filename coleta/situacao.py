@@ -362,6 +362,7 @@ RESERVAS_TCE = {
     "prefeituras/fortaleza": {"tribunal": "TCE-CE", "arquivo": "interior/ce.json", "cid": "2304400", "tipo": "pessoa", "parte": "prefeitura"},
     "vereadores/recife": {"tribunal": "TCE-PE", "arquivo": "interior-cargo/pe.json", "cid": "2611606", "tipo": "cargo", "parte": "camara"},
     "vereadores/joao_pessoa": {"tribunal": "TCE-PB", "arquivo": "interior/pb.json", "cid": "2507507", "tipo": "pessoa", "parte": "camara"},
+    "vereadores/vitoria": {"tribunal": "TCE-ES", "arquivo": "interior-cargo/es.json", "cid": "3205309", "tipo": "cargo", "parte": "camara"},
     "prefeituras/vitoria": {"tribunal": "TCE-ES", "arquivo": "interior-cargo/es.json", "cid": "3205309", "tipo": "cargo", "parte": "prefeitura"},
 }
 AVISO_RESERVA = {

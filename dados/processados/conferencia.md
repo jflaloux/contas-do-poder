@@ -1,4 +1,4 @@
-# Conferência dos dados — 08/10/2026 13:51
+# Conferência dos dados — 08/10/2026 14:43
 
 ## 1. Cobertura
 
@@ -127,6 +127,9 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de João Pessoa com gastos do gabinete no mês retrasado | 28 | 17 | OK |
 | Vereadores de Teresina no cargo (camaras.json) | 28 | 24 | OK |
 | Vereadores de Teresina com gastos do gabinete no mês retrasado | 29 | 17 | OK |
+| Vereadores de Vitória no cargo (camaras.json) | 21 | 17 | OK |
+| Vereadores de Cuiabá no cargo (camaras.json) | 27 | 22 | OK |
+| Vereadores de Cuiabá com gastos do gabinete no mês retrasado | 27 | 16 | OK |
 | Prefeitura de São Paulo: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de São Paulo: secretários na folha do último mês | 24 | 14 | OK |
 | Prefeitura do Rio de Janeiro: prefeito na folha do último mês | 1 | 1 | OK |

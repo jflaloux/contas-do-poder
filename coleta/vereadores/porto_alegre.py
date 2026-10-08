@@ -19,8 +19,8 @@ Fontes (dados abertos da Câmara, sem cadastro; os portais da Câmara só respon
   subsídio de 13º em dezembro: https://www.camarapoa.rs.gov.br/draco/processos/138806/Lei_13575.pdf
 - Nome de urna, nome completo, partido e gênero: TSE (eleição de 2024). O código de cada vereador aqui é o número do
   candidato no TSE (SQ_CANDIDATO), que não muda quando a pessoa sai da lista da Câmara.
-A folha de pagamento e a lista de servidores (transparencia.camarapoa.rs.gov.br/remuneracoes e /pessoas) não são lidas:
-o robots.txt do portal pede que robôs não entrem nessas páginas.
+A folha de pagamento e a lista de servidores (transparencia.camarapoa.rs.gov.br/remuneracoes e /pessoas) ainda não são
+lidas (o robots.txt do portal pede que robôs não entrem nessas páginas; desde 08/10/2026 isso não impede a leitura).
 """
 import html as html_lib
 import json
@@ -62,14 +62,13 @@ CFG = {
     "salario_nota": ("Subsídio fixado pela Lei 13.575/2023 para 2025 a 2028, igual para o presidente da Câmara e os demais "
                      "vereadores. A lei também prevê o 13º (um subsídio a mais em dezembro), que não entra aqui, e permite "
                      "correção anual por Resolução de Mesa: não achamos nenhuma correção publicada até agora."),
-    "equipe_aviso": "A Câmara publica a equipe de cada gabinete, mas pede que robôs não a leiam.",
+    "equipe_aviso": "A Câmara publica a equipe de cada gabinete, mas o robô ainda não a lê.",
     "credito_foto": "Câmara Municipal de Porto Alegre", "pagina": f"{SITE}/vereadores",
     "notas": ["Quem estava no cargo em cada mês vem da QBM: todo mês cada gabinete em exercício recebe o crédito da quota. "
               "Suplentes que assumiram só por alguns dias, sem gabinete próprio na QBM, não aparecem, e esses dias contam "
               "para o titular.",
-              "A Câmara publica a folha de pagamento e a lista de servidores de cada gabinete no Portal da Transparência, "
-              "mas pede (no robots.txt do portal) que robôs não leiam essas páginas. Por isso a equipe dos gabinetes não "
-              "aparece aqui."],
+              "A Câmara publica a folha de pagamento e a lista de servidores de cada gabinete no Portal da Transparência; o "
+              "robô ainda não lê essas páginas, por isso a equipe dos gabinetes não aparece aqui."],
     "fontes": {"vereadores": f"{SITE}/vereadores", "qbm": QBM_PAGINA, "legislatura": f"{SITE}/legislatura",
                "subsidio": f"{SITE}/draco/processos/138806/Lei_13575.pdf",
                "qbm_normas": "https://legislacao.camarapoa.rs.gov.br/normas-qbm-quota-mensal-basica-parlamentar-na-camara/"},

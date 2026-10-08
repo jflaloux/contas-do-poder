@@ -238,9 +238,9 @@ CFG = {
     "fonte": "Tribunal de Contas do Estado da Paraíba (TCE-PB), Portal de Dados Abertos: a folha de pagamento que cada "
              "município manda ao Tribunal (Servidores, dados consolidados)",
     "url": PORTAL,
-    "nota": "Valor bruto do mês, como a Câmara ou a Prefeitura informou ao Tribunal de Contas da Paraíba, antes dos "
-            "descontos. A folha do Tribunal não separa salário, 13º, férias e outros pagamentos: um mês com valor "
-            "maior pode ter 13º, férias ou atrasados.",
+    "nota": "Valor bruto do mês na folha que o município manda ao Tribunal de Contas da Paraíba, antes dos descontos. "
+            "A folha do Tribunal não separa salário, 13º, férias e outros pagamentos: um mês com valor maior pode ter "
+            "13º, férias ou atrasados.",
     "notas": ["Cada município manda a sua folha ao Tribunal todo mês; o mês que ainda não foi mandado aparece sem valor.",
               "Dezembro de 2025 não está nos arquivos de dados abertos do Tribunal (o arquivo de 2025 vai até "
               "novembro): o mês aparece sem valor em todas as cidades.",

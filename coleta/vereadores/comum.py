@@ -512,6 +512,9 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
     equipe = equipe[equipe.aaaamm <= ate]
     subsidio = cfg.get("subsidio") or []
     verba_ate = cfg.get("verba_ate") or 999999
+    # meses em que a Câmara não publicou a verba (nem no arquivo do mês nem na folha): não contam na média da verba, e o
+    # site diz "não publicada" em vez de R$ 0 (Cuiabá: fev e abr/2026)
+    verba_sem = {int(x) for x in (cfg.get("verba_sem") or [])}
 
     def valor_subsidio(am):
         v = 0
@@ -575,7 +578,7 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
             m = sum(1 for x in s if x[5] or abs(x[1]) >= 0.5)
             mg = sum(1 for x in s if abs(x[1]) >= 0.5)
             # verba_ate: último mês com a verba publicada (a verba sai depois da folha); os meses seguintes não contam
-            mc = sum(1 for x in s if (x[5] or abs(x[2]) >= 0.5) and x[0] <= verba_ate)
+            mc = sum(1 for x in s if (x[5] or abs(x[2]) >= 0.5) and x[0] <= verba_ate and x[0] not in verba_sem)
             com_eq = [x for x in s if x[3] >= 0.5]
             com_pes = [x for x in s if x[4] > 0]
             cats = {}
@@ -659,6 +662,10 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
         "verba_fora": cfg.get("verba_fora") or [],  # anos em que a verba ficou de fora (fonte com erro)
         # último mês com a verba publicada, quando a verba sai depois da folha (só nas cidades em que isso acontece)
         **({"verba_ate": int(cfg["verba_ate"])} if cfg.get("verba_ate") and int(cfg["verba_ate"]) < ate else {}),
+        # meses sem a verba publicada no meio da série (fora deles, a verba é a publicada)
+        **({"verba_sem": sorted(m for m in verba_sem if int(cfg["inicio"]) <= m <= min(ate, verba_ate))} if verba_sem else {}),
+        # Câmara que não tem verba de gabinete nem cota (Vitória): o texto da Câmara, para o site não dizer "sem dados abertos"
+        **({"sem_verba": cfg["sem_verba"]} if cfg.get("sem_verba") else {}),
     }
     return meta, pessoas
 
