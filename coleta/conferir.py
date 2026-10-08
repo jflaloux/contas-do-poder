@@ -50,7 +50,9 @@ def _vereadores_capitais():
     for cod, c in d["meta"]["cidades"].items():
         ult = c["ultimo_mes"]
         retrasado = ult - 1 if ult % 100 > 1 else ult - 89
-        ps = [p for p in d["p"] if str(p.get("cid")) == cod]
+        if c.get("verba_ate"):  # a verba sai depois da folha (João Pessoa): confere o último mês com a verba publicada
+            retrasado = min(retrasado, int(c["verba_ate"]))
+        ps =[p for p in d["p"] if str(p.get("cid")) == cod]
         com_gasto = sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
         if str(retrasado // 100) in (c.get("verba_fora") or []) or c.get("conferir_gastos") is False:
             # a verba desse ano ficou de fora de propósito (o site da Câmara está com erro, e o site avisa), ou a cidade

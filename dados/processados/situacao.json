@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-07T21:48:02",
+ "gerado_em": "2026-10-08T13:25:56",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -927,6 +927,17 @@
    "erro": null
   },
   {
+   "fonte": "vereadores/joao_pessoa",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": "2026-10-08T13:21:19",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
    "fonte": "vereadores/maceio",
    "situacao": "ok",
    "ultimo_mes": 202609,
@@ -1010,6 +1021,17 @@
    "meses_atras": 0,
    "ultimo_sucesso": "2026-10-07T21:13:28",
    "onde": "exterior",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "vereadores/teresina",
+   "situacao": "ok",
+   "ultimo_mes": 202608,
+   "meses_atras": 1,
+   "ultimo_sucesso": "2026-10-08T13:25:16",
+   "onde": "brasil",
    "so_brasil": false,
    "falha_desde": null,
    "erro": null

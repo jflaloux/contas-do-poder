@@ -12,8 +12,8 @@ da Câmara, do Senado e do Portal da Transparência. Um projeto independente e s
   do gabinete e equipe, onde a Assembleia publica.
 - **Judiciário**: os ministros do STF, STJ, TST, STM e TSE, os conselheiros do CNJ e o procurador-geral da República,
   mês a mês desde jan/2025.
-- **Capitais**: cada vereador de 13 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
-  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju e Boa Vista) e o prefeito, o vice e os secretários de nove (São Paulo,
+- **Capitais**: cada vereador de 15 capitais (São Paulo, Rio de Janeiro, Belo Horizonte, Fortaleza, Goiânia, Maceió,
+  Manaus, Natal, Porto Alegre, Recife, São Luís, Aracaju, Boa Vista, João Pessoa e Teresina) e o prefeito, o vice e os secretários de nove (São Paulo,
   Recife, Fortaleza, Vitória, Porto Alegre, Salvador, Curitiba, Natal e Campo Grande), além do prefeito e do vice do
   Rio de Janeiro.
 - **Interior do Ceará e da Paraíba**: vereadores, prefeito e vice de cada cidade, pela folha que o município manda ao
@@ -166,8 +166,8 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   a cada rodada; a proteção fica em `dados/processados/` e no `dados.json`), os arquivos de controle e de situação e as
   fotos. Testes: `python3 -m coleta.testes_gravacao` (46 casos inventados, numa pasta temporária).
 - **Tribunal de Contas como reserva das capitais que ele cobre** (`RESERVAS_TCE` em `coleta/situacao.py`): Câmara e
-  Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara do Recife (TCE-PE) e Prefeitura de Vitória (TCE-ES),
-  as duas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
+  Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara de João Pessoa (TCE-PB, valor de cada pessoa), Câmara
+  do Recife (TCE-PE) e Prefeitura de Vitória (TCE-ES), as duas últimas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
   frente dela, a chave `reservas` de `site/dados/situacao.json` marca a reserva como ativa, e a página da cidade usa o
   arquivo do tribunal, com o aviso pronto (`aviso`: no TCE-PE e no TCE-ES, que o valor é o total pago ao cargo, não o
   salário de cada pessoa).
@@ -537,7 +537,7 @@ Robô `coleta/municipios.py`, para as 5.569 câmaras:
 ## Vereadores das capitais, passo 2
 
 Robô `coleta/vereadores/` (`python3 coletar.py vereadores`; `vereadores_sp` é o nome antigo e faz o mesmo). Um
-arquivo por cidade (`sp.py`, `fortaleza.py`, `goiania.py`, `manaus.py`, `natal.py`, `recife.py`): `coletar()` baixa
+arquivo por cidade (`sp.py`, `fortaleza.py`, `goiania.py`, `manaus.py`, `natal.py`, `recife.py`, `joao_pessoa.py`, `teresina.py`...): `coletar()` baixa
 os dados abertos da Câmara e grava em `dados/municipios/<cidade>/` (vai para o Git); `montar()` entrega tudo no
 formato comum (`comum.py`), e o robô junta as cidades em `site/dados/camaras.json`. Uma cidade que falhar não
 derruba as outras: o site segue com o que já estava gravado. Vereador só se compara com vereador da mesma cidade
@@ -553,13 +553,32 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
 | Recife | folha mensal (CSV) + e-Processo | folha bruta (subsídio, 13º, 1/3 de férias) | Verba Indenizatória, por tipo | pessoas, cargos e custo |
 | Aracaju | folha mensal (planilha; o PDF quando a planilha vem vazia) | valor bruto da folha | VAEP em PDF de imagem: ainda fora | lotação genérica ("gabinete de vereador"): não ligada ao gabinete |
 | Boa Vista | quadro mensal da verba de cada vereador (PDF) | subsídio fixado (R$ 20.864,78, Resolução 253/2023) | verba indenizatória, por tipo (o total é o "total pago" do quadro) | não publicada |
+| João Pessoa | folha mensal (página da transparência, com nome) + lista de vereadores da Câmara | valor do mês na folha (subsídio de R$ 26.000, Lei 14.702/2022; presidente R$ 32.000) | verba indenizatória, por mês e serviço (contratos e notas em PDF, não lidos) | cargos de gabinete sem o gabinete: não ligada |
+| Teresina | cota do mês (quem recebeu) + lista de vereadores da Câmara | subsídio de R$ 24.754,79 (o valor da folha dos vereadores), pelos dias no cargo | Despesas com Atividade Parlamentar, nota por nota (fornecedor, CNPJ, inciso da Resolução 62/2013) | não publicada |
 
 - Nome civil, gênero e partido: TSE (eleição de 2024); os nomes são casados entre as fontes com tolerância a
   abreviações e erros de digitação (`comum.semelhanca`).
 - O CPF dos assessores não é guardado, e os descontos da folha (como empréstimos) não são lidos.
-- Teresina e João Pessoa: as Câmaras mudaram de endereço (teresina.pi.leg.br e joaopessoa.pb.leg.br). Os endereços
-  antigos não respondem, e o robô tratava a falta de robots.txt como proibição (RFC 9309): não há proibição, os robôs
-  ficam a fazer com os endereços novos. Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
+- João Pessoa (`joao_pessoa.py`, desde 08/10/2026): a folha da página de Recursos Humanos da transparência
+  (joaopessoa.pb.leg.br, POST com o mês) traz nome, cargo, regime, admissão e o valor do mês, sem CPF e sem lotação;
+  guardamos só as linhas de regime eletivo. Quem estava no cargo em cada mês: quem está na folha; a data de admissão dá
+  o dia da posse, e o valor de um mês pago pela metade dá o dia da saída. Quem está em exercício hoje: a lista de
+  vereadores da Câmara (nome parlamentar, casado com o nome de urna do TSE). A verba indenizatória sai uns meses depois
+  da folha: `verba_ate` (camaras.json) diz o último mês publicado, e os meses seguintes não contam na média da verba.
+  Código de cada vereador: o SQ da candidatura de 2024 no TSE. Reserva: TCE-PB.
+- Teresina (`teresina.py`, desde 08/10/2026): a folha da Câmara não traz o nome de cada vereador, por isso o salário é o
+  subsídio que ela mostra para todos (R$ 24.754,79 desde jan/2025, conferido em 08/10/2026), pelos dias no cargo; o
+  robô não lê a folha. A cota (Despesas com Atividade Parlamentar, consulta PrimeFaces do portal da transparência) traz
+  cada pagamento e, no detalhe, o mês das despesas e as notas: o pagamento entra nesse mês, e quem recebeu a cota de um
+  mês estava no cargo naquele mês (o último mês é o último em que quase todos já receberam). O detalhe de cada pagamento
+  é lido uma vez (os recentes sem notas, de novo por 4 meses). A consulta traz também pagamentos que não são cota (INSS,
+  empresas, a própria Câmara): só entra quem foi candidato a vereador em 2024 na cidade ou está na página da Câmara. Sem
+  o mês no detalhe, vale a data do pagamento; um mês sem cota entre dois com ela, num mês com menos vereadores pagos que
+  cadeiras, conta como no cargo; notas que passam do valor pago são reduzidas na mesma proporção; fornecedor com CPF
+  aparece como "Pessoa física" (o CPF não é guardado). Quem está em exercício hoje: a lista de vereadores da Câmara, que
+  separa os licenciados. Código: o SQ da candidatura de 2024 no TSE. Sem reserva no Tribunal de Contas.
+- As duas abrem de fora do Brasil (conferido em 08/10/2026) e rodam com as outras no GitHub Actions.
+- Palmas e Curitiba publicam em sistemas em JavaScript (NúcleoGov e prodata; Betha Cloud), ainda a fazer.
 - SAPL de Fortaleza e de Natal: o robots.txt pede 60 s entre pedidos, então só pedimos a lista de mandatos e,
   em Fortaleza, no máximo 6 fotos por semana.
 - Fotos: as da Câmara Municipal; quem está no cargo sem foto da Câmara recebe a foto da candidatura de 2024 no TSE
@@ -944,8 +963,8 @@ site: `python3 -m coleta.tce site`), para os 223 municípios da Paraíba e os 18
   numa linha (cargo, partido quando casou com o TSE, "passa do teto" quando o valor típico passa, o valor típico e a
   série mês a mês em colunas pequenas), quem passou pela Câmara no período, a tabela de todos os meses e as notas (meses
   sem folha, folha sem vereadores). Na seção "Prefeitura", o prefeito e o vice (ou a frase de que não aparecem na folha
-  do último mês) e, na Paraíba, os secretários. A capital com dados próprios (Fortaleza) usa os dela; João Pessoa usa
-  estes. O valor típico também entra no texto da página pronta, no texto para compartilhar e na imagem da cidade.
+  do último mês) e, na Paraíba, os secretários. A capital com dados próprios usa os dela, parte por parte (Fortaleza; em
+  João Pessoa, a Câmara, desde 08/10/2026), e o tribunal fica de reserva; a Prefeitura de João Pessoa usa estes. O valor típico também entra no texto da página pronta, no texto para compartilhar e na imagem da cidade.
 - **Ago/2026**: Paraíba, 2.200 vereadores em 222 das 223 câmaras (valor mediano R$ 6.950), 218 prefeitos, 211 vices e
   1.446 secretários em 188 cidades; Ceará, 2.238 vereadores em 182 das 184 câmaras (mediano R$ 10.400), 178 prefeitos e
   167 vices. Em algumas cidades o prefeito não aparece na folha. O número de vereadores de um mês pode passar o de

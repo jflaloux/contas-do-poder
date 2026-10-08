@@ -360,6 +360,11 @@
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:06:13"
  },
+ "vereadores/joao_pessoa": {
+  "ultima_tentativa": "2026-10-08T13:21:19",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-08T13:21:19"
+ },
  "vereadores/maceio": {
   "ultima_tentativa": "2026-10-02T15:09:02",
   "falhas": 0,
@@ -399,6 +404,11 @@
   "ultima_tentativa": "2026-10-02T14:45:06",
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T14:45:06"
+ },
+ "vereadores/teresina": {
+  "ultima_tentativa": "2026-10-08T13:25:16",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-08T13:25:16"
  },
  "viagens/AM": {
   "ultima_tentativa": "2026-10-03T15:09:49",

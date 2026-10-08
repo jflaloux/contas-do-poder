@@ -1,4 +1,4 @@
-# Conferência dos dados — 07/10/2026 21:48
+# Conferência dos dados — 08/10/2026 13:25
 
 ## 1. Cobertura
 
@@ -57,9 +57,8 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
-- Comparações senador × ano: 327
+- Comparações senador × ano: 324
 - **Diferenças de R$ 1 ou mais: 0**
-- Não comparados: 1 senador(es) × ano de quem já saiu do exercício, em que o total da API parou no dia da saída.
 
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
@@ -81,16 +80,16 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 - Dorinaldo Malafaia — 06/2026: R$ 50,642.02
 - Waldez Góes — 08/2026: R$ 48,606.69
 - Delegado Éder Mauro — 01/2026: R$ 47,354.26
-- Fernanda Machiaveli — 06/2026: R$ 46,366.21
-- Fernanda Machiaveli — 04/2026: R$ 46,366.21
-- Fernanda Machiaveli — 07/2026: R$ 46,366.21
 - Fernanda Machiaveli — 08/2026: R$ 46,366.21
-- Fernanda Machiaveli — 05/2026: R$ 46,366.21
+- Fernanda Machiaveli — 07/2026: R$ 46,366.21
+- Fernanda Machiaveli — 06/2026: R$ 46,366.21
+- Esther Dweck — 04/2026: R$ 46,366.21
+- Esther Dweck — 05/2026: R$ 46,366.21
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
-- Senadores comparados: 78
-- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 32
+- Senadores comparados: 81
+- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 34
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 7. Sanidade (trava a publicação automática)
@@ -120,6 +119,10 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de Aracaju no cargo (camaras.json) | 25 | 20 | OK |
 | Vereadores de Boa Vista no cargo (camaras.json) | 23 | 19 | OK |
 | Vereadores de Boa Vista com gastos do gabinete no mês retrasado | 23 | 13 | OK |
+| Vereadores de João Pessoa no cargo (camaras.json) | 29 | 24 | OK |
+| Vereadores de João Pessoa com gastos do gabinete no mês retrasado | 28 | 17 | OK |
+| Vereadores de Teresina no cargo (camaras.json) | 28 | 24 | OK |
+| Vereadores de Teresina com gastos do gabinete no mês retrasado | 29 | 17 | OK |
 | Prefeitura de São Paulo: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de São Paulo: secretários na folha do último mês | 24 | 14 | OK |
 | Prefeitura do Rio de Janeiro: prefeito na folha do último mês | 1 | 1 | OK |

@@ -1,6 +1,6 @@
 {
  "sobre": "O que fazer quando quebra cada fonte de risco alto do raio-X (dados/processados/raio-x-fontes.md). Regra geral: o robô que falha não apaga o último dado bom; conserto só se couber em cerca de 1 hora; passou disso, a fonte vai para onde.CONGELADAS (o site mostra 'dados até' e, onde houver, o valor da lei ou a reserva). Folha de governador: a lei é o número, a folha é complemento. O relatório de situação (dados/processados/situacao.md) mostra o plano ao lado de cada fonte que falhar.",
- "atualizado_em": "2026-10-03",
+ "atualizado_em": "2026-10-08",
  "fontes": [
   {
    "fonte": "judiciario/cnj",
@@ -73,6 +73,14 @@
   {
    "fonte": "vereadores/fortaleza",
    "se_quebrar": "reserva automática no TCE-CE, ensaiada em 07/10/2026: a mediana do valor bruto dos vereadores em cada mês sem 13º (todos menos jun/2025, dez/2025 e jun/2026, em que o 13º vem dentro do bruto) é igual ao subsídio_mes.csv da Câmara (R$ 20.139,20 em jan/2025 e R$ 26.080,98 depois); o TCE-CE não traz vice-prefeito de Fortaleza"
+  },
+  {
+   "fonte": "vereadores/joao_pessoa",
+   "se_quebrar": "reserva automática no TCE-PB (site/dados/interior/pb.json, vereador por vereador): se a folha da Câmara falhar ou ficar 2 meses atrás, a página da cidade passa a mostrar o valor do TCE-PB, com aviso; a folha, a verba e a lista ficam até o último mês lido; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/teresina",
+   "se_quebrar": "o subsídio segue pelo valor fixo (R$ 24.754,79, o da folha da Câmara); a cota fica até o último mês lido e, sem o detalhe de um pagamento, entra o valor pago sem as notas; sem reserva no Tribunal de Contas; passou de 1 hora, congelar"
   }
  ]
 }

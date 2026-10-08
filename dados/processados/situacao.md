@@ -1,6 +1,6 @@
-# Situação das fontes (07/10/2026 21:48, rodada: exterior)
+# Situação das fontes (08/10/2026 13:25, rodada: brasil)
 
-Último mês fechado: 09/2026. 97 fontes: 89 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
+Último mês fechado: 09/2026. 99 fontes: 91 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
 
 Desde a rodada anterior (semana de 29/09/2026):
 
@@ -94,6 +94,7 @@ Desde a rodada anterior (semana de 29/09/2026):
 | vereadores/boa_vista | ok | 08/2026 | 2026-10-07 | exterior |  |
 | vereadores/fortaleza (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | vereadores/goiania | ok | 09/2026 | 2026-10-07 | exterior |  |
+| vereadores/joao_pessoa | ok | 08/2026 | 2026-10-08 | brasil |  |
 | vereadores/maceio (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/manaus (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/natal (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
@@ -102,6 +103,7 @@ Desde a rodada anterior (semana de 29/09/2026):
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/sao_luis (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-07 | exterior |  |
+| vereadores/teresina | ok | 08/2026 | 2026-10-08 | brasil |  |
 | viagens/AM (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
 | viagens/MG | ok | 09/2026 | 2026-10-07 | exterior |  |
 | viagens/PB (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |

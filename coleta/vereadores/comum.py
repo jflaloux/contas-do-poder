@@ -433,6 +433,7 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
     ganha = ganha[ganha.aaaamm <= ate]
     equipe = equipe[equipe.aaaamm <= ate]
     subsidio = cfg.get("subsidio") or []
+    verba_ate = cfg.get("verba_ate") or 999999
 
     def valor_subsidio(am):
         v = 0
@@ -495,7 +496,8 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
                 return None
             m = sum(1 for x in s if x[5] or abs(x[1]) >= 0.5)
             mg = sum(1 for x in s if abs(x[1]) >= 0.5)
-            mc = sum(1 for x in s if x[5] or abs(x[2]) >= 0.5)
+            # verba_ate: último mês com a verba publicada (a verba sai depois da folha); os meses seguintes não contam
+            mc = sum(1 for x in s if (x[5] or abs(x[2]) >= 0.5) and x[0] <= verba_ate)
             com_eq = [x for x in s if x[3] >= 0.5]
             com_pes = [x for x in s if x[4] > 0]
             cats = {}
@@ -575,6 +577,8 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
         "equipe_em": cfg.get("equipe_em") or "", "equipe_custo": bool(len(equipe)) and bool(pd.to_numeric(equipe.custo, errors="coerce").fillna(0).gt(0).any()),
         "equipe_nota": cfg.get("equipe_nota"), "equipe_aviso": cfg.get("equipe_aviso"), "conferir_gastos": cfg.get("conferir_gastos", True), "notas": cfg.get("notas") or [], "fontes": cfg.get("fontes") or {},
         "verba_fora": cfg.get("verba_fora") or [],  # anos em que a verba ficou de fora (fonte com erro)
+        # último mês com a verba publicada, quando a verba sai depois da folha (só nas cidades em que isso acontece)
+        **({"verba_ate": int(cfg["verba_ate"])} if cfg.get("verba_ate") and int(cfg["verba_ate"]) < ate else {}),
     }
     return meta, pessoas
 
