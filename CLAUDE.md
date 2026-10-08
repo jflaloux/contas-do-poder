@@ -12,20 +12,21 @@ armadilhas que não estão escritas em outro lugar.
   portal entrega a qualquer visitante).
 - CPF: o inteiro, nunca. Mascarado (como o Portal da Transparência publica), só de agente público, quando a fonte
   oficial já publica assim e serve para separar homônimos (ex.: ministros nas viagens). De fornecedor pessoa física,
-  não, nem mascarado (`vereadores/comum.mascarar` devolve ""). Decisão do Jean-François, 01/10/2026.
+  não, nem mascarado (`vereadores/comum.mascarar` devolve só a marca "PF", sem algarismo, para o site mostrar
+  "Pessoa física"; sem documento, o nome só aparece se for de empresa ou órgão). Decisão do Jean-François, 01/10/2026;
+  marca "PF" desde 08/10/2026, depois do erro em que o nome de pessoa física apareceu no site (ver /correcoes).
 - Não guardar os descontos pessoais da folha (pensão, empréstimo, imposto de cada um).
-- `robots.txt`: é uma convenção, não lei (decisão do Jean-François, 30/09/2026). Por padrão, respeitar o robots.txt e o
-  `Crawl-delay`, com pausas entre as consultas: a sessão de `coleta/util.py` (`_sessao()`, `SessaoEducada`) faz isso, e
-  todo robô usa essa sessão, nunca `requests.get` direto.
-  Exceção: dados públicos que a LAI manda publicar e abrir para acesso automatizado (Lei 12.527/2011, art. 8º, § 3º,
-  III), como a remuneração de agentes públicos, podem ser lidos mesmo quando o robots.txt proíbe, desde que:
-  - o endereço esteja na lista de exceções do código, com o motivo, e no README (público);
-  - a leitura seja mínima: só as páginas necessárias, no máximo uma vez por semana, com pausa entre os pedidos e
-    respeitando o Crawl-delay;
-  - o robô se identifique (User-Agent "ContasDoPoder");
-  - o robô pare se o órgão pedir ou bloquear (e aí vale a regra do WAF acima).
-  Quando a única barreira é o robots.txt, não precisa de pedido pela LAI em paralelo (decisão do Jean-François,
-  01/10/2026).
+- `robots.txt`: é uma convenção, não lei. **Pode ser sempre ignorado** (decisão do Jean-François, 08/10/2026): não é
+  barreira, não precisa de exceção caso a caso, nem de autorização do órgão, nem de pedido pela LAI. O README diz isso em
+  público. Continuam valendo para todo robô:
+  - a sessão de `coleta/util.py` (`_sessao()`, `SessaoEducada`), nunca `requests.get` direto;
+  - o `Crawl-delay` (se houver) e pausas entre os pedidos;
+  - a leitura mínima: só as páginas necessárias, no máximo uma vez por semana;
+  - a identificação (User-Agent "ContasDoPoder");
+  - parar se o órgão pedir ou bloquear (e aí vale a regra do WAF acima: `BLOQUEADO_ROBOTS = True` no módulo ou o site
+    em `SITES_PARADOS`, em `coleta/util.py`).
+  CAPTCHA, WAF, login e consulta que pede CPF continuam sendo barreiras que não se contornam. (Antes, de 30/09 a
+  08/10/2026: respeitar por padrão, com exceções só para dados que a LAI manda abrir, listadas no código e no README.)
 - Nunca desligar a verificação de TLS. Se a cadeia do certificado estiver incompleta, completar com o certificado
   intermediário certo (AIA) junto com o `certifi`.
 - Fotos só com licença livre ou autorização, com crédito em `site/fotos/creditos.json`.
@@ -101,12 +102,19 @@ armadilhas que não estão escritas em outro lugar.
   (`coleta/folhas_estaduais/powerbi.py`).
 - Node 22: `fs.cpSync` falha em pastas montadas de máquina virtual; `gerar.mjs` copia arquivo por arquivo.
 - Ao passar arquivos entre máquinas, use nomes únicos e confira o md5 (uma cópia antiga já foi publicada por engano).
-- Câmara: o robots.txt (desde 18/09/2026) proíbe `/deputados/*/*`; essas páginas são exceção (lista em
-  `coleta/util.py`). O que já foi lido fica em `dados/camara/` (no Git) e não é baixado de novo. Os contracheques
+- Câmara: o robots.txt (desde 18/09/2026) pede que robôs não abram `/deputados/*/*`; lemos com 0,25 s entre os pedidos
+  (`util.PAUSAS`). O que já foi lido fica em `dados/camara/` (no Git) e não é baixado de novo. Os contracheques
   detalhados (~530 por mês) são lidos aos poucos, do mais recente para o mais antigo (`CAMARA_MAX_DETALHE`, 6.000 por
   vez); o padronizar só usa os meses completos (`DETALHE_DESDE`). Nunca guardar IR, previdência ou líquido.
-- Portais CKAN proíbem `/api/` no robots.txt: ache os arquivos pela página do conjunto (`util.recursos_ckan`).
-- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): exceções ao robots.txt; para parar, `BLOQUEADO_ROBOTS = True`.
+- Portais CKAN: os arquivos se acham pela página do conjunto (`util.recursos_ckan`), com os 10 s do Crawl-delay; a `/api/`
+  não é necessária.
+- Prefeitura de SP (`Disallow: /`) e Paraná (`Disallow: /pte`): lemos com a pausa de `util.PAUSAS`; para parar, se o órgão
+  pedir ou bloquear, `BLOQUEADO_ROBOTS = True` no módulo ou o site em `util.SITES_PARADOS`.
+- Laço de paginação: limite fixo de páginas e conferir que a página avançou (em 08/10/2026, um parâmetro de página errado
+  repetiu o mesmo pedido à Câmara de Vitória por ~10 min).
+- Vitória: a API de servidores ignora `competencia_ano` e devolve o ano corrente; o filtro que vale é `ano`. Cuiabá
+  (gp.srv.br, GeneXus): a folha sai do PDF `arrelacao_folhapag`; arquivo de verba com o mês errado no título vale pelo mês
+  escrito no texto.
 - No Cowork, a pasta montada não deixa apagar arquivos: `node publicacao/gerar.mjs` falha ao limpar `publicar/`. Para
   conferir o build, copie `site/` e `publicacao/` para uma pasta fora de `mnt/` e rode lá.
 
@@ -144,9 +152,9 @@ armadilhas que não estão escritas em outro lugar.
 - Cowork: a ligação com o Mac cai (em 02/10/2026, por ~13 h) e, antes de cair, o limite de cada comando encurta (de ~150
   s para ~20 s); chamadas em paralelo se derrubam. Rode os robôs em partes curtas (`definir_prazo(70)` com `timeout 85`),
   um por vez. Depois que a ligação volta, a permissão de apagar arquivos na pasta precisa ser pedida de novo.
-- Judiciário: STF, STM e TSE vêm do DadosJusBr (CC BY 4.0, sempre com o crédito). Não ler a consulta do STF
-  (egesp-portal, robots.txt Disallow: /) nem a do STM (www2.stm.jus.br/rem_web) sem a exceção; o 403 do TSE não se
-  contorna. Do STF, os valores saem da cópia do arquivo oficial (backups/), não do pacote: dez/2025 tem colunas e linhas
+- Judiciário: STF, STM e TSE vêm do DadosJusBr (CC BY 4.0, sempre com o crédito). A consulta do STF
+  (egesp-portal, robots.txt Disallow: /) e a do STM (www2.stm.jus.br/rem_web) podem ser lidas pela regra do robots.txt
+  de 08/10/2026 (ainda não feito); o 403 do TSE não se contorna. Do STF, os valores saem da cópia do arquivo oficial (backups/), não do pacote: dez/2025 tem colunas e linhas
   repetidas, e o sinal das férias de jul/2026 se acerta pelos totais do próprio arquivo.
 - Judiciário: a "remuneração do órgão de origem" (TSE, CNJ) nunca entra, para não somar duas vezes. Quem aparece na folha
   e não está em dados/judiciario/composicao.json vira aviso no log (os nomes "fora" já conferidos ficam no arquivo).
