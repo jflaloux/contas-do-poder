@@ -97,6 +97,10 @@ const VER_SP = Object.keys(ENDERECOS).filter((k) => k.startsWith("ver-3550308-")
 const verCom2025 = (cod) => { const p = lerDados("camaras.json").p.find((q) => q.k === "v" && String(q.cid) === String(cod) && q.x && q.per && q.per["2025"] && q.per["2025"].m >= 12 && ENDERECOS[q.id]); return p ? `/${ENDERECOS[p.id]}?periodo=2025` : null; };
 // o custo por mês de 2025 sem o pagamento único (o que a página tem de mostrar), pela conta feita aqui com os números de camaras.json
 const custoSemUnico = (id, k) => { const q = lerDados("camaras.json").p.find((x) => x.id === id), r = q && q.per[k]; return r ? Math.round((r.g - (r.cats.pagamento_unico || 0)) / r.mg + (r.mc ? r.c / r.mc : 0)) : null; };
+// STM: os meses que vêm da consulta oficial do tribunal (o link do mês não é do DadosJusBr) e um ministro no cargo; São Luís: um vereador com a página no site da Câmara
+const STM_OFICIAIS = Object.entries(((lerDados("judiciario.json").meta.orgaos || {}).STM || {}).fonte_mes || {}).filter(([, u]) => !/dadosjusbr/i.test(u)).map(([m]) => Number(m)).sort((x, y) => x - y);
+const MIN_STM = (lerDados("judiciario.json").p.find((q) => q.org === "STM" && q.x && ENDERECOS[q.id]) || {}).id;
+const VER_SLZ = lerDados("camaras.json").p.find((q) => q.k === "v" && q.cid === 2111300 && q.x && /^https:\/\/www\.cmsaoluis\.ma\.gov\.br\/vereadores\//.test(q.o || "") && ENDERECOS[q.id]);
 const NOME_VER_SP = ((lerDados("camaras.json").p.find((p) => p.id === VER_SP)) || {}).n || "";
 const VERBA_ANOS = { 2025: 34706.25, 2026: 36018.75 };
 const VERBA_TEXTO_ANOS = [/Cada vereador pode gastar até R\$\s34\.706 em 2025 e R\$\s36\.019 em 2026 por mês\./];
@@ -417,6 +421,28 @@ const PAGINAS = [
       const valor = ((document.querySelector("#contracheque .resumo-valor") || {}).textContent || "").replace(/\\D/g, "");
       if (valor !== ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))}) f.push("o custo por mês devia ser " + ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))} + " e é " + valor);
       return f; })()` },
+  // STM (08/10/2026): jan, mar, abr e set/2026 pela consulta oficial (o link do mês é o da consulta), o resto pelo DadosJusBr; a lista do órgão e a imagem dizem as duas fontes
+  { nome: "judiciario-stm-meses-oficiais", url: "/judiciario", pagina: [new RegExp(`Superior Tribunal Militar \\(STM\\)\\s+\\d+ no cargo · dados até set/2026 · fonte: cópia da folha oficial no DadosJusBr e, em ${STM_OFICIAIS.length} meses, a consulta oficial`)] },
+  { nome: "ministro-stm-meses-oficiais", acao: true, url: MIN_STM ? `/${ENDERECOS[MIN_STM]}?periodo=2026` : null, depois: `(() => {
+      const f = [], t = document.querySelector("#meses-jud");
+      if (!t) return ["sem o contracheque de cada mês"];
+      const itens = [...t.querySelectorAll("details")].map((d) => [(d.querySelector("summary") || {}).textContent || "", d.textContent]);
+      const de = (m) => itens.find(([s]) => s.startsWith(m));
+      for (const m of ${JSON.stringify(STM_OFICIAIS.map((x) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(x % 100) - 1]}/${Math.floor(x / 100)}`))}) { const i = de(m);
+        if (!i) f.push("sem o mês " + m); else if (!new RegExp("consulta oficial do tribunal; escolha " + m).test(i[1])) f.push(m + ": o link devia ser da consulta oficial");
+        else if (!/R\\$\\s?[1-9]/.test(i[1])) f.push(m + ": sem valor"); }
+      const ago = de("ago/2026"); if (ago && !/o arquivo de ago\\/2026/.test(ago[1])) f.push("ago/2026 devia ter o arquivo do DadosJusBr");
+      if (/Sem dados na fonte/.test(document.querySelector("#app").innerText)) f.push("ainda diz que faltam meses na fonte");
+      if (!/via DadosJusBr e consulta oficial/.test(document.querySelector("#app").innerText)) f.push("a imagem e o texto não dizem as duas fontes");
+      return f; })()` },
+  // São Luís: a página de cada vereador no site da Câmara, o partido de hoje e a nota da VIEP (sem o texto antigo de que o robô não lê o site da Câmara)
+  { nome: "vereador-sao-luis-pagina-da-camara", url: VER_SLZ ? `/${ENDERECOS[VER_SLZ.id]}` : null, depois: `(() => {
+      const f = [], t = (document.querySelector("#contracheque") || {}).innerText || "", a = document.querySelector("#contracheque .conta__oficial");
+      if (!a || a.href !== ${JSON.stringify(VER_SLZ ? VER_SLZ.o : "")}) f.push("a página oficial devia ser a do site da Câmara: " + (a && a.href));
+      if (!new RegExp(${JSON.stringify(VER_SLZ ? `Vereador · ${VER_SLZ.pt}` : "")}).test(t)) f.push("o partido devia ser ${VER_SLZ ? VER_SLZ.pt : ""}");
+      if (!/VIEP\\) fica de fora/.test(t)) f.push("sem a nota da VIEP");
+      if (/O robô ainda não lê/.test(t)) f.push("ainda tem o texto de que o robô não lê o site da Câmara");
+      return f; })()` },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -688,7 +714,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
-  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /pagamento_unico|notasUnico|unicoNome|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|pagamento-unico/ },
+  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /pagamento_unico|notasUnico|unicoNome|mesesOficiaisJ|meses_oficiais|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|pagamento-unico|stm-meses-oficiais/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },

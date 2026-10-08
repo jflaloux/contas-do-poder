@@ -1126,6 +1126,9 @@ Cada linha é uma folha (normal, suplementar) e o detalhamento da página dá os
 (abono de permanência à parte), indenizações, vantagens eventuais (férias e 13º à parte); o "teto constitucional" (abate-teto)
 fica de fora. Em ago/2026, os totais dos 15 ministros pela consulta são iguais aos do DadosJusBr. A soma dos itens às vezes
 não fecha com o total da própria página por centavos ou poucos reais: vale a soma (o log avisa).
+No site, o link de cada mês (`fonte_mes`) aponta para a consulta oficial nesses meses; o `gerar.mjs` põe em `meta.orgaos.STM.meses_oficiais`
+os meses cujo link não é do DadosJusBr, e a lista do órgão, a imagem de compartilhar e o texto da página dizem “via DadosJusBr e
+consulta oficial”; o link do mês diz “a consulta oficial do tribunal; escolha o mês” (a consulta não tem um arquivo por mês).
 
 O [DadosJusBr](https://dadosjusbr.org) (Transparência Brasil) coleta a folha oficial do sistema de Justiça todo mês
 (licença CC BY 4.0, com crédito). Do STF, os valores saem da cópia do arquivo oficial que ele guarda, e não do pacote

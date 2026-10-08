@@ -375,7 +375,7 @@ function rotuloPessoa(p) {
 }
 const GASTOS = { d: "em gastos do mandato (cota parlamentar e outros)", s: "em gastos do mandato (cota parlamentar e outros)", e: "em viagens oficiais", j: "em gastos dos cargos", v: "com a verba do gabinete", a: "com a verba do gabinete" };
 // Judiciário: a folha do órgão (ou a cópia dela no DadosJusBr)
-const fonteJ = (p) => { const o = ORGAOS_J[p.org] || {}; return `da folha ${o.sigla === "PGR" ? "do MPF" : `do ${o.sigla || p.org}`}${o.via === "DadosJusBr" ? " (via DadosJusBr)" : ""}`; };
+const fonteJ = (p) => { const o = ORGAOS_J[p.org] || {}; return `da folha ${o.sigla === "PGR" ? "do MPF" : `do ${o.sigla || p.org}`}${o.via === "DadosJusBr" ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
 const FONTE = { d: "da Câmara dos Deputados", s: "do Senado Federal", e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" };
 // o mesmo topo de contracheque que o app.js desenha (secContracheque/resumoTopo), com os números do período padrão
 const partidoUF = (p) => {
@@ -650,7 +650,7 @@ if (judiciario.length) {
       const r = p.per.leg, med = r && r.mg ? r.g / r.mg : 0;
       return `<li><a href="/${esc(END.p[p.id] || p.id)}">${esc(p.n)}</a> <small>${esc(p.g)}${med ? ` · ${esc(reais(med))} por mês, em média, desde jan/2025` : ""}</small></li>`;
     };
-    return `<h2 class="h3">${esc(o.n)} (${esc(sigla)})</h2><p class="discreto">${ps.length} no cargo · dados até ${mesTxt(o.ultimo_mes)}${o.via === "DadosJusBr" ? " · via DadosJusBr" : ""}</p><ul class="lista">${ps.map(linha).join("")}</ul>`;
+    return `<h2 class="h3">${esc(o.n)} (${esc(sigla)})</h2><p class="discreto">${ps.length} no cargo · dados até ${mesTxt(o.ultimo_mes)}${o.via === "DadosJusBr" ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " · via DadosJusBr e consulta oficial" : " · via DadosJusBr") : ""}</p><ul class="lista">${ps.map(linha).join("")}</ul>`;
   };
   const corpo = '<section class="bloco" id="judiciario" aria-labelledby="t-judiciario"><p class="rotulo">Justiça</p><h1 id="t-judiciario" class="titulo-pagina">Judiciário</h1>'
     + `<p class="lide">${esc(lide)}</p>${Object.entries(ORGAOS_J).map(bloco).join("")}</section>`;
@@ -852,7 +852,9 @@ if (judiciario.length) {
   fs.writeFileSync(path.join(SAIDA, "dados", "indice", "judiciario.json"), JSON.stringify({
     // sem a lista dos nomes das parcelas e sem o link de cada mês (só servem ao detalhe, no arquivo inteiro)
     meta: { ...Object.fromEntries(Object.entries(JUD.meta).filter(([k]) => k !== "tipos")),
-      orgaos: Object.fromEntries(Object.entries(ORGAOS_J).map(([s, o]) => [s, Object.fromEntries(Object.entries(o).filter(([k]) => k !== "fonte_mes"))])) },
+      orgaos: Object.fromEntries(Object.entries(ORGAOS_J).map(([s, o]) => [s, { ...Object.fromEntries(Object.entries(o).filter(([k]) => k !== "fonte_mes")),
+        // os meses que vêm da consulta oficial do tribunal, e não da cópia do DadosJusBr (o link do mês não é do DadosJusBr): o app.js diz isso na lista dos órgãos sem baixar o link de cada mês
+        ...(Object.entries(o.fonte_mes || {}).filter(([, u]) => !/dadosjusbr/i.test(u)).length ? { meses_oficiais: Object.entries(o.fonte_mes).filter(([, u]) => !/dadosjusbr/i.test(u)).map(([m]) => Number(m)).sort((x, y) => x - y) } : {}) }])) },
     p: JUD.p.map(({ t, tc, ti, nm, dt, ...resto }) => { const u = (t || []).filter((x) => x[1]).pop(); return { ...resto, ...(u ? { u: [u[0], u[1]] } : {}) }; }),
   }));
 }

@@ -3468,8 +3468,15 @@
   // duas páginas, que não se somam). No site publicado, a lista leve (dados/indice/judiciario.json, sem o mês a mês e
   // com o último mês de cada um em u) vem com os outros dados; o arquivo inteiro só ao abrir uma página do Judiciário.
   const JUD = { meta: null, completo: null, tipos: null, fonteMes: {} };
+  // meses de um órgão que vêm da consulta oficial do tribunal, e não da cópia do DadosJusBr (o link do mês não é do DadosJusBr): hoje, o STM em jan, mar, abr e set/2026
+  // (o gerar.mjs põe os meses em meta.orgaos[sigla].meses_oficiais; sem o build, vêm do link de cada mês)
+  const mesesOficiaisJ = (sigla) => {
+    const o = (((JUD.meta || {}).orgaos || {})[sigla]) || {};
+    if (Array.isArray(o.meses_oficiais)) return o.meses_oficiais;
+    return Object.entries(o.fonte_mes || JUD.fonteMes[sigla] || {}).filter(([, u]) => !/dadosjusbr/i.test(u)).map(([m]) => Number(m)).sort((a, b) => a - b);
+  };
   const orgaoJ = (p) => ((JUD.meta || {}).orgaos || {})[p.org] || {};
-  const fonteJ = (p) => { const o = orgaoJ(p); return `da folha ${p.org === "PGR" ? "do MPF" : `do ${p.org}`}${o.via === "DadosJusBr" ? " (via DadosJusBr)" : ""}`; };
+  const fonteJ = (p) => { const o = orgaoJ(p); return `da folha ${p.org === "PGR" ? "do MPF" : `do ${p.org}`}${o.via === "DadosJusBr" ? (mesesOficiaisJ(p.org).length ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
   function guardarJudiciario(d) {
     JUD.tipos = (d.meta && d.meta.tipos) || JUD.tipos;
     for (const [sigla, o] of Object.entries((d.meta && d.meta.orgaos) || {})) if (o.fonte_mes) JUD.fonteMes[sigla] = o.fonte_mes;
@@ -3538,7 +3545,7 @@
           parcelas.length ? [h("p", { class: "subitens__nota" }, "Parcela por parcela, como a fonte dá:"), parcelas.map(([n, v]) => sub(n, v))] : null,
           naoSep.length ? h("p", { class: "subitens__nota" }, `A fonte não separa: ${listaE(naoSep)}.`) : null,
           nota ? h("p", { class: "subitens__nota" }, `* ${nota}`) : null,
-          fm[m] ? h("p", { class: "subitens__nota" }, h("a", { href: fm[m], target: "_blank", rel: "noopener" }, `Ver na fonte (o arquivo de ${fmtMes(m)}) ↗`)) : null));
+          fm[m] ? h("p", { class: "subitens__nota" }, h("a", { href: fm[m], target: "_blank", rel: "noopener" }, /dadosjusbr/i.test(fm[m]) ? `Ver na fonte (o arquivo de ${fmtMes(m)}) ↗` : `Ver na fonte (a consulta oficial do tribunal; escolha ${fmtMes(m)}) ↗`)) : null));
     };
     return h("article", { class: "cartao", id: "meses-jud" },
       h("div", { class: "cartao__cabeca" }, h("div", null, h("h2", { class: "h3" }, "Contracheque de cada mês"),
@@ -3564,7 +3571,7 @@
       const pagosFora = sigla === "CNJ" ? (o.sem_folha || []).filter((x) => S.porId.get(x.id)) : [];
       return h("article", { class: "cartao", id: `jud-${sigla.toLowerCase()}` },
         h("h2", { class: "h3" }, `${o.n} (${sigla})`),
-        h("p", { class: "discreto pequeno", style: "margin:0" }, [`${agora.length} no cargo`, `dados até ${fmtMes(o.ultimo_mes)}`, o.via === "DadosJusBr" ? "fonte: cópia da folha oficial no DadosJusBr" : "fonte: a folha oficial"].join(" · ")),
+        h("p", { class: "discreto pequeno", style: "margin:0" }, [`${agora.length} no cargo`, `dados até ${fmtMes(o.ultimo_mes)}`, o.via === "DadosJusBr" ? `fonte: cópia da folha oficial no DadosJusBr${mesesOficiaisJ(sigla).length ? ` e, em ${mesesOficiaisJ(sigla).length === 1 ? "um mês" : `${mesesOficiaisJ(sigla).length} meses`}, a consulta oficial` : ""}` : "fonte: a folha oficial"].join(" · ")),
         C.n >= POUCOS && C.gm && !SEM_COMPARACAO.has(`t${sigla}`) ? h("div", { class: "estatisticas" }, estatistica("Bruto típico por mês", reais(C.gm), `mediana da média mensal de cada uma das ${C.n} pessoas que receberam do órgão desde jan/2025${C.n !== agora.length ? ` (${agora.length} estão no cargo hoje)` : ""}`)) : null,
         listaPessoas(agora.map(linha)),
         pagosFora.length ? [h("p", { class: "rotulo", style: "margin:10px 0 0" }, "Também integram o CNJ, pagos pelo próprio tribunal"),
