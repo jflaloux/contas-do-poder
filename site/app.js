@@ -407,11 +407,13 @@
   // metade ou mais dos colegas com exatamente o mesmo valor (por exemplo, quando só entra o subsídio, igual para todos):
   // "mais que X%" enganaria, porque o lugar no ranking vira sorteio entre os empatados
   const empatado = (pos) => pos.n > 2 && pos.iguais >= (pos.n - 1) / 2;
+  // quem só tem o que vai para o bolso (Prefeitura, governador, Judiciário) ou cuja Câmara não tem a verba na fonte que lemos: "recebe", não "custa"
+  const recebeSo = (p) => soBolso(p) || verbaNaoLida(p);
   const fraseposicao = (p, pos) => {
-    const g = plural(pos.g || grupo(p)), verbo = soBolso(p) ? "Recebe" : "Custa";
+    const g = plural(pos.g || grupo(p)), verbo = recebeSo(p) ? "Recebe" : "Custa";
     if (empatado(pos)) return `${verbo} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${g}`;
-    if (pos.pos === 1) return soBolso(p) ? `É quem mais recebe entre os ${g}` : `É o maior custo entre os ${g}`;
-    if (pos.pos === pos.n) return soBolso(p) ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
+    if (pos.pos === 1) return recebeSo(p) ? `É quem mais recebe entre os ${g}` : `É o maior custo entre os ${g}`;
+    if (pos.pos === pos.n) return recebeSo(p) ? `É quem menos recebe entre os ${g}` : `É o menor custo entre os ${g}`;
     return acimaDaMediana(pos) ? `${verbo} mais que ${pos.pct}% dos ${g}` : `${verbo} menos que ${pos.pctMais}% dos ${g}`;
   };
   // a posição em uma faixa, sem caixa: "212º de 554 · custa mais que 61% dos deputados em 2025" e, embaixo, a régua dos quatro quartos com o
@@ -422,7 +424,7 @@
     // no empate, a marca fica no meio do grupo dos empatados
     const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
     const quarto = Math.min(3, Math.floor(lugar / 25));
-    const verbo = soBolso(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
+    const verbo = recebeSo(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"];
     const faixa = [`entre os 25% que ${verbo[0]}`, "abaixo da mediana", "acima da mediana", `entre os 25% que ${verbo[1]}`][quarto];
     const frase = fraseposicao(p, pos), minus = frase.charAt(0).toLowerCase() + frase.slice(1);
     // a posição de cima conta todos que tiveram mandato no período; o ranking, mais abaixo, pode ter só quem está no cargo hoje:
@@ -1118,13 +1120,13 @@
     if (pos) {
       const igual = empatado(pos);
       const gp = plural(pos.g || grupo(p));
-      const frase = igual ? `${soBolso(p) ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${gp}`
+      const frase = igual ? `${recebeSo(p) ? "Recebe" : "Custa"} o mesmo que ${pos.iguais} dos outros ${pos.n - 1} ${gp}`
         : p.k === "p" ? (pos.pos === 1 ? "Quem mais recebe na Prefeitura" : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% da Prefeitura` : `Recebe menos que ${pos.pctMais}% da Prefeitura`)
-        : p.k === "g" ? (pos.pos === 1 ? `Quem mais recebe entre os ${gp}` : pos.pos === pos.n ? `Quem menos recebe entre os ${gp}` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% dos ${gp}` : `Recebe menos que ${pos.pctMais}% dos ${gp}`)
+        : p.k === "g" || verbaNaoLida(p) ? (pos.pos === 1 ? `Quem mais recebe entre os ${gp}` : pos.pos === pos.n ? `Quem menos recebe entre os ${gp}` : acimaDaMediana(pos) ? `Recebe mais que ${pos.pct}% dos ${gp}` : `Recebe menos que ${pos.pctMais}% dos ${gp}`)
         : pos.pos === 1 ? `O maior custo entre os ${gp}` : pos.pos === pos.n ? `O menor custo entre os ${gp}`
         : acimaDaMediana(pos) ? `Custa mais que ${pos.pct}% dos ${gp}` : `Custa menos que ${pos.pctMais}% dos ${gp}`;
       const lugar = pos.n > 1 ? (1 - (pos.pos - 1 + (igual ? pos.iguais / 2 : 0)) / (pos.n - 1)) * 100 : 50;
-      y = reguaImagem(t, y + respiro(t), frase, lugar, soBolso(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"]);
+      y = reguaImagem(t, y + respiro(t), frase, lugar, recebeSo(p) ? ["menos recebem", "mais recebem"] : ["menos custam", "mais custam"]);
     } else y += 4;
     // as duas partes do custo dele; vereador de Câmara que não publica a verba (ou publicou incompleta, e ela ficou de
     // fora): "não publicados", não R$ 0
@@ -2311,9 +2313,15 @@
           h("tbody", null, linhas.filter(([, f]) => f(r1) || f(r2)).map(([nome, f, fmt]) => {
             const a = f(r1), b = f(r2), dif = b - a, pct = a ? Math.round((dif / a) * 100) : null;
             const igual = fmt === reais ? Math.abs(dif) < 1 : Math.abs(dif) < 0.5;
-            return h("tr", null, h("td", null, nome), h("td", { class: "num" }, fmt(a)), h("td", { class: "num" }, fmt(b)),
-              h("td", { class: igual ? "" : dif > 0 ? "dif-mais" : "dif-menos" }, igual ? "igual" : `${dif > 0 ? "+" : "−"}${fmt(Math.abs(dif))}${pct !== null ? ` (${pct > 0 ? "+" : ""}${pct}%)` : ""}`));
+            // vereador de Câmara sem a verba na fonte que lemos: nas linhas de gastos e de custo, "não publicados" (ou "não há", onde a Câmara não tem verba) e sem
+            // diferença, para ninguém parecer mais barato por falta de dado
+            const doGasto = nome === "Gastos do mandato ou do cargo" || nome.startsWith("Verba do gabinete"), doCusto = nome === "Custo por mês";
+            const celula = (x, v) => (doGasto && verbaNaoLida(x) ? "não publicados" : doGasto && semVerbaCasa(x) ? "não há" : fmt(v));
+            const semComparar = (doGasto || doCusto) && verbaNaoLida(p) !== verbaNaoLida(o);
+            return h("tr", null, h("td", null, nome), h("td", { class: "num" }, celula(p, a)), h("td", { class: "num" }, celula(o, b)),
+              h("td", { class: semComparar ? "" : igual ? "" : dif > 0 ? "dif-mais" : "dif-menos" }, semComparar ? "não se compara" : igual ? "igual" : `${dif > 0 ? "+" : "−"}${fmt(Math.abs(dif))}${pct !== null ? ` (${pct > 0 ? "+" : ""}${pct}%)` : ""}`));
           })))),
+          verbaNaoLida(p) || verbaNaoLida(o) ? h("p", { class: "nota" }, `Os gastos do mandato ${[p, o].filter(verbaNaoLida).map((x) => `de ${x.n}`).join(" e ")} não são publicados na fonte que lemos: o custo por mês ${[p, o].filter(verbaNaoLida).length > 1 ? "deles" : "dele"} só tem o salário${verbaNaoLida(p) !== verbaNaoLida(o) ? ", e por isso a diferença com o outro não é calculada" : ""}.`) : null,
           h("div", { class: "acoes" },
             h("a", { href: urlDe(o.id), class: "pequeno", onclick: () => { S.origem = "comparar"; } }, `Ver o contracheque de ${o.n}`),
             h("button", { type: "button", class: "link-botao pequeno", onclick: () => { S.outro = null; render(); irPara("comparar"); } }, "Tirar da comparação")),
@@ -3688,6 +3696,13 @@
   };
   // g: grupo ("d", "v3550308", "a35"...). "v+": só nas câmaras (e Assembleias) que publicam o custo da equipe de cada gabinete
   const metricaVale = (m, g) => {
+    // Câmara sem verba de gabinete (Vitória) ou sem a verba na fonte que lemos (São Luís, Aracaju): a lista da verba seria só zeros e não entra; onde a
+    // verba não foi lida, o "custo" seria só o salário (igual a "vai para o bolso") e também não entra, para ninguém parecer mais barato por falta de dado
+    if (tipoG(g) === "v") {
+      const c = infoG(g) || {};
+      if (m === "despesas" && !c.verba_nome) return false;
+      if (m === "custo" && !c.verba_nome && !c.sem_verba) return false;
+    }
     const cs = METRICAS[m].casas;
     if (!cs) return true;
     if (cs.includes(tipoG(g))) return true;
@@ -3707,7 +3722,7 @@
     if (porLugar(R.casa) && !cidadesDo(R.casa).length) R.casa = "d";
     if (porLugar(R.casa) && !cidadesDo(R.casa).some((c) => c.cod === R.cid)) R.cid = cidadesDo(R.casa)[0].cod;
     const G = () => (porLugar(R.casa) ? `${R.casa}${R.cid}` : R.casa);
-    if (!METRICAS[R.metrica] || !metricaVale(R.metrica, G())) R.metrica = "custo";
+    if (!METRICAS[R.metrica] || !metricaVale(R.metrica, G())) R.metrica = metricaVale("custo", G()) ? "custo" : "ganha";
     const periodosOk = () => { if (![...anosGrupo(G()), "leg"].includes(R.periodo)) R.periodo = anosGrupo(G()).includes("2025") ? "2025" : anosGrupo(G())[0]; };
     periodosOk();
     const semUF = () => R.casa === "e" || porLugar(R.casa);
@@ -3758,6 +3773,8 @@
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
           (R.casa === "d" || R.casa === "s") && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "A ajuda de custo, paga de uma vez (na posse, por exemplo), não entra no valor por mês: dividida por poucos meses, faria parecer mais caro quem teve menos meses no período. Ela aparece à parte, na página de cada pessoa.") : null,
+          R.casa === "v" && !(infoG(G()) || {}).verba_nome ? h("li", null, (infoG(G()) || {}).sem_verba ? `${infoG(G()).sem_verba} Por isso não há ranking de verba.`
+            : `${(infoG(G()) || {}).n}: gastos do mandato não publicados na fonte que lemos. O ranking mostra só o que vai para o bolso: o custo total não é calculado.`) : null,
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,
           R.casa === "p" ? h("li", null, `Prefeitura ${deCid(R.cid)}: prefeito, vice, secretários municipais${R.cid === SP ? " e subprefeitos" : ""}. Só o que recebem: a Prefeitura não publica os gastos por pessoa. Servidores cedidos por outro órgão ficam de fora.`) : null,
           R.casa === "v" ? h("li", null, `Vereadores ${deCid(R.cid)}: ${(infoG(G()) || {}).subsidio_folha ? "o salário vem da folha de pagamento da Câmara" : "o salário é o mesmo para todos; o que muda é quanto cada um usa da verba do gabinete"}. Suplentes entram pelos meses em que ocuparam o gabinete. Vereadores de cidades diferentes não se comparam aqui: cada Câmara tem as suas regras.`) : null,
@@ -3770,7 +3787,7 @@
     // trocar o grupo (ou a cidade) muda os filtros: refaz só esta seção, no lugar, com os botões "Quem" no mesmo ponto
     // da tela e o foco no que foi escolhido. Antes, a página inteira era refeita e a rolagem pulava para cima.
     const trocouGrupo = (foco) => {
-      R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = "custo"; periodosOk(); medir();
+      R.completo = false; if (!metricaVale(R.metrica, G())) R.metrica = metricaVale("custo", G()) ? "custo" : "ganha"; periodosOk(); medir();
       const ancora = (x) => x.querySelector(".grupo-pilulas");
       const y = sec.isConnected && ancora(sec) ? ancora(sec).getBoundingClientRect().top : null;
       const novo = secRanking(p, k, comoCargo);

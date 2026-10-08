@@ -93,6 +93,9 @@ const simularVerba = (verbaMes, vigencia) => (caminho) => {
   return JSON.stringify(d);
 };
 const VER_SP = Object.keys(ENDERECOS).filter((k) => k.startsWith("ver-3550308-")).sort()[0];
+// um vereador no cargo com mandato em 2025 inteiro (a posição entre os colegas só aparece com meses suficientes), da cidade de código IBGE `cod`
+const verCom2025 = (cod) => { const p = lerDados("camaras.json").p.find((q) => q.k === "v" && String(q.cid) === String(cod) && q.x && q.per && q.per["2025"] && q.per["2025"].m >= 12 && ENDERECOS[q.id]); return p ? `/${ENDERECOS[p.id]}?periodo=2025` : null; };
+const NOME_VER_SP = ((lerDados("camaras.json").p.find((p) => p.id === VER_SP)) || {}).n || "";
 const VERBA_ANOS = { 2025: 34706.25, 2026: 36018.75 };
 const VERBA_TEXTO_ANOS = [/Cada vereador pode gastar até R\$\s34\.706 em 2025 e R\$\s36\.019 em 2026 por mês\./];
 // Valor de governador, vice ou secretário cuja origem é "imprensa" (governadores.json): a fonte aparece como notícia, com o nome do veículo e a norma
@@ -351,6 +354,41 @@ const PAGINAS = [
       if (!ls.length) f.push("o CSV não tem linhas");
       ls.forEach((l) => { if (!/,\\d{4}-\\d{2},[\\d.]+,,/.test(l)) f.push("no CSV, a verba devia ficar em branco: " + l.slice(0, 80)); });
       return f; })()` })),
+  // rankings e Comparar: São Luís e Aracaju (verba não lida) não têm a lista de verba nem o "custo" (só o salário), e a posição diz "recebe"; Vitória (sem verba) não tem a lista de verba
+  ...[["sao-luis", 2111300, "São Luís"], ["aracaju", 2800308, "Aracaju"]].map(([cidade, cod, nomeC]) => ({ nome: `ranking-${cidade}-sem-verba-lida`, acao: true, url: verCom2025(cod), depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const sel = document.querySelector("#ranking #metrica"); if (!sel) return ["sem o seletor Comparar por no ranking"];
+      const ops = [...sel.options].map((o) => o.textContent);
+      if (ops.some((o) => /Verba do gabinete usada/.test(o))) f.push("o ranking ainda oferece a verba do gabinete: " + ops.join(" | "));
+      if (ops.some((o) => /^Custo por mês/.test(o))) f.push("o ranking ainda oferece o custo por mês (só o salário): " + ops.join(" | "));
+      if (sel.value !== "ganha") f.push("a métrica padrão devia ser o que vai para o bolso e é " + sel.value);
+      const rk = document.querySelector("#ranking").innerText;
+      if (!/${nomeC}: gastos do mandato não publicados na fonte que lemos/.test(rk)) f.push("o ranking não tem a nota dos gastos não publicados");
+      const pos = (document.querySelector(".posicao-faixa") || {}).innerText || "";
+      if (!pos) f.push("sem a posição entre os colegas (o teste não vale)");
+      else if (/custa|custo|custam/i.test(pos) || !/receb/i.test(pos)) f.push("a posição entre os colegas devia dizer recebe: " + pos.replace(/\\s+/g, " ").slice(0, 120));
+      return f; })()` })),
+  { nome: "ranking-vitoria-sem-verba", acao: true, url: ENDERECOS["ver-3205309-80002273761"] ? `/${ENDERECOS["ver-3205309-80002273761"]}` : null, depois: `(async () => {
+      const f = [], sel = document.querySelector("#ranking #metrica"); if (!sel) return ["sem o seletor Comparar por no ranking"];
+      const ops = [...sel.options].map((o) => o.textContent);
+      if (ops.some((o) => /Verba do gabinete usada/.test(o))) f.push("o ranking de Vitória ainda oferece a verba do gabinete");
+      if (!ops.some((o) => /^Custo por mês/.test(o))) f.push("o ranking de Vitória devia ter o custo por mês (sem verba, ele é completo): " + ops.join(" | "));
+      if (!/não instituiu cota parlamentar[^]*Por isso não há ranking de verba/.test(document.querySelector("#ranking").innerText)) f.push("o ranking não tem a nota de que não há verba");
+      return f; })()` },
+  { nome: "comparar-sao-luis-com-sp", acao: true, url: primeiro("ver-2111300-"), depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const campo = document.querySelector("#busca-comparar"); if (!campo) return ["sem o campo Comparar"];
+      campo.focus(); await esp(2500); campo.value = ${JSON.stringify(NOME_VER_SP)}; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(500);
+      const b = document.querySelector("#comparar .sugestoes button"); if (!b) return ["a busca do Comparar não achou " + ${JSON.stringify(NOME_VER_SP)}];
+      b.click(); await esp(800);
+      const linhas = [...document.querySelectorAll("#comparar .comp-tabela tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      const de = (n) => linhas.find((l) => l[0] === n);
+      const g = de("Gastos do mandato ou do cargo"), c = de("Custo por mês"), bolso = de("Vai para o bolso");
+      if (!g || g[1] !== "não publicados" || g[3] !== "não se compara") f.push("a linha dos gastos devia dizer não publicados e não se compara: " + JSON.stringify(g));
+      if (!c || c[3] !== "não se compara") f.push("o custo por mês não devia ter diferença: " + JSON.stringify(c));
+      if (!bolso || /não se compara|não publicados/.test(bolso.join(" "))) f.push("o que vai para o bolso se compara: " + JSON.stringify(bolso));
+      if (!/não são publicados na fonte que lemos/.test(document.querySelector("#comparar").innerText)) f.push("sem a nota do Comparar");
+      return f; })()` },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
