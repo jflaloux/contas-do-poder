@@ -1899,7 +1899,9 @@
   function notaMensalVereador(p) {
     if (p.k === "v" && p.cid === SP) return "A verba do gabinete entra no mês da nota. O que não é usado num mês pode ser usado nos meses seguintes do mesmo ano, então há meses acima da média. Os últimos meses ainda podem receber notas.";
     const c = casaDe(p) || {};
-    return [...(c.verba_notas || []).slice(0, 1), c.verba_regra, "Os últimos meses ainda podem mudar."].filter(Boolean).join(" ");
+    // até 2 notas da verba (a segunda costuma explicar o mês: "o mês é o da liquidação, há meses sem liquidação e meses com duas", em Porto Velho); com mais, só a primeira
+    const vn = c.verba_notas || [];
+    return [...vn.slice(0, vn.length <= 2 ? 2 : 1), c.verba_regra, "Os últimos meses ainda podem mudar."].filter(Boolean).join(" ");
   }
   // governador e vice: a cor da faixa embaixo das colunas, pelo cargo no mês (a mesma do ministro e do deputado)
   const FAIXA_G = { gov: "e", exercicio: "e", vice: "d" };

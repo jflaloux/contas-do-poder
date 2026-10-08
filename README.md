@@ -574,10 +574,10 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   do gráfico da página do vereador, com uma nota embaixo; no CSV a célula da verba fica em branco. Os meses de `verba_sem`
   (Cuiabá) seguem o mesmo caminho, com “não publicados” (a Câmara não publicou aquele mês). Onde há `sem_verba` (Vitória), a
   página diz que a Câmara não tem verba de gabinete (a lista de gastos, a imagem de compartilhar e o texto da cidade), com o
-  texto da própria Câmara. Onde a Câmara não tem a verba na fonte que lemos (`verba_nome` nulo e sem `sem_verba`: São Luís e
-  Aracaju), a página do vereador diz “não publicados” no lugar de R$ 0 em gastos do mandato (topo, lista, tabela mês a mês, dica
+  texto da própria Câmara. Onde a Câmara não tem a verba na fonte que lemos (`verba_nome` nulo e sem `sem_verba`: São Luís,
+  Aracaju e Rio Branco), a página do vereador diz “não publicados” no lugar de R$ 0 em gastos do mandato (topo, lista, tabela mês a mês, dica
   do gráfico, imagem e texto de compartilhar; no CSV a célula fica em branco), sem dizer que a verba não existe
-  (`verbaNaoLida`, no `app.js`; `semVerbaLida`, no `gerar.mjs`, para o HTML pronto). No ranking, nessas cidades não há a lista de
+  (`verbaNaoLida`, no `app.js`; `semVerbaLida`, no `gerar.mjs`, para o HTML pronto). Porto Velho (verba pela liquidação do mês: há meses sem e meses com duas) mostra as duas notas da verba embaixo do mês a mês (`notaMensalVereador`: até duas notas). No ranking, nessas cidades não há a lista de
   verba nem o “custo por mês” (seria só o salário: fica “vai para o bolso”), com uma nota; em Vitória, só a lista de verba sai. A
   posição entre os colegas diz “recebe”, e o Comparar mostra “não publicados” e “não se compara” onde só um dos lados tem a verba.
 - Pagamento único de vereador (`pagamento_unico` em camaras.json, com `aj` e `un`: o mês, o valor, a nota e o link; hoje Vitória e 15

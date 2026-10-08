@@ -343,7 +343,7 @@ const PAGINAS = [
       if (!/,2026-03,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de 2026-03 devia ter valor");
       return f; })()` },
   // Câmara sem a verba na fonte que lemos (São Luís e Aracaju: verba_nome nulo, sem sem_verba): "não publicados" no lugar de R$ 0 no topo, na lista, na tabela mês a mês e no CSV
-  ...[["sao-luis", "ver-2111300-"], ["aracaju", "ver-2800308-"]].map(([cidade, prefixo]) => ({ nome: `vereador-${cidade}-gastos-nao-publicados`, acao: true, url: primeiro(prefixo), depois: `(async () => {
+  ...[["sao-luis", "ver-2111300-"], ["aracaju", "ver-2800308-"], ["rio-branco", "ver-1200401-"]].map(([cidade, prefixo]) => ({ nome: `vereador-${cidade}-gastos-nao-publicados`, acao: true, url: primeiro(prefixo), depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), t = (document.querySelector("#contracheque") || {}).innerText || "";
       if (!/Os gastos do mandato não aparecem na fonte que lemos/.test(t)) f.push("o topo não diz que os gastos do mandato não aparecem na fonte");
       if (!/não publicados\\s+gastos do mandato/.test(t)) f.push("a divisão do custo não mostra gastos do mandato: não publicados");
@@ -361,7 +361,7 @@ const PAGINAS = [
       ls.forEach((l) => { if (!/,\\d{4}-\\d{2},[\\d.]+,,/.test(l)) f.push("no CSV, a verba devia ficar em branco: " + l.slice(0, 80)); });
       return f; })()` })),
   // rankings e Comparar: São Luís e Aracaju (verba não lida) não têm a lista de verba nem o "custo" (só o salário), e a posição diz "recebe"; Vitória (sem verba) não tem a lista de verba
-  ...[["sao-luis", 2111300, "São Luís"], ["aracaju", 2800308, "Aracaju"]].map(([cidade, cod, nomeC]) => ({ nome: `ranking-${cidade}-sem-verba-lida`, acao: true, url: verCom2025(cod), depois: `(async () => {
+  ...[["sao-luis", 2111300, "São Luís"], ["aracaju", 2800308, "Aracaju"], ["rio-branco", 1200401, "Rio Branco"]].map(([cidade, cod, nomeC]) => ({ nome: `ranking-${cidade}-sem-verba-lida`, acao: true, url: verCom2025(cod), depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       const sel = document.querySelector("#ranking #metrica"); if (!sel) return ["sem o seletor Comparar por no ranking"];
       const ops = [...sel.options].map((o) => o.textContent);
@@ -443,6 +443,18 @@ const PAGINAS = [
       if (!/VIEP\\) fica de fora/.test(t)) f.push("sem a nota da VIEP");
       if (/O robô ainda não lê/.test(t)) f.push("ainda tem o texto de que o robô não lê o site da Câmara");
       return f; })()` },
+  // Rio Branco e Porto Velho (08/10/2026): Rio Branco sem a verba nos dados abertos ("não publicados", como São Luís e Aracaju: ver os testes acima); Porto Velho com a verba pela liquidação do mês
+  { nome: "cidade-rio-branco", url: "/cidade/rio-branco-ac", ter: [["#cidade .pessoa-chip", 21]], texto: [/Os 21 vereadores no cargo, um a um/, /só o salário; os gastos do mandato não são publicados na fonte que lemos/, /Equipe de um gabinete/i, /Lei 1\.856\/2011/], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
+  { nome: "cidade-porto-velho", url: "/cidade/porto-velho-ro", ter: [["#cidade .pessoa-chip", 23]], texto: [/Os 23 vereadores no cargo, um a um/, /Verba do gabinete usada/i, /Equipe de um gabinete/i, /em jan\/2026 a folha traz só as férias/i], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
+  { nome: "vereador-porto-velho-verba-liquidacao", acao: true, url: ENDERECOS["ver-1100205-220001983467"] ? `/${ENDERECOS["ver-1100205-220001983467"]}` : null, depois: `(() => {
+      const f = [], t = (document.querySelector("#mes-a-mes") || {}).textContent || "";
+      if (!/há meses sem liquidação e meses com duas/.test(t)) f.push("o mês a mês não explica que o mês é o da liquidação (meses sem e meses com duas)");
+      const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      if (!linhas.length || linhas.some((l) => /não publicados/.test(l[2]))) f.push("Porto Velho tem verba: nenhum mês devia dizer não publicados");
+      const cota = (document.querySelector("#cota") || {}).textContent || "";
+      if (!/Verba indenizatória \\(liquidação do mês\\)/.test(cota)) f.push("a lista de gastos não traz o tipo único da verba");
+      return f; })()` },
+  { nome: "atualizacao-stm-set-2026", url: "/atualizacao", pagina: [/Superior Tribunal Militar[\s\S]{0,200}?set\/2026/, /consulta oficial, meses que faltam no DadosJusBr\)[\s\S]{0,200}?set\/2026/] },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -714,7 +726,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
-  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /pagamento_unico|notasUnico|unicoNome|mesesOficiaisJ|meses_oficiais|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|pagamento-unico|stm-meses-oficiais/ },
+  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /Rio Branco|Porto Velho|pagamento_unico|notasUnico|unicoNome|mesesOficiaisJ|meses_oficiais|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|rio-branco|porto-velho|pagamento-unico|stm-meses-oficiais|stm-set-2026/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },
