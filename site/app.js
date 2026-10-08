@@ -53,7 +53,7 @@
   const ESTADOS = { AC: "Acre", AL: "Alagoas", AM: "Amazonas", AP: "Amapá", BA: "Bahia", CE: "Ceará", DF: "Distrito Federal", ES: "Espírito Santo", GO: "Goiás", MA: "Maranhão", MG: "Minas Gerais", MS: "Mato Grosso do Sul", MT: "Mato Grosso", PA: "Pará", PB: "Paraíba", PE: "Pernambuco", PI: "Piauí", PR: "Paraná", RJ: "Rio de Janeiro", RN: "Rio Grande do Norte", RO: "Rondônia", RR: "Roraima", RS: "Rio Grande do Sul", SC: "Santa Catarina", SE: "Sergipe", SP: "São Paulo", TO: "Tocantins" };
   const UFS = Object.keys(ESTADOS);
   const ORDEM_GANHA = ["salario", "subsidio", "folha_total", "vantagens_pessoais", "abono_permanencia", "indenizacoes", "vantagens_eventuais", "decimo_terceiro", "ferias", "jetons",
-    "auxilio_moradia", "auxilios", "auxilios_folha", "ajuda_de_custo", "outros_rendimentos", "outras"];
+    "auxilio_moradia", "auxilios", "auxilios_folha", "ajuda_de_custo", "pagamento_unico", "outros_rendimentos", "outras"];
   const ORDEM_CUSTA = ["cota_parlamentar", "diarias", "outros_gastos_mandato", "viagens_oficiais", "verba_gabinete"];
   const ORDEM_EQUIPE = ["assessores_gabinete"];
   function iniciais(nome) {
@@ -241,7 +241,11 @@
   // e de toda comparação (mediana, posição, ranking, selo ▲/▼) e aparece à parte, com o valor e o mês. O mês a mês continua como a fonte
   // mostra. Quem foi ministro e parlamentar ("dois cargos"): só a parte do mandato (a ajuda de custo de ministro é outra coisa: valores
   // pequenos e mensais ou uma posse, e a fonte não separa).
-  const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"] };
+  // Vereador (08/10/2026): "pagamento_unico" (camaras.json), como os retroativos de um vereador afastado (Vitória) ou a conversão de férias (Cuiabá); cada pagamento
+  // traz a nota e o link em p.un: [[aaaamm, valor, texto, url, origem]], com origem "imprensa" (o link é uma notícia) ou "fonte" (a lei ou a folha).
+  const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"], v: ["pagamento_unico"] };
+  // como o pagamento único se chama na página: "ajuda de custo" (deputado e senador) ou "pagamento único" (vereador)
+  const unicoNome = (p) => (p.k === "v" ? "pagamento único" : "ajuda de custo");
   function unicosDe(p, k, cats) {
     const q = p.k === "j" ? S.porId.get(((p.cg || [])[1] || {}).id) : p;
     const lista = q && UNICOS[q.k];
@@ -263,10 +267,20 @@
     if (!Array.isArray(lista)) return [];
     return [...new Set(lista.filter((x) => Array.isArray(x) && Number.isInteger(x[0])).map((x) => x[0]))].sort((a, b) => a - b);
   }
+  // as notas dos pagamentos únicos de um vereador no período (p.un): o mês, o valor, o que a fonte permite dizer e o link; origem "imprensa" = o link é uma
+  // notícia (diz "notícia" e o nome do veículo, como nas outras notas de imprensa); origem "fonte" = o link é a lei ou a folha
+  const VEICULOS_UN = { "folhavitoria.com.br": "Folha Vitória" };
+  function notasUnico(p, k) {
+    const ano = k === "leg" ? null : Number(k);
+    return (p.un || []).filter((x) => Array.isArray(x) && (ano === null || Math.floor(x[0] / 100) === ano)).map(([mes, valor, texto, url, origem]) => {
+      let host = ""; try { host = new URL(url).hostname.replace(/^www\./, ""); } catch (e) { /* sem link válido */ }
+      return { mes, valor, texto, url: /^https?:/.test(url || "") ? url : "", imprensa: origem === "imprensa", veiculo: VEICULOS_UN[host] || "" };
+    });
+  }
   // "paga de uma vez em fev/2023"; vários pagamentos: "paga em fev/2023 e jan/2027" (ou "em N pagamentos", se forem mais de 3); sem o mês: "no período"
-  const comoUnico = (v, meses) => {
-    const ms = meses || [];
-    return ms.length === 1 ? `paga de uma vez em ${fmtMes(ms[0])}` : ms.length > 3 ? `paga em ${ms.length} pagamentos` : ms.length ? `paga em ${listaE(ms.map(fmtMes))}` : "paga de uma vez no período";
+  const comoUnico = (v, meses, fem = true) => {
+    const ms = meses || [], pg = fem ? "paga" : "pago";
+    return ms.length === 1 ? `${pg} de uma vez em ${fmtMes(ms[0])}` : ms.length > 3 ? `${pg} em ${ms.length} pagamentos` : ms.length ? `${pg} em ${listaE(ms.map(fmtMes))}` : `${pg} de uma vez no período`;
   };
   function resumo(p, k) {
     const r = p && p.per[k];
@@ -323,6 +337,8 @@
     return anos.length ? anos[anos.length - 1] : "leg";
   }
   const nomeCat = (k) => (meta().categorias[k] || { nome: k }).nome;
+  // "Auxílios (inclui auxílio-moradia)" é do Congresso; na Câmara de vereadores são outros auxílios (auxílio-saúde em Cuiabá, auxílio-alimentação em outras)
+  const nomeCatP = (c, p) => (legisl(p) && c === "auxilios" ? "Auxílios" : nomeCat(c));
   // O 13º e as férias são pagos de uma vez ou em parcelas, num ou noutro mês. Na lista "item por item, por mês" todo valor é a
   // média por mês do período: o total do período ÷ os meses do período com pagamento (r.mg; num ano inteiro, ÷ 12). Por isso
   // essas duas linhas dizem "média por mês" e, embaixo, a conta e quando o órgão paga.
@@ -1626,7 +1642,8 @@
   const NOMES_FONTE = { deputados: "deputados", vereadores: "vereadores", verba: "verba do gabinete", subsidio: "salário", folha: "folha de pagamento", gastos: "gastos do mandato", gabinetes: "gabinetes", funcionarios: "funcionários", equipe: "equipe",
     lei_subsidio: "lei do salário", verba_regra: "regras da verba", lista: "quem está no cargo", mandatos: "mandatos", legislatura: "legislatura", servidores: "servidores", presenca: "presença",
     alimentacao: "auxílio-alimentação", combustivel: "combustível", custeio: "custeio do gabinete", ceap: "cota do gabinete (CEAP)", cota: "cota do gabinete", viap: "verba indenizatória (VIAP)",
-    qbm: "quota básica mensal (QBM)", qbm_normas: "regras da QBM", sdp: "portal da transparência" };
+    qbm: "quota básica mensal (QBM)", qbm_normas: "regras da QBM", sdp: "portal da transparência",
+    gratificacao: "lei da gratificação", auxilio_saude: "lei do auxílio-saúde", ferias: "lei das férias", verba_lei: "lei da verba", api: "API da transparência", cotas: "cotas parlamentares" };
   // fonte nova sem nome na lista acima: a chave, sem o "_"
   const fontesCasa = (c) => Object.entries((c && c.fontes) || {}).filter(([, u]) => /^https?:/.test(u || "")).map(([k, u]) => [NOMES_FONTE[k] || k.replace(/_/g, " "), u]);
   const mesEquipe = (c) => { const [m, a] = ((c && c.equipe_em) || "").split("/"); return Number(a) * 100 + Number(m) || null; };
@@ -1670,9 +1687,9 @@
             : h("li", { class: "resumo-parte--custa" }, h("strong", null, reais(r.cm)), h("span", null, `em ${gastosNome(p).toLowerCase()}`))));
     // ajuda de custo (paga de uma vez): fora desta média e da posição, com o valor e o que a média seria com ela
     const sinal = r.unico ? [h("sup", { class: "resumo-sinal", "aria-hidden": "true" }, "*"), h("span", { class: "visualmente-oculto" }, " (veja a nota ao final)")] : null;
-    const nota = r.unico ? h("p", { class: "conta__resumo-nota" }, h("span", { "aria-hidden": "true" }, "* "), r.unico < 0 ? "Fora desta média: devolução ou acerto de ajuda de custo, " : "Fora desta média: ajuda de custo de ",
-      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesesDoUnico(p, k))}`,
-      `.${r.mg ? ` Contando com ${r.unico < 0 ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
+    const nota = r.unico ? h("p", { class: "conta__resumo-nota" }, h("span", { "aria-hidden": "true" }, "* "), r.unico < 0 ? `Fora desta média: devolução ou acerto de ${unicoNome(p)}, ` : `Fora desta média: ${unicoNome(p)} de `,
+      h("strong", null, reais(r.unico)), r.unico < 0 ? " na fonte" : `, ${comoUnico(r.unico, mesesDoUnico(p, k), p.k !== "v")}`,
+      `.${r.mg ? ` Contando com ${r.unico < 0 || p.k === "v" ? "ele" : "ela"}, seriam ${reais(r.tm + r.unico / r.mg)} por mês.` : ""}`) : null;
     // a frase antes do número (proposta B, escolhida em 07/10/2026): o que recebe e o que usa em gastos, ou só o que existe; quem só recebe
     // (Prefeitura, governador, Judiciário) fica como era. Sempre bruto, e os valores são os mesmos da divisão logo abaixo. A mesma regra no gerar.mjs.
     const g = gastosNome(p).toLowerCase();
@@ -1694,8 +1711,8 @@
   }
   // a linha do pagamento único, na lista: o que é, quando caiu e por que fica fora do "por mês" e da comparação
   function textoUnico(p, k, r, v) {
-    if (v < 0) return "Valor negativo na fonte (devolução ou acerto de uma ajuda de custo anterior). É o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas.";
-    const c = comoUnico(v, mesesDoUnico(p, k)).replace(/^./, (x) => x.toUpperCase());
+    if (v < 0) return `Valor negativo na fonte (devolução ou acerto de ${p.k === "v" ? "um pagamento único anterior" : "uma ajuda de custo anterior"}). É o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas.`;
+    const c = comoUnico(v, mesesDoUnico(p, k), p.k !== "v").replace(/^./, (x) => x.toUpperCase());
     if (!r.mg) return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês e da comparação com os colegas.`;
     const pesa = r.mg <= 8 && /^\d{4}$/.test(k) ? `, bem mais do que pesaria em quem teve os 12 meses do ano (${reais(v / 12)})` : "";
     return `${c}: é o total do período, e não um valor por mês. Fica fora do custo por mês, da mediana e da posição entre os colegas porque não se repete todo mês: dividido pelos ${r.mg} ${r.mg === 1 ? "mês" : "meses"} do período, somaria ${reais(v / r.mg)} por mês${pesa}.`;
@@ -1793,10 +1810,10 @@
         const selo = seloComp(porMes(rm, c), C.cat[c], `vs. ${txtMed}`);
         const det = detalheCat(p, k, c);
         const explica = MEDIA_PAGA.has(c) ? h("span", { class: "item__detalhe" }, explicaMedia(p, r, c, k)) : null;
-        if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, MEDIA_PAGA.has(c) ? nomeMedia(c) : nomeCat(c)), valor, explica, selo);
+        if (!det) return h("div", { class: "item" }, h("span", { class: "item__nome" }, MEDIA_PAGA.has(c) ? nomeMedia(c) : nomeCatP(c, p)), valor, explica, selo);
         const vpm = c === "viagens_oficiais" ? viagensPorMes(p, k) : null;
         return h("details", { class: "item-abre", ontoggle: (e) => { if (e.target.open) evento("abrir_detalhe", { categoria: c, casa: casaTxt(p) }); } },
-          h("summary", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c), h("span", { class: "item__abre" }, "detalhe")), valor, selo),
+          h("summary", { class: "item" }, h("span", { class: "item__nome" }, nomeCatP(c, p), h("span", { class: "item__abre" }, "detalhe")), valor, selo),
           h("div", { class: "subitens" },
             det.linhas.map(([t, v]) => h("div", { class: "subitem" }, h("span", null, t), h("span", { class: "num" }, reais(v / det.div)), h("span", { class: "subitem__pct" }, pctTxt(v, det.total)))),
             vpm ? h("p", { class: "subitens__nota" }, `${num(vpm, vpm < 10 ? 1 : 0)} viagens por mês, em média.`) : null,
@@ -1826,8 +1843,10 @@
           h("span", { class: "item__detalhe" }, leiG(p) ? "o salário oficial do cargo" : p.k === "t" ? "bruto, antes do abate-teto; as diárias ficam à parte" : soBolso(p) ? "tudo para o bolso" : verbaNaoLida(p) ? `${reais(r.gm)} para o bolso; ${gastosNome(p).toLowerCase()} não publicados` : `${reais(r.gm)} para o bolso + ${reais(r.cm)} em ${gastosNome(p).toLowerCase()}`)),
         r.unico ? h("div", { class: "unico" },
           titulo("Pago de uma vez, fora da média por mês", "unico"),
-          Object.entries(r.unicos).map(([c, v]) => h("div", { class: "item" }, h("span", { class: "item__nome" }, nomeCat(c)), h("span", { class: "item__valor" }, reais(v)),
-            h("span", { class: "item__detalhe" }, textoUnico(p, k, r, v))))) : null,
+          Object.entries(r.unicos).map(([c, v]) => h("div", { class: "item" }, h("span", { class: "item__nome" }, c === "pagamento_unico" ? "Pagamento único" : nomeCat(c)), h("span", { class: "item__valor" }, reais(v)),
+            h("span", { class: "item__detalhe" }, textoUnico(p, k, r, v)),
+            ...notasUnico(p, k).map((n) => h("span", { class: "item__detalhe unico__nota" }, `${fmtMes(n.mes)}, ${reais(n.valor)}: ${n.texto} `,
+              n.url ? h("a", { href: n.url, target: "_blank", rel: "noopener" }, `${n.imprensa ? `Ver a notícia${n.veiculo ? ` (${n.veiculo})` : ""}` : "Ver a lei"}\u00a0↗`) : null))))) : null,
         r.em ? h("div", { class: "equipe-resumo" },
           titulo("À parte: equipe do gabinete (vai para outras pessoas)", "equipe"),
           h("div", { class: "estatisticas", style: "padding:6px 22px 0" },
@@ -1866,7 +1885,9 @@
   const semVerbaCasa = (p) => (legisl(p) && (casaDe(p) || {}).sem_verba) || "";
   function pontosDoPeriodo(p, k) {
     const ano = k === "leg" ? null : Number(k);
-    return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4], ra: t[5] || 0, sv: verbaPendente(p, t[0]) }));
+    // pagamento único do mês (vereador): o valor continua no mês, como a fonte mostra, e a página marca quanto dele fica fora da média
+    const un = (mes) => ((UNICOS[p.k] && p.un) || []).filter((x) => x[0] === mes).reduce((s, x) => s + x[1], 0);
+    return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4], ra: t[5] || 0, sv: verbaPendente(p, t[0]), un: un(t[0]) }));
   }
   const nomeMes = (q) => `${MESES[(q.aaaamm % 100) - 1]}/${Math.floor(q.aaaamm / 100)}`;
   function tabela(cabecalho, linhas, rotulo) {
@@ -1977,7 +1998,7 @@
         p.k === "j" ? p.cg.map((c) => h("span", null, h("span", { class: `chave chave--faixa faixa-cargo--${S.porId.get(c.id) ? S.porId.get(c.id).k : "e"}` }), `Mês como ${c.g.split(/[ -]/)[0].toLowerCase()}`)) : null),
       caixa,
       tabela(["Mês", "Bolso", gastosNome(p), "Custo total"], pontos.map((q) => (q.sv ? [nomeMes(q), reais(q.g), q.sv === "atraso" ? "ainda não publicados" : "não publicados", `${reais(q.g)}, sem os gastos`]
-        : [nomeMes(q), reais(q.g), reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`]))),
+        : [nomeMes(q), `${reais(q.g)}${q.un ? " *" : ""}`, reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`]))),
       h("ul", { class: "lista nota" },
         pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
           ? "≈ O auxílio-moradia é informado por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado."
@@ -1986,6 +2007,7 @@
         p.k === "d" ? h("li", null, "Junho e dezembro costumam ser mais altos: a Câmara paga o 13º em duas parcelas, nesses meses.") : null,
         p.k === "a" && (casaDe(p) || {}).subsidio_folha ? h("li", null, "Meses mais altos: férias, 13º ou pagamentos atrasados, que a Assembleia soma no mês em que paga.") : null,
         legisl(p) && ocupacaoTxt(p) ? h("li", null, `Mês com salário menor: o ${cargoCurto(p)} ficou só parte do mês no cargo.`) : null,
+        pontos.some((q) => q.un) ? h("li", null, `* ${listaE(pontos.filter((q) => q.un).map((q) => `${nomeMes(q)} inclui ${reais(q.un)}`))} de pagamento único, que fica fora da média por mês (veja “Pago de uma vez”, acima).`) : null,
         pontos.some((q) => q.sv === "nao") ? h("li", null, `Os gastos do mandato não aparecem na fonte que lemos da ${(casaDe(p) || {}).casa || "Câmara"}: a coluna mostra “não publicados”, e não R$ 0.`) : null,
         pontos.some((q) => q.sv === "atraso") ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} publica a verba com atraso em relação à folha: os meses mais recentes mostram “ainda não publicados”, e não R$ 0. A média por mês não conta esses meses.`) : null,
         pontos.some((q) => q.sv === "falta") ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} não publicou a verba de ${listaE(pontos.filter((q) => q.sv === "falta").map(nomeMes))}: ${pontos.filter((q) => q.sv === "falta").length === 1 ? "esse mês mostra" : "esses meses mostram"} “não publicados”, e não R$ 0. A média por mês não conta ${pontos.filter((q) => q.sv === "falta").length === 1 ? "esse mês" : "esses meses"}.`) : null,
@@ -1999,6 +2021,7 @@
       (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), q.sv ? h("div", { class: "pequeno" }, `${gastosNome(p)}: ${q.sv === "atraso" ? "ainda não publicados" : "não publicados"}`) : linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`),
         h("div", null, q.sv ? "Custo total, sem os gastos " : "Custo total ", h("strong", null, reais(q.g + q.c))),
         q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null,
+        q.un ? h("div", { class: "pequeno" }, `inclui ${reais(q.un)} de pagamento único (fora da média por mês)`) : null,
         p.k === "j" && cargoNoMes(p, q.aaaamm) ? h("div", { class: "pequeno" }, cargoNoMes(p, q.aaaamm) === "e" ? "Neste mês: ministro" : "Neste mês: no Congresso") : null],
       p.k === "j" ? (q) => cargoNoMes(p, q.aaaamm) : null);
     return card;
@@ -2326,7 +2349,7 @@
             h("a", { href: urlDe(o.id), class: "pequeno", onclick: () => { S.origem = "comparar"; } }, `Ver o contracheque de ${o.n}`),
             h("button", { type: "button", class: "link-botao pequeno", onclick: () => { S.outro = null; render(); irPara("comparar"); } }, "Tirar da comparação")),
           (p.k === "s" || o.k === "s") ? h("p", { class: "nota" }, "A equipe do Senado é uma estimativa.") : null,
-          r1.unico || r2.unico ? h("p", { class: "nota" }, "A ajuda de custo, paga de uma vez, fica fora de “Vai para o bolso” e de “Custo por mês”: aparece à parte, na página de cada um.") : null);
+          r1.unico || r2.unico ? h("p", { class: "nota" }, "A ajuda de custo e o pagamento único de vereador, pagos de uma vez, ficam fora de “Vai para o bolso” e de “Custo por mês”: aparecem à parte, na página de cada um.") : null);
       }
     }
     return card;
@@ -3773,6 +3796,7 @@
           R.metrica === "cota" && R.casa === "d" ? h("li", null, "O limite da cota muda por estado, de R$ 41,6 mil (DF) a R$ 58,5 mil (RR) por mês, por causa do preço das passagens.") : null,
           R.casa === "s" && ["equipe", "pessoas", "porPessoa"].includes(R.metrica) ? h("li", null, "A equipe do Senado é uma estimativa feita a partir da folha de pagamento.") : null,
           (R.casa === "d" || R.casa === "s") && ["custo", "ganha"].includes(R.metrica) ? h("li", null, "A ajuda de custo, paga de uma vez (na posse, por exemplo), não entra no valor por mês: dividida por poucos meses, faria parecer mais caro quem teve menos meses no período. Ela aparece à parte, na página de cada pessoa.") : null,
+          R.casa === "v" && S.D.p.some((q) => q.k === "v" && q.cid === R.cid && q.un) ? h("li", null, "O pagamento único (retroativos, conversão de férias), pago de uma vez, não entra no valor por mês: aparece à parte, na página de cada vereador.") : null,
           R.casa === "v" && !(infoG(G()) || {}).verba_nome ? h("li", null, (infoG(G()) || {}).sem_verba ? `${infoG(G()).sem_verba} Por isso não há ranking de verba.`
             : `${(infoG(G()) || {}).n}: gastos do mandato não publicados na fonte que lemos. O ranking mostra só o que vai para o bolso: o custo total não é calculado.`) : null,
           R.casa === "e" ? h("li", null, "Governo federal: presidente, vice e ministros. Viagens em aviões da FAB e no avião presidencial não têm custo publicado.") : null,

@@ -392,7 +392,7 @@ const gastosNome = (p) => ({ e: "gastos do cargo", j: "gastos dos cargos", p: "g
 const rotuloValor = (p) => (p.k === "g" && p.fonte === "lei" ? "Salário do cargo por mês" : soBolso(p) ? "Recebe por mês" : "Custo por mês");
 const nomeK = (k, p) => quando(k, p).replace(/^Em/, "em");
 // pagamento único (ver UNICOS no app.js): a ajuda de custo de deputado e senador, paga de uma vez, fica fora do "por mês"
-const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"] };
+const UNICOS = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"], v: ["pagamento_unico"] };
 const somaUnicos = (p, k, r) => {
   const q = p.k === "j" ? porId.get(((p.cg || [])[1] || {}).id) : p;
   const lista = q && UNICOS[q.k];

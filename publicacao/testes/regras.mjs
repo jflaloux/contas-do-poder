@@ -26,7 +26,7 @@ const confere = (nome, ok, detalhe = "") => { total++; if (!ok) falhas++; consol
 const digitos = (t) => String(t || "").replace(/[^0-9-]/g, "");
 
 // ------------------------------------------------------------------ a conta, feita aqui de outro jeito (nada de importar o app.js)
-const UNICO_DE = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"] };
+const UNICO_DE = { d: ["ajuda_de_custo"], s: ["ajuda_de_custo"], v: ["pagamento_unico"] };
 const anoPadrao = (p) => (p.per["2025"] && p.per["2025"].m >= 1 ? "2025" : Object.keys(p.per).filter((a) => a !== "leg" && p.per[a] && p.per[a].m > 0).sort().pop());
 // o que sai do "por mês": a ajuda de custo do parlamentar (em "tudo junto", a do mandato, que é o 2º cargo)
 function unicoDe(p, k, porId) {
@@ -145,6 +145,25 @@ console.log("\n-- Câmara sem a verba na fonte que lemos: o HTML pronto diz \"n�
   for (const cod of com) { const p = primeiroDe(cod), h = p ? html(p.id) : "";
     if (/resumo-parte--texto/.test(h)) erradas.push(`${CAMS.meta.cidades[cod].n}: tem verba e o HTML pronto diz não publicados`); }
   confere(`o HTML pronto de ${nao.map((c) => CAMS.meta.cidades[c].n).join(" e ") || "nenhuma cidade"} (sem a verba lida) diz "não publicados", e o das ${com.length} cidades com verba não`, nao.length >= 2 && erradas.length === 0, erradas.join(" | "));
+}
+
+// ------------------------------------------------------------------ 1e) pagamento único de vereador: o HTML pronto e a regra dizem o mesmo número
+console.log("\n-- Pagamento único de vereador (Vitória e Cuiabá): fora do por mês, no HTML pronto");
+{
+  const END = lerDados("enderecos.json").p, CAMS = lerDados("camaras.json");
+  const com = CAMS.p.filter((p) => p.k === "v" && p.un && p.un.length && END[p.id]);
+  const erradas = [];
+  for (const p of com) {
+    const kPadrao = p.per["2025"] && p.per["2025"].m >= 1 ? "2025" : "2026";
+    const r = p.per[kPadrao]; if (!r) continue;
+    const esperado = String(Math.round((r.mg ? (r.g - unicoDe(p, kPadrao, new Map())) / r.mg : 0) + (r.mc ? r.c / r.mc : 0)));
+    const arq = path.join(PUBLICAR, `${END[p.id]}.html`); if (!fs.existsSync(arq)) { erradas.push(`${p.id}: sem HTML pronto`); continue; }
+    const mostrado = digitos((/<p class="resumo-valor">([^<]*)<\/p>/.exec(fs.readFileSync(arq, "utf8")) || [])[1]);
+    if (mostrado !== esperado) erradas.push(`${p.n} (${kPadrao}): HTML ${mostrado} x conta ${esperado}`);
+  }
+  confere(`o valor do topo do HTML pronto dos ${com.length} vereadores com pagamento único é o da regra (sem o pagamento)`, com.length >= 16 && erradas.length === 0, erradas.slice(0, 4).join(" | "));
+  const A = CAMS.p.find((p) => p.id === "ver-3205309-80002283949"), U = A && A.un && A.un[0];
+  confere("Armandinho Fontoura: o pagamento único é o que a imprensa noticiou (R$ 215.190,24 em dez/2025), com o link de jornal e origem imprensa", !!U && U[0] === 202512 && Math.abs(U[1] - 215190.24) < 0.01 && U[4] === "imprensa" && /^https:\/\/www\.folhavitoria\.com\.br\//.test(U[3]), JSON.stringify(U));
 }
 
 // ------------------------------------------------------------------ 2) casos inventados, num build à parte

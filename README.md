@@ -577,6 +577,11 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   (`verbaNaoLida`, no `app.js`; `semVerbaLida`, no `gerar.mjs`, para o HTML pronto). No ranking, nessas cidades não há a lista de
   verba nem o “custo por mês” (seria só o salário: fica “vai para o bolso”), com uma nota; em Vitória, só a lista de verba sai. A
   posição entre os colegas diz “recebe”, e o Comparar mostra “não publicados” e “não se compara” onde só um dos lados tem a verba.
+- Pagamento único de vereador (`pagamento_unico` em camaras.json, com `aj` e `un`: o mês, o valor, a nota e o link; hoje Vitória e 15
+  vereadores de Cuiabá): `UNICOS` (`app.js` e `gerar.mjs`) ganhou `v`, e o valor sai do por mês, da mediana, da posição, do ranking e do
+  Comparar, como a ajuda de custo de deputado e senador. A página mostra o bloco “Pago de uma vez” com a nota do mês e o link
+  (origem `imprensa`: “Ver a notícia (veículo)”; origem `fonte`: “Ver a lei”), marca o mês no mês a mês e na dica do gráfico
+  (“inclui R$ X de pagamento único”) e deixa o mês como a fonte mostra, também no CSV. Veículo novo: `VEICULOS_UN` (`app.js`).
   Código de cada vereador: o SQ da candidatura de 2024 no TSE. Reserva: TCE-PB.
 - Teresina (`teresina.py`, desde 08/10/2026): a folha da Câmara não traz o nome de cada vereador, por isso o salário é o
   subsídio que ela mostra para todos (R$ 24.754,79 desde jan/2025, conferido em 08/10/2026), pelos dias no cargo; o

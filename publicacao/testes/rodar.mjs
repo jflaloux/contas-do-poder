@@ -95,6 +95,8 @@ const simularVerba = (verbaMes, vigencia) => (caminho) => {
 const VER_SP = Object.keys(ENDERECOS).filter((k) => k.startsWith("ver-3550308-")).sort()[0];
 // um vereador no cargo com mandato em 2025 inteiro (a posição entre os colegas só aparece com meses suficientes), da cidade de código IBGE `cod`
 const verCom2025 = (cod) => { const p = lerDados("camaras.json").p.find((q) => q.k === "v" && String(q.cid) === String(cod) && q.x && q.per && q.per["2025"] && q.per["2025"].m >= 12 && ENDERECOS[q.id]); return p ? `/${ENDERECOS[p.id]}?periodo=2025` : null; };
+// o custo por mês de 2025 sem o pagamento único (o que a página tem de mostrar), pela conta feita aqui com os números de camaras.json
+const custoSemUnico = (id, k) => { const q = lerDados("camaras.json").p.find((x) => x.id === id), r = q && q.per[k]; return r ? Math.round((r.g - (r.cats.pagamento_unico || 0)) / r.mg + (r.mc ? r.c / r.mc : 0)) : null; };
 const NOME_VER_SP = ((lerDados("camaras.json").p.find((p) => p.id === VER_SP)) || {}).n || "";
 const VERBA_ANOS = { 2025: 34706.25, 2026: 36018.75 };
 const VERBA_TEXTO_ANOS = [/Cada vereador pode gastar até R\$\s34\.706 em 2025 e R\$\s36\.019 em 2026 por mês\./];
@@ -389,6 +391,32 @@ const PAGINAS = [
       if (!bolso || /não se compara|não publicados/.test(bolso.join(" "))) f.push("o que vai para o bolso se compara: " + JSON.stringify(bolso));
       if (!/não são publicados na fonte que lemos/.test(document.querySelector("#comparar").innerText)) f.push("sem a nota do Comparar");
       return f; })()` },
+  // pagamento único de vereador (08/10/2026): fora da média por mês, com a nota e o link; Vitória (notícia) e Cuiabá (lei)
+  { nome: "vereador-vitoria-pagamento-unico", acao: true, url: ENDERECOS["ver-3205309-80002283949"] ? `/${ENDERECOS["ver-3205309-80002283949"]}` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), t = (document.querySelector("#contracheque") || {}).innerText || "";
+      const valor = ((document.querySelector("#contracheque .resumo-valor") || {}).textContent || "").replace(/\\D/g, "");
+      if (valor !== ${JSON.stringify(String(custoSemUnico("ver-3205309-80002283949", "2025")))}) f.push("o custo por mês devia ser " + ${JSON.stringify(String(custoSemUnico("ver-3205309-80002283949", "2025")))} + " (sem o pagamento único) e é " + valor);
+      if (!/Fora desta média: pagamento único de R\\$\\s215\\.190, pago de uma vez em dez\\/2025/.test(t)) f.push("o topo não tem a nota do pagamento único");
+      if (!/PAGO DE UMA VEZ, FORA DA MÉDIA POR MÊS\\s+Pagamento único\\s+R\\$\\s215\\.190/i.test(t)) f.push("sem o bloco Pago de uma vez com o pagamento único");
+      const a = [...document.querySelectorAll("#contracheque .unico a")].find((x) => /folhavitoria/.test(x.href));
+      if (!a || !/^Ver a notícia \\(Folha Vitória\\)/.test(a.textContent)) f.push("o link do jornal devia dizer notícia e o veículo: " + (a && a.textContent));
+      const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      const dez = linhas.find((l) => l[0] === "dez/2025"); if (!dez || !/\\*$/.test(dez[1])) f.push("dez/2025 devia ter a marca do pagamento único no bolso: " + JSON.stringify(dez));
+      if (!/dez\\/2025 inclui R\\$\\s215\\.190 de pagamento único/.test(document.querySelector("#mes-a-mes").textContent)) f.push("sem a nota do mês a mês");
+      const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
+      HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
+      const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (bt) { bt.click(); await esp(200); }
+      const csv = guardados.length ? await guardados[0].text() : "";
+      if (!/,2025-12,253054\\.\\d\\d,/.test(csv)) f.push("o CSV devia trazer dez/2025 como a fonte (R$ 253.054): " + (csv.split("\\n").find((l) => /2025-12/.test(l)) || "sem a linha"));
+      return f; })()` },
+  { nome: "vereador-cuiaba-pagamento-unico", url: ENDERECOS["ver-5103403-110002008432"] ? `/${ENDERECOS["ver-5103403-110002008432"]}?periodo=2026` : null, depois: `(() => {
+      const f = [], t = (document.querySelector("#contracheque") || {}).innerText || "";
+      if (!/Fora desta média: pagamento único de R\\$\\s46\\.946, pago de uma vez em jan\\/2026/.test(t)) f.push("o topo não tem a nota do pagamento único");
+      const a = [...document.querySelectorAll("#contracheque .unico a")][0]; if (!a || !/^Ver a lei/.test(a.textContent)) f.push("o link da lei devia dizer Ver a lei: " + (a && a.textContent));
+      if (/inclui auxílio-moradia/.test(t)) f.push("o rótulo dos auxílios do vereador ainda fala de auxílio-moradia");
+      const valor = ((document.querySelector("#contracheque .resumo-valor") || {}).textContent || "").replace(/\\D/g, "");
+      if (valor !== ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))}) f.push("o custo por mês devia ser " + ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))} + " e é " + valor);
+      return f; })()` },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -660,7 +688,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
-  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju/ },
+  { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /pagamento_unico|notasUnico|unicoNome|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|pagamento-unico/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },
