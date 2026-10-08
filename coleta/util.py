@@ -56,33 +56,36 @@ def dormir(segundos):
 _local = threading.local()
 
 
-# ---------------------------------------------------------------- robots.txt
-class BloqueadoRobots(Exception):
-    """O robots.txt do site não deixa robôs abrirem este endereço: não abrimos (regra do projeto, ver CLAUDE.md)."""
+# ---------------------------------------------------------------- robots.txt e pausas
+# O robots.txt é uma convenção, não lei (decisão de 08/10/2026, ver CLAUDE.md): não impede nenhum pedido. A sessão lê o
+# robots.txt de cada site só para saber o Crawl-delay e se o site prefere que robôs não entrem naquele endereço (aí, uma
+# pausa entre os pedidos). O que continua valendo para todo robô: só dados públicos, leitura mínima (o cache faz cada
+# página ser baixada no máximo uma vez por semana), o User-Agent "ContasDoPoder", pausas entre os pedidos, e parar se o
+# órgão pedir ou bloquear (SITES_PARADOS aqui, ou BLOQUEADO_ROBOTS no módulo do robô). CAPTCHA, WAF, login e consulta
+# que pede CPF continuam sendo barreiras que não se contornam.
+class SiteParado(Exception):
+    """O órgão pediu para o robô parar (ou bloqueou o robô): nenhum pedido sai para esse site (SITES_PARADOS)."""
 
+
+# Sites que pediram para o robô parar, ou que bloquearam o robô: (começo do endereço, desde quando e por quê). Nenhum
+# pedido sai para eles (SiteParado), e quem chama segue com o que já estava gravado.
+SITES_PARADOS = []
 
 # APIs feitas para robôs, com regras próprias de uso (a da Wikimedia pede só um User-Agent identificado e ritmo
-# moderado); o robots.txt desses sites é para quem varre as páginas, não para a API
+# moderado): o robots.txt desses sites nem é lido
 APIS_LIBERADAS = ("https://commons.wikimedia.org/w/api.php", "https://www.wikidata.org/w/api.php")
-# Exceções ao robots.txt (regra no CLAUDE.md): dados que a LAI manda publicar e abrir para acesso automatizado
-# (Lei 12.527/2011, art. 8º, § 3º, III). Cada uma: (começo do endereço, motivo, segundos entre pedidos naquele site).
-# A leitura é mínima (o cache faz cada página ser baixada no máximo uma vez por semana), o robô se identifica pelo
-# User-Agent e para se o site bloquear.
-EXCECOES_ROBOTS = [
-    ("https://www.camara.leg.br/deputados/",
-     "Câmara dos Deputados: salário, 13º, férias, diárias e pessoal de gabinete de cada deputado (remuneração de "
-     "agente público, que a LAI manda publicar; o robots.txt proíbe /deputados/*/* desde 18/09/2026)", 0.25),
-    ("https://dados.prefeitura.sp.gov.br/",
-     "Prefeitura de São Paulo: folha de pagamento nos dados abertos (o robots.txt do portal tem Disallow: /)", 10),
-    ("https://www.transparencia.pr.gov.br/pte/",
-     "Paraná: remuneração do governador e do vice no Portal da Transparência (o robots.txt tem Disallow: /pte)", 2),
-    ("https://dadosabertos.almg.gov.br/ws/",
-     "Assembleia de Minas Gerais: deputados e verba indenizatória nos dados abertos da ALMG (serviço feito para acesso "
-     "automatizado; o robots.txt tem Disallow: /)", 1),
-    ("https://docigp.alerj.rj.gov.br/",
-     "Assembleia do Rio de Janeiro: verba indenizatória de cada deputado no DOCIGP, o portal de transparência da verba "
-     "(o robots.txt tem Disallow: /)", 0.5),
+# Pausa mínima entre os pedidos em alguns endereços (começo do endereço, segundos), além do Crawl-delay. São os sites
+# que, de 30/09 a 08/10/2026, eram exceções ao robots.txt (dados que a LAI manda abrir, lidos mesmo com o robots.txt
+# proibindo), com a pausa que já tinham.
+PAUSAS = [
+    ("https://www.camara.leg.br/deputados/", 0.25),   # robots.txt proíbe /deputados/*/* desde 18/09/2026
+    ("https://dados.prefeitura.sp.gov.br/", 10),      # Disallow: /
+    ("https://www.transparencia.pr.gov.br/pte/", 2),  # Disallow: /pte
+    ("https://dadosabertos.almg.gov.br/ws/", 1),      # Disallow: / (o serviço é feito para acesso automatizado)
+    ("https://docigp.alerj.rj.gov.br/", 0.5),         # Disallow: /
 ]
+# Endereço que o robots.txt pede que robôs não abram, sem pausa própria nem Crawl-delay: esta pausa entre os pedidos
+PAUSA_SE_O_ROBOTS_PROIBE = 1.0
 _robots, _robots_trava, _ultimo_pedido, _trava_host = {}, threading.Lock(), {}, {}
 
 
@@ -153,11 +156,19 @@ def _pedir(origem, funcao, *args, **kwargs):
     return r
 
 
-def excecao_robots(url):
-    """(motivo, pausa) se o endereço está na lista de exceções ao robots.txt; senão None."""
-    for comeco, motivo, pausa in EXCECOES_ROBOTS:
+def pausa_do_endereco(url):
+    """Segundos de pausa própria daquele endereço (PAUSAS), ou None."""
+    for comeco, pausa in PAUSAS:
         if str(url).startswith(comeco):
-            return motivo, pausa
+            return pausa
+    return None
+
+
+def site_parado(url):
+    """(começo, motivo) se o site pediu para o robô parar (SITES_PARADOS); senão None."""
+    for comeco, motivo in SITES_PARADOS:
+        if str(url).startswith(comeco):
+            return comeco, motivo
     return None
 
 
@@ -244,7 +255,8 @@ def _robots_de(origem, sessao):
     try:
         r = _pedir(origem, requests.Session.request, sessao, "GET", f"{origem}/robots.txt", timeout=30, allow_redirects=True)
         if r.status_code >= 500:
-            regras = {"regras": [(False, "/")], "atraso": None}  # servidor com erro: não abre nada agora (RFC 9309)
+            # servidor com erro: vale como se o site pedisse que robôs não entrem (RFC 9309), ou seja, com pausa
+            regras = {"regras": [(False, "/")], "atraso": None}
         elif r.status_code >= 400 or "<html" in r.text[:600].lower():
             regras = {"regras": [], "atraso": None}  # sem robots.txt: tudo permitido
         else:
@@ -252,9 +264,9 @@ def _robots_de(origem, sessao):
     except HostIndisponivel:
         raise
     except requests.RequestException:
-        # robots.txt que não abriu (site fora do ar, ou bloqueio): nada é aberto nesse site (nem as exceções, porque o
+        # robots.txt que não abriu (site fora do ar, ou bloqueio): nada é aberto nesse site (o site não responde, e o
         # Crawl-delay não é conhecido) por ROBOTS_INACESSIVEL_SEGUNDOS, e depois se tenta ler de novo; quem pede recebe
-        # erro de conexão, não "robots proíbe"
+        # erro de conexão
         regras = {"regras": [(False, "/")], "atraso": None, "inacessivel": True}
         with _robots_trava:
             _robots_falhou[origem] = {"quando": time.time(), "regras": regras}
@@ -265,33 +277,38 @@ def _robots_de(origem, sessao):
 
 
 class SessaoEducada(requests.Session):
-    """requests.Session que lê o robots.txt de cada site antes do primeiro pedido: não abre o que ele proíbe
-    (BloqueadoRobots), a não ser os endereços de EXCECOES_ROBOTS (com pausa entre os pedidos), e respeita o
-    Crawl-delay (um pedido por vez naquele site, com a pausa pedida)."""
+    """requests.Session que lê o robots.txt de cada site antes do primeiro pedido, só para as pausas: o Crawl-delay (um
+    pedido por vez naquele site, com a pausa pedida), a pausa própria do endereço (PAUSAS) ou, onde o robots.txt pede
+    que robôs não entrem, PAUSA_SE_O_ROBOTS_PROIBE. O robots.txt não impede nenhum pedido (regra no CLAUDE.md); o que
+    impede é o site ter pedido para o robô parar (SITES_PARADOS -> SiteParado)."""
 
     def request(self, method, url, *args, **kwargs):
         from urllib.parse import urlsplit
         u = urlsplit(str(url))
         origem = f"{u.scheme}://{u.netloc}"
-        if not str(url).startswith(APIS_LIBERADAS):
-            regras = _robots_de(origem, self)
-            if regras.get("inacessivel"):  # sem ler o robots.txt não há como saber o Crawl-delay: nem a exceção abre
-                raise requests.exceptions.ConnectionError(f"o robots.txt de {u.netloc} não abriu (site fora do ar ou bloqueado)")
-            exc = excecao_robots(url)
-            if exc:  # exceção: lê mesmo com o robots.txt proibindo, com a pausa (e o Crawl-delay, se houver)
-                _esperar_vez(origem, max(exc[1], regras["atraso"] or 0))
+        parado = site_parado(url)
+        if parado:
+            raise SiteParado(f"{u.netloc}: o robô não abre este site ({parado[1]})")
+        if str(url).startswith(APIS_LIBERADAS):
+            return _pedir(origem, super().request, method, url, *args, **kwargs)
+        regras = _robots_de(origem, self)
+        if regras.get("inacessivel"):  # o site não respondeu nem ao robots.txt: sem pedidos por um tempo
+            raise requests.exceptions.ConnectionError(f"o robots.txt de {u.netloc} não abriu (site fora do ar ou bloqueado)")
+        pausa = pausa_do_endereco(url)
+        if pausa is not None:  # pausa própria do endereço (e o Crawl-delay, se for maior)
+            _esperar_vez(origem, max(pausa, regras["atraso"] or 0))
+            return _pedir(origem, super().request, method, url, *args, **kwargs)
+        if regras["atraso"]:
+            with _robots_trava:
+                trava = _trava_host.setdefault(origem, threading.Lock())
+            with trava:
+                espera = _ultimo_pedido.get(origem, 0) + regras["atraso"] - time.time()
+                if espera > 0:
+                    dormir(espera)
+                _ultimo_pedido[origem] = time.time()
                 return _pedir(origem, super().request, method, url, *args, **kwargs)
-            if not permitido(str(url), regras):
-                raise BloqueadoRobots(f"o robots.txt de {u.netloc} não permite robôs em {u.path}")
-            if regras["atraso"]:
-                with _robots_trava:
-                    trava = _trava_host.setdefault(origem, threading.Lock())
-                with trava:
-                    espera = _ultimo_pedido.get(origem, 0) + regras["atraso"] - time.time()
-                    if espera > 0:
-                        dormir(espera)
-                    _ultimo_pedido[origem] = time.time()
-                    return _pedir(origem, super().request, method, url, *args, **kwargs)
+        if not permitido(str(url), regras):  # o site prefere que robôs não entrem aqui: lemos, com pausa
+            _esperar_vez(origem, PAUSA_SE_O_ROBOTS_PROIBE)
         return _pedir(origem, super().request, method, url, *args, **kwargs)
 
 
@@ -328,7 +345,7 @@ def ca_com_intermediario(host, nome):
     folha = x509.load_pem_x509_certificate(ssl.get_server_certificate((host, 443), timeout=30).encode())
     aia = folha.extensions.get_extension_for_class(x509.AuthorityInformationAccess).value
     url = next(d.access_location.value for d in aia if d.access_method == AuthorityInformationAccessOID.CA_ISSUERS)
-    der = _sessao().get(url, timeout=60).content  # pela sessão do projeto (robots.txt, User-Agent), como todo pedido
+    der = _sessao().get(url, timeout=60).content  # pela sessão do projeto (pausas, User-Agent), como todo pedido
     inter = x509.load_der_x509_certificate(der) if not der.lstrip().startswith(b"-----") else x509.load_pem_x509_certificate(der)
     assinado = False
     for bloco in re.findall(rb"-----BEGIN CERTIFICATE-----.+?-----END CERTIFICATE-----", raizes_pem, re.S):
@@ -871,8 +888,8 @@ def log(*args):
 
 def recursos_ckan(pagina, pausa=10):
     """Arquivos de um conjunto de dados de um portal CKAN, pela página do conjunto (/dataset/<nome>): [{id, name, url}].
-    O robots.txt desses portais não deixa robôs usarem a API (/api/) e pede 10 s entre os pedidos (Crawl-delay); a
-    página do conjunto e os arquivos (/dataset/.../download/...) são permitidos."""
+    O robots.txt desses portais pede que robôs não usem a API (/api/) e 10 s entre os pedidos (Crawl-delay); a página do
+    conjunto e os arquivos (/dataset/.../download/...) bastam, e são o caminho usado desde antes de 08/10/2026."""
     from bs4 import BeautifulSoup
     verificar_prazo()
     r = _sessao().get(pagina, timeout=120)

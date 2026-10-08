@@ -233,13 +233,14 @@ def montar():
 
 
 # O robots.txt do Portal de Dados Abertos da Prefeitura (dados.prefeitura.sp.gov.br) tem "Disallow: /" para todos os
-# robôs. O portal está na lista de exceções (coleta/util.py, regra no CLAUDE.md): a folha é dado que a LAI manda abrir.
-# Se a Prefeitura pedir para parar ou bloquear, troque para True: o site fica com o que já estava gravado.
+# robôs; o robots.txt é uma convenção, não lei (regra no CLAUDE.md), e a folha é dado que a LAI manda abrir: lemos com
+# 10 s entre os pedidos (util.PAUSAS). Se a Prefeitura pedir para parar ou bloquear, troque para True: o site fica com o
+# que já estava gravado.
 BLOQUEADO_ROBOTS = False
 
 
 def coletar():
     if BLOQUEADO_ROBOTS:
-        log("  Prefeitura de São Paulo: o robots.txt do portal não permite robôs; fica o que já estava gravado")
+        log("  Prefeitura de São Paulo: a Prefeitura pediu para o robô parar; fica o que já estava gravado")
         return
     coletar_remuneracao()

@@ -1,7 +1,7 @@
 """Assembleia Legislativa de Minas Gerais (ALMG): deputado estadual por deputado estadual.
 
 Fontes (Dados Abertos da ALMG, https://dadosabertos.almg.gov.br/ws/, serviço feito para acesso automatizado; o robots.txt
-do site tem "Disallow: /", e a leitura é uma das exceções do projeto, ver coleta/util.py e o README):
+do site tem "Disallow: /", que é uma convenção e não lei: lemos com 1 s entre os pedidos, util.PAUSAS e o README):
 - Deputados por situação (1: em exercício; 2: afastados; 3: que exerceram mandato): /ws/deputados/situacao/<n>, e os dados
   de cada um (nome civil, sexo, partido, situação): /ws/deputados/<id>
 - Verba indenizatória do deputado no mês, por tipo e nota a nota (emitente, CNPJ/CPF, documento, data, valor reembolsado):

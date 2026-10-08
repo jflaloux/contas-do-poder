@@ -57,15 +57,16 @@ def _tabela(nome):
     return saida
 
 
-# O robots.txt do Portal da Transparência do Paraná tem "Disallow: /pte" para todos os robôs (menos os buscadores).
-# O portal está na lista de exceções (coleta/util.py, regra no CLAUDE.md): a remuneração do governador e do vice é dado
-# que a LAI manda abrir. Se o Estado pedir para parar ou bloquear, troque para True: o site fica com o que já foi gravado.
+# O robots.txt do Portal da Transparência do Paraná tem "Disallow: /pte" para todos os robôs (menos os buscadores); o
+# robots.txt é uma convenção, não lei (regra no CLAUDE.md), e a remuneração do governador e do vice é dado que a LAI manda
+# abrir: lemos com 2 s entre os pedidos (util.PAUSAS). Se o Estado pedir para parar ou bloquear, troque para True: o site
+# fica com o que já foi gravado.
 BLOQUEADO_ROBOTS = False
 
 
 def coletar():
     if BLOQUEADO_ROBOTS:
-        comum.avisar(UF, "o robots.txt do portal não permite robôs; fica o que já estava gravado")
+        comum.avisar(UF, "o Estado pediu para o robô parar; fica o que já estava gravado")
         return 0
     feitos, linhas = set(), []
     fazer = set(comum.a_fazer(UF, comum.ultimo_possivel()))

@@ -1,6 +1,7 @@
 """STF, STM e TSE pelo DadosJusBr (https://dadosjusbr.org, licença CC BY 4.0), enquanto a fonte oficial não abre para o
-robô: a consulta do STF (egesp-portal.stf.jus.br) e a do STM (www2.stm.jus.br/rem_web) são proibidas no robots.txt (a
-exceção depende de uma conversa com um advogado) e o site do TSE responde 403 a robôs (não contornamos).
+robô: a consulta do STF (egesp-portal.stf.jus.br) e a do STM (www2.stm.jus.br/rem_web) pedem no robots.txt que robôs não
+entrem (desde 08/10/2026 isso não impede a leitura, mas o robô próprio ainda não foi feito; a do STM só abre do Brasil) e o
+site do TSE responde 403 a robôs (bloqueio: não contornamos).
 
 O DadosJusBr coleta a folha oficial todo mês e publica um pacote por órgão e mês (contracheque.csv e remuneracao.csv,
 item por item), com uma cópia do arquivo original baixado. O STF vem da consulta oficial do STF (coletor próprio do

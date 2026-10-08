@@ -44,7 +44,7 @@ NOTAS_GERAIS = [
 ]
 NOTAS = {
     "STF": ["Fonte: a cópia do arquivo oficial do STF (consulta egesp-portal.stf.jus.br) guardada pelo DadosJusBr (licença CC BY "
-            "4.0). O robô do Contas do Poder não lê a consulta do STF porque o robots.txt dela proíbe robôs.",
+            "4.0). O robô do Contas do Poder ainda não lê a consulta do STF.",
             "Em dez/2025 o arquivo do STF repete cada coluna e cada linha (valores iguais): vale uma de cada. O pacote padronizado do "
             "DadosJusBr daquele mês ficou com as colunas trocadas; por isso os valores aqui saem da cópia do arquivo oficial.",
             "Em jul/2026, para dois ministros, a coluna Férias traz um valor que os totais do próprio arquivo subtraem; aqui ele "
@@ -59,7 +59,7 @@ NOTAS = {
             "Jan/2026 não está na lista de arquivos do TST. Em fev/2025, para 13 ministros, o total de rendimentos do próprio "
             "arquivo difere da soma das partes; aqui fica a soma das partes."],
     "STM": ["Fonte: a planilha que o STM manda ao Painel de Remuneração dos Magistrados do CNJ, coletada pelo DadosJusBr (licença "
-            "CC BY 4.0). A consulta do STM é proibida a robôs no robots.txt e não abre de fora do Brasil.",
+            "CC BY 4.0). O robô do Contas do Poder ainda não lê a consulta do STM, que só abre de dentro do Brasil.",
             "Jan, mar e abr/2026 não estão no DadosJusBr."],
     "TSE": ["Fonte: a planilha que o TSE manda ao Painel de Remuneração dos Magistrados do CNJ, coletada pelo DadosJusBr (licença "
             "CC BY 4.0). O site do TSE responde 403 a robôs.",

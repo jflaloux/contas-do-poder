@@ -4,8 +4,8 @@ Fontes:
 - DOCIGP (Descentralização Orçamentária de Custeio Individualizado para Gabinete Parlamentar), o portal de transparência
   da verba indenizatória: https://docigp.alerj.rj.gov.br/transparencia. O robô lê o que a página usa (/api/v1/...): os
   deputados da legislatura, o orçamento mensal de cada um (valor do mês) e os lançamentos publicados de cada mês (data,
-  centro de custo, fornecedor, CNPJ/CPF, documento, valor). O robots.txt do DOCIGP tem "Disallow: /": a leitura é uma das
-  exceções do projeto (verba de agente público, que a LAI manda publicar), ver coleta/util.py e o README.
+  centro de custo, fornecedor, CNPJ/CPF, documento, valor). O robots.txt do DOCIGP tem "Disallow: /", que é uma convenção
+  e não lei (verba de agente público, que a LAI manda publicar): lemos com 0,5 s entre os pedidos (util.PAUSAS, README).
 - Subsídio: Lei 11.074/2025 (R$ 34.774,64), pela tabela de remuneração da Alerj.
 - Quem está no cargo hoje e o partido de hoje: a página "Quem são" do site da Alerj (www.alerj.rj.gov.br/Deputados/QuemSao,
   sem robots.txt); o partido do DOCIGP está desatualizado (ainda tem DEM, PSL, PHS): para quem saiu, vale o da eleição de 2022.

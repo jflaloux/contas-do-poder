@@ -12,12 +12,13 @@ Fontes:
   https://www.camara.leg.br/deputados/ID/pessoal-gabinete?ano=AAAA
 - Auxílio-moradia e imóvel funcional: https://www.camara.leg.br/moradia/detalhamento
 
-O robots.txt da Câmara (desde 18/09/2026) não deixa robôs abrirem /deputados/ID/... (as páginas de salário, do
-contracheque detalhado e de pessoal de gabinete de cada deputado). Essas páginas são lidas como exceção (regra no
-CLAUDE.md, lista em coleta/util.py): é a remuneração de agente público, que a LAI manda publicar e abrir para acesso
-automatizado. Devagar (um pedido a cada 0,25 s) e só o que falta: o que já foi lido fica em dados/camara/ (no Git) e não
-é baixado de novo, a não ser os meses recentes. Se a Câmara bloquear, o robô usa o que está em dados/camara/ e, para os
-meses seguintes, o subsídio fixado em lei (Decreto Legislativo 172/2022) nos meses em exercício.
+O robots.txt da Câmara (desde 18/09/2026) pede que robôs não abram /deputados/ID/... (as páginas de salário, do
+contracheque detalhado e de pessoal de gabinete de cada deputado). O robots.txt é uma convenção, não lei (regra no
+CLAUDE.md): é a remuneração de agente público, que a LAI manda publicar e abrir para acesso automatizado. Devagar (um
+pedido a cada 0,25 s, util.PAUSAS) e só o que falta: o que já foi lido fica em dados/camara/ (no Git) e não é baixado de
+novo, a não ser os meses recentes. Se a Câmara pedir para parar ou bloquear (util.SITES_PARADOS), o robô usa o que está
+em dados/camara/ e, para os meses seguintes, o subsídio fixado em lei (Decreto Legislativo 172/2022) nos meses em
+exercício.
 Do contracheque detalhado guardamos só o que o deputado recebe (subsídio, vantagens, 13º, férias, acertos, abate-teto,
 diárias, auxílios, verbas indenizatórias), nunca o imposto de renda, a previdência ou o líquido.
 """
@@ -32,7 +33,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .config import ANOS, BRUTOS, CACHE, DADOS, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, ULTIMO_MES, meses_da_legislatura
-from .util import BloqueadoRobots, TempoEsgotado, baixar, cache_valido, gravar_csv, ler_json, log, normalizar_nome, numero_br, salvar_json
+from .util import SiteParado, TempoEsgotado, baixar, cache_valido, gravar_csv, ler_json, log, normalizar_nome, numero_br, salvar_json
 
 API = "https://dadosabertos.camara.leg.br/api/v2"
 SITE = "https://www.camara.leg.br"
@@ -330,7 +331,7 @@ def verba_gabinete(lista):
     log(f"Câmara: verba de gabinete ok ({len(df)} meses)")
 
 
-# ---------------------------------------------------------------- páginas de cada deputado (exceção ao robots.txt)
+# ---------------------------------------------------------------- páginas de cada deputado (o robots.txt pede que robôs não entrem)
 def _pagina(id_, tipo, **params):
     try:
         return baixar(f"{SITE}/deputados/{id_}/{tipo}", params=params).text
@@ -349,14 +350,14 @@ def _em_paralelo(func, tarefas, nome, tolerancia=0):
             for f in as_completed(futuros):
                 try:
                     f.result()
-                except (TempoEsgotado, BloqueadoRobots):
+                except (TempoEsgotado, SiteParado):
                     raise
                 except Exception as e:  # registra e segue
                     erros.append((futuros[f], repr(e)))
                 feitos += 1
                 if feitos % 500 == 0:
                     log(f"  ... {nome}: {feitos}/{len(tarefas)}")
-        except (TempoEsgotado, BloqueadoRobots):
+        except (TempoEsgotado, SiteParado):
             ex.shutdown(wait=True, cancel_futures=True)
             raise
     if erros:
@@ -455,7 +456,7 @@ def remuneracao(lista):
             df = pd.read_csv(arq)
         df["calculado"] = False
         log(f"Câmara: salários ok ({len(df)} meses)")
-    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+    except (SiteParado, RuntimeError, requests.RequestException) as e:
         log(f"Câmara: as páginas de remuneração não abriram ({e}); fica o que está em dados/camara/ e, depois, o subsídio da lei")
         df = guardado.assign(calculado=False)
         df = pd.concat([df, pd.DataFrame(_pela_lei(lista, df), columns=df.columns)], ignore_index=True)
@@ -523,7 +524,7 @@ def detalhe(rem):
     erro = None
     try:
         _em_paralelo(_detalhe_mes, faltam[:MAX_DETALHE], "contracheque detalhado", tolerancia=20)
-    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+    except (SiteParado, RuntimeError, requests.RequestException) as e:
         erro = e
         log(f"Câmara: os contracheques detalhados não abriram ({e}); fica o que está em dados/camara/")
     finally:  # grava o que já foi lido, mesmo se o tempo acabar
@@ -592,7 +593,7 @@ def pessoal(lista, rem):
     try:
         # algumas páginas dão erro 500 de vez em quando; toleramos poucas (são tentadas de novo na próxima vez)
         _em_paralelo(_pessoal_ano, pendentes, "pessoal de gabinete", tolerancia=max(20, int(0.05 * len(pendentes))))
-    except (BloqueadoRobots, RuntimeError, requests.RequestException) as e:
+    except (SiteParado, RuntimeError, requests.RequestException) as e:
         log(f"Câmara: as páginas de pessoal não abriram ({e}); fica o que está em dados/camara/pessoal.csv")
         df = pd.read_csv(arq)
         df.to_csv(BRUTOS / "camara_pessoal.csv", index=False)

@@ -1,4 +1,5 @@
-"""Testes do disjuntor por site (util._pedir, SessaoEducada, baixar) e do robots.txt que não abre. Usa servidores falsos no
+"""Testes do disjuntor por site (util._pedir, SessaoEducada, baixar), do robots.txt (que não impede pedidos, só dá as
+pausas) e dos sites que pediram para parar. Usa servidores falsos no
 próprio computador (127.0.0.1) e funções inventadas; não abre a internet.
 
     python3 -m coleta.testes_disjuntor
@@ -67,6 +68,7 @@ def executar():
 
     s1, vivo = _servidor()
     s2, vivo_crawl = _servidor(robots="User-agent: *\nCrawl-delay: 1\n")
+    s4, vivo_proibe = _servidor(robots="User-agent: *\nDisallow: /\n")
     fechado = "http://127.0.0.1:9"  # porta fechada: a conexão é recusada na hora
     morto = fechado
     s = util._sessao()
@@ -154,11 +156,12 @@ def executar():
         levanta(lambda: util.baixar(f"{morto}/x", tentativas=1, timeout=3), requests.RequestException)
     caso("vizinho continua", s.get(f"{vivo}/ok", timeout=5).status_code == 200)
 
-    # 8. robots.txt que não abre: o site fica fechado por um tempo (sem tentar de novo a cada pedido), nem a exceção abre
+    # 8. robots.txt que não abre: o site fica fechado por um tempo (sem tentar de novo a cada pedido), nem o endereço com
+    # pausa própria abre
     _limpar()
     morto = fechado
     e = levanta(lambda: s.get(f"{morto}/pagina", timeout=3), requests.exceptions.ConnectionError)
-    caso("robots inacessível vira erro de conexão", e is not None and not isinstance(e, util.BloqueadoRobots))
+    caso("robots inacessível vira erro de conexão", e is not None and not isinstance(e, util.SiteParado))
     caso("e fica guardado por um tempo", morto in util._robots_falhou and morto not in util._robots)
     antes = util._disjuntor.get(morto, {}).get("falhas", 0)
     levanta(lambda: s.get(f"{morto}/outra", timeout=3), requests.exceptions.ConnectionError)
@@ -166,13 +169,13 @@ def executar():
     util._robots_falhou[morto]["quando"] -= util.ROBOTS_INACESSIVEL_SEGUNDOS + 1
     levanta(lambda: s.get(f"{morto}/outra", timeout=3), requests.exceptions.ConnectionError)
     caso("passado o prazo, tenta ler o robots.txt de novo", util._disjuntor[morto]["falhas"] > antes)
-    util.EXCECOES_ROBOTS.append((f"{morto}/", "teste", 0))
+    util.PAUSAS.append((f"{morto}/", 0))
     try:
         _limpar()
         e = levanta(lambda: s.get(f"{morto}/pagina", timeout=3), requests.exceptions.ConnectionError)
-        caso("a exceção ao robots.txt não passa se o robots.txt não abriu", e is not None)
+        caso("a pausa própria não abre o site se o robots.txt não abriu", e is not None)
     finally:
-        util.EXCECOES_ROBOTS.pop()
+        util.PAUSAS.pop()
 
     # 9. Crawl-delay do robots.txt é respeitado entre os pedidos
     _limpar()
@@ -180,6 +183,26 @@ def executar():
     t0 = time.time()
     s.get(f"{vivo_crawl}/b", timeout=5)
     caso("Crawl-delay de 1 s entre pedidos", time.time() - t0 >= 0.9)
+
+    # 9b. robots.txt que proíbe tudo não impede o pedido (regra de 08/10/2026): só pede uma pausa entre os pedidos
+    _limpar()
+    caso("Disallow: / não bloqueia", s.get(f"{vivo_proibe}/a", timeout=5).text == "ok")
+    t0 = time.time()
+    s.get(f"{vivo_proibe}/b", timeout=5)
+    caso("e o pedido seguinte espera a pausa", time.time() - t0 >= util.PAUSA_SE_O_ROBOTS_PROIBE * 0.9)
+    caso("SiteParado não é BloqueadoRobots (que saiu)", not hasattr(util, "BloqueadoRobots"))
+    caso("lista de exceções saiu", not hasattr(util, "EXCECOES_ROBOTS"))
+
+    # 9c. site que pediu para parar: nenhum pedido sai, nem ao robots.txt
+    _limpar()
+    util.SITES_PARADOS.append((f"{vivo}/", "teste: o órgão pediu para parar"))
+    try:
+        e = levanta(lambda: s.get(f"{vivo}/ok", timeout=5), util.SiteParado)
+        caso("site parado levanta SiteParado", isinstance(e, util.SiteParado))
+        caso("sem pedido nem ao robots.txt", vivo not in util._robots)
+    finally:
+        util.SITES_PARADOS.pop()
+    caso("tirado da lista, volta a abrir", s.get(f"{vivo}/ok", timeout=5).text == "ok")
 
     # 10. o prazo para abrir a conexão vale quando a chamada passa só um número, e a função recebe a tupla
     _limpar()
@@ -196,6 +219,7 @@ def executar():
 
     s1.shutdown()
     s2.shutdown()
+    s4.shutdown()
     _limpar()
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0

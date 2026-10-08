@@ -1,8 +1,9 @@
 """Rio Grande do Sul: Portal da Transparência, painel "Pessoal do Poder Executivo" (Power BI), com a chave anônima que a
 própria página entrega a qualquer visitante (ver powerbi.py). Para cada mês, o valor bruto do vínculo e as rubricas
 (subsídio, 1/3 de férias, 13º, vale-refeição); descontos pessoais e impostos não são lidos. O painel cobre os últimos
-36 meses. Os arquivos mensais de dados abertos (arquivostransparencia.sefaz.rs.gov.br) não são usados: o robots.txt
-daquele endereço proíbe acesso automático. https://www.transparencia.rs.gov.br/"""
+36 meses. Os arquivos mensais de dados abertos (arquivostransparencia.sefaz.rs.gov.br) não são usados (o robots.txt
+daquele endereço pede que robôs não entrem; desde 08/10/2026 o robots.txt não impede a leitura, mas o painel já basta).
+https://www.transparencia.rs.gov.br/"""
 import re
 
 from ..util import _sessao

@@ -113,7 +113,7 @@ conexão seguidas (nenhuma resposta, nem de erro) num site, os pedidos seguintes
 milhares de pedidos esperava 90 s, 4 vezes. Foi o que se viu em 07/10/2026, quando o site da Câmara passou a não
 responder ao computador da simulação (e a conexão ficou sem resposta, sem recusa) no meio de uma primeira leitura de
 ~7.000 páginas; a rodada de 06/10 do GitHub pode ter passado pelo mesmo. Não é uma forma de passar por bloqueio: é parar
-de insistir. Um robots.txt que não abre vale como "fechado" por 5 minutos (nem as exceções abrem, porque o Crawl-delay não é conhecido), e erro de certificado não conta como site fora do ar. Testes: `python3 -m coleta.testes_disjuntor` (disjuntor e robots.txt) e `python3 -m coleta.testes_rodada` (tempos, prazo geral e códigos de saída de `rotina/etapa-github.sh`, e a conta do orçamento do workflow). Em 06/10/2026 a rodada
+de insistir. Um site cujo robots.txt não responde vale como "fechado" por 5 minutos (o Crawl-delay não é conhecido), e erro de certificado não conta como site fora do ar. Testes: `python3 -m coleta.testes_disjuntor` (disjuntor, pausas do robots.txt e sites que pediram para parar) e `python3 -m coleta.testes_rodada` (tempos, prazo geral e códigos de saída de `rotina/etapa-github.sh`, e a conta do orçamento do workflow). Em 06/10/2026 a rodada
 única da época (`coletar.py tudo`, limite de 2h30) foi cancelada pelo limite sem salvar nada; foi por isso que a
 coleta passou a ser em etapas.
 
@@ -633,7 +633,7 @@ um único candidato a prefeito, vice ou vereador da cidade). Uma cidade fora do 
 
 | Cidade | Fonte | O que a folha dá |
 |---|---|---|
-| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês; exceção ao robots.txt, ver "Robôs e robots.txt") | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
+| São Paulo | Portal de Dados Abertos, "Histórico de Remuneração dos Servidores Ativos" (CSV de ~21 MB por mês; o robots.txt pede que robôs não entrem, ver "Robôs e robots.txt") | Remuneração do mês + "demais elementos" (13º, férias, auxílio-refeição, atrasados). Cedido: exceções 2 e 3 |
 | Recife | Dados Abertos do Recife, "Servidores e salários" (um CSV de ~85 MB por ano, lido aos poucos e filtrado pela função) | Proventos, férias e 13º ("natalina"). R$ 0 no mês = recebe de outro órgão |
 | Fortaleza | Dados Abertos de Fortaleza, `relacao_AAAAMM.csv` (~24 MB por mês) | Só o total dos proventos: o que passa do normal da pessoa vira "outros". Menos de 30% do normal do cargo = recebe de outro órgão |
 | Vitória | Dados Abertos de Vitória, conjunto "Pessoal" (API do portal, uma tabela por mês) | Só a remuneração bruta total. Quadro "cedido por outros órgãos" = recebe de outro órgão |
@@ -666,8 +666,8 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
 
 | Estado | Fonte | O que entra |
 |---|---|---|
-| Minas Gerais | Dados abertos da ALMG (`dadosabertos.almg.gov.br/ws/`; exceção ao robots.txt, ver "Robôs e robots.txt"): deputados em exercício e que saíram, e a verba indenizatória de cada deputado e mês | Subsídio da lei (Lei 24.266/2022); verba indenizatória nota a nota (emitente, CNPJ, documento, valor reembolsado). Quem está no cargo: a situação na ALMG (em exercício; para quem saiu, a data da renúncia ou do fim da suplência). O site vai até o último mês em que 80% dos deputados já prestaram contas |
-| Rio de Janeiro | DOCIGP, o portal da verba da Alerj (exceção ao robots.txt): o orçamento mensal de cada gabinete e os lançamentos publicados; a página "Quem são" do site da Alerj | Subsídio da lei (Lei 11.074/2025), desde fev/2025; lançamentos de débito um a um (centro de custo, fornecedor, CNPJ, documento), sem o saldo que passa de mês, os créditos e a devolução do saldo. Quem está no cargo e o partido de hoje: a página "Quem são" (70); desde quando: os meses com orçamento. O site vai até o último mês em que 80% dos gabinetes já foram publicados |
+| Minas Gerais | Dados abertos da ALMG (`dadosabertos.almg.gov.br/ws/`; o robots.txt pede que robôs não entrem, ver "Robôs e robots.txt"): deputados em exercício e que saíram, e a verba indenizatória de cada deputado e mês | Subsídio da lei (Lei 24.266/2022); verba indenizatória nota a nota (emitente, CNPJ, documento, valor reembolsado). Quem está no cargo: a situação na ALMG (em exercício; para quem saiu, a data da renúncia ou do fim da suplência). O site vai até o último mês em que 80% dos deputados já prestaram contas |
+| Rio de Janeiro | DOCIGP, o portal da verba da Alerj (o robots.txt pede que robôs não entrem): o orçamento mensal de cada gabinete e os lançamentos publicados; a página "Quem são" do site da Alerj | Subsídio da lei (Lei 11.074/2025), desde fev/2025; lançamentos de débito um a um (centro de custo, fornecedor, CNPJ, documento), sem o saldo que passa de mês, os créditos e a devolução do saldo. Quem está no cargo e o partido de hoje: a página "Quem são" (70); desde quando: os meses com orçamento. O site vai até o último mês em que 80% dos gabinetes já foram publicados |
 | São Paulo | Dados abertos da Alesp: `deputados.xml` e `despesas_gabinetes_AAAA.xml` | Subsídio da lei (Leis 17.617/2023 e 18.384/2025); verba de gabinete por mês, tipo e fornecedor (a Alesp soma as notas do mesmo fornecedor no mês) |
 | Bahia | Transparência da ALBA: a lista de deputados e a planilha mensal da verba (botão Excel) | Subsídio da lei (Lei 14.532/2023), desde fev/2025; verba indenizatória processo por processo, por categoria (o fornecedor só está na página de cada processo, ainda fora) |
 | Pernambuco | Portal da Transparência da Alepe: a lista de dados abertos e o que a página usa (prestações da verba e as notas de cada uma) | Subsídio da lei (Lei 18.138/2023); verba indenizatória nota a nota (rubrica, CNPJ, empresa, valor). As notas chegam aos poucos (no máximo 400 prestações por vez) |
@@ -801,7 +801,7 @@ Cada estado grava `dados/governadores/folha/<uf>.csv` (vai para o Git; só os me
 | MG | Dados abertos, "Remuneração dos servidores ativos" | CSV mensal de ~130 MB (dois leiautes), com 13º, férias, jetons e abate-teto |
 | PB | Dados abertos (API da Codata) | Por órgão e mês: parte fixa e parte variável |
 | PE | Dados abertos, "Remuneração de servidores" | CSV mensal; a governadora é achada pelo nome (recebe como procuradora) |
-| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses; exceção ao robots.txt) |
+| PR | Portal da Transparência, "Remuneração" | Busca pelo nome e página de detalhes (20 meses; o robots.txt pede que robôs não entrem) |
 | RO | API do Portal da Transparência | Por cargo e mês, com as rubricas; o 13º numa folha à parte |
 | RR | API do Portal da Transparência | Por nome e mês, com os lançamentos. Em 02 e 03/10/2026 a API respondeu 504 por mais de um dia (a coleta falhou; o site manteve o último dado); voltou no dia 03 |
 | SC | Dados abertos, "Remuneração dos servidores" | CSV mensal só com o bruto; o Estado só mantém os meses recentes |
@@ -1069,8 +1069,8 @@ interrompe a função) ou, onde a folha não mostra, como no STJ (a lotação é
 | TST | arquivo mensal (CSV) | jan/2025 | jan/2026 não publicado |
 | CNJ | página da folha | jan/2025 | só quem o CNJ paga; nov/2025 vazio na página |
 | PGR | planilhas do MPF (ODS) | jan/2025 | o total soma as verbas indenizatórias, que o arquivo deixa de fora |
-| STF | DadosJusBr, cópia do arquivo oficial | jan/2025 | a consulta do STF proíbe robôs no robots.txt |
-| STM | DadosJusBr (Painel do CNJ) | jan/2025 | a consulta proíbe robôs e só abre do Brasil |
+| STF | DadosJusBr, cópia do arquivo oficial | jan/2025 | o robô ainda não lê a consulta do STF |
+| STM | DadosJusBr (Painel do CNJ) | jan/2025 | o robô ainda não lê a consulta, que só abre do Brasil |
 | TSE | DadosJusBr (Painel do CNJ) | fev/2025 | o site do TSE responde 403 a robôs |
 
 O [DadosJusBr](https://dadosjusbr.org) (Transparência Brasil) coleta a folha oficial do sistema de Justiça todo mês
@@ -1110,27 +1110,33 @@ mês, com o último mês de cada um) e o app baixa o `judiciario.json` inteiro a
 
 ## Robôs e robots.txt
 
-Todo pedido dos robôs passa por `coleta.util._sessao()` (`SessaoEducada`), que lê o robots.txt de cada site antes do
-primeiro pedido: o que ele proíbe não é aberto (erro `BloqueadoRobots`, e o estado ou a cidade segue com o que já estava
-gravado), e o `Crawl-delay` é respeitado. As APIs da Wikimedia ficam de fora (têm regras próprias para robôs). Quem cria
-um robô novo deve usar essa sessão, e não `requests` direto.
+O robô não segue o robots.txt, que é uma convenção e não lei: lê só dados públicos que a Lei de Acesso à Informação
+manda publicar e abrir para "acesso automatizado por sistemas externos" (Lei 12.527/2011, art. 8º, § 3º, III), como a
+remuneração de agentes públicos. Ele se identifica ("ContasDoPoder", com o endereço do site), faz pausas entre os
+pedidos, lê cada página no máximo uma vez por semana (o que já foi lido fica no Git e não é baixado de novo) e para se o
+órgão pedir ou bloquear. Login, CAPTCHA, bloqueio de robôs e consulta que pede CPF continuam sendo barreiras: o robô não
+passa por elas, e a fonte fica de fora. (De 30/09 a 08/10/2026, o robots.txt era respeitado, com exceções só para os
+cinco primeiros sites da tabela abaixo.)
 
-**Exceções.** O robots.txt é uma convenção, não lei. Dados que a Lei de Acesso à Informação manda publicar e abrir para
-"acesso automatizado por sistemas externos" (Lei 12.527/2011, art. 8º, § 3º, III), como a remuneração de agentes
-públicos, são lidos mesmo quando o robots.txt de um órgão proíbe. Cada exceção está em `EXCECOES_ROBOTS`
-(`coleta/util.py`), com o motivo e uma pausa entre os pedidos; o robô se identifica ("ContasDoPoder", com o endereço
-do site), lê só o que falta (o que já foi lido fica no Git) e para se o órgão pedir ou bloquear. Hoje:
+Todo pedido passa por `coleta.util._sessao()` (`SessaoEducada`); quem cria um robô novo deve usar essa sessão, e não
+`requests` direto. A sessão lê o robots.txt de cada site só para as pausas: respeita o `Crawl-delay` (um pedido por vez
+naquele site, com a pausa pedida), usa a pausa própria do endereço quando há (`PAUSAS`) e, onde o robots.txt pede que
+robôs não entrem, espera 1 s entre os pedidos (`PAUSA_SE_O_ROBOTS_PROIBE`). Site que pede para parar ou bloqueia o robô
+entra em `SITES_PARADOS` (`coleta/util.py`; hoje, nenhum) ou, no módulo do robô, em `BLOQUEADO_ROBOTS = True`, e o site
+segue com o que já estava gravado. As APIs da Wikimedia ficam de fora (têm regras próprias para robôs).
 
-| Site | O que o robots.txt proíbe | O que lemos | Pausa |
+| Site | O que o robots.txt pede que robôs não abram | O que lemos | Pausa |
 |---|---|---|---|
 | Câmara dos Deputados | `/deputados/*/*` (desde 18/09/2026) | Remuneração, contracheque detalhado e pessoal de gabinete de cada deputado | 0,25 s |
 | Prefeitura de São Paulo (dados abertos) | todo o portal (`Disallow: /`) | Folha de pagamento mensal (CSV) | 10 s |
 | Paraná (Portal da Transparência) | `/pte` | Remuneração do governador e do vice | 2 s |
 | Assembleia de Minas Gerais (dados abertos) | todo o serviço (`Disallow: /`) | Deputados e verba indenizatória de cada deputado e mês (API `/ws/`, feita para acesso automatizado) | 1 s |
 | Assembleia do Rio de Janeiro (DOCIGP) | todo o portal (`Disallow: /`) | Orçamento mensal e lançamentos publicados da verba de cada gabinete | 0,5 s |
+| Câmara de Vitória (transparência) | todo o site (`Disallow: /`) | Folha dos vereadores, pela API do portal | 1 s |
+| Câmara de Cuiabá (portal da transparência, gp.srv.br) | todo o sistema (`Disallow: /`) | Folha dos vereadores (relatório em PDF) e arquivos da verba indenizatória | 1 s |
 
-Os portais CKAN (ES, MG, PE, SC, Recife e Fortaleza) proíbem só a API (`/api/`): os arquivos são achados pela página
-do conjunto de dados (`coleta.util.recursos_ckan`), com os 10 s de pausa que pedem.
+Os portais CKAN (ES, MG, PE, SC, Recife e Fortaleza) pedem que robôs não usem a API (`/api/`): os arquivos são achados
+pela página do conjunto de dados (`coleta.util.recursos_ckan`), com os 10 s de pausa que pedem.
 
 **Câmara.** O que as páginas de cada deputado mostram fica em `dados/camara/` (no Git): `remuneracao.csv` (salário da
 folha normal), `remuneracao_detalhe.csv` (o contracheque de cada mês: 13º, férias, acertos, abate-teto, diárias,
