@@ -2,7 +2,7 @@
 conselheiros do CNJ e o Procurador-Geral da República (ver o README, "Judiciário").
 
 Cada fonte é um módulo desta pasta: stj, tst, cnj e pgr leem a fonte oficial; dadosjusbr lê o STF, o STM e o TSE pelo
-DadosJusBr (CC BY 4.0), enquanto a fonte oficial não abre para o robô. Reserva: se o robô oficial do STJ ou do PGR falhar,
+DadosJusBr (CC BY 4.0); stm completa o STM com a consulta oficial nos meses que o DadosJusBr não tem. Reserva: se o robô oficial do STJ ou do PGR falhar,
 os meses que ele ainda não leu vêm do DadosJusBr (dadosjusbr.reserva), marcados em fontes.csv pelo endereço; quando a
 fonte oficial volta, ela relê esses meses. TST e CNJ ficam sem reserva (o pacote do DadosJusBr não bate com a fonte
 oficial: ver dadosjusbr.RESERVA). `coletar()` de cada um grava em
@@ -17,7 +17,7 @@ Uso: python3 coletar.py judiciario         (as sete fontes e o site)
 """
 from .. import onde
 from ..util import TempoEsgotado, log
-from . import cnj, dadosjusbr, pgr, site, stj, tst
+from . import cnj, dadosjusbr, pgr, site, stj, stm, tst
 
 
 class _Fonte:
@@ -28,7 +28,8 @@ class _Fonte:
 
 FONTES = [_Fonte("stj", stj.coletar), _Fonte("tst", tst.coletar), _Fonte("cnj", cnj.coletar), _Fonte("pgr", pgr.coletar),
           _Fonte("stf", lambda: dadosjusbr.coletar("STF")), _Fonte("stm", lambda: dadosjusbr.coletar("STM")),
-          _Fonte("tse", lambda: dadosjusbr.coletar("TSE"))]
+          _Fonte("tse", lambda: dadosjusbr.coletar("TSE")),
+          _Fonte("stm_oficial", stm.coletar)]  # os meses que o DadosJusBr não tem, pela consulta oficial do STM (só do Brasil)
 POR_NOME = {f.__name__: f for f in FONTES}
 
 

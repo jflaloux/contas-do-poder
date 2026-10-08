@@ -89,6 +89,18 @@
   {
    "fonte": "vereadores/cuiaba",
    "se_quebrar": "a folha (relatório em PDF) e a verba ficam até o último mês lido (verba_ate; os meses sem arquivo, \"não publicados\"); sem reserva no Tribunal de Contas (o TCE-MT não tem robô); passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "judiciario/stm_oficial",
+   "se_quebrar": "a consulta oficial só completa os meses que o DadosJusBr não tem: se ela falhar, o STM segue pelo DadosJusBr e os meses que faltam ficam sem dados (meses_sem_dados), como antes de 08/10/2026; os meses já lidos ficam; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "vereadores/porto_alegre",
+   "se_quebrar": "subsídio da lei e QBM como antes; a equipe dos gabinetes (folha mensal do portal de remunerações) é complemento: se falhar, fica até o último mês lido (equipe_em); passou de 1 hora, congelar só a equipe"
+  },
+  {
+   "fonte": "vereadores/sao_luis",
+   "se_quebrar": "a folha do Portal da Remuneração é o principal; a lista do site da Câmara (página, partido, foto) é complemento: se falhar, ficam as gravadas (site_vereadores.csv) e a coleta da folha segue"
   }
  ]
 }

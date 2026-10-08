@@ -260,6 +260,11 @@
   "falhas": 0,
   "ultimo_sucesso": "2026-10-02T15:58:24"
  },
+ "judiciario/stm_oficial": {
+  "ultima_tentativa": "2026-10-08T15:48:40",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-08T15:48:40"
+ },
  "prefeituras/campo_grande": {
   "ultima_tentativa": "2026-10-02T15:30:28",
   "falhas": 0,

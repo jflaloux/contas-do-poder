@@ -1111,8 +1111,16 @@ interrompe a função) ou, onde a folha não mostra, como no STJ (a lotação é
 | CNJ | página da folha | jan/2025 | só quem o CNJ paga; nov/2025 vazio na página |
 | PGR | planilhas do MPF (ODS) | jan/2025 | o total soma as verbas indenizatórias, que o arquivo deixa de fora |
 | STF | DadosJusBr, cópia do arquivo oficial | jan/2025 | o robô ainda não lê a consulta do STF |
-| STM | DadosJusBr (Painel do CNJ) | jan/2025 | o robô ainda não lê a consulta, que só abre do Brasil |
+| STM | DadosJusBr (Painel do CNJ); os meses que ele não tem, pela consulta oficial do STM | jan/2025 | a consulta oficial só abre do Brasil (`coleta/judiciario/stm.py`, rodada mensal) |
 | TSE | DadosJusBr (Painel do CNJ) | fev/2025 | o site do TSE responde 403 a robôs |
+
+STM pela consulta oficial (`coleta/judiciario/stm.py`, fonte `judiciario/stm_oficial`, só do Brasil, desde 08/10/2026): os meses
+que o DadosJusBr não tem (jan, mar, abr e set/2026, em 08/10/2026) vêm da consulta "Remuneração de Servidores" do STM, aba
+Ministros Ativos (POST com o campo de controle que a página entrega; 15 linhas por página, em `/pesquisa/0`, `/pesquisa/2`...).
+Cada linha é uma folha (normal, suplementar) e o detalhamento da página dá os itens por grupo: subsídio, vantagens pessoais
+(abono de permanência à parte), indenizações, vantagens eventuais (férias e 13º à parte); o "teto constitucional" (abate-teto)
+fica de fora. Em ago/2026, os totais dos 15 ministros pela consulta são iguais aos do DadosJusBr. A soma dos itens às vezes
+não fecha com o total da própria página por centavos ou poucos reais: vale a soma (o log avisa).
 
 O [DadosJusBr](https://dadosjusbr.org) (Transparência Brasil) coleta a folha oficial do sistema de Justiça todo mês
 (licença CC BY 4.0, com crédito). Do STF, os valores saem da cópia do arquivo oficial que ele guarda, e não do pacote
@@ -1175,6 +1183,8 @@ segue com o que já estava gravado. As APIs da Wikimedia ficam de fora (têm reg
 | Assembleia do Rio de Janeiro (DOCIGP) | todo o portal (`Disallow: /`) | Orçamento mensal e lançamentos publicados da verba de cada gabinete | 0,5 s |
 | Câmara de Vitória (transparência) | todo o site (`Disallow: /`) | Folha dos vereadores, pela API do portal | 1 s |
 | Câmara de Cuiabá (portal da transparência, gp.srv.br) | todo o sistema (`Disallow: /`) | Folha dos vereadores (relatório em PDF) e arquivos da verba indenizatória | 1 s |
+| Câmara de São Luís (site principal) | todo o site (`Disallow: /`) | Lista de vereadores (página, partido e foto) | 1 s |
+| STM (consulta de remuneração) | `/rem_web/` | Ministros ativos, nos meses que o DadosJusBr não tem | 2 s |
 
 Os portais CKAN (ES, MG, PE, SC, Recife e Fortaleza) pedem que robôs não usem a API (`/api/`): os arquivos são achados
 pela página do conjunto de dados (`coleta.util.recursos_ckan`), com os 10 s de pausa que pedem.

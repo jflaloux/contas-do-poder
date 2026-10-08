@@ -59,8 +59,7 @@ NOTAS = {
             "Jan/2026 não está na lista de arquivos do TST. Em fev/2025, para 13 ministros, o total de rendimentos do próprio "
             "arquivo difere da soma das partes; aqui fica a soma das partes."],
     "STM": ["Fonte: a planilha que o STM manda ao Painel de Remuneração dos Magistrados do CNJ, coletada pelo DadosJusBr (licença "
-            "CC BY 4.0). O robô do Contas do Poder ainda não lê a consulta do STM, que só abre de dentro do Brasil.",
-            "Jan, mar e abr/2026 não estão no DadosJusBr."],
+            "CC BY 4.0). Os meses que o DadosJusBr não tem vêm da consulta oficial do STM (só abre de dentro do Brasil)."],
     "TSE": ["Fonte: a planilha que o TSE manda ao Painel de Remuneração dos Magistrados do CNJ, coletada pelo DadosJusBr (licença "
             "CC BY 4.0). O site do TSE responde 403 a robôs.",
             "Aqui só o que o TSE paga: quem vem do STF ou do STJ recebe o subsídio no tribunal de origem e, no TSE, a "
@@ -238,6 +237,12 @@ def montar():
         notas_org = NOTAS.get(org, []) + ([
             f"Meses que vieram do DadosJusBr (licença CC BY 4.0), porque a fonte oficial não abriu para o robô: "
             f"{', '.join(f'{m % 100:02d}/{m // 100}' for m in reserva)}. Voltam a vir da fonte oficial quando ela abrir."] if reserva else [])
+        # STM: os meses que o DadosJusBr não tem e que vieram da consulta oficial do STM (coleta/judiciario/stm.py)
+        oficiais = sorted(int(f["ano_mes"]) for f in fontes if "stm.jus.br" in (f.get("url") or "") and int(f["pessoas"] or 0))
+        if oficiais:
+            notas_org.append(f"{', '.join(f'{m % 100:02d}/{m // 100}' for m in oficiais)}: pela consulta oficial do STM (Remuneração "
+                             f"de Servidores, aba Ministros Ativos), porque o DadosJusBr não tem esses meses; valores antes do "
+                             f"abate-teto, como nos outros meses.")
         metas[org] = {
             "n": oc.get("nome", org), "sigla": org, "vagas": oc.get("vagas"), "no_cargo": no_cargo, "inicio": comum.INICIO,
             "ultimo_mes": ultimo, "anos": [str(a) for a in sorted({am // 100 for am in janela})], "via": via,

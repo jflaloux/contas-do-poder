@@ -45,7 +45,7 @@ SO_BRASIL = {
     "folhas": {"AL", "AM", "CE", "MA", "PA", "PB", "PI", "RJ", "RN", "SE"},
     "tce": set(),
     "viagens": {"AM", "PB", "SE"},  # viagens dos governadores (coleta/viagens_governadores); MG e SP abrem de fora
-    "judiciario": set(),  # as sete fontes abrem de fora (conferido em 02/10/2026)
+    "judiciario": {"stm_oficial"},  # as sete fontes abrem de fora (conferido em 02/10/2026); a consulta oficial do STM, só do Brasil
     "federal": set(),
 }
 

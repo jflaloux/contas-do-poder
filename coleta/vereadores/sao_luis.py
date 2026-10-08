@@ -9,9 +9,12 @@ Fontes:
   número de pessoas e o custo bruto por mês e a contagem de cargos do último mês. Descontos, líquido, CPF, matrícula e
   nomes de servidores não são guardados.
 - Nome de urna, nome completo, partido e gênero: TSE (eleição de 2024).
-Ainda não coletado: o site principal da Câmara (robots.txt "Disallow: /", que desde 08/10/2026 não impede a leitura) —
-por isso ficam de fora as fotos, a página de cada vereador e a verba indenizatória (cota parlamentar), que só são
-publicadas lá.
+- Foto, página, nome civil e partido de quem está na legislatura (desde 08/10/2026): a lista de vereadores do site
+  principal da Câmara, https://www.cmsaoluis.ma.gov.br/vereadores (robots.txt "Disallow: /", que é uma convenção e não lei:
+  lemos com pausa). O partido é o da Câmara (o de hoje); sem ele, o do TSE.
+Fora: a verba indenizatória de exercício parlamentar (VIEP). O site da Câmara só publica relatórios de empenho do ano
+(https://www.cmsaoluis.ma.gov.br/transparencia/cotas-parlamentares: empenhos anuais e valores pagos acumulados, sem o mês
+a mês de cada vereador), que não cabem no mês a mês do site.
 """
 import hashlib
 import html as html_lib
@@ -26,6 +29,9 @@ from ..util import _sessao, cache_valido, gravar_csv, log, normalizar_nome, veri
 from . import comum
 
 COD = 2111300
+SITE = "https://www.cmsaoluis.ma.gov.br"
+LISTA = f"{SITE}/vereadores"
+COTAS = f"{SITE}/transparencia/cotas-parlamentares"
 INICIO = 202501
 PORTAL = "https://cmsaoluis.portalremuneracao.com.br"
 PASTA = DADOS / "municipios" / "sao_luis"
@@ -37,7 +43,8 @@ CFG = {
                    "verba de gabinete, comissionados, prestadores de serviço e servidores efetivos). O gabinete da Presidência não entra. "
                    "Quando o titular se licencia, o gabinete continua com o nome dele e a folha não diz qual suplente o ocupa: esses meses ficam de fora.",
     "credito_foto": "Câmara Municipal de São Luís", "pagina": f"{PORTAL}/",
-    "fontes": {"folha": f"{PORTAL}/"},
+    "fontes": {"folha": f"{PORTAL}/", "vereadores": "https://www.cmsaoluis.ma.gov.br/vereadores",
+               "cotas": "https://www.cmsaoluis.ma.gov.br/transparencia/cotas-parlamentares"},
     "conferir_gastos": False,  # a Câmara não publica a verba (ou cota) de cada gabinete: não há gasto do mês para conferir
 }
 CAMPOS = ["nome", "referencia", "cargo_funcao", "lotacao", "vinculo", "tipo_folha", "valor", "admissao", "exoneracao", "matricula"]
@@ -190,8 +197,31 @@ def folha():
         gravar_csv(pd.DataFrame([{"ano": a, "mes": m, "lotacao": k[0], "cargo": k[1], "pessoas": len(q)} for k, q in sorted(cargos.items())]), arq_c)
 
 
+def lista():
+    """Nome parlamentar, nome civil, partido, foto e página de cada vereador da legislatura (a lista do site da Câmara)."""
+    verificar_prazo()
+    r = _sessao().get(LISTA, timeout=90)
+    r.raise_for_status()
+    linhas = []
+    for bloco in re.findall(r'<a href="(https://www\.cmsaoluis\.ma\.gov\.br/vereadores/[a-z0-9\-]+)"[^>]*>\s*<img src="([^"]+)" alt="([^"]*)"'
+                            r'.*?class="sigla-partido">([^<]*)<.*?class="panel-title[^"]*">([^<]*)<', r.text, re.S):
+        pagina, foto, civil, partido, nome = (html_lib.unescape(x).strip() for x in bloco)
+        linhas.append({"nome": " ".join(nome.split()), "nome_civil": " ".join(civil.split()), "partido": partido, "foto": foto,
+                       "pagina": pagina})
+    df = pd.DataFrame(linhas, columns=["nome", "nome_civil", "partido", "foto", "pagina"]).drop_duplicates("pagina")
+    if not 25 <= len(df) <= 45:  # página quebrada: fica a lista gravada
+        log(f"  São Luís: a lista do site da Câmara veio com {len(df)} vereadores; fica a que estava gravada")
+        return
+    gravar_csv(df, PASTA / "site_vereadores.csv")
+    log(f"  São Luís: {len(df)} vereadores na lista do site da Câmara")
+
+
 def coletar():
     folha()
+    try:
+        lista()
+    except Exception as e:  # noqa: BLE001 — a foto e a página são complemento: a folha segue
+        log(f"  São Luís: a lista do site da Câmara não abriu ({type(e).__name__}); ficam as fotos e páginas já gravadas")
 
 
 # ---------------------------------------------------------------- montagem
@@ -336,6 +366,7 @@ def montar(tipos):
                          "nome_civil": comum.titulo(t["nome"] if t is not None else _sem_defeito(p["civil"])), "partido": _partido(t["partido"]) if t is not None else "",
                          "genero": t["genero"] if t is not None else "", "eleito": t["situacao"] if t is not None else "", "pagina": CFG["pagina"]})
     ver = pd.DataFrame(linhas_v)
+    ver = _do_site(ver, pessoas)
 
     # gabinetes: o nome da lotação -> vereador; só nos meses em que ele estava no cargo (quando o titular se licencia,
     # o gabinete continua com o nome dele e não se sabe qual suplente o ocupa)
@@ -358,10 +389,32 @@ def montar(tipos):
 
     sub = _subsidio(fv)
     cfg = dict(CFG, ultimo_mes=ultimo, equipe_em=ultimo_eq, subsidio=sub, salario_nota=_salario_nota(fv, sub),
-               notas=["O robô ainda não lê o site principal da Câmara, por isso aqui não há fotos, nem a página de cada vereador, "
-                      "nem a verba indenizatória (cota parlamentar), que só é publicada lá.",
+               notas=["A verba indenizatória de exercício parlamentar (VIEP) fica de fora: o site da Câmara só publica relatórios "
+                      "de empenho do ano, sem o valor de cada mês por vereador.",
                       "Quem estava no cargo em cada mês vem da folha de pagamento: os vereadores pagos naquele mês (titulares e suplentes que assumiram)."])
     return comum.montar(cfg, tipos, ver, mandatos, ganha=ganha, equipe=equipe, cargos=cargos)
+
+
+def _do_site(ver, pessoas):
+    """Página, foto e partido de hoje de cada vereador pela lista do site da Câmara (nome civil ou parlamentar)."""
+    arq = PASTA / "site_vereadores.csv"
+    if not arq.exists() or not len(ver):
+        return ver
+    site = pd.read_csv(arq).fillna("")
+    fotos, ver = [], ver.copy()
+    for r in site.itertuples():
+        c = _achar(r.nome_civil, pessoas) or _achar(r.nome, pessoas)
+        if c is None or c not in set(ver.codigo):
+            log(f"  São Luís: na lista do site da Câmara e não na folha: {r.nome}")
+            continue
+        i = ver.index[ver.codigo == c][0]
+        ver.at[i, "pagina"] = r.pagina
+        if r.partido:
+            ver.at[i, "partido"] = _partido(r.partido)
+        if r.foto:
+            fotos.append((int(c), r.foto))
+    comum.fotos(COD, fotos)
+    return ver
 
 
 def _partido(p):
