@@ -13,8 +13,7 @@ Fontes:
   principal da Câmara, https://www.cmsaoluis.ma.gov.br/vereadores (robots.txt "Disallow: /", que é uma convenção e não lei:
   lemos com pausa). O partido é o da Câmara (o de hoje); sem ele, o do TSE.
 Fora: a verba indenizatória de exercício parlamentar (VIEP). O site da Câmara só publica relatórios de empenho do ano
-(https://www.cmsaoluis.ma.gov.br/transparencia/cotas-parlamentares: empenhos anuais e valores pagos acumulados, sem o mês
-a mês de cada vereador), que não cabem no mês a mês do site.
+(empenhos anuais e valores pagos acumulados, sem o mês a mês de cada vereador), que não cabem no mês a mês do site.
 """
 import hashlib
 import html as html_lib
@@ -31,7 +30,6 @@ from . import comum
 COD = 2111300
 SITE = "https://www.cmsaoluis.ma.gov.br"
 LISTA = f"{SITE}/vereadores"
-COTAS = f"{SITE}/transparencia/cotas-parlamentares"
 INICIO = 202501
 PORTAL = "https://cmsaoluis.portalremuneracao.com.br"
 PASTA = DADOS / "municipios" / "sao_luis"
@@ -43,8 +41,7 @@ CFG = {
                    "verba de gabinete, comissionados, prestadores de serviço e servidores efetivos). O gabinete da Presidência não entra. "
                    "Quando o titular se licencia, o gabinete continua com o nome dele e a folha não diz qual suplente o ocupa: esses meses ficam de fora.",
     "credito_foto": "Câmara Municipal de São Luís", "pagina": f"{PORTAL}/",
-    "fontes": {"folha": f"{PORTAL}/", "vereadores": "https://www.cmsaoluis.ma.gov.br/vereadores",
-               "cotas": "https://www.cmsaoluis.ma.gov.br/transparencia/cotas-parlamentares"},
+    "fontes": {"folha": f"{PORTAL}/", "vereadores": "https://www.cmsaoluis.ma.gov.br/vereadores"},
     "conferir_gastos": False,  # a Câmara não publica a verba (ou cota) de cada gabinete: não há gasto do mês para conferir
 }
 CAMPOS = ["nome", "referencia", "cargo_funcao", "lotacao", "vinculo", "tipo_folha", "valor", "admissao", "exoneracao", "matricula"]
