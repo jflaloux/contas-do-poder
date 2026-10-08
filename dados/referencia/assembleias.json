@@ -288,7 +288,7 @@
     "ato": "Lei 24.266/2022",
     "url": "https://www.almg.gov.br/legislacao-mineira/texto/LEI/24266/2022/"
    },
-   "barreiras": "O robots.txt de dadosabertos.almg.gov.br proíbe robôs (Disallow: /); as páginas de verba do site têm reCAPTCHA. A API de dados abertos é lida como exceção ao robots.txt (decisão de 30/09/2026; ver coleta/util.py).",
+   "barreiras": "O robots.txt de dadosabertos.almg.gov.br proíbe robôs (Disallow: /); as páginas de verba do site têm reCAPTCHA. A API de dados abertos é lida com 1 s entre os pedidos (de 30/09 a 08/10/2026, como exceção ao robots.txt; desde então o robots.txt não impede a leitura).",
    "observacoes": "Robô feito (coleta/assembleias/mg.py): deputados (em exercício e que saíram, com a data da situação) e a verba indenizatória nota a nota pela API /ws/ dos dados abertos.",
    "abriu_de_fora": true
   },
@@ -507,7 +507,7 @@
     "ato": "Lei 11.074/2025",
     "url": "https://transparencia.alerj.rj.gov.br/section/report/62"
    },
-   "barreiras": "O robots.txt de docigp.alerj.rj.gov.br diz Disallow: /: o DOCIGP é lido como exceção ao robots.txt (decisão de 30/09/2026; ver coleta/util.py). A folha e a equipe saem em PDF.",
+   "barreiras": "O robots.txt de docigp.alerj.rj.gov.br diz Disallow: /: o DOCIGP é lido com 0,5 s entre os pedidos (de 30/09 a 08/10/2026, como exceção ao robots.txt; desde então o robots.txt não impede a leitura). A folha e a equipe saem em PDF.",
    "observacoes": "Robô feito (coleta/assembleias/rj.py): orçamento mensal e lançamentos de débito do DOCIGP; quem está no cargo e o partido de hoje pela página 'Quem são' do site da Alerj (sem robots.txt). O partido do DOCIGP está desatualizado.",
    "abriu_de_fora": true
   },

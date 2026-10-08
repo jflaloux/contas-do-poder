@@ -44,7 +44,7 @@
    "atraso": "cerca de 1,5 mês (DadosJusBr)",
    "barreiras": "O robots.txt do egesp-portal proíbe tudo (Disallow: /; o comentário do arquivo diz que é para a URL do CloudFront, mas é o que o endereço serve). portal.stf.jus.br e transparencia.stf.jus.br: cadeia TLS incompleta (falta o intermediário 'GlobalSign GCC R6 AlphaSSL CA 2025', que se completa pelo AIA) e, com a cadeia completa, 403 para o robô, do Brasil e de fora.",
    "exterior": "o robots.txt do egesp-portal abre de fora; o portal responde 403 ao robô de qualquer lugar",
-   "robots": "egesp-portal.stf.jus.br: Disallow: / (só com exceção, que é decisão do Jean-François); portal.stf.jus.br: 403 até no robots.txt",
+   "robots": "egesp-portal.stf.jus.br: Disallow: / (desde 08/10/2026 não impede a leitura; a consulta abriu ao robô do Brasil nesse dia); portal.stf.jus.br: 403 até no robots.txt",
    "dadosjusbr": {
     "cobre": true,
     "desde": "2020-07",
@@ -54,7 +54,7 @@
     "fonte_do_dadosjusbr": "coletor próprio (github.com/dadosjusbr/coletor-stf), que lê a consulta do egesp-portal",
     "link_arquivo_oficial": "não na API; a cópia do HTML original está em https://dadosjusbr-public.s3.amazonaws.com/stf/backups/stf-AAAA-M.zip e a URL oficial se reconstrói pelo código do coletor"
    },
-   "como_ler": "Pacote mensal do DadosJusBr (API /v2/dados/stf/{ano}/{mes}) e, para conferir, a cópia do original em backups/. Com exceção ao robots.txt (decisão do Jean-François), uma consulta por mês ao egesp-portal, com a mesma URL do coletor-stf.",
+   "como_ler": "Pacote mensal do DadosJusBr (API /v2/dados/stf/{ano}/{mes}) e, para conferir, a cópia do original em backups/. A consulta do egesp-portal (GET q[ano_eq], q[mes_eq], q[cdg_sitfunc_eq]=12) abriu ao robô em 08/10/2026, mas não traz nada além do DadosJusBr (set/2026 ainda vazio, ago/2026 já no pacote; os defeitos de dez/2025 e jul/2026 são do próprio arquivo oficial): não é lida.",
    "obs": "Conferido jul/2026 (10 ministros): os valores do pacote do DadosJusBr batem com a cópia do arquivo oficial, item por item. Subsídio de R$ 46.366,19. Em jul/2026 aparecem 'vantagens pessoais' para 9 dos 10 ministros, em valores que equivalem a 5% a 35% do subsídio (em jun/2026 eram zero). Para dois ministros (Gilmar Mendes e Dias Toffoli), a coluna 'Férias' de jul/2026 traz um valor que os totais do próprio arquivo subtraem (em jun/2026 a mesma coluna trazia valores maiores); o DadosJusBr soma esse valor como pagamento. O 'bruto' do arquivo não inclui o abono de permanência, que vem à parte."
   },
   {
@@ -129,7 +129,7 @@
     "fonte_do_dadosjusbr": "painel do CNJ (coletor-cnj)",
     "link_arquivo_oficial": "não; cópia das planilhas em stm/backups/"
    },
-   "como_ler": "Pelo DadosJusBr (painel do CNJ). A consulta oficial só com exceção ao robots.txt e do Brasil.",
+   "como_ler": "Pelo DadosJusBr (painel do CNJ). Os meses que o DadosJusBr não tem vêm da consulta oficial (coleta/judiciario/stm.py, só do Brasil; jan, mar, abr e set/2026 em 08/10/2026).",
    "obs": "A página de transparência do STM liga para o formulário em 'Gestão de pessoas'."
   },
   {
@@ -224,7 +224,7 @@
     "ultimo_mes": "2026-02",
     "fonte_do_dadosjusbr": "painel do CNJ"
    },
-   "como_ler": "Pelo DadosJusBr, quando voltar a atualizar; a página oficial só com exceção ao robots.txt.",
+   "como_ler": "Pelo DadosJusBr, quando voltar a atualizar; a página oficial (robots.txt, que desde 08/10/2026 não impede a leitura) não é lida: desembargadores e juízes ficam fora do site (sem página abaixo dos tribunais superiores).",
    "obs": "Exemplo de atraso no DadosJusBr."
   },
   {

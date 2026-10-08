@@ -56,7 +56,7 @@ No fim de cada rodada, `coleta/situacao.py` grava `dados/processados/rodada-resu
 
 | Fonte | Acesso | Onde | Publicação | Último mês | Histórico | Linhas · commits | Cobertura | Risco | Recomendação |
 |---|---|---|---|---|---|---|---|---|---|
-| `federal/camara` | API oficial + arquivos da cota + páginas de cada deputado (exceção ao robots.txt) | EUA | diária (API); mensal (folha) | 09/2026 | robots.txt passou a proibir /deputados/*/* em 18/09/2026 (exceção registrada) | 631 · 5 | 648 | **médio** (2): acesso intermediário; problema já visto na fonte | manter semanal |
+| `federal/camara` | API oficial + arquivos da cota + páginas de cada deputado (o robots.txt pede que robôs não entrem) | EUA | diária (API); mensal (folha) | 09/2026 | robots.txt passou a proibir /deputados/*/* em 18/09/2026 (desde 08/10/2026 isso não impede a leitura) | 631 · 5 | 648 | **médio** (2): acesso intermediário; problema já visto na fonte | manter semanal |
 | `federal/executivo` | arquivo aberto (Portal da Transparência, ~80 MB por mês) | EUA | mensal, ~2 meses depois | 07/2026 | — | 244 · 2 | 71 | **baixo** (0): acesso estável | passar a mensal (só há mês novo uma vez por mês) |
 | `federal/senado` | API oficial (dados abertos legislativos e administrativos) | EUA | mensal (folha); contínua (cota) | 09/2026 | — | 362 · 1 | 105 | **baixo** (0): acesso estável | manter semanal |
 
@@ -87,7 +87,7 @@ No fim de cada rodada, `coleta/situacao.py` grava `dados/processados/rodada-resu
 | `folhas/AC` | página (busca por nome e detalhe, com token do formulário) | EUA | mensal | 07/2026 | — | 67 · 1 | 2 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
 | `folhas/AM` | API interna do portal | Brasil | mensal | 08/2026 | — | 43 · 1 | 2 | **médio** (2): acesso intermediário; só abre do Brasil | passar a mensal |
 | `folhas/BA` | painel Power BI (chave anônima da página) | EUA | mensal | 08/2026 | — | 129 · 1 | 2 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
-| `folhas/PR` | página (busca por nome e detalhe; exceção ao robots.txt) | EUA | mensal | 08/2026 | — | 94 · 3 | 2 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
+| `folhas/PR` | página (busca por nome e detalhe; o robots.txt pede que robôs não entrem) | EUA | mensal | 08/2026 | — | 94 · 3 | 2 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
 | `folhas/RR` | API interna do portal | EUA | mensal | 07/2026 | 02 e 03/10: API fora do ar (504); voltou sozinha | 51 · 1 | 2 | **médio** (2): acesso intermediário; problema já visto na fonte | passar a mensal |
 | `folhas/RS` | painel Power BI (chave anônima da página) | EUA | mensal | 08/2026 | — | 141 · 1 | 2 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
 | `folhas/SE` | API interna do portal | Brasil | mensal | 09/2026 | — | 53 · 1 | 2 | **médio** (2): acesso intermediário; só abre do Brasil | passar a mensal |
@@ -136,7 +136,7 @@ No fim de cada rodada, `coleta/situacao.py` grava `dados/processados/rodada-resu
 | `assembleias/mt` | API interna do portal (Elotech) | EUA | mensal | 09/2026 | o portal carrega o reCAPTCHA (só ativo se a entidade for integrada ao Oxy) | 384 · 2 | 38 | **médio** (2): acesso intermediário; problema já visto na fonte | passar a mensal |
 | `assembleias/pe` | API de dados abertos e páginas da verba (notas uma prestação por pedido) | EUA | mensal | 08/2026 | no máximo 400 prestações por vez | 169 · 1 | 51 | **médio** (2): acesso intermediário; robô grande ou lento | passar a mensal |
 | `assembleias/pi` | formulário ScriptCase (pesquisa guardada na sessão) | EUA | mensal | 07/2026 | — | 379 · 1 | 40 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
-| `assembleias/rj` | API interna do portal (DOCIGP; exceção ao robots.txt) | EUA | mensal, com meses de atraso | 05/2026 (atraso da fonte) | atraso da fonte: o mês sai depois da análise da prestação | 261 · 3 | 82 | **médio** (2): acesso intermediário; problema já visto na fonte | passar a mensal |
+| `assembleias/rj` | API interna do portal (DOCIGP; o robots.txt pede que robôs não entrem) | EUA | mensal, com meses de atraso | 05/2026 (atraso da fonte) | atraso da fonte: o mês sai depois da análise da prestação | 261 · 3 | 82 | **médio** (2): acesso intermediário; problema já visto na fonte | passar a mensal |
 | `assembleias/ro` | páginas (verba por gabinete e mês) | EUA | mensal | 09/2026 | — | 180 · 2 | 25 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
 | `assembleias/se` | PDF mensal (folha e ressarcimento) | EUA | mensal | 08/2026 | — | 336 · 2 | 26 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
 | `assembleias/to` | PDF por deputado e mês (pela pesquisa da página) | EUA | mensal | 08/2026 | — | 242 · 1 | 24 | **médio** (2): página, formulário, PDF ou painel | passar a mensal |
@@ -146,7 +146,7 @@ No fim de cada rodada, `coleta/situacao.py` grava `dados/processados/rodada-resu
 | `assembleias/rn` | API aberta da lista de parlamentares (salário pela lei) | EUA | quando muda a composição | 09/2026 | verba e folha só por API com credencial (não usada) | 126 · 2 | 24 | **baixo** (1): acesso intermediário | manter semanal |
 | `assembleias/sc` | arquivo aberto (CSV anual) e listas de deputados | EUA | contínua | 09/2026 | 02/10: listas de deputados fora do ar ou fechadas para o exterior (segue com as gravadas) | 167 · 3 | 49 | **baixo** (1): acesso estável; problema já visto na fonte | manter semanal |
 | `assembleias/ce` | arquivo aberto (CSV do portal: folha e VDP) | EUA | mensal | 09/2026 | — | 214 · 3 | 64 | **baixo** (0): acesso estável | manter semanal |
-| `assembleias/mg` | API oficial (webservice de dados abertos; exceção ao robots.txt) | EUA | mensal | 07/2026 | — | 210 · 2 | 82 | **baixo** (0): acesso estável | manter semanal |
+| `assembleias/mg` | API oficial (webservice de dados abertos; o robots.txt pede que robôs não entrem) | EUA | mensal | 07/2026 | — | 210 · 2 | 82 | **baixo** (0): acesso estável | manter semanal |
 | `assembleias/ms` | arquivo aberto (CSV anual da CEAP) | EUA | contínua | 09/2026 | — | 134 · 1 | 25 | **baixo** (0): acesso estável | manter semanal |
 | `assembleias/pb` | arquivo aberto (ODS mensal) | EUA | mensal | 07/2026 | 02/10: faltava o odfpy no Python do Mac (ambiente, não a fonte) | 157 · 2 | 48 | **baixo** (0): acesso estável | manter semanal |
 | `assembleias/sp` | arquivo aberto (XML de dados abertos) | EUA | diária (lista); anual atualizado (verba) | 08/2026 | — | 147 · 1 | 98 | **baixo** (0): acesso estável | manter semanal |
@@ -185,7 +185,7 @@ No fim de cada rodada, `coleta/situacao.py` grava `dados/processados/rodada-resu
 | `prefeituras/salvador` | API interna do portal | EUA | mensal | 09/2026 | — | 186 · 1 | 27 | **baixo** (1): acesso intermediário | manter semanal |
 | `prefeituras/fortaleza` | arquivo aberto (CKAN, CSV de ~24 MB) | EUA | mensal | 07/2026 | — | 160 · 2 | 68 | **baixo** (0): acesso estável | manter semanal (TCE-CE tem prefeito e vice de Fortaleza) |
 | `prefeituras/rio` | arquivo mensal (CSV sem o cargo: só prefeito e vice) | EUA | mensal | 09/2026 | — | 126 · 1 | 2 | **baixo** (0): acesso estável | manter semanal |
-| `prefeituras/sp` | arquivo aberto (CKAN; exceção ao robots.txt) | EUA | mensal | 08/2026 | — | 244 · 3 | 92 | **baixo** (0): acesso estável | manter semanal |
+| `prefeituras/sp` | arquivo aberto (CKAN; o robots.txt pede que robôs não entrem) | EUA | mensal | 08/2026 | — | 244 · 3 | 92 | **baixo** (0): acesso estável | manter semanal |
 | `prefeituras/vitoria` | API de dados abertos da Prefeitura | EUA | mensal | 08/2026 | — | 132 · 1 | 21 | **baixo** (0): acesso estável | manter semanal (TCE-ES tem o valor pago ao prefeito e ao vice) |
 
 ## Tribunais de Contas (interior)
