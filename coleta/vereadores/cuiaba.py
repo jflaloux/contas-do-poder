@@ -72,7 +72,9 @@ CFG = {
                     "redação da Lei 6.919/2023), para ressarcir despesas da atividade parlamentar. A prestação de contas é por "
                     "relatório de atividades."),
     "verba_notas": ["A Câmara publica um valor por vereador e mês (até jan/2026 na própria folha, como linha informativa; "
-                    "depois, num arquivo por mês), sem as notas: por isso não há tipo de gasto nem fornecedor aqui."],
+                    "depois, num arquivo por mês), sem as notas: por isso não há tipo de gasto nem fornecedor aqui.",
+                    "A lei dá ao presidente da Câmara uma segunda verba, de gestão, também de 75% (art. 2º). Na folha (até "
+                    "jan/2026), a verba da presidente aparece em dobro; nos arquivos mensais de 2026, só uma vez."],
     "equipe_nota": None,
     "credito_foto": "Câmara Municipal de Cuiabá", "pagina": LISTA,
     "notas": ["Quem estava no cargo em cada mês: quem aparece na folha da Câmara no mês com a folha mensal ou com a verba "
