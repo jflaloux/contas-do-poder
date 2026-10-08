@@ -82,14 +82,20 @@ Cada número tem link para a fonte oficial.
 - [x] Vereadores, passo 2b: Fortaleza, Goiânia, Manaus, Natal e Recife, vereador por vereador (robô comum a várias cidades) — Claude
 - [x] Vereadores, passo 2c: Rio de Janeiro, Belo Horizonte, Porto Alegre, Maceió e São Luís (robôs rodam no Mac, no Brasil) — Claude
 - [x] Vereadores, passo 2d: Aracaju (folha) e Boa Vista (subsídio da resolução e verba por tipo) — Claude
-- [ ] Vereadores, passo 2e: Curitiba (Betha Cloud) e Palmas (NúcleoGov e prodata, em JavaScript). Teresina e João Pessoa: as Câmaras
-  mudaram de endereço (teresina.pi.leg.br, joaopessoa.pb.leg.br); não há proibição no robots.txt (o "bloqueio" era o endereço antigo fora do ar). Salvador, Belém, Campo Grande, Florianópolis, Cuiabá e Vitória só com autorização da Câmara ou pedido pela LAI (robots.txt ou CAPTCHA)
+- [x] Vereadores, passo 2e (parte): João Pessoa (folha com o nome, verba por mês e serviço, reserva no TCE-PB) e Teresina
+  (cota nota por nota, subsídio da folha pelos dias no cargo), jan/2025 a ago/2026, 76 vereadores, rodam no GitHub
+  (08/10/2026) — Agente de Dados
+- [ ] Vereadores, passo 2e (resto): Curitiba (Betha Cloud) e Palmas (NúcleoGov e prodata, em JavaScript). Salvador, Belém,
+  Campo Grande, Florianópolis, Cuiabá e Vitória: pedidos às Câmaras nos rascunhos de 08/10/2026 (Cuiabá e Vitória: só o
+  robots.txt; exceção pela LAI é decisão do Jean-François)
 - [x] Capitais e estados que bloqueiam o exterior: rodada semanal no Mac (`rotina/semana-brasil.sh`, launchd), com `coleta/onde.py` e o relatório `dados/processados/situacao.md` — Claude
 - [ ] Instalar a rodada no Mac: `bash rotina/instalar-mac.sh` e uma primeira vez com `bash rotina/semana-brasil.sh --agora` — Jean-François
 - [x] Prefeituras, robô comum (`coleta/prefeituras/`): São Paulo, Recife, Fortaleza, Vitória e Porto Alegre, prefeito, vice e secretários mês a mês pela folha — Claude
 - [x] Prefeituras: Salvador, Curitiba, Natal, Campo Grande (desde jun/2025) e Rio (só prefeito e vice: a folha não diz o cargo) — Claude
-- [ ] Prefeituras, próximas: Macapá (portal de
-  terceiro em Bubble), João Pessoa (Incapsula, não contornamos). Belo Horizonte: o portal bloqueia robôs (WAF) — Claude
+- [ ] Prefeituras, próximas: Macapá (portal de terceiro em Bubble). João Pessoa: o Incapsula está na frente, mas em
+  08/10/2026 não recusou o robô do Brasil e a consulta devolve JSON (prefeito pela API; secretários SMN-1 precisam da
+  lista de nomes). Belo Horizonte: em 08/10/2026 o WAF não recusou o robô (CSV mensal de dados abertos, CC BY, dez/2023 a
+  ago/2026; secretários pelo cargo; prefeito e vice fora do arquivo). Os dois: só do Brasil — Jean-François decide
 - [x] Governadores, v1: salário (subsídio) do governador e do vice nos 27 estados, com a lei ou a fonte de cada valor, quem governou desde 2023 e se a folha abre (`dados/governadores/governadores.json`, mantido à mão) — Claude
 - [x] Governadores, v2: o mês a mês pela folha onde ela é aberta (AC, DF, ES, MG, PB, PR, PE, RO, RR, SC, SP) — Claude
 - [x] Governadores, v3: folha mês a mês em 24 estados (+ AL, AM, BA, CE, GO, MA, MS, PA, PI, RJ, RN, RS, SE). AP e MT pedem CAPTCHA (não contornamos); TO só funciona clicando — Claude
@@ -194,4 +200,6 @@ Cada número tem link para a fonte oficial.
 - [x] Prova de conceito: os 26 Tribunais de Contas que fiscalizam municípios (dados/referencia/tribunais.json; prova na Paraíba) — Claude
 - [x] Robôs dos Tribunais de Contas: PB (TCE-PB, CSV) e CE (TCE-CE, API), com vereadores, prefeito, vice e (PB) secretários, mês a mês desde jan/2025 — Claude
 - [x] Token da API do TCM-GO: não vamos pedir (07/10/2026: o órgão exige cadastro no Sistema da Ouvidoria, trabalho demais para o ganho) — Jean-François
-- [ ] Pedir acesso: chave da API do TCM-BA, acesso em lote ao TCE-MG e ao TCE-SC — Jean-François decide
+- [ ] Pedir acesso (rascunhos de 08/10/2026): dados de pessoal do TCM-BA em formato aberto (a API do SIGA abre sem chave,
+  mas não tem pessoal; a consulta de pessoal tem reCAPTCHA), chave para os pacotes de remuneração do CAPMG no Portal de
+  Dados Abertos do TCE-MG (853 municípios, 2018 a 2026, atrás de reCAPTCHA) e acesso em lote ao TCE-SC — Jean-François envia
