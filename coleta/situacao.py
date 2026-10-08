@@ -88,8 +88,17 @@ def _ultimos_meses():
         um["federal/atividade"] = int(min(datas)[:7].replace("-", ""))
     for sigla, m in _ler("judiciario.json").get("meta", {}).get("orgaos", {}).items():
         um[f"judiciario/{sigla.lower()}"] = m.get("ultimo_mes")
-    if um.get("judiciario/stm"):  # a consulta oficial do STM completa o mesmo órgão (coleta/judiciario/stm.py)
-        um["judiciario/stm_oficial"] = um["judiciario/stm"]
+    # STM: o DadosJusBr e a consulta oficial (os meses que o DadosJusBr não tem, coleta/judiciario/stm.py) são duas fontes;
+    # cada uma fica com o último mês que ela mesma deu (o do site é o maior dos dois)
+    if um.get("judiciario/stm"):
+        from .judiciario import comum as jcomum
+        lidos = [x for x in jcomum.ler_fontes("STM") if int(x.get("pessoas") or 0)]
+        dj = [int(x["ano_mes"]) for x in lidos if "dadosjusbr" in (x.get("url") or "")]
+        of = [int(x["ano_mes"]) for x in lidos if "stm.jus.br" in (x.get("url") or "")]
+        if dj:
+            um["judiciario/stm"] = max(dj)
+        if of:
+            um["judiciario/stm_oficial"] = max(of)
     for pasta in ("interior", "interior-cargo"):  # valor de cada pessoa (PB, CE) e valor por cargo (ES, PE, RJ)
         for arq in sorted((SITE / pasta).glob("*.json")) if (SITE / pasta).exists() else []:
             meta = _ler(f"{pasta}/{arq.name}").get("meta", {})
