@@ -39,6 +39,7 @@ CFG = {
                          "\"outros vencimentos\" (a folha não diz o que são; R$ 5.500 para a maioria), o auxílio-alimentação, "
                          "férias e 13º. Sem os descontos."),
         "verba_nome": None, "verba_mes": {},
+        "conferir_gastos": False,  # sem verba nos dados abertos: não há gasto do mês para conferir
         "equipe_nota": ("Servidores do centro de custo do gabinete do vereador na folha da Câmara, com o custo bruto (todas as "
                         "parcelas pagas, antes dos descontos). O gabinete da Presidência não entra."),
         "credito_foto": "Câmara Municipal de Rio Branco", "pagina": f"{SAPL}/parlamentar/",

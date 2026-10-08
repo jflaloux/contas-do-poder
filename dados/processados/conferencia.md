@@ -1,4 +1,4 @@
-# Conferência dos dados — 08/10/2026 15:39
+# Conferência dos dados — 08/10/2026 17:06
 
 ## 1. Cobertura
 
@@ -130,6 +130,9 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de Vitória no cargo (camaras.json) | 21 | 17 | OK |
 | Vereadores de Cuiabá no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Cuiabá com gastos do gabinete no mês retrasado | 27 | 16 | OK |
+| Vereadores de Rio Branco no cargo (camaras.json) | 21 | 17 | OK |
+| Vereadores de Porto Velho no cargo (camaras.json) | 23 | 19 | OK |
+| Vereadores de Porto Velho com gastos do gabinete no mês retrasado | 22 | 13 | OK |
 | Prefeitura de São Paulo: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de São Paulo: secretários na folha do último mês | 24 | 14 | OK |
 | Prefeitura do Rio de Janeiro: prefeito na folha do último mês | 1 | 1 | OK |
