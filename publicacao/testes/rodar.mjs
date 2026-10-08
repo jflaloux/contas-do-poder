@@ -309,11 +309,37 @@ const PAGINAS = [
       if (!links.includes(ok[0])) f.push("sem o link do Portal da Transparência da Câmara");
       const fora = links.filter((u) => !ok.includes(u) && !u.startsWith("https://www.teresina.pi.leg.br/vereadores/")); if (fora.length) f.push("link de Teresina fora da lista: " + fora.join(", "));
       return f; })()` },
+  // Vitória sem verba de gabinete (sem_verba) e Cuiabá com meses sem a verba (verba_sem: "não publicados"; depois de verba_ate: "ainda não publicados")
+  { nome: "vereador-vitoria-sem-verba", url: ENDERECOS["ver-3205309-80002273761"] ? `/${ENDERECOS["ver-3205309-80002273761"]}` : null, depois: `(() => {
+      const f = [], t = (document.querySelector("#contracheque") || {}).innerText || "";
+      if (!/Verba de gabinete\\s+não há/.test(t)) f.push("a lista de gastos não diz que não há verba de gabinete");
+      if (!/não instituiu cota parlamentar/.test(t)) f.push("sem o texto da Câmara sobre a cota parlamentar");
+      return f; })()` },
+  { nome: "cidade-cuiaba", url: "/cidade/cuiaba-mt", ter: [["#cidade .pessoa-chip", 27]], texto: [/Os 27 vereadores no cargo, um a um/, /não publicou a verba indenizatória de 02\/2026 e 04\/2026/, /pela folha de pagamento da Câmara/], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
+  { nome: "vereador-cuiaba-verba-sem", acao: true, url: ENDERECOS["ver-5103403-110002017762"] ? `/${ENDERECOS["ver-5103403-110002017762"]}?periodo=2026` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      const de = (m) => linhas.find((l) => l[0] === m);
+      for (const m of ["fev/2026", "abr/2026"]) { const l = de(m); if (!l || l[2] !== "não publicados") f.push(m + ": os gastos dizem " + JSON.stringify(l && l[2]) + " e deviam dizer não publicados"); }
+      const set = de("set/2026"); if (!set || set[2] !== "ainda não publicados") f.push("set/2026 devia dizer ainda não publicados: " + JSON.stringify(set));
+      for (const m of ["jan/2026", "mar/2026", "ago/2026"]) { const l = de(m); if (!l || !/^R\\$ [1-9]/.test(l[2])) f.push(m + " devia mostrar a verba em reais: " + JSON.stringify(l)); }
+      const txt = document.querySelector("#mes-a-mes").textContent;
+      if (!/não publicou a verba de fev\\/2026 e abr\\/2026/.test(txt) || !/publica a verba com atraso/.test(txt)) f.push("faltam as duas notas sobre a verba (mês que faltou e atraso)");
+      const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
+      HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
+      const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return f.concat(["sem o botão Mês a mês (CSV)"]);
+      bt.click(); await esp(200);
+      const csv = guardados.length ? await guardados[0].text() : "";
+      for (const m of ["2026-02", "2026-04", "2026-09"]) if (!new RegExp("," + m + ",[\\\\d.]+,,").test(csv)) f.push("no CSV, a verba de " + m + " devia ficar em branco");
+      if (!/,2026-03,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de 2026-03 devia ter valor");
+      return f; })()` },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
   { nome: "reserva-recife-cargo", url: "/cidade/recife-pe", simular: simularReservas(["vereadores/recife"], true),
     pagina: [/dados do tce-pe\./i, /não é o salário de cada pessoa/i, /em média, por vereador/i, /total pago ao cargo/i], semPagina: [/valor típico de um vereador/i], sem: [/ganha mais que/i, /passa do teto/i] },
+  { nome: "reserva-vitoria-camara-cargo", url: "/cidade/vitoria-es", simular: simularReservas(["vereadores/vitoria"]),
+    pagina: [/dados do tce-es\./i, /não é o salário de cada pessoa/i, /em média, por vereador/i, /total pago ao cargo/i], semPagina: [/Os 21 vereadores no cargo, um a um/] },
   { nome: "reserva-vitoria-prefeitura-cargo", url: "/cidade/vitoria-es", simular: simularReservas(["prefeituras/vitoria"]),
     pagina: [/dados do tce-es\./i, /quanto a prefeitura paga ao prefeito e ao vice/i, /não é o salário de cada pessoa/i], semPagina: [/quanto recebem o prefeito, os secretários/i] },
   { nome: "deputado-atividade", url: ENDERECOS["dep-74856"] ? `/${ENDERECOS["dep-74856"]}` : null,
@@ -336,7 +362,8 @@ const PAGINAS = [
   { nome: "cidade-pequena", url: "/cidade/acrelandia-ac" },
   // ES, PE e RJ: o Tribunal de Contas só publica o total pago ao cargo (e quantas pessoas): sempre "em média", nunca o salário
   // de alguém, sem "passa do teto" nem "ganha mais que X%"
-  { nome: "cidade-es-vitoria", url: "/cidade/vitoria-es", ter: [["#cidade .pessoa-chip--fixo", 15]], texto: [/em média, por vereador/i, /total pago ao cargo/i], sem: [/passa do teto/i, /ganha mais que/i] },
+  // Vitória (08/10/2026): a Câmara vem de camaras.json (vereador por vereador; sem cota parlamentar desde 2023, com o texto da Câmara); o valor por cargo do TCE-ES só entra se a reserva estiver ativa
+  { nome: "cidade-es-vitoria", url: "/cidade/vitoria-es", ter: [["#cidade .pessoa-chip", 21]], texto: [/Os 21 vereadores no cargo, um a um/, /não instituiu cota parlamentar/i, /só o salário, a Câmara não tem verba de gabinete/i], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
   { nome: "cidade-es-cariacica", url: "/cidade/cariacica-es", ter: [["#cidade .pessoa-chip--fixo", 15], ["#prefeitura .folha-linha", 2]], texto: [/23 pessoas no cargo de vereador/i, /não representa um vereador/i], sem: [/em média, por vereador/i, /passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-pe-abreu-e-lima", url: "/cidade/abreu-e-lima-pe", ter: [["#cidade .pessoa-chip--fixo", 10], ["#prefeitura .folha-linha", 2]], texto: [/em média, por vereador/i, /13 pessoas no cargo de vereador/i, /R\$ 26\.000/], sem: [/passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-pe-aguas-belas", url: "/cidade/aguas-belas-pe", ter: [["#cidade .pessoa-chip--fixo", 10]], texto: [/presidente da Câmara/i, /13 pessoas/i], sem: [/passa do teto/i, /ganha mais que/i] },
@@ -577,7 +604,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
-  { nome: "capitais com verba atrasada (João Pessoa) e Teresina", quando: /verbaPendente|verba_ate|João Pessoa|Teresina/, paginas: /joao-pessoa|teresina/ },
+  { nome: "capitais sem verba, com verba atrasada ou com mês faltando (João Pessoa, Teresina, Vitória, Cuiabá)", quando: /verbaPendente|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá/, paginas: /joao-pessoa|teresina|vitoria|cuiaba/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },

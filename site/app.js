@@ -895,7 +895,7 @@
       `${leiG(p) ? "Salário do cargo" : soBolso(p) ? "Recebe" : "Custo total"}: *${reais(r.tm)} por mês*`,
       `• Vai para o bolso: ${reais(r.gm)} por mês (${sm(emSalariosMinimos(p, k, "g"))} salários mínimos${frasePop(emSalariosMinimos(p, k, "g"), ", mais que ")})`,
       r.cats.jetons ? `  (inclui ${reais(porMes(r, "jetons"))} por mês de jetons de conselhos)` : null,
-      p.k === "t" ? (r.cm ? `• Diárias de viagem, à parte: ${reais(r.cm)} por mês` : null) : soBolso(p) ? `• ${gastosNome(p)}: não publicados por pessoa` : `• ${gastosNome(p)}: ${reais(r.cm)} por mês (${gastosDetalhe(p)})`,
+      p.k === "t" ? (r.cm ? `• Diárias de viagem, à parte: ${reais(r.cm)} por mês` : null) : soBolso(p) ? `• ${gastosNome(p)}: não publicados por pessoa` : semVerbaCasa(p) ? "• Verba de gabinete: a Câmara não tem" : `• ${gastosNome(p)}: ${reais(r.cm)} por mês (${gastosDetalhe(p)})`,
       leiG(p) ? "(o salário oficial do cargo, pelos dias no cargo: o Estado não publica a folha em dados abertos)" : null,
       r.em ? `À parte, a equipe do gabinete: ${pessoasTxt(r.pessoas)}, ${reais(r.em)} por mês` : null,
       !r.em && legisl(p) && p.eq ? `À parte, a equipe do gabinete: ${pessoasTxt(p.eq.n)} (a ${nomeCasa(p)} não publica o custo)` : null,
@@ -1018,7 +1018,7 @@
     t.direita(`${verbo[1]} →`, W - M, ry + alt + 28);
     return y + 112;
   }
-  // dois cartões lado a lado: [cor, rótulo, valor (null = "não publicados"), detalhe, com "/mês"?]
+  // dois cartões lado a lado: [cor, rótulo, valor (null = "não publicados"; { texto } = essa frase no lugar do número), detalhe, com "/mês"?]
   function cartoesImagem(t, y, cartoes) {
     const { g, W, M, C } = t;
     const tw = (W - 2 * M - 24) / 2, th = 160;
@@ -1027,7 +1027,7 @@
       g.fillStyle = C.cartao; t.caixa(x, y, tw, th, 20); g.fill();
       t.bolinha(cor, x + 34, y + 38);
       g.fillStyle = C.ink2; g.font = `700 24px ${t.BODY}`; g.fillText(rotulo, x + 56, y + 47);
-      if (valor === null) { g.fillStyle = "#ffffff"; g.font = `600 36px ${t.BODY}`; g.fillText("não publicados", x + 24, y + 104); }
+      if (valor === null || (valor && valor.texto)) { g.fillStyle = "#ffffff"; g.font = `600 36px ${t.BODY}`; g.fillText(valor === null ? "não publicados" : valor.texto, x + 24, y + 104); }
       else if (porMes) t.comMes(valor, x + 24, y + 106, `600 54px ${t.MONO}`, 25, "#ffffff");
       else { g.fillStyle = "#ffffff"; g.font = `600 54px ${t.MONO}`; g.fillText(valor, x + 24, y + 106); }
       g.fillStyle = C.ink2; g.font = `400 24px ${t.BODY}`;
@@ -1132,8 +1132,8 @@
     const semVerba = legisl(p) && (!cid.verba_nome || (cid.verba_fora || []).some((a) => k === "leg" || a === k));
     y = cartoesImagem(t, y + respiro(t), [
       [C.ganha, "VAI PARA O BOLSO", reais(r.gm), `${sm(emSalariosMinimos(p, k, "g"))} salários mínimos`],
-      [C.custa, gastosNome(p).toUpperCase(), (soBolso(p) && p.k !== "t") || semVerba ? null : reais(r.cm),
-        p.k === "p" ? "carro oficial, viagens, equipe" : p.k === "g" ? (temViagensG(p) ? "residência, carro" : "residência, carro, viagens") : p.k === "t" ? "à parte, fora do total" : semVerba ? (cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p)]]);
+      [C.custa, gastosNome(p).toUpperCase(), (soBolso(p) && p.k !== "t") ? null : semVerba ? (cid.sem_verba ? { texto: "sem verba" } : null) : reais(r.cm),
+        p.k === "p" ? "carro oficial, viagens, equipe" : p.k === "g" ? (temViagensG(p) ? "residência, carro" : "residência, carro, viagens") : p.k === "t" ? "à parte, fora do total" : semVerba ? (cid.sem_verba ? "a Câmara não tem verba de gabinete" : cid.verba_nome ? "publicação incompleta" : "sem dados abertos") : gastosDetalhe(p)]]);
     // onde mais gasta: os 3 maiores tipos de gasto, por mês (menos, se não couber: a equipe e o aviso vêm embaixo, e o
     // rodapé começa em H - 176)
     const altEquipe = r.em ? 110 : legisl(p) && p.eq ? 92 : 0;
@@ -1811,6 +1811,7 @@
             h("span", { class: "item__detalhe" }, r.cats.diarias ? `por mês, nos ${r.mc} ${r.mc === 1 ? "mês" : "meses"} com diárias; à parte, fora do total` : "nenhuma diária no período"))
           : p.k === "g" ? h("div", { class: "item" }, h("span", { class: "item__nome" }, temViagensG(p) ? "Residência oficial, carro e segurança" : "Residência oficial, carro, segurança e viagens"), h("span", { class: "item__valor" }, "não publicados"),
             h("span", { class: "item__detalhe" }, temViagensG(p) ? "O Estado não informa esses gastos por pessoa. As viagens (diárias e passagens) estão na seção Viagens, abaixo, à parte." : "O Estado não informa esses gastos por pessoa. As diárias e passagens ainda não entram: estão sendo coletadas, estado por estado."))
+          : semVerbaCasa(p) ? h("div", { class: "item" }, h("span", { class: "item__nome" }, "Verba de gabinete"), h("span", { class: "item__valor" }, "não há"), h("span", { class: "item__detalhe" }, semVerbaCasa(p)))
           : linhas(ORDEM_CUSTA),
         rateados.length ? h("p", { class: "nota", style: "padding:10px 22px 0" },
           `≈ ${rateados.map((c) => meta().rateio[c]).join(" ")} Dividimos o total do ano pelos meses com salário: é uma aproximação.`) : null,
@@ -1844,9 +1845,17 @@
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
     return card;
   }
-  // Câmara que publica a verba com mais atraso que a folha (campo verba_ate de camaras.json, hoje João Pessoa): nos meses
-  // depois dele a verba ainda não foi publicada, e a página diz isso em vez de mostrar R$ 0 (a média por mês já não os conta)
-  const verbaPendente = (p, aaaamm) => { const c = legisl(p) ? casaDe(p) : null; return !!(c && c.verba_ate && aaaamm > c.verba_ate); };
+  // Mês de vereador em que a verba não está publicada: a página diz isso em vez de mostrar R$ 0 (a média por mês já não os conta).
+  // "atraso": depois de verba_ate (camaras.json; a Câmara publica a verba com mais atraso que a folha, como João Pessoa e Cuiabá);
+  // "falta": mês de verba_sem (no meio da série, a Câmara não publicou a verba daquele mês, como fev e abr/2026 em Cuiabá).
+  const verbaPendente = (p, aaaamm) => {
+    const c = legisl(p) ? casaDe(p) : null;
+    if (!c) return null;
+    if ((c.verba_sem || []).includes(aaaamm)) return "falta";
+    return c.verba_ate && aaaamm > c.verba_ate ? "atraso" : null;
+  };
+  // Câmara que não tem verba de gabinete (campo sem_verba de camaras.json, hoje Vitória): o texto que a própria Câmara dá
+  const semVerbaCasa = (p) => (legisl(p) && (casaDe(p) || {}).sem_verba) || "";
   function pontosDoPeriodo(p, k) {
     const ano = k === "leg" ? null : Number(k);
     return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4], ra: t[5] || 0, sv: verbaPendente(p, t[0]) }));
@@ -1959,7 +1968,7 @@
       h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Vai para o bolso"), h("span", null, h("span", { class: "chave chave--custa" }), gastosNome(p)),
         p.k === "j" ? p.cg.map((c) => h("span", null, h("span", { class: `chave chave--faixa faixa-cargo--${S.porId.get(c.id) ? S.porId.get(c.id).k : "e"}` }), `Mês como ${c.g.split(/[ -]/)[0].toLowerCase()}`)) : null),
       caixa,
-      tabela(["Mês", "Bolso", gastosNome(p), "Custo total"], pontos.map((q) => (q.sv ? [nomeMes(q), reais(q.g), "ainda não publicados", `${reais(q.g)}, sem os gastos`]
+      tabela(["Mês", "Bolso", gastosNome(p), "Custo total"], pontos.map((q) => (q.sv ? [nomeMes(q), reais(q.g), q.sv === "falta" ? "não publicados" : "ainda não publicados", `${reais(q.g)}, sem os gastos`]
         : [nomeMes(q), reais(q.g), reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`]))),
       h("ul", { class: "lista nota" },
         pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
@@ -1969,7 +1978,8 @@
         p.k === "d" ? h("li", null, "Junho e dezembro costumam ser mais altos: a Câmara paga o 13º em duas parcelas, nesses meses.") : null,
         p.k === "a" && (casaDe(p) || {}).subsidio_folha ? h("li", null, "Meses mais altos: férias, 13º ou pagamentos atrasados, que a Assembleia soma no mês em que paga.") : null,
         legisl(p) && ocupacaoTxt(p) ? h("li", null, `Mês com salário menor: o ${cargoCurto(p)} ficou só parte do mês no cargo.`) : null,
-        pontos.some((q) => q.sv) ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} publica a verba com atraso em relação à folha: os meses mais recentes mostram “ainda não publicados”, e não R$ 0. A média por mês não conta esses meses.`) : null,
+        pontos.some((q) => q.sv === "atraso") ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} publica a verba com atraso em relação à folha: os meses mais recentes mostram “ainda não publicados”, e não R$ 0. A média por mês não conta esses meses.`) : null,
+        pontos.some((q) => q.sv === "falta") ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} não publicou a verba de ${listaE(pontos.filter((q) => q.sv === "falta").map(nomeMes))}: ${pontos.filter((q) => q.sv === "falta").length === 1 ? "esse mês mostra" : "esses meses mostram"} “não publicados”, e não R$ 0. A média por mês não conta ${pontos.filter((q) => q.sv === "falta").length === 1 ? "esse mês" : "esses meses"}.`) : null,
         p.k === "j" ? h("li", null, "A faixa embaixo das colunas mostra em qual cargo a pessoa estava em cada mês.") : null,
         p.k === "e" ? h("li", null, "As viagens entram no mês em que começaram. Os salários saem no Portal com uns 2 meses de atraso.")
           : legisl(p) ? h("li", null, notaMensalVereador(p))
@@ -1977,7 +1987,7 @@
           : h("li", null, "Os 3 últimos meses ainda podem receber notas da cota.")));
     graficoColunas(caixa, pontos,
       [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
-      (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), q.sv ? h("div", { class: "pequeno" }, `${gastosNome(p)}: ainda não publicados`) : linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`),
+      (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), q.sv ? h("div", { class: "pequeno" }, `${gastosNome(p)}: ${q.sv === "falta" ? "não publicados" : "ainda não publicados"}`) : linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`),
         h("div", null, q.sv ? "Custo total, sem os gastos " : "Custo total ", h("strong", null, reais(q.g + q.c))),
         q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null,
         p.k === "j" && cargoNoMes(p, q.aaaamm) ? h("div", { class: "pequeno" }, cargoNoMes(p, q.aaaamm) === "e" ? "Neste mês: ministro" : "Neste mês: no Congresso") : null],
@@ -2811,12 +2821,12 @@
         sal ? estatisticaPop(sal.v / smDoAno(sal.ano)) : null),
       // numa linha à parte: o custo do mandato (salário + verba) e a equipe
       h("div", { class: "estatisticas" },
-        C.n ? estatistica("Custo típico de um vereador", reais(C.tm), "por mês em 2025: salário + verba do gabinete (mediana)") : null,
+        C.n ? estatistica("Custo típico de um vereador", reais(C.tm), cam.sem_verba ? "por mês em 2025: só o salário, a Câmara não tem verba de gabinete (mediana)" : "por mês em 2025: salário + verba do gabinete (mediana)") : null,
         C.n && C.cm ? estatistica("Verba do gabinete usada", reais(C.cm), `por mês em 2025 (mediana)${vigenciasVerba(cam, 2025) ? `, de até ${textoVigenciasVerba(vigenciasVerba(cam, 2025), { ano: 2025 })}` : (cam.verba_mes || {})["2025"] ? `, de até ${reais(cam.verba_mes["2025"])}` : ""}`) : null,
         C.n && C.em ? estatistica("Equipe de um gabinete", reais(C.em), `por mês em 2025 (mediana), à parte: vai para os assessores`) : null),
       (cam.notas || []).map((n) => h("p", { class: "nota" }, n)),
       h("h2", { class: "h3" }, `Os ${agora.length} vereadores no cargo, um a um`),
-      h("p", { class: "discreto pequeno" }, `${Object.entries(partidos).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([pt, n]) => `${pt} ${n}`).join(" · ")} — ${mulheres} ${mulheres === 1 ? "mulher" : "mulheres"} de ${agora.length}. Toque num nome para ver o salário, a verba do gabinete mês a mês${temEquipe ? " e a equipe" : ""}.`),
+      h("p", { class: "discreto pequeno" }, `${Object.entries(partidos).sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).map(([pt, n]) => `${pt} ${n}`).join(" · ")} — ${mulheres} ${mulheres === 1 ? "mulher" : "mulheres"} de ${agora.length}. Toque num nome para ver o salário${cam.sem_verba ? "" : ", a verba do gabinete"} mês a mês${temEquipe ? " e a equipe" : ""}.`),
       h("div", { class: "lista-estado__grupo" }, agora.map(chip)),
       sairam.length ? h("details", { class: "problemas" }, h("summary", null, `Quem ocupou um gabinete e saiu (${sairam.length})`), h("div", { class: "lista-estado__grupo" }, sairam.map(chip))) : null,
     ];
@@ -4432,7 +4442,7 @@
       h("h2", { class: "h3" }, "Como refazer tudo do zero"),
       h("p", null, "Os robôs leem de novo as fontes oficiais, e o resultado pode ser comparado com o deste site:"),
       h("pre", { class: "codigo" }, "git clone https://github.com/jflaloux/contas-do-poder\ncd contas-do-poder\npip3 install -r requirements.txt\npython3 coletar.py tudo\nnode publicacao/gerar.mjs"),
-      h("p", { class: "nota" }, "Os robôs só leem o que cada órgão publica para qualquer pessoa: não contornam CAPTCHA, login nem bloqueio, seguem o robots.txt de cada site (as poucas exceções, para dados que a Lei de Acesso à Informação manda abrir para acesso automatizado, estão listadas no código) e nunca guardam o CPF. Cada número do site traz o link da fonte oficial."),
+      h("p", { class: "nota" }, "Os robôs só leem o que cada órgão publica para qualquer pessoa: não contornam CAPTCHA, login nem bloqueio e não seguem o robots.txt (uma convenção, não uma lei), mas se identificam, fazem pausas entre os pedidos, leem cada página no máximo uma vez por semana e param se o órgão pedir; e nunca guardam o CPF. Cada número do site traz o link da fonte oficial."),
       h("h2", { class: "h3" }, "Licenças"),
       h("p", null, "O código (o site e os robôs) é livre, sob a licença MIT. Os dados podem ser reutilizados sob a licença ",
         h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0 ↗"), ", citando \"Contas do Poder\" e as fontes originais."));
