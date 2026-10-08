@@ -1,4 +1,4 @@
-# Conferência dos dados — 08/10/2026 13:25
+# Conferência dos dados — 08/10/2026 13:51
 
 ## 1. Cobertura
 
@@ -91,6 +91,10 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 - Senadores comparados: 81
 - Diferença mediana: -3 pessoa(s); casos com diferença > 5: 34
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
+
+## 6b. Fornecedor pessoa física pelo nome no site
+
+- Nomes de fornecedor pessoa física (CPF ou sem CNPJ) em camaras.json e assembleias.json: 0 (tem de ser 0)
 
 ## 7. Sanidade (trava a publicação automática)
 

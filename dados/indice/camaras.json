@@ -667,7 +667,7 @@
   },
   "PI": {
    "cidade": "Teresina",
-   "fonte": "https://transparencia.teresina.pi.leg.br/project6-war/ext/consultarServidores.jsf",
+   "fonte": "https://transparencia.teresina.pi.leg.br/project6-war/novo-home.jsf",
    "salario": [
     0.75,
     "Folha mensal (jan/2016 a ago/2026) dos parlamentares; o detalhe mostra vencimento, gratificação e redutor."

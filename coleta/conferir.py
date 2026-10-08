@@ -40,6 +40,41 @@ def _vereadores_no_site():
     return sum(m[5] for m in json.load(open(arq, encoding="utf-8"))["m"]) if arq.exists() else 0
 
 
+def _fornecedores_pessoa_no_site():
+    """Nomes de fornecedor pessoa física (CPF no lugar do documento, ou sem documento e sem nome de empresa) que aparecem
+    em camaras.json ou assembleias.json. Tem de ser zero: o site mostra "Pessoa física" (vereadores.comum.fornecedor_pf).
+    Não conta o nome que, na mesma fonte, também vem com CNPJ (o MEI que às vezes é lançado com o CPF do dono)."""
+    import csv
+    from .config import DADOS
+    from .vereadores.comum import empresa, fornecedor_pf, parece_empresa
+    csv.field_size_limit(10**9)
+    tipos = set()
+    for a in ("camaras.json", "assembleias.json"):
+        arq = RAIZ / "site" / "dados" / a
+        if arq.exists():
+            tipos |= set(json.loads(arq.read_text(encoding="utf-8"))["meta"]["tipos"])
+    achados = set()
+    for arq in sorted(list((DADOS / "municipios").glob("*/*.csv")) + list((DADOS / "assembleias").glob("*/*.csv"))):
+        with open(arq, encoding="utf-8", newline="") as f:
+            r = csv.reader(f)
+            cab = next(r, [])
+            doc = next((j for j, h in enumerate(cab) if re.search(r"cnpj", h, re.I)), None)
+            nome = next((j for j, h in enumerate(cab) if re.search(r"fornec|benefic|emitente|credor|favorec", h, re.I)), None)
+            if nome is None:
+                continue
+            pf, com_cnpj = set(), set()
+            for l in r:  # fonte sem coluna de documento (Alesc): o documento é vazio
+                d = l[doc] if doc is not None and doc < len(l) else ""
+                if len(l) <= nome or not l[nome].strip():
+                    continue
+                if len(re.sub(r"\D", "", d)) >= 12:
+                    com_cnpj.add(empresa(l[nome]))
+                elif fornecedor_pf(d, l[nome]) and not parece_empresa(l[nome]):
+                    pf.add(empresa(l[nome]))
+            achados |= {f"{arq.parent.parent.name}/{arq.parent.name}: {n}" for n in (pf - com_cnpj) & tipos}
+    return sorted(achados)
+
+
 def _vereadores_capitais():
     """Por cidade do site/dados/camaras.json: (nome, cadeiras, no cargo, com gastos do gabinete no mês retrasado)."""
     arq = RAIZ / "site" / "dados" / "camaras.json"
@@ -270,6 +305,12 @@ def executar():
         ("Parlamentares no arquivo do site", n_site, 700),
         (f"Deputados com a equipe contada em {mes_f:02d}/{ano_f}", n_equipe_dep, 450),
     ]
+    # nome de fornecedor pessoa física no site (regra do projeto: só "Pessoa física"); cada nome é um alerta
+    pessoas = _fornecedores_pessoa_no_site()
+    problemas += len(pessoas)
+    rel += ["## 6b. Fornecedor pessoa física pelo nome no site", "",
+            f"- Nomes de fornecedor pessoa física (CPF ou sem CNPJ) em camaras.json e assembleias.json: {len(pessoas)} (tem de ser 0)",
+            *[f"- {n}" for n in pessoas[:20]], ""]
     rel += ["## 7. Sanidade (trava a publicação automática)", "", "| Checagem | Valor | Mínimo | |", "|---|---:|---:|---|"]
     for nome, valor, minimo in checagens:
         ok = valor >= minimo

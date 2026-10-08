@@ -46,6 +46,28 @@ CFG = {
     "fontes": {"verba": PAGINA, "subsidio": "https://sapl.al.ro.leg.br/media/sapl/public/normajuridica/2023/11274/lei_5530.pdf"},
 }
 DOC = re.compile(r"(\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}|\*{3}\.\d{3}\.\d{3}\*?-\*{2})")
+# o documento às vezes vem só com os algarismos, sem pontos ("NOME 1112223000144 AVENIDA ..."), às vezes sem o zero da
+# frente ou com um a mais
+DOC_SEM_PONTOS = re.compile(r"(?<![\d.\-/])(\d{8,15})(?![\d.\-/])")
+
+
+def _prestador(prest):
+    """(nome, documento) do "Prestador" da Alero: o nome vem antes do documento, e o endereço depois dele fica de fora. O CPF
+    (mascarado pela própria Alero, ou só os algarismos) não é guardado: vira a marca "PF" (vereadores.comum.mascarar);
+    o CNPJ fica com os 14 algarismos."""
+    prest = (prest or "").strip()
+    if re.fullmatch(r"(None\s*-?\s*)+", prest):
+        return "", ""
+    doc = DOC.search(prest) or DOC_SEM_PONTOS.search(prest)
+    if not doc:
+        return prest, ""
+    nome, d = prest[:doc.start()].strip(" -"), re.sub(r"\D", "", doc.group(1))
+    if "*" in doc.group(1) or len(d) <= 11:
+        return nome, vc.PF
+    if len(d) == 15 and d[0] == "0":
+        d = d[1:]
+    # com 12, 13 ou 15 algarismos (um a menos ou a mais), fica como veio: é de empresa, mas não dá para saber qual algarismo falta
+    return nome, (f"{d[:2]}.{d[2:5]}.{d[5:8]}/{d[8:12]}-{d[12:]}" if len(d) == 14 else d)
 
 
 def _get(params):
@@ -84,12 +106,11 @@ def _ler(t, am, gab):
         data = (re.search(r"Data:\s*(\d{2}/\d{2}/\d{4})", x) or [None, ""])[1]
         classe = (re.search(r"Classe:\s*([^|]+)", x) or [None, ""])[1].strip()
         prest = (re.search(r"Prestador:\s*([^|]+)", x) or [None, ""])[1].strip()
-        doc = DOC.search(prest)
-        nome = prest[:doc.start()].strip() if doc else prest
+        nome, doc = _prestador(prest)
         saude = "SAUDE" in normalizar_nome(ctx["verba"])
         saida.append({"ano": am // 100, "mes": am % 100, "gabinete": gab, "deputado": ctx["deputado"], "lote": ctx["lote"],
                       "tipo": "Reembolso de despesas de saúde" if saude else (classe.capitalize() or "Outras despesas"),
-                      "fornecedor": "" if saude else nome, "cnpj_cpf": doc.group(1) if doc else "", "data": data, "valor": valor})
+                      "fornecedor": "" if saude else nome, "cnpj_cpf": "" if saude else doc, "data": data, "valor": valor})
     return saida
 
 

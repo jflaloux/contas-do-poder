@@ -111,6 +111,7 @@ def titulo(nome):
 _CPF_NO_TEXTO = re.compile(r"(?<!\d)(?<!\d[.-])(?:\d{3}\.?\d{3}\.?\d{3}[-/]?\d{2}"
                            r"|(?<!\d[ \t])\d{3}[ \t]+\d{3}[ \t]+\d{3}(?:[ \t]*-[ \t]*|[ \t]+)?\d{2}(?![ \t]+\d))(?!\d)(?![.-]\d)")
 _COLUNAS_TEXTO = re.compile(r"fornec|benefic|nome|emitente|credor|favorec|objeto|descri|histor|interessad|detalh", re.I)
+_COLUNAS_NOME = re.compile(r"fornec|benefic|emitente|credor|favorec|prestador", re.I)
 # número do documento (nota, recibo, boleto): aqui sai só o número que é um CPF válido (os dígitos verificadores batem),
 # para não apagar números de nota comuns; com o rótulo ("CPF:") junto
 _COLUNAS_DOC = re.compile(r"document|^numero$|^num_|^nota$|^nf$|recibo|fatura", re.I)
@@ -166,6 +167,7 @@ def limpar_cpfs(pasta):
         if not linhas:
             continue
         cols = [j for j, h in enumerate(linhas[0]) if _COLUNAS_TEXTO.search(h)]
+        nomes = [j for j, h in enumerate(linhas[0]) if _COLUNAS_NOME.search(h)]
         docs = [j for j, h in enumerate(linhas[0]) if _COLUNAS_DOC.search(h) and j not in cols]
         cnpj = next((j for j, h in enumerate(linhas[0]) if re.search(r"cnpj", h, re.I)), None)
         mudou = 0
@@ -181,6 +183,13 @@ def limpar_cpfs(pasta):
                 if novo != linha[j]:
                     linha[j] = novo
                     mudou += 1
+            # no nome do fornecedor, também o começo de um CPF (9 algarismos) ou o CPF sem o zero da frente (sem_cpf_curto)
+            for j in nomes:
+                if j < len(linha):
+                    novo = sem_cpf_curto(linha[j])
+                    if novo != linha[j]:
+                        linha[j] = novo
+                        mudou += 1
             # documento de pessoa física com um algarismo a mais (o CPF digitado com erro): 12 algarismos em que os 11
             # primeiros ou os 11 últimos formam um CPF válido
             if not empresa_na_linha:
@@ -195,23 +204,92 @@ def limpar_cpfs(pasta):
     return total
 
 
+# Número de 9 ou 10 algarismos solto num nome: o começo de um CPF (os 9 primeiros algarismos já dão os 2 últimos) ou o
+# CPF sem o zero da frente (10 algarismos). Sai do nome (sem algarismo nem separador de número colado).
+_CPF_CURTO = re.compile(r"(?<![\d.\-/])(\d{9,10})(?![\d])(?![.\-/]\d)")
+
+
+def sem_cpf_curto(texto):
+    """O nome sem um número que seja o começo de um CPF (9 algarismos) ou um CPF sem o zero da frente (10 algarismos com
+    os dígitos verificadores certos)."""
+    if not isinstance(texto, str) or not _CPF_CURTO.search(texto):
+        return texto
+
+    def trocar(m):
+        n = m.group(1)
+        return " " if len(n) == 9 or cpf_valido(n.zfill(11)) else n
+    novo = _CPF_CURTO.sub(trocar, texto)
+    return re.sub(r"\s+", " ", novo).strip(" -–:/") if novo != texto else texto
+
+
+# Fornecedor sem CNPJ: só aparece pelo nome no site se o nome é de empresa (LTDA, S/A, posto, hotel, prefeitura...) ou
+# traz um CNPJ; senão, "Pessoa física" (regra do projeto: o nome de fornecedor pessoa física não aparece no site).
+_EMPRESA = re.compile(
+    r"\b(LTDA|LTD|ME|EPP|EIRELI|EIRELE|EIRELLI|S\s?/\s?A|S\.\s?A\.?|S/S|INC|LLC|CORP|CORPORATION|LIMITED|GMBH|PLC|CIA|COMPANHIA|"
+    r"COMERCIO|COMERCIAL|COM|SERVICOS?|SERV|POSTOS?|AUTO|AUTOPECAS|HOTEL|HOTEIS|HOTELARIA|HOTELEIROS?|POUSADA|RESTAURANTE|"
+    r"CHURRASCARIA|PIZZARIA|LANCHONETE|LANCHES|PADARIA|PANIFICADORA|FARMACIA|DROGARIA|SUPERMERCADOS?|MERCADO|MERCADINHO|"
+    r"ATACADO|ATACADAO|DISTRIBUIDORA|DISTRIBUICAO|INDUSTRIA|IND|EMPREENDIMENTOS?|PARTICIPACOES|CONSULTORIA|ASSESSORIA|"
+    r"CONTABILIDADE|CONTABIL|ADVOGADOS|ADVOCACIA|SOCIEDADE|ASSOCIACAO|INSTITUTO|FUNDACAO|COOPERATIVA|EDITORA|GRAFICA|"
+    r"GRAFICOS|IMPRESSORA|JORNAL|JORNALISTICA|RADIO|RADIODIFUSAO|TV|TELEVISAO|COMUNICACAO|COMUNICACOES|PUBLICIDADE|"
+    r"PUBLICIDADES|PROPAGANDA|MARKETING|AGENCIA|TURISMO|VIAGENS|LOCADORA|LOCACOES|LOCACAO|TRANSPORTES?|COMBUSTIVEIS?|"
+    r"DERIVADOS|PETROLEO|TELECOM|TELECOMUNICACOES|TELEFONICA|BANCO|CORREIOS|EMPRESA|EMPRESARIAL|GRUPO|CLINICA|LABORATORIO|"
+    r"IMOBILIARIA|IMOBILIARIOS|IMOVEIS|CONDOMINIO|EDIFICIO|SHOPPING|PREFEITURA|SECRETARIA|ASSEMBLEIA|GOVERNO|MUNICIPIO|"
+    r"UNIVERSIDADE|FACULDADE|ESCOLA|COLEGIO|IGREJA|SINDICATO|FEDERACAO|CONFEDERACAO|CONSELHO|ENERGIA|ENERGISA|SANEAMENTO|"
+    r"SAAE|ESGOTO|SOFTWARE|SYSTEMS|TECNOLOGIA|TECHNOLOGY|TECHNOLOGIES|INFORMATICA|SOLUCOES|PRODUCOES|PRODUTORA|EVENTOS|"
+    r"FILMES|DIGITAL|MIDIA|MIDIAS|INTERNET|PROVEDOR|LOJAS?|MAGAZINE|CALCADOS|CONFECCOES|MOVEIS|MATERIAIS|CONSTRUCOES|"
+    r"CONSTRUTORA|ENGENHARIA|GESTAO|NEGOCIOS|IMPORTADORA|ALIMENTOS|BEBIDAS|PAPELARIA|LIVRARIA|OTICA|ESTACIONAMENTOS?|"
+    r"OFICINA|MECANICA|PNEUS|VEICULOS|AUTOMOVEIS|REPRESENTACOES|MAQUINAS|EQUIPAMENTOS|MONITORAMENTO|NOTICIAS|"
+    r"CAMARA MUNICIPAL|ADOBE|GOOGLE|FACEBOOK|MICROSOFT|AMAZON|APPLE|ZOOM|STREAMYARD|TRELLO|FLICKR|HOSTINGER|STARLINK|UBER|"
+    r"IFOOD|LATAM|GOL|AZUL|CLARO|VIVO|TIM|[A-Z]+NET|LIMITADA|CASAN|CELESC|SAMAE|SEMASA|COND|EDIF|CENTER|BUSINESS|COMPUTADORES|"
+    r"CARTUCHOS|IMPRESSORAS|COPIA|FUNDACION|PROGRAM|ADMINISTRADORA|INVESTIMENTOS?|CANVA|CAPCUT|DROPBOX|SLACK|PEDAGIO|REVISTA|"
+    r"TABELIAO|CARTORIO|RECICLADOS)\b|&|\.COM\b|LTDA\b|S\s?/\s?A\b|EIRELI|CONSULTORIA|COMUNICACAO|TECNOLOGIA")
+
+
+# um CNPJ no meio do nome: escrito com pontos e barra ("10.528.028/0001 50") ou 12 a 15 algarismos seguidos (Alero)
+_CNPJ_NO_NOME = re.compile(r"(?<!\d)(\d{2}\.\d{3}\.\d{3}\s?/\s?\d{4}|\d{12,15})(?!\d)")
+
+
+def parece_empresa(nome):
+    """O nome é de empresa (ou de órgão público), pelas palavras ou por um CNPJ no meio?"""
+    n = normalizar_nome(nome or "")
+    # "SA" no fim, sem "de" antes ("Habiteto SA", e não "Maria de Sá"), é sociedade anônima
+    return bool(_EMPRESA.search(n) or _CNPJ_NO_NOME.search(n) or re.search(r"(?<!\bDE)(?<!\bDA)(?<!\bDO)\s+SA\.?$", n))
+
+
+def fornecedor_pf(doc, nome):
+    """True se o fornecedor é pessoa física (o site mostra "Pessoa física", não o nome):
+    - o documento é um CPF: a marca "PF" de mascarar, o CPF mascarado de antes ("***...") ou 11 algarismos;
+    - com CNPJ (12 a 15 algarismos: há fonte que perde o zero da frente ou junta um algarismo), não;
+    - sem documento: pessoa física, a não ser que o nome seja de empresa (parece_empresa)."""
+    c = str(doc or "").strip()
+    d = re.sub(r"\D", "", c)
+    if c.upper() == "PF" or c.startswith("***") or len(d) == 11 or ("*" in c and len(d) < 12):
+        return True
+    if len(d) >= 12 or "/" in c:
+        return False
+    return not parece_empresa(nome)
+
+
 def empresa(nome):
-    nome = re.sub(r"\s+", " ", sem_cpf(nome or "")).strip(" .-")
+    nome = re.sub(r"\s+", " ", sem_cpf_curto(sem_cpf(nome or ""))).strip(" .-")
     return " ".join(_SIGLAS.get(w.lower(), w.lower() if w.lower() in _MINUSCULAS and i else w.capitalize())
                     for i, w in enumerate(nome.split())) or "Sem nome"
 
 
+PF = "PF"  # marca de fornecedor pessoa física no lugar do documento (sem nenhum algarismo do CPF)
+
+
 def mascarar(doc):
     """Só o CNPJ (empresa) é guardado, como está; o CPF de quem é pessoa física não é guardado, nem mascarado (regra do
-    projeto): vira "". Um CPF que já chega mascarado da fonte também sai, e num campo composto ("CPF: ... NF 1") só fica
-    o CNPJ, se houver."""
+    projeto): no lugar dele fica a marca "PF" (para o site mostrar "Pessoa física" e não o nome). Um CPF que já chega
+    mascarado da fonte também vira "PF", e num campo composto ("CPF: ... NF 1") só fica o CNPJ, se houver. Sem documento: ""."""
     t = (doc or "").strip()
     d = re.sub(r"\D", "", t)
-    if len(d) == 11 or "*" in t or len(d) in (6, 7, 8, 9):
-        return ""
+    if len(d) == 11 or ("*" in t and len(d) != 14) or len(d) in (6, 7, 8, 9):
+        return PF
     if _CPF_NO_TEXTO.search(t) or (re.search(r"\bC\.?P\.?F\b", t, re.I) and "CNPJ" not in t.upper()):
         resto = sem_cpf(t)
-        return resto if len(re.sub(r"\D", "", resto)) == 14 else ""
+        return resto if len(re.sub(r"\D", "", resto)) == 14 else PF
     return t
 
 
@@ -516,17 +594,19 @@ def montar(cfg, tipos, ver, mandatos, ganha=None, despesas=None, verba=None, equ
             if not len(dd):
                 return None
             ordem = lambda serie: sorted(serie.items(), key=lambda x: (-round(float(x[1]), 2), str(x[0])))  # empate: pelo nome (igual em qualquer computador)
-            saida = {"verba_gabinete": [[tipos(t), _r(v)] for t, v in ordem(dd.groupby("tipo").valor.sum()) if _r(v) > 0][:8]}
+            # só os 8 maiores entram na lista de nomes do arquivo (antes entravam todos, e o arquivo levava nomes que o
+            # site não mostra)
+            saida = {"verba_gabinete": [[tipos(t), v] for t, v in [(t, _r(v)) for t, v in ordem(dd.groupby("tipo").valor.sum()) if _r(v) > 0][:8]]}
             com_forn = dd[dd.fornecedor.fillna("").astype(str).str.strip() != ""]
             if len(com_forn):
                 chave = [re.sub(r"\D", "", str(c)) or f"?{normalizar_nome(f)}" for c, f in zip(com_forn.cnpj_cpf.fillna(""), com_forn.fornecedor)]
                 forn = com_forn.assign(chave=chave)
                 nomes = {}
                 for ch, gg in forn.groupby("chave"):
-                    pf = str(gg.cnpj_cpf.iloc[0]).startswith("***")
+                    pf = any(fornecedor_pf(c, f) for c, f in zip(gg.cnpj_cpf.fillna(""), gg.fornecedor))
                     nomes[ch] = "Pessoa física" if pf else empresa(gg.fornecedor.mode().iloc[0])
                 por_forn = forn.assign(nome=forn.chave.map(nomes)).groupby("nome").valor.sum()
-                saida["fornecedores"] = [[tipos(t), _r(v)] for t, v in ordem(por_forn) if _r(v) > 0][:8]
+                saida["fornecedores"] = [[tipos(t), v] for t, v in [(t, _r(v)) for t, v in ordem(por_forn) if _r(v) > 0][:8]]
             return saida
 
         filtros = {str(a): (lambda x, a=a: x // 100 == a) for a in anos}

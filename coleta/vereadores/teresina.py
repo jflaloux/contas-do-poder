@@ -38,7 +38,7 @@ LISTA = f"{SITE}/vereadores"
 TRANSP = "https://transparencia.teresina.pi.leg.br"
 COTA = f"{TRANSP}/project6-war/ext/consultarDespesaAtividade.jsf"
 DETALHE = f"{TRANSP}/project6-war/ext/detalharDespesa.jsf"
-FOLHA = f"{TRANSP}/project6-war/ext/consultarServidores.jsf"
+PORTAL = f"{TRANSP}/project6-war/novo-home.jsf"
 PASTA = DADOS / "municipios" / "teresina"
 C = CACHE / "cmteresina"
 VAGAS = 29
@@ -60,7 +60,7 @@ CFG = {
                     "Quando as notas de um mês passam do valor pago, cada nota é reduzida na mesma proporção, para a soma dar o que a Câmara pagou."],
     "credito_foto": "Câmara Municipal de Teresina", "pagina": LISTA,
     "notas": ["Quem estava no cargo em cada mês: quem recebeu a cota daquele mês (um mês sem a cota entre dois com ela, num mês em que menos vereadores que cadeiras receberam, conta como no cargo). Quem está em exercício hoje: a lista de vereadores da Câmara (os licenciados ficam à parte)."],
-    "fontes": {"cota": COTA, "lista": LISTA, "subsidio": FOLHA},
+    "fontes": {"cota": COTA, "lista": LISTA, "subsidio": PORTAL},
 }
 H = {"Faces-Request": "partial/ajax", "X-Requested-With": "XMLHttpRequest"}
 
@@ -408,7 +408,7 @@ def montar(tipos):
         for n in (ns.itertuples() if ns is not None else []):
             pf = bool(int(n.pf))
             linhas.append({"ano": a, "mes": m, "codigo": cod, "tipo": _tipo(n.tipo), "fornecedor": n.fornecedor,
-                           "cnpj_cpf": "***" if pf else n.cnpj_cpf, "valor": round(float(n.valor) * fator, 2)})
+                           "cnpj_cpf": comum.PF if pf else n.cnpj_cpf, "valor": round(float(n.valor) * fator, 2)})
         if pago - soma >= 0.01:
             linhas.append({"ano": a, "mes": m, "codigo": cod, "tipo": "Sem detalhe publicado", "fornecedor": "", "cnpj_cpf": "", "valor": round(pago - soma, 2)})
     desp = pd.DataFrame(linhas, columns=["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"])

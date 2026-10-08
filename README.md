@@ -711,7 +711,14 @@ salário, verba com fornecedores, mês a mês desde jan/2025. Saída: `site/dado
   documento (nota, recibo, boleto), sai todo número de 11 algarismos com os dígitos verificadores de um CPF, mesmo na nota
   de uma empresa. É uma escolha consciente (decisão do Jean-François, 04/10/2026): privacidade primeiro. Cerca de 1 em
   11 números de 11 algarismos tem os dígitos de um CPF por acaso, e o número de uma nota pode sair junto; os valores
-  não mudam.
+  não mudam. No nome do fornecedor, sai também o começo de um CPF (9 algarismos soltos) e o CPF sem o zero da frente.
+- Fornecedor pessoa física (capitais e Assembleias): no lugar do CPF fica a marca "PF", sem nenhum algarismo
+  (`vereadores/comum.mascarar`), e o site mostra "Pessoa física", nunca o nome. Sem documento nenhum, o nome só aparece se
+  for de empresa ou de órgão público (`comum.parece_empresa`: Ltda, S/A, Eireli, posto, hotel, prefeitura...); com CNPJ
+  (12 a 15 algarismos), aparece. Só os 8 maiores tipos e fornecedores de cada período entram na lista de nomes de
+  camaras.json e assembleias.json. A conferência confere que nenhum nome de fornecedor pessoa física das fontes está
+  nesses arquivos (`conferir._fornecedores_pessoa_no_site`), e `coleta/testes_fontes.py` testa a regra. De 01/10 a
+  08/10/2026 a marca não existia e o nome aparecia (correção registrada).
 - No site, o deputado estadual é o tipo `a` (Assembleia): o `app.js` e o `gerar.mjs` trocam o `k` "e" do arquivo, que no
   site é o governo federal. A página de cada um é a mesma do vereador (salário, verba do gabinete mês a mês, para onde
   foi o dinheiro, equipe onde a Assembleia publica, as notas e as fontes de `meta.estados[uf]`), e ele só se compara com

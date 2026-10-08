@@ -54,6 +54,45 @@ def executar():
     s0 = pd.DataFrame([(3, 2025, 3, 5000.0)], columns=["id_deputado", "ano", "mes", "total_site"])
     c0 = pd.DataFrame([(3, 2025, 3, "COMBUSTÍVEIS", 6000.0)], columns=["id_deputado", "ano", "mes", "tipo", "valor"])
     caso("cota: site abaixo do arquivo antes da lacuna é ignorado", padronizar.completar_cota_com_site(c0, s0, {3: "c"}) == [])
+
+    # fornecedor pessoa física: o nome nunca vai para o site (08/10/2026: desde 01/10, o CPF tirado deixava o documento
+    # vazio, e o site mostrava o nome de quem não tinha CNPJ)
+    from .assembleias import ro
+    from .vereadores import comum as vc
+
+    def cpf_inventado(base9):
+        """Os 11 algarismos de um CPF inventado (os 9 de base e os dois verificadores calculados), sem número no arquivo."""
+        d = [int(c) for c in base9]
+        for n in (9, 10):
+            d.append(sum(d[i] * (n + 1 - i) for i in range(n)) * 10 % 11 % 10)
+        return "".join(map(str, d))
+    cpf = cpf_inventado("011122233")  # começa com zero: sem ele, fica com 10 algarismos
+    caso("mascarar: CPF vira a marca PF", vc.mascarar(f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}") == "PF" and vc.mascarar("***.111.222-**") == "PF")
+    caso("mascarar: CNPJ fica e vazio fica vazio", vc.mascarar("12.345.678/0001-90") == "12.345.678/0001-90" and vc.mascarar("") == "")
+    # nomes inventados, com as mesmas armadilhas dos nomes reais: sobrenome que é palavra de empresa ("Câmara", "Sá", "Mei")
+    pf = [("PF", "XYZ COMERCIAL LTDA"), ("***.111.222*-**", "Fulano"), (cpf, "Fulano"), ("", "Carlos Pereira"),
+          ("", "Fulana Câmara da Costa"), ("", "MARIA NOGUEIRA SÁ DE ALMEIDA"), ("", "REGINA MARIA MEI SOUZA"),
+          ("", "TAXI - JOSE DA SILVA"), ("", "Fulano de Tal e Beltrana de Tal - SEI 26.0.000012345-6"), (None, "José")]
+    caso("pessoa física: sem CNPJ e com nome de pessoa, ou com CPF, não mostra o nome", all(vc.fornecedor_pf(d, n) for d, n in pf))
+    empresas = [("12.345.678/0001-90", "Fulano de Tal"), ("1234567800019", "X"), ("", "ABC VEÍCULOS LTDA"), ("", "Energia DistribuiçãoS/A"),
+                ("", "Prefeitura Municipal de Exemplo"), ("", "ZOOM COMMUNICATIONS INC"), ("", "Silva & Souza Ltda 10.111.222/0001 50")]
+    caso("empresa: com CNPJ, ou sem CNPJ e com nome de empresa, mostra o nome", not any(vc.fornecedor_pf(d, n) for d, n in empresas))
+    caso("nome sem o começo de um CPF", vc.sem_cpf_curto(f"Fulana de Tal {cpf[:9]}") == "Fulana de Tal"
+         and vc.sem_cpf_curto("XYZ LTDA 1112223000144") == "XYZ LTDA 1112223000144" and vc.empresa(f"Fulano Silva {cpf[1:]}") == "Fulano Silva")
+    caso("Alero: nome e documento do prestador", ro._prestador("XYZ LTDA ME 1112223000144 AVENIDA BRASIL 352 - Cacoal - RO")
+         == ("XYZ LTDA ME", "1112223000144") and ro._prestador(f"FULANO SILVA {cpf[1:]} AV. BRASIL") == ("FULANO SILVA", "PF")
+         and ro._prestador("FULANO ***.111.222*-** RUA X") == ("FULANO", "PF"))
+    ver = pd.DataFrame([{"codigo": 1, "nome": "Ver A", "nome_civil": "", "partido": "", "genero": "M", "eleito": "eleito", "pagina": ""}])
+    mand = pd.DataFrame([{"codigo": 1, "inicio": "2025-01-01", "fim": ""}])
+    desp = pd.DataFrame([(2025, 1, 1, "Aluguel", "Maria da Silva Souza", "", 1000.0), (2025, 1, 1, "Aluguel", "Beltrano Souza", "PF", 900.0),
+                         (2025, 1, 1, "Combustível", "Posto Bom Ltda", "", 500.0), (2025, 1, 1, "Assessoria", "Fulano de Tal", "12.345.678/0001-90", 800.0)],
+                        columns=["ano", "mes", "codigo", "tipo", "fornecedor", "cnpj_cpf", "valor"])
+    tipos = vc.Tipos()
+    _, ps = vc.montar({"cod": 1, "n": "Teste", "uf": "XX", "casa": "Câmara", "inicio": 202501, "ultimo_mes": 202501}, tipos, ver, mand, despesas=desp)
+    nomes = [tipos.lista[i] for i, _ in ps[0]["dt"]["leg"]["fornecedores"]]
+    caso("montar: o site mostra 'Pessoa física' e nunca o nome de quem não tem CNPJ",
+         "Pessoa física" in nomes and "Posto Bom Ltda" in nomes and "Fulano de Tal" in nomes
+         and not any(n in tipos.lista for n in ("Maria da Silva Souza", "Beltrano Souza")))
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 

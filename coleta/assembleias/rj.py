@@ -91,9 +91,10 @@ def _quem_sao():
 
 
 def _so_cnpj(doc):
-    """Só o CNPJ (empresa) é guardado; o CPF de quem é pessoa física não, nem mascarado (regra do projeto)."""
+    """Só o CNPJ (empresa) é guardado; o CPF de quem é pessoa física não, nem mascarado (regra do projeto): no lugar dele,
+    a marca "PF" (vereadores.comum.mascarar), para o site mostrar "Pessoa física" e não o nome."""
     d = re.sub(r"\D", "", doc or "")
-    return d if len(d) == 14 else ""
+    return d if len(d) == 14 else (vc.PF if len(d) == 11 or "*" in (doc or "") else "")
 
 
 def coletar():
