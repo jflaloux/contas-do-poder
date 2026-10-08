@@ -564,7 +564,9 @@ derruba as outras: o site segue com o que já estava gravado. Vereador só se co
   guardamos só as linhas de regime eletivo. Quem estava no cargo em cada mês: quem está na folha; a data de admissão dá
   o dia da posse, e o valor de um mês pago pela metade dá o dia da saída. Quem está em exercício hoje: a lista de
   vereadores da Câmara (nome parlamentar, casado com o nome de urna do TSE). A verba indenizatória sai uns meses depois
-  da folha: `verba_ate` (camaras.json) diz o último mês publicado, e os meses seguintes não contam na média da verba.
+  da folha: `verba_ate` (camaras.json) diz o último mês publicado, e os meses seguintes não contam na média da verba. No site
+  (`verbaPendente`, no `app.js`), esses meses mostram “ainda não publicados” no lugar de R$ 0 na tabela mês a mês e na dica
+  do gráfico da página do vereador, com uma nota embaixo; no CSV a célula da verba fica em branco.
   Código de cada vereador: o SQ da candidatura de 2024 no TSE. Reserva: TCE-PB.
 - Teresina (`teresina.py`, desde 08/10/2026): a folha da Câmara não traz o nome de cada vereador, por isso o salário é o
   subsídio que ela mostra para todos (R$ 24.754,79 desde jan/2025, conferido em 08/10/2026), pelos dias no cargo; o

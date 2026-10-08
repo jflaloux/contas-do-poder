@@ -1844,9 +1844,12 @@
     add(card, h("div", { class: "conta__corpo" }, lado, valores));
     return card;
   }
+  // Câmara que publica a verba com mais atraso que a folha (campo verba_ate de camaras.json, hoje João Pessoa): nos meses
+  // depois dele a verba ainda não foi publicada, e a página diz isso em vez de mostrar R$ 0 (a média por mês já não os conta)
+  const verbaPendente = (p, aaaamm) => { const c = legisl(p) ? casaDe(p) : null; return !!(c && c.verba_ate && aaaamm > c.verba_ate); };
   function pontosDoPeriodo(p, k) {
     const ano = k === "leg" ? null : Number(k);
-    return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4], ra: t[5] || 0 }));
+    return p.t.filter((t) => ano === null || Math.floor(t[0] / 100) === ano).map((t) => ({ aaaamm: t[0], g: t[1], c: t[2], e: t[3], pes: t[4], ra: t[5] || 0, sv: verbaPendente(p, t[0]) }));
   }
   const nomeMes = (q) => `${MESES[(q.aaaamm % 100) - 1]}/${Math.floor(q.aaaamm / 100)}`;
   function tabela(cabecalho, linhas, rotulo) {
@@ -1956,7 +1959,8 @@
       h("div", { class: "legenda" }, h("span", null, h("span", { class: "chave chave--ganha" }), "Vai para o bolso"), h("span", null, h("span", { class: "chave chave--custa" }), gastosNome(p)),
         p.k === "j" ? p.cg.map((c) => h("span", null, h("span", { class: `chave chave--faixa faixa-cargo--${S.porId.get(c.id) ? S.porId.get(c.id).k : "e"}` }), `Mês como ${c.g.split(/[ -]/)[0].toLowerCase()}`)) : null),
       caixa,
-      tabela(["Mês", "Bolso", gastosNome(p), "Custo total"], pontos.map((q) => [nomeMes(q), reais(q.g), reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`])),
+      tabela(["Mês", "Bolso", gastosNome(p), "Custo total"], pontos.map((q) => (q.sv ? [nomeMes(q), reais(q.g), "ainda não publicados", `${reais(q.g)}, sem os gastos`]
+        : [nomeMes(q), reais(q.g), reais(q.c), `${q.ra ? "≈ " : ""}${reais(q.g + q.c)}`]))),
       h("ul", { class: "lista nota" },
         pontos.some((q) => q.ra) ? h("li", null, casaBase(p) === "d"
           ? "≈ O auxílio-moradia é informado por ano. Dividimos o total pelos meses com salário, então o valor de cada mês é aproximado."
@@ -1965,6 +1969,7 @@
         p.k === "d" ? h("li", null, "Junho e dezembro costumam ser mais altos: a Câmara paga o 13º em duas parcelas, nesses meses.") : null,
         p.k === "a" && (casaDe(p) || {}).subsidio_folha ? h("li", null, "Meses mais altos: férias, 13º ou pagamentos atrasados, que a Assembleia soma no mês em que paga.") : null,
         legisl(p) && ocupacaoTxt(p) ? h("li", null, `Mês com salário menor: o ${cargoCurto(p)} ficou só parte do mês no cargo.`) : null,
+        pontos.some((q) => q.sv) ? h("li", null, `A ${(casaDe(p) || {}).casa || "Câmara"} publica a verba com atraso em relação à folha: os meses mais recentes mostram “ainda não publicados”, e não R$ 0. A média por mês não conta esses meses.`) : null,
         p.k === "j" ? h("li", null, "A faixa embaixo das colunas mostra em qual cargo a pessoa estava em cada mês.") : null,
         p.k === "e" ? h("li", null, "As viagens entram no mês em que começaram. Os salários saem no Portal com uns 2 meses de atraso.")
           : legisl(p) ? h("li", null, notaMensalVereador(p))
@@ -1972,7 +1977,8 @@
           : h("li", null, "Os 3 últimos meses ainda podem receber notas da cota.")));
     graficoColunas(caixa, pontos,
       [{ k: "g", cls: "seg-ganha" }, { k: "c", cls: "seg-custa" }],
-      (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`), h("div", null, "Custo total ", h("strong", null, reais(q.g + q.c))),
+      (q) => [linhaDica("ganha", reais(q.g), "para o bolso"), q.sv ? h("div", { class: "pequeno" }, `${gastosNome(p)}: ainda não publicados`) : linhaDica("custa", reais(q.c), `em ${gastosNome(p).toLowerCase()}`),
+        h("div", null, q.sv ? "Custo total, sem os gastos " : "Custo total ", h("strong", null, reais(q.g + q.c))),
         q.ra ? h("div", { class: "pequeno" }, `≈ inclui ${reais(q.ra)} de valores informados por ano, divididos por mês`) : null,
         p.k === "j" && cargoNoMes(p, q.aaaamm) ? h("div", { class: "pequeno" }, cargoNoMes(p, q.aaaamm) === "e" ? "Neste mês: ministro" : "Neste mês: no Congresso") : null],
       p.k === "j" ? (q) => cargoNoMes(p, q.aaaamm) : null);
@@ -4311,7 +4317,7 @@
     const lei = leiG(p);
     const cab = ["pessoa", "cargo", "mes", lei ? "salario_do_cargo_reais" : "vai_para_o_bolso_reais", ...(soBolso(p) ? [] : ["gastos_do_mandato_reais", "equipe_do_gabinete_reais", "pessoas_na_equipe", "parte_rateada_do_ano_reais"]), "fonte"];
     const linhas = (p.t || []).filter((t) => t[1] || t[2] || t[3]).map((t) => [p.n, p.g, `${Math.floor(t[0] / 100)}-${String(t[0] % 100).padStart(2, "0")}`, reais2(t[1]),
-      ...(soBolso(p) ? [] : [reais2(t[2]), reais2(t[3]), t[4] || "", reais2(t[5] || 0)]), fonte]);
+      ...(soBolso(p) ? [] : [verbaPendente(p, t[0]) ? "" : reais2(t[2]), reais2(t[3]), t[4] || "", reais2(t[5] || 0)]), fonte]);
     return csvTexto(cab, linhas);
   }
   function blocoBaixar(p) {

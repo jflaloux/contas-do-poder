@@ -272,6 +272,43 @@ const PAGINAS = [
   { nome: "governador-sp-sem-congelada", url: primeiro("gov-sp-"), semPagina: [/a fonte parou de publicar/i] },
   // capital sem reserva ligada: a fonte própria, sem o aviso do tribunal
   { nome: "cidade-fortaleza-fonte-propria", url: "/cidade/fortaleza-ce", semPagina: [/dados do tce-ce/i] },
+  // João Pessoa e Teresina (08/10/2026): vereador por vereador. A Câmara de João Pessoa vem de camaras.json (o valor do Tribunal de Contas não aparece na parte
+  // da Câmara; a Prefeitura continua vindo do TCE-PB); a verba sai depois da folha (verba_ate): os meses sem verba dizem "ainda não publicados", não R$ 0.
+  { nome: "cidade-joao-pessoa", url: "/cidade/joao-pessoa-pb", ter: [["#cidade .pessoa-chip", 29], ["#prefeitura", 1]], depois: `(() => {
+      const f = [], tc = (document.querySelector("#cidade") || {}).textContent || "", tp = (document.querySelector("#prefeitura") || {}).textContent || "";
+      if (!/Os 29 vereadores no cargo, um a um/.test(tc)) f.push("a Câmara não lista os 29 vereadores um a um");
+      if (!/pela folha de pagamento da Câmara/.test(tc)) f.push("o salário não vem da folha da Câmara");
+      if (/Tribunal de Contas|TCE-PB|em média, por vereador|pessoas no cargo de vereador|valor típico/i.test(tc)) f.push("a parte da Câmara ainda traz o valor do Tribunal de Contas");
+      if (!/publicada até 06\\/2026/.test(tc)) f.push("sem a nota da verba publicada até 06/2026");
+      if (!/TCE-PB/.test(tp)) f.push("a Prefeitura deixou de vir do TCE-PB");
+      return f; })()` },
+  { nome: "cidade-teresina", url: "/cidade/teresina-pi", ter: [["#cidade .pessoa-chip", 28]], texto: [/Os 28 vereadores no cargo, um a um/, /R\$\s24\.754,79/, /quem recebeu a cota daquele mês/], sem: [/em média, por vereador/i, /pessoas no cargo de vereador/i, /Tribunal de Contas/i], semPagina: [/Prefeitura de Teresina/i] },
+  { nome: "vereador-joao-pessoa-verba-pendente", acao: true, url: ENDERECOS["ver-2507507-150002036038"] ? `/${ENDERECOS["ver-2507507-150002036038"]}?periodo=2026` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
+      const de = (m) => linhas.find((l) => l[0] === m);
+      for (const m of ["jul/2026", "ago/2026"]) { const l = de(m);
+        if (!l) { f.push("sem a linha de " + m); continue; }
+        if (l[2] !== "ainda não publicados") f.push(m + ": os gastos dizem " + JSON.stringify(l[2]) + " e deviam dizer ainda não publicados");
+        if (!/sem os gastos/.test(l[3])) f.push(m + ": o custo total não diz que está sem os gastos: " + l[3]); }
+      const jun = de("jun/2026"); if (!jun || !/^R\\$ [1-9]/.test(jun[2])) f.push("jun/2026 devia mostrar a verba em reais: " + JSON.stringify(jun));
+      if (linhas.some((l) => /^R\\$ 0$/.test(l[2]) && /2026/.test(l[0]))) f.push("algum mês de 2026 mostra R$ 0 de gastos");
+      if (!/A média por mês não conta esses meses/.test(document.querySelector("#mes-a-mes").textContent)) f.push("sem a nota sobre a verba publicada com atraso");
+      const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
+      HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
+      const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return f.concat(["sem o botão Mês a mês (CSV)"]);
+      bt.click(); await esp(200);
+      const csv = guardados.length ? await guardados[0].text() : "";
+      if (!/,2026-07,[\\d.]+,,/.test(csv) || !/,2026-08,[\\d.]+,,/.test(csv)) f.push("no CSV, a verba de jul e ago/2026 devia ficar em branco");
+      if (!/,2026-06,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de jun/2026 devia ter valor");
+      return f; })()` },
+  // Teresina: a fonte do subsídio é o Portal da Transparência da Câmara (página inicial); as fontes só podem ser as duas desta lista
+  { nome: "vereador-teresina-fontes", url: ENDERECOS["ver-2211001-180001926305"] ? `/${ENDERECOS["ver-2211001-180001926305"]}` : null, depois: `(() => {
+      const f = [], ok = ["https://transparencia.teresina.pi.leg.br/project6-war/novo-home.jsf", "https://transparencia.teresina.pi.leg.br/project6-war/ext/consultarDespesaAtividade.jsf", "https://www.teresina.pi.leg.br/vereadores"];
+      const links = [...document.querySelectorAll("#app a[href*='teresina.pi.leg.br']")].map((a) => a.href);
+      if (!links.includes(ok[0])) f.push("sem o link do Portal da Transparência da Câmara");
+      const fora = links.filter((u) => !ok.includes(u) && !u.startsWith("https://www.teresina.pi.leg.br/vereadores/")); if (fora.length) f.push("link de Teresina fora da lista: " + fora.join(", "));
+      return f; })()` },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -540,6 +577,7 @@ const GRUPOS = [
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
+  { nome: "capitais com verba atrasada (João Pessoa) e Teresina", quando: /verbaPendente|verba_ate|João Pessoa|Teresina/, paginas: /joao-pessoa|teresina/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },
