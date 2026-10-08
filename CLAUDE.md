@@ -112,6 +112,9 @@ armadilhas que não estão escritas em outro lugar.
   pedir ou bloquear, `BLOQUEADO_ROBOTS = True` no módulo ou o site em `util.SITES_PARADOS`.
 - Laço de paginação: limite fixo de páginas e conferir que a página avançou (em 08/10/2026, um parâmetro de página errado
   repetiu o mesmo pedido à Câmara de Vitória por ~10 min).
+- Portais portaltp.com.br (Câmaras de Rio Branco e Porto Velho, `vereadores/portaltp.py`): o endereço da API que a página
+  de Dados Abertos mostra devolve a própria página; o JSON sai do formulário de exportação (POST com ano, mês e formato).
+  O SAPL dessas Câmaras pede 60 s entre os pedidos: ler os parlamentares numa lista só.
 - Vitória: a API de servidores ignora `competencia_ano` e devolve o ano corrente; o filtro que vale é `ano`. Cuiabá
   (gp.srv.br, GeneXus): a folha sai do PDF `arrelacao_folhapag`; arquivo de verba com o mês errado no título vale pelo mês
   escrito no texto.
