@@ -35,11 +35,16 @@ def executar():
         for f in (tmp / "bin").iterdir():
             f.chmod(0o755)
 
-        def rodar(etapa, minutos, rc=0, essencial="", prazo_em=None):
+        def rodar(etapa, minutos, rc=0, essencial="", prazo_em=None, retomar=None):
             for f in ("etapas.txt", "chamadas.txt"):
                 (tmp / f).unlink(missing_ok=True)
             env = {**os.environ, "PATH": f"{tmp / 'bin'}:{os.environ['PATH']}", "RUNNER_TEMP": str(tmp), "STUB_RC": str(rc)}
             env.pop("PRAZO_FIM", None)
+            # o workflow põe RETOMAR no ambiente de todos os passos (inclusive o dos testes): o teste escolhe o seu (em 22/10/2026,
+            # a retomada caiu aqui porque os casos herdaram RETOMAR=true e as etapas normais não rodaram)
+            env.pop("RETOMAR", None)
+            if retomar is not None:
+                env["RETOMAR"] = retomar
             if prazo_em is not None:
                 env["PRAZO_FIM"] = str(int(time.time()) + prazo_em)
             r = subprocess.run(["bash", str(SCRIPT), etapa, str(minutos), essencial], cwd=RAIZ, env=env, capture_output=True, text=True)
@@ -63,6 +68,13 @@ def executar():
         # etapa essencial ignora o prazo geral
         _, etapas, chamadas, _ = rodar("padronizar", 30, essencial="essencial", prazo_em=60)
         caso("essencial roda mesmo sem prazo", chamadas == "coletar.py padronizar --tempo-max 1800" and etapas.startswith("padronizar 0"))
+        # rodada retomada: a etapa de coleta não roda nem é anotada; a essencial roda
+        sai, etapas, chamadas, _ = rodar("camara", 130, retomar="true")
+        caso("retomada: a coleta não roda", sai == 0 and chamadas == "" and etapas == "")
+        _, etapas, chamadas, _ = rodar("padronizar", 30, essencial="essencial", retomar="true")
+        caso("retomada: a essencial roda", chamadas == "coletar.py padronizar --tempo-max 1800" and etapas.startswith("padronizar 0"))
+        _, etapas, chamadas, _ = rodar("senado", 10, retomar="false")
+        caso("RETOMAR=false: a coleta roda", chamadas == "coletar.py senado --tempo-max 600")
 
     # o orçamento do workflow cabe no job (conta do pior caso do cabeçalho de etapa-github.sh)
     texto = WORKFLOW.read_text(encoding="utf-8")
