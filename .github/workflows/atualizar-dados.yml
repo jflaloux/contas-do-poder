@@ -45,24 +45,43 @@ env:
 
 jobs:
   atualizar:
-    runs-on: ubuntu-latest
+    # a imagem fixa (e não ubuntu-latest, que passou para o Ubuntu 26 em 19/10/2026): a troca de sistema se faz de propósito,
+    # com uma rodada de teste, e não no meio de uma rodada semanal
+    runs-on: ubuntu-24.04
     timeout-minutes: 355  # o máximo do GitHub é 360; o orçamento da rodada está em rotina/etapa-github.sh
     steps:
       - name: Baixar o código
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Marcar o commit em que a rodada começa
-        run: echo "INICIO_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+        run: |
+          echo "INICIO_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+          # a lista das etapas (rotina/etapa-github.sh) existe desde o começo: os passos finais a leem mesmo quando a rodada
+          # para antes da coleta (em 13/10/2026, o apt-get falhou e eles deram "cannot open file etapas.txt")
+          touch "$RUNNER_TEMP/etapas.txt"
+
+      # logo no começo, antes de qualquer passo que possa falhar: o GitHub apaga o cache que fica 7 dias sem uso. Em 13/10/2026
+      # a rodada parou no apt-get antes de chegar aqui, o cache de 07/10 venceu, e a de 20/10 começou do zero: ~7.000 páginas
+      # da Câmara de uma vez, e a Câmara parou de responder no meio
+      - name: Recuperar os downloads da semana passada
+        uses: actions/cache/restore@v6
+        with:
+          path: dados/cache
+          key: downloads-${{ github.run_id }}
+          restore-keys: downloads-
 
       - name: Preparar o Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0  # v7.1.0 saiu em 22/10/2026: fica a anterior até ter algumas semanas
         with:
           python-version: "3.11"
           cache: pip
 
       - name: Instalar as dependências
         run: |
-          sudo apt-get install -y poppler-utils  # pdftotext, para as folhas em PDF da Câmara de Maceió
+          # pdftotext, para os PDFs das Câmaras de Maceió, Cuiabá e Boa Vista. O índice do apt da imagem fica velho (em 13/10/2026
+          # o pacote deu 404 e a rodada parou): update antes; e, se ainda falhar, só essas fontes ficam sem os PDFs
+          sudo apt-get update -qq && sudo apt-get install -y poppler-utils \
+            || echo "::warning::poppler-utils não instalou: os PDFs das Câmaras de Maceió, Cuiabá e Boa Vista ficam como estavam."
           pip install -r requirements.txt
 
       - name: Testes rápidos do código (param a rodada antes de 2 horas de coleta)
@@ -73,16 +92,9 @@ jobs:
           python -m coleta.testes_fontes
           python -m coleta.testes_rodada
 
-      - name: Recuperar os downloads da semana passada
-        uses: actions/cache/restore@v4
-        with:
-          path: dados/cache
-          key: downloads-${{ github.run_id }}
-          restore-keys: downloads-
-
       - name: Retomar - buscar o trabalho da rodada que não salvou (no cache privado do repositório)
         if: ${{ inputs.retomar }}
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         with:
           path: ${{ runner.temp }}/trabalho
           key: trabalho-${{ inputs.run_id }}
@@ -127,9 +139,6 @@ jobs:
       - name: "Coletar: Renda (PNAD)"
         run: rotina/etapa-github.sh renda 45
 
-      - name: "Coletar: Presença e projetos (Câmara e Senado)"
-        run: rotina/etapa-github.sh atividade 40
-
       - name: "Coletar: Vereadores das capitais"
         run: rotina/etapa-github.sh vereadores 40
 
@@ -145,8 +154,13 @@ jobs:
       - name: "Coletar: Índice de Transparência"
         run: rotina/etapa-github.sh indice 10
 
+      # depois das outras: longe da coleta da Câmara (em 20/10/2026, logo depois dela, a Câmara ainda não respondia)
+      - name: "Coletar: Presença e projetos (Câmara e Senado)"
+        run: rotina/etapa-github.sh atividade 40
+
+      # com o cache vazio, o TCE do ES baixa ~1,7 GB (~45 min) e o do CE relê ~1.100 blocos (~35 min): 90 min não bastavam
       - name: "Coletar: Tribunais de Contas"
-        run: rotina/etapa-github.sh tce 90
+        run: rotina/etapa-github.sh tce 120
 
       - name: "Coletar: Juntar tudo na base unificada"
         run: rotina/etapa-github.sh padronizar 30 essencial
@@ -169,7 +183,8 @@ jobs:
         continue-on-error: true
         run: |
           # o pacote vai para o cache privado do repositório (não para um artefato: o de repositório público é baixável por qualquer conta)
-          python -m coleta.retomada guardar "$RUNNER_TEMP/trabalho"; rc=$?
+          # (com o -e do GitHub, "comando; rc=$?" sairia no próprio comando)
+          python -m coleta.retomada guardar "$RUNNER_TEMP/trabalho" && rc=0 || rc=$?
           if [ "$rc" = 0 ]; then echo "pacote=sim" >> "$GITHUB_OUTPUT"
           elif [ "$rc" = 3 ]; then echo "pacote=nao" >> "$GITHUB_OUTPUT"
           else exit "$rc"; fi
@@ -178,14 +193,14 @@ jobs:
         id: guardar_cache
         if: always() && steps.pacote.outputs.pacote == 'sim'
         continue-on-error: true
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: ${{ runner.temp }}/trabalho
           key: trabalho-${{ github.run_id }}
 
       - name: Guardar os downloads para a próxima vez
         if: always()
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: dados/cache
           key: downloads-${{ github.run_id }}
@@ -253,7 +268,7 @@ jobs:
 
       - name: Guardar o relatório da conferência
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: conferencia
           path: |

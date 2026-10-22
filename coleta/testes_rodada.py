@@ -358,7 +358,7 @@ def _salvar(texto, caso):
 
 
 def _estrutura(texto, caso):
-    caso("o pacote da coleta vai para o cache privado, não para artefato público", "actions/cache/save@v4" in texto
+    caso("o pacote da coleta vai para o cache privado, não para artefato público", "actions/cache/save@v6" in texto
          and "key: trabalho-${{ github.run_id }}" in texto and "upload-artifact" in texto and texto.count("upload-artifact") == 1)
     caso("o único artefato é o relatório da conferência", "name: conferencia" in texto and "trabalho-da-rodada" not in texto)
     caso("retomar busca o cache pela chave da rodada e falha se não achar", "key: trabalho-${{ inputs.run_id }}" in texto and "fail-on-cache-miss: true" in texto)
