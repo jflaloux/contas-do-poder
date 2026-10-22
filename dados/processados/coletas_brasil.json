@@ -10,14 +10,14 @@
   "ultimo_sucesso": "2026-10-02T15:36:01"
  },
  "assembleias/am": {
-  "ultima_tentativa": "2026-10-02T15:35:36",
+  "ultima_tentativa": "2026-10-22T09:56:41",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:35:36"
+  "ultimo_sucesso": "2026-10-22T09:56:41"
  },
  "assembleias/ap": {
-  "ultima_tentativa": "2026-10-02T15:34:42",
+  "ultima_tentativa": "2026-10-22T09:55:03",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:34:42"
+  "ultimo_sucesso": "2026-10-22T09:55:03"
  },
  "assembleias/ba": {
   "ultima_tentativa": "2026-10-02T15:31:25",
@@ -30,24 +30,27 @@
   "ultimo_sucesso": "2026-10-02T15:31:36"
  },
  "assembleias/df": {
-  "ultima_tentativa": "2026-10-02T15:35:10",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:35:10"
+  "ultima_tentativa": "2026-10-22T09:56:31",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:35:10",
+  "primeira_falha": "2026-10-22T09:56:31",
+  "ultimo_erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
+  "ultima_falha": "2026-10-22T09:56:31"
  },
  "assembleias/es": {
-  "ultima_tentativa": "2026-10-02T15:31:57",
+  "ultima_tentativa": "2026-10-22T09:53:39",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:31:57"
+  "ultimo_sucesso": "2026-10-22T09:53:39"
  },
  "assembleias/go": {
-  "ultima_tentativa": "2026-10-02T15:31:37",
+  "ultima_tentativa": "2026-10-22T09:52:42",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:31:37"
+  "ultimo_sucesso": "2026-10-22T09:52:42"
  },
  "assembleias/ma": {
-  "ultima_tentativa": "2026-10-02T15:35:43",
+  "ultima_tentativa": "2026-10-22T09:57:29",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:35:43"
+  "ultimo_sucesso": "2026-10-22T09:57:29"
  },
  "assembleias/mg": {
   "ultima_tentativa": "2026-10-02T15:31:19",
@@ -77,9 +80,9 @@
   "ultimo_sucesso": "2026-10-02T19:39:14"
  },
  "assembleias/pe": {
-  "ultima_tentativa": "2026-10-02T15:31:28",
+  "ultima_tentativa": "2026-10-22T09:51:56",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:31:28"
+  "ultimo_sucesso": "2026-10-22T09:51:56"
  },
  "assembleias/pi": {
   "ultima_tentativa": "2026-10-02T15:35:46",
@@ -112,9 +115,9 @@
   "ultimo_sucesso": "2026-10-02T15:36:01"
  },
  "assembleias/rs": {
-  "ultima_tentativa": "2026-10-02T15:32:48",
+  "ultima_tentativa": "2026-10-22T09:55:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:32:48"
+  "ultimo_sucesso": "2026-10-22T09:55:01"
  },
  "assembleias/sc": {
   "ultima_tentativa": "2026-10-02T15:31:39",
@@ -142,14 +145,14 @@
   "ultimo_sucesso": "2026-10-02T15:42:03"
  },
  "folhas/AL": {
-  "ultima_tentativa": "2026-10-02T15:42:07",
+  "ultima_tentativa": "2026-10-22T09:58:26",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:42:07"
+  "ultimo_sucesso": "2026-10-22T09:58:26"
  },
  "folhas/AM": {
-  "ultima_tentativa": "2026-10-02T15:42:13",
+  "ultima_tentativa": "2026-10-22T09:58:33",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:42:13"
+  "ultimo_sucesso": "2026-10-22T09:58:33"
  },
  "folhas/BA": {
   "ultima_tentativa": "2026-10-02T15:42:15",
@@ -157,9 +160,9 @@
   "ultimo_sucesso": "2026-10-02T15:42:15"
  },
  "folhas/CE": {
-  "ultima_tentativa": "2026-10-02T15:42:39",
+  "ultima_tentativa": "2026-10-22T09:58:35",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:42:39"
+  "ultimo_sucesso": "2026-10-22T09:58:35"
  },
  "folhas/DF": {
   "ultima_tentativa": "2026-10-02T15:43:50",
@@ -177,9 +180,9 @@
   "ultimo_sucesso": "2026-10-02T15:45:08"
  },
  "folhas/MA": {
-  "ultima_tentativa": "2026-10-02T15:45:42",
+  "ultima_tentativa": "2026-10-22T09:58:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:45:42"
+  "ultimo_sucesso": "2026-10-22T09:58:58"
  },
  "folhas/MG": {
   "ultima_tentativa": "2026-10-02T15:45:55",
@@ -197,9 +200,9 @@
   "ultimo_sucesso": "2026-10-02T15:46:57"
  },
  "folhas/PB": {
-  "ultima_tentativa": "2026-10-02T15:47:22",
+  "ultima_tentativa": "2026-10-22T09:59:10",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:47:22"
+  "ultimo_sucesso": "2026-10-22T09:59:10"
  },
  "folhas/PE": {
   "ultima_tentativa": "2026-10-02T15:47:41",
@@ -207,9 +210,9 @@
   "ultimo_sucesso": "2026-10-02T15:47:41"
  },
  "folhas/PI": {
-  "ultima_tentativa": "2026-10-02T15:48:29",
+  "ultima_tentativa": "2026-10-22T09:59:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:48:29"
+  "ultimo_sucesso": "2026-10-22T09:59:28"
  },
  "folhas/PR": {
   "ultima_tentativa": "2026-10-02T15:48:33",
@@ -361,9 +364,9 @@
   "ultimo_sucesso": "2026-10-08T14:43:27"
  },
  "vereadores/fortaleza": {
-  "ultima_tentativa": "2026-10-02T14:49:03",
+  "ultima_tentativa": "2026-10-22T09:39:25",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T14:49:03"
+  "ultimo_sucesso": "2026-10-22T09:39:25"
  },
  "vereadores/goiania": {
   "ultima_tentativa": "2026-10-02T15:06:13",
@@ -371,9 +374,9 @@
   "ultimo_sucesso": "2026-10-02T15:06:13"
  },
  "vereadores/joao_pessoa": {
-  "ultima_tentativa": "2026-10-08T13:21:19",
+  "ultima_tentativa": "2026-10-22T09:49:55",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-08T13:21:19"
+  "ultimo_sucesso": "2026-10-22T09:49:55"
  },
  "vereadores/maceio": {
   "ultima_tentativa": "2026-10-02T15:09:02",
@@ -386,9 +389,9 @@
   "ultimo_sucesso": "2026-10-02T15:10:13"
  },
  "vereadores/natal": {
-  "ultima_tentativa": "2026-10-02T15:16:00",
+  "ultima_tentativa": "2026-10-22T09:45:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:16:00"
+  "ultimo_sucesso": "2026-10-22T09:45:58"
  },
  "vereadores/porto_alegre": {
   "ultima_tentativa": "2026-10-02T15:18:59",
@@ -417,9 +420,9 @@
   "ultimo_sucesso": "2026-10-02T14:45:19"
  },
  "vereadores/sao_luis": {
-  "ultima_tentativa": "2026-10-02T15:25:41",
+  "ultima_tentativa": "2026-10-22T09:49:48",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:25:41"
+  "ultimo_sucesso": "2026-10-22T09:49:48"
  },
  "vereadores/sp": {
   "ultima_tentativa": "2026-10-02T14:45:06",
@@ -427,9 +430,9 @@
   "ultimo_sucesso": "2026-10-02T14:45:06"
  },
  "vereadores/teresina": {
-  "ultima_tentativa": "2026-10-08T13:25:16",
+  "ultima_tentativa": "2026-10-22T09:50:11",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-08T13:25:16"
+  "ultimo_sucesso": "2026-10-22T09:50:11"
  },
  "vereadores/vitoria": {
   "ultima_tentativa": "2026-10-08T14:43:27",

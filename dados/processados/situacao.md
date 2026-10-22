@@ -1,16 +1,17 @@
-# Situação das fontes (08/10/2026 17:04, rodada: brasil)
+# Situação das fontes (22/10/2026 09:59, rodada: brasil)
 
-Último mês fechado: 09/2026. 104 fontes: 96 ok, 5 com o atraso da própria fonte, 0 atrasadas, 0 falhando, 3 congeladas.
+Último mês fechado: 09/2026. 104 fontes: 95 ok, 5 com o atraso da própria fonte, 0 atrasadas, 1 falhando, 3 congeladas.
 
-Desde a rodada anterior (semana de 29/09/2026):
+Desde a rodada anterior (semana de 06/10/2026):
 
-- Quebrou: nada.
+- Quebrou: assembleias/df (falhando desde 22/10/2026).
 - Voltou: nada.
 - Continua com problema: nada.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-02 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
+| assembleias/df (só do Brasil) | falhando | 08/2026 | 2026-10-02 | brasil | ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')) Plano de queda: a folha vem do CKAN (arquivo aberto, mais estável); se quebrar o PDF da verba, congelar só a verba |
+| assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-22 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 05/2026 | 2026-10-07 | exterior | a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas |
 | folhas/MG | atrasada (fonte) | 03/2026 | 2026-10-07 | exterior | a Secretaria de Planejamento publica a folha com alguns meses de atraso |
 | folhas/SP | atrasada (fonte) | 04/2026 | 2026-10-07 | exterior | o Estado publica a série histórica com alguns meses de atraso |
@@ -20,25 +21,24 @@ Desde a rodada anterior (semana de 29/09/2026):
 | prefeituras/campo_grande | congelada | 02/2026 | 2026-10-02 | brasil | a consulta da Prefeitura não traz a folha depois de fev/2026 |
 | assembleias/ac | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/al (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
-| assembleias/am (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
-| assembleias/ap (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| assembleias/am (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
+| assembleias/ap (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/ba | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/ce | ok | 09/2026 | 2026-10-07 | exterior |  |
-| assembleias/df (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
-| assembleias/es (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
-| assembleias/go (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
+| assembleias/es (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
+| assembleias/go (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/mg | ok | 07/2026 | 2026-10-07 | exterior |  |
 | assembleias/ms | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/mt | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/pa | ok | 08/2026 | 2026-10-07 | exterior |  |
 | assembleias/pb | ok | 07/2026 | 2026-10-07 | exterior |  |
-| assembleias/pe | ok | 08/2026 | 2026-10-02 | brasil | ConnectionError: o robots.txt de dadosabertos.alepe.pe.gov.br não abriu (site fora do ar ou bloqueado) |
+| assembleias/pe | ok | 09/2026 | 2026-10-22 | brasil | ConnectionError: o robots.txt de dadosabertos.alepe.pe.gov.br não abriu (site fora do ar ou bloqueado) |
 | assembleias/pi | ok | 07/2026 | 2026-10-07 | exterior |  |
 | assembleias/pr | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/rn | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/ro | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/rr | ok | 07/2026 | 2026-10-07 | exterior |  |
-| assembleias/rs (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| assembleias/rs (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/sc | ok | 09/2026 | 2026-10-07 | exterior |  |
 | assembleias/se | ok | 08/2026 | 2026-10-07 | exterior |  |
 | assembleias/sp | ok | 09/2026 | 2026-10-07 | exterior |  |
@@ -50,18 +50,18 @@ Desde a rodada anterior (semana de 29/09/2026):
 | federal/renda | ok | — | 2026-10-07 | exterior |  |
 | federal/senado | ok | 10/2026 | 2026-10-07 | exterior |  |
 | folhas/AC | ok | 07/2026 | 2026-10-07 | exterior |  |
-| folhas/AL (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
-| folhas/AM (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| folhas/AL (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
+| folhas/AM (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | folhas/BA | ok | 08/2026 | 2026-10-07 | exterior |  |
-| folhas/CE (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| folhas/CE (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | folhas/DF | ok | 08/2026 | 2026-10-07 | exterior |  |
 | folhas/ES | ok | 09/2026 | 2026-10-07 | exterior |  |
 | folhas/GO | ok | 08/2026 | 2026-10-07 | exterior |  |
-| folhas/MA (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| folhas/MA (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | folhas/MS | ok | 08/2026 | 2026-10-07 | exterior |  |
-| folhas/PB (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| folhas/PB (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | folhas/PE | ok | 08/2026 | 2026-10-07 | exterior |  |
-| folhas/PI (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| folhas/PI (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | folhas/PR | ok | 09/2026 | 2026-10-07 | exterior |  |
 | folhas/RN (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | folhas/RO | ok | 09/2026 | 2026-10-07 | exterior |  |
@@ -73,7 +73,7 @@ Desde a rodada anterior (semana de 29/09/2026):
 | judiciario/pgr | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/stf | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/stj | ok | 08/2026 | 2026-10-07 | exterior |  |
-| judiciario/stm | ok | 09/2026 | 2026-10-07 | exterior |  |
+| judiciario/stm | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/stm_oficial (só do Brasil) | ok | 09/2026 | 2026-10-08 | brasil |  |
 | judiciario/tse | ok | 08/2026 | 2026-10-07 | exterior |  |
 | judiciario/tst | ok | 08/2026 | 2026-10-07 | exterior |  |
@@ -94,20 +94,20 @@ Desde a rodada anterior (semana de 29/09/2026):
 | vereadores/belo_horizonte (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/boa_vista | ok | 08/2026 | 2026-10-07 | exterior |  |
 | vereadores/cuiaba | ok | 09/2026 | 2026-10-08 | brasil |  |
-| vereadores/fortaleza (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| vereadores/fortaleza (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | vereadores/goiania | ok | 09/2026 | 2026-10-07 | exterior |  |
-| vereadores/joao_pessoa | ok | 08/2026 | 2026-10-08 | brasil |  |
+| vereadores/joao_pessoa | ok | 09/2026 | 2026-10-22 | brasil |  |
 | vereadores/maceio (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/manaus (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
-| vereadores/natal (só do Brasil) | ok | 07/2026 | 2026-10-02 | brasil |  |
+| vereadores/natal (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | vereadores/porto_alegre (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/porto_velho | ok | 09/2026 | 2026-10-08 | brasil |  |
 | vereadores/recife | ok | 09/2026 | 2026-10-07 | exterior |  |
 | vereadores/rio_branco | ok | 09/2026 | 2026-10-08 | brasil |  |
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
-| vereadores/sao_luis (só do Brasil) | ok | 08/2026 | 2026-10-02 | brasil |  |
+| vereadores/sao_luis (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-07 | exterior |  |
-| vereadores/teresina | ok | 08/2026 | 2026-10-08 | brasil |  |
+| vereadores/teresina | ok | 08/2026 | 2026-10-22 | brasil |  |
 | vereadores/vitoria (só do Brasil) | ok | 09/2026 | 2026-10-08 | brasil |  |
 | viagens/AM (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
 | viagens/MG | ok | 09/2026 | 2026-10-07 | exterior |  |

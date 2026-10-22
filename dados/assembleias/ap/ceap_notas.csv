@@ -3000,7 +3000,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,42,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,571,480.0
 2026,8,42,Combustíveis e Lubrificantes Automotivos,05.983.192/0026-75,SALOMAO ALCOLUMBRE & CIA LTDA,897,300.12
 2026,8,42,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,82,12000.0
-2026,8,42,Locação de Imóveis,,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
+2026,8,42,Locação de Imóveis,PF,RAIMUNDO SIMEAO DE SOUZA,S/N,3500.0
 2026,8,44,Combustíveis e Lubrificantes Automotivos,08.945.482/0001-64,MACHADO & ANDRADE LTDA - EPP,15905,7500.0
 2026,8,44,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.978.138/0001-41,DISTRIBUIDORA GUIMARÃES,8,12000.0
 2026,8,44,Locação de Bens Móveis de Outras Naturezas e Intangíveis,29.978.138/0001-41,DISTRIBUIDORA GUIMARÃES,1,12000.0
@@ -3025,7 +3025,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0007-70,POSTO DE COMBUSTIVEIS JARDINS EIRELI,7481,520.06
 2026,8,59,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39716,347.34
 2026,8,59,Locação de Bens Móveis de Outras Naturezas e Intangíveis,44.218.668/0001-85,GRAA E SERVIÇOS LTDA,8,23500.0
-2026,8,59,Locação de Imóveis,,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
+2026,8,59,Locação de Imóveis,PF,GEORGE LINCON DA SILVA COUTO,S/N,17500.0
 2026,8,59,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,13337742,1762.56
 2026,8,61,Combustíveis e Lubrificantes Automotivos,64.999.595/0001-13,AUTO POSTO RV LTDA,120,3900.0
 2026,8,61,Gêneros de Alimentação,34.927.582/0002-59,MARACA AUTOSERVICO - NUTRIAMA LTDA,182066,1496.56
@@ -3040,7 +3040,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,520,10000.0
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,517,10000.0
 2026,8,62,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.527.867/0001-13,COOPERATIVA DE TRANSPORTE DOS PROPRIETARIOS DE VE?CULOS DO AMAP?-FENIX,518,10000.0
-2026,8,62,Locação de Imóveis,,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
+2026,8,62,Locação de Imóveis,PF,MARIA JOSÉ SOUZA CHAGAS,S/N,2800.0
 2026,8,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,578,2000.0
 2026,8,64,Combustíveis e Lubrificantes Automotivos,37.066.762/0002-81,FERMAN AUTO POSTO LTDA,577,2000.0
 2026,8,64,Gêneros de Alimentação,23.069.198/0001-65,M A SILVA E SILVA LTDA,252915,1984.91
@@ -3049,7 +3049,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,65,Locação de Bens Móveis de Outras Naturezas e Intangíveis,05.320.845/0001-88,MACPLAN CONSTRUCOES E COMERCIO LTDA EPP,34,17000.0
 2026,8,65,Locação de Software,35.841.368/0001-67,RUAN DHONHE RODRIGUES DA SILVA,54,5000.0
 2026,8,66,Locação de Bens Móveis de Outras Naturezas e Intangíveis,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,18,15000.0
-2026,8,66,Locação de Imóveis,,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
+2026,8,66,Locação de Imóveis,PF,FABIO APARECIDO SALVADOR AVELINO,S/N,5420.0
 2026,8,66,Locação de Software,30.286.024/0001-10,P F MOTTA DOS S DE OLIVEIRA,171,7000.0
 2026,8,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,2213,1505.16
 2026,8,68,Combustíveis e Lubrificantes Automotivos,02.924.411/0002-80,AUTO POSTO MACHADO LTDA.,2214,2537.33
@@ -3057,7 +3057,7 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,68,Combustíveis e Lubrificantes Automotivos,03.659.452/0011-40,AUTOMOTO-AUTOMOVEIS DO AMAPA LTDA,3477,495.0
 2026,8,68,Combustíveis e Lubrificantes Automotivos,10.522.077/0001-85,POSTO DE COMBUSTIVEIS JARDINS LTDA EPP,39720,1300.0
 2026,8,68,Vigilância ostensiva,28.242.540/0001-09,PATENTE EMPRESA DE SEGURANÇA LTDA,372,13050.0
-2026,8,69,Locação de Imóveis,,MAICON WILLIAN TAVARES SOARES,8,6000.0
+2026,8,69,Locação de Imóveis,PF,MAICON WILLIAN TAVARES SOARES,8,6000.0
 2026,8,69,Locação de Software,38.014.466/0001-19,M&M EMPREENDIMENTOS E SOLUÇÕES LTDA,4,12000.0
 2026,8,71,Combustíveis e Lubrificantes Automotivos,02.924.411/0001-07,AUTO POSTO MACHADO LTDA,7154,730.42
 2026,8,71,Combustíveis e Lubrificantes Automotivos,37.893.090/0001-05,POSTO ANDRADE LTDA,846,445.0
@@ -3077,9 +3077,9 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,71,Serviços de Energia Elétrica,05.965.546/0001-09,CIA DE ELETRICIDADE DO AMAPA,13281769,419.6
 2026,8,74,Combustíveis e Lubrificantes Automotivos,07.126.271/0001-37,J R P LACERDA - ME,2391,9994.9
 2026,8,74,Locação de Bens Móveis de Outras Naturezas e Intangíveis,17.533.629/0001-08,J. DE O. SALOMAO,22,19000.0
-2026,8,74,Locação de Bens Móveis e Intangíveis,,JOSÉ MAX LACERDA FERREIRA,12,6500.0
+2026,8,74,Locação de Bens Móveis e Intangíveis,PF,JOSÉ MAX LACERDA FERREIRA,12,6500.0
 2026,8,75,Locação de Bens Móveis de Outras Naturezas e Intangíveis,15.144.822/0001-13,E.VIEGAS FERREIRA,79,12000.0
-2026,8,75,Locação de Imóveis,,KARINNY RAMADA DE MELO,S/N,2630.0
+2026,8,75,Locação de Imóveis,PF,KARINNY RAMADA DE MELO,S/N,2630.0
 2026,8,76,Combustíveis e Lubrificantes Automotivos,09.405.430/0003-20,REAL L PETROLEO II,12450,4799.49
 2026,8,76,Locação de Bens Móveis de Outras Naturezas e Intangíveis,21.496.223/0001-61,AMAZZON CAR LTDA-ME,73,11000.0
 2026,8,76,Locação de Bens Móveis de Outras Naturezas e Intangíveis,21.496.223/0001-61,AMAZZON CAR LTDA-ME,72,8000.0
@@ -3096,12 +3096,25 @@ ano,mes,gabinete,elemento,cnpj_cpf,fornecedor,nota,valor
 2026,8,78,Locação de Imóveis,17.088.132/0001-10,WALDENES BARBOSA ADVOGADOS,3,12000.0
 2026,8,78,Serviço Gráficos e Editoriais,29.276.575/0001-13,NEW PRINT COMERCIO E SERVICOS LTDA,3212,12140.0
 2026,8,78,Serviços de Publicidade Legal,19.579.219/0001-15,G.I.LACERDA-ME,399,20000.0
+2026,9,16,,,,,0.0
+2026,9,38,,,,,0.0
+2026,9,40,,,,,0.0
 2026,9,42,,,,,0.0
 2026,9,44,,,,,0.0
 2026,9,45,,,,,0.0
+2026,9,54,,,,,0.0
 2026,9,57,,,,,0.0
 2026,9,59,,,,,0.0
 2026,9,61,,,,,0.0
+2026,9,62,,,,,0.0
+2026,9,64,,,,,0.0
 2026,9,65,,,,,0.0
 2026,9,66,,,,,0.0
+2026,9,68,,,,,0.0
+2026,9,69,,,,,0.0
+2026,9,71,,,,,0.0
+2026,9,74,,,,,0.0
+2026,9,75,,,,,0.0
+2026,9,76,,,,,0.0
+2026,9,77,,,,,0.0
 2026,9,78,,,,,0.0
