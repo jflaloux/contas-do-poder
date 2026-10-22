@@ -183,6 +183,17 @@ armadilhas que não estão escritas em outro lugar.
 - "No cargo" nas Assembleias: estar na folha ou nas notas da verba no último mês não basta (licenciados continuam
   recebendo; suplentes saem quando o titular volta; quem ainda não lançou a verba some). Use a lista de quem está em
   exercício que a própria Assembleia publica (e a de afastamentos, com as datas, em GO).
+- Câmara: depois de ~6.000 pedidos em ~40 min, www.camara.leg.br e dadosabertos param de responder por um tempo (do Mac em
+  07/10/2026 e do GitHub em 20/10/2026). Com o cache de downloads vazio, a coleta da Câmara chega a ~7.400 páginas; com o
+  cache, ~3.500. Por isso o workflow recupera o cache logo depois do checkout (o GitHub apaga o que fica 7 dias sem uso) e
+  a etapa de presença e projetos roda longe da Câmara. Não é bloqueio do exterior: não passar a Câmara para `SO_BRASIL`.
+- Uma etapa que falha não pode derrubar a rodada: o `padronizar` monta cada parte (Câmara, Senado, governo federal) à parte
+  e a que falha fica como na base anterior (`base_anterior` em `metadados.json`). Etapa nova que alimenta a base ou o site:
+  o mesmo cuidado (arquivo que falta = usar o anterior e marcar, nunca cair).
+- Rodada do Brasil (launchd): a pasta do projeto fica num disco externo, e o `/bin/bash` aberto direto pelo launchd não tem a
+  permissão de "volumes removíveis" (sai com 126, "Operation not permitted" no `launchd.log`); o agendamento chama o `zsh`,
+  que chama o `bash` (`rotina/instalar-mac.sh`). Um limpador do Mac apagou `~/Library/Logs/ContasDoPoder` em 21/10/2026:
+  o launchd recria a pasta sozinho, mas os registros antigos se perdem.
 
 ## Regras internas (só no computador do projeto)
 
