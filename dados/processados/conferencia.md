@@ -1,12 +1,14 @@
-# Conferência dos dados — 08/10/2026 17:06
+# Conferência dos dados — 22/10/2026 13:48
 
 ## 1. Cobertura
 
 - Deputados na base: 648 (em exercício hoje: 513 de 513)
-- Senadores na base: 105 (em exercício hoje: 79 de 81)
+- Senadores na base: 106 (em exercício hoje: 80 de 81)
 - Governo federal na base: 71 (presidente, vice e ministros desde 2023)
 
-**ATENÇÃO: número de parlamentares em exercício diferente do esperado.** Senado com número diferente de 3 em: DF (2), MG (2) (vaga à espera do suplente, ou renúncia ainda não refletida na lista).
+**ATENÇÃO: número de parlamentares em exercício diferente do esperado.** Senado com número diferente de 3 em: DF (2) (vaga à espera do suplente, ou renúncia ainda não refletida na lista).
+
+**Partes da base com os dados da rodada anterior** (a coleta desta rodada falhou): camara (dados de 2026-10-07)
 
 ## 2. Cota parlamentar da Câmara: nossa soma × página oficial do deputado
 
@@ -14,57 +16,20 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 
 | Deputado | Ano | Nossa soma | Site oficial | Diferença |
 |---|---|---:|---:|---:|
-| Daniel Freitas | 2024 | 558,681.46 | 558,681.46 | 0.00 |
-| Daniel Freitas | 2025 | 564,906.02 | 564,906.02 | 0.00 |
-| Altineu Côrtes | 2024 | 468,327.42 | 468,327.42 | 0.00 |
-| Altineu Côrtes | 2025 | 451,891.89 | 451,891.89 | 0.00 |
-| Júnior Ferrari | 2024 | 383,369.78 | 383,369.76 | 0.02 |
-| Júnior Ferrari | 2025 | 383,150.20 | 383,150.21 | -0.01 |
-| Joaquim Passarinho | 2024 | 458,293.15 | 458,293.15 | -0.00 |
-| Joaquim Passarinho | 2025 | 558,974.17 | 558,974.17 | 0.00 |
-| Helena Lima | 2024 | 606,140.66 | 606,140.66 | 0.00 |
-| Helena Lima | 2025 | 646,009.82 | 646,009.82 | 0.00 |
-| Dimas Gadelha | 2024 | 500,001.01 | 500,001.01 | 0.00 |
-| Dimas Gadelha | 2025 | 492,919.64 | 492,919.64 | 0.00 |
-| Da Vitoria | 2024 | 514,642.84 | 514,642.84 | 0.00 |
-| Da Vitoria | 2025 | 536,573.96 | 536,573.96 | 0.00 |
-| Clarissa Tércio | 2024 | 345,146.46 | 345,146.46 | 0.00 |
-| Clarissa Tércio | 2025 | 535,644.97 | 535,644.97 | 0.00 |
-| Roberta Roma | 2024 | 475,811.52 | 475,811.52 | -0.00 |
-| Roberta Roma | 2025 | 541,587.42 | 541,587.42 | 0.00 |
-| Ana Pimentel | 2024 | 494,232.46 | 494,232.46 | 0.00 |
-| Ana Pimentel | 2025 | 496,300.75 | 496,300.75 | 0.00 |
-| Ana Paula Leão | 2024 | 517,524.92 | 517,524.92 | 0.00 |
-| Ana Paula Leão | 2025 | 511,868.74 | 513,827.38 | -1,958.64 |
-| Coronel Chrisóstomo | 2024 | 588,712.44 | 588,712.44 | 0.00 |
-| Coronel Chrisóstomo | 2025 | 595,280.14 | 595,280.14 | 0.00 |
-| Gustavo Gayer | 2024 | 427,170.50 | 427,170.50 | 0.00 |
-| Gustavo Gayer | 2025 | 225,537.64 | 225,537.64 | -0.00 |
-| Amanda Gentil | 2024 | 377,822.92 | 383,205.80 | -5,382.88 (explicada: mês com saldo negativo que a página não lista) |
-| Amanda Gentil | 2025 | 556,441.95 | 556,441.94 | 0.01 |
-| Gabriel Nunes | 2024 | 566,255.59 | 566,255.59 | 0.00 |
-| Gabriel Nunes | 2025 | 547,458.30 | 547,458.30 | -0.00 |
-| Ricardo Guidi | 2024 | 78,161.98 | 78,161.98 | 0.00 |
-| Ricardo Guidi | 2025 | 549,421.39 | 549,421.39 | -0.00 |
-| Gutemberg Reis | 2024 | 436,168.36 | 436,168.36 | 0.00 |
-| Gutemberg Reis | 2025 | 490,094.29 | 490,094.29 | 0.00 |
-| Sargento Portugal | 2024 | 478,215.21 | 478,215.21 | 0.00 |
-| Sargento Portugal | 2025 | 521,049.89 | 521,049.89 | -0.00 |
-| Kiko Celeguim | 2024 | 529,739.97 | 529,739.97 | 0.00 |
-| Kiko Celeguim | 2025 | 525,157.48 | 525,157.48 | 0.00 |
+| (não conferido: a Câmara ficou com os dados de 2026-10-07, conferidos quando foram publicados) | | | | |
 
-**Resultado: 1 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
+**Resultado: 0 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
 
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
-- Comparações senador × ano: 324
+- Comparações senador × ano: 320
 - **Diferenças de R$ 1 ou mais: 0**
 
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
-- Nossa soma 2026: R$ 3,282,518.11
+- Nossa soma 2026: R$ 3,661,391.77
 - Página oficial: R$ 3,661,391.77
-- **DIFERENTE**
+- **OK**
 
 ## 5. Salários mensais acima do subsídio (revisar à mão)
 
@@ -80,16 +45,16 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 - Dorinaldo Malafaia — 06/2026: R$ 50,642.02
 - Waldez Góes — 08/2026: R$ 48,606.69
 - Delegado Éder Mauro — 01/2026: R$ 47,354.26
-- Fernanda Machiaveli — 08/2026: R$ 46,366.21
-- Fernanda Machiaveli — 07/2026: R$ 46,366.21
 - Fernanda Machiaveli — 06/2026: R$ 46,366.21
-- Esther Dweck — 04/2026: R$ 46,366.21
-- Esther Dweck — 05/2026: R$ 46,366.21
+- Fernanda Machiaveli — 04/2026: R$ 46,366.21
+- Fernanda Machiaveli — 07/2026: R$ 46,366.21
+- Fernanda Machiaveli — 08/2026: R$ 46,366.21
+- Fernanda Machiaveli — 05/2026: R$ 46,366.21
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
-- Senadores comparados: 81
-- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 34
+- Senadores comparados: 80
+- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 36
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 6b. Fornecedor pessoa física pelo nome no site
@@ -146,7 +111,7 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Prefeitura de Porto Alegre: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Porto Alegre: secretários na folha do último mês | 19 | 11 | OK |
 | Prefeitura de Salvador: prefeito na folha do último mês | 1 | 1 | OK |
-| Prefeitura de Salvador: secretários na folha do último mês | 17 | 11 | OK |
+| Prefeitura de Salvador: secretários na folha do último mês | 16 | 11 | OK |
 | Prefeitura de Curitiba: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Curitiba: secretários na folha do último mês | 11 | 7 | OK |
 | Prefeitura do Natal: prefeito na folha do último mês | 1 | 1 | OK |
@@ -187,11 +152,11 @@ Casos: 20. Podem ser acertos de meses anteriores; confira na página oficial.
 | Deputados com salário em 08/2026 | 528 | 480 | OK |
 | Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
 | Senadores com salário em 08/2026 | 84 | 75 | OK |
-| Senadores com assessores em 08/2026 | 82 | 60 | OK |
+| Senadores com assessores em 08/2026 | 81 | 60 | OK |
 | Cota da Câmara nos últimos 12 meses (R$ milhões) | 259 | 150 | OK |
-| Cota do Senado nos últimos 12 meses (R$ milhões) | 36 | 15 | OK |
-| Parlamentares no arquivo do site | 842 | 700 | OK |
+| Cota do Senado nos últimos 12 meses (R$ milhões) | 37 | 15 | OK |
+| Parlamentares no arquivo do site | 843 | 700 | OK |
 | Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
 
 ---
-**Total de alertas: 3**
+**Total de alertas: 1**

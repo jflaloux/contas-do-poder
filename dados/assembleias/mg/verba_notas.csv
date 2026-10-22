@@ -42615,11 +42615,11 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,4458,Combustível e lubrificante,Posto Tigre Ltda.,18822841000140,288597,2026-08-10,100.76,100.76
 2026,8,4458,Combustível e lubrificante,Dutra e Silva Ltda.,02104426000110,1174067,2026-08-11,174.81,174.81
 2026,8,4458,Combustível e lubrificante,Rede Hg Combustíveis Ltda.,13569064000400,1427180,2026-08-13,227.3,227.3
-2026,8,4458,Combustível e lubrificante,Tic Tac Derivados de Petróleo Ltda.,17269218000149,1652914,2026-08-13,205.95,205.95
+2026,8,4458,Combustível e lubrificante,Tic Tac Derivados de Combustíveis Ltda.,17269218000149,1652914,2026-08-13,205.95,205.95
 2026,8,4458,Combustível e lubrificante,Abc Distribuição de Petróleo Ltda.,13117591000123,38641,2026-08-14,227.21,227.21
 2026,8,4458,Combustível e lubrificante,Radeck Comércio de Combustível e Derivados Ltda.,37605579000126,806363,2026-08-14,155.11,155.11
-2026,8,4458,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024872,2026-08-31,1450.0,1450.0
 2026,8,4458,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024885,2026-08-31,11000.0,11000.0
+2026,8,4458,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024872,2026-08-31,1450.0,1450.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Hotel dos Silveira Ltda.,03708251000113,1473,2026-08-04,146.0,146.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Sousa Melo Palace Hotel Ltda.,08365698000150,22696,2026-08-06,151.0,151.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Hotel Marks de Abaete Ltda.,13454605000102,9088,2026-08-07,160.0,160.0
@@ -42627,8 +42627,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Rio Branco Palace Hotel Ltda.,21465422000102,694,2026-08-08,600.0,600.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Alexandre Mattar Turismo Real Ltda.,36273306000169,1072,2026-08-14,510.0,510.0
 2026,8,4458,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,018226600,2026-08-23,247.18,247.18
-2026,8,4458,"Serviços de consultoria, assessoria e pesquisa",Larissa de Moura Guerra Almeida,,82,2026-08-31,5010.0,5010.0
-2026,8,4458,"Serviços de consultoria, assessoria e pesquisa",Rosa Maria Gomes da Cruz Lopes,,41,2026-08-31,5100.0,5100.0
+2026,8,4458,"Serviços de consultoria, assessoria e pesquisa",Larissa de Moura Guerra Almeida,PF,82,2026-08-31,5010.0,5010.0
+2026,8,4458,"Serviços de consultoria, assessoria e pesquisa",Rosa Maria Gomes da Cruz Lopes,PF,41,2026-08-31,5100.0,5100.0
 2026,8,7327,Combustível e lubrificante,Petrosantos Comercio de Combustiveis Ltda.,25864216000126,706830,2026-07-16,160.0,160.0
 2026,8,7327,Combustível e lubrificante,Auto Posto de Combustiveis Portal da Canastra Ltda.,08033526000180,149120,2026-07-24,168.75,168.75
 2026,8,7327,Combustível e lubrificante,Auto Posto Tupy Eloi Mendes Ltda.,34834636000150,548249,2026-07-25,309.57,309.57
@@ -42643,8 +42643,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,7327,Combustível e lubrificante,Prodoeste Veículos e Serviços Ltda.,20495149000287,10081,2026-08-07,229.98,229.98
 2026,8,7327,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,001.26.55082341-7,2026-07-27,87.18,87.18
 2026,8,7327,Locação de imóvel e despesas a ele concernentes,Giga Mais Fibra Telecomunicações S.A,07714104002401,1204726,2026-08-03,139.99,139.99
-2026,8,7327,Locação de imóvel e despesas a ele concernentes,Angélica Cristina Barbosa da Mata,,Julho/26,2026-08-10,800.0,800.0
-2026,8,7327,Locação de imóvel e despesas a ele concernentes,Paulier Soares Brandão,,Julho/2026,2026-08-10,2200.0,2200.0
+2026,8,7327,Locação de imóvel e despesas a ele concernentes,Angélica Cristina Barbosa da Mata,PF,Julho/26,2026-08-10,800.0,800.0
+2026,8,7327,Locação de imóvel e despesas a ele concernentes,Paulier Soares Brandão,PF,Julho/2026,2026-08-10,2200.0,2200.0
 2026,8,7327,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004517,2026-08-18,3250.0,3250.0
 2026,8,7327,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004530,2026-08-26,6800.0,6800.0
 2026,8,7327,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000633,2026-07-30,799.0,799.0
@@ -42653,18 +42653,18 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,7327,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,471,2026-08-02,700.5,700.5
 2026,8,7327,"Passagens, hospedagem e alimentação",Bm Palace Hotel Ltda.,07415190000157,2004,2026-08-06,169.0,169.0
 2026,8,7327,"Passagens, hospedagem e alimentação",Bm Palace Hotel Ltda.,07415190000157,2005,2026-08-06,175.0,175.0
-2026,8,7327,"Passagens, hospedagem e alimentação",Bm Palace Hotel Ltda.,07415190000157,2006,2026-08-06,169.0,169.0
 2026,8,7327,"Passagens, hospedagem e alimentação",Bm Palace Hotel Ltda.,07415190000157,2007,2026-08-06,169.0,169.0
-2026,8,7327,"Passagens, hospedagem e alimentação",Stalo Hotel Ltda.,03514109000135,2881,2026-08-07,170.0,170.0
+2026,8,7327,"Passagens, hospedagem e alimentação",Bm Palace Hotel Ltda.,07415190000157,2006,2026-08-06,169.0,169.0
 2026,8,7327,"Passagens, hospedagem e alimentação",Stalo Hotel Ltda.,03514109000135,2882,2026-08-07,170.0,170.0
+2026,8,7327,"Passagens, hospedagem e alimentação",Stalo Hotel Ltda.,03514109000135,2881,2026-08-07,170.0,170.0
 2026,8,7758,Combustível e lubrificante,Posto Aljig Ltda.,03857669000192,61802,2026-08-02,162.12,162.12
 2026,8,7758,Combustível e lubrificante,Posto Alvinopolis Ltda.,18297549000155,727593,2026-08-08,160.11,160.11
 2026,8,7758,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32527,2026-08-08,100.07,100.07
 2026,8,7758,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32788,2026-08-12,52.19,52.19
 2026,8,7758,Combustível e lubrificante,Comercial Oliveira e Brant Ltda.,03086069000259,20084,2026-08-14,100.04,100.04
 2026,8,7758,Combustível e lubrificante,Adx Combustiveis Ltda.,45934846000137,45803,2026-08-15,245.45,245.45
-2026,8,7758,Combustível e lubrificante,Posto Producao Ltda.,04246589000163,1714489,2026-08-15,209.86,209.86
 2026,8,7758,Combustível e lubrificante,Posto Producao Ltda.,04246589000163,1714492,2026-08-15,179.96,179.96
+2026,8,7758,Combustível e lubrificante,Posto Producao Ltda.,04246589000163,1714489,2026-08-15,209.86,209.86
 2026,8,7758,Combustível e lubrificante,Posto Rota do Sol Ltda.,01617259000149,75168,2026-08-16,150.0,150.0
 2026,8,7758,Combustível e lubrificante,Raydan e Lobão Comércio de Combustíveis e Lubrificantes Ltda.,30492039000134,187961,2026-08-20,250.01,250.01
 2026,8,7758,Combustível e lubrificante,Posto Alvorada do Oeste Ltda.,04173198000166,399057,2026-08-27,127.99,127.99
@@ -42685,23 +42685,33 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,7762,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564000140,007342278,2026-07-15,132.85,129.93
 2026,8,7762,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,410188529,2026-07-21,231.93,231.93
 2026,8,7762,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,0289798-9,2026-07-22,173.25,171.15
-2026,8,7762,Locação de imóvel e despesas a ele concernentes,Áurea Gonçalves dos Santos,,169268,2026-08-17,3333.15,3333.15
+2026,8,7762,Locação de imóvel e despesas a ele concernentes,Áurea Gonçalves dos Santos,PF,169268,2026-08-17,3333.15,3333.15
 2026,8,7762,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72779,2026-08-31,1530.0,1530.0
-2026,8,7762,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72777,2026-08-31,10400.0,10400.0
 2026,8,7762,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72778,2026-08-31,2040.0,2040.0
+2026,8,7762,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72777,2026-08-31,10400.0,10400.0
 2026,8,7762,Material de expediente e informática e locação de móveis e equipamentos para escritório,Emc Tecnologia Ltda.,22261093000140,58685,2026-08-12,830.0,830.0
 2026,8,7762,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,706772558,2026-08-23,537.75,522.75
+2026,8,8095,Combustível e lubrificante,Auto Posto Xanatam Ltda.,23898869000109,649652,2026-08-05,370.11,370.11
+2026,8,8095,Combustível e lubrificante,Posto Grajaú Ltda.,20828299000184,11200,2026-08-08,326.43,326.43
+2026,8,8095,Combustível e lubrificante,Auto Posto Xanatam Ltda.,23898869000109,651657,2026-08-12,80.0,80.0
+2026,8,8095,Combustível e lubrificante,Posto Cn Ltda.,07362678000163,29682,2026-08-12,117.0,117.0
+2026,8,8095,Combustível e lubrificante,Auto Posto Xanatam Ltda.,23898869000109,651931,2026-08-13,132.74,132.74
+2026,8,8095,Combustível e lubrificante,Posto Carmênia S. A.,03567739000178,338129,2026-08-14,271.48,271.48
+2026,8,8095,Combustível e lubrificante,Auto Posto Xanatam Ltda.,23898869000109,653104,2026-08-17,200.0,200.0
+2026,8,8095,Combustível e lubrificante,Auto Posto Trevinho Ltda.,17960090000165,1360713,2026-08-19,200.0,200.0
+2026,8,8095,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034565,2026-08-31,4600.0,4600.0
+2026,8,8095,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034564,2026-08-31,6290.0,6290.0
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,130540,2026-07-31,249.63,249.63
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,130539,2026-07-31,202.71,202.71
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,31820,2026-08-01,77.2,77.2
-2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,31819,2026-08-01,69.38,69.38
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,31813,2026-08-01,176.06,176.06
+2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,31819,2026-08-01,69.38,69.38
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689136,2026-08-01,200.0,200.0
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,130567,2026-08-01,119.68,119.68
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689137,2026-08-01,286.78,286.78
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689187,2026-08-02,277.39,277.39
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689224,2026-08-02,222.35,222.35
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,130567,2026-08-01,119.68,119.68
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689221,2026-08-02,372.99,372.99
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689224,2026-08-02,222.35,222.35
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689187,2026-08-02,277.39,277.39
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32000,2026-08-03,175.74,175.74
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689376,2026-08-03,293.92,293.92
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689284,2026-08-03,463.08,463.08
@@ -42710,13 +42720,13 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689810,2026-08-06,267.23,267.23
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32426,2026-08-07,187.86,187.86
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689959,2026-08-07,217.2,217.2
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689886,2026-08-07,309.06,309.06
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689977,2026-08-07,106.82,106.82
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,689886,2026-08-07,309.06,309.06
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690031,2026-08-08,117.07,117.07
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,130651,2026-08-08,329.5,329.5
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690039,2026-08-08,117.74,117.74
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690025,2026-08-08,338.33,338.33
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690054,2026-08-08,157.2,157.2
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690039,2026-08-08,117.74,117.74
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690159,2026-08-09,241.0,241.0
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690373,2026-08-10,318.59,318.59
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690301,2026-08-10,361.79,361.79
@@ -42729,9 +42739,9 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690724,2026-08-13,300.04,300.04
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32959,2026-08-14,188.45,188.45
 2026,8,9652,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,33076,2026-08-14,289.94,289.94
-2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690836,2026-08-14,261.09,261.09
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690889,2026-08-14,291.02,291.02
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690949,2026-08-14,374.38,374.38
+2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,690836,2026-08-14,261.09,261.09
 2026,8,9652,Combustível e lubrificante,Trialem Combustíveis Ltda.,10572553000172,691069,2026-08-15,273.0,273.0
 2026,8,9652,Locação e fretamento de veículos,Hpe Locadora de Veículos Ltda.,46054009000186,102415762,2026-08-06,9815.0,9815.0
 2026,8,9652,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034408,2026-08-17,1775.0,1775.0
@@ -42776,8 +42786,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1252717,2026-08-18,43.0,23.65
 2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1253696,2026-08-19,28.26,28.26
 2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1257486,2026-08-24,29.48,29.48
-2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1258441,2026-08-24,31.02,31.02
 2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1256562,2026-08-24,35.01,35.01
+2026,8,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1258441,2026-08-24,31.02,31.02
 2026,8,9673,"Passagens, hospedagem e alimentação",Narla Tatianne de Souza Aboganem Alves,32077219000185,1185/2026,2026-08-28,400.0,400.0
 2026,8,9673,"Serviços de consultoria, assessoria e pesquisa",Monteiro de Andrade Diniz Galuppo e Viana Advogados Associados,03580846000136,568,2026-07-31,7000.0,7000.0
 2026,8,10002,Combustível e lubrificante,Comercial Foccus Ltda.,05290880000100,63327,2026-08-06,200.0,200.0
@@ -42795,10 +42805,10 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,10002,Combustível e lubrificante,Posto Oceano Ltda.,08401243000143,2724327,2026-08-26,100.0,100.0
 2026,8,10002,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004518,2026-08-19,3650.0,3650.0
 2026,8,10002,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004519,2026-08-19,2400.0,2400.0
-2026,8,10002,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,XWJ8XT,2026-07-28,2671.67,2671.67
 2026,8,10002,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,JCK1GY,2026-07-28,1215.35,1215.35
-2026,8,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,8286,2026-08-07,1159.2,1159.2
+2026,8,10002,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,XWJ8XT,2026-07-28,2671.67,2671.67
 2026,8,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,8287,2026-08-07,1159.2,1159.2
+2026,8,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,8286,2026-08-07,1159.2,1159.2
 2026,8,10002,"Passagens, hospedagem e alimentação",Pousada Sol Nascente Ltda.,03318254000140,1211,2026-08-22,1631.5,1631.5
 2026,8,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,9389,2026-08-31,779.8,779.8
 2026,8,10434,Combustível e lubrificante,Carrefour Comércio e Indústria Ltda.,45543915032032,787809,2026-08-19,159.91,159.91
@@ -42834,7 +42844,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,12193,Combustível e lubrificante,Auto Posto Capixaba Ltda.,02783114000180,9706,2026-08-06,200.0,200.0
 2026,8,12193,Combustível e lubrificante,Posto Ponte Nova Ltda.,17159880000146,175543,2026-08-09,321.45,321.45
 2026,8,12193,Combustível e lubrificante,Rede Jojo de Combustiveis Vi Ltda.,49764821000193,212813,2026-08-09,258.18,258.18
-2026,8,12193,Combustível e lubrificante,Tic Tac Derivados de Petróleo Ltda.,17269218000149,1652430,2026-08-12,265.0,265.0
+2026,8,12193,Combustível e lubrificante,Tic Tac Derivados de Combustíveis Ltda.,17269218000149,1652430,2026-08-12,265.0,265.0
 2026,8,12193,Combustível e lubrificante,Auto Posto Scuderia Ltda.,25717562000181,61123,2026-08-14,272.9,272.9
 2026,8,12193,Combustível e lubrificante,Posto Fórmula Br Ltda.,05555642000170,433624,2026-08-16,219.74,219.74
 2026,8,12193,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,103359,2026-08-19,116.35,116.35
@@ -42849,7 +42859,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,12193,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034561,2026-08-31,10500.0,10500.0
 2026,8,12202,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005769,2026-08-31,7000.0,7000.0
 2026,8,12202,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,54273,2026-07-27,190.92,190.92
-2026,8,12202,"Serviços de consultoria, assessoria e pesquisa",Alluy Richard Sérgio,,08/2026,2026-08-31,10500.0,10500.0
+2026,8,12202,"Serviços de consultoria, assessoria e pesquisa",Alluy Richard Sérgio,PF,08/2026,2026-08-31,10500.0,10500.0
 2026,8,13425,Combustível e lubrificante,Posto Itapoã Ltda.,17488693000106,2413785,2026-08-02,284.47,284.47
 2026,8,13425,Combustível e lubrificante,Posto 2 Abastecimento de Combustiveis Ltda.,18901025000121,265533,2026-08-02,230.18,230.18
 2026,8,13425,Combustível e lubrificante,Posto Vila Paris Ltda.,37164909000195,490727,2026-08-03,319.5,319.5
@@ -42965,6 +42975,27 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,16234,"Passagens, hospedagem e alimentação",Arco Administradora Manhuacu Ltda.,61616092000123,202600000003136,2026-08-02,265.0,265.0
 2026,8,16234,"Passagens, hospedagem e alimentação",J.B. Palace Hotel Ltda.,19641240000101,3252,2026-08-09,550.0,550.0
 2026,8,16234,"Serviços de consultoria, assessoria e pesquisa",Fabio Miranda Sociedade Individual de Advocacia,42745005000193,11,2026-08-28,9000.0,9000.0
+2026,8,17872,Combustível e lubrificante,Posto Sbt 09 Ltda.,00770819000138,164333,2026-08-02,356.84,356.84
+2026,8,17872,Combustível e lubrificante,Auto Posto Ventania Ltda.,03691111000180,1148803,2026-08-05,362.55,362.55
+2026,8,17872,Combustível e lubrificante,Posto de Combustiveis R B Ltda.,71161798000100,132484,2026-08-05,189.97,189.97
+2026,8,17872,Combustível e lubrificante,Posto Sul Ltda.,13591506000164,11139,2026-08-06,288.99,288.99
+2026,8,17872,Combustível e lubrificante,Posto de Combustiveis R B Ltda.,71161798000100,133802,2026-08-07,211.5,211.5
+2026,8,17872,Combustível e lubrificante,Posto Leste Ltda.,04038996000185,714248,2026-08-10,286.41,286.41
+2026,8,17872,Combustível e lubrificante,Loc Cachapuz Ltda.,03591406000184,1098407,2026-08-11,309.5,309.5
+2026,8,17872,Combustível e lubrificante,Posto Pio Xii Ltda.,05020360000179,138060,2026-08-17,260.28,260.28
+2026,8,17872,Combustível e lubrificante,Posto Santos e Silva Ltda.,06239233000128,63319,2026-08-18,260.0,260.0
+2026,8,17872,Combustível e lubrificante,Auto Posto Roda D Agua Ltda.,19222613000100,52656,2026-08-19,268.53,268.53
+2026,8,17872,Combustível e lubrificante,Posto Via Cajuri Ltda.,55837055000142,138253,2026-08-20,243.39,243.39
+2026,8,17872,Combustível e lubrificante,Auto Posto Ancorado Ltda.,40623168000178,64271,2026-08-21,316.32,316.32
+2026,8,17872,Combustível e lubrificante,Auto Posto 3d de Bom Jesus Ltda.,57334901000137,88196,2026-08-22,336.85,336.85
+2026,8,17872,Combustível e lubrificante,Loc Cachapuz Ltda.,03591406000184,1103424,2026-08-24,248.4,248.4
+2026,8,17872,Combustível e lubrificante,Posto de Combustiveis R B Ltda.,71161798000100,142135,2026-08-25,300.98,300.98
+2026,8,17872,Combustível e lubrificante,Posto Monte Santo Ltda.,08223834000178,20800,2026-08-27,305.13,305.13
+2026,8,17872,Combustível e lubrificante,Posto Três Poderes Ltda.,16941734000105,386573,2026-08-28,154.1,154.1
+2026,8,17872,Combustível e lubrificante,São Luis Combustíveis Ltda.,41214699000170,26714,2026-08-31,284.31,284.31
+2026,8,17872,Locação de imóvel e despesas a ele concernentes,Wenaldo Ferreira,PF,14844,2026-08-28,3500.0,3500.0
+2026,8,17872,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30926,2026-08-31,10000.0,10000.0
+2026,8,17872,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30925,2026-08-31,4300.0,4300.0
 2026,8,17919,Combustível e lubrificante,Rodoposto Oliveira Ltda.,05333717000179,969831,2026-07-30,249.99,249.99
 2026,8,17919,Combustível e lubrificante,Auto Posto Feres Maciello Ltda.,14584336000153,21705,2026-08-07,200.0,200.0
 2026,8,17919,Combustível e lubrificante,Auto Posto Garanhão Ltda.,03396640000150,27433,2026-08-09,250.0,250.0
@@ -42978,8 +43009,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,17919,Combustível e lubrificante,Auto Posto Manino Ltda.,01678462000125,356698,2026-08-23,200.0,200.0
 2026,8,17919,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,061017919,2026-08-10,132.62,130.0
 2026,8,17919,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010939453,2026-08-26,619.0,619.0
-2026,8,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034664,2026-08-31,5250.0,5250.0
 2026,8,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034578,2026-08-31,3790.0,3790.0
+2026,8,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034664,2026-08-31,5250.0,5250.0
 2026,8,17919,"Passagens, hospedagem e alimentação",Marlene de Souza Oliveira,32331755000165,58/2026,2026-08-07,420.0,420.0
 2026,8,17919,"Passagens, hospedagem e alimentação",Vicenzo Hotel Ltda.,47825577000104,1611,2026-08-08,530.0,530.0
 2026,8,17919,"Passagens, hospedagem e alimentação",Grande Hotel de Minas Novas Ltda.,07693282000107,202600000113,2026-08-20,580.0,580.0
@@ -42999,7 +43030,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00044730,2026-08-25,186.25,186.25
 2026,8,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00044703,2026-08-25,229.27,229.27
 2026,8,18022,Locação de imóvel e despesas a ele concernentes,Inetvip Telecom Ltda.,71195218000197,4099799,2026-08-03,118.62,118.62
-2026,8,18022,Locação de imóvel e despesas a ele concernentes,Naiara Roberta Santos da Silva,,08/2026,2026-08-31,640.0,640.0
+2026,8,18022,Locação de imóvel e despesas a ele concernentes,Naiara Roberta Santos da Silva,PF,08/2026,2026-08-31,640.0,640.0
 2026,8,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0684,2026-08-31,8500.0,8500.0
 2026,8,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0682,2026-08-31,2750.0,2750.0
 2026,8,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0683,2026-08-31,2750.0,2750.0
@@ -43072,6 +43103,45 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18850,Locação e fretamento de veículos,Grupo Lider Locadora de Veiculos S/A,41405527000183,646 Adt-1,2026-08-24,11150.0,11150.0
 2026,8,18850,"Passagens, hospedagem e alimentação",Restaurante e Bar Agostinho Ltda.,00619613000101,69108,2026-08-01,266.64,266.64
 2026,8,18850,"Passagens, hospedagem e alimentação",G R Restaurante Ltda.,50219892000194,8538,2026-08-05,84.07,84.07
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153302,2026-08-01,329.57,329.57
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153235,2026-08-01,180.04,180.04
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153411,2026-08-03,260.7,260.7
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,963980,2026-08-04,193.48,193.48
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153763,2026-08-05,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153641,2026-08-05,97.0,97.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153827,2026-08-06,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153896,2026-08-06,239.02,239.02
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153830,2026-08-06,315.36,315.36
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153796,2026-08-06,300.05,300.05
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153787,2026-08-06,166.88,166.88
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,153987,2026-08-07,276.73,276.73
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154002,2026-08-07,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154075,2026-08-08,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154095,2026-08-08,285.66,285.66
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154143,2026-08-09,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154137,2026-08-09,484.54,484.54
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154246,2026-08-10,212.87,212.87
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,964190,2026-08-11,261.55,261.55
+2026,8,18852,Combustível e lubrificante,Posto Irai Ltda.,05061474000167,293117,2026-08-11,170.0,170.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154637,2026-08-13,197.1,197.1
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154657,2026-08-13,250.0,250.0
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154833,2026-08-14,223.97,223.97
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154692,2026-08-14,302.75,302.75
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154813,2026-08-14,511.8,511.8
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154916,2026-08-15,226.21,226.21
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154852,2026-08-15,295.06,295.06
+2026,8,18852,Combustível e lubrificante,Alto Umuarama Combustiveis Ltda.,04748235000117,154885,2026-08-15,217.53,217.53
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,415470258,2026-07-30,125.93,60.44
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Uberlândia,18431312000115,1.207.311/26-09,2026-07-31,526.8,230.04
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Algar Telecom S/A,71208516000174,553367184,2026-08-12,169.86,84.93
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Dmae - Departamento Municipal de Água e Esgoto de Uberlândia,25769548000121,07-2026,2026-08-19,131.05,63.99
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,425030296,2026-08-28,111.44,54.51
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Uberlândia,18431312000115,1.207.312/26-63,2026-08-28,495.95,230.04
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Celso Kiyochi Takimura,PF,30/34,2026-08-31,750.0,750.0
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Miriam Tiemi Takimura Oliveira,PF,30/34,2026-08-31,750.0,750.0
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Rogério Massachi Takimura,PF,30/34,2026-08-31,750.0,750.0
+2026,8,18852,Locação de imóvel e despesas a ele concernentes,Simone Heiko Takimura Siquieroli,PF,30/34,2026-08-31,750.0,750.0
+2026,8,18852,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024799,2026-08-01,5500.0,5500.0
 2026,8,18857,Combustível e lubrificante,Auto Posto e Restaurante do Juá Ltda.,02381298000152,334908,2026-07-21,100.0,100.0
 2026,8,18857,Combustível e lubrificante,Posto Pkl Ltda.,02687363000253,52908,2026-07-22,253.29,253.29
 2026,8,18857,Combustível e lubrificante,Posto Mangueirão Ltda.,19643295000142,363429,2026-07-30,272.0,272.0
@@ -43090,7 +43160,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18857,Locação de imóvel e despesas a ele concernentes,Proxxima Tecnologia Ltda,04283579000106,R27951,2026-07-30,180.0,180.0
 2026,8,18857,Locação de imóvel e despesas a ele concernentes,Giganet Telecom Eireli,07224642000113,4796,2026-08-04,119.9,119.9
 2026,8,18857,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010576245,2026-08-17,619.0,619.0
-2026,8,18857,Locação de imóvel e despesas a ele concernentes,Simone Lemos de Melo Santos,,008/26,2026-08-31,3327.0,3327.0
+2026,8,18857,Locação de imóvel e despesas a ele concernentes,Simone Lemos de Melo Santos,PF,008/26,2026-08-31,3327.0,3327.0
 2026,8,18857,Locação e fretamento de veículos,Bravo Locações Ltda.,08906610000160,004856,2026-08-31,4000.0,4000.0
 2026,8,18857,Locação e fretamento de veículos,Bravo Locações Ltda.,08906610000160,004855,2026-08-31,10125.0,10125.0
 2026,8,18857,"Passagens, hospedagem e alimentação",Restaurante Luz Lanches Ltda,52932115000118,149445,2026-07-16,15.0,15.0
@@ -43104,7 +43174,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.460,2026-08-03,249.95,249.95
 2026,8,18860,Combustível e lubrificante,Posto de Combustíveis Santo Agostinho Ltda.,06349404000171,290880,2026-08-03,122.59,122.59
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.589,2026-08-07,203.27,203.27
-2026,8,18860,Combustível e lubrificante,Tic Tac Derivados de Petróleo Ltda.,17269218000149,1650652,2026-08-08,107.15,107.15
+2026,8,18860,Combustível e lubrificante,Tic Tac Derivados de Combustíveis Ltda.,17269218000149,1650652,2026-08-08,107.15,107.15
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.620,2026-08-09,251.39,251.39
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.639,2026-08-10,214.61,214.61
 2026,8,18860,Combustível e lubrificante,Posto Matos & Marques Ltda.,23748593000174,628081,2026-08-11,101.64,101.64
@@ -43112,7 +43182,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18860,Combustível e lubrificante,Posto Trevo Ltda.,19986561000130,1295506,2026-08-14,100.0,100.0
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.747,2026-08-15,28.88,28.88
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.760,2026-08-16,246.37,246.37
-2026,8,18860,Combustível e lubrificante,Tic Tac Derivados de Petróleo Ltda.,17269218000149,1655541,2026-08-17,100.0,100.0
+2026,8,18860,Combustível e lubrificante,Tic Tac Derivados de Combustíveis Ltda.,17269218000149,1655541,2026-08-17,100.0,100.0
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.843,2026-08-20,185.45,185.45
 2026,8,18860,Combustível e lubrificante,Posto Trevo Ltda.,19986561000130,1299221,2026-08-20,104.34,104.34
 2026,8,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.002.882,2026-08-21,160.05,160.05
@@ -43124,7 +43194,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,18860,Locação de imóvel e despesas a ele concernentes,Klisa Comunicação & Multmidia Ltda - Epp,09607157000154,0273241-0,2026-07-30,114.9,114.9
 2026,8,18860,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564000140,008904095,2026-08-05,216.85,216.85
 2026,8,18860,Locação de imóvel e despesas a ele concernentes,Efe Ele Comercio Ltda,02869567000124,42824,2026-08-11,132.81,120.23
-2026,8,18860,Locação de imóvel e despesas a ele concernentes,Izabel Cristina Alves Pereira,,021/2026,2026-08-31,400.0,400.0
+2026,8,18860,Locação de imóvel e despesas a ele concernentes,Izabel Cristina Alves Pereira,PF,021/2026,2026-08-31,400.0,400.0
 2026,8,18860,Locação e fretamento de veículos,Prime Veículos e Empreendimentos Ltda.,19972687000155,1709,2026-08-14,3500.0,3500.0
 2026,8,18860,Locação e fretamento de veículos,Localiza Fleet S.A.,02286479000108,AFMTZ-3635078,2026-08-20,7073.57,7073.57
 2026,8,18860,Material de expediente e informática e locação de móveis e equipamentos para escritório,Efe Ele Comercio Ltda,02869567000124,42825,2026-08-11,28.99,28.99
@@ -43144,10 +43214,10 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,19150,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,026825872,2026-07-17,83.91,83.91
 2026,8,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0039469514,2026-08-05,168.99,168.99
 2026,8,19150,Locação de imóvel e despesas a ele concernentes,Tim S/A,02421421000111,17404339,2026-08-09,263.97,175.98
-2026,8,19150,Locação de imóvel e despesas a ele concernentes,Vania Elizabeth Vaz Teixeira Barrozo,,38628,2026-08-25,2905.1,2817.15
+2026,8,19150,Locação de imóvel e despesas a ele concernentes,Vania Elizabeth Vaz Teixeira Barrozo,PF,38628,2026-08-25,2905.1,2817.15
 2026,8,19150,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004550,2026-08-31,5100.0,5100.0
-2026,8,19150,"Passagens, hospedagem e alimentação",Hotel Canaa Ltda,,220,2026-08-14,320.0,320.0
-2026,8,19150,"Passagens, hospedagem e alimentação",Hotel Canaa Ltda,,221,2026-08-16,160.0,160.0
+2026,8,19150,"Passagens, hospedagem e alimentação",Hotel Canaa Ltda,PF,220,2026-08-14,320.0,320.0
+2026,8,19150,"Passagens, hospedagem e alimentação",Hotel Canaa Ltda,PF,221,2026-08-16,160.0,160.0
 2026,8,19150,"Serviços de consultoria, assessoria e pesquisa",Moura Lima e Siqueira Advogados Associados,07152492000180,332,2026-08-31,5000.0,5000.0
 2026,8,21125,Combustível e lubrificante,Posto Cj Ltda.,04783903000147,387053,2026-07-02,100.0,100.0
 2026,8,21125,Combustível e lubrificante,Posto Cj Ltda.,04783903000147,388515,2026-07-14,200.0,200.0
@@ -43183,16 +43253,16 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,22514,Combustível e lubrificante,Rede Jojo de Combustiveis Ii Ltda,35491355000105,815369,2026-08-27,125.95,125.95
 2026,8,22514,Combustível e lubrificante,Posto Nicomedes Ltda,18937259000129,75769,2026-08-29,229.66,229.66
 2026,8,22514,Locação de imóvel e despesas a ele concernentes,Dmae - Departamento Municipal de Água e Esgoto de Uberlândia,25769548000121,07/2026,2026-07-31,115.04,115.04
-2026,8,22514,Locação de imóvel e despesas a ele concernentes,Vicente de Paulo Araújo Júnior,,127003,2026-07-31,3868.8,3500.0
+2026,8,22514,Locação de imóvel e despesas a ele concernentes,Vicente de Paulo Araújo Júnior,PF,127003,2026-07-31,3868.8,3500.0
 2026,8,22514,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,420045897,2026-08-17,286.18,286.18
 2026,8,22514,Locação de imóvel e despesas a ele concernentes,Algar Telecom S/A,71208516000174,554269576,2026-08-21,184.3,184.3
-2026,8,22514,Locação de imóvel e despesas a ele concernentes,Silvia Regina Ferreira,,08/2026,2026-08-31,280.0,280.0
+2026,8,22514,Locação de imóvel e despesas a ele concernentes,Silvia Regina Ferreira,PF,08/2026,2026-08-31,280.0,280.0
 2026,8,22514,Locação e fretamento de veículos,Localiza Fleet S.A.,02286479000108,AFMTZ-3621743,2026-08-18,3746.23,3746.23
 2026,8,22514,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085000155,AFMTZ-3625233,2026-08-18,4600.0,4600.0
 2026,8,22514,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085000155,AFMTZ-3625234,2026-08-18,2640.0,2640.0
-2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,,030826,2026-08-03,180.0,180.0
-2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,,120826 CNF-BH,2026-08-12,180.0,180.0
-2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,,120826 BH-CNF,2026-08-12,180.0,180.0
+2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,PF,030826,2026-08-03,180.0,180.0
+2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,PF,120826 CNF-BH,2026-08-12,180.0,180.0
+2026,8,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,PF,120826 BH-CNF,2026-08-12,180.0,180.0
 2026,8,22515,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,98979,2026-08-02,305.51,305.51
 2026,8,22515,Combustível e lubrificante,Posto Vila da Serra Ltda.,16979906000130,294452,2026-08-03,311.33,311.33
 2026,8,22515,Combustível e lubrificante,Posto Raja Ltda.,61066301000102,64792,2026-08-05,151.3,151.3
@@ -43205,12 +43275,21 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,22515,Combustível e lubrificante,Posto Millenniun de Viçosa Ltda.,04158512000131,444108,2026-08-29,307.57,307.57
 2026,8,22515,"Serviços de consultoria, assessoria e pesquisa",Contabilidade Lafayette Vilella de Moraes Ltda.,48786898000100,350,2026-08-19,2100.0,2100.0
 2026,8,22515,"Serviços de consultoria, assessoria e pesquisa",Leonardo da Silva Sociedade Individual de Advocacia,61269606000111,17,2026-08-31,8500.0,8500.0
+2026,8,22523,Combustível e lubrificante,Posto Mw Ltda.,10408986000197,14094,2026-08-08,521.02,521.02
+2026,8,22523,Combustível e lubrificante,Marco Antonio Duarte de Carvalho,00795426000189,180366,2026-08-13,100.0,100.0
+2026,8,22523,Combustível e lubrificante,Barrigão Comercial Ltda.,22265797000191,75185,2026-08-14,319.09,319.09
+2026,8,22523,Combustível e lubrificante,Posto Jacarandá Ltda.,24163610000174,556153,2026-08-15,280.12,280.12
+2026,8,22523,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011037948,2026-08-27,619.0,619.0
+2026,8,22523,Locação de imóvel e despesas a ele concernentes,Natália de Menezes Campos,PF,08/2026,2026-08-31,3000.0,3000.0
+2026,8,22523,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30915,2026-08-31,7000.0,7000.0
+2026,8,22523,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30914,2026-08-31,4500.0,4500.0
+2026,8,22523,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,31155,2026-08-31,2500.0,2500.0
 2026,8,22561,Combustível e lubrificante,Posto Raja Ltda.,61066301000102,00000535,2026-08-01,1951.36,1951.36
 2026,8,22561,Combustível e lubrificante,Posto Raja Ltda.,61066301000102,00000562,2026-08-17,3433.67,3433.67
 2026,8,22561,Combustível e lubrificante,Coelho e Bichara Petroleo e Derivados Ltda.,06660777000169,13577,2026-08-28,1261.35,1261.35
 2026,8,22561,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005770,2026-08-31,4300.0,4300.0
-2026,8,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72788,2026-08-31,3500.0,3500.0
 2026,8,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72789,2026-08-31,4200.0,4200.0
+2026,8,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72788,2026-08-31,3500.0,3500.0
 2026,8,22607,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,064058392,2026-08-13,1233.59,246.72
 2026,8,22607,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000642,2026-08-26,992.0,992.0
 2026,8,22607,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,521,2026-08-31,696.59,696.59
@@ -43236,19 +43315,19 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,22616,Combustível e lubrificante,Rede Dom Pedro de Postos Ltda.,20415295006610,563508,2026-08-15,286.14,286.14
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Brafer,25700188000101,1072055,2026-07-13,624.21,624.21
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Dma Distribuidora S/A,01928075001686,180447,2026-07-17,80.0,73.02
-2026,8,22616,Locação de imóvel e despesas a ele concernentes,Eduardo Bolognani Ferreira,,13466,2026-07-21,800.0,800.0
+2026,8,22616,Locação de imóvel e despesas a ele concernentes,Eduardo Bolognani Ferreira,PF,13466,2026-07-21,800.0,800.0
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Belo Horizonte,18715383000140,6/10,2026-07-21,151.75,151.75
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,009453886,2026-07-22,619.0,619.0
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,028545875,2026-07-23,85.47,83.91
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,062428977,2026-08-04,150.75,146.99
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,416693921,2026-08-10,139.43,139.43
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,417546945,2026-08-12,58.97,58.97
-2026,8,22616,Locação de imóvel e despesas a ele concernentes,Maria de Fátima Guimarães Rodrigues,,06/10,2026-08-16,800.0,800.0
+2026,8,22616,Locação de imóvel e despesas a ele concernentes,Maria de Fátima Guimarães Rodrigues,PF,06/10,2026-08-16,800.0,800.0
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Dma Distribuidora S/A,01928075001686,151058,2026-08-17,84.95,76.67
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Curvelo,17695024000105,12764726,2026-08-17,32.67,32.67
 2026,8,22616,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0039663754,2026-08-20,205.15,205.15
-2026,8,22616,Locação de imóvel e despesas a ele concernentes,José Oscar de Morais,,08/2026,2026-08-28,1500.0,1500.0
-2026,8,22616,Locação de imóvel e despesas a ele concernentes,Jane Aparecida Gouveia das Dores,,08/26,2026-08-31,220.0,220.0
+2026,8,22616,Locação de imóvel e despesas a ele concernentes,José Oscar de Morais,PF,08/2026,2026-08-28,1500.0,1500.0
+2026,8,22616,Locação de imóvel e despesas a ele concernentes,Jane Aparecida Gouveia das Dores,PF,08/26,2026-08-31,220.0,220.0
 2026,8,22616,Locação e fretamento de veículos,R & R Veículos Ltda.,40911561000167,008/2026,2026-08-17,4533.33,4533.33
 2026,8,22616,Locação e fretamento de veículos,R & R Veículos Ltda.,40911561000167,005/26,2026-08-17,1866.66,1866.66
 2026,8,22616,"Serviços de consultoria, assessoria e pesquisa",Mendonça e Mendonça Advocacia Sociedade de Advogados,32241072000117,59,2026-08-28,2240.0,2240.0
@@ -43403,8 +43482,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26105,Combustível e lubrificante,Posto Estoril Ltda.,02282319000182,803532,2026-08-04,150.65,150.65
 2026,8,26105,Combustível e lubrificante,Auto Posto Chaves Ltda.,02885584000155,44198,2026-08-05,266.56,266.56
 2026,8,26105,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,32299,2026-08-06,222.48,222.48
-2026,8,26105,Combustível e lubrificante,Posto Barão Vpp Ltda.,30166678000100,1111733,2026-08-07,219.13,219.13
 2026,8,26105,Combustível e lubrificante,Posto Barão Vpp Ltda.,30166678000100,1111856,2026-08-07,265.14,265.14
+2026,8,26105,Combustível e lubrificante,Posto Barão Vpp Ltda.,30166678000100,1111733,2026-08-07,219.13,219.13
 2026,8,26105,Combustível e lubrificante,Posto Soberano Ltda.,10985528000110,399069,2026-08-11,248.17,248.17
 2026,8,26105,Combustível e lubrificante,As Negócios Empreendimentos Ii Ltda.,04944326000128,244535,2026-08-12,305.0,305.0
 2026,8,26105,Combustível e lubrificante,Auto Posto Roselanche Ltda.,18094698000117,830974,2026-08-13,218.31,218.31
@@ -43418,16 +43497,16 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26105,"Passagens, hospedagem e alimentação",Rede Olt Hoteis Ltda.,09367604000730,11159/2026,2026-07-18,346.66,346.66
 2026,8,26105,"Passagens, hospedagem e alimentação",Rede Olt Hoteis Ltda.,09367604000730,11160/2026,2026-07-18,346.66,346.66
 2026,8,26105,"Passagens, hospedagem e alimentação",Rede Olt Hoteis Ltda.,09367604000730,11158/2026,2026-07-18,346.66,346.66
+2026,8,26105,"Passagens, hospedagem e alimentação",Constantino Hotel Ltda.,07406837000184,202600000075626,2026-08-01,333.34,333.34
 2026,8,26105,"Passagens, hospedagem e alimentação",Constantino Hotel Ltda.,07406837000184,202600000075625,2026-08-01,333.32,333.32
 2026,8,26105,"Passagens, hospedagem e alimentação",Constantino Hotel Ltda.,07406837000184,202600000075624,2026-08-01,333.34,333.34
-2026,8,26105,"Passagens, hospedagem e alimentação",Constantino Hotel Ltda.,07406837000184,202600000075626,2026-08-01,333.34,333.34
 2026,8,26105,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,497,2026-08-04,72.55,72.55
-2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145798,2026-08-14,215.8,215.8
-2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145800,2026-08-14,215.81,215.81
-2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145728,2026-08-14,373.76,373.76
 2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145726,2026-08-14,373.78,373.78
 2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145801,2026-08-14,215.82,215.82
+2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145800,2026-08-14,215.81,215.81
+2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145798,2026-08-14,215.8,215.8
 2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145727,2026-08-14,373.77,373.77
+2026,8,26105,"Passagens, hospedagem e alimentação",Victory Business Hotel Ltda.,03566599000113,202600000145728,2026-08-14,373.76,373.76
 2026,8,26111,"Assinatura de publicações, periódicos e ""clippings""",Sempre Editora Ltda.,26198515000484,0325134-5,2026-08-16,89.65,89.65
 2026,8,26111,Combustível e lubrificante,Comercial Vdm Ltda,15000233000161,141815,2026-08-04,158.75,158.75
 2026,8,26111,Combustível e lubrificante,Posto Cruzeiro de Encontro Ltda.,04337463000102,294914,2026-08-05,197.1,197.1
@@ -43498,9 +43577,9 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26114,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,425040047,2026-08-28,529.62,529.62
 2026,8,26114,Locação de imóvel e despesas a ele concernentes,Rn Negócios e Empreendimentos Ltda.,24021554000133,5042082026,2026-08-31,4303.18,4303.18
 2026,8,26114,Locação de imóvel e despesas a ele concernentes,Sae Superintendencia de Agua e Esgoto,16829475000125,08/2026,2026-08-31,86.11,86.11
+2026,8,26114,Locação e fretamento de veículos,Dinamica Logistica e Serviços Ltda.,07550674000109,29470,2026-08-17,3252.42,3252.42
 2026,8,26114,Locação e fretamento de veículos,Dinamica Logistica e Serviços Ltda.,07550674000109,29475,2026-08-17,1832.27,1832.27
 2026,8,26114,Locação e fretamento de veículos,Dinamica Logistica e Serviços Ltda.,07550674000109,29472,2026-08-17,4144.83,4144.83
-2026,8,26114,Locação e fretamento de veículos,Dinamica Logistica e Serviços Ltda.,07550674000109,29470,2026-08-17,3252.42,3252.42
 2026,8,26114,Material de expediente e informática e locação de móveis e equipamentos para escritório,Dimex do Triângulo Ltda.,23342322000114,82989,2026-08-13,2281.97,2281.97
 2026,8,26114,Material de expediente e informática e locação de móveis e equipamentos para escritório,Meta Prime Tecnologia e Serviços Ltda.,28927167000111,0081,2026-08-31,290.0,290.0
 2026,8,26114,"Passagens, hospedagem e alimentação",Conectcar Instituicao de Pagamento e Solucoes de Mobilidade Eletronica S/A,16577631000299,TET08/2026,2026-08-31,763.57,763.57
@@ -43558,7 +43637,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26138,Combustível e lubrificante,Auto Posto Nazarao Miradouro Ltda.,39877715000162,276077,2026-08-30,247.05,247.05
 2026,8,26138,Combustível e lubrificante,Santo Posto Contagem-Comercio de Combustiveis Ltda.,40220124000105,113198,2026-08-30,274.41,274.41
 2026,8,26138,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011110384,2026-08-28,619.0,619.0
-2026,8,26138,Locação de imóvel e despesas a ele concernentes,Nilton Vieira Filho,,08/2026,2026-08-31,1374.43,1374.43
+2026,8,26138,Locação de imóvel e despesas a ele concernentes,Nilton Vieira Filho,PF,08/2026,2026-08-31,1374.43,1374.43
 2026,8,26138,Locação e fretamento de veículos,Barbosa e Silva Empreendimentos Ltda.,12868111000101,100,2026-08-31,8860.0,8860.0
 2026,8,26138,"Serviços de consultoria, assessoria e pesquisa",Moura Lima e Siqueira Advogados Associados,07152492000180,333,2026-08-31,5000.0,5000.0
 2026,8,26143,Combustível e lubrificante,Rodoposto Oliveira Ltda.,05333717000179,960233,2026-07-10,231.04,231.04
@@ -43568,8 +43647,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26143,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00030317,2026-08-25,4396.18,4396.18
 2026,8,26143,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,059643533,2026-07-19,85.0,85.0
 2026,8,26143,Locação e fretamento de veículos,Estrela Logística Ltda.,04309564000161,004341,2026-08-25,6800.0,6800.0
-2026,8,26143,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002363,2026-08-25,5990.0,5990.0
 2026,8,26143,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,02364,2026-08-25,3500.0,3500.0
+2026,8,26143,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002363,2026-08-25,5990.0,5990.0
 2026,8,26143,"Passagens, hospedagem e alimentação",Hotel Fenícia Ltda.,17845769000103,57798,2026-07-11,470.0,470.0
 2026,8,26143,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,THL42V,2026-08-17,3058.1,3058.1
 2026,8,26143,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,,2026-08-25,44.19,44.19
@@ -43636,7 +43715,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26145,Locação de imóvel e despesas a ele concernentes,Vero S/A,31748174000675,07/2026,2026-08-12,134.69,134.69
 2026,8,26145,Locação de imóvel e despesas a ele concernentes,Fundacao Affemg de Assistencia e Saude - Fundaffemg,00660903000107,08/2026,2026-08-17,5663.65,5657.75
 2026,8,26145,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,Parcela 5,2026-08-20,857.97,794.43
-2026,8,26145,Locação de imóvel e despesas a ele concernentes,Dulcineia de Jesus Barbosa,,80,2026-08-28,580.0,580.0
+2026,8,26145,Locação de imóvel e despesas a ele concernentes,Dulcineia de Jesus Barbosa,PF,80,2026-08-28,580.0,580.0
 2026,8,26145,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30921,2026-08-31,9000.0,9000.0
 2026,8,26145,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30920,2026-08-31,4800.0,4800.0
 2026,8,26145,Material de expediente e informática e locação de móveis e equipamentos para escritório,23.924.441 Jhonne Nelson Rodrigues,23924441000185,170,2026-08-10,2300.0,2300.0
@@ -43647,6 +43726,11 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26145,"Passagens, hospedagem e alimentação",Vicenzo Hotel Ltda.,47825577000104,1550,2026-07-31,200.0,200.0
 2026,8,26145,"Passagens, hospedagem e alimentação",Companhia Atual de Transportes,23929979000182,2734208,2026-08-02,175.35,175.35
 2026,8,26145,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,706776241,2026-08-23,740.21,664.96
+2026,8,26149,Locação de imóvel e despesas a ele concernentes,Tim S a,02421421002084,16725072,2026-08-03,219.99,219.99
+2026,8,26151,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,1593,2026-07-24,6284.59,4994.93
+2026,8,26151,Locação e fretamento de veículos,Loc Frotas Locações S/A,37229373000149,023746,2026-05-27,2883.5,2883.5
+2026,8,26151,Locação e fretamento de veículos,Vd Comércio de Veículos Ltda.,39786983000179,Parcela 31,2026-08-01,3441.73,3441.73
+2026,8,26151,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30916,2026-08-31,4000.0,4000.0
 2026,8,26152,Combustível e lubrificante,Agenor Posto de Combustiveis Ltda.,19283605000165,883684,2026-07-31,327.29,327.29
 2026,8,26152,Combustível e lubrificante,Posto Vila Maria Dias Ltda.,08986856000190,1079840,2026-08-03,448.39,448.39
 2026,8,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,66202,2026-08-05,375.49,375.49
@@ -43671,7 +43755,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26152,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,415481805,2026-07-30,120.89,120.89
 2026,8,26152,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,63970712,2026-08-08,396.01,264.0
 2026,8,26152,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,10316985,2026-08-11,339.0,339.0
-2026,8,26152,Locação de imóvel e despesas a ele concernentes,Geilson Alves Lulu,,1192070,2026-08-26,4500.0,4500.0
+2026,8,26152,Locação de imóvel e despesas a ele concernentes,Geilson Alves Lulu,PF,1192070,2026-08-26,4500.0,4500.0
 2026,8,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034660,2026-08-31,1250.0,1250.0
 2026,8,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034661,2026-08-31,1250.0,1250.0
 2026,8,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034579,2026-08-31,10500.0,10500.0
@@ -43681,11 +43765,11 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26153,Combustível e lubrificante,Auto Posto Piramide Comércio de Combustíveis Ltda.,32650884000116,000008304,2026-08-27,700.0,700.0
 2026,8,26153,Combustível e lubrificante,Posto de Combustiveis Sevia Ltda.,40282697000155,3317,2026-08-28,1400.0,1400.0
 2026,8,26153,Combustível e lubrificante,Auto Posto Jequitinhonha Ltda.,20496985000103,000009383,2026-08-31,1500.0,1500.0
-2026,8,26153,Locação de imóvel e despesas a ele concernentes,Manoel Augusto Freitas Dias,,167046,2026-07-20,4603.15,4600.0
+2026,8,26153,Locação de imóvel e despesas a ele concernentes,Manoel Augusto Freitas Dias,PF,167046,2026-07-20,4603.15,4600.0
 2026,8,26153,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,421631609,2026-08-20,324.12,324.12
 2026,8,26153,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010852316,2026-08-23,619.0,619.0
 2026,8,26153,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,001.26.64174980-5,2026-08-28,517.23,517.23
-2026,8,26153,Locação de imóvel e despesas a ele concernentes,Marilde Ribeiro dos Reis,,AGO/2026,2026-08-31,1000.0,1000.0
+2026,8,26153,Locação de imóvel e despesas a ele concernentes,Marilde Ribeiro dos Reis,PF,AGO/2026,2026-08-31,1000.0,1000.0
 2026,8,26153,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30928,2026-08-31,3580.65,3580.65
 2026,8,26153,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30927,2026-08-31,3580.65,3580.65
 2026,8,26153,"Passagens, hospedagem e alimentação",64.292.258 Marcus Vinicius Rezende de Oliveira,64292258000191,57,2026-08-31,825.0,825.0
@@ -43711,7 +43795,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,26164,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,936/215-26-Parc.6,2026-08-14,185.08,185.08
 2026,8,26164,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,936/216-26-Parc.6,2026-08-14,185.08,185.08
 2026,8,26164,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001012900639,2026-08-14,963.83,963.83
-2026,8,26164,Locação de imóvel e despesas a ele concernentes,Gervásio da Silva Barbosa,,08/2026,2026-08-31,3400.0,3400.0
+2026,8,26164,Locação de imóvel e despesas a ele concernentes,Gervásio da Silva Barbosa,PF,08/2026,2026-08-31,3400.0,3400.0
 2026,8,26164,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72775,2026-08-31,1750.0,1750.0
 2026,8,26164,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72776,2026-08-31,1750.0,1750.0
 2026,8,26164,Material de expediente e informática e locação de móveis e equipamentos para escritório,Toner Tech Suprimentos para Impressao Ltda.,33606217000107,4231,2026-08-31,3200.0,3200.0
@@ -43795,7 +43879,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28862,Combustível e lubrificante,Posto Presidente Ltda.,23158736000198,16416,2026-08-07,83.08,83.08
 2026,8,28862,Locação de imóvel e despesas a ele concernentes,Cond.Edif.Avelina Moreira,22228837000125,876,2026-07-28,680.0,660.01
 2026,8,28862,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,064535144,2026-08-13,301.87,301.87
-2026,8,28862,Locação de imóvel e despesas a ele concernentes,Fernando Antônio Abdalla,,08/2026,2026-08-31,2526.0,2526.0
+2026,8,28862,Locação de imóvel e despesas a ele concernentes,Fernando Antônio Abdalla,PF,08/2026,2026-08-31,2526.0,2526.0
 2026,8,28862,Locação e fretamento de veículos,Ponta Locação de Veiculos Ltda,42761872000112,769,2026-08-31,6500.0,6500.0
 2026,8,28862,Locação e fretamento de veículos,Ponta Locação de Veiculos Ltda,42761872000112,768,2026-08-31,6900.0,6900.0
 2026,8,28862,Material de expediente e informática e locação de móveis e equipamentos para escritório,Fernandes e Aguiar Locação e Eventos Ltda.,01486634000169,017815,2026-08-07,1080.0,1080.0
@@ -43814,12 +43898,12 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00004933,2026-07-09,93.18,93.18
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005004,2026-07-12,239.31,239.31
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005044,2026-07-13,154.0,154.0
-2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005158,2026-07-19,167.87,167.87
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005155,2026-07-19,107.35,107.35
+2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005158,2026-07-19,167.87,167.87
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005177,2026-07-20,283.91,283.91
 2026,8,28863,Combustível e lubrificante,Ps4 Combustiveis Ltda.,44351024000160,52928,2026-07-21,272.87,272.87
-2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005212,2026-07-22,189.4,189.4
 2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005240,2026-07-22,194.19,194.19
+2026,8,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005212,2026-07-22,189.4,189.4
 2026,8,28863,Combustível e lubrificante,Posto Schumacker Ltda.,01273485000150,462324,2026-07-22,285.4,285.4
 2026,8,28863,Combustível e lubrificante,Gabriel Costa Comercio de Derivados de Petroleo Ltda.,11614481000141,671553,2026-07-23,187.02,187.02
 2026,8,28863,Combustível e lubrificante,Auto Posto de Combustiveis Portal da Canastra Ltda.,08033526000180,149121,2026-07-24,188.55,188.55
@@ -43853,14 +43937,14 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28863,Combustível e lubrificante,Raydan e Lobão Comércio de Combustíveis e Lubrificantes Ltda.,30492039000134,188344,2026-08-23,202.44,202.44
 2026,8,28863,Combustível e lubrificante,Posto Maluquinho Ltda.,05910170000127,479004,2026-08-24,295.69,295.69
 2026,8,28863,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010062227,2026-08-05,619.0,619.0
-2026,8,28863,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002359,2026-08-24,4590.0,4590.0
 2026,8,28863,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002358,2026-08-24,8490.0,8490.0
+2026,8,28863,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002359,2026-08-24,4590.0,4590.0
 2026,8,28863,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,704947537,2026-08-03,780.2,768.3
 2026,8,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,CQSQKH,2026-08-10,3386.67,2882.83
 2026,8,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,BHYFPV,2026-08-11,3299.33,3299.33
 2026,8,28863,"Passagens, hospedagem e alimentação",Cooperativa Mista de Transporte de Passageiros em Taxi B H Ltda.,25298969000111,2412,2026-08-11,159.05,159.05
-2026,8,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,LJZ4MS,2026-08-14,3054.54,3054.54
 2026,8,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,RRLI2U,2026-08-14,2509.15,2509.15
+2026,8,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,LJZ4MS,2026-08-14,3054.54,3054.54
 2026,8,28864,Combustível e lubrificante,Posto Danúbio Ltda.,17288630000106,14047,2026-08-03,290.17,290.17
 2026,8,28864,Combustível e lubrificante,Posto Danúbio Ltda.,17288630000106,14066,2026-08-03,191.23,191.23
 2026,8,28864,Combustível e lubrificante,Posto Santos Santa Barbara Ltda.,44105281000112,257713,2026-08-07,314.6,314.6
@@ -43902,8 +43986,8 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28865,Locação de imóvel e despesas a ele concernentes,Rafael Tadeu Nunes,22298795000107,69,2026-08-03,280.0,280.0
 2026,8,28865,Locação de imóvel e despesas a ele concernentes,Zaaz Provedor de Internet e Telecomunicaçoes S/A,26453505005245,383392,2026-08-04,98.0,98.0
 2026,8,28865,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,060279834,2026-08-06,430.0,286.67
-2026,8,28865,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30918,2026-08-31,11900.0,11900.0
 2026,8,28865,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30917,2026-08-31,2000.0,2000.0
+2026,8,28865,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,30918,2026-08-31,11900.0,11900.0
 2026,8,28865,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,10,2026-06-26,96.94,96.94
 2026,8,28865,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,54286,2026-07-29,49.97,49.97
 2026,8,28865,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,420,2026-07-01,617.62,617.62
@@ -43943,7 +44027,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564000140,006511913,2026-07-05,132.64,129.82
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,406653757,2026-07-08,156.25,156.17
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,009080038,2026-07-14,406.84,406.84
-2026,8,28866,Locação de imóvel e despesas a ele concernentes,Gislaine Antonia Bernardes,,100277,2026-07-22,2507.77,2503.27
+2026,8,28866,Locação de imóvel e despesas a ele concernentes,Gislaine Antonia Bernardes,PF,100277,2026-07-22,2507.77,2503.27
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,00001075377231,2026-07-27,220.0,220.0
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,009947179,2026-08-03,619.0,619.0
 2026,8,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269202,2026-08-05,345.0,345.0
@@ -43962,20 +44046,20 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28868,Locação de imóvel e despesas a ele concernentes,Bazinho Supermercados Ltda.,66212721000173,000075828,2026-07-31,449.47,449.47
 2026,8,28868,Locação de imóvel e despesas a ele concernentes,Jose Marcio Imoveis Ltda.,04335735000127,07/2026,2026-08-11,170.85,170.85
 2026,8,28868,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010313601,2026-08-11,619.0,619.0
-2026,8,28868,Locação de imóvel e despesas a ele concernentes,Magaly Cristina Soares da Silva,,07/2026,2026-08-18,1700.0,1700.0
+2026,8,28868,Locação de imóvel e despesas a ele concernentes,Magaly Cristina Soares da Silva,PF,07/2026,2026-08-18,1700.0,1700.0
 2026,8,28868,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001025999620,2026-08-28,64.0,64.0
-2026,8,28868,Locação de imóvel e despesas a ele concernentes,Yara de Souza Martins,,08/2026,2026-08-31,700.0,700.0
+2026,8,28868,Locação de imóvel e despesas a ele concernentes,Yara de Souza Martins,PF,08/2026,2026-08-31,700.0,700.0
 2026,8,28868,Locação e fretamento de veículos,Ouro Preto Locações Ltda.,43211216000109,201,2026-08-17,6000.0,6000.0
 2026,8,28868,Material de expediente e informática e locação de móveis e equipamentos para escritório,Karlo'S Papelaria Ltda.,42908509000187,000043166,2026-08-11,290.0,290.0
 2026,8,28868,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,484,2026-08-02,114.4,114.4
 2026,8,28868,"Passagens, hospedagem e alimentação",Planeta Sabor Ltda.,00607061000111,402702,2026-08-03,68.98,68.98
 2026,8,28868,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1248467,2026-08-12,45.54,45.54
 2026,8,28868,"Serviços de consultoria, assessoria e pesquisa",Ladir & Franco Advogados,09084879000171,446,2026-08-20,1890.0,1890.0
-2026,8,28869,Locação de imóvel e despesas a ele concernentes,Geraldo Abilio Penha Caldeira,,330427,2026-07-21,2827.81,2821.82
 2026,8,28869,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0039377476,2026-07-28,236.25,231.54
 2026,8,28869,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,0012652582474-0,2026-08-08,174.43,174.43
 2026,8,28869,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,416469588,2026-08-10,427.07,419.87
 2026,8,28869,Locação de imóvel e despesas a ele concernentes,Tele Técnico Soluções em Informática Ltda,03379570000122,08/2026,2026-08-10,1380.0,1380.0
+2026,8,28869,Locação de imóvel e despesas a ele concernentes,Geraldo Abilio Penha Caldeira,PF,330427,2026-08-14,2827.81,2821.82
 2026,8,28869,Material de expediente e informática e locação de móveis e equipamentos para escritório,Tele Técnico Soluções em Informática Ltda,03379570000122,AGOSTO/2026,2026-08-10,2555.0,2555.0
 2026,8,28871,Combustível e lubrificante,Auto Posto V3 Ltda.,15500817000104,324733,2026-08-02,160.22,160.22
 2026,8,28871,Combustível e lubrificante,Posto de Combustiveis Milenio Ltda.,61341144000104,647,2026-08-04,126.34,126.34
@@ -43994,12 +44078,12 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28871,Locação de imóvel e despesas a ele concernentes,Playnet Comunicacao e Multimidia Ltda.,45898786000144,2866,2026-08-07,97.93,97.93
 2026,8,28871,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010262581,2026-08-10,619.0,619.0
 2026,8,28871,Locação de imóvel e despesas a ele concernentes,Copasa Patos Saneamento S/A,57323717000191,000455581,2026-08-14,169.4,169.4
-2026,8,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,,94410,2026-08-31,3603.0,3603.0
-2026,8,28871,Locação de imóvel e despesas a ele concernentes,Maria Malvina de Nazaré,,08/2026,2026-08-31,1000.0,1000.0
+2026,8,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,PF,94410,2026-08-31,3603.0,3603.0
+2026,8,28871,Locação de imóvel e despesas a ele concernentes,Maria Malvina de Nazaré,PF,08/2026,2026-08-31,1000.0,1000.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024948,2026-08-15,2017.0,2017.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024946,2026-08-15,2017.0,2017.0
 2026,8,28871,Locação e fretamento de veículos,Target Frotas Ltda.,21652672000151,024945,2026-08-15,2957.5,2957.5
-2026,8,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo Cpf,20018486000100,81,2026-08-14,180.0,180.0
+2026,8,28871,Manutenção e despesas gerais com veículos,Renato Rodrigues de Araujo,20018486000100,81,2026-08-14,180.0,180.0
 2026,8,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L10561,2026-07-28,210.0,210.0
 2026,8,28871,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,5606,2026-06-19,522.9,522.9
 2026,8,28871,"Passagens, hospedagem e alimentação",Empresa Gontijo de Transportes S/A,16624611009873,018085549,2026-07-30,385.01,385.01
@@ -44070,7 +44154,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000364,418851,2026-08-30,250.0,250.0
 2026,8,28872,Locação de imóvel e despesas a ele concernentes,Alares Internet S/A,02952192000161,442627591-1/1-26,2026-08-01,133.43,130.59
 2026,8,28872,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,036794747,2026-08-25,63.82,63.82
-2026,8,28872,Locação de imóvel e despesas a ele concernentes,Beatriz Barbosa de Lima,,29-7,2026-08-26,2034.0,2034.0
+2026,8,28872,Locação de imóvel e despesas a ele concernentes,Beatriz Barbosa de Lima,PF,29-7,2026-08-26,2034.0,2034.0
 2026,8,28872,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,423207755,2026-08-26,119.16,119.16
 2026,8,28872,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002367,2026-08-25,2510.0,2510.0
 2026,8,28872,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002365,2026-08-25,4990.0,4657.33
@@ -44083,12 +44167,12 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28874,Combustível e lubrificante,Noroeste Derivados de Petróleo Ltda.,48527784000137,110675,2026-08-13,241.03,241.03
 2026,8,28874,Combustível e lubrificante,Auto Posto Sao Francisco Ltda.,04171017000162,30304,2026-08-28,3625.24,3615.24
 2026,8,28874,Combustível e lubrificante,Rede Dakota I Ltda.,01530043000141,000000514,2026-08-31,493.02,493.02
-2026,8,28874,Locação de imóvel e despesas a ele concernentes,Kênia Maria de Almeida Queiroz,,07/2026,2026-06-30,1449.37,1449.37
+2026,8,28874,Locação de imóvel e despesas a ele concernentes,Kênia Maria de Almeida Queiroz,PF,07/2026,2026-06-30,1449.37,1449.37
 2026,8,28874,Locação de imóvel e despesas a ele concernentes,Onnet Telecomunicacoes Ltda.,03127257000105,503717,2026-07-10,99.9,99.9
 2026,8,28874,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,416194102,2026-08-07,154.57,154.57
 2026,8,28874,Locação de imóvel e despesas a ele concernentes,Departamento de Agua e Esgoto de Patrocínio,20266755000140,370883122,2026-08-10,24.74,24.33
 2026,8,28874,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010285884,2026-08-10,619.0,619.0
-2026,8,28874,Locação de imóvel e despesas a ele concernentes,Wanderlea Maria de Souza Santos,,08/2026,2026-08-31,300.0,300.0
+2026,8,28874,Locação de imóvel e despesas a ele concernentes,Wanderlea Maria de Souza Santos,PF,08/2026,2026-08-31,300.0,300.0
 2026,8,28874,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004524,2026-08-21,3600.0,3600.0
 2026,8,28874,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004561,2026-08-31,3500.0,3500.0
 2026,8,28874,"Passagens, hospedagem e alimentação",Buser Brasil Tecnologia Ltda.,29365880000181,P3OFVZ,2026-08-05,158.9,158.9
@@ -44097,7 +44181,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28874,"Passagens, hospedagem e alimentação",H.D. de Carvalho e Cia Ltda.,09186571000137,623/2026,2026-08-14,266.0,266.0
 2026,8,28874,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,510,2026-08-28,65.68,65.68
 2026,8,28874,"Serviços de consultoria, assessoria e pesquisa",Candido e Candido Neto Advogados Associados,23537497000187,99,2026-08-28,6000.0,6000.0
-2026,8,28874,"Serviços de consultoria, assessoria e pesquisa",Alana Carlech Correia,,022,2026-08-31,1800.0,1800.0
+2026,8,28874,"Serviços de consultoria, assessoria e pesquisa",Alana Carlech Correia,PF,022,2026-08-31,1800.0,1800.0
 2026,8,28875,Combustível e lubrificante,Comercial Beira Rio Ltda.,18467688000180,931890,2026-06-10,225.85,225.85
 2026,8,28875,Combustível e lubrificante,Cooperativa Agro Pecuaria do Vale do Paracatu Ltda.,23153943002365,191652,2026-06-18,220.59,220.59
 2026,8,28875,Combustível e lubrificante,Braz-Petro Comercio de Combustiveis e Derivados de Petroleo Ltda.,13210937000133,92523,2026-07-02,217.64,217.64
@@ -44137,9 +44221,9 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,421306401,2026-08-21,123.54,123.54
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Microtell Scm Ltda,22457970000153,000366587,2026-08-21,94.8,94.8
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002273,2026-08-27,482.52,482.52
-2026,8,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,,,2026-08-31,1600.0,1600.0
+2026,8,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,PF,,2026-08-31,1600.0,1600.0
 2026,8,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001263,2026-08-31,416.97,416.97
-2026,8,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,,,2026-08-31,1600.0,1600.0
+2026,8,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,PF,,2026-08-31,1600.0,1600.0
 2026,8,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0019,2026-08-31,14000.0,14000.0
 2026,8,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,T&J Comercio de Papelaria Cia Ltda,41827075000128,000012311,2026-08-18,162.9,162.9
 2026,8,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,T&J Comercio de Papelaria Cia Ltda,41827075000128,000012330,2026-08-25,73.8,73.8
@@ -44181,7 +44265,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,30238,Combustível e lubrificante,Posto Serrinha Vzp Ltda.,20752820000147,602851,2026-08-02,300.05,300.05
 2026,8,30238,Combustível e lubrificante,Agora Auto Posto Ltda.,14552512000175,43397,2026-08-03,247.64,247.64
 2026,8,30238,Combustível e lubrificante,Organizações Novo Belvedere Ltda.,02898537000146,926392,2026-08-03,362.21,362.21
-2026,8,30238,Combustível e lubrificante,Posto São Rafael Combustiveis Ltda,62240605000107,113318,2026-08-03,187.0,187.0
+2026,8,30238,Combustível e lubrificante,Posto São Rafael Combustiveis Ltda.,62240605000107,113318,2026-08-03,187.0,187.0
 2026,8,30238,Combustível e lubrificante,Santa Fé Combustiveis Ltda.,26617835000189,422758,2026-08-04,312.2,312.2
 2026,8,30238,Combustível e lubrificante,Posto Wap Cristiano Machado Ltda.,22143669000175,875339,2026-08-08,215.72,215.72
 2026,8,30238,Combustível e lubrificante,Rede Dom Pedro de Postos Ltda.,20415295002037,652351,2026-08-08,277.25,277.25
@@ -44193,7 +44277,7 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,30238,Combustível e lubrificante,Comércio de Derivados de Petróleo Major Ltda.,17237017000160,367333,2026-08-14,315.69,315.69
 2026,8,30238,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1939362,2026-08-14,246.9,246.9
 2026,8,30238,Combustível e lubrificante,Posto D'Angelis Ltda.,23174519000191,2101203,2026-08-16,242.96,242.96
-2026,8,30238,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010607055,2026-08-18,619.0,619.0
+2026,8,30238,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010607055,2026-08-17,619.0,619.0
 2026,8,30238,Locação e fretamento de veículos,Ouro Preto Locações Ltda.,43211216000109,202,2026-08-30,6500.0,6500.0
 2026,8,30238,Locação e fretamento de veículos,Loc BH Locadora de Veículos Belo Horizonte Ltda.,03350577000111,19022,2026-08-31,2564.52,2564.52
 2026,8,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-07-03,48.94,48.94
@@ -44215,10 +44299,13 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,8,30238,"Passagens, hospedagem e alimentação",Paineiras Hotel Fazenda Ltda,40717558000107,2026000002706,2026-08-10,190.0,190.0
 2026,8,30238,"Passagens, hospedagem e alimentação",Gol Linhas Aereas S/A,07575651000159,MDRGCV,2026-08-12,1246.92,1246.92
 2026,8,30238,"Passagens, hospedagem e alimentação",Gol Linhas Aereas S/A,07575651000159,DOTMKQ,2026-08-12,1223.45,1223.45
-2026,8,30238,"Passagens, hospedagem e alimentação",Hotel Regina de Muriaé Ltda - Me,17608928000156,1957,2026-08-12,160.0,160.0
+2026,8,30238,"Passagens, hospedagem e alimentação",Hotel Regina de Muriaé Ltda.,17608928000156,1957,2026-08-12,160.0,160.0
 2026,8,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-08-14,28.07,28.07
 2026,8,30238,"Passagens, hospedagem e alimentação",Uber do Brasil Tecnologia Ltda.,17895646000187,,2026-08-14,22.98,22.98
 2026,8,30238,"Serviços de consultoria, assessoria e pesquisa",Sociedade de Advogados Arthur Guerra e Advogados Associados,14352422000130,370,2026-08-31,6500.0,6500.0
+2026,9,4458,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011843783,2026-09-13,619.0,619.0
+2026,9,4458,"Serviços de consultoria, assessoria e pesquisa",Larissa de Moura Guerra Almeida,PF,83,2026-09-30,5010.0,5010.0
+2026,9,4458,"Serviços de consultoria, assessoria e pesquisa",Rosa Maria Gomes da Cruz Lopes,PF,42,2026-09-30,5100.0,5100.0
 2026,9,7327,Combustível e lubrificante,Auto Posto Guatapara Ltda.,08613402000173,000.005.831,2026-08-17,1591.7,1591.7
 2026,9,7327,Combustível e lubrificante,Iguatemi Auto Posto Paraiso Ltda.,27177908000121,00000150,2026-08-26,1358.94,1358.94
 2026,9,7327,Combustível e lubrificante,Posto do Colega Sociedade Ltda.,24902363000180,00022640,2026-09-01,207.51,207.51
@@ -44228,17 +44315,334 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,9,7327,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,417298622,2026-08-10,159.86,159.86
 2026,9,7327,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,03760615-9,2026-08-27,105.77,105.77
 2026,9,7327,Locação de imóvel e despesas a ele concernentes,Giga Mais Fibra Telecomunicações S.A,07714104002401,1330986,2026-09-02,147.18,147.18
-2026,9,7327,Locação de imóvel e despesas a ele concernentes,Angélica Cristina Barbosa da Mata,,ago/2026,2026-09-10,800.0,800.0
-2026,9,7327,Locação de imóvel e despesas a ele concernentes,Paulier Soares Brandão,,ago/2026,2026-09-10,2200.0,2200.0
+2026,9,7327,Locação de imóvel e despesas a ele concernentes,Angélica Cristina Barbosa da Mata,PF,ago/2026,2026-09-10,800.0,800.0
+2026,9,7327,Locação de imóvel e despesas a ele concernentes,Paulier Soares Brandão,PF,ago/2026,2026-09-10,2200.0,2200.0
 2026,9,7327,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004576,2026-09-22,6800.0,6800.0
 2026,9,7327,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000639,2026-08-26,799.0,799.0
 2026,9,7327,Material de expediente e informática e locação de móveis e equipamentos para escritório,J.M.E Informática Ltda.,07307312000191,469,2026-09-03,970.0,970.0
 2026,9,7327,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,514,2026-09-02,432.34,432.34
+2026,9,7758,Combustível e lubrificante,Auto Posto São Jacinto Ltda.,42505241000132,91896,2026-09-01,130.02,130.02
+2026,9,7758,Combustível e lubrificante,Raydan e Lobão Comércio de Combustíveis e Lubrificantes Ltda.,30492039000134,47491,2026-09-09,230.0,230.0
+2026,9,7758,Combustível e lubrificante,Posto Karambi Ltda.,64281629000130,396188,2026-09-11,158.35,158.35
+2026,9,7758,Combustível e lubrificante,Raydan e Lobão Comércio de Combustíveis e Lubrificantes Ltda.,30492039000134,192281,2026-09-23,252.08,252.08
+2026,9,7758,Combustível e lubrificante,Auto Posto Aguiar Ltda.,04953263000176,1013343,2026-09-25,223.03,223.03
+2026,9,7758,Combustível e lubrificante,Auto Posto Montana Ltda.,02529098000102,717532,2026-09-29,150.12,150.12
+2026,9,7758,Combustível e lubrificante,Jmm Comercio de Derivados de Petroleo Ltda.,34727760000117,0000004579,2026-09-30,9832.59,9832.59
+2026,9,7758,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,37451,2026-09-30,101.72,101.72
+2026,9,7758,Locação e fretamento de veículos,Prime Veículos e Empreendimentos Ltda.,19972687000155,1718,2026-09-15,13000.0,13000.0
+2026,9,9652,Locação e fretamento de veículos,Hpe Locadora de Veículos Ltda.,46054009000186,112415762,2026-09-09,9815.0,9815.0
+2026,9,9652,Manutenção e despesas gerais com veículos,Jair Óleos Ltda.,17315433000996,48.147,2026-08-28,1093.0,1093.0
+2026,9,9652,"Passagens, hospedagem e alimentação",Cooperativa Mista de Transporte de Passageiros em Taxi B H Ltda.,25298969000111,2637,2026-09-08,1006.22,1006.22
+2026,9,9673,Combustível e lubrificante,Posto Portal de Contagem Ltda.,40819143000144,28966,2026-09-02,452.57,452.57
+2026,9,9673,Combustível e lubrificante,Posto Barão de Melo Ltda.,21626395000102,1066895,2026-09-04,360.13,360.13
+2026,9,9673,Combustível e lubrificante,Posto Amazonas Ltda.,17279670000191,190472,2026-09-12,227.03,227.03
+2026,9,9673,Combustível e lubrificante,Posto Portal de Contagem Ltda.,40819143000144,35302,2026-09-12,476.72,476.72
+2026,9,9673,Combustível e lubrificante,Posto Pio Xii Ltda.,05020360000179,146812,2026-09-19,253.95,253.95
+2026,9,9673,Combustível e lubrificante,Aquilae do Jardim Ltda.,07589892000157,218294,2026-09-22,219.24,219.24
+2026,9,9673,Combustível e lubrificante,Posto Pio Xii Ltda.,05020360000179,147898,2026-09-24,241.16,241.16
+2026,9,9673,Combustível e lubrificante,Posto Portal de Contagem Ltda.,40819143000144,42458,2026-09-24,474.45,474.45
+2026,9,9673,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1971173,2026-09-25,217.84,217.84
+2026,9,9673,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010609894,2026-08-18,485.83,485.83
+2026,9,9673,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,0001063479653,2026-09-05,182.19,182.19
+2026,9,9673,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72780,2026-08-31,4150.0,4150.0
+2026,9,9673,Material de expediente e informática e locação de móveis e equipamentos para escritório,Emc Tecnologia Ltda.,22261093000140,59229,2026-09-03,3125.0,2795.0
+2026,9,9673,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ttg Equipamentos Com e Serviços Ltda,04046917000188,2295,2026-09-09,306.42,305.84
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1261238,2026-08-31,29.18,29.18
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1262402,2026-09-01,29.79,29.79
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1263377,2026-09-02,30.71,30.71
+2026,9,9673,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,513,2026-09-02,1295.89,1295.89
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1267142,2026-09-09,33.17,33.17
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1271831,2026-09-16,29.18,29.18
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1275741,2026-09-22,30.4,30.4
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1276788,2026-09-23,33.17,33.17
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1277877,2026-09-24,35.63,35.63
+2026,9,9673,"Passagens, hospedagem e alimentação",Associação dos Servidores do Legislativo do Estado de Minas Gerais,17340266000186,1278777,2026-09-25,29.79,29.79
+2026,9,9673,"Serviços de consultoria, assessoria e pesquisa",Monteiro de Andrade Diniz Galuppo e Viana Advogados Associados,03580846000136,569,2026-08-31,7000.0,7000.0
+2026,9,10002,Combustível e lubrificante,Posto Hugo Werneck Ltda.,25723479000115,000000961,2026-09-03,3000.0,3000.0
+2026,9,10002,Combustível e lubrificante,Posto R.E.M. Ltda.,41705211000107,1161308,2026-09-03,50.0,50.0
+2026,9,10002,Combustível e lubrificante,Auto Posto Gigante Ltda.,13093320000185,72363,2026-09-04,229.99,229.99
+2026,9,10002,Combustível e lubrificante,Posto Via Cajuri Ltda.,55837055000142,142884,2026-09-04,200.0,200.0
+2026,9,10002,Combustível e lubrificante,Liberdade Combustiveis Ltda.,41213768000120,5527,2026-09-05,200.0,200.0
+2026,9,10002,Combustível e lubrificante,Posto Siga Ltda.,51391912000172,198225,2026-09-07,100.0,100.0
+2026,9,10002,Combustível e lubrificante,Auto Posto Beija Flor Ii Ltda.,32014189000168,1276965,2026-09-10,409.98,409.98
+2026,9,10002,Combustível e lubrificante,Novo Posto Seabra Ltda.,28309020000168,590575,2026-09-10,290.0,290.0
+2026,9,10002,Combustível e lubrificante,Rede Ornelas Petroleo Ltda.,51709591000101,116954,2026-09-11,250.0,250.0
+2026,9,10002,Combustível e lubrificante,Posto Garitão Ltda.,04716311000102,623187,2026-09-12,200.0,200.0
+2026,9,10002,Combustível e lubrificante,Posto Vila Fernão Dias Ltda.,08418243000156,1804411,2026-09-12,299.97,299.97
+2026,9,10002,Combustível e lubrificante,Adx Combustiveis Ltda.,45934846000137,99683,2026-09-13,201.63,201.63
+2026,9,10002,Combustível e lubrificante,Posto Jr Faisao V Ltda.,27134718000127,567492,2026-09-14,200.0,200.0
+2026,9,10002,Combustível e lubrificante,Rodo Posto Juiz de Fora Ltda.,10671749000114,1908770,2026-09-22,246.51,246.51
+2026,9,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,9936,2026-09-13,1527.2,1527.2
+2026,9,10002,"Passagens, hospedagem e alimentação",Hotel Soul Flats Ltda.,27391243000154,9935,2026-09-13,772.8,772.8
+2026,9,10002,"Passagens, hospedagem e alimentação",Pousada Sol Nascente Ltda.,03318254000140,1391,2026-09-20,602.0,602.0
+2026,9,10002,"Passagens, hospedagem e alimentação",Apart Hotel Jordania Ltda.,67945272000135,12/2026,2026-09-24,520.0,520.0
+2026,9,10002,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,VR7M7X,2026-09-24,4641.42,4641.42
+2026,9,10002,"Passagens, hospedagem e alimentação",Pousada & Hotel das Araras e Servicos Ltda.,62392754000191,202600000002112,2026-09-26,750.0,750.0
+2026,9,10002,"Passagens, hospedagem e alimentação",Pousada Sol Nascente Ltda.,03318254000140,1441,2026-09-28,1354.0,1354.0
+2026,9,10434,Combustível e lubrificante,Irmãos Silva S/A,21012190002261,1159416,2026-09-29,100.0,100.0
+2026,9,10434,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011272541,2026-09-02,619.0,619.0
+2026,9,10434,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034909,2026-09-30,14500.0,14500.0
+2026,9,10434,"Serviços de consultoria, assessoria e pesquisa",Diego de Araujo Lima Sociedade Individual de Advocacia,68455406000100,10,2026-09-30,3000.0,3000.0
+2026,9,11307,Locação e fretamento de veículos,Locadora e Construtora Shalon Ltda.,09416042000182,297,2026-09-30,6000.0,6000.0
+2026,9,11307,Locação e fretamento de veículos,Md Locadora e Serviços Ltda.,46418291000133,051,2026-09-30,7400.0,7400.0
+2026,9,11307,Locação e fretamento de veículos,Md Locadora e Serviços Ltda.,46418291000133,052,2026-09-30,3200.0,2894.12
+2026,9,12193,Combustível e lubrificante,Mauro Pereira da Silva Auto Posto Ltda.,08297118000135,293445,2026-08-10,260.05,260.05
+2026,9,12193,Combustível e lubrificante,José Ernesto Ansorge Eireli,19358621000170,148686,2026-08-19,289.38,289.38
+2026,9,12193,Combustível e lubrificante,Rodoposto Oliveira Ltda.,05333717000179,980962,2026-08-26,205.49,205.49
+2026,9,12193,Combustível e lubrificante,Santo Posto Sao Joao - Comercio de Combustiveis Ltda.,54326413000190,43837,2026-08-26,236.1,236.1
+2026,9,12193,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,34362,2026-08-28,215.79,215.79
+2026,9,12193,Combustível e lubrificante,Rede Hg de Combustiveis Ltda.,13569064004813,296574,2026-08-28,251.33,251.33
+2026,9,12193,Combustível e lubrificante,Auto Posto Jc Sales Ltda.,43513367000111,250556,2026-08-29,202.17,202.17
+2026,9,12193,Combustível e lubrificante,Tic Tac Derivados de Combustíveis Ltda.,17269218000149,1667032,2026-09-02,246.81,246.81
+2026,9,12193,Combustível e lubrificante,Posto Lupus Isabel Bueno Ltda.,02507257000160,253860,2026-09-05,164.74,164.74
+2026,9,12193,Combustível e lubrificante,Posto Jacarandá Ltda.,24163610000174,561744,2026-09-09,234.99,234.99
+2026,9,12193,Combustível e lubrificante,Rotor Combustiveis e Lubrificantes Ltda.,12370860000104,64717,2026-09-09,303.34,303.34
+2026,9,12193,Combustível e lubrificante,Roma Comercio de Combustiveis e Lubrificantes Ltda.,21859871000135,178036,2026-09-11,275.5,275.5
+2026,9,12193,Combustível e lubrificante,Vista Alegre Combustíveis Ltda.,48013331000192,3475,2026-09-11,278.13,278.13
+2026,9,12193,Combustível e lubrificante,Posto Alamo 3 Ltda.,37975766000100,569022,2026-09-12,200.0,200.0
+2026,9,12193,Combustível e lubrificante,Posto São Rafael Combustiveis Ltda.,62240605000107,132745,2026-09-12,212.99,212.99
+2026,9,12193,Combustível e lubrificante,Rede Hg de Combustiveis Ltda.,13569064004813,300241,2026-09-12,289.24,289.24
+2026,9,12193,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005791,2026-09-30,3500.0,3500.0
+2026,9,12193,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034901,2026-09-30,10500.0,10500.0
+2026,9,12202,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005788,2026-09-30,7000.0,7000.0
+2026,9,12202,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,54848,2026-08-31,361.23,361.23
+2026,9,12202,"Serviços de consultoria, assessoria e pesquisa",Alluy Richard Sérgio,PF,09/2026,2026-09-30,10500.0,10500.0
+2026,9,16234,Combustível e lubrificante,Pires Combustíveis e Serviços Ltda.,42938761000139,374614,2026-08-08,100.0,100.0
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,117127,2026-08-09,260.0,260.0
+2026,9,16234,Combustível e lubrificante,Pires Combustíveis e Serviços Ltda.,42938761000139,335331,2026-08-12,200.0,200.0
+2026,9,16234,Combustível e lubrificante,Auto Posto Ls Santos Dumont Ltda.,34776092000118,126915,2026-08-15,304.25,304.25
+2026,9,16234,Combustível e lubrificante,Posto Novo Milênio Ltda.,03541830000114,274736,2026-08-18,200.04,200.04
+2026,9,16234,Combustível e lubrificante,Petro Serra Auto Posto Ltda.,09264999000150,585463,2026-08-21,100.0,100.0
+2026,9,16234,Combustível e lubrificante,Posto Irmaos Soares Ltda.,21709431000100,58410,2026-08-21,150.0,150.0
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,117746,2026-08-21,252.45,252.45
+2026,9,16234,Combustível e lubrificante,Pires Combustíveis e Serviços Ltda.,42938761000139,377943,2026-08-26,292.0,292.0
+2026,9,16234,Combustível e lubrificante,Pires Combustiveis e Servicos Ltda,42938761000724,154847,2026-08-29,174.0,174.0
+2026,9,16234,Combustível e lubrificante,Pires Combustíveis e Serviços Ltda.,42938761000139,379061,2026-09-01,308.67,308.67
+2026,9,16234,Combustível e lubrificante,Sociedade Comercial Mercolub Ltda.,86449790000455,66754,2026-09-01,180.22,180.22
+2026,9,16234,Combustível e lubrificante,Posto Tunel Ltda.,08160834000176,955491,2026-09-04,200.0,200.0
+2026,9,16234,Combustível e lubrificante,Rede Santana Combustiveis BH I Ltda.,49052599000104,1169332,2026-09-05,200.0,200.0
+2026,9,16234,Combustível e lubrificante,Tne Combustíveis João Monlevade Ltda.,04326925000188,683878,2026-09-07,100.0,100.0
+2026,9,16234,Combustível e lubrificante,Posto São Gonçalo Ltda.,25173691000156,453952,2026-09-08,216.42,216.42
+2026,9,16234,Combustível e lubrificante,Psa Combustíveis Ltda.,07197910000155,215661,2026-09-09,212.11,212.11
+2026,9,16234,Combustível e lubrificante,Pires Combustíveis e Serviços Ltda.,42938761000139,380878,2026-09-10,278.22,278.22
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,119113,2026-09-15,238.35,238.35
+2026,9,16234,Combustível e lubrificante,Sociedade Comercial Canaã Ltda.,21504196000121,2931204,2026-09-15,419.21,419.21
+2026,9,16234,Combustível e lubrificante,Posto Novo Aeroporto Ltda.,43883971000130,259100,2026-09-16,216.97,216.97
+2026,9,16234,Combustível e lubrificante,Caratinga Combustíveis Ltda.,23981936000146,412315,2026-09-17,230.03,230.03
+2026,9,16234,Combustível e lubrificante,Auto Posto Ama Ltda.,29307486000197,632340,2026-09-19,222.91,222.91
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,119373,2026-09-20,230.05,230.05
+2026,9,16234,Combustível e lubrificante,Auto Posto Guimarães Rosa Ltda.,25168246000106,213366,2026-09-22,225.06,225.06
+2026,9,16234,Combustível e lubrificante,Auto Posto Ls Santos Dumont Ltda.,34776092000118,134154,2026-09-23,100.0,100.0
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,119547,2026-09-23,220.0,220.0
+2026,9,16234,Combustível e lubrificante,Auto Posto Rainha da Paz,23472757000183,212243,2026-09-24,150.0,150.0
+2026,9,16234,Combustível e lubrificante,Auto Posto Mendonça Ltda.,18048230000196,1833931,2026-09-25,100.0,100.0
+2026,9,16234,Combustível e lubrificante,Posto Auto Giro 2 Ltda.,11076267000189,323309,2026-09-26,200.0,200.0
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,119746,2026-09-26,220.03,220.03
+2026,9,16234,Combustível e lubrificante,A. P. Magalhães & Cia. Ltda.,21027537000115,120258,2026-09-27,200.0,200.0
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,119934,2026-09-28,224.81,224.81
+2026,9,16234,Combustível e lubrificante,R-Q-P Combustiveis Ltda.,07884310000327,120020,2026-09-29,200.0,200.0
+2026,9,16234,Locação e fretamento de veículos,Barbosa e Silva Empreendimentos Ltda.,12868111000101,103,2026-09-30,7500.0,7500.0
+2026,9,16234,Locação e fretamento de veículos,Barbosa e Silva Empreendimentos Ltda.,12868111000101,104,2026-09-30,7500.0,7500.0
+2026,9,16234,"Serviços de consultoria, assessoria e pesquisa",Fabio Miranda Sociedade Individual de Advocacia,42745005000193,12,2026-09-29,9000.0,9000.0
+2026,9,17919,Combustível e lubrificante,Posto Itapoã Ltda.,17488693000106,2415144,2026-08-03,458.12,458.12
+2026,9,17919,Combustível e lubrificante,Auto Posto Bom Jardim Ltda.,04902165000100,321439,2026-08-05,131.8,131.8
+2026,9,17919,Combustível e lubrificante,Auto Posto Bom Jardim Ltda.,04902165000100,321634,2026-08-07,158.16,158.16
+2026,9,17919,Combustível e lubrificante,"Marins, Marins e Cia Ltda.",25235292000172,311868,2026-08-12,200.02,200.02
+2026,9,17919,Combustível e lubrificante,Posto Vila Nossa Senhora de Fátima Ltda.,05462748000120,804414,2026-08-12,100.0,100.0
+2026,9,17919,Combustível e lubrificante,Posto Nova Minas Ltda.,11335529000182,120139,2026-08-13,425.4,425.4
+2026,9,17919,Combustível e lubrificante,Posto Kobu Ltda.,66416876000121,228740,2026-08-20,124.37,124.37
+2026,9,17919,Combustível e lubrificante,Petrol Combustiveis Itaobim Ltda.,50822359000112,54504,2026-08-21,132.97,132.97
+2026,9,17919,Combustível e lubrificante,Rede de Posto Tz Ltda,51598419000128,81988,2026-08-21,251.85,251.85
+2026,9,17919,Combustível e lubrificante,Posto Rio Pinheiro Ltda.,19990159000129,793963,2026-08-24,335.12,335.12
+2026,9,17919,Combustível e lubrificante,Posto Santana Ii Ltda.,86580131000100,168936,2026-08-24,150.0,150.0
+2026,9,17919,Combustível e lubrificante,São Cristovão Combustíveis Ltda.,41213704000120,30017,2026-08-28,150.0,150.0
+2026,9,17919,Combustível e lubrificante,Crs Combustiveis Iii Ltda,51884261000152,211459,2026-08-31,131.79,131.79
+2026,9,17919,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,334723,2026-09-01,135.0,135.0
+2026,9,17919,Combustível e lubrificante,Zumm Empreendimentos Ltda.,03020246000113,77209,2026-09-22,100.0,100.0
+2026,9,17919,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,000141349027833,2026-09-10,130.0,130.0
+2026,9,17919,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,012377091,2026-09-25,619.0,619.0
+2026,9,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,039915,2026-09-30,5250.0,2004.12
+2026,9,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,0034968,2026-09-30,10500.0,10500.0
+2026,9,17919,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,034914,2026-09-30,3790.0,3790.0
+2026,9,17919,"Passagens, hospedagem e alimentação",Manoel Oscar de Araújo Filho,11159025000159,2215,2026-08-23,561.0,561.0
+2026,9,17919,"Passagens, hospedagem e alimentação",Pousada Vila Vieira Ltda.,41831879000109,1588/2026,2026-09-11,390.0,390.0
+2026,9,17919,"Passagens, hospedagem e alimentação",Hotel Amantykir Ltda.,05265321000131,3104,2026-09-17,957.0,957.0
+2026,9,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00045121,2026-08-31,221.72,221.72
+2026,9,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00045557,2026-09-05,217.7,217.7
+2026,9,18022,Combustível e lubrificante,Posto Mario Werneck Limitada,03665115000193,2225868,2026-09-06,254.98,254.98
+2026,9,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00045931,2026-09-11,212.54,212.54
+2026,9,18022,Combustível e lubrificante,Posto Poeta Ltda.,05577012000105,734333,2026-09-13,250.92,250.92
+2026,9,18022,Combustível e lubrificante,Auto Posto Beija Flor Ltda.,31910917000157,00046313,2026-09-16,185.74,185.74
+2026,9,18022,Locação de imóvel e despesas a ele concernentes,Inetvip Telecom Ltda.,71195218000197,4132267,2026-09-05,118.52,118.52
+2026,9,18022,Locação de imóvel e despesas a ele concernentes,Supermercados Cidade Ltda.,66322108000109,94391,2026-09-22,405.67,231.88
+2026,9,18022,Locação de imóvel e despesas a ele concernentes,Naiara Roberta Santos da Silva,PF,09/2026,2026-09-30,640.0,640.0
+2026,9,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,692,2026-09-30,8500.0,8500.0
+2026,9,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0690,2026-09-30,2750.0,2750.0
+2026,9,18022,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0691,2026-09-30,2750.0,2750.0
+2026,9,18022,Material de expediente e informática e locação de móveis e equipamentos para escritório,Filibras Comercial Importação e Exportação Ltda,05781815000179,050004,2026-09-01,296.0,285.0
+2026,9,18022,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,55213,2026-09-29,268.78,268.78
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,125721,2026-08-26,198.32,198.32
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,125741,2026-08-27,55.01,55.01
+2026,9,18848,Combustível e lubrificante,Irmãos Braz & Cia Ltda.,23589112000125,1116006,2026-08-30,260.9,260.9
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,125974,2026-09-01,200.83,200.83
+2026,9,18848,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,34763,2026-09-01,313.08,313.08
+2026,9,18848,Combustível e lubrificante,Auto Posto Santa Lúcia Ltda.,20863338000184,621142,2026-09-03,300.01,300.01
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,126269,2026-09-07,210.42,210.42
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,126379,2026-09-09,104.01,104.01
+2026,9,18848,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,35417,2026-09-09,291.45,291.45
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,126505,2026-09-12,220.8,220.8
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,126891,2026-09-21,52.01,52.01
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,127065,2026-09-25,176.99,176.99
+2026,9,18848,Combustível e lubrificante,Posto Carrao Canjeranus Ltda,29941376000182,127141,2026-09-26,244.96,244.96
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Igor Gonçalves Oliveira Silva,52226118000136,7,2026-09-02,680.0,680.0
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,428528487,2026-09-11,69.98,69.98
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Consorcio Cemig Sim Gd I,45955360000185,0001855418,2026-09-15,411.04,411.04
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Avançar - Engenharia de Computação Eireli,09418723000180,000.026.705,2026-09-21,114.9,114.9
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001124902743,2026-09-24,393.25,262.16
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,012534899,2026-09-27,619.0,619.0
+2026,9,18848,Locação de imóvel e despesas a ele concernentes,Serviço Autônomo de Água e Esgoto Saae,23278690000140,2231726,2026-09-28,30.01,30.01
+2026,9,18848,Manutenção e despesas gerais com veículos,Niponica Comercio de Veiculos Ltda,07215045000718,000035834,2026-08-10,2009.44,2009.44
+2026,9,18848,Manutenção e despesas gerais com veículos,Niponica Comercio de Veiculos Ltda,07215045000718,2026000002246,2026-08-10,730.0,730.0
+2026,9,18848,Material de expediente e informática e locação de móveis e equipamentos para escritório,Emc Tecnologia Ltda.,22261093000140,59649,2026-09-25,1515.0,1515.0
+2026,9,18848,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,26200661888,2026-09-08,973.68,973.68
+2026,9,18848,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,560,2026-09-29,5219.69,5219.69
+2026,9,18858,Locação e fretamento de veículos,Ponto Forte Locadora de Veiculos Ltda.,11486013000139,82,2026-09-24,5443.33,5443.33
+2026,9,18858,Material de expediente e informática e locação de móveis e equipamentos para escritório,Apa Informatica e Telecomunicacoes Ltda.,18268318000113,50098,2026-09-23,816.66,751.33
+2026,9,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.003.204,2026-09-04,280.84,280.84
+2026,9,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.003.333,2026-09-11,272.13,272.13
+2026,9,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.003.496,2026-09-19,301.05,301.05
+2026,9,18860,Combustível e lubrificante,Petróleo Montes Claros Ltda.,04588291000131,000.003.671,2026-09-28,312.18,312.18
+2026,9,18860,Locação de imóvel e despesas a ele concernentes,Giuliano Cruz Barreto,PF,198521696,2026-09-15,2500.0,2500.0
+2026,9,18860,Locação e fretamento de veículos,Localiza Fleet S.A.,02286479000108,AFMTZ-3724172,2026-09-20,7073.57,7073.57
+2026,9,18860,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mcf- Outsourcing Ltda,37923951000142,10534,2026-09-30,1450.0,1450.0
+2026,9,18860,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mcf- Outsourcing Ltda,37923951000142,10563,2026-09-30,520.0,520.0
+2026,9,18860,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mcf- Outsourcing Ltda,37923951000142,10538,2026-09-30,120.0,120.0
+2026,9,19150,Combustível e lubrificante,Posto São Pedro Ltda.,16580169000106,792706,2026-09-24,181.1,181.1
+2026,9,19150,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,022315773,2026-08-01,168.99,168.99
+2026,9,19150,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,419854563,2026-08-20,178.35,178.35
+2026,9,19150,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,4580,2026-09-30,5100.0,5100.0
+2026,9,19150,"Serviços de consultoria, assessoria e pesquisa",Moura Lima e Siqueira Advogados Associados,07152492000180,370,2026-09-30,5000.0,5000.0
 2026,9,21125,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72784,2026-09-09,3700.0,3700.0
 2026,9,21125,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72783,2026-09-15,9800.0,9800.0
 2026,9,21125,Material de expediente e informática e locação de móveis e equipamentos para escritório,Dmc Informática Ltda.,08337791000151,010952,2026-09-01,380.0,380.0
 2026,9,21125,"Serviços de consultoria, assessoria e pesquisa",Moura Lima e Siqueira Advogados Associados,07152492000180,331,2026-08-31,3000.0,3000.0
 2026,9,21125,"Serviços de consultoria, assessoria e pesquisa",Augusto Paulino - Sociedade Individual de Advocacia,04688063000133,475,2026-09-01,2000.0,2000.0
+2026,9,22514,Combustível e lubrificante,Posto Zeppe São José Ltda.,17272550000162,1627864,2026-08-11,185.65,185.65
+2026,9,22514,Combustível e lubrificante,Auto Posto 81 Ltda.,06090064000107,81718,2026-08-15,219.51,219.51
+2026,9,22514,Combustível e lubrificante,Posto Riegert Ltda.,16631418000137,256922,2026-08-24,248.52,248.52
+2026,9,22514,Combustível e lubrificante,Jr Comércio de Combustíveis e Conveniência Ltda.,08575903000102,272713,2026-08-30,268.48,268.48
+2026,9,22514,Combustível e lubrificante,Auto Posto Vieira e Martins Ltda.,05072757000104,13226,2026-08-31,331.21,331.21
+2026,9,22514,Combustível e lubrificante,Posto Riegert Ltda.,16631418000137,257621,2026-08-31,144.04,144.04
+2026,9,22514,Combustível e lubrificante,Bernardes & Bastos Ltda.,19347597000173,625339,2026-09-01,305.05,305.05
+2026,9,22514,Combustível e lubrificante,Savastano e Porto Ltda.,02196687000108,347239,2026-09-03,223.38,223.38
+2026,9,22514,Combustível e lubrificante,Auto Posto 81 Ltda.,06090064000107,55205,2026-09-04,265.25,265.25
+2026,9,22514,Combustível e lubrificante,Auto Posto 2m Ltda.,03201848000177,1817710,2026-09-07,326.99,326.99
+2026,9,22514,Combustível e lubrificante,Auto Posto Rota do Sol Ltda.,01939996000168,17256,2026-09-08,266.03,266.03
+2026,9,22514,Combustível e lubrificante,Planura Comercio de Combustíveis Ltda.,38593592000175,610000,2026-09-09,290.02,290.02
+2026,9,22514,Combustível e lubrificante,Auto Posto Vip Itapagipe Ltda.,40166157000106,3269,2026-09-10,260.04,260.04
+2026,9,22514,Combustível e lubrificante,Auto Posto 2m Ltda.,03201848000177,1821244,2026-09-13,262.47,262.47
+2026,9,22514,Combustível e lubrificante,Comércio de Petróleo Xapetuba Ltda.,03042891000137,308798,2026-09-16,300.02,300.02
+2026,9,22514,Combustível e lubrificante,Auto Posto 81 Ltda.,06090064000107,55759,2026-09-17,304.59,304.59
+2026,9,22514,Combustível e lubrificante,Bernardes & Bastos Ltda.,19347597000173,631191,2026-09-17,304.99,304.99
+2026,9,22514,Combustível e lubrificante,Auto Posto 81 Ltda.,06090064000107,99342,2026-09-22,289.96,289.96
+2026,9,22514,Combustível e lubrificante,Posto Mangabeiras Ltda.,42969048000152,567086,2026-09-23,318.38,318.38
+2026,9,22514,Combustível e lubrificante,Posto Sigma Ltda.,03733135000154,342137,2026-09-26,218.5,218.5
+2026,9,22514,Combustível e lubrificante,Auto Posto 81 Ltda.,06090064000107,99664,2026-09-29,301.23,301.23
+2026,9,22514,Locação de imóvel e despesas a ele concernentes,Vicente de Paulo Araújo Júnior,PF,132720,2026-09-01,3500.0,3500.0
+2026,9,22514,Locação de imóvel e despesas a ele concernentes,Dmae - Departamento Municipal de Água e Esgoto de Uberlândia,25769548000121,08/2026,2026-09-10,119.99,119.99
+2026,9,22514,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,429655905,2026-09-15,364.4,364.4
+2026,9,22514,Locação de imóvel e despesas a ele concernentes,Algar Telecom S/A,71208516000174,558256720,2026-09-21,184.3,184.3
+2026,9,22514,Locação de imóvel e despesas a ele concernentes,Silvia Regina Ferreira,PF,09/2026,2026-09-30,280.0,280.0
+2026,9,22514,Locação e fretamento de veículos,Localiza Fleet S.A.,02286479000108,AFMTZ-3713534,2026-09-18,3746.23,3746.23
+2026,9,22514,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085000155,AFMTZ-3716204,2026-09-18,2640.0,2640.0
+2026,9,22514,Locação e fretamento de veículos,Localiza Rent A Car S/A,16670085000155,AFMTZ-3716203,2026-09-18,4600.0,4600.0
+2026,9,22514,"Passagens, hospedagem e alimentação",Rodney Silva Souza,PF,010926,2026-09-01,180.0,180.0
+2026,9,22561,Combustível e lubrificante,Posto Raja Ltda.,61066301000102,00000571,2026-09-01,3100.53,3100.53
+2026,9,22561,Combustível e lubrificante,Posto Raja Ltda.,61066301000102,00000603,2026-09-16,3017.05,3017.05
+2026,9,22561,Combustível e lubrificante,Coelho e Bichara Petroleo e Derivados Ltda.,06660777000169,13633,2026-09-22,1271.08,1271.08
+2026,9,22561,Combustível e lubrificante,Oliveira Fernandes Comércio de Combustíveis Ltda.,18425298000147,817185,2026-09-28,164.03,164.03
+2026,9,22561,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,065529107,2026-08-23,644.99,184.28
+2026,9,22561,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,071085605,2026-09-23,645.0,184.28
+2026,9,22561,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005784,2026-09-30,4300.0,4300.0
+2026,9,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,73922,2026-09-30,4200.0,4200.0
+2026,9,22561,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,73923,2026-09-30,3500.0,3500.0
+2026,9,22607,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,69578588,2026-09-16,1142.72,228.54
+2026,9,22607,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000651,2026-09-23,992.0,992.0
+2026,9,22607,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,576,2026-09-30,27.9,27.9
+2026,9,22607,"Serviços de consultoria, assessoria e pesquisa",Daniela Mattar Sociedade Individual de Advocacia,53336881000182,20,2026-09-28,4000.0,4000.0
+2026,9,22616,Combustível e lubrificante,Ib Chaves Posto de Combustiveis e Lubrificantes Ltda.,33820016000108,189619,2026-08-16,327.94,327.94
+2026,9,22616,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,103317,2026-08-19,279.18,279.18
+2026,9,22616,Combustível e lubrificante,Posto Ruralminas de Combustiveis Ltda.,34715336000152,241860,2026-08-20,197.8,197.8
+2026,9,22616,Combustível e lubrificante,Posto Curva do Retiro Ltda.,04437401000164,1143924,2026-08-23,130.43,130.43
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Brafer,25700188000101,3357494,2026-08-20,628.37,628.37
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Eduardo Bolognani Ferreira,PF,13663,2026-08-21,800.0,800.0
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Belo Horizonte,18715383000140,7/10,2026-08-21,151.75,151.75
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,010814089,2026-08-22,619.0,619.0
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,067887164,2026-09-04,149.95,146.99
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,426839131,2026-09-09,144.54,144.54
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,Jane Aparecida Gouveia das Dores,PF,09/26,2026-09-30,220.0,220.0
+2026,9,22616,Locação de imóvel e despesas a ele concernentes,José Oscar de Morais,PF,09/2026,2026-09-30,1500.0,1500.0
+2026,9,24621,Combustível e lubrificante,Auto Posto Pascoal Ltda.,03446578000164,705170,2026-08-14,218.11,218.11
+2026,9,24621,Combustível e lubrificante,Atalaia Combustíveis e Lubrificantes Ltda.,27543740000120,423727,2026-08-15,233.77,233.77
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001214,2026-09-01,191.04,191.04
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001215,2026-09-01,181.93,181.93
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001213,2026-09-01,208.31,208.31
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001236,2026-09-04,149.93,149.93
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001240/2026,2026-09-04,206.53,206.53
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001259,2026-09-08,201.39,201.39
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001263,2026-09-10,142.94,142.94
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001265,2026-09-10,59.9,59.9
+2026,9,24621,Combustível e lubrificante,Posto Arco Iris Ltda.,18915041000173,480287,2026-09-11,304.38,304.38
+2026,9,24621,Combustível e lubrificante,Posto Super Tigre Ltda.,02024746000160,260123,2026-09-13,239.09,239.09
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001285,2026-09-14,231.44,231.44
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001293,2026-09-16,81.73,81.73
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001290,2026-09-16,113.94,113.94
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001294,2026-09-16,209.72,209.72
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001306,2026-09-18,135.08,135.08
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001310,2026-09-21,188.96,188.96
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001309,2026-09-21,185.97,185.97
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001314,2026-09-21,113.55,113.55
+2026,9,24621,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001338,2026-09-28,238.7,238.7
+2026,9,24621,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011829362,2026-09-13,619.0,619.0
+2026,9,24621,Locação e fretamento de veículos,Grupo Lider Locadora de Veiculos S/A,41405527000183,534-22/36,2026-09-14,7489.0,7489.0
+2026,9,24621,Locação e fretamento de veículos,Grupo Lider Locadora de Veiculos S/A,41405527000183,0589-16/18,2026-09-14,3975.0,3975.0
+2026,9,24621,Locação e fretamento de veículos,Grupo Lider Locadora de Veiculos S/A,41405527000183,611-14/18,2026-09-14,3859.0,3859.0
+2026,9,24621,"Passagens, hospedagem e alimentação",Aline Helena Rosa Ltda.,28118847000194,939,2026-09-14,193.0,193.0
+2026,9,24621,"Passagens, hospedagem e alimentação",Aline Helena Rosa Ltda.,28118847000194,938,2026-09-14,198.0,198.0
+2026,9,24621,"Passagens, hospedagem e alimentação",Operar Hoteis Ltda.,15225143000411,2026000006795,2026-09-23,486.46,486.46
+2026,9,26098,Combustível e lubrificante,Comercial Garcia Meneses Ltda.,71171003000136,332823,2026-08-08,230.08,230.08
+2026,9,26098,Combustível e lubrificante,Posto Zeppelin Ltda.,27476355000108,1715112,2026-08-18,193.47,193.47
+2026,9,26098,Combustível e lubrificante,Posto Palha Seca Ltda.,20810584000178,813039,2026-08-24,298.27,298.27
+2026,9,26098,Combustível e lubrificante,Posto Zeppelin Ltda.,27476355000108,1722955,2026-09-01,107.05,107.05
+2026,9,26098,Combustível e lubrificante,Posto de Combustíveis Santo Agostinho Ltda.,06349404000171,300812,2026-09-02,134.47,134.47
+2026,9,26098,Combustível e lubrificante,Posto Danúbio Ltda.,17288630000106,32025,2026-09-03,146.43,146.43
+2026,9,26098,Combustível e lubrificante,Posto Beija Flor Universitario - Sl Ltda.,23436741000115,209,2026-09-04,189.27,189.27
+2026,9,26098,Combustível e lubrificante,Auto Posto Itapoã Ltda.,04702816000118,648576,2026-09-05,185.02,185.02
+2026,9,26098,Combustível e lubrificante,Comercio de Combustiveis Fermi Ltda.,60909957000187,270090,2026-09-05,160.16,160.16
+2026,9,26098,Combustível e lubrificante,Posto Bom Jesus de Aracuai Ltda.,45253766000116,80943,2026-09-05,230.02,230.02
+2026,9,26098,Combustível e lubrificante,Posto Bruna Ltda.,00247861000179,1595097,2026-09-05,291.1,291.1
+2026,9,26098,Combustível e lubrificante,Posto de Combustivel Rio Manso Ltda.,04213721000130,1534,2026-09-05,205.11,205.11
+2026,9,26098,Combustível e lubrificante,Posto Vicente Francisco Ltda.,86374618000137,153046,2026-09-05,152.44,152.44
+2026,9,26098,Combustível e lubrificante,Posto Oceano Ltda.,08401243000143,2736762,2026-09-07,218.24,218.24
+2026,9,26098,Combustível e lubrificante,Posto Olimar Comercio de Combustiveis Ltda.,14135978000175,84049,2026-09-08,169.52,169.52
+2026,9,26098,Combustível e lubrificante,"Ap Magalhaes e Cia Ltda,",21027537000387,23071,2026-09-09,157.04,157.04
+2026,9,26098,Combustível e lubrificante,Auto Posto Mangueiras Ltda.,17375551000132,785207,2026-09-11,190.02,190.02
+2026,9,26098,Combustível e lubrificante,Posto de Combustíveis Santo Agostinho Ltda.,06349404000171,303666,2026-09-11,223.2,223.2
+2026,9,26098,Combustível e lubrificante,Auto Posto Mangueiras Ltda.,17375551000132,785323,2026-09-12,217.0,217.0
+2026,9,26098,Combustível e lubrificante,Cristovao Pereira da Silva & Cia. Ltda.,04706807000367,32984,2026-09-12,137.02,137.02
+2026,9,26098,Combustível e lubrificante,Posto Oceano Ltda.,08401243000143,2744643,2026-09-14,230.92,230.92
+2026,9,26098,Combustível e lubrificante,Posto de Combustiveis Center Sul Ltda.,32650507000187,475296,2026-09-15,100.0,100.0
+2026,9,26098,Combustível e lubrificante,Posto Santa Tereza Ltda.,29077402000176,1092488,2026-09-16,170.93,170.93
+2026,9,26098,Combustível e lubrificante,Posto Zeppelin Ltda.,27476355000108,1735038,2026-09-19,177.63,177.63
+2026,9,26098,Combustível e lubrificante,Posto Coqueiros Ltda.,59428308000185,13516,2026-09-20,170.0,170.0
+2026,9,26098,Combustível e lubrificante,Posto Itapoã Ltda.,17488693000106,2439889,2026-09-21,272.92,272.92
+2026,9,26098,Combustível e lubrificante,Posto Zeppelin Ltda.,27476355000108,1736183,2026-09-21,123.03,123.03
+2026,9,26098,Combustível e lubrificante,Postos Pmg Ltda.,08474773000111,176829,2026-09-21,217.37,217.37
+2026,9,26098,Combustível e lubrificante,Auto Posto Expresso de Contagem Ltda.,38831120000103,543546,2026-09-24,355.18,355.18
+2026,9,26098,Combustível e lubrificante,Comercio e Distribuicao Sales Ltda.,05418619004040,29405,2026-09-29,236.3,236.3
+2026,9,26098,Manutenção e despesas gerais com veículos,Ab Comércio de Veículos Ltda.,07124577000154,000359574,2026-09-28,1158.94,1158.94
+2026,9,26098,Manutenção e despesas gerais com veículos,Ab Comércio de Veículos Ltda.,07124577000154,8714,2026-09-28,339.0,339.0
+2026,9,26098,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000649,2026-09-23,1230.0,1230.0
 2026,9,26105,Combustível e lubrificante,Posto Estoril Ltda.,02282319000182,810040,2026-08-19,284.65,284.65
 2026,9,26105,Combustível e lubrificante,Posto Estoril Ltda.,02282319000182,811368,2026-08-21,199.96,199.96
 2026,9,26105,Combustível e lubrificante,Posto Soberano Ltda.,10985528000110,402581,2026-08-30,264.12,264.12
@@ -44251,6 +44655,100 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,9,26105,Material de expediente e informática e locação de móveis e equipamentos para escritório,Máximo Informática Ltda.,04727240000143,0000644,2026-08-26,2020.0,2020.0
 2026,9,26105,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,26171505717,2026-08-03,644.54,644.54
 2026,9,26105,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,26198104945,2026-09-04,586.23,566.23
+2026,9,26111,"Assinatura de publicações, periódicos e ""clippings""",Sempre Editora Ltda.,26198515000484,0325134-6,2026-09-16,89.65,89.65
+2026,9,26111,Locação e fretamento de veículos,Locar New Veículos Ltda.,08659172000183,005772,2026-08-31,3400.0,3400.0
+2026,9,26111,Material de expediente e informática e locação de móveis e equipamentos para escritório,Santo Agostinho Livraria e Papelaria Ltda.,05077513000114,54870,2026-09-01,250.9,250.9
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Eletronica Nuclear Ltda.,17164872000198,22548,2026-09-01,239.64,239.64
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Algar Telecom S/A,71208516000174,557890493,2026-09-21,371.53,371.53
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,012213158,2026-09-21,339.0,339.0
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Sae Superintendencia de Agua e Esgoto,16829475000125,09/2026,2026-09-22,86.11,86.11
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Rn Negócios e Empreendimentos Ltda.,24021554000133,5042092026,2026-09-23,4303.18,4303.18
+2026,9,26114,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,435209310,2026-09-28,624.71,624.71
+2026,9,26114,Material de expediente e informática e locação de móveis e equipamentos para escritório,Dimex do Triângulo Ltda.,23342322000114,83531,2026-09-14,2281.97,2281.97
+2026,9,26114,Material de expediente e informática e locação de móveis e equipamentos para escritório,Meta Prime Tecnologia e Serviços Ltda.,28927167000111,0082,2026-09-30,290.0,290.0
+2026,9,26114,"Passagens, hospedagem e alimentação",Conectcar Instituicao de Pagamento e Solucoes de Mobilidade Eletronica S/A,16577631000299,TET6I92-09/26,2026-09-30,525.07,525.07
+2026,9,26114,"Passagens, hospedagem e alimentação",Conectcar Instituicao de Pagamento e Solucoes de Mobilidade Eletronica S/A,16577631000299,TEJ6I92-09/26,2026-09-30,525.07,525.07
+2026,9,26114,"Serviços de consultoria, assessoria e pesquisa",Andrei Vieira Mundin Luciano Sociedade Individual de Advocacia,65673786000153,8,2026-09-30,6000.0,6000.0
+2026,9,26143,Combustível e lubrificante,Posto Tocantins Ltda.,17462474000158,00030532,2026-09-29,4473.58,4473.58
+2026,9,26143,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001022146998,2026-09-01,85.0,85.0
+2026,9,26143,Locação e fretamento de veículos,Estrela Logística Ltda.,04309564000161,004448,2026-09-28,6800.0,6800.0
+2026,9,26143,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002432,2026-09-28,3500.0,3500.0
+2026,9,26143,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002431,2026-09-28,5990.0,5990.0
+2026,9,26143,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,,2026-09-30,15.77,15.77
+2026,9,26143,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Mg-050 S/A,08822767000108,,2026-09-30,36.4,36.4
+2026,9,26143,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,,2026-09-30,63.6,63.6
+2026,9,26143,"Passagens, hospedagem e alimentação",Motiva Infraestrutura de Mobilidade S/A,02846056000197,,2026-09-30,14.08,14.08
+2026,9,26143,"Serviços de consultoria, assessoria e pesquisa",Graciela Goncalves Sociedade Individual de Advocacia,51443617000112,,2026-09-25,5000.0,5000.0
+2026,9,26151,Combustível e lubrificante,Posto Santo Inácio de Loyola Ltda.,37842300000128,1769,2026-09-04,7124.22,7004.22
+2026,9,26151,Locação e fretamento de veículos,Vd Comércio de Veículos Ltda.,39786983000179,Parcela 32,2026-09-01,3441.73,3441.73
+2026,9,26151,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,31091,2026-09-30,4000.0,4000.0
+2026,9,26152,Combustível e lubrificante,Auto Posto Center Car Ltda,08546092000111,392648,2026-08-13,430.0,430.0
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,67323,2026-09-02,287.62,287.62
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,89543,2026-09-02,343.08,343.08
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,62424,2026-09-04,338.2,338.2
+2026,9,26152,Combustível e lubrificante,Fátima Auto Posto Ltda.,38558946000140,680934,2026-09-04,225.65,225.65
+2026,9,26152,Combustível e lubrificante,Auto Posto Rio Cervo Ltda.,12090263000118,324790,2026-09-05,350.59,350.59
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,270358,2026-09-06,395.91,395.91
+2026,9,26152,Combustível e lubrificante,Agenor Posto de Combustiveis Ltda.,19283605000165,896493,2026-09-09,320.02,320.02
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,67672,2026-09-11,387.1,387.1
+2026,9,26152,Combustível e lubrificante,Posto Geraldo Cypriano de Moraes Ltda.,19051820000130,2499,2026-09-12,430.02,430.02
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,50466,2026-09-13,354.83,354.83
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,50572,2026-09-16,382.02,382.02
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,67958,2026-09-18,483.52,483.52
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,63056,2026-09-21,329.75,329.75
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,50847,2026-09-22,425.9,425.9
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,91903,2026-09-22,355.77,355.77
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,92058,2026-09-24,481.84,481.84
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,92197,2026-09-25,229.36,229.36
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,92526,2026-09-27,384.99,384.99
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,92840,2026-09-28,293.17,293.17
+2026,9,26152,Combustível e lubrificante,Agenor Posto de Combustiveis Ltda.,19283605000165,941886,2026-09-29,198.59,198.59
+2026,9,26152,Combustível e lubrificante,Auto Posto Pouso Alegre Ltda.,18605436000170,63413,2026-09-30,519.57,519.57
+2026,9,26152,Combustível e lubrificante,Auto Posto Rigotti & Moraes Ltda.,03382268000123,281060,2026-09-30,369.69,369.69
+2026,9,26152,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,425643498,2026-08-30,136.02,136.02
+2026,9,26152,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,69475873,2026-09-08,401.24,261.34
+2026,9,26152,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011736797,2026-09-11,339.0,339.0
+2026,9,26152,Locação de imóvel e despesas a ele concernentes,Geilson Alves Lulu,PF,09/2026,2026-09-28,4500.0,4500.0
+2026,9,26152,Locação e fretamento de veículos,Pontual Loc Car Ltda.,12305622000107,34915,2026-09-30,10500.0,10500.0
+2026,9,26153,Combustível e lubrificante,Posto Avenida Castelo Branco Ltda.,13475285000169,911,2026-09-24,1360.06,1360.06
+2026,9,26153,Combustível e lubrificante,Auto Posto Jequitinhonha Ltda.,20496985000103,000009436,2026-09-28,1489.1,1489.1
+2026,9,26153,Combustível e lubrificante,Posto de Combustiveis Sevia Ltda.,40282697000155,3432,2026-09-29,1402.0,1402.0
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Manoel Augusto Freitas Dias,PF,169058,2026-08-14,4603.15,4600.0
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001049146236,2026-08-31,265.0,265.0
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,431368953,2026-09-18,369.96,369.96
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,012288844,2026-09-23,619.0,619.0
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,001.26.73076681-1,2026-09-28,171.83,171.83
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Marilde Ribeiro dos Reis,PF,SET/2026,2026-09-30,800.0,800.0
+2026,9,26153,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001073692568,2026-09-30,270.47,265.0
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001835,2026-09-02,334.85,334.85
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001826,2026-09-02,532.05,532.05
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001837,2026-09-03,266.8,266.8
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001849,2026-09-04,331.75,331.75
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001862,2026-09-05,160.0,160.0
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001861,2026-09-05,361.52,361.52
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001890,2026-09-12,429.25,429.25
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001904,2026-09-14,438.14,438.14
+2026,9,26164,Combustível e lubrificante,Posto Vila Paris Ltda.,37164909000195,000000362,2026-09-17,287.14,287.14
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001935,2026-09-19,159.23,159.23
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00001986,2026-09-26,342.09,342.09
+2026,9,26164,Combustível e lubrificante,Auto Posto Chale Ltda.,12941507000129,00002002,2026-09-28,443.99,443.99
+2026,9,26164,Combustível e lubrificante,Nosso Posto de Alfenas Ltda.,19355924000139,000003128,2026-09-29,779.31,779.31
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,417856377,2026-08-11,112.48,112.48
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,418415636,2026-08-12,92.97,92.97
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Condominio do Edificio Century Xxi,03974321000185,0000676070,2026-09-16,551.9,548.4
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Condominio do Edificio Century Xxi,03974321000185,0000676071,2026-09-16,545.36,541.86
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001035003392,2026-09-17,511.08,511.08
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,936/343-26-Parc.7,2026-09-21,46.46,46.46
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,936/215-26-Parc.7,2026-09-21,185.08,185.08
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Prefeitura Municipal de Juiz de Fora,18338178000102,936/216-26-Parc.7,2026-09-21,185.08,185.08
+2026,9,26164,Locação de imóvel e despesas a ele concernentes,Gervásio da Silva Barbosa,PF,09/2026,2026-09-30,3400.0,3400.0
+2026,9,26164,Material de expediente e informática e locação de móveis e equipamentos para escritório,Toner Tech Suprimentos para Impressao Ltda.,33606217000107,4232,2026-09-30,3200.0,3200.0
+2026,9,26164,"Passagens, hospedagem e alimentação",Gol Linhas Aereas S/A,07575651000159,OZGSPE,2026-08-04,4680.36,4680.36
+2026,9,26164,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,523,2026-09-02,426.85,426.85
+2026,9,28859,Combustível e lubrificante,Postos Urbano Ferraz Ltda.,21981287000158,000013832,2026-09-29,942.43,942.43
+2026,9,28859,"Passagens, hospedagem e alimentação",Cooperativa Mista de Transporte de Passageiros em Taxi B H Ltda.,25298969000111,2799,2026-09-30,399.28,399.28
+2026,9,28859,"Serviços de consultoria, assessoria e pesquisa",Luiz Felipe Gariff Sociedade Individual de Advocacia,49818378000196,14/2026,2026-09-30,8000.0,8000.0
+2026,9,28859,"Serviços de consultoria, assessoria e pesquisa",Miranda Neto Sociedade Individual de Advocacia,60807764000115,29,2026-09-30,3000.0,3000.0
 2026,9,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005479,2026-08-03,173.17,173.17
 2026,9,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005483,2026-08-03,542.43,542.43
 2026,9,28863,Combustível e lubrificante,Jr Comércio e Prestação de Serviços Ltda.,17968553000135,00005492,2026-08-04,698.74,698.74
@@ -44314,10 +44812,69 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,9,28863,"Passagens, hospedagem e alimentação",Azul Linhas Aereas Brasileiras S/A,09296295000160,SWE3MD,2026-09-13,2167.15,2167.15
 2026,9,28863,"Passagens, hospedagem e alimentação",Good Stone Curvelo Hotel Ltda.,44965712000110,4747,2026-09-17,506.0,506.0
 2026,9,28863,"Passagens, hospedagem e alimentação",Good Stone Curvelo Hotel Ltda.,44965712000110,4746,2026-09-17,253.0,253.0
+2026,9,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,480174,2026-09-04,150.38,150.38
+2026,9,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,480173,2026-09-04,269.37,269.37
+2026,9,28864,Combustível e lubrificante,Posto Veraneio Ltda.,17005646000164,1096276,2026-09-05,300.1,300.1
+2026,9,28864,Combustível e lubrificante,Rio Grande Combustíveis Ltda.,03754139000119,17414,2026-09-10,300.03,300.03
+2026,9,28864,Combustível e lubrificante,Posto Avien Ltda.,08799288000118,1177969,2026-09-12,200.0,200.0
+2026,9,28864,Combustível e lubrificante,Posto Danúbio Ltda.,17288630000106,37060,2026-09-14,260.89,260.89
+2026,9,28864,Combustível e lubrificante,Rede 1000 Ltda.,17610403000155,1562493,2026-09-14,324.25,324.25
+2026,9,28864,Combustível e lubrificante,Posto Ferrense Ltda.,19388008000103,91129,2026-09-16,317.02,317.02
+2026,9,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,484421,2026-09-18,219.99,219.99
+2026,9,28864,Combustível e lubrificante,Posto 65 Ltda.,24303721000139,484422,2026-09-18,292.29,292.29
+2026,9,28864,Combustível e lubrificante,Comercial Minas Gril Ltda.,02553038000117,1744028,2026-09-22,293.57,293.57
+2026,9,28864,Combustível e lubrificante,Organizações Junqueira Agro Pecuária Ltda.,23344625000176,132937,2026-09-22,329.08,329.08
+2026,9,28864,Combustível e lubrificante,Posto Milhao Ltda.,15335622000148,797557,2026-09-24,305.63,305.63
+2026,9,28864,Combustível e lubrificante,Posto de Combustiveis Floramar Ltda.,59267910000188,40985,2026-09-29,297.22,297.22
+2026,9,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0688,2026-09-30,3950.0,3950.0
+2026,9,28864,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0689,2026-09-30,8500.0,8500.0
+2026,9,28864,"Passagens, hospedagem e alimentação",Restaurante Encantado Ltda.,16997066000138,187644,2026-09-05,89.54,89.54
+2026,9,28864,"Passagens, hospedagem e alimentação",Rodosnack Monlevade Lanchonete e Restaurante Ltda.,09675689000129,1928819,2026-09-05,42.0,42.0
+2026,9,28864,"Passagens, hospedagem e alimentação",Caravelle Hotel Ltda.,13417957000180,18853,2026-09-16,440.0,440.0
+2026,9,28864,"Passagens, hospedagem e alimentação",Comercial Lins e Guedes Ltda.,05336082000910,158460,2026-09-16,21.5,21.5
+2026,9,28864,"Passagens, hospedagem e alimentação",Rodosnack Monlevade Lanchonete e Restaurante Ltda.,09675689000129,1942159,2026-09-17,68.2,68.2
+2026,9,28864,"Passagens, hospedagem e alimentação",Organizações Campolar Ltda.,65318727000167,130013,2026-09-18,62.13,62.13
+2026,9,28864,"Passagens, hospedagem e alimentação",Maria Faustino Comercial Ltda,26237822000184,003301,2026-09-19,37.5,37.5
+2026,9,28864,"Passagens, hospedagem e alimentação",Orzil e Mattar Ltda.,42954354000115,3276,2026-09-20,66.76,66.76
+2026,9,28864,"Passagens, hospedagem e alimentação",Hotel Vila Helmar Ltda.,13818499000190,345,2026-09-23,150.0,150.0
+2026,9,28865,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,101579,2026-08-12,348.23,348.23
+2026,9,28865,Combustível e lubrificante,Impacto Auto Posto Senador Amaral Ltda.,43490558000105,36771,2026-08-13,355.37,355.37
+2026,9,28865,Combustível e lubrificante,"Marins, Marins e Cia Ltda.",25235292000172,312788,2026-08-20,100.0,100.0
+2026,9,28865,Combustível e lubrificante,Posto Portal de Contagem Ltda.,40819143000144,20807,2026-08-20,268.66,268.66
+2026,9,28865,Combustível e lubrificante,Posto Servsul Eireli,66317835000188,530797,2026-08-20,310.01,310.01
+2026,9,28865,Combustível e lubrificante,Moreira e Filhos Comercio Petroleo Ltda.,17718156000296,339961,2026-08-23,341.5,341.5
+2026,9,28865,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1947878,2026-08-24,329.01,329.01
+2026,9,28865,Combustível e lubrificante,Posto São Sebastião Ltda.,24739294000136,55167,2026-08-25,347.11,347.11
+2026,9,28865,Combustível e lubrificante,Auto Posto Morais Cardoso Ltda.,19222661000190,403886,2026-08-28,100.0,100.0
+2026,9,28865,Combustível e lubrificante,Auto Posto Santa Monica Mr Ltda.,30840001000105,159394,2026-09-01,276.47,276.47
+2026,9,28865,Combustível e lubrificante,Fátima Auto Posto Ltda.,38558946000140,000009042,2026-09-01,1101.2,1101.2
+2026,9,28865,Combustível e lubrificante,Brito & Rodrigues Ltda.,21038716000158,859151,2026-09-02,50.0,50.0
+2026,9,28865,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1955342,2026-09-03,306.38,306.38
+2026,9,28865,Combustível e lubrificante,Rede Santana Combustiveis BH I Ltda.,49052599000104,1165729,2026-09-03,125.84,125.84
+2026,9,28865,Combustível e lubrificante,Posto Wap Amazonas Ltda.,06041725000104,1528974,2026-09-05,326.42,326.42
+2026,9,28865,Combustível e lubrificante,Postos Pmg Ltda.,08474773000464,47203,2026-09-07,260.11,260.11
+2026,9,28865,Combustível e lubrificante,Violeta I Auto Posto Ltda.,05756824000100,119088,2026-09-08,272.05,272.05
+2026,9,28865,Combustível e lubrificante,Novo Auto Posto Sandrele Ltda.,48908528000190,2178,2026-09-13,346.97,346.97
+2026,9,28865,Combustível e lubrificante,Rede Santana Combustiveis BH I Ltda.,49052599000104,1181308,2026-09-15,111.6,111.6
+2026,9,28865,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1964347,2026-09-16,327.53,327.53
+2026,9,28865,Combustível e lubrificante,Posto Camila Ltda.,21568446000197,1510978,2026-09-17,157.84,157.84
+2026,9,28865,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1968241,2026-09-22,123.96,123.96
+2026,9,28865,Combustível e lubrificante,Rede Santana Combustiveis BH I Ltda.,49052599000104,1194397,2026-09-24,109.89,109.89
+2026,9,28865,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1973971,2026-09-28,100.0,100.0
+2026,9,28865,Combustível e lubrificante,Rede Santana Combustiveis BH I Ltda.,49052599000104,1199934,2026-09-28,170.39,170.39
+2026,9,28865,Combustível e lubrificante,Auto Posto Viola e Filhos Ltda.,02082454000184,000004323,2026-09-30,3449.35,3449.35
+2026,9,28865,Combustível e lubrificante,Madine Auto Posto Ltda.,38747481000176,000010336,2026-09-30,4520.07,4520.07
+2026,9,28865,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,065775792,2026-08-23,430.0,286.67
+2026,9,28865,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,071285150,2026-09-23,430.0,286.67
+2026,9,28865,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,31095,2026-09-30,2000.0,2000.0
+2026,9,28865,Locação e fretamento de veículos,Locadora de Veículos Floresta Ltda.,07560718000181,31096,2026-09-30,11900.0,11900.0
+2026,9,28865,"Passagens, hospedagem e alimentação","Muschioni Administracao, Participacoes e Servicos Ltda.",65315707000132,1725,2026-08-04,450.0,450.0
+2026,9,28865,"Passagens, hospedagem e alimentação",Cooperativa de Rádio Comunicação de Belo Horizonte - Cooperbh-Taxi,04276357000158,527,2026-09-02,325.93,325.93
+2026,9,28865,"Passagens, hospedagem e alimentação",Hotel do Hespanhol Ltda.,24731853000161,534,2026-09-14,580.0,580.0
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Client Co Servicos de Rede Nordeste S/A,53420564000140,008666139,2026-08-05,132.66,129.82
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,416841617,2026-08-07,194.75,191.8
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A.,02558157000910,066379197,2026-08-27,220.0,220.0
-2026,9,28866,Locação de imóvel e despesas a ele concernentes,Gislaine Antonia Bernardes,,337734,2026-09-01,2507.77,2503.27
+2026,9,28866,Locação de imóvel e despesas a ele concernentes,Gislaine Antonia Bernardes,PF,337734,2026-09-01,2507.77,2503.27
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269203,2026-09-02,345.0,345.0
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Condomínio do Edifício Costa Rangel,23770217000186,269227,2026-09-02,345.0,345.0
 2026,9,28866,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011339197,2026-09-03,619.0,619.0
@@ -44325,3 +44882,226 @@ IEE202600791",2026-04-28,210.0,210.0
 2026,9,28866,Manutenção e despesas gerais com veículos,Jose dos Reis Sati,15229504000155,68,2026-09-01,520.0,520.0
 2026,9,28866,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mil Print Comercio e Servicos Ltda.,08880615000161,566,2026-08-05,84.58,84.58
 2026,9,28866,"Passagens, hospedagem e alimentação",Alelo S/A,04740876000125,0921597,2026-08-20,322.0,322.0
+2026,9,28868,Combustível e lubrificante,Auto Posto Dornelas Ltda.,03285009000184,000017027,2026-09-30,3223.46,3223.46
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Energisa Minas Rio - Distribuidora de Energia S/A,19527639000158,016603049,2026-08-26,129.54,129.54
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Intermicro Ltda.,02491874000114,000249323,2026-08-28,119.9,119.9
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Jose Marcio Imoveis Ltda.,04335735000127,08/2026,2026-09-11,175.11,175.11
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Magaly Cristina Soares da Silva,PF,08/2026,2026-09-16,1700.0,1700.0
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Intermicro Ltda.,02491874000114,000265816,2026-09-29,119.9,119.9
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Telefônica Brasil S/A,02558157000162,00001050406902,2026-09-29,64.0,64.0
+2026,9,28868,Locação de imóvel e despesas a ele concernentes,Yara de Souza Martins,PF,09/2026,2026-09-30,560.0,560.0
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Gox SA,07543400000192,2252416,2026-07-15,129.42,129.42
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,409130949,2026-07-16,117.65,117.65
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Salinas Agr Empreendimentos Imobiliários Ltda,06973206000184,95139,2026-08-09,2135.0,2133.0
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Serviço Autonômo de Água e Esgoto,21260443000191,22175072026-2,2026-08-10,97.86,97.86
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Gox SA,07543400000192,2274165,2026-08-11,129.42,129.42
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,419126040,2026-08-17,109.63,109.63
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,0012661650106-4,2026-08-20,65.35,59.57
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Claro Nxt Telecomunicacoes S/A,66970229002100,0040099102,2026-08-27,231.54,231.54
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,426631076,2026-09-09,315.16,315.16
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Salinas Agr Empreendimentos Imobiliários Ltda,06973206000184,95140,2026-09-09,2135.0,2133.0
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Tele Técnico Soluções em Informática Ltda,03379570000122,09/2026,2026-09-10,1380.0,1380.0
+2026,9,28869,Locação de imóvel e despesas a ele concernentes,Geraldo Abilio Penha Caldeira,PF,336165,2026-09-14,2827.81,2821.82
+2026,9,28869,Material de expediente e informática e locação de móveis e equipamentos para escritório,Tele Técnico Soluções em Informática Ltda,03379570000122,SETEMBRO/2026,2026-09-10,2555.0,2555.0
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Edilson Valadão da Silva Ltda.,36301843000175,862,2026-09-01,175.0,175.0
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Playnet Comunicacao e Multimidia Ltda.,45898786000144,3492,2026-09-03,159.9,159.9
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,426330136,2026-09-08,734.37,727.45
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011701518,2026-09-10,619.0,619.0
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Copasa Patos Saneamento S/A,57323717000191,000560626,2026-09-15,169.62,169.62
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Edilson Valadão da Silva Ltda.,36301843000175,964,2026-09-30,175.0,175.0
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Jose Marcos Rodrigues,PF,94411,2026-09-30,3603.0,3603.0
+2026,9,28871,Locação de imóvel e despesas a ele concernentes,Maria Malvina de Nazaré,PF,09/2026,2026-09-30,800.0,800.0
+2026,9,28871,Material de expediente e informática e locação de móveis e equipamentos para escritório,Ultraloc Ltda.,50545255000108,L10992,2026-08-31,210.0,210.0
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,273869,2026-08-07,157.12,157.12
+2026,9,28872,Combustível e lubrificante,Auto Posto Arcanjo Miguel Iii Ltda.,23370537000149,294199,2026-08-30,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Nosso Posto de Alfenas Ltda.,19355924000139,556148,2026-08-31,171.25,171.25
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,16930,2026-09-01,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Muzambão Ltda.,19311414000160,44525,2026-09-02,140.74,140.74
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274544,2026-09-02,153.22,153.22
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274549,2026-09-02,210.84,210.84
+2026,9,28872,Combustível e lubrificante,Auto Posto Arcanjo Miguel Iii Ltda.,23370537000149,294571,2026-09-03,250.0,250.0
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274567,2026-09-03,156.01,156.01
+2026,9,28872,Combustível e lubrificante,Padua de Melo Comércio e Serviço Ltda.,16994189000115,491675,2026-09-03,144.05,144.05
+2026,9,28872,Combustível e lubrificante,Posto Acácias Ltda.,09128405000184,249388,2026-09-04,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,170501,2026-09-05,144.07,144.07
+2026,9,28872,Combustível e lubrificante,Alfa Rvm Ltda.,03418121000146,4070217,2026-09-06,291.77,291.77
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,5482,2026-09-06,283.3,283.3
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000445,154042,2026-09-08,260.02,260.02
+2026,9,28872,Combustível e lubrificante,Auto Lubrificantes Maciel & Costa Ltda.,24351578000150,323321,2026-09-09,186.35,186.35
+2026,9,28872,Combustível e lubrificante,Posto Souza Ltda.,16652000000106,266270,2026-09-09,192.59,192.59
+2026,9,28872,Combustível e lubrificante,Posto Dois Irmãos Ltda.,18029074000388,262874,2026-09-10,193.56,193.56
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000364,420328,2026-09-10,200.0,200.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Arcanjo Miguel Iii Ltda.,23370537000149,295313,2026-09-11,131.42,131.42
+2026,9,28872,Combustível e lubrificante,Revamar Lopes Ltda.,02674176000154,90806,2026-09-11,135.98,135.98
+2026,9,28872,Combustível e lubrificante,Auto Posto Luiz Guerra Ltda.,42360514000106,83218,2026-09-12,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Serra Negra Ltda.,86422151000153,296513,2026-09-12,161.49,161.49
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000445,154611,2026-09-12,152.88,152.88
+2026,9,28872,Combustível e lubrificante,Auto Posto Arcanjo Miguel Iii Ltda.,23370537000149,295452,2026-09-13,250.0,250.0
+2026,9,28872,Combustível e lubrificante,Posto Super Tigre Ltda.,02024746001990,142029,2026-09-13,320.01,320.01
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,11931,2026-09-14,119.53,119.53
+2026,9,28872,Combustível e lubrificante,Auto Posto Ventania Ltda.,03691111000180,117643,2026-09-15,167.31,167.31
+2026,9,28872,Combustível e lubrificante,Comércio de Combustiveis Nova Aliança Eloi Mendes Ltda.,57697114000150,13525,2026-09-15,50.0,50.0
+2026,9,28872,Combustível e lubrificante,Posto Moreira Cabral Ltda.,12518567000133,529833,2026-09-15,286.03,286.03
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,11973,2026-09-16,169.26,169.26
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274904,2026-09-16,56.02,56.02
+2026,9,28872,Combustível e lubrificante,Revamar Lopes Ltda.,02674176000154,93174,2026-09-16,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Gigi Ltda.,07636728000153,243956,2026-09-18,150.17,150.17
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,6330,2026-09-18,190.06,190.06
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274964,2026-09-18,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274963,2026-09-18,42.93,42.93
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,274962,2026-09-18,124.77,124.77
+2026,9,28872,Combustível e lubrificante,"Marins, Marins e Cia Ltda.",25235292000172,316415,2026-09-18,241.25,241.25
+2026,9,28872,Combustível e lubrificante,Auto Posto Brasil Petro Muzambinho Ltda.,38657012000166,546751,2026-09-19,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Revamar Lopes Ltda.,02674176000154,95336,2026-09-19,242.73,242.73
+2026,9,28872,Combustível e lubrificante,Petro Qualy Comércio e Exportação Ltda.,05245166000191,387083,2026-09-20,265.64,265.64
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000364,421812,2026-09-20,250.0,250.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Santa Lúcia Ltda.,20863338000184,626722,2026-09-21,241.95,241.95
+2026,9,28872,Combustível e lubrificante,Auto Posto Sao Cristovao Ltda.,13843181000160,239935,2026-09-21,250.0,250.0
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,6464,2026-09-21,162.65,162.65
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,50948,2026-09-21,177.68,177.68
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275052,2026-09-21,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275049,2026-09-21,158.8,158.8
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000445,156157,2026-09-22,253.68,253.68
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,6568,2026-09-23,139.15,139.15
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275113,2026-09-23,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275112,2026-09-23,154.01,154.01
+2026,9,28872,Combustível e lubrificante,Auto Posto Brasil Petro Muzambinho Ltda.,38657012000166,548374,2026-09-24,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,17511,2026-09-24,203.7,203.7
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,12206,2026-09-24,164.25,164.25
+2026,9,28872,Combustível e lubrificante,Posto Super Tigre Ltda.,02024746001728,93396,2026-09-24,174.98,174.98
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275174,2026-09-25,79.24,79.24
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275165,2026-09-25,161.0,161.0
+2026,9,28872,Combustível e lubrificante,São Paulo Minas Comércio de Derivados de Petróleo Ltda.,05282048000153,346508,2026-09-25,160.03,160.03
+2026,9,28872,Combustível e lubrificante,Auto Posto Cobuccio Areadense Ltda.,38315978000115,276956,2026-09-26,196.0,196.0
+2026,9,28872,Combustível e lubrificante,Posto Rede Verde Ltda.,33817696000445,156797,2026-09-26,124.25,124.25
+2026,9,28872,Combustível e lubrificante,Auto Posto Rodochaves Ltda.,06171272000130,584716,2026-09-27,221.08,221.08
+2026,9,28872,Combustível e lubrificante,Auto Posto Santana Ltda.,18658732000139,122294,2026-09-27,222.67,222.67
+2026,9,28872,Combustível e lubrificante,Auto Posto Arcanjo Miguel Iii Ltda.,23370537000149,296640,2026-09-28,250.0,250.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Irmãos Coelho Ltda.,66315060000101,323545,2026-09-28,150.0,150.0
+2026,9,28872,Combustível e lubrificante,Cooperativa Agropecuária de Boa Esperança Ltda.,18780254002260,261158,2026-09-28,166.92,166.92
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275259,2026-09-28,117.03,117.03
+2026,9,28872,Combustível e lubrificante,Posto Super Tigre Ltda.,02024746001051,21218,2026-09-28,176.28,176.28
+2026,9,28872,Combustível e lubrificante,Auto Posto Brasil Petro Muzambinho Ltda.,38657012000166,550554,2026-09-30,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Auto Posto Santana Ltda.,18658732000139,123157,2026-09-30,222.77,222.77
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,6857,2026-09-30,128.07,128.07
+2026,9,28872,Combustível e lubrificante,Gascop Combustiveis Ltda.,32299988000128,12395,2026-09-30,203.45,203.45
+2026,9,28872,Combustível e lubrificante,Irmaos Freitas Ltda.,12448289000195,275324,2026-09-30,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Revamar Lopes Ltda.,02674176000154,106077,2026-09-30,100.0,100.0
+2026,9,28872,Combustível e lubrificante,Revamar Lopes Ltda.,02674176000154,106076,2026-09-30,213.29,213.29
+2026,9,28872,Locação de imóvel e despesas a ele concernentes,Alares Internet S/A,02952192000161,1132223,2026-08-29,133.24,133.24
+2026,9,28872,Locação de imóvel e despesas a ele concernentes,Beatriz Barbosa de Lima,PF,30-9,2026-09-23,2100.0,2100.0
+2026,9,28872,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,0012671960995-0,2026-09-24,54.4,54.4
+2026,9,28872,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,433451448,2026-09-27,124.27,124.27
+2026,9,28872,Locação e fretamento de veículos,Estrela Logística Ltda.,04309564000161,004449,2026-09-29,4990.0,4990.0
+2026,9,28872,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002435,2026-09-29,2490.0,2490.0
+2026,9,28872,Locação e fretamento de veículos,Valor Locações Ltda.,07475524000188,002436,2026-09-29,2510.0,2510.0
+2026,9,28872,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mauricio Pires Monteiro,02246376000106,00042,2026-09-26,2000.0,2000.0
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Onnet Telecomunicacoes Ltda.,03127257000105,585363,2026-08-16,99.9,99.9
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Kênia Maria de Almeida Queiroz,PF,08/2026,2026-08-31,1449.37,1449.37
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,426341241,2026-09-08,180.31,177.49
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Departamento de Agua e Esgoto de Patrocínio,20266755000140,370917910,2026-09-08,24.33,24.33
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,011678891,2026-09-10,619.0,619.0
+2026,9,28874,Locação de imóvel e despesas a ele concernentes,Wanderlea Maria de Souza Santos,PF,09/2026,2026-09-30,150.0,150.0
+2026,9,28874,Locação e fretamento de veículos,Vip Loc Veiculos Ltda.,10186946000148,004590,2026-09-30,3500.0,3500.0
+2026,9,28874,"Serviços de consultoria, assessoria e pesquisa",Alana Carlech Correia,PF,023,2026-09-30,1800.0,1800.0
+2026,9,28874,"Serviços de consultoria, assessoria e pesquisa",Candido e Candido Neto Advogados Associados,23537497000187,121,2026-09-30,6000.0,6000.0
+2026,9,28875,Combustível e lubrificante,Posto Dudu Ltda.,01096207000255,1275,2026-08-13,201.48,201.48
+2026,9,28875,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001124,2026-08-14,100.37,100.37
+2026,9,28875,Combustível e lubrificante,Sociedade França e Resende Ltda.,03635544000118,2760,2026-08-14,132.68,132.68
+2026,9,28875,Combustível e lubrificante,Tag Sul Cascol Combustíveis para Veículos Ltda,00306597006804,772854,2026-08-14,211.51,211.51
+2026,9,28875,Combustível e lubrificante,Posto Vargas de Jf Ltda,50459424000197,56387,2026-08-16,221.25,221.25
+2026,9,28875,Combustível e lubrificante,Comercio de Combustiveis Ourominas Ltda,11851012000146,253683,2026-08-18,132.44,132.44
+2026,9,28875,Combustível e lubrificante,Posto R.E.M. Ltda.,41705211000107,1154274,2026-08-18,233.0,233.0
+2026,9,28875,Combustível e lubrificante,Auto Posto Aeroporto Ltda.,08202116000115,68035,2026-08-19,193.63,193.63
+2026,9,28875,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001147,2026-08-20,104.76,104.76
+2026,9,28875,Combustível e lubrificante,Noroeste Derivados de Petróleo Ltda.,48527784000137,112956,2026-08-20,218.39,218.39
+2026,9,28875,Combustível e lubrificante,Noroeste Derivados de Petróleo Ltda.,48527784000137,112912,2026-08-20,178.61,178.61
+2026,9,28875,Combustível e lubrificante,Posto Presidente Ltda.,23158736000198,60925,2026-08-24,86.49,86.49
+2026,9,28875,Combustível e lubrificante,Posto Canecão Ltda.,16943706000127,732614,2026-08-25,100.0,100.0
+2026,9,28875,Combustível e lubrificante,Posto Quick Ltda.,17365867000143,1948297,2026-08-25,211.84,211.84
+2026,9,28875,Combustível e lubrificante,Comercial Beira Rio Ltda.,18467688000180,973546,2026-08-26,114.57,114.57
+2026,9,28875,Combustível e lubrificante,Posto Zeppelin Ltda.,27476355000108,1719727,2026-08-26,107.65,107.65
+2026,9,28875,Combustível e lubrificante,Posto Souza Chaves Ltda.,10777244000139,740701,2026-08-27,187.74,187.74
+2026,9,28875,Combustível e lubrificante,Eco Empreendimentos Comerciais Ltda.,00194032000175,114386,2026-08-28,214.17,214.17
+2026,9,28875,Combustível e lubrificante,Posto Itapoã Ltda.,17488693000106,2435729,2026-08-29,230.94,230.94
+2026,9,28875,Combustível e lubrificante,Guarapiranga Auto Posto Ltda.,47044803000101,282357,2026-08-30,126.4,126.4
+2026,9,28875,Combustível e lubrificante,Comercial de Combustiveis Portal de Minas Iii Ltda.,09600242000190,87846,2026-09-01,100.0,100.0
+2026,9,28875,Combustível e lubrificante,Noroeste Derivados de Petróleo Ltda.,48527784000137,116840,2026-09-01,100.0,100.0
+2026,9,28875,Combustível e lubrificante,Auto Posto Caravelas Ltda.,22787652000150,190048,2026-09-03,170.04,170.04
+2026,9,28875,Combustível e lubrificante,Posto Caeté Mirim Ltda.,22756944000126,583683,2026-09-04,150.0,150.0
+2026,9,28875,Combustível e lubrificante,Posto Chefao Ltda.,19751553000104,275623,2026-09-09,211.08,211.08
+2026,9,28875,Combustível e lubrificante,Rodo Posto Silvio'S Ltda.,17451576000178,210075,2026-09-09,199.89,199.89
+2026,9,28875,Combustível e lubrificante,Comercio de Combustiveis Fermi Ltda.,60909957000187,273553,2026-09-10,262.01,262.01
+2026,9,28875,Combustível e lubrificante,Belvedere Combustiveis Ltda.,18719436000109,6334,2026-09-11,451.64,451.64
+2026,9,28875,Combustível e lubrificante,Posto de Combustíveis Vila California Ltda.,37811410000122,1894257,2026-09-13,120.26,120.26
+2026,9,28875,Combustível e lubrificante,Posto Presidente Ltda.,23158736000198,71277,2026-09-13,196.68,196.68
+2026,9,28875,Combustível e lubrificante,Posto Vila Tabocão Ltda.,07012185000101,910793,2026-09-13,189.43,189.43
+2026,9,28875,Combustível e lubrificante,Organização Comercial Guimarães Ltda.,21254958000421,60990,2026-09-15,208.67,208.67
+2026,9,28875,Combustível e lubrificante,Posto J. E. Ltda.,23786734000143,178458,2026-09-15,50.0,50.0
+2026,9,28875,Combustível e lubrificante,Posto Santa Inês Minas Ltda.,21662242000110,1200506,2026-09-17,277.45,277.45
+2026,9,28875,Combustível e lubrificante,Eco Empreendimentos Comerciais Ltda.,00194032000175,120006,2026-09-24,212.69,212.69
+2026,9,28875,Combustível e lubrificante,Posto de Combustíveis Vila California Ltda.,37811410000122,1907301,2026-09-25,382.48,382.48
+2026,9,28875,Combustível e lubrificante,Posto Souza Chaves Ltda.,10777244000139,750214,2026-09-25,200.0,200.0
+2026,9,28875,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,1335,2026-09-28,465.14,465.14
+2026,9,28875,Locação e fretamento de veículos,Raja Rent A Car S/A,01338388000106,72795,2026-08-27,6282.0,6282.0
+2026,9,28875,Locação e fretamento de veículos,Conexão Locadora de Veículos Ltda,10376488000100,23719,2026-09-30,3963.5,3963.5
+2026,9,28875,Material de expediente e informática e locação de móveis e equipamentos para escritório,Studio Interativo Tecnologia da Informação Ltda,43630461000150,76,2026-08-29,750.0,750.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Hotel Faria e Spa Ltda.,14916739000152,6392,2026-07-10,322.09,322.09
+2026,9,28875,"Passagens, hospedagem e alimentação",Hotel Safira Serviços Hoteleiros Ltda,45601304000142,249,2026-07-27,860.0,860.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Viena Restaurantes,46285765002917,820916,2026-07-28,68.8,68.8
+2026,9,28875,"Passagens, hospedagem e alimentação",Bella Carne Cozinha & Sabor,53074640000102,003707,2026-07-30,145.87,145.87
+2026,9,28875,"Passagens, hospedagem e alimentação",Lm Hotel Ltda,50399205000160,0000000000004063,2026-08-14,180.0,180.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Organização Comercial Roselanche Ltda.,18960914000160,325737,2026-08-16,192.59,96.29
+2026,9,28875,"Passagens, hospedagem e alimentação",Natureba Produtos Alimenticios Ltda.,05256164000106,977,2026-08-19,159.09,159.09
+2026,9,28875,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,6 PEDÁGIOS,2026-08-26,73.1,73.1
+2026,9,28875,"Passagens, hospedagem e alimentação",Rm Hotel e Construções Ltda,60784894000180,493,2026-08-27,200.0,200.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Chicago Prime Alimentos Eireli,19099439000222,10551,2026-08-28,74.8,74.8
+2026,9,28875,"Passagens, hospedagem e alimentação",Mad Comércio de Alimentos Ltda.,39337265000115,540399,2026-08-28,64.7,64.7
+2026,9,28875,"Passagens, hospedagem e alimentação",Hotel Milênio Ltda.,03722325000176,3921,2026-08-30,195.0,195.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Hotel Milênio Ltda.,03722325000176,3920,2026-08-30,195.0,195.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Hotel Eldorado Paracatu Ltda.,03609030000198,3401,2026-09-03,760.0,760.0
+2026,9,28875,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,SEIS PEDÁGIOS,2026-09-04,73.1,73.1
+2026,9,28875,"Passagens, hospedagem e alimentação",Sem Parar Instituição de Pagamento Ltda.,04088208000165,709932891,2026-09-08,328.3,288.3
+2026,9,28875,"Serviços de consultoria, assessoria e pesquisa",Marcos Braga Sociedade Individual de Advocacia,48922171000102,7.,2026-09-08,5000.0,5000.0
+2026,9,28876,Combustível e lubrificante,Sociedade Comercial Serra Azul Ltda.,21627305000106,000008423,2026-07-31,3415.04,1609.11
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001032,2026-08-01,214.69,214.69
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001047,2026-08-03,265.01,265.01
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,000010480,2026-08-03,276.76,276.76
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001051,2026-08-04,253.35,253.35
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001083,2026-08-08,316.8,316.8
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001125,2026-08-14,320.72,320.72
+2026,9,28876,Combustível e lubrificante,Posto Jardim Holanda Ltda,51761719000186,41607,2026-08-18,281.46,281.46
+2026,9,28876,Combustível e lubrificante,Auto Posto e Restaurante do Juá Ltda.,02381298000152,340803,2026-08-19,100.0,100.0
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001162,2026-08-24,291.08,291.08
+2026,9,28876,Combustível e lubrificante,Posto Antunes Ltda.,01553073000173,24142,2026-08-25,172.68,172.68
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001216,2026-09-01,270.5,270.5
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001242,2026-09-04,373.75,373.75
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001271,2026-09-10,235.23,235.23
+2026,9,28876,Combustível e lubrificante,Auto Posto do Alemão Ltda.,42927464000198,00001279,2026-09-12,288.31,288.31
+2026,9,28876,Combustível e lubrificante,Comercial Bi Ltda.,02666850000159,56799,2026-09-13,50.0,50.0
+2026,9,28876,Combustível e lubrificante,Posto Fórmula Br Ltda.,05555642000170,458670,2026-09-23,280.92,280.92
+2026,9,28876,Combustível e lubrificante,Auto Posto Amil Ltda.,08574321000101,000006602,2026-09-30,7088.05,7088.05
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,426189698,2026-09-08,315.27,312.6
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,04061033-1,2026-09-09,11.86,11.86
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Ronald Aparecido Mendes Teixeira,36452677000108,000003772,2026-09-14,100.0,100.0
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Companhia de Saneamento de Minas Gerais,17281106000103,04266042-2,2026-09-18,45.46,45.46
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Cemig Distribuição S.A.,06981180000116,43161617711,2026-09-22,154.21,154.21
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Microtell Scm Ltda,22457970000153,000402066,2026-09-24,94.8,94.8
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Claudia José da Conceiçao,PF,09/2026,2026-09-30,1600.0,1600.0
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Cledimar Godinho Ribeiro,46696648000145,000002379,2026-09-30,519.54,519.54
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Luzima Teixeira da Silva Morais,10646848000146,000001279,2026-09-30,315.08,315.08
+2026,9,28876,Locação de imóvel e despesas a ele concernentes,Samara Alves de Freitas,PF,09/2026,2026-09-30,1600.0,1600.0
+2026,9,28876,Locação e fretamento de veículos,Egs Locadora de Veiculos Ltda,44912245000160,0020,2026-09-30,14000.0,14000.0
+2026,9,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,Sociedade Comercial Xavier Ltda.,01181232000156,000003582,2026-08-28,280.0,280.0
+2026,9,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,Mastec Cartuchos e Toners de M. Claros Ltda,09320580000179,2813,2026-09-16,100.0,100.0
+2026,9,28876,Material de expediente e informática e locação de móveis e equipamentos para escritório,Sociedade Comercial Xavier Ltda.,01181232000156,00003605,2026-09-30,400.0,400.0
+2026,9,28876,"Passagens, hospedagem e alimentação",Concessionaria da Rodovia Belo Horizonte Cristalina SA,57990933000190,,2026-09-19,48.7,48.7
+2026,9,28876,"Passagens, hospedagem e alimentação",Eco135 Concessionaria de Rodovias S/A,30265100000100,,2026-09-19,159.0,159.0
+2026,9,28877,Locação de imóvel e despesas a ele concernentes,Trevisan Empreendimentos e Participações Ltda,23901652000100,0522,2026-09-28,5600.0,5600.0
+2026,9,28877,"Serviços de consultoria, assessoria e pesquisa",Verdolim e Cancherini Advocacia,25404182000197,76,2026-09-30,4000.0,4000.0
+2026,9,28878,Locação de imóvel e despesas a ele concernentes,Starlink Brazil Serviços de Internet Ltda.,40154884000153,012337647,2026-09-24,339.0,339.0
+2026,9,28878,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0694,2026-09-30,2750.0,2750.0
+2026,9,28878,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0695,2026-09-30,2750.0,2750.0
+2026,9,28878,Locação e fretamento de veículos,Gusmarc Locações Ltda.,14360629000157,0693,2026-09-30,8500.0,8500.0
+2026,9,28878,"Serviços de consultoria, assessoria e pesquisa","Camara, Ribeiro de Oliveira e Freire Sociedade de Advogados",07965077000145,193,2026-09-30,5000.0,5000.0
+2026,9,30238,"Serviços de consultoria, assessoria e pesquisa",Sociedade de Advogados Arthur Guerra e Advogados Associados,14352422000130,406,2026-09-30,6500.0,6500.0
