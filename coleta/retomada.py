@@ -12,11 +12,14 @@ conferência.
 O que entra: os arquivos de `dados/` e `site/` diferentes do commit em que a rodada começou (INICIO_SHA; alterados, novos e
 apagados, comitados ou não) e `dados/brutos/`. Na restauração, o pacote é validado antes de qualquer extração (só arquivos
 comuns, só em dados/ e site/, sem `..` nem caminho absoluto, e os mesmos do manifesto) e é recusado se a `main` mudou, desde
-o commit de partida, algum dos arquivos que ele traz (por exemplo, a rodada do Brasil enviou outra versão): ele
-sobrescreveria um trabalho mais novo.
+o commit de partida, algum dos arquivos de dados que ele traz (por exemplo, um CSV que outra rodada enviou): ele sobrescreveria
+um trabalho mais novo. Nos arquivos gerados (GERADOS: os do site, feitos a partir dos CSVs, e a base em dados/processados/),
+fica a versão da `main` (como no passo de salvar, quando o rebase conflita com a rodada do Brasil): a lista vai para
+<pasta>/mantidos.txt, e o workflow refaz os arquivos do site com `coletar.py montar` antes das etapas essenciais.
 """
 import json
 import os
+import re
 import subprocess
 import sys
 import tarfile
@@ -25,6 +28,9 @@ from pathlib import Path
 PERMITIDOS = ("dados/", "site/")
 BRUTOS = "dados/brutos/"
 LIMITE_MB = 700  # o cache do repositório tem 10 GB; um pacote maior que isto indica algo errado
+# arquivos refeitos a partir dos CSVs (coletar.py montar, padronizar, site e situacao): no conflito, fica a versão da main
+# (a mesma regra do passo de salvar do workflow, no rebase com a rodada do Brasil)
+GERADOS = re.compile(r"^(site/dados/|site/fotos/creditos\.json$|dados/processados/)")
 
 
 class Recusa(Exception):
@@ -115,19 +121,26 @@ def restaurar(pasta, raiz="."):
         for caminho in [*manifesto["arquivos"], *manifesto["apagados"]]:
             if not _caminho_seguro(caminho):
                 raise Recusa(f"o manifesto tem um caminho inseguro: {caminho}")
-        # 2) a main não pode ter mudado nenhum dos arquivos que o pacote traz
+        # 2) a main não pode ter mudado nenhum dos arquivos de dados que o pacote traz; nos gerados, fica a versão da main
         conflitos = [c for c, base in {**manifesto["arquivos"], **manifesto["apagados"]}.items() if _blob("HEAD", c) != base]
-        if conflitos:
+        dados = [c for c in conflitos if not GERADOS.match(c)]
+        if dados:
             raise Recusa("estes arquivos mudaram na main desde a rodada que falhou (rode a rodada completa de novo): "
-                         + ", ".join(sorted(conflitos)[:20]) + (" ..." if len(conflitos) > 20 else ""))
+                         + ", ".join(sorted(dados)[:20]) + (" ..." if len(dados) > 20 else ""))
+        mantidos = set(conflitos)
         # 3) extrair
         for m in membros:
-            t.extract(m, path=".", **({"filter": "data"} if hasattr(tarfile, "data_filter") else {}))
+            if m.name not in mantidos:
+                t.extract(m, path=".", **({"filter": "data"} if hasattr(tarfile, "data_filter") else {}))
     for c in manifesto["apagados"]:
-        if os.path.exists(c):
+        if c not in mantidos and os.path.exists(c):
             os.remove(c)
-    print(f"Trabalho restaurado (partida {manifesto['base'][:8]}): {len(manifesto['arquivos'])} arquivos de dados e site, "
-          f"{manifesto['brutos']} brutos, {len(manifesto['apagados'])} apagados.")
+    (pasta / "mantidos.txt").write_text("".join(f"{c}\n" for c in sorted(mantidos)), encoding="utf-8")
+    print(f"Trabalho restaurado (partida {manifesto['base'][:8]}): {len(manifesto['arquivos']) - len(mantidos)} arquivos de dados e site, "
+          f"{manifesto['brutos']} brutos, {len(manifesto['apagados'])} apagados."
+          + (f" Ficou a versão da main (mudou depois da rodada; refeitos com coletar.py montar): {', '.join(sorted(mantidos))}."
+             if mantidos else ""))
+    return sorted(mantidos)
 
 
 def main(argv):

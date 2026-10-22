@@ -171,14 +171,28 @@ def _retomada(caso):
                  and (nova / "dados/brutos/camara.csv").exists() and not (nova / "dados/apagar.csv").exists()
                  and (nova / "site/dados/x.json").read_text() == '{"a":1}')
 
-            # conflito em dados/ e também em site/dados/ (agora conta): recusa e não extrai nada
-            for arq in ("dados/a.csv", "site/dados/x.json"):
-                outra = clone("conflito-" + arq.replace("/", "-"))
-                (outra / arq).write_text("mudou na main\n")
-                _git(outra, "commit", "-q", "-am", "outra rodada")
-                msg = _recusa(retomada.restaurar, pasta, raiz=outra)
-                os.chdir(cwd)
-                caso(f"restaurar: recusa se a main mudou {arq}", msg is not None and arq in msg and not (outra / "dados/c.csv").exists())
+            # conflito num arquivo de dados: recusa e não extrai nada
+            outra = clone("conflito-dados")
+            (outra / "dados/a.csv").write_text("mudou na main\n")
+            _git(outra, "commit", "-q", "-am", "outra rodada")
+            msg = _recusa(retomada.restaurar, pasta, raiz=outra)
+            os.chdir(cwd)
+            caso("restaurar: recusa se a main mudou dados/a.csv", msg is not None and "dados/a.csv" in msg and not (outra / "dados/c.csv").exists())
+            # conflito num arquivo gerado (site/dados/): fica a versão da main, o resto é restaurado, e a lista sai em mantidos.txt
+            outra = clone("conflito-gerado")
+            (outra / "site/dados/x.json").write_text("mudou na main\n")
+            _git(outra, "commit", "-q", "-am", "rodada do Brasil")
+            msg = _recusa(retomada.restaurar, pasta, raiz=outra)
+            os.chdir(cwd)
+            caso("restaurar: conflito só em arquivo gerado não recusa, fica o da main e restaura o resto",
+                 msg is None and (outra / "site/dados/x.json").read_text() == "mudou na main\n"
+                 and (outra / "dados/a.csv").read_text() == "2\n" and (outra / "dados/c.csv").exists()
+                 and (pasta / "mantidos.txt").read_text() == "site/dados/x.json\n")
+            # sem conflito, mantidos.txt vazio (o workflow só roda o montar se houver algo nele)
+            outra = clone("sem-conflito")
+            retomada.restaurar(pasta, raiz=outra)
+            os.chdir(cwd)
+            caso("restaurar: sem conflito, mantidos.txt vazio", (pasta / "mantidos.txt").read_text() == "")
 
             # pacote adulterado ou quebrado: recusa antes de extrair qualquer coisa
             def pacote_com(nome, membros, manifesto=None):
@@ -365,7 +379,14 @@ def _estrutura(texto, caso):
     caso("o ponto de retomada vem antes da conferência", texto.index("Ponto de retomada - guardar") < texto.index("Conferir com os sites oficiais"))
     caso("conferir e salvar têm prazo próprio", texto.count("timeout-minutes: 20") == 2)
     caso("concurrency fila sem cancelar", "group: atualizar-dados" in texto and "cancel-in-progress: false" in texto)
-    caso("a suíte de testes roda no workflow", all(t in texto for t in ("coleta.testes_pandas", "coleta.testes_gravacao", "coleta.testes_disjuntor", "coleta.testes_rodada", "coleta.testes_fontes")))
+    caso("a suíte de testes roda no workflow", all(t in texto for t in ("coleta.testes_pandas", "coleta.testes_gravacao", "coleta.testes_disjuntor", "coleta.testes_rodada", "coleta.testes_fontes", "coleta.testes_padronizar")))
+    # em 13/10/2026 o apt-get falhou antes da lista das etapas existir, e os passos finais deram "cannot open file"
+    caso("a lista das etapas é criada no primeiro passo", texto.index('touch "$RUNNER_TEMP/etapas.txt"') < texto.index("Preparar o Python"))
+    caso("os downloads são recuperados antes de qualquer passo que possa falhar",
+         texto.index("Recuperar os downloads") < min(texto.index("Preparar o Python"), texto.index("Instalar as dependências")))
+    caso("o apt-get update vem antes do install e a falha do poppler não para a rodada",
+         "apt-get update" in texto and "poppler-utils \\\n            || echo" in texto)
+    caso("a retomada refaz os arquivos do site quando ficou a versão da main", "mantidos.txt" in texto and "coletar.py montar" in texto)
 
 
 if __name__ == "__main__":

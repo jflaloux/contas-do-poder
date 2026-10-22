@@ -49,8 +49,13 @@ A primeira coleta faz alguns milhares de consultas e leva uns 20–30 minutos. T
 O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda terça-feira às 8h17**
 (horário de Brasília). Também dá para rodar na hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
 
-0. Antes de tudo, testes rápidos (`coleta/testes_pandas.py`, `testes_gravacao.py`, `testes_disjuntor.py`): se o código está quebrado,
-   a rodada para em segundos e não depois de horas de coleta. O `pandas` está fixado em `>=1.5,<3.1` (`requirements.txt`);
+0. Antes de tudo, o cache dos downloads da semana anterior (logo depois do checkout: o GitHub apaga o cache que fica 7 dias
+   sem uso, e em 13/10/2026 uma rodada que parou antes dele deixou o cache vencer; a de 20/10 começou do zero, com ~7.000
+   páginas da Câmara de uma vez, e a Câmara parou de responder no meio). Depois, testes rápidos (`coleta/testes_pandas.py`,
+   `testes_gravacao.py`, `testes_disjuntor.py`, `testes_fontes.py`, `testes_rodada.py`, `testes_padronizar.py`): se o código está quebrado,
+   a rodada para em segundos e não depois de horas de coleta. O `apt-get` (poppler, para os PDFs de Maceió, Cuiabá e Boa
+   Vista) roda com `update` antes e, se falhar, só avisa. A imagem é fixa (`ubuntu-24.04`): a troca de sistema se faz de
+   propósito, com uma rodada de teste. O `pandas` está fixado em `>=1.5,<3.1` (`requirements.txt`);
    o pandas 3 recusa `máscara & lista` e derrubou o `padronizar` em 06/10/2026. No Mac: `.venv/bin/pip install -r requirements.txt`.
 1. Baixa os dados oficiais (reaproveitando os downloads da semana anterior), **uma etapa por passo**
    (`rotina/etapa-github.sh <etapa> <minutos>`): cada etapa tem um tempo máximo e, se estourar, para sozinha, grava o
@@ -58,7 +63,11 @@ O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda 
    geral (`PRAZO_FIM`, 5h25 depois do início) que deixa 70 minutos para padronizar (30 no máximo), montar o site (15),
    a situação (5), conferir e salvar: a coleta propriamente dita tem até 4h15, e a etapa que não cabe mais é pulada. O
    limite do job é de 5h55. Antes da coleta, um passo recusa a rodada se a legislatura terminou (código 5).
-2. Monta a base e o arquivo do site.
+2. Monta a base e o arquivo do site. Uma parte da base federal (Câmara, Senado ou governo federal) que não pode ser
+   montada, porque a coleta dela falhou e falta um arquivo bruto ou por qualquer erro, fica como estava na base anterior
+   (no Git), e o resto segue (`coleta/padronizar.py`; em 20/10/2026, sem isso, a Câmara derrubou a rodada inteira). Isso
+   fica em `dados/processados/metadados.json` (`base_anterior`, com a data dos dados), na situação das fontes ("falhando",
+   com a data) e no resumo da execução, que termina com erro depois de salvar.
 3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`).
 4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site. Se o Git
    precisar trazer o que a rodada do Brasil enviou (rebase, e `coletar.py montar` quando há conflito), a conferência roda
@@ -82,9 +91,11 @@ conferência fica anexado em cada execução.
   salvou (está no resumo dela e na URL), depois de consertar o que falhou na `main`. O workflow busca o pacote no cache
   (falha se não achar) e `coleta/retomada.py restaurar` o valida **antes de extrair** (só arquivos comuns, só em `dados/` e
   `site/`, sem `..` nem caminho absoluto, os mesmos do manifesto) e **recusa se a `main` mudou, desde o commit de partida,
-  qualquer arquivo que o pacote traz** (por exemplo, a rodada do Brasil enviou outra versão: aí é preciso a rodada
-  completa). As etapas de coleta são puladas; roda padronizar, site, situação, conferência e salvar, com a mesma
-  conferência final. Leva minutos.
+  algum arquivo de dados que o pacote traz** (um CSV que outra rodada enviou: aí é preciso a rodada completa). Nos arquivos
+  gerados (`site/dados/`, `site/fotos/creditos.json`, `dados/processados/`), fica a versão da `main` e os arquivos do site
+  são refeitos com `coletar.py montar` (a mesma regra do passo de salvar). As etapas de coleta são puladas; roda
+  padronizar, site, situação, conferência e salvar, com a mesma conferência final. Leva minutos. Pela linha de comando:
+  `gh workflow run "Atualizar dados" -f retomar=true -f run_id=<número>`.
 - **Salvar:** só o `git push` publica, e ele só roda depois da conferência, que é repetida sobre a árvore final (depois
   do rebase e do `montar`); o relatório dessa conferência vai para `conferencia-final.md` fora da árvore (senão o
   `pull --rebase` seguinte falharia por árvore suja); o push tenta até 3 vezes; conferir e salvar têm 20 minutos cada.
@@ -203,7 +214,9 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   tenta no dia seguinte).
 - **Instalar a rodada do Brasil** (uma vez, num computador com macOS): `bash rotina/instalar-mac.sh` (cria o `.venv`, instala as dependências e o
   agendamento). Rodar na hora: `bash rotina/semana-brasil.sh --agora`. O registro de cada rodada fica em
-  `~/Library/Logs/ContasDoPoder/`.
+  `~/Library/Logs/ContasDoPoder/`. O agendamento chama o `zsh`, que chama o `bash`: com a pasta do projeto num disco externo,
+  o `/bin/bash` aberto direto pelo launchd não tem a permissão de "volumes removíveis" do macOS e sai com o código 126
+  ("Operation not permitted" no `launchd.log`). Conferir com `launchctl list | grep contasdopoder` (último código 0).
 
 ## Publicação (Cloudflare Pages)
 

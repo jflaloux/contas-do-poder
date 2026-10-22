@@ -18,6 +18,8 @@ Tudo por mês: alguns valores só são informados por ano (auxílio-moradia da C
 outros gastos do Senado). Dividimos o total do ano igualmente pelos meses em que o parlamentar recebeu
 salário naquele ano. É uma aproximação: essas linhas ficam com rateado=True e a descrição diz o total do ano.
 """
+import re
+import traceback
 from datetime import datetime
 
 import numpy as np
@@ -139,7 +141,24 @@ def completar_cota_com_site(cota, site, pid):
     return saida
 
 
+# Os arquivos brutos de cada parte (o robô da Câmara grava camara_cota_site.csv por último: sem ele, a coleta não terminou)
+BRUTOS_CAMARA = ("camara_deputados.json", "camara_remuneracao.csv", "camara_verba_gabinete.csv", "camara_cota.csv",
+                 "camara_cota_site.csv", "camara_moradia.csv", "camara_pessoal.csv")
+BRUTOS_SENADO = ("senado_folha.csv", "senado_ceaps.csv", "senado_outros_gastos.csv", "senado_assessores_gabinete.csv",
+                 "senado_beneficios.csv")
+BRUTOS_EXECUTIVO = ("executivo_pessoas.json", "executivo_cargos.csv", "executivo_remuneracao.csv", "executivo_jetons.csv",
+                    "executivo_viagens.csv")
+
+
+def _exigir(nomes, *extras):
+    """FileNotFoundError com todos os arquivos que faltam (a coleta daquela parte falhou ou não rodou)."""
+    faltam = [a.name for a in [*(BRUTOS / n for n in nomes), *extras] if not a.exists()]
+    if faltam:
+        raise FileNotFoundError(f"faltam {', '.join(faltam)} em dados/ (a coleta desta parte falhou ou não rodou)")
+
+
 def _camara():
+    _exigir(BRUTOS_CAMARA)
     deps = ler_json(BRUTOS / "camara_deputados.json")
     pid = {d["id"]: f"dep-{d['id']}" for d in deps}
     L = []
@@ -239,6 +258,7 @@ def _camara():
 
 # ---------------------------------------------------------------- Senado
 def _senado():
+    _exigir(BRUTOS_SENADO, CACHE / "senado" / "senadores_v2.json")
     sens = [s for s in ler_json(CACHE / "senado" / "senadores_v2.json") if s["exerceu_na_legislatura"]]
     pid = {s["id"]: f"sen-{s['id']}" for s in sens}
     L = []
@@ -355,11 +375,9 @@ def _nome_cargo(c, feminino):
 
 
 def _executivo(politicos_congresso, lanc_congresso):
-    arq = BRUTOS / "executivo_pessoas.json"
-    if not arq.exists():
-        log("  Executivo: sem dados (rode `coletar.py executivo`)")
-        return [], []
-    pessoas = ler_json(arq)
+    # sem os arquivos, a parte do governo federal fica a da base anterior (executar): nunca sai da base
+    _exigir(BRUTOS_EXECUTIVO)
+    pessoas = ler_json(BRUTOS / "executivo_pessoas.json")
     cargos = pd.read_csv(BRUTOS / "executivo_cargos.csv", dtype={"id_portal": str})
     rem = pd.read_csv(BRUTOS / "executivo_remuneracao.csv", dtype={"id_portal": str})
     # 13º: o Portal mostra o adiantamento (em geral em junho) e, no fim do ano, o 13º inteiro (o adiantamento
@@ -489,19 +507,22 @@ def _executivo(politicos_congresso, lanc_congresso):
 
 
 # ---------------------------------------------------------------- tamanho da equipe
-def _equipe(ids):
+def _equipe(ids, anteriores=None):
     """Pessoas no gabinete por mês. Câmara: secretários parlamentares (pagos pela verba de gabinete);
-    CNE aparece à parte. Senado: comissionados do gabinete e escritórios encontrados na folha (estimativa)."""
-    partes = []
+    CNE aparece à parte. Senado: comissionados do gabinete e escritórios encontrados na folha (estimativa).
+    anteriores: {casa: equipe da base anterior} das partes que não puderam ser montadas de novo (executar)."""
+    anteriores = anteriores or {}
+    partes = [eq[["id_politico", "ano", "mes", "pessoas", "cne"]] for eq in anteriores.values()]
     arq = BRUTOS / "camara_pessoal.csv"
-    if arq.exists():
+    if "camara" not in anteriores and arq.exists():
         c = pd.read_csv(arq)
         c["id_politico"] = "dep-" + c["id_deputado"].astype(str)
         partes.append(c.rename(columns={"secretarios": "pessoas"})[["id_politico", "ano", "mes", "pessoas", "cne"]])
-    s_ = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
-    s_["id_politico"] = "sen-" + s_["id_senador"].astype(str)
-    s_["cne"] = 0
-    partes.append(s_[["id_politico", "ano", "mes", "pessoas", "cne"]])
+    if "senado" not in anteriores:
+        s_ = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
+        s_["id_politico"] = "sen-" + s_["id_senador"].astype(str)
+        s_["cne"] = 0
+        partes.append(s_[["id_politico", "ano", "mes", "pessoas", "cne"]])
     eq = _na_legislatura(pd.concat(partes, ignore_index=True))
     eq = eq[eq["id_politico"].isin(ids) & ((eq["pessoas"] > 0) | (eq["cne"] > 0))]
     return eq.sort_values(["id_politico", "ano", "mes"])
@@ -557,12 +578,82 @@ def _resumo(politicos, lanc, equipe):
     return saida
 
 
+# ---------------------------------------------------------------- uma parte que falha não derruba a base
+# Em 20/10/2026 a Câmara parou de responder no meio da coleta, camara_cota_site.csv não foi gravado e o padronizar caiu:
+# a rodada inteira não salvou nada (senado, executivo, judiciário, capitais, Assembleias...). Agora, a parte que não pode
+# ser montada (arquivo bruto que falta ou qualquer erro) fica como estava na base anterior (dados/processados, no Git), e
+# isso fica anotado em metadados.json ("base_anterior"), na situação das fontes e no aviso do fim da rodada.
+PARTES = {"camara": "dep-", "senado": "sen-", "executivo": "exe-"}
+
+
+def _data_br(iso):
+    return f"{iso[8:10]}/{iso[5:7]}/{iso[:4]}" if iso else "?"
+
+
+def _base_anterior(casa):
+    """(políticos, lançamentos, equipe) da parte `casa` na base unificada anterior. Erro se não houver base anterior."""
+    prefixo = PARTES[casa]
+    politicos = [p for p in ler_json(PROCESSADOS / "politicos.json") if p.get("casa") == casa]
+    lanc = pd.read_csv(PROCESSADOS / "lancamentos.csv.gz")
+    lanc = lanc[lanc.id_politico.str.startswith(prefixo)]
+    if not politicos or lanc.empty:
+        raise RuntimeError(f"a base anterior não tem a parte {casa}")
+    L = [{"id_politico": r.id_politico, "ano": int(r.ano), "mes": None if pd.isna(r.mes) else int(r.mes), "grupo": r.grupo,
+          "categoria": r.categoria, "descricao": r.descricao, "valor": float(r.valor), "fonte": r.fonte,
+          "rateado": str(r.rateado) == "True"} for r in lanc.itertuples()]
+    equipe = pd.read_csv(PROCESSADOS / "equipe.csv")
+    return politicos, L, equipe[equipe.id_politico.str.startswith(prefixo)]
+
+
+def _detalhe_desde_anterior(meta):
+    """O DETALHE_DESDE da base anterior (a pendência dos contracheques da Câmara continua a mesma)."""
+    if "camara_detalhe_desde" in meta:
+        return meta["camara_detalhe_desde"]
+    for p in meta.get("pendencias", []):
+        if p.startswith("Câmara: o contracheque detalhado"):
+            m = re.search(r"desde (\d{2})/(\d{4})", p)
+            return int(m.group(2)) * 100 + int(m.group(1)) if m else None
+    return INICIO_LEGISLATURA[0] * 100 + INICIO_LEGISLATURA[1]  # sem pendência: todos os meses já tinham o detalhe
+
+
 def executar():
+    global DETALHE_DESDE
     log("Padronizando...")
-    pc, lc = _camara()
-    ps, ls, _liquido = _senado()  # o líquido não é guardado (regra do projeto: nada de descontos nem líquido)
+    meta_ant = ler_json(PROCESSADOS / "metadados.json") if (PROCESSADOS / "metadados.json").exists() else {}
+    anteriores, base_anterior, eq_anterior = {}, {}, {}
+
+    def parte(casa, funcao, *args):
+        """O resultado de funcao(); se ela falhar, None e a parte fica marcada para vir da base anterior."""
+        try:
+            return funcao(*args)
+        except Exception as e:  # noqa: BLE001 - qualquer erro: a parte fica como estava, e a rodada segue
+            motivo = f"{type(e).__name__}: {e}"[:400]
+            if not isinstance(e, FileNotFoundError):
+                traceback.print_exc()
+            log(f"  {casa}: a parte nova não pôde ser montada ({motivo}); fica a da base anterior")
+            ant = (meta_ant.get("base_anterior") or {}).get(casa) or {}
+            # a data dos dados: a da última base que montou esta parte (se a anterior já era cópia, a data dela continua)
+            base_anterior[casa] = {"motivo": motivo, "dados_de": ant.get("dados_de") or meta_ant.get("gerado_em")}
+            p, L, eq = _base_anterior(casa)
+            anteriores[casa] = (p, L)
+            eq_anterior[casa] = eq
+            return None
+
+    r = parte("camara", _camara)
+    pc, lc = r if r else ([], [])
+    if r is None:
+        DETALHE_DESDE = _detalhe_desde_anterior(meta_ant)
+    r = parte("senado", _senado)
+    ps, ls = r[:2] if r else ([], [])  # o líquido não é guardado (regra do projeto: nada de descontos nem líquido)
+    for casa in ("camara", "senado"):  # os lançamentos da base anterior já estão divididos por mês (o rateio não muda nada)
+        if casa in anteriores:
+            for p in anteriores[casa][0]:
+                p.pop("relacionado", None)  # a ligação com o governo é refeita abaixo, com o governo desta rodada
+            (pc if casa == "camara" else ps).extend(anteriores[casa][0])
+            (lc if casa == "camara" else ls).extend(anteriores[casa][1])
     lanc = _ratear_anuais(lc + ls)
-    pe, le = _executivo(pc + ps, pd.DataFrame(lanc))
+    r = parte("executivo", _executivo, pc + ps, pd.DataFrame(lanc))
+    pe, le = r if r else anteriores["executivo"]
     # ligação de volta: deputado/senador que foi ministro
     for e in pe:
         if e["relacionado"]:
@@ -583,13 +674,16 @@ def executar():
     gravar_json(PROCESSADOS / "politicos.json", politicos, compacto=False, indent=1)
     gravar_csv(pd.DataFrame(lanc).sort_values(["id_politico", "ano", "mes", "grupo", "categoria"]),
                PROCESSADOS / "lancamentos.csv.gz")
-    equipe = _equipe(ids)
+    equipe = _equipe(ids, eq_anterior)
     gravar_csv(equipe, PROCESSADOS / "equipe.csv")
     gravar_json(PROCESSADOS / "resumo.json", _resumo(politicos, lanc, equipe), compacto=False, indent=1, pessoas=True)
     # metadados: as categorias, os grupos e as fontes não podem sumir; as pendências podem acabar
     gravar_json(PROCESSADOS / "metadados.json", compacto=False, indent=1,
                 chaves=("categorias", "grupos", "fontes", "fontes_por_lancamento"), dados={
         "gerado_em": datetime.now().isoformat(timespec="seconds"),
+        # as partes que vieram da base anterior nesta rodada (vazio quando tudo foi montado de novo): coleta/situacao.py
+        "base_anterior": base_anterior,
+        "camara_detalhe_desde": DETALHE_DESDE,
         "legislatura": LEGISLATURA,
         "periodo": f"{INICIO_LEGISLATURA[1]:02d}/{INICIO_LEGISLATURA[0]} até hoje",
         "salario_minimo": SALARIO_MINIMO,
@@ -657,4 +751,5 @@ def executar():
     n_dep = sum(p["casa"] == "camara" for p in politicos)
     n_sen = sum(p["casa"] == "senado" for p in politicos)
     n_exe = sum(p["casa"] == "executivo" for p in politicos)
-    log(f"Base pronta: {n_dep} deputados, {n_sen} senadores, {n_exe} do governo federal, {len(lanc)} lançamentos.")
+    log(f"Base pronta: {n_dep} deputados, {n_sen} senadores, {n_exe} do governo federal, {len(lanc)} lançamentos."
+        + "".join(f" {c}: dados de {_data_br(b['dados_de'])} (base anterior)." for c, b in base_anterior.items()))

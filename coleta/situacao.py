@@ -173,6 +173,11 @@ def executar():
     coletas = {lugar: onde.ler(lugar) for lugar in onde.LUGARES}
     meses = _ultimos_meses()
     recusas, recusas_sem_fonte = recusas_ativas()
+    # partes da base federal que vieram da base anterior nesta rodada (coleta/padronizar.py): o site continua com os dados antigos
+    try:
+        base_anterior = json.loads((PROCESSADOS / "metadados.json").read_text(encoding="utf-8")).get("base_anterior") or {}
+    except (OSError, ValueError):
+        base_anterior = {}
     linhas = []
     for ch in sorted(set(meses) | set(coletas["exterior"]) | set(coletas["brasil"]) | set(recusas)):
         tent = {lugar: coletas[lugar].get(ch) for lugar in onde.LUGARES if coletas[lugar].get(ch)}
@@ -194,6 +199,13 @@ def executar():
                                    "tirar de onde.CONGELADAS)" if um and um > cg["ate"] else "")
         if fora_do_site and not erro:
             erro = "não entrou no arquivo do site (a montagem falhou: ver o log da rodada)"
+        ba = base_anterior.get(ch.split("/", 1)[1]) if ch.startswith("federal/") else None
+        if ba:  # a parte nova não entrou na base: fica a anterior (falha, mesmo que a coleta tenha dado certo)
+            falhando = True
+            situacao = "falhando" if situacao != "congelada" else situacao
+            dt = ba.get("dados_de") or ""
+            erro = (f"a base desta rodada ficou com os dados de {_dia(dt)} ({ba.get('motivo', '')[:150]})"
+                    + (f". {erro}" if erro else ""))
         if recusada and not (erro or "").startswith("Recusado"):
             erro = "Recusado por perda de cobertura (fica o dado anterior): " + "; ".join(t for t, _ in recusas[ch]) + \
                    (f". {erro}" if erro else "")

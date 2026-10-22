@@ -91,6 +91,7 @@ jobs:
           python -m coleta.testes_disjuntor
           python -m coleta.testes_fontes
           python -m coleta.testes_rodada
+          python -m coleta.testes_padronizar
 
       - name: Retomar - buscar o trabalho da rodada que não salvou (no cache privado do repositório)
         if: ${{ inputs.retomar }}
@@ -100,9 +101,13 @@ jobs:
           key: trabalho-${{ inputs.run_id }}
           fail-on-cache-miss: true
 
-      - name: Retomar - restaurar o trabalho (valida o pacote e recusa se a main mudou os mesmos arquivos)
+      - name: Retomar - restaurar o trabalho (valida o pacote e recusa se a main mudou os mesmos arquivos de dados)
         if: ${{ inputs.retomar }}
-        run: python -m coleta.retomada restaurar "$RUNNER_TEMP/trabalho"
+        run: |
+          python -m coleta.retomada restaurar "$RUNNER_TEMP/trabalho"
+          # arquivos do site que a main mudou depois da rodada (a rodada do Brasil, por exemplo): ficou a versão da main, e os
+          # arquivos do site são refeitos com os CSVs das duas rodadas (como no passo de salvar)
+          if [ -s "$RUNNER_TEMP/trabalho/mantidos.txt" ]; then python coletar.py montar; fi
 
       - name: Conferir que a legislatura não terminou
         run: |
@@ -311,7 +316,18 @@ jobs:
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as r:
               r.write("### Fontes com falha desta rodada\n" + "".join(f"- {k}: {v['falhas']} seguida(s): {v.get('ultimo_erro', '')[:120]}\n" for k, v in sorted(f.items())))
           graves = [k for k, v in f.items() if v["falhas"] >= 3]
-          if graves:
-              print("Fontes com 3 falhas seguidas ou mais:", ", ".join(graves))
+          # partes da base federal que ficaram como na base anterior (coleta/padronizar.py): a rodada salvou o resto, mas avisa
+          try:
+              ba = json.load(open("dados/processados/metadados.json")).get("base_anterior") or {}
+          except (OSError, ValueError):
+              ba = {}
+          if ba:
+              with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as r:
+                  r.write("### Base federal com partes da rodada anterior\n" + "".join(
+                      f"- {c}: dados de {(b.get('dados_de') or '?')[:10]} ({b.get('motivo', '')[:200]})\n" for c, b in sorted(ba.items())))
+              print("Partes da base federal que ficaram com os dados anteriores:", ", ".join(sorted(ba)))
+          if graves or ba:
+              if graves:
+                  print("Fontes com 3 falhas seguidas ou mais:", ", ".join(graves))
               sys.exit(1)
           PYEOF

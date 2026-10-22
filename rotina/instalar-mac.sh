@@ -20,6 +20,11 @@ echo "Python: $PYTHON ($("$PYTHON" --version))"
 .venv/bin/pip install --quiet -r requirements.txt
 .venv/bin/python -c "import coleta.onde, coleta.situacao; print('Projeto importa sem erro.')"
 
+# O launchd chama o zsh, que chama o bash: com a pasta do projeto num disco externo, o macOS pede a permissão de "volumes
+# removíveis" ao programa que o launchd abre. O /bin/bash aberto direto pelo launchd não a tem (e, por ser programa do sistema,
+# nem pode pedir): ele saía com o código 126 ("Operation not permitted" ao ler o script, em outubro de 2026). Com o zsh na
+# frente, o bash e o Python herdam a permissão do zsh. Conferir depois de instalar: launchctl list | grep contasdopoder
+# (o último código deve ser 0) e ~/Library/Logs/ContasDoPoder/launchd.log.
 ROTULO=com.contasdopoder.semana-brasil
 PLIST="$HOME/Library/LaunchAgents/$ROTULO.plist"
 mkdir -p "$HOME/Library/LaunchAgents" "$HOME/Library/Logs/ContasDoPoder"
@@ -30,7 +35,7 @@ cat > "$PLIST" <<PLISTEOF
 <dict>
   <key>Label</key><string>$ROTULO</string>
   <key>ProgramArguments</key>
-  <array><string>/bin/bash</string><string>$REPO/rotina/semana-brasil.sh</string></array>
+  <array><string>/bin/zsh</string><string>-c</string><string>/bin/bash "$REPO/rotina/semana-brasil.sh"</string></array>
   <key>StartCalendarInterval</key>
   <dict><key>Hour</key><integer>13</integer><key>Minute</key><integer>7</integer></dict>
   <key>StandardOutPath</key><string>$HOME/Library/Logs/ContasDoPoder/launchd.log</string>
