@@ -68,7 +68,9 @@ O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda 
    (no Git), e o resto segue (`coleta/padronizar.py`; em 20/10/2026, sem isso, a Câmara derrubou a rodada inteira). Isso
    fica em `dados/processados/metadados.json` (`base_anterior`, com a data dos dados), na situação das fontes ("falhando",
    com a data) e no resumo da execução, que termina com erro depois de salvar.
-3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`).
+3. Confere com os sites oficiais e faz checagens de sanidade (`coletar.py conferir --max-alertas 8`). Sem o arquivo bruto de
+   uma parte (a coleta dela falhou), aquela comparação fica "não conferido"; com a Câmara fora do ar, as páginas que não
+   abrem não contam como diferença (se nenhuma abrir, 1 alerta). A conferência não cai por isso.
 4. Se tudo estiver certo, salva os números novos neste repositório, e o Cloudflare Pages publica o site. Se o Git
    precisar trazer o que a rodada do Brasil enviou (rebase, e `coletar.py montar` quando há conflito), a conferência roda
    de novo sobre a árvore final antes do `git push`, que tenta até 3 vezes.

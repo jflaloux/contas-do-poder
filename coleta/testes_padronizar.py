@@ -1,5 +1,6 @@
 """Testes da base unificada quando uma parte falha (coleta/padronizar.py): a parte que não pode ser montada (arquivo bruto
-que falta, ou qualquer erro) fica como estava na base anterior, e a rodada segue. Em 20/10/2026 a Câmara parou de responder,
+que falta, ou qualquer erro) fica como estava na base anterior, e a rodada segue; a situação marca a parte, e a conferência
+(coleta/conferir.py) também não cai sem os brutos ou com a Câmara fora do ar. Em 20/10/2026 a Câmara parou de responder,
 camara_cota_site.csv não foi gravado, o padronizar caiu e nada foi salvo.
 
 Roda numa pasta temporária, com um pedaço da base que está no Git (dados/processados/), sem nenhum arquivo bruto (como no
@@ -58,6 +59,27 @@ def _situacao(proc, tmp):
     finally:
         for k, v in salvos.items():
             setattr(situacao, k, v)
+
+
+def _conferencia(brutos, proc):
+    """(alertas, relatório) da conferência com a pasta de teste e sem internet (a Câmara "fora do ar")."""
+    from . import conferir
+    salvos = {k: getattr(conferir, k) for k in ("BRUTOS", "PROCESSADOS", "baixar")}
+
+    def fora_do_ar(*a, **k):
+        raise ConnectionError("www.camara.leg.br não responde (teste)")
+
+    conferir.BRUTOS, conferir.PROCESSADOS, conferir.baixar = brutos, proc, fora_do_ar
+    try:
+        alertas = conferir.executar()
+    except Exception as e:  # noqa: BLE001
+        print(f"ERRO a conferência caiu: {e!r}")
+        alertas = None
+    finally:
+        for k, v in salvos.items():
+            setattr(conferir, k, v)
+    arq = proc / "conferencia.md"
+    return alertas, (arq.read_text(encoding="utf-8") if arq.exists() else "")
 
 
 def executar():
@@ -135,6 +157,13 @@ def executar():
             caso("situação: o Senado da base anterior fica 'falhando'", linhas["federal/senado"]["situacao"], "falhando")
             caso("situação: o erro diz a data dos dados", "dados de " + _dia(meta0["gerado_em"]) in (linhas["federal/senado"]["erro"] or ""), True)
             caso("situação: a Câmara (montada de novo) não leva o aviso", "base desta rodada" in (linhas["federal/camara"]["erro"] or ""), False)
+
+            # 5) a conferência também não cai sem os arquivos brutos e com a Câmara fora do ar (em 20/10/2026 ela teria caído)
+            alertas, relatorio = _conferencia(brutos, proc)
+            caso("conferência: roda sem os brutos e com a Câmara fora do ar", alertas is not None, True)
+            caso("conferência: diz o que não foi conferido", "não conferido" in relatorio and "não abriram" in relatorio, True)
+            # (o número de alertas não diz nada aqui: a base de teste é um pedaço, e a sanidade cobra 480 deputados)
+            caso("conferência: vai até o fim (sanidade e total)", "## 7. Sanidade" in relatorio and "**Total de alertas:" in relatorio, True)
         finally:
             for k, v in salvos.items():
                 setattr(padronizar, k, v)

@@ -162,19 +162,33 @@ def executar():
                    + (" Senado com número diferente de 3 em: " + ", ".join(f"{uf} ({n})" for uf, n in fora.items())
                       + " (vaga à espera do suplente, ou renúncia ainda não refletida na lista)." if fora else "") + "\n")
 
+    # partes da base que ficaram como na rodada anterior (coleta/padronizar.py): aviso, sem alerta (os números são os já conferidos)
+    try:
+        base_ant = ler_json(PROCESSADOS / "metadados.json").get("base_anterior") or {}
+    except (OSError, ValueError):
+        base_ant = {}
+    if base_ant:
+        rel += ["**Partes da base com os dados da rodada anterior** (a coleta desta rodada falhou): "
+                + "; ".join(f"{c} (dados de {(b.get('dados_de') or '?')[:10]})" for c, b in sorted(base_ant.items())), ""]
+
     # 2. Cota da Câmara vs página oficial de cada deputado
     log("Conferência: cota da Câmara vs páginas oficiais (amostra)")
     cota = lanc[lanc.categoria == "cota_parlamentar"]
     rel += ["## 2. Cota parlamentar da Câmara: nossa soma × página oficial do deputado", "",
             f"Amostra aleatória de {AMOSTRA} deputados em exercício, anos 2024 e 2025.", "",
             "| Deputado | Ano | Nossa soma | Site oficial | Diferença |", "|---|---|---:|---:|---:|"]
-    amostra = random.sample([p for p in deps if p["em_exercicio"]], AMOSTRA)
-    difs = 0
+    em_ex = [p for p in deps if p["em_exercicio"]]
+    amostra = random.sample(em_ex, min(AMOSTRA, len(em_ex)))
+    difs, sem_resposta, erro_rede = 0, 0, None
     for p in amostra:
         id_ = int(p["id"].split("-")[1])
         for ano in (2024, 2025):
             nossa = cota[(cota.id_politico == p["id"]) & (cota.ano == ano)].valor.sum()
-            oficial, _ = _cota_oficial_camara(id_, ano)
+            try:
+                oficial, _ = _cota_oficial_camara(id_, ano)
+            except Exception as e:  # noqa: BLE001 - a Câmara fora do ar não derruba a conferência (nem a rodada)
+                sem_resposta, erro_rede = sem_resposta + 1, e
+                continue
             if oficial is None:
                 continue
             dif = round(nossa - oficial, 2)
@@ -189,14 +203,25 @@ def executar():
                        + (" (explicada: mês com saldo negativo que a página não lista)" if explicada else "") + " |")
     rel += ["", f"**Resultado: {difs} diferença(s) de R$ 1 ou mais.** "
             "(Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)", ""]
+    if sem_resposta:  # sem resposta não é diferença; se nenhuma página abriu, a cota ficou sem conferir: 1 alerta
+        rel += [f"- Páginas oficiais que não abriram: {sem_resposta} de {2 * len(amostra)} ({erro_rede!r:.150})", ""]
+        problemas += 1 if sem_resposta == 2 * len(amostra) else 0
     problemas += difs
 
     # 3. Cota do Senado vs total da API "recursos utilizados"
     log("Conferência: cota do Senado vs API de recursos utilizados")
     rel += ["## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano", ""]
-    ceaps_bruto = pd.read_csv(BRUTOS / "senado_ceaps.csv")
+    # sem o arquivo bruto (a coleta do Senado falhou e a base ficou com a parte anterior, coleta/padronizar.py): não há o que
+    # comparar, e a conferência segue
+    ceaps_bruto = (pd.read_csv(BRUTOS / "senado_ceaps.csv") if (BRUTOS / "senado_ceaps.csv").exists()
+                   else pd.DataFrame(columns=["id_senador", "ano", "valor"]))
+    if ceaps_bruto.empty:
+        rel += ["- Sem dados/brutos/senado_ceaps.csv nesta rodada (a coleta do Senado falhou): não conferido.", ""]
+        sens_cmp = []
+    else:
+        sens_cmp = sens
     total, difs_s, exemplos, ignorados = 0, 0, [], 0
-    for p in sens:
+    for p in sens_cmp:
         cod = p["id"].split("-")[1]
         for arq in (CACHE / "senado" / "recursos").glob(f"{cod}_*.json"):
             ano = int(arq.stem.split("_")[1])
@@ -225,17 +250,25 @@ def executar():
 
     # 4. Auxílio-moradia da Câmara: total do ano vs resumo da página oficial
     log("Conferência: auxílio-moradia da Câmara")
-    html = baixar(f"{SITE}/transparencia/gastos-parlamentares/").text
-    texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
-    m = re.search(r"auxílio-moradia:\s*R\$\s*([\d\.,]+)", texto)
-    oficial = numero_br(m.group(1)) if m else None
-    mor = pd.read_csv(BRUTOS / "camara_moradia.csv")
-    nossa = round(mor[mor.ano == ULTIMO_MES[0]].auxilio_moradia.sum(), 2)
-    ok = oficial is not None and abs(nossa - oficial) < 1
-    rel += ["## 4. Auxílio-moradia da Câmara no ano (todos os deputados)", "",
-            f"- Nossa soma {ULTIMO_MES[0]}: R$ {nossa:,.2f}", f"- Página oficial: R$ {oficial:,.2f}" if oficial else "- Página oficial: não encontrado",
-            f"- **{'OK' if ok else 'DIFERENTE'}**", ""]
-    problemas += 0 if ok else 1
+    if (BRUTOS / "camara_moradia.csv").exists():
+        try:
+            html = baixar(f"{SITE}/transparencia/gastos-parlamentares/").text
+        except Exception as e:  # noqa: BLE001 - a Câmara fora do ar: não conferido (1 alerta), sem derrubar a conferência
+            log(f"Conferência: a página do auxílio-moradia não abriu ({e!r:.120})")
+            html = ""
+        texto = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html))
+        m = re.search(r"auxílio-moradia:\s*R\$\s*([\d\.,]+)", texto)
+        oficial = numero_br(m.group(1)) if m else None
+        mor = pd.read_csv(BRUTOS / "camara_moradia.csv")
+        nossa = round(mor[mor.ano == ULTIMO_MES[0]].auxilio_moradia.sum(), 2)
+        ok = oficial is not None and abs(nossa - oficial) < 1
+        rel += ["## 4. Auxílio-moradia da Câmara no ano (todos os deputados)", "",
+                f"- Nossa soma {ULTIMO_MES[0]}: R$ {nossa:,.2f}", f"- Página oficial: R$ {oficial:,.2f}" if oficial else "- Página oficial: não encontrado",
+                f"- **{'OK' if ok else 'DIFERENTE'}**", ""]
+        problemas += 0 if ok else 1
+    else:  # a coleta da Câmara falhou antes da moradia: a base ficou com a parte anterior (coleta/padronizar.py)
+        rel += ["## 4. Auxílio-moradia da Câmara no ano (todos os deputados)", "",
+                "- Sem dados/brutos/camara_moradia.csv nesta rodada (a coleta da Câmara falhou): não conferido.", ""]
 
     # 5. Salários fora do padrão (para revisar à mão)
     sal = lanc[lanc.categoria == "salario"]
@@ -248,16 +281,19 @@ def executar():
     rel.append("")
 
     # 6. Assessores do Senado: pessoas na nossa conta × API
-    pessoal = pd.read_csv(BRUTOS / "senado_pessoal.csv")
-    gab = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
-    ultimo = gab[(gab.ano * 100 + gab.mes) == (gab.ano * 100 + gab.mes).max()]
-    api = pessoal[pessoal.ano == ULTIMO_MES[0]].groupby("id_senador").quantidade.sum()
-    cmp = ultimo.set_index("id_senador").join(api.rename("api")).dropna()
-    cmp["dif"] = cmp.pessoas - cmp.api
-    rel += ["## 6. Senado: assessores encontrados na folha × quantidade informada pela API", "",
-            f"- Senadores comparados: {len(cmp)}",
-            f"- Diferença mediana: {cmp.dif.median():.0f} pessoa(s); casos com diferença > 5: {(cmp.dif.abs() > 5).sum()}",
-            "- Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).", ""]
+    rel += ["## 6. Senado: assessores encontrados na folha × quantidade informada pela API", ""]
+    if (BRUTOS / "senado_pessoal.csv").exists() and (BRUTOS / "senado_assessores_gabinete.csv").exists():
+        pessoal = pd.read_csv(BRUTOS / "senado_pessoal.csv")
+        gab = pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv")
+        ultimo = gab[(gab.ano * 100 + gab.mes) == (gab.ano * 100 + gab.mes).max()]
+        api = pessoal[pessoal.ano == ULTIMO_MES[0]].groupby("id_senador").quantidade.sum()
+        cmp = ultimo.set_index("id_senador").join(api.rename("api")).dropna()
+        cmp["dif"] = cmp.pessoas - cmp.api
+        rel += [f"- Senadores comparados: {len(cmp)}",
+                f"- Diferença mediana: {cmp.dif.median():.0f} pessoa(s); casos com diferença > 5: {(cmp.dif.abs() > 5).sum()}",
+                "- Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).", ""]
+    else:
+        rel += ["- Sem os arquivos brutos do Senado nesta rodada (a coleta falhou): não conferido.", ""]
 
     # 7. Sanidade: se algo grande quebrou (uma fonte fora do ar, um site que mudou de layout),
     #    estes números despencam. Cada falha soma 10 alertas e trava a publicação automática.
