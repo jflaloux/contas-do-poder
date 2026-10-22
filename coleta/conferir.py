@@ -179,6 +179,12 @@ def executar():
             "| Deputado | Ano | Nossa soma | Site oficial | Diferença |", "|---|---|---:|---:|---:|"]
     em_ex = [p for p in deps if p["em_exercicio"]]
     amostra = random.sample(em_ex, min(AMOSTRA, len(em_ex)))
+    if "camara" in base_ant:
+        # a Câmara ficou com a base anterior (já conferida quando foi publicada): comparar dados antigos com o site de hoje só
+        # mostraria o que mudou no site desde então (em 22/10/2026, 6 diferenças na base de 07/10, que tinha dado 1)
+        rel.append(f"| (não conferido: a Câmara ficou com os dados de {(base_ant['camara'].get('dados_de') or '?')[:10]}, "
+                   "conferidos quando foram publicados) | | | | |")
+        amostra = []
     difs, sem_resposta, erro_rede = 0, 0, None
     for p in amostra:
         id_ = int(p["id"].split("-")[1])
