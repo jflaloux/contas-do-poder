@@ -17,7 +17,8 @@ name: Atualizar dados
 
 on:
   schedule:
-    # Toda terça-feira às 8h17 de Brasília (11h17 UTC).
+    # Toda terça-feira às 8h17 de Brasília (11h17 UTC). O GitHub atrasa o disparo agendado em várias horas (em 06, 13 e
+    # 20/10/2026: 5h56, 7h03 e 4h22 depois); a execução só aparece na lista quando começa.
     # Semanal, e não mensal, porque o GitHub apaga o cache de downloads que fica 7 dias sem uso.
     - cron: "17 11 * * 2"
   workflow_dispatch: # botão "Run workflow", para rodar na hora

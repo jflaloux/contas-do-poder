@@ -47,7 +47,9 @@ A primeira coleta faz alguns milhares de consultas e leva uns 20–30 minutos. T
 ## Atualização automática
 
 O robô do GitHub Actions (`.github/workflows/atualizar-dados.yml`) roda **toda terça-feira às 8h17**
-(horário de Brasília). Também dá para rodar na hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
+(horário de Brasília). O GitHub atrasa o disparo agendado: em 06, 13 e 20/10/2026 a rodada começou 5h56, 7h03 e 4h22 depois
+do horário, e nenhuma execução aparece antes disso (não é rodada perdida nem workflow desligado). Também dá para rodar na
+hora: aba **Actions** → **Atualizar dados** → **Run workflow**.
 
 0. Antes de tudo, o cache dos downloads da semana anterior (logo depois do checkout: o GitHub apaga o cache que fica 7 dias
    sem uso, e em 13/10/2026 uma rodada que parou antes dele deixou o cache vencer; a de 20/10 começou do zero, com ~7.000
