@@ -93,6 +93,15 @@ def executar():
     caso("montar: o site mostra 'Pessoa física' e nunca o nome de quem não tem CNPJ",
          "Pessoa física" in nomes and "Posto Bom Ltda" in nomes and "Fulano de Tal" in nomes
          and not any(n in tipos.lista for n in ("Maria da Silva Souza", "Beltrano Souza")))
+    # verba da Câmara do Recife congelada (27/10/2026): a fonte não é pulada (a folha continua) e o robô não chama a verba
+    from unittest import mock
+    from . import onde, situacao
+    from .vereadores import recife
+    caso("Recife: congelamento só da verba não pula a fonte", onde.CONGELADAS["vereadores/recife"].get("so_a_verba") and not onde.congelada("vereadores/recife"))
+    with mock.patch.object(recife, "mandatos"), mock.patch.object(recife, "folha"), mock.patch.object(recife, "verba") as v:
+        recife.coletar()
+    caso("Recife: coletar() não chama a verba", not v.called)
+    caso("Recife: a verba mostrada vai até o mês congelado (dez/2025)", recife.VERBA_ATE == 202512)
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 

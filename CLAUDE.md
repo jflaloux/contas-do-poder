@@ -190,6 +190,11 @@ armadilhas que não estão escritas em outro lugar.
 - Uma etapa que falha não pode derrubar a rodada: o `padronizar` monta cada parte (Câmara, Senado, governo federal) à parte
   e a que falha fica como na base anterior (`base_anterior` em `metadados.json`). Etapa nova que alimenta a base ou o site:
   o mesmo cuidado (arquivo que falta = usar o anterior e marcar, nunca cair).
+- Verba da Câmara do Recife (`vereadores/recife`): congelada em 27/10/2026, por decisão do Jean-François, porque o servidor da
+  Câmara responde HTTP 500 à consulta da verba de ~14 vereadores em 2025 e ~22 em 2026 desde 20/10/2026 (também do Mac). É um
+  congelamento só da verba (`"so_a_verba"` em `onde.CONGELADAS`): a folha e a lista de vereadores seguem; `recife.coletar()` não
+  chama `verba()`, e a montagem usa só a verba até dez/2025 (lida inteira antes), ignorando `verba_erros.csv`. Sem isto, o
+  `montar` recusava o `camaras.json` em cada rodada (o ano com erro sai para todos). Não reativar sem o OK dele.
 - Rodada do Brasil (launchd): a pasta do projeto fica num disco externo, e o `/bin/bash` aberto direto pelo launchd não tem a
   permissão de "volumes removíveis" (sai com 126, "Operation not permitted" no `launchd.log`); o agendamento chama o `zsh`,
   que chama o `bash` (`rotina/instalar-mac.sh`). Um limpador do Mac apagou `~/Library/Logs/ContasDoPoder` em 21/10/2026:

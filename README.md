@@ -156,7 +156,9 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   cada 90 dias (se a fonte voltar, a situação avisa, e ela sai da lista à mão). Desde 03/10/2026: a folha do Pará (dados
   até mar/2026: a consulta pública não mostra mais quem tem mandato eletivo), a folha do Rio de Janeiro (dados até
   mar/2026: o governador em exercício é o presidente do Tribunal de Justiça, pago pelo Tribunal) e a Prefeitura de
-  Campo Grande (dados até fev/2026: a consulta não traz a folha depois disso).
+  Campo Grande (dados até fev/2026: a consulta não traz a folha depois disso). Desde 27/10/2026, só a verba
+  da Câmara do Recife (dados até dez/2025: o servidor da Câmara responde HTTP 500 à consulta desde 20/10/2026), por decisão do
+  Jean-François: `"so_a_verba"` em `CONGELADAS`, a folha e a lista de vereadores seguem e a coleta da verba não tenta de novo.
 - **Folha de governador é complemento da lei**: o subsídio dos 27 governadores e vices vem da lei, e o site o mostra
   sempre; a folha só acrescenta 13º, férias e abate-teto. Folha de governador que quebrar e cujo conserto passar de
   cerca de 1 hora é congelada, e o site fica com o valor da lei.

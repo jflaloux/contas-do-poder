@@ -18,12 +18,14 @@ import time
 
 import pandas as pd
 
+from .. import onde
 from ..config import CACHE, DADOS
 from ..util import TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2611606
 INICIO = 202501
+VERBA_ATE = onde.CONGELADAS["vereadores/recife"]["ate"]  # a verba congelada: último mês mostrado (dez/2025)
 EPROC = "https://e-processo.recife.pe.leg.br"
 TRANSP = "https://transparencia.recife.pe.leg.br/++api++/legislativo"
 FOLHA = "https://transparenciacamara.recife.pe.gov.br/codigos/web/camara/remuneracaoServidores_csv.php"
@@ -215,7 +217,9 @@ def verba():
 def coletar():
     mandatos()
     folha()
-    verba()
+    # verba() NÃO é chamada: congelada por decisão do Jean-François em 27/10/2026 (onde.CONGELADAS["vereadores/recife"]). O servidor
+    # da Câmara responde HTTP 500 à consulta da verba de ~14 vereadores em 2025 e ~22 em 2026 desde 20/10/2026, do GitHub e do Mac.
+    # O site mostra a verba de 2025 (completa, lida antes); a montagem (abaixo) usa só até VERBA_ATE e ignora verba_erros.csv.
 
 
 # ---------------------------------------------------------------- montagem
@@ -329,17 +333,15 @@ def montar(tipos):
     ultimo = min(ate, ultimo_folha or ate)
     ultimo_eq = f"{int(fc.mes.iloc[0]):02d}/{int(fc.ano.iloc[0])}" if len(fc) else ""
     notas, verba_fora = list(CFG["notas"]), []
-    # ano em que a página da verba deu erro (para todos ou para alguns): a verba desse ano fica de fora para todos,
-    # para não comparar quem tem a verba contada com quem não tem
-    if (PASTA / "verba_erros.csv").exists():
-        err = pd.read_csv(PASTA / "verba_erros.csv").fillna("")
-        for ano, g in err.groupby("ano"):
-            quem = sorted({ver.set_index("codigo").nome.get(pelo_nome(n), n) for n in g.nome if n})
-            verba_fora.append(str(int(ano)))
-            if despesas is not None:
-                despesas = despesas[despesas.ano != int(ano)]
-            quem_txt = (f" para {len(quem)} vereadores ({', '.join(quem)})" if len(quem) <= 12 else f" para {len(quem)} vereadores") if quem else ""
-            notas.append(f"No site da Câmara, a página da verba de {int(ano)} dá erro{quem_txt}. Para não comparar vereadores com e sem a verba, "
-                         f"a verba de {int(ano)} fica de fora para todos, até a Câmara corrigir.")
+    # verba congelada (onde.CONGELADAS): só entra a de VERBA_ATE e antes, que foi lida inteira; verba_erros.csv (registro dos erros
+    # de uma consulta que não roda mais) não conta. Os anos seguintes ficam de fora para todos, para não comparar vereadores com e
+    # sem a verba.
+    verba_fora = [str(a) for a in range(VERBA_ATE // 100 + 1, ate // 100 + 1)]
+    if despesas is not None:
+        despesas = despesas[despesas.ano <= VERBA_ATE // 100]
+    if verba_fora:
+        notas.append(f"A consulta da verba indenizatória no servidor da Câmara do Recife retorna erro desde 20/10/2026 e a coleta da verba "
+                     f"está parada. A verba mostrada vai até {VERBA_ATE % 100:02d}/{VERBA_ATE // 100}; a de {', '.join(verba_fora)} não é "
+                     "mostrada, para não comparar vereadores com e sem a verba.")
     cfg = dict(CFG, ultimo_mes=ultimo, equipe_em=ultimo_eq, notas=notas, verba_fora=verba_fora)
     return comum.montar(cfg, tipos, ver.drop(columns=["civil_tse"]), mandatos_df, ganha=ganha, despesas=despesas, equipe=equipe, cargos=cargos)

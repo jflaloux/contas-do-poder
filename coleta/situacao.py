@@ -189,14 +189,14 @@ def executar():
         recusada = ch in recusas  # gravação recusada por perda de cobertura (util.gravar_com): fica o dado anterior
         falhando = falhando or fora_do_site or recusada
         atraso = _meses_entre(um, fechado) if um else None
-        situacao = ("congelada" if ch in onde.CONGELADAS else
+        situacao = ("congelada" if ch in onde.CONGELADAS and not (onde.CONGELADAS[ch].get("so_a_verba") and falhando) else
                     "falhando" if falhando else "atrasada (fonte)" if atraso is not None and atraso >= 3 and ch in ATRASOS_CONHECIDOS
                     else "atrasada" if atraso is not None and atraso >= 3 else "ok")
         erro = next((c.get("ultimo_erro") for lugar, c in tent.items() if c.get("falhas", 0) > 0), None)
         if situacao == "congelada":
             cg = onde.CONGELADAS[ch]
             erro = cg["motivo"] + (f" (ATENÇÃO: a última coleta trouxe mês depois de {cg['ate']}: a fonte pode ter voltado; "
-                                   "tirar de onde.CONGELADAS)" if um and um > cg["ate"] else "")
+                                   "tirar de onde.CONGELADAS)" if um and um > cg["ate"] and not cg.get("so_a_verba") else "")
         if fora_do_site and not erro:
             erro = "não entrou no arquivo do site (a montagem falhou: ver o log da rodada)"
         ba = base_anterior.get(ch.split("/", 1)[1]) if ch.startswith("federal/") else None
@@ -451,8 +451,12 @@ def publicar(linhas, fechado, resumo=None):
             sit, texto = "atraso_fonte", f"Atraso da própria fonte: {motivo[0].lower() + motivo[1:]}."
         elif s == "congelada":
             cg = onde.CONGELADAS[l["fonte"]]
-            sit, texto = "congelada", (f"Congelada: dados até {fmt_mes(cg['ate'])}. {cg['motivo'][0].upper() + cg['motivo'][1:]}. "
-                                       "O site mostra o último dado publicado; a coleta tenta de novo a cada três meses.")
+            if cg.get("so_a_verba"):
+                sit, texto = "congelada", (f"Verba congelada: dados até {fmt_mes(cg['ate'])}. {cg['motivo'][0].upper() + cg['motivo'][1:]}. "
+                                           "O site mostra o último dado publicado; a coleta da verba não tenta de novo.")
+            else:
+                sit, texto = "congelada", (f"Congelada: dados até {fmt_mes(cg['ate'])}. {cg['motivo'][0].upper() + cg['motivo'][1:]}. "
+                                           "O site mostra o último dado publicado; a coleta tenta de novo a cada três meses.")
         elif s == "atrasada":
             sit, texto = "atrasada", f"Os dados vão até {fmt_mes(l['ultimo_mes'])}, {l['meses_atras']} meses antes do último mês fechado."
         else:

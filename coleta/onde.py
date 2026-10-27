@@ -64,6 +64,12 @@ CONGELADAS = {
                             "Tribunal, e o cargo de vice está vago"},
     "prefeituras/campo_grande": {"desde": "2026-10-03", "ate": 202602,
                                  "motivo": "a consulta da Prefeitura não traz a folha depois de fev/2026"},
+    # congelamento só da verba: a folha e a lista de vereadores continuam sendo coletadas (a fonte não é pulada) e a verba não
+    # é mais pedida, nunca (decisão do Jean-François, 27/10/2026): a consulta da verba no servidor da Câmara dá HTTP 500
+    "vereadores/recife": {"desde": "2026-10-27", "ate": 202512, "so_a_verba": True,
+                          "motivo": "a consulta da verba indenizatória no servidor da Câmara do Recife retorna erro HTTP 500 desde "
+                                    "20/10/2026; a coleta da verba está parada por decisão de 27/10/2026 (a folha continua) e o site "
+                                    "mostra a verba de 2025"},
 }
 REVER_CONGELADA_DIAS = 90
 
@@ -114,8 +120,8 @@ def _ultima_tentativa(ch):
 
 def congelada(ch):
     """True se a fonte está congelada e não é a vez de tentar de novo (uma vez a cada REVER_CONGELADA_DIAS dias)."""
-    if ch not in CONGELADAS:
-        return False
+    if ch not in CONGELADAS or CONGELADAS[ch].get("so_a_verba"):
+        return False  # (congelamento só da verba: o módulo não chama a verba, e o resto da fonte segue)
     ultima = _ultima_tentativa(ch)
     return bool(ultima) and datetime.now() - ultima < timedelta(days=REVER_CONGELADA_DIAS)
 
