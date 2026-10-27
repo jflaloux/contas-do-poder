@@ -1,7 +1,7 @@
 {
  "dados/assembleias/mt/equipe.csv": {
   "estado": "recusado",
-  "quando": "2026-10-20T17:55:33",
+  "quando": "2026-10-27T18:11:03",
   "fonte": "assembleias/mt",
   "texto": "mês 01/2026: 24 para 0 linhas; mês 02/2026: 25 para 0 linhas; mês 03/2026: 27 para 0 linhas (e mais 6)",
   "perdas": [
@@ -63,21 +63,21 @@
  },
  "dados/assembleias/rj/orcamentos.csv": {
   "estado": "recusado",
-  "quando": "2026-10-20T17:23:22",
+  "quando": "2026-10-27T18:00:27",
   "fonte": "assembleias/rj",
-  "texto": "o arquivo: 2864 para 1187 linhas",
+  "texto": "o arquivo: 2874 para 1197 linhas",
   "perdas": [
    [
     "arquivo",
-    2864,
-    1187,
+    2874,
+    1197,
     "linhas"
    ]
   ]
  },
  "site/dados/camaras.json": {
   "estado": "recusado",
-  "quando": "2026-10-20T16:57:26",
+  "quando": "2026-10-27T17:20:41",
   "fonte": null,
   "texto": "p/cid=2611606: 37 para 0 com \"dt\" preenchido",
   "perdas": [

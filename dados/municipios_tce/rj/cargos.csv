@@ -158,6 +158,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300407,Barra Mansa,camara,202605,vereador,Agente Político,19.00,223488.16,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202606,vereador,Agente Político,19.00,232705.00,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202607,vereador,Agente Político,19.00,232705.00,,,,CAMARA BARRA MANSA
+3300407,Barra Mansa,camara,202608,vereador,Agente Político,19.00,238305.00,,,,CAMARA BARRA MANSA
 3300456,Belford Roxo,camara,202501,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202502,vereador,Agente Político,26.00,483550.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202503,vereador,Agente Político,25.00,446600.00,,,,CAMARA BELFORD ROXO
@@ -177,6 +178,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300456,Belford Roxo,camara,202605,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202606,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202607,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
+3300456,Belford Roxo,camara,202608,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
 3300506,Bom Jardim,camara,202501,vereador,Agente Político,11.00,108921.01,,,,CAMARA BOM JARDIM
 3300506,Bom Jardim,camara,202502,vereador,Agente Político,11.00,133675.81,,,,CAMARA BOM JARDIM
 3300506,Bom Jardim,camara,202503,vereador,Agente Político,11.00,108921.01,,,,CAMARA BOM JARDIM
@@ -535,6 +537,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301850,Guapimirim,camara,202605,vereador,Agente Político,10.00,124952.70,,,,CAMARA GUAPIMIRIM
 3301850,Guapimirim,camara,202606,vereador,Agente Político,10.00,124952.70,,,,CAMARA GUAPIMIRIM
 3301850,Guapimirim,camara,202607,vereador,Agente Político,10.00,133005.20,,,,CAMARA GUAPIMIRIM
+3301850,Guapimirim,camara,202608,vereador,Agente Político,10.00,125230.38,,,,CAMARA GUAPIMIRIM
 3301876,Iguaba Grande,camara,202501,vereador,Agente Político,11.00,19408.40,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202502,vereador,Agente Político,11.00,21426.84,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202503,vereador,Agente Político,11.00,19917.62,,,,CAMARA IGUABA GRANDE
@@ -714,6 +717,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302304,Laje do Muriaé,camara,202605,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202606,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202607,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
+3302304,Laje do Muriaé,camara,202608,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302403,Macaé,camara,202501,vereador,Agente Político,17.00,193432.71,,,,CAMARA MACAE
 3302403,Macaé,camara,202502,vereador,Agente Político,17.00,173799.81,,,,CAMARA MACAE
 3302403,Macaé,camara,202503,vereador,Agente Político,17.00,153602.83,,,,CAMARA MACAE
@@ -1189,6 +1193,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304128,Quatis,camara,202605,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304128,Quatis,camara,202606,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304128,Quatis,camara,202607,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
+3304128,Quatis,camara,202608,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304144,Queimados,camara,202501,vereador,Agente Político,17.00,215220.00,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202502,vereador,Agente Político,17.00,233989.16,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202503,vereador,Agente Político,17.00,229296.90,,,,CAMARA QUEIMADOS
@@ -1307,6 +1312,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304508,Rio das Flores,camara,202604,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202605,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202606,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
+3304508,Rio das Flores,camara,202607,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
+3304508,Rio das Flores,camara,202608,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304524,Rio das Ostras,camara,202501,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202502,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202503,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS

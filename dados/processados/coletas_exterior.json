@@ -1,48 +1,48 @@
 {
  "assembleias/ac": {
-  "ultima_tentativa": "2026-10-20T17:48:35",
+  "ultima_tentativa": "2026-10-27T18:04:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:35"
+  "ultimo_sucesso": "2026-10-27T18:04:13"
  },
  "assembleias/ba": {
-  "ultima_tentativa": "2026-10-20T17:23:22",
+  "ultima_tentativa": "2026-10-27T18:00:27",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:23:22"
+  "ultimo_sucesso": "2026-10-27T18:00:27"
  },
  "assembleias/ce": {
-  "ultima_tentativa": "2026-10-20T17:25:09",
+  "ultima_tentativa": "2026-10-27T18:00:44",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:25:09"
+  "ultimo_sucesso": "2026-10-27T18:00:44"
  },
  "assembleias/mg": {
-  "ultima_tentativa": "2026-10-20T17:15:18",
+  "ultima_tentativa": "2026-10-27T17:47:26",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:15:18"
+  "ultimo_sucesso": "2026-10-27T17:47:26"
  },
  "assembleias/ms": {
-  "ultima_tentativa": "2026-10-20T17:31:38",
+  "ultima_tentativa": "2026-10-27T18:01:43",
   "falhas": 0,
   "ultimo_erro": "AttributeError: 'DataFrame' object has no attribute 'ano'",
   "ultima_falha": "2026-10-07T17:05:22",
-  "ultimo_sucesso": "2026-10-20T17:31:38"
+  "ultimo_sucesso": "2026-10-27T18:01:43"
  },
  "assembleias/mt": {
-  "ultima_tentativa": "2026-10-20T17:50:09",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-27T18:06:14",
+  "falhas": 2,
   "ultimo_sucesso": "2026-10-07T21:44:03",
   "primeira_falha": "2026-10-20T17:50:09",
-  "ultimo_erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/46259 (Caused by ConnectTimeoutError(<HTTPSConnection(host='almt.eloweb.net', port=443) at 0x7f0467042550>, 'Connection to almt.eloweb.net timed out. (connect",
-  "ultima_falha": "2026-10-20T17:50:09"
+  "ultimo_erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host='almt.eloweb.net', port=443) at 0x7ff9144a4150>, 'Connection to almt.eloweb.net timed out. (connect",
+  "ultima_falha": "2026-10-27T18:06:14"
  },
  "assembleias/pa": {
-  "ultima_tentativa": "2026-10-20T17:48:34",
+  "ultima_tentativa": "2026-10-27T18:04:12",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:34"
+  "ultimo_sucesso": "2026-10-27T18:04:12"
  },
  "assembleias/pb": {
-  "ultima_tentativa": "2026-10-20T17:29:31",
+  "ultima_tentativa": "2026-10-27T18:01:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:29:31"
+  "ultimo_sucesso": "2026-10-27T18:01:17"
  },
  "assembleias/pe": {
   "ultima_tentativa": "2026-10-07T21:41:31",
@@ -52,330 +52,342 @@
   "ultima_falha": "2026-10-07T21:41:31"
  },
  "assembleias/pi": {
-  "ultima_tentativa": "2026-10-20T17:48:23",
+  "ultima_tentativa": "2026-10-27T18:04:02",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:23"
+  "ultimo_sucesso": "2026-10-27T18:04:02"
  },
  "assembleias/pr": {
-  "ultima_tentativa": "2026-10-20T17:48:20",
+  "ultima_tentativa": "2026-10-27T18:03:59",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:20"
+  "ultimo_sucesso": "2026-10-27T18:03:59"
  },
  "assembleias/rj": {
-  "ultima_tentativa": "2026-10-20T17:18:15",
-  "falhas": 1,
+  "ultima_tentativa": "2026-10-27T17:50:22",
+  "falhas": 2,
   "ultimo_sucesso": "2026-10-07T21:41:17",
   "primeira_falha": "2026-10-20T17:18:15",
-  "ultimo_erro": "Recusado por perda de cobertura (fica o arquivo anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2864 para 1187 linhas",
-  "ultima_falha": "2026-10-20T17:18:15"
+  "ultimo_erro": "ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/congressmen/7/legislatures/2/budgets/6462/entries?query=%7B%22filter%22%3A+%7B%22text%22%3A+null%7D%2C+%22pagination%22%3A+%7B%22per_page%22%3A+100%2C+%22current_page%22%3A+1%7D%2C+%2",
+  "ultima_falha": "2026-10-27T17:50:22"
  },
  "assembleias/rn": {
-  "ultima_tentativa": "2026-10-20T17:48:23",
+  "ultima_tentativa": "2026-10-27T18:04:02",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:23"
+  "ultimo_sucesso": "2026-10-27T18:04:02"
  },
  "assembleias/ro": {
-  "ultima_tentativa": "2026-10-20T17:31:49",
+  "ultima_tentativa": "2026-10-27T18:01:54",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:31:49"
+  "ultimo_sucesso": "2026-10-27T18:01:54"
  },
  "assembleias/rr": {
-  "ultima_tentativa": "2026-10-20T17:48:41",
+  "ultima_tentativa": "2026-10-27T18:04:21",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:48:41"
+  "ultimo_sucesso": "2026-10-27T18:04:21"
  },
  "assembleias/sc": {
-  "ultima_tentativa": "2026-10-20T17:31:21",
+  "ultima_tentativa": "2026-10-27T18:01:24",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:31:21"
+  "ultimo_sucesso": "2026-10-27T18:01:24"
  },
  "assembleias/se": {
-  "ultima_tentativa": "2026-10-20T17:44:59",
+  "ultima_tentativa": "2026-10-27T18:03:33",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:44:59"
+  "ultimo_sucesso": "2026-10-27T18:03:33"
  },
  "assembleias/sp": {
-  "ultima_tentativa": "2026-10-20T17:14:57",
+  "ultima_tentativa": "2026-10-27T17:47:11",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:14:57"
+  "ultimo_sucesso": "2026-10-27T17:47:11"
  },
  "assembleias/to": {
-  "ultima_tentativa": "2026-10-20T17:33:59",
+  "ultima_tentativa": "2026-10-27T18:02:11",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:33:59"
+  "ultimo_sucesso": "2026-10-27T18:02:11"
  },
  "federal/atividade": {
-  "ultima_tentativa": "2026-10-20T16:24:44",
-  "falhas": 1,
-  "ultimo_sucesso": "2026-10-07T21:13:19",
-  "primeira_falha": "2026-10-20T16:24:44",
+  "ultima_tentativa": "2026-10-27T18:11:30",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-27T18:11:30",
   "ultimo_erro": "ConnectionError: o robots.txt de dadosabertos.camara.leg.br não abriu (site fora do ar ou bloqueado)",
   "ultima_falha": "2026-10-20T16:24:44"
  },
  "federal/camara": {
-  "ultima_tentativa": "2026-10-20T15:40:17",
-  "falhas": 1,
-  "ultimo_sucesso": "2026-10-07T21:12:15",
-  "primeira_falha": "2026-10-20T15:40:17",
+  "ultima_tentativa": "2026-10-27T16:43:01",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-27T16:43:01",
   "ultimo_erro": "RuntimeError: 1145 consultas falharam, ex.: [((204549, 2025), \"HostIndisponivel('https://www.camara.leg.br não responde (várias falhas seguidas); sem novos pedidos por 15 min')\"), ((220714, 2025), \"HostIndisponivel('https://www.camara.leg.br não responde (várias falhas seguidas); sem novos pedidos p",
   "ultima_falha": "2026-10-20T15:40:17"
  },
  "federal/executivo": {
-  "ultima_tentativa": "2026-10-20T16:22:59",
+  "ultima_tentativa": "2026-10-27T17:01:44",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:22:59"
+  "ultimo_sucesso": "2026-10-27T17:01:44"
  },
  "federal/municipios": {
-  "ultima_tentativa": "2026-10-20T16:24:41",
+  "ultima_tentativa": "2026-10-27T17:03:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:24:41"
+  "ultimo_sucesso": "2026-10-27T17:03:17"
  },
  "federal/renda": {
-  "ultima_tentativa": "2026-10-20T16:24:42",
+  "ultima_tentativa": "2026-10-27T17:03:18",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:24:42"
+  "ultimo_sucesso": "2026-10-27T17:03:18"
  },
  "federal/senado": {
-  "ultima_tentativa": "2026-10-20T16:20:51",
+  "ultima_tentativa": "2026-10-27T17:01:05",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:20:51"
+  "ultimo_sucesso": "2026-10-27T17:01:05"
  },
  "folhas/AC": {
-  "ultima_tentativa": "2026-10-20T17:06:16",
+  "ultima_tentativa": "2026-10-27T17:32:14",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:06:16"
+  "ultimo_sucesso": "2026-10-27T17:32:14"
  },
  "folhas/BA": {
-  "ultima_tentativa": "2026-10-20T17:06:20",
+  "ultima_tentativa": "2026-10-27T17:32:19",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:06:20"
+  "ultimo_sucesso": "2026-10-27T17:32:19"
  },
  "folhas/DF": {
-  "ultima_tentativa": "2026-10-20T17:06:30",
+  "ultima_tentativa": "2026-10-27T17:32:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:06:30"
+  "ultimo_sucesso": "2026-10-27T17:32:28"
  },
  "folhas/ES": {
-  "ultima_tentativa": "2026-10-20T17:06:47",
+  "ultima_tentativa": "2026-10-27T17:32:51",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:06:47"
+  "ultimo_sucesso": "2026-10-27T17:32:51"
  },
  "folhas/GO": {
-  "ultima_tentativa": "2026-10-20T17:09:55",
+  "ultima_tentativa": "2026-10-27T17:37:56",
   "falhas": 0,
   "ultimo_erro": "HTTPError: 500 Server Error: INTERNAL SERVER ERROR for url: https://dadosabertos.go.gov.br/dataset/9cec56e2-8e10-472f-b060-d925ba3b29b5/resource/5a09150b-5708-4c09-a094-da432b179c91/download/folhapagamento_202608.csv",
   "ultima_falha": "2026-10-07T16:54:23",
-  "ultimo_sucesso": "2026-10-20T17:09:55"
+  "ultimo_sucesso": "2026-10-27T17:37:56"
  },
  "folhas/MG": {
-  "ultima_tentativa": "2026-10-20T17:10:33",
+  "ultima_tentativa": "2026-10-27T17:38:35",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:10:33"
+  "ultimo_sucesso": "2026-10-27T17:38:35"
  },
  "folhas/MS": {
-  "ultima_tentativa": "2026-10-20T17:11:37",
+  "ultima_tentativa": "2026-10-27T17:43:14",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:11:37"
+  "ultimo_sucesso": "2026-10-27T17:43:14"
  },
  "folhas/PE": {
-  "ultima_tentativa": "2026-10-20T17:11:45",
+  "ultima_tentativa": "2026-10-27T17:43:31",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:11:45"
+  "ultimo_sucesso": "2026-10-27T17:43:31"
  },
  "folhas/PR": {
-  "ultima_tentativa": "2026-10-20T17:12:41",
+  "ultima_tentativa": "2026-10-27T17:44:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:12:41"
+  "ultimo_sucesso": "2026-10-27T17:44:58"
  },
  "folhas/RO": {
-  "ultima_tentativa": "2026-10-20T17:12:57",
+  "ultima_tentativa": "2026-10-27T17:45:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:12:57"
+  "ultimo_sucesso": "2026-10-27T17:45:15"
  },
  "folhas/RR": {
-  "ultima_tentativa": "2026-10-20T17:13:01",
+  "ultima_tentativa": "2026-10-27T17:45:18",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:13:01"
+  "ultimo_sucesso": "2026-10-27T17:45:18"
  },
  "folhas/RS": {
-  "ultima_tentativa": "2026-10-20T17:13:09",
+  "ultima_tentativa": "2026-10-27T17:45:27",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:13:09"
+  "ultimo_sucesso": "2026-10-27T17:45:27"
  },
  "folhas/SC": {
-  "ultima_tentativa": "2026-10-20T17:13:14",
+  "ultima_tentativa": "2026-10-27T17:45:32",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:13:14"
+  "ultimo_sucesso": "2026-10-27T17:45:32"
  },
  "folhas/SP": {
-  "ultima_tentativa": "2026-10-20T17:13:51",
+  "ultima_tentativa": "2026-10-27T17:46:09",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:13:51"
+  "ultimo_sucesso": "2026-10-27T17:46:09"
  },
  "judiciario/cnj": {
-  "ultima_tentativa": "2026-10-20T16:23:55",
+  "ultima_tentativa": "2026-10-27T17:02:36",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:23:55"
+  "ultimo_sucesso": "2026-10-27T17:02:36"
  },
  "judiciario/pgr": {
-  "ultima_tentativa": "2026-10-20T16:24:26",
-  "falhas": 1,
-  "ultimo_sucesso": "2026-10-07T21:13:12",
-  "primeira_falha": "2026-10-20T16:24:26",
+  "ultima_tentativa": "2026-10-27T17:03:05",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-27T17:03:05",
   "ultimo_erro": "HTTPError: 503 Server Error: Service Unavailable for url: https://transparencia.mpf.mp.br/conteudo/contracheque/remuneracao-membros-ativos/2026/remuneracao-membros-ativos_2026_Setembro.ods",
   "ultima_falha": "2026-10-20T16:24:26"
  },
  "judiciario/stf": {
-  "ultima_tentativa": "2026-10-20T16:24:30",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:24:30"
+  "ultima_tentativa": "2026-10-27T17:03:14",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-20T16:24:30",
+  "primeira_falha": "2026-10-27T17:03:14",
+  "ultimo_erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-10-27T17:03:14"
  },
  "judiciario/stj": {
-  "ultima_tentativa": "2026-10-20T16:23:30",
+  "ultima_tentativa": "2026-10-27T17:02:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:23:30"
+  "ultimo_sucesso": "2026-10-27T17:02:15"
  },
  "judiciario/stm": {
-  "ultima_tentativa": "2026-10-20T16:24:33",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:24:33"
+  "ultima_tentativa": "2026-10-27T17:03:17",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-20T16:24:33",
+  "primeira_falha": "2026-10-27T17:03:17",
+  "ultimo_erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-10-27T17:03:17"
  },
  "judiciario/tse": {
-  "ultima_tentativa": "2026-10-20T16:24:36",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:24:36"
+  "ultima_tentativa": "2026-10-27T17:03:17",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-20T16:24:36",
+  "primeira_falha": "2026-10-27T17:03:17",
+  "ultimo_erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-10-27T17:03:17"
  },
  "judiciario/tst": {
-  "ultima_tentativa": "2026-10-20T16:23:43",
+  "ultima_tentativa": "2026-10-27T17:02:28",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:23:43"
+  "ultimo_sucesso": "2026-10-27T17:02:28"
  },
  "prefeituras/curitiba": {
-  "ultima_tentativa": "2026-10-20T17:05:12",
+  "ultima_tentativa": "2026-10-27T17:31:17",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:05:12"
+  "ultimo_sucesso": "2026-10-27T17:31:17"
  },
  "prefeituras/fortaleza": {
-  "ultima_tentativa": "2026-10-20T17:00:23",
+  "ultima_tentativa": "2026-10-27T17:23:43",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:00:23"
+  "ultimo_sucesso": "2026-10-27T17:23:43"
  },
  "prefeituras/porto_alegre": {
-  "ultima_tentativa": "2026-10-20T17:02:33",
+  "ultima_tentativa": "2026-10-27T17:27:00",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:02:33"
+  "ultimo_sucesso": "2026-10-27T17:27:00"
  },
  "prefeituras/recife": {
-  "ultima_tentativa": "2026-10-20T16:59:22",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:59:22"
+  "ultima_tentativa": "2026-10-27T17:23:21",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-20T16:59:22",
+  "primeira_falha": "2026-10-27T17:23:21",
+  "ultimo_erro": "ConnectionError: o robots.txt de dados.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-10-27T17:23:21"
  },
  "prefeituras/rio": {
-  "ultima_tentativa": "2026-10-20T16:57:29",
+  "ultima_tentativa": "2026-10-27T17:20:44",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:57:29"
+  "ultimo_sucesso": "2026-10-27T17:20:44"
  },
  "prefeituras/salvador": {
-  "ultima_tentativa": "2026-10-20T17:03:50",
+  "ultima_tentativa": "2026-10-27T17:29:31",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:03:50"
+  "ultimo_sucesso": "2026-10-27T17:29:31"
  },
  "prefeituras/sp": {
-  "ultima_tentativa": "2026-10-20T16:57:27",
+  "ultima_tentativa": "2026-10-27T17:20:42",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:57:27"
+  "ultimo_sucesso": "2026-10-27T17:20:42"
  },
  "prefeituras/vitoria": {
-  "ultima_tentativa": "2026-10-20T17:02:05",
+  "ultima_tentativa": "2026-10-27T17:25:33",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:02:05"
+  "ultimo_sucesso": "2026-10-27T17:25:33"
  },
  "tce/ce": {
-  "ultima_tentativa": "2026-10-20T17:57:59",
+  "ultima_tentativa": "2026-10-27T18:17:11",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:57:59"
+  "ultimo_sucesso": "2026-10-27T18:17:11"
  },
  "tce/es": {
-  "ultima_tentativa": "2026-10-20T18:32:29",
+  "ultima_tentativa": "2026-10-27T18:54:16",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T18:32:29"
+  "ultimo_sucesso": "2026-10-27T18:54:16"
  },
  "tce/pb": {
-  "ultima_tentativa": "2026-10-20T17:56:32",
+  "ultima_tentativa": "2026-10-27T18:16:45",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:56:32"
+  "ultimo_sucesso": "2026-10-27T18:16:45"
  },
  "tce/pe": {
-  "ultima_tentativa": "2026-10-20T19:20:17",
+  "ultima_tentativa": "2026-10-27T18:56:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T21:46:28",
+  "ultimo_sucesso": "2026-10-27T18:56:13",
   "ultimo_erro": "tempo máximo da rodada (continua na próxima)"
  },
  "tce/rj": {
-  "ultima_tentativa": "2026-10-07T21:46:28",
+  "ultima_tentativa": "2026-10-27T19:13:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-07T21:46:28"
+  "ultimo_sucesso": "2026-10-27T19:13:58"
  },
  "vereadores/aracaju": {
-  "ultima_tentativa": "2026-10-20T16:44:41",
+  "ultima_tentativa": "2026-10-27T17:07:57",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:44:41"
+  "ultimo_sucesso": "2026-10-27T17:07:57"
  },
  "vereadores/boa_vista": {
-  "ultima_tentativa": "2026-10-20T16:44:48",
+  "ultima_tentativa": "2026-10-27T17:08:06",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:44:48"
+  "ultimo_sucesso": "2026-10-27T17:08:06"
  },
  "vereadores/cuiaba": {
-  "ultima_tentativa": "2026-10-20T16:47:17",
+  "ultima_tentativa": "2026-10-27T17:11:10",
   "primeira_falha": "2026-10-20T16:47:17",
-  "falhas": 1,
+  "falhas": 2,
   "ultimo_erro": "ConnectionError: o robots.txt de legislativo.camaracuiaba.mt.gov.br não abriu (site fora do ar ou bloqueado)",
-  "ultima_falha": "2026-10-20T16:47:17"
+  "ultima_falha": "2026-10-27T17:11:10"
  },
  "vereadores/goiania": {
-  "ultima_tentativa": "2026-10-20T16:26:58",
+  "ultima_tentativa": "2026-10-27T17:03:35",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:26:58"
+  "ultimo_sucesso": "2026-10-27T17:03:35"
  },
  "vereadores/joao_pessoa": {
-  "ultima_tentativa": "2026-10-20T16:45:38",
+  "ultima_tentativa": "2026-10-27T17:08:40",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:45:38"
+  "ultimo_sucesso": "2026-10-27T17:08:40"
  },
  "vereadores/porto_velho": {
-  "ultima_tentativa": "2026-10-20T16:52:22",
+  "ultima_tentativa": "2026-10-27T17:16:10",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:52:22"
+  "ultimo_sucesso": "2026-10-27T17:16:10"
  },
  "vereadores/recife": {
-  "ultima_tentativa": "2026-10-20T16:27:54",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:27:54"
+  "ultima_tentativa": "2026-10-27T17:06:25",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-20T16:27:54",
+  "primeira_falha": "2026-10-27T17:06:25",
+  "ultimo_erro": "ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-10-27T17:06:25"
  },
  "vereadores/rio_branco": {
-  "ultima_tentativa": "2026-10-20T16:48:07",
+  "ultima_tentativa": "2026-10-27T17:12:00",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:48:07"
+  "ultimo_sucesso": "2026-10-27T17:12:00"
  },
  "vereadores/sp": {
-  "ultima_tentativa": "2026-10-20T16:26:03",
+  "ultima_tentativa": "2026-10-27T17:03:20",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:26:03"
+  "ultimo_sucesso": "2026-10-27T17:03:20"
  },
  "vereadores/teresina": {
-  "ultima_tentativa": "2026-10-20T16:45:54",
+  "ultima_tentativa": "2026-10-27T17:08:55",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T16:45:54"
+  "ultimo_sucesso": "2026-10-27T17:08:55"
  },
  "viagens/MG": {
-  "ultima_tentativa": "2026-10-20T17:14:09",
+  "ultima_tentativa": "2026-10-27T17:46:27",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:14:09"
+  "ultimo_sucesso": "2026-10-27T17:46:27"
  },
  "viagens/SP": {
-  "ultima_tentativa": "2026-10-20T17:14:45",
+  "ultima_tentativa": "2026-10-27T17:47:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-20T17:14:45"
+  "ultimo_sucesso": "2026-10-27T17:47:01"
  }
 }
