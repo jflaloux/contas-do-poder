@@ -243,6 +243,12 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6381,7.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de Veículo,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,002497,9900.0
 6381,7.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,26149190559,287.4
 6381,7.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTAPAR,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,9586,683.0
+6462,7.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,26171417986,254.3
+6462,7.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,SERVRIO,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,002548,9900.0
+6462,7.0,31/07/2026,Combustíveis e lubrificantes,VII,Combustível,POSTO DE GASOLINA LEIROZ LTDA,31037724000133,387,4488.15
+6462,7.0,31/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Atividade Parlamentar,SETOR 1 COMERCIO E SERVIÇOS E PUBLICIDADE LTDA,22444852000100,08,8500.3
+6462,7.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTAPAR,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,12445,683.0
+6300,8.0,01/05/2026,Assessoria de imprensa e comunicação,VIII.d,Assessoria de Comunicação,A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,12000.0
 5208,11.0,01/02/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,LOCAÇÃO VAGA,Terminal Garagem Menezes Côrtes S.A,02664042000152,NF,650.0
 5208,11.0,28/02/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO VEÍCULO,POSTO DE ABASTECIMENTO SERVIÇOS E COM LINHA AMARELA LTDA,02752766000158,NF,2025.35
 5208,11.0,28/02/2025,Locação ou fretamento de veículos automotores,VI.a,ALUGUEL VEÍCULO,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,NF,10558.0
@@ -812,6 +818,39 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6384,12.0,30/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,MATERIAL ESCRITÓRIO MANDATO,Papelaria México,39071931000116,,982.8
 6384,12.0,30/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,ALUGUEL NOTEBBOK MANDATO,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,900.0
 6384,12.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO DE SALDO ACUMULADO 1º SEMESTRE DE 2026,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,4953.09
+6465,12.0,01/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,339.81
+6465,12.0,02/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO REGINAS LTDA,00083430000114,,208.51
+6465,12.0,03/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,331.07
+6465,12.0,04/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,320.0
+6465,12.0,05/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO BRAGA'S DE ITAIPUACU LTDA,08027198000109,,319.19
+6465,12.0,06/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,290.0
+6465,12.0,07/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO BRAGA'S DE ITAIPUACU LTDA,08027198000109,,273.97
+6465,12.0,08/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,AUTO POSTO PRIMEIRAO DE ITAIPUACU,10848048000108,,202.75
+6465,12.0,10/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,260.0
+6465,12.0,11/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO BRAGA'S DE ITAIPUACU LTDA,08027198000109,,309.35
+6465,12.0,13/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,340.87
+6465,12.0,14/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,311.43
+6465,12.0,15/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,300.0
+6465,12.0,16/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,AUTO POSTO PRIMEIRAO DE ITAIPUACU,10848048000108,,333.33
+6465,12.0,17/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,270.0
+6465,12.0,18/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,298.79
+6465,12.0,19/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO GROTÃO LTDA,30343057000154,,239.87
+6465,12.0,20/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO REGINAS LTDA,00083430000114,,131.89
+6465,12.0,21/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,291.64
+6465,12.0,22/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,Posto de Gasolina Dom Pedro II Ltda,42331363000150,,255.03
+6465,12.0,25/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,AUTO POSTO PRIMEIRAO DE ITAIPUACU,10848048000108,,74.36
+6465,12.0,27/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,AUTO POSTO TOP GLORIA,12455190000110,,210.01
+6465,12.0,29/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,AUTO POSTO PRIMEIRAO DE ITAIPUACU,10848048000108,,101.2
+6465,12.0,31/07/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,ALUGUEL NOTEBOOK MANDATO,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,900.0
+6465,12.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,ALUGUEL CARRO OFICIAL MANDATO,MOVIDA PARTICIPAÇÕES S.A,21314559000166,,10914.52
+6465,12.0,31/07/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,FORNECIMENTO DE AGUA MANDATO,Eshyla Shusuku Honda Conceição,44785019000166,,90.0
+6465,12.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO MENEZES CORTES,Terminal Garagem Menezes Côrtes S.A,02664042000152,,650.0
+6465,12.0,31/07/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,MATERIAL ESCRITÓRIO MANDATO,Papelaria México,39071931000116,,1082.9
+6465,12.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SERVIÇO DE TAG VEICULO OFICIAL,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,,160.82
+6465,12.0,31/07/2026,Serviços gráficos,VIII.a,MATERIAL GRAFICO MANDATO,SENNA E SERVIÇOS E PRODUÇÕES GRAFICAS,58059370000184,,7200.0
+6465,12.0,31/07/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL CARRO OFICIAL,POSTO DE COMBUSTIVEIS PIEDRAS DEL MAR LTDA.,11270315000175,,220.0
+6465,12.0,31/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR MANDATO,18.080.920 ELIANE ALVES DE CARVALHO,18080920000122,,1000.0
+6465,12.0,31/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,DIVULGAÇÃO ATIVIDADE PARLAMENTAR MANDATO,GABRIEL SOUZA LEITE DE SÁ,49987052000192,,4000.0
 5210,14.0,15/02/2025,Combustíveis e lubrificantes,VII,Abastecimento - veículo - TOYOTA HILUX - SW4 - Placa - SQW -3G73,POSTO CANCELA SERVIÇOS E COMÉRCIO LTDA.,28284941000113,ag 6171,342.53
 5210,14.0,18/02/2025,Combustíveis e lubrificantes,VII,Abastecimento - veículo - TOYOTA HYLUX - SW4 - Placa - SQW -3G73,POSTO CANCELA SERVIÇOS E COMÉRCIO LTDA.,28284941000113,ag 6171,110.44
 5210,14.0,20/02/2025,Combustíveis e lubrificantes,VII,Abastecimento - veículo - TOYOTA HILUX - SW4 - Placa - SQW -3G73,POSTO CANCELA SERVIÇOS E COMÉRCIO LTDA.,28284941000113,ag 6171,305.29
@@ -1813,6 +1852,25 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6389,19.0,27/06/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,307.2
 6389,19.0,29/06/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,202.07
 6389,19.0,30/06/2026,Devolução de saldo,4,Devolução Docigp para Alerj,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,69505.57
+6470,19.0,01/07/2026,Locação ou fretamento de veículos automotores,VI.a,Locação automóvel,VELOZ TRANSRIO TRANSPORTE LTDA (MATRIZ),00530512000160,,1800.0
+6470,19.0,01/07/2026,Assinatura de TV a cabo ou similar,IV.d,Tv a cabo,sky,72820822000120,,217.82
+6470,19.0,02/07/2026,Locação ou fretamento de veículos automotores,VI.a,Locação automóvel,TOTALMAX LOCAÇÃO E TRANSPORTES LTDA,28267028000109,,8000.0
+6470,19.0,06/07/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Compras,CARREFOUR COMERCIO E INDUSTRIA LTDA,45543915001404,,143.67
+6470,19.0,06/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,228.04
+6470,19.0,06/07/2026,Material de expediente e suprimentos de informática,IV.b,Galão de água,ARIS AL COMERCIO E DISTRIBUIDORA DE BEBIDAS E GELO LTDA ME,23090557000166,,30.0
+6470,19.0,10/07/2026,Locação de imóveis,III.a,Locação de imóvel,Sérgio Augusto A de Mello,PF,,3999.3
+6470,19.0,10/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto Supersonico Ltda,42426965000190,,287.86
+6470,19.0,10/07/2026,Acesso à internet,IV.c,Internet,TVANET,32113383000109,,103.9
+6470,19.0,14/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,174.93
+6470,19.0,18/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto Supersonico Ltda,42426965000190,,255.59
+6470,19.0,20/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,260.63
+6470,19.0,21/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,Luz,LIGHT SERVIÇOS DE ELETRICIDADE S.A.,60444437000146,,994.32
+6470,19.0,22/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto Supersonico Ltda,42426965000190,,258.19
+6470,19.0,24/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,290.17
+6470,19.0,28/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto de Serviços Quitungo Ltda,33756255000138,,251.99
+6470,19.0,28/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,abastecimento água,Águas do Rio,42310775000103,,176.19
+6470,19.0,30/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Conteúdo de mídia,SAINT CLAIR DE CASTRO,37020092000181,,2000.0
+6470,19.0,31/07/2026,Combustíveis e lubrificantes,VII,combustível,Posto Supersonico Ltda,42426965000190,,171.26
 5276,20.0,13/02/2025,Material de expediente e suprimentos de informática,IV.b,Material de expediente,Kalunga Comércio e Indústria Gráfica Ltda,43283811002799,1022623,968.7
 5276,20.0,13/02/2025,Material de expediente e suprimentos de informática,IV.b,Material de expediente,Kalunga Comércio e Indústria Gráfica Ltda,43283811002799,1022627,146.4
 5286,20.0,07/03/2025,Combustíveis e lubrificantes,VII,Abastecimento carro oficial,Posto de Gasolina do Capitão de Belford Roxo Ltda.,03944335000156,,243.14
@@ -2103,6 +2161,26 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6390,20.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,locação carro auxiliar,BELMAC Construtora LTDA,13474158000145,,5000.0
 6390,20.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,locação carro oficial,BELMAC Construtora LTDA,13474158000145,,11000.0
 6390,20.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,,683.0
+6471,20.0,01/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto São Jorge Belford Roxo LTDA,15479797000129,,156.87
+6471,20.0,03/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO KM 13 DA DUTRA LTDA,00118442000137,1908858,185.0
+6471,20.0,04/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO DE GASOLINA DO POETA LTDA,27106772000169,,214.86
+6471,20.0,06/07/2026,Material de expediente e suprimentos de informática,IV.b,material de expediente,KALUNGA SA,43283811016153,,555.7
+6471,20.0,08/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto São Jorge Belford Roxo LTDA,15479797000129,,214.29
+6471,20.0,10/07/2026,Material de expediente e suprimentos de informática,IV.b,material de expediente,KALUNGA SA,43283811016153,,191.8
+6471,20.0,10/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto cascão LTDA,26495759000186,,216.77
+6471,20.0,15/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto São Jorge Belford Roxo LTDA,15479797000129,,212.74
+6471,20.0,16/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO KM 13 DA DUTRA LTDA,00118442000137,,175.95
+6471,20.0,18/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO CARESTIATO DE FRIBURGO LTDA,00701679000146,,275.66
+6471,20.0,21/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO DE GAS SEBASTIAO DE BELFORD ROXO,36562874000180,,196.02
+6471,20.0,23/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,POSTO DE GAS SEBASTIAO DE BELFORD ROXO,36562874000180,,170.07
+6471,20.0,27/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto São Jorge Belford Roxo LTDA,15479797000129,,241.05
+6471,20.0,30/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL,Auto posto São Jorge Belford Roxo LTDA,15479797000129,,234.97
+6471,20.0,31/07/2026,Combustíveis e lubrificantes,VII,Abastecimento carro oficial,POSTO KM 13 DA DUTRA LTDA,00118442000137,,185.09
+6471,20.0,31/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,SERVIÇO DE PUBLICIDADE,SANTOS E NOGUEIRA GRAFICA E SERVICOS LTDA,28152622000154,,6000.0
+6471,20.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,,683.0
+6471,20.0,31/07/2026,Locação de imóveis,III.a,LOCAÇÃO DE IMÓVEL,Julio Cesar Ferreira Cunha,PF,,5000.0
+6471,20.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE CARRO AUXILIAR,BELMAC Construtora LTDA,13474158000145,,5000.0
+6471,20.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO CARRO OFICIAL,BELMAC Construtora LTDA,13474158000145,,11000.0
 5215,24.0,28/02/2025,Impulsionamento de mídias,VIII.c,META,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,,2895.92
 5215,24.0,28/02/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,,445.5
 5215,24.0,28/02/2025,"Serviços e produtos postais previstos nos contratos celebrados pela Assembleia Legislativa, vedadas as aquisições de selos e remessas de cartões postais",II,Correios,EMPRESA BRASILEIRA DE CORREIOS E TELÉGRAFOS,34028316000103,,4767.54
@@ -2955,6 +3033,35 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6083,27.0,28/02/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Felipe Rimes,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,250.0
 6083,27.0,28/02/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Lucas Muller,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,100.0
 6083,27.0,28/02/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,99 Fabi,99 TECNOLOGIA LTDA,18033552000161,,118.34
+6157,27.0,05/03/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Serviços de comunicação,Vicente Gomide Saraiva,27517224000121,,6000.0
+6157,27.0,05/03/2026,Locação de imóveis,III.a,Aluguel,Fabricio da Silva Neves,PF,,2367.39
+6157,27.0,05/03/2026,"Participação do Parlamentar em cursos, palestras, seminários, simpósios, congressos ou eventos congêneres, realizados por instituição especializada",IX,Seminário Equipe do Mandato,IBEF Rio de Janeiro,34163329000195,,1780.3
+6157,27.0,07/03/2026,Locação de móveis e equipamentos,IV.a,Computadores,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,3660.0
+6157,27.0,10/03/2026,Acesso à internet,IV.c,Internet,PREDLINK REDE DE TELECOMUNICAÇÕES LTDA,05980171000148,,139.9
+6157,27.0,10/03/2026,Locação ou fretamento de veículos automotores,VI.a,Locação de carro,Servcar Soluções Automotivas Ltda,18325264000180,,2500.0
+6157,27.0,10/03/2026,Locação ou aquisição de licença de uso de software,IV.e,Software,FLEX MARKETING DIRETO LTDA ME,14437788000102,,1000.0
+6157,27.0,10/03/2026,Locação ou fretamento de veículos automotores,VI.a,Locação Carro,GALOC SERVICOS LTDA,33550944000191,,8800.0
+6157,27.0,10/03/2026,Locação de móveis e equipamentos,IV.a,impressora,BETSER INFORMÁTICA,49461397000108,,300.0
+6157,27.0,10/03/2026,"Serviços de energia elétrica, água e esgoto",III.d,Enel,AMPLA ENERGIA E SERVIÇOS SA,33050071000158,,291.38
+6157,27.0,11/03/2026,Diárias para Parlamentar e seus assessores,X,Diária Isabella,Isabela Almeida Fernandes,PF,,306.26
+6157,27.0,12/03/2026,Material de expediente e suprimentos de informática,IV.b,Papelaria,Papelaria México,39071931000116,,140.7
+6157,27.0,14/03/2026,Locação de móveis e equipamentos,IV.a,Rental,RENTAL BRASIL LOCAÇÕES LTDA,01490702000163,,445.0
+6157,27.0,23/03/2026,Material de expediente e suprimentos de informática,IV.b,Água,Eshyla Shusuku Honda Conceição,44785019000166,,180.0
+6157,27.0,27/03/2026,Material de expediente e suprimentos de informática,IV.b,Papelaria,Papelaria México,39071931000116,,349.1
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Manu,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,225.34
+6157,27.0,31/03/2026,Combustíveis e lubrificantes,VII,Ticket 2609,Ticket Solucoes HDFGT S/A,03506307000157,,585.77
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Pedágio,GALOC SERVICOS LTDA,33550944000191,,98.61
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Daniele,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,133.13
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Julia,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,100.0
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Daniel,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,250.0
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Kelly,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,295.72
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Davi,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,200.0
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Lucas Muller,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,100.0
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Felipe Rimes,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,328.58
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,99 Fabi,99 TECNOLOGIA LTDA,18033552000161,,380.7
+6157,27.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Lucas,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,100.0
+6157,27.0,31/03/2026,Combustíveis e lubrificantes,VII,Ticket 6689,Ticket Solucoes HDFGT S/A,03506307000157,,574.0
+6157,27.0,31/03/2026,Combustíveis e lubrificantes,VII,Ticket 7189,Ticket Solucoes HDFGT S/A,03506307000157,,1529.83
 5219,28.0,28/02/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Locação de Vaga de Estacionamento - Vaga 02,Terminal Garagem Menezes Côrtes S.A,02664042000152,CTRL 009617387815234,650.0
 5219,28.0,28/02/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Locação de Vaga de Estacionamento - Vaga 01,Terminal Garagem Menezes Côrtes S.A,02664042000152,CTRL 009817387812363,650.0
 5219,28.0,28/02/2025,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,"Aquisição de Gêneros Alimentícios (café, açúcar e chá)",CARREFOUR COMERCIO E INDUSTRIA LTDA,45543915001404,E60701190202502241532DY5DH6FAZHS,274.6
@@ -3241,6 +3348,19 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6397,32.0,25/06/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,MATTAR E MATTAR AUTO POSTO LTDA.,04971802000108,"Notas Fiscais, Nota Fiscal p/ Público, Atesto, Fatura do Cartão de Crédito, Comprovante de Pagamento da Fatura",460.07
 6397,32.0,27/06/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,Convel de Vassouras Comercio e Serviços LTDA,36168250000182,"Notas Fiscais, Nota Fiscal para Público, Fatura de Cartão de Crédito, Comprovante de Pagamento da Fatura e Atesto",549.63
 6397,32.0,30/06/2026,Assessoria de imprensa e comunicação,VIII.d,Contrato de Assessoria de Imprensa,MPF COMUNICAÇÃO LTDA,11953291000159,"Notas Fiscais, Nota Fiscal p/ público e Atesto",9000.0
+6478,32.0,02/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,MATTAR E MATTAR AUTO POSTO LTDA.,04971802000108,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",475.81
+6478,32.0,04/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,AUTO POSTO REZENDE RECREIO II LTDA,04366125000190,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",480.8
+6478,32.0,10/07/2026,Locação de imóveis,III.a,Locação de Imóvel para fins de Gabinete Parlamentar no município de Volta Redonda,AMARAL IMOVEIS VR LTDA,27415031000160,"Documento para pagamento, Comprovante de Pagamento, Comprovante Público, Atesto e Recibo",3033.35
+6478,32.0,10/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,MATTAR E MATTAR AUTO POSTO LTDA.,04971802000108,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",521.19
+6478,32.0,13/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,AUTO POSTO REZENDE RECREIO II LTDA,04366125000190,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",533.76
+6478,32.0,14/07/2026,Locação ou fretamento de veículos automotores,VI.a,Contrato de Locação Veículo,BHS CAR ALUGUEL DE AUTOMÓVEIS LTDA,32134754000120,"Notas Fiscais, Nota Fiscal para público, Atesto e Comprovante de Pagamento",18950.0
+6478,32.0,16/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Tag Itaú Connectar - passagem expressas nas vias e permanência em estacionamentos,Itaú S.A,60872504000123,"Histórico de Lançamentos - incluindo Passagens e Recargas de 01/07/2026 a 31/07/2026, Documento com o resumo dos cálculos, atesto, fatura do cartão de crédito e comprovante de pagamento do cartão de crédito",637.23
+6478,32.0,16/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,POSTO DE GASOLINA NOVO PINHEIRAL,27518588000126,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",537.62
+6478,32.0,17/07/2026,Combustíveis e lubrificantes,VII,Serviço de Internet Móvel,STARLINK BRAZIL SERVIÇOS DE INTERNET LTDA,40154884000153,"Fatura do Cartão de Crédito, Comprovante de Pagamento da Fatura do Cartão de Crédito, Extrato Completo, Extrato para o Público e Atesto",339.0
+6478,32.0,21/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,MATTAR E MATTAR AUTO POSTO LTDA.,04971802000108,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",548.62
+6478,32.0,24/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,Posto de Combustivel Portal das Americas,31288748000165,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",413.11
+6478,32.0,29/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,POSTO DE ABASTECIMENTO ALLERS LTDA,39207105000151,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",567.03
+6478,32.0,30/07/2026,Combustíveis e lubrificantes,VII,Abastecimento/Combustível,derivados de Petróleo Nascimento LTDA ME,35591085000104,"Notas Fiscais, Nota Fiscal para público, Atesto, Fatura do Cartão de Crédito e Comprovante de Pagamento do Cartão de Crédito",442.88
 5221,33.0,05/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,CATUCA POSTO E SERVICOS LTDA,05725748000175,117801,283.09
 5221,33.0,08/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,CENTRO AUTOMOTIVO PACO DE SOUZA LTDA.,01487893000104,041314,235.79
 5221,33.0,12/02/2025,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE EXPEDIENTE,Papelaria México,39071931000116,004992,375.8
@@ -3645,6 +3765,15 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 5941,38.0,31/12/2025,Combustíveis e lubrificantes,VII,posto,AUTO POSTO MAQUINE LTDA,42357715000146,207781,176.48
 5941,38.0,31/12/2025,Devolução de saldo,4,devolucao,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,983266126038318,78898.18
 5941,38.0,31/12/2025,Locação ou fretamento de veículos automotores,VI.a,Aluguel do Carro,MOVIDA PARTICIPAÇÕES S.A,21314559000166,26465544,3819.6
+6014,38.0,31/01/2026,Locação ou fretamento de veículos automotores,VI.a,ALUGUEL DO CARRO,MOVIDA PARTICIPAÇÕES S.A,21314559000166,,3819.6
+6014,38.0,31/01/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel do Carro,MOVIDA PARTICIPAÇÕES S.A,21314559000166,28653774/1,4423.25
+6014,38.0,31/01/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel do Carro,MOVIDA PARTICIPAÇÕES S.A,21314559000166,26465544/9,1400.52
+6014,38.0,31/01/2026,Impulsionamento de mídias,VIII.c,facebook,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,129417928,10000.0
+6089,38.0,28/02/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel do Carro,MOVIDA PARTICIPAÇÕES S.A,21314559000166,28653774,4275.8
+6089,38.0,28/02/2026,Combustíveis e lubrificantes,VII,Combustivel,AUTO POSTO MAQUINE LTDA,42357715000146,216666,265.95
+6089,38.0,28/02/2026,Combustíveis e lubrificantes,VII,Combustivel,AUTO POSTO MAQUINE LTDA,42357715000146,217763,264.92
+6089,38.0,28/02/2026,Combustíveis e lubrificantes,VII,Combustivel,AUTO POSTO MAQUINE LTDA,42357715000146,218766,232.48
+6089,38.0,28/02/2026,Impulsionamento de mídias,VIII.c,facebook,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,131884316,4986.66
 5225,40.0,03/02/2025,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO VW GOL - PERÍODO DE FEVEREIRO 2025,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,RECIBO Nº 154/2025,3000.0
 5225,40.0,03/02/2025,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO JEEP COMMANDER - PERÍODO DE FEVEREIRO 2025,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,RECIBO Nº 153/2025,16000.0
 5225,40.0,03/02/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO DE COMBUSTIVEL,AUTO POSTO VALE NEVADO LTDA,14808720000192,NFCe Nº 409180 - Série: 20,230.39
@@ -4443,6 +4572,52 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6239,42.0,30/04/2026,Impulsionamento de mídias,VIII.c,Impulsionamento,TWITTER INTERNATIONAL,15493642000147,720125509545,32.0
 6239,42.0,30/04/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,247,382.0
 6239,42.0,30/04/2026,Impulsionamento de mídias,VIII.c,Impulsionamento,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,136438020,1136.41
+6321,42.0,24/05/2026,Diárias para Parlamentar e seus assessores,X,Viagem,ROBERTO LUIZ APOLINÁRIO DE JESUS DA SILVA,PF,,612.52
+6321,42.0,24/05/2026,Diárias para Parlamentar e seus assessores,X,Viagem,MARCIO GUALBERTO DOS SANTOS,PF,,733.92
+6321,42.0,24/05/2026,Diárias para Parlamentar e seus assessores,X,Viagem,JEAN FELIPE,PF,,612.52
+6321,42.0,24/05/2026,Diárias para Parlamentar e seus assessores,X,Viagem,Anderson Sillis,PF,,612.52
+6321,42.0,31/05/2026,Impulsionamento de mídias,VIII.c,Impulsionamento,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,138328414,186.43
+6321,42.0,31/05/2026,Material de expediente e suprimentos de informática,IV.b,Papelaria,Papelaria México,39071931000116,6449,627.0
+6321,42.0,31/05/2026,Impulsionamento de mídias,VIII.c,Impulsionamento,TWITTER INTERNATIONAL,15493642000147,686139239970,32.0
+6321,42.0,31/05/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,427,4000.0
+6321,42.0,31/05/2026,Impulsionamento de mídias,VIII.c,Mídia,Google Cloud Brasil Computação e Serviços de Dados Ltda,25012398000107,17441489,154.0
+6321,42.0,31/05/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguem de Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,426,13000.0
+6321,42.0,31/05/2026,Material de expediente e suprimentos de informática,IV.b,Água,Eshyla Shusuku Honda Conceição,44785019000166,,135.0
+6321,42.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Sem Parar,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,696146688,558.57
+6321,42.0,31/05/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,23907,382.0
+6321,42.0,31/05/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,23908,202.0
+6321,42.0,31/05/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,122,1289.15
+6321,42.0,31/05/2026,Combustíveis e lubrificantes,VII,Combustível,POSTO DE GASOLINA MARECHAL DE BANGU LTDA,02553357000122,,6233.07
+6321,42.0,31/05/2026,Locação de móveis e equipamentos,IV.a,Locação de Câmera,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,120,1100.0
+6321,42.0,31/05/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,121,613.58
+6403,42.0,03/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,Fábio Menezes Chailles Santos,PF,,306.26
+6403,42.0,03/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,LUCIANA MARIA CHAMON,PF,,306.26
+6403,42.0,03/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,MARCIO GUALBERTO DOS SANTOS,PF,,366.96
+6403,42.0,03/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,Anderson Sillis,PF,,306.26
+6403,42.0,16/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,RICARDO BERTOLDO DOS SANTOS,PF,,306.26
+6403,42.0,16/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,Anderson Sillis,PF,,306.26
+6403,42.0,16/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,LUCIANA MARIA CHAMON,PF,,306.26
+6403,42.0,16/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,MARCIO GUALBERTO DOS SANTOS,PF,,366.96
+6403,42.0,18/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,ROBERTO LUIZ APOLINÁRIO DE JESUS DA SILVA,PF,,306.26
+6403,42.0,18/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,MARCIO GUALBERTO DOS SANTOS,PF,,366.96
+6403,42.0,18/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,LUCIANA MARIA CHAMON,PF,,306.26
+6403,42.0,18/06/2026,Diárias para Parlamentar e seus assessores,X,Viagem,Anderson Sillis,PF,,306.26
+6403,42.0,23/06/2026,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO MAQUINE LTDA,42357715000146,230031,179.08
+6403,42.0,30/06/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,150,613.58
+6403,42.0,30/06/2026,Devolução de saldo,4,Devolução Semestral,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,7230.06
+6403,42.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Sem Parar,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,700483089,407.41
+6403,42.0,30/06/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,23919,382.0
+6403,42.0,30/06/2026,Impulsionamento de mídias,VIII.c,Mídia,Google Cloud Brasil Computação e Serviços de Dados Ltda,25012398000107,,154.0
+6403,42.0,30/06/2026,Impulsionamento de mídias,VIII.c,IMPULSIONAMENTO,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,140397725,1070.22
+6403,42.0,30/06/2026,Combustíveis e lubrificantes,VII,Combustível,POSTO DE GASOLINA MARECHAL DE BANGU LTDA,02553357000122,,6053.99
+6403,42.0,30/06/2026,Material de expediente e suprimentos de informática,IV.b,Água,Eshyla Shusuku Honda Conceição,44785019000166,865,75.0
+6403,42.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,514,13000.0
+6403,42.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,515,4000.0
+6403,42.0,30/06/2026,Impulsionamento de mídias,VIII.c,Impulsionamento,TWITTER INTERNATIONAL,15493642000147,662153095427,32.0
+6403,42.0,30/06/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,151,1289.15
+6403,42.0,30/06/2026,Locação de móveis e equipamentos,IV.a,Locação de Câmera,MARKKAR SISTEMAS DE INFORMÁTICA LTDA,11115760000160,149,1100.0
+6403,42.0,30/06/2026,Material de expediente e suprimentos de informática,IV.b,PAPELARIA,Papelaria México,39071931000116,6574,1233.7
+6403,42.0,30/06/2026,Locação de móveis e equipamentos,IV.a,Locação de Computador,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,23920,202.0
 5299,44.0,31/03/2025,Assessoria de imprensa e comunicação,VIII.d,ASSESSORIA DE IMPRENSA,A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,11000.0
 5370,44.0,30/04/2025,Assessoria de imprensa e comunicação,VIII.d,ASSESSORIA DE IMPRENSA,A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,11000.0
 5370,44.0,30/04/2025,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEICULO,SEGBRASIL COMERCIO E SERVIÇOS LTDA,28619965000186,,15000.0
@@ -4476,6 +4651,21 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6323,46.0,29/05/2026,Material de expediente e suprimentos de informática,IV.b,Material de Expediente,Papelaria México,39071931000116,,657.5
 6323,46.0,30/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Pedágio,MOVIDA LOCAÇÃO DE VEICULOS,07976147000160,,44.72
 6323,46.0,31/05/2026,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO MAQUINE LTDA,42357715000146,,247.12
+6405,46.0,01/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Agua,Eshyla Shusuku Honda Conceição,44785019000166,,195.0
+6405,46.0,03/06/2026,Impulsionamento de mídias,VIII.c,Divulgação de Atividade Parlamentar,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,,5467.13
+6405,46.0,09/06/2026,Monitoramento da atividade parlamentar em redes sociais,VIII.e,Monitoramento de Mídias Sociais,"KAREN SALLES CARDOSO FERNANDES COELHO,",PF,,3000.0
+6405,46.0,11/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de carro,MOVIDA LOCAÇÃO DE VEICULOS,07976147000160,,3437.35
+6405,46.0,11/06/2026,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO MAQUINE LTDA,42357715000146,,216.2
+6405,46.0,11/06/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Material gráfico,IMPRINT 2001 GRAFICA E EDITORA LTDA,02495060000158,,3999.0
+6405,46.0,13/06/2026,Locação ou aquisição de licença de uso de software,IV.e,Software,OPENAI BRAZIL LIMITADA,62531071000178,,560.25
+6405,46.0,13/06/2026,Locação ou aquisição de licença de uso de software,IV.e,Software,BYTEDANCE BRASIL TECNOLOGIA LTDA,27415911000136,,65.9
+6405,46.0,18/06/2026,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO MAQUINE LTDA,42357715000146,,212.78
+6405,46.0,23/06/2026,Material de expediente e suprimentos de informática,IV.b,Material de Expediente,Papelaria México,39071931000116,,658.1
+6405,46.0,23/06/2026,Locação de móveis e equipamentos,IV.a,Aluguel de Notebook,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,2250.0
+6405,46.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,Software,MLABS,23465964000100,,340.0
+6405,46.0,30/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Agua,Eshyla Shusuku Honda Conceição,44785019000166,,120.0
+6405,46.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Pedágio,MOVIDA LOCAÇÃO DE VEICULOS,07976147000160,,15.39
+6405,46.0,30/06/2026,Devolução de saldo,4,Devolução de Saldo,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,46513.18
 5228,50.0,03/02/2025,Combustíveis e lubrificantes,VII,Combustível,Posto Modelo JMLBG Ltda,05058322000105,NF 2557905/2025,153.87
 5228,50.0,03/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação de Veículo,Servcar Soluções Automotivas Ltda,18325264000180,FATURA 024/2025,3000.0
 5228,50.0,03/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação de Veículo,Servcar Soluções Automotivas Ltda,18325264000180,FATURA 023/2025,12000.0
@@ -6341,6 +6531,18 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6414,64.0,30/06/2026,IPTU e seguro contra incêndio,III.c,Seguro equipamentos parc 5/6 - Gabinete Avançado de Vilar dos Teles,Tokio Marine Seguradora S.A.,33164021000100,Boleto 13521466 junho 2026,149.46
 6414,64.0,30/06/2026,IPTU e seguro contra incêndio,III.c,Seguro imóvel parc 5/6 - Gabinete Avançado de Vilar dos Teles,PORTO SEGURO COMPANHIA DE SEGUROS GERAIS,61198164000160,Boleto 57230286 junho 2026,106.53
 6414,64.0,30/06/2026,IPTU e seguro contra incêndio,III.c,IPTU parc 5 de 10 - Gabinete Avançado de Vilar dos Teles,Município de São João de Meriti,29138336000105,Boleto 66936584,136.22
+6495,64.0,16/07/2026,Combustíveis e lubrificantes,VII,Combustível 1ª quinzena,Galápagos Centro Automotivo Ltda.,07187563000180,Boleto 2192 quinzena 1 julho 2026,892.21
+6495,64.0,18/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Pedágio,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,Fatura 26156390453 julho 2026,783.09
+6495,64.0,22/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,Conta de energia elétrica - Gabinete Avançado de Vilar dos Teles,LIGHT SERVIÇOS DE ELETRICIDADE S.A.,60444437000146,NF 083653397 julho 2026,181.84
+6495,64.0,24/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,Conta de água - Gabinete Avançado de Vilar dos Teles,Águas do Rio,42644220000106,NF 466298 julho 2026,88.1
+6495,64.0,31/07/2026,IPTU e seguro contra incêndio,III.c,IPTU parc 6 de 10 - Gabinete Avançado de Vilar dos Teles,Município de São João de Meriti,29138336000105,Boleto 66936585 julho 2026,136.22
+6495,64.0,31/07/2026,Combustíveis e lubrificantes,VII,Combustível 2ª quinzena,Galápagos Centro Automotivo Ltda.,07187563000180,Boleto 2214 quinzena 2 julho 2026,2452.37
+6495,64.0,31/07/2026,Locação de móveis e equipamentos,IV.a,locação impressora - Gabinete Avançado de Vilar dos Teles,Daddy Ilha Soluções Integradas Ltda.,08540992000151,Boleto 712 julho 2026,481.94
+6495,64.0,31/07/2026,IPTU e seguro contra incêndio,III.c,Seguro equipamentos parc 6/6 - Gabinete Avançado de Vilar dos Teles,Tokio Marine Seguradora S.A.,33164021000100,Boleto 13521466 julho 2026,149.46
+6495,64.0,31/07/2026,IPTU e seguro contra incêndio,III.c,Seguro imóvel parc 6/6 - Gabinete Avançado de Vilar dos Teles,PORTO SEGURO COMPANHIA DE SEGUROS GERAIS,61198164000160,Boleto 57230287 julho 2026,106.53
+6495,64.0,31/07/2026,Locação de imóveis,III.a,Locação de imóvel - Gabinete Avançado Vilar dos Teles,Gisele Martins,PF,Recibo 07 julho 2026,3903.17
+6495,64.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,Locação de veículos,HI TECH VEÍCULOS EIRELLI,29566131000112,07BL-TTC/2026 julho 2026,9500.0
+6495,64.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,Locação de veículos,HI TECH VEÍCULOS EIRELLI,29566131000112,01BL-TUG/2026 julho 2026,12000.0
 5237,68.0,02/02/2025,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Divulgação de Atividade Parlamentar,Live 86 Agencia Ltda,07119602000101,Recibo,12000.0
 5237,68.0,02/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação de veículos auto-motores,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,Recibo,15000.0
 5237,68.0,03/02/2025,Combustíveis e lubrificantes,VII,Combustíveis e lubrificantes,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,NFE,300.0
@@ -6555,6 +6757,30 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6415,68.0,25/06/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3507125,200.0
 6415,68.0,26/06/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3508631,150.0
 6415,68.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO GABINETE DIRETOR,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,943619393754298,9751.1
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3515600,200.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3521480,150.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3523115,240.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3512172,200.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3521759,130.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3513508,190.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3510376,250.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3513932,150.0
+6496,68.0,02/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3521485,210.0
+6496,68.0,04/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3525889,200.0
+6496,68.0,06/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILLUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3528500,200.0
+6496,68.0,07/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3529130,250.0
+6496,68.0,08/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3529631,240.0
+6496,68.0,09/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3531398,180.0
+6496,68.0,10/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3534655,350.0
+6496,68.0,13/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3538989,200.0
+6496,68.0,14/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3540806,150.0
+6496,68.0,17/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3545842,200.0
+6496,68.0,20/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3551828,200.0
+6496,68.0,21/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3553113,200.0
+6496,68.0,22/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO CARRO OFICIAL HILUX,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3556783,200.0
+6496,68.0,22/07/2026,Combustíveis e lubrificantes,VII,ABASTECIMENTO,REDE OSORIOS DE MARICÁ COMERCIO DE GAS NATURAL,09547694000156,3555143,150.0
+6496,68.0,30/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DO VEÍCULO SENTRA NISSA PLACA LUC6I72,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,604/2026,8500.0
+6496,68.0,30/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DO VEÍCULO HILUX PLACA SRL1G15,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,603/2026,15000.0
 5238,72.0,01/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação,Novacom,18828846000180,254,5000.0
 5238,72.0,01/02/2025,Combustíveis e lubrificantes,VII,Combustível,ALG Posto,72408842000198,184504,298.71
 5238,72.0,01/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação,Novacom,18828846000180,253,7900.0
@@ -7413,6 +7639,13 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6418,77.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Estacionamento,Terminal Garagem Menezes Côrtes S.A,02664042000152,,650.0
 6418,77.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel carro,L MAFFEI COMPRA VENDA LOCAÇÃO DE VEÍCULOS EIRELI ME,26312379000169,,4200.0
 6418,77.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,,13500.0
+6499,77.0,23/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Sem Parar,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,,404.95
+6499,77.0,29/07/2026,Combustíveis e lubrificantes,VII,Combustível,Auto Servico Sudoeste LTDA,31449135000162,,2935.94
+6499,77.0,31/07/2026,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO SAQUAREMA LTDA,30357529000128,,2621.16
+6499,77.0,31/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Divulgação de atividade parlamentar,C & D Health Club LTDA,44692131000152,,7000.0
+6499,77.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel de Carro,L MAFFEI COMPRA VENDA LOCAÇÃO DE VEÍCULOS EIRELI ME,26312379000169,,4200.0
+6499,77.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,Aluguel Carro,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,,13500.0
+6499,77.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Estacionamento,Terminal Garagem Menezes Côrtes S.A,02664042000152,,650.0
 5241,79.0,04/02/2025,Combustíveis e lubrificantes,VII,Combustível,Centro automotivo golfe clube LTDA,31197361000101,,319.67
 5241,79.0,05/02/2025,Combustíveis e lubrificantes,VII,Combustível,AUTO POSTO RYDER LTDA,19356275000190,,236.96
 5241,79.0,07/02/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,uber,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,58.96
@@ -8246,6 +8479,29 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6420,82.0,30/06/2026,Locação de imóveis,III.a,Gabinete de Apoio,João Luis Xavier Soares,,,2343.0
 6420,82.0,30/06/2026,Acesso à internet,IV.c,serviço de internet,UNIDOS NET PROVEDOR LTDA,45597639000134,,99.9
 6420,82.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,locomoção,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,65.05
+6501,82.0,01/07/2026,Locação de móveis e equipamentos,IV.a,locação de equipamentos,HAND-PC TECNOLOGIA E INFORMÁTICA LTDA-ME,10342229000168,,2200.0
+6501,82.0,06/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,custeio de gabinete,Águas do Rio,42310775000103,,224.69
+6501,82.0,07/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,energia,AMPLA ENERGIA E SERVIÇOS SA,33050071000158,,123.07
+6501,82.0,08/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,locomoção,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,42.91
+6501,82.0,10/07/2026,Diárias para Parlamentar e seus assessores,X,diária,Daniela Souza Damaso,PF,,306.26
+6501,82.0,16/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,locomoção,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,50.7
+6501,82.0,17/07/2026,Combustíveis e lubrificantes,VII,Combustível,Posto de Gasolina Amizade de Jacarepagua,42243113000168,,138.43
+6501,82.0,17/07/2026,"Serviços de energia elétrica, água e esgoto",III.d,energia,AMPLA ENERGIA E SERVIÇOS SA,33050071000158,,75.93
+6501,82.0,17/07/2026,Acesso à internet,IV.c,serviço de internet,UNIDOS NET PROVEDOR LTDA,45597639000134,,99.9
+6501,82.0,17/07/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,custeio de gabinete,58.102.687 CARLOS MENDES DA FONSECA,58102687000156,,28.0
+6501,82.0,22/07/2026,Assinatura de TV a cabo ou similar,IV.d,Manutenção de Gabinete,OI SERVIÇOS DE TELEVISÃO POR ASSINATURA,53059901000115,,100.91
+6501,82.0,24/07/2026,Locação ou fretamento de veículos automotores,VI.a,locação de veículos,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,,4500.0
+6501,82.0,25/07/2026,Acesso à internet,IV.c,serviço de internet,OI FIBRA,53420564000140,,116.53
+6501,82.0,27/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,locomoção,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,201.82
+6501,82.0,27/07/2026,Combustíveis e lubrificantes,VII,Combustível,Posto dos Santos Reis Ltda,29051570000192,,300.0
+6501,82.0,27/07/2026,Diárias para Parlamentar e seus assessores,X,diária,Daniela Souza Damaso,PF,,306.26
+6501,82.0,30/07/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,assessoria de imprensa,A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,6900.0
+6501,82.0,31/07/2026,Diárias para Parlamentar e seus assessores,X,diária,Vinicius Cesar da Silva de Paula,PF,,1225.04
+6501,82.0,31/07/2026,Diárias para Parlamentar e seus assessores,X,diária,Amauri de Medeiros Torres,PF,,1225.04
+6501,82.0,31/07/2026,Locação de imóveis,III.a,Gabinete de apoio,João Luis Xavier Soares,PF,,2343.0
+6501,82.0,31/07/2026,Locação de imóveis,III.a,Gabinete de apoio,Maria Aparecida da Silva Passos,PF,,1000.0
+6501,82.0,31/07/2026,Diárias para Parlamentar e seus assessores,X,diária,Petrônio Vilela dos Santos,PF,,1225.04
+6501,82.0,31/07/2026,Diárias para Parlamentar e seus assessores,X,Diária,Célia Cristina Amorim Silva Jordão,PF,,1467.84
 5386,83.0,11/04/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO,POSTO GIGANTE DA DUTRA LTDA,04488570000123,NF 99523,461.44
 5386,83.0,28/04/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO,POSTO DE COMBUSTÍVEIS PARADA CERTA LTDA.,46075787000151,NF 54508,393.12
 5386,83.0,30/04/2025,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE ESCRITÓRIO,Papelaria México,39071931000116,NFE 5.163/5.197/5.205,421.5
@@ -8300,6 +8556,14 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6033,83.0,31/01/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,VERSUS SOLUCOES LTDA,51137150000182,FATURA 00008,21500.0
 6108,83.0,28/02/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,PRODUÇÃO DE CONTEÚDO PARA REDES SOCIAIS,FRACTAL MARKETING E ESTRATÉGIA LTDA-ME,63674457000100,NF 00050002,9350.0
 6108,83.0,28/02/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,VERSUS SOLUCOES LTDA,51137150000182,FATURA 00009,21500.0
+6459,87.0,23/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Aquisição de materiais de consumo destinados ao apoio das atividades administrativas do Gabinete Parlamentar.,CASAS GUANABARA COMESTÍVEIS LTDA,33130543005575,,249.52
+6459,87.0,23/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Aquisição de Água Mineral.,Eshyla Shusuku Honda Conceição,44785019000166,,30.0
+6459,87.0,24/06/2026,Material de expediente e suprimentos de informática,IV.b,Material de Escritório.,KALUNGA COMÉRCIO E INDÚSTRIA GRÁFICA LTDA,43283811000150,,681.66
+6459,87.0,30/06/2026,Serviços gráficos,VIII.a,Material Gráfico,BERMANN COMERCIO E SERVICOS LTDA,36466233000121,,6200.0
+6459,87.0,30/06/2026,Devolução de saldo,4,Devolução de Saldo Acumulado 1º Semestre.,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,13846.42
+6459,87.0,30/06/2026,Assessoria de imprensa e comunicação,VIII.d,Comunicação Social.,CONECT-RIO SOLUÇÕES LTDA,24091587000150,,5320.0
+6459,87.0,30/06/2026,Combustíveis e lubrificantes,VII,Abastecimento,KEM C.R.T.S.E.I.P.D. PETROLEO LTDA,40296824000175,,4757.73
+6459,87.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Estacionamento.,Terminal Garagem Menezes Côrtes S.A,02664042000152,,80.0
 5244,91.0,05/02/2025,Material de expediente e suprimentos de informática,IV.b,Papelaria,Paper Papelaria e Presente Ltda,50816447000101,,279.0
 5244,91.0,05/02/2025,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Água mineral,ANAS-TURAIS PRODUTOS SAUDE LTDA,05403264000100,,72.0
 5244,91.0,11/02/2025,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Água mineral,K W Comercio e Transporte de GLP Ltda,41280525000105,,190.0
@@ -10421,6 +10685,21 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6432,107.0,30/06/2026,Combustíveis e lubrificantes,VII,NF 467513,POSTO DE COMBUSTIVEIS CAFUBA LTDA,30759763000181,,224.74
 6432,107.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,13691.87
 6432,107.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,PEDÁGIO,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,,546.48
+6514,107.0,11/07/2026,Combustíveis e lubrificantes,VII,NF 1028509,POSTO DE GASOLINA SANTA ROSA DE ICARAI LTDA,08975032000114,,319.07
+6514,107.0,15/07/2026,Combustíveis e lubrificantes,VII,NF 60703,Auto posto mandala ltda,55266155000166,,285.63
+6514,107.0,20/07/2026,Combustíveis e lubrificantes,VII,NF 683729,J.P.X COMBUSTÍVEIS E CONVENIÊNCIAS - BARRA LTDA,02944029000157,,342.44
+6514,107.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,UBER,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,147.98
+6514,107.0,31/07/2026,Combustíveis e lubrificantes,VII,NF 682098,J.P.X COMBUSTÍVEIS E CONVENIÊNCIAS - BARRA LTDA,02944029000157,,233.34
+6514,107.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,PEDÁGIO,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,,299.71
+6514,107.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,ALUGUEL DE CARRO,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,,15000.0
+6514,107.0,31/07/2026,Combustíveis e lubrificantes,VII,NF 6383,Auto posto mandala ltda,55266155000166,,284.5
+6514,107.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,99 TAXI,99 TECNOLOGIA LTDA,18033552000161,,91.6
+6514,107.0,31/07/2026,Combustíveis e lubrificantes,VII,"NF 126203, 127838, 128045",Posto de Gasolina Rias Baixas LTDA,40236820000100,,569.52
+6514,107.0,31/07/2026,Combustíveis e lubrificantes,VII,"NF 1032992, 1038680, 1043513",POSTO DE GASOLINA SANTA ROSA DE ICARAI LTDA,08975032000114,,563.43
+6514,107.0,31/07/2026,Locação de móveis e equipamentos,IV.a,LOCAÇÃO DE EQUIPAMENTO,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,550.0
+6514,107.0,31/07/2026,Material de expediente e suprimentos de informática,IV.b,NF ÁGUA,Eshyla Shusuku Honda Conceição,44785019000166,,90.0
+6514,107.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,99 TAXI,99 TECNOLOGIA LTDA,18033552000161,,110.0
+6514,107.0,31/07/2026,Combustíveis e lubrificantes,VII,"NF 1021150, 1021923, 1022675, 1025025, 1025725, 1027230",POSTO DE GASOLINA SANTA ROSA DE ICARAI LTDA,08975032000114,,1247.1
 5254,108.0,03/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO F1 RACING LTDA,03922066000127,17668,329.56
 5254,108.0,19/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO F1 RACING LTDA,03922066000127,17882,312.62
 5254,108.0,24/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO F1 RACING LTDA,03922066000127,17939,456.22
@@ -10523,6 +10802,13 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6352,109.0,14/05/2026,Assessoria de imprensa e comunicação,VIII.d,Serviço de comunicação,CARCARÁ ESTUDIO LTDA,62865923000163,,10000.0
 6352,109.0,20/05/2026,Combustíveis e lubrificantes,VII,Combustível,Posto Estácio Ltda.,30701494000100,,1187.8
 6352,109.0,27/05/2026,Material de expediente e suprimentos de informática,IV.b,Material Escritório,Papelaria México,39071931000116,,305.5
+6434,109.0,01/06/2026,Locação ou fretamento de veículos automotores,VI.a,Locação Veículo,UTILICAR RENT A CAR LTDA,14217886000134,,11000.0
+6434,109.0,15/06/2026,Material de expediente e suprimentos de informática,IV.b,Material Expediente/ Água,Eshyla Shusuku Honda Conceição,44785019000166,,60.0
+6434,109.0,24/06/2026,Material de expediente e suprimentos de informática,IV.b,Material Escritório,Papelaria México,39071931000116,,337.4
+6434,109.0,30/06/2026,Combustíveis e lubrificantes,VII,Combustível,Posto Estácio Ltda.,30701494000100,,1663.14
+6434,109.0,30/06/2026,Devolução de saldo,4,Devolução de Saldo,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,27417.66
+6434,109.0,30/06/2026,Combustíveis e lubrificantes,VII,Combustível,Posto Estácio Ltda.,30701494000100,,1041.39
+6434,109.0,30/06/2026,Assessoria de imprensa e comunicação,VIII.d,Serviço de Comunicação,CARCARÁ ESTUDIO LTDA,62865923000163,,10000.0
 5255,110.0,03/02/2025,Combustíveis e lubrificantes,VII,Abastecimento de Veículo,AUTO POSTO CHACALTAYA,42314534000132,NF. 1705486,241.84
 5255,110.0,03/02/2025,Material de expediente e suprimentos de informática,IV.b,Material de Expediente,Kalunga Comércio e Indústria Gráfica Ltda,43283811002799,NF. 1017588,178.16
 5255,110.0,05/02/2025,Combustíveis e lubrificantes,VII,Abastecimento de Veículo,AUTO POSTO CHACALTAYA,42314534000132,NF. 1707405,170.16
@@ -10861,6 +11147,25 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6353,110.0,31/05/2026,Passagens aéreas e terrestres,I,Viagem,DEPUTADA ÍNDIA ARMELAU,,,3678.53
 6353,110.0,31/05/2026,Impulsionamento de mídias,VIII.c,Facebook - Meta,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,138031448,4000.0
 6353,110.0,31/05/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Divulgação de atividade parlamentar,ROBSON DE VASCONCELLOS (Swell Marketing & Comunicação),49023379000144,5,500.0
+6435,110.0,01/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO CHACALTAYA,42314534000132,2087092,343.2
+6435,110.0,02/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Água - Material de consumo,Eshyla Shusuku Honda Conceição,44785019000166,817,77.0
+6435,110.0,03/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO CHACALTAYA,42314534000132,2088826,258.46
+6435,110.0,05/06/2026,Condomínio,III.b,Condominio (Escritorio de apoio),CONDOMÍNIO ABSOLUTTO BUSINESS TOWERS,24483027000140,,705.31
+6435,110.0,06/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO ML AMERICAS BARRA LTDA,30735629000140,1506756,293.26
+6435,110.0,08/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO CHACALTAYA,42314534000132,2092684,316.21
+6435,110.0,08/06/2026,IPTU e seguro contra incêndio,III.c,IPTU (ESCRITORIO DE APOIO),Cesar Sousa Fernandes,PF,05,338.5
+6435,110.0,18/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO ML AMERICAS BARRA LTDA,30735629000140,1516296,280.95
+6435,110.0,22/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO CHACALTAYA,42314534000132,2104350,264.07
+6435,110.0,24/06/2026,Material de expediente e suprimentos de informática,IV.b,Material de expediente,Kalunga Comércio e Indústria Gráfica Ltda,43283811002799,556594,276.4
+6435,110.0,25/06/2026,Combustíveis e lubrificantes,VII,Abastecimento de Veiculo,AUTO POSTO ML AMERICAS BARRA LTDA,30735629000140,1522265,331.25
+6435,110.0,26/06/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,Água - Material de consumo,Eshyla Shusuku Honda Conceição,44785019000166,884,80.0
+6435,110.0,30/06/2026,Locação de imóveis,III.a,Locação (escritorio de apoio),Cesar Sousa Fernandes,PF,,1284.4
+6435,110.0,30/06/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Divulgação de atividade parlamentar,A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,119,7000.0
+6435,110.0,30/06/2026,Acesso à internet,IV.c,Internet - Escritorio de apoio,OI S/A.,76535764033157,705490682,130.54
+6435,110.0,30/06/2026,"Serviços de energia elétrica, água e esgoto",III.d,Energia Eletrica (escritorio de apoio),LIGHT SERVIÇOS DE ELETRICIDADE S.A.,60444437000146,079507290,120.76
+6435,110.0,30/06/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Divulgação de atividade parlamentar,ROBSON DE VASCONCELLOS (Swell Marketing & Comunicação),49023379000144,70000,500.0
+6435,110.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Locação de veiculo,SERV - RIO TERCEIRIZAÇÃO E SERVIÇOS LTDA.,10479861000158,2479,14000.0
+6435,110.0,30/06/2026,Impulsionamento de mídias,VIII.c,Facebook - Meta,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,140184776,3999.99
 5256,111.0,17/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,STATUS RIO AUTO SERVIÇOS LTDA,30882039000140,000012722,333.02
 5256,111.0,17/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,STATUS RIO AUTO SERVIÇOS LTDA,30882039000140,000012725,263.36
 5256,111.0,18/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,STATUS RIO AUTO SERVIÇOS LTDA,30882039000140,000012724,262.59
@@ -12088,6 +12393,34 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6357,115.0,31/05/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,Adobe Systems Brasil LTDA,02999520000185,L05,129.0
 6357,115.0,31/05/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,BYTEDANCE BRASIL TECNOLOGIA LTDA,27415911000136,L04,65.9
 6357,115.0,31/05/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,CANVA MARKETING LTDA,45537041000150,L01,24.24
+6439,115.0,01/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,APULIA POSTO DE GASOLINA LTDA,30352496000123,L02,383.25
+6439,115.0,02/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO LUNA 1 COMBUSTIVEIS SÃO GONÇALO,19607121000124,L05,227.9
+6439,115.0,06/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,APULIA POSTO DE GASOLINA LTDA,30352496000123,L07,383.25
+6439,115.0,08/06/2026,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE EXPEDIENTE,KALUNGA COMERCIO E INDUSTRIA GRÁFICA,43283811001202,L23,294.7
+6439,115.0,08/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO LUNA 1 COMBUSTIVEIS SÃO GONÇALO,19607121000124,L08,360.07
+6439,115.0,09/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO UNIÃO DE PADUA LTDA,03734859000112,L09,297.91
+6439,115.0,10/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO LUNA 1 COMBUSTIVEIS SÃO GONÇALO,19607121000124,L10,235.34
+6439,115.0,11/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO SG,07221741000141,L11,223.04
+6439,115.0,12/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,AUTO POSTO MAQUINE LTDA,42357715000146,L12,370.01
+6439,115.0,16/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,AUTO POSTO MAQUINE LTDA,42357715000146,L13,309.46
+6439,115.0,17/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,APULIA POSTO DE GASOLINA LTDA,30352496000123,L14,181.22
+6439,115.0,22/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,Auto Posto Cruzada Península,47308253000190,L15,301.78
+6439,115.0,23/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO LUNA 1 COMBUSTIVEIS SÃO GONÇALO,19607121000124,L16,229.73
+6439,115.0,24/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO DE GASOLINA SANTA ROSA DE ICARAI LTDA,08975032000114,L18,290.51
+6439,115.0,29/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,POSTO DE GASOLINA MAGNATA,34354993000111,L27,329.66
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARES,ZOOM TECNOLOGIA LTDA,06105781000599,L22,88.25
+6439,115.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,AA ASSESSORIA E LOCAÇÃO LTDA.,29825570000100,L25,10900.0
+6439,115.0,30/06/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,DIVULGAÇÃO DA ATIVIDADE PARLAMENTAR,EVAG COMUNICAÇÃO E TECNOLOGIA LTDA.,15705697000173,L26,6200.0
+6439,115.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,AA ASSESSORIA E LOCAÇÃO LTDA.,29825570000100,L28,3200.0
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,OPENAI BRAZIL LIMITADA,62531071000178,L21,105.62
+6439,115.0,30/06/2026,Combustíveis e lubrificantes,VII,COMBUSTIVEL,AUTO POSTO MAQUINE LTDA,42357715000146,L20,310.61
+6439,115.0,30/06/2026,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE EXPEDIENTE,KALUNGA COMERCIO E INDUSTRIA GRÁFICA,43283811001202,L19,1530.7
+6439,115.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,PEDÁGIO,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,L17,435.77
+6439,115.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO DE SALDO,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,L00,35305.97
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,Adobe Systems Brasil LTDA,02999520000185,L06,129.0
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,BYTEDANCE BRASIL TECNOLOGIA LTDA,27415911000136,L04,65.9
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,Google Cloud Brasil Computação e Serviços de Dados Ltda,25012398000107,L03,127.64
+6439,115.0,30/06/2026,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO DE SOFTWARE,CANVA MARKETING LTDA,45537041000150,L01,23.36
 5260,116.0,03/02/2025,Material de expediente e suprimentos de informática,IV.b,Papelaria,Papelaria México,39071931000116,NF 4964,398.0
 5260,116.0,05/02/2025,Locação ou fretamento de veículos automotores,VI.a,Locação de Veículos,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,REC 160,8000.0
 5260,116.0,05/02/2025,Assessoria de imprensa e comunicação,VIII.d,Gerenciamento de rede social,Casa Verde Comunicação Inteligente,23589525000100,NF 179,4000.0
@@ -12425,6 +12758,13 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6128,118.0,28/02/2026,Locação ou fretamento de veículos automotores,VI.a,Locação veículo,RJUNQUEIRA,30927375000162,,16000.0
 6128,118.0,28/02/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Estacionamento,ALLPARK EMPREEND.PARTIC.E SERV.S/A,60537263000166,,683.0
 6128,118.0,28/02/2026,Diárias para Parlamentar e seus assessores,X,Diária,Moriza Peixoto de França Lacerda,,,918.78
+6202,118.0,31/03/2026,Locação ou aquisição de licença de uso de software,IV.e,papelaria,KALUNGA COMERCIO E INDUSTRIA GRÁFICA,43283811001202,,399.0
+6202,118.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,estacionamento,ALLPARK EMPREEND.PARTIC.E SERV.S/A,60537263000166,,683.0
+6202,118.0,31/03/2026,Custeio de despesas vinculadas ao Gabinete Parlamentar e aos Escritórios de Apoio à Atividade Parlamentar,IV,papelaria,Papelaria México,39071931000116,,712.09
+6202,118.0,31/03/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,transporte,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,644.37
+6202,118.0,31/03/2026,Locação ou fretamento de veículos automotores,VI.a,Locação de Veículos,RJUNQUEIRA,30927375000162,,16000.0
+6202,118.0,31/03/2026,Combustíveis e lubrificantes,VII,combustível,POSTO LIDACE,27602275000151,,2374.83
+6202,118.0,31/03/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,Monitoramento de redes,Doctor Solution LTDA.,59441924000176,,12000.0
 5263,120.0,03/02/2025,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE EXPEDIENTE,Papelaria México,39071931000116,,572.64
 5263,120.0,04/02/2025,Material de expediente e suprimentos de informática,IV.b,MATERIAL DE EXPEDIENTE,Eshyla Shusuku Honda Conceição,44785019000166,,150.0
 5263,120.0,28/02/2025,Locação ou aquisição de licença de uso de software,IV.e,LOCAÇÃO COMPUTADOR,LOGICA TECNOLOGIA - EIRELI EPP,03817776000197,,225.0
@@ -12866,6 +13206,22 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6363,122.0,31/05/2026,Monitoramento da atividade parlamentar em redes sociais,VIII.e,Clipping de noticias,JONATA BATALHA DE CASTRO,23415974000131,,3000.0
 6363,122.0,31/05/2026,Acesso à internet,IV.c,Predialnet,PREDLINK REDE DE TELECOMUNICAÇÕES LTDA,05980171000148,,139.9
 6363,122.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,Servcar Soluções Automotivas Ltda,18325264000180,,456.64
+6445,122.0,03/06/2026,Combustíveis e lubrificantes,VII,CENTRO AUTOMOTIVO PACO DE SOUZA,CENTRO AUTOMOTIVO PACO DE SOUZA LTDA.,01487893000104,,252.12
+6445,122.0,04/06/2026,"Serviços de energia elétrica, água e esgoto",III.d,ENEL 207,AMPLA ENERGIA E SERVIÇOS SA,33050071000158,,207.57
+6445,122.0,04/06/2026,"Serviços de energia elétrica, água e esgoto",III.d,ENEL 218,AMPLA ENERGIA E SERVIÇOS SA,33050071000158,,218.81
+6445,122.0,11/06/2026,Combustíveis e lubrificantes,VII,AUTO POSTO MAQUINE LTD,AUTO POSTO MAQUINE LTDA,42357715000146,,369.73
+6445,122.0,15/06/2026,Combustíveis e lubrificantes,VII,POSTO DE GASOLINA SANTA ROSA,POSTO DE GASOLINA SANTA ROSA DE ICARAI LTDA,08975032000114,,178.63
+6445,122.0,17/06/2026,Combustíveis e lubrificantes,VII,AUTO POSTO MAQUINE,AUTO POSTO MAQUINE LTDA,42357715000146,,436.47
+6445,122.0,30/06/2026,Combustíveis e lubrificantes,VII,AUTO POSTO MAQUINE 281,AUTO POSTO MAQUINE LTDA,42357715000146,,281.44
+6445,122.0,30/06/2026,Serviços gráficos,VIII.a,PIRAMIDE DIGITAL IMPRESSOES,PIRÂMIDE DIGITAL IMPRESSÕES EIRELE ME,00509320000171,,5000.0
+6445,122.0,30/06/2026,Combustíveis e lubrificantes,VII,AUTO POSTO MAQUINE LTDA,AUTO POSTO MAQUINE LTDA,42357715000146,,383.61
+6445,122.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,Servcar Soluções Automotivas Ltda,18325264000180,,367.76
+6445,122.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,SERVCAR,Servcar Soluções Automotivas Ltda,18325264000180,,12500.0
+6445,122.0,30/06/2026,Devolução de saldo,4,devolução de saldo,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,49614.8
+6445,122.0,30/06/2026,Locação de imóveis,III.a,ALUGUEL,Rogério Couri Boumaroun,PF,,4103.2
+6445,122.0,30/06/2026,Assinatura de TV a cabo ou similar,IV.d,CLARO,CLARO S.A.,40432544000147,,131.77
+6445,122.0,30/06/2026,Acesso à internet,IV.c,PREDLINK,PREDLINK REDE DE TELECOMUNICAÇÕES LTDA,05980171000148,,139.9
+6445,122.0,30/06/2026,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,PROJETO IN,JONATA BATALHA DE CASTRO,23415974000131,,3000.0
 5266,123.0,28/02/2025,Passagens aéreas e terrestres,I,Passagem Aérea Rio x BSB,MM TURISMO E VIAGENS S.A,16988607000161,,1667.9
 5266,123.0,28/02/2025,Combustíveis e lubrificantes,VII,Combustível,Auto Posto Pio XII,05058162000102,,455.59
 5266,123.0,28/02/2025,Combustíveis e lubrificantes,VII,Combustível,Posto Santa Clara de Copacabana Limitada,00089378000103,,1838.33
@@ -13735,6 +14091,37 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6448,125.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,Servcar Soluções Automotivas Ltda,18325264000180,NF 130/26,1250.0
 6448,125.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,6BFAE9E9821F7D0E7F75ABEAE4DA9C50EAA482AF,3411.11
 6448,125.0,30/06/2026,Impulsionamento de mídias,VIII.c,DIVULGAÇÃO DE ATIVIDADE PARLAMENTAR,FACEBOOK SERVICOS ONLINE DO BRASIL LTDA,13347016000117,NF 141481312/26,1500.0
+6530,125.0,01/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199060/26,152.4
+6530,125.0,05/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199400/26,229.04
+6530,125.0,06/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199442/26,209.58
+6530,125.0,07/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199595/26,152.02
+6530,125.0,08/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199636/26,231.84
+6530,125.0,08/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199676/26,240.03
+6530,125.0,08/07/2026,Material de expediente e suprimentos de informática,IV.b,ÁGUA / CAFÉ,Centrolimp Comércio de Bebidas,36349527000173,6049/26,284.5
+6530,125.0,09/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199703/26,311.11
+6530,125.0,09/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199714/26,245.02
+6530,125.0,11/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199858/26,238.16
+6530,125.0,11/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199903/26,241.56
+6530,125.0,12/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199950/26,183.64
+6530,125.0,12/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199993/26,135.92
+6530,125.0,12/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 199999/26,156.81
+6530,125.0,13/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200015/26,124.5
+6530,125.0,14/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200117/26,246.06
+6530,125.0,14/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,200163/26,138.93
+6530,125.0,15/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200230/26,140.87
+6530,125.0,16/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,200342/26,343.06
+6530,125.0,17/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200551/26,175.95
+6530,125.0,18/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200682/26,236.07
+6530,125.0,18/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200583/26,294.24
+6530,125.0,18/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200716/26,99.87
+6530,125.0,19/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200785/26,198.35
+6530,125.0,20/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 200871/26,246.13
+6530,125.0,21/07/2026,Passagens aéreas e terrestres,I,PASSAGEM AÉREA,TAM Linhas aéreas S/A,02012862000160,9572296689876,2419.52
+6530,125.0,22/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,ALPS AUTO POSTO LTDA,04012786000118,NF 201105/26,160.83
+6530,125.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,GALOC SERVICOS LTDA,33550944000191,NF 042/26,15000.0
+6530,125.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,Servcar Soluções Automotivas Ltda,18325264000180,NF 157/26,3000.0
+6530,125.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,Servcar Soluções Automotivas Ltda,18325264000180,NF 158/26,1250.0
+6530,125.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,PEDÁGIO,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,NF 705590793/26,45.97
 5269,128.0,10/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,CENTRO AUTOMOTIVO PACO DE SOUZA LTDA.,01487893000104,41799,425.19
 5269,128.0,19/02/2025,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,FOTOGRAFIA,DAYANE SANTOS DUARTE,57085421000180,7,2500.0
 5269,128.0,19/02/2025,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,AUTO POSTO MAQUINE LTDA,42357715000146,163043,554.91
@@ -14941,6 +15328,18 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6372,135.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,CRÉDITO UBER PARA CHEFE DE GAB. MARA,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,70.0
 6372,135.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,CRÉDITO UBER PARA ASSESSOR JOAO GABRIEL,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,50.63
 6372,135.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,CRÉDITO UBER PARA ASSESSOR JOAO NETO,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,138.95
+6454,135.0,01/06/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,510,13500.0
+6454,135.0,01/06/2026,Material de expediente e suprimentos de informática,IV.b,AGUA MINERAL,Eshyla Shusuku Honda Conceição,44785019000166,793,60.0
+6454,135.0,03/06/2026,Monitoramento da atividade parlamentar em redes sociais,VIII.e,MARKETING DIRETO - GESTÃO DE TRAFEGO PAGO,COMANDO ADS ASSESSORIA DE MARKETING LTDA,59497480000190,53,5000.0
+6454,135.0,14/06/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO DE SERVIÇOS ALIANÇA DE CAMPO GRANDE LTDA,05152484000108,242407,326.71
+6454,135.0,15/06/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO DE GASOLINA JARDIM DA FREGUESIA LTDA,10330237000194,1026308,147.71
+6454,135.0,22/06/2026,Locação ou aquisição de licença de uso de software,IV.e,CANVA,CANVA MARKETING LTDA,45537041000150,0485738427044,67.5
+6454,135.0,24/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,SEM PARAR,SEM PARAR INSTITUICAO DE PAGAMENTO LTDA,04088208000165,698302925,446.64
+6454,135.0,25/06/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO DE GASOLINA JARDIM DA FREGUESIA LTDA,10330237000194,1034189,159.12
+6454,135.0,30/06/2026,Devolução de saldo,4,DEVOLUÇÃO SALDO 1º SEMESTRE 2026,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,6721.46
+6454,135.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,CRÉDITO UBER PARA ASSESSORA RAISSA,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,727.67
+6454,135.0,30/06/2026,Material de expediente e suprimentos de informática,IV.b,PAPELARIA,Papelaria México,39071931000116,6579,683.8
+6454,135.0,30/06/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,POSTO DE GASOLINA JARDIM DA FREGUESIA LTDA,10330237000194,1038020,237.55
 5274,136.0,28/02/2025,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,RJ EVER,19685605000191,,8000.0
 5346,136.0,30/03/2025,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULO,RJ EVER,19685605000191,,8000.0
 5417,136.0,30/04/2025,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREEND.PARTIC.E SERV.S/A,60537263000166,,683.0
@@ -14992,6 +15391,13 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6373,136.0,31/05/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO HILUX,RJ EVER,19685605000191,,13000.0
 6373,136.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,,1366.0
 6373,136.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,PEDÁGIO,RJ EVER,19685605000191,,84.55
+6455,136.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,HILUX,RJ EVER,19685605000191,,13000.0
+6455,136.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,COROLLA,RJ EVER,19685605000191,,8000.0
+6455,136.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,,1366.0
+6455,136.0,30/06/2026,Devolução de saldo,4,Devolução de Saldo 1° Semestre 2026,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,52083.31
+6537,136.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,HILUX,RJ EVER,19685605000191,,13000.0
+6537,136.0,31/07/2026,Locação ou fretamento de veículos automotores,VI.a,COROLLA,RJ EVER,19685605000191,,8000.0
+6537,136.0,31/07/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,ESTACIONAMENTO,ALLPARK EMPREENDIMENTOS PARTICIPAÇÕES E SERVIÇOS SA,60537263105855,,1366.0
 5275,137.0,28/02/2025,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,"DIVULGAÇÃO, ASSESSORIA DE IMPRENSA, CLIPPING DE NOTÍCIAS",A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,3571.4
 5347,137.0,10/03/2025,"Divulgação de sua atividade parlamentar, respeitadas as vedações de leis eleitorais",VIII,"DIVULGAÇÃO, ASSESSORIA DE IMPRENSA, CLIPPING DE NOTÍCIAS",A3 SERVICOS DE PUBLICIDADE E COMUNICAÇÃO LTDA,32433119000144,,3225.8
 5489,137.0,27/05/2025,Passagens aéreas e terrestres,I,PASSAGEM AREA RJ/BSB BSB/RJ EM 27/05 A 28/05,123 MILHAS,26669170000157,,3827.84
@@ -15057,3 +15463,6 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 5994,138.0,28/12/2025,Locação de imóveis,III.a,Locação garagem,JOSÉ DOS SANTOS MACEDO FILHO,,02,1000.0
 5994,138.0,28/12/2025,Locação de imóveis,III.a,Locação de Imóvel não residencial,JOSÉ DOS SANTOS MACEDO FILHO,,02,3347.77
 5994,138.0,31/12/2025,Devolução de saldo,4,Lançamento de Devolução,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,3293.68
+6540,139.0,30/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS 2,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,RECIBO,6000.0
+6540,139.0,30/07/2026,Locação ou fretamento de veículos automotores,VI.a,LOCAÇÃO DE VEÍCULOS,HORIZONTE LOCADORA DE VEÍCULOS,21921129000102,RECIBO,15000.0
+6540,139.0,30/07/2026,Combustíveis e lubrificantes,VII,COMBUSTÍVEL,M.R.P. BARRA AUTO POSTO LTDA,39562533000100,DIVERSOS,2502.84

@@ -1,7 +1,7 @@
 {
- "gerado_em": "2026-10-22T09:59:57-03:00",
- "semana": "2026-10-20",
- "anterior": "2026-10-06",
+ "gerado_em": "2026-10-27T11:05:37-03:00",
+ "semana": "2026-10-27",
+ "anterior": "2026-10-20",
  "lugares": [
   "brasil"
  ],
@@ -15,13 +15,56 @@
   }
  ],
  "voltou": [],
- "continua": [],
+ "continua": [
+  {
+   "fonte": "assembleias/mt",
+   "situacao": "falhando",
+   "desde": "2026-10-20T17:50:09",
+   "ultimo_mes": 202609,
+   "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/mt/equipe.csv: mês 01/2026: 24 para 0 linhas; mês 02/2026: 25 para 0 linhas; mês 03/2026: 27 para 0 linhas (e mais 6) (em 2026"
+  },
+  {
+   "fonte": "assembleias/rj",
+   "situacao": "falhando",
+   "desde": "2026-10-20T17:18:15",
+   "ultimo_mes": 202605,
+   "erro": "Recusado por perda de cobertura (fica o arquivo anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2864 para 1187 linhas"
+  },
+  {
+   "fonte": "federal/atividade",
+   "situacao": "falhando",
+   "desde": "2026-10-20T16:24:44",
+   "ultimo_mes": 202609,
+   "erro": "ConnectionError: o robots.txt de dadosabertos.camara.leg.br não abriu (site fora do ar ou bloqueado)"
+  },
+  {
+   "fonte": "federal/camara",
+   "situacao": "falhando",
+   "desde": "2026-10-20T15:40:17",
+   "ultimo_mes": 202610,
+   "erro": "a base desta rodada ficou com os dados de 07/10/2026 (FileNotFoundError: faltam camara_cota_site.csv em dados/ (a coleta desta parte falhou ou não rodou)). RuntimeError: 1145 consultas falharam, ex.: "
+  },
+  {
+   "fonte": "judiciario/pgr",
+   "situacao": "falhando",
+   "desde": "2026-10-20T16:24:26",
+   "ultimo_mes": 202609,
+   "erro": "HTTPError: 503 Server Error: Service Unavailable for url: https://transparencia.mpf.mp.br/conteudo/contracheque/remuneracao-membros-ativos/2026/remuneracao-membros-ativos_2026_Setembro.ods"
+  },
+  {
+   "fonte": "vereadores/recife",
+   "situacao": "falhando",
+   "desde": "2026-10-27T11:04:58",
+   "ultimo_mes": 202609,
+   "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com \"dt\" preenchido (em 2026-10-27)"
+  }
+ ],
  "quebrou_e_voltou": [],
  "totais": {
-  "falhando": 1,
-  "atrasada (fonte)": 5,
+  "falhando": 7,
+  "atrasada (fonte)": 4,
   "congelada": 3,
-  "ok": 95
+  "ok": 90
  },
  "historico": [
   {
@@ -53,16 +96,52 @@
   },
   {
    "semana": "2026-10-20",
-   "atualizado_em": "2026-10-22T09:59:57-03:00",
+   "atualizado_em": "2026-10-22T10:48:17-03:00",
+   "lugares": [
+    "exterior"
+   ],
+   "fontes": 104,
+   "problemas": {
+    "assembleias/mt": "falhando",
+    "assembleias/rj": "falhando",
+    "federal/atividade": "falhando",
+    "federal/camara": "falhando",
+    "judiciario/pgr": "falhando",
+    "vereadores/recife": "falhando"
+   },
+   "teve_problema": [
+    "assembleias/mt",
+    "assembleias/rj",
+    "federal/atividade",
+    "federal/camara",
+    "judiciario/pgr",
+    "vereadores/recife"
+   ]
+  },
+  {
+   "semana": "2026-10-27",
+   "atualizado_em": "2026-10-27T11:05:37-03:00",
    "lugares": [
     "brasil"
    ],
    "fontes": 104,
    "problemas": {
-    "assembleias/df": "falhando"
+    "assembleias/df": "falhando",
+    "assembleias/mt": "falhando",
+    "assembleias/rj": "falhando",
+    "federal/atividade": "falhando",
+    "federal/camara": "falhando",
+    "judiciario/pgr": "falhando",
+    "vereadores/recife": "falhando"
    },
    "teve_problema": [
-    "assembleias/df"
+    "assembleias/df",
+    "assembleias/mt",
+    "assembleias/rj",
+    "federal/atividade",
+    "federal/camara",
+    "judiciario/pgr",
+    "vereadores/recife"
    ]
   }
  ]

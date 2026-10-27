@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-07",
+ "gerado_em": "2026-10-20",
  "fonte": [
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2018",
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2022",
@@ -37,14 +37,15 @@
    "candidatura sem bens no arquivo do TSE": 151
   },
   "senadores": {
-   "no cargo": 80,
-   "com declaração": 79,
+   "no cargo": 79,
+   "sem: nenhum candidato com o mesmo nome": 1,
+   "com declaração": 77,
    "candidatura sem bens no arquivo do TSE": 1
   },
   "vereadores das capitais": {
-   "no cargo": 479,
-   "com declaração": 412,
-   "candidatura sem bens no arquivo do TSE": 67
+   "no cargo": 628,
+   "com declaração": 531,
+   "candidatura sem bens no arquivo do TSE": 97
   },
   "vereadores do interior": {
    "no cargo": 7464,

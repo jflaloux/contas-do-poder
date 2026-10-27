@@ -1699,7 +1699,6 @@ ano,mes,arquivo,vereador,total_pago,despesa,valor
 2026,3,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Divulgação de Atividades em Geral,7000.0
 2026,3,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços Gráficos,5000.0
 2026,3,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços de Contabilidade,7000.0
-2026,4,marcelo-nunes,,,,0.0
 2026,4,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria Jurídica,15000.0
 2026,4,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria de Imprensa,9000.0
 2026,4,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Divulgação de Atividades,7500.0
@@ -1822,7 +1821,7 @@ ano,mes,arquivo,vereador,total_pago,despesa,valor
 2026,4,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Divulgação de Atividades em Geral,7000.0
 2026,4,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços Gráficos,5000.0
 2026,4,italo-otavio.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços de Contabilidade,7000.0
-2026,5,marcelo-nunes,,,,0.0
+2026,4,marcelo-nunes,,,,0.0
 2026,5,vava.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria Jurídica,15000.0
 2026,5,vava.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria de Imprensa,9000.0
 2026,5,vava.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Divulgação de Atividades,7500.0
@@ -1945,6 +1944,7 @@ ano,mes,arquivo,vereador,total_pago,despesa,valor
 2026,5,italo.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Divulgação de Atividades em Geral,7000.0
 2026,5,italo.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços Gráficos,5000.0
 2026,5,italo.pdf,ÍTALO OTÁVIO TEIXEIRA PINTO,40000.0,Serviços de Contabilidade,7000.0
+2026,5,marcelo-nunes,,,,0.0
 2026,6,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria Jurídica,15000.0
 2026,6,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria de Imprensa,9000.0
 2026,6,aderval-rocha.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Divulgação de Atividades,7500.0
@@ -2301,3 +2301,121 @@ ano,mes,arquivo,vereador,total_pago,despesa,valor
 2026,8,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Divulgação de Atividades,6000.0
 2026,8,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Serviços Gráficos,4800.0
 2026,8,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Serviços de Contabilidade,8000.0
+2026,9,vava-do-thiangua.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,vava-do-thiangua.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,vava-do-thiangua.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Divulgação de Atividades,7500.0
+2026,9,vava-do-thiangua.pdf,ADERVAL DA ROCHA FERREIRA FILHO,39500.0,Serviços de Contabilidade,8000.0
+2026,9,adjalma-goncalves.pdf,ADJALMA GONÇALVES,39500.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,adjalma-goncalves.pdf,ADJALMA GONÇALVES,39500.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,adjalma-goncalves.pdf,ADJALMA GONÇALVES,39500.0,Divulgação em Geral,7500.0
+2026,9,adjalma-goncalves.pdf,ADJALMA GONÇALVES,39500.0,Serviços de Contabilidade,8000.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Acesso a Internet,149.9
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Consultoria e Assessoria Jurídica,15000.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Consultoria e Assessoria de Imprensa,6000.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Divulgação de Atividades,7000.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Locaçaõ de Imóveis,3000.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Material de Consumo e Expediente,1144.92
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Serviços Gráficos,500.0
+2026,9,adnan-lima.pdf,ADNAN WADSON DE LIMA,39794.82,Serviços de Contabilidade,7000.0
+2026,9,aline-rezende.pdf,ALINE MARIA DE MENEZES REZENDE CHAGAS,40000.0,Consultoria e Assessoria Jurídica,10000.0
+2026,9,aline-rezende.pdf,ALINE MARIA DE MENEZES REZENDE CHAGAS,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,aline-rezende.pdf,ALINE MARIA DE MENEZES REZENDE CHAGAS,40000.0,Divulgação de Atividades,7500.0
+2026,9,aline-rezende.pdf,ALINE MARIA DE MENEZES REZENDE CHAGAS,40000.0,Serviços Gráficos,5500.0
+2026,9,aline-rezende.pdf,ALINE MARIA DE MENEZES REZENDE CHAGAS,40000.0,Serviços de Contabilidade,8000.0
+2026,9,carol-dantas.pdf,ANNE CAROLINY DANTAS PEREIRA,38500.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,carol-dantas.pdf,ANNE CAROLINY DANTAS PEREIRA,38500.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,carol-dantas.pdf,ANNE CAROLINY DANTAS PEREIRA,38500.0,Divulgação de Atividades,1000.0
+2026,9,carol-dantas.pdf,ANNE CAROLINY DANTAS PEREIRA,38500.0,Serviços Gráficos,5500.0
+2026,9,carol-dantas.pdf,ANNE CAROLINY DANTAS PEREIRA,38500.0,Serviços de Contabilidade,8000.0
+2026,9,oreste-aguiar.pdf,ANTONIO ORESTE DE AGUIAR,39500.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,oreste-aguiar.pdf,ANTONIO ORESTE DE AGUIAR,39500.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,oreste-aguiar.pdf,ANTONIO ORESTE DE AGUIAR,39500.0,Divulgação de Atividades Geral,7500.0
+2026,9,oreste-aguiar.pdf,ANTONIO ORESTE DE AGUIAR,39500.0,Serviços de Contabilidade,8000.0
+2026,9,bruno-perez.pdf,BRUNO PEREZ DE SALES,40000.0,Consultoria e Assessoria Jurídica,14000.0
+2026,9,bruno-perez.pdf,BRUNO PEREZ DE SALES,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,bruno-perez.pdf,BRUNO PEREZ DE SALES,40000.0,Divulgação em Geral,7000.0
+2026,9,bruno-perez.pdf,BRUNO PEREZ DE SALES,40000.0,Serviço Gráfico,5000.0
+2026,9,bruno-perez.pdf,BRUNO PEREZ DE SALES,40000.0,Serviços de Contabilidade,5000.0
+2026,9,barbara-falcao.pdf,BÁBARA RIBEIRO FALCÃO,40000.0,Consultoria e Assessoria Jurídica,10000.0
+2026,9,barbara-falcao.pdf,BÁBARA RIBEIRO FALCÃO,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,barbara-falcao.pdf,BÁBARA RIBEIRO FALCÃO,40000.0,Divulgação de Atividades,7500.0
+2026,9,barbara-falcao.pdf,BÁBARA RIBEIRO FALCÃO,40000.0,Pesquisas SócioEconômicas,6000.0
+2026,9,barbara-falcao.pdf,BÁBARA RIBEIRO FALCÃO,40000.0,Serviços de Contabilidade,8000.0
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Acesso a Internet,599.8
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Consultoria e Assessoria de Imprensa,5500.0
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Divulgação de Atividades Geral,5500.0
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Energia Elétrica ou Similar,371.87
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Locação de Equipamentos,1500.0
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Locação de Imóveis,2800.0
+2026,9,carla-messias.pdf,CARLA DEMÉTRIO MARTINS MATOS MESSIAS,39271.67,Serviços de Contabilidade,8000.0
+2026,9,deyvid-carneiro.pdf,DEYVID EVERSON SILVA CARNEIRO,40000.0,Consultoria Jurídica,15000.0
+2026,9,deyvid-carneiro.pdf,DEYVID EVERSON SILVA CARNEIRO,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,deyvid-carneiro.pdf,DEYVID EVERSON SILVA CARNEIRO,40000.0,Consultoria e elaboração de Projetos,7000.0
+2026,9,deyvid-carneiro.pdf,DEYVID EVERSON SILVA CARNEIRO,40000.0,Divulgação de Atividades,7000.0
+2026,9,deyvid-carneiro.pdf,DEYVID EVERSON SILVA CARNEIRO,40000.0,Serviços de Contabilidade,2000.0
+2026,9,genilson-costa.pdf,GENILSON COSTA E SILVA,39500.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,genilson-costa.pdf,GENILSON COSTA E SILVA,39500.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,genilson-costa.pdf,GENILSON COSTA E SILVA,39500.0,Divulgação de Atividades,7500.0
+2026,9,genilson-costa.pdf,GENILSON COSTA E SILVA,39500.0,Serviço de Contabilidade,8000.0
+2026,9,gil-rocha.pdf,GILDEVALDO DA LUZ ROCHA,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,gil-rocha.pdf,GILDEVALDO DA LUZ ROCHA,40000.0,Consultoria eAssessoria Jurídica,15000.0
+2026,9,gil-rocha.pdf,GILDEVALDO DA LUZ ROCHA,40000.0,Divulgação de Atividades,5000.0
+2026,9,gil-rocha.pdf,GILDEVALDO DA LUZ ROCHA,40000.0,Locação de Imóveis,3500.0
+2026,9,gil-rocha.pdf,GILDEVALDO DA LUZ ROCHA,40000.0,Serviço de Contabilidade,8000.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Consultoria e Assessoria Jurídica,15000.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Consultoria e Assessoria de Imprensa,8000.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Divulgação de Atividades,7500.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Locação de Imóveis,1000.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Serviços de Contabilidade,8000.0
+2026,9,jeu-nunes.pdf,JEUSIVANIA PEREIRA NUNES,39762.2,Suprimento de Informática,262.2
+2026,9,julio-cezar-medeiros.pdf,JÚLIO CEZAR MEDEIROS LIMA,40000.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,julio-cezar-medeiros.pdf,JÚLIO CEZAR MEDEIROS LIMA,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,julio-cezar-medeiros.pdf,JÚLIO CEZAR MEDEIROS LIMA,40000.0,Consultoria e elaboração de projetos,3000.0
+2026,9,julio-cezar-medeiros.pdf,JÚLIO CEZAR MEDEIROS LIMA,40000.0,Divulgação de Atividades,5000.0
+2026,9,julio-cezar-medeiros.pdf,JÚLIO CEZAR MEDEIROS LIMA,40000.0,Serviços de Contabilidade,8000.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Consultoria e Assessoria Jurídica,12000.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Consultoria e Assessoria de Imprensa,8000.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Consultoria e Elaboração de Projetos,7000.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Locação de Equipamentos,1000.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Serviços Gráficos,4200.0
+2026,9,manoel-neves.pdf,MANOEL NEVES DE MACEDO,39200.0,Serviços de Contabilidade,7000.0
+2026,9,marcelo-nunes.pdf,MARCELO DE MAGALHAES NUNES,32000.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,marcelo-nunes.pdf,MARCELO DE MAGALHAES NUNES,32000.0,Consultoria e Assessoria de Imprensa,7000.0
+2026,9,marcelo-nunes.pdf,MARCELO DE MAGALHAES NUNES,32000.0,Divulgação de Atividades,5000.0
+2026,9,marcelo-nunes.pdf,MARCELO DE MAGALHAES NUNES,32000.0,Serviços Gráficos,5000.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Consultoria e Assessoria Juridica,10500.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Consultoria e elaboralçao de projetos,3000.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Divulgação de atividades,7000.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Serviços Gráficos,5500.0
+2026,9,daniel-mangabeira.pdf,MOACIVAL DANIEL MANGABEIRA,40000.0,Serviços de Contabilidade,5000.0
+2026,9,renato-queiroz.pdf,RENATO DE ANDRADE QUEIRÓZ,40000.0,Consultoria e Assessoria Jurídica,13000.0
+2026,9,renato-queiroz.pdf,RENATO DE ANDRADE QUEIRÓZ,40000.0,Consultoria e Assessoria de Imprensa,8000.0
+2026,9,renato-queiroz.pdf,RENATO DE ANDRADE QUEIRÓZ,40000.0,Divulgação de Atividades em Geral,7000.0
+2026,9,renato-queiroz.pdf,RENATO DE ANDRADE QUEIRÓZ,40000.0,Locação ou Aquisição de Software,5000.0
+2026,9,renato-queiroz.pdf,RENATO DE ANDRADE QUEIRÓZ,40000.0,Serviços de Contabilidade,7000.0
+2026,9,roberto-franco.pdf,ROBERTO CONCEIÇÃO DOS SANTOS FRANCO,40000.0,Consultoria Elaboraçaõ de Projetos,5500.0
+2026,9,roberto-franco.pdf,ROBERTO CONCEIÇÃO DOS SANTOS FRANCO,40000.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,roberto-franco.pdf,ROBERTO CONCEIÇÃO DOS SANTOS FRANCO,40000.0,Consultoria e Assessoria de Imprensa,7500.0
+2026,9,roberto-franco.pdf,ROBERTO CONCEIÇÃO DOS SANTOS FRANCO,40000.0,Divulgaçõ de Atividades,4000.0
+2026,9,roberto-franco.pdf,ROBERTO CONCEIÇÃO DOS SANTOS FRANCO,40000.0,Serviços de Contabilidade,8000.0
+2026,9,thiago-reis.pdf,THIAGO CEZAR REIS PEREIRA,39000.0,Consultoria e Assessoria Juridica,15000.0
+2026,9,thiago-reis.pdf,THIAGO CEZAR REIS PEREIRA,39000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,thiago-reis.pdf,THIAGO CEZAR REIS PEREIRA,39000.0,Consultoria e Elaboração de Projetos,7000.0
+2026,9,thiago-reis.pdf,THIAGO CEZAR REIS PEREIRA,39000.0,Serviços de Contabilidade,8000.0
+2026,9,thiago-fogaca.pdf,THIAGO COELHO FOGAÇA,40000.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,thiago-fogaca.pdf,THIAGO COELHO FOGAÇA,40000.0,Consultoria e Assessoria de Imprensa,9000.0
+2026,9,thiago-fogaca.pdf,THIAGO COELHO FOGAÇA,40000.0,Divulgação de Atividades,7500.0
+2026,9,thiago-fogaca.pdf,THIAGO COELHO FOGAÇA,40000.0,Locação de Imóveis,3500.0
+2026,9,thiago-fogaca.pdf,THIAGO COELHO FOGAÇA,40000.0,Serviços de Contabilidade,5050.0
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Consultoria e Assessoria Juridica,15000.0
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Consultoria e Assessoria de Imprensa,7000.0
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Consultoria e Elaboração de Projetos,5000.0
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Divulgação de Atividades,4000.0
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Material de Consumo Expediente,740.29
+2026,9,thiago-saraiva.pdf,THIAGO DUARTE SARAIVA,39740.29,Serviços de Contabilidade,8000.0
+2026,9,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Consultoria e Assessoria Jurídica,15000.0
+2026,9,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Consultoria e elaboração de projetos,6000.0
+2026,9,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Divulgação de Atividades,6000.0
+2026,9,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Serviços Gráficos,4800.0
+2026,9,walquiria-ribeiro.pdf,WALKIRIA RIBEIRO DOS REIS,39800.0,Serviços de Contabilidade,8000.0

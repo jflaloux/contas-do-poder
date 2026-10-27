@@ -1,5 +1,12 @@
 {
- "gerado_em": "2026-10-07T21:47:19",
+ "gerado_em": "2026-10-22T13:47:41",
+ "base_anterior": {
+  "camara": {
+   "motivo": "FileNotFoundError: faltam camara_cota_site.csv em dados/ (a coleta desta parte falhou ou não rodou)",
+   "dados_de": "2026-10-07T21:47:19"
+  }
+ },
+ "camara_detalhe_desde": 202302,
  "legislatura": 57,
  "periodo": "02/2023 até hoje",
  "salario_minimo": {
