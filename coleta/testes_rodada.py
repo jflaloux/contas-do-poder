@@ -330,9 +330,9 @@ def _salvar(texto, caso):
         base = {"dados/processados/conferencia.md": "antigo\n", "dados/processados/situacao.md": "s\n", "dados/camara/a.csv": "1\n",
                 "dados/portal_transparencia/.gitkeep": "", "dados/municipios/.gitkeep": "", "dados/municipios_tce/.gitkeep": "",
                 "dados/judiciario/.gitkeep": "", "dados/governadores/.gitkeep": "", "dados/atividade/.gitkeep": "", "dados/bens/.gitkeep": "",
-                "dados/assembleias/.gitkeep": "", "dados/referencia/renda_trabalho.json": "{}", "site/dados/s.json": "{}", "site/fotos/f.txt": "f"}
+                "dados/assembleias/.gitkeep": "", "dados/referencia/renda_trabalho.json": "{}", "dados/referencia/camara_historico.json": "{}", "dados/indice/i.json": "{}", "LEIAME.md": "l\n", "site/dados/s.json": "{}", "site/fotos/f.txt": "f"}
 
-        def cenario(nome, rejeitar_primeiro_push=False, outra_rodada=None, stub_rc=0, stub_montar=0):
+        def cenario(nome, rejeitar_primeiro_push=False, outra_rodada=None, stub_rc=0, stub_montar=0, tambem_muda=None):
             origem = tmp / f"{nome}.git"
             subprocess.run(["git", "init", "-q", "--bare", "-b", "main", str(origem)], check=True)
             semente = tmp / f"{nome}-semente"
@@ -347,6 +347,8 @@ def _salvar(texto, caso):
             subprocess.run(["git", "clone", "-q", str(origem), str(rodada)], check=True, capture_output=True)
             (rodada / "dados/camara/a.csv").write_text("2\n")  # o que a coleta mudou
             (rodada / "site/dados/s.json").write_text('{"github":1}')
+            for arq, conteudo in (tambem_muda or {}).items():
+                (rodada / arq).write_text(conteudo)
             if outra_rodada:  # a rodada do Brasil enviou antes
                 outro = tmp / f"{nome}-brasil"
                 subprocess.run(["git", "clone", "-q", str(origem), str(outro)], check=True, capture_output=True)
@@ -371,6 +373,14 @@ def _salvar(texto, caso):
         montou = (rodada / "dados/processados/montar.txt").exists() and "montado" in (rodada / "dados/processados/montar.txt").read_text()
         caso("salvar: conflito nos arquivos gerados com a rodada do Brasil: fica a versão de lá, refaz com montar e envia",
              r.returncode == 0 and salvo and montou and remoto == "2\n")
+        # 27/10/2026: o site.py gravou dados/referencia/camara_historico.json (fora da lista do git add) e o pull --rebase recusou
+        # "unstaged changes"; o conflito foi tratado com lista vazia e a rodada de 2h30 não foi salva
+        r, remoto, salvo, motivo, rodada = cenario("referencia", tambem_muda={"dados/referencia/camara_historico.json": '{"1":2}', "dados/indice/i.json": '{"i":1}'})
+        historico = subprocess.run(["git", "--git-dir", str(tmp / "referencia.git"), "show", "main:dados/referencia/camara_historico.json"], capture_output=True, text=True).stdout
+        caso("salvar: dados/referencia (camara_historico.json) e dados/indice entram no commit", r.returncode == 0 and salvo and remoto == "2\n" and historico == '{"1":2}')
+        r, remoto, salvo, motivo, rodada = cenario("fora-da-lista", tambem_muda={"LEIAME.md": "mudou\n"})
+        caso("salvar: arquivo rastreado mudado fora da lista não trava o pull --rebase: sai da árvore, com aviso, e o resto é enviado",
+             r.returncode == 0 and salvo and remoto == "2\n" and "mudados fora do que é salvo" in r.stdout and "LEIAME.md" in r.stdout)
         r, remoto, salvo, motivo, _ = cenario("recusado", rejeitar_primeiro_push=True)
         caso("salvar: push recusado uma vez (conferência reescreveu o relatório): o pull --rebase seguinte funciona e a 2ª tentativa envia",
              r.returncode == 0 and remoto == "2\n" and salvo)
@@ -398,6 +408,12 @@ def _estrutura(texto, caso):
          texto.index("Recuperar os downloads") < min(texto.index("Preparar o Python"), texto.index("Instalar as dependências")))
     caso("o apt-get update vem antes do install e a falha do poppler não para a rodada",
          "apt-get update" in texto and "poppler-utils \\\n            || echo" in texto)
+    add = re.search(r"\n *git add (dados/processados [^\n]*)", texto).group(1).split()
+    pastas = {"/".join(f.split("/")[:2]) for f in subprocess.run(["git", "ls-files", "dados"], capture_output=True, text=True).stdout.split()}
+    # (dados/brutos e dados/cache não são rastreados; dados/processados/lancamentos.csv é ignorado)
+    faltam = sorted(p for p in pastas if not any(p == a or p.startswith(a.rstrip("/") + "/") for a in add))
+    caso(f"o git add do passo de salvar cobre todas as pastas rastreadas de dados/ (faltam: {faltam})", not faltam)
+    caso("o passo de salvar só trata como conflito se houver arquivo em conflito", "[ ! -s \"$RUNNER_TEMP/conflitos.nul\" ]" in texto)
     caso("a retomada refaz os arquivos do site quando ficou a versão da main", "mantidos.txt" in texto and "coletar.py montar" in texto)
 
 
