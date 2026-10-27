@@ -1,12 +1,12 @@
-# Situação das fontes (27/10/2026 19:52, rodada: exterior)
+# Situação das fontes (27/10/2026 17:02, rodada: exterior)
 
-Último mês fechado: 09/2026. 104 fontes: 92 ok, 3 com o atraso da própria fonte, 0 atrasadas, 6 falhando, 3 congeladas.
+Último mês fechado: 09/2026. 104 fontes: 92 ok, 3 com o atraso da própria fonte, 0 atrasadas, 5 falhando, 4 congeladas.
 
 Desde a rodada anterior (semana de 20/10/2026):
 
 - Quebrou: judiciario/stf (falhando desde 27/10/2026), judiciario/stm (falhando desde 27/10/2026), judiciario/tse (falhando desde 27/10/2026).
-- Voltou: federal/atividade (agora: ok), federal/camara (agora: ok), judiciario/pgr (agora: ok).
-- Continua com problema: assembleias/mt (falhando desde 20/10/2026), assembleias/rj (falhando desde 20/10/2026), vereadores/recife (falhando desde 27/10/2026).
+- Voltou: federal/atividade (agora: ok), federal/camara (agora: ok), judiciario/pgr (agora: ok), vereadores/recife (agora: congelada).
+- Continua com problema: assembleias/mt (falhando desde 20/10/2026), assembleias/rj (falhando desde 20/10/2026).
 - Quebrou e voltou nesta semana: assembleias/df.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
@@ -16,13 +16,13 @@ Desde a rodada anterior (semana de 20/10/2026):
 | judiciario/stf | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
 | judiciario/stm | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
 | judiciario/tse | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
-| vereadores/recife | falhando | 09/2026 | 2026-10-20 | exterior | Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com "dt" preen Plano de queda: sem reserva no TCE-PE (ensaio de 07/10/2026: a folha da Câmara do Recife no TCE-PE vem sem nenhum vereador em todos os meses desde jan/2025; a reserva automática da situação só vale com dados do órgão no arquivo do tribunal); a folha e a verba ficam até o último mês lido; passou de 1 hora, congelar |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-22 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | folhas/SP | atrasada (fonte) | 04/2026 | 2026-10-27 | exterior | o Estado publica a série histórica com alguns meses de atraso |
 | prefeituras/recife | atrasada (fonte) | 06/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de dados.recife.pe.gov.br não abriu (site fora do ar ou bloqueado) |
 | folhas/PA (só do Brasil) | congelada | 03/2026 | 2026-10-02 | brasil | desde abr/2026 a consulta pública da folha do Estado não mostra quem tem mandato eletivo |
 | folhas/RJ (só do Brasil) | congelada | 03/2026 | 2026-10-02 | brasil | desde mar/2026 o governador em exercício é o presidente do Tribunal de Justiça, pago pelo Tribunal, e o cargo de vice es |
 | prefeituras/campo_grande | congelada | 02/2026 | 2026-10-02 | brasil | a consulta da Prefeitura não traz a folha depois de fev/2026 |
+| vereadores/recife | congelada | 09/2026 | 2026-10-20 | exterior | a consulta da verba indenizatória no servidor da Câmara do Recife retorna erro HTTP 500 desde 20/10/2026; a coleta da ve |
 | assembleias/ac | ok | 09/2026 | 2026-10-27 | exterior |  |
 | assembleias/al (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | assembleias/am (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
@@ -94,7 +94,7 @@ Desde a rodada anterior (semana de 20/10/2026):
 | tce/rj | ok | 08/2026 | 2026-10-27 | exterior |  |
 | vereadores/aracaju | ok | 09/2026 | 2026-10-27 | exterior |  |
 | vereadores/belo_horizonte (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
-| vereadores/boa_vista | ok | 08/2026 | 2026-10-27 | exterior |  |
+| vereadores/boa_vista | ok | 09/2026 | 2026-10-27 | exterior |  |
 | vereadores/cuiaba | ok | 09/2026 | 2026-10-08 | brasil | ConnectionError: o robots.txt de legislativo.camaracuiaba.mt.gov.br não abriu (site fora do ar ou bloqueado) |
 | vereadores/fortaleza (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | vereadores/goiania | ok | 09/2026 | 2026-10-27 | exterior |  |
@@ -108,7 +108,7 @@ Desde a rodada anterior (semana de 20/10/2026):
 | vereadores/rio_de_janeiro (só do Brasil) | ok | 09/2026 | 2026-10-02 | brasil |  |
 | vereadores/sao_luis (só do Brasil) | ok | 09/2026 | 2026-10-22 | brasil |  |
 | vereadores/sp | ok | 09/2026 | 2026-10-27 | exterior |  |
-| vereadores/teresina | ok | 08/2026 | 2026-10-27 | exterior |  |
+| vereadores/teresina | ok | 09/2026 | 2026-10-27 | exterior |  |
 | vereadores/vitoria (só do Brasil) | ok | 09/2026 | 2026-10-08 | brasil |  |
 | viagens/AM (só do Brasil) | ok | 09/2026 | 2026-10-03 | brasil |  |
 | viagens/MG | ok | 09/2026 | 2026-10-27 | exterior |  |

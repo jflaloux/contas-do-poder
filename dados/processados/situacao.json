@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-27T19:52:49",
+ "gerado_em": "2026-10-27T17:02:42",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -56,17 +56,6 @@
    "so_brasil": false,
    "falha_desde": "2026-10-27T17:03:17",
    "erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)"
-  },
-  {
-   "fonte": "vereadores/recife",
-   "situacao": "falhando",
-   "ultimo_mes": 202609,
-   "meses_atras": 0,
-   "ultimo_sucesso": "2026-10-20T16:27:54",
-   "onde": "exterior",
-   "so_brasil": false,
-   "falha_desde": "2026-10-27T17:06:25",
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com \"dt\" preenchido (em 2026-10-27). ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)"
   },
   {
    "fonte": "assembleias/ma",
@@ -133,6 +122,17 @@
    "so_brasil": false,
    "falha_desde": null,
    "erro": "a consulta da Prefeitura não traz a folha depois de fev/2026"
+  },
+  {
+   "fonte": "vereadores/recife",
+   "situacao": "congelada",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-20T16:27:54",
+   "onde": "exterior",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": "a consulta da verba indenizatória no servidor da Câmara do Recife retorna erro HTTP 500 desde 20/10/2026; a coleta da verba está parada por decisão de 27/10/2026 (a folha continua) e o site mostra a verba de 2025"
   },
   {
    "fonte": "assembleias/ac",
@@ -918,8 +918,8 @@
   {
    "fonte": "vereadores/boa_vista",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": "2026-10-27T17:08:06",
    "onde": "exterior",
    "so_brasil": false,
@@ -1072,8 +1072,8 @@
   {
    "fonte": "vereadores/teresina",
    "situacao": "ok",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
    "ultimo_sucesso": "2026-10-27T17:08:55",
    "onde": "exterior",
    "so_brasil": false,

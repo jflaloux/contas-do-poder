@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-27T16:52:49-03:00",
+ "gerado_em": "2026-10-27T17:02:42-03:00",
  "semana": "2026-10-27",
  "anterior": "2026-10-20",
  "lugares": [
@@ -44,6 +44,11 @@
    "fonte": "judiciario/pgr",
    "antes": "falhando",
    "situacao": "ok"
+  },
+  {
+   "fonte": "vereadores/recife",
+   "antes": "falhando",
+   "situacao": "congelada"
   }
  ],
  "continua": [
@@ -60,22 +65,15 @@
    "desde": "2026-10-20T17:18:15",
    "ultimo_mes": 202606,
    "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2874 para 1197 linhas (em 2026-10-27). ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj"
-  },
-  {
-   "fonte": "vereadores/recife",
-   "situacao": "falhando",
-   "desde": "2026-10-27T17:06:25",
-   "ultimo_mes": 202609,
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com \"dt\" preenchido (em 2026-10-27). ConnectionError: o robots.txt de transparenciacamara.reci"
   }
  ],
  "quebrou_e_voltou": [
   "assembleias/df"
  ],
  "totais": {
-  "falhando": 6,
+  "falhando": 5,
   "atrasada (fonte)": 3,
-  "congelada": 3,
+  "congelada": 4,
   "ok": 92
  },
  "historico": [
@@ -132,7 +130,7 @@
   },
   {
    "semana": "2026-10-27",
-   "atualizado_em": "2026-10-27T16:52:49-03:00",
+   "atualizado_em": "2026-10-27T17:02:42-03:00",
    "lugares": [
     "brasil",
     "exterior"
@@ -143,8 +141,7 @@
     "assembleias/rj": "falhando",
     "judiciario/stf": "falhando",
     "judiciario/stm": "falhando",
-    "judiciario/tse": "falhando",
-    "vereadores/recife": "falhando"
+    "judiciario/tse": "falhando"
    },
    "teve_problema": [
     "assembleias/df",

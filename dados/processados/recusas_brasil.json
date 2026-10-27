@@ -1,16 +1,7 @@
 {
  "site/dados/camaras.json": {
-  "estado": "recusado",
-  "quando": "2026-10-27T11:21:09",
-  "fonte": null,
-  "texto": "p/cid=2611606: 37 para 0 com \"dt\" preenchido",
-  "perdas": [
-   [
-    "p/cid=2611606",
-    37,
-    0,
-    "com \"dt\" preenchido"
-   ]
-  ]
+  "estado": "aceito",
+  "quando": "2026-10-27T16:59:41",
+  "fonte": null
  }
 }
