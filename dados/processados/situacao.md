@@ -1,16 +1,16 @@
-# Situação das fontes (27/10/2026 11:05, rodada: brasil)
+# Situação das fontes (27/10/2026 11:21, rodada: brasil)
 
-Último mês fechado: 09/2026. 104 fontes: 90 ok, 4 com o atraso da própria fonte, 0 atrasadas, 7 falhando, 3 congeladas.
+Último mês fechado: 09/2026. 104 fontes: 91 ok, 4 com o atraso da própria fonte, 0 atrasadas, 6 falhando, 3 congeladas.
 
 Desde a rodada anterior (semana de 20/10/2026):
 
-- Quebrou: assembleias/df (falhando desde 22/10/2026).
+- Quebrou: nada.
 - Voltou: nada.
 - Continua com problema: assembleias/mt (falhando desde 20/10/2026), assembleias/rj (falhando desde 20/10/2026), federal/atividade (falhando desde 20/10/2026), federal/camara (falhando desde 20/10/2026), judiciario/pgr (falhando desde 20/10/2026), vereadores/recife (falhando desde 27/10/2026).
+- Quebrou e voltou nesta semana: assembleias/df.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| assembleias/df (só do Brasil) | falhando | 08/2026 | 2026-10-02 | brasil | ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response')) Plano de queda: a folha vem do CKAN (arquivo aberto, mais estável); se quebrar o PDF da verba, congelar só a verba |
 | assembleias/mt | falhando | 09/2026 | 2026-10-07 | exterior | Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/mt/equipe.csv: mês 01/2026: 24 para 0 linhas;  |
 | assembleias/rj | falhando | 05/2026 | 2026-10-07 | exterior | Recusado por perda de cobertura (fica o arquivo anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2864 para 118 |
 | federal/atividade | falhando | 09/2026 | 2026-10-07 | exterior | ConnectionError: o robots.txt de dadosabertos.camara.leg.br não abriu (site fora do ar ou bloqueado) |
@@ -30,6 +30,7 @@ Desde a rodada anterior (semana de 20/10/2026):
 | assembleias/ap (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/ba | ok | 09/2026 | 2026-10-20 | exterior |  |
 | assembleias/ce | ok | 09/2026 | 2026-10-20 | exterior |  |
+| assembleias/df (só do Brasil) | ok | 09/2026 | 2026-10-27 | brasil |  |
 | assembleias/es (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/go (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/mg | ok | 08/2026 | 2026-10-20 | exterior |  |

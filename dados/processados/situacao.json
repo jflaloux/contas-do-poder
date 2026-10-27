@@ -1,18 +1,7 @@
 {
- "gerado_em": "2026-10-27T11:05:37",
+ "gerado_em": "2026-10-27T11:21:47",
  "ultimo_mes_fechado": 202609,
  "fontes": [
-  {
-   "fonte": "assembleias/df",
-   "situacao": "falhando",
-   "ultimo_mes": 202608,
-   "meses_atras": 1,
-   "ultimo_sucesso": "2026-10-02T15:35:10",
-   "onde": "brasil",
-   "so_brasil": true,
-   "falha_desde": "2026-10-22T09:56:31",
-   "erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-  },
   {
    "fonte": "assembleias/mt",
    "situacao": "falhando",
@@ -76,7 +65,7 @@
    "ultimo_sucesso": "2026-10-20T16:27:54",
    "onde": "exterior",
    "so_brasil": false,
-   "falha_desde": "2026-10-27T11:04:58",
+   "falha_desde": "2026-10-27T11:21:09",
    "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com \"dt\" preenchido (em 2026-10-27)"
   },
   {
@@ -219,6 +208,17 @@
    "ultimo_sucesso": "2026-10-20T17:25:09",
    "onde": "exterior",
    "so_brasil": false,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
+   "fonte": "assembleias/df",
+   "situacao": "ok",
+   "ultimo_mes": 202609,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-10-27T11:09:05",
+   "onde": "brasil",
+   "so_brasil": true,
    "falha_desde": null,
    "erro": null
   },

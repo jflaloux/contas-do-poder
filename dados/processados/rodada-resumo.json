@@ -1,19 +1,11 @@
 {
- "gerado_em": "2026-10-27T11:05:37-03:00",
+ "gerado_em": "2026-10-27T11:21:47-03:00",
  "semana": "2026-10-27",
  "anterior": "2026-10-20",
  "lugares": [
   "brasil"
  ],
- "quebrou": [
-  {
-   "fonte": "assembleias/df",
-   "situacao": "falhando",
-   "desde": "2026-10-22T09:56:31",
-   "ultimo_mes": 202608,
-   "erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
-  }
- ],
+ "quebrou": [],
  "voltou": [],
  "continua": [
   {
@@ -54,17 +46,19 @@
   {
    "fonte": "vereadores/recife",
    "situacao": "falhando",
-   "desde": "2026-10-27T11:04:58",
+   "desde": "2026-10-27T11:21:09",
    "ultimo_mes": 202609,
    "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/camaras.json: p/cid=2611606: 37 para 0 com \"dt\" preenchido (em 2026-10-27)"
   }
  ],
- "quebrou_e_voltou": [],
+ "quebrou_e_voltou": [
+  "assembleias/df"
+ ],
  "totais": {
-  "falhando": 7,
+  "falhando": 6,
   "atrasada (fonte)": 4,
   "congelada": 3,
-  "ok": 90
+  "ok": 91
  },
  "historico": [
   {
@@ -120,13 +114,12 @@
   },
   {
    "semana": "2026-10-27",
-   "atualizado_em": "2026-10-27T11:05:37-03:00",
+   "atualizado_em": "2026-10-27T11:21:47-03:00",
    "lugares": [
     "brasil"
    ],
    "fontes": 104,
    "problemas": {
-    "assembleias/df": "falhando",
     "assembleias/mt": "falhando",
     "assembleias/rj": "falhando",
     "federal/atividade": "falhando",

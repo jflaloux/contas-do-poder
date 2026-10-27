@@ -30,12 +30,11 @@
   "ultimo_sucesso": "2026-10-02T15:31:36"
  },
  "assembleias/df": {
-  "ultima_tentativa": "2026-10-22T09:56:31",
-  "falhas": 1,
-  "ultimo_sucesso": "2026-10-02T15:35:10",
-  "primeira_falha": "2026-10-22T09:56:31",
+  "ultima_tentativa": "2026-10-27T11:09:05",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-10-27T11:09:05",
   "ultimo_erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
-  "ultima_falha": "2026-10-22T09:56:31"
+  "ultima_falha": "2026-10-27T11:08:37"
  },
  "assembleias/es": {
   "ultima_tentativa": "2026-10-22T09:53:39",
