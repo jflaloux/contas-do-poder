@@ -101,6 +101,9 @@ def executar():
         brutos.mkdir(parents=True)
         pol = _pedaco(PROCESSADOS, proc)
         meta0 = json.loads((proc / "metadados.json").read_text(encoding="utf-8"))
+        # a data dos dados de uma parte: a da última base montada de verdade (se a base de partida já veio de uma rodada com
+        # a parte na base anterior, como em 22/10/2026, é a dela, não a data em que o arquivo foi gravado)
+        dados0 = lambda parte: ((meta0.get("base_anterior") or {}).get(parte) or {}).get("dados_de") or meta0["gerado_em"]
         antes = {c: _soma(proc, p) for c, p in padronizar.PARTES.items()}
         por_casa = lambda lista: {c: sum(p["casa"] == c for p in lista) for c in padronizar.PARTES}
         padronizar.BRUTOS, padronizar.PROCESSADOS, padronizar.CACHE = brutos, proc, tmp / "dados" / "cache"
@@ -117,7 +120,7 @@ def executar():
             meta = json.loads((proc / "metadados.json").read_text(encoding="utf-8"))
             caso("as três partes vêm da base anterior", sorted(meta.get("base_anterior", {})), ["camara", "executivo", "senado"])
             caso("o motivo diz o arquivo que falta", "camara_cota_site.csv" in meta["base_anterior"]["camara"]["motivo"], True)
-            caso("a data dos dados é a da base anterior", meta["base_anterior"]["camara"]["dados_de"], meta0["gerado_em"])
+            caso("a data dos dados é a da base anterior", meta["base_anterior"]["camara"]["dados_de"], dados0("camara"))
             caso("mesmas pessoas em cada parte",
                  por_casa(json.loads((proc / "politicos.json").read_text(encoding="utf-8"))), por_casa(pol))
             caso("mesmos valores em cada parte", {c: _soma(proc, p) for c, p in padronizar.PARTES.items()}, antes)
@@ -128,7 +131,7 @@ def executar():
             padronizar.executar()
             meta2 = json.loads((proc / "metadados.json").read_text(encoding="utf-8"))
             caso("duas rodadas seguidas com a base anterior: a data não avança", meta2["base_anterior"]["camara"]["dados_de"],
-                 meta0["gerado_em"])
+                 dados0("camara"))
 
             # 3) a Câmara montada de novo (com um valor a mais) e o resto da base anterior; um erro qualquer (não só arquivo
             # que falta) no Senado também não derruba a base
@@ -155,7 +158,7 @@ def executar():
             # 4) a situação das fontes marca a parte que ficou com a base anterior (com a data dos dados)
             linhas = _situacao(proc, tmp)
             caso("situação: o Senado da base anterior fica 'falhando'", linhas["federal/senado"]["situacao"], "falhando")
-            caso("situação: o erro diz a data dos dados", "dados de " + _dia(meta0["gerado_em"]) in (linhas["federal/senado"]["erro"] or ""), True)
+            caso("situação: o erro diz a data dos dados", "dados de " + _dia(dados0("senado")) in (linhas["federal/senado"]["erro"] or ""), True)
             caso("situação: a Câmara (montada de novo) não leva o aviso", "base desta rodada" in (linhas["federal/camara"]["erro"] or ""), False)
 
             # 5) a conferência também não cai sem os arquivos brutos e com a Câmara fora do ar (em 20/10/2026 ela teria caído)
