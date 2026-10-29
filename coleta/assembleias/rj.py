@@ -139,11 +139,15 @@ def coletar():
     arq_q = PASTA / "orcamentos_lidos.csv"
     lidos_dep = dict(pd.read_csv(arq_q).values) if arq_q.exists() else {}
     orcs = orc_antigo.drop(columns=["lido_em"], errors="ignore").to_dict("records") if len(orc_antigo) else []
+    orcs = [o for o in orcs if str(o["mes"]).replace("-", "").isdigit() and int(str(o["mes"]).replace("-", "")) >= INICIO]
 
     def orcamentos(d):
         saida = []
         for b in _todas(f"congressmen/{d['id']}/legislatures/{leg}/budgets"):
             data = (b.get("budget") or {}).get("date", "")[:7]
+            if not data or int(data.replace("-", "")) < INICIO:
+                continue  # o site começa em INICIO; sem isto, orcamentos.csv ganhava os meses de 2023 e 2024 na primeira leitura e a
+                # gravação do mesmo arquivo logo depois (sem eles) era recusada por perda de cobertura (rodada de 20/10/2026)
             cl = b.get("congressman_legislature") or {}
             saida.append({"orcamento": b["id"], "deputado": d["id"], "mes": data, "valor_mes": float(b.get("value") or 0),
                           "publicado": int(bool(b.get("published_at"))), "inicio": (cl.get("started_at") or "")[:10], "fim": (cl.get("ended_at") or "")[:10]})
