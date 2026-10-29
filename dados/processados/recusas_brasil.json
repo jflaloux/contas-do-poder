@@ -1,4 +1,14 @@
 {
+ "dados/assembleias/mt/equipe.csv": {
+  "estado": "aceito",
+  "quando": "2026-10-29T19:30:11",
+  "fonte": "assembleias/mt"
+ },
+ "dados/assembleias/rj/orcamentos.csv": {
+  "estado": "aceito",
+  "quando": "2026-10-29T19:25:52",
+  "fonte": null
+ },
  "site/dados/camaras.json": {
   "estado": "aceito",
   "quando": "2026-10-27T16:59:41",

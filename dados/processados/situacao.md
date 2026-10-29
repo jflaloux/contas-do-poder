@@ -1,22 +1,22 @@
-# Situação das fontes (27/10/2026 17:02, rodada: exterior)
+# Situação das fontes (29/10/2026 19:31, rodada: brasil)
 
-Último mês fechado: 09/2026. 104 fontes: 92 ok, 3 com o atraso da própria fonte, 0 atrasadas, 5 falhando, 4 congeladas.
+Último mês fechado: 09/2026. 104 fontes: 92 ok, 4 com o atraso da própria fonte, 0 atrasadas, 4 falhando, 4 congeladas.
 
 Desde a rodada anterior (semana de 20/10/2026):
 
 - Quebrou: judiciario/stf (falhando desde 27/10/2026), judiciario/stm (falhando desde 27/10/2026), judiciario/tse (falhando desde 27/10/2026).
-- Voltou: federal/atividade (agora: ok), federal/camara (agora: ok), judiciario/pgr (agora: ok), vereadores/recife (agora: congelada).
-- Continua com problema: assembleias/mt (falhando desde 20/10/2026), assembleias/rj (falhando desde 20/10/2026).
+- Voltou: assembleias/rj (agora: atrasada (fonte)), federal/atividade (agora: ok), federal/camara (agora: ok), judiciario/pgr (agora: ok), vereadores/recife (agora: congelada).
+- Continua com problema: assembleias/mt (falhando desde 20/10/2026).
 - Quebrou e voltou nesta semana: assembleias/df.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| assembleias/mt | falhando | 09/2026 | 2026-10-07 | exterior | Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/mt/equipe.csv: mês 01/2026: 24 para 0 linhas;  |
-| assembleias/rj | falhando | 06/2026 | 2026-10-07 | exterior | Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2874 para 1197 l |
+| assembleias/mt | falhando | 09/2026 | 2026-10-07 | exterior | ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparenc |
 | judiciario/stf | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
 | judiciario/stm | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
 | judiciario/tse | falhando | 08/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado) |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-22 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
+| assembleias/rj | atrasada (fonte) | 06/2026 | 2026-10-29 | brasil | ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/con |
 | folhas/SP | atrasada (fonte) | 04/2026 | 2026-10-27 | exterior | o Estado publica a série histórica com alguns meses de atraso |
 | prefeituras/recife | atrasada (fonte) | 06/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de dados.recife.pe.gov.br não abriu (site fora do ar ou bloqueado) |
 | folhas/PA (só do Brasil) | congelada | 03/2026 | 2026-10-02 | brasil | desde abr/2026 a consulta pública da folha do Estado não mostra quem tem mandato eletivo |

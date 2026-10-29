@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-27T17:02:42",
+ "gerado_em": "2026-10-29T19:31:18",
  "ultimo_mes_fechado": 202609,
  "fontes": [
   {
@@ -11,18 +11,7 @@
    "onde": "exterior",
    "so_brasil": false,
    "falha_desde": "2026-10-20T17:50:09",
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/mt/equipe.csv: mês 01/2026: 24 para 0 linhas; mês 02/2026: 25 para 0 linhas; mês 03/2026: 27 para 0 linhas (e mais 6) (em 2026-10-27). ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host='almt.eloweb.net', port=443) at 0x7ff9144a4150>, 'Connection to almt.eloweb.net timed out. (connect"
-  },
-  {
-   "fonte": "assembleias/rj",
-   "situacao": "falhando",
-   "ultimo_mes": 202606,
-   "meses_atras": 3,
-   "ultimo_sucesso": "2026-10-07T21:41:17",
-   "onde": "exterior",
-   "so_brasil": false,
-   "falha_desde": "2026-10-20T17:18:15",
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2874 para 1197 linhas (em 2026-10-27). ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/congressmen/7/legislatures/2/budgets/6462/entries?query=%7B%22filter%22%3A+%7B%22text%22%3A+null%7D%2C+%22pagination%22%3A+%7B%22per_page%22%3A+100%2C+%22current_page%22%3A+1%7D%2C+%2"
+   "erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host='almt.eloweb.net', port=443) at 0x7ff9144a4150>, 'Connection to almt.eloweb.net timed out. (connect"
   },
   {
    "fonte": "judiciario/stf",
@@ -67,6 +56,17 @@
    "so_brasil": true,
    "falha_desde": null,
    "erro": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados"
+  },
+  {
+   "fonte": "assembleias/rj",
+   "situacao": "atrasada (fonte)",
+   "ultimo_mes": 202606,
+   "meses_atras": 3,
+   "ultimo_sucesso": "2026-10-29T19:25:58",
+   "onde": "brasil",
+   "so_brasil": false,
+   "falha_desde": null,
+   "erro": "ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/congressmen/7/legislatures/2/budgets/6462/entries?query=%7B%22filter%22%3A+%7B%22text%22%3A+null%7D%2C+%22pagination%22%3A+%7B%22per_page%22%3A+100%2C+%22current_page%22%3A+1%7D%2C+%2"
   },
   {
    "fonte": "folhas/SP",

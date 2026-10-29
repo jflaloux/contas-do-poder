@@ -62,9 +62,12 @@
   "ultimo_sucesso": "2026-10-02T15:31:40"
  },
  "assembleias/mt": {
-  "ultima_tentativa": "2026-10-02T15:41:46",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:41:46"
+  "ultima_tentativa": "2026-10-29T19:27:28",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:41:46",
+  "primeira_falha": "2026-10-29T19:27:28",
+  "ultimo_erro": "HostIndisponivel: https://almt.eloweb.net não responde (várias falhas seguidas); sem novos pedidos por 15 min",
+  "ultima_falha": "2026-10-29T19:27:28"
  },
  "assembleias/pa": {
   "ultima_tentativa": "2026-10-02T15:35:55",
@@ -94,9 +97,9 @@
   "ultimo_sucesso": "2026-10-02T15:35:44"
  },
  "assembleias/rj": {
-  "ultima_tentativa": "2026-10-02T15:31:22",
+  "ultima_tentativa": "2026-10-29T19:25:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:31:22"
+  "ultimo_sucesso": "2026-10-29T19:25:58"
  },
  "assembleias/rn": {
   "ultima_tentativa": "2026-10-02T15:35:46",

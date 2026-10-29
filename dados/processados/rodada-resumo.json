@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-27T17:02:42-03:00",
+ "gerado_em": "2026-10-29T19:31:18-03:00",
  "semana": "2026-10-27",
  "anterior": "2026-10-20",
  "lugares": [
@@ -31,6 +31,11 @@
  ],
  "voltou": [
   {
+   "fonte": "assembleias/rj",
+   "antes": "falhando",
+   "situacao": "atrasada (fonte)"
+  },
+  {
    "fonte": "federal/atividade",
    "antes": "falhando",
    "situacao": "ok"
@@ -57,22 +62,15 @@
    "situacao": "falhando",
    "desde": "2026-10-20T17:50:09",
    "ultimo_mes": 202609,
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/mt/equipe.csv: mês 01/2026: 24 para 0 linhas; mês 02/2026: 25 para 0 linhas; mês 03/2026: 27 para 0 linhas (e mais 6) (em 2026"
-  },
-  {
-   "fonte": "assembleias/rj",
-   "situacao": "falhando",
-   "desde": "2026-10-20T17:18:15",
-   "ultimo_mes": 202606,
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): dados/assembleias/rj/orcamentos.csv: o arquivo: 2874 para 1197 linhas (em 2026-10-27). ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj"
+   "erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host"
   }
  ],
  "quebrou_e_voltou": [
   "assembleias/df"
  ],
  "totais": {
-  "falhando": 5,
-  "atrasada (fonte)": 3,
+  "falhando": 4,
+  "atrasada (fonte)": 4,
   "congelada": 4,
   "ok": 92
  },
@@ -130,7 +128,7 @@
   },
   {
    "semana": "2026-10-27",
-   "atualizado_em": "2026-10-27T17:02:42-03:00",
+   "atualizado_em": "2026-10-29T19:31:18-03:00",
    "lugares": [
     "brasil",
     "exterior"
@@ -138,7 +136,6 @@
    "fontes": 104,
    "problemas": {
     "assembleias/mt": "falhando",
-    "assembleias/rj": "falhando",
     "judiciario/stf": "falhando",
     "judiciario/stm": "falhando",
     "judiciario/tse": "falhando"
