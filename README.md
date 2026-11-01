@@ -1528,7 +1528,7 @@ pelo `gerar.mjs` com o `verba_fora` de cada cidade em `camaras.json` (hoje Macei
 cobertura que existe DE VERDADE (nenhum vereador dessas cidades tem despesa `c` nos anos de fora; e nenhuma cidade com `verba_nome` e sem despesa fica sem a pendência),
 e não o limite legal da verba (`verba_mes`, que existe mesmo sem despesas: a pendência do Recife saiu por engano em 04/10/2026 por isso). O limite mensal da verba na página do vereador e da cidade vem de `meta.cidades[cod].verba_mes` (valor por ano); se o limite muda no meio de um ano, os dados trazem também `verba_vigencia` (`[[desde AAAAMM, valor], ...]`, só quando há mais de uma vigência) e o texto diz cada valor com o período ("até R$ 100 por mês de jan a ago/2025 e R$ 120 desde set/2025"); sem o campo, ou com mudança só na virada do ano (São Paulo hoje), o texto por ano não muda (`vigenciasVerba` e `textoVigenciasVerba` no `app.js`; testes `verba-*` no `rodar.mjs`). A frequência de atualização escrita nos textos
 (`/imprensa`, `/sobre`, `/atualizacao`, `/dados-abertos`, notas das páginas de estado e do índice) segue a de verdade: as fontes que abrem de fora do Brasil, toda semana (GitHub, terça);
-as que só abrem do Brasil, uma vez por mês; a fonte congelada, a cada três meses; na dúvida, "a cada rodada de atualização"
+as que só abrem do Brasil, uma vez por mês; a fonte congelada tem a frase própria dela em `/atualizacao` (nova tentativa só onde o `situacao.json` diz); na dúvida, "a cada rodada de atualização"
 
 ## Presença e projetos na página do deputado federal e do senador
 

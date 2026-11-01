@@ -785,10 +785,10 @@ if (SIT && (SIT.fontes || []).length) {
     + "<li><strong>Última coleta: </strong>o dia da última leitura da fonte que deu certo. O traço (—) quer dizer que ainda não há registro dessa leitura.</li>"
     + `<li><strong>${esc(sit.em_dia || "Em dia")}: </strong>os dados vão até menos de 3 meses antes do último mês fechado${fechado ? ` (${fechado})` : ""}. Várias fontes publicam cada mês com 1 ou 2 meses de atraso, e isso conta como em dia.</li>`
     + `<li><strong>${esc(sit.atraso_fonte || "Atraso da própria fonte")}: </strong>o órgão publica com atraso ou deixou de mostrar o dado; o motivo está ao lado.</li>`
-    + `<li><strong>${esc(sit.congelada || "Congelada")}: </strong>a fonte parou de publicar o que o site mostra; o site fica com o último dado e a coleta tenta de novo a cada três meses.</li>`
+    + `<li><strong>${esc(sit.congelada || "Congelada")}: </strong>a fonte parou de publicar o que o site mostra, ou a coleta dela está parada. O site fica com o último dado publicado; o motivo e o que vale para aquela fonte estão ao lado.</li>`
     + `<li><strong>${esc(sit.atrasada || "Atrasada")}: </strong>os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido.</li>`
     + `<li><strong>${esc(sit.falhou || "A coleta falhou")}: </strong>a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.</li></ul>`
-    + '<p class="nota">Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte que parou de publicar é tentada de novo a cada três meses. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
+    + '<p class="nota">Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte congelada segue a frase própria dela na lista. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
   const titulo = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
   paginas.push(["atualizacao", pagina("atualizacao", titulo, lide, corpo, { extras: ["/dados/situacao.json"] })]);
 }

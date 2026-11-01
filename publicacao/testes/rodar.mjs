@@ -168,7 +168,7 @@ const PAGINAS = [
       if (!filtro || !filtro.getAttribute("aria-label")) f.push("o campo de filtro não tem rótulo");
       return f;
     })()` },
-  // sem os arquivos de bens (hoje não existem; só a partir de 26/10/2026): nada aparece, nem título, e o app nem pede o arquivo
+  // pessoa que não casou com nenhuma candidatura (fora do bens.json real): nada aparece, nem título
   { nome: "deputado-federal", url: primeiro("dep-"), semPagina: [/bens declarados/i, /Justiça Eleitoral/] },
   // arquivo que FALTA (404) ou vem quebrado: a seção diz que não deu para carregar (atividade) ou some (bens, que é opcional), e para de pedir
   // (antes, a seção se recriava e pedia o arquivo de novo, em ciclo, e a página podia travar). O limite de pedidos pega o ciclo.
@@ -454,6 +454,9 @@ const PAGINAS = [
       const cota = (document.querySelector("#cota") || {}).textContent || "";
       if (!/Verba indenizatória \\(liquidação do mês\\)/.test(cota)) f.push("a lista de gastos não traz o tipo único da verba");
       return f; })()` },
+  // a legenda das fontes congeladas não promete nova tentativa (a verba da Câmara do Recife está parada por decisão, e não tenta de novo)
+  { nome: "atualizacao-congelada-sem-promessa", url: "/atualizacao", pagina: [/Congelada:\s*a fonte parou de publicar[\s\S]{0,200}?o motivo e o que vale para aquela fonte estão ao lado/, /Verba congelada: dados até 12\/2025[\s\S]{0,400}?a coleta da verba não tenta de novo/],
+    semPagina: [/a coleta tenta de novo a cada três meses\.\s*Atrasada/, /é tentada de novo a cada três meses/] },
   { nome: "atualizacao-stm-set-2026", url: "/atualizacao", pagina: [/Superior Tribunal Militar[\s\S]{0,200}?set\/2026/, /consulta oficial, meses que faltam no DadosJusBr\)[\s\S]{0,200}?set\/2026/] },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),

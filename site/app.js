@@ -4622,10 +4622,10 @@
         h("li", null, h("strong", null, "Última coleta: "), "o dia da última leitura da fonte que deu certo. O traço (—) quer dizer que ainda não há registro dessa leitura."),
         h("li", null, h("strong", null, `${sit.em_dia || "Em dia"}: `), `os dados vão até menos de 3 meses antes do último mês fechado${fechado ? ` (${fechado})` : ""}. Várias fontes publicam cada mês com 1 ou 2 meses de atraso, e isso conta como em dia.`),
         h("li", null, h("strong", null, `${sit.atraso_fonte || "Atraso da própria fonte"}: `), "o órgão publica com atraso ou deixou de mostrar o dado; o motivo está ao lado."),
-        h("li", null, h("strong", null, `${sit.congelada || "Congelada"}: `), "a fonte parou de publicar o que o site mostra; o site fica com o último dado e a coleta tenta de novo a cada três meses."),
+        h("li", null, h("strong", null, `${sit.congelada || "Congelada"}: `), "a fonte parou de publicar o que o site mostra, ou a coleta dela está parada. O site fica com o último dado publicado; o motivo e o que vale para aquela fonte estão ao lado."),
         h("li", null, h("strong", null, `${sit.atrasada || "Atrasada"}: `), "os dados vão até 3 meses ou mais antes do último mês fechado, sem motivo conhecido."),
         h("li", null, h("strong", null, `${sit.falhou || "A coleta falhou"}: `), "a última leitura da fonte não deu certo; o site mostra os últimos dados obtidos.")),
-      h("p", { class: "nota" }, "Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte que parou de publicar é tentada de novo a cada três meses. Esta lista em JSON, para quem quiser conferir ou reaproveitar: ",
+      h("p", { class: "nota" }, "Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte congelada segue a frase própria dela na lista. Esta lista em JSON, para quem quiser conferir ou reaproveitar: ",
         h("a", { href: "/dados/situacao.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "situacao.json" }) }, "situacao.json"),
         ". Os arquivos de dados e as cópias públicas estão em ", h("a", { href: "/dados-abertos" }, "dados abertos"), "."));
   }
