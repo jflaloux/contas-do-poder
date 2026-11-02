@@ -375,7 +375,8 @@ function rotuloPessoa(p) {
 }
 const GASTOS = { d: "em gastos do mandato (cota parlamentar e outros)", s: "em gastos do mandato (cota parlamentar e outros)", e: "em viagens oficiais", j: "em gastos dos cargos", v: "com a verba do gabinete", a: "com a verba do gabinete" };
 // Judiciário: a folha do órgão (ou a cópia dela no DadosJusBr)
-const fonteJ = (p) => { const o = ORGAOS_J[p.org] || {}; return `da folha ${o.sigla === "PGR" ? "do MPF" : `do ${o.sigla || p.org}`}${o.via === "DadosJusBr" ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
+const viaDJB = (v) => /^DadosJusBr/.test(v || ""); // "DadosJusBr" ou "DadosJusBr e consulta oficial" (STM): nos dois, crédito e licença do DadosJusBr
+const fonteJ = (p) => { const o = ORGAOS_J[p.org] || {}; return `da folha ${o.sigla === "PGR" ? "do MPF" : `do ${o.sigla || p.org}`}${viaDJB(o.via) ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
 const FONTE = { d: "da Câmara dos Deputados", s: "do Senado Federal", e: "do Portal da Transparência", j: "do Congresso e do Portal da Transparência" };
 // o mesmo topo de contracheque que o app.js desenha (secContracheque/resumoTopo), com os números do período padrão
 const partidoUF = (p) => {
@@ -650,7 +651,7 @@ if (judiciario.length) {
       const r = p.per.leg, med = r && r.mg ? r.g / r.mg : 0;
       return `<li><a href="/${esc(END.p[p.id] || p.id)}">${esc(p.n)}</a> <small>${esc(p.g)}${med ? ` · ${esc(reais(med))} por mês, em média, desde jan/2025` : ""}</small></li>`;
     };
-    return `<h2 class="h3">${esc(o.n)} (${esc(sigla)})</h2><p class="discreto">${ps.length} no cargo · dados até ${mesTxt(o.ultimo_mes)}${o.via === "DadosJusBr" ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " · via DadosJusBr e consulta oficial" : " · via DadosJusBr") : ""}</p><ul class="lista">${ps.map(linha).join("")}</ul>`;
+    return `<h2 class="h3">${esc(o.n)} (${esc(sigla)})</h2><p class="discreto">${ps.length} no cargo · dados até ${mesTxt(o.ultimo_mes)}${viaDJB(o.via) ? (Object.values(o.fonte_mes || {}).some((u) => !/dadosjusbr/i.test(u)) ? " · via DadosJusBr e consulta oficial" : " · via DadosJusBr") : ""}</p><ul class="lista">${ps.map(linha).join("")}</ul>`;
   };
   const corpo = '<section class="bloco" id="judiciario" aria-labelledby="t-judiciario"><p class="rotulo">Justiça</p><h1 id="t-judiciario" class="titulo-pagina">Judiciário</h1>'
     + `<p class="lide">${esc(lide)}</p>${Object.entries(ORGAOS_J).map(bloco).join("")}</section>`;
@@ -758,7 +759,7 @@ if (SIT && (SIT.fontes || []).length) {
       + '<p class="discreto pequeno" style="margin:0">Problema é a coleta que falhou ou dados atrasados sem motivo conhecido. O atraso da própria fonte e as fontes congeladas não contam.</p></div>';
   })();
   const linha = (f, ancora) => `<tr${ancora ? ` id="${idFonte(f.id)}"` : ""}><td><a href="${esc(f.url)}" target="_blank" rel="noopener">${esc(f.nome)}&nbsp;↗</a>`
-    + (f.via ? `<small class="tabela-gov__obs">Dados pelo ${esc(f.via)}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}</small>` : "") + "</td>"
+    + (f.via ? `<small class="tabela-gov__obs">Dados pelo ${esc(f.via)}${viaDJB(f.via) ? " (CC BY 4.0)" : ""}</small>` : "") + "</td>"
     + `<td data-rotulo="Dados até">${f.ultimo_mes ? mes(f.ultimo_mes) : "—"}</td>`
     + `<td data-rotulo="Última coleta">${f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"}</td>`
     + `<td data-rotulo="Situação"><span class="${f.situacao === "em_dia" ? "etiqueta" : f.situacao === "congelada" ? "etiqueta etiqueta--fora" : "etiqueta etiqueta--estimativa"}">${esc(sit[f.situacao] || f.situacao)}</span>`

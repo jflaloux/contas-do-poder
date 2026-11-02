@@ -3553,8 +3553,10 @@
     if (Array.isArray(o.meses_oficiais)) return o.meses_oficiais;
     return Object.entries(o.fonte_mes || JUD.fonteMes[sigla] || {}).filter(([, u]) => !/dadosjusbr/i.test(u)).map(([m]) => Number(m)).sort((a, b) => a - b);
   };
+  // "DadosJusBr" ou "DadosJusBr e consulta oficial" (STM, desde a rodada de 27/10/2026): nos dois, o crédito e a licença CC BY 4.0 do DadosJusBr
+  const viaDJB = (v) => /^DadosJusBr/.test(v || "");
   const orgaoJ = (p) => ((JUD.meta || {}).orgaos || {})[p.org] || {};
-  const fonteJ = (p) => { const o = orgaoJ(p); return `da folha ${p.org === "PGR" ? "do MPF" : `do ${p.org}`}${o.via === "DadosJusBr" ? (mesesOficiaisJ(p.org).length ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
+  const fonteJ = (p) => { const o = orgaoJ(p); return `da folha ${p.org === "PGR" ? "do MPF" : `do ${p.org}`}${viaDJB(o.via) ? (mesesOficiaisJ(p.org).length ? " (via DadosJusBr e consulta oficial)" : " (via DadosJusBr)") : ""}`; };
   function guardarJudiciario(d) {
     JUD.tipos = (d.meta && d.meta.tipos) || JUD.tipos;
     for (const [sigla, o] of Object.entries((d.meta && d.meta.orgaos) || {})) if (o.fonte_mes) JUD.fonteMes[sigla] = o.fonte_mes;
@@ -3596,7 +3598,7 @@
       SEM_COMPARACAO.has(grupo(p)) ? h("p", { class: "nota" }, `Sem comparação com os colegas: ${p.org === "CNJ" ? "no CNJ, quem vem de um tribunal recebe o salário no tribunal de origem e, aqui, só a diferença de subsídio; os outros recebem o subsídio inteiro" : "no TSE, os ministros recebem o salário no tribunal ou no órgão de origem e, aqui, a gratificação eleitoral ou o jeton; os substitutos só aparecem nos meses em que recebem"}. Por isso os valores não são comparáveis entre si.`) : null,
       h("ul", { class: "lista nota caixa-nota" }, (M.notas || []).map((n) => h("li", null, n))),
       (o.notas || []).map((n) => h("p", { class: "nota" }, n)),
-      o.via === "DadosJusBr" ? h("p", { class: "nota" }, "Fonte: ", h("a", { href: "https://dadosjusbr.org", target: "_blank", rel: "noopener" }, "DadosJusBr (dadosjusbr.org) ↗"), ", que copia a folha oficial; licença CC BY 4.0.") : null,
+      viaDJB(o.via) ? h("p", { class: "nota" }, "Fonte: ", h("a", { href: "https://dadosjusbr.org", target: "_blank", rel: "noopener" }, "DadosJusBr (dadosjusbr.org) ↗"), ", que copia a folha oficial; licença CC BY 4.0.") : null,
       h("p", { class: "nota" }, `Dados ${p.org === "PGR" ? "do MPF" : `do ${p.org}`} até ${fmtMes(o.ultimo_mes)}. `, h("a", { href: `/judiciario#jud-${p.org.toLowerCase()}`, onclick: () => { S.origem = "pessoa_judiciario"; } }, `Ver todos ${p.org === "PGR" ? "da PGR" : p.org === "CNJ" ? "do CNJ" : `do ${p.org}`} →`)),
     ];
   }
@@ -3649,7 +3651,7 @@
       const pagosFora = sigla === "CNJ" ? (o.sem_folha || []).filter((x) => S.porId.get(x.id)) : [];
       return h("article", { class: "cartao", id: `jud-${sigla.toLowerCase()}` },
         h("h2", { class: "h3" }, `${o.n} (${sigla})`),
-        h("p", { class: "discreto pequeno", style: "margin:0" }, [`${agora.length} no cargo`, `dados até ${fmtMes(o.ultimo_mes)}`, o.via === "DadosJusBr" ? `fonte: cópia da folha oficial no DadosJusBr${mesesOficiaisJ(sigla).length ? ` e, em ${mesesOficiaisJ(sigla).length === 1 ? "um mês" : `${mesesOficiaisJ(sigla).length} meses`}, a consulta oficial` : ""}` : "fonte: a folha oficial"].join(" · ")),
+        h("p", { class: "discreto pequeno", style: "margin:0" }, [`${agora.length} no cargo`, `dados até ${fmtMes(o.ultimo_mes)}`, viaDJB(o.via) ? `fonte: cópia da folha oficial no DadosJusBr${mesesOficiaisJ(sigla).length ? ` e, em ${mesesOficiaisJ(sigla).length === 1 ? "um mês" : `${mesesOficiaisJ(sigla).length} meses`}, a consulta oficial` : ""}` : "fonte: a folha oficial"].join(" · ")),
         C.n >= POUCOS && C.gm && !SEM_COMPARACAO.has(`t${sigla}`) ? h("div", { class: "estatisticas" }, estatistica("Bruto típico por mês", reais(C.gm), `mediana da média mensal de cada uma das ${C.n} pessoas que receberam do órgão desde jan/2025${C.n !== agora.length ? ` (${agora.length} estão no cargo hoje)` : ""}`)) : null,
         listaPessoas(agora.map(linha)),
         pagosFora.length ? [h("p", { class: "rotulo", style: "margin:10px 0 0" }, "Também integram o CNJ, pagos pelo próprio tribunal"),
@@ -3657,7 +3659,7 @@
         sairam.length ? listaFechada(`Quem saiu desde jan/2025 (${sairam.length})`, `judiciario_sairam_${sigla}`, listaPessoas(sairam.map(linha))) : null,
         h("details", { class: "nota-dobra" }, h("summary", null, "Sobre a fonte"),
           (o.notas || []).map((n) => h("p", { class: "nota" }, n)),
-          o.via === "DadosJusBr" ? h("p", { class: "nota" }, "Fonte: DadosJusBr (dadosjusbr.org), que copia a folha oficial; licença CC BY 4.0.") : null,
+          viaDJB(o.via) ? h("p", { class: "nota" }, "Fonte: DadosJusBr (dadosjusbr.org), que copia a folha oficial; licença CC BY 4.0.") : null,
           h("p", { class: "nota" }, o.fonte ? h("a", { href: o.fonte, target: "_blank", rel: "noopener" }, "Folha de pagamento ↗") : null, o.fonte && o.composicao ? " · " : null,
             o.composicao ? h("a", { href: o.composicao, target: "_blank", rel: "noopener" }, "Composição ↗") : null)));
     };
@@ -4408,7 +4410,7 @@
       j: "Página no Portal da Transparência", v: "Página do vereador no site da Câmara Municipal", p: "Folha de pagamento da Prefeitura",
       a: "Página do deputado no site da Assembleia Legislativa", t: `Composição: ${orgaoJ(p).n || p.org}`, g: leiG(p) ? `Fonte do salário ${deUF(p.uf)}` : `Folha de pagamento ${deUF(p.uf)}` }[p.k] || "Página oficial";
     const f = p.o ? [[nome, p.o]] : [];
-    if (p.k === "t") { const o = orgaoJ(p); if (o.fonte) f.push([`Folha de pagamento: ${o.n}`, o.fonte]); if (o.via === "DadosJusBr") f.push(["DadosJusBr (cópia da folha oficial, licença CC BY 4.0)", "https://dadosjusbr.org"]); }
+    if (p.k === "t") { const o = orgaoJ(p); if (o.fonte) f.push([`Folha de pagamento: ${o.n}`, o.fonte]); if (viaDJB(o.via)) f.push(["DadosJusBr (cópia da folha oficial, licença CC BY 4.0)", "https://dadosjusbr.org"]); }
     if (p.k === "g") { const e = GOV.porUF[p.uf]; if (e && e.v && e.v[4] && e.v[4] !== p.o) f.push([`Lei ou fonte do salário ${deUF(p.uf)}`, e.v[4]]); }
     if (temViagensG(p)) f.push([`Viagens a serviço ${deUF(p.uf)}`, GOV.porUF[p.uf].vgf.u]);
     if (legisl(p)) f.push(...fontesCasa(casaDe(p)).map(([t, u]) => [`${maiuscula(t)}: ${(casaDe(p) || {}).casa || ""}`, u]));
@@ -4672,7 +4674,7 @@
     const motivo = (f) => { const r = `${sit[f.situacao] || ""}: `, t = f.texto || ""; const m = t.startsWith(r) ? t.slice(r.length) : t; return m.charAt(0).toUpperCase() + m.slice(1); };
     const linha = (f, ancora) => h("tr", { id: ancora ? idFonte(f.id) : null },
       h("td", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome}\u00a0↗`),
-        f.via ? h("small", { class: "tabela-gov__obs" }, `Dados pelo ${f.via}${f.via === "DadosJusBr" ? " (CC BY 4.0)" : ""}`) : null),
+        f.via ? h("small", { class: "tabela-gov__obs" }, `Dados pelo ${f.via}${viaDJB(f.via) ? " (CC BY 4.0)" : ""}`) : null),
       h("td", { "data-rotulo": "Dados até" }, f.ultimo_mes ? fmtMes(f.ultimo_mes) : "—"),
       h("td", { "data-rotulo": "Última coleta" }, f.ultima_coleta ? dataBR(f.ultima_coleta) : "—"),
       h("td", { "data-rotulo": "Situação" }, etiqueta(f), f.situacao !== "em_dia" && f.texto ? h("small", { class: "tabela-gov__obs" }, motivo(f)) : null));

@@ -226,7 +226,8 @@ const PAGINAS = [
   { nome: "bens-cidade-es", url: "/cidade/afonso-claudio-es", metas: { "dados-bens": "es" }, simular: simularBens({ es: BENS_ES }),
     pagina: [/Bens declarados à Justiça Eleitoral/, /São 2 pessoas no cargo de Afonso Cláudio, em ordem alfabética/, /imóveis R\$\s310\.000,00/, /não declarou bens/] },
   { nome: "bens-cidade-sem-registro", url: "/cidade/acrelandia-ac", metas: { "dados-bens": "ce" }, simular: simularBens({ ce: BENS_CE }), semPagina: [/Bens declarados/i] },
-  { nome: "cidade-interior-sem-bens", url: "/cidade/abaiara-ce", semPagina: [/Bens declarados/i, /Justiça Eleitoral/] },
+  // cidade de estado sem arquivo de bens (só CE, ES, PB e PE têm): com os arquivos reais, nada aparece
+  { nome: "cidade-interior-sem-bens", url: "/cidade/acrelandia-ac", semPagina: [/Bens declarados/i, /Justiça Eleitoral/] },
   // ajuda de custo (paga de uma vez) fora do "por mês" e da comparação: quem tem poucos meses e a ajuda da posse não sobe no ranking só por ela.
   // Tiago Dimas (5 meses em 2025, ajuda de R$ 46.366 em set/2025) já foi o 9º de 554; André Abdon, o 1º. A largura de 900 px é a em que o
   // menu das seções do deputado não cabe: tem de ficar numa linha só, rolando para o lado, com o aviso de que há mais.
@@ -603,7 +604,6 @@ const PAGINAS = [
       return f; })()` },
   // busca sem resultado: ao Analytics vai só o que tem cara de nome (termoMedivel, no app.js). Em localhost o gtag não existe: o teste põe um gravador no lugar.
   // Os termos têm "zzqx" para a busca não achar ninguém; cada termo espera os 1,5 s da pausa antes do envio.
-  { nome: "busca-sem-resultado", acao: true, url: "/", depois: `(async () => {
   // busca tolerante: grafia parecida (só para escolher: o Enter sozinho não escolhe), cargo no feminino, "prefeitura de caj", sigla do estado
   { nome: "busca-parecidos", acao: true, url: "/", depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
@@ -631,6 +631,7 @@ const PAGINAS = [
       tecla("Enter"); await esp(2500);
       if (!/nikolas-ferreira/.test(location.pathname)) f.push("seta e Enter não abriram Nikolas Ferreira: " + location.pathname);
       return f; })()` },
+  { nome: "busca-sem-resultado", acao: true, url: "/", depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), enviados = [];
       window.gtag = (...a) => { if (a[0] === "event" && a[1] === "busca_sem_resultado") enviados.push(a[2].termo); };
       const campo = document.querySelector("#busca"), sug = document.querySelector("#sugestoes"); if (!campo || !sug) return ["sem o campo de busca da página inicial"];
@@ -639,9 +640,9 @@ const PAGINAS = [
       const digitar = async (v, ficar) => {
         campo.value = v; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400);
         if (!/Ninguém encontrado/.test(sug.innerText)) f.push("a busca achou alguém com " + JSON.stringify(v) + ": o caso não vale");
-        campo.value = ""; campo.dispatchEvent(new Event("input", { bubbles: true }));
         if (ficar) { await esp(ficar); if (!enviados.length) f.push("4 s depois de parar de digitar o termo ainda não tinha ido"); }
         campo.blur(); await esp(800); campo.focus();
+        campo.value = ""; campo.dispatchEvent(new Event("input", { bubbles: true }));
       };
       await digitar("Zzqx Kwvy", 4300);                             // vai sozinho, 4 s depois: sem acento, minúsculas
       { const antes = enviados.length; campo.value = "Zzqx Bbbb"; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400); campo.value = "Zzqx Bbbbc"; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400);
