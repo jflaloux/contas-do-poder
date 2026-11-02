@@ -3672,7 +3672,8 @@
           h("li", null, h("strong", null, "Subsídio"), ": o salário do cargo, em parcela única, fixado em lei."),
           h("li", null, h("strong", null, "Teto e abate-teto"), ": o teto do funcionalismo é o subsídio de ministro do STF. Quando a soma das parcelas de um mês passa do teto, a folha desconta o que passou, e esse desconto se chama abate-teto. Aqui o valor aparece antes desse desconto."),
           h("li", null, h("strong", null, "Parcela indenizatória"), ": a que o órgão classifica como ressarcimento de despesa, e não como remuneração. Por essa classificação, ela não entra na conta do teto, e por isso o total do mês pode passar do teto."),
-          h("li", null, h("strong", null, "PVTAC e GECJAO"), ": siglas de parcelas da lista da Resolução Conjunta CNJ/CNMP nº 14/2026. O nome por extenso e a regra de cada uma estão no texto da resolução."),
+          h("li", null, h("strong", null, "PVTAC"), ": Parcela de Valorização por Tempo de Antiguidade na Carreira. Pelo art. 3º da Resolução Conjunta CNJ/CNMP nº 14/2026, é indenizatória: 5% do subsídio a cada 5 anos de exercício em atividade jurídica, até 35%, mediante requerimento."),
+          h("li", null, h("strong", null, "GECJAO"), ": Gratificação por Exercício Cumulativo de Jurisdição, Atribuição ou Ofício. Pelos arts. 5º (alínea b) e 9º da mesma resolução, é indenizatória: paga a quem é designado para acumular outro órgão, cargo ou ofício, em até 35% do subsídio a cada 30 dias. As duas siglas aparecem na folha do STJ; o texto da resolução traz só o nome por extenso."),
           h("li", null, h("strong", null, "Diárias"), ": o que se paga em viagem a serviço (hospedagem e alimentação). Ficam à parte, fora do total do mês."))),
       h("div", { style: "display:grid;gap:16px" }, Object.entries(M.orgaos || {}).map(bloco)));
   }
