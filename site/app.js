@@ -560,26 +560,91 @@
     raiz.style.scrollBehavior = antes;
   };
   const buscaTexto = (p) => p._b || (p._b = semAcento(`${p.n} ${p.nc || ""} ${p.pt || ""} ${p.uf} ${ESTADOS[p.uf] || ""} ${p.g}`));
-  function encontrar(q, filtro) {
-    const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
-    if (!termos.length) return [];
-    const achados = S.D.p.filter((p) => p.k !== "j" && (!filtro || filtro(p)) && termos.every((t) => buscaTexto(p).includes(t)));
+  // ---- busca tolerante: funções puras (o teste de publicacao/testes/regras.mjs as lê daqui, entre estas duas marcas)
+  // BUSCA-INICIO
+  const CONECTIVOS = new Set(["de", "da", "do", "das", "dos", "e"]);
+  const RAIZ_CARGO = { prefeita: "prefeit", prefeito: "prefeit", deputada: "deputad", deputado: "deputad", ministra: "minist", ministro: "minist", senadora: "senador", vereadora: "vereador", governadora: "governador" };
+  const SO_CARGO = new Set(["prefeito", "prefeita", "prefeitura", "camara", "vereador", "vereadora", "vereadores", "municipal", "cidade", "municipio"]);
+  // as palavras da busca: sem acento, a mesma raiz para o cargo no masculino e no feminino, sem "de/da/do" (sobrando alguma outra)
+  function termosBusca(q) {
+    const t = semAcento(q).trim().split(/\s+/).filter(Boolean).map((x) => RAIZ_CARGO[x] || x);
+    const sem = t.filter((x) => !CONECTIVOS.has(x));
+    return sem.length ? sem : t;
+  }
+  // "prefeitura de caj" -> "caj": o nome da cidade sem a palavra do cargo (e sem "de" solto nas pontas)
+  function nomeBuscadoDaCidade(q) {
+    const t = semAcento(q).trim().split(/\s+/).filter((x) => x && !SO_CARGO.has(x));
+    while (t.length && CONECTIVOS.has(t[0])) t.shift();
+    while (t.length && CONECTIVOS.has(t[t.length - 1])) t.pop();
+    return t.join(" ");
+  }
+  // a grafia pelo som: Nikolas/Nicolas, Thiago/Tiago, Wellington/Vellington, Talyta/Talita, Jesus/Jezus
+  const chaveFonetica = (t) => semAcento(t).replace(/ph/g, "f").replace(/w/g, "v").replace(/y/g, "i").replace(/k/g, "c").replace(/z/g, "s").replace(/h/g, "").replace(/(.)\1+/g, "$1");
+  function distancia(a, b) {
+    let ant = Array.from({ length: b.length + 1 }, (_, j) => j);
+    for (let i = 1; i <= a.length; i++) {
+      const at = [i];
+      for (let j = 1; j <= b.length; j++) at[j] = Math.min(ant[j] + 1, at[j - 1] + 1, ant[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      ant = at;
+    }
+    return ant[b.length];
+  }
+  // quão longe a palavra digitada (t) está de uma palavra do nome (n), as duas pela chave do som; Infinity = não parece.
+  // Começo igual vale 0. Senão a primeira letra tem de ser a mesma, e os erros aceitos são: nenhum até 3 letras (1 se há outras palavras
+  // certas), 1 de 4 a 6, 2 com 7 ou mais; até 4 letras compara só com o começo da palavra, com 5 ou mais também com a palavra inteira.
+  function distanciaPalavra(t, n, comOutras) {
+    if (n.startsWith(t)) return 0;
+    const lim = t.length >= 7 ? 2 : t.length >= 4 || comOutras ? 1 : 0;
+    if (!lim || t[0] !== n[0]) return Infinity;
+    const d = t.length >= 5 ? Math.min(distancia(t, n.slice(0, t.length)), distancia(t, n)) : distancia(t, n.slice(0, t.length));
+    return d <= lim ? d : Infinity;
+  }
+  // a soma das distâncias de cada palavra digitada à palavra mais próxima do nome; Infinity se alguma não parece com nenhuma ou a soma passa de 2
+  function distanciaNome(termos, palavrasDoNome) {
+    let soma = 0;
+    for (const t of termos) {
+      let melhor = Infinity;
+      for (const n of palavrasDoNome) melhor = Math.min(melhor, distanciaPalavra(t, n, termos.length > 1));
+      if (melhor === Infinity) return Infinity;
+      soma += melhor;
+    }
+    return soma <= 2 ? soma : Infinity;
+  }
+  // BUSCA-FIM
+  const palavrasFoneticas = (p) => p._f || (p._f = chaveFonetica(`${p.n} ${p.nc || ""}`).split(/\s+/).filter(Boolean));
+  // aprox: nenhum nome igual ao digitado; devolve os de grafia parecida (mais perto primeiro), no mesmo formato
+  function encontrar(q, filtro, aprox) {
+    const termos = termosBusca(q), foneticos = aprox ? termos.map(chaveFonetica) : [], dist = new Map();
+    if (!termos.length || (aprox && foneticos.join("").length < 3)) return [];
+    const achados = S.D.p.filter((p) => {
+      if (p.k === "j" || (filtro && !filtro(p))) return false;
+      if (!aprox) return termos.every((t) => buscaTexto(p).includes(t));
+      const d = distanciaNome(foneticos, palavrasFoneticas(p));
+      if (d === Infinity) return false;
+      dist.set(p.id, d);
+      return true;
+    });
     const ids = new Set(achados.map((p) => p.id));
     // mesma pessoa em dois cargos (ex.: deputado licenciado que é ministro): mostra só uma vez, o cargo atual
     return achados.filter((p) => {
       const o = p.rel && ids.has(p.rel) ? S.porId.get(p.rel) : null;
       return !o || (p.x && !o.x) || (!!p.x === !!o.x && (p.k === "e" || p.k === "p" || p.k === "g"));
-    }).map((p) => (p.j && S.porId.get(p.j)) || p).sort((a, b) => b.x - a.x || a.n.localeCompare(b.n, "pt-BR"));
+    }).sort((a, b) => (dist.get(a.id) || 0) - (dist.get(b.id) || 0) || b.x - a.x || a.n.localeCompare(b.n, "pt-BR")).map((p) => (p.j && S.porId.get(p.j)) || p);
   }
-  // a página do estado pelo nome do estado (o governador e o vice, pelo nome, aparecem como pessoas: ver encontrar); sem
-  // a lista dos governadores como pessoas (site/ sem o publicacao/gerar.mjs), também pelo nome do governador
+  // a página do estado pelo nome do estado ou pela sigla (a sigla sozinha, ou ao lado de outra palavra: "governador sp"); o governador e o vice,
+  // pelo nome, aparecem como pessoas: ver encontrar. Sem a lista dos governadores como pessoas (site/ sem o publicacao/gerar.mjs),
+  // também pelo nome do governador
   function encontrarGov(q) {
-    const termos = semAcento(q).trim().split(/\s+/).filter(Boolean);
-    if (!termos.length || semAcento(q).trim().length < 3) return [];
+    const termos = termosBusca(q);
+    const sozinha = termos.length === 1 && termos[0].length === 2; // só "SP" (maiúsculas): "al" ou "ma" são o começo de um nome
+    if (!termos.length || (sozinha ? q.trim() !== q.trim().toUpperCase() : termos.join("").length < 3)) return [];
     const comNome = !GOVP.meta;
-    return GOV.e.filter((e) => { const t = semAcento(`${comNome ? `${e.gov.n} ${e.gov.nc || ""} ` : ""}${ESTADOS[e.uf]} governador governadora`); return termos.every((x) => t.includes(x)); }).slice(0, 2);
+    return GOV.e.filter((e) => {
+      const t = semAcento(`${comNome ? `${e.gov.n} ${e.gov.nc || ""} ` : ""}${ESTADOS[e.uf]} governador governadora governo`);
+      return termos.every((x) => (x.length === 2 && ESTADOS[x.toUpperCase()] ? e.uf.toLowerCase() === x : x.length > 2 && t.includes(x)));
+    }).slice(0, 2);
   }
-  // o que as pessoas procuram e não acham: manda o termo 1,5 s depois de parar de digitar, uma vez por termo.
+  // o que as pessoas procuram e não acham: manda o termo 4 s depois de parar de digitar (ou ao sair do campo), uma vez por termo.
   // Só vai o que tem cara de nome (político, cidade, cargo): letras, espaço, ponto, apóstrofo e hífen, de 3 a 50 caracteres,
   // até 6 palavras e nenhuma com 26 letras ou mais. O resto (número, e-mail, endereço de site, texto colado) não é enviado,
   // nem cortado: some. Lista branca de propósito: o Analytics não pode receber CPF, telefone nem texto livre.
@@ -587,20 +652,24 @@
     const t = semAcento(valor).trim().replace(/\s+/g, " ");
     return /^[a-z][a-z .'’-]{2,49}$/.test(t) && t.split(" ").length <= 6 && !/[a-z]{26,}/.test(t) ? t : null;
   }
-  let buscaTimer = null;
+  let buscaTimer = null, buscaPendente = null;
   const buscasMedidas = new Set();
   function medirBuscaVazia(valor) {
     clearTimeout(buscaTimer);
-    buscaTimer = setTimeout(() => {
-      const termo = termoMedivel(valor);
-      if (!termo || buscasMedidas.has(termo)) return;
-      buscasMedidas.add(termo);
-      evento("busca_sem_resultado", { termo });
-    }, 1500);
+    buscaPendente = valor;
+    buscaTimer = setTimeout(enviarBuscaVazia, 4000);
+  }
+  function enviarBuscaVazia() {
+    clearTimeout(buscaTimer);
+    const termo = buscaPendente === null ? null : termoMedivel(buscaPendente);
+    buscaPendente = null;
+    if (!termo || buscasMedidas.has(termo)) return;
+    buscasMedidas.add(termo);
+    evento("busca_sem_resultado", { termo });
   }
   // campo de busca com lista de sugestões (teclado: setas, Enter, Esc)
   function ligarBusca(input, caixa, aoEscolher, filtro, comCidades, origemBusca = "busca") {
-    let itens = [], ativo = -1;
+    let itens = [], ativo = -1, soParecidos = false;
     // os grupos que a página de um deputado ou senador não baixou (Assembleias, Câmaras, Judiciário) vêm quando a pessoa começa a buscar;
     // se chegarem depois que ela já digitou, a lista de sugestões se refaz
     const pedirTudo = () => { if (!S.completo) garantirTudo().then(() => { if (input.value.trim() && document.activeElement === input) input.dispatchEvent(new Event("input")); }); };
@@ -617,7 +686,7 @@
     caixa.setAttribute("role", "listbox");
     if (!caixa.hasAttribute("aria-label")) caixa.setAttribute("aria-label", "Sugestões");
     const fechar = () => { caixa.hidden = true; ativo = -1; };
-    const marcar = () => [...caixa.children].forEach((b, i) => b.setAttribute("aria-selected", String(i === ativo)));
+    const marcar = () => [...caixa.querySelectorAll("button")].forEach((b, i) => b.setAttribute("aria-selected", String(i === ativo)));
     input.addEventListener("input", () => {
       const pol = encontrar(input.value, filtro).slice(0, comCidades ? 6 : 8);
       const cid = comCidades ? encontrarCidades(input.value) : [];
@@ -630,10 +699,16 @@
           : h("span", null, e.gov.n, h("small", null, `${tituloGov(e)} ${deUF(e.uf)}${partidoTxt(e.gov).replace(/[()]/g, "").replace(/^ /, " · ")}`)))));
       cid.forEach((c) => caixa.append(h("button", { type: "button", class: "sugestao sugestao--cidade", role: "option", onclick: () => { fechar(); input.value = ""; irParaCidade(c, origemBusca); } },
         avatarCidade("p"), h("span", null, `Câmara Municipal ${deCidade(c)} (${c.uf})`, h("small", null, `${c.nv} vereadores · ${num(c.pop, 0)} habitantes`)))));
-      pol.forEach((p) => caixa.append(h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
-        avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)))));
+      const botaoPessoa = (p) => h("button", { type: "button", class: "sugestao", role: "option", onclick: () => { fechar(); input.value = ""; aoEscolher(p); } },
+        avatar(p, "p"), h("span", null, p.n, h("small", null, `${p.g} · ${partidoUF(p)}${p.x ? "" : " · fora do cargo"}${p.rel && S.porId.get(p.rel) ? ` · também ${nomeRel(p.rel)}` : ""}`)));
+      const aviso = (t) => h("p", { class: "pequeno discreto", style: "padding:8px", role: "option", "aria-disabled": "true", "aria-selected": "false" }, t);
+      pol.forEach((p) => caixa.append(botaoPessoa(p)));
+      soParecidos = false;
       if (input.value.trim().length >= 2 && !itens.length) {
-        caixa.append(h("p", { class: "pequeno discreto", style: "padding:8px", role: "option", "aria-disabled": "true", "aria-selected": "false" }, "Ninguém encontrado. Confira a grafia."));
+        // nenhum nome igual: os de grafia parecida (Nicolas/Nikolas), só para escolher (o Enter não escolhe sozinho)
+        const par = input.value.trim().length >= 3 ? encontrar(input.value, filtro, true).slice(0, 5) : [];
+        if (par.length) { caixa.append(aviso("Nenhum nome igual. Nomes parecidos:")); par.forEach((p) => caixa.append(botaoPessoa(p))); itens = par; soParecidos = true; }
+        else caixa.append(aviso("Ninguém encontrado. Confira a grafia."));
         medirBuscaVazia(input.value);
       }
       caixa.hidden = !caixa.children.length;
@@ -643,12 +718,13 @@
       if (caixa.hidden) return;
       if (e.key === "ArrowDown") { ativo = Math.min(itens.length - 1, ativo + 1); marcar(); e.preventDefault(); }
       else if (e.key === "ArrowUp") { ativo = Math.max(0, ativo - 1); marcar(); e.preventDefault(); }
-      else if (e.key === "Enter" && itens.length) {
+      else if (e.key === "Enter" && itens.length && !(soParecidos && ativo < 0)) {
         const botoes = [...caixa.querySelectorAll("button")];
         (botoes[Math.max(0, ativo)] || botoes[0]).click(); e.preventDefault();
       }
       else if (e.key === "Escape") fechar();
     });
+    input.addEventListener("blur", () => { if (buscaPendente !== null) setTimeout(enviarBuscaVazia, 300); }); // quem sai do campo antes dos 4 s não perde a medida
     document.addEventListener("click", (e) => { if (!caixa.contains(e.target) && e.target !== input) fechar(); });
   }
 
@@ -2436,10 +2512,10 @@
   }
   function encontrarCidades(q, n = 4) {
     if (!CID.m) return [];
-    const t = semAcento(q).trim();
-    if (t.length < 3) return [];
-    return CID.m.filter((c) => semAcento(`${c.n} ${c.uf}`).includes(t) || semAcento(`${c.n} ${ESTADOS[c.uf]}`).includes(t))
+    const de = (t) => t.length < 3 ? [] : CID.m.filter((c) => semAcento(`${c.n} ${c.uf}`).includes(t) || semAcento(`${c.n} ${ESTADOS[c.uf]}`).includes(t))
       .sort((a, b) => (semAcento(a.n).startsWith(t) ? 0 : 1) - (semAcento(b.n).startsWith(t) ? 0 : 1) || b.pop - a.pop).slice(0, n);
+    const achadas = de(semAcento(q).trim()); // "prefeitura de caj" não casa inteira: tenta de novo só com o nome da cidade
+    return achadas.length ? achadas : de(nomeBuscadoDaCidade(q));
   }
   function avatarCidade(tam) {
     const lado = tam === "g" ? 34 : 18;

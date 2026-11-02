@@ -604,16 +604,49 @@ const PAGINAS = [
   // busca sem resultado: ao Analytics vai só o que tem cara de nome (termoMedivel, no app.js). Em localhost o gtag não existe: o teste põe um gravador no lugar.
   // Os termos têm "zzqx" para a busca não achar ninguém; cada termo espera os 1,5 s da pausa antes do envio.
   { nome: "busca-sem-resultado", acao: true, url: "/", depois: `(async () => {
+  // busca tolerante: grafia parecida (só para escolher: o Enter sozinho não escolhe), cargo no feminino, "prefeitura de caj", sigla do estado
+  { nome: "busca-parecidos", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const campo = document.querySelector("#busca"), sug = document.querySelector("#sugestoes"); if (!campo || !sug) return ["sem o campo de busca da página inicial"];
+      campo.focus(); await esp(2500);
+      const digitar = async (v) => { campo.value = v; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(500); return sug.innerText; };
+      const tecla = (k) => campo.dispatchEvent(new KeyboardEvent("keydown", { key: k, bubbles: true, cancelable: true }));
+      let t = await digitar("Deputada Tabata");
+      if (!/Tabata Amaral/.test(t) || /Nenhum nome igual/.test(t)) f.push("deputada (feminino do cargo) não achou Tabata Amaral: " + JSON.stringify(t.slice(0, 120)));
+      t = await digitar("prefeitura de caj");
+      if (!sug.querySelector(".sugestao--cidade") || !/Caj/.test(t)) f.push("prefeitura de caj não achou uma cidade que começa com Caj: " + JSON.stringify(t.slice(0, 120)));
+      t = await digitar("SP");
+      if (!/São Paulo/.test(t) || !sug.querySelector(".sugestao")) f.push("a sigla SP não trouxe o governo de São Paulo: " + JSON.stringify(t.slice(0, 120)));
+      t = await digitar("governador mg");
+      if (!/Minas Gerais/.test(t)) f.push("governador mg não trouxe Minas Gerais: " + JSON.stringify(t.slice(0, 120)));
+      t = await digitar("al");
+      if (/Alagoas/.test(t.split("\\n").slice(0, 2).join(" ")) && /Governo/.test(t.split("\\n").slice(0, 2).join(" "))) f.push("al em minúsculas é começo de nome: não devia trazer o governo de Alagoas primeiro");
+      t = await digitar("Nicolas Ferreira");
+      if (!/Nenhum nome igual\\. Nomes parecidos:/.test(t) || !/Nikolas Ferreira/.test(t)) f.push("Nicolas Ferreira não trouxe Nikolas Ferreira como nome parecido: " + JSON.stringify(t.slice(0, 160)));
+      const antes = location.pathname; tecla("Enter"); await esp(500);
+      if (location.pathname !== antes) f.push("o Enter sozinho escolheu um nome parecido: " + location.pathname);
+      tecla("ArrowDown"); await esp(100);
+      const sel = [...sug.querySelectorAll("button")].filter((b) => b.getAttribute("aria-selected") === "true");
+      if (sel.length !== 1 || !/Nikolas/.test(sel[0].innerText)) f.push("a seta para baixo não marcou o primeiro nome parecido");
+      tecla("Enter"); await esp(2500);
+      if (!/nikolas-ferreira/.test(location.pathname)) f.push("seta e Enter não abriram Nikolas Ferreira: " + location.pathname);
+      return f; })()` },
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), enviados = [];
       window.gtag = (...a) => { if (a[0] === "event" && a[1] === "busca_sem_resultado") enviados.push(a[2].termo); };
       const campo = document.querySelector("#busca"), sug = document.querySelector("#sugestoes"); if (!campo || !sug) return ["sem o campo de busca da página inicial"];
       campo.focus(); await esp(2500);
-      const digitar = async (v, vai) => {
-        campo.value = v; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(1700);
+      // sair do campo manda o que está pendente na hora (o envio sozinho espera 4 s depois de parar de digitar)
+      const digitar = async (v, ficar) => {
+        campo.value = v; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400);
         if (!/Ninguém encontrado/.test(sug.innerText)) f.push("a busca achou alguém com " + JSON.stringify(v) + ": o caso não vale");
         campo.value = ""; campo.dispatchEvent(new Event("input", { bubbles: true }));
+        if (ficar) { await esp(ficar); if (!enviados.length) f.push("4 s depois de parar de digitar o termo ainda não tinha ido"); }
+        campo.blur(); await esp(800); campo.focus();
       };
-      await digitar("Zzqx Kwvy");                                   // vai: sem acento, minúsculas
+      await digitar("Zzqx Kwvy", 4300);                             // vai sozinho, 4 s depois: sem acento, minúsculas
+      { const antes = enviados.length; campo.value = "Zzqx Bbbb"; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400); campo.value = "Zzqx Bbbbc"; campo.dispatchEvent(new Event("input", { bubbles: true })); await esp(400);
+        campo.blur(); await esp(800); campo.focus(); campo.value = ""; campo.dispatchEvent(new Event("input", { bubbles: true }));
+        if (enviados.length - antes !== 1 || enviados[enviados.length - 1] !== "zzqx bbbbc") f.push("quem continua digitando manda só o último termo: foram " + JSON.stringify(enviados.slice(antes))); enviados.splice(antes); }
       await digitar("ZZQX   kwvy");                                 // o mesmo termo de novo: uma vez só
       await digitar("Zzqx d'Ávila");                                // apóstrofo e acento
       await digitar("Dr. Zzqx João");                               // ponto
@@ -728,7 +761,7 @@ const GRUPOS = [
   { nome: "cidade e interior", quando: /secCidade|vereadoresInterior|secPrefeitura|vereadoresCargo|carregarInterior|carregarCargo|interior/, paginas: /^cidade|reserva|bens-cidade/ },
   { nome: "governador e estado", quando: /secGovernador|notasGov|blocoTJ|otDe|secViagensG|governadores\.json/, paginas: /governador|estado|rj-/ },
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
-  { nome: "busca sem resultado", quando: /termoMedivel|medirBuscaVazia|busca_sem_resultado/, paginas: /^busca-sem-resultado$/ },
+  { nome: "busca sem resultado e busca tolerante", quando: /termoMedivel|medirBuscaVazia|enviarBuscaVazia|busca_sem_resultado|BUSCA-INICIO|encontrarGov|encontrarCidades|termosBusca/, paginas: /^busca-/ },
   { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /Rio Branco|Porto Velho|pagamento_unico|notasUnico|unicoNome|mesesOficiaisJ|meses_oficiais|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|rio-branco|porto-velho|pagamento-unico|stm-meses-oficiais|stm-set-2026/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },

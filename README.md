@@ -1331,13 +1331,21 @@ do deputado não cabe. Se acrescentar uma seção ou alongar um rótulo, conferi
   ali chega com a origem `busca_topo`) e `abrir_lista` (listas que começam fechadas: `ministros`, `governadores`,
   `vice_governadores`, `cidades` com a UF, `secretarios`, `subprefeitos` e `sairam_prefeitura`).
   Busca sem resultado (desde 08/10/2026): `busca_sem_resultado`, quando a busca por nome (página inicial, cabeçalho ou Comparar) não
-  acha ninguém, com o `termo` digitado, sem acento e em minúsculas, uma vez por termo, 1,5 s depois de a pessoa parar de digitar.
+  acha nenhum nome igual (mesmo que sugira nomes de grafia parecida), com o `termo` digitado, sem acento e em minúsculas, uma vez por termo,
+  4 s depois de a pessoa parar de digitar ou quando sai do campo (antes eram 1,5 s e cada pausa de quem digita devagar mandava um pedaço do
+  nome: "joel be", "joel ben"...).
   Só vai o que tem cara de nome: letras, espaço, ponto, apóstrofo e hífen, de 3 a 50 caracteres, até 6 palavras e nenhuma com 26
   letras ou mais (`termoMedivel`, no `app.js`). O que tem número, `@`, endereço de site ou texto colado não é enviado, nem cortado:
   some. É uma lista branca de propósito, para o Analytics não receber CPF, telefone nem e-mail (antes, o filtro só barrava `@` e três
   dígitos seguidos, e deixava passar, por exemplo, dígitos em grupos de um ou dois e texto longo). Para ver no Analytics, `termo`
   precisa ser registrado como dimensão personalizada (escopo: evento). Testes: `busca-sem-resultado` no `rodar.mjs` e o bloco
   "Busca sem resultado" do `regras.mjs`.
+  Busca tolerante (`ligarBusca`, `encontrar`, `encontrarGov` e `encontrarCidades` no `app.js`, funções puras entre as marcas `BUSCA-INICIO` e
+  `BUSCA-FIM`): sem nenhum nome igual, o campo mostra até 5 "Nomes parecidos" (só para escolher; o Enter sozinho não abre nenhum), pela grafia pelo
+  som (k/c, w/v, y/i, h mudo, letra dobrada: Nicolas/Nikolas) e por até 2 letras de diferença conforme o tamanho da palavra, com a primeira letra
+  igual. O cargo no feminino vale ("deputada", "prefeita"), "de/da/do" não conta, "prefeitura de caj" acha a cidade pelo nome, "governador sp" e "SP"
+  (em maiúsculas) levam ao governo do estado. Só pessoas já carregadas na busca (as do interior não entram). Testes: `busca-parecidos` no `rodar.mjs` e
+  "Busca tolerante" no `regras.mjs`.
   Também, no "Encontrou um erro?": `abrir_fonte` com `onde: erro` (clique num link da fonte), `abrir_reportar_erro`
   (abriu "A fonte mostra outro valor?") e `reportar_erro` (clique no e-mail); e `ver_correcoes`.
   Índice de Transparência: `ver_indice` (abriu `/indice`, com a origem: link ou navegação) e `abrir_indice` (abriu um

@@ -127,7 +127,40 @@ console.log("\n-- Busca sem resultado: só nome vai ao Analytics (lista branca t
     confere(`os ${passa.length} termos que têm cara de nome passam, sem acento e em minúsculas`, erradosPassa.length === 0, erradosPassa.join(" | "));
     const erradosBarra = barra.filter((e) => termoMedivel(e) !== null).map((e) => `${JSON.stringify(e)} passou como ${JSON.stringify(termoMedivel(e))}`);
     confere(`os ${barra.length} termos com número, e-mail, endereço, texto longo, curto ou comprido demais não vão (e não são cortados)`, erradosBarra.length === 0, erradosBarra.join(" | "));
-    confere("medirBuscaVazia usa termoMedivel e não corta o texto (sem slice, sem a regra antiga)", /const termo = termoMedivel\(valor\);/.test(fonte) && !/@\|\\d\{3\}/.test(fonte), "o envio não passa pelo filtro");
+    confere("enviarBuscaVazia usa termoMedivel e não corta o texto (sem slice, sem a regra antiga)", /termoMedivel\(buscaPendente\)/.test(fonte) && !/@\|\\d\{3\}/.test(fonte), "o envio não passa pelo filtro");
+  }
+}
+
+// ------------------------------------------------------------------ 1c2) a busca tolerante: grafia parecida, cargo no feminino, "prefeitura de caj"
+console.log("\n-- Busca tolerante (funções puras entre BUSCA-INICIO e BUSCA-FIM do app.js, com os nomes reais de site/dados)");
+{
+  const fonte = fs.readFileSync(path.join(SITE, "app.js"), "utf8");
+  const sem = /  const semAcento = [^\n]*\n/.exec(fonte), i = fonte.indexOf("// BUSCA-INICIO"), f = fonte.indexOf("// BUSCA-FIM");
+  confere("o app.js tem semAcento e o bloco da busca tolerante (o teste os lê de lá)", !!sem && i > 0 && f > i, "não achei no app.js");
+  if (sem && i > 0 && f > i) {
+    const { termosBusca, nomeBuscadoDaCidade, chaveFonetica, distanciaNome } = new Function(`${sem[0]}${fonte.slice(i, f)} return { termosBusca, nomeBuscadoDaCidade, chaveFonetica, distanciaNome };`)();
+    const igual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+    const t1 = [["Prefeita Beri", ["prefeit", "beri"]], ["alexandre de moraes", ["alexandre", "moraes"]], ["Deputada  Federal", ["deputad", "federal"]], ["de da", ["de", "da"]], ["Governo do Pará", ["governo", "para"]]];
+    const e1 = t1.filter(([e, s]) => !igual(termosBusca(e), s)).map(([e, s]) => `${e}: deu ${JSON.stringify(termosBusca(e))}`);
+    confere(`termosBusca: sem acento, mesma raiz do cargo no feminino, sem "de/da/do" (${t1.length} casos)`, e1.length === 0, e1.join(" | "));
+    const t2 = [["prefeitura de caj", "caj"], ["Prefeita Beri", "beri"], ["Câmara Municipal de São Paulo", "sao paulo"], ["cachoeiro de itapemirim", "cachoeiro de itapemirim"], ["vereadores", ""]];
+    const e2 = t2.filter(([e, s]) => nomeBuscadoDaCidade(e) !== s).map(([e, s]) => `${e}: deu ${JSON.stringify(nomeBuscadoDaCidade(e))}`);
+    confere(`nomeBuscadoDaCidade: só o nome da cidade, sem a palavra do cargo (${t2.length} casos)`, e2.length === 0, e2.join(" | "));
+    const t3 = [["nikolas", "nicolas"], ["thiago", "tiago"], ["wellington", "vellington"], ["talyta", "talita"], ["phelipe", "felipe"], ["jesus", "jezus"], ["aleksandre", "alecsandre"]];
+    const e3 = t3.filter(([a, b]) => chaveFonetica(a) !== chaveFonetica(b)).map(([a, b]) => `${a} e ${b} deviam ter a mesma chave`);
+    confere(`chaveFonetica: grafias que soam igual têm a mesma chave (${t3.length} pares)`, e3.length === 0, e3.join(" | "));
+    // com os nomes reais: quem a pessoa quis dizer aparece, e o que não parece com ninguém não traz ninguém
+    const nomes = new Map();
+    for (const a of ["dados.json", "assembleias.json", "governadores.json", "judiciario.json", "camaras.json"]) for (const p of lerDados(a).p || []) if (p.n) nomes.set(p.id, p);
+    const acha = (q) => { const t = termosBusca(q).map(chaveFonetica); return [...nomes.values()].filter((p) => distanciaNome(t, chaveFonetica(`${p.n} ${p.nc || ""}`).split(/\s+/).filter(Boolean)) < Infinity).map((p) => p.n); };
+    const quis = [["Nicolas Ferreira", "Nikolas Ferreira"], ["nicolai", "Nikolas Ferreira"], ["Taly", "Talíria Petrone"], ["Gisa", "Gisela Simona"], ["alexandre de moa", "Alexandre de Moraes"], ["Bolsonaru", "Flávio Bolsonaro"],
+      ["Tabata Amara", "Tabata Amaral"], ["Fernando Hadad", "Fernando Haddad"], ["Wellington Fagundis", "Wellington Fagundes"]];
+    const e4 = quis.filter(([q, n]) => !acha(q).includes(n)).map(([q, n]) => `${q} devia achar ${n}`);
+    confere(`nomes de grafia parecida achados com os nomes reais (${quis.length} casos)`, e4.length === 0, e4.join(" | "));
+    const nada = ["Zzqx Kwvy", "joel bolsonaro", "123 456", "qwxz"].filter((q) => acha(q).length);
+    confere("o que não parece com nome nenhum não traz ninguém", nada.length === 0, nada.map((q) => `${q}: ${acha(q).slice(0, 3).join(", ")}`).join(" | "));
+    const muitos = ["lula", "ana", "silva", "maria"].filter((q) => acha(q).length > 400);
+    confere("nome comum não vira uma lista sem fim (o app mostra só 5, mais perto primeiro)", muitos.length === 0, muitos.join(", "));
   }
 }
 
