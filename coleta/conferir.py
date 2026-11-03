@@ -16,6 +16,21 @@ from .util import baixar, ler_json, log, numero_br
 SITE = "https://www.camara.leg.br"
 AMOSTRA = 20
 SUBSIDIOS = {39293.32, 41650.92, 44008.52, 46366.19}
+# A página de cada deputado só mostra a verba de gabinete de um mês bem depois do fechamento (julho/2026 era o último em
+# 03/11/2026, quatro meses de atraso). A checagem vale para o último mês que a Câmara publicou, e o atraso tem limite.
+ATRASO_MAXIMO_VERBA = 6
+PUBLICADO_VERBA = 50  # deputados com verba no mês para ele contar como publicado (mês com poucos casos é falha, não mês novo)
+
+
+def ultimo_mes_da_verba(lanc, ultimo_mes):
+    """((ano, mês), atraso em meses) do último mês com verba de gabinete de deputados na base; ((None, None), 99) se não há."""
+    f = lanc[(lanc.id_politico.str[:3] == "dep") & (lanc.categoria == "assessores_gabinete") & (lanc.valor > 0)]
+    por_mes = f.groupby(["ano", "mes"]).id_politico.nunique()
+    publicados = [(int(a), int(m)) for (a, m), n in por_mes.items() if n >= PUBLICADO_VERBA]
+    if not publicados:
+        return (None, None), 99
+    ano, mes = max(publicados)
+    return (ano, mes), (ultimo_mes[0] * 12 + ultimo_mes[1]) - (ano * 12 + mes)
 
 
 def _cota_oficial_camara(id_, ano):
@@ -203,10 +218,17 @@ def executar():
             meses = cota[(cota.id_politico == p["id"]) & (cota.ano == ano)].groupby("mes").valor.sum()
             sem_negativos = round(float(meses.clip(lower=0).sum()), 2)
             explicada = abs(dif) >= 1 and abs(sem_negativos - oficial) < 1
-            if abs(dif) >= 1 and not explicada:
+            # créditos e estornos de passagens (só na consulta mensal do site, desde ago/2025): a consulta mensal desconta, e a
+            # página anual de alguns deputados não (03/11/2026: Ana Paula Leão, R$ 979,32 em nov/2025, igual ao crédito do mês)
+            creditos = cota[(cota.id_politico == p["id"]) & (cota.ano == ano)
+                            & cota.descricao.str.startswith("Créditos e estornos", na=False)].valor.sum()
+            explicada_cred = abs(dif) >= 1 and not explicada and creditos < 0 and abs(nossa - creditos - oficial) < 1
+            if abs(dif) >= 1 and not (explicada or explicada_cred):
                 difs += 1
             rel.append(f"| {p['nome']} | {ano} | {nossa:,.2f} | {oficial:,.2f} | {dif:,.2f}"
-                       + (" (explicada: mês com saldo negativo que a página não lista)" if explicada else "") + " |")
+                       + (" (explicada: mês com saldo negativo que a página não lista)" if explicada else "")
+                       + (f" (explicada: a página anual não desconta os créditos e estornos de passagens de R$ {-creditos:,.2f}, "
+                          "que a consulta mensal do mesmo site desconta)" if explicada_cred else "") + " |")
     rel += ["", f"**Resultado: {difs} diferença(s) de R$ 1 ou mais.** "
             "(Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)", ""]
     if sem_resposta:  # sem resposta não é diferença; se nenhuma página abriu, a cota ficou sem conferir: 1 alerta
@@ -310,8 +332,9 @@ def executar():
     def quantos(casa, cat, ano=None, mes=None):
         f = lanc[(lanc.casa == casa) & (lanc.categoria == cat) & (lanc.ano == (ano or ano_f)) & (lanc.mes == (mes or mes_f)) & (lanc.valor > 0)]
         return f.id_politico.nunique()
-    # a verba de gabinete da Câmara sai uns 2 meses depois (no fim de setembro, o último mês era julho): um mês antes
-    ano_v, mes_v = (k - 1) // 12, (k - 1) % 12 + 1
+    # a verba de gabinete da Câmara sai com atraso (no fim de setembro e em 03/11/2026, o último mês era julho): vale o último
+    # mês publicado, e o atraso tem limite
+    (ano_v, mes_v), atraso_v = ultimo_mes_da_verba(lanc, ULTIMO_MES)
     chave = lanc.ano * 12 + lanc.mes.fillna(0)
     janela = (chave > ano_f * 12 + mes_f - 12) & (chave <= ano_f * 12 + mes_f)
     def cota_12m(casa):
@@ -341,7 +364,10 @@ def executar():
         ("Estados com o mês a mês do governador pela folha", _governadores()[2], 20),
         (f"Governo federal: com salário em {ult_e % 100:02d}/{ult_e // 100}", com_salario_e, 25),
         (f"Deputados com salário em {mes_f:02d}/{ano_f}", quantos("dep", "salario"), 480),
-        (f"Deputados com verba de gabinete em {mes_v:02d}/{ano_v}", quantos("dep", "assessores_gabinete", ano_v, mes_v), 450),
+        (f"Deputados com verba de gabinete em {mes_v:02d}/{ano_v} (último mês publicado)" if ano_v else "Deputados com verba de gabinete publicada",
+         quantos("dep", "assessores_gabinete", ano_v, mes_v) if ano_v else 0, 450),
+        (f"Verba de gabinete da Câmara: meses até o limite de atraso ({ATRASO_MAXIMO_VERBA}); atraso de {atraso_v} mês(es)",
+         ATRASO_MAXIMO_VERBA - atraso_v, 0),
         (f"Senadores com salário em {mes_f:02d}/{ano_f}", quantos("sen", "salario"), 75),
         (f"Senadores com assessores em {mes_f:02d}/{ano_f}", quantos("sen", "assessores_gabinete"), 60),
         ("Cota da Câmara nos últimos 12 meses (R$ milhões)", round(cota_12m("dep") / 1e6), 150),

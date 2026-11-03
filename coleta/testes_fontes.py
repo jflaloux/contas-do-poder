@@ -102,6 +102,23 @@ def executar():
         recife.coletar()
     caso("Recife: coletar() não chama a verba", not v.called)
     caso("Recife: a verba mostrada vai até o mês congelado (dez/2025)", recife.VERBA_ATE == 202512)
+    # conferência: a verba de gabinete da Câmara sai com atraso (03/11/2026: último mês julho, quatro meses de atraso)
+    from . import conferir
+    def verba(*meses):  # (ano, mês, deputados com verba) -> lançamentos
+        return pd.DataFrame([{"id_politico": f"dep-{i}", "ano": a, "mes": m, "categoria": "assessores_gabinete", "valor": 1000.0}
+                             for a, m, n in meses for i in range(n)])
+    lanc = pd.concat([verba((2026, 6, 500), (2026, 7, 514), (2026, 8, 3)),
+                      pd.DataFrame([{"id_politico": "sen-1", "ano": 2026, "mes": 10, "categoria": "assessores_gabinete", "valor": 1.0}]
+                                   + [{"id_politico": "dep-1", "ano": 2026, "mes": 10, "categoria": "cota_parlamentar", "valor": 1.0}])])
+    caso("Conferência: o último mês da verba é o último com deputados de verdade (não conta mês de poucos casos, senador nem outra categoria)",
+         conferir.ultimo_mes_da_verba(lanc, (2026, 11)) == ((2026, 7), 4))
+    caso("Conferência: atraso de 6 meses ainda passa, de 7 não",
+         conferir.ATRASO_MAXIMO_VERBA - conferir.ultimo_mes_da_verba(lanc, (2027, 1))[1] >= 0
+         and conferir.ATRASO_MAXIMO_VERBA - conferir.ultimo_mes_da_verba(lanc, (2027, 2))[1] < 0)
+    caso("Conferência: sem nenhuma verba de gabinete, o atraso é enorme (falha)",
+         conferir.ultimo_mes_da_verba(lanc[lanc.mes != 7].query("mes != 6"), (2026, 11)) == ((None, None), 99))
+    caso("Conferência: mês novo publicado vira o mês conferido", conferir.ultimo_mes_da_verba(
+         pd.concat([lanc, verba((2026, 8, 520))]), (2026, 11)) == ((2026, 8), 3))
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
