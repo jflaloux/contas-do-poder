@@ -17,14 +17,21 @@ MESES = {"JANEIRO": 1, "FEVEREIRO": 2, "MARCO": 3, "ABRIL": 4, "MAIO": 5, "JUNHO
          "OUTUBRO": 10, "NOVEMBRO": 11, "DEZEMBRO": 12}
 
 
-def _arquivos():
-    """{AAAAMM: url}: a série histórica e o mês atual."""
-    t = _sessao().get(PAGINA, timeout=120).text
+def _arquivos(texto=None):
+    """{AAAAMM: url}: a série histórica e o mês atual. Portal fora do ar (HTTP 503 em 03/11/2026) ou página sem a lista de
+    arquivos: erro claro, em vez de seguir com uma lista vazia (o max() de uma lista vazia derrubou a etapa)."""
+    if texto is None:
+        r = _sessao().get(PAGINA, timeout=120)
+        r.raise_for_status()
+        texto = r.text
+    t = texto
     saida = {}
     for mes, ano in re.findall(r"historico/remuneracao_([A-Za-z]+)_(\d{4})\.rar", t):
         if comum.normalizar_nome(mes) in MESES:
             saida[int(ano) * 100 + MESES[comum.normalizar_nome(mes)]] = f"{BASE}/historico/remuneracao_{mes}_{ano}.rar"
-    if saida and "txt/RemuneracaoAtivos.csv" in t:
+    if not saida:
+        raise RuntimeError("a página de remuneração do portal de SP não trouxe a lista de arquivos")
+    if "txt/RemuneracaoAtivos.csv" in t:
         a, m = divmod(max(saida), 100)
         saida[a * 100 + m + 1 if m < 12 else (a + 1) * 100 + 1] = f"{BASE}/txt/RemuneracaoAtivos.csv"
     return saida

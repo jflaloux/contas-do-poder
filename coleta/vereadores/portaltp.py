@@ -61,10 +61,21 @@ def _parcelas(x):
     return saida
 
 
+def _lista(saida, caminho, am):
+    """A exportação é uma lista de registros. Mês que o portal ainda não publicou vem como um objeto só com a "mensagem"
+    ("não houve informações disponibilizadas ... para o referido período", visto em Porto Velho em 03/11/2026, mês 10/2026):
+    vale como mês sem dados (lista vazia). Qualquer outro formato é erro, e não dado."""
+    if isinstance(saida, list):
+        return saida
+    if isinstance(saida, dict) and set(saida) <= {"mensagem"}:
+        return []
+    raise RuntimeError(f"a exportação de {caminho} ({am}) veio em formato inesperado ({type(saida).__name__})")
+
+
 def _exportar(cfg, caminho, am, arquivo, dias):
     """A exportação em JSON de uma página de dados abertos do portal (o formulário: ano, mês, formato), com cache."""
     if arquivo.exists() and cache_valido(arquivo, dias):
-        return json.loads(arquivo.read_text(encoding="utf-8"))
+        return _lista(json.loads(arquivo.read_text(encoding="utf-8")), caminho, am)
     url = f"{cfg['portal']}{caminho}"
     s = _sessao()
     for tentativa in range(3):
@@ -88,6 +99,7 @@ def _exportar(cfg, caminho, am, arquivo, dias):
             if tentativa == 2:
                 raise
             dormir(10 + 10 * tentativa)
+    saida = _lista(saida, caminho, am)
     arquivo.parent.mkdir(parents=True, exist_ok=True)
     arquivo.write_text(json.dumps(saida, ensure_ascii=False), encoding="utf-8")
     dormir(PAUSA)

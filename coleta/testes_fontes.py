@@ -119,6 +119,25 @@ def executar():
          conferir.ultimo_mes_da_verba(lanc[lanc.mes != 7].query("mes != 6"), (2026, 11)) == ((None, None), 99))
     caso("Conferência: mês novo publicado vira o mês conferido", conferir.ultimo_mes_da_verba(
          pd.concat([lanc, verba((2026, 8, 520))]), (2026, 11)) == ((2026, 8), 3))
+    # 03/11/2026: portaltp devolveu um objeto com a "mensagem" para o mês que ainda não saiu (Porto Velho, 10/2026) e o robô
+    # tentou ler a frase como se fosse registro; o portal de SP devolveu HTTP 503 e o max() da lista vazia derrubou a etapa
+    from .folhas_estaduais import sp
+    from .vereadores import portaltp
+    msg = {"mensagem": "Informamos que, no período consultado, não houve informações disponibilizadas pelo Município."}
+    caso("portaltp: mês sem dados (objeto com a mensagem) vale como lista vazia", portaltp._lista(msg, "/api/x", 202610) == [])
+    caso("portaltp: lista de registros passa como está", portaltp._lista([{"nome": "A"}], "/api/x", 202601) == [{"nome": "A"}])
+    try:
+        portaltp._lista({"erro": "outro formato"}, "/api/x", 202610)
+        caso("portaltp: objeto de outro formato é erro, não mês vazio", False)
+    except RuntimeError:
+        caso("portaltp: objeto de outro formato é erro, não mês vazio", True)
+    try:
+        sp._arquivos("<html><h2>Service Unavailable</h2></html>")
+        caso("SP: página sem a lista de arquivos dá erro claro (e não max() de lista vazia)", False)
+    except RuntimeError:
+        caso("SP: página sem a lista de arquivos dá erro claro (e não max() de lista vazia)", True)
+    arq = sp._arquivos('<a href="historico/remuneracao_Setembro_2026.rar"></a><a href="txt/RemuneracaoAtivos.csv"></a>')
+    caso("SP: a lista traz a série histórica e o mês atual (o seguinte ao último)", sorted(arq) == [202609, 202610])
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
