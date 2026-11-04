@@ -1,59 +1,62 @@
 {
- "gerado_em": "2026-10-29T19:31:18-03:00",
- "semana": "2026-10-27",
- "anterior": "2026-10-20",
+ "gerado_em": "2026-11-03T23:23:02-03:00",
+ "semana": "2026-11-03",
+ "anterior": "2026-10-27",
  "lugares": [
-  "brasil",
   "exterior"
  ],
  "quebrou": [
   {
-   "fonte": "judiciario/stf",
-   "situacao": "falhando",
-   "desde": "2026-10-27T17:03:14",
-   "ultimo_mes": 202608,
-   "erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)"
+   "fonte": "assembleias/pi",
+   "situacao": "atrasada",
+   "desde": null,
+   "ultimo_mes": 202607,
+   "erro": null
   },
   {
-   "fonte": "judiciario/stm",
-   "situacao": "falhando",
-   "desde": "2026-10-27T17:03:17",
-   "ultimo_mes": 202608,
-   "erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)"
+   "fonte": "folhas/AC",
+   "situacao": "atrasada",
+   "desde": null,
+   "ultimo_mes": 202607,
+   "erro": null
   },
   {
-   "fonte": "judiciario/tse",
+   "fonte": "judiciario/stm_oficial",
+   "situacao": "atrasada",
+   "desde": null,
+   "ultimo_mes": 202604,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/fortaleza",
+   "situacao": "atrasada",
+   "desde": null,
+   "ultimo_mes": 202607,
+   "erro": null
+  },
+  {
+   "fonte": "prefeituras/salvador",
    "situacao": "falhando",
-   "desde": "2026-10-27T17:03:17",
-   "ultimo_mes": 202608,
-   "erro": "ConnectionError: o robots.txt de api.dadosjusbr.org não abriu (site fora do ar ou bloqueado)"
+   "desde": "2026-11-03T19:13:41",
+   "ultimo_mes": 202609,
+   "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/prefeituras.json: p/cid=2927408: 19 para 1 com \"x\" preenchido (em 2026-11-03)"
   }
  ],
  "voltou": [
   {
-   "fonte": "assembleias/rj",
-   "antes": "falhando",
-   "situacao": "atrasada (fonte)"
-  },
-  {
-   "fonte": "federal/atividade",
+   "fonte": "judiciario/stf",
    "antes": "falhando",
    "situacao": "ok"
   },
   {
-   "fonte": "federal/camara",
+   "fonte": "judiciario/stm",
    "antes": "falhando",
    "situacao": "ok"
   },
   {
-   "fonte": "judiciario/pgr",
+   "fonte": "judiciario/tse",
    "antes": "falhando",
    "situacao": "ok"
-  },
-  {
-   "fonte": "vereadores/recife",
-   "antes": "falhando",
-   "situacao": "congelada"
   }
  ],
  "continua": [
@@ -61,18 +64,17 @@
    "fonte": "assembleias/mt",
    "situacao": "falhando",
    "desde": "2026-10-20T17:50:09",
-   "ultimo_mes": 202609,
+   "ultimo_mes": 202610,
    "erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host"
   }
  ],
- "quebrou_e_voltou": [
-  "assembleias/df"
- ],
+ "quebrou_e_voltou": [],
  "totais": {
-  "falhando": 4,
+  "falhando": 2,
+  "atrasada": 4,
   "atrasada (fonte)": 4,
   "congelada": 4,
-  "ok": 92
+  "ok": 90
  },
  "historico": [
   {
@@ -151,6 +153,30 @@
     "judiciario/stm",
     "judiciario/tse",
     "vereadores/recife"
+   ]
+  },
+  {
+   "semana": "2026-11-03",
+   "atualizado_em": "2026-11-03T23:23:02-03:00",
+   "lugares": [
+    "exterior"
+   ],
+   "fontes": 104,
+   "problemas": {
+    "assembleias/mt": "falhando",
+    "assembleias/pi": "atrasada",
+    "folhas/AC": "atrasada",
+    "judiciario/stm_oficial": "atrasada",
+    "prefeituras/fortaleza": "atrasada",
+    "prefeituras/salvador": "falhando"
+   },
+   "teve_problema": [
+    "assembleias/mt",
+    "assembleias/pi",
+    "folhas/AC",
+    "judiciario/stm_oficial",
+    "prefeituras/fortaleza",
+    "prefeituras/salvador"
    ]
   }
  ]

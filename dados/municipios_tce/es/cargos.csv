@@ -19,6 +19,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200102,Afonso Cláudio,camara,202606,vereador,VEREADOR,11.00,100399.22,0.00,0.00,0.00,Câmara Municipal de Afonso Cláudio
 3200102,Afonso Cláudio,camara,202607,vereador,VEREADOR,11.00,100399.22,0.00,0.00,0.00,Câmara Municipal de Afonso Cláudio
 3200102,Afonso Cláudio,camara,202608,vereador,VEREADOR,11.00,100399.22,0.00,0.00,0.00,Câmara Municipal de Afonso Cláudio
+3200102,Afonso Cláudio,camara,202609,vereador,VEREADOR,11.00,100399.22,0.00,0.00,0.00,Câmara Municipal de Afonso Cláudio
 3200102,Afonso Cláudio,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,,,,,Prefeitura Municipal de Afonso Cláudio
 3200102,Afonso Cláudio,prefeitura,202501,vice,VICE PREFEITO MUNICIPAL,1.00,8251.57,0.00,0.00,0.00,Prefeitura Municipal de Afonso Cláudio
 3200102,Afonso Cláudio,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,,,,,Prefeitura Municipal de Afonso Cláudio
@@ -81,6 +82,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200136,Águia Branca,camara,202606,vereador,Vereador,11.00,57640.00,0.00,0.00,0.00,Câmara Municipal de Águia Branca
 3200136,Águia Branca,camara,202607,vereador,Vereador,11.00,59400.00,0.00,0.00,0.00,Câmara Municipal de Águia Branca
 3200136,Águia Branca,camara,202608,vereador,Vereador,11.00,57640.00,0.00,0.00,0.00,Câmara Municipal de Águia Branca
+3200136,Águia Branca,camara,202609,vereador,Vereador,11.00,59400.00,0.00,0.00,0.00,Câmara Municipal de Águia Branca
 3200136,Águia Branca,prefeitura,202501,prefeito,PREFEITO,1.00,22000.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
 3200136,Águia Branca,prefeitura,202501,vice,VICE PREFEITO,1.00,9200.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
 3200136,Águia Branca,prefeitura,202502,prefeito,PREFEITO,1.00,22000.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
@@ -121,6 +123,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200136,Águia Branca,prefeitura,202607,vice,VICE PREFEITO,1.00,9200.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
 3200136,Águia Branca,prefeitura,202608,prefeito,PREFEITO,1.00,22000.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
 3200136,Águia Branca,prefeitura,202608,vice,VICE PREFEITO,1.00,9200.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
+3200136,Águia Branca,prefeitura,202609,prefeito,PREFEITO,1.00,22000.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
+3200136,Águia Branca,prefeitura,202609,vice,VICE PREFEITO,1.00,9200.00,0.00,0.00,0.00,Prefeitura Municipal de Águia Branca
 3200169,Água Doce do Norte,camara,202501,vereador,VEREADOR,13.00,40000.00,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202502,vereador,VEREADOR,9.00,46738.80,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202503,vereador,VEREADOR,9.00,46738.80,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
@@ -138,9 +142,10 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200169,Água Doce do Norte,camara,202603,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202604,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202605,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
-3200169,Água Doce do Norte,camara,202606,vereador,VEREADOR,9.00,13500.00,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
+3200169,Água Doce do Norte,camara,202606,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202607,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,camara,202608,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
+3200169,Água Doce do Norte,camara,202609,vereador,VEREADOR,9.00,52710.57,0.00,0.00,0.00,Câmara Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,prefeitura,202501,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,prefeitura,202502,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,prefeitura,202503,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
@@ -161,6 +166,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200169,Água Doce do Norte,prefeitura,202606,prefeito,PREFEITO,1.00,16624.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,prefeitura,202607,prefeito,PREFEITO,1.00,16624.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
 3200169,Água Doce do Norte,prefeitura,202608,prefeito,PREFEITO,1.00,16624.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
+3200169,Água Doce do Norte,prefeitura,202609,prefeito,PREFEITO,1.00,16624.00,0.00,0.00,0.00,Prefeitura Municipal de Água Doce do Norte
 3200201,Alegre,camara,202501,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202502,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202503,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
@@ -171,7 +177,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200201,Alegre,camara,202508,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202509,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202510,vereador,VEREADOR,11.00,101235.98,15000.00,5535.98,0.00,Câmara Municipal de Alegre
-3200201,Alegre,camara,202511,vereador,VEREADOR,11.00,95700.00,15000.00,0.00,0.00,Câmara Municipal de Alegre
+3200201,Alegre,camara,202511,vereador,VEREADOR,11.00,80700.00,0.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202512,vereador,VEREADOR,11.00,176400.00,9000.00,80700.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202601,vereador,VEREADOR,11.00,95700.00,15000.00,0.00,0.00,Câmara Municipal de Alegre
 3200201,Alegre,camara,202602,vereador,VEREADOR,11.00,95700.00,15000.00,0.00,0.00,Câmara Municipal de Alegre
@@ -222,6 +228,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200201,Alegre,prefeitura,202607,vice,VICE-PREFEITO,1.00,9500.00,0.00,0.00,0.00,Prefeitura Municipal de Alegre
 3200201,Alegre,prefeitura,202608,prefeito,PREFEITO,1.00,19000.00,0.00,0.00,0.00,Prefeitura Municipal de Alegre
 3200201,Alegre,prefeitura,202608,vice,VICE-PREFEITO,1.00,9500.00,0.00,0.00,0.00,Prefeitura Municipal de Alegre
+3200201,Alegre,prefeitura,202609,prefeito,PREFEITO,1.00,19000.00,0.00,0.00,0.00,Prefeitura Municipal de Alegre
+3200201,Alegre,prefeitura,202609,vice,VICE-PREFEITO,1.00,9500.00,0.00,0.00,0.00,Prefeitura Municipal de Alegre
 3200300,Alfredo Chaves,camara,202501,vereador,VEREADOR,9.00,71700.00,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,camara,202502,vereador,VEREADOR,9.00,71700.00,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,camara,202503,vereador,VEREADOR,9.00,71700.00,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
@@ -242,6 +250,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200300,Alfredo Chaves,camara,202606,vereador,VEREADOR,9.00,72586.23,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,camara,202607,vereador,VEREADOR,9.00,72586.23,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,camara,202608,vereador,VEREADOR,9.00,72586.23,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
+3200300,Alfredo Chaves,camara,202609,vereador,VEREADOR,9.00,72586.23,0.00,0.00,0.00,Câmara Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,2.00,15800.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,prefeitura,202501,vice,VICE PREFEITO,2.00,6900.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,15800.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
@@ -282,6 +291,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200300,Alfredo Chaves,prefeitura,202607,vice,VICE PREFEITO,1.00,6900.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,15800.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
 3200300,Alfredo Chaves,prefeitura,202608,vice,VICE PREFEITO,1.00,6900.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
+3200300,Alfredo Chaves,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,15800.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
+3200300,Alfredo Chaves,prefeitura,202609,vice,VICE PREFEITO,1.00,6900.00,0.00,0.00,0.00,Prefeitura Municipal de Alfredo Chaves
 3200359,Alto Rio Novo,camara,202501,vereador,VEREADOR,9.00,35999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202502,vereador,VEREADOR,9.00,35999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202503,vereador,VEREADOR,9.00,35999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
@@ -299,9 +310,10 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200359,Alto Rio Novo,camara,202603,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202604,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202605,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
-3200359,Alto Rio Novo,camara,202606,vereador,VEREADOR,9.00,9000.00,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
+3200359,Alto Rio Novo,camara,202606,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202607,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,camara,202608,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
+3200359,Alto Rio Novo,camara,202609,vereador,VEREADOR,9.00,44999.73,0.00,0.00,0.00,Câmara Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,prefeitura,202501,prefeito,PREFEITO/A,1.00,11725.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,prefeitura,202501,vice,VICE-PREFEITO(A),1.00,,,,,Prefeitura Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,prefeitura,202502,prefeito,PREFEITO/A,1.00,11725.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
@@ -342,6 +354,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200359,Alto Rio Novo,prefeitura,202607,vice,VICE-PREFEITO(A),1.00,5973.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,prefeitura,202608,prefeito,PREFEITO/A,1.00,11725.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
 3200359,Alto Rio Novo,prefeitura,202608,vice,VICE-PREFEITO(A),1.00,5973.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
+3200359,Alto Rio Novo,prefeitura,202609,prefeito,PREFEITO/A,1.00,11725.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
+3200359,Alto Rio Novo,prefeitura,202609,vice,VICE-PREFEITO(A),1.00,5973.00,0.00,0.00,0.00,Prefeitura Municipal de Alto Rio Novo
 3200409,Anchieta,camara,202501,vereador,VEREADOR,11.00,113780.14,12000.00,0.00,0.00,Câmara Municipal de Anchieta
 3200409,Anchieta,camara,202502,vereador,VEREADOR,11.00,130660.14,28880.00,0.00,0.00,Câmara Municipal de Anchieta
 3200409,Anchieta,camara,202503,vereador,VEREADOR,11.00,129170.14,27390.00,0.00,0.00,Câmara Municipal de Anchieta
@@ -403,6 +417,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200409,Anchieta,prefeitura,202607,vice,VICE PREFEITO,1.00,13700.43,0.00,0.00,0.00,Prefeitura Municipal de Anchieta
 3200409,Anchieta,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,27201.43,0.00,0.00,0.00,Prefeitura Municipal de Anchieta
 3200409,Anchieta,prefeitura,202608,vice,VICE PREFEITO,1.00,3640.83,0.00,0.00,0.00,Prefeitura Municipal de Anchieta
+3200409,Anchieta,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,27201.43,0.00,0.00,0.00,Prefeitura Municipal de Anchieta
 3200409,Anchieta,prefeitura,202609,vice,VICE PREFEITO,1.00,,,,,Fundo Municipal de Saúde de Anchieta
 3200508,Apiacá,camara,202501,vereador,VEREADOR,13.00,55800.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
 3200508,Apiacá,camara,202502,vereador,VEREADOR,9.00,56400.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
@@ -424,6 +439,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200508,Apiacá,camara,202606,vereador,VEREADOR,9.00,58000.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
 3200508,Apiacá,camara,202607,vereador,VEREADOR,9.00,58000.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
 3200508,Apiacá,camara,202608,vereador,VEREADOR,9.00,58000.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
+3200508,Apiacá,camara,202609,vereador,VEREADOR,9.00,58000.00,0.00,0.00,0.00,Câmara Municipal de Apiacá
 3200508,Apiacá,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
 3200508,Apiacá,prefeitura,202501,vice,VICE PREFEITO(A),1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
 3200508,Apiacá,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
@@ -464,13 +480,15 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200508,Apiacá,prefeitura,202607,vice,VICE PREFEITO(A),1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
 3200508,Apiacá,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
 3200508,Apiacá,prefeitura,202608,vice,VICE PREFEITO(A),1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
+3200508,Apiacá,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
+3200508,Apiacá,prefeitura,202609,vice,VICE PREFEITO(A),1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Apiacá
 3200607,Aracruz,camara,202501,vereador,Vereador,18.00,261852.91,18163.31,79490.13,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202502,vereador,Vereador,17.00,177143.74,18163.31,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202503,vereador,Vereador,17.00,178355.40,19374.97,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202504,vereador,Vereador,17.00,177446.64,18466.21,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202505,vereador,Vereador,17.00,194974.36,20095.87,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202506,vereador,Vereador,17.00,187358.90,20146.52,0.00,0.00,Câmara Municipal de Aracruz
-3200607,Aracruz,camara,202507,vereador,Vereador,17.00,214163.49,19129.59,0.00,27821.52,Câmara Municipal de Aracruz
+3200607,Aracruz,camara,202507,vereador,Vereador,17.00,213880.57,19129.59,0.00,27821.52,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202508,vereador,Vereador,17.00,186907.81,19129.59,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202509,vereador,Vereador,17.00,187621.84,19843.62,0.00,0.00,Câmara Municipal de Aracruz
 3200607,Aracruz,camara,202510,vereador,Vereador,17.00,201083.17,33304.95,0.00,0.00,Câmara Municipal de Aracruz
@@ -525,6 +543,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200607,Aracruz,prefeitura,202607,vice,VICE PREFEITO MUNICIPAL,1.00,17872.02,0.00,0.00,0.00,Secretaria de Governo de Aracruz
 3200607,Aracruz,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,25531.46,0.00,0.00,0.00,Secretaria de Governo de Aracruz
 3200607,Aracruz,prefeitura,202608,vice,VICE PREFEITO MUNICIPAL,1.00,17872.02,0.00,0.00,0.00,Secretaria de Governo de Aracruz
+3200607,Aracruz,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,15318.88,0.00,0.00,0.00,Secretaria de Governo de Aracruz
+3200607,Aracruz,prefeitura,202609,vice,VICE PREFEITO MUNICIPAL,1.00,25531.46,0.00,0.00,0.00,Secretaria de Governo de Aracruz
 3200706,Atilio Vivacqua,camara,202501,vereador,VEREADOR PRESIDENTE / VEREADOR,16.00,36500.00,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,camara,202502,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,36500.00,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,camara,202503,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,36500.00,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
@@ -544,7 +564,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200706,Atilio Vivacqua,camara,202605,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,38142.50,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,camara,202606,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,38142.50,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,camara,202607,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,38142.50,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
-3200706,Atilio Vivacqua,camara,202608,vereador,VEREADOR,9.00,33440.00,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
+3200706,Atilio Vivacqua,camara,202608,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,38142.50,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,camara,202609,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,38142.50,0.00,0.00,0.00,Câmara Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,13500.00,0.00,0.00,0.00,Prefeitura Municipal de Atílio Vivácqua
 3200706,Atilio Vivacqua,prefeitura,202501,vice,VICE-PREFEITO,2.00,5400.00,0.00,0.00,0.00,Prefeitura Municipal de Atílio Vivácqua
@@ -649,6 +669,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200805,Baixo Guandu,prefeitura,202607,vice,VICE - PREFEITO,1.00,12000.00,0.00,0.00,0.00,Secretaria Municipal de Administração de Baixo Guandu
 3200805,Baixo Guandu,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,23000.00,0.00,0.00,0.00,Secretaria Municipal de Administração de Baixo Guandu
 3200805,Baixo Guandu,prefeitura,202608,vice,VICE - PREFEITO,1.00,12000.00,0.00,0.00,0.00,Secretaria Municipal de Administração de Baixo Guandu
+3200805,Baixo Guandu,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,23000.00,0.00,0.00,0.00,Secretaria Municipal de Administração de Baixo Guandu
+3200805,Baixo Guandu,prefeitura,202609,vice,VICE - PREFEITO,1.00,12000.00,0.00,0.00,0.00,Secretaria Municipal de Administração de Baixo Guandu
 3200904,Barra de São Francisco,camara,202501,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,19.00,137393.10,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,camara,202502,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,136234.04,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,camara,202503,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,134734.08,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
@@ -669,6 +691,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200904,Barra de São Francisco,camara,202606,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,152308.65,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,camara,202607,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,152308.65,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,camara,202608,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,152308.65,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
+3200904,Barra de São Francisco,camara,202609,vereador,VEREADOR (A) / PRESIDENTE DA CÂMARA,13.00,152308.65,0.00,0.00,0.00,Câmara Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,15750.00,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,prefeitura,202501,vice,VICE PREFEITO MUNICIPAL,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,15750.00,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
@@ -709,6 +732,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3200904,Barra de São Francisco,prefeitura,202607,vice,VICE PREFEITO MUNICIPAL,1.00,10920.25,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17199.39,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
 3200904,Barra de São Francisco,prefeitura,202608,vice,VICE PREFEITO MUNICIPAL,1.00,10920.25,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
+3200904,Barra de São Francisco,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17199.39,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
+3200904,Barra de São Francisco,prefeitura,202609,vice,VICE PREFEITO MUNICIPAL,1.00,10920.25,0.00,0.00,0.00,Prefeitura Municipal de Barra de São Francisco
 3201001,Boa Esperança,camara,202501,vereador,VEREADOR,15.00,71100.00,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
 3201001,Boa Esperança,camara,202502,vereador,VEREADOR,9.00,77612.22,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
 3201001,Boa Esperança,camara,202503,vereador,VEREADOR,9.00,77612.22,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
@@ -729,6 +754,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201001,Boa Esperança,camara,202606,vereador,VEREADOR,9.00,77889.96,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
 3201001,Boa Esperança,camara,202607,vereador,VEREADOR,9.00,77889.96,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
 3201001,Boa Esperança,camara,202608,vereador,VEREADOR,9.00,77889.96,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
+3201001,Boa Esperança,camara,202609,vereador,VEREADOR,9.00,77889.96,0.00,0.00,0.00,Câmara Municipal de Boa Esperança
 3201001,Boa Esperança,prefeitura,202501,prefeito,PREFEITO,2.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
 3201001,Boa Esperança,prefeitura,202501,vice,VICE- PREFEITO,2.00,7800.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
 3201001,Boa Esperança,prefeitura,202502,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
@@ -769,6 +795,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201001,Boa Esperança,prefeitura,202607,vice,VICE- PREFEITO,1.00,11900.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
 3201001,Boa Esperança,prefeitura,202608,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
 3201001,Boa Esperança,prefeitura,202608,vice,VICE- PREFEITO,1.00,7800.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
+3201001,Boa Esperança,prefeitura,202609,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
+3201001,Boa Esperança,prefeitura,202609,vice,VICE- PREFEITO,1.00,7800.00,0.00,0.00,0.00,Prefeitura Municipal de Boa Esperança
 3201100,Bom Jesus do Norte,camara,202501,vereador,VEREADOR (A),9.00,67082.04,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,camara,202502,vereador,VEREADOR (A),9.00,67082.04,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,camara,202503,vereador,VEREADOR (A),9.00,67082.04,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
@@ -789,6 +817,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201100,Bom Jesus do Norte,camara,202606,vereador,VEREADOR (A),9.00,69902.73,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,camara,202607,vereador,VEREADOR (A),9.00,69902.73,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,camara,202608,vereador,VEREADOR (A),9.00,69902.73,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
+3201100,Bom Jesus do Norte,camara,202609,vereador,VEREADOR (A),9.00,69902.73,0.00,0.00,0.00,Câmara Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,14000.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,prefeitura,202501,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,14000.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
@@ -829,6 +858,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201100,Bom Jesus do Norte,prefeitura,202607,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,14000.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
 3201100,Bom Jesus do Norte,prefeitura,202608,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
+3201100,Bom Jesus do Norte,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,14000.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
+3201100,Bom Jesus do Norte,prefeitura,202609,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Bom Jesus do Norte
 3201159,Brejetuba,camara,202501,vereador,VEREADOR / PRESIDENTE DA CAMARA,15.00,37500.00,0.00,0.00,0.00,Câmara Municipal de Brejetuba
 3201159,Brejetuba,camara,202502,vereador,PRESIDENTE DA CAMARA / VEREADOR,9.00,37500.00,0.00,0.00,0.00,Câmara Municipal de Brejetuba
 3201159,Brejetuba,camara,202503,vereador,VEREADOR / PRESIDENTE DA CAMARA,9.00,37500.00,0.00,0.00,0.00,Câmara Municipal de Brejetuba
@@ -890,6 +921,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201159,Brejetuba,prefeitura,202607,vice,VICE-PREFEITO,1.00,8337.16,0.00,0.00,0.00,Prefeitura Municipal de Brejetuba
 3201159,Brejetuba,prefeitura,202608,prefeito,PREFEITO,1.00,16674.33,0.00,0.00,0.00,Prefeitura Municipal de Brejetuba
 3201159,Brejetuba,prefeitura,202608,vice,VICE-PREFEITO,1.00,8337.16,0.00,0.00,0.00,Prefeitura Municipal de Brejetuba
+3201159,Brejetuba,prefeitura,202609,prefeito,PREFEITO,1.00,16674.33,0.00,0.00,0.00,Prefeitura Municipal de Brejetuba
+3201159,Brejetuba,prefeitura,202609,vice,VICE-PREFEITO,1.00,8337.16,0.00,0.00,0.00,Prefeitura Municipal de Brejetuba
 3201209,Cachoeiro de Itapemirim,camara,202501,vereador,VEREADOR,20.00,197707.53,0.00,0.00,0.00,Câmara Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,camara,202502,vereador,VEREADOR,20.00,201913.13,0.00,0.00,0.00,Câmara Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,camara,202503,vereador,VEREADOR,20.00,201913.13,0.00,0.00,0.00,Câmara Municipal de Cachoeiro de Itapemirim
@@ -910,6 +943,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201209,Cachoeiro de Itapemirim,camara,202606,vereador,VEREADOR,20.00,301288.29,0.00,93071.07,0.00,Câmara Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,camara,202607,vereador,VEREADOR,20.00,208130.46,0.00,0.00,0.00,Câmara Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,camara,202608,vereador,VEREADOR,20.00,217931.30,0.00,4380.83,5841.11,Câmara Municipal de Cachoeiro de Itapemirim
+3201209,Cachoeiro de Itapemirim,camara,202609,vereador,VEREADOR,20.00,206836.84,0.00,0.00,0.00,Câmara Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,prefeitura,202501,prefeito,PREFEITO,1.00,18596.06,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,prefeitura,202501,vice,VICE PREFEITO,1.00,12805.01,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,prefeitura,202502,prefeito,PREFEITO,1.00,18596.06,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
@@ -950,6 +984,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201209,Cachoeiro de Itapemirim,prefeitura,202607,vice,VICE PREFEITO,1.00,17073.34,0.00,0.00,4268.33,Prefeitura Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,prefeitura,202608,prefeito,PREFEITO,1.00,18596.06,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
 3201209,Cachoeiro de Itapemirim,prefeitura,202608,vice,VICE PREFEITO,1.00,12805.01,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
+3201209,Cachoeiro de Itapemirim,prefeitura,202609,prefeito,PREFEITO,1.00,18596.06,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
+3201209,Cachoeiro de Itapemirim,prefeitura,202609,vice,VICE PREFEITO,1.00,12805.01,0.00,0.00,0.00,Prefeitura Municipal de Cachoeiro de Itapemirim
 3201308,Cariacica,camara,202501,vereador,VEREADOR,32.00,280800.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
 3201308,Cariacica,camara,202502,vereador,VEREADOR,23.00,277650.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
 3201308,Cariacica,camara,202503,vereador,VEREADOR,23.00,280800.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
@@ -970,6 +1006,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201308,Cariacica,camara,202606,vereador,VEREADOR,23.00,307800.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
 3201308,Cariacica,camara,202607,vereador,VEREADOR,23.00,294300.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
 3201308,Cariacica,camara,202608,vereador,VEREADOR,23.00,280800.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
+3201308,Cariacica,camara,202609,vereador,VEREADOR,23.00,301050.00,0.00,0.00,0.00,Câmara Municipal de Cariacica
 3201308,Cariacica,prefeitura,202501,prefeito,PREFEITO,1.00,27000.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
 3201308,Cariacica,prefeitura,202501,vice,VICE-PREFEITO,2.00,25000.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
 3201308,Cariacica,prefeitura,202502,prefeito,PREFEITO,1.00,27000.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
@@ -1010,6 +1047,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201308,Cariacica,prefeitura,202607,vice,VICE-PREFEITO,1.00,24150.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
 3201308,Cariacica,prefeitura,202608,prefeito,PREFEITO,1.00,28350.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
 3201308,Cariacica,prefeitura,202608,vice,VICE-PREFEITO,1.00,52780.00,0.00,26390.00,0.00,Gabinete do Prefeito de Cariacica
+3201308,Cariacica,prefeitura,202609,prefeito,PREFEITO,1.00,1890.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
+3201308,Cariacica,prefeitura,202609,vice,VICE-PREFEITO,1.00,28070.00,0.00,0.00,0.00,Gabinete do Prefeito de Cariacica
 3201407,Castelo,camara,202501,vereador,VEREADOR,13.00,98670.00,0.00,0.00,0.00,Câmara Municipal de Castelo
 3201407,Castelo,camara,202502,vereador,VEREADOR,13.00,98670.00,0.00,0.00,0.00,Câmara Municipal de Castelo
 3201407,Castelo,camara,202503,vereador,VEREADOR,13.00,98670.00,0.00,0.00,0.00,Câmara Municipal de Castelo
@@ -1060,6 +1099,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201407,Castelo,prefeitura,202606,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Castelo
 3201407,Castelo,prefeitura,202607,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Castelo
 3201407,Castelo,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Castelo
+3201407,Castelo,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Castelo
 3201506,Colatina,camara,202501,vereador,VEREADOR / PRESIDENTE DA CAMARA,25.00,129400.00,0.00,0.00,0.00,Câmara Municipal de Colatina
 3201506,Colatina,camara,202502,vereador,VEREADOR / PRESIDENTE DA CAMARA,15.00,129400.00,0.00,0.00,0.00,Câmara Municipal de Colatina
 3201506,Colatina,camara,202503,vereador,PRESIDENTE DA CAMARA / VEREADOR,15.00,135608.08,0.00,0.00,0.00,Câmara Municipal de Colatina
@@ -1121,6 +1161,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201506,Colatina,prefeitura,202607,vice,Vice-Prefeito,1.00,14400.00,0.00,0.00,0.00,Prefeitura Municipal de Colatina
 3201506,Colatina,prefeitura,202608,prefeito,Prefeito Municipal,1.00,19500.00,0.00,0.00,0.00,Prefeitura Municipal de Colatina
 3201506,Colatina,prefeitura,202608,vice,Vice-Prefeito,1.00,14400.00,0.00,0.00,0.00,Prefeitura Municipal de Colatina
+3201506,Colatina,prefeitura,202609,prefeito,Prefeito Municipal,1.00,19500.00,0.00,0.00,0.00,Prefeitura Municipal de Colatina
+3201506,Colatina,prefeitura,202609,vice,Vice-Prefeito,1.00,14400.00,0.00,0.00,0.00,Prefeitura Municipal de Colatina
 3201605,Conceição da Barra,camara,202501,vereador,Vereador,11.00,102300.00,0.00,0.00,0.00,Câmara Municipal de Conceição da Barra
 3201605,Conceição da Barra,camara,202502,vereador,Vereador,11.00,121602.58,9651.29,0.00,0.00,Câmara Municipal de Conceição da Barra
 3201605,Conceição da Barra,camara,202503,vereador,Vereador,11.00,111951.29,9651.29,0.00,0.00,Câmara Municipal de Conceição da Barra
@@ -1182,6 +1224,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201605,Conceição da Barra,prefeitura,202607,vice,VICE-PREFEITO,1.00,18263.00,0.00,0.00,0.00,Prefeitura Municipal de Conceição da Barra
 3201605,Conceição da Barra,prefeitura,202608,prefeito,PREFEITO,1.00,26670.00,0.00,0.00,0.00,Prefeitura Municipal de Conceição da Barra
 3201605,Conceição da Barra,prefeitura,202608,vice,VICE-PREFEITO,1.00,18263.00,0.00,0.00,0.00,Prefeitura Municipal de Conceição da Barra
+3201605,Conceição da Barra,prefeitura,202609,prefeito,PREFEITO,1.00,36195.00,0.00,9525.00,0.00,Prefeitura Municipal de Conceição da Barra
+3201605,Conceição da Barra,prefeitura,202609,vice,VICE-PREFEITO,1.00,24785.50,0.00,6522.50,0.00,Prefeitura Municipal de Conceição da Barra
 3201704,Conceição do Castelo,camara,202501,vereador,Vereador(a) / Vereador Presidente,9.00,60150.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,camara,202502,vereador,Vereador Presidente / Vereador(a),9.00,60150.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,camara,202503,vereador,Vereador(a) / Vereador Presidente,9.00,60150.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
@@ -1202,6 +1246,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201704,Conceição do Castelo,camara,202606,vereador,Vereador Presidente / Vereador(a),9.00,62710.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,camara,202607,vereador,Vereador Presidente / Vereador(a),9.00,62710.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,camara,202608,vereador,Vereador(a) / Vereador Presidente,9.00,62710.00,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
+3201704,Conceição do Castelo,camara,202609,vereador,Vereador(a) / Vereador Presidente,9.00,59705.70,0.00,0.00,0.00,Câmara Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,prefeitura,202501,prefeito,PREFEITO,1.00,15504.31,0.00,0.00,0.00,Prefeitura Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,prefeitura,202502,prefeito,PREFEITO,1.00,15504.31,0.00,0.00,0.00,Prefeitura Municipal de Conceição do Castelo
 3201704,Conceição do Castelo,prefeitura,202503,prefeito,PREFEITO,1.00,15504.31,0.00,0.00,0.00,Prefeitura Municipal de Conceição do Castelo
@@ -1282,6 +1327,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201803,Divino de São Lourenço,prefeitura,202606,prefeito,PREFEITO,1.00,12413.66,0.00,0.00,0.00,Prefeitura Municipal de Divino de São Lourenço
 3201803,Divino de São Lourenço,prefeitura,202607,prefeito,PREFEITO,1.00,12413.66,0.00,0.00,0.00,Prefeitura Municipal de Divino de São Lourenço
 3201803,Divino de São Lourenço,prefeitura,202608,prefeito,PREFEITO,1.00,12413.66,0.00,0.00,0.00,Prefeitura Municipal de Divino de São Lourenço
+3201803,Divino de São Lourenço,prefeitura,202609,prefeito,PREFEITO,1.00,12413.66,0.00,0.00,0.00,Prefeitura Municipal de Divino de São Lourenço
 3201902,Domingos Martins,camara,202501,vereador,VEREADOR,13.00,84879.00,0.00,0.00,0.00,Câmara Municipal de Domingos Martins
 3201902,Domingos Martins,camara,202502,vereador,VEREADOR,13.00,84879.00,0.00,0.00,0.00,Câmara Municipal de Domingos Martins
 3201902,Domingos Martins,camara,202503,vereador,VEREADOR,13.00,84879.00,0.00,0.00,0.00,Câmara Municipal de Domingos Martins
@@ -1343,6 +1389,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3201902,Domingos Martins,prefeitura,202607,vice,VICE-PREFEITO,1.00,9974.78,0.00,0.00,0.00,Prefeitura Municipal de Domingos Martins
 3201902,Domingos Martins,prefeitura,202608,prefeito,PREFEITO,1.00,18031.88,0.00,0.00,0.00,Prefeitura Municipal de Domingos Martins
 3201902,Domingos Martins,prefeitura,202608,vice,VICE-PREFEITO,1.00,9974.78,0.00,0.00,0.00,Prefeitura Municipal de Domingos Martins
+3201902,Domingos Martins,prefeitura,202609,prefeito,PREFEITO,1.00,18031.88,0.00,0.00,0.00,Prefeitura Municipal de Domingos Martins
+3201902,Domingos Martins,prefeitura,202609,vice,VICE-PREFEITO,1.00,9974.78,0.00,0.00,0.00,Prefeitura Municipal de Domingos Martins
 3202009,Dores do Rio Preto,camara,202501,vereador,VEREADOR (A),13.00,52493.85,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,camara,202502,vereador,VEREADOR (A),9.00,62964.81,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,camara,202503,vereador,VEREADOR (A),9.00,57729.33,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
@@ -1363,6 +1411,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202009,Dores do Rio Preto,camara,202606,vereador,VEREADOR (A),9.00,60073.56,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,camara,202607,vereador,VEREADOR (A),9.00,60073.56,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,camara,202608,vereador,VEREADOR (A),9.00,60073.56,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
+3202009,Dores do Rio Preto,camara,202609,vereador,VEREADOR (A),9.00,60073.56,0.00,0.00,0.00,Câmara Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,18260.52,0.00,0.00,0.00,Prefeitura Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,prefeitura,202501,vice,VICE PREFEITO,1.00,9130.27,0.00,0.00,0.00,Prefeitura Municipal de Dores do Rio Preto
 3202009,Dores do Rio Preto,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,19142.50,0.00,0.00,0.00,Prefeitura Municipal de Dores do Rio Preto
@@ -1410,7 +1459,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202108,Ecoporanga,camara,202503,vereador,VEREADOR,11.00,109756.29,0.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202504,vereador,VEREADOR,11.00,126556.29,16800.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202505,vereador,VEREADOR,11.00,118156.29,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
-3202108,Ecoporanga,camara,202506,vereador,VEREADOR,11.00,8400.00,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
+3202108,Ecoporanga,camara,202506,vereador,VEREADOR,11.00,118156.29,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202507,vereador,VEREADOR,11.00,118156.29,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202508,vereador,VEREADOR,11.00,118156.29,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202509,vereador,VEREADOR,11.00,118156.29,8400.00,0.00,0.00,Câmara Municipal de Ecoporanga
@@ -1425,6 +1474,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202108,Ecoporanga,camara,202606,vereador,VEREADOR,11.00,119356.29,9600.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202607,vereador,VEREADOR,11.00,122750.41,9600.00,0.00,10861.21,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,camara,202608,vereador,VEREADOR,11.00,119356.29,9600.00,0.00,2036.48,Câmara Municipal de Ecoporanga
+3202108,Ecoporanga,camara,202609,vereador,VEREADOR,11.00,119356.29,9600.00,0.00,0.00,Câmara Municipal de Ecoporanga
 3202108,Ecoporanga,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,23062.60,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
 3202108,Ecoporanga,prefeitura,202501,vice,VICE-PREFEITO MUNICIPAL,1.00,11531.30,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
 3202108,Ecoporanga,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,23062.60,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
@@ -1465,6 +1515,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202108,Ecoporanga,prefeitura,202607,vice,VICE-PREFEITO MUNICIPAL,1.00,11531.30,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
 3202108,Ecoporanga,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,23062.60,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
 3202108,Ecoporanga,prefeitura,202608,vice,VICE-PREFEITO MUNICIPAL,1.00,11531.30,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
+3202108,Ecoporanga,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,23062.60,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
+3202108,Ecoporanga,prefeitura,202609,vice,VICE-PREFEITO MUNICIPAL,1.00,11531.30,0.00,0.00,0.00,Prefeitura Municipal de Ecoporanga
 3202207,Fundão,camara,202501,vereador,VEREADOR,12.00,71940.00,0.00,0.00,0.00,Câmara Municipal de Fundão
 3202207,Fundão,camara,202502,vereador,VEREADOR,12.00,72600.00,0.00,0.00,0.00,Câmara Municipal de Fundão
 3202207,Fundão,camara,202503,vereador,VEREADOR,12.00,72600.00,0.00,0.00,0.00,Câmara Municipal de Fundão
@@ -1485,6 +1537,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202207,Fundão,camara,202606,vereador,VEREADOR,12.00,76230.00,0.00,0.00,0.00,Câmara Municipal de Fundão
 3202207,Fundão,camara,202607,vereador,VEREADOR,12.00,76230.00,0.00,0.00,0.00,Câmara Municipal de Fundão
 3202207,Fundão,camara,202608,vereador,VEREADOR,12.00,76230.00,0.00,0.00,0.00,Câmara Municipal de Fundão
+3202207,Fundão,camara,202609,vereador,VEREADOR,12.00,83853.00,0.00,0.00,0.00,Câmara Municipal de Fundão
 3202207,Fundão,prefeitura,202501,prefeito,PREFEITO MUNICIPAL EM EXERCICIO,1.00,13823.33,0.00,0.00,0.00,Gabinete do Prefeito de Fundão
 3202207,Fundão,prefeitura,202502,prefeito,PREFEITO MUNICIPAL EM EXERCICIO,1.00,14300.00,0.00,0.00,0.00,Gabinete do Prefeito de Fundão
 3202207,Fundão,prefeitura,202503,prefeito,PREFEITO MUNICIPAL EM EXERCICIO,1.00,14300.00,0.00,0.00,0.00,Gabinete do Prefeito de Fundão
@@ -1526,13 +1579,14 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202256,Governador Lindenberg,camara,202606,vereador,VEREADOR,9.00,72854.82,0.00,0.00,0.00,Câmara Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,camara,202607,vereador,VEREADOR,9.00,72854.82,0.00,0.00,0.00,Câmara Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,camara,202608,vereador,VEREADOR,9.00,72854.82,0.00,0.00,0.00,Câmara Municipal de Governador Lindenberg
+3202256,Governador Lindenberg,camara,202609,vereador,VEREADOR,9.00,72854.82,0.00,0.00,0.00,Câmara Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,22682.83,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202501,vice,VICE-PREFEITO,1.00,11341.44,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,22682.83,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202502,vice,VICE-PREFEITO,1.00,11341.44,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202503,prefeito,PREFEITO MUNICIPAL,1.00,22682.83,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202503,vice,VICE-PREFEITO,1.00,11341.44,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
-3202256,Governador Lindenberg,prefeitura,202504,prefeito,PREFEITO MUNICIPAL,1.00,,,,,Prefeitura Municipal de Governador Lindenberg
+3202256,Governador Lindenberg,prefeitura,202504,prefeito,PREFEITO MUNICIPAL,1.00,23778.41,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202504,vice,VICE-PREFEITO,1.00,11889.23,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202505,prefeito,PREFEITO MUNICIPAL,1.00,23778.41,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202505,vice,VICE-PREFEITO,1.00,11889.23,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
@@ -1566,6 +1620,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202256,Governador Lindenberg,prefeitura,202607,vice,VICE-PREFEITO,1.00,12395.71,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,24791.37,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202256,Governador Lindenberg,prefeitura,202608,vice,VICE-PREFEITO,1.00,12395.71,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
+3202256,Governador Lindenberg,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,24791.37,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
+3202256,Governador Lindenberg,prefeitura,202609,vice,VICE-PREFEITO,1.00,12395.71,0.00,0.00,0.00,Prefeitura Municipal de Governador Lindenberg
 3202306,Guaçuí,camara,202501,vereador,VEREADOR,11.00,74238.22,0.00,0.00,0.00,Câmara Municipal de Guaçuí
 3202306,Guaçuí,camara,202502,vereador,VEREADOR,11.00,80838.22,0.00,0.00,0.00,Câmara Municipal de Guaçuí
 3202306,Guaçuí,camara,202503,vereador,VEREADOR,12.00,80100.07,0.00,0.00,0.00,Câmara Municipal de Guaçuí
@@ -1586,6 +1642,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202306,Guaçuí,camara,202606,vereador,VEREADOR,11.00,88020.41,0.00,0.00,0.00,Câmara Municipal de Guaçuí
 3202306,Guaçuí,camara,202607,vereador,VEREADOR,11.00,88020.41,0.00,0.00,0.00,Câmara Municipal de Guaçuí
 3202306,Guaçuí,camara,202608,vereador,VEREADOR,11.00,102363.16,0.00,0.00,0.00,Câmara Municipal de Guaçuí
+3202306,Guaçuí,camara,202609,vereador,VEREADOR,11.00,88020.41,0.00,0.00,0.00,Câmara Municipal de Guaçuí
 3202306,Guaçuí,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,17408.63,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
 3202306,Guaçuí,prefeitura,202501,vice,VICE-PREFEITO,1.00,8704.31,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
 3202306,Guaçuí,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,17408.63,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
@@ -1626,6 +1683,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202306,Guaçuí,prefeitura,202607,vice,VICE-PREFEITO,1.00,9513.44,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
 3202306,Guaçuí,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,22390.25,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
 3202306,Guaçuí,prefeitura,202608,vice,VICE-PREFEITO,1.00,11195.12,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
+3202306,Guaçuí,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,19026.89,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
+3202306,Guaçuí,prefeitura,202609,vice,VICE-PREFEITO,1.00,9513.44,0.00,0.00,0.00,Prefeitura Municipal de Guaçuí
 3202405,Guarapari,camara,202501,vereador,VEREADOR / PRESIDENTE,25.00,259644.32,0.00,0.00,0.00,Câmara Municipal de Guarapari
 3202405,Guarapari,camara,202502,vereador,PRESIDENTE / VEREADOR,17.00,259954.92,0.00,0.00,0.00,Câmara Municipal de Guarapari
 3202405,Guarapari,camara,202503,vereador,PRESIDENTE / VEREADOR,17.00,260711.50,0.00,0.00,0.00,Câmara Municipal de Guarapari
@@ -1646,6 +1705,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202405,Guarapari,camara,202606,vereador,VEREADOR / PRESIDENTE,17.00,390068.95,0.00,127500.00,0.00,Câmara Municipal de Guarapari
 3202405,Guarapari,camara,202607,vereador,VEREADOR / PRESIDENTE,17.00,261250.94,0.00,0.00,0.00,Câmara Municipal de Guarapari
 3202405,Guarapari,camara,202608,vereador,PRESIDENTE / VEREADOR,17.00,263347.10,0.00,0.00,0.00,Câmara Municipal de Guarapari
+3202405,Guarapari,camara,202609,vereador,VEREADOR / PRESIDENTE,17.00,263796.60,0.00,0.00,0.00,Câmara Municipal de Guarapari
 3202405,Guarapari,prefeitura,202501,prefeito,Prefeito,1.00,18422.59,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
 3202405,Guarapari,prefeitura,202501,vice,Vice Prefeito,1.00,10048.68,0.00,0.00,0.00,Fundo Municipal de Assistência Social de Guarapari
 3202405,Guarapari,prefeitura,202502,prefeito,Prefeito,1.00,18422.59,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
@@ -1686,6 +1746,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202405,Guarapari,prefeitura,202607,vice,Vice Prefeito,1.00,10048.68,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
 3202405,Guarapari,prefeitura,202608,prefeito,Prefeito,1.00,18422.59,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
 3202405,Guarapari,prefeitura,202608,vice,Vice Prefeito,1.00,10048.68,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
+3202405,Guarapari,prefeitura,202609,prefeito,Prefeito,1.00,18422.59,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
+3202405,Guarapari,prefeitura,202609,vice,Vice Prefeito,1.00,10048.68,0.00,0.00,0.00,Prefeitura Municipal de Guarapari
 3202454,Ibatiba,camara,202501,vereador,PRESIDENTE DA CAMARA / VEREADOR,11.00,79982.87,0.00,0.00,0.00,Câmara Municipal de Ibatiba
 3202454,Ibatiba,camara,202502,vereador,VEREADOR / PRESIDENTE DA CAMARA,11.00,79982.87,0.00,0.00,0.00,Câmara Municipal de Ibatiba
 3202454,Ibatiba,camara,202503,vereador,PRESIDENTE DA CAMARA / VEREADOR,11.00,86832.68,0.00,0.00,0.00,Câmara Municipal de Ibatiba
@@ -1706,6 +1768,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202454,Ibatiba,camara,202606,vereador,VEREADOR / PRESIDENTE DA CAMARA,11.00,98944.67,0.00,0.00,0.00,Câmara Municipal de Ibatiba
 3202454,Ibatiba,camara,202607,vereador,PRESIDENTE DA CAMARA / VEREADOR,11.00,98944.67,0.00,0.00,0.00,Câmara Municipal de Ibatiba
 3202454,Ibatiba,camara,202608,vereador,PRESIDENTE DA CAMARA / VEREADOR,11.00,98944.67,0.00,0.00,0.00,Câmara Municipal de Ibatiba
+3202454,Ibatiba,camara,202609,vereador,VEREADOR / PRESIDENTE DA CAMARA,11.00,98944.67,0.00,0.00,0.00,Câmara Municipal de Ibatiba
 3202454,Ibatiba,prefeitura,202501,prefeito,PREFEITO,1.00,16374.38,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
 3202454,Ibatiba,prefeitura,202501,vice,VICE PREFEITO(A),1.00,7657.09,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
 3202454,Ibatiba,prefeitura,202502,prefeito,PREFEITO,1.00,16374.38,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
@@ -1746,6 +1809,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202454,Ibatiba,prefeitura,202607,vice,VICE PREFEITO(A),1.00,8442.70,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
 3202454,Ibatiba,prefeitura,202608,prefeito,PREFEITO,1.00,18054.38,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
 3202454,Ibatiba,prefeitura,202608,vice,VICE PREFEITO(A),1.00,8442.70,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
+3202454,Ibatiba,prefeitura,202609,prefeito,PREFEITO,1.00,18054.38,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
+3202454,Ibatiba,prefeitura,202609,vice,VICE PREFEITO(A),1.00,8442.70,0.00,0.00,0.00,Prefeitura Municipal de Ibatiba
 3202504,Ibiraçu,camara,202501,vereador,PRESIDENTE DA CÂMARA / VEREADOR,9.00,52183.67,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
 3202504,Ibiraçu,camara,202502,vereador,VEREADOR / PRESIDENTE DA CÂMARA,9.00,57224.63,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
 3202504,Ibiraçu,camara,202503,vereador,VEREADOR / PRESIDENTE DA CÂMARA,9.00,54704.15,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
@@ -1766,6 +1831,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202504,Ibiraçu,camara,202606,vereador,PRESIDENTE DA CÂMARA / VEREADOR,9.00,57034.57,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
 3202504,Ibiraçu,camara,202607,vereador,PRESIDENTE DA CÂMARA / VEREADOR,9.00,57034.57,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
 3202504,Ibiraçu,camara,202608,vereador,VEREADOR / PRESIDENTE DA CÂMARA,9.00,57034.57,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
+3202504,Ibiraçu,camara,202609,vereador,VEREADOR / PRESIDENTE DA CÂMARA,9.00,57034.57,0.00,0.00,0.00,Câmara Municipal de Ibiraçu
 3202504,Ibiraçu,prefeitura,202501,prefeito,PREFEITO,1.00,16417.65,0.00,0.00,0.00,Prefeitura Municipal de Ibiraçu
 3202504,Ibiraçu,prefeitura,202501,vice,VICE-PREFEITO MUNICIPAL,1.00,6782.35,0.00,0.00,0.00,Prefeitura Municipal de Ibiraçu
 3202504,Ibiraçu,prefeitura,202502,prefeito,PREFEITO,1.00,18387.77,0.00,0.00,0.00,Prefeitura Municipal de Ibiraçu
@@ -1828,6 +1894,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202553,Ibitirama,camara,202606,vereador,VEREADOR,9.00,42949.43,0.00,0.00,0.00,Câmara Municipal de Ibitirama
 3202553,Ibitirama,camara,202607,vereador,VEREADOR,9.00,42949.43,0.00,0.00,0.00,Câmara Municipal de Ibitirama
 3202553,Ibitirama,camara,202608,vereador,VEREADOR,9.00,42949.43,0.00,0.00,0.00,Câmara Municipal de Ibitirama
+3202553,Ibitirama,camara,202609,vereador,VEREADOR,9.00,42949.43,0.00,0.00,0.00,Câmara Municipal de Ibitirama
 3202553,Ibitirama,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,15139.42,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
 3202553,Ibitirama,prefeitura,202501,vice,VICE-PREFEITO MUNICIPAL,1.00,7569.71,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
 3202553,Ibitirama,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,19235.34,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
@@ -1860,6 +1927,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202553,Ibitirama,prefeitura,202606,prefeito,PREFEITO MUNICIPAL,1.00,21524.66,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
 3202553,Ibitirama,prefeitura,202607,prefeito,PREFEITO MUNICIPAL,1.00,17294.66,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
 3202553,Ibitirama,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17294.66,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
+3202553,Ibitirama,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17294.66,0.00,0.00,0.00,Prefeitura Municipal de Ibitirama
 3202603,Iconha,camara,202501,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,58980.99,0.00,0.00,0.00,Câmara Municipal de Iconha
 3202603,Iconha,camara,202502,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,60088.06,0.00,0.00,0.00,Câmara Municipal de Iconha
 3202603,Iconha,camara,202503,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,70688.06,0.00,0.00,0.00,Câmara Municipal de Iconha
@@ -1921,7 +1989,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202603,Iconha,prefeitura,202607,vice,VICE-PREFEITO,1.00,8319.97,0.00,0.00,0.00,Prefeitura Municipal de Iconha
 3202603,Iconha,prefeitura,202608,prefeito,PREFEITO,2.00,18260.94,0.00,0.00,0.00,Instituto de Previdência dos Servidores do Município de Iconha / Prefeitura Municipal de Iconha
 3202603,Iconha,prefeitura,202608,vice,VICE-PREFEITO,1.00,8319.97,0.00,0.00,0.00,Prefeitura Municipal de Iconha
-3202603,Iconha,prefeitura,202609,prefeito,PREFEITO,1.00,1621.00,0.00,0.00,0.00,Instituto de Previdência dos Servidores do Município de Iconha
+3202603,Iconha,prefeitura,202609,prefeito,PREFEITO,2.00,18260.94,0.00,0.00,0.00,Instituto de Previdência dos Servidores do Município de Iconha / Prefeitura Municipal de Iconha
+3202603,Iconha,prefeitura,202609,vice,VICE-PREFEITO,1.00,8319.97,0.00,0.00,0.00,Prefeitura Municipal de Iconha
 3202652,Irupi,camara,202501,vereador,VEREADOR,12.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202502,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202503,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
@@ -1929,7 +1998,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202652,Irupi,camara,202505,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202506,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202507,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
-3202652,Irupi,camara,202508,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
+3202652,Irupi,camara,202508,vereador,VEREADOR,9.00,,,,,Câmara Municipal de Irupi
 3202652,Irupi,camara,202509,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202510,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
 3202652,Irupi,camara,202511,vereador,VEREADOR,9.00,69000.00,0.00,0.00,0.00,Câmara Municipal de Irupi
@@ -1983,6 +2052,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202652,Irupi,prefeitura,202607,vice,VICE-PREFEITO,1.00,9836.28,0.00,0.00,0.00,Prefeitura Municipal de Irupi
 3202652,Irupi,prefeitura,202608,prefeito,PREFEITO,1.00,19776.71,0.00,0.00,0.00,Prefeitura Municipal de Irupi
 3202652,Irupi,prefeitura,202608,vice,VICE-PREFEITO,1.00,9836.28,0.00,0.00,0.00,Prefeitura Municipal de Irupi
+3202652,Irupi,prefeitura,202609,prefeito,PREFEITO,1.00,19776.71,0.00,0.00,0.00,Prefeitura Municipal de Irupi
+3202652,Irupi,prefeitura,202609,vice,VICE-PREFEITO,1.00,9836.28,0.00,0.00,0.00,Prefeitura Municipal de Irupi
 3202702,Itaguaçu,camara,202501,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,80620.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
 3202702,Itaguaçu,camara,202502,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,83020.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
 3202702,Itaguaçu,camara,202503,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,81820.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
@@ -2003,6 +2074,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202702,Itaguaçu,camara,202606,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,85420.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
 3202702,Itaguaçu,camara,202607,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,85420.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
 3202702,Itaguaçu,camara,202608,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,85420.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
+3202702,Itaguaçu,camara,202609,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,85420.00,0.00,0.00,0.00,Câmara Municipal de Itaguaçu
 3202702,Itaguaçu,prefeitura,202501,prefeito,PREFEITO,1.00,19120.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
 3202702,Itaguaçu,prefeitura,202501,vice,VICE-PREFEITO,1.00,11360.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
 3202702,Itaguaçu,prefeitura,202502,prefeito,PREFEITO,1.00,19620.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
@@ -2043,6 +2115,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202702,Itaguaçu,prefeitura,202607,vice,VICE-PREFEITO,1.00,11360.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
 3202702,Itaguaçu,prefeitura,202608,prefeito,PREFEITO,1.00,19120.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
 3202702,Itaguaçu,prefeitura,202608,vice,VICE-PREFEITO,1.00,14880.00,800.00,0.00,3520.00,Prefeitura Municipal de Itaguaçu
+3202702,Itaguaçu,prefeitura,202609,prefeito,PREFEITO,1.00,19120.00,800.00,0.00,0.00,Prefeitura Municipal de Itaguaçu
+3202702,Itaguaçu,prefeitura,202609,vice,VICE-PREFEITO,1.00,11360.00,800.00,0.00,10560.00,Prefeitura Municipal de Itaguaçu
 3202801,Itapemirim,camara,202501,vereador,Vereador,19.00,116376.00,18876.00,0.00,0.00,Câmara Municipal de Itapemirim
 3202801,Itapemirim,camara,202502,vereador,Vereador,13.00,116376.00,18876.00,0.00,0.00,Câmara Municipal de Itapemirim
 3202801,Itapemirim,camara,202503,vereador,Vereador,13.00,116376.00,18876.00,0.00,0.00,Câmara Municipal de Itapemirim
@@ -2126,6 +2200,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3202900,Itarana,camara,202606,vereador,VEREADOR,9.00,51900.00,5200.00,0.00,0.00,Câmara Municipal de Itarana
 3202900,Itarana,camara,202607,vereador,VEREADOR,9.00,51900.00,5200.00,0.00,0.00,Câmara Municipal de Itarana
 3202900,Itarana,camara,202608,vereador,VEREADOR,9.00,51900.00,5200.00,0.00,0.00,Câmara Municipal de Itarana
+3202900,Itarana,camara,202609,vereador,VEREADOR,9.00,51900.00,5200.00,0.00,0.00,Câmara Municipal de Itarana
 3202900,Itarana,prefeitura,202501,prefeito,PREFEITO,1.00,15860.00,360.00,0.00,0.00,Prefeitura Municipal de Itarana
 3202900,Itarana,prefeitura,202501,vice,VICE PREFEITO,1.00,8500.00,0.00,0.00,0.00,Prefeitura Municipal de Itarana
 3202900,Itarana,prefeitura,202502,prefeito,PREFEITO,1.00,15680.00,180.00,0.00,0.00,Prefeitura Municipal de Itarana
@@ -2188,6 +2263,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203007,Iúna,camara,202606,vereador,VEREADOR(A),11.00,85752.70,0.00,0.00,0.00,Câmara Municipal de Iúna
 3203007,Iúna,camara,202607,vereador,VEREADOR(A),11.00,85752.70,0.00,0.00,0.00,Câmara Municipal de Iúna
 3203007,Iúna,camara,202608,vereador,VEREADOR(A),11.00,85752.70,0.00,0.00,0.00,Câmara Municipal de Iúna
+3203007,Iúna,camara,202609,vereador,VEREADOR(A),11.00,85752.70,0.00,0.00,0.00,Câmara Municipal de Iúna
 3203007,Iúna,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,18168.00,0.00,0.00,0.00,Prefeitura Municipal de Iúna
 3203007,Iúna,prefeitura,202501,vice,VICE-PREFEITO,1.00,9084.00,0.00,0.00,0.00,Prefeitura Municipal de Iúna
 3203007,Iúna,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,22502.00,0.00,0.00,0.00,Prefeitura Municipal de Iúna
@@ -2291,6 +2367,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203056,Jaguaré,prefeitura,202607,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Jaguaré
 3203056,Jaguaré,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17500.00,0.00,0.00,0.00,Prefeitura Municipal de Jaguaré
 3203056,Jaguaré,prefeitura,202608,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Jaguaré
+3203056,Jaguaré,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17500.00,0.00,0.00,0.00,Prefeitura Municipal de Jaguaré
+3203056,Jaguaré,prefeitura,202609,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Jaguaré
 3203106,Jerônimo Monteiro,camara,202501,vereador,VEREADOR,13.00,56005.29,0.00,0.00,0.00,Câmara Municipal de Jerônimo Monteiro
 3203106,Jerônimo Monteiro,camara,202502,vereador,VEREADOR,9.00,65005.29,0.00,0.00,0.00,Câmara Municipal de Jerônimo Monteiro
 3203106,Jerônimo Monteiro,camara,202503,vereador,VEREADOR,9.00,67707.54,0.00,0.00,0.00,Câmara Municipal de Jerônimo Monteiro
@@ -2415,6 +2493,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203130,João Neiva,prefeitura,202607,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de João Neiva
 3203130,João Neiva,prefeitura,202608,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de João Neiva
 3203130,João Neiva,prefeitura,202608,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de João Neiva
+3203130,João Neiva,prefeitura,202609,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de João Neiva
+3203130,João Neiva,prefeitura,202609,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de João Neiva
 3203163,Laranja da Terra,camara,202501,vereador,Vereador,9.00,59247.89,0.00,0.00,0.00,Câmara Municipal de Laranja da Terra
 3203163,Laranja da Terra,camara,202502,vereador,Vereador,9.00,59247.89,0.00,0.00,0.00,Câmara Municipal de Laranja da Terra
 3203163,Laranja da Terra,camara,202503,vereador,Vereador,9.00,59247.89,0.00,0.00,0.00,Câmara Municipal de Laranja da Terra
@@ -2476,6 +2556,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203163,Laranja da Terra,prefeitura,202607,vice,VICE PREFEITO MUNICIPAL,1.00,8204.33,0.00,0.00,0.00,Prefeitura Municipal de Laranja da Terra
 3203163,Laranja da Terra,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17069.07,0.00,0.00,0.00,Prefeitura Municipal de Laranja da Terra
 3203163,Laranja da Terra,prefeitura,202608,vice,VICE PREFEITO MUNICIPAL,1.00,8204.33,0.00,0.00,0.00,Prefeitura Municipal de Laranja da Terra
+3203163,Laranja da Terra,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17069.07,0.00,0.00,0.00,Prefeitura Municipal de Laranja da Terra
+3203163,Laranja da Terra,prefeitura,202609,vice,VICE PREFEITO MUNICIPAL,1.00,8204.33,0.00,0.00,0.00,Prefeitura Municipal de Laranja da Terra
 3203205,Linhares,camara,202501,vereador,VEREADOR,17.00,110764.00,0.00,0.00,0.00,Câmara Municipal de Linhares
 3203205,Linhares,camara,202502,vereador,VEREADOR,17.00,110764.00,0.00,0.00,0.00,Câmara Municipal de Linhares
 3203205,Linhares,camara,202503,vereador,VEREADOR,17.00,110764.00,0.00,0.00,0.00,Câmara Municipal de Linhares
@@ -2496,6 +2578,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203205,Linhares,camara,202606,vereador,VEREADOR,18.00,116956.00,0.00,0.00,0.00,Câmara Municipal de Linhares
 3203205,Linhares,camara,202607,vereador,VEREADOR,18.00,116956.00,0.00,0.00,0.00,Câmara Municipal de Linhares
 3203205,Linhares,camara,202608,vereador,VEREADOR,18.00,110764.00,0.00,0.00,0.00,Câmara Municipal de Linhares
+3203205,Linhares,camara,202609,vereador,VEREADOR,17.00,110764.00,0.00,0.00,0.00,Câmara Municipal de Linhares
 3203205,Linhares,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,19719.65,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
 3203205,Linhares,prefeitura,202501,vice,VICE PREFEITO MUNICIPAL,1.00,12012.62,0.00,0.00,0.00,Secretaria Municipal de Desenvolvimento Econômico de Linhares
 3203205,Linhares,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,19719.65,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
@@ -2536,6 +2619,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203205,Linhares,prefeitura,202607,vice,VICE PREFEITO MUNICIPAL,1.00,12613.25,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
 3203205,Linhares,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,20705.63,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
 3203205,Linhares,prefeitura,202608,vice,VICE PREFEITO MUNICIPAL,1.00,12613.25,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
+3203205,Linhares,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,20705.63,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
+3203205,Linhares,prefeitura,202609,vice,VICE PREFEITO MUNICIPAL,1.00,12613.25,0.00,0.00,0.00,Gabinete do Prefeito de Linhares
 3203304,Mantenópolis,camara,202501,vereador,VEREADOR,9.00,36555.03,0.00,0.00,0.00,Câmara Municipal de Mantenópolis
 3203304,Mantenópolis,camara,202502,vereador,VEREADOR,9.00,36555.03,0.00,0.00,0.00,Câmara Municipal de Mantenópolis
 3203304,Mantenópolis,camara,202503,vereador,VEREADOR,9.00,,,,,Câmara Municipal de Mantenópolis
@@ -2660,6 +2745,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203320,Marataízes,prefeitura,202607,vice,VICE PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Marataízes
 3203320,Marataízes,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Marataízes
 3203320,Marataízes,prefeitura,202608,vice,VICE PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Marataízes
+3203320,Marataízes,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Marataízes
+3203320,Marataízes,prefeitura,202609,vice,VICE PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Marataízes
 3203346,Marechal Floriano,camara,202501,vereador,Presidente da Câmara / Vereador,11.00,98900.00,0.00,0.00,0.00,Câmara Municipal de Marechal Floriano
 3203346,Marechal Floriano,camara,202502,vereador,Vereador / Presidente da Câmara,11.00,98900.00,0.00,0.00,0.00,Câmara Municipal de Marechal Floriano
 3203346,Marechal Floriano,camara,202503,vereador,Vereador / Presidente da Câmara,11.00,98900.00,0.00,0.00,0.00,Câmara Municipal de Marechal Floriano
@@ -2721,6 +2808,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203346,Marechal Floriano,prefeitura,202607,vice,VICE-PREFEITO,1.00,15470.00,0.00,0.00,0.00,Prefeitura Municipal de Marechal Floriano
 3203346,Marechal Floriano,prefeitura,202608,prefeito,PREFEITO,1.00,,,,,Prefeitura Municipal de Marechal Floriano
 3203346,Marechal Floriano,prefeitura,202608,vice,VICE-PREFEITO,1.00,15470.00,0.00,0.00,0.00,Prefeitura Municipal de Marechal Floriano
+3203346,Marechal Floriano,prefeitura,202609,prefeito,PREFEITO,2.00,,,,,Prefeitura Municipal de Marechal Floriano
+3203346,Marechal Floriano,prefeitura,202609,vice,VICE-PREFEITO,1.00,19545.34,0.00,0.00,0.00,Prefeitura Municipal de Marechal Floriano
 3203353,Marilândia,camara,202501,vereador,VEREADOR,13.00,67440.87,9000.00,0.00,0.00,Câmara Municipal de Marilândia
 3203353,Marilândia,camara,202502,vereador,VEREADOR,9.00,67440.87,9000.00,0.00,0.00,Câmara Municipal de Marilândia
 3203353,Marilândia,camara,202503,vereador,VEREADOR,9.00,67440.87,9000.00,0.00,0.00,Câmara Municipal de Marilândia
@@ -2741,6 +2830,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203353,Marilândia,camara,202606,vereador,VEREADOR,9.00,72630.45,11700.00,0.00,0.00,Câmara Municipal de Marilândia
 3203353,Marilândia,camara,202607,vereador,VEREADOR,9.00,72630.45,11700.00,0.00,0.00,Câmara Municipal de Marilândia
 3203353,Marilândia,camara,202608,vereador,VEREADOR,9.00,72630.45,11700.00,0.00,0.00,Câmara Municipal de Marilândia
+3203353,Marilândia,camara,202609,vereador,VEREADOR,9.00,72630.45,11700.00,0.00,0.00,Câmara Municipal de Marilândia
 3203353,Marilândia,prefeitura,202501,prefeito,Prefeito Municipal,1.00,13228.14,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
 3203353,Marilândia,prefeitura,202501,vice,Vice-Prefeito,1.00,7215.35,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
 3203353,Marilândia,prefeitura,202502,prefeito,Prefeito Municipal,1.00,13228.14,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
@@ -2781,6 +2871,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203353,Marilândia,prefeitura,202607,vice,Vice-Prefeito,1.00,7215.35,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
 3203353,Marilândia,prefeitura,202608,prefeito,Prefeito Municipal,1.00,13228.14,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
 3203353,Marilândia,prefeitura,202608,vice,Vice-Prefeito,1.00,7215.35,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
+3203353,Marilândia,prefeitura,202609,prefeito,Prefeito Municipal,1.00,13228.14,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
+3203353,Marilândia,prefeitura,202609,vice,Vice-Prefeito,1.00,7215.35,0.00,0.00,0.00,Prefeitura Municipal de Marilândia
 3203403,Mimoso do Sul,camara,202501,vereador,VEREADOR(A),14.00,85800.00,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,camara,202502,vereador,VEREADOR(A),15.00,92726.78,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,camara,202503,vereador,VEREADOR(A),15.00,93008.63,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
@@ -2801,6 +2893,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203403,Mimoso do Sul,camara,202606,vereador,VEREADOR(A),13.00,98959.74,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,camara,202607,vereador,VEREADOR(A),13.00,98959.74,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,camara,202608,vereador,VEREADOR(A),13.00,98959.74,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
+3203403,Mimoso do Sul,camara,202609,vereador,VEREADOR(A),13.00,98959.74,0.00,0.00,0.00,Câmara Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,prefeitura,202501,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,prefeitura,202501,vice,VICE-PREFEITO (A) MUNICIPAL,1.00,12833.34,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,prefeitura,202502,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
@@ -2837,6 +2930,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203403,Mimoso do Sul,prefeitura,202606,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,prefeitura,202607,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
 3203403,Mimoso do Sul,prefeitura,202608,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
+3203403,Mimoso do Sul,prefeitura,202609,prefeito,PREFEITO (A) MUNICIPAL,1.00,16800.00,0.00,0.00,0.00,Prefeitura Municipal de Mimoso do Sul
 3203502,Montanha,camara,202501,vereador,VEREADOR,10.00,83250.00,0.00,15750.00,0.00,Câmara Municipal de Montanha
 3203502,Montanha,camara,202502,vereador,VEREADOR,10.00,85500.00,0.00,10500.00,0.00,Câmara Municipal de Montanha
 3203502,Montanha,camara,202503,vereador,VEREADOR,10.00,81250.00,0.00,5250.00,0.00,Câmara Municipal de Montanha
@@ -2857,6 +2951,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203502,Montanha,camara,202606,vereador,VEREADOR,10.00,80250.00,0.00,5250.00,0.00,Câmara Municipal de Montanha
 3203502,Montanha,camara,202607,vereador,VEREADOR,10.00,75000.00,0.00,0.00,0.00,Câmara Municipal de Montanha
 3203502,Montanha,camara,202608,vereador,VEREADOR,10.00,80250.00,0.00,5250.00,0.00,Câmara Municipal de Montanha
+3203502,Montanha,camara,202609,vereador,VEREADOR,10.00,75000.00,0.00,0.00,0.00,Câmara Municipal de Montanha
 3203502,Montanha,prefeitura,202501,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
 3203502,Montanha,prefeitura,202501,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
 3203502,Montanha,prefeitura,202502,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
@@ -2897,6 +2992,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203502,Montanha,prefeitura,202607,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
 3203502,Montanha,prefeitura,202608,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
 3203502,Montanha,prefeitura,202608,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
+3203502,Montanha,prefeitura,202609,prefeito,PREFEITO,1.00,15000.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
+3203502,Montanha,prefeitura,202609,vice,VICE-PREFEITO,1.00,7500.00,0.00,0.00,0.00,Prefeitura Municipal de Montanha
 3203601,Mucurici,camara,202501,vereador,VEREADOR(A),9.00,52560.00,0.00,0.00,0.00,Câmara Municipal de Mucurici
 3203601,Mucurici,camara,202502,vereador,VEREADOR(A),9.00,52643.07,0.00,0.00,0.00,Câmara Municipal de Mucurici
 3203601,Mucurici,camara,202503,vereador,VEREADOR(A),9.00,52560.00,0.00,0.00,0.00,Câmara Municipal de Mucurici
@@ -2917,6 +3014,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203601,Mucurici,camara,202606,vereador,VEREADOR(A),9.00,78840.00,0.00,26280.00,0.00,Câmara Municipal de Mucurici
 3203601,Mucurici,camara,202607,vereador,VEREADOR(A),9.00,52560.00,0.00,0.00,0.00,Câmara Municipal de Mucurici
 3203601,Mucurici,camara,202608,vereador,VEREADOR(A),9.00,52560.00,0.00,0.00,0.00,Câmara Municipal de Mucurici
+3203601,Mucurici,camara,202609,vereador,VEREADOR(A),9.00,52560.00,0.00,0.00,0.00,Câmara Municipal de Mucurici
 3203601,Mucurici,prefeitura,202501,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
 3203601,Mucurici,prefeitura,202501,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
 3203601,Mucurici,prefeitura,202502,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
@@ -2957,11 +3055,13 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203601,Mucurici,prefeitura,202607,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
 3203601,Mucurici,prefeitura,202608,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
 3203601,Mucurici,prefeitura,202608,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
+3203601,Mucurici,prefeitura,202609,prefeito,PREFEITO,1.00,16000.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
+3203601,Mucurici,prefeitura,202609,vice,VICE-PREFEITO,1.00,6500.00,0.00,0.00,0.00,Prefeitura Municipal de Mucurici
 3203700,Muniz Freire,camara,202501,vereador,VEREADOR / PRESIDENTE,9.00,74700.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202502,vereador,PRESIDENTE / VEREADOR,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202503,vereador,VEREADOR / PRESIDENTE,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202504,vereador,VEREADOR / PRESIDENTE,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
-3203700,Muniz Freire,camara,202505,vereador,PRESIDENTE / VEREADOR,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
+3203700,Muniz Freire,camara,202505,vereador,VEREADOR / PRESIDENTE,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202506,vereador,PRESIDENTE / VEREADOR,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202507,vereador,PRESIDENTE / VEREADOR,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
 3203700,Muniz Freire,camara,202508,vereador,PRESIDENTE / VEREADOR,9.00,75230.00,0.00,0.00,0.00,Câmara Municipal de Muniz Freire
@@ -3018,6 +3118,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203700,Muniz Freire,prefeitura,202607,vice,Vice Prefeito,1.00,13000.00,0.00,0.00,0.00,Prefeitura Municipal de Muniz Freire
 3203700,Muniz Freire,prefeitura,202608,prefeito,Prefeito Municipal,1.00,23000.00,0.00,0.00,0.00,Prefeitura Municipal de Muniz Freire
 3203700,Muniz Freire,prefeitura,202608,vice,Vice Prefeito,1.00,13000.00,0.00,0.00,0.00,Prefeitura Municipal de Muniz Freire
+3203700,Muniz Freire,prefeitura,202609,prefeito,Prefeito Municipal,1.00,23000.00,0.00,0.00,0.00,Prefeitura Municipal de Muniz Freire
+3203700,Muniz Freire,prefeitura,202609,vice,Vice Prefeito,1.00,13000.00,0.00,0.00,0.00,Prefeitura Municipal de Muniz Freire
 3203809,Muqui,camara,202501,vereador,VEREADOR PRESIDENTE DE CAMARA / VEREADOR,14.00,41500.00,0.00,0.00,0.00,Câmara Municipal de Muqui
 3203809,Muqui,camara,202502,vereador,VEREADOR / VEREADOR PRESIDENTE DE CAMARA,9.00,41500.00,0.00,0.00,0.00,Câmara Municipal de Muqui
 3203809,Muqui,camara,202503,vereador,VEREADOR / VEREADOR PRESIDENTE DE CAMARA,9.00,41500.00,0.00,0.00,0.00,Câmara Municipal de Muqui
@@ -3038,6 +3140,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203809,Muqui,camara,202606,vereador,VEREADOR / VEREADOR PRESIDENTE DE CAMARA,9.00,43248.06,0.00,0.00,0.00,Câmara Municipal de Muqui
 3203809,Muqui,camara,202607,vereador,VEREADOR PRESIDENTE DE CAMARA / VEREADOR,9.00,46331.67,0.00,0.00,0.00,Câmara Municipal de Muqui
 3203809,Muqui,camara,202608,vereador,VEREADOR PRESIDENTE DE CAMARA / VEREADOR,9.00,46812.14,0.00,0.00,0.00,Câmara Municipal de Muqui
+3203809,Muqui,camara,202609,vereador,VEREADOR / VEREADOR PRESIDENTE DE CAMARA,9.00,46018.86,0.00,0.00,0.00,Câmara Municipal de Muqui
 3203809,Muqui,prefeitura,202501,prefeito,PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
 3203809,Muqui,prefeitura,202502,prefeito,PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
 3203809,Muqui,prefeitura,202503,prefeito,PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
@@ -3067,6 +3170,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203809,Muqui,prefeitura,202606,prefeito,PREFEITO,1.00,13500.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
 3203809,Muqui,prefeitura,202607,prefeito,PREFEITO,1.00,13500.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
 3203809,Muqui,prefeitura,202608,prefeito,PREFEITO,1.00,13500.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
+3203809,Muqui,prefeitura,202609,prefeito,PREFEITO,1.00,13500.00,0.00,0.00,0.00,Prefeitura Municipal de Muqui
 3203908,Nova Venécia,camara,202501,vereador,VEREADOR,13.00,129664.62,0.00,0.00,0.00,Câmara Municipal de Nova Venécia
 3203908,Nova Venécia,camara,202502,vereador,VEREADOR,13.00,131675.70,0.00,0.00,0.00,Câmara Municipal de Nova Venécia
 3203908,Nova Venécia,camara,202503,vereador,VEREADOR,13.00,131675.70,0.00,0.00,0.00,Câmara Municipal de Nova Venécia
@@ -3128,6 +3232,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3203908,Nova Venécia,prefeitura,202607,vice,VICE - PREFEITO,1.00,10833.94,0.00,0.00,0.00,Prefeitura Municipal de Nova Venécia
 3203908,Nova Venécia,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,21667.89,0.00,0.00,0.00,Prefeitura Municipal de Nova Venécia
 3203908,Nova Venécia,prefeitura,202608,vice,VICE - PREFEITO,1.00,10833.94,0.00,0.00,0.00,Prefeitura Municipal de Nova Venécia
+3203908,Nova Venécia,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,21667.89,0.00,0.00,0.00,Prefeitura Municipal de Nova Venécia
+3203908,Nova Venécia,prefeitura,202609,vice,VICE - PREFEITO,1.00,10833.94,0.00,0.00,0.00,Prefeitura Municipal de Nova Venécia
 3204005,Pancas,camara,202501,vereador,VEREADOR,11.00,93618.28,0.00,0.00,0.00,Câmara Municipal de Pancas
 3204005,Pancas,camara,202502,vereador,VEREADOR,11.00,108049.34,5500.00,0.00,0.00,Câmara Municipal de Pancas
 3204005,Pancas,camara,202503,vereador,VEREADOR,11.00,103583.81,5500.00,0.00,0.00,Câmara Municipal de Pancas
@@ -3189,6 +3295,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204005,Pancas,prefeitura,202607,vice,Vice Prefeito Municipal,1.00,,,,,Prefeitura Municipal de Pancas
 3204005,Pancas,prefeitura,202608,prefeito,Prefeito Municipal,1.00,26354.16,0.00,0.00,0.00,Prefeitura Municipal de Pancas
 3204005,Pancas,prefeitura,202608,vice,Vice Prefeito Municipal,1.00,,,,,Prefeitura Municipal de Pancas
+3204005,Pancas,prefeitura,202609,prefeito,Prefeito Municipal,1.00,26354.16,0.00,0.00,0.00,Prefeitura Municipal de Pancas
+3204005,Pancas,prefeitura,202609,vice,Vice Prefeito Municipal,1.00,,,,,Prefeitura Municipal de Pancas
 3204054,Pedro Canário,camara,202501,vereador,PRESIDENTE / VEREADOR,11.00,86800.00,0.00,0.00,0.00,Câmara Municipal de Pedro Canário
 3204054,Pedro Canário,camara,202502,vereador,PRESIDENTE / VEREADOR,11.00,86800.00,0.00,0.00,0.00,Câmara Municipal de Pedro Canário
 3204054,Pedro Canário,camara,202503,vereador,PRESIDENTE / VEREADOR,11.00,86800.00,0.00,0.00,0.00,Câmara Municipal de Pedro Canário
@@ -3248,6 +3356,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204054,Pedro Canário,prefeitura,202606,vice,VICE-PREFEITO,1.00,,,,,Prefeitura Municipal de Pedro Canário
 3204054,Pedro Canário,prefeitura,202607,prefeito,PREFEITO,2.00,40000.00,0.00,0.00,0.00,Prefeitura Municipal de Pedro Canário
 3204054,Pedro Canário,prefeitura,202608,prefeito,PREFEITO,2.00,40000.00,0.00,0.00,0.00,Prefeitura Municipal de Pedro Canário
+3204054,Pedro Canário,prefeitura,202609,prefeito,PREFEITO,2.00,41704.00,0.00,0.00,0.00,Prefeitura Municipal de Pedro Canário
 3204104,Pinheiros,camara,202501,vereador,VEREADOR,18.00,86017.58,0.00,0.00,0.00,Câmara Municipal de Pinheiros
 3204104,Pinheiros,camara,202502,vereador,VEREADOR,11.00,86017.58,0.00,0.00,0.00,Câmara Municipal de Pinheiros
 3204104,Pinheiros,camara,202503,vereador,VEREADOR,11.00,90060.41,0.00,0.00,0.00,Câmara Municipal de Pinheiros
@@ -3331,6 +3440,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204203,Piúma,camara,202606,vereador,VEREADOR PRESIDENTE / VEREADOR(A),11.00,116865.00,0.00,0.00,0.00,Câmara Municipal de Piúma
 3204203,Piúma,camara,202607,vereador,VEREADOR(A) / VEREADOR PRESIDENTE,11.00,116865.00,0.00,0.00,0.00,Câmara Municipal de Piúma
 3204203,Piúma,camara,202608,vereador,VEREADOR PRESIDENTE / VEREADOR(A),11.00,116865.00,0.00,0.00,0.00,Câmara Municipal de Piúma
+3204203,Piúma,camara,202609,vereador,VEREADOR(A) / VEREADOR PRESIDENTE,11.00,116865.00,0.00,0.00,0.00,Câmara Municipal de Piúma
 3204203,Piúma,prefeitura,202501,prefeito,PREFEITO,1.00,18712.69,0.00,0.00,0.00,Prefeitura Municipal de Piúma
 3204203,Piúma,prefeitura,202501,vice,VICE-PREFEITO,1.00,10644.82,0.00,0.00,0.00,Prefeitura Municipal de Piúma
 3204203,Piúma,prefeitura,202502,prefeito,PREFEITO,1.00,25287.31,0.00,0.00,0.00,Prefeitura Municipal de Piúma
@@ -3393,6 +3503,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204252,Ponto Belo,camara,202606,vereador,VEREADOR,9.00,64380.00,0.00,0.00,0.00,Câmara Municipal de Ponto Belo
 3204252,Ponto Belo,camara,202607,vereador,VEREADOR,9.00,68930.00,0.00,4550.00,0.00,Câmara Municipal de Ponto Belo
 3204252,Ponto Belo,camara,202608,vereador,VEREADOR,9.00,64380.00,0.00,0.00,0.00,Câmara Municipal de Ponto Belo
+3204252,Ponto Belo,camara,202609,vereador,VEREADOR,9.00,67688.89,0.00,3308.89,0.00,Câmara Municipal de Ponto Belo
 3204252,Ponto Belo,prefeitura,202501,prefeito,PREFEITO,2.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
 3204252,Ponto Belo,prefeitura,202501,vice,VICE-PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
 3204252,Ponto Belo,prefeitura,202502,prefeito,PREFEITO,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
@@ -3433,6 +3544,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204252,Ponto Belo,prefeitura,202607,vice,VICE-PREFEITO,1.00,17000.00,0.00,7000.00,0.00,Prefeitura Municipal de Ponto Belo
 3204252,Ponto Belo,prefeitura,202608,prefeito,PREFEITO,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
 3204252,Ponto Belo,prefeitura,202608,vice,VICE-PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
+3204252,Ponto Belo,prefeitura,202609,prefeito,PREFEITO,1.00,20000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
+3204252,Ponto Belo,prefeitura,202609,vice,VICE-PREFEITO,1.00,10000.00,0.00,0.00,0.00,Prefeitura Municipal de Ponto Belo
 3204302,Presidente Kennedy,camara,202501,vereador,VEREADOR 2025-2028,14.00,81531.62,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,camara,202502,vereador,VEREADOR 2025-2028,9.00,84343.05,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,camara,202503,vereador,VEREADOR 2025-2028,9.00,84343.05,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
@@ -3453,6 +3566,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204302,Presidente Kennedy,camara,202606,vereador,VEREADOR 2025-2028,9.00,92743.05,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,camara,202607,vereador,VEREADOR 2025-2028,9.00,92743.05,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,camara,202608,vereador,VEREADOR 2025-2028,9.00,92743.05,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
+3204302,Presidente Kennedy,camara,202609,vereador,VEREADOR 2025-2028,9.00,110040.96,0.00,0.00,0.00,Câmara Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,prefeitura,202501,prefeito,PREFEITO,2.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,prefeitura,202502,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,prefeitura,202503,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
@@ -3473,6 +3587,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204302,Presidente Kennedy,prefeitura,202606,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,prefeitura,202607,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
 3204302,Presidente Kennedy,prefeitura,202608,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
+3204302,Presidente Kennedy,prefeitura,202609,prefeito,PREFEITO,1.00,20810.00,0.00,0.00,0.00,Prefeitura Municipal de Presidente Kennedy
 3204351,Rio Bananal,camara,202501,vereador,VEREADOR - PRESIDENTE / VEREADOR,19.00,82107.33,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
 3204351,Rio Bananal,camara,202502,vereador,VEREADOR / VEREADOR - PRESIDENTE,11.00,82107.33,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
 3204351,Rio Bananal,camara,202503,vereador,VEREADOR - PRESIDENTE / VEREADOR,11.00,82107.33,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
@@ -3493,6 +3608,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204351,Rio Bananal,camara,202606,vereador,VEREADOR - PRESIDENTE / VEREADOR,11.00,85637.89,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
 3204351,Rio Bananal,camara,202607,vereador,VEREADOR / VEREADOR - PRESIDENTE,11.00,85637.89,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
 3204351,Rio Bananal,camara,202608,vereador,VEREADOR - PRESIDENTE / VEREADOR,11.00,85637.89,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
+3204351,Rio Bananal,camara,202609,vereador,VEREADOR - PRESIDENTE / VEREADOR,11.00,85637.89,0.00,0.00,0.00,Câmara Municipal de Rio Bananal
 3204351,Rio Bananal,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,19045.84,0.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
 3204351,Rio Bananal,prefeitura,202501,vice,VICE-PREFEITO,1.00,9014.07,0.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
 3204351,Rio Bananal,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,19045.84,0.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
@@ -3533,6 +3649,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204351,Rio Bananal,prefeitura,202607,vice,VICE-PREFEITO,1.00,10001.68,600.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
 3204351,Rio Bananal,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,20464.81,600.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
 3204351,Rio Bananal,prefeitura,202608,vice,VICE-PREFEITO,1.00,10001.68,600.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
+3204351,Rio Bananal,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,20464.81,600.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
+3204351,Rio Bananal,prefeitura,202609,vice,VICE-PREFEITO,1.00,10001.68,600.00,0.00,0.00,Prefeitura Municipal de Rio Bananal
 3204401,Rio Novo do Sul,camara,202501,vereador,VEREADOR / VEREADOR PRESIDENTE,9.00,58270.00,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,camara,202502,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,55306.67,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,camara,202503,vereador,VEREADOR PRESIDENTE / VEREADOR,9.00,52978.33,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
@@ -3553,6 +3671,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204401,Rio Novo do Sul,camara,202606,vereador,VEREADOR / VEREADOR PRESIDENTE,10.00,80185.39,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,camara,202607,vereador,VEREADOR PRESIDENTE / VEREADOR,10.00,80185.39,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,camara,202608,vereador,VEREADOR PRESIDENTE / VEREADOR,10.00,80185.39,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
+3204401,Rio Novo do Sul,camara,202609,vereador,VEREADOR PRESIDENTE / VEREADOR,10.00,80185.39,0.00,0.00,0.00,Câmara Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,prefeitura,202501,prefeito,Prefeito Municipal,1.00,17500.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,prefeitura,202501,vice,Vice-prefeito,1.00,8750.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,prefeitura,202502,prefeito,Prefeito Municipal,1.00,17500.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
@@ -3593,6 +3712,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204401,Rio Novo do Sul,prefeitura,202607,vice,Vice-prefeito,1.00,9639.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,prefeitura,202608,prefeito,Prefeito Municipal,1.00,19278.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
 3204401,Rio Novo do Sul,prefeitura,202608,vice,Vice-prefeito,1.00,9639.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
+3204401,Rio Novo do Sul,prefeitura,202609,prefeito,Prefeito Municipal,1.00,19278.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
+3204401,Rio Novo do Sul,prefeitura,202609,vice,Vice-prefeito,1.00,9639.00,0.00,0.00,0.00,Prefeitura Municipal de Rio Novo do Sul
 3204500,Santa Leopoldina,camara,202501,vereador,VEREADOR - PRESIDENTE CAMARA / VEREADOR,14.00,62872.39,0.00,0.00,0.00,Câmara Municipal de Santa Leopoldina
 3204500,Santa Leopoldina,camara,202502,vereador,VEREADOR - PRESIDENTE CAMARA / VEREADOR,9.00,62872.39,0.00,0.00,0.00,Câmara Municipal de Santa Leopoldina
 3204500,Santa Leopoldina,camara,202503,vereador,VEREADOR - PRESIDENTE CAMARA / VEREADOR,9.00,62872.39,0.00,0.00,0.00,Câmara Municipal de Santa Leopoldina
@@ -3654,6 +3775,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204500,Santa Leopoldina,prefeitura,202607,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Leopoldina
 3204500,Santa Leopoldina,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,,,,,Prefeitura Municipal de Santa Leopoldina
 3204500,Santa Leopoldina,prefeitura,202608,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Leopoldina
+3204500,Santa Leopoldina,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,,,,,Prefeitura Municipal de Santa Leopoldina
+3204500,Santa Leopoldina,prefeitura,202609,vice,VICE PREFEITO,1.00,9000.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Leopoldina
 3204559,Santa Maria de Jetibá,camara,202501,vereador,Vereador,13.00,129304.11,0.00,0.00,0.00,Câmara Municipal de Santa Maria de Jetibá
 3204559,Santa Maria de Jetibá,camara,202502,vereador,Vereador,13.00,135621.07,0.00,0.00,0.00,Câmara Municipal de Santa Maria de Jetibá
 3204559,Santa Maria de Jetibá,camara,202503,vereador,Vereador,13.00,129744.16,0.00,0.00,0.00,Câmara Municipal de Santa Maria de Jetibá
@@ -3778,6 +3901,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204609,Santa Teresa,prefeitura,202607,vice,VICE-PREFEITO,1.00,8736.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Teresa
 3204609,Santa Teresa,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17472.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Teresa
 3204609,Santa Teresa,prefeitura,202608,vice,VICE-PREFEITO,1.00,8736.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Teresa
+3204609,Santa Teresa,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17472.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Teresa
+3204609,Santa Teresa,prefeitura,202609,vice,VICE-PREFEITO,1.00,8736.00,0.00,0.00,0.00,Prefeitura Municipal de Santa Teresa
 3204658,São Domingos do Norte,camara,202501,vereador,Vereador(a) / Presidente(a) da Câmara,9.00,53074.24,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,camara,202502,vereador,Vereador(a) / Presidente(a) da Câmara,9.00,53074.24,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,camara,202503,vereador,Presidente(a) da Câmara / Vereador(a),9.00,53074.24,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
@@ -3798,6 +3923,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204658,São Domingos do Norte,camara,202606,vereador,Vereador(a) / Presidente(a) da Câmara,9.00,55335.21,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,camara,202607,vereador,Vereador(a) / Presidente(a) da Câmara,10.00,56344.64,0.00,3028.30,0.00,Câmara Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,camara,202608,vereador,Vereador(a) / Presidente(a) da Câmara,9.00,55335.21,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
+3204658,São Domingos do Norte,camara,202609,vereador,Presidente(a) da Câmara / Vereador(a),9.00,55335.21,0.00,0.00,0.00,Câmara Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,prefeitura,202501,prefeito,PREFEITO,1.00,15498.35,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,prefeitura,202501,vice,VICE-PREFEITO,1.00,8972.78,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,prefeitura,202502,prefeito,PREFEITO,1.00,15498.35,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
@@ -3838,6 +3964,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204658,São Domingos do Norte,prefeitura,202607,vice,VICE-PREFEITO,1.00,9355.02,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,prefeitura,202608,prefeito,PREFEITO,1.00,16158.58,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
 3204658,São Domingos do Norte,prefeitura,202608,vice,VICE-PREFEITO,1.00,9355.02,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
+3204658,São Domingos do Norte,prefeitura,202609,prefeito,PREFEITO,1.00,16158.58,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
+3204658,São Domingos do Norte,prefeitura,202609,vice,VICE-PREFEITO,1.00,9355.02,0.00,0.00,0.00,Prefeitura Municipal de São Domingos do Norte
 3204708,São Gabriel da Palha,camara,202501,vereador,VEREADOR,23.00,140294.00,9100.00,9371.00,0.00,Câmara Municipal de São Gabriel da Palha
 3204708,São Gabriel da Palha,camara,202502,vereador,VEREADOR,13.00,137423.00,15600.00,0.00,0.00,Câmara Municipal de São Gabriel da Palha
 3204708,São Gabriel da Palha,camara,202503,vereador,VEREADOR,13.00,137423.00,15600.00,0.00,0.00,Câmara Municipal de São Gabriel da Palha
@@ -3899,6 +4027,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204708,São Gabriel da Palha,prefeitura,202607,vice,VICE-PREFEITO,1.00,11087.68,0.00,0.00,0.00,Prefeitura Municipal de São Gabriel da Palha
 3204708,São Gabriel da Palha,prefeitura,202608,prefeito,PREFEITO(A) MUNICIPAL,1.00,21704.97,0.00,0.00,0.00,Prefeitura Municipal de São Gabriel da Palha
 3204708,São Gabriel da Palha,prefeitura,202608,vice,VICE-PREFEITO,1.00,11087.68,0.00,0.00,0.00,Prefeitura Municipal de São Gabriel da Palha
+3204708,São Gabriel da Palha,prefeitura,202609,prefeito,PREFEITO(A) MUNICIPAL,1.00,21704.97,0.00,0.00,0.00,Prefeitura Municipal de São Gabriel da Palha
+3204708,São Gabriel da Palha,prefeitura,202609,vice,VICE-PREFEITO,1.00,11087.68,0.00,0.00,0.00,Prefeitura Municipal de São Gabriel da Palha
 3204807,São José do Calçado,camara,202501,vereador,VEREADOR,9.00,79080.00,0.00,0.00,0.00,Câmara Municipal de São José do Calçado
 3204807,São José do Calçado,camara,202502,vereador,VEREADOR,9.00,79081.62,0.00,0.00,0.00,Câmara Municipal de São José do Calçado
 3204807,São José do Calçado,camara,202503,vereador,VEREADOR,9.00,79080.00,0.00,0.00,0.00,Câmara Municipal de São José do Calçado
@@ -3960,6 +4090,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204807,São José do Calçado,prefeitura,202607,vice,VICE PREFEITO,1.00,,,,,Prefeitura Municipal de São José do Calçado
 3204807,São José do Calçado,prefeitura,202608,prefeito,PREFEITO,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de São José do Calçado
 3204807,São José do Calçado,prefeitura,202608,vice,VICE PREFEITO,1.00,,,,,Prefeitura Municipal de São José do Calçado
+3204807,São José do Calçado,prefeitura,202609,prefeito,PREFEITO,1.00,18000.00,0.00,0.00,0.00,Prefeitura Municipal de São José do Calçado
+3204807,São José do Calçado,prefeitura,202609,vice,VICE PREFEITO,1.00,,,,,Prefeitura Municipal de São José do Calçado
 3204906,São Mateus,camara,202501,vereador,VEREADOR,11.00,132000.00,0.00,0.00,0.00,Câmara Municipal de São Mateus
 3204906,São Mateus,camara,202502,vereador,VEREADOR,11.00,132000.00,0.00,0.00,0.00,Câmara Municipal de São Mateus
 3204906,São Mateus,camara,202503,vereador,VEREADOR,11.00,132000.00,0.00,0.00,0.00,Câmara Municipal de São Mateus
@@ -4021,6 +4153,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204906,São Mateus,prefeitura,202607,vice,Vice-Prefeito Municipal,1.00,18000.00,0.00,0.00,0.00,Secretaria de Gabinete de São Mateus
 3204906,São Mateus,prefeitura,202608,prefeito,Prefeito Muncipal,1.00,21000.00,0.00,0.00,0.00,Secretaria de Gabinete de São Mateus
 3204906,São Mateus,prefeitura,202608,vice,Vice-Prefeito Municipal,1.00,18000.00,0.00,0.00,0.00,Secretaria de Gabinete de São Mateus
+3204906,São Mateus,prefeitura,202609,prefeito,Prefeito Muncipal,1.00,21000.00,0.00,0.00,0.00,Secretaria de Gabinete de São Mateus
+3204906,São Mateus,prefeitura,202609,vice,Vice-Prefeito Municipal,1.00,18000.00,0.00,0.00,0.00,Secretaria de Gabinete de São Mateus
 3204955,São Roque do Canaã,camara,202501,vereador,VEREADOR,9.00,46660.51,0.00,0.00,0.00,Câmara Municipal de São Roque do Canaã
 3204955,São Roque do Canaã,camara,202502,vereador,VEREADOR,10.00,46660.52,0.00,0.00,0.00,Câmara Municipal de São Roque do Canaã
 3204955,São Roque do Canaã,camara,202503,vereador,VEREADOR,10.00,46660.51,0.00,0.00,0.00,Câmara Municipal de São Roque do Canaã
@@ -4082,6 +4216,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3204955,São Roque do Canaã,prefeitura,202607,vice,VICE PREFEITO,1.00,8819.34,0.00,0.00,0.00,Fundo Municipal de Saúde de São Roque do Canaã
 3204955,São Roque do Canaã,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,17638.69,0.00,0.00,0.00,Prefeitura Municipal de São Roque do Canaã
 3204955,São Roque do Canaã,prefeitura,202608,vice,VICE PREFEITO,1.00,8819.34,0.00,0.00,0.00,Fundo Municipal de Saúde de São Roque do Canaã
+3204955,São Roque do Canaã,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,17638.69,0.00,0.00,0.00,Prefeitura Municipal de São Roque do Canaã
+3204955,São Roque do Canaã,prefeitura,202609,vice,VICE PREFEITO,1.00,8819.34,0.00,0.00,0.00,Fundo Municipal de Saúde de São Roque do Canaã
 3205002,Serra,camara,202501,vereador,VEREADOR - SERRA,23.00,406685.77,0.00,0.00,0.00,Câmara Municipal de Serra
 3205002,Serra,camara,202502,vereador,VEREADOR - SERRA,23.00,406685.77,0.00,0.00,0.00,Câmara Municipal de Serra
 3205002,Serra,camara,202503,vereador,VEREADOR - SERRA,23.00,406685.77,0.00,0.00,0.00,Câmara Municipal de Serra
@@ -4102,6 +4238,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205002,Serra,camara,202606,vereador,VEREADOR - SERRA,27.00,477413.73,0.00,0.00,0.00,Câmara Municipal de Serra
 3205002,Serra,camara,202607,vereador,VEREADOR - SERRA,27.00,477413.73,0.00,0.00,0.00,Câmara Municipal de Serra
 3205002,Serra,camara,202608,vereador,VEREADOR - SERRA,27.00,477413.73,0.00,0.00,0.00,Câmara Municipal de Serra
+3205002,Serra,camara,202609,vereador,VEREADOR - SERRA,27.00,477413.73,0.00,0.00,0.00,Câmara Municipal de Serra
 3205002,Serra,prefeitura,202501,prefeito,Prefeito,2.00,22000.00,0.00,0.00,0.00,Coordenadoria de Governo de Serra
 3205002,Serra,prefeitura,202501,vice,Vice Prefeito,2.00,19500.00,0.00,0.00,0.00,Secretaria Municipal de Defesa Social de Serra
 3205002,Serra,prefeitura,202502,prefeito,Prefeito,1.00,22000.00,0.00,0.00,0.00,Coordenadoria de Governo de Serra
@@ -4142,6 +4279,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205002,Serra,prefeitura,202607,vice,Vice Prefeito,1.00,19500.00,0.00,0.00,0.00,Secretaria Municipal de Defesa Social de Serra
 3205002,Serra,prefeitura,202608,prefeito,Prefeito,1.00,22000.00,0.00,0.00,0.00,Coordenadoria de Governo de Serra
 3205002,Serra,prefeitura,202608,vice,Vice Prefeito,1.00,19500.00,0.00,0.00,0.00,Secretaria Municipal de Defesa Social de Serra
+3205002,Serra,prefeitura,202609,prefeito,Prefeito,1.00,22000.00,0.00,0.00,0.00,Coordenadoria de Governo de Serra
+3205002,Serra,prefeitura,202609,vice,Vice Prefeito,1.00,19500.00,0.00,0.00,0.00,Secretaria Municipal de Defesa Social de Serra
 3205010,Sooretama,camara,202501,vereador,VEREADOR,9.00,63596.60,0.00,0.00,0.00,Câmara Municipal de Sooretama
 3205010,Sooretama,camara,202502,vereador,VEREADOR,9.00,63596.60,0.00,0.00,0.00,Câmara Municipal de Sooretama
 3205010,Sooretama,camara,202503,vereador,VEREADOR,9.00,63596.60,0.00,0.00,0.00,Câmara Municipal de Sooretama
@@ -4329,6 +4468,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205069,Venda Nova do Imigrante,prefeitura,202607,vice,VICE PREFEITO,1.00,7872.65,0.00,0.00,0.00,Prefeitura Municipal de Venda Nova do Imigrante
 3205069,Venda Nova do Imigrante,prefeitura,202608,prefeito,PREFEITO,1.00,23030.52,0.00,0.00,0.00,Prefeitura Municipal de Venda Nova do Imigrante
 3205069,Venda Nova do Imigrante,prefeitura,202608,vice,VICE PREFEITO,1.00,7872.65,0.00,0.00,0.00,Prefeitura Municipal de Venda Nova do Imigrante
+3205069,Venda Nova do Imigrante,prefeitura,202609,prefeito,PREFEITO,1.00,23030.52,0.00,0.00,0.00,Prefeitura Municipal de Venda Nova do Imigrante
+3205069,Venda Nova do Imigrante,prefeitura,202609,vice,VICE PREFEITO,1.00,7872.65,0.00,0.00,0.00,Prefeitura Municipal de Venda Nova do Imigrante
 3205101,Viana,camara,202501,vereador,VEREADOR,13.00,164450.00,0.00,0.00,0.00,Câmara Municipal de Viana
 3205101,Viana,camara,202502,vereador,VEREADOR,20.00,212923.49,0.00,17968.56,31533.26,Câmara Municipal de Viana
 3205101,Viana,camara,202503,vereador,VEREADOR,14.00,173512.49,0.00,9062.49,0.00,Câmara Municipal de Viana
@@ -4349,6 +4490,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205101,Viana,camara,202606,vereador,VEREADOR,14.00,202111.63,0.00,19438.13,0.00,Câmara Municipal de Viana
 3205101,Viana,camara,202607,vereador,VEREADOR,14.00,211012.71,0.00,29451.25,0.00,Câmara Municipal de Viana
 3205101,Viana,camara,202608,vereador,VEREADOR,14.00,181561.46,0.00,0.00,0.00,Câmara Municipal de Viana
+3205101,Viana,camara,202609,vereador,VEREADOR,14.00,181561.46,0.00,0.00,0.00,Câmara Municipal de Viana
 3205101,Viana,prefeitura,202501,prefeito,PREFEITO,1.00,24000.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
 3205101,Viana,prefeitura,202501,vice,VICE-PREFEITO,1.00,12000.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
 3205101,Viana,prefeitura,202502,prefeito,PREFEITO,1.00,24000.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
@@ -4389,6 +4531,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205101,Viana,prefeitura,202607,vice,VICE-PREFEITO,1.00,12540.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
 3205101,Viana,prefeitura,202608,prefeito,PREFEITO,1.00,15884.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
 3205101,Viana,prefeitura,202608,vice,VICE-PREFEITO,1.00,17138.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
+3205101,Viana,prefeitura,202609,prefeito,PREFEITO,1.00,,,,,Prefeitura Municipal de Viana
+3205101,Viana,prefeitura,202609,vice,VICE-PREFEITO,1.00,25080.00,0.00,0.00,0.00,Prefeitura Municipal de Viana
 3205150,Vila Pavão,camara,202501,vereador,VEREADOR,9.00,42059.43,0.00,0.00,0.00,Câmara Municipal de Vila Pavão
 3205150,Vila Pavão,camara,202502,vereador,VEREADOR,9.00,42059.43,0.00,0.00,0.00,Câmara Municipal de Vila Pavão
 3205150,Vila Pavão,camara,202503,vereador,VEREADOR,9.00,42059.43,0.00,0.00,0.00,Câmara Municipal de Vila Pavão
@@ -4450,6 +4594,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205150,Vila Pavão,prefeitura,202607,vice,Vice-Prefeito Municipal,1.00,10420.05,0.00,0.00,0.00,Prefeitura Municipal de Vila Pavão
 3205150,Vila Pavão,prefeitura,202608,prefeito,Prefeito Municipal,1.00,20840.10,0.00,0.00,0.00,Prefeitura Municipal de Vila Pavão
 3205150,Vila Pavão,prefeitura,202608,vice,Vice-Prefeito Municipal,1.00,10420.05,0.00,0.00,0.00,Prefeitura Municipal de Vila Pavão
+3205150,Vila Pavão,prefeitura,202609,prefeito,Prefeito Municipal,1.00,20840.10,0.00,0.00,0.00,Prefeitura Municipal de Vila Pavão
+3205150,Vila Pavão,prefeitura,202609,vice,Vice-Prefeito Municipal,1.00,10420.05,0.00,0.00,0.00,Prefeitura Municipal de Vila Pavão
 3205176,Vila Valério,camara,202501,vereador,VEREADOR,9.00,68491.53,0.00,0.00,0.00,Câmara Municipal de Vila Valério
 3205176,Vila Valério,camara,202502,vereador,VEREADOR,9.00,68491.53,0.00,0.00,0.00,Câmara Municipal de Vila Valério
 3205176,Vila Valério,camara,202503,vereador,VEREADOR,9.00,68491.53,0.00,0.00,0.00,Câmara Municipal de Vila Valério
@@ -4470,6 +4616,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205176,Vila Valério,camara,202606,vereador,VEREADOR,9.00,74958.84,0.00,0.00,0.00,Câmara Municipal de Vila Valério
 3205176,Vila Valério,camara,202607,vereador,VEREADOR,9.00,74958.84,0.00,0.00,0.00,Câmara Municipal de Vila Valério
 3205176,Vila Valério,camara,202608,vereador,VEREADOR,9.00,74958.84,0.00,0.00,0.00,Câmara Municipal de Vila Valério
+3205176,Vila Valério,camara,202609,vereador,VEREADOR,9.00,74958.84,0.00,0.00,0.00,Câmara Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,23691.75,2850.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202501,vice,VICE-PREFEITO,1.00,7515.92,0.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,23091.75,2250.00,0.00,0.00,Prefeitura Municipal de Vila Valério
@@ -4506,10 +4653,12 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205176,Vila Valério,prefeitura,202605,vice,VICE-PREFEITO,1.00,11028.76,2800.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202606,prefeito,PREFEITO MUNICIPAL,1.00,27018.46,4200.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202606,vice,VICE-PREFEITO,1.00,11028.76,2800.00,0.00,0.00,Prefeitura Municipal de Vila Valério
-3205176,Vila Valério,prefeitura,202607,prefeito,PREFEITO MUNICIPAL,1.00,22818.46,0.00,0.00,0.00,Prefeitura Municipal de Vila Valério
+3205176,Vila Valério,prefeitura,202607,prefeito,PREFEITO MUNICIPAL,1.00,27518.46,4700.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202607,vice,VICE-PREFEITO,1.00,11628.76,3400.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,27618.46,4800.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205176,Vila Valério,prefeitura,202608,vice,VICE-PREFEITO,1.00,11028.76,2800.00,0.00,0.00,Prefeitura Municipal de Vila Valério
+3205176,Vila Valério,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,26218.46,3400.00,0.00,0.00,Prefeitura Municipal de Vila Valério
+3205176,Vila Valério,prefeitura,202609,vice,VICE-PREFEITO,1.00,10928.76,2700.00,0.00,0.00,Prefeitura Municipal de Vila Valério
 3205200,Vila Velha,camara,202501,vereador,VEREADOR,25.00,340099.49,25090.68,0.00,0.00,Câmara Municipal de Vila Velha
 3205200,Vila Velha,camara,202502,vereador,VEREADOR,23.00,344096.73,25036.38,0.00,0.00,Câmara Municipal de Vila Velha
 3205200,Vila Velha,camara,202503,vereador,VEREADOR,21.00,344260.36,25200.00,0.00,0.00,Câmara Municipal de Vila Velha
@@ -4530,6 +4679,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205200,Vila Velha,camara,202606,vereador,VEREADOR,21.00,319060.35,0.00,0.00,0.00,Câmara Municipal de Vila Velha
 3205200,Vila Velha,camara,202607,vereador,VEREADOR,21.00,319060.35,0.00,0.00,0.00,Câmara Municipal de Vila Velha
 3205200,Vila Velha,camara,202608,vereador,VEREADOR,21.00,319060.35,0.00,0.00,0.00,Câmara Municipal de Vila Velha
+3205200,Vila Velha,camara,202609,vereador,VEREADOR,21.00,319060.35,0.00,0.00,0.00,Câmara Municipal de Vila Velha
 3205200,Vila Velha,prefeitura,202501,prefeito,PREFEITO MUNICIPAL,1.00,29750.00,750.00,0.00,0.00,Secretaria Municipal de Governo de Vila Velha
 3205200,Vila Velha,prefeitura,202501,vice,VICE PREFEITO MUNICIPAL,1.00,,,,,Secretaria Municipal de Governo de Vila Velha
 3205200,Vila Velha,prefeitura,202502,prefeito,PREFEITO MUNICIPAL,1.00,29750.00,750.00,0.00,0.00,Secretaria Municipal de Governo de Vila Velha
@@ -4570,6 +4720,8 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205200,Vila Velha,prefeitura,202607,vice,VICE PREFEITO MUNICIPAL,1.00,27965.00,850.00,0.00,0.00,Secretaria Municipal de Governo de Vila Velha
 3205200,Vila Velha,prefeitura,202608,prefeito,PREFEITO MUNICIPAL,1.00,29850.00,850.00,0.00,0.00,Secretaria Municipal de Gabinete do Prefeito de Vila Velha
 3205200,Vila Velha,prefeitura,202608,vice,VICE PREFEITO MUNICIPAL,1.00,39637.50,850.00,13557.50,0.00,Secretaria Municipal de Governo de Vila Velha
+3205200,Vila Velha,prefeitura,202609,prefeito,PREFEITO MUNICIPAL,1.00,44350.00,850.00,14500.00,0.00,Secretaria Municipal de Gabinete do Prefeito de Vila Velha
+3205200,Vila Velha,prefeitura,202609,vice,VICE PREFEITO MUNICIPAL,1.00,26080.00,850.00,0.00,0.00,Secretaria Municipal de Governo de Vila Velha
 3205309,Vitória,camara,202501,vereador,VEREADOR,26.00,370732.39,0.00,0.00,0.00,Câmara Municipal de Vitória
 3205309,Vitória,camara,202502,vereador,VEREADOR,21.00,372646.13,0.00,0.00,0.00,Câmara Municipal de Vitória
 3205309,Vitória,camara,202503,vereador,VEREADOR,21.00,371321.79,0.00,0.00,0.00,Câmara Municipal de Vitória
@@ -4590,6 +4742,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205309,Vitória,camara,202606,vereador,VEREADOR,21.00,393349.04,23795.45,0.00,0.00,Câmara Municipal de Vitória
 3205309,Vitória,camara,202607,vereador,VEREADOR,21.00,395321.79,24000.00,0.00,0.00,Câmara Municipal de Vitória
 3205309,Vitória,camara,202608,vereador,VEREADOR,21.00,395321.79,24000.00,0.00,0.00,Câmara Municipal de Vitória
+3205309,Vitória,camara,202609,vereador,VEREADOR,21.00,395321.79,24000.00,0.00,0.00,Câmara Municipal de Vitória
 3205309,Vitória,prefeitura,202501,prefeito,PREFEITO,1.00,19217.12,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
 3205309,Vitória,prefeitura,202501,vice,VICE-PREFEITO,2.00,15362.88,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
 3205309,Vitória,prefeitura,202502,prefeito,PREFEITO,1.00,19217.12,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
@@ -4626,3 +4779,4 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3205309,Vitória,prefeitura,202606,prefeito,PREFEITO,1.00,26707.69,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
 3205309,Vitória,prefeitura,202607,prefeito,PREFEITO,1.00,19217.12,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
 3205309,Vitória,prefeitura,202608,prefeito,PREFEITO,1.00,19217.12,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória
+3205309,Vitória,prefeitura,202609,prefeito,PREFEITO,1.00,19217.12,0.00,0.00,0.00,Secretaria Municipal de Governo de Vitória

@@ -6670,6 +6670,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213847,18,Alex da Piatã,Consultorias,12700.0
 2026,9,213848,20,Alex da Piatã,Trabalhos Técnicos,12700.0
 2026,9,213850,219,Alex da Piatã,Assessorias,12700.0
+2026,9,215692,591,Angelo Almeida,Consultorias,12700.0
 2026,9,213613,273,Angelo Coronel Filho,Trabalhos Técnicos,12700.0
 2026,9,213680,274,Angelo Coronel Filho,Consultorias,12700.0
 2026,9,213772,39,Angelo Coronel Filho,Assessorias,12740.0
@@ -6702,6 +6703,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213998,156,Eduardo Alencar,Pesquisas,12700.0
 2026,9,214892,440,Eduardo Alencar,Locação de veículo terrestre,14250.0
 2026,9,213702,64,Eduardo Salles,Consultorias,9500.0
+2026,9,215621,1900,Eduardo Salles,Assessorias,7000.0
 2026,9,215020,293,Euclides Fernandes,Locação de veículo terrestre,3500.0
 2026,9,215020,294,Euclides Fernandes,Locação de veículo terrestre,3500.0
 2026,9,215020,295,Euclides Fernandes,Locação de veículo terrestre,4500.0
@@ -6710,6 +6712,8 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,213918,202600000000349,Fabrício Falcão,Assessorias,10000.0
 2026,9,214070,95,Fabrício Falcão,Consultorias,5000.0
 2026,9,214070,202600000000003,Fabrício Falcão,Consultorias,5000.0
+2026,9,215606,95752,Fabrício Falcão,Locação de veículo terrestre,2900.0
+2026,9,215606,95753,Fabrício Falcão,Locação de veículo terrestre,2900.0
 2026,9,213592,872,Felipe Duarte,Assessorias,12000.0
 2026,9,213834,18,Felipe Duarte,Trabalhos Técnicos,11300.0
 2026,9,213874,25,Felipe Duarte,Consultorias,12700.0
@@ -6770,6 +6774,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214423,1676,Manuel Rocha,Consultorias,8000.0
 2026,9,214481,24,Manuel Rocha,Consultorias,4740.0
 2026,9,214484,17,Manuel Rocha,Locação de veículo terrestre,14250.0
+2026,9,215734,126,Manuel Rocha,Pesquisas,12700.0
 2026,9,213988,784,Marcinho Oliveira,Locação de veículo terrestre,12500.0
 2026,9,214042,1236,Marcinho Oliveira,Assessorias,7500.0
 2026,9,214093,237,Marcinho Oliveira,Consultorias,4350.0
@@ -6801,8 +6806,8 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214251,3989,Niltinho,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,555.0
 2026,9,214252,149,Niltinho,Consultorias,7000.0
 2026,9,214252,148,Niltinho,Assessorias,7000.0
-2026,9,214386,502,Niltinho,Assessorias,4700.0
 2026,9,214386,501,Niltinho,Consultorias,5700.0
+2026,9,214386,502,Niltinho,Assessorias,4700.0
 2026,9,214412,267,Olivia Santana,Assessorias,11500.0
 2026,9,215205,15215,Olivia Santana,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1000.0
 2026,9,214122,132,Osni Cardoso,Assessorias,11200.0
@@ -6867,6 +6872,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,9,214114,1039982039,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,131.99
 2026,9,214114,1039982006,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1354.59
 2026,9,214627,09.2026,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,8105.0
+2026,9,215703,0011687732,Zé Raimundo Fontes,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,380.76
 2026,9,214678,910,Zó,Locação de veículo terrestre,3656.71
 2026,9,214682,102,Zó,Assessorias,12700.0
 2026,10,214995,36,Alex da Piatã,Consultorias,12700.0
@@ -6875,6 +6881,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215346,50,Alex da Piatã,Divulgação da  atividade parlamentar,10000.0
 2026,10,215347,51,Alex da Piatã,Trabalhos Técnicos,12700.0
 2026,10,215408,129,Angelo Almeida,Divulgação da  atividade parlamentar,38500.0
+2026,10,215693,592,Angelo Almeida,Consultorias,12400.0
 2026,10,214898,40,Angelo Coronel Filho,Assessorias,12740.0
 2026,10,215074,299,Angelo Coronel Filho,Divulgação da  atividade parlamentar,34000.0
 2026,10,215369,05,Angelo Coronel Filho,Consultorias,12700.0
@@ -6886,12 +6893,22 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,214625,121,Binho Galinha,Trabalhos Técnicos,12700.0
 2026,10,214841,3,Binho Galinha,Assessorias,12600.0
 2026,10,215264,24,Bobô,Divulgação da  atividade parlamentar,9400.0
+2026,10,215470,2026000000018,Bobô,Divulgação da  atividade parlamentar,1500.0
+2026,10,215470,2026000000046,Bobô,Divulgação da  atividade parlamentar,500.0
+2026,10,215679,421,Bobô,Divulgação da  atividade parlamentar,1200.0
+2026,10,215852,2026000000023,Bobô,Divulgação da  atividade parlamentar,500.0
+2026,10,215852,2026000000024,Bobô,Divulgação da  atividade parlamentar,1600.0
 2026,10,215304,177,Cafu Barreto,Divulgação da  atividade parlamentar,28722.23
 2026,10,215309,176,Cafu Barreto,Divulgação da  atividade parlamentar,12000.0
 2026,10,215313,2600000000018,Cafu Barreto,Consultorias,10243.0
 2026,10,215259,81,Cláudia Oliveira,Assessorias,11100.0
 2026,10,215331,4023,Cláudia Oliveira,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,670.0
 2026,10,215337,2243,Cláudia Oliveira,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,520.0
+2026,10,215580,39,Cláudia Oliveira,Divulgação da  atividade parlamentar,2000.0
+2026,10,215655,207,Cláudia Oliveira,Divulgação da  atividade parlamentar,6000.0
+2026,10,215674,28,Cláudia Oliveira,Divulgação da  atividade parlamentar,1500.0
+2026,10,215719,115,Cláudia Oliveira,Divulgação da  atividade parlamentar,1000.0
+2026,10,215750,100,Cláudia Oliveira,Divulgação da  atividade parlamentar,1500.0
 2026,10,215070,298,Dr. Diego Castro,Divulgação da  atividade parlamentar,31000.0
 2026,10,215091,79,Dr. Diego Castro,Consultorias,12700.0
 2026,10,215270,122,Dr. Diego Castro,Pesquisas,12700.0
@@ -6901,11 +6918,15 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215512,162,Eduardo Alencar,Divulgação da  atividade parlamentar,20900.0
 2026,10,215512,161,Eduardo Alencar,Pesquisas,12700.0
 2026,10,215389,67,Eduardo Salles,Consultorias,9500.0
+2026,10,215622,1928,Eduardo Salles,Assessorias,7000.0
+2026,10,215712,35634,Eduardo Salles,Divulgação da  atividade parlamentar,20000.0
 2026,10,215338,23,Euclides Fernandes,Consultorias,7500.0
 2026,10,215339,49,Euclides Fernandes,Assessorias,7500.0
 2026,10,215163,2600000000421,Fabrício Falcão,Assessorias,10000.0
 2026,10,215310,98,Fabrício Falcão,Consultorias,5000.0
 2026,10,215349,122,Fabrício Falcão,Divulgação da  atividade parlamentar,28000.0
+2026,10,215606,95754,Fabrício Falcão,Locação de veículo terrestre,1309.68
+2026,10,215606,95755,Fabrício Falcão,Locação de veículo terrestre,2900.0
 2026,10,214836,877,Felipe Duarte,Assessorias,12000.0
 2026,10,214924,39,Felipe Duarte,Consultorias,12700.0
 2026,10,214927,46,Felipe Duarte,Trabalhos Técnicos,11300.0
@@ -6916,6 +6937,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,214844,25,Hassan,Trabalhos Técnicos,12000.0
 2026,10,214846,2600000000944,Hassan,Consultorias,8000.0
 2026,10,215297,32,Hassan,Divulgação da  atividade parlamentar,30000.0
+2026,10,215914,1,Hassan,Assessorias,10000.0
 2026,10,215415,2246,Ivana Bastos,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,2530.0
 2026,10,215415,1527,Ivana Bastos,Divulgação da  atividade parlamentar,824.0
 2026,10,215418,2026000000013,Ivana Bastos,Assessorias,12000.0
@@ -6933,7 +6955,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215111,29,Jose de Arimateia,Divulgação da  atividade parlamentar,12000.0
 2026,10,215242,2661,Jose de Arimateia,Divulgação da  atividade parlamentar,15000.0
 2026,10,215358,387,Jose de Arimateia,Locação de veículo terrestre,14000.0
-2026,10,215565,2026000000051,Jose de Arimateia,Divulgação da  atividade parlamentar,4000.0
+2026,10,215596,2026000000051,Jose de Arimateia,Divulgação da  atividade parlamentar,4000.0
 2026,10,215393,2026100000044,Jurailton Santos,Divulgação da  atividade parlamentar,6588.24
 2026,10,215432,226,Jurailton Santos,Divulgação da  atividade parlamentar,3000.0
 2026,10,215435,225,Jurailton Santos,Divulgação da  atividade parlamentar,9700.0
@@ -6949,6 +6971,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,214878,116,Júnior Nascimento,Pesquisas,12700.0
 2026,10,214890,88,Júnior Nascimento,Consultorias,12500.0
 2026,10,215016,76,Júnior Nascimento,Assessorias,12500.0
+2026,10,215695,1191,Júnior Nascimento,Divulgação da  atividade parlamentar,13000.0
 2026,10,215411,682,Kátia Oliveira,Divulgação da  atividade parlamentar,30000.0
 2026,10,215134,105,Laerte do Vando,Divulgação da  atividade parlamentar,6500.0
 2026,10,215138,2026000000057,Laerte do Vando,Pesquisas,12700.0
@@ -6974,14 +6997,19 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215135,226,Ludmilla Fiscina,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,15500.0
 2026,10,215238,1425,Ludmilla Fiscina,Consultorias,5000.0
 2026,10,215239,4,Ludmilla Fiscina,Divulgação da  atividade parlamentar,2500.0
+2026,10,215240,37,Ludmilla Fiscina,Trabalhos Técnicos,3500.0
 2026,10,215462,29,Manuel Rocha,Divulgação da  atividade parlamentar,11000.0
 2026,10,215463,293,Manuel Rocha,Divulgação da  atividade parlamentar,7000.0
+2026,10,215614,1693,Manuel Rocha,Consultorias,8000.0
+2026,10,215729,127,Manuel Rocha,Pesquisas,12700.0
 2026,10,215050,11,Marcinho Oliveira,Divulgação da  atividade parlamentar,15000.0
 2026,10,215164,118,Marcinho Oliveira,Pesquisas,12500.0
 2026,10,215202,792,Marcinho Oliveira,Locação de veículo terrestre,12500.0
 2026,10,215319,89,Marcinho Oliveira,Consultorias,12500.0
 2026,10,215322,1245,Marcinho Oliveira,Assessorias,11500.0
 2026,10,215450,20,Maria del Carmen,Divulgação da  atividade parlamentar,23000.0
+2026,10,215475,164,Maria del Carmen,Assessorias,5600.0
+2026,10,215749,74,Maria del Carmen,Divulgação da  atividade parlamentar,10000.0
 2026,10,214893,57,Marquinho Viana,Consultorias,1500.0
 2026,10,214893,22202,Marquinho Viana,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,500.0
 2026,10,215225,13258852,Marquinho Viana,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,619.0
@@ -6993,6 +7021,10 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215410,2026000000108,Marquinho Viana,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1000.0
 2026,10,215417,1163,Marquinho Viana,Trabalhos Técnicos,5000.0
 2026,10,215476,801,Marquinho Viana,Divulgação da  atividade parlamentar,2000.0
+2026,10,215676,9558,Marquinho Viana,Divulgação da  atividade parlamentar,5000.0
+2026,10,215714,375985,Marquinho Viana,Divulgação da  atividade parlamentar,27600.0
+2026,10,215737,37,Marquinho Viana,Divulgação da  atividade parlamentar,500.0
+2026,10,215737,260000000000033,Marquinho Viana,Divulgação da  atividade parlamentar,600.0
 2026,10,214702,11,Matheus Ferreira,Trabalhos Técnicos,12700.0
 2026,10,214718,875,Matheus Ferreira,Assessorias,12741.32
 2026,10,214718,876,Matheus Ferreira,Consultorias,12741.32
@@ -7003,6 +7035,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215603,167,Nelson Leal,Trabalhos Técnicos,12700.0
 2026,10,214986,122,Neusa Cadore,Assessorias,9800.0
 2026,10,214986,123,Neusa Cadore,Consultorias,9800.0
+2026,10,215764,148,Neusa Cadore,Divulgação da  atividade parlamentar,20700.0
 2026,10,214988,2239,Niltinho,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,800.0
 2026,10,214988,4020,Niltinho,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,555.0
 2026,10,214989,511,Niltinho,Consultorias,5700.0
@@ -7010,6 +7043,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215073,152,Niltinho,Assessorias,7000.0
 2026,10,215073,151,Niltinho,Consultorias,7000.0
 2026,10,215237,14,Niltinho,Locação de veículo terrestre,12500.0
+2026,10,215731,306,Niltinho,Divulgação da  atividade parlamentar,15000.0
 2026,10,215200,64,Osni Cardoso,Locação de veículo terrestre,12545.0
 2026,10,215235,133,Osni Cardoso,Assessorias,11200.0
 2026,10,215236,89,Osni Cardoso,Consultorias,11190.0
@@ -7017,9 +7051,10 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215256,233,Pancadinha,Assessorias,12700.0
 2026,10,215258,791,Pancadinha,Locação de veículo terrestre,12500.0
 2026,10,215371,52,Pancadinha,Divulgação da  atividade parlamentar,27100.0
-2026,10,215373,47,Pancadinha,Consultorias,12700.0
 2026,10,215472,462,Patrick Lopes,Consultorias,12700.0
 2026,10,215544,274,Patrick Lopes,Assessorias,12700.0
+2026,10,215637,2600000000011,Patrick Lopes,Trabalhos Técnicos,12700.0
+2026,10,215741,340,Patrick Lopes,Divulgação da  atividade parlamentar,40000.0
 2026,10,215100,21,Paulo Câmara,Assessorias,11000.0
 2026,10,215165,125853,Paulo Câmara,Consultorias,1000.0
 2026,10,215176,41,Paulo Câmara,Trabalhos Técnicos,3000.0
@@ -7028,12 +7063,27 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215406,2988,Paulo Câmara,Divulgação da  atividade parlamentar,10000.0
 2026,10,214978,1001,Pedro Tavares,Locação de veículo terrestre,14270.0
 2026,10,214983,10/2026,Pedro Tavares,Aluguel  de imóveis para escritório; despesas concernentes a eles,1600.0
+2026,10,215697,301,Pedro Tavares,Assessorias,8000.0
 2026,10,214830,523,Penalva,Assessorias,12740.0
 2026,10,214835,68,Penalva,Consultorias,11000.0
 2026,10,215098,46,Penalva,Divulgação da  atividade parlamentar,30000.0
 2026,10,215137,125852,Penalva,Consultorias,1700.0
+2026,10,215629,355,Penalva,Divulgação da  atividade parlamentar,2000.0
+2026,10,215634,202,Penalva,Divulgação da  atividade parlamentar,1500.0
+2026,10,215728,721,Penalva,Divulgação da  atividade parlamentar,2000.0
 2026,10,214967,46,Raimundinho da JR,Trabalhos Técnicos,11000.0
 2026,10,215027,25,Raimundinho da JR,Divulgação da  atividade parlamentar,40770.0
+2026,10,215699,1023,Ricardo Rodrigues,Consultorias,7000.0
+2026,10,215702,4025,Ricardo Rodrigues,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,1000.0
+2026,10,215704,1829,Ricardo Rodrigues,Locação de veículo terrestre,12500.0
+2026,10,215707,1016,Ricardo Rodrigues,Divulgação da  atividade parlamentar,11000.0
+2026,10,215708,44,Ricardo Rodrigues,Divulgação da  atividade parlamentar,7500.0
+2026,10,215762,24100,Ricardo Rodrigues,Assessorias,11200.0
+2026,10,215771,583,Ricardo Rodrigues,Divulgação da  atividade parlamentar,6166.0
+2026,10,215926,23,Ricardo Rodrigues,Divulgação da atividade parlamentar em redes sociais,23000.0
+2026,10,215625,27,Roberto Carlos,Consultorias,12700.0
+2026,10,215625,2244,Roberto Carlos,Aquisição ou locação de software; serviços postais  e de segurança; assinaturas de,865.0
+2026,10,215777,300,Roberto Carlos,Locação de veículo terrestre,14200.0
 2026,10,214527,216,Robinho,Assessorias,12500.0
 2026,10,214578,957,Robinho,Locação de veículo terrestre,14000.0
 2026,10,214699,3,Robinho,Consultorias,12500.0
@@ -7044,6 +7094,7 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215136,2026000000054,Rogério Andrade,Consultorias,12700.0
 2026,10,215251,7,Rogério Andrade,Trabalhos Técnicos,12700.0
 2026,10,214923,895,Samuel Junior,Assessorias,9500.0
+2026,10,215709,152,Samuel Junior,Locação de veículo terrestre,12000.0
 2026,10,215262,2056,Sandro Régis,Divulgação da  atividade parlamentar,39000.0
 2026,10,215263,790,Sandro Régis,Locação de veículo terrestre,12500.0
 2026,10,215521,1313,Sandro Régis,Assessorias,9750.0
@@ -7057,7 +7108,28 @@ ano,mes,processo,nf,deputado,categoria,valor
 2026,10,215336,247,Vitor Azevedo,Assessorias,4200.0
 2026,10,215340,2701,Vitor Azevedo,Assessorias,8500.0
 2026,10,215439,146,Vitor Azevedo,Divulgação da  atividade parlamentar,40000.0
+2026,10,215715,803,Vitor Azevedo,Locação de veículo terrestre,14000.0
 2026,10,214897,79,Vitor Bonfim,Assessorias,9500.0
 2026,10,214994,2124,Vitor Bonfim,Consultorias,11000.0
 2026,10,215099,14248738,Vitor Bonfim,"Locomoção, hospedagem",289.75
-2026,10,215607,308,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,2000.0
+2026,10,215414,15,Vitor Bonfim,Divulgação da  atividade parlamentar,2000.0
+2026,10,215414,14,Vitor Bonfim,Divulgação da  atividade parlamentar,9000.0
+2026,10,215595,2600000000036,Zé Raimundo Fontes,Assessorias,11000.0
+2026,10,215598,496,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,1000.0
+2026,10,215607,2600000000308,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,2000.0
+2026,10,215671,52,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,2000.0
+2026,10,215671,2600000000061,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,2000.0
+2026,10,215703,202600000000182,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,5500.0
+2026,10,215744,0010,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,8105.0
+2026,10,215744,003185606,Zé Raimundo Fontes,Aluguel  de imóveis para escritório; despesas concernentes a eles,398.31
+2026,10,215763,2600000000073,Zé Raimundo Fontes,Locação de veículo terrestre,5600.0
+2026,10,215826,202600000000026,Zé Raimundo Fontes,Divulgação da  atividade parlamentar,2000.0
+2026,10,215713,4817,Zó,Divulgação da  atividade parlamentar,33320.0
+2026,10,215717,922,Zó,Locação de veículo terrestre,3653.71
+2026,11,215733,2026000000045,Binho Galinha,Divulgação da  atividade parlamentar,29421.29
+2026,11,215904,1,Hassan,Consultorias,8000.0
+2026,11,215922,1,Hassan,Trabalhos Técnicos,12000.0
+2026,11,215748,141,Marcinho Oliveira,Divulgação da  atividade parlamentar,25700.0
+2026,11,215885,525,Penalva,Assessorias,12740.0
+2026,11,215823,217,Robinho,Assessorias,12500.0
+2026,11,215892,1,Robinho,Locação de veículo terrestre,14000.0

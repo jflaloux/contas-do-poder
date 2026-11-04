@@ -19,6 +19,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300100,Angra dos Reis,camara,202606,vereador,Agente Político,15.00,254085.00,,,,CAMARA ANGRA DOS REIS
 3300100,Angra dos Reis,camara,202607,vereador,Agente Político,15.00,254085.00,,,,CAMARA ANGRA DOS REIS
 3300100,Angra dos Reis,camara,202608,vereador,Agente Político,15.00,254085.00,,,,CAMARA ANGRA DOS REIS
+3300100,Angra dos Reis,camara,202609,vereador,Agente Político,15.00,254085.00,,,,CAMARA ANGRA DOS REIS
 3300159,Aperibé,camara,202501,vereador,Agente Político,9.00,68370.03,,,,CAMARA APERIBE
 3300159,Aperibé,camara,202502,vereador,Agente Político,9.00,68370.03,,,,CAMARA APERIBE
 3300159,Aperibé,camara,202503,vereador,Agente Político,9.00,68370.03,,,,CAMARA APERIBE
@@ -59,6 +60,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300209,Araruama,camara,202606,vereador,Agente Político,20.00,303527.69,,,,CAMARA ARARUAMA
 3300209,Araruama,camara,202607,vereador,Agente Político,20.00,303579.15,,,,CAMARA ARARUAMA
 3300209,Araruama,camara,202608,vereador,Agente Político,21.00,303487.64,,,,CAMARA ARARUAMA
+3300209,Araruama,camara,202609,vereador,Agente Político,20.00,278137.66,,,,CAMARA ARARUAMA
 3300225,Areal,camara,202501,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
 3300225,Areal,camara,202502,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
 3300225,Areal,camara,202503,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
@@ -79,6 +81,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300225,Areal,camara,202606,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
 3300225,Areal,camara,202607,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
 3300225,Areal,camara,202608,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
+3300225,Areal,camara,202609,vereador,Agente Político,9.00,88719.39,,,,CAMARA AREAL
 3300233,Armação dos Búzios,camara,202501,vereador,Agente Político,9.00,79636.47,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
 3300233,Armação dos Búzios,camara,202502,vereador,Agente Político,9.00,82068.12,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
 3300233,Armação dos Búzios,camara,202503,vereador,Agente Político,9.00,82068.12,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
@@ -99,6 +102,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300233,Armação dos Búzios,camara,202606,vereador,Agente Político,9.00,85687.74,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
 3300233,Armação dos Búzios,camara,202607,vereador,Agente Político,9.00,85687.74,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
 3300233,Armação dos Búzios,camara,202608,vereador,Agente Político,9.00,85687.74,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
+3300233,Armação dos Búzios,camara,202609,vereador,Agente Político,9.00,85687.74,,,,CÂMARA ARMAÇÃO DOS BÚZIOS
 3300258,Arraial do Cabo,camara,202501,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
 3300258,Arraial do Cabo,camara,202502,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
 3300258,Arraial do Cabo,camara,202503,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
@@ -119,6 +123,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300258,Arraial do Cabo,camara,202606,vereador,Agente Político,10.00,84500.00,,,,CAMARA ARRAIAL DO CABO
 3300258,Arraial do Cabo,camara,202607,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
 3300258,Arraial do Cabo,camara,202608,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
+3300258,Arraial do Cabo,camara,202609,vereador,Agente Político,9.00,81000.00,,,,CAMARA ARRAIAL DO CABO
 3300308,Barra do Piraí,camara,202501,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
 3300308,Barra do Piraí,camara,202502,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
 3300308,Barra do Piraí,camara,202503,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
@@ -139,6 +144,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300308,Barra do Piraí,camara,202606,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
 3300308,Barra do Piraí,camara,202607,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
 3300308,Barra do Piraí,camara,202608,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
+3300308,Barra do Piraí,camara,202609,vereador,Agente Político,11.00,129667.89,,,,CAMARA BARRA DO PIRAI
 3300407,Barra Mansa,camara,202501,vereador,Agente Político,19.00,216505.00,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202502,vereador,Agente Político,19.00,237305.00,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202503,vereador,Agente Político,19.00,254005.00,,,,CAMARA BARRA MANSA
@@ -199,6 +205,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300506,Bom Jardim,camara,202606,vereador,Agente Político,11.00,140822.93,,,,CAMARA BOM JARDIM
 3300506,Bom Jardim,camara,202607,vereador,Agente Político,11.00,130921.01,,,,CAMARA BOM JARDIM
 3300506,Bom Jardim,camara,202608,vereador,Agente Político,11.00,130921.01,,,,CAMARA BOM JARDIM
+3300506,Bom Jardim,camara,202609,vereador,Agente Político,11.00,130921.01,,,,CAMARA BOM JARDIM
 3300605,Bom Jesus do Itabapoana,camara,202501,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
 3300605,Bom Jesus do Itabapoana,camara,202502,vereador,Agente Político,13.00,121828.86,,,,CAMARA BOM JESUS DO ITABAPOANA
 3300605,Bom Jesus do Itabapoana,camara,202503,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
@@ -219,6 +226,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300605,Bom Jesus do Itabapoana,camara,202606,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
 3300605,Bom Jesus do Itabapoana,camara,202607,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
 3300605,Bom Jesus do Itabapoana,camara,202608,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
+3300605,Bom Jesus do Itabapoana,camara,202609,vereador,Agente Político,13.00,121828.85,,,,CAMARA BOM JESUS DO ITABAPOANA
 3300704,Cabo Frio,camara,202501,vereador,Agente Político,22.00,327010.00,,,,CAMARA CABO FRIO
 3300704,Cabo Frio,camara,202502,vereador,Agente Político,21.00,333900.00,,,,CAMARA CABO FRIO
 3300704,Cabo Frio,camara,202503,vereador,Agente Político,21.00,333900.00,,,,CAMARA CABO FRIO
@@ -239,6 +247,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300704,Cabo Frio,camara,202606,vereador,Agente Político,21.00,339199.95,,,,CAMARA CABO FRIO
 3300704,Cabo Frio,camara,202607,vereador,Agente Político,21.00,333900.00,,,,CAMARA CABO FRIO
 3300704,Cabo Frio,camara,202608,vereador,Agente Político,21.00,333900.00,,,,CAMARA CABO FRIO
+3300704,Cabo Frio,camara,202609,vereador,Agente Político,21.00,333900.00,,,,CAMARA CABO FRIO
 3300803,Cachoeiras de Macacu,camara,202501,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
 3300803,Cachoeiras de Macacu,camara,202502,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
 3300803,Cachoeiras de Macacu,camara,202503,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
@@ -259,6 +268,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300803,Cachoeiras de Macacu,camara,202606,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
 3300803,Cachoeiras de Macacu,camara,202607,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
 3300803,Cachoeiras de Macacu,camara,202608,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
+3300803,Cachoeiras de Macacu,camara,202609,vereador,Agente Político,15.00,150000.00,,,,CAMARA CACHOEIRAS DE MACACU
 3300902,Cambuci,camara,202501,vereador,Agente Político,9.00,81000.00,,,,CAMARA CAMBUCI
 3300902,Cambuci,camara,202502,vereador,Agente Político,9.00,81000.00,,,,CAMARA CAMBUCI
 3300902,Cambuci,camara,202503,vereador,Agente Político,9.00,81000.00,,,,CAMARA CAMBUCI
@@ -279,6 +289,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300902,Cambuci,camara,202606,vereador,Agente Político,9.00,89100.00,,,,CAMARA CAMBUCI
 3300902,Cambuci,camara,202607,vereador,Agente Político,9.00,89100.00,,,,CAMARA CAMBUCI
 3300902,Cambuci,camara,202608,vereador,Agente Político,9.00,89100.00,,,,CAMARA CAMBUCI
+3300902,Cambuci,camara,202609,vereador,Agente Político,9.00,89100.00,,,,CAMARA CAMBUCI
 3300936,Carapebus,camara,202501,vereador,Agente Político,9.00,67500.00,,,,CAMARA CARAPEBUS
 3300936,Carapebus,camara,202502,vereador,Agente Político,10.00,64000.00,,,,CAMARA CARAPEBUS
 3300936,Carapebus,camara,202503,vereador,Agente Político,11.00,63500.00,,,,CAMARA CARAPEBUS
@@ -299,6 +310,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300936,Carapebus,camara,202606,vereador,Agente Político,13.00,60000.00,,,,CAMARA CARAPEBUS
 3300936,Carapebus,camara,202607,vereador,Agente Político,14.00,67500.00,,,,CAMARA CARAPEBUS
 3300936,Carapebus,camara,202608,vereador,Agente Político,14.00,67500.00,,,,CAMARA CARAPEBUS
+3300936,Carapebus,camara,202609,vereador,Agente Político,14.00,67500.00,,,,CAMARA CARAPEBUS
 3300951,Comendador Levy Gasparian,camara,202501,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
 3300951,Comendador Levy Gasparian,camara,202502,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
 3300951,Comendador Levy Gasparian,camara,202503,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
@@ -319,6 +331,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300951,Comendador Levy Gasparian,camara,202606,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
 3300951,Comendador Levy Gasparian,camara,202607,vereador,Agente Político,9.00,46531.53,,,,CAMARA COMENDADOR LEVY GASPARIAN
 3300951,Comendador Levy Gasparian,camara,202608,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
+3300951,Comendador Levy Gasparian,camara,202609,vereador,Agente Político,9.00,45580.05,,,,CAMARA COMENDADOR LEVY GASPARIAN
 3301009,Campos dos Goytacazes,camara,202501,vereador,Agente Político,27.00,369123.53,,,,CAMARA CAMPOS DOS GOYTACAZES
 3301009,Campos dos Goytacazes,camara,202502,vereador,Agente Político,25.00,338092.86,,,,CAMARA CAMPOS DOS GOYTACAZES
 3301009,Campos dos Goytacazes,camara,202503,vereador,Agente Político,25.00,387192.50,,,,CAMARA CAMPOS DOS GOYTACAZES
@@ -339,6 +352,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301009,Campos dos Goytacazes,camara,202606,vereador,Agente Político,25.00,374202.50,,,,CAMARA CAMPOS DOS GOYTACAZES
 3301009,Campos dos Goytacazes,camara,202607,vereador,Agente Político,27.00,406473.08,,,,CAMARA CAMPOS DOS GOYTACAZES
 3301009,Campos dos Goytacazes,camara,202608,vereador,Agente Político,27.00,412900.68,,,,CAMARA CAMPOS DOS GOYTACAZES
+3301009,Campos dos Goytacazes,camara,202609,vereador,Agente Político,25.00,405461.11,,,,CAMARA CAMPOS DOS GOYTACAZES
 3301108,Cantagalo,camara,202501,vereador,Agente Político,11.00,89726.52,,,,CAMARA CANTAGALO
 3301108,Cantagalo,camara,202502,vereador,Agente Político,11.00,100920.68,,,,CAMARA CANTAGALO
 3301108,Cantagalo,camara,202503,vereador,Agente Político,11.00,89726.52,,,,CAMARA CANTAGALO
@@ -359,6 +373,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301108,Cantagalo,camara,202606,vereador,Agente Político,11.00,134589.83,,,,CAMARA CANTAGALO
 3301108,Cantagalo,camara,202607,vereador,Agente Político,11.00,89726.52,,,,CAMARA CANTAGALO
 3301108,Cantagalo,camara,202608,vereador,Agente Político,11.00,89726.52,,,,CAMARA CANTAGALO
+3301108,Cantagalo,camara,202609,vereador,Agente Político,11.00,89726.52,,,,CAMARA CANTAGALO
 3301157,Cardoso Moreira,camara,202501,vereador,Agente Político,13.00,75083.33,,,,CAMARA CARDOSO MOREIRA
 3301157,Cardoso Moreira,camara,202502,vereador,Agente Político,10.00,76500.00,,,,CAMARA CARDOSO MOREIRA
 3301157,Cardoso Moreira,camara,202503,vereador,Agente Político,10.00,76500.00,,,,CAMARA CARDOSO MOREIRA
@@ -379,6 +394,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301157,Cardoso Moreira,camara,202606,vereador,Agente Político,10.00,81000.00,,,,CAMARA CARDOSO MOREIRA
 3301157,Cardoso Moreira,camara,202607,vereador,Agente Político,10.00,81000.00,,,,CAMARA CARDOSO MOREIRA
 3301157,Cardoso Moreira,camara,202608,vereador,Agente Político,10.00,81000.00,,,,CAMARA CARDOSO MOREIRA
+3301157,Cardoso Moreira,camara,202609,vereador,Agente Político,10.00,86666.66,,,,CAMARA CARDOSO MOREIRA
 3301207,Carmo,camara,202501,vereador,Agente Político,11.00,87167.52,,,,CAMARA CARMO
 3301207,Carmo,camara,202502,vereador,Agente Político,11.00,87167.52,,,,CAMARA CARMO
 3301207,Carmo,camara,202503,vereador,Agente Político,11.00,87167.52,,,,CAMARA CARMO
@@ -398,6 +414,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301207,Carmo,camara,202606,vereador,Agente Político,11.00,139251.28,,,,CAMARA CARMO
 3301207,Carmo,camara,202607,vereador,Agente Político,11.00,95667.52,,,,CAMARA CARMO
 3301207,Carmo,camara,202608,vereador,Agente Político,11.00,95667.52,,,,CAMARA CARMO
+3301207,Carmo,camara,202609,vereador,Agente Político,11.00,95667.52,,,,CAMARA CARMO
 3301306,Casimiro de Abreu,camara,202501,vereador,Agente Político,11.00,93714.50,,,,CAMARA CASIMIRO DE ABREU
 3301306,Casimiro de Abreu,camara,202502,vereador,Agente Político,10.00,93714.50,,,,CAMARA CASIMIRO DE ABREU
 3301306,Casimiro de Abreu,camara,202503,vereador,Agente Político,10.00,93714.50,,,,CAMARA CASIMIRO DE ABREU
@@ -418,6 +435,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301306,Casimiro de Abreu,camara,202606,vereador,Agente Político,11.00,103085.95,,,,CAMARA CASIMIRO DE ABREU
 3301306,Casimiro de Abreu,camara,202607,vereador,Agente Político,11.00,103085.95,,,,CAMARA CASIMIRO DE ABREU
 3301306,Casimiro de Abreu,camara,202608,vereador,Agente Político,11.00,103085.95,,,,CAMARA CASIMIRO DE ABREU
+3301306,Casimiro de Abreu,camara,202609,vereador,Agente Político,11.00,103085.95,,,,CAMARA CASIMIRO DE ABREU
 3301405,Conceição de Macabu,camara,202501,vereador,Agente Político,11.00,71500.00,,,,CÂMARA CONCEIÇÃO DE MACABU
 3301405,Conceição de Macabu,camara,202502,vereador,Agente Político,11.00,107718.75,,,,CÂMARA CONCEIÇÃO DE MACABU
 3301405,Conceição de Macabu,camara,202503,vereador,Agente Político,11.00,91356.25,,,,CÂMARA CONCEIÇÃO DE MACABU
@@ -438,6 +456,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301405,Conceição de Macabu,camara,202606,vereador,Agente Político,13.00,100543.39,,,,CÂMARA CONCEIÇÃO DE MACABU
 3301405,Conceição de Macabu,camara,202607,vereador,Agente Político,14.00,101635.78,,,,CÂMARA CONCEIÇÃO DE MACABU
 3301405,Conceição de Macabu,camara,202608,vereador,Agente Político,13.00,100543.39,,,,CÂMARA CONCEIÇÃO DE MACABU
+3301405,Conceição de Macabu,camara,202609,vereador,Agente Político,14.00,102947.80,,,,CÂMARA CONCEIÇÃO DE MACABU
 3301504,Cordeiro,camara,202501,vereador,Agente Político,11.00,83801.19,,,,CAMARA CORDEIRO
 3301504,Cordeiro,camara,202502,vereador,Agente Político,12.00,85578.79,,,,CAMARA CORDEIRO
 3301504,Cordeiro,camara,202503,vereador,Agente Político,12.00,91419.48,,,,CAMARA CORDEIRO
@@ -458,6 +477,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301504,Cordeiro,camara,202606,vereador,Agente Político,11.00,94801.19,,,,CAMARA CORDEIRO
 3301504,Cordeiro,camara,202607,vereador,Agente Político,11.00,132511.72,,,,CAMARA CORDEIRO
 3301504,Cordeiro,camara,202608,vereador,Agente Político,11.00,94801.19,,,,CAMARA CORDEIRO
+3301504,Cordeiro,camara,202609,vereador,Agente Político,11.00,94801.19,,,,CAMARA CORDEIRO
 3301603,Duas Barras,camara,202501,vereador,Agente Político,12.00,79944.90,,,,CAMARA DUAS BARRAS
 3301603,Duas Barras,camara,202502,vereador,Agente Político,10.00,83353.42,,,,CAMARA DUAS BARRAS
 3301603,Duas Barras,camara,202503,vereador,Agente Político,9.00,83663.28,,,,CAMARA DUAS BARRAS
@@ -478,6 +498,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301603,Duas Barras,camara,202606,vereador,Agente Político,9.00,97561.92,,,,CAMARA DUAS BARRAS
 3301603,Duas Barras,camara,202607,vereador,Agente Político,9.00,95263.28,,,,CAMARA DUAS BARRAS
 3301603,Duas Barras,camara,202608,vereador,Agente Político,9.00,95263.28,,,,CAMARA DUAS BARRAS
+3301603,Duas Barras,camara,202609,vereador,Agente Político,9.00,94463.28,,,,CAMARA DUAS BARRAS
 3301702,Duque de Caxias,camara,202501,vereador,Agente Político,28.00,482124.98,,,,CAMARA DUQUE DE CAXIAS
 3301702,Duque de Caxias,camara,202502,vereador,Agente Político,29.00,525625.00,,,,CAMARA DUQUE DE CAXIAS
 3301702,Duque de Caxias,camara,202503,vereador,Agente Político,29.00,525625.00,,,,CAMARA DUQUE DE CAXIAS
@@ -498,6 +519,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301702,Duque de Caxias,camara,202606,vereador,Agente Político,29.00,525625.00,,,,CAMARA DUQUE DE CAXIAS
 3301702,Duque de Caxias,camara,202607,vereador,Agente Político,29.00,525625.00,,,,CAMARA DUQUE DE CAXIAS
 3301702,Duque de Caxias,camara,202608,vereador,Agente Político,29.00,531666.66,,,,CAMARA DUQUE DE CAXIAS
+3301702,Duque de Caxias,camara,202609,vereador,Agente Político,29.00,525625.00,,,,CAMARA DUQUE DE CAXIAS
 3301801,Engenheiro Paulo de Frontin,camara,202501,vereador,Agente Político,9.00,54108.00,,,,CAMARA ENGENHEIRO PAULO DE FRONTIN
 3301801,Engenheiro Paulo de Frontin,camara,202502,vereador,Agente Político,9.00,54108.00,,,,CAMARA ENGENHEIRO PAULO DE FRONTIN
 3301801,Engenheiro Paulo de Frontin,camara,202503,vereador,Agente Político,9.00,54108.00,,,,CAMARA ENGENHEIRO PAULO DE FRONTIN
@@ -538,6 +560,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301850,Guapimirim,camara,202606,vereador,Agente Político,10.00,124952.70,,,,CAMARA GUAPIMIRIM
 3301850,Guapimirim,camara,202607,vereador,Agente Político,10.00,133005.20,,,,CAMARA GUAPIMIRIM
 3301850,Guapimirim,camara,202608,vereador,Agente Político,10.00,125230.38,,,,CAMARA GUAPIMIRIM
+3301850,Guapimirim,camara,202609,vereador,Agente Político,10.00,124952.70,,,,CAMARA GUAPIMIRIM
 3301876,Iguaba Grande,camara,202501,vereador,Agente Político,11.00,19408.40,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202502,vereador,Agente Político,11.00,21426.84,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202503,vereador,Agente Político,11.00,19917.62,,,,CAMARA IGUABA GRANDE
@@ -558,6 +581,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3301876,Iguaba Grande,camara,202606,vereador,Agente Político,11.00,39193.50,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202607,vereador,Agente Político,11.00,30140.40,,,,CAMARA IGUABA GRANDE
 3301876,Iguaba Grande,camara,202608,vereador,Agente Político,11.00,36067.21,,,,CAMARA IGUABA GRANDE
+3301876,Iguaba Grande,camara,202609,vereador,Agente Político,11.00,34927.48,,,,CAMARA IGUABA GRANDE
 3301900,Itaboraí,camara,202501,vereador,Agente Político,11.00,199650.00,,,,CAMARA ITABORAI
 3301900,Itaboraí,camara,202502,vereador,Agente Político,11.00,199650.00,,,,CAMARA ITABORAI
 3301900,Itaboraí,camara,202503,vereador,Agente Político,11.00,199650.00,,,,CAMARA ITABORAI
@@ -598,6 +622,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302007,Itaguaí,camara,202606,vereador,Agente Político,11.00,158593.82,,,,CAMARA ITAGUAI
 3302007,Itaguaí,camara,202607,vereador,Agente Político,12.00,159074.41,,,,CAMARA ITAGUAI
 3302007,Itaguaí,camara,202608,vereador,Agente Político,11.00,158593.82,,,,CAMARA ITAGUAI
+3302007,Itaguaí,camara,202609,vereador,Agente Político,11.00,165349.91,,,,CAMARA ITAGUAI
 3302056,Italva,camara,202501,vereador,Agente Político,11.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202502,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202503,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
@@ -618,6 +643,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302056,Italva,camara,202606,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202607,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
 3302056,Italva,camara,202608,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
+3302056,Italva,camara,202609,vereador,Agente Político,9.00,91371.60,,,,CAMARA ITALVA
 3302106,Itaocara,camara,202501,vereador,Agente Político,11.00,107800.00,,,,CAMARA ITAOCARA
 3302106,Itaocara,camara,202502,vereador,Agente Político,11.00,107800.00,,,,CAMARA ITAOCARA
 3302106,Itaocara,camara,202503,vereador,Agente Político,11.00,107800.00,,,,CAMARA ITAOCARA
@@ -638,6 +664,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302106,Itaocara,camara,202606,vereador,Agente Político,12.00,107473.34,,,,CAMARA ITAOCARA
 3302106,Itaocara,camara,202607,vereador,Agente Político,12.00,107800.00,,,,CAMARA ITAOCARA
 3302106,Itaocara,camara,202608,vereador,Agente Político,11.00,107800.00,,,,CAMARA ITAOCARA
+3302106,Itaocara,camara,202609,vereador,Agente Político,11.00,107800.00,,,,CAMARA ITAOCARA
 3302205,Itaperuna,camara,202501,vereador,Agente Político,25.00,365185.87,,,,CAMARA ITAPERUNA
 3302205,Itaperuna,camara,202502,vereador,Agente Político,13.00,157083.68,,,,CAMARA ITAPERUNA
 3302205,Itaperuna,camara,202503,vereador,Agente Político,13.00,179844.86,,,,CAMARA ITAPERUNA
@@ -658,6 +685,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302205,Itaperuna,camara,202606,vereador,Agente Político,13.00,171685.67,,,,CAMARA ITAPERUNA
 3302205,Itaperuna,camara,202607,vereador,Agente Político,13.00,171685.67,,,,CAMARA ITAPERUNA
 3302205,Itaperuna,camara,202608,vereador,Agente Político,13.00,257528.44,,,,CAMARA ITAPERUNA
+3302205,Itaperuna,camara,202609,vereador,Agente Político,13.00,171685.67,,,,CAMARA ITAPERUNA
 3302254,Itatiaia,camara,202501,vereador,Agente Político,13.00,128724.96,,,,CAMARA ITATIAIA
 3302254,Itatiaia,camara,202502,vereador,Agente Político,13.00,128724.96,,,,CAMARA ITATIAIA
 3302254,Itatiaia,camara,202503,vereador,Agente Político,13.00,128724.96,,,,CAMARA ITATIAIA
@@ -678,6 +706,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302254,Itatiaia,camara,202606,vereador,Agente Político,14.00,140853.61,,,,CAMARA ITATIAIA
 3302254,Itatiaia,camara,202607,vereador,Agente Político,14.00,140853.61,,,,CAMARA ITATIAIA
 3302254,Itatiaia,camara,202608,vereador,Agente Político,14.00,140853.61,,,,CAMARA ITATIAIA
+3302254,Itatiaia,camara,202609,vereador,Agente Político,14.00,140853.61,,,,CAMARA ITATIAIA
 3302270,Japeri,camara,202501,vereador,Agente Político,20.00,134673.00,,,,CAMARA JAPERI
 3302270,Japeri,camara,202502,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
 3302270,Japeri,camara,202503,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
@@ -698,6 +727,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302270,Japeri,camara,202606,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
 3302270,Japeri,camara,202607,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
 3302270,Japeri,camara,202608,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
+3302270,Japeri,camara,202609,vereador,Agente Político,11.00,139755.00,,,,CAMARA JAPERI
 3302304,Laje do Muriaé,camara,202501,vereador,Agente Político,9.00,59400.00,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202502,vereador,Agente Político,9.00,59400.00,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202503,vereador,Agente Político,9.00,59400.00,,,,CAMARA LAJE DO MURIAE
@@ -738,6 +768,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302403,Macaé,camara,202606,vereador,Agente Político,19.00,108948.15,,,,CAMARA MACAE
 3302403,Macaé,camara,202607,vereador,Agente Político,18.00,163436.85,,,,CAMARA MACAE
 3302403,Macaé,camara,202608,vereador,Agente Político,18.00,150136.85,,,,CAMARA MACAE
+3302403,Macaé,camara,202609,vereador,Agente Político,18.00,145962.22,,,,CAMARA MACAE
 3302452,Macuco,camara,202501,vereador,Agente Político,9.00,46330.92,,,,CAMARA MACUCO
 3302452,Macuco,camara,202502,vereador,Agente Político,9.00,46330.92,,,,CAMARA MACUCO
 3302452,Macuco,camara,202503,vereador,Agente Político,9.00,46330.92,,,,CAMARA MACUCO
@@ -758,6 +789,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302452,Macuco,camara,202606,vereador,Agente Político,9.00,55780.92,,,,CAMARA MACUCO
 3302452,Macuco,camara,202607,vereador,Agente Político,9.00,55780.92,,,,CAMARA MACUCO
 3302452,Macuco,camara,202608,vereador,Agente Político,9.00,55780.92,,,,CAMARA MACUCO
+3302452,Macuco,camara,202609,vereador,Agente Político,9.00,55780.92,,,,CAMARA MACUCO
 3302502,Magé,camara,202501,vereador,Agente Político,17.00,249774.38,,,,CAMARA MAGE
 3302502,Magé,camara,202502,vereador,Agente Político,17.00,257274.06,,,,CAMARA MAGE
 3302502,Magé,camara,202503,vereador,Agente Político,17.00,259675.53,,,,CAMARA MAGE
@@ -778,6 +810,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302502,Magé,camara,202606,vereador,Agente Político,17.00,250136.53,,,,CAMARA MAGE
 3302502,Magé,camara,202607,vereador,Agente Político,17.00,258286.95,,,,CAMARA MAGE
 3302502,Magé,camara,202608,vereador,Agente Político,17.00,258286.95,,,,CAMARA MAGE
+3302502,Magé,camara,202609,vereador,Agente Político,18.00,258286.95,,,,CAMARA MAGE
 3302601,Mangaratiba,camara,202501,vereador,Agente Político,13.00,83406.44,,,,CAMARA MANGARATIBA
 3302601,Mangaratiba,camara,202502,vereador,Agente Político,14.00,82764.85,,,,CAMARA MANGARATIBA
 3302601,Mangaratiba,camara,202503,vereador,Agente Político,13.00,83406.44,,,,CAMARA MANGARATIBA
@@ -798,6 +831,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302601,Mangaratiba,camara,202606,vereador,Agente Político,13.00,113149.77,,,,CAMARA MANGARATIBA
 3302601,Mangaratiba,camara,202607,vereador,Agente Político,13.00,113149.77,,,,CAMARA MANGARATIBA
 3302601,Mangaratiba,camara,202608,vereador,Agente Político,13.00,113149.77,,,,CAMARA MANGARATIBA
+3302601,Mangaratiba,camara,202609,vereador,Agente Político,13.00,113149.77,,,,CAMARA MANGARATIBA
 3302700,Maricá,camara,202501,vereador,Agente Político,21.00,342166.11,,,,CAMARA MARICA
 3302700,Maricá,camara,202502,vereador,Agente Político,21.00,346566.99,,,,CAMARA MARICA
 3302700,Maricá,camara,202503,vereador,Agente Político,21.00,346566.99,,,,CAMARA MARICA
@@ -818,6 +852,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302700,Maricá,camara,202606,vereador,Agente Político,21.00,346566.99,,,,CAMARA MARICA
 3302700,Maricá,camara,202607,vereador,Agente Político,22.00,349000.26,,,,CAMARA MARICA
 3302700,Maricá,camara,202608,vereador,Agente Político,21.00,346566.99,,,,CAMARA MARICA
+3302700,Maricá,camara,202609,vereador,Agente Político,24.00,379573.38,,,,CAMARA MARICA
 3302809,Mendes,camara,202501,vereador,Agente Político,10.00,82340.02,,,,CAMARA MENDES
 3302809,Mendes,camara,202502,vereador,Agente Político,11.00,94814.52,,,,CAMARA MENDES
 3302809,Mendes,camara,202503,vereador,Agente Político,11.00,96698.25,,,,CAMARA MENDES
@@ -834,6 +869,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302809,Mendes,camara,202606,vereador,Agente Político,11.00,82487.16,,,,CAMARA MENDES
 3302809,Mendes,camara,202607,vereador,Agente Político,11.00,82487.16,,,,CAMARA MENDES
 3302809,Mendes,camara,202608,vereador,Agente Político,11.00,82487.16,,,,CAMARA MENDES
+3302809,Mendes,camara,202609,vereador,Agente Político,11.00,82487.16,,,,CAMARA MENDES
 3302858,Mesquita,camara,202501,vereador,Agente Político,10.00,100210.00,,,,CAMARA MESQUITA
 3302858,Mesquita,camara,202502,vereador,Agente Político,10.00,100210.00,,,,CAMARA MESQUITA
 3302858,Mesquita,camara,202503,vereador,Agente Político,10.00,100210.00,,,,CAMARA MESQUITA
@@ -874,6 +910,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302908,Miguel Pereira,camara,202606,vereador,Agente Político,13.00,109746.45,,,,CAMARA MIGUEL PEREIRA
 3302908,Miguel Pereira,camara,202607,vereador,Agente Político,11.00,105125.99,,,,CAMARA MIGUEL PEREIRA
 3302908,Miguel Pereira,camara,202608,vereador,Agente Político,10.00,99019.20,,,,CAMARA MIGUEL PEREIRA
+3302908,Miguel Pereira,camara,202609,vereador,Agente Político,10.00,99019.20,,,,CAMARA MIGUEL PEREIRA
 3303005,Miracema,camara,202501,vereador,Agente Político,11.00,98120.00,,,,CAMARA MIRACEMA
 3303005,Miracema,camara,202502,vereador,Agente Político,11.00,98120.00,,,,CAMARA MIRACEMA
 3303005,Miracema,camara,202503,vereador,Agente Político,11.00,98120.00,,,,CAMARA MIRACEMA
@@ -894,6 +931,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303005,Miracema,camara,202606,vereador,Agente Político,12.00,110075.32,,,,CAMARA MIRACEMA
 3303005,Miracema,camara,202607,vereador,Agente Político,12.00,124306.56,,,,CAMARA MIRACEMA
 3303005,Miracema,camara,202608,vereador,Agente Político,11.00,107470.00,,,,CAMARA MIRACEMA
+3303005,Miracema,camara,202609,vereador,Agente Político,11.00,107470.00,,,,CAMARA MIRACEMA
 3303104,Natividade,camara,202501,vereador,Agente Político,12.00,108590.95,,,,CAMARA NATIVIDADE
 3303104,Natividade,camara,202502,vereador,Agente Político,12.00,108921.01,,,,CAMARA NATIVIDADE
 3303104,Natividade,camara,202503,vereador,Agente Político,12.00,108921.01,,,,CAMARA NATIVIDADE
@@ -914,6 +952,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303104,Natividade,camara,202606,vereador,Agente Político,11.00,108921.01,,,,CAMARA NATIVIDADE
 3303104,Natividade,camara,202607,vereador,Agente Político,11.00,108921.01,,,,CAMARA NATIVIDADE
 3303104,Natividade,camara,202608,vereador,Agente Político,11.00,108921.01,,,,CAMARA NATIVIDADE
+3303104,Natividade,camara,202609,vereador,Agente Político,11.00,108921.01,,,,CAMARA NATIVIDADE
 3303203,Nilópolis,camara,202501,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
 3303203,Nilópolis,camara,202502,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
 3303203,Nilópolis,camara,202503,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
@@ -934,6 +973,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303203,Nilópolis,camara,202606,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
 3303203,Nilópolis,camara,202607,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
 3303203,Nilópolis,camara,202608,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
+3303203,Nilópolis,camara,202609,vereador,Agente Político,12.00,186000.00,,,,CAMARA NILOPOLIS
 3303302,Niterói,camara,202501,vereador,Agente Político,23.00,371075.84,,,,CAMARA NITEROI
 3303302,Niterói,camara,202502,vereador,Agente Político,23.00,435092.19,,,,CAMARA NITEROI
 3303302,Niterói,camara,202503,vereador,Agente Político,22.00,428422.86,,,,CAMARA NITEROI
@@ -954,6 +994,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303302,Niterói,camara,202606,vereador,Agente Político,20.00,396076.60,,,,CAMARA NITEROI
 3303302,Niterói,camara,202607,vereador,Agente Político,20.00,396076.60,,,,CAMARA NITEROI
 3303302,Niterói,camara,202608,vereador,Agente Político,20.00,400377.28,,,,CAMARA NITEROI
+3303302,Niterói,camara,202609,vereador,Agente Político,20.00,446347.40,,,,CAMARA NITEROI
 3303401,Nova Friburgo,camara,202501,vereador,Agente Político,21.00,325500.00,,,,CAMARA NOVA FRIBURGO
 3303401,Nova Friburgo,camara,202502,vereador,Agente Político,21.00,327210.00,,,,CAMARA NOVA FRIBURGO
 3303401,Nova Friburgo,camara,202503,vereador,Agente Político,21.00,326400.00,,,,CAMARA NOVA FRIBURGO
@@ -974,6 +1015,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303401,Nova Friburgo,camara,202606,vereador,Agente Político,21.00,488250.00,,,,CAMARA NOVA FRIBURGO
 3303401,Nova Friburgo,camara,202607,vereador,Agente Político,21.00,335850.00,,,,CAMARA NOVA FRIBURGO
 3303401,Nova Friburgo,camara,202608,vereador,Agente Político,21.00,336100.00,,,,CAMARA NOVA FRIBURGO
+3303401,Nova Friburgo,camara,202609,vereador,Agente Político,21.00,336000.00,,,,CAMARA NOVA FRIBURGO
 3303500,Nova Iguaçu,camara,202501,vereador,Agente Político,22.00,333000.00,,,,CAMARA NOVA IGUAÇU
 3303500,Nova Iguaçu,camara,202502,vereador,Agente Político,23.00,356500.00,,,,CAMARA NOVA IGUAÇU
 3303500,Nova Iguaçu,camara,202503,vereador,Agente Político,23.00,348000.00,,,,CAMARA NOVA IGUAÇU
@@ -994,6 +1036,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303500,Nova Iguaçu,camara,202606,vereador,Agente Político,23.00,348000.00,,,,CAMARA NOVA IGUAÇU
 3303500,Nova Iguaçu,camara,202607,vereador,Agente Político,23.00,348000.00,,,,CAMARA NOVA IGUAÇU
 3303500,Nova Iguaçu,camara,202608,vereador,Agente Político,23.00,348000.00,,,,CAMARA NOVA IGUAÇU
+3303500,Nova Iguaçu,camara,202609,vereador,Agente Político,23.00,348000.00,,,,CAMARA NOVA IGUAÇU
 3303609,Paracambi,camara,202501,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
 3303609,Paracambi,camara,202502,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
 3303609,Paracambi,camara,202503,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
@@ -1014,6 +1057,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303609,Paracambi,camara,202606,vereador,Agente Político,9.00,81220.00,,,,CAMARA PARACAMBI
 3303609,Paracambi,camara,202607,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
 3303609,Paracambi,camara,202608,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
+3303609,Paracambi,camara,202609,vereador,Agente Político,9.00,83700.00,,,,CAMARA PARACAMBI
 3303708,Paraíba do Sul,camara,202501,vereador,Agente Político,18.00,97500.00,,,,CAMARA PARAIBA DO SUL
 3303708,Paraíba do Sul,camara,202502,vereador,Agente Político,13.00,97500.00,,,,CAMARA PARAIBA DO SUL
 3303708,Paraíba do Sul,camara,202503,vereador,Agente Político,13.00,97500.00,,,,CAMARA PARAIBA DO SUL
@@ -1034,6 +1078,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303708,Paraíba do Sul,camara,202606,vereador,Agente Político,15.00,95000.00,,,,CAMARA PARAIBA DO SUL
 3303708,Paraíba do Sul,camara,202607,vereador,Agente Político,14.00,97500.00,,,,CAMARA PARAIBA DO SUL
 3303708,Paraíba do Sul,camara,202608,vereador,Agente Político,14.00,97500.00,,,,CAMARA PARAIBA DO SUL
+3303708,Paraíba do Sul,camara,202609,vereador,Agente Político,14.00,97500.00,,,,CAMARA PARAIBA DO SUL
 3303807,Paraty,camara,202501,vereador,Agente Político,13.00,85520.41,,,,CAMARA PARATY
 3303807,Paraty,camara,202502,vereador,Agente Político,13.00,88250.03,,,,CAMARA PARATY
 3303807,Paraty,camara,202503,vereador,Agente Político,14.00,92717.85,,,,CAMARA PARATY
@@ -1054,6 +1099,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303807,Paraty,camara,202606,vereador,Agente Político,12.00,90527.03,,,,CAMARA PARATY
 3303807,Paraty,camara,202607,vereador,Agente Político,12.00,91535.83,,,,CAMARA PARATY
 3303807,Paraty,camara,202608,vereador,Agente Político,12.00,93270.27,,,,CAMARA PARATY
+3303807,Paraty,camara,202609,vereador,Agente Político,12.00,106986.47,,,,CAMARA PARATY
 3303856,Paty do Alferes,camara,202501,vereador,Agente Político,17.00,137671.77,,,,CAMARA PATY DO ALFERES
 3303856,Paty do Alferes,camara,202502,vereador,Agente Político,11.00,97151.45,,,,CAMARA PATY DO ALFERES
 3303856,Paty do Alferes,camara,202503,vereador,Agente Político,11.00,97151.45,,,,CAMARA PATY DO ALFERES
@@ -1074,6 +1120,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303856,Paty do Alferes,camara,202606,vereador,Agente Político,12.00,108368.86,,,,CAMARA PATY DO ALFERES
 3303856,Paty do Alferes,camara,202607,vereador,Agente Político,11.00,101212.43,,,,CAMARA PATY DO ALFERES
 3303856,Paty do Alferes,camara,202608,vereador,Agente Político,11.00,101212.43,,,,CAMARA PATY DO ALFERES
+3303856,Paty do Alferes,camara,202609,vereador,Agente Político,11.00,100905.73,,,,CAMARA PATY DO ALFERES
 3303906,Petrópolis,camara,202501,vereador,Agente Político,17.00,194621.96,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202502,vereador,Agente Político,17.00,223359.14,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202503,vereador,Agente Político,15.00,214908.60,,,,CAMARA PETROPOLIS
@@ -1094,6 +1141,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303906,Petrópolis,camara,202606,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202607,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303906,Petrópolis,camara,202608,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
+3303906,Petrópolis,camara,202609,vereador,Agente Político,15.00,223333.05,,,,CAMARA PETROPOLIS
 3303955,Pinheiral,camara,202501,vereador,Agente Político,11.00,73464.93,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202502,vereador,Agente Político,10.00,70355.31,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202503,vereador,Agente Político,9.00,96753.69,,,,CAMARA PINHEIRAL
@@ -1114,6 +1162,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3303955,Pinheiral,camara,202606,vereador,Agente Político,9.00,96867.19,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202607,vereador,Agente Político,9.00,96867.19,,,,CAMARA PINHEIRAL
 3303955,Pinheiral,camara,202608,vereador,Agente Político,9.00,96867.19,,,,CAMARA PINHEIRAL
+3303955,Pinheiral,camara,202609,vereador,Agente Político,9.00,96867.19,,,,CAMARA PINHEIRAL
 3304003,Piraí,camara,202501,vereador,Agente Político,12.00,110322.85,,,,CAMARA PIRAI
 3304003,Piraí,camara,202502,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
 3304003,Piraí,camara,202503,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
@@ -1134,6 +1183,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304003,Piraí,camara,202606,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
 3304003,Piraí,camara,202607,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
 3304003,Piraí,camara,202608,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
+3304003,Piraí,camara,202609,vereador,Agente Político,11.00,111676.51,,,,CAMARA PIRAI
 3304102,Porciúncula,camara,202501,vereador,Agente Político,11.00,82500.00,,,,CAMARA PORCIUNCULA
 3304102,Porciúncula,camara,202502,vereador,Agente Político,11.00,82500.00,,,,CAMARA PORCIUNCULA
 3304102,Porciúncula,camara,202503,vereador,Agente Político,11.00,82500.00,,,,CAMARA PORCIUNCULA
@@ -1154,6 +1204,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304102,Porciúncula,camara,202606,vereador,Agente Político,12.00,86014.50,,,,CAMARA PORCIUNCULA
 3304102,Porciúncula,camara,202607,vereador,Agente Político,12.00,86014.50,,,,CAMARA PORCIUNCULA
 3304102,Porciúncula,camara,202608,vereador,Agente Político,12.00,90575.88,,,,CAMARA PORCIUNCULA
+3304102,Porciúncula,camara,202609,vereador,Agente Político,11.00,86014.50,,,,CAMARA PORCIUNCULA
 3304110,Porto Real,camara,202501,vereador,Agente Político,15.00,104500.00,,,,CAMARA PORTO REAL
 3304110,Porto Real,camara,202502,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
 3304110,Porto Real,camara,202503,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
@@ -1174,6 +1225,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304110,Porto Real,camara,202606,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
 3304110,Porto Real,camara,202607,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
 3304110,Porto Real,camara,202608,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
+3304110,Porto Real,camara,202609,vereador,Agente Político,11.00,104500.00,,,,CAMARA PORTO REAL
 3304128,Quatis,camara,202501,vereador,Agente Político,14.00,59475.00,,,,CAMARA QUATIS
 3304128,Quatis,camara,202502,vereador,Agente Político,9.00,59528.52,,,,CAMARA QUATIS
 3304128,Quatis,camara,202503,vereador,Agente Político,9.00,59475.00,,,,CAMARA QUATIS
@@ -1194,6 +1246,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304128,Quatis,camara,202606,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304128,Quatis,camara,202607,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304128,Quatis,camara,202608,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
+3304128,Quatis,camara,202609,vereador,Agente Político,9.00,65003.62,,,,CAMARA QUATIS
 3304144,Queimados,camara,202501,vereador,Agente Político,17.00,215220.00,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202502,vereador,Agente Político,17.00,233989.16,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202503,vereador,Agente Político,17.00,229296.90,,,,CAMARA QUEIMADOS
@@ -1214,6 +1267,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304144,Queimados,camara,202606,vereador,Agente Político,17.00,255541.72,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202607,vereador,Agente Político,17.00,215220.00,,,,CAMARA QUEIMADOS
 3304144,Queimados,camara,202608,vereador,Agente Político,17.00,215220.00,,,,CAMARA QUEIMADOS
+3304144,Queimados,camara,202609,vereador,Agente Político,17.00,225684.97,,,,CAMARA QUEIMADOS
 3304151,Quissamã,camara,202501,vereador,Agente Político,13.00,98087.85,,,,CAMARA QUISSAMA
 3304151,Quissamã,camara,202502,vereador,Agente Político,12.00,102461.19,,,,CAMARA QUISSAMA
 3304151,Quissamã,camara,202503,vereador,Agente Político,12.00,103085.95,,,,CAMARA QUISSAMA
@@ -1234,6 +1288,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304151,Quissamã,camara,202606,vereador,Agente Político,11.00,111348.05,,,,CAMARA QUISSAMA
 3304151,Quissamã,camara,202607,vereador,Agente Político,11.00,111348.05,,,,CAMARA QUISSAMA
 3304151,Quissamã,camara,202608,vereador,Agente Político,11.00,111348.05,,,,CAMARA QUISSAMA
+3304151,Quissamã,camara,202609,vereador,Agente Político,11.00,111348.05,,,,CAMARA QUISSAMA
 3304201,Resende,camara,202501,vereador,Agente Político,18.00,267708.58,,,,CAMARA RESENDE
 3304201,Resende,camara,202502,vereador,Agente Político,18.00,266716.84,,,,CAMARA RESENDE
 3304201,Resende,camara,202503,vereador,Agente Político,17.00,268553.15,,,,CAMARA RESENDE
@@ -1274,6 +1329,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304300,Rio Bonito,camara,202606,vereador,Agente Político,9.00,67500.00,,,,CAMARA RIO BONITO
 3304300,Rio Bonito,camara,202607,vereador,Agente Político,9.00,67500.00,,,,CAMARA RIO BONITO
 3304300,Rio Bonito,camara,202608,vereador,Agente Político,9.00,67500.00,,,,CAMARA RIO BONITO
+3304300,Rio Bonito,camara,202609,vereador,Agente Político,9.00,67500.00,,,,CAMARA RIO BONITO
 3304409,Rio Claro,camara,202501,vereador,Agente Político,12.00,105825.17,,,,CAMARA RIO CLARO
 3304409,Rio Claro,camara,202502,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
 3304409,Rio Claro,camara,202503,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
@@ -1294,6 +1350,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304409,Rio Claro,camara,202606,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
 3304409,Rio Claro,camara,202607,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
 3304409,Rio Claro,camara,202608,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
+3304409,Rio Claro,camara,202609,vereador,Agente Político,11.00,110165.00,,,,CAMARA RIO CLARO
 3304508,Rio das Flores,camara,202501,vereador,Agente Político,11.00,72407.34,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202502,vereador,Agente Político,9.00,71513.42,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202503,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
@@ -1314,6 +1371,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304508,Rio das Flores,camara,202606,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202607,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304508,Rio das Flores,camara,202608,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
+3304508,Rio das Flores,camara,202609,vereador,Agente Político,9.00,64362.06,,,,CAMARA RIO DAS FLORES
 3304524,Rio das Ostras,camara,202501,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202502,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202503,vereador,Agente Político,15.00,150000.00,,,,CAMARA RIO DAS OSTRAS
@@ -1334,6 +1392,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304524,Rio das Ostras,camara,202606,vereador,Agente Político,15.00,185100.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202607,vereador,Agente Político,15.00,185100.00,,,,CAMARA RIO DAS OSTRAS
 3304524,Rio das Ostras,camara,202608,vereador,Agente Político,15.00,185100.00,,,,CAMARA RIO DAS OSTRAS
+3304524,Rio das Ostras,camara,202609,vereador,Agente Político,15.00,185100.00,,,,CAMARA RIO DAS OSTRAS
 3304607,Santa Maria Madalena,camara,202501,vereador,Agente Político,9.00,100000.00,,,,CAMARA SANTA MARIA MADALENA
 3304607,Santa Maria Madalena,camara,202502,vereador,Agente Político,9.00,100000.00,,,,CAMARA SANTA MARIA MADALENA
 3304607,Santa Maria Madalena,camara,202503,vereador,Agente Político,9.00,100000.00,,,,CAMARA SANTA MARIA MADALENA
@@ -1373,6 +1432,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304706,Santo Antônio de Pádua,camara,202606,vereador,Agente Político,13.00,129118.60,,,,CAMARA SANTO ANTONIO DE PADUA
 3304706,Santo Antônio de Pádua,camara,202607,vereador,Agente Político,13.00,129118.60,,,,CAMARA SANTO ANTONIO DE PADUA
 3304706,Santo Antônio de Pádua,camara,202608,vereador,Agente Político,13.00,129118.60,,,,CAMARA SANTO ANTONIO DE PADUA
+3304706,Santo Antônio de Pádua,camara,202609,vereador,Agente Político,13.00,129118.60,,,,CAMARA SANTO ANTONIO DE PADUA
 3304755,São Francisco de Itabapoana,camara,202501,vereador,Agente Político,14.00,126099.68,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
 3304755,São Francisco de Itabapoana,camara,202502,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
 3304755,São Francisco de Itabapoana,camara,202503,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
@@ -1393,6 +1453,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304755,São Francisco de Itabapoana,camara,202606,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
 3304755,São Francisco de Itabapoana,camara,202607,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
 3304755,São Francisco de Itabapoana,camara,202608,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
+3304755,São Francisco de Itabapoana,camara,202609,vereador,Agente Político,14.00,128404.38,,,,CAMARA SAO FRANCISCO DE ITABAPOANA
 3304805,São Fidélis,camara,202501,vereador,Agente Político,9.00,18200.00,,,,CAMARA SAO FIDELIS
 3304805,São Fidélis,camara,202502,vereador,Agente Político,9.00,103346.11,,,,CAMARA SAO FIDELIS
 3304805,São Fidélis,camara,202503,vereador,Agente Político,9.00,81900.00,,,,CAMARA SAO FIDELIS
@@ -1413,6 +1474,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304805,São Fidélis,camara,202606,vereador,Agente Político,9.00,97200.00,,,,CAMARA SAO FIDELIS
 3304805,São Fidélis,camara,202607,vereador,Agente Político,9.00,97200.00,,,,CAMARA SAO FIDELIS
 3304805,São Fidélis,camara,202608,vereador,Agente Político,9.00,97200.00,,,,CAMARA SAO FIDELIS
+3304805,São Fidélis,camara,202609,vereador,Agente Político,9.00,97200.00,,,,CAMARA SAO FIDELIS
 3304904,São Gonçalo,camara,202501,vereador,Agente Político,30.00,589691.61,,,,CÂMARA SÃO GONÇALO
 3304904,São Gonçalo,camara,202502,vereador,Agente Político,27.00,589691.61,,,,CÂMARA SÃO GONÇALO
 3304904,São Gonçalo,camara,202503,vereador,Agente Político,27.00,589691.61,,,,CÂMARA SÃO GONÇALO
@@ -1433,6 +1495,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3304904,São Gonçalo,camara,202606,vereador,Agente Político,27.00,589691.61,,,,CÂMARA SÃO GONÇALO
 3304904,São Gonçalo,camara,202607,vereador,Agente Político,27.00,884537.55,,,,CÂMARA SÃO GONÇALO
 3304904,São Gonçalo,camara,202608,vereador,Agente Político,27.00,589691.61,,,,CÂMARA SÃO GONÇALO
+3304904,São Gonçalo,camara,202609,vereador,Agente Político,27.00,589691.61,,,,CÂMARA SÃO GONÇALO
 3305000,São João da Barra,camara,202501,vereador,Agente Político,13.00,139451.00,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202502,vereador,Agente Político,13.00,139451.00,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202503,vereador,Agente Político,13.00,139451.00,,,,CAMARA SAO JOAO DA BARRA
@@ -1453,6 +1516,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305000,São João da Barra,camara,202606,vereador,Agente Político,13.00,155335.44,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202607,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202608,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
+3305000,São João da Barra,camara,202609,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
 3305109,São João de Meriti,camara,202501,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202502,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202503,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
@@ -1473,6 +1537,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305109,São João de Meriti,camara,202606,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202607,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202608,vereador,Agente Político,18.00,305400.00,,,,CAMARA SAO JOAO DE MERITI
+3305109,São João de Meriti,camara,202609,vereador,Agente Político,18.00,311400.00,,,,CAMARA SAO JOAO DE MERITI
 3305133,São José de Ubá,camara,202501,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
 3305133,São José de Ubá,camara,202502,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
 3305133,São José de Ubá,camara,202503,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
@@ -1513,6 +1578,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305158,São José do Vale do Rio Preto,camara,202606,vereador,Agente Político,10.00,73420.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202607,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202608,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
+3305158,São José do Vale do Rio Preto,camara,202609,vereador,Agente Político,9.00,73800.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305208,São Pedro da Aldeia,camara,202501,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
 3305208,São Pedro da Aldeia,camara,202502,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
 3305208,São Pedro da Aldeia,camara,202503,vereador,Agente Político,10.00,165031.90,,,,CAMARA SAO PEDRO DA ALDEIA
@@ -1553,6 +1619,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305307,São Sebastião do Alto,camara,202606,vereador,Agente Político,12.00,17332.00,,,,CAMARA SAO SEBASTIAO DO ALTO
 3305307,São Sebastião do Alto,camara,202607,vereador,Agente Político,12.00,17332.00,,,,CAMARA SAO SEBASTIAO DO ALTO
 3305307,São Sebastião do Alto,camara,202608,vereador,Agente Político,12.00,17332.00,,,,CAMARA SAO SEBASTIAO DO ALTO
+3305307,São Sebastião do Alto,camara,202609,vereador,Agente Político,12.00,17332.00,,,,CAMARA SAO SEBASTIAO DO ALTO
 3305406,Sapucaia,camara,202501,vereador,Agente Político,15.00,102300.00,,,,CAMARA SAPUCAIA
 3305406,Sapucaia,camara,202502,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
 3305406,Sapucaia,camara,202503,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
@@ -1573,6 +1640,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305406,Sapucaia,camara,202606,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
 3305406,Sapucaia,camara,202607,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
 3305406,Sapucaia,camara,202608,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
+3305406,Sapucaia,camara,202609,vereador,Agente Político,11.00,102300.00,,,,CAMARA SAPUCAIA
 3305505,Saquarema,camara,202501,vereador,Agente Político,15.00,162438.51,,,,CAMARA SAQUAREMA
 3305505,Saquarema,camara,202502,vereador,Agente Político,16.00,168269.64,,,,CAMARA SAQUAREMA
 3305505,Saquarema,camara,202503,vereador,Agente Político,16.00,174933.78,,,,CAMARA SAQUAREMA
@@ -1593,6 +1661,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305505,Saquarema,camara,202606,vereador,Agente Político,16.00,173043.66,,,,CAMARA SAQUAREMA
 3305505,Saquarema,camara,202607,vereador,Agente Político,16.00,173488.51,,,,CAMARA SAQUAREMA
 3305505,Saquarema,camara,202608,vereador,Agente Político,16.00,173488.51,,,,CAMARA SAQUAREMA
+3305505,Saquarema,camara,202609,vereador,Agente Político,16.00,173488.51,,,,CAMARA SAQUAREMA
 3305554,Seropédica,camara,202501,vereador,Agente Político,10.00,101151.37,,,,CAMARA SEROPEDICA
 3305554,Seropédica,camara,202502,vereador,Agente Político,13.00,93523.51,,,,CAMARA SEROPEDICA
 3305554,Seropédica,camara,202503,vereador,Agente Político,9.00,91160.10,,,,CAMARA SEROPEDICA
@@ -1613,6 +1682,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305554,Seropédica,camara,202606,vereador,Agente Político,10.00,101289.00,,,,CAMARA SEROPEDICA
 3305554,Seropédica,camara,202607,vereador,Agente Político,10.00,101289.00,,,,CAMARA SEROPEDICA
 3305554,Seropédica,camara,202608,vereador,Agente Político,10.00,101289.00,,,,CAMARA SEROPEDICA
+3305554,Seropédica,camara,202609,vereador,Agente Político,10.00,101289.00,,,,CAMARA SEROPEDICA
 3305604,Silva Jardim,camara,202501,vereador,Agente Político,9.00,70981.83,,,,CAMARA SILVA JARDIM
 3305604,Silva Jardim,camara,202502,vereador,Agente Político,9.00,70981.83,,,,CAMARA SILVA JARDIM
 3305604,Silva Jardim,camara,202503,vereador,Agente Político,9.00,70981.83,,,,CAMARA SILVA JARDIM
@@ -1633,6 +1703,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305604,Silva Jardim,camara,202606,vereador,Agente Político,12.00,114478.60,,,,CAMARA SILVA JARDIM
 3305604,Silva Jardim,camara,202607,vereador,Agente Político,12.00,82260.10,,,,CAMARA SILVA JARDIM
 3305604,Silva Jardim,camara,202608,vereador,Agente Político,12.00,82260.10,,,,CAMARA SILVA JARDIM
+3305604,Silva Jardim,camara,202609,vereador,Agente Político,12.00,82260.10,,,,CAMARA SILVA JARDIM
 3305703,Sumidouro,camara,202501,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
 3305703,Sumidouro,camara,202502,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
 3305703,Sumidouro,camara,202503,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
@@ -1652,6 +1723,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305703,Sumidouro,camara,202606,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
 3305703,Sumidouro,camara,202607,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
 3305703,Sumidouro,camara,202608,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
+3305703,Sumidouro,camara,202609,vereador,Agente Político,11.00,108900.00,,,,CAMARA SUMIDOURO
 3305752,Tanguá,camara,202501,vereador,Agente Político,11.00,89117.19,,,,CAMARA TANGUA
 3305752,Tanguá,camara,202502,vereador,Agente Político,10.00,86146.62,,,,CAMARA TANGUA
 3305752,Tanguá,camara,202503,vereador,Agente Político,9.00,89117.19,,,,CAMARA TANGUA
@@ -1691,6 +1763,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305802,Teresópolis,camara,202606,vereador,Agente Político,21.00,189399.00,,,,CAMARA TERESOPOLIS
 3305802,Teresópolis,camara,202607,vereador,Agente Político,21.00,189399.00,,,,CAMARA TERESOPOLIS
 3305802,Teresópolis,camara,202608,vereador,Agente Político,21.00,189399.00,,,,CAMARA TERESOPOLIS
+3305802,Teresópolis,camara,202609,vereador,Agente Político,21.00,189399.00,,,,CAMARA TERESOPOLIS
 3305901,Trajano de Moraes,camara,202501,vereador,Agente Político,9.00,59706.75,,,,CAMARA TRAJANO DE MORAES
 3305901,Trajano de Moraes,camara,202502,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
 3305901,Trajano de Moraes,camara,202503,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
@@ -1710,6 +1783,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305901,Trajano de Moraes,camara,202606,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
 3305901,Trajano de Moraes,camara,202607,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
 3305901,Trajano de Moraes,camara,202608,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
+3305901,Trajano de Moraes,camara,202609,vereador,Agente Político,9.00,93891.51,,,,CAMARA TRAJANO DE MORAES
 3306008,Três Rios,camara,202501,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
 3306008,Três Rios,camara,202502,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
 3306008,Três Rios,camara,202503,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
@@ -1730,6 +1804,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306008,Três Rios,camara,202606,vereador,Agente Político,15.00,189366.67,,,,CAMARA TRES RIOS
 3306008,Três Rios,camara,202607,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
 3306008,Três Rios,camara,202608,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
+3306008,Três Rios,camara,202609,vereador,Agente Político,15.00,185250.00,,,,CAMARA TRES RIOS
 3306107,Valença,camara,202501,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
 3306107,Valença,camara,202502,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
 3306107,Valença,camara,202503,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
@@ -1750,6 +1825,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306107,Valença,camara,202606,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
 3306107,Valença,camara,202607,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
 3306107,Valença,camara,202608,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
+3306107,Valença,camara,202609,vereador,Agente Político,12.00,156000.00,,,,CAMARA VALENÇA
 3306156,Varre-Sai,camara,202501,vereador,Agente Político,9.00,89100.00,,,,CAMARA VARRE-SAI
 3306156,Varre-Sai,camara,202502,vereador,Agente Político,9.00,93888.00,,,,CAMARA VARRE-SAI
 3306156,Varre-Sai,camara,202503,vereador,Agente Político,9.00,93888.00,,,,CAMARA VARRE-SAI
@@ -1770,6 +1846,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306156,Varre-Sai,camara,202606,vereador,Agente Político,9.00,89019.73,,,,CAMARA VARRE-SAI
 3306156,Varre-Sai,camara,202607,vereador,Agente Político,9.00,89715.20,,,,CAMARA VARRE-SAI
 3306156,Varre-Sai,camara,202608,vereador,Agente Político,9.00,93888.00,,,,CAMARA VARRE-SAI
+3306156,Varre-Sai,camara,202609,vereador,Agente Político,10.00,93888.00,,,,CAMARA VARRE-SAI
 3306206,Vassouras,camara,202501,vereador,Agente Político,17.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202502,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202503,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
@@ -1790,6 +1867,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306206,Vassouras,camara,202606,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202607,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306206,Vassouras,camara,202608,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
+3306206,Vassouras,camara,202609,vereador,Agente Político,13.00,121823.00,,,,CAMARA VASSOURAS
 3306305,Volta Redonda,camara,202501,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202502,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202503,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
@@ -1810,3 +1888,4 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3306305,Volta Redonda,camara,202606,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202607,vereador,Agente Político,21.00,271975.00,,,,CAMARA VOLTA REDONDA
 3306305,Volta Redonda,camara,202608,vereador,Agente Político,21.00,265650.00,,,,CAMARA VOLTA REDONDA
+3306305,Volta Redonda,camara,202609,vereador,Agente Político,21.00,391622.92,,,,CAMARA VOLTA REDONDA

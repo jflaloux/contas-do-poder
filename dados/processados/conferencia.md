@@ -1,4 +1,4 @@
-# Conferência dos dados — 27/10/2026 19:53
+# Conferência dos dados — 04/11/2026 02:23
 
 ## 1. Cobertura
 
@@ -33,7 +33,7 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Ana Pimentel | 2024 | 494,232.46 | 494,232.46 | 0.00 |
 | Ana Pimentel | 2025 | 496,300.75 | 496,300.75 | 0.00 |
 | Ana Paula Leão | 2024 | 517,524.92 | 517,524.92 | 0.00 |
-| Ana Paula Leão | 2025 | 512,848.06 | 513,827.38 | -979.32 |
+| Ana Paula Leão | 2025 | 512,848.06 | 513,827.38 | -979.32 (explicada: a página anual não desconta os créditos e estornos de passagens de R$ 979.32, que a consulta mensal do mesmo site desconta) |
 | Coronel Chrisóstomo | 2024 | 588,712.44 | 588,712.44 | 0.00 |
 | Coronel Chrisóstomo | 2025 | 593,799.66 | 593,799.66 | 0.00 |
 | Gustavo Gayer | 2024 | 427,170.50 | 427,170.50 | 0.00 |
@@ -50,7 +50,7 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Kim Kataguiri | 2024 | 162,365.21 | 162,365.21 | 0.00 |
 | Kim Kataguiri | 2025 | 151,751.34 | 151,751.34 | 0.00 |
 
-**Resultado: 1 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
+**Resultado: 0 diferença(s) de R$ 1 ou mais.** (Em 2024 são esperadas pequenas diferenças: ver pendências nos metadados.)
 
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
@@ -86,7 +86,7 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
 - Senadores comparados: 81
-- Diferença mediana: -3 pessoa(s); casos com diferença > 5: 32
+- Diferença mediana: -4 pessoa(s); casos com diferença > 5: 33
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 6b. Fornecedor pessoa física pelo nome no site
@@ -98,16 +98,16 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Checagem | Valor | Mínimo | |
 |---|---:|---:|---|
 | Governo federal: no cargo em 08/2026 | 40 | 30 | OK |
-| Câmaras municipais com custo no arquivo do site | 5450 | 5000 | OK |
+| Câmaras municipais com custo no arquivo do site | 5452 | 5000 | OK |
 | Vereadores eleitos no arquivo do site | 58153 | 55000 | OK |
 | Vereadores de São Paulo no cargo (camaras.json) | 55 | 46 | OK |
-| Vereadores de São Paulo com gastos do gabinete no mês retrasado | 56 | 33 | OK |
+| Vereadores de São Paulo com gastos do gabinete no mês retrasado | 55 | 33 | OK |
 | Vereadores de Rio de Janeiro no cargo (camaras.json) | 51 | 43 | OK |
 | Vereadores de Belo Horizonte no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Fortaleza no cargo (camaras.json) | 43 | 36 | OK |
 | Vereadores de Fortaleza com gastos do gabinete no mês retrasado | 45 | 25 | OK |
 | Vereadores de Goiânia no cargo (camaras.json) | 37 | 31 | OK |
-| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 36 | 22 | OK |
+| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 34 | 22 | OK |
 | Vereadores de Maceió no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Manaus no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Manaus com gastos do gabinete no mês retrasado | 41 | 24 | OK |
@@ -181,14 +181,15 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Governadores com o valor da lei, da folha ou da tabela oficial | 27 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
 | Governo federal: com salário em 08/2026 | 40 | 25 | OK |
-| Deputados com salário em 08/2026 | 528 | 480 | OK |
-| Deputados com verba de gabinete em 07/2026 | 514 | 450 | OK |
-| Senadores com salário em 08/2026 | 84 | 75 | OK |
-| Senadores com assessores em 08/2026 | 81 | 60 | OK |
-| Cota da Câmara nos últimos 12 meses (R$ milhões) | 260 | 150 | OK |
-| Cota do Senado nos últimos 12 meses (R$ milhões) | 37 | 15 | OK |
+| Deputados com salário em 09/2026 | 526 | 480 | OK |
+| Deputados com verba de gabinete em 07/2026 (último mês publicado) | 514 | 450 | OK |
+| Verba de gabinete da Câmara: meses até o limite de atraso (6); atraso de 4 mês(es) | 2 | 0 | OK |
+| Senadores com salário em 09/2026 | 83 | 75 | OK |
+| Senadores com assessores em 09/2026 | 81 | 60 | OK |
+| Cota da Câmara nos últimos 12 meses (R$ milhões) | 246 | 150 | OK |
+| Cota do Senado nos últimos 12 meses (R$ milhões) | 35 | 15 | OK |
 | Parlamentares no arquivo do site | 844 | 700 | OK |
-| Deputados com a equipe contada em 08/2026 | 513 | 450 | OK |
+| Deputados com a equipe contada em 09/2026 | 514 | 450 | OK |
 
 ---
-**Total de alertas: 1**
+**Total de alertas: 0**
