@@ -358,7 +358,9 @@ def _mes_txt(am):
 def _ressalvas(faixas):
     fd, fs = faixas.get("d", {}), faixas.get("s", {})
     return [
-        "Período: o mandato que começou em 1º/2/2023 e termina em 31/1/2027. Os dados são parciais: vão até o último mês "
+        f"Período: mandato 2023–2026, de fev/2023 a {_mes_txt(max((x or [0, 0])[1] for f in faixas.values() for x in f.values()))}. "
+        "Os senadores eleitos em 2022 têm mandato até 2031: o balanço conta só o que cada um exerceu desde 1º/2/2023. "
+        "Os dados são parciais: vão até o último mês "
         f"que cada fonte publicou (Câmara: folha até {_mes_txt((fd.get('r') or [0, 0])[1])}, cota até {_mes_txt((fd.get('c') or [0, 0])[1])}, "
         f"verba de gabinete até {_mes_txt((fd.get('e') or [0, 0])[1])}; Senado: folha até {_mes_txt((fs.get('r') or [0, 0])[1])}, "
         f"CEAPS até {_mes_txt((fs.get('c') or [0, 0])[1])}). O balanço é refeito a cada atualização semanal.",
