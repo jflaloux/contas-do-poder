@@ -140,6 +140,8 @@ const BENS_ES = (() => { const nomes = nomesInterior("interior-cargo/es.json", 3
 // nada de juízo, ranking, média, comparação ou evolução dentro do bloco (testado só no texto de #bens)
 const SEM_JULGAMENTO_BENS = [/mais rico/i, /\brico\b/i, /patrimônio (cresceu|aumentou|dobrou)/i, /evolução/i, /maior patrimônio/i, /ranking/i, /enriquec/i, /média/i, /mediana/i, /\bcompar/i, /acima d[eoa]/i, /abaixo d[eoa]/i];
 // ---- dados do balanço (09/11/2026): o primeiro da fila, a pessoa do teste e os meses vêm do arquivo, nunca fixos
+const RES_FORT = (lerDados("situacao.json").reservas || {});
+const RES_FORT_CAMARA = !!(RES_FORT["vereadores/fortaleza"] || {}).ativa, RES_FORT_PREF = !!(RES_FORT["prefeituras/fortaleza"] || {}).ativa;
 const BAL = (() => { try { return lerDados("balanco.json"); } catch (e) { return null; } })();
 const BAL_FMT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
 const BAL_ULTIMO = BAL ? Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1]))) : 0;
@@ -289,7 +291,11 @@ const PAGINAS = [
   { nome: "cidade-campo-grande-congelada", url: "/cidade/campo-grande-ms", pagina: [/folha até fev\/2026: a fonte parou de publicar/i] },
   { nome: "governador-sp-sem-congelada", url: primeiro("gov-sp-"), semPagina: [/a fonte parou de publicar/i] },
   // capital sem reserva ligada: a fonte própria, sem o aviso do tribunal
-  { nome: "cidade-fortaleza-fonte-propria", url: "/cidade/fortaleza-ce", semPagina: [/dados do tce-ce/i] },
+  { nome: "cidade-fortaleza-fonte-propria", url: "/cidade/fortaleza-ce", depois: `(() => {
+      const f = [], tc = (document.querySelector("#cidade") || {}).textContent || "", tp = (document.querySelector("#prefeitura") || {}).textContent || "";
+      if (/dados do tce-ce/i.test(tc)) f.push("a parte da Câmara (reserva ${RES_FORT_CAMARA ? "ativa" : "inativa"}) ${RES_FORT_CAMARA ? "devia" : "não devia"} ter o aviso do TCE-CE");
+      if (/dados do tce-ce/i.test(tp) !== ${RES_FORT_PREF}) f.push("a parte da Prefeitura ${RES_FORT_PREF ? "devia" : "não devia"} ter o aviso 'dados do TCE-CE' (reserva ${RES_FORT_PREF ? "ativa" : "inativa"} no situacao.json)");
+      return f; })()` },
   // João Pessoa e Teresina (08/10/2026): vereador por vereador. A Câmara de João Pessoa vem de camaras.json (o valor do Tribunal de Contas não aparece na parte
   // da Câmara; a Prefeitura continua vindo do TCE-PB); a verba sai depois da folha (verba_ate): os meses sem verba dizem "ainda não publicados", não R$ 0.
   { nome: "cidade-joao-pessoa", url: "/cidade/joao-pessoa-pb", ter: [["#cidade .pessoa-chip", 29], ["#prefeitura", 1]], depois: `(() => {

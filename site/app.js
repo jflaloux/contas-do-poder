@@ -5004,8 +5004,7 @@
 
     const roda = h("div", { class: "balanco-fim" },
       h("h2", { class: "h3", id: "balanco-como" }, "Como ler este balanço"),
-      h("ul", { class: "lista" }, [h("li", null, `Período: ${balPeriodo(B)}. Os senadores eleitos em 2022 têm mandato até 2031: o balanço conta só o que cada um exerceu desde 1º/2/2023. Os dados são parciais (${balFaixasTexto(B, "d")}, na Câmara; ${balFaixasTexto(B, "s")}, no Senado) e o balanço é refeito a cada atualização.`),
-        ...(META.ressalvas || []).filter((t) => !/^Período:/.test(t)).map((t) => h("li", null, t))]),
+      h("ul", { class: "lista" }, (META.ressalvas || []).map((t) => h("li", null, t))),
       h("h2", { class: "h3" }, "As fontes"),
       h("ul", { class: "lista" }, (META.fontes || []).map((f) => h("li", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome} ↗`)))),
       h("h2", { class: "h3" }, "Baixar os dados"),
