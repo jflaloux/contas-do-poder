@@ -48,7 +48,10 @@ Cada número tem link para a fonte oficial.
 - [x] Câmara: 13º, férias, acertos, ajuda de custo e diárias dos deputados, pelo contracheque detalhado de cada mês
   (exceção ao robots.txt; leitura do mais recente para o mais antigo) — Claude
 - [x] Câmara: contracheques lidos de fev/2023 a set/2026 (23.781; depois só os meses novos) — Claude
-- [ ] Câmara: limites históricos da cota por estado (2023–2025) — Claude
+- [x] Câmara: limites históricos da cota por estado, mês a mês (Atos da Mesa 270/2023 e 244/2026;
+  `dados/referencia/limites_cota_camara_historico.csv`, 09/11/2026) — Agente de Dados
+- [ ] Balanço 2023–2026 (`/balanco`): dados prontos (adae3d0, 09/11/2026); página, revisão externa e e-mails à imprensa
+  para 24–26/11/2026 — Agentes de Dados, de Site e de Divulgação
 - [ ] Senado: validar a estimativa de custo dos assessores (ex.: pedir via LAI o custo por gabinete) — Você e Claude
 
 ## Fase 2 — Protótipo (em andamento)
