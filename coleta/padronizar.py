@@ -730,7 +730,7 @@ def executar():
               [] if DETALHE_DESDE else ["Câmara: o contracheque detalhado (13º, férias, acertos, diárias e ajuda de custo) "
                                         "ainda está sendo lido e entra nas próximas semanas."]),
             "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
-            "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
+            "Câmara: o limite da cota por estado na página de cada deputado é o atual (Ato da Mesa nº 244/2026, desde 20/2/2026); o balanço do mandato usa o de cada mês (Ato da Mesa nº 270/2023 até 19/2/2026).",
             "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada "
             "servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
             "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",

@@ -138,6 +138,23 @@ def executar():
         caso("SP: página sem a lista de arquivos dá erro claro (e não max() de lista vazia)", True)
     arq = sp._arquivos('<a href="historico/remuneracao_Setembro_2026.rar"></a><a href="txt/RemuneracaoAtivos.csv"></a>')
     caso("SP: a lista traz a série histórica e o mês atual (o seguinte ao último)", sorted(arq) == [202609, 202610])
+    # 09/11/2026 (balanço): o histórico da Câmara põe "SUPLENCIA" e "Exercício" no mesmo dia (vale a ordem da API) e o
+    # suplente convocado às vezes não ganha o evento "Exercício"; ordenar por (data, situação) deixava Marcos Braz sem
+    # nenhum mês no cargo
+    from datetime import date
+    from . import balanco
+    ev = [["2023-02-01", 57, None], ["2026-05-28", 57, "SUPLENCIA"], ["2026-05-28", 57, "CONVOCADO"], ["2026-05-28", 57, "Exercício"],
+          ["2026-10-10", 57, "SUPLENCIA"]]
+    caso("Balanço: SUPLENCIA e Exercício no mesmo dia, na ordem da API", balanco._intervalos_camara(ev, date(2026, 10, 31))
+         == [(date(2026, 5, 28), date(2026, 10, 10))])
+    ev = [["2024-12-04", 57, "CONVOCADO"], ["2025-11-13", 57, "SUPLENCIA"]]
+    caso("Balanço: CONVOCADO sem 'Exercício' depois conta como exercício", balanco.meses_em_exercicio(ev, date(2026, 10, 31))
+         == {a * 100 + m for a in (2024, 2025) for m in range(1, 13) if 202412 <= a * 100 + m <= 202511})
+    fr = balanco._fracoes([(date(2024, 6, 16), date(2024, 7, 31))], date(2026, 10, 31))
+    caso("Balanço: meio mês no cargo conta 0,5", fr == {202406: 0.5, 202407: 1.0})
+    vig = [(date(2023, 2, 1), 100.0), (date(2026, 2, 20), 128.0)]
+    caso("Balanço: limite da cota no mês da mudança, pelos dias", abs(balanco.limite_do_mes(vig, 202602) - (100 * 19 + 128 * 9) / 28) < 1e-9
+         and balanco.limite_do_mes(vig, 202601) == 100.0 and balanco.limite_do_mes(vig, 202603) == 128.0)
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
