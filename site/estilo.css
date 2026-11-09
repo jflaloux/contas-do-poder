@@ -1166,3 +1166,53 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
 
 /* a frase antes do número grande do contracheque */
 .resumo-frase { margin: 0 0 10px; font-size: 1.2rem; line-height: 1.35; color: var(--banda-ink); font-weight: 500; }
+
+/* /balanco: o balanço do mandato de deputados federais e senadores. Lista e visão por estado: tabela no computador, um bloco por linha no celular. */
+.balanco-pontos { display: grid; gap: 8px; max-width: 52em; }
+.balanco-pontos .lista { margin: 0; }
+.balanco-barra { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; }
+.balanco-modo { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.balanco-resultado, .balanco-fim { display: grid; gap: 16px; }
+.balanco-casa { display: grid; gap: 8px; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--raio); background: var(--paper); }
+.balanco-casa .nota, .balanco-casa .discreto { margin: 0; }
+.balanco-itens { display: grid; gap: 10px 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+.balanco-item { display: grid; gap: 2px; align-content: start; }
+.balanco-item .rotulo { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.balanco-item strong { font-family: var(--display); font-size: 1.45rem; font-weight: 600; line-height: 1.1; }
+.tabela-balanco { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.tabela-balanco th, .tabela-balanco td { text-align: left; vertical-align: top; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--line-2); white-space: normal; }
+.tabela-balanco th { font-size: .8rem; color: var(--ink-2); font-weight: 600; }
+.tabela-balanco th .etiqueta { margin-left: 6px; }
+.tabela-balanco .balanco-nome { width: 24%; min-width: 11em; }
+.tabela-balanco .balanco-nome a { text-decoration: none; }
+.tabela-balanco .balanco-nome a:hover strong { color: var(--accent); }
+.tabela-balanco .balanco-num strong { display: block; font-family: var(--mono); font-size: .95rem; font-weight: 600; white-space: nowrap; }
+.tabela-balanco .balanco-num small { display: block; margin-top: 2px; }
+.tabela-balanco .balanco-total strong { font-size: 1.02rem; }
+.tabela-balanco .tabela-gov__obs { display: block; margin-top: 3px; font-weight: 400; }
+.balanco-selos, .balanco-acoes { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 5px 0 3px; }
+.tabela-balanco--estados .balanco-nome { width: 26%; }
+.balanco-casa-linha td { background: var(--accent-soft); }
+.tabela-balanco tr[aria-current="true"] td { background: var(--hi-soft); }
+@media (max-width: 900px) {
+  .tabela-balanco, .tabela-balanco tbody { display: block; }
+  .tabela-balanco thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .tabela-balanco tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .tabela-balanco td { display: block; padding: 0; border: 0; min-width: 0; }
+  .tabela-balanco .balanco-nome { grid-column: 1 / -1; width: auto; min-width: 0; }
+  .tabela-balanco .balanco-total { grid-column: 1 / -1; }
+  .tabela-balanco td[data-rotulo]::before { content: attr(data-rotulo); display: block; color: var(--ink-2); font-size: .8rem; margin-bottom: 1px; }
+}
+@media (max-width: 640px) {
+  .balanco-estat { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .balanco-estat .estatistica__valor { font-size: 1.3rem; }
+  .balanco-estat .estatistica__comp { font-size: .8rem; }
+}
+@media (max-width: 440px) {
+  .cabecalho__buscar-texto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .cabecalho__buscar { padding: 8px 11px; }
+  .cabecalho__link { padding: 0 8px; }
+}
+.balanco-linha { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
+@media (max-width: 640px) { .balanco-filtros { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tabela-balanco .tabela-gov__obs a { text-decoration: underline; text-underline-offset: 2px; }

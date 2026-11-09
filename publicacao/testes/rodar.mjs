@@ -139,6 +139,14 @@ const BENS_CE = (() => { const [pf, vp, ...v] = [...nomesInterior("interior/ce.j
 const BENS_ES = (() => { const nomes = nomesInterior("interior-cargo/es.json", 3200102, ["c"]); return { 3200102: { [nomes[2]]: [2024, 310000, 1, 310000, 0, 0, 0, 0, "56170", "80000123456"], [nomes[0]]: [2024, 0, 0, 0, 0, 0, 0, 0, "56170", "80000123457"] } }; })();
 // nada de juízo, ranking, média, comparação ou evolução dentro do bloco (testado só no texto de #bens)
 const SEM_JULGAMENTO_BENS = [/mais rico/i, /\brico\b/i, /patrimônio (cresceu|aumentou|dobrou)/i, /evolução/i, /maior patrimônio/i, /ranking/i, /enriquec/i, /média/i, /mediana/i, /\bcompar/i, /acima d[eoa]/i, /abaixo d[eoa]/i];
+// ---- dados do balanço (09/11/2026): o primeiro da fila, a pessoa do teste e os meses vêm do arquivo, nunca fixos
+const BAL = (() => { try { return lerDados("balanco.json"); } catch (e) { return null; } })();
+const BAL_FMT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
+const BAL_ULTIMO = BAL ? Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1]))) : 0;
+const BAL_ORDEM = (v) => (a, b) => v(b) - v(a) || a.n.localeCompare(b.n, "pt-BR");
+const BAL_PRIMEIRO = BAL ? BAL.p.filter((b) => b.k === "d" && b.mc >= 3).sort(BAL_ORDEM((b) => b.t.m))[0] : null;
+const BAL_PRIMEIRO_TOTAL = BAL ? BAL.p.filter((b) => b.k === "d" && b.mc >= 3).sort(BAL_ORDEM((b) => b.t.t))[0] : null;
+const BAL_PESSOA = BAL ? BAL.p.find((b) => b.k === "d" && b.u > 0 && b.c.p !== undefined && b.mc >= 3 && !b.rel && ENDERECOS[b.id]) : null;
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -545,7 +553,88 @@ const PAGINAS = [
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },
   { nome: "judiciario", url: "/judiciario", ter: [["#judiciario", 1]] },
   { nome: "indice", url: "/indice", ter: [["#indice", 1]] },
-  { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10]] },
+  { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10], ["#dados-abertos a[href='/dados/balanco.csv']", BAL ? 1 : 0]] },
+  // /balanco (09/11/2026): a lista, o quadro de cada casa, as ressalvas e a ordem pela média por mês (com os de poucos meses no fim)
+  { nome: "balanco", url: BAL ? "/balanco" : null, ter: [["#balanco tbody tr", 40], ["#balanco .balanco-casa", 1], ["#balanco a[href='/dados/balanco.csv']", 1], ["#balanco .balanco-pontos li", 6]],
+    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /a versão final sai em fev\/2027/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
+      new RegExp(`equipe até ${reEsc(BAL_FMT(BAL.meta.faixas.d.e[1]))}`), /Os senadores eleitos em 2022 têm mandato até 2031/, /Sem agregados por partido/] : [],
+    semPagina: [/termina em 31\/1\/2027/, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
+  { nome: "balanco-ordem-pela-media", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const esperado = ${JSON.stringify(BAL_PRIMEIRO ? BAL_PRIMEIRO.n : "")}, errado = ${JSON.stringify(BAL_PRIMEIRO_TOTAL ? BAL_PRIMEIRO_TOTAL.n : "")};
+      if (esperado === errado) f.push("teste inválido: o primeiro pela média e pelo total são o mesmo");
+      const linhas = () => [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")];
+      if (!linhas()[0] || linhas()[0].querySelector(".balanco-nome strong").textContent !== esperado) f.push("o primeiro da lista devia ser " + esperado + " (maior média por mês), e não " + errado + " (maior total): " + (linhas()[0] && linhas()[0].querySelector(".balanco-nome strong").textContent));
+      for (let i = 0; i < 20 && [...document.querySelectorAll("#balanco button")].some((b) => /^Mostrar mais/.test(b.textContent)); i++) { [...document.querySelectorAll("#balanco button")].find((b) => /^Mostrar mais/.test(b.textContent)).click(); await esp(60); }
+      const poucos = linhas().map((tr) => /menos de 3 meses/.test(tr.querySelector(".balanco-selos").textContent));
+      const ult = poucos.lastIndexOf(false), prim = poucos.indexOf(true);
+      if (linhas().length !== ${BAL ? BAL.p.filter((b) => b.k === "d").length : 0}) f.push("a lista da Câmara devia ter ${BAL ? BAL.p.filter((b) => b.k === "d").length : 0} pessoas e tem " + linhas().length);
+      if (prim !== -1 && prim < ult) f.push("quem tem menos de 3 meses aparece antes de quem tem 3 meses ou mais (posição " + prim + " e " + ult + ")");
+      return f; })()` },
+  // o Senado à parte: equipe com o selo "estimativa", sem % do limite e sem ordenar pela equipe; o quadro da casa bate com o arquivo
+  { nome: "balanco-senado", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      [...document.querySelectorAll("#balanco .balanco-barra button")].find((b) => /^Senado/.test(b.textContent)).click(); await esp(300);
+      const t = document.querySelector("#balanco").innerText.replace(/\\s+/g, " "), linhas = document.querySelectorAll("#balanco .tabela-balanco tbody tr");
+      if (linhas.length < 40) f.push("a lista do Senado devia ter pelo menos 40 linhas: " + linhas.length);
+      if (document.querySelector("#bal-ordem").value !== "n" || location.search !== "?casa=s") f.push("o Senado devia abrir em ordem de nome (o total inclui a equipe estimada): " + document.querySelector("#bal-ordem").value + " " + location.search);
+      if (linhas[0] && linhas[0].querySelector(".balanco-nome strong").textContent !== ${JSON.stringify(BAL ? BAL.p.filter((b) => b.k === "s").map((b) => b.n).sort((a, b) => a.localeCompare(b, "pt-BR"))[0] : "")}) f.push("o primeiro senador devia ser o primeiro do alfabeto: " + linhas[0].querySelector(".balanco-nome strong").textContent);
+      if (![...document.querySelectorAll("#balanco thead th")].some((th) => /Equipe/.test(th.textContent) && th.querySelector(".etiqueta--estimativa"))) f.push("a coluna da equipe do Senado não tem o selo estimativa");
+      const ordens = [...document.querySelectorAll("#bal-ordem option")].map((o) => o.value);
+      if (ordens.includes("e") || ordens.includes("p")) f.push("o Senado não devia ordenar pela equipe nem pela % do limite: " + ordens.join(","));
+      if (/% do limite/.test([...linhas].map((tr) => tr.innerText).join(" "))) f.push("linha do Senado com % do limite");
+      if (!/não publica a tabela de limites por estado/.test(t)) f.push("falta a nota de que o Senado não tem % do limite");
+      if (!/estimativa pela lotação atual dos servidores/.test(t)) f.push("falta a nota da equipe estimada");
+      for (const v of ${JSON.stringify(BAL ? [BAL.casa.s.r.md, BAL.casa.s.c.md, BAL.casa.s.o.md, BAL.casa.s.e.md, BAL.casa.s.t.md].map((v) => Math.round(v).toLocaleString("pt-BR")) : [])}) if (!t.includes("R$ " + v)) f.push("o quadro do Senado não tem R$ " + v);
+      if (/Câmara dos Deputados: [0-9]+ deputados/.test(t)) f.push("o quadro da Câmara apareceu na visão do Senado");
+      return f; })()` },
+  { nome: "balanco-estados", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), bt = (t) => [...document.querySelectorAll("#balanco button")].find((b) => b.textContent.startsWith(t));
+      bt("Por estado").click(); await esp(300);
+      const linhas = () => [...document.querySelectorAll("#balanco .tabela-balanco--estados tbody tr")];
+      if (linhas().length !== 28) f.push("a visão por estado devia ter 28 linhas (a casa e os 27 estados): " + linhas().length);
+      const sp = linhas().find((tr) => /São Paulo \\(SP\\)/.test(tr.innerText));
+      const num = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
+      if (!sp || !sp.innerText.includes(num(${BAL ? BAL.uf.d.SP.t.md : 0}))) f.push("SP: a mediana do total por mês devia ser " + num(${BAL ? BAL.uf.d.SP.t.md : 0}));
+      if (!sp || !/${BAL ? String(BAL.uf.d.SP.c.pmd.toFixed(1)).replace(".", ",") : ""}% do limite \\(mediana\\)/.test(sp.innerText)) f.push("SP: falta a % do limite (mediana)");
+      bt("Soma no período").click(); await esp(300);
+      const sp2 = linhas().find((tr) => /São Paulo \\(SP\\)/.test(tr.innerText));
+      if (!sp2 || !sp2.innerText.includes(num(${BAL ? BAL.uf.d.SP.t.s : 0}))) f.push("SP: a soma do total devia ser " + num(${BAL ? BAL.uf.d.SP.t.s : 0}));
+      if (!/vista=estados/.test(location.search) || !/modo=soma/.test(location.search)) f.push("o endereço não guardou a visão e o modo: " + location.search);
+      if (/artido|PT\\b|PL\\b/.test(document.querySelector("#balanco .tabela-balanco--estados").innerText)) f.push("a visão por estado não pode trazer partido");
+      sp2.querySelector(".balanco-acoes button").click(); await esp(400);
+      if (!/uf=SP/.test(location.search) || document.querySelector("#balanco .tabela-balanco--estados")) f.push("'Ver as pessoas' devia filtrar por SP e voltar para a lista: " + location.search);
+      const quem = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr .balanco-nome small")].filter((s) => /· /.test(s.textContent) && !/ · SP · /.test(s.textContent));
+      if (quem.length) f.push("a lista de SP trouxe gente de outro estado: " + quem[0].textContent);
+      return f; })()` },
+  // uma pessoa (o endereço que o perfil e a imagem de compartilhar usam): uma linha, com a ajuda de custo à parte, e a janela de compartilhar
+  { nome: "balanco-pessoa", acao: true, url: BAL_PESSOA ? `/balanco?pessoa=${BAL_PESSOA.id}` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const num = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
+      const linhas = document.querySelectorAll("#balanco .tabela-balanco tbody tr");
+      if (linhas.length !== 1) return ["devia mostrar só uma pessoa: " + linhas.length];
+      const tx = linhas[0].innerText.replace(/\\s+/g, " ");
+      for (const v of ${JSON.stringify(BAL_PESSOA ? [`R$ ${BAL_PESSOA.r.m}`, `R$ ${BAL_PESSOA.t.m}`] : [])}) { const n = num(Number(v.slice(3))); if (!tx.includes(n)) f.push("a linha não tem " + n); }
+      if (!tx.includes("inclui " + num(${BAL_PESSOA ? BAL_PESSOA.u : 0}) + " de ajuda de custo, fora da média")) f.push("falta a ajuda de custo à parte");
+      if (!/${BAL_PESSOA ? String(BAL_PESSOA.c.p.toFixed(1)).replace(".", ",") : ""}% do limite/.test(tx)) f.push("falta a % do limite");
+      linhas[0].querySelector(".link-botao").click(); await esp(3500);
+      const j = document.querySelector("dialog.janela-img[open]"); if (!j) return f.concat(["a janela de compartilhar não abriu"]);
+      if (!j.querySelector("img.compartilhar-img__previa[src^='blob:']")) f.push("a imagem do balanço não foi gerada");
+      const zap = decodeURIComponent(j.querySelector("a.botao--zap").href.split("text=")[1] || "");
+      if (!zap.includes(${JSON.stringify(BAL_PESSOA ? BAL_PESSOA.n : "")}) || !/Veja o balanço completo: .*\\/balanco\\?pessoa=/.test(zap)) f.push("o texto do WhatsApp está sem o nome ou sem o link: " + zap.slice(0, 120));
+      if (!zap.includes(num(${BAL_PESSOA ? BAL_PESSOA.t.m : 0}) + " por mês")) f.push("o texto do WhatsApp não tem o total por mês");
+      return f; })()` },
+  // as entradas: link no perfil, chamada na página inicial e o link do cabeçalho; e o CSV traz uma linha por pessoa
+  { nome: "balanco-entradas", acao: true, url: BAL_PESSOA ? `/${ENDERECOS[BAL_PESSOA.id]}` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      const a = document.querySelector(".nota--balanco a"); if (!a || a.getAttribute("href") !== "/balanco?pessoa=${BAL_PESSOA ? BAL_PESSOA.id : ""}") f.push("o perfil devia ter o link 'ver no Balanço' com o id: " + (a && a.getAttribute("href")));
+      if (!document.querySelector("a#link-balanco[href='/balanco']")) f.push("o cabeçalho não tem o link do Balanço");
+      if (a) { a.click(); await esp(2500); if (location.pathname !== "/balanco" || document.querySelectorAll("#balanco .tabela-balanco tbody tr").length !== 1) f.push("o link do perfil não levou à linha da pessoa no Balanço"); }
+      const r = await fetch("/dados/balanco.csv"), c = await r.text();
+      if (!r.ok) f.push("o CSV não abriu: " + r.status);
+      if (c.split("\\n").filter(Boolean).length !== ${BAL ? BAL.p.length + 1 : 0}) f.push("o CSV devia ter ${BAL ? BAL.p.length + 1 : 0} linhas (cabeçalho e uma por pessoa): " + c.split("\\n").filter(Boolean).length);
+      return f; })()` },
+  { nome: "balanco-chamada-inicial", url: "/", ter: [[".chamada-balanco[href='/balanco']", 1]] },
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1], ["ol.correcoes a[href='/cidade/sao-paulo-sp']", 1]] },
   // correções que apontam para uma página: o aviso "esta página já foi corrigida" no fim da página (cidade pelo código IBGE, pessoa pelo id) e nenhum aviso onde não há
   { nome: "cidade-com-correcao", url: "/cidade/sao-paulo-sp", pagina: [/Esta página já foi corrigida\./, /Vereadores de São Paulo: a verba do gabinete por mês em 2026/, /04\/10\/2026/], ter: [["#correcoes-desta-pagina:not([hidden]) li", 1]] },
@@ -750,7 +839,7 @@ const PERFIS = arg("completo") ? TODOS_PERFIS : TODOS_PERFIS.slice(0, 2);
 // Modo rápido: a suíte completa passou de 60 minutos (mais de 90 tipos de página em 4 perfis). No meio do trabalho, --rapido roda uma página de cada
 // tipo e --mudou acrescenta as páginas dos assuntos que o git diff toca. GRUPOS: quando o diff (as linhas mudadas, ou o nome do arquivo) casa com
 // "quando", entram as páginas de teste cujo nome casa com "paginas". Assunto novo no site = uma linha aqui.
-const RAPIDO = ["inicio", "deputado-federal", "senador", "ministro", "governador", "estado", "cidade-capital", "cidade-interior", "atualizacao", "judiciario", "indice", "dados-abertos", "sobre", "correcoes", "deputado-topo-1080"];
+const RAPIDO = ["inicio", "balanco", "deputado-federal", "senador", "ministro", "governador", "estado", "cidade-capital", "cidade-interior", "atualizacao", "judiciario", "indice", "dados-abertos", "sobre", "correcoes", "deputado-topo-1080"];
 const PESSOAS_TOPO = "topo|deputado|senador|ministro|governador|prefeitura|vereador|judiciario-pessoa";
 const GRUPOS = [
   { nome: "topo do contracheque", quando: /conta__resumo|resumoTopo|faixaPosicao|posicao-faixa|resumo-valor|conta__topo/, paginas: new RegExp(PESSOAS_TOPO) },
@@ -764,6 +853,7 @@ const GRUPOS = [
   { nome: "judiciário", quando: /secJudiciario|notasJud|judiciario\.json/, paginas: /judiciario/ },
   { nome: "busca sem resultado e busca tolerante", quando: /termoMedivel|medirBuscaVazia|enviarBuscaVazia|busca_sem_resultado|BUSCA-INICIO|encontrarGov|encontrarCidades|termosBusca/, paginas: /^busca-/ },
   { nome: "capitais sem verba, com verba atrasada, com mês faltando ou sem a verba lida (João Pessoa, Teresina, Vitória, Cuiabá, São Luís, Aracaju)", quando: /Rio Branco|Porto Velho|pagamento_unico|notasUnico|unicoNome|mesesOficiaisJ|meses_oficiais|verbaPendente|verbaNaoLida|verba_ate|verba_sem|sem_verba|semVerbaCasa|João Pessoa|Teresina|Vitória|Cuiabá|São Luís|Aracaju/, paginas: /joao-pessoa|teresina|vitoria|cuiaba|sao-luis|aracaju|rio-branco|porto-velho|pagamento-unico|stm-meses-oficiais|stm-set-2026/ },
+  { nome: "balanço", quando: /secBalanco|balanco|balPontos|chamadaBalanco|linkBalancoPerfil/i, paginas: /^balanco/ },
   { nome: "índice de transparência", quando: /secIndice|indice_transparencia/, paginas: /indice/ },
   { nome: "sobre, imprensa e dados abertos", quando: /secSobre|sobre\.json|secImprensa|imprensa|secDadosAbertos|manifesto/, paginas: /sobre|imprensa|dados-abertos/ },
   { nome: "descobrir os representantes", quando: /abrirGuia|listaGuia|guia__/, paginas: /descobrir|inicio/ },

@@ -684,6 +684,8 @@ const DESCRICAO_ARQ = {
   "correcoes.json": "Os erros do site já corrigidos: o que estava errado e o que mudou.",
   "atividade.json": "Presença no Plenário e projetos de cada deputado federal e senador desde fev/2023: X de Y, sem nota nem ranking, com a fonte (a Câmara conta por dia de sessão e o Senado por votação nominal: contas diferentes).",
   "bens.json": "Bens declarados à Justiça Eleitoral (TSE) na candidatura por quem está no cargo e tem página no site: só o tipo e o valor, informados pela própria pessoa (em geral o valor de compra), sem descrição dos bens nem CPF. Sem ranking nem comparação.",
+  "balanco.json": "Balanço de deputados federais e senadores desde fev/2023: o que cada um recebeu e o que o mandato usou (cota, outros gastos, equipe), total e média por mês, e a soma e a mediana por estado.",
+  "balanco.csv": "O mesmo balanço, uma linha por pessoa, para abrir em planilha.",
   "situacao.json": "A situação de cada fonte: até que mês vão os dados, quando foram lidos pela última vez e o motivo de qualquer atraso (página Atualização dos dados).",
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]
@@ -697,7 +699,7 @@ function manifesto() {
     for (const e of fs.readdirSync(pasta, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
       const a = path.join(pasta, e.name), r = rel ? `${rel}/${e.name}` : e.name;
       if (e.isDirectory()) andar(a, r);
-      else if (e.isFile() && /\.json$/.test(e.name)) {
+      else if (e.isFile() && /\.(json|csv)$/.test(e.name)) {
         const conteudo = fs.readFileSync(a);
         arquivos.push({ arquivo: r, bytes: conteudo.length, sha256: createHash("sha256").update(conteudo).digest("hex"), descricao: descricaoArq(r) });
       }
@@ -723,7 +725,7 @@ const tamanhoTxt = (b) => (b >= 1048576 ? `${(b / 1048576).toFixed(1).replace(".
     license: "https://creativecommons.org/licenses/by/4.0/", isAccessibleForFree: true, creator: { "@type": "Organization", name: "Contas do Poder", url: `${DOMINIO}/` },
     dateModified: DATA_ATUALIZADA, temporalCoverage: "2023-02/..", spatialCoverage: { "@type": "Country", name: "Brasil" },
     sameAs: COPIAS.map((c) => c.url).filter((u) => /doi\.org/.test(u)),
-    distribution: MANIFESTO.arquivos.filter((a) => !a.arquivo.includes("/")).map((a) => ({ "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${DOMINIO}/dados/${a.arquivo}`, name: a.arquivo, contentSize: `${a.bytes} B`, sha256: a.sha256 })) };
+    distribution: MANIFESTO.arquivos.filter((a) => !a.arquivo.includes("/")).map((a) => ({ "@type": "DataDownload", encodingFormat: a.arquivo.endsWith(".csv") ? "text/csv" : "application/json", contentUrl: `${DOMINIO}/dados/${a.arquivo}`, name: a.arquivo, contentSize: `${a.bytes} B`, sha256: a.sha256 })) };
   paginas.push(["dados-abertos", pagina("dados-abertos", titulo, lide, corpo, { extras: ["/dados/manifesto.json"], ld: [LD_DATASET] })]);
 }
 
@@ -792,6 +794,45 @@ if (SIT && (SIT.fontes || []).length) {
     + '<p class="nota">Os robôs leem de novo as fontes que abrem de fora do Brasil toda semana e as que só abrem do Brasil uma vez por mês; a fonte congelada segue a frase própria dela na lista. Esta lista em JSON, para quem quiser conferir ou reaproveitar: <a href="/dados/situacao.json" download>situacao.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
   const titulo = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
   paginas.push(["atualizacao", pagina("atualizacao", titulo, lide, corpo, { extras: ["/dados/situacao.json"] })]);
+}
+
+// ------------------------------------------------------------------ balanço do mandato (/balanco, de site/dados/balanco.json)
+// A página de verdade (filtros, lista, estados, imagem para compartilhar) é feita pelo app.js (secBalanco); aqui, o que vale sem
+// JavaScript: o título, o período, o que ler antes dos números, o quadro de cada casa e as fontes. O texto de balPontos é o mesmo do app.js.
+const BAL = ler("balanco.json", null);
+if (BAL && (BAL.p || []).length) {
+  const mes = (m) => `${MESES[(m % 100) - 1]}/${Math.floor(m / 100)}`;
+  const listaE = (xs) => (xs.length <= 1 ? xs.join("") : `${xs.slice(0, -1).join(", ")} e ${xs[xs.length - 1]}`);
+  const PARTE = { r: "recebeu", c: "cota", o: "outros gastos", e: "equipe" };
+  const ultimo = Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1])));
+  const faixas = (k) => {
+    const f = BAL.meta.faixas[k], grupos = new Map();
+    for (const c of ["r", "c", "o", "e"]) grupos.set(f[c][1], [...(grupos.get(f[c][1]) || []), PARTE[c]]);
+    return [...grupos].sort((a, b) => b[0] - a[0]).map(([m, nomes]) => `${listaE(nomes)} até ${mes(m)}`).join("; ");
+  };
+  const reaisB = (v) => (v === null || v === undefined ? "—" : `R$\u00a0${Math.round(v).toLocaleString("pt-BR")}`);
+  const periodo = `mandato 2023–2026, de fev/2023 a ${mes(ultimo)}`;
+  const f = BAL.meta.faixas, acima = BAL.p.filter((x) => x.k === "d" && x.c.p > 100).length, minimo = BAL.meta.meses_minimos_mediana || 3;
+  const pontos = [
+    `Dados parciais: vão até o último mês que cada fonte publicou. Câmara: ${faixas("d")}. Senado: ${faixas("s")}.${f.d.e[1] < f.d.r[1] ? " A verba de gabinete da Câmara (a equipe) é publicada com atraso." : ""}`,
+    `Base de ${BAL.meta.atualizado}. O balanço é refeito a cada rodada de atualização; a versão final sai em fev/2027.`,
+    "Valores brutos, como as fontes publicam: sem imposto de renda, previdência nem valor líquido.",
+    `Compare pela média por mês, não pelo total: quem ficou menos tempo no cargo (um suplente, por exemplo) acumula menos. Cada média diz por quantos meses foi dividida; com menos de ${minimo} meses numa parte, a pessoa fica fora das medianas e depois das demais na ordem por média.`,
+    "Câmara e Senado têm regras diferentes e aparecem à parte: o site não compara os totais das duas casas. No Senado, a equipe é uma estimativa, e a cota não tem % do limite (o Senado não publica a tabela por estado em formato aberto).",
+    `Câmara, % do limite da cota: o que foi usado ÷ a soma dos limites do estado nos meses no cargo. O total da cota que a Câmara publica inclui os trechos de avião extras (até quatro por mês), por isso ${acima} ${acima === 1 ? "deputado passa" : "deputados passam"} de 100%.`,
+  ];
+  const casa = (k, nome, plural) => { const a = BAL.casa[k], s = k === "s"; return `<li><strong>${nome}:</strong> ${a.n} ${plural} no período, ${a.x} no cargo hoje. Mediana da média por mês: recebeu ${reaisB(a.r.md)}, cota ${reaisB(a.c.md)}${a.c.pmd !== undefined ? ` (${String(a.c.pmd.toFixed(1)).replace(".", ",")}% do limite)` : ""}, outros gastos ${reaisB(a.o.md)}, equipe ${reaisB(a.e.md)}${s ? " (estimativa)" : ""}, total ${reaisB(a.t.md)}.</li>`; };
+  const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e o link da fonte de cada número. Tudo com dados abertos oficiais.`;
+  const corpo = '<section class="bloco" id="balanco" aria-labelledby="t-balanco"><p class="rotulo">Deputados federais e senadores</p>'
+    + '<h1 id="t-balanco" class="titulo-pagina">Balanço 2023–2026</h1>'
+    + `<p class="lide">${esc(lide)}</p>`
+    + `<div class="balanco-pontos caixa-nota"><h2 class="h3">Antes dos números</h2><ul class="lista">${pontos.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>`
+    + `<div class="balanco-casa"><h2 class="h3">Resumo de cada casa</h2><ul class="lista">${casa("d", "Câmara dos Deputados", "deputados")}${casa("s", "Senado Federal", "senadores")}</ul></div>`
+    + '<h2 class="h3">As fontes</h2><ul class="lista">' + (BAL.meta.fontes || []).map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nome)}&nbsp;↗</a></li>`).join("") + "</ul>"
+    + '<p class="nota">Os dados, uma linha por pessoa: <a href="/dados/balanco.csv" download>balanco.csv</a> e <a href="/dados/balanco.json" download>balanco.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
+  const titulo = "Balanço 2023–2026: o que cada deputado federal e senador recebeu e usou | Contas do Poder";
+  const texto = `${periodo[0].toUpperCase()}${periodo.slice(1)}: o que cada deputado federal e senador recebeu, a cota parlamentar, outros gastos e a equipe do gabinete, com a média por mês e a fonte de cada número.`;
+  paginas.push(["balanco", pagina("balanco", titulo, texto, corpo, { extras: ["/dados/balanco.json"], leve: true })]);
 }
 
 // ------------------------------------------------------------------ sobre e privacidade (/sobre, de site/sobre.json)

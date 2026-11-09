@@ -1666,6 +1666,38 @@ Dois usos do mesmo arquivo (`site/dados/situacao.json`), sem arquivo novo:
   aviso, o texto de cada tipo e o que não pode aparecer. Também confere que as páginas afetadas dizem "Folha até..." e que a
   de São Paulo (fonte em dia) não diz.
 
+## Balanço 2023–2026 (`/balanco`)
+
+Página de lançamento (09/11/2026), de `site/dados/balanco.json` (a coleta e as regras de cálculo estão em "Balanço do mandato", acima). O
+`app.js` desenha a página (`secBalanco`, `carregarBalanco`; o `gerar.mjs` faz `publicar/balanco.html` com o título, o período, "Antes dos
+números", o quadro de cada casa e as fontes, para quem não roda JavaScript). É uma página só, com filtros, e não uma por estado: custa 1
+arquivo HTML (e o CSV, +1) no limite do Cloudflare. Carrega só o essencial (`<meta name="dados-leve">`, `rotaLeve()`) mais o `balanco.json`.
+
+- **Cada casa à parte** (Câmara é o padrão; Senado em `?casa=s`): nunca uma lista com as duas, para não comparar total de uma com o da
+  outra. A lista da Câmara é ordenada pela **média por mês** (padrão); a do Senado abre **por nome**, porque o total do Senado inclui a equipe,
+  que é estimativa, e ordenar por ele destacaria a maior estimativa (a ordem por total continua à escolha, com a nota). A escolha de ordem tem de recebeu, cota, % do limite (só Câmara), outros gastos, equipe (só
+  Câmara), total no período, meses no cargo e nome. Quem tem menos de 3 meses na parte vai depois das demais, qualquer que seja o sentido, com a
+  etiqueta "menos de 3 meses". Filtros: estado, nome, "só quem está no cargo hoje". Nada por partido (o partido aparece só como dado da pessoa).
+- **Por estado** (`?vista=estados`): uma linha para a casa e uma por estado, em ordem alfabética (sem ranking de estados), com a mediana da média
+  por mês de cada parte ou a soma no período (`?modo=soma`) e o número de pessoas; "Ver as pessoas" filtra a lista.
+- **Textos**: o período vem de `meta.faixas` ("mandato 2023–2026, de fev/2023 a <último mês>"; nunca "termina em 31/1/2027": os senadores eleitos
+  em 2022 ficam até 2031), as faixas de cada parte também. "Antes dos números" (`balPontos`) são 6 frases do `app.js` e do `gerar.mjs`, em
+  duplicata: mudar uma, mudar a outra. "Como ler este balanço" traz as ressalvas do arquivo (menos a primeira, "Período:", que diz o que não
+  vale para os senadores), as fontes e o download do CSV e do JSON. A equipe do Senado leva o selo "estimativa" e não entra na ordem.
+- **Endereços** (`history.replaceState`, sem recarregar): `?casa=s`, `?uf=SP`, `?cargo=1`, `?vista=estados`, `?modo=soma`, `?ordem=r|c|p|o|e|tt|mc|n`,
+  `?dir=asc|desc`, `?q=nome` e `?pessoa=<id>` (uma pessoa só; é o endereço que o perfil e a imagem usam).
+- **Entradas**: link "Balanço" no cabeçalho (`#link-balanco`; no celular a lupa fica sem o texto "Buscar" para caber), chamada na página inicial
+  (`chamadaBalanco`), "ver no Balanço" no perfil de cada deputado federal e senador (`linkBalancoPerfil`, `?pessoa=<id>`).
+- **Compartilhar**: imagem 1080×1350 e texto de WhatsApp de cada pessoa (`specPessoaBal`) e de cada estado e casa (`specUFBal`), com as
+  mesmas peças dos perfis (`cabecaImagem`, `cartoesImagem`...). Eventos: `ver_balanco` (a rota), `filtrar_balanco` (o: casa, uf, vista, modo,
+  cargo, ordem, busca...), `abrir_perfil_balanco`, `abrir_balanco_perfil` (do perfil), `baixar_dados` (`balanco.csv`/`balanco.json`) e, na
+  imagem, `abrir_compartilhar` e `compartilhar` com `conteudo: "balanco"` e `tipo: pessoa|estado`.
+- **Dados abertos**: o manifesto (`gerar.mjs`, `manifesto()`) passou a listar também os `.csv`; `balanco.csv` aparece em `/dados-abertos`
+  (CC BY 4.0, como os JSON) e no JSON-LD com `text/csv`.
+- **Testes** (`publicacao/testes/rodar.mjs`): `balanco`, `balanco-ordem-pela-media` (o primeiro da fila é o de maior média, e não o de maior
+  total; poucos meses no fim), `balanco-senado`, `balanco-estados`, `balanco-pessoa`, `balanco-entradas` (perfil, cabeçalho, CSV) e
+  `balanco-chamada-inicial`; os números esperados saem do próprio `balanco.json`.
+
 ## Conforto, dados estruturados, baixar dados e carga sob demanda (07/10/2026)
 
 - **404 de verdade**: o `gerar.mjs` faz `publicar/404.html` (a página do app com `noindex`); o Cloudflare Pages a serve, com o código 404, para todo
