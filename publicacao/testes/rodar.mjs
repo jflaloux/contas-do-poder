@@ -150,7 +150,14 @@ const BAL_ELEG = (b) => (b.t.ok !== undefined ? !!b.t.ok : ["r", "c", "o", "e"].
 const BAL_PRIMEIRO = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.m))[0] : null;
 const BAL_PRIMEIRO_TOTAL = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.t))[0] : null;
 const BAL_PRIMEIRO_NOME = BAL ? BAL.p.filter((b) => b.k === "d").map((b) => b.n).sort((x, y) => x.localeCompare(y, "pt-BR"))[0] : "";
-const BAL_PESSOA = BAL ? BAL.p.find((b) => b.k === "d" && b.u > 0 && b.c.p !== undefined && b.mc >= 3 && !b.rel && ENDERECOS[b.id]) : null;
+const DADOS_G = (() => { try { return new Map(lerDados("dados.json").p.map((p) => [p.id, p.g])); } catch (e) { return new Map(); } })();
+const BAL_FEM = BAL ? (() => { const b = BAL.p.find((x) => /^(Deputada|Senadora)/.test(DADOS_G.get(x.id) || "")); return b ? { ...b, g: DADOS_G.get(b.id) } : null; })() : null;
+const BAL_DEVOLVEU = BAL ? BAL.p.find((b) => b.u < 0) : null;
+const BAL_ACERTO = BAL ? BAL.p.find((b) => b.u > b.r.t) : null;
+const BAL_NEG = BAL ? BAL.p.find((b) => ["c", "o", "e"].some((c) => b[c].m < 0 && b[c].n >= 1)) : null;
+const BAL_LIC = BAL ? BAL.p.find((b) => b.r.lic > 0) : null;
+const BAL_CURTO = BAL ? BAL.p.find((b) => b.mc < 1 && b.mc > 0) : null;
+const BAL_PESSOA = BAL ? BAL.p.find((b) => b.k === "d" && b.u > 0 && b.u <= b.r.t && b.c.p !== undefined && b.mc >= 3 && !b.rel && ENDERECOS[b.id]) : null;
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
   // o "Descobrir", passo 2 (SP) aberto: nada rola para o lado, a única rolagem é a do popup, os rótulos existem e "Ver todos" abre o grupo
@@ -564,9 +571,9 @@ const PAGINAS = [
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10], ["#dados-abertos a[href='/dados/balanco.csv']", BAL ? 1 : 0]] },
   // /balanco (09/11/2026): a lista, o quadro de cada casa, as ressalvas e a ordem pela média por mês (com os de poucos meses no fim)
   { nome: "balanco", url: BAL ? "/balanco" : null, ter: [["#balanco tbody tr", 40], ["#balanco .balanco-casa", 1], ["#balanco a[href='/dados/balanco.csv']", 1], ["#balanco .balanco-pontos li", 6]],
-    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /em fev\/2027 há uma atualização com o fim do mandato dos deputados/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
+    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /está prevista uma atualização em fev\/2027, com o fim do mandato dos deputados/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
       new RegExp(`equipe até ${reEsc(BAL_FMT(BAL.meta.faixas.d.e[1]))}`), /Os senadores eleitos em 2022 têm mandato até 2031/, /Sem agregados por partido/] : [],
-    semPagina: [/termina em 31\/1\/2027/, /versão final/, /o link da fonte de cada número/, /vai para o bolso/i, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
+    semPagina: [/termina em 31\/1\/2027/, /Tudo com dados abertos oficiais/, /em fev\/2027 há uma atualização/, /não há ato da Mesa/, /versão final/, /o link da fonte de cada número/, /vai para o bolso/i, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
   { nome: "balanco-ordem-pela-media", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       const esperado = ${JSON.stringify(BAL_PRIMEIRO ? BAL_PRIMEIRO.n : "")}, errado = ${JSON.stringify(BAL_PRIMEIRO_TOTAL ? BAL_PRIMEIRO_TOTAL.n : "")};
@@ -652,6 +659,16 @@ const PAGINAS = [
       if (!r.ok) f.push("o CSV não abriu: " + r.status);
       if (c.split("\\n").filter(Boolean).length !== ${BAL ? BAL.p.length + 1 : 0}) f.push("o CSV devia ter ${BAL ? BAL.p.length + 1 : 0} linhas (cabeçalho e uma por pessoa): " + c.split("\\n").filter(Boolean).length);
       return f; })()` },
+  // celular estreito: a página não pode passar da largura (a licença do CSV não quebrava e abria rolagem horizontal)
+  { nome: "balanco-320", url: BAL ? "/balanco" : null, largura: 320, ter: [["#balanco .balanco-fim a[href*='creativecommons.org']", 1]] },
+  { nome: "balanco-320-estados", url: BAL ? "/balanco?vista=estados" : null, largura: 320, ter: [["#balanco .tabela-balanco--estados tbody tr", 28]] },
+  // cargo no feminino, meses sem "0,0" nem "1,0", ajuda de custo devolvida e estorno nas partes negativas
+  { nome: "balanco-cargo-feminino", url: BAL_FEM ? `/balanco?pessoa=${BAL_FEM.id}` : null, pagina: BAL_FEM ? [new RegExp(`${reEsc(BAL_FEM.g)} · ${BAL_FEM.uf}`)] : [] },
+  { nome: "balanco-meses-e-devolucao", url: BAL_DEVOLVEU ? `/balanco?pessoa=${BAL_DEVOLVEU.id}` : null, pagina: BAL_DEVOLVEU ? [new RegExp(`devolveu R\\$\\s${Math.round(-BAL_DEVOLVEU.u).toLocaleString("pt-BR").replace(".", "\\.")} de ajuda de custo`)] : [], semPagina: [/inclui -R\$/, /0,0 meses/, /1,0 mês/] },
+  { nome: "balanco-ajuda-acertos", url: BAL_ACERTO ? `/balanco?pessoa=${BAL_ACERTO.id}` : null, pagina: [/inclui R\$\s[0-9.]+ de ajuda de custo e acertos negativos lançados pela fonte/], semPagina: [/inclui -R\$/] },
+  { nome: "balanco-devolucao-lancada", url: BAL_NEG ? `/balanco?pessoa=${BAL_NEG.id}` : null, pagina: [/devolução lançada pela fonte/], semPagina: [/NaN/] },
+  { nome: "balanco-licenca", url: BAL_LIC ? `/balanco?pessoa=${BAL_LIC.id}` : null, pagina: [/inclui [0-9,]+ (mês|meses) de licença com o salário do mandato/] },
+  { nome: "balanco-sem-media", url: BAL_CURTO ? `/balanco?pessoa=${BAL_CURTO.id}` : null, pagina: [/\(menos de 1 mês no cargo, sem média\)/, /0,[0-9]{2} mês/], semPagina: [/: menos de 1 mês no cargo: sem média/, /0,0 /, /NaN/] },
   { nome: "balanco-chamada-inicial", url: "/", ter: [[".chamada-balanco[href='/balanco']", 1]] },
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1], ["ol.correcoes a[href='/cidade/sao-paulo-sp']", 1]] },
   // correções que apontam para uma página: o aviso "esta página já foi corrigida" no fim da página (cidade pelo código IBGE, pessoa pelo id) e nenhum aviso onde não há

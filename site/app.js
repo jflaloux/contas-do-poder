@@ -4725,7 +4725,16 @@
   const BAL_CASA = { d: "Câmara dos Deputados", s: "Senado Federal" };
   const BAL_CARGO = { d: "Deputado federal", s: "Senador" };
   const BAL_PARTE = { r: "recebeu", c: "cota", o: "outros gastos", e: "equipe" };
-  const balMeses = (n) => `${num(n, n % 1 ? 1 : 0)} ${n === 1 ? "mês" : "meses"}`;
+  // meses: duas casas abaixo de 1 mês (nunca "0,0"), uma casa só se houver fração, singular abaixo de 2; o mesmo formato em todo lugar
+  const balNum = (n) => { const r = Math.round(n * 10) / 10; return n < 1 ? num(Math.round(n * 100) / 100, 2) : num(r, r % 1 ? 1 : 0); };
+  const balMeses = (n) => `${balNum(n)} ${n < 2 ? "mês" : "meses"}`;
+  // cargo no feminino quando é o caso: o campo g do perfil (dados.json); sem ele, o masculino
+  const balCargoDe = (b) => { const q = S.porId.get(b.id); return (q && q.g) || BAL_CARGO[b.k]; };
+  // partes com menos de 3 meses (m3 do arquivo, ou contadas aqui): quem tem alguma fica fora das comparações
+  const balPartesCurtas = (b, min) => (b.m3 && b.m3.length ? b.m3 : (b.k === "s" ? ["r", "c", "o"] : ["r", "c", "o", "e"]).filter((c) => b[c].n > 0 && b[c].n < min));
+  const balAviso = (b, min) => { if (balElegivel(b, min) && b.mc >= min) return null; const cs = balPartesCurtas(b, min); return `Menos de ${min} meses em ${cs.length ? listaE(cs.map((c) => BAL_PARTE[c])) : "uma parte do total"}: fica fora das comparações`; };
+  // ajuda de custo: negativa = devolução; maior que o total recebido = não dá para dizer que o total a inclui
+  const balAjuda = (b) => (!b.u ? null : b.u < 0 ? `devolveu ${reais(-b.u)} de ajuda de custo` : b.u > b.r.t ? `inclui ${reais(b.u)} de ajuda de custo e acertos negativos lançados pela fonte` : `inclui ${reais(b.u)} de ajuda de custo, fora da média`);
   const balReais = (v) => (v === null || v === undefined ? "—" : reais(v));
   const balUltimoMes = (B) => Math.max(...Object.values(B.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1])));
   // "recebeu, cota e outros gastos até out/2026; equipe até jul/2026" (a faixa de cada parte, do arquivo, nunca fixa)
@@ -4743,15 +4752,15 @@
   const balSemEq = (b) => (b.t && b.t.ms !== undefined ? b.t.ms : (b.r.m || 0) + (b.c.m || 0) + (b.o.m || 0));
   const balSemEqTotal = (b) => (b.t && b.t.ts !== undefined ? b.t.ts : b.r.t + b.c.t + b.o.t);
   const balTotalM = (b) => { const v = b.mc < 1 || b.r.n < 1 ? null : b.k === "s" ? balSemEq(b) : b.t.m; return v === undefined ? null : v; };
-  const balSemMedia = (b) => (b.mc < 1 ? "menos de 1 mês no cargo: sem média" : "falta a média de alguma parte: sem média do total"); // divisor menor que 1 mês: sem média
+  const balSemMedia = (b) => (b.mc < 1 ? "menos de 1 mês no cargo, sem média" : "falta a média de alguma parte, sem média do total"); // divisor menor que 1 mês: sem média
   const balTotalT = (b) => (b.k === "s" ? balSemEqTotal(b) : b.t.t);
-  const balMedia = (parte) => (parte.m === null || parte.m === undefined || parte.n < 1 ? null : parte.m);
+  const balMedia = (parte) => (parte.m === null || parte.m === undefined || parte.n < 1 || parte.m < 0 ? null : parte.m); // média negativa (devolução lançada pela fonte): só o total
   // elegível para a ordem pelo total: nenhuma parte que forma o total com menos de 3 meses (no Senado, sem a equipe)
   const balElegivel = (b, min) => (b.t && b.t.ok !== undefined ? !!b.t.ok : (b.k === "s" ? ["r", "c", "o"] : ["r", "c", "o", "e"]).every((c) => !(b[c].n > 0) || b[c].n >= min));
   // a nota do calendário: os valores mudaram no período, e a média por mês favorece quem entrou depois
   function balNotaCalendario(B) {
     const t = B.meta.teto_verba_gabinete, ev = (x) => (typeof x === "number" ? fmtMes(x) : String(x).slice(0, 7).split("-").reverse().join("/"));
-    const nums = Array.isArray(t) && t.length > 1 ? ` O valor disponível da verba de gabinete da Câmara (estimado pela página de cada deputado; não há ato da Mesa com os valores) foi de ${reais(t[0].valor)} (${ev(t[0].desde)}) para ${reais(t[t.length - 1].valor)} (${ev(t[t.length - 1].desde)}).` : "";
+    const nums = Array.isArray(t) && t.length > 1 ? ` O valor disponível da verba de gabinete da Câmara (estimado pela página de cada deputado; não achamos o ato da Mesa com os valores) foi de ${reais(t[0].valor)} (${ev(t[0].desde)}) para ${reais(t[t.length - 1].valor)} (${ev(t[t.length - 1].desde)}).` : "";
     return `A média por mês favorece quem entrou depois dos reajustes: o subsídio, o limite da cota e o valor disponível da verba de gabinete mudaram no período.${nums} Quem esteve no cargo só nos meses mais recentes tende a ter média maior.`;
   }
   // as ressalvas que vêm antes dos números (as 15 frases completas ficam em "Como ler", mais abaixo)
@@ -4759,7 +4768,7 @@
     const f = B.meta.faixas, acima = balAcima100(B);
     return [
       `Dados parciais: vão até o último mês que cada fonte publicou. Câmara: ${balFaixasTexto(B, "d")}. Senado: ${balFaixasTexto(B, "s")}.${f.d.e[1] < f.d.r[1] ? " A verba de gabinete da Câmara (a equipe) é publicada com atraso." : ""}${balLacunas(B)}`,
-      `Base de ${B.meta.atualizado}. O balanço é refeito a cada rodada; em fev/2027 há uma atualização com o fim do mandato dos deputados, e os meses que as fontes publicam com atraso entram depois.`,
+      `Base de ${B.meta.atualizado}, com as correções de 09 e 10/11/2026. O balanço é refeito a cada rodada; está prevista uma atualização em fev/2027, com o fim do mandato dos deputados, e os meses que as fontes publicam com atraso entram depois.`,
       "Valores brutos, como as fontes publicam: sem imposto de renda, previdência nem valor líquido.",
       `Compare com cuidado a média por mês: quem ficou menos tempo no cargo (um suplente, por exemplo) acumula menos no total, e a média favorece quem entrou depois dos reajustes. Cada média diz por quantos meses foi dividida; com menos de ${balMinimo(B)} meses numa parte, a pessoa fica depois das demais na ordem por média e fora das medianas.`,
       "Câmara e Senado têm regras diferentes e aparecem à parte: o site não compara os totais das duas casas. No Senado, a equipe é uma estimativa e fica fora do total e da ordem; a cota não tem % do limite (o Senado não publica a tabela por estado em formato aberto).",
@@ -4803,7 +4812,7 @@
     // ---- compartilhar: imagem e texto de cada pessoa e de cada estado
     const medirBal = (extra) => ({ conteudo: "balanco", ...extra });
     const textoPessoaBal = (b) => {
-      const quem = BAL_CARGO[b.k], s = b.k === "s";
+      const quem = balCargoDe(b), s = b.k === "s";
       return [
         `*${b.n}* (${quem}, ${b.uf}${b.pt ? `, ${b.pt}` : ""}), balanço do ${balPeriodo(B)} (${balMeses(b.mc)} no cargo):`,
         balTotalM(b) === null ? `Total no período: *${reais(balTotalT(b))}* (${balSemMedia(b)})`
@@ -4812,7 +4821,8 @@
         `• Cota parlamentar: ${balReais(balMedia(b.c))} por mês${b.c.p !== undefined ? ` (${num(b.c.p, 1)}% do limite)` : ""}`,
         `• Outros gastos do mandato: ${balReais(balMedia(b.o))} por mês`,
         `• Equipe do gabinete: ${balReais(balMedia(b.e))} por mês${s ? " (estimativa, fora do total)" : ""}`,
-        "Valores brutos, dados abertos oficiais; parciais, pelo que cada fonte já publicou.",
+        balAviso(b, MIN),
+        "Valores brutos, dados públicos oficiais; parciais, pelo que cada fonte já publicou.",
         "",
         `Veja o balanço completo: ${endereco() ? linkBal({ pessoa: b.id }) : "Contas do Poder"}`,
       ].join("\n");
@@ -4820,8 +4830,10 @@
     async function imagemPessoaBal(b) {
       return comFolga(async (t) => {
         const { g, M, H, C } = t, s = b.k === "s", q0 = S.porId.get(b.id) || {};
-        const cab = await cabecaImagem(t, { foto: q0.f, nome: b.n, rotulo: "BALANÇO 2023–2026", sub: `${BAL_CARGO[b.k]} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""}`, linhasSub: 2 });
-        let y = valorImagem(t, cab.y + respiro(t), `${s ? "TOTAL SEM A EQUIPE ESTIMADA" : "TOTAL"} POR MÊS, EM MÉDIA · ${num(b.mc, b.mc % 1 ? 1 : 0)} ${b.mc === 1 ? "MÊS" : "MESES"} NO CARGO`, balReais(balTotalM(b)));
+        const cab = await cabecaImagem(t, { foto: q0.f, nome: b.n, rotulo: "BALANÇO 2023–2026", sub: `${balCargoDe(b)} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""}`, linhasSub: 2 });
+        let y = balTotalM(b) === null
+          ? valorImagem(t, cab.y + respiro(t), `TOTAL NO PERÍODO · ${b.mc < 1 ? "MENOS DE 1 MÊS NO CARGO" : "SEM MÉDIA DO TOTAL"}`, balReais(balTotalT(b)), false)
+          : valorImagem(t, cab.y + respiro(t), `${s ? "TOTAL SEM A EQUIPE ESTIMADA" : "TOTAL"} POR MÊS, EM MÉDIA · ${balNum(b.mc)} ${b.mc < 2 ? "MÊS" : "MESES"} NO CARGO`, balReais(balTotalM(b)));
         y = cartoesImagem(t, y + respiro(t), [
           [C.ganha, "RECEBEU", balReais(balMedia(b.r)), `${reais(b.r.t)} no período`],
           [C.custa, "COTA PARLAMENTAR", balReais(balMedia(b.c)), b.c.p !== undefined ? `${num(b.c.p, 1)}% do limite` : "sem % do limite no Senado"]]);
@@ -4829,10 +4841,11 @@
           ["Outros gastos do mandato", balReais(balMedia(b.o))],
           [`Equipe do gabinete${s ? " (estimativa, fora do total)" : ""}`, balReais(balMedia(b.e))]], 44, C.equipe);
         g.fillStyle = C.ink2; g.font = `400 22px ${t.BODY}`;
-        const aviso = `De ${fmtMes(b.de)} a ${fmtMes(b.ate)}, pelo que cada fonte já publicou. Valores brutos.`;
+        const aviso = `De ${fmtMes(b.de)} a ${fmtMes(b.ate)}, pelo que cada fonte já publicou. Valores brutos.`, fora = balAviso(b, MIN);
         g.fillText(aviso, M, Math.min(y + 36, H - 196));
-        rodapeImagem(t, "VEJA O BALANÇO DO MANDATO EM", "/balanco", `Dados abertos oficiais ${s ? "do Senado Federal" : "da Câmara dos Deputados"}`, cab.temFoto ? creditoFoto(q0.fc) : null);
-        return Math.min(y + 36, H - 196);
+        if (fora) { g.fillStyle = "#ffffff"; g.font = `600 24px ${t.BODY}`; g.fillText(fora, M, Math.min(y + 74, H - 196)); }
+        rodapeImagem(t, "VEJA O BALANÇO DO MANDATO EM", "/balanco", `Dados públicos oficiais ${s ? "do Senado Federal" : "da Câmara dos Deputados"}`, cab.temFoto ? creditoFoto(q0.fc) : null);
+        return Math.min(y + (balAviso(b, MIN) ? 74 : 36), H - 196);
       });
     }
     const specPessoaBal = (b) => {
@@ -4845,13 +4858,13 @@
       const a = B.uf[k][uf], s = k === "s", pl = k === "d" ? "deputados federais" : "senadores";
       return [
         `*Balanço ${ESTADOS[uf]}: ${pl}* (${balPeriodo(B)})`,
-        `${a.n} ${pl} no período (${a.x} no cargo hoje). Mediana da média por mês:`,
+        `${a.n} ${pl} no período (${a.x} no cargo hoje). Mediana da média por mês de ${a.t.ns !== undefined ? a.t.ns : a.t.n} com ${MIN} meses ou mais:`,
         `• ${rotuloTotal(k)}: *${balReais(totalMd(k, a, uf))}*`,
         `• Recebeu: ${balReais(a.r.md)}`,
         `• Cota parlamentar: ${balReais(a.c.md)}${a.c.pmd !== undefined ? ` (${num(a.c.pmd, 1)}% do limite, mediana)` : ""}`,
         `• Outros gastos do mandato: ${balReais(a.o.md)}`,
         `• Equipe do gabinete: ${balReais(a.e.md)}${s ? " (estimativa, fora do total)" : ""}`,
-        "Valores brutos, dados abertos oficiais; parciais, pelo que cada fonte já publicou.",
+        "Valores brutos, dados públicos oficiais; parciais, pelo que cada fonte já publicou.",
         "",
         `Veja o balanço completo: ${endereco() ? linkBal({ casa: k, uf }) : "Contas do Poder"}`,
       ].join("\n");
@@ -4868,8 +4881,8 @@
           ["Outros gastos do mandato", balReais(a.o.md)],
           [`Equipe do gabinete${s ? " (estimativa, fora do total)" : ""}`, balReais(a.e.md)]], 44, C.equipe);
         g.fillStyle = C.ink2; g.font = `400 22px ${t.BODY}`;
-        g.fillText("Valores brutos, pelo que cada fonte já publicou.", M, Math.min(y + 36, H - 196));
-        rodapeImagem(t, "VEJA O BALANÇO DO MANDATO EM", "/balanco", `Dados abertos oficiais ${s ? "do Senado Federal" : "da Câmara dos Deputados"}`);
+        g.fillText(`Mediana de ${a.t.ns !== undefined ? a.t.ns : a.t.n} ${pl} com ${MIN} meses ou mais. Valores brutos.`, M, Math.min(y + 36, H - 196));
+        rodapeImagem(t, "VEJA O BALANÇO DO MANDATO EM", "/balanco", `Dados públicos oficiais ${s ? "do Senado Federal" : "da Câmara dos Deputados"}`);
         return Math.min(y + 36, H - 196);
       });
     }
@@ -4931,7 +4944,7 @@
     const parteCel = (rotulo, parte, extra) => {
       const m = balMedia(parte), a1 = parte.a ? "≈\u00a0" : "";
       return h("td", { "data-rotulo": rotulo, class: "balanco-num" },
-        m === null ? [h("strong", { class: "num" }, "—"), h("small", { class: "tabela-gov__obs" }, parte.n < 1 && parte.n > 0 ? `${reais(parte.t)} em ${balMeses(parte.n)}: menos de 1 mês, sem média` : "sem meses nesta parte")]
+        m === null ? [h("strong", { class: "num" }, "—"), h("small", { class: "tabela-gov__obs" }, parte.m < 0 ? `${reais(parte.t)} em ${balMeses(parte.n)}: devolução lançada pela fonte` : parte.n < 1 && parte.n > 0 ? `${reais(parte.t)} em ${balMeses(parte.n)} (menos de 1 mês, sem média)` : "sem meses nesta parte")]
           : [h("strong", { class: "num" }, `${a1}${reais(m)}`), h("small", { class: "tabela-gov__obs" }, `${reais(parte.t)} em ${balMeses(parte.n)}`)],
         extra);
     };
@@ -4940,21 +4953,22 @@
       return h("tr", { id: `bal-${b.id}` },
         h("td", { class: "balanco-nome" },
           h("a", { href: url, onclick: () => { S.origem = "balanco"; evento("abrir_perfil_balanco", { casa: BAL_CASA[b.k] }); } }, h("strong", null, b.n)),
-          h("small", { class: "tabela-gov__obs" }, `${BAL_CARGO[b.k]} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""}`),
+          h("small", { class: "tabela-gov__obs" }, `${balCargoDe(b)} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""}`),
           h("span", { class: "balanco-selos" },
             h("span", { class: b.x ? "etiqueta" : "etiqueta etiqueta--fora" }, b.x ? "no cargo hoje" : "fora do cargo hoje"),
             b.su ? h("span", { class: "etiqueta etiqueta--fora" }, "suplente") : null,
             b.mc < MIN || !balElegivel(b, MIN) ? h("span", { class: "etiqueta etiqueta--fora" }, b.mc < MIN ? `menos de ${MIN} meses` : `menos de ${MIN} meses em uma parte`) : null),
           b.rel ? h("small", { class: "tabela-gov__obs" }, "Os meses como ministro ficam na ", h("a", { href: urlDe(b.rel), onclick: () => { S.origem = "balanco"; } }, "página de ministro"), ".") : null,
-          h("button", { type: "button", class: "link-botao pequeno", onclick: () => compartilharImagem(specPessoaBal(b), "balanco") }, "Compartilhar")),
-        h("td", { "data-rotulo": "Meses no cargo", class: "balanco-num" }, h("strong", { class: "num" }, num(b.mc, b.mc % 1 ? 1 : 0)), h("small", { class: "tabela-gov__obs" }, `${fmtMes(b.de)} a ${fmtMes(b.ate)}`)),
-        parteCel("Recebeu por mês", b.r, [b.u ? h("small", { class: "tabela-gov__obs" }, `inclui ${reais(b.u)} de ajuda de custo, fora da média`) : null,
+          h("button", { type: "button", class: "link-botao pequeno", "aria-label": `Compartilhar o balanço de ${b.n}`, onclick: () => compartilharImagem(specPessoaBal(b), "balanco") }, "Compartilhar")),
+        h("td", { "data-rotulo": "Meses no cargo", class: "balanco-num" }, h("strong", { class: "num" }, balNum(b.mc)), h("small", { class: "tabela-gov__obs" }, `${fmtMes(b.de)} a ${fmtMes(b.ate)}`)),
+        parteCel("Recebeu por mês", b.r, [balAjuda(b) ? h("small", { class: "tabela-gov__obs" }, balAjuda(b)) : null,
+          b.r.lic > 0 ? h("small", { class: "tabela-gov__obs" }, `inclui ${balMeses(b.r.lic)} de licença com o salário do mandato`) : null,
           b.r.sp ? h("small", { class: "tabela-gov__obs" }, `${b.r.sp} ${b.r.sp === 1 ? "mês no cargo" : "meses no cargo"} sem pagamento na fonte, fora da média`) : null]),
         parteCel("Cota por mês", b.c, b.c.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.c.p, 1)}% do limite`) : null),
         parteCel("Outros gastos por mês", b.o),
         parteCel(`Equipe por mês${s ? " (estimativa)" : ""}`, b.e, b.e.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.e.p, 1)}% do valor disponível da verba`) : null),
         h("td", { "data-rotulo": s ? "Total por mês, sem a equipe" : "Total por mês", class: "balanco-num balanco-total" }, h("strong", { class: "num" }, balReais(balTotalM(b))),
-          h("small", { class: "tabela-gov__obs" }, `${reais(balTotalT(b))} no período${balTotalM(b) === null ? `: ${balSemMedia(b)}` : ""}`)));
+          h("small", { class: "tabela-gov__obs" }, `${reais(balTotalT(b))} no período${balTotalM(b) === null ? ` (${balSemMedia(b)})` : ""}`)));
     }
     function listaPessoas() {
       const spec = ORDENS_BAL.find((o) => o[0] === E.ordem), val = spec[2], nPartes = spec[3];
@@ -4973,7 +4987,7 @@
       return h("div", null,
         E.so ? h("p", { class: "discreto" }, "Mostrando uma pessoa. ", h("button", { type: "button", class: "link-botao", onclick: () => { E.so = ""; mudou("todos"); } }, E.casa === "s" ? "Ver todos os senadores" : "Ver todos os deputados")) : null,
         h("p", { class: "discreto", role: "status", id: "bal-contagem" }, total === 0 ? "Ninguém encontrado com estes filtros."
-          : `${total} ${total === 1 ? "pessoa" : "pessoas"}${total > aparece.length ? `, mostrando as ${aparece.length} primeiras` : ""}. ${!E.so && spec[2] && nPartes ? `Em ordem de ${rotuloOrdemBal(spec[0], spec[1], E.casa).toLowerCase()}; quem tem menos de ${MIN} meses numa parte do total vem depois.` : ""}${E.casa === "s" && (E.ordem === "m" || E.ordem === "tt") ? " O total do Senado não inclui a equipe, que é uma estimativa e aparece à parte." : ""}`),
+          : `${total} ${total === 1 ? "pessoa" : "pessoas"}${total > aparece.length ? `, mostrando as ${aparece.length} primeiras` : ""}. ${!E.so && spec[2] && nPartes ? `Em ordem de ${rotuloOrdemBal(spec[0], spec[1], E.casa).toLowerCase()}; quem tem menos de ${MIN} meses ${({ r: "em recebeu", c: "em cota", p: "em cota", o: "em outros gastos", e: "em equipe", ep: "em equipe" })[E.ordem] ? `na parte escolhida (${({ r: "recebeu", c: "cota", p: "cota", o: "outros gastos", e: "equipe", ep: "equipe" })[E.ordem]})` : "numa parte do total"} vem depois.` : ""}${E.casa === "s" && (E.ordem === "m" || E.ordem === "tt") ? " O total do Senado não inclui a equipe, que é uma estimativa e aparece à parte." : ""}`),
         !E.so && ["m", "r", "c", "o", "e"].includes(E.ordem) ? h("p", { class: "nota", id: "bal-nota-calendario" }, balNotaCalendario(B)) : null,
         total ? h("table", { class: "tabela-balanco" },
           h("caption", { class: "visualmente-oculto" }, `Balanço do ${balPeriodo(B)}: cada ${BAL_CARGO[E.casa].toLowerCase()}, com média por mês e total no período`),
@@ -4991,13 +5005,13 @@
         h("td", { class: "balanco-nome" }, uf ? h("strong", null, `${ESTADOS[uf]} (${uf})`) : h("strong", null, rotulo),
           h("small", { class: "tabela-gov__obs" }, `${a.n} ${a.n === 1 ? "pessoa" : "pessoas"} no período · ${a.x} no cargo hoje`),
           uf ? h("span", { class: "balanco-acoes" },
-            h("button", { type: "button", class: "link-botao pequeno", onclick: () => { E.uf = uf; E.vista = "p"; E.so = ""; mudou("estado_pessoas"); selUF.value = uf; irPara("balanco-lista"); } }, "Ver as pessoas"),
-            h("button", { type: "button", class: "link-botao pequeno", onclick: () => compartilharImagem(specUFBal(k, uf), "balanco") }, "Compartilhar")) : null),
+            h("button", { type: "button", class: "link-botao pequeno", onclick: () => { E.uf = uf; E.vista = "p"; E.so = ""; mudou("estado_pessoas"); selUF.value = uf; irPara("balanco-lista"); }, "aria-label": `Ver as pessoas de ${ESTADOS[uf]}` }, "Ver as pessoas"),
+            h("button", { type: "button", class: "link-botao pequeno", "aria-label": `Compartilhar o balanço de ${ESTADOS[uf]}`, onclick: () => compartilharImagem(specUFBal(k, uf), "balanco") }, "Compartilhar")) : null),
         h("td", { "data-rotulo": soma ? "Recebeu, soma" : "Recebeu, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.r))),
         h("td", { "data-rotulo": soma ? "Cota, soma" : "Cota, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.c)),
           a.c.pct !== undefined ? h("small", { class: "tabela-gov__obs" }, soma ? `${num(a.c.pct, 1)}% do limite (soma ÷ soma)` : `${num(a.c.pmd, 1)}% do limite (mediana)`) : null),
         h("td", { "data-rotulo": soma ? "Outros gastos, soma" : "Outros gastos, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.o))),
-        h("td", { "data-rotulo": `${soma ? "Equipe, soma" : "Equipe, mediana por mês"}${s ? " (estimativa)" : ""}`, class: "balanco-num" }, h("strong", { class: "num" }, val(a.e))),
+        h("td", { "data-rotulo": `${soma ? "Equipe, soma" : "Equipe, mediana por mês"}${s ? " (estimativa)" : ""}`, class: "balanco-num" }, h("strong", { class: "num" }, val(a.e)), !soma && a.e.pmd !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)`) : null),
         h("td", { "data-rotulo": `${soma ? "Total, soma" : "Total, mediana por mês"}${s ? ", sem a equipe" : ""}`, class: "balanco-num balanco-total" }, h("strong", { class: "num" }, soma ? balReais(totalSoma(k, a)) : balReais(totalMd(k, a, uf)))));
       return h("div", null,
         h("div", { class: "balanco-modo" }, h("span", { class: "rotulo" }, "Valores:"), modoGrp.el),
@@ -5018,16 +5032,16 @@
         h("h2", { class: "h3" }, `${BAL_CASA[k]}: ${a.n} ${k === "d" ? "deputados" : "senadores"} no período, ${a.x} no cargo hoje`),
         h("p", { class: "discreto" }, "Mediana da média por mês de quem exerceu o mandato:"),
         h("div", { class: "balanco-itens" }, item("Recebeu", a.r.md), item("Cota", a.c.md, a.c.pmd !== undefined ? `${num(a.c.pmd, 1)}% do limite (mediana)` : "sem % do limite no Senado"),
-          item("Outros gastos", a.o.md), item("Equipe", a.e.md, null, s), item(rotuloTotal(k), totalMd(k, a, ""), s ? "recebeu, cota e outros gastos" : null)),
-        k === "d" ? h("p", { class: "nota" }, `Cota: a % do limite pode passar de 100% porque o total que a Câmara publica inclui trechos de avião além da cota (até quatro por mês) e, para líderes e presidentes de comissão, um adicional; o percentual é sobre o limite-base do estado. Hoje, ${balAcima100(B)} deputados com ${MIN} meses ou mais passam de 100%. A equipe é a verba de gabinete, publicada com atraso (${fmtMes(META.faixas.d.e[1])}).`)
-          : h("p", { class: "nota" }, "Equipe: estimativa pela lotação atual dos servidores de cada gabinete, ligada à folha de pagamento pelo nome. O titular que foi ministro fica com a equipe do suplente, e quem assumiu agora herda a de quem saiu; por isso o site não ordena nem destaca o Senado pela equipe. Cota: o Senado não publica a tabela de limites por estado em formato aberto, e por isso não há % do limite. Os totais do Senado e os da Câmara não se comparam: a equipe de uma é paga, a da outra é estimada."));
+          item("Outros gastos", a.o.md), item("Equipe", a.e.md, a.e.pmd !== undefined ? `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)` : null, s), item(rotuloTotal(k), totalMd(k, a, ""), s ? "recebeu, cota e outros gastos" : null)),
+        k === "d" ? h("p", { class: "nota" }, `Cota: hoje, ${balAcima100(B)} deputados com ${MIN} meses ou mais passam de 100% do limite (a explicação está em “Antes dos números”). A equipe é a verba de gabinete, publicada até ${fmtMes(META.faixas.d.e[1])}.`)
+          : h("p", { class: "nota" }, "Equipe: estimativa pela lotação atual dos servidores de cada gabinete, ligada à folha de pagamento pelo nome. O titular que foi ministro fica com a equipe do suplente, e quem assumiu agora herda a de quem saiu; por isso o site não ordena nem destaca o Senado pela equipe. Cota: o Senado não publica a tabela de limites por estado em formato aberto, e por isso não há % do limite. Os totais do Senado e os da Câmara não se comparam: a equipe da Câmara é o valor pago; a do Senado é uma estimativa."));
     }
 
     function desenhar(digitando) {
       casaGrp.marcar(); vistaGrp.marcar(); modoGrp.marcar();
       if (!digitando) { opcoesOrdem(); selOrdem.value = E.ordem; selUF.value = E.uf; }
-      botaoDir.textContent = E.asc ? "Menor primeiro" : "Maior primeiro";
-      botaoDir.setAttribute("aria-label", `Sentido da ordem: ${E.asc ? "do menor para o maior" : "do maior para o menor"}`);
+      botaoDir.textContent = E.ordem === "n" ? (E.asc ? "A–Z" : "Z–A") : E.asc ? "Menor primeiro" : "Maior primeiro";
+      botaoDir.setAttribute("aria-label", `${botaoDir.textContent}: trocar o sentido da ordem`);
       controlesPessoa.style.display = E.vista !== "p" ? "none" : "";
       resultado.textContent = "";
       add(resultado, quadroCasa(), E.vista === "p" ? h("div", { id: "balanco-lista" }, listaPessoas()) : tabelaEstados());
@@ -5041,12 +5055,12 @@
       h("h2", { class: "h3" }, "Baixar os dados"),
       h("p", null, h("a", { class: "botao", href: "/dados/balanco.csv", download: "", onclick: () => evento("baixar_dados", { arquivo: "balanco.csv" }) }, "Baixar o CSV (planilha)"), " ",
         h("a", { class: "botao botao--leve", href: "/dados/balanco.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "balanco.json" }) }, "Baixar o JSON")),
-      h("p", { class: "nota" }, `Uma linha por pessoa, com o endereço da página dela. Licença ${META.licenca || "CC BY 4.0"}. Todos os arquivos, com a impressão digital de cada um, estão em `, h("a", { href: "/dados-abertos" }, "dados abertos"), ". Quanto cada fonte já publicou e quando foi lida pela última vez: ", h("a", { href: "/atualizacao" }, "atualização dos dados"), "."));
+      h("p", { class: "nota" }, `Uma linha por pessoa, com o endereço da página dela. O CSV é conservador: as médias com menos de ${MIN} meses e o total de quem fica fora das comparações vêm em branco, com colunas de aviso; a página mostra esses valores com a etiqueta. Licença `, h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0\u00a0↗"), ", citando “Contas do Poder” e as fontes originais. Todos os arquivos, com a impressão digital de cada um, estão em ", h("a", { href: "/dados-abertos" }, "dados abertos"), ". Quanto cada fonte já publicou e quando foi lida pela última vez: ", h("a", { href: "/atualizacao" }, "atualização dos dados"), "."));
 
     const sec = h("section", { class: "bloco", id: "balanco", "aria-labelledby": "t-balanco" },
       h("p", { class: "rotulo" }, "Deputados federais e senadores"),
       h("h1", { id: "t-balanco", class: "titulo-pagina" }, "Balanço 2023–2026"),
-      h("p", { class: "lide" }, `O ${balPeriodo(B)}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados abertos oficiais.`),
+      h("p", { class: "lide" }, `O ${balPeriodo(B)}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados públicos oficiais.`),
       h("div", { class: "estatisticas balanco-estat" },
         estatistica("Pessoas no balanço", num(P.length), `${B.casa.d.n} deputados e ${B.casa.s.n} senadores`),
         estatistica("Dados até", fmtMes(balUltimoMes(B)), `equipe da Câmara até ${fmtMes(META.faixas.d.e[1])}`),
@@ -5278,7 +5292,7 @@
       h("a", { class: "chamada-indice chamada-balanco", href: "/balanco", onclick: () => { S.origem = "inicio"; } },
         h("span", { class: "rotulo" }, "Balanço 2023–2026"),
         h("strong", null, "O que cada deputado federal e senador recebeu e o que o mandato usou desde fev/2023"),
-        h("span", null, "Salário, cota parlamentar, outros gastos e equipe do gabinete, com a média por mês, por estado e por pessoa →")));
+        h("span", null, "O que recebeu, a cota parlamentar, outros gastos e equipe do gabinete, com a média por mês, por estado e por pessoa →")));
   }
   function linkBalancoPerfil(p) {
     if (!/^(dep|sen)-/.test(p.id) || (p.k !== "d" && p.k !== "s")) return null;

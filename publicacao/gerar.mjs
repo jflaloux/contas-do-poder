@@ -685,7 +685,7 @@ const DESCRICAO_ARQ = {
   "atividade.json": "Presença no Plenário e projetos de cada deputado federal e senador desde fev/2023: X de Y, sem nota nem ranking, com a fonte (a Câmara conta por dia de sessão e o Senado por votação nominal: contas diferentes).",
   "bens.json": "Bens declarados à Justiça Eleitoral (TSE) na candidatura por quem está no cargo e tem página no site: só o tipo e o valor, informados pela própria pessoa (em geral o valor de compra), sem descrição dos bens nem CPF. Sem ranking nem comparação.",
   "balanco.json": "Balanço de deputados federais e senadores desde fev/2023: o que cada um recebeu e o que o mandato usou (cota, outros gastos, equipe), total e média por mês, e a soma e a mediana por estado.",
-  "balanco.csv": "O mesmo balanço, uma linha por pessoa, para abrir em planilha.",
+  "balanco.csv": "O mesmo balanço, uma linha por pessoa, para abrir em planilha. É conservador: médias com menos de 3 meses e o total de quem fica fora das comparações vêm em branco, com colunas de aviso (a página mostra esses valores com a etiqueta).",
   "situacao.json": "A situação de cada fonte: até que mês vão os dados, quando foram lidos pela última vez e o motivo de qualquer atraso (página Atualização dos dados).",
 };
 const descricaoArq = (a) => DESCRICAO_ARQ[a]
@@ -817,14 +817,14 @@ if (BAL && (BAL.p || []).length) {
   const lacunas = Object.entries(BAL.meta.lacunas || {}).flatMap(([k, partes]) => Object.entries(partes).map(([c, ms]) => ` ${k === "d" ? "Câmara" : "Senado"}, ${PARTE[c]}: ${listaE(ms.map(mes))} não ${ms.length === 1 ? "foi publicado" : "foram publicados"} pela fonte e ${ms.length === 1 ? "fica" : "ficam"} fora das médias.`)).join("");
   const pontos = [
     `Dados parciais: vão até o último mês que cada fonte publicou. Câmara: ${faixas("d")}. Senado: ${faixas("s")}.${f.d.e[1] < f.d.r[1] ? " A verba de gabinete da Câmara (a equipe) é publicada com atraso." : ""}${lacunas}`,
-    `Base de ${BAL.meta.atualizado}. O balanço é refeito a cada rodada; em fev/2027 há uma atualização com o fim do mandato dos deputados, e os meses que as fontes publicam com atraso entram depois.`,
+    `Base de ${BAL.meta.atualizado}, com as correções de 09 e 10/11/2026. O balanço é refeito a cada rodada; está prevista uma atualização em fev/2027, com o fim do mandato dos deputados, e os meses que as fontes publicam com atraso entram depois.`,
     "Valores brutos, como as fontes publicam: sem imposto de renda, previdência nem valor líquido.",
     `Compare com cuidado a média por mês: quem ficou menos tempo no cargo (um suplente, por exemplo) acumula menos no total, e a média favorece quem entrou depois dos reajustes. Cada média diz por quantos meses foi dividida; com menos de ${minimo} meses numa parte, a pessoa fica depois das demais na ordem por média e fora das medianas.`,
     "Câmara e Senado têm regras diferentes e aparecem à parte: o site não compara os totais das duas casas. No Senado, a equipe é uma estimativa e fica fora do total e da ordem; a cota não tem % do limite (o Senado não publica a tabela por estado em formato aberto).",
     `Câmara, % do limite da cota: o que foi usado ÷ a soma dos limites do estado nos meses no cargo. A % pode passar de 100% porque o total que a Câmara publica inclui trechos de avião além da cota (até quatro por mês) e, para líderes e presidentes de comissão, um adicional; o percentual é sobre o limite-base do estado. ${acima} ${acima === 1 ? "deputado com" : "deputados com"} ${minimo} meses ou mais passam de 100%.`,
   ];
   const casa = (k, nome, plural) => { const a = BAL.casa[k], s = k === "s"; return `<li><strong>${nome}:</strong> ${a.n} ${plural} no período, ${a.x} no cargo hoje. Mediana da média por mês: recebeu ${reaisB(a.r.md)}, cota ${reaisB(a.c.md)}${a.c.pmd !== undefined ? ` (${String(a.c.pmd.toFixed(1)).replace(".", ",")}% do limite)` : ""}, outros gastos ${reaisB(a.o.md)}, equipe ${reaisB(a.e.md)}${s ? " (estimativa, fora do total)" : `, total ${reaisB(a.t.md)}`}.</li>`; };
-  const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados abertos oficiais.`;
+  const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados públicos oficiais.`;
   const corpo = '<section class="bloco" id="balanco" aria-labelledby="t-balanco"><p class="rotulo">Deputados federais e senadores</p>'
     + '<h1 id="t-balanco" class="titulo-pagina">Balanço 2023–2026</h1>'
     + `<p class="lide">${esc(lide)}</p>`
