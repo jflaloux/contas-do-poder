@@ -304,7 +304,8 @@ def _senado():
 
     gab = _na_legislatura(pd.read_csv(BRUTOS / "senado_assessores_gabinete.csv"))
     for r in gab.itertuples():
-        if r.id_senador in pid and r.valor:
+        # a estimativa com 0 assessores é a folha de quem já saiu do gabinete (rescisão, devolução): não é equipe
+        if r.id_senador in pid and r.valor and r.pessoas:
             L.append(_linha(pid[r.id_senador], r.ano, r.mes, "assessores_gabinete",
                             f"Salários de {r.pessoas} assessores comissionados do gabinete e escritórios (estimativa)",
                             r.valor, "senado_folha"))

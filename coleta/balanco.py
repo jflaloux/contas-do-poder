@@ -371,8 +371,8 @@ def calcular(lanc, politicos, historicos, hoje=None):
             return float(mm[c].get(m, 0.0)) if c in mm and m in mm.index else 0.0
         if k == "s":  # a equipe estimada do Senado conta pelos dias no cargo
             linha["e_estimada"] = tot["e"]
-            tot["e"] = sum(valor("e", m) * fr.get(m, 0.0) for m in mm.index)
-        pesos, sem_pagamento = {}, 0
+            tot["e"] = sum(max(0.0, valor("e", m)) * fr.get(m, 0.0) for m in mm.index)
+        pesos, sem_pagamento, licenca_paga = {}, 0.0, 0.0
         for c in COMPONENTES:
             meses = sorted(m for m in set(fr) | set(mm.index) if m in pub[c])
             peso, no_periodo = {}, 0.0
@@ -380,13 +380,15 @@ def calcular(lanc, politicos, historicos, hoje=None):
                 v = valor(c, m)
                 if c == "r":
                     if abs(v) < 1:
-                        sem_pagamento += 1 if fr.get(m, 0.0) > 0 else 0
+                        sem_pagamento += fr.get(m, 0.0)  # em meses (fração), para não passar dos meses no cargo
                         w = 0.0
                     else:
                         w = max(fr.get(m, 0.0), min(1.0, max(0.0, float(sal.get((pid, m), 0.0)) / subsidio(m))))
+                        licenca_paga += w - fr.get(m, 0.0)
                 elif c == "e" and k == "s":
+                    # estimativa negativa (a folha de um ex-assessor, com 0 pessoas no gabinete) não é equipe: conta zero
                     w = fr.get(m, 0.0)
-                    v *= w
+                    v = max(0.0, v) * w
                 elif c == "e":  # verba de gabinete: o mês com gasto pesa ao menos o gasto ÷ o valor disponível
                     tm = _teto_no_mes(teto, m)
                     w = max(fr.get(m, 0.0), min(1.0, v / tm) if v > 0.5 and tm else 0.0)
@@ -407,6 +409,7 @@ def calcular(lanc, politicos, historicos, hoje=None):
             linha[c + "_fora"] = tot[c] - no_periodo  # fora dos meses publicados (ou sem mês): só no total
             linha[c + "_rat"] = float(rateado.get((pid, c), 0.0))
         linha["r_sem_pagamento"] = sem_pagamento
+        linha["r_licenca"] = licenca_paga  # meses fora do cargo com o subsídio (licença) que entram na média do recebido
         linha["c_lim"] = linha["c_pct"] = linha["e_teto"] = linha["e_pct"] = None
         if k == "d" and p.get("uf") in vig:
             lim = limite_dos_dias(vig[p["uf"]], [d for d in dias if _aaaamm(d) in pub["c"]])
@@ -589,8 +592,10 @@ def _pessoa_json(r, enderecos):
     item = {"id": r.id, "k": r.k, "n": r.nome, "uf": r.uf, "pt": r.partido, "x": int(r.x), "su": int(r.suplente),
             "mc": _n(r.mc), "de": None if pd.isna(r.de) else int(r.de), "ate": None if pd.isna(r.ate) else int(r.ate),
             "r": comp("r"), "u": _r(r.u), "c": comp("c"), "o": comp("o"), "e": comp("e")}
-    if r.r_sem_pagamento:
-        item["r"]["sp"] = int(r.r_sem_pagamento)
+    if r.r_sem_pagamento >= 0.005:
+        item["r"]["sp"] = _n(r.r_sem_pagamento)
+    if r.r_licenca >= 0.005:
+        item["r"]["lic"] = _n(r.r_licenca)
     if r.c_pct is not None and not pd.isna(r.c_pct):
         item["c"]["l"] = _r(r.c_lim)
         item["c"]["p"] = round(float(r.c_pct), 1)
@@ -623,7 +628,7 @@ COLUNAS_CSV = [
     ("x", "no_cargo_hoje"), ("condicao", "condicao"), ("mc", "meses_no_cargo"), ("de", "primeiro_mes_no_cargo"),
     ("ate", "ultimo_mes_no_cargo"),
     ("r", "recebeu_total"), ("u", "recebeu_ajuda_de_custo"), ("r_m", "recebeu_media_mensal_sem_ajuda_de_custo"), ("r_n", "recebeu_meses"),
-    ("r_sem_pagamento", "recebeu_meses_no_cargo_sem_pagamento"),
+    ("r_sem_pagamento", "recebeu_meses_no_cargo_sem_pagamento"), ("r_licenca", "recebeu_meses_de_licenca_com_subsidio"),
     ("c", "cota_total"), ("c_m", "cota_media_mensal"), ("c_n", "cota_meses"), ("c_lim", "cota_limite_no_periodo"), ("c_pct", "cota_pct_do_limite"),
     ("o", "outros_gastos_mandato_total"), ("o_m", "outros_gastos_mandato_media_mensal"), ("o_n", "outros_gastos_mandato_meses"),
     ("o_inc", "outros_gastos_mandato_incompleto"),
@@ -658,8 +663,8 @@ def _csv(df, enderecos):
         d[c + "_m"] = d[c + "_m"].where(d[c + "_n"] >= MESES_MINIMOS)
     for c in ("r", "u", "r_m", "c", "c_m", "c_lim", "o", "o_m", "e", "e_m", "e_teto", "total", "total_m", "ts", "ms"):
         d[c] = d[c].map(lambda v: "" if v is None or pd.isna(v) else f"{float(v):.2f}")
-    for c in ("mc", "r_n", "c_n", "o_n", "e_n", "c_pct", "e_pct"):
-        d[c] = d[c].map(lambda v: "" if v is None or pd.isna(v) else f"{float(v):.2f}" if c.endswith("_n") or c == "mc" else f"{float(v):.1f}")
+    for c in ("mc", "r_n", "c_n", "o_n", "e_n", "c_pct", "e_pct", "r_sem_pagamento", "r_licenca"):
+        d[c] = d[c].map(lambda v: "" if v is None or pd.isna(v) else f"{float(v):.2f}" if c.endswith("_n") or c in ("mc", "r_sem_pagamento", "r_licenca") else f"{float(v):.1f}")
     d = d.sort_values(["casa", "uf", "nome"])
     return d[[a for a, _ in COLUNAS_CSV]].rename(columns=dict(COLUNAS_CSV))
 

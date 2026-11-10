@@ -190,6 +190,7 @@ def executar():
     L.append(lin("dep-2", 202506, "custa", "cota_parlamentar", 3000))  # nota depois da saída, sem licença
     L += [lin("sen-9", 202500 + m, "ganha", "salario", 46366.19) for m in range(1, 4)]
     L += [lin("sen-9", 202500 + m, "custa", "outros_gastos_mandato", 1000, True) for m in range(1, 7)]
+    L.append(lin("sen-9", 202502, "equipe", "assessores_gabinete", -500))  # estimativa negativa (0 assessores)
     pol = [{"id": "dep-1", "casa": "camara", "nome": "A", "uf": "SP"}, {"id": "dep-2", "casa": "camara", "nome": "B", "uf": "SP"},
            {"id": "dep-3", "casa": "camara", "nome": "C", "uf": "SP"},
            {"id": "sen-9", "casa": "senado", "nome": "D", "uf": "SP", "exercicios": [{"inicio": "2025-01-01", "fim": "2025-03-31"}]}]
@@ -203,6 +204,9 @@ def executar():
          abs(df.loc["dep-2", "c_n"] - 5) < 0.01 and df.loc["dep-2", "c"] == 203000)
     caso("Balanço: outros gastos do Senado (valor anual repartido) contam só os meses no cargo", abs(df.loc["sen-9", "o_n"] - 3) < 0.01)
     caso("Balanço: convocação e suplência no mesmo dia, sem pagamento, não contam como mês no cargo", "dep-3" not in df.index)
+    caso("Balanço: equipe estimada negativa do Senado conta zero", df.loc["sen-9", "e"] == 0)
+    caso("Balanço: meses sem pagamento e de licença com subsídio em fração, sem passar dos meses no cargo",
+         (df.r_sem_pagamento <= df.mc + 1e-9).all() and (df.r_n <= df.mc + df.r_licenca + 1e-6).all())
     from .site import _salario_repetido
     caso("Site: no mês seguinte à saída, sai o salário igual (±R$ 1) ao de um mês que já sai",
          _salario_repetido({202605: 29144.46, 202608: 5000.0}, [29144.46, 29144.0]) == {202605})
