@@ -850,6 +850,80 @@ def gravar_json(caminho, dados, *, compacto=True, indent=None, final="", motivo=
     return gravar_texto(caminho, texto, motivo=motivo, tipo="json", **opcoes)
 
 
+def mesclar_por_parte(anterior, novo, recusadas, *, lista="p", chave="cid", partes=("meta", "cidades"), ajustar=None):
+    """O novo com as partes `recusadas` (valores de `chave`, como texto) trocadas pelas do anterior: os itens de `lista`
+    dessas partes e a entrada delas no dicionário `partes` (caminho dentro do JSON, como meta.cidades). ajustar(item,
+    anterior, resultado) adapta um item que volta do anterior (índices de tabelas do meta, por exemplo)."""
+    import copy
+    saida = copy.deepcopy(novo)
+    fica = [x for x in saida.get(lista, []) if str(x.get(chave)) not in recusadas]
+    volta = [copy.deepcopy(x) for x in anterior.get(lista, []) if str(x.get(chave)) in recusadas]
+    if ajustar:
+        volta = [ajustar(x, anterior, saida) for x in volta]
+    saida[lista] = fica + volta
+    d_novo, d_ant = saida, anterior
+    for k in partes:
+        d_novo, d_ant = d_novo.setdefault(k, {}), (d_ant or {}).get(k) or {}
+    for k in recusadas:
+        if k in d_ant:
+            d_novo[k] = copy.deepcopy(d_ant[k])
+        else:
+            d_novo.pop(k, None)
+    return saida
+
+
+def gravar_json_por_parte(caminho, dados, *, lista="p", chave="cid", partes=("meta", "cidades"), ajustar=None, motivo=None,
+                          compacto=True):
+    """Como gravar_json, num arquivo feito de partes (as cidades de camaras.json e prefeituras.json): a parte que perde
+    cobertura fica como estava no anterior, e as outras entram com o dado novo. Em 03/11/2026, a folha de Salvador pela
+    metade fez recusar o prefeituras.json inteiro e segurou os meses novos do Recife. A recusa de cada parte vai para a
+    situação com a chave "<arquivo>#<chave>=<valor>" (só a fonte daquela parte fica marcada). Perda fora das partes
+    (o arquivo todo, outro grupo): recusa o arquivo, como gravar_json. Devolve True se gravou (inteiro ou mesclado)."""
+    from datetime import datetime
+    caminho = Path(caminho)
+    texto = json.dumps(dados, ensure_ascii=False, separators=(",", ":")) if compacto else json.dumps(dados, ensure_ascii=False)
+    prefixo = f"{lista}/{chave}="
+    p = None
+    try:
+        p = _preparar(caminho, lambda tmp: Path(tmp).write_text(texto, encoding="utf-8"), motivo, "json", {})
+        if not p["perdas"] or motivo:
+            _trocar(p)
+            _aceitar_partes(p["rel"], {str(x.get(chave)) for x in dados.get(lista, [])}, chave)
+            return True
+        por_parte = {}
+        for perda in p["perdas"]:
+            g = str(perda[0])
+            if not g.startswith(prefixo):
+                _recusar(p)
+                return False
+            por_parte.setdefault(g[len(prefixo):], []).append(perda)
+        anterior = json.loads(caminho.read_text(encoding="utf-8"))
+    finally:
+        tmp = caminho.parent / f".novo.{caminho.name}"
+        if tmp.exists():
+            tmp.unlink()
+    mesclado = mesclar_por_parte(anterior, dados, set(por_parte), lista=lista, chave=chave, partes=partes, ajustar=ajustar)
+    for valor, perdas in sorted(por_parte.items()):
+        rel = f"{p['rel']}#{chave}={valor}"
+        texto_p = _texto_perdas(perdas)
+        log(f"  RECUSADO por perda de cobertura: {rel}: {texto_p}. Fica a parte anterior; as outras entram.")
+        _recusas.append({"arquivo": rel, "fonte": _fonte_atual, "perdas": perdas, "texto": texto_p})
+        _anotar(rel, {"estado": "recusado", "quando": datetime.now().isoformat(timespec="seconds"), "fonte": _fonte_atual,
+                      "texto": texto_p, "perdas": [[str(g), a, d, u] for g, a, d, u in perdas[:20]]})
+    ok = gravar_json(caminho, mesclado, compacto=compacto)
+    if ok:
+        _aceitar_partes(p["rel"], {str(x.get(chave)) for x in dados.get(lista, [])} - set(por_parte), chave)
+    return ok
+
+
+def _aceitar_partes(rel, valores, chave):
+    """Partes que tinham sido recusadas e agora entraram: o aceite vai para a situação."""
+    from datetime import datetime
+    for arquivo, ev in ler_recusas().items():
+        if arquivo.startswith(f"{rel}#{chave}=") and ev.get("estado") == "recusado" and arquivo.split("=", 1)[1] in valores:
+            _anotar(arquivo, {"estado": "aceito", "quando": datetime.now().isoformat(timespec="seconds"), "fonte": _fonte_atual})
+
+
 def recusas_desde(marca, fonte=None):
     """As recusas desta execução a partir da posição `marca` (de len(util._recusas)), só as da fonte, se dada."""
     return [r for r in _recusas[marca:] if fonte is None or r["fonte"] == fonte]

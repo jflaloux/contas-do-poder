@@ -24,7 +24,7 @@ from datetime import date, datetime
 import pandas as pd
 
 from ..config import HOJE, RAIZ
-from ..util import TempoEsgotado, baixar, gravar_json, gravar_linhas, log, normalizar_nome
+from ..util import TempoEsgotado, baixar, gravar_json_por_parte, gravar_linhas, log, normalizar_nome
 
 FOTOS = RAIZ / "site" / "fotos"
 SAIDA = RAIZ / "site" / "dados" / "camaras.json"
@@ -711,6 +711,25 @@ def _fotos_tse(resultados, baixar=True):
         log(f"  {novas} fotos novas de vereadores (candidatura de 2024 no TSE)")
 
 
+def remapear_tipos(item, anterior, novo):
+    """Vereador que volta do camaras.json anterior (cidade recusada): os índices de meta.tipos no detalhe (dt) passam
+    para a lista nova (o tipo que faltar entra no fim dela)."""
+    antes = anterior.get("meta", {}).get("tipos") or []
+    lista = novo.setdefault("meta", {}).setdefault("tipos", [])
+    pos = {t: i for i, t in enumerate(lista)}
+
+    def novo_idx(i):
+        t = antes[i] if 0 <= i < len(antes) else None
+        if t not in pos:
+            pos[t] = len(lista)
+            lista.append(t)
+        return pos[t]
+    for per in (item.get("dt") or {}).values():
+        for cat, pares in per.items():
+            per[cat] = [[novo_idx(i), v] for i, v in pares]
+    return item
+
+
 def escrever(resultados, tipos, baixar_fotos=True):
     """resultados: [(meta, pessoas), ...] -> site/dados/camaras.json."""
     _fotos_tse(resultados, baixar_fotos)
@@ -725,6 +744,7 @@ def escrever(resultados, tipos, baixar_fotos=True):
         },
         "p": todas,
     }
-    if gravar_json(SAIDA, dados):  # cidade que sumiu ou perdeu muita gente: fica o arquivo anterior (util.gravar_com)
+    # cidade que sumiu ou perdeu muita gente: fica a parte anterior dela, e as outras cidades entram (util.gravar_json_por_parte)
+    if gravar_json_por_parte(SAIDA, dados, ajustar=remapear_tipos):
         log(f"Site: {SAIDA.relative_to(RAIZ)} ({SAIDA.stat().st_size / 1e3:.0f} KB, {len(resultados)} cidades, {len(todas)} vereadores)")
     return dados

@@ -209,6 +209,53 @@ def executar():
     seg = pd.DataFrame([{"aaaamm": 202611, "tp": "se"} for _ in range(10)])
     caso("Salvador: mês menor confirmado pelo mês seguinte é aceito",
          salvador.confirmado([{"tp": "pr"}] + [{"tp": "se"}] * 9, seg, 202610) and not salvador.confirmado([{"tp": "se"}], seg, 202610))
+    # gravação por parte (util.gravar_json_por_parte): os dois casos reais, em cópias num diretório temporário
+    import json as _json
+    import tempfile
+    from pathlib import Path
+    from . import util
+    from .vereadores import comum as vcomum
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        guardados = util._arquivo_eventos, util._eventos
+        util._arquivo_eventos, util._eventos = (lambda lugar_: tmp / f"recusas_{lugar_}.json"), None
+        try:
+            # 03/11/2026: Salvador com a folha pela metade (1 de 19 no cargo) segurava os meses novos do Recife
+            arq = tmp / "prefeituras.json"
+            def pref(n_sal, x_sal, n_rec, ult_rec):
+                return {"meta": {"tipos": [], "cidades": {"2927408": {"n": "Salvador", "ultimo_mes": 202610 if x_sal == 1 else 202609},
+                                                          "2611606": {"n": "Recife", "ultimo_mes": ult_rec}}},
+                        "p": [{"id": f"pre-2927408-{i}", "cid": "2927408", "x": 1 if i < x_sal else 0} for i in range(n_sal)]
+                             + [{"id": f"pre-2611606-{i}", "cid": "2611606", "x": 1} for i in range(n_rec)]}
+            arq.write_text(_json.dumps(pref(19, 19, 23, 202606)), encoding="utf-8")
+            ok = util.gravar_json_por_parte(arq, pref(19, 1, 26, 202610))
+            r = _json.loads(arq.read_text(encoding="utf-8"))
+            sal = [x for x in r["p"] if x["cid"] == "2927408"]
+            ev = util.ler_recusas()
+            caso("Gravação por parte: Salvador pela metade fica com a parte anterior, e o Recife entra",
+                 ok and sum(x["x"] for x in sal) == 19 and r["meta"]["cidades"]["2927408"]["ultimo_mes"] == 202609
+                 and sum(1 for x in r["p"] if x["cid"] == "2611606") == 26 and r["meta"]["cidades"]["2611606"]["ultimo_mes"] == 202610
+                 and ev.get(f"{util._rel(arq)}#cid=2927408", {}).get("estado") == "recusado")
+            ok2 = util.gravar_json_por_parte(arq, pref(19, 19, 26, 202610))
+            caso("Gravação por parte: a parte que volta ao normal entra e a recusa dela vira aceite",
+                 ok2 and util.ler_recusas()[f"{util._rel(arq)}#cid=2927408"]["estado"] == "aceito")
+            # 20 a 27/10/2026: a verba do Recife com erro 500 (dt vazio nos 37 vereadores) segurava o camaras.json inteiro
+            arq = tmp / "camaras.json"
+            def cam(dt_recife, tipos, idx, valor_jp):
+                return {"meta": {"tipos": tipos, "cidades": {"2611606": {"n": "Recife"}, "2507507": {"n": "João Pessoa", "v": valor_jp}}},
+                        "p": [{"id": f"ver-2611606-{i}", "cid": "2611606", "dt": {"2026": {"verba_gabinete": [[idx, 100]]}} if dt_recife else {}}
+                              for i in range(37)]
+                             + [{"id": f"ver-2507507-{i}", "cid": "2507507", "dt": {}, "v": valor_jp} for i in range(29)]}
+            arq.write_text(_json.dumps(cam(True, ["Aluguel", "Combustível"], 0, 1)), encoding="utf-8")
+            ok = util.gravar_json_por_parte(arq, cam(False, ["Combustível", "Telefone"], 0, 2), ajustar=vcomum.remapear_tipos)
+            r = _json.loads(arq.read_text(encoding="utf-8"))
+            rec = [x for x in r["p"] if x["cid"] == "2611606"]
+            i = rec[0]["dt"]["2026"]["verba_gabinete"][0][0] if rec and rec[0]["dt"] else None
+            caso("Gravação por parte: o Recife sem a verba fica com a parte anterior (índices dos tipos refeitos), e João Pessoa entra",
+                 ok and len(rec) == 37 and i is not None and r["meta"]["tipos"][i] == "Aluguel"
+                 and all(x["v"] == 2 for x in r["p"] if x["cid"] == "2507507") and r["meta"]["cidades"]["2507507"]["v"] == 2)
+        finally:
+            util._arquivo_eventos, util._eventos = guardados
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 

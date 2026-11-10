@@ -27,7 +27,7 @@ from datetime import datetime
 import pandas as pd
 
 from ..config import CACHE, RAIZ
-from ..util import TempoEsgotado, gravar_json, log, normalizar_nome
+from ..util import TempoEsgotado, gravar_json_por_parte, log, normalizar_nome
 
 SAIDA = RAIZ / "site" / "dados" / "prefeituras.json"
 FOTOS = RAIZ / "site" / "fotos"
@@ -396,7 +396,8 @@ def escrever(resultados, baixar_fotos=True):
             log(f"  {novas} fotos novas das prefeituras (candidatura de 2024 no TSE)")
     _por_fotos(todas, metas)
     dados = {"meta": {"gerado_em": datetime.now().isoformat(timespec="seconds"), "tipos": [], "categorias": {}, "cidades": metas}, "p": todas}
-    gravar_json(SAIDA, dados)  # cidade que sumiu ou perdeu muita gente: fica o arquivo anterior (util.gravar_com)
+    # cidade que sumiu ou perdeu muita gente: fica a parte anterior dela, e as outras cidades entram (util.gravar_json_por_parte)
+    gravar_json_por_parte(SAIDA, dados)
     for meta, ps in resultados:
         n = Counter(p["tp"] for p in ps if p["x"])
         sub = f", {n['sb']} subprefeitos" if n["sb"] else ""

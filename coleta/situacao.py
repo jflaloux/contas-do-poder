@@ -124,6 +124,7 @@ def _fontes_da_recusa(arquivo, ev):
     if ev.get("fonte"):
         return [ev["fonte"]]
     from . import prefeituras, vereadores
+    arquivo = arquivo.split("#", 1)[0]  # recusa de uma parte (util.gravar_json_por_parte): "<arquivo>#cid=<código>"
     grupos = [str(p[0]) for p in ev.get("perdas") or []]
     valor = lambda g: g.split("=", 1)[1] if "=" in g else None
     if arquivo in ("site/dados/camaras.json", "site/dados/prefeituras.json"):

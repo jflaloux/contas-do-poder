@@ -184,6 +184,13 @@ mês. Uma fonte que falha de fora espera a rodada do Brasil seguinte (até um m�
   regra: cache de downloads (`dados/cache/`), os intermediários do governo federal em `dados/brutos/` (refeitos do zero
   a cada rodada; a proteção fica em `dados/processados/` e no `dados.json`), os arquivos de controle e de situação e as
   fotos. Testes: `python3 -m coleta.testes_gravacao` (46 casos inventados, numa pasta temporária).
+  **Por parte** (`gravar_json_por_parte`, desde 10/11/2026): em `camaras.json` e `prefeituras.json`, a cidade que perde
+  cobertura fica com a parte anterior dela (os itens de `p` e a entrada em `meta.cidades`; no `camaras.json`, os
+  índices de `meta.tipos` do detalhe são refeitos) e as outras cidades entram com o dado novo. A recusa vai para a
+  situação com a chave `<arquivo>#cid=<código>`, e só a fonte daquela cidade fica marcada; quando a cidade volta ao
+  normal, o aceite apaga a marca. Antes, a recusa de uma cidade segurava o arquivo inteiro (03/11/2026: Salvador com a
+  folha pela metade segurou os meses novos do Recife; 20 a 27/10: a verba do Recife com erro 500 segurou o `camaras.json`).
+  Perda fora das cidades recusa o arquivo, como antes. Testes dos dois casos em `coleta/testes_fontes.py`.
 - **Tribunal de Contas como reserva das capitais que ele cobre** (`RESERVAS_TCE` em `coleta/situacao.py`): Câmara e
   Prefeitura de Fortaleza (TCE-CE, valor de cada pessoa), Câmara de João Pessoa (TCE-PB, valor de cada pessoa), Câmara
   do Recife (TCE-PE) e Câmara e Prefeitura de Vitória (TCE-ES), as três últimas pelo total pago ao cargo. Quando a coleta da fonte própria falha, ou quando o tribunal tem 2 meses ou mais à
