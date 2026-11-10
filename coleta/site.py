@@ -170,8 +170,8 @@ def _sem_pagamento_fora_do_mandato(lanc):
     """Tira o "salário" de meses em que o deputado não estava no mandato.
 
     A página de remuneração de cada deputado no site da Câmara mostra, como "salário do deputado", também o que é pago
-    a ex-deputados que ainda não tinham assumido ou que já tinham saído (suplentes), que parece ser a aposentadoria do
-    plano de previdência dos parlamentares: de 1/7 do subsídio (Marcelo Nilo, R$ 6.623,74 por mês até tomar posse como
+    a ex-deputados que ainda não tinham assumido ou que já tinham saído (suplentes); a página não diz a que se refere
+    o pagamento: de 1/7 do subsídio (Marcelo Nilo, R$ 6.623,74 por mês até tomar posse como
     suplente, em abril de 2026) ao subsídio inteiro (Ivan Valente, depois de deixar a suplência em abril de 2026). Pelo
     histórico oficial da Câmara, tiramos o salário (e o resto do contracheque) dos meses sem nenhum dia em exercício nem
     de licença e sem cota nem equipe: o licenciado continua no mandato e pode ficar com o salário dele (secretário de

@@ -352,7 +352,7 @@ Um erro nosso (pagamento fora do mandato), corrigido na origem e registrado em `
 mês duplicado nem sinal trocado por nós. O que foi achado, corrigido ou explicado:
 
 1. **Corrigido: pagamentos a suplentes fora do mandato.** A página de remuneração da Câmara mostra como salário o que é
-   pago a suplentes nos meses fora do mandato (parece ser a aposentadoria do plano dos parlamentares). O site só tirava
+   pago a suplentes nos meses fora do mandato (a página não diz a que se refere o pagamento). O site só tirava
    valores abaixo de 40% do subsídio, e cinco deputados ficavam com esses pagamentos: Pauderney Avelino (R$ 399.362;
    R$ 19.085 a R$ 23.845 por mês antes de ser convocado e depois de sair), Ivan Valente (R$ 258.657; o subsídio
    inteiro depois de deixar a suplência em 1º/4/2026), Leônidas Cristino (R$ 251.342), Luiz Carlos Hauly (R$ 134.598,

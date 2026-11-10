@@ -479,8 +479,8 @@ O CSV (uma linha por pessoa, CC BY 4.0) traz as mesmas colunas, com o endereço 
 - **Limite da cota da Câmara** de cada mês: `dados/referencia/limites_cota_camara_historico.csv` (Ato da Mesa nº 270/2023
   até 19/2/2026; Ato da Mesa nº 244/2026 depois; fev/2026 pelos dias). Do Senado não há tabela aberta por estado: sem %.
 - Conferência de 09/11/2026 (somas, cinco pessoas à mão, maiores e menores): `dados/processados/balanco-conferencia.md`.
-- Pagamentos da Câmara a suplentes fora do mandato (a página de remuneração mostra como salário o que parece ser a
-  aposentadoria do plano dos parlamentares): `site._sem_pagamento_fora_do_mandato` tira os meses sem dia em exercício
+- Pagamentos da Câmara a suplentes fora do mandato (a página de remuneração mostra como salário o que é pago nesses
+  meses, sem dizer a que se refere): `site._sem_pagamento_fora_do_mandato` tira os meses sem dia em exercício
   nem de licença e sem cota nem equipe; no mês seguinte à saída (acertos), só o pagamento menor que 40% do subsídio. Até
   09/11/2026 só saía o menor que 40% em todo mês (correção registrada).
 
