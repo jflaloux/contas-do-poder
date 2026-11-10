@@ -29,6 +29,10 @@ ATRASOS_CONHECIDOS = {
     "folhas/SP": "o Estado publica a série histórica com alguns meses de atraso",
     "assembleias/rj": "a Alerj publica o mês de cada gabinete depois de analisar a prestação de contas",
     "assembleias/ma": "a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos deputados",
+    "folhas/AC": "o Portal da Transparência do Acre não tem a folha de ago/2026 em diante (a busca de qualquer nome volta vazia; "
+                 "conferido em 10/11/2026)",
+    "prefeituras/fortaleza": "o portal de dados abertos de Fortaleza publicou a relação de servidores só até jul/2026 (conferido em "
+                             "10/11/2026); a reserva do TCE-CE cobre os meses seguintes",
     "judiciario/stf": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/stm": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/tse": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
