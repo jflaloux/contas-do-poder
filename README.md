@@ -1684,11 +1684,13 @@ Página de lançamento (09/11/2026), de `site/dados/balanco.json` (a coleta e as
 números", o quadro de cada casa e as fontes, para quem não roda JavaScript). É uma página só, com filtros, e não uma por estado: custa 1
 arquivo HTML (e o CSV, +1) no limite do Cloudflare. Carrega só o essencial (`<meta name="dados-leve">`, `rotaLeve()`) mais o `balanco.json`.
 
-- **Cada casa à parte** (Câmara é o padrão; Senado em `?casa=s`): nunca uma lista com as duas, para não comparar total de uma com o da
-  outra. A lista da Câmara é ordenada pela **média por mês** (padrão); a do Senado abre **por nome**, porque o total do Senado inclui a equipe,
-  que é estimativa, e ordenar por ele destacaria a maior estimativa (a ordem por total continua à escolha, com a nota). A escolha de ordem tem de recebeu, cota, % do limite (só Câmara), outros gastos, equipe (só
-  Câmara), total no período, meses no cargo e nome. Quem tem menos de 3 meses na parte vai depois das demais, qualquer que seja o sentido, com a
-  etiqueta "menos de 3 meses". Filtros: estado, nome, "só quem está no cargo hoje". Nada por partido (o partido aparece só como dado da pessoa).
+- **Cada casa à parte** (Câmara é o padrão; Senado em `?casa=s`): nunca uma lista com as duas. As duas abrem **por nome**: a média por mês
+  favorece quem entrou tarde (os valores subiram no período) e o total do Senado inclui a equipe estimada. A ordem por **média por mês**
+  continua à escolha, com uma nota de calendário acima da lista (`balNotaCalendario`; os valores do teto da verba vêm de
+  `meta.teto_verba_gabinete`, se houver). No Senado, o total e a ordem são **sem a equipe estimada** (campos `t.ms`/`t.ts` do arquivo, ou conta
+  local), e a equipe aparece à parte com "(estimativa)". Na ordem por total, quem tem alguma parte com menos de 3 meses (`t.ok`, ou conta local) vai
+  depois das demais, com a etiqueta. Média com divisor menor que 1 mês: "—" e só o total. Filtros: estado, nome, "só quem está no cargo hoje".
+  Nada por partido.
 - **Por estado** (`?vista=estados`): uma linha para a casa e uma por estado, em ordem alfabética (sem ranking de estados), com a mediana da média
   por mês de cada parte ou a soma no período (`?modo=soma`) e o número de pessoas; "Ver as pessoas" filtra a lista.
 - **Textos**: o período vem de `meta.faixas` ("mandato 2023–2026, de fev/2023 a <último mês>"; nunca "termina em 31/1/2027": os senadores eleitos

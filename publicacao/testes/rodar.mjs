@@ -146,8 +146,10 @@ const BAL = (() => { try { return lerDados("balanco.json"); } catch (e) { return
 const BAL_FMT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
 const BAL_ULTIMO = BAL ? Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1]))) : 0;
 const BAL_ORDEM = (v) => (a, b) => v(b) - v(a) || a.n.localeCompare(b.n, "pt-BR");
-const BAL_PRIMEIRO = BAL ? BAL.p.filter((b) => b.k === "d" && b.mc >= 3).sort(BAL_ORDEM((b) => b.t.m))[0] : null;
-const BAL_PRIMEIRO_TOTAL = BAL ? BAL.p.filter((b) => b.k === "d" && b.mc >= 3).sort(BAL_ORDEM((b) => b.t.t))[0] : null;
+const BAL_ELEG = (b) => (b.t.ok !== undefined ? !!b.t.ok : ["r", "c", "o", "e"].every((c) => !(b[c].n > 0) || b[c].n >= 3)) && b.mc >= 3;
+const BAL_PRIMEIRO = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.m))[0] : null;
+const BAL_PRIMEIRO_TOTAL = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.t))[0] : null;
+const BAL_PRIMEIRO_NOME = BAL ? BAL.p.filter((b) => b.k === "d").map((b) => b.n).sort((x, y) => x.localeCompare(y, "pt-BR"))[0] : "";
 const BAL_PESSOA = BAL ? BAL.p.find((b) => b.k === "d" && b.u > 0 && b.c.p !== undefined && b.mc >= 3 && !b.rel && ENDERECOS[b.id]) : null;
 const PAGINAS = [
   { nome: "inicio", url: "/", ter: [["#chips-info", 1]] },
@@ -293,7 +295,7 @@ const PAGINAS = [
   // capital sem reserva ligada: a fonte própria, sem o aviso do tribunal
   { nome: "cidade-fortaleza-fonte-propria", url: "/cidade/fortaleza-ce", depois: `(() => {
       const f = [], tc = (document.querySelector("#cidade") || {}).textContent || "", tp = (document.querySelector("#prefeitura") || {}).textContent || "";
-      if (/dados do tce-ce/i.test(tc)) f.push("a parte da Câmara (reserva ${RES_FORT_CAMARA ? "ativa" : "inativa"}) ${RES_FORT_CAMARA ? "devia" : "não devia"} ter o aviso do TCE-CE");
+      if (/dados do tce-ce/i.test(tc) !== ${RES_FORT_CAMARA}) f.push("a parte da Câmara (reserva ${RES_FORT_CAMARA ? "ativa" : "inativa"}) ${RES_FORT_CAMARA ? "devia" : "não devia"} ter o aviso do TCE-CE");
       if (/dados do tce-ce/i.test(tp) !== ${RES_FORT_PREF}) f.push("a parte da Prefeitura ${RES_FORT_PREF ? "devia" : "não devia"} ter o aviso 'dados do TCE-CE' (reserva ${RES_FORT_PREF ? "ativa" : "inativa"} no situacao.json)");
       return f; })()` },
   // João Pessoa e Teresina (08/10/2026): vereador por vereador. A Câmara de João Pessoa vem de camaras.json (o valor do Tribunal de Contas não aparece na parte
@@ -562,14 +564,17 @@ const PAGINAS = [
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10], ["#dados-abertos a[href='/dados/balanco.csv']", BAL ? 1 : 0]] },
   // /balanco (09/11/2026): a lista, o quadro de cada casa, as ressalvas e a ordem pela média por mês (com os de poucos meses no fim)
   { nome: "balanco", url: BAL ? "/balanco" : null, ter: [["#balanco tbody tr", 40], ["#balanco .balanco-casa", 1], ["#balanco a[href='/dados/balanco.csv']", 1], ["#balanco .balanco-pontos li", 6]],
-    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /a versão final sai em fev\/2027/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
+    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /em fev\/2027 há uma atualização com o fim do mandato dos deputados/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
       new RegExp(`equipe até ${reEsc(BAL_FMT(BAL.meta.faixas.d.e[1]))}`), /Os senadores eleitos em 2022 têm mandato até 2031/, /Sem agregados por partido/] : [],
-    semPagina: [/termina em 31\/1\/2027/, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
+    semPagina: [/termina em 31\/1\/2027/, /versão final/, /o link da fonte de cada número/, /vai para o bolso/i, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
   { nome: "balanco-ordem-pela-media", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       const esperado = ${JSON.stringify(BAL_PRIMEIRO ? BAL_PRIMEIRO.n : "")}, errado = ${JSON.stringify(BAL_PRIMEIRO_TOTAL ? BAL_PRIMEIRO_TOTAL.n : "")};
       if (esperado === errado) f.push("teste inválido: o primeiro pela média e pelo total são o mesmo");
       const linhas = () => [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")];
+      if (document.querySelector("#bal-ordem").value !== "n" || linhas()[0].querySelector(".balanco-nome strong").textContent !== ${JSON.stringify(BAL_PRIMEIRO_NOME)}) f.push("a Câmara devia abrir em ordem de nome (a média favorece quem entrou tarde): " + linhas()[0].querySelector(".balanco-nome strong").textContent);
+      const sel = document.querySelector("#bal-ordem"); sel.value = "m"; sel.dispatchEvent(new Event("change", { bubbles: true })); await esp(300);
+      if (!document.querySelector("#bal-nota-calendario")) f.push("a ordem por média devia trazer a nota do calendário acima da lista");
       if (!linhas()[0] || linhas()[0].querySelector(".balanco-nome strong").textContent !== esperado) f.push("o primeiro da lista devia ser " + esperado + " (maior média por mês), e não " + errado + " (maior total): " + (linhas()[0] && linhas()[0].querySelector(".balanco-nome strong").textContent));
       for (let i = 0; i < 20 && [...document.querySelectorAll("#balanco button")].some((b) => /^Mostrar mais/.test(b.textContent)); i++) { [...document.querySelectorAll("#balanco button")].find((b) => /^Mostrar mais/.test(b.textContent)).click(); await esp(60); }
       const poucos = linhas().map((tr) => /menos de 3 meses/.test(tr.querySelector(".balanco-selos").textContent));
@@ -591,7 +596,7 @@ const PAGINAS = [
       if (/% do limite/.test([...linhas].map((tr) => tr.innerText).join(" "))) f.push("linha do Senado com % do limite");
       if (!/não publica a tabela de limites por estado/.test(t)) f.push("falta a nota de que o Senado não tem % do limite");
       if (!/estimativa pela lotação atual dos servidores/.test(t)) f.push("falta a nota da equipe estimada");
-      for (const v of ${JSON.stringify(BAL ? [BAL.casa.s.r.md, BAL.casa.s.c.md, BAL.casa.s.o.md, BAL.casa.s.e.md, BAL.casa.s.t.md].map((v) => Math.round(v).toLocaleString("pt-BR")) : [])}) if (!t.includes("R$ " + v)) f.push("o quadro do Senado não tem R$ " + v);
+      for (const v of ${JSON.stringify(BAL ? [BAL.casa.s.r.md, BAL.casa.s.c.md, BAL.casa.s.o.md, BAL.casa.s.e.md].map((v) => Math.round(v).toLocaleString("pt-BR")) : [])}) if (!t.includes("R$ " + v)) f.push("o quadro do Senado não tem R$ " + v);
       if (/Câmara dos Deputados: [0-9]+ deputados/.test(t)) f.push("o quadro da Câmara apareceu na visão do Senado");
       return f; })()` },
   { nome: "balanco-estados", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
@@ -644,7 +649,7 @@ const PAGINAS = [
   { nome: "correcoes", url: "/correcoes", ter: [["ol.correcoes > li", 1], ["ol.correcoes a[href='/cidade/sao-paulo-sp']", 1]] },
   // correções que apontam para uma página: o aviso "esta página já foi corrigida" no fim da página (cidade pelo código IBGE, pessoa pelo id) e nenhum aviso onde não há
   { nome: "cidade-com-correcao", url: "/cidade/sao-paulo-sp", pagina: [/Esta página já foi corrigida\./, /Vereadores de São Paulo: a verba do gabinete por mês em 2026/, /04\/10\/2026/], ter: [["#correcoes-desta-pagina:not([hidden]) li", 1]] },
-  { nome: "senador-com-correcao", url: ENDERECOS["sen-4605"] ? `/${ENDERECOS["sen-4605"]}` : null, pagina: [/Esta página já foi corrigida\./, /Ajuda de custo: o mês do pagamento na página de senador de Flávio Dino/] },
+  { nome: "senador-com-correcao", url: ENDERECOS["sen-4605"] ? `/${ENDERECOS["sen-4605"]}` : null, pagina: [/Esta página já foi corrigida( [0-9]+ vezes)?\./, /Ajuda de custo: o mês do pagamento na página de senador de Flávio Dino/] },
   { nome: "cidade-sem-correcao", url: "/cidade/fortaleza-ce", semPagina: [/Esta página já foi corrigida/], ter: [["#erro", 1]] },
   { nome: "sobre", url: "/sobre", ter: [["#sobre h2", 5], ["#sobre a[href^='mailto:']", 1], ["#sobre a[href='/imprensa']", 1]] },
   // "Para a imprensa": curta e neutra; o método com os links das páginas de transparência, a licença e o modelo de citação, o contato; sem nome de pessoa

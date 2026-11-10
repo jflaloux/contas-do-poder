@@ -812,17 +812,19 @@ if (BAL && (BAL.p || []).length) {
   };
   const reaisB = (v) => (v === null || v === undefined ? "—" : `R$\u00a0${Math.round(v).toLocaleString("pt-BR")}`);
   const periodo = `mandato 2023–2026, de fev/2023 a ${mes(ultimo)}`;
-  const f = BAL.meta.faixas, acima = BAL.p.filter((x) => x.k === "d" && x.c.p > 100).length, minimo = BAL.meta.meses_minimos_mediana || 3;
+  const f = BAL.meta.faixas, minimo = BAL.meta.meses_minimos_mediana || 3;
+  const acima = BAL.meta.acima_100 !== undefined ? BAL.meta.acima_100 : BAL.p.filter((x) => x.k === "d" && x.c.p > 100 && x.mc >= minimo).length;
+  const lacunas = Object.entries(BAL.meta.lacunas || {}).flatMap(([k, partes]) => Object.entries(partes).map(([c, ms]) => ` ${k === "d" ? "Câmara" : "Senado"}, ${PARTE[c]}: ${listaE(ms.map(mes))} não ${ms.length === 1 ? "foi publicado" : "foram publicados"} pela fonte e ${ms.length === 1 ? "fica" : "ficam"} fora das médias.`)).join("");
   const pontos = [
-    `Dados parciais: vão até o último mês que cada fonte publicou. Câmara: ${faixas("d")}. Senado: ${faixas("s")}.${f.d.e[1] < f.d.r[1] ? " A verba de gabinete da Câmara (a equipe) é publicada com atraso." : ""}`,
-    `Base de ${BAL.meta.atualizado}. O balanço é refeito a cada rodada de atualização; a versão final sai em fev/2027.`,
+    `Dados parciais: vão até o último mês que cada fonte publicou. Câmara: ${faixas("d")}. Senado: ${faixas("s")}.${f.d.e[1] < f.d.r[1] ? " A verba de gabinete da Câmara (a equipe) é publicada com atraso." : ""}${lacunas}`,
+    `Base de ${BAL.meta.atualizado}. O balanço é refeito a cada rodada; em fev/2027 há uma atualização com o fim do mandato dos deputados, e os meses que as fontes publicam com atraso entram depois.`,
     "Valores brutos, como as fontes publicam: sem imposto de renda, previdência nem valor líquido.",
-    `Compare pela média por mês, não pelo total: quem ficou menos tempo no cargo (um suplente, por exemplo) acumula menos. Cada média diz por quantos meses foi dividida; com menos de ${minimo} meses numa parte, a pessoa fica fora das medianas e depois das demais na ordem por média.`,
-    "Câmara e Senado têm regras diferentes e aparecem à parte: o site não compara os totais das duas casas. No Senado, a equipe é uma estimativa, e a cota não tem % do limite (o Senado não publica a tabela por estado em formato aberto).",
-    `Câmara, % do limite da cota: o que foi usado ÷ a soma dos limites do estado nos meses no cargo. O total da cota que a Câmara publica inclui os trechos de avião extras (até quatro por mês), por isso ${acima} ${acima === 1 ? "deputado passa" : "deputados passam"} de 100%.`,
+    `Compare com cuidado a média por mês: quem ficou menos tempo no cargo (um suplente, por exemplo) acumula menos no total, e a média favorece quem entrou depois dos reajustes. Cada média diz por quantos meses foi dividida; com menos de ${minimo} meses numa parte, a pessoa fica depois das demais na ordem por média e fora das medianas.`,
+    "Câmara e Senado têm regras diferentes e aparecem à parte: o site não compara os totais das duas casas. No Senado, a equipe é uma estimativa e fica fora do total e da ordem; a cota não tem % do limite (o Senado não publica a tabela por estado em formato aberto).",
+    `Câmara, % do limite da cota: o que foi usado ÷ a soma dos limites do estado nos meses no cargo. A % pode passar de 100% porque o total que a Câmara publica inclui trechos de avião além da cota (até quatro por mês) e, para líderes e presidentes de comissão, um adicional; o percentual é sobre o limite-base do estado. ${acima} ${acima === 1 ? "deputado com" : "deputados com"} ${minimo} meses ou mais passam de 100%.`,
   ];
-  const casa = (k, nome, plural) => { const a = BAL.casa[k], s = k === "s"; return `<li><strong>${nome}:</strong> ${a.n} ${plural} no período, ${a.x} no cargo hoje. Mediana da média por mês: recebeu ${reaisB(a.r.md)}, cota ${reaisB(a.c.md)}${a.c.pmd !== undefined ? ` (${String(a.c.pmd.toFixed(1)).replace(".", ",")}% do limite)` : ""}, outros gastos ${reaisB(a.o.md)}, equipe ${reaisB(a.e.md)}${s ? " (estimativa)" : ""}, total ${reaisB(a.t.md)}.</li>`; };
-  const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e o link da fonte de cada número. Tudo com dados abertos oficiais.`;
+  const casa = (k, nome, plural) => { const a = BAL.casa[k], s = k === "s"; return `<li><strong>${nome}:</strong> ${a.n} ${plural} no período, ${a.x} no cargo hoje. Mediana da média por mês: recebeu ${reaisB(a.r.md)}, cota ${reaisB(a.c.md)}${a.c.pmd !== undefined ? ` (${String(a.c.pmd.toFixed(1)).replace(".", ",")}% do limite)` : ""}, outros gastos ${reaisB(a.o.md)}, equipe ${reaisB(a.e.md)}${s ? " (estimativa, fora do total)" : `, total ${reaisB(a.t.md)}`}.</li>`; };
+  const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados abertos oficiais.`;
   const corpo = '<section class="bloco" id="balanco" aria-labelledby="t-balanco"><p class="rotulo">Deputados federais e senadores</p>'
     + '<h1 id="t-balanco" class="titulo-pagina">Balanço 2023–2026</h1>'
     + `<p class="lide">${esc(lide)}</p>`
