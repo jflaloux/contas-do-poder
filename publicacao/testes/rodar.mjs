@@ -565,6 +565,12 @@ const PAGINAS = [
   // mudança em 2026 (e não em 2025): o texto de 2025 na página da cidade não leva o período
   { nome: "verba-vigencia-so-em-2026-cidade", url: "/cidade/sao-paulo-sp", simular: simularVerba({ 2025: 100, 2026: 120 }, [[202501, 100], [202603, 120]]),
     pagina: [/por mês em 2025 \(mediana\), de até R\$\s100(?! de| e)/], semPagina: [/de jan a/] },
+  // viagens de BA, ES e RS (10/11/2026): a fonte identifica a pessoa pelo cargo (BA, RS) e a nota diz o que entra; o governador da BA não tem viagem publicada
+  { nome: "governador-ba-viagens-vice", url: ENDERECOS["gov-ba-geraldo-junior"] ? `/${ENDERECOS["gov-ba-geraldo-junior"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 2], ["#viagens details table", 1]], pagina: [/Painel de Diárias/, /identifica a pessoa pelo cargo/, /O painel não publica passagens/] },
+  { nome: "governador-ba-sem-viagem", url: ENDERECOS["gov-ba-jeronimo-rodrigues"] ? `/${ENDERECOS["gov-ba-jeronimo-rodrigues"]}` : null, ter: [["#viagens h2", 1]], pagina: [/A fonte não mostra viagem de Jerônimo Rodrigues/] },
+  { nome: "governador-es-viagens", url: ENDERECOS["gov-es-ricardo-ferraco"] ? `/${ENDERECOS["gov-es-ricardo-ferraco"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 2]], pagina: [/dados abertos do Espírito Santo/, /As passagens não são publicadas por pessoa/] },
+  { nome: "governador-rs-viagens", url: ENDERECOS["gov-rs-eduardo-leite"] ? `/${ENDERECOS["gov-rs-eduardo-leite"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 3], ["#viagens details table", 1]], pagina: [/seção Viagens do Governador/, /identifica a pessoa pelo cargo/, /Viagens no avião do Estado não têm custo publicado/] },
+  { nome: "governador-rs-viagens-vice", url: ENDERECOS["gov-rs-gabriel-souza"] ? `/${ENDERECOS["gov-rs-gabriel-souza"]}` : null, ter: [["#viagens h2", 1], ["#viagens .estatistica", 3]] },
   { nome: "governador-sem-viagens", url: ENDERECOS["gov-sp-tarcisio-de-freitas"] ? `/${ENDERECOS["gov-sp-tarcisio-de-freitas"]}` : null, ter: [["#viagens h2", 1]] },
   { nome: "estado", url: "/governador/sp", ter: [["#governador", 1]] },
   { nome: "estado-assembleia", url: "/governador/go", ter: [["#governador", 1], ["#assembleia", 1]] },

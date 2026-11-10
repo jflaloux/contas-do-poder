@@ -102,6 +102,7 @@ const VALORES_DADO = (() => {
   const nomesDe = (meta) => Object.values((meta && meta.cidades) || {}).map((c) => c.n).filter(Boolean).sort((x, y) => (y === "São Paulo") - (x === "São Paulo") || x.localeCompare(y, "pt-BR"));
   const camaras = nomesDe(CAM.meta), prefeituras = nomesDe(PRE.meta), semSP = camaras.filter((n) => n !== "São Paulo");
   const comFolha = (GOV.e || []).filter((e) => e.m && e.m.length), semFolha = (GOV.e || []).filter((e) => !(e.m && e.m.length)).map((e) => ESTADOS[e.uf]);
+  const comViagens = (GOV.e || []).filter((e) => e.vgf).map((e) => ESTADOS[e.uf]).sort((x, y) => x.localeCompare(y, "pt-BR"));
   const totalVereadores = (MUN.m || []).reduce((s, r) => s + (r[5] || 0), 0);
   const ufsCargo = fs.existsSync(path.join(SITE, "dados", "interior-cargo")) ? fs.readdirSync(path.join(SITE, "dados", "interior-cargo")).filter((a) => /^[a-z]{2}\.json$/.test(a)).map((a) => a.slice(0, 2).toUpperCase()).sort() : [];
   return {
@@ -109,6 +110,7 @@ const VALORES_DADO = (() => {
     "n-vereadores": `${Math.round(totalVereadores / 1000)} mil`,
     "n-capitais-camaras": extenso(semSP.length), "capitais-camaras": listaE(semSP),
     "n-capitais-prefeituras": extenso(prefeituras.length), "capitais-prefeituras": listaE(prefeituras),
+    "n-viagens-gov": extenso(comViagens.length), "viagens-gov": listaE(comViagens),
     "n-folha": String(comFolha.length), "sem-folha": listaE(semFolha),
     "interior-cargo-estados": maiuscula1(listaE(ufsCargo.map(emUF))), "interior-cargo-estados-baixo": listaE(ufsCargo.map(emUF)),
     // a verba que uma Câmara não deixa ler (camaras.json, meta de cada cidade, `verba_fora`: os anos em que a verba fica de fora de todos os vereadores
