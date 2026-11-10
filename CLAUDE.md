@@ -96,9 +96,11 @@ armadilhas que não estão escritas em outro lugar.
   se referem; antes da posse de suplentes ou depois da saída). `coleta/site.py` (`_sem_pagamento_fora_do_mandato`) tira
   esses meses pelo histórico oficial: sai todo mês sem dia em exercício nem de licença e sem cota nem equipe, qualquer
   que seja o valor (até 09/11/2026 só saía abaixo de 40% do subsídio; ver /correcoes); estorno (valor negativo) não é
-  sinal de gabinete ativo; o mês seguinte à saída fica inteiro (traz os acertos). Histórico da Câmara
+  sinal de gabinete ativo; no mês seguinte à saída ficam os pagamentos do contracheque detalhado, e o salário sai quando
+  é igual (±R$ 1) ao de um mês que já sai. Histórico da Câmara
   (`/deputados/{id}/historico`): ordenar os eventos só pela data (no mesmo dia vale a ordem da API); o exercício começa
-  na posse ("Exercício"); "CONVOCADO" só conta quando não vem posse depois; ministros aparecem como "Licença".
+  na posse ("Exercício"); "CONVOCADO" só conta quando não vem posse depois, e sem posse só se passar de 2 dias ou houver
+  pagamento ou cota no período; ministros aparecem como "Licença".
 - Senado: a API de outros gastos dá 404 para quem não está em exercício; a página de transparência do senador tem o
   mesmo quadro (`dados/senado/outros_gastos.csv` guarda o que foi lido). Ausência de dado não é zero: marcar incompleto.
 - Câmara: a verba de gabinete de dez/2024 não existe na fonte (a página de 2024 vai de jan a nov): fica fora das médias
