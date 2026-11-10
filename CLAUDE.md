@@ -43,6 +43,9 @@ armadilhas que não estão escritas em outro lugar.
   (README, "Duas rodadas"). Robô novo que só abre do Brasil: o nome dele em `SO_BRASIL`. Grupo novo de fontes: o laço
   de `coletar()` com `onde.pular(...)` e `with onde.registrar(...)`, como em `coleta/vereadores/__init__.py`, e o
   grupo em `coletar.py rodada_brasil()` e em `coleta/situacao.py`.
+- O GitHub Actions roda Python 3.11 e o Mac, 3.12 (que soma decimais com compensação): teste com número decimal compara
+  com tolerância, nunca com `==` (em 10/11/2026, 31 × 100/31 deu 100 no Mac e 100,00000000000001 no GitHub, e a rodada
+  parou nos testes rápidos). Teste novo de coleta: conferir também num clone limpo com o Python do workflow.
 - No Mac, os robôs rodam com `.venv/bin/python` (criado por `rotina/instalar-mac.sh`), não com o `python3` do sistema.
   Dependência nova no `requirements.txt`: rodar também `.venv/bin/pip install -r requirements.txt`, ou a rodada do
   Brasil falha (em 02/10/2026, a Assembleia da PB parou por falta do odfpy no `.venv`).
