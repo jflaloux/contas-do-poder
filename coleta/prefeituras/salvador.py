@@ -131,6 +131,17 @@ def _mes(am):
     return linhas
 
 
+def incompleto(novas, linhas, am):
+    """O portal publica a folha do mês aos poucos: em 03/11/2026, out/2026 tinha só 1 dos 19 secretários, e o site ficou com
+    1 pessoa no cargo (a gravação de prefeituras.json recusou). Mês com menos da metade das pessoas do mês anterior
+    guardado, ou sem o prefeito, ainda não está completo."""
+    antes = linhas[linhas.aaaamm.astype(int) < am] if len(linhas) else linhas
+    if not len(antes):
+        return False
+    n_antes = int((antes.aaaamm.astype(int) == antes.aaaamm.astype(int).max()).sum())
+    return len(novas) < n_antes / 2 or not any(x["tp"] == "pr" for x in novas)
+
+
 def _meses():
     hoje = date.today()
     am, fim = INICIO, hoje.year * 100 + hoje.month
@@ -154,6 +165,9 @@ def coletar():
         novas = _mes(am)
         if novas is None:
             log(f"  Prefeitura de Salvador: {am % 100:02d}/{am // 100} ainda sem folha")
+            continue
+        if incompleto(novas, linhas, am):
+            log(f"  Prefeitura de Salvador: {am % 100:02d}/{am // 100} com a folha incompleta ({len(novas)} pessoas); fica para a próxima rodada")
             continue
         (C / f"{am}.json").write_text(json.dumps(novas, ensure_ascii=False), encoding="utf-8")
         linhas = pd.concat([linhas[linhas.aaaamm.astype(int) != am], pd.DataFrame(novas, columns=COLUNAS)], ignore_index=True)

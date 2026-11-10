@@ -32,8 +32,6 @@ ATRASOS_CONHECIDOS = {
     "judiciario/stf": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/stm": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/tse": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
-    "prefeituras/recife": "o arquivo de 2026 no portal de dados abertos da Prefeitura vai até jun/2026 (atualizado pela última vez em "
-                          "26/06/2026, conferido em 02/10/2026)",
 }
 SAIDA_MD = PROCESSADOS / "situacao.md"
 SAIDA_JSON = PROCESSADOS / "situacao.json"
