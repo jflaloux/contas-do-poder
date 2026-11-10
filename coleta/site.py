@@ -166,6 +166,11 @@ def _em_exercicio(id_num, legislatura):
     return balanco.meses_em_exercicio(guardado[str(id_num)])
 
 
+def _salario_repetido(no_mes, repetidos):
+    """{AAAAMM} do mês seguinte à saída cujo salário é igual (R$ 1 a mais ou a menos) ao de um mês que já sai."""
+    return {m for m, v in no_mes.items() if any(abs(v - x) <= 1 for x in repetidos)}
+
+
 def _sem_pagamento_fora_do_mandato(lanc):
     """Tira o "salário" de meses em que o deputado não estava no mandato.
 
@@ -175,8 +180,9 @@ def _sem_pagamento_fora_do_mandato(lanc):
     suplente, em abril de 2026) ao subsídio inteiro (Ivan Valente, depois de deixar a suplência em abril de 2026). Pelo
     histórico oficial da Câmara, tiramos o salário (e o resto do contracheque) dos meses sem nenhum dia em exercício nem
     de licença e sem cota nem equipe (um estorno não conta como gasto do mês): o licenciado continua no mandato e pode
-    ficar com o salário dele (secretário de Estado, ministro), e o mês seguinte à saída fica, porque traz os acertos
-    dela (os dias do mês anterior, férias e 13º proporcionais). Até 09/11/2026 só saía o pagamento menor que 40% do
+    ficar com o salário dele (secretário de Estado, ministro). No mês seguinte à saída ficam os acertos do contracheque
+    detalhado (os dias do mês anterior, férias e 13º proporcionais), e o salário da página sai quando é igual ao de um
+    mês que já sai (o mesmo pagamento que se repete). Até 09/11/2026 só saía o pagamento menor que 40% do
     subsídio, em qualquer mês fora do exercício (ver site/dados/correcoes.json)."""
     dep = lanc[lanc.id_politico.str.startswith("dep-")]
     sal = dep[dep.categoria == "salario"].groupby(["id_politico", "ano", "mes"]).valor.sum()
@@ -201,6 +207,15 @@ def _sem_pagamento_fora_do_mandato(lanc):
         # o salário e o resto do contracheque da Câmara (13º, acertos) daquele mês
         fora = ((lanc.id_politico == pid) & (lanc.categoria == "salario") | (lanc.id_politico == pid) & (lanc.fonte == "camara_detalhe")
                 & (lanc.grupo == "ganha")) & ~am.isin(meses) & ~am.isin(licenca) & ~am.isin(depois) & sem_gabinete
+        # no mês seguinte à saída ficam os acertos do contracheque detalhado, mas o salário da página de remuneração sai
+        # quando é igual (R$ 1 a mais ou a menos) ao de um mês que já sai: é o mesmo pagamento que se repete (Leônidas
+        # Cristino, mai/2026, R$ 29.144,46, igual a jun a out/2026)
+        da_pagina = (lanc.id_politico == pid) & (lanc.categoria == "salario") & (lanc.fonte == "camara_remuneracao")
+        repetidos = [v for v in lanc[fora & da_pagina].groupby(am[fora & da_pagina]).valor.sum() if v > 0]
+        if repetidos:
+            no_mes = lanc[da_pagina & am.isin(depois)].groupby(am[da_pagina & am.isin(depois)]).valor.sum()
+            iguais = _salario_repetido(no_mes.to_dict(), repetidos)
+            fora |= da_pagina & am.isin(iguais) & ~am.isin(meses) & ~am.isin(licenca) & sem_gabinete
         if fora.any():
             log(f"Site: {pid}: {int(fora.sum())} meses de pagamento fora do exercício do mandato saem da conta "
                 f"(R$ {lanc[fora].valor.sum():,.2f})")

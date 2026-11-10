@@ -76,29 +76,41 @@ def _eventos(eventos):
     return sorted(((dt[:10], sit) for dt, leg, sit in eventos if leg == LEGISLATURA and sit), key=lambda x: x[0])
 
 
-def _intervalos_camara(eventos, hoje):
+def _intervalos_camara(eventos, hoje, marcar=False):
     """Intervalos em exercício na legislatura pelo histórico da Câmara: da posse ("Exercício"; "CONVOCADO" só quando não vem
     "Exercício" depois) até o dia do evento seguinte com outra situação (licença, suplência, vacância, suspensão). O dia da posse e o do
     afastamento contam, como na cota (Ato da Mesa nº 43/2009, arts. 11 e 12)."""
     evs = _eventos(eventos)
-    saida, desde = [], None
+    saida, desde, so_conv = [], None, False
     for k, (dt, sit) in enumerate(evs):
         d = date.fromisoformat(dt)
         if sit in EXERCICIO and desde is None:
-            desde = d
+            desde, so_conv = d, sit == "CONVOCADO"
             if sit == "CONVOCADO":  # a convocação não é a posse: com "Exercício" depois (antes de sair), vale a posse
                 for dt2, sit2 in evs[k + 1:]:
                     if sit2 not in EXERCICIO:
                         break
                     if sit2 == "Exercício":
-                        desde = date.fromisoformat(dt2)
+                        desde, so_conv = date.fromisoformat(dt2), False
                         break
         elif sit not in EXERCICIO and desde is not None:
-            saida.append((desde, d))
+            saida.append((desde, d, so_conv))
             desde = None
     if desde is not None:
-        saida.append((desde, max(desde, hoje)))
-    return saida
+        saida.append((desde, max(desde, hoje), so_conv))
+    return saida if marcar else [(a, b) for a, b, _ in saida]
+
+
+def _vale_convocacao(ini, fim, so_conv, mm):
+    """Convocação sem posse depois só conta se durou mais de 2 dias ou se houve pagamento ou cota no período (a Câmara
+    registra "CONVOCADO" e "SUPLENCIA" no mesmo dia de quem não chegou a assumir: Marcelo Calero, Wolmer Araújo)."""
+    if not so_conv or (fim - ini).days + 1 > 2:
+        return True
+    meses = {_aaaamm(ini), _aaaamm(fim)}
+    for m in meses:
+        if m in mm.index and (abs(float(mm["r"].get(m, 0.0))) >= 1 or abs(float(mm["c"].get(m, 0.0))) >= 1):
+            return True
+    return False
 
 
 def meses_em_exercicio(eventos, hoje=None):
@@ -331,16 +343,19 @@ def calcular(lanc, politicos, historicos, hoje=None):
             continue
         pid, k = p["id"], "d" if p["casa"] == "camara" else "s"
         num = pid.split("-")[1]
+        mm = por_id.get(pid, pd.DataFrame(columns=list(COMPONENTES)))
+        licenca = set()
         if k == "d":
             ev = historicos.get(num)
             if ev is None:
                 log(f"Balanço: {pid} sem histórico da Câmara; fica sem meses no cargo")
-            intervalos = _intervalos_camara(ev or [], ate_dia)
+            intervalos = [(a, b) for a, b, so_conv in _intervalos_camara(ev or [], ate_dia, marcar=True)
+                          if _vale_convocacao(a, b, so_conv, mm)]
+            licenca = meses_em_licenca(ev or [], ate_dia)
         else:
             intervalos = _intervalos_senado(p.get("exercicios"), ate_dia)
         dias = _dias(intervalos, ate_dia)
         fr = _fracoes(intervalos, ate_dia)
-        mm = por_id.get(pid, pd.DataFrame(columns=list(COMPONENTES)))
         tot = {c: float(totais.get((pid, c), 0.0)) for c in COMPONENTES}
         if not fr and not any(abs(v) >= 1 for v in tot.values()):
             continue
@@ -372,6 +387,13 @@ def calcular(lanc, politicos, historicos, hoje=None):
                 elif c == "e" and k == "s":
                     w = fr.get(m, 0.0)
                     v *= w
+                elif c == "e":  # verba de gabinete: o mês com gasto pesa ao menos o gasto ÷ o valor disponível
+                    tm = _teto_no_mes(teto, m)
+                    w = max(fr.get(m, 0.0), min(1.0, v / tm) if v > 0.5 and tm else 0.0)
+                elif c == "c":  # nota de um mês sem exercício fica no gasto; só a licença da Câmara conta o mês
+                    w = fr.get(m, 0.0) or (1.0 if v > 0.5 and m in licenca else 0.0)
+                elif k == "s":  # outros gastos do Senado: valor anual repartido; conta só o tempo no cargo
+                    w = fr.get(m, 0.0)
                 else:
                     w = fr.get(m, 0.0) or (1.0 if v > 0.5 else 0.0)
                 no_periodo += v
@@ -580,11 +602,13 @@ def _pessoa_json(r, enderecos):
         item["e"]["eb"] = _r(r.e_estimada)  # a estimativa do mês inteiro (a do perfil)
         if r.o_incompleto:
             item["o"]["inc"] = 1
-    tm = sum(0 if pd.isna(r[c + "_m"]) else r[c + "_m"] for c in COMPONENTES)
-    item["t"] = {"t": _r(r.r + r.c + r.o + r.e), "m": _r(tm), "ok": int(bool(r.ok))}
+    def soma_medias(partes):  # sem a média de alguma parte, não há média do total
+        ms = [r[c + "_m"] for c in partes]
+        return None if any(pd.isna(x) for x in ms) else _r(sum(ms))
+    item["t"] = {"t": _r(r.r + r.c + r.o + r.e), "m": soma_medias(COMPONENTES), "ok": int(bool(r.ok))}
     if r.k == "s":
         item["t"]["ts"] = _r(r.r + r.c + r.o)
-        item["t"]["ms"] = _r(sum(0 if pd.isna(r[c + "_m"]) else r[c + "_m"] for c in PARTES_DO_TOTAL["s"]))
+        item["t"]["ms"] = soma_medias(PARTES_DO_TOTAL["s"])
     if r.menos_de_3:
         item["m3"] = list(r.menos_de_3)
     if isinstance(r.rel, str) and r.rel:
@@ -619,10 +643,10 @@ def _csv(df, enderecos):
     d["condicao"] = d.suplente.map({True: "suplente", False: "titular"})
     d["x"] = d.x.map({True: "sim", False: "não"})
     d["total"] = d.r + d.c + d.o + d.e
-    d["total_m"] = _tm(d, COMPONENTES)
+    d["total_m"] = _tm(d, COMPONENTES).where(d.ok)  # média do total em branco fora das comparações
     senado = d.k == "s"
     d["ts"] = (d.r + d.c + d.o).where(senado)
-    d["ms"] = _tm(d, PARTES_DO_TOTAL["s"]).where(senado)
+    d["ms"] = _tm(d, PARTES_DO_TOTAL["s"]).where(senado & d.ok)
     d["e_est"] = senado.map({True: "sim", False: "não"})
     d["o_inc"] = d.o_incompleto.map(lambda v: "sim" if v is True else "não" if v is False else "")
     d["ok"] = d.ok.map({True: "sim", False: "não"})

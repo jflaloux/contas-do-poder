@@ -1,6 +1,6 @@
 # Balanço 2023–2026: conferência
 
-Feita em 09/11/2026 e refeita em 10/11/2026, depois de duas revisões independentes, sobre a base padronizada de 04/11/2026 (`dados/processados/lancamentos.csv.gz`, rodada do GitHub) e
+Feita em 09/11/2026 e refeita em 10/11/2026, depois de três revisões independentes, sobre a base padronizada de 04/11/2026 (`dados/processados/lancamentos.csv.gz`, rodada do GitHub) e
 o `site/dados/balanco.json` gerado por `python3 coletar.py site` (`coleta/balanco.py`). As páginas oficiais foram lidas
 em 09/11/2026.
 
@@ -17,11 +17,11 @@ a out/2026.
   (R$ 1.128.727.383 contra R$ 1.168.113.220 do perfil). Nenhum perfil de deputado ou senador ficou fora do balanço.
 - **Balanço × base bruta** (`lancamentos.csv.gz`, sem os ajustes do site): as diferenças são os ajustes que o site faz
   nos perfis: o salário pago pelo Congresso nos meses como ministro de 18 deputados e senadores (R$ 21.632.402, fica na
-  página de ministro) e os pagamentos da Câmara fora do mandato de 8 deputados (`site._sem_pagamento_fora_do_mandato`).
+  página de ministro) e os pagamentos da Câmara fora do mandato de 8 deputados (no mês seguinte à saída, só o salário igual ao de um mês que já sai) (`site._sem_pagamento_fora_do_mandato`).
 - **Base mudada nesta conferência** (perfis também; registrado em `site/dados/correcoes.json`): os outros gastos do
   mandato de 25 senadores que não estavam em exercício no dia da coleta (R$ 2.879.741, da página de transparência de cada
   um; `dados/senado/outros_gastos.csv`); e, pelo `site.py`, 11 perfis de deputados (pagamentos fora do mandato).
-- Totais do balanço: Câmara R$ 4.702.072.963; Senado R$ 1.472.413.131 (R$ 343.685.749 sem a equipe estimada).
+- Totais do balanço: Câmara R$ 4.701.988.000; Senado R$ 1.472.413.131 (R$ 343.685.749 sem a equipe estimada).
 
 ## (b) Cinco pessoas conferidas à mão
 
@@ -127,9 +127,9 @@ Só quem tem 3 meses ou mais na média da parte. O que olhar está na seção se
 | Nivaldo Albuquerque (dep-194260) | AL | 3,0 | 3,1 | 158.031 | 36.528 |
 | Wolmer Araújo (dep-182146) | MA | 4,1 | 4,1 | 200.368 | 39.163 |
 | Eliza Virgínia (dep-220008) | PB | 4,0 | 4,0 | 210.721 | 41.678 |
-| Priscila Costa (dep-226075) | CE | 6,9 | 6,7 | 325.831 | 42.178 |
+| Priscila Costa (dep-226075) | CE | 6,7 | 6,7 | 325.831 | 42.178 |
 | Paulo Marinho Jr (dep-128760) | MA | 8,1 | 8,1 | 385.307 | 42.179 |
-| Flavinha (dep-225727) | MT | 4,1 | 4,0 | 209.590 | 42.337 |
+| Flavinha (dep-225727) | MT | 4,0 | 4,0 | 209.590 | 42.337 |
 | Luciano Galego (dep-227323) | MA | 4,0 | 4,0 | 211.281 | 42.408 |
 | Henrique Júnior (dep-227324) | MA | 4,0 | 4,0 | 212.232 | 42.645 |
 | Fábio Henrique (dep-68720) | SE | 3,8 | 3,9 | 210.416 | 43.036 |
@@ -159,7 +159,7 @@ Só quem tem 3 meses ou mais na média da parte. O que olhar está na seção se
 | Marcio Alvino (dep-178983) | SP | 45,0 | 45,0 | 190.677 | 4.237 | 9,6 |
 | João Carlos (dep-235869) | AM | 4,0 | 4,0 | 21.201 | 5.362 | 9,5 |
 | Adriana Ventura (dep-204528) | SP | 45,0 | 45,0 | 300.643 | 6.681 | 15,2 |
-| Renan Ferreirinha (dep-225386) | RJ | 4,8 | 4,8 | 51.060 | 10.544 | 25,4 |
+| Renan Ferreirinha (dep-225386) | RJ | 4,8 | 4,8 | 51.060 | 10.615 | 25,5 |
 | Sandro Alex (dep-160621) | PR | 9,5 | 9,5 | 110.430 | 11.627 | 23,7 |
 | Gilson Marques (dep-204365) | SC | 45,0 | 45,0 | 623.257 | 13.850 | 29,6 |
 | Pastor Sargento Isidório (dep-204553) | BA | 45,0 | 45,0 | 644.968 | 14.333 | 31,2 |
@@ -213,16 +213,16 @@ Só quem tem 3 meses ou mais na média da parte. O que olhar está na seção se
 
 | Pessoa | UF | Meses no cargo | Meses na média | Total (R$) | Média por mês (R$) | % do limite |
 |---|---|---|---|---|---|---|
-| Ulisses Guimarães (dep-223398) | MG | 3,8 | 3,8 | 0 | 0 | 0,0 |
-| Lucyana Genésio (dep-229082) | MA | 3,9 | 3,9 | 0 | 0 | 0,0 |
-| Mariana Carvalho (dep-227275) | MA | 4,0 | 4,0 | 0 | 0 | 0,0 |
-| Newton Bonin (dep-229939) | PR | 4,0 | 3,2 | 0 | 0 | 0,0 |
-| Fábio Henrique (dep-68720) | SE | 3,8 | 3,8 | 0 | 0 | 0,0 |
-| Wolmer Araújo (dep-182146) | MA | 4,1 | 4,1 | 0 | 0 | 0,0 |
-| Pedro Tourinho (dep-229259) | SP | 3,8 | 3,8 | 0 | 0 | 0,0 |
-| Nelinho Freitas (dep-233218) | CE | 3,9 | 3,9 | 0 | 0 | 0,0 |
 | Dra. Mayra Pinheiro (dep-230088) | CE | 4,1 | 3,1 | 0 | 0 | 0,0 |
-| Duarte Gonçalves Jr (dep-227800) | MG | 3,9 | 3,9 | 0 | 0 | 0,0 |
+| Ribeiro Neto (dep-235088) | MA | 4,1 | 4,1 | 0 | 0 | 0,0 |
+| Dr. Remy Soares (dep-228616) | MA | 3,9 | 3,9 | 0 | 0 | 0,0 |
+| Dr. Gonçalo (dep-212625) | MA | 3,9 | 3,9 | 0 | 0 | 0,0 |
+| Loreny (dep-171139) | SP | 3,6 | 3,6 | 0 | 0 | 0,0 |
+| Sérgio Turra (dep-235776) | RS | 4,0 | 3,8 | 0 | 0 | 0,0 |
+| Dr Fabio Rueda (dep-227401) | AC | 4,0 | 4,0 | 0 | 0 | 0,0 |
+| Luciano Galego (dep-227323) | MA | 4,0 | 4,0 | 0 | 0 | 0,0 |
+| Lucyana Genésio (dep-229082) | MA | 3,9 | 3,9 | 0 | 0 | 0,0 |
+| Wolmer Araújo (dep-182146) | MA | 4,1 | 4,1 | 0 | 0 | 0,0 |
 
 **Senado, Recebeu (sem a ajuda de custo): 10 maiores médias por mês**
 
@@ -278,8 +278,8 @@ Só quem tem 3 meses ou mais na média da parte. O que olhar está na seção se
 | Flavio Azevedo (sen-6374) | RN | 3,9 | 3,9 | 25.928 | 6.567 |
 | Oriovisto Guimarães (sen-5924) | PR | 45,0 | 45,0 | 371.601 | 8.258 |
 | Eduardo Girão (sen-5976) | CE | 42,3 | 42,3 | 477.462 | 11.290 |
-| Vanderlan Cardoso (sen-5899) | GO | 41,1 | 42,1 | 536.862 | 12.753 |
 | Flávio Bolsonaro (sen-5894) | RJ | 45,0 | 45,0 | 574.965 | 12.777 |
+| Vanderlan Cardoso (sen-5899) | GO | 41,1 | 41,1 | 536.862 | 13.063 |
 | Camilo Santana (sen-6336) | CE | 7,2 | 7,2 | 99.794 | 13.842 |
 | Leila Barros (sen-5979) | DF | 44,1 | 44,1 | 635.793 | 14.418 |
 | Wilder Morais (sen-5070) | GO | 45,0 | 45,0 | 665.191 | 14.782 |
@@ -304,15 +304,15 @@ Só quem tem 3 meses ou mais na média da parte. O que olhar está na seção se
 | Pessoa | UF | Meses no cargo | Meses na média | Total (R$) | Média por mês (R$) |
 |---|---|---|---|---|---|
 | Jorge Kajuru (sen-5895) | GO | 45,0 | 45,0 | 1.474 | 33 |
-| Wellington Dias (sen-5016) | PI | 0,5 | 9,5 | 678 | 71 |
 | Cleitinho (sen-6337) | MG | 45,0 | 45,0 | 16.201 | 360 |
 | Oriovisto Guimarães (sen-5924) | PR | 45,0 | 45,0 | 17.069 | 379 |
 | Vanderlan Cardoso (sen-5899) | GO | 41,1 | 41,1 | 19.998 | 487 |
 | Pedro Chaves (sen-453) | GO | 3,9 | 3,9 | 2.291 | 582 |
-| Renan Filho (sen-5207) | AL | 7,4 | 19,4 | 15.818 | 817 |
 | Jader Barbalho (sen-35) | PA | 45,0 | 45,0 | 53.046 | 1.179 |
-| Carlos Fávaro (sen-6295) | MT | 8,0 | 39,0 | 54.148 | 1.390 |
 | Mauro Carvalho Junior (sen-6362) | MT | 3,9 | 3,9 | 7.025 | 1.784 |
+| Wilder Morais (sen-5070) | GO | 45,0 | 45,0 | 80.967 | 1.799 |
+| Leila Barros (sen-5979) | DF | 44,1 | 44,1 | 92.788 | 2.104 |
+| Renan Filho (sen-5207) | AL | 7,4 | 7,4 | 15.818 | 2.149 |
 
 **Senado, Equipe do gabinete (estimativa, pelos dias no cargo): 10 maiores médias por mês**
 
@@ -354,7 +354,10 @@ por nós.
    40% do subsídio. Agora sai todo mês sem dia em exercício nem de licença e sem cota nem equipe positiva (um estorno não
    conta: Leônidas Cristino, ago/2024), e o mês seguinte à saída fica (traz os acertos: Silvia Waiãpi, Augusto Puppio e
    Lázaro Botelho, que saíram em 30/7/2025, têm em ago/2025 salário de R$ 4,9 a 5,7 mil e "férias, acertos" de R$ 2,3 a
-   2,6 mil). 11 perfis mudaram desde a versão publicada.
+   2,6 mil). Na terceira revisão: nesse mês, o salário da página sai quando é igual ao de um mês que já sai (é o mesmo
+   pagamento que se repete: Leônidas Cristino mai/2026, R$ 29.144,46; Pauderney Avelino abr/2026 e nov/2024; Missionário
+   José Olimpio nov/2025, R$ 10.597,99); ficam os pagamentos do contracheque detalhado. Ivan Valente mai/2026 (R$ 33.251,18)
+   não é igual a nenhum mês que sai e fica. 11 perfis mudaram desde a versão publicada.
 2. **Outros gastos do mandato do Senado de quem não estava em exercício** (correção de 10/11). `coleta/senado.py` só lia a
    API, que responde 404 para quem não está em exercício; 25 senadores ficavam com zero (Rodrigo Pacheco sem os correios
    de 2024–2025; Lourdinha Pereira sem R$ 18.504 de 2026; Mecias de Jesus, R$ 773.256). Agora vêm da página de
@@ -372,7 +375,7 @@ por nós.
    R$ 243.371 por mês, tem 2,9 meses de equipe). Média com menos de 1 mês no divisor não existe (Jarbas Vasconcelos: 1 dia
    em set/2023, R$ 8.664 de acertos).
 6. **Limite da cota** pelos dias em exercício, com o valor de cada dia (fev/2026 mudou no dia 20: Soldado Noelio, 11 a
-   28/02); nota lançada num mês sem exercício entra no gasto sem criar limite (Gláucia Santiago: 99,0%). 34 deputados
+   28/02); nota lançada num mês sem exercício entra no gasto sem criar limite (Gláucia Santiago: 99,0%). 33 deputados
    com 3 meses ou mais passam de 100% (`meta.acima_100`): as passagens ao estado são pagas além da cota (Ato da Mesa nº
    43/2009, art. 2º, § 3º) e aparecem no total; líderes e presidentes de comissão têm um adicional fora do limite.
 7. **Recebeu**: mês no cargo sem nenhum pagamento na fonte não entra no divisor (`r.sp`, 96 pessoas): o mês da posse de
@@ -391,3 +394,20 @@ por nós.
     de R$ 1 milhão em junho e dezembro.
 12. **Diferenças com as páginas de hoje**: só nos últimos meses (notas que chegaram depois de 04/11), em janeiro de 2023
     (as páginas anuais somam janeiro, da legislatura anterior) e na CEAPS de nov/2025 de Ana Paula Lobato (explicada acima).
+
+### Terceira revisão (10/11/2026)
+
+A revisão refez as 755 pessoas e bateu campo a campo; os problemas eram de regra:
+
+- Média do total em branco no CSV fora das comparações (Itamar Paim, Renzo Braz, Jarbas Vasconcelos) e `t.m`/`t.ms` nulos
+  no JSON quando falta a média de alguma parte (Nivaldo Albuquerque).
+- Verba de gabinete da Câmara: o mês pesa ao menos o gasto ÷ o valor disponível (mês com 1 dia no cargo e o resto de
+  licença: Wilson Santiago jun/2026, R$ 165.580). Nenhum deputado passa de 100% do valor disponível (eram 21). A cota não
+  muda: o limite é proporcional aos dias pela regra da Câmara.
+- Outros gastos do Senado (valor anual repartido): pesam só a fração no cargo (Carlos Fávaro: 7,95 meses na média, eram
+  38,95; Wellington Dias, com 0,5 mês no cargo, fica sem média).
+- Nota da cota num mês sem exercício fica no gasto e não conta no divisor (Gláucia Santiago: R$ 41.488 por mês, eram
+  R$ 33.205); só a licença da Câmara conta o mês.
+- "CONVOCADO" e "SUPLENCIA" sem posse só contam se o intervalo passar de 2 dias ou houver pagamento ou cota (Marcelo Calero,
+  Duarte Gonçalves Jr, de fev a jun/2024, Wolmer Araújo).
+- Deputados acima de 100% do limite da cota pela % arredondada que a página mostra: 33.

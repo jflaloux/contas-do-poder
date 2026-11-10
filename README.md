@@ -472,13 +472,15 @@ O CSV (uma linha por pessoa, CC BY 4.0) traz as mesmas colunas, com avisos e o e
 - **Meses no cargo** pelos dias em exercício: Câmara, o histórico de cada deputado na API de dados abertos
   (`/deputados/{id}/historico`, guardado em `dados/referencia/camara_historico.json`; o robô relê quem falta, quem
   mudou de situação e, até 150 por rodada, quem está no cargo e foi lido há mais de 28 dias). No mesmo dia vale a ordem
-  da API; conta da posse ("Exercício"), e "CONVOCADO" só quando não vem posse depois. Senado: os exercícios de cada senador.
+  da API; conta da posse ("Exercício"), e "CONVOCADO" só quando não vem posse depois (e, sem posse, só se passar de 2 dias
+  ou houver pagamento ou cota no período). Senado: os exercícios de cada senador.
 - **Média por mês**: o total da parte nos meses que a fonte publicou ÷ os meses no cargo nesses meses (`meta.faixas`;
   mês da faixa que ninguém tem fica de fora, `meta.lacunas`: dez/2024 da verba de gabinete da Câmara). Recebeu: mês sem
   nenhum pagamento não entra (`r.sp`); com pagamento, pesa a fração no cargo ou, se maior, o salário ÷ o subsídio
-  (licenciado que ficou com o salário do mandato); a ajuda de custo fica fora da média. Cota, outros e equipe da Câmara: a
-  fração no cargo, ou o mês inteiro num mês sem dia no cargo e com valor positivo. Equipe do Senado: a estimativa de cada
-  mês × a fração no cargo. Com menos de 1 mês no divisor, não há média; nas comparações, só quem tem 3 meses ou mais em
+  (licenciado que ficou com o salário do mandato); a ajuda de custo fica fora da média. Cota: a fração no cargo (num mês
+  sem exercício, a nota fica no gasto e o mês só conta se for de licença na Câmara). Equipe da Câmara: a fração no cargo
+  ou, se maior, o gasto ÷ o valor disponível do mês. Outros gastos: a fração no cargo (na Câmara, o mês inteiro se houver
+  diária sem dia no cargo). Equipe do Senado: a estimativa de cada mês × a fração no cargo. Com menos de 1 mês no divisor, não há média; nas comparações, só quem tem 3 meses ou mais em
   cada parte do total (`t.ok`; Senado: sem a equipe estimada, `t.ts`/`t.ms`).
 - **Limite da cota da Câmara**: `dados/referencia/limites_cota_camara_historico.csv` (Ato da Mesa nº 270/2023 até
   19/2/2026; Ato da Mesa nº 244/2026 depois), dia a dia nos dias em exercício (Ato da Mesa nº 43/2009, art. 11); nota de
@@ -492,8 +494,9 @@ O CSV (uma linha por pessoa, CC BY 4.0) traz as mesmas colunas, com avisos e o e
   `dados/processados/balanco-conferencia.md`.
 - Pagamentos da Câmara a suplentes fora do mandato (a página de remuneração mostra como salário o que é pago nesses
   meses, sem dizer a que se refere): `site._sem_pagamento_fora_do_mandato` tira os meses sem dia em exercício nem de
-  licença e sem cota nem equipe positiva (estorno não conta); o mês seguinte à saída fica (acertos). Até 09/11/2026 só
-  saía o menor que 40% do subsídio (correção registrada).
+  licença e sem cota nem equipe positiva (estorno não conta); no mês seguinte à saída ficam os pagamentos do contracheque
+  detalhado, e o salário sai quando é igual (±R$ 1) ao de um mês que já sai. Até 09/11/2026 só saía o menor que 40% do
+  subsídio (correção registrada).
 
 ## Bens declarados na candidatura (TSE)
 

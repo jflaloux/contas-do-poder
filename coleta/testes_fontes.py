@@ -177,6 +177,38 @@ def executar():
     esperado = (100 * 9 + 128 * 9) / 28  # 11 a 19/02 no valor antigo, 20 a 28/02 no novo
     caso("Balanço: limite da cota pelos dias em exercício, com a mudança no meio do mês",
          abs(balanco.limite_dos_dias(vig, dias) - esperado) < 1e-9)
+    # terceira revisão (10/11/2026): pesos da equipe, da cota e dos outros gastos do Senado; convocação de um dia
+    def lin(pid, am, grupo, cat, v, rat=False):
+        return {"id_politico": pid, "ano": am // 100, "mes": am % 100, "grupo": grupo, "categoria": cat, "descricao": "x",
+                "valor": v, "fonte": "f", "rateado": rat}
+    L = []
+    for pid in ("dep-1", "dep-2"):
+        L += [lin(pid, 202500 + m, "ganha", "salario", 46366.19) for m in range(1, 6)]
+        L += [lin(pid, 202500 + m, "custa", "cota_parlamentar", 40000) for m in range(1, 6)]
+        L += [lin(pid, 202500 + m, "equipe", "assessores_gabinete", 130000) for m in range(1, 6)]
+    L.append(lin("dep-1", 202506, "equipe", "assessores_gabinete", 130000))  # 1 dia no cargo, o resto de licença
+    L.append(lin("dep-2", 202506, "custa", "cota_parlamentar", 3000))  # nota depois da saída, sem licença
+    L += [lin("sen-9", 202500 + m, "ganha", "salario", 46366.19) for m in range(1, 4)]
+    L += [lin("sen-9", 202500 + m, "custa", "outros_gastos_mandato", 1000, True) for m in range(1, 7)]
+    pol = [{"id": "dep-1", "casa": "camara", "nome": "A", "uf": "SP"}, {"id": "dep-2", "casa": "camara", "nome": "B", "uf": "SP"},
+           {"id": "dep-3", "casa": "camara", "nome": "C", "uf": "SP"},
+           {"id": "sen-9", "casa": "senado", "nome": "D", "uf": "SP", "exercicios": [{"inicio": "2025-01-01", "fim": "2025-03-31"}]}]
+    hist = {"1": [["2025-01-01", 57, "Exercício"], ["2025-06-01", 57, "Licença"]],
+            "2": [["2025-01-01", 57, "Exercício"], ["2025-05-31", 57, "SUPLENCIA"]],
+            "3": [["2025-03-10", 57, "CONVOCADO"], ["2025-03-10", 57, "SUPLENCIA"]]}
+    df = balanco.calcular(pd.DataFrame(L), pol, hist, hoje=date(2025, 6, 30))[0].set_index("id")
+    caso("Balanço: verba de gabinete do mês com 1 dia no cargo pesa o gasto ÷ o disponível (não passa de 100%)",
+         df.loc["dep-1", "e_n"] > 5.9 and df.loc["dep-1", "e_pct"] <= 100)
+    caso("Balanço: nota da cota num mês sem exercício nem licença fica no gasto, sem contar o mês",
+         abs(df.loc["dep-2", "c_n"] - 5) < 0.01 and df.loc["dep-2", "c"] == 203000)
+    caso("Balanço: outros gastos do Senado (valor anual repartido) contam só os meses no cargo", abs(df.loc["sen-9", "o_n"] - 3) < 0.01)
+    caso("Balanço: convocação e suplência no mesmo dia, sem pagamento, não contam como mês no cargo", "dep-3" not in df.index)
+    from .site import _salario_repetido
+    caso("Site: no mês seguinte à saída, sai o salário igual (±R$ 1) ao de um mês que já sai",
+         _salario_repetido({202605: 29144.46, 202608: 5000.0}, [29144.46, 29144.0]) == {202605})
+    seg = pd.DataFrame([{"aaaamm": 202611, "tp": "se"} for _ in range(10)])
+    caso("Salvador: mês menor confirmado pelo mês seguinte é aceito",
+         salvador.confirmado([{"tp": "pr"}] + [{"tp": "se"}] * 9, seg, 202610) and not salvador.confirmado([{"tp": "se"}], seg, 202610))
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
