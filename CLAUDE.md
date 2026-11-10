@@ -92,12 +92,17 @@ armadilhas que não estão escritas em outro lugar.
   (homônimos ficam sem foto). O conjunto de dados do TSE é Creative Commons Atribuição: sempre com o crédito.
 - Regenerar `camaras.json` ou `governadores.json` fora da rodada semanal muda mais do que se quer (o último mês
   fechado avança, a nota do Paraná sobre o robots.txt some). Para mudar só as fotos, trocar só `f`/`fc` no arquivo.
-- Câmara: a página de remuneração de cada deputado lista pagamentos de meses fora do mandato (aposentadoria de
-  ex-deputado, antes da posse de suplentes). `coleta/site.py` (`_sem_pagamento_fora_do_mandato`) tira esses meses
-  pelo histórico oficial: sai todo mês sem dia em exercício nem de licença e sem cota nem equipe, qualquer que seja o
-  valor (até 09/11/2026 só saía abaixo de 40% do subsídio; ver /correcoes). Histórico da Câmara
-  (`/deputados/{id}/historico`): ordenar os eventos só pela data, porque no mesmo dia vale a ordem da API; "CONVOCADO"
-  sem "Exercício" depois também é exercício; ministros aparecem como "Licença".
+- Câmara: a página de remuneração de cada deputado lista pagamentos de meses fora do mandato (a página não diz a que
+  se referem; antes da posse de suplentes ou depois da saída). `coleta/site.py` (`_sem_pagamento_fora_do_mandato`) tira
+  esses meses pelo histórico oficial: sai todo mês sem dia em exercício nem de licença e sem cota nem equipe, qualquer
+  que seja o valor (até 09/11/2026 só saía abaixo de 40% do subsídio; ver /correcoes); estorno (valor negativo) não é
+  sinal de gabinete ativo; o mês seguinte à saída fica inteiro (traz os acertos). Histórico da Câmara
+  (`/deputados/{id}/historico`): ordenar os eventos só pela data (no mesmo dia vale a ordem da API); o exercício começa
+  na posse ("Exercício"); "CONVOCADO" só conta quando não vem posse depois; ministros aparecem como "Licença".
+- Senado: a API de outros gastos dá 404 para quem não está em exercício; a página de transparência do senador tem o
+  mesmo quadro (`dados/senado/outros_gastos.csv` guarda o que foi lido). Ausência de dado não é zero: marcar incompleto.
+- Câmara: a verba de gabinete de dez/2024 não existe na fonte (a página de 2024 vai de jan a nov): fica fora das médias
+  (`meta.lacunas` do balanço).
 - Governadores: o 13º adiantado vem marcado e fica fora da média (`_serie` em `coleta/governadores.py`).
 - Rio Grande do Norte limita as consultas (erro 429): pausa de 10 s. A exportação em CSV por órgão passou a dar 429
   sempre; o robô usa a busca pelo nome (JSON), que sai antes da lista por órgão. Cada mês leva ~1 min.
