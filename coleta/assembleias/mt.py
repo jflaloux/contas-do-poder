@@ -39,6 +39,7 @@ PORTAL = "https://almt.eloweb.net/portaltransparencia/1/servidores"
 PASTA = DADOS / "assembleias" / "mt"
 C = CACHE / "assembleias" / "mt"
 SIMULTANEOS = 3
+MAX_EQUIPE, LOTES_EQUIPE, PAUSA_LOTES = 250, 6, 90  # o servidor corta depois de ~330 pedidos seguidos
 CFG = {
     "cod": COD, "n": "Mato Grosso", "uf": UF, "casa": "Assembleia Legislativa de Mato Grosso", "vagas": 24, "inicio": INICIO,
     "id_prefixo": "est", "k": "e", "cargo": ("Deputada estadual", "Deputado estadual"),
@@ -209,16 +210,28 @@ def _coletar_equipe(hoje, recente):
             return False  # saiu há mais de 3 meses: não muda mais
         return time.time() - arq.stat().st_mtime > 20 * 86400
 
-    fila = [x for x in lotados if precisa(x)]
+    # o servidor da ALMT para de aceitar conexões depois de ~330 pedidos seguidos (outubro/2026, do GitHub e do Mac); em
+    # 10/11/2026, lotes de 250 com 90 s de pausa entre eles passaram. Primeiro quem ainda não foi lido, depois os lidos há
+    # mais tempo; no máximo LOTES_EQUIPE lotes por rodada (o resto fica para a próxima)
+    def idade(x):
+        arq = C / "equipe" / f"{x['ano']}_{x['matricula']}.json"
+        return arq.stat().st_mtime if arq.exists() else 0
+    fila = sorted((x for x in lotados if precisa(x)), key=idade)
+    if len(fila) > MAX_EQUIPE * LOTES_EQUIPE:
+        log(f"  ALMT: equipe, {len(fila)} servidores a ler; {MAX_EQUIPE * LOTES_EQUIPE} nesta rodada, o resto nas próximas")
+        fila = fila[:MAX_EQUIPE * LOTES_EQUIPE]
 
     def um(x):
         fin = _financeiro(x["matricula"], x["ano"])
         (C / "equipe" / f"{x['ano']}_{x['matricula']}.json").write_text(json.dumps(fin), encoding="utf-8")
     feitos = 0
     try:
-        with ThreadPoolExecutor(SIMULTANEOS) as ex:
-            for _ in ex.map(um, fila):
-                feitos += 1
+        for i in range(0, len(fila), MAX_EQUIPE):
+            if i:
+                dormir(PAUSA_LOTES)
+            with ThreadPoolExecutor(SIMULTANEOS) as ex:
+                for _ in ex.map(um, fila[i:i + MAX_EQUIPE]):
+                    feitos += 1
     finally:
         log(f"  ALMT: equipe, {feitos} de {len(fila)} servidores de gabinete lidos agora ({len(lotados)} no total)")
         linhas = {}
