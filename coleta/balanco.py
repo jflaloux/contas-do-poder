@@ -661,7 +661,8 @@ def executar(lanc, politicos, meta):
             "periodo": [202302, _ultimo(faixas)], "faixas": faixas, "lacunas": lacunas, "componentes": COMPONENTES,
             "partes_do_total": {k: list(v) for k, v in PARTES_DO_TOTAL.items()},
             "meses_minimos_mediana": MESES_MINIMOS,
-            "acima_100": int(((dep.c_n >= MESES_MINIMOS) & (dep.c_pct > 100)).sum()),
+            # pela % arredondada que a página mostra (com a conta exata, 100,0% mostrado contava como acima)
+            "acima_100": int(((dep.c_n >= MESES_MINIMOS) & (dep.c_pct.round(1) > 100)).sum()),
             "limites_cota_camara": [{"desde": n["desde"], "norma": n["norma"], "url": n["url_norma"], "valores": n["url_valores"]} for n in normas],
             "teto_verba_gabinete": [{"desde": a, "valor": v} for a, v in teto], "teto_verba_gabinete_fonte": TETO_FONTE,
             "fontes": FONTES, "ressalvas": [x for x in _ressalvas(faixas, lacunas, teto) if x],
