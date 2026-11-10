@@ -168,6 +168,15 @@ def executar():
                       + [{"ano": 2026, "mes": 8, "parlamentar": f"D{i}"} for i in range(2)]
                       + [{"ano": 2026, "mes": 9, "parlamentar": f"D{i}"} for i in range(20)])
     caso("Alepi: meses com a verba pela metade são relidos", pi.incompletos(vb, [202600 + m for m in range(1, 11)]) == [202608, 202609, 202610])
+    # revisão de 10/11/2026: convocação com posse depois (Priscila Costa: convocada 9/7/2026, posse 6/8/2026); limite da
+    # cota em fev/2026 (mudou no dia 20) para quem esteve no cargo só parte do mês (Soldado Noelio, 11 a 28/02)
+    ev = [["2026-07-09", 57, "CONVOCADO"], ["2026-07-09", 57, "CONVOCADO"], ["2026-08-06", 57, "Exercício"]]
+    caso("Balanço: com posse depois da convocação, vale a posse", balanco._intervalos_camara(ev, date(2026, 10, 31))
+         == [(date(2026, 8, 6), date(2026, 10, 31))])
+    dias = [date(2026, 2, d) for d in range(11, 29)]
+    esperado = (100 * 9 + 128 * 9) / 28  # 11 a 19/02 no valor antigo, 20 a 28/02 no novo
+    caso("Balanço: limite da cota pelos dias em exercício, com a mudança no meio do mês",
+         abs(balanco.limite_dos_dias(vig, dias) - esperado) < 1e-9)
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 

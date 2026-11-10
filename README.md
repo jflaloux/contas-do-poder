@@ -459,30 +459,41 @@ ministro fica só na página de ministro (sai da página de deputado/senador, em
 ministro + parlamentar = tudo junto. Cada opção mostra o custo dele por mês, e o quadro "Como a conta fecha" põe
 as três visões lado a lado em totais do período, com os meses de cada cargo.
 
-## Balanço do mandato 2023–2027 (`site/dados/balanco.json` e `balanco.csv`)
+## Balanço do mandato 2023–2026 (`site/dados/balanco.json` e `balanco.csv`)
 
 `coleta/balanco.py`, no fim da etapa `site` (refeito em toda rodada): para cada deputado federal e senador que exerceu
-mandato desde 1º/2/2023, quanto **recebeu** (grupo "ganha"), a **cota** parlamentar (com a % do limite na Câmara), os
-**outros gastos do mandato** (diárias; no Senado, passagens fora da CEAPS, correios e impulsionamento), a **equipe** e o
-total, cada um com a média por mês; e a soma e a mediana por estado e por casa (sem nada por partido). Os lançamentos são
-os mesmos dos perfis, depois dos ajustes de `coleta/site.py`: o total de cada pessoa é o do perfil em "Mandato todo".
-O CSV (uma linha por pessoa, CC BY 4.0) traz as mesmas colunas, com o endereço da página.
+mandato desde 1º/2/2023, até o último mês com dado, quanto **recebeu** (grupo "ganha"), a **cota** parlamentar (com a %
+do limite na Câmara), os **outros gastos do mandato** (diárias; no Senado, passagens fora da CEAPS, correios e
+impulsionamento), a **equipe** e o total, cada um com a média por mês; e a soma e a mediana por estado e por casa (sem nada
+por partido). Os lançamentos são os mesmos dos perfis, depois dos ajustes de `coleta/site.py`: o total de cada pessoa é o
+do perfil em "Mandato todo", menos a equipe estimada do Senado, que conta pelos dias no cargo (o perfil fica em `e.eb`).
+O CSV (uma linha por pessoa, CC BY 4.0) traz as mesmas colunas, com avisos e o endereço da página.
 
 - **Meses no cargo** pelos dias em exercício: Câmara, o histórico de cada deputado na API de dados abertos
   (`/deputados/{id}/historico`, guardado em `dados/referencia/camara_historico.json`; o robô relê quem falta, quem
-  mudou de situação e, até 150 por rodada, quem está no cargo e foi lido há mais de 28 dias). "Exercício" e
-  "CONVOCADO" contam como exercício, e no mesmo dia vale a ordem da API. Senado: os exercícios de cada senador.
-- **Média por mês**: o total da parte nos meses que a fonte já publicou ÷ os meses no cargo dentro dessa faixa
-  (`meta.faixas`). Recebeu: o mês pesa a fração no cargo ou, se maior, o salário ÷ o subsídio (licenciado que ficou com o
-  salário do mandato); a ajuda de custo fica fora da média. Cota, outros e equipe: a fração no cargo (a cota da Câmara é
-  proporcional aos dias, Ato da Mesa nº 43/2009, art. 11), ou o mês inteiro num mês sem dia no cargo e com valor.
-- **Limite da cota da Câmara** de cada mês: `dados/referencia/limites_cota_camara_historico.csv` (Ato da Mesa nº 270/2023
-  até 19/2/2026; Ato da Mesa nº 244/2026 depois; fev/2026 pelos dias). Do Senado não há tabela aberta por estado: sem %.
-- Conferência de 09/11/2026 (somas, cinco pessoas à mão, maiores e menores): `dados/processados/balanco-conferencia.md`.
+  mudou de situação e, até 150 por rodada, quem está no cargo e foi lido há mais de 28 dias). No mesmo dia vale a ordem
+  da API; conta da posse ("Exercício"), e "CONVOCADO" só quando não vem posse depois. Senado: os exercícios de cada senador.
+- **Média por mês**: o total da parte nos meses que a fonte publicou ÷ os meses no cargo nesses meses (`meta.faixas`;
+  mês da faixa que ninguém tem fica de fora, `meta.lacunas`: dez/2024 da verba de gabinete da Câmara). Recebeu: mês sem
+  nenhum pagamento não entra (`r.sp`); com pagamento, pesa a fração no cargo ou, se maior, o salário ÷ o subsídio
+  (licenciado que ficou com o salário do mandato); a ajuda de custo fica fora da média. Cota, outros e equipe da Câmara: a
+  fração no cargo, ou o mês inteiro num mês sem dia no cargo e com valor positivo. Equipe do Senado: a estimativa de cada
+  mês × a fração no cargo. Com menos de 1 mês no divisor, não há média; nas comparações, só quem tem 3 meses ou mais em
+  cada parte do total (`t.ok`; Senado: sem a equipe estimada, `t.ts`/`t.ms`).
+- **Limite da cota da Câmara**: `dados/referencia/limites_cota_camara_historico.csv` (Ato da Mesa nº 270/2023 até
+  19/2/2026; Ato da Mesa nº 244/2026 depois), dia a dia nos dias em exercício (Ato da Mesa nº 43/2009, art. 11); nota de
+  um mês sem exercício entra no gasto sem criar limite. Do Senado não há tabela aberta por estado: sem %. **Valor da
+  verba de gabinete da Câmara** (`e.p`): `dados/referencia/teto_verba_gabinete_camara.csv`, estimado pela página de
+  cada deputado.
+- **Outros gastos do Senado** de quem não está em exercício: a API responde 404; `coleta/senado.py` lê o mesmo quadro da
+  página de transparência do senador e guarda tudo em `dados/senado/outros_gastos.csv` (desde 10/11/2026; antes, quem
+  não estava em exercício no dia da coleta ficava sem esses gastos, correção registrada).
+- Conferência de 09 e 10/11/2026 (somas, cinco pessoas à mão, maiores e menores, revisões):
+  `dados/processados/balanco-conferencia.md`.
 - Pagamentos da Câmara a suplentes fora do mandato (a página de remuneração mostra como salário o que é pago nesses
-  meses, sem dizer a que se refere): `site._sem_pagamento_fora_do_mandato` tira os meses sem dia em exercício
-  nem de licença e sem cota nem equipe; no mês seguinte à saída (acertos), só o pagamento menor que 40% do subsídio. Até
-  09/11/2026 só saía o menor que 40% em todo mês (correção registrada).
+  meses, sem dizer a que se refere): `site._sem_pagamento_fora_do_mandato` tira os meses sem dia em exercício nem de
+  licença e sem cota nem equipe positiva (estorno não conta); o mês seguinte à saída fica (acertos). Até 09/11/2026 só
+  saía o menor que 40% do subsídio (correção registrada).
 
 ## Bens declarados na candidatura (TSE)
 

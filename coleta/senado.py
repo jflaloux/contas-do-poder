@@ -15,8 +15,10 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import pandas as pd
 import requests
 
-from .config import ANOS, BRUTOS, CACHE, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, meses_da_legislatura
-from .util import (TempoEsgotado, baixar, cache_valido, ler_json, log, normalizar_nome,
+import html as H
+
+from .config import ANOS, BRUTOS, CACHE, DADOS, HOJE, INICIO_LEGISLATURA, LEGISLATURA, PARALELO, meses_da_legislatura
+from .util import (TempoEsgotado, baixar, cache_valido, dormir, gravar_csv, ler_json, log, normalizar_nome,
                    numero_br, salvar_json)
 
 LEGIS = "https://legis.senado.leg.br/dadosabertos"
@@ -294,7 +296,8 @@ def ceaps():
     partes = []
     for ano in ANOS:
         arq = C / "ceaps" / f"{ano}.json"
-        if not cache_valido(arq, 1 if ano == HOJE.year else 30):
+        # o ano passado ainda muda (créditos e estornos de passagens: nov/2025 de Ana Paula Lobato mudou depois da cópia)
+        if not cache_valido(arq, 1 if ano == HOJE.year else 7 if ano == HOJE.year - 1 else 30):
             log(f"Senado: baixando cota parlamentar (CEAPS) {ano}")
             salvar_json(arq, baixar(f"{ADM}/senadores/despesas_ceaps/{ano}", timeout=300).json())
         df = pd.DataFrame(ler_json(arq))
@@ -326,8 +329,55 @@ def _recursos(tarefa):
     salvar_json(arq, d.get("data") or [])
 
 
+# Outros gastos do mandato de quem não está em exercício: a API de recursos responde 404, mas a página de transparência do
+# senador (o mesmo quadro "Gastos não inclusos nas Cotas") continua no ar. Até 10/11/2026 só entravam os senadores em
+# exercício no dia da coleta, e quem tinha saído (ou estava de licença) ficava sem os outros gastos do mandato todo.
+# O que já foi lido fica em dados/senado/outros_gastos.csv (no Git): a API para de responder quando o senador sai.
+PAGINA_SEN = "https://www6g.senado.leg.br/transparencia/sen/{cod}/"
+OUTROS_GUARDADOS = DADOS / "senado" / "outros_gastos.csv"
+
+
+def outros_da_pagina(html):
+    """[(recurso, valor)] do quadro "Gastos não inclusos nas Cotas" da página do senador, com os nomes da API
+    ("Viagens Oficiais - Diárias", "Consumo de Material - Outros materiais", "Correios"...). Grupo com itens embaixo vale
+    pelos itens; "consulte" (combustíveis, passagens emitidas) não tem valor."""
+    i = html.find("Gastos não inclusos nas Cotas")
+    if i < 0:
+        return None
+    corpo = html[i:]
+    corpo = corpo[corpo.find("<tbody>"):corpo.find("</tbody>")]
+    linhas = []
+    for tr in re.findall(r"<tr([^>]*)>(.*?)</tr>", corpo, flags=re.S):
+        grupo = "sen_tabela_linha_grupo" in tr[0]
+        tds = re.findall(r"<td[^>]*>(.*?)</td>", tr[1], flags=re.S)
+        if len(tds) < 2:
+            continue
+        nome = " ".join(H.unescape(re.sub(r"<div.*?</div>|<[^>]+>", " ", tds[0], flags=re.S)).split())
+        valor = " ".join(H.unescape(re.sub(r"<[^>]+>", " ", tds[1])).split())
+        linhas.append((grupo, nome, numero_br(valor) if re.fullmatch(r"-?[\d.]+,\d{2}", valor) else None))
+    saida = []
+    for k, (grupo, nome, valor) in enumerate(linhas):
+        filhos = grupo and k + 1 < len(linhas) and not linhas[k + 1][0]
+        if grupo and not filhos and valor is not None:
+            saida.append((nome, valor))
+        elif not grupo and valor is not None:
+            pai = next((n for g, n, _ in reversed(linhas[:k]) if g), "")
+            saida.append((f"{pai} - {nome}" if pai else nome, valor))
+    return saida
+
+
+def _anos_no_cargo(s):
+    anos = set()
+    for e in s.get("exercicios") or []:
+        ini = int((e.get("inicio") or "0000")[:4])
+        fim = int((e.get("fim") or str(HOJE.year))[:4])
+        anos |= set(range(ini, fim + 1))
+    return sorted(a for a in anos if a in ANOS)
+
+
 def recursos(lista):
-    """Outros gastos do mandato, benefícios e pessoal. A API só responde para quem está em exercício."""
+    """Outros gastos do mandato, benefícios e pessoal. A API só responde para quem está em exercício; de quem não está, os
+    outros gastos vêm da página de transparência (uma vez por senador e ano, guardados em dados/senado/)."""
     atuais = [s["id"] for s in lista if s["em_exercicio"]]
     tarefas = [(cod, ano) for cod in atuais for ano in ANOS]
     log(f"Senado: recursos utilizados ({len(tarefas)} consultas)")
@@ -343,15 +393,54 @@ def recursos(lista):
     for cod, ano in tarefas:
         for d in ler_json(C / "recursos" / f"{cod}_{ano}.json"):
             for x in (d.get("gastosNaoInclusos") or {}).get("despesas", []):
-                outros.append({"id_senador": cod, "ano": ano, "tipo": x["recurso"], "valor": x["valor"] or 0.0})
+                outros.append({"id_senador": cod, "ano": ano, "tipo": x["recurso"], "valor": x["valor"] or 0.0, "origem": "api"})
             for x in d.get("beneficios") or []:
                 beneficios.append({"id_senador": cod, "ano": ano, "beneficio": x["beneficio"], "utilizacao": x["utilizacao"]})
             for x in d.get("pessoal") or []:
                 pessoal.append({"id_senador": cod, "ano": ano, "local": x["local"], "quantidade": x["quantidade"]})
+    outros = _outros_de_quem_saiu(lista, set(atuais), outros)
     pd.DataFrame(outros).to_csv(BRUTOS / "senado_outros_gastos.csv", index=False)
     pd.DataFrame(beneficios).to_csv(BRUTOS / "senado_beneficios.csv", index=False)
     pd.DataFrame(pessoal).to_csv(BRUTOS / "senado_pessoal.csv", index=False)
     log(f"Senado: recursos ok ({len(outros)} linhas de outros gastos)")
+
+
+def _outros_de_quem_saiu(lista, atuais, outros):
+    """Junta os outros gastos lidos agora (API) com os guardados e, de quem não está em exercício, lê a página de
+    transparência dos anos que ainda não foram lidos. Grava dados/senado/outros_gastos.csv e devolve as linhas."""
+    cols = ["id_senador", "ano", "tipo", "valor", "origem"]
+    guardado = pd.read_csv(OUTROS_GUARDADOS) if OUTROS_GUARDADOS.exists() else pd.DataFrame(columns=cols)
+    novos = pd.DataFrame(outros, columns=cols)
+    # da API, o ano corrente de quem está em exercício (e o que veio agora); o resto, o guardado
+    lidos = set(zip(novos.id_senador.astype(int), novos.ano.astype(int)))
+    if len(guardado):
+        guardado = guardado.loc[[(int(c), int(a)) not in lidos for c, a in zip(guardado.id_senador, guardado.ano)]]
+    tem = lidos | set(zip(guardado.id_senador.astype(int), guardado.ano.astype(int)))
+    # anos sem nada guardado, de quem não está em exercício hoje (lidos uma vez: a página não muda depois da saída)
+    pedir = [(s["id"], a) for s in lista if s["id"] not in atuais for a in _anos_no_cargo(s)
+             if (s["id"], a) not in tem]
+    paginas = []
+    for cod, ano in pedir:
+        try:
+            linhas = outros_da_pagina(baixar(PAGINA_SEN.format(cod=cod), params={"ano": ano}).text)
+        except (TempoEsgotado, KeyboardInterrupt):
+            raise
+        except Exception as e:  # noqa: BLE001 — fica para a próxima rodada
+            log(f"Senado: página de transparência de {cod} ({ano}) não abriu ({type(e).__name__})")
+            continue
+        if linhas is None:
+            log(f"Senado: página de transparência de {cod} ({ano}) sem o quadro de outros gastos")
+            continue
+        paginas += [{"id_senador": cod, "ano": ano, "tipo": t, "valor": v, "origem": "pagina"} for t, v in linhas]
+        paginas.append({"id_senador": cod, "ano": ano, "tipo": "(lido)", "valor": 0.0, "origem": "pagina"})  # ano lido, mesmo sem gasto
+        dormir(1)
+    if pedir:
+        log(f"Senado: outros gastos de quem não está em exercício, {len(pedir)} páginas de transparência")
+    tudo = pd.concat([guardado, novos, pd.DataFrame(paginas, columns=cols)], ignore_index=True)
+    tudo = tudo.sort_values(["id_senador", "ano", "tipo"])
+    OUTROS_GUARDADOS.parent.mkdir(parents=True, exist_ok=True)
+    gravar_csv(tudo, OUTROS_GUARDADOS)
+    return tudo[tudo.tipo != "(lido)"].to_dict("records")
 
 
 def coletar():

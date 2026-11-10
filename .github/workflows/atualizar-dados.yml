@@ -240,7 +240,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # tudo o que a rodada grava em dados/ e site/ (dados/referencia inteira: em 27/10/2026, o histórico dos deputados da Câmara,
           # dados/referencia/camara_historico.json, mudou e ficou de fora da lista; o pull --rebase recusou "unstaged changes")
-          git add dados/processados dados/portal_transparencia dados/municipios dados/municipios_tce dados/judiciario dados/governadores dados/camara dados/atividade dados/bens dados/assembleias dados/referencia dados/indice site/dados site/fotos
+          git add dados/processados dados/portal_transparencia dados/municipios dados/municipios_tce dados/judiciario dados/governadores dados/camara dados/senado dados/atividade dados/bens dados/assembleias dados/referencia dados/indice site/dados site/fotos
           if git diff --cached --quiet; then
             echo "Nada mudou desde a última atualização."
             touch "$RUNNER_TEMP/salvo"

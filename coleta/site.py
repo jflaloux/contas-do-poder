@@ -174,24 +174,19 @@ def _sem_pagamento_fora_do_mandato(lanc):
     o pagamento: de 1/7 do subsídio (Marcelo Nilo, R$ 6.623,74 por mês até tomar posse como
     suplente, em abril de 2026) ao subsídio inteiro (Ivan Valente, depois de deixar a suplência em abril de 2026). Pelo
     histórico oficial da Câmara, tiramos o salário (e o resto do contracheque) dos meses sem nenhum dia em exercício nem
-    de licença e sem cota nem equipe: o licenciado continua no mandato e pode ficar com o salário dele (secretário de
-    Estado, ministro); no mês seguinte à saída, que pode trazer os acertos dela, só sai o pagamento menor que 40% do
-    subsídio. Até 09/11/2026 só se olhava pagamento menor que 40% do subsídio, e cinco casos passavam (ver
-    site/dados/correcoes.json)."""
+    de licença e sem cota nem equipe (um estorno não conta como gasto do mês): o licenciado continua no mandato e pode
+    ficar com o salário dele (secretário de Estado, ministro), e o mês seguinte à saída fica, porque traz os acertos
+    dela (os dias do mês anterior, férias e 13º proporcionais). Até 09/11/2026 só saía o pagamento menor que 40% do
+    subsídio, em qualquer mês fora do exercício (ver site/dados/correcoes.json)."""
     dep = lanc[lanc.id_politico.str.startswith("dep-")]
     sal = dep[dep.categoria == "salario"].groupby(["id_politico", "ano", "mes"]).valor.sum()
     gabinete = dep[dep.grupo != "ganha"].groupby(["id_politico", "ano", "mes"]).valor.sum()  # cota, diárias, equipe
-    suspeitos = sorted({i for (i, a, m), v in sal.items() if v > 0 and not gabinete.get((i, a, m), 0)})
-    from .camara import subsidio
+    suspeitos = sorted({i for (i, a, m), v in sal.items() if v > 0 and not gabinete.get((i, a, m), 0) > 0})
     historicos = ler_json(HISTORICO) if HISTORICO.exists() else {}
     tirar = pd.Series(False, index=lanc.index)
     am = lanc.ano * 100 + lanc.mes.fillna(0).astype(int)
-    com_gabinete = {(i, int(a) * 100 + int(m)) for (i, a, m), v in gabinete.items() if v}
+    com_gabinete = {(i, int(a) * 100 + int(m)) for (i, a, m), v in gabinete.items() if v > 0}  # estorno não é sinal de exercício
     sem_gabinete = pd.Series([(i, x) not in com_gabinete for i, x in zip(lanc.id_politico, am)], index=lanc.index) & lanc.mes.notna()
-    # salário do mês abaixo de 40% do subsídio (a regra do mês seguinte à saída)
-    sal_mes = {(i, int(a) * 100 + int(m)): v for (i, a, m), v in sal.items()}
-    pequeno = pd.Series([sal_mes.get((i, x), 0) < 0.4 * subsidio(x) if x % 100 else True for i, x in zip(lanc.id_politico, am)],
-                        index=lanc.index)
     extra = []
     for pid in suspeitos:
         meses = _em_exercicio(pid.split("-")[1], None)
@@ -201,12 +196,11 @@ def _sem_pagamento_fora_do_mandato(lanc):
         # mandato (um secretário de Estado, por exemplo) continua na conta
         ev = historicos.get(pid.split("-")[1], [])
         licenca = balanco.meses_em_licenca(ev)
-        # o mês seguinte à saída pode trazer os acertos dela: ali só sai o pagamento pequeno (menos de 40% do
-        # subsídio), como antes de 09/11/2026
+        # o mês seguinte à saída traz os acertos dela (os dias do mês anterior, férias e 13º proporcionais): fica
         depois = balanco.meses_depois_da_saida(ev)
         # o salário e o resto do contracheque da Câmara (13º, acertos) daquele mês
         fora = ((lanc.id_politico == pid) & (lanc.categoria == "salario") | (lanc.id_politico == pid) & (lanc.fonte == "camara_detalhe")
-                & (lanc.grupo == "ganha")) & ~am.isin(meses) & ~am.isin(licenca) & sem_gabinete & (~am.isin(depois) | pequeno)
+                & (lanc.grupo == "ganha")) & ~am.isin(meses) & ~am.isin(licenca) & ~am.isin(depois) & sem_gabinete
         if fora.any():
             log(f"Site: {pid}: {int(fora.sum())} meses de pagamento fora do exercício do mandato saem da conta "
                 f"(R$ {lanc[fora].valor.sum():,.2f})")

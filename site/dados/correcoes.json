@@ -2,13 +2,22 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-11-10",
+      "titulo": "Senadores: outros gastos do mandato de quem não estava em exercício",
+      "texto": [
+        "Os outros gastos do mandato dos senadores (passagens fora da cota, correios, impulsionamento em redes sociais e material) vêm, por ano, da API de dados abertos do Senado, que só responde para quem está em exercício. Até 10 de novembro de 2026, quem não estava em exercício no dia da coleta (porque saiu, era suplente que já tinha deixado o cargo ou estava de licença) ficava com esses gastos em zero no período todo, em 25 páginas. Os maiores valores que faltavam: Mecias de Jesus (R$ 773.256), Rodrigo Cunha (R$ 454.401), Augusta Brito (R$ 402.195), Margareth Buzetti (R$ 314.026) e Eduardo Girão (R$ 216.543). O erro foi nosso.",
+        "Agora, de quem não está em exercício, esses valores vêm da página de transparência de cada senador no site do Senado, que continua no ar, e ficam guardados. O que cada um recebeu, a cota (CEAPS) e a equipe não mudaram."
+      ],
+      "paginas": ["jun-3035730", "jun-593253", "sen-453", "sen-4605", "sen-4979", "sen-5016", "sen-5732", "sen-5905", "sen-5976", "sen-5979", "sen-5991", "sen-6011", "sen-6015", "sen-6021", "sen-6027", "sen-6304", "sen-6305", "sen-6345", "sen-6350", "sen-6351", "sen-6359", "sen-6362", "sen-6363", "sen-6366", "sen-6372", "sen-6374", "sen-6381"]
+    },
+    {
       "data": "2026-11-09",
       "titulo": "Deputados federais: pagamentos a suplentes nos meses fora do mandato",
       "texto": [
-        "A página de remuneração de cada deputado no site da Câmara mostra como salário também o que é pago a suplentes nos meses em que não estavam no mandato (antes de assumir ou depois de sair); a página não diz a que se refere o pagamento. Desde o lançamento, tirávamos esses meses da conta só quando o pagamento era menor que 40% do subsídio. Por isso, até 9 de novembro de 2026, pagamentos maiores fora do mandato apareciam como salário em cinco páginas: Pauderney Avelino (R$ 399.362 a mais no período todo), Ivan Valente (R$ 258.657), Leônidas Cristino (R$ 251.342), Luiz Carlos Hauly (R$ 134.598) e Josias Gomes (R$ 128.766). O erro foi nosso.",
-        "Agora, pelo histórico oficial de cada deputado na Câmara, saem da conta os meses sem nenhum dia em exercício nem de licença e sem cota nem equipe, qualquer que seja o valor (o deputado licenciado continua no mandato e pode ficar com o salário dele). No mês seguinte à saída, que pode trazer os acertos dela, continua valendo o corte de 40%: por essa regra, em outras dez páginas saíram pagamentos de R$ 5 a R$ 8.039 do mês seguinte à saída, e na de Chiquinho Brazão saiu um desconto de R$ 2.056 lançado depois da vacância do mandato. Os gastos do mandato (cota e equipe) não mudaram."
+        "A página de remuneração de cada deputado no site da Câmara mostra como salário também o que é pago a suplentes nos meses em que não estavam no mandato (antes de assumir ou depois de sair); a página não diz a que se refere o pagamento. Desde o lançamento, tirávamos esses meses da conta só quando o pagamento era menor que 40% do subsídio. Por isso, até 9 de novembro de 2026, pagamentos maiores fora do mandato apareciam como salário em cinco páginas: Pauderney Avelino (R$ 399.363 a mais no período todo), Ivan Valente (R$ 258.657), Leônidas Cristino (R$ 293.268), Luiz Carlos Hauly (R$ 134.599) e Josias Gomes (R$ 128.766). O erro foi nosso.",
+        "Agora, pelo histórico oficial de cada deputado na Câmara, saem da conta os meses sem nenhum dia em exercício nem de licença e sem cota nem equipe, qualquer que seja o valor (o deputado licenciado continua no mandato e pode ficar com o salário dele; um estorno de passagem não conta como gasto do mês). O mês seguinte à saída fica, porque traz os acertos da saída: por isso voltaram à conta valores desse mês que a regra antiga tirava, em cinco páginas (Missionário José Olimpio, R$ 21.238; Lebrão, R$ 7.172; Sonize Barbosa, R$ 7.133; Gilvan Maximo, R$ 6.755; Ilacir Bicalho, R$ 1.662), e na de Renan Ferreirinha saíram R$ 5. Os gastos do mandato (cota e equipe) não mudaram."
       ],
-      "paginas": ["dep-141480", "dep-171139", "dep-204476", "dep-204514", "dep-208297", "dep-220577", "dep-220579", "dep-220580", "dep-221329", "dep-223398", "dep-225386", "dep-73531", "dep-73778", "dep-74095", "dep-74141", "dep-74299"]
+      "paginas": ["dep-160561", "dep-220531", "dep-220575", "dep-220600", "dep-225386", "dep-235620", "dep-73531", "dep-73778", "dep-74095", "dep-74141", "dep-74299"]
     },
     {
       "data": "2026-10-08",

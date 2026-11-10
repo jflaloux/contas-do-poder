@@ -1,0 +1,2316 @@
+id_senador,ano,tipo,valor,origem
+22,2023,Aquisição de passagens aéreas (ATC 2/2023),162327.97,api
+22,2023,Consumo de Material - Outros materiais,7583.05,api
+22,2023,Correios,31294.31,api
+22,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+22,2023,Viagens Oficiais - Diárias,7521.06,api
+22,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+22,2024,Aquisição de passagens aéreas (ATC 2/2023),138408.87,api
+22,2024,Consumo de Material - Outros materiais,3899.01,api
+22,2024,Correios,32416.47,api
+22,2024,Cotas para Impulsionamento em Mídias Sociais,480.0,api
+22,2024,Viagens Oficiais - Diárias,59581.52,api
+22,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+22,2025,Aquisição de passagens aéreas (ATC 2/2023),175017.5,api
+22,2025,Consumo de Material - Outros materiais,8494.09,api
+22,2025,Correios,34187.36,api
+22,2025,Cotas para Impulsionamento em Mídias Sociais,32581.84,api
+22,2025,Viagens Oficiais - Diárias,84086.49,api
+22,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+22,2026,Aquisição de passagens aéreas (ATC 2/2023),169408.54,api
+22,2026,Consumo de Material - Outros materiais,6632.18,api
+22,2026,Correios,38078.76,api
+22,2026,Cotas para Impulsionamento em Mídias Sociais,13139.68,api
+22,2026,Viagens Oficiais - Diárias,38847.69,api
+22,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+35,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+35,2023,Consumo de Material - Outros materiais,4654.61,api
+35,2023,Correios,5098.25,api
+35,2023,Cotas para Impulsionamento em Mídias Sociais,25000.0,api
+35,2023,Viagens Oficiais - Diárias,0.0,api
+35,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+35,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+35,2024,Consumo de Material - Outros materiais,3738.83,api
+35,2024,Correios,620.74,api
+35,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+35,2024,Viagens Oficiais - Diárias,0.0,api
+35,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+35,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+35,2025,Consumo de Material - Outros materiais,5598.92,api
+35,2025,Correios,3032.88,api
+35,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+35,2025,Viagens Oficiais - Diárias,0.0,api
+35,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+35,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+35,2026,Consumo de Material - Outros materiais,4376.58,api
+35,2026,Correios,925.54,api
+35,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+35,2026,Viagens Oficiais - Diárias,0.0,api
+35,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+70,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+70,2023,Consumo de Material - Outros materiais,6705.53,api
+70,2023,Correios,5187.81,api
+70,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+70,2023,Viagens Oficiais - Diárias,28961.76,api
+70,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+70,2024,Aquisição de passagens aéreas (ATC 2/2023),22199.63,api
+70,2024,Consumo de Material - Outros materiais,4783.02,api
+70,2024,Correios,38680.37,api
+70,2024,Cotas para Impulsionamento em Mídias Sociais,14070.89,api
+70,2024,Viagens Oficiais - Diárias,0.0,api
+70,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+70,2025,Aquisição de passagens aéreas (ATC 2/2023),105088.87,api
+70,2025,Consumo de Material - Outros materiais,8439.9,api
+70,2025,Correios,38183.77,api
+70,2025,Cotas para Impulsionamento em Mídias Sociais,12761.78,api
+70,2025,Viagens Oficiais - Diárias,11029.82,api
+70,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+70,2026,Aquisição de passagens aéreas (ATC 2/2023),98652.84,api
+70,2026,Consumo de Material - Outros materiais,5598.83,api
+70,2026,Correios,24105.98,api
+70,2026,Cotas para Impulsionamento em Mídias Sociais,1881.63,api
+70,2026,Viagens Oficiais - Diárias,0.0,api
+70,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+285,2023,Aquisição de passagens aéreas (ATC 2/2023),66324.15,api
+285,2023,Consumo de Material - Outros materiais,4991.85,api
+285,2023,Correios,226.59,api
+285,2023,Cotas para Impulsionamento em Mídias Sociais,21526.74,api
+285,2023,Viagens Oficiais - Diárias,32010.75,api
+285,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+285,2024,Aquisição de passagens aéreas (ATC 2/2023),83491.43,api
+285,2024,Consumo de Material - Outros materiais,3864.16,api
+285,2024,Correios,285.94,api
+285,2024,Cotas para Impulsionamento em Mídias Sociais,39000.0,api
+285,2024,Viagens Oficiais - Diárias,0.0,api
+285,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+285,2025,Aquisição de passagens aéreas (ATC 2/2023),145259.24,api
+285,2025,Consumo de Material - Outros materiais,5354.5,api
+285,2025,Correios,35838.88,api
+285,2025,Cotas para Impulsionamento em Mídias Sociais,27841.6,api
+285,2025,Viagens Oficiais - Diárias,17973.79,api
+285,2025,Viagens Oficiais - Ressarcimento de Passagens,29269.27,api
+285,2026,Aquisição de passagens aéreas (ATC 2/2023),90609.39,api
+285,2026,Consumo de Material - Outros materiais,4092.46,api
+285,2026,Correios,33970.37,api
+285,2026,Cotas para Impulsionamento em Mídias Sociais,6702.78,api
+285,2026,Viagens Oficiais - Diárias,0.0,api
+285,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+345,2023,Aquisição de passagens aéreas (ATC 2/2023),4355.3,api
+345,2023,Consumo de Material - Outros materiais,3472.91,api
+345,2023,Correios,40199.88,api
+345,2023,Cotas para Impulsionamento em Mídias Sociais,8751.66,api
+345,2023,Viagens Oficiais - Diárias,2800.0,api
+345,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+345,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+345,2024,Consumo de Material - Outros materiais,3653.95,api
+345,2024,Correios,62055.84,api
+345,2024,Cotas para Impulsionamento em Mídias Sociais,1074.57,api
+345,2024,Viagens Oficiais - Diárias,1055.22,api
+345,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+345,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+345,2025,Consumo de Material - Outros materiais,5735.2,api
+345,2025,Correios,82131.17,api
+345,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+345,2025,Viagens Oficiais - Diárias,28204.01,api
+345,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+345,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+345,2026,Consumo de Material - Outros materiais,3724.47,api
+345,2026,Correios,24583.84,api
+345,2026,Cotas para Impulsionamento em Mídias Sociais,179.43,api
+345,2026,Viagens Oficiais - Diárias,24903.79,api
+345,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+453,2025,(lido),0.0,pagina
+453,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+453,2025,Consumo de Material - Outros materiais,2290.97,pagina
+453,2025,Correios,0.0,pagina
+453,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+453,2025,Viagens Oficiais - Diárias,0.0,pagina
+453,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+470,2023,Aquisição de passagens aéreas (ATC 2/2023),118281.96,api
+470,2023,Consumo de Material - Outros materiais,7044.88,api
+470,2023,Correios,23650.47,api
+470,2023,Cotas para Impulsionamento em Mídias Sociais,35196.3,api
+470,2023,Viagens Oficiais - Diárias,87486.91,api
+470,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+470,2024,Aquisição de passagens aéreas (ATC 2/2023),115031.71,api
+470,2024,Consumo de Material - Outros materiais,4934.34,api
+470,2024,Correios,35144.25,api
+470,2024,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+470,2024,Viagens Oficiais - Diárias,50068.0,api
+470,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+470,2025,Aquisição de passagens aéreas (ATC 2/2023),141433.23,api
+470,2025,Consumo de Material - Outros materiais,9948.17,api
+470,2025,Correios,15746.23,api
+470,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+470,2025,Viagens Oficiais - Diárias,66113.13,api
+470,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+470,2026,Aquisição de passagens aéreas (ATC 2/2023),98453.87,api
+470,2026,Consumo de Material - Outros materiais,7460.42,api
+470,2026,Correios,7569.36,api
+470,2026,Cotas para Impulsionamento em Mídias Sociais,12000.0,api
+470,2026,Viagens Oficiais - Diárias,10180.71,api
+470,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+475,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+475,2023,Consumo de Material - Outros materiais,7636.37,api
+475,2023,Correios,458.59,api
+475,2023,Cotas para Impulsionamento em Mídias Sociais,6000.0,api
+475,2023,Viagens Oficiais - Diárias,15089.72,api
+475,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+475,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+475,2024,Consumo de Material - Outros materiais,6437.99,api
+475,2024,Correios,10624.69,api
+475,2024,Cotas para Impulsionamento em Mídias Sociais,9999.63,api
+475,2024,Viagens Oficiais - Diárias,0.0,api
+475,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+475,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+475,2025,Consumo de Material - Outros materiais,9065.69,api
+475,2025,Correios,17878.47,api
+475,2025,Cotas para Impulsionamento em Mídias Sociais,22865.26,api
+475,2025,Viagens Oficiais - Diárias,0.0,api
+475,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+475,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+475,2026,Consumo de Material - Outros materiais,7301.06,api
+475,2026,Correios,351.46,api
+475,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+475,2026,Viagens Oficiais - Diárias,0.0,api
+475,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+581,2023,Aquisição de passagens aéreas (ATC 2/2023),123681.96,api
+581,2023,Consumo de Material - Outros materiais,6511.38,api
+581,2023,Correios,33570.95,api
+581,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+581,2023,Viagens Oficiais - Diárias,58322.51,api
+581,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+581,2024,Aquisição de passagens aéreas (ATC 2/2023),120099.03,api
+581,2024,Consumo de Material - Outros materiais,4624.53,api
+581,2024,Correios,55161.83,api
+581,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+581,2024,Viagens Oficiais - Diárias,33539.95,api
+581,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+581,2025,Aquisição de passagens aéreas (ATC 2/2023),134768.03,api
+581,2025,Consumo de Material - Outros materiais,8514.03,api
+581,2025,Correios,30700.76,api
+581,2025,Cotas para Impulsionamento em Mídias Sociais,32170.45,api
+581,2025,Viagens Oficiais - Diárias,74493.54,api
+581,2025,Viagens Oficiais - Ressarcimento de Passagens,33071.24,api
+581,2026,Aquisição de passagens aéreas (ATC 2/2023),55833.99,api
+581,2026,Consumo de Material - Outros materiais,5749.62,api
+581,2026,Correios,21498.49,api
+581,2026,Cotas para Impulsionamento em Mídias Sociais,7584.84,api
+581,2026,Viagens Oficiais - Diárias,15034.74,api
+581,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+631,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+631,2023,Consumo de Material - Outros materiais,7382.68,api
+631,2023,Correios,2175.51,api
+631,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+631,2023,Viagens Oficiais - Diárias,0.0,api
+631,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+631,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+631,2024,Consumo de Material - Outros materiais,4719.51,api
+631,2024,Correios,19646.12,api
+631,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+631,2024,Viagens Oficiais - Diárias,0.0,api
+631,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+631,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+631,2025,Consumo de Material - Outros materiais,7411.79,api
+631,2025,Correios,33123.8,api
+631,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+631,2025,Viagens Oficiais - Diárias,9375.29,api
+631,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+631,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+631,2026,Consumo de Material - Outros materiais,4978.06,api
+631,2026,Correios,18057.73,api
+631,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+631,2026,Viagens Oficiais - Diárias,0.0,api
+631,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+739,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+739,2023,Consumo de Material - Outros materiais,8663.34,api
+739,2023,Correios,60800.84,api
+739,2023,Cotas para Impulsionamento em Mídias Sociais,8544.84,api
+739,2023,Viagens Oficiais - Diárias,68679.81,api
+739,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+739,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+739,2024,Consumo de Material - Outros materiais,6721.42,api
+739,2024,Correios,92026.25,api
+739,2024,Cotas para Impulsionamento em Mídias Sociais,23824.25,api
+739,2024,Viagens Oficiais - Diárias,29492.27,api
+739,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+739,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+739,2025,Consumo de Material - Outros materiais,8165.41,api
+739,2025,Correios,62096.69,api
+739,2025,Cotas para Impulsionamento em Mídias Sociais,22573.07,api
+739,2025,Viagens Oficiais - Diárias,118872.58,api
+739,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+739,2026,Aquisição de passagens aéreas (ATC 2/2023),17012.52,api
+739,2026,Consumo de Material - Outros materiais,5457.73,api
+739,2026,Correios,34853.84,api
+739,2026,Cotas para Impulsionamento em Mídias Sociais,2398.93,api
+739,2026,Viagens Oficiais - Diárias,41333.35,api
+739,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+742,2023,Aquisição de passagens aéreas (ATC 2/2023),94289.92,api
+742,2023,Consumo de Material - Outros materiais,8245.97,api
+742,2023,Correios,14637.83,api
+742,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+742,2023,Viagens Oficiais - Diárias,22943.19,api
+742,2023,Viagens Oficiais - Ressarcimento de Passagens,33805.14,api
+742,2024,Aquisição de passagens aéreas (ATC 2/2023),121662.48,api
+742,2024,Consumo de Material - Outros materiais,6614.33,api
+742,2024,Correios,24787.43,api
+742,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+742,2024,Viagens Oficiais - Diárias,0.0,api
+742,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+742,2025,Aquisição de passagens aéreas (ATC 2/2023),136062.91,api
+742,2025,Consumo de Material - Outros materiais,9242.88,api
+742,2025,Correios,14273.69,api
+742,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+742,2025,Viagens Oficiais - Diárias,0.0,api
+742,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+742,2026,Aquisição de passagens aéreas (ATC 2/2023),92146.27,api
+742,2026,Consumo de Material - Outros materiais,5378.35,api
+742,2026,Correios,8775.69,api
+742,2026,Cotas para Impulsionamento em Mídias Sociais,7886.27,api
+742,2026,Viagens Oficiais - Diárias,0.0,api
+742,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+825,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+825,2023,Consumo de Material - Outros materiais,4400.53,api
+825,2023,Correios,93288.33,api
+825,2023,Cotas para Impulsionamento em Mídias Sociais,3407.19,api
+825,2023,Viagens Oficiais - Diárias,0.0,api
+825,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+825,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+825,2024,Consumo de Material - Outros materiais,3484.41,api
+825,2024,Correios,56996.0,api
+825,2024,Cotas para Impulsionamento em Mídias Sociais,14068.08,api
+825,2024,Viagens Oficiais - Diárias,1473.54,api
+825,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+825,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+825,2025,Consumo de Material - Outros materiais,6174.9,api
+825,2025,Correios,61052.4,api
+825,2025,Cotas para Impulsionamento em Mídias Sociais,26221.38,api
+825,2025,Viagens Oficiais - Diárias,0.0,api
+825,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+825,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+825,2026,Consumo de Material - Outros materiais,4675.91,api
+825,2026,Correios,24906.42,api
+825,2026,Cotas para Impulsionamento em Mídias Sociais,1500.26,api
+825,2026,Viagens Oficiais - Diárias,0.0,api
+825,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1173,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1173,2023,Consumo de Material - Outros materiais,5749.09,api
+1173,2023,Correios,33988.06,api
+1173,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1173,2023,Viagens Oficiais - Diárias,33768.72,api
+1173,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1173,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1173,2024,Consumo de Material - Outros materiais,5280.55,api
+1173,2024,Correios,29401.87,api
+1173,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1173,2024,Viagens Oficiais - Diárias,0.0,api
+1173,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1173,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1173,2025,Consumo de Material - Outros materiais,9522.54,api
+1173,2025,Correios,52317.89,api
+1173,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1173,2025,Viagens Oficiais - Diárias,11048.71,api
+1173,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1173,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1173,2026,Consumo de Material - Outros materiais,9029.68,api
+1173,2026,Correios,10247.93,api
+1173,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1173,2026,Viagens Oficiais - Diárias,0.0,api
+1173,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1186,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1186,2023,Consumo de Material - Outros materiais,6934.4,api
+1186,2023,Correios,44245.06,api
+1186,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1186,2023,Viagens Oficiais - Diárias,12290.25,api
+1186,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1186,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1186,2024,Consumo de Material - Outros materiais,3690.96,api
+1186,2024,Correios,20867.92,api
+1186,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1186,2024,Viagens Oficiais - Diárias,0.0,api
+1186,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1186,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1186,2025,Consumo de Material - Outros materiais,7385.87,api
+1186,2025,Correios,23241.53,api
+1186,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1186,2025,Viagens Oficiais - Diárias,0.0,api
+1186,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+1186,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+1186,2026,Consumo de Material - Outros materiais,5188.27,api
+1186,2026,Correios,8900.5,api
+1186,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+1186,2026,Viagens Oficiais - Diárias,0.0,api
+1186,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3777,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3777,2023,Consumo de Material - Outros materiais,12231.68,api
+3777,2023,Correios,9327.83,api
+3777,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+3777,2023,Viagens Oficiais - Diárias,0.0,api
+3777,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3777,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3777,2024,Consumo de Material - Outros materiais,8609.63,api
+3777,2024,Correios,11107.33,api
+3777,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+3777,2024,Viagens Oficiais - Diárias,32284.71,api
+3777,2024,Viagens Oficiais - Ressarcimento de Passagens,83275.36,api
+3777,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3777,2025,Consumo de Material - Outros materiais,10354.95,api
+3777,2025,Correios,5390.23,api
+3777,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+3777,2025,Viagens Oficiais - Diárias,115221.15,api
+3777,2025,Viagens Oficiais - Ressarcimento de Passagens,35471.87,api
+3777,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3777,2026,Consumo de Material - Outros materiais,7175.68,api
+3777,2026,Correios,11831.11,api
+3777,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+3777,2026,Viagens Oficiais - Diárias,21149.17,api
+3777,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3806,2023,Aquisição de passagens aéreas (ATC 2/2023),85526.25,api
+3806,2023,Consumo de Material - Outros materiais,5100.93,api
+3806,2023,Correios,37860.73,api
+3806,2023,Cotas para Impulsionamento em Mídias Sociais,34676.61,api
+3806,2023,Viagens Oficiais - Diárias,0.0,api
+3806,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3806,2024,Aquisição de passagens aéreas (ATC 2/2023),134736.32,api
+3806,2024,Consumo de Material - Outros materiais,3993.09,api
+3806,2024,Correios,29396.72,api
+3806,2024,Cotas para Impulsionamento em Mídias Sociais,29943.24,api
+3806,2024,Viagens Oficiais - Diárias,21985.5,api
+3806,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3806,2025,Aquisição de passagens aéreas (ATC 2/2023),189713.61,api
+3806,2025,Consumo de Material - Outros materiais,6545.6,api
+3806,2025,Correios,128525.81,api
+3806,2025,Cotas para Impulsionamento em Mídias Sociais,35272.89,api
+3806,2025,Viagens Oficiais - Diárias,15727.43,api
+3806,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3806,2026,Aquisição de passagens aéreas (ATC 2/2023),108871.84,api
+3806,2026,Consumo de Material - Outros materiais,4552.2,api
+3806,2026,Correios,19987.94,api
+3806,2026,Cotas para Impulsionamento em Mídias Sociais,3023.13,api
+3806,2026,Viagens Oficiais - Diárias,0.0,api
+3806,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3830,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3830,2023,Consumo de Material - Outros materiais,5311.0,api
+3830,2023,Correios,2612.33,api
+3830,2023,Cotas para Impulsionamento em Mídias Sociais,30000.13,api
+3830,2023,Viagens Oficiais - Diárias,63950.76,api
+3830,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3830,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3830,2024,Consumo de Material - Outros materiais,4319.27,api
+3830,2024,Correios,2062.63,api
+3830,2024,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+3830,2024,Viagens Oficiais - Diárias,0.0,api
+3830,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3830,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3830,2025,Consumo de Material - Outros materiais,7651.56,api
+3830,2025,Correios,9022.85,api
+3830,2025,Cotas para Impulsionamento em Mídias Sociais,32700.08,api
+3830,2025,Viagens Oficiais - Diárias,38415.58,api
+3830,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+3830,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+3830,2026,Consumo de Material - Outros materiais,6542.84,api
+3830,2026,Correios,307.67,api
+3830,2026,Cotas para Impulsionamento em Mídias Sociais,12394.6,api
+3830,2026,Viagens Oficiais - Diárias,0.0,api
+3830,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4531,2023,Aquisição de passagens aéreas (ATC 2/2023),80340.04,api
+4531,2023,Consumo de Material - Outros materiais,10136.88,api
+4531,2023,Correios,32461.59,api
+4531,2023,Cotas para Impulsionamento em Mídias Sociais,1512.14,api
+4531,2023,Viagens Oficiais - Diárias,0.0,api
+4531,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4531,2024,Aquisição de passagens aéreas (ATC 2/2023),90524.3,api
+4531,2024,Consumo de Material - Outros materiais,10059.73,api
+4531,2024,Correios,30964.6,api
+4531,2024,Cotas para Impulsionamento em Mídias Sociais,10257.38,api
+4531,2024,Viagens Oficiais - Diárias,0.0,api
+4531,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4531,2025,Aquisição de passagens aéreas (ATC 2/2023),126053.89,api
+4531,2025,Consumo de Material - Outros materiais,12637.14,api
+4531,2025,Correios,42821.46,api
+4531,2025,Cotas para Impulsionamento em Mídias Sociais,8578.38,api
+4531,2025,Viagens Oficiais - Diárias,0.0,api
+4531,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4531,2026,Aquisição de passagens aéreas (ATC 2/2023),37206.89,api
+4531,2026,Consumo de Material - Outros materiais,12912.95,api
+4531,2026,Correios,22708.4,api
+4531,2026,Cotas para Impulsionamento em Mídias Sociais,26171.18,api
+4531,2026,Viagens Oficiais - Diárias,0.0,api
+4531,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4545,2023,(lido),0.0,pagina
+4545,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+4545,2023,Consumo de Material - Outros materiais,0.0,pagina
+4545,2023,Correios,0.0,pagina
+4545,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+4545,2023,Viagens Oficiais - Diárias,0.0,pagina
+4545,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+4560,2023,Aquisição de passagens aéreas (ATC 2/2023),12170.43,api
+4560,2023,Consumo de Material - Outros materiais,2603.95,api
+4560,2023,Correios,522.33,api
+4560,2023,Cotas para Impulsionamento em Mídias Sociais,17176.62,api
+4560,2023,Viagens Oficiais - Diárias,56264.0,api
+4560,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4560,2024,Aquisição de passagens aéreas (ATC 2/2023),43559.43,api
+4560,2024,Consumo de Material - Outros materiais,2459.46,api
+4560,2024,Correios,22708.7,api
+4560,2024,Cotas para Impulsionamento em Mídias Sociais,9953.65,api
+4560,2024,Viagens Oficiais - Diárias,61692.17,api
+4560,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4560,2025,Aquisição de passagens aéreas (ATC 2/2023),123782.6,api
+4560,2025,Consumo de Material - Outros materiais,3410.24,api
+4560,2025,Correios,91.53,api
+4560,2025,Cotas para Impulsionamento em Mídias Sociais,33922.57,api
+4560,2025,Viagens Oficiais - Diárias,25657.86,api
+4560,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4560,2026,Aquisição de passagens aéreas (ATC 2/2023),96080.1,api
+4560,2026,Consumo de Material - Outros materiais,2170.02,api
+4560,2026,Correios,205.53,api
+4560,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4560,2026,Viagens Oficiais - Diárias,17186.78,api
+4560,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4605,2023,(lido),0.0,pagina
+4605,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+4605,2023,Consumo de Material - Outros materiais,0.0,pagina
+4605,2023,Correios,0.0,pagina
+4605,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+4605,2023,Viagens Oficiais - Diárias,0.0,pagina
+4605,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+4605,2024,(lido),0.0,pagina
+4605,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+4605,2024,Consumo de Material - Outros materiais,454.08,pagina
+4605,2024,Correios,0.0,pagina
+4605,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+4605,2024,Viagens Oficiais - Diárias,0.0,pagina
+4605,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+4639,2023,Aquisição de passagens aéreas (ATC 2/2023),182498.11,api
+4639,2023,Consumo de Material - Outros materiais,6193.43,api
+4639,2023,Correios,3679.94,api
+4639,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4639,2023,Viagens Oficiais - Diárias,29198.37,api
+4639,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4639,2024,Aquisição de passagens aéreas (ATC 2/2023),164633.09,api
+4639,2024,Consumo de Material - Outros materiais,4772.87,api
+4639,2024,Correios,16910.95,api
+4639,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4639,2024,Viagens Oficiais - Diárias,0.0,api
+4639,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4639,2025,Aquisição de passagens aéreas (ATC 2/2023),227725.97,api
+4639,2025,Consumo de Material - Outros materiais,5144.77,api
+4639,2025,Correios,45634.84,api
+4639,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4639,2025,Viagens Oficiais - Diárias,0.0,api
+4639,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4639,2026,Aquisição de passagens aéreas (ATC 2/2023),232166.72,api
+4639,2026,Consumo de Material - Outros materiais,5093.25,api
+4639,2026,Correios,24802.51,api
+4639,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4639,2026,Viagens Oficiais - Diárias,0.0,api
+4639,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4642,2023,Aquisição de passagens aéreas (ATC 2/2023),17454.27,api
+4642,2023,Consumo de Material - Outros materiais,5287.23,api
+4642,2023,Correios,4783.58,api
+4642,2023,Cotas para Impulsionamento em Mídias Sociais,28324.21,api
+4642,2023,Viagens Oficiais - Diárias,61160.91,api
+4642,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4642,2024,Aquisição de passagens aéreas (ATC 2/2023),9286.34,api
+4642,2024,Consumo de Material - Outros materiais,4437.72,api
+4642,2024,Correios,46367.86,api
+4642,2024,Cotas para Impulsionamento em Mídias Sociais,29789.41,api
+4642,2024,Viagens Oficiais - Diárias,50751.11,api
+4642,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4642,2025,Aquisição de passagens aéreas (ATC 2/2023),107637.57,api
+4642,2025,Consumo de Material - Outros materiais,8344.1,api
+4642,2025,Correios,91915.56,api
+4642,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+4642,2025,Viagens Oficiais - Diárias,92868.98,api
+4642,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4642,2026,Aquisição de passagens aéreas (ATC 2/2023),69249.03,api
+4642,2026,Consumo de Material - Outros materiais,5417.26,api
+4642,2026,Correios,13903.39,api
+4642,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4642,2026,Viagens Oficiais - Diárias,0.0,api
+4642,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4694,2023,Aquisição de passagens aéreas (ATC 2/2023),31487.21,api
+4694,2023,Consumo de Material - Outros materiais,7906.0,api
+4694,2023,Correios,25133.8,api
+4694,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4694,2023,Viagens Oficiais - Diárias,0.0,api
+4694,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4694,2024,Aquisição de passagens aéreas (ATC 2/2023),53619.78,api
+4694,2024,Consumo de Material - Outros materiais,4489.61,api
+4694,2024,Correios,42836.75,api
+4694,2024,Cotas para Impulsionamento em Mídias Sociais,1263.07,api
+4694,2024,Viagens Oficiais - Diárias,0.0,api
+4694,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4694,2025,Aquisição de passagens aéreas (ATC 2/2023),53583.79,api
+4694,2025,Consumo de Material - Outros materiais,10545.21,api
+4694,2025,Correios,27033.08,api
+4694,2025,Cotas para Impulsionamento em Mídias Sociais,25171.98,api
+4694,2025,Viagens Oficiais - Diárias,0.0,api
+4694,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4694,2026,Aquisição de passagens aéreas (ATC 2/2023),30694.74,api
+4694,2026,Consumo de Material - Outros materiais,9257.08,api
+4694,2026,Correios,31826.87,api
+4694,2026,Cotas para Impulsionamento em Mídias Sociais,1637.63,api
+4694,2026,Viagens Oficiais - Diárias,0.0,api
+4694,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4770,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+4770,2023,Consumo de Material - Outros materiais,6103.33,api
+4770,2023,Correios,147.66,api
+4770,2023,Cotas para Impulsionamento em Mídias Sociais,14733.13,api
+4770,2023,Viagens Oficiais - Diárias,0.0,api
+4770,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4770,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+4770,2024,Consumo de Material - Outros materiais,7053.32,api
+4770,2024,Correios,141.85,api
+4770,2024,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+4770,2024,Viagens Oficiais - Diárias,0.0,api
+4770,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4770,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+4770,2025,Consumo de Material - Outros materiais,8197.22,api
+4770,2025,Correios,19.77,api
+4770,2025,Cotas para Impulsionamento em Mídias Sociais,16507.4,api
+4770,2025,Viagens Oficiais - Diárias,17847.87,api
+4770,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4770,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+4770,2026,Consumo de Material - Outros materiais,4994.32,api
+4770,2026,Correios,0.0,api
+4770,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4770,2026,Viagens Oficiais - Diárias,0.0,api
+4770,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4811,2023,Aquisição de passagens aéreas (ATC 2/2023),65561.79,api
+4811,2023,Consumo de Material - Outros materiais,10166.46,api
+4811,2023,Correios,63639.47,api
+4811,2023,Cotas para Impulsionamento em Mídias Sociais,4633.73,api
+4811,2023,Viagens Oficiais - Diárias,79972.5,api
+4811,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4811,2024,Aquisição de passagens aéreas (ATC 2/2023),69426.49,api
+4811,2024,Consumo de Material - Outros materiais,3433.85,api
+4811,2024,Correios,89246.28,api
+4811,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4811,2024,Viagens Oficiais - Diárias,93929.58,api
+4811,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4811,2025,Aquisição de passagens aéreas (ATC 2/2023),103719.96,api
+4811,2025,Consumo de Material - Outros materiais,4869.09,api
+4811,2025,Correios,89086.25,api
+4811,2025,Cotas para Impulsionamento em Mídias Sociais,549.14,api
+4811,2025,Viagens Oficiais - Diárias,93797.41,api
+4811,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4811,2026,Aquisição de passagens aéreas (ATC 2/2023),74614.59,api
+4811,2026,Consumo de Material - Outros materiais,4102.48,api
+4811,2026,Correios,81431.12,api
+4811,2026,Cotas para Impulsionamento em Mídias Sociais,2017.02,api
+4811,2026,Viagens Oficiais - Diárias,72612.02,api
+4811,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4979,2024,(lido),0.0,pagina
+4979,2024,Aquisição de passagens aéreas (ATC 2/2023),36248.46,pagina
+4979,2024,Consumo de Material - Outros materiais,0.0,pagina
+4979,2024,Correios,3114.27,pagina
+4979,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+4979,2024,Viagens Oficiais - Diárias,0.0,pagina
+4979,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+4994,2023,Aquisição de passagens aéreas (ATC 2/2023),71919.96,api
+4994,2023,Consumo de Material - Outros materiais,9852.44,api
+4994,2023,Correios,17836.32,api
+4994,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4994,2023,Viagens Oficiais - Diárias,19873.3,api
+4994,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4994,2024,Aquisição de passagens aéreas (ATC 2/2023),37518.06,api
+4994,2024,Consumo de Material - Outros materiais,8388.76,api
+4994,2024,Correios,29348.49,api
+4994,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4994,2024,Viagens Oficiais - Diárias,0.0,api
+4994,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4994,2025,Aquisição de passagens aéreas (ATC 2/2023),30930.58,api
+4994,2025,Consumo de Material - Outros materiais,9753.89,api
+4994,2025,Correios,67999.47,api
+4994,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4994,2025,Viagens Oficiais - Diárias,0.0,api
+4994,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+4994,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+4994,2026,Consumo de Material - Outros materiais,7474.32,api
+4994,2026,Correios,14158.72,api
+4994,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+4994,2026,Viagens Oficiais - Diárias,0.0,api
+4994,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5008,2023,Aquisição de passagens aéreas (ATC 2/2023),79200.34,api
+5008,2023,Consumo de Material - Outros materiais,5316.8,api
+5008,2023,Correios,15986.47,api
+5008,2023,Cotas para Impulsionamento em Mídias Sociais,9338.17,api
+5008,2023,Viagens Oficiais - Diárias,84867.65,api
+5008,2023,Viagens Oficiais - Ressarcimento de Passagens,1299.56,api
+5008,2024,Aquisição de passagens aéreas (ATC 2/2023),98089.85,api
+5008,2024,Consumo de Material - Outros materiais,4866.01,api
+5008,2024,Correios,18555.38,api
+5008,2024,Cotas para Impulsionamento em Mídias Sociais,22923.29,api
+5008,2024,Viagens Oficiais - Diárias,90509.02,api
+5008,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5008,2025,Aquisição de passagens aéreas (ATC 2/2023),125308.51,api
+5008,2025,Consumo de Material - Outros materiais,6089.81,api
+5008,2025,Correios,90105.07,api
+5008,2025,Cotas para Impulsionamento em Mídias Sociais,31353.09,api
+5008,2025,Viagens Oficiais - Diárias,110177.27,api
+5008,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5008,2026,Aquisição de passagens aéreas (ATC 2/2023),111983.42,api
+5008,2026,Consumo de Material - Outros materiais,4541.27,api
+5008,2026,Correios,36617.0,api
+5008,2026,Cotas para Impulsionamento em Mídias Sociais,4885.77,api
+5008,2026,Viagens Oficiais - Diárias,43054.91,api
+5008,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5012,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5012,2023,Consumo de Material - Outros materiais,11871.93,api
+5012,2023,Correios,53318.07,api
+5012,2023,Cotas para Impulsionamento em Mídias Sociais,13087.71,api
+5012,2023,Viagens Oficiais - Diárias,26538.23,api
+5012,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5012,2024,Aquisição de passagens aéreas (ATC 2/2023),55740.4,api
+5012,2024,Consumo de Material - Outros materiais,9010.5,api
+5012,2024,Correios,27537.54,api
+5012,2024,Cotas para Impulsionamento em Mídias Sociais,11912.71,api
+5012,2024,Viagens Oficiais - Diárias,0.0,api
+5012,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5012,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5012,2025,Consumo de Material - Outros materiais,13763.06,api
+5012,2025,Correios,38871.76,api
+5012,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5012,2025,Viagens Oficiais - Diárias,48463.28,api
+5012,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5012,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5012,2026,Consumo de Material - Outros materiais,13425.05,api
+5012,2026,Correios,1079.12,api
+5012,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5012,2026,Viagens Oficiais - Diárias,0.0,api
+5012,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5016,2023,(lido),0.0,pagina
+5016,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5016,2023,Consumo de Material - Outros materiais,677.94,pagina
+5016,2023,Correios,0.0,pagina
+5016,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5016,2023,Viagens Oficiais - Diárias,0.0,pagina
+5016,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5016,2025,(lido),0.0,pagina
+5016,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5016,2025,Consumo de Material - Outros materiais,0.0,pagina
+5016,2025,Correios,0.0,pagina
+5016,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5016,2025,Viagens Oficiais - Diárias,0.0,pagina
+5016,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5016,2026,(lido),0.0,pagina
+5016,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5016,2026,Consumo de Material - Outros materiais,0.0,pagina
+5016,2026,Correios,0.0,pagina
+5016,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5016,2026,Viagens Oficiais - Diárias,0.0,pagina
+5016,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5070,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5070,2023,Consumo de Material - Outros materiais,8875.13,api
+5070,2023,Correios,3154.27,api
+5070,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5070,2023,Viagens Oficiais - Diárias,26572.86,api
+5070,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5070,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5070,2024,Consumo de Material - Outros materiais,7557.26,api
+5070,2024,Correios,3313.47,api
+5070,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5070,2024,Viagens Oficiais - Diárias,0.0,api
+5070,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5070,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5070,2025,Consumo de Material - Outros materiais,10169.46,api
+5070,2025,Correios,14052.04,api
+5070,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5070,2025,Viagens Oficiais - Diárias,0.0,api
+5070,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5070,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5070,2026,Consumo de Material - Outros materiais,6893.66,api
+5070,2026,Correios,378.6,api
+5070,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5070,2026,Viagens Oficiais - Diárias,0.0,api
+5070,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5207,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5207,2023,Consumo de Material - Outros materiais,146.95,api
+5207,2023,Correios,0.0,api
+5207,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5207,2023,Viagens Oficiais - Diárias,0.0,api
+5207,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5207,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5207,2024,Consumo de Material - Outros materiais,0.0,api
+5207,2024,Correios,0.0,api
+5207,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5207,2024,Viagens Oficiais - Diárias,0.0,api
+5207,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5207,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5207,2025,Consumo de Material - Outros materiais,0.0,api
+5207,2025,Correios,0.0,api
+5207,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5207,2025,Viagens Oficiais - Diárias,0.0,api
+5207,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5207,2026,Aquisição de passagens aéreas (ATC 2/2023),10961.36,api
+5207,2026,Consumo de Material - Outros materiais,4709.81,api
+5207,2026,Correios,0.0,api
+5207,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5207,2026,Viagens Oficiais - Diárias,0.0,api
+5207,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5257,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5257,2023,Consumo de Material - Outros materiais,0.0,api
+5257,2023,Correios,0.0,api
+5257,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5257,2023,Viagens Oficiais - Diárias,0.0,api
+5257,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5257,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5257,2024,Consumo de Material - Outros materiais,0.0,api
+5257,2024,Correios,0.0,api
+5257,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5257,2024,Viagens Oficiais - Diárias,0.0,api
+5257,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5257,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5257,2025,Consumo de Material - Outros materiais,0.0,api
+5257,2025,Correios,0.0,api
+5257,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5257,2025,Viagens Oficiais - Diárias,0.0,api
+5257,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5257,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5257,2026,Consumo de Material - Outros materiais,730.52,api
+5257,2026,Correios,36.27,api
+5257,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5257,2026,Viagens Oficiais - Diárias,0.0,api
+5257,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5322,2023,Aquisição de passagens aéreas (ATC 2/2023),76198.02,api
+5322,2023,Consumo de Material - Outros materiais,3991.31,api
+5322,2023,Correios,7457.88,api
+5322,2023,Cotas para Impulsionamento em Mídias Sociais,6887.63,api
+5322,2023,Viagens Oficiais - Diárias,0.0,api
+5322,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5322,2024,Aquisição de passagens aéreas (ATC 2/2023),106046.42,api
+5322,2024,Consumo de Material - Outros materiais,3132.31,api
+5322,2024,Correios,15841.84,api
+5322,2024,Cotas para Impulsionamento em Mídias Sociais,5648.71,api
+5322,2024,Viagens Oficiais - Diárias,0.0,api
+5322,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5322,2025,Aquisição de passagens aéreas (ATC 2/2023),108272.89,api
+5322,2025,Consumo de Material - Outros materiais,5559.05,api
+5322,2025,Correios,28631.95,api
+5322,2025,Cotas para Impulsionamento em Mídias Sociais,8750.97,api
+5322,2025,Viagens Oficiais - Diárias,0.0,api
+5322,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5322,2026,Aquisição de passagens aéreas (ATC 2/2023),33092.46,api
+5322,2026,Consumo de Material - Outros materiais,2809.58,api
+5322,2026,Correios,35432.39,api
+5322,2026,Cotas para Impulsionamento em Mídias Sociais,4500.79,api
+5322,2026,Viagens Oficiais - Diárias,0.0,api
+5322,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5352,2023,Aquisição de passagens aéreas (ATC 2/2023),40347.02,api
+5352,2023,Consumo de Material - Outros materiais,7415.55,api
+5352,2023,Correios,343.26,api
+5352,2023,Cotas para Impulsionamento em Mídias Sociais,4998.24,api
+5352,2023,Viagens Oficiais - Diárias,86479.26,api
+5352,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5352,2024,Aquisição de passagens aéreas (ATC 2/2023),80260.9,api
+5352,2024,Consumo de Material - Outros materiais,5470.98,api
+5352,2024,Correios,16633.21,api
+5352,2024,Cotas para Impulsionamento em Mídias Sociais,9000.0,api
+5352,2024,Viagens Oficiais - Diárias,28601.74,api
+5352,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5352,2025,Aquisição de passagens aéreas (ATC 2/2023),116184.13,api
+5352,2025,Consumo de Material - Outros materiais,8135.82,api
+5352,2025,Correios,15330.19,api
+5352,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5352,2025,Viagens Oficiais - Diárias,85802.3,api
+5352,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5352,2026,Aquisição de passagens aéreas (ATC 2/2023),80700.06,api
+5352,2026,Consumo de Material - Outros materiais,5243.38,api
+5352,2026,Correios,4209.9,api
+5352,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5352,2026,Viagens Oficiais - Diárias,0.0,api
+5352,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5376,2023,Aquisição de passagens aéreas (ATC 2/2023),70609.15,api
+5376,2023,Consumo de Material - Outros materiais,3531.36,api
+5376,2023,Correios,66418.78,api
+5376,2023,Cotas para Impulsionamento em Mídias Sociais,185.81,api
+5376,2023,Viagens Oficiais - Diárias,47207.94,api
+5376,2023,Viagens Oficiais - Ressarcimento de Passagens,15213.01,api
+5376,2024,Aquisição de passagens aéreas (ATC 2/2023),12285.22,api
+5376,2024,Consumo de Material - Outros materiais,4195.55,api
+5376,2024,Correios,33428.76,api
+5376,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5376,2024,Viagens Oficiais - Diárias,83752.88,api
+5376,2024,Viagens Oficiais - Ressarcimento de Passagens,20735.17,api
+5376,2025,Aquisição de passagens aéreas (ATC 2/2023),26724.25,api
+5376,2025,Consumo de Material - Outros materiais,6824.41,api
+5376,2025,Correios,36012.62,api
+5376,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5376,2025,Viagens Oficiais - Diárias,18351.56,api
+5376,2025,Viagens Oficiais - Ressarcimento de Passagens,10903.75,api
+5376,2026,Aquisição de passagens aéreas (ATC 2/2023),5429.7,api
+5376,2026,Consumo de Material - Outros materiais,5204.07,api
+5376,2026,Correios,23660.39,api
+5376,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5376,2026,Viagens Oficiais - Diárias,17131.96,api
+5376,2026,Viagens Oficiais - Ressarcimento de Passagens,14322.69,api
+5385,2023,Aquisição de passagens aéreas (ATC 2/2023),32336.57,api
+5385,2023,Consumo de Material - Outros materiais,7732.4,api
+5385,2023,Correios,89892.8,api
+5385,2023,Cotas para Impulsionamento em Mídias Sociais,36000.09,api
+5385,2023,Viagens Oficiais - Diárias,104196.84,api
+5385,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5385,2024,Aquisição de passagens aéreas (ATC 2/2023),54270.84,api
+5385,2024,Consumo de Material - Outros materiais,5540.95,api
+5385,2024,Correios,97951.88,api
+5385,2024,Cotas para Impulsionamento em Mídias Sociais,34972.39,api
+5385,2024,Viagens Oficiais - Diárias,125406.18,api
+5385,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5385,2025,Aquisição de passagens aéreas (ATC 2/2023),132382.28,api
+5385,2025,Consumo de Material - Outros materiais,8630.61,api
+5385,2025,Correios,97186.47,api
+5385,2025,Cotas para Impulsionamento em Mídias Sociais,35095.26,api
+5385,2025,Viagens Oficiais - Diárias,94718.65,api
+5385,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5385,2026,Aquisição de passagens aéreas (ATC 2/2023),111327.15,api
+5385,2026,Consumo de Material - Outros materiais,7910.62,api
+5385,2026,Correios,101812.66,api
+5385,2026,Cotas para Impulsionamento em Mídias Sociais,28687.07,api
+5385,2026,Viagens Oficiais - Diárias,72682.25,api
+5385,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5386,2023,Aquisição de passagens aéreas (ATC 2/2023),64636.5,api
+5386,2023,Consumo de Material - Outros materiais,12299.98,api
+5386,2023,Correios,9211.12,api
+5386,2023,Cotas para Impulsionamento em Mídias Sociais,1037.41,api
+5386,2023,Viagens Oficiais - Diárias,28667.45,api
+5386,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5386,2024,Aquisição de passagens aéreas (ATC 2/2023),84425.06,api
+5386,2024,Consumo de Material - Outros materiais,6969.96,api
+5386,2024,Correios,25960.23,api
+5386,2024,Cotas para Impulsionamento em Mídias Sociais,1405.98,api
+5386,2024,Viagens Oficiais - Diárias,30335.49,api
+5386,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5386,2025,Aquisição de passagens aéreas (ATC 2/2023),133935.17,api
+5386,2025,Consumo de Material - Outros materiais,11093.26,api
+5386,2025,Correios,36741.12,api
+5386,2025,Cotas para Impulsionamento em Mídias Sociais,15907.66,api
+5386,2025,Viagens Oficiais - Diárias,134158.29,api
+5386,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5386,2026,Aquisição de passagens aéreas (ATC 2/2023),92972.62,api
+5386,2026,Consumo de Material - Outros materiais,8814.34,api
+5386,2026,Correios,14417.46,api
+5386,2026,Cotas para Impulsionamento em Mídias Sociais,12000.0,api
+5386,2026,Viagens Oficiais - Diárias,54074.25,api
+5386,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5411,2023,Aquisição de passagens aéreas (ATC 2/2023),95307.51,api
+5411,2023,Consumo de Material - Outros materiais,7620.61,api
+5411,2023,Correios,1468.12,api
+5411,2023,Cotas para Impulsionamento em Mídias Sociais,29576.87,api
+5411,2023,Viagens Oficiais - Diárias,18453.9,api
+5411,2023,Viagens Oficiais - Ressarcimento de Passagens,10910.29,api
+5411,2024,Aquisição de passagens aéreas (ATC 2/2023),77550.43,api
+5411,2024,Consumo de Material - Outros materiais,4595.11,api
+5411,2024,Correios,1928.6,api
+5411,2024,Cotas para Impulsionamento em Mídias Sociais,32845.63,api
+5411,2024,Viagens Oficiais - Diárias,48696.05,api
+5411,2024,Viagens Oficiais - Ressarcimento de Passagens,60204.06,api
+5411,2025,Aquisição de passagens aéreas (ATC 2/2023),77969.8,api
+5411,2025,Consumo de Material - Outros materiais,7984.14,api
+5411,2025,Correios,26564.05,api
+5411,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5411,2025,Viagens Oficiais - Diárias,97014.72,api
+5411,2025,Viagens Oficiais - Ressarcimento de Passagens,109719.57,api
+5411,2026,Aquisição de passagens aéreas (ATC 2/2023),98474.33,api
+5411,2026,Consumo de Material - Outros materiais,6088.53,api
+5411,2026,Correios,16700.9,api
+5411,2026,Cotas para Impulsionamento em Mídias Sociais,10522.6,api
+5411,2026,Viagens Oficiais - Diárias,0.0,api
+5411,2026,Viagens Oficiais - Ressarcimento de Passagens,20919.87,api
+5422,2023,Aquisição de passagens aéreas (ATC 2/2023),104081.57,api
+5422,2023,Consumo de Material - Outros materiais,3313.35,api
+5422,2023,Correios,262.69,api
+5422,2023,Cotas para Impulsionamento em Mídias Sociais,700.0,api
+5422,2023,Viagens Oficiais - Diárias,27057.62,api
+5422,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5422,2024,Aquisição de passagens aéreas (ATC 2/2023),157336.7,api
+5422,2024,Consumo de Material - Outros materiais,5256.6,api
+5422,2024,Correios,0.0,api
+5422,2024,Cotas para Impulsionamento em Mídias Sociais,8726.46,api
+5422,2024,Viagens Oficiais - Diárias,0.0,api
+5422,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5422,2025,Aquisição de passagens aéreas (ATC 2/2023),173024.15,api
+5422,2025,Consumo de Material - Outros materiais,6525.95,api
+5422,2025,Correios,129.11,api
+5422,2025,Cotas para Impulsionamento em Mídias Sociais,7288.63,api
+5422,2025,Viagens Oficiais - Diárias,27868.5,api
+5422,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5422,2026,Aquisição de passagens aéreas (ATC 2/2023),125713.35,api
+5422,2026,Consumo de Material - Outros materiais,5551.96,api
+5422,2026,Correios,52.85,api
+5422,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5422,2026,Viagens Oficiais - Diárias,0.0,api
+5422,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5502,2023,Aquisição de passagens aéreas (ATC 2/2023),126243.64,api
+5502,2023,Consumo de Material - Outros materiais,6447.78,api
+5502,2023,Correios,67629.73,api
+5502,2023,Cotas para Impulsionamento em Mídias Sociais,4054.98,api
+5502,2023,Viagens Oficiais - Diárias,5524.46,api
+5502,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5502,2024,Aquisição de passagens aéreas (ATC 2/2023),90789.4,api
+5502,2024,Consumo de Material - Outros materiais,4649.01,api
+5502,2024,Correios,73301.03,api
+5502,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5502,2024,Viagens Oficiais - Diárias,0.0,api
+5502,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5502,2025,Aquisição de passagens aéreas (ATC 2/2023),115880.11,api
+5502,2025,Consumo de Material - Outros materiais,6744.09,api
+5502,2025,Correios,73020.99,api
+5502,2025,Cotas para Impulsionamento em Mídias Sociais,30940.84,api
+5502,2025,Viagens Oficiais - Diárias,0.0,api
+5502,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5502,2026,Aquisição de passagens aéreas (ATC 2/2023),46865.33,api
+5502,2026,Consumo de Material - Outros materiais,4071.24,api
+5502,2026,Correios,610.76,api
+5502,2026,Cotas para Impulsionamento em Mídias Sociais,9230.87,api
+5502,2026,Viagens Oficiais - Diárias,0.0,api
+5502,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5523,2023,Aquisição de passagens aéreas (ATC 2/2023),49973.82,api
+5523,2023,Consumo de Material - Outros materiais,5112.76,api
+5523,2023,Correios,30228.47,api
+5523,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5523,2023,Viagens Oficiais - Diárias,0.0,api
+5523,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5523,2024,Aquisição de passagens aéreas (ATC 2/2023),52195.12,api
+5523,2024,Consumo de Material - Outros materiais,4169.88,api
+5523,2024,Correios,21449.94,api
+5523,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5523,2024,Viagens Oficiais - Diárias,0.0,api
+5523,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5523,2025,Aquisição de passagens aéreas (ATC 2/2023),5613.41,api
+5523,2025,Consumo de Material - Outros materiais,6337.92,api
+5523,2025,Correios,27222.38,api
+5523,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5523,2025,Viagens Oficiais - Diárias,0.0,api
+5523,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5523,2026,Aquisição de passagens aéreas (ATC 2/2023),2969.26,api
+5523,2026,Consumo de Material - Outros materiais,5803.86,api
+5523,2026,Correios,15990.82,api
+5523,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5523,2026,Viagens Oficiais - Diárias,0.0,api
+5523,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5525,2023,Aquisição de passagens aéreas (ATC 2/2023),151800.04,api
+5525,2023,Consumo de Material - Outros materiais,6617.69,api
+5525,2023,Correios,53256.49,api
+5525,2023,Cotas para Impulsionamento em Mídias Sociais,17266.77,api
+5525,2023,Viagens Oficiais - Diárias,0.0,api
+5525,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5525,2024,Aquisição de passagens aéreas (ATC 2/2023),91242.77,api
+5525,2024,Consumo de Material - Outros materiais,5639.68,api
+5525,2024,Correios,37373.67,api
+5525,2024,Cotas para Impulsionamento em Mídias Sociais,3709.38,api
+5525,2024,Viagens Oficiais - Diárias,736.77,api
+5525,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5525,2025,Aquisição de passagens aéreas (ATC 2/2023),48519.76,api
+5525,2025,Consumo de Material - Outros materiais,7094.68,api
+5525,2025,Correios,42828.41,api
+5525,2025,Cotas para Impulsionamento em Mídias Sociais,18949.99,api
+5525,2025,Viagens Oficiais - Diárias,0.0,api
+5525,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5525,2026,Aquisição de passagens aéreas (ATC 2/2023),3223.07,api
+5525,2026,Consumo de Material - Outros materiais,4896.76,api
+5525,2026,Correios,34067.48,api
+5525,2026,Cotas para Impulsionamento em Mídias Sociais,14764.58,api
+5525,2026,Viagens Oficiais - Diárias,0.0,api
+5525,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5672,2023,Aquisição de passagens aéreas (ATC 2/2023),98021.83,api
+5672,2023,Consumo de Material - Outros materiais,7496.63,api
+5672,2023,Correios,16678.34,api
+5672,2023,Cotas para Impulsionamento em Mídias Sociais,4257.1,api
+5672,2023,Viagens Oficiais - Diárias,56675.11,api
+5672,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5672,2024,Aquisição de passagens aéreas (ATC 2/2023),144604.92,api
+5672,2024,Consumo de Material - Outros materiais,4823.59,api
+5672,2024,Correios,23751.47,api
+5672,2024,Cotas para Impulsionamento em Mídias Sociais,30951.0,api
+5672,2024,Viagens Oficiais - Diárias,41334.71,api
+5672,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5672,2025,Aquisição de passagens aéreas (ATC 2/2023),156892.84,api
+5672,2025,Consumo de Material - Outros materiais,10504.13,api
+5672,2025,Correios,11114.39,api
+5672,2025,Cotas para Impulsionamento em Mídias Sociais,18392.29,api
+5672,2025,Viagens Oficiais - Diárias,107802.0,api
+5672,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5672,2026,Aquisição de passagens aéreas (ATC 2/2023),68473.76,api
+5672,2026,Consumo de Material - Outros materiais,7140.25,api
+5672,2026,Correios,40941.41,api
+5672,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5672,2026,Viagens Oficiais - Diárias,12107.26,api
+5672,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5718,2023,Aquisição de passagens aéreas (ATC 2/2023),109641.38,api
+5718,2023,Consumo de Material - Outros materiais,6285.52,api
+5718,2023,Correios,12183.48,api
+5718,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5718,2023,Viagens Oficiais - Diárias,25150.45,api
+5718,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5718,2024,Aquisição de passagens aéreas (ATC 2/2023),99720.52,api
+5718,2024,Consumo de Material - Outros materiais,5188.95,api
+5718,2024,Correios,10318.84,api
+5718,2024,Cotas para Impulsionamento em Mídias Sociais,652.0,api
+5718,2024,Viagens Oficiais - Diárias,32585.01,api
+5718,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5718,2025,Aquisição de passagens aéreas (ATC 2/2023),141424.89,api
+5718,2025,Consumo de Material - Outros materiais,7612.83,api
+5718,2025,Correios,15009.46,api
+5718,2025,Cotas para Impulsionamento em Mídias Sociais,23759.35,api
+5718,2025,Viagens Oficiais - Diárias,14541.85,api
+5718,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5718,2026,Aquisição de passagens aéreas (ATC 2/2023),122751.19,api
+5718,2026,Consumo de Material - Outros materiais,777.54,api
+5718,2026,Correios,94765.9,api
+5718,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5718,2026,Viagens Oficiais - Diárias,20952.23,api
+5718,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5732,2023,(lido),0.0,pagina
+5732,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5732,2023,Consumo de Material - Outros materiais,5612.1,pagina
+5732,2023,Correios,43416.83,pagina
+5732,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5732,2023,Viagens Oficiais - Diárias,41193.42,pagina
+5732,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5732,2024,(lido),0.0,pagina
+5732,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5732,2024,Consumo de Material - Outros materiais,4661.26,pagina
+5732,2024,Correios,11341.46,pagina
+5732,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5732,2024,Viagens Oficiais - Diárias,8377.51,pagina
+5732,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5732,2025,(lido),0.0,pagina
+5732,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5732,2025,Consumo de Material - Outros materiais,8142.8,pagina
+5732,2025,Correios,13096.45,pagina
+5732,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5732,2025,Viagens Oficiais - Diárias,33542.79,pagina
+5732,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5732,2026,(lido),0.0,pagina
+5732,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5732,2026,Consumo de Material - Outros materiais,6320.78,pagina
+5732,2026,Correios,3992.11,pagina
+5732,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5732,2026,Viagens Oficiais - Diárias,0.0,pagina
+5732,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5736,2023,Aquisição de passagens aéreas (ATC 2/2023),21226.05,api
+5736,2023,Consumo de Material - Outros materiais,11493.57,api
+5736,2023,Correios,16126.07,api
+5736,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5736,2023,Viagens Oficiais - Diárias,9930.14,api
+5736,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5736,2024,Aquisição de passagens aéreas (ATC 2/2023),49618.21,api
+5736,2024,Consumo de Material - Outros materiais,6667.41,api
+5736,2024,Correios,36223.51,api
+5736,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5736,2024,Viagens Oficiais - Diárias,22153.66,api
+5736,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5736,2025,Aquisição de passagens aéreas (ATC 2/2023),81058.14,api
+5736,2025,Consumo de Material - Outros materiais,10865.77,api
+5736,2025,Correios,27102.64,api
+5736,2025,Cotas para Impulsionamento em Mídias Sociais,17104.99,api
+5736,2025,Viagens Oficiais - Diárias,38157.86,api
+5736,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5736,2026,Aquisição de passagens aéreas (ATC 2/2023),93704.48,api
+5736,2026,Consumo de Material - Outros materiais,7403.86,api
+5736,2026,Correios,20328.99,api
+5736,2026,Cotas para Impulsionamento em Mídias Sociais,17761.19,api
+5736,2026,Viagens Oficiais - Diárias,0.0,api
+5736,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5748,2023,Aquisição de passagens aéreas (ATC 2/2023),97175.34,api
+5748,2023,Consumo de Material - Outros materiais,9424.6,api
+5748,2023,Correios,78492.14,api
+5748,2023,Cotas para Impulsionamento em Mídias Sociais,4830.44,api
+5748,2023,Viagens Oficiais - Diárias,41593.33,api
+5748,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5748,2024,Aquisição de passagens aéreas (ATC 2/2023),93591.14,api
+5748,2024,Consumo de Material - Outros materiais,7285.01,api
+5748,2024,Correios,43275.98,api
+5748,2024,Cotas para Impulsionamento em Mídias Sociais,10068.11,api
+5748,2024,Viagens Oficiais - Diárias,68315.56,api
+5748,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5748,2025,Aquisição de passagens aéreas (ATC 2/2023),141367.27,api
+5748,2025,Consumo de Material - Outros materiais,9535.51,api
+5748,2025,Correios,77772.7,api
+5748,2025,Cotas para Impulsionamento em Mídias Sociais,9302.13,api
+5748,2025,Viagens Oficiais - Diárias,41229.57,api
+5748,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5748,2026,Aquisição de passagens aéreas (ATC 2/2023),95527.46,api
+5748,2026,Consumo de Material - Outros materiais,6764.53,api
+5748,2026,Correios,20440.47,api
+5748,2026,Cotas para Impulsionamento em Mídias Sociais,5590.01,api
+5748,2026,Viagens Oficiais - Diárias,0.0,api
+5748,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5783,2023,Aquisição de passagens aéreas (ATC 2/2023),107706.92,api
+5783,2023,Consumo de Material - Outros materiais,5290.01,api
+5783,2023,Correios,63693.56,api
+5783,2023,Cotas para Impulsionamento em Mídias Sociais,4860.35,api
+5783,2023,Viagens Oficiais - Diárias,700.0,api
+5783,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5783,2024,Aquisição de passagens aéreas (ATC 2/2023),110704.02,api
+5783,2024,Consumo de Material - Outros materiais,5634.02,api
+5783,2024,Correios,24433.89,api
+5783,2024,Cotas para Impulsionamento em Mídias Sociais,2683.15,api
+5783,2024,Viagens Oficiais - Diárias,0.0,api
+5783,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5783,2025,Aquisição de passagens aéreas (ATC 2/2023),173555.77,api
+5783,2025,Consumo de Material - Outros materiais,7442.65,api
+5783,2025,Correios,93897.23,api
+5783,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5783,2025,Viagens Oficiais - Diárias,0.0,api
+5783,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5783,2026,Aquisição de passagens aéreas (ATC 2/2023),102434.25,api
+5783,2026,Consumo de Material - Outros materiais,4667.75,api
+5783,2026,Correios,16803.28,api
+5783,2026,Cotas para Impulsionamento em Mídias Sociais,9000.0,api
+5783,2026,Viagens Oficiais - Diárias,0.0,api
+5783,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5793,2023,Aquisição de passagens aéreas (ATC 2/2023),61418.41,api
+5793,2023,Consumo de Material - Outros materiais,6730.42,api
+5793,2023,Correios,502.38,api
+5793,2023,Cotas para Impulsionamento em Mídias Sociais,25028.11,api
+5793,2023,Viagens Oficiais - Diárias,34876.46,api
+5793,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5793,2024,Aquisição de passagens aéreas (ATC 2/2023),70118.82,api
+5793,2024,Consumo de Material - Outros materiais,5121.46,api
+5793,2024,Correios,18171.07,api
+5793,2024,Cotas para Impulsionamento em Mídias Sociais,32582.56,api
+5793,2024,Viagens Oficiais - Diárias,736.77,api
+5793,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5793,2025,Aquisição de passagens aéreas (ATC 2/2023),101841.22,api
+5793,2025,Consumo de Material - Outros materiais,7227.4,api
+5793,2025,Correios,36784.97,api
+5793,2025,Cotas para Impulsionamento em Mídias Sociais,4448.94,api
+5793,2025,Viagens Oficiais - Diárias,25175.9,api
+5793,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5793,2026,Aquisição de passagens aéreas (ATC 2/2023),86975.79,api
+5793,2026,Consumo de Material - Outros materiais,4688.22,api
+5793,2026,Correios,17650.69,api
+5793,2026,Cotas para Impulsionamento em Mídias Sociais,16422.75,api
+5793,2026,Viagens Oficiais - Diárias,0.0,api
+5793,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5894,2023,Aquisição de passagens aéreas (ATC 2/2023),45422.62,api
+5894,2023,Consumo de Material - Outros materiais,10356.53,api
+5894,2023,Correios,152753.87,api
+5894,2023,Cotas para Impulsionamento em Mídias Sociais,19001.22,api
+5894,2023,Viagens Oficiais - Diárias,9157.71,api
+5894,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5894,2024,Aquisição de passagens aéreas (ATC 2/2023),81175.23,api
+5894,2024,Consumo de Material - Outros materiais,9123.88,api
+5894,2024,Correios,159401.5,api
+5894,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5894,2024,Viagens Oficiais - Diárias,0.0,api
+5894,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5894,2025,Aquisição de passagens aéreas (ATC 2/2023),43112.25,api
+5894,2025,Consumo de Material - Outros materiais,10245.22,api
+5894,2025,Correios,161288.81,api
+5894,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5894,2025,Viagens Oficiais - Diárias,0.0,api
+5894,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5894,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5894,2026,Consumo de Material - Outros materiais,8538.91,api
+5894,2026,Correios,12969.6,api
+5894,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5894,2026,Viagens Oficiais - Diárias,0.0,api
+5894,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5895,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5895,2023,Consumo de Material - Outros materiais,0.0,api
+5895,2023,Correios,0.0,api
+5895,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5895,2023,Viagens Oficiais - Diárias,0.0,api
+5895,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5895,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5895,2024,Consumo de Material - Outros materiais,0.0,api
+5895,2024,Correios,0.0,api
+5895,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5895,2024,Viagens Oficiais - Diárias,0.0,api
+5895,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5895,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5895,2025,Consumo de Material - Outros materiais,0.0,api
+5895,2025,Correios,0.0,api
+5895,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5895,2025,Viagens Oficiais - Diárias,0.0,api
+5895,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5895,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5895,2026,Consumo de Material - Outros materiais,0.0,api
+5895,2026,Correios,0.0,api
+5895,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5895,2026,Viagens Oficiais - Diárias,0.0,api
+5895,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5899,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5899,2023,Consumo de Material - Outros materiais,6272.97,api
+5899,2023,Correios,83.43,api
+5899,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5899,2023,Viagens Oficiais - Diárias,0.0,api
+5899,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5899,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5899,2024,Consumo de Material - Outros materiais,5123.63,api
+5899,2024,Correios,0.0,api
+5899,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5899,2024,Viagens Oficiais - Diárias,0.0,api
+5899,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5899,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5899,2025,Consumo de Material - Outros materiais,4143.81,api
+5899,2025,Correios,0.0,api
+5899,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5899,2025,Viagens Oficiais - Diárias,0.0,api
+5899,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5899,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5899,2026,Consumo de Material - Outros materiais,4374.21,api
+5899,2026,Correios,0.0,api
+5899,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5899,2026,Viagens Oficiais - Diárias,0.0,api
+5899,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5905,2023,(lido),0.0,pagina
+5905,2023,Aquisição de passagens aéreas (ATC 2/2023),137315.28,pagina
+5905,2023,Consumo de Material - Outros materiais,6060.75,pagina
+5905,2023,Correios,81779.65,pagina
+5905,2023,Cotas para Impulsionamento em Mídias Sociais,27463.47,pagina
+5905,2023,Viagens Oficiais - Diárias,38321.46,pagina
+5905,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5905,2024,(lido),0.0,pagina
+5905,2024,Aquisição de passagens aéreas (ATC 2/2023),143322.74,pagina
+5905,2024,Consumo de Material - Outros materiais,5155.76,pagina
+5905,2024,Correios,43291.99,pagina
+5905,2024,Cotas para Impulsionamento em Mídias Sociais,10010.63,pagina
+5905,2024,Viagens Oficiais - Diárias,42575.97,pagina
+5905,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5906,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5906,2023,Consumo de Material - Outros materiais,0.0,api
+5906,2023,Correios,0.0,api
+5906,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5906,2023,Viagens Oficiais - Diárias,0.0,api
+5906,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5906,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5906,2024,Consumo de Material - Outros materiais,0.0,api
+5906,2024,Correios,0.0,api
+5906,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5906,2024,Viagens Oficiais - Diárias,0.0,api
+5906,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5906,2025,Aquisição de passagens aéreas (ATC 2/2023),186886.26,api
+5906,2025,Consumo de Material - Outros materiais,8001.1,api
+5906,2025,Correios,29455.38,api
+5906,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5906,2025,Viagens Oficiais - Diárias,104135.8,api
+5906,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5906,2026,Aquisição de passagens aéreas (ATC 2/2023),134420.87,api
+5906,2026,Consumo de Material - Outros materiais,7520.93,api
+5906,2026,Correios,12802.78,api
+5906,2026,Cotas para Impulsionamento em Mídias Sociais,260.8,api
+5906,2026,Viagens Oficiais - Diárias,0.0,api
+5906,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5917,2023,Aquisição de passagens aéreas (ATC 2/2023),75495.29,api
+5917,2023,Consumo de Material - Outros materiais,6203.78,api
+5917,2023,Correios,25362.33,api
+5917,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5917,2023,Viagens Oficiais - Diárias,700.0,api
+5917,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5917,2024,Aquisição de passagens aéreas (ATC 2/2023),75108.95,api
+5917,2024,Consumo de Material - Outros materiais,4961.94,api
+5917,2024,Correios,28313.71,api
+5917,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5917,2024,Viagens Oficiais - Diárias,14148.7,api
+5917,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5917,2025,Aquisição de passagens aéreas (ATC 2/2023),121706.88,api
+5917,2025,Consumo de Material - Outros materiais,8134.09,api
+5917,2025,Correios,83677.07,api
+5917,2025,Cotas para Impulsionamento em Mídias Sociais,21923.75,api
+5917,2025,Viagens Oficiais - Diárias,31748.98,api
+5917,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5917,2026,Aquisição de passagens aéreas (ATC 2/2023),84254.5,api
+5917,2026,Consumo de Material - Outros materiais,6692.19,api
+5917,2026,Correios,33433.84,api
+5917,2026,Cotas para Impulsionamento em Mídias Sociais,9000.0,api
+5917,2026,Viagens Oficiais - Diárias,13521.76,api
+5917,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5924,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5924,2023,Consumo de Material - Outros materiais,4775.34,api
+5924,2023,Correios,275.08,api
+5924,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5924,2023,Viagens Oficiais - Diárias,0.0,api
+5924,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5924,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5924,2024,Consumo de Material - Outros materiais,3405.48,api
+5924,2024,Correios,15.56,api
+5924,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5924,2024,Viagens Oficiais - Diárias,0.0,api
+5924,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5924,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5924,2025,Consumo de Material - Outros materiais,4875.18,api
+5924,2025,Correios,0.0,api
+5924,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5924,2025,Viagens Oficiais - Diárias,0.0,api
+5924,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5924,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5924,2026,Consumo de Material - Outros materiais,3699.77,api
+5924,2026,Correios,22.56,api
+5924,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5924,2026,Viagens Oficiais - Diárias,0.0,api
+5924,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5926,2023,Aquisição de passagens aéreas (ATC 2/2023),84368.32,api
+5926,2023,Consumo de Material - Outros materiais,5058.23,api
+5926,2023,Correios,13276.95,api
+5926,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5926,2023,Viagens Oficiais - Diárias,0.0,api
+5926,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5926,2024,Aquisição de passagens aéreas (ATC 2/2023),157877.91,api
+5926,2024,Consumo de Material - Outros materiais,4362.59,api
+5926,2024,Correios,13835.82,api
+5926,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5926,2024,Viagens Oficiais - Diárias,0.0,api
+5926,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5926,2025,Aquisição de passagens aéreas (ATC 2/2023),253224.21,api
+5926,2025,Consumo de Material - Outros materiais,6376.35,api
+5926,2025,Correios,16848.08,api
+5926,2025,Cotas para Impulsionamento em Mídias Sociais,3300.0,api
+5926,2025,Viagens Oficiais - Diárias,0.0,api
+5926,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5926,2026,Aquisição de passagens aéreas (ATC 2/2023),148299.44,api
+5926,2026,Consumo de Material - Outros materiais,5020.3,api
+5926,2026,Correios,21505.58,api
+5926,2026,Cotas para Impulsionamento em Mídias Sociais,2882.54,api
+5926,2026,Viagens Oficiais - Diárias,0.0,api
+5926,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5936,2023,Aquisição de passagens aéreas (ATC 2/2023),96144.15,api
+5936,2023,Consumo de Material - Outros materiais,3393.02,api
+5936,2023,Correios,2924.64,api
+5936,2023,Cotas para Impulsionamento em Mídias Sociais,8081.52,api
+5936,2023,Viagens Oficiais - Diárias,0.0,api
+5936,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5936,2024,Aquisição de passagens aéreas (ATC 2/2023),158074.0,api
+5936,2024,Consumo de Material - Outros materiais,2117.95,api
+5936,2024,Correios,4709.95,api
+5936,2024,Cotas para Impulsionamento em Mídias Sociais,4991.76,api
+5936,2024,Viagens Oficiais - Diárias,0.0,api
+5936,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5936,2025,Aquisição de passagens aéreas (ATC 2/2023),156398.36,api
+5936,2025,Consumo de Material - Outros materiais,4249.88,api
+5936,2025,Correios,54275.95,api
+5936,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5936,2025,Viagens Oficiais - Diárias,50295.14,api
+5936,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5936,2026,Aquisição de passagens aéreas (ATC 2/2023),132816.35,api
+5936,2026,Consumo de Material - Outros materiais,4141.99,api
+5936,2026,Correios,46754.31,api
+5936,2026,Cotas para Impulsionamento em Mídias Sociais,8635.28,api
+5936,2026,Viagens Oficiais - Diárias,10161.02,api
+5936,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5942,2023,Aquisição de passagens aéreas (ATC 2/2023),84069.08,api
+5942,2023,Consumo de Material - Outros materiais,5281.85,api
+5942,2023,Correios,6622.76,api
+5942,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5942,2023,Viagens Oficiais - Diárias,43982.24,api
+5942,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5942,2024,Aquisição de passagens aéreas (ATC 2/2023),110591.66,api
+5942,2024,Consumo de Material - Outros materiais,3416.16,api
+5942,2024,Correios,537.71,api
+5942,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5942,2024,Viagens Oficiais - Diárias,0.0,api
+5942,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5942,2025,Aquisição de passagens aéreas (ATC 2/2023),58259.78,api
+5942,2025,Consumo de Material - Outros materiais,7462.04,api
+5942,2025,Correios,7875.21,api
+5942,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5942,2025,Viagens Oficiais - Diárias,0.0,api
+5942,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5942,2026,Aquisição de passagens aéreas (ATC 2/2023),55886.74,api
+5942,2026,Consumo de Material - Outros materiais,5637.75,api
+5942,2026,Correios,434.78,api
+5942,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5942,2026,Viagens Oficiais - Diárias,0.0,api
+5942,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5953,2023,Aquisição de passagens aéreas (ATC 2/2023),146943.97,api
+5953,2023,Consumo de Material - Outros materiais,7248.86,api
+5953,2023,Correios,67805.38,api
+5953,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5953,2023,Viagens Oficiais - Diárias,78289.1,api
+5953,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5953,2024,Aquisição de passagens aéreas (ATC 2/2023),178565.38,api
+5953,2024,Consumo de Material - Outros materiais,6421.4,api
+5953,2024,Correios,76008.76,api
+5953,2024,Cotas para Impulsionamento em Mídias Sociais,31008.72,api
+5953,2024,Viagens Oficiais - Diárias,16699.09,api
+5953,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5953,2025,Aquisição de passagens aéreas (ATC 2/2023),147097.12,api
+5953,2025,Consumo de Material - Outros materiais,8580.36,api
+5953,2025,Correios,41746.39,api
+5953,2025,Cotas para Impulsionamento em Mídias Sociais,34913.79,api
+5953,2025,Viagens Oficiais - Diárias,71662.56,api
+5953,2025,Viagens Oficiais - Ressarcimento de Passagens,50362.34,api
+5953,2026,Aquisição de passagens aéreas (ATC 2/2023),100127.44,api
+5953,2026,Consumo de Material - Outros materiais,6806.35,api
+5953,2026,Correios,8089.18,api
+5953,2026,Cotas para Impulsionamento em Mídias Sociais,8862.93,api
+5953,2026,Viagens Oficiais - Diárias,44057.32,api
+5953,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5959,2023,Aquisição de passagens aéreas (ATC 2/2023),77066.45,api
+5959,2023,Consumo de Material - Outros materiais,6432.92,api
+5959,2023,Correios,37201.42,api
+5959,2023,Cotas para Impulsionamento em Mídias Sociais,23859.28,api
+5959,2023,Viagens Oficiais - Diárias,3424.46,api
+5959,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5959,2024,Aquisição de passagens aéreas (ATC 2/2023),102938.14,api
+5959,2024,Consumo de Material - Outros materiais,4286.33,api
+5959,2024,Correios,40755.23,api
+5959,2024,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5959,2024,Viagens Oficiais - Diárias,0.0,api
+5959,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5959,2025,Aquisição de passagens aéreas (ATC 2/2023),153441.66,api
+5959,2025,Consumo de Material - Outros materiais,5034.88,api
+5959,2025,Correios,10229.84,api
+5959,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5959,2025,Viagens Oficiais - Diárias,0.0,api
+5959,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5959,2026,Aquisição de passagens aéreas (ATC 2/2023),92028.51,api
+5959,2026,Consumo de Material - Outros materiais,3579.88,api
+5959,2026,Correios,11291.04,api
+5959,2026,Cotas para Impulsionamento em Mídias Sociais,12000.0,api
+5959,2026,Viagens Oficiais - Diárias,0.0,api
+5959,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5967,2023,Aquisição de passagens aéreas (ATC 2/2023),34480.99,api
+5967,2023,Consumo de Material - Outros materiais,4602.43,api
+5967,2023,Correios,51373.13,api
+5967,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5967,2023,Viagens Oficiais - Diárias,38454.2,api
+5967,2023,Viagens Oficiais - Ressarcimento de Passagens,52640.69,api
+5967,2024,Aquisição de passagens aéreas (ATC 2/2023),70398.42,api
+5967,2024,Consumo de Material - Outros materiais,4229.57,api
+5967,2024,Correios,50918.75,api
+5967,2024,Cotas para Impulsionamento em Mídias Sociais,35587.03,api
+5967,2024,Viagens Oficiais - Diárias,22195.7,api
+5967,2024,Viagens Oficiais - Ressarcimento de Passagens,25391.69,api
+5967,2025,Aquisição de passagens aéreas (ATC 2/2023),2099.09,api
+5967,2025,Consumo de Material - Outros materiais,7043.54,api
+5967,2025,Correios,41254.35,api
+5967,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5967,2025,Viagens Oficiais - Diárias,36843.0,api
+5967,2025,Viagens Oficiais - Ressarcimento de Passagens,74185.14,api
+5967,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5967,2026,Consumo de Material - Outros materiais,6208.88,api
+5967,2026,Correios,41304.58,api
+5967,2026,Cotas para Impulsionamento em Mídias Sociais,12000.0,api
+5967,2026,Viagens Oficiais - Diárias,0.0,api
+5967,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5973,2023,Aquisição de passagens aéreas (ATC 2/2023),96408.72,api
+5973,2023,Consumo de Material - Outros materiais,3948.51,api
+5973,2023,Correios,70982.21,api
+5973,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5973,2023,Viagens Oficiais - Diárias,28145.99,api
+5973,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5973,2024,Aquisição de passagens aéreas (ATC 2/2023),81241.25,api
+5973,2024,Consumo de Material - Outros materiais,6062.74,api
+5973,2024,Correios,73562.41,api
+5973,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5973,2024,Viagens Oficiais - Diárias,44493.81,api
+5973,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5973,2025,Aquisição de passagens aéreas (ATC 2/2023),98959.71,api
+5973,2025,Consumo de Material - Outros materiais,5506.28,api
+5973,2025,Correios,34727.03,api
+5973,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5973,2025,Viagens Oficiais - Diárias,0.0,api
+5973,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5973,2026,Aquisição de passagens aéreas (ATC 2/2023),50349.47,api
+5973,2026,Consumo de Material - Outros materiais,4248.86,api
+5973,2026,Correios,42821.91,api
+5973,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5973,2026,Viagens Oficiais - Diárias,47803.51,api
+5973,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5974,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5974,2023,Consumo de Material - Outros materiais,0.0,api
+5974,2023,Correios,0.0,api
+5974,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5974,2023,Viagens Oficiais - Diárias,0.0,api
+5974,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5974,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5974,2024,Consumo de Material - Outros materiais,0.0,api
+5974,2024,Correios,0.0,api
+5974,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5974,2024,Viagens Oficiais - Diárias,0.0,api
+5974,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5974,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5974,2025,Consumo de Material - Outros materiais,0.0,api
+5974,2025,Correios,0.0,api
+5974,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5974,2025,Viagens Oficiais - Diárias,0.0,api
+5974,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5974,2026,Aquisição de passagens aéreas (ATC 2/2023),8596.44,api
+5974,2026,Consumo de Material - Outros materiais,785.86,api
+5974,2026,Correios,0.0,api
+5974,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5974,2026,Viagens Oficiais - Diárias,0.0,api
+5974,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5976,2023,(lido),0.0,pagina
+5976,2023,Aquisição de passagens aéreas (ATC 2/2023),32544.96,pagina
+5976,2023,Consumo de Material - Outros materiais,6257.53,pagina
+5976,2023,Correios,0.0,pagina
+5976,2023,Cotas para Impulsionamento em Mídias Sociais,25343.18,pagina
+5976,2023,Viagens Oficiais - Diárias,0.0,pagina
+5976,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5976,2024,(lido),0.0,pagina
+5976,2024,Aquisição de passagens aéreas (ATC 2/2023),32167.66,pagina
+5976,2024,Consumo de Material - Outros materiais,3675.97,pagina
+5976,2024,Correios,0.0,pagina
+5976,2024,Cotas para Impulsionamento em Mídias Sociais,12233.29,pagina
+5976,2024,Viagens Oficiais - Diárias,0.0,pagina
+5976,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5976,2025,(lido),0.0,pagina
+5976,2025,Aquisição de passagens aéreas (ATC 2/2023),50158.63,pagina
+5976,2025,Consumo de Material - Outros materiais,5867.51,pagina
+5976,2025,Correios,3151.76,pagina
+5976,2025,Cotas para Impulsionamento em Mídias Sociais,23499.89,pagina
+5976,2025,Viagens Oficiais - Diárias,0.0,pagina
+5976,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5976,2026,(lido),0.0,pagina
+5976,2026,Aquisição de passagens aéreas (ATC 2/2023),15639.53,pagina
+5976,2026,Consumo de Material - Outros materiais,3187.46,pagina
+5976,2026,Correios,2816.37,pagina
+5976,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5976,2026,Viagens Oficiais - Diárias,0.0,pagina
+5976,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5977,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5977,2023,Consumo de Material - Outros materiais,0.0,api
+5977,2023,Correios,0.0,api
+5977,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5977,2023,Viagens Oficiais - Diárias,0.0,api
+5977,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5977,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5977,2024,Consumo de Material - Outros materiais,0.0,api
+5977,2024,Correios,0.0,api
+5977,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5977,2024,Viagens Oficiais - Diárias,0.0,api
+5977,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5977,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5977,2025,Consumo de Material - Outros materiais,0.0,api
+5977,2025,Correios,0.0,api
+5977,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5977,2025,Viagens Oficiais - Diárias,0.0,api
+5977,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5977,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+5977,2026,Consumo de Material - Outros materiais,174.77,api
+5977,2026,Correios,0.0,api
+5977,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5977,2026,Viagens Oficiais - Diárias,0.0,api
+5977,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5979,2023,(lido),0.0,pagina
+5979,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5979,2023,Consumo de Material - Outros materiais,3802.99,pagina
+5979,2023,Correios,1274.8,pagina
+5979,2023,Cotas para Impulsionamento em Mídias Sociais,400.0,pagina
+5979,2023,Viagens Oficiais - Diárias,48225.14,pagina
+5979,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5979,2024,(lido),0.0,pagina
+5979,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5979,2024,Consumo de Material - Outros materiais,5067.01,pagina
+5979,2024,Correios,2545.11,pagina
+5979,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5979,2024,Viagens Oficiais - Diárias,0.0,pagina
+5979,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5979,2025,(lido),0.0,pagina
+5979,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5979,2025,Consumo de Material - Outros materiais,7952.77,pagina
+5979,2025,Correios,831.75,pagina
+5979,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+5979,2025,Viagens Oficiais - Diárias,14578.93,pagina
+5979,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5979,2026,(lido),0.0,pagina
+5979,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+5979,2026,Consumo de Material - Outros materiais,5370.67,pagina
+5979,2026,Correios,101.8,pagina
+5979,2026,Cotas para Impulsionamento em Mídias Sociais,2062.87,pagina
+5979,2026,Viagens Oficiais - Diárias,0.0,pagina
+5979,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5982,2023,Aquisição de passagens aéreas (ATC 2/2023),49070.56,api
+5982,2023,Consumo de Material - Outros materiais,3515.97,api
+5982,2023,Correios,14687.86,api
+5982,2023,Cotas para Impulsionamento em Mídias Sociais,3000.0,api
+5982,2023,Viagens Oficiais - Diárias,68792.34,api
+5982,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5982,2024,Aquisição de passagens aéreas (ATC 2/2023),87140.63,api
+5982,2024,Consumo de Material - Outros materiais,2901.08,api
+5982,2024,Correios,9760.86,api
+5982,2024,Cotas para Impulsionamento em Mídias Sociais,14871.88,api
+5982,2024,Viagens Oficiais - Diárias,59026.58,api
+5982,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5982,2025,Aquisição de passagens aéreas (ATC 2/2023),125895.59,api
+5982,2025,Consumo de Material - Outros materiais,4711.34,api
+5982,2025,Correios,2699.01,api
+5982,2025,Cotas para Impulsionamento em Mídias Sociais,8565.14,api
+5982,2025,Viagens Oficiais - Diárias,79575.76,api
+5982,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5982,2026,Aquisição de passagens aéreas (ATC 2/2023),91243.18,api
+5982,2026,Consumo de Material - Outros materiais,4906.72,api
+5982,2026,Correios,15974.84,api
+5982,2026,Cotas para Impulsionamento em Mídias Sociais,3761.03,api
+5982,2026,Viagens Oficiais - Diárias,0.0,api
+5982,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5985,2023,Aquisição de passagens aéreas (ATC 2/2023),84923.41,api
+5985,2023,Consumo de Material - Outros materiais,7720.54,api
+5985,2023,Correios,43772.55,api
+5985,2023,Cotas para Impulsionamento em Mídias Sociais,31583.3,api
+5985,2023,Viagens Oficiais - Diárias,138356.96,api
+5985,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5985,2024,Aquisição de passagens aéreas (ATC 2/2023),110093.86,api
+5985,2024,Consumo de Material - Outros materiais,6755.92,api
+5985,2024,Correios,50980.2,api
+5985,2024,Cotas para Impulsionamento em Mídias Sociais,34797.61,api
+5985,2024,Viagens Oficiais - Diárias,166308.47,api
+5985,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5985,2025,Aquisição de passagens aéreas (ATC 2/2023),163009.73,api
+5985,2025,Consumo de Material - Outros materiais,11658.65,api
+5985,2025,Correios,69469.59,api
+5985,2025,Cotas para Impulsionamento em Mídias Sociais,31412.36,api
+5985,2025,Viagens Oficiais - Diárias,162639.59,api
+5985,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5985,2026,Aquisição de passagens aéreas (ATC 2/2023),134850.72,api
+5985,2026,Consumo de Material - Outros materiais,8280.09,api
+5985,2026,Correios,42913.0,api
+5985,2026,Cotas para Impulsionamento em Mídias Sociais,31258.68,api
+5985,2026,Viagens Oficiais - Diárias,58150.2,api
+5985,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5988,2023,Aquisição de passagens aéreas (ATC 2/2023),86033.01,api
+5988,2023,Consumo de Material - Outros materiais,4470.99,api
+5988,2023,Correios,22995.37,api
+5988,2023,Cotas para Impulsionamento em Mídias Sociais,6499.0,api
+5988,2023,Viagens Oficiais - Diárias,0.0,api
+5988,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5988,2024,Aquisição de passagens aéreas (ATC 2/2023),141250.43,api
+5988,2024,Consumo de Material - Outros materiais,4051.02,api
+5988,2024,Correios,9297.53,api
+5988,2024,Cotas para Impulsionamento em Mídias Sociais,2298.16,api
+5988,2024,Viagens Oficiais - Diárias,25840.99,api
+5988,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5988,2025,Aquisição de passagens aéreas (ATC 2/2023),197411.71,api
+5988,2025,Consumo de Material - Outros materiais,7246.62,api
+5988,2025,Correios,15623.72,api
+5988,2025,Cotas para Impulsionamento em Mídias Sociais,12801.51,api
+5988,2025,Viagens Oficiais - Diárias,25931.43,api
+5988,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5988,2026,Aquisição de passagens aéreas (ATC 2/2023),113209.56,api
+5988,2026,Consumo de Material - Outros materiais,6441.41,api
+5988,2026,Correios,14168.55,api
+5988,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5988,2026,Viagens Oficiais - Diárias,0.0,api
+5988,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5990,2023,Aquisição de passagens aéreas (ATC 2/2023),82751.34,api
+5990,2023,Consumo de Material - Outros materiais,3622.37,api
+5990,2023,Correios,38099.38,api
+5990,2023,Cotas para Impulsionamento em Mídias Sociais,14601.6,api
+5990,2023,Viagens Oficiais - Diárias,94877.54,api
+5990,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5990,2024,Aquisição de passagens aéreas (ATC 2/2023),90659.46,api
+5990,2024,Consumo de Material - Outros materiais,1483.64,api
+5990,2024,Correios,19529.16,api
+5990,2024,Cotas para Impulsionamento em Mídias Sociais,17892.09,api
+5990,2024,Viagens Oficiais - Diárias,18224.1,api
+5990,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5990,2025,Aquisição de passagens aéreas (ATC 2/2023),157587.09,api
+5990,2025,Consumo de Material - Outros materiais,5421.57,api
+5990,2025,Correios,50266.21,api
+5990,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
+5990,2025,Viagens Oficiais - Diárias,32296.16,api
+5990,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5990,2026,Aquisição de passagens aéreas (ATC 2/2023),105114.64,api
+5990,2026,Consumo de Material - Outros materiais,6097.27,api
+5990,2026,Correios,67950.7,api
+5990,2026,Cotas para Impulsionamento em Mídias Sociais,9000.0,api
+5990,2026,Viagens Oficiais - Diárias,20753.32,api
+5990,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5991,2024,(lido),0.0,pagina
+5991,2024,Aquisição de passagens aéreas (ATC 2/2023),60953.75,pagina
+5991,2024,Consumo de Material - Outros materiais,794.28,pagina
+5991,2024,Correios,24572.07,pagina
+5991,2024,Cotas para Impulsionamento em Mídias Sociais,10167.07,pagina
+5991,2024,Viagens Oficiais - Diárias,0.0,pagina
+5991,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+5998,2023,Aquisição de passagens aéreas (ATC 2/2023),114359.03,api
+5998,2023,Consumo de Material - Outros materiais,3407.65,api
+5998,2023,Correios,8521.81,api
+5998,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5998,2023,Viagens Oficiais - Diárias,27161.49,api
+5998,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5998,2024,Aquisição de passagens aéreas (ATC 2/2023),96626.48,api
+5998,2024,Consumo de Material - Outros materiais,2530.83,api
+5998,2024,Correios,4353.61,api
+5998,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+5998,2024,Viagens Oficiais - Diárias,28158.96,api
+5998,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5998,2025,Aquisição de passagens aéreas (ATC 2/2023),102205.92,api
+5998,2025,Consumo de Material - Outros materiais,4470.98,api
+5998,2025,Correios,25843.74,api
+5998,2025,Cotas para Impulsionamento em Mídias Sociais,7650.0,api
+5998,2025,Viagens Oficiais - Diárias,92796.33,api
+5998,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+5998,2026,Aquisição de passagens aéreas (ATC 2/2023),49949.03,api
+5998,2026,Consumo de Material - Outros materiais,3423.52,api
+5998,2026,Correios,19435.47,api
+5998,2026,Cotas para Impulsionamento em Mídias Sociais,5043.99,api
+5998,2026,Viagens Oficiais - Diárias,13442.99,api
+5998,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6008,2023,Aquisição de passagens aéreas (ATC 2/2023),29935.27,api
+6008,2023,Consumo de Material - Outros materiais,4590.78,api
+6008,2023,Correios,649.56,api
+6008,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6008,2023,Viagens Oficiais - Diárias,56700.36,api
+6008,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6008,2024,Aquisição de passagens aéreas (ATC 2/2023),46055.55,api
+6008,2024,Consumo de Material - Outros materiais,4593.69,api
+6008,2024,Correios,3178.87,api
+6008,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6008,2024,Viagens Oficiais - Diárias,70635.09,api
+6008,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6008,2025,Aquisição de passagens aéreas (ATC 2/2023),69602.24,api
+6008,2025,Consumo de Material - Outros materiais,6914.23,api
+6008,2025,Correios,10263.24,api
+6008,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6008,2025,Viagens Oficiais - Diárias,43603.01,api
+6008,2025,Viagens Oficiais - Ressarcimento de Passagens,10105.33,api
+6008,2026,Aquisição de passagens aéreas (ATC 2/2023),62243.24,api
+6008,2026,Consumo de Material - Outros materiais,4919.1,api
+6008,2026,Correios,373.16,api
+6008,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6008,2026,Viagens Oficiais - Diárias,16672.44,api
+6008,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6009,2023,Aquisição de passagens aéreas (ATC 2/2023),43009.24,api
+6009,2023,Consumo de Material - Outros materiais,7720.48,api
+6009,2023,Correios,21418.64,api
+6009,2023,Cotas para Impulsionamento em Mídias Sociais,6215.61,api
+6009,2023,Viagens Oficiais - Diárias,93259.48,api
+6009,2023,Viagens Oficiais - Ressarcimento de Passagens,4775.87,api
+6009,2024,Aquisição de passagens aéreas (ATC 2/2023),60410.78,api
+6009,2024,Consumo de Material - Outros materiais,5035.85,api
+6009,2024,Correios,46823.16,api
+6009,2024,Cotas para Impulsionamento em Mídias Sociais,20099.4,api
+6009,2024,Viagens Oficiais - Diárias,127095.21,api
+6009,2024,Viagens Oficiais - Ressarcimento de Passagens,19760.32,api
+6009,2025,Aquisição de passagens aéreas (ATC 2/2023),60376.9,api
+6009,2025,Consumo de Material - Outros materiais,6103.57,api
+6009,2025,Correios,43435.84,api
+6009,2025,Cotas para Impulsionamento em Mídias Sociais,6235.62,api
+6009,2025,Viagens Oficiais - Diárias,140768.53,api
+6009,2025,Viagens Oficiais - Ressarcimento de Passagens,4521.0,api
+6009,2026,Aquisição de passagens aéreas (ATC 2/2023),55037.32,api
+6009,2026,Consumo de Material - Outros materiais,4676.05,api
+6009,2026,Correios,135681.56,api
+6009,2026,Cotas para Impulsionamento em Mídias Sociais,19125.12,api
+6009,2026,Viagens Oficiais - Diárias,208800.23,api
+6009,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6010,2023,Aquisição de passagens aéreas (ATC 2/2023),45395.0,api
+6010,2023,Consumo de Material - Outros materiais,7112.91,api
+6010,2023,Correios,28847.54,api
+6010,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6010,2023,Viagens Oficiais - Diárias,0.0,api
+6010,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6010,2024,Aquisição de passagens aéreas (ATC 2/2023),57574.7,api
+6010,2024,Consumo de Material - Outros materiais,4334.97,api
+6010,2024,Correios,7550.84,api
+6010,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6010,2024,Viagens Oficiais - Diárias,0.0,api
+6010,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6010,2025,Aquisição de passagens aéreas (ATC 2/2023),83975.24,api
+6010,2025,Consumo de Material - Outros materiais,8435.62,api
+6010,2025,Correios,23039.35,api
+6010,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6010,2025,Viagens Oficiais - Diárias,0.0,api
+6010,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6010,2026,Aquisição de passagens aéreas (ATC 2/2023),35205.74,api
+6010,2026,Consumo de Material - Outros materiais,7049.57,api
+6010,2026,Correios,25251.43,api
+6010,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6010,2026,Viagens Oficiais - Diárias,0.0,api
+6010,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6011,2024,(lido),0.0,pagina
+6011,2024,Aquisição de passagens aéreas (ATC 2/2023),32164.56,pagina
+6011,2024,Consumo de Material - Outros materiais,2106.95,pagina
+6011,2024,Correios,13102.84,pagina
+6011,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6011,2024,Viagens Oficiais - Diárias,9065.55,pagina
+6011,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6015,2024,(lido),0.0,pagina
+6015,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6015,2024,Consumo de Material - Outros materiais,2609.41,pagina
+6015,2024,Correios,16636.11,pagina
+6015,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6015,2024,Viagens Oficiais - Diárias,1473.54,pagina
+6015,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6021,2023,(lido),0.0,pagina
+6021,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6021,2023,Consumo de Material - Outros materiais,2052.46,pagina
+6021,2023,Correios,1226.67,pagina
+6021,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6021,2023,Viagens Oficiais - Diárias,12464.21,pagina
+6021,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6025,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6025,2023,Consumo de Material - Outros materiais,0.0,api
+6025,2023,Correios,0.0,api
+6025,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6025,2023,Viagens Oficiais - Diárias,0.0,api
+6025,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6025,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6025,2024,Consumo de Material - Outros materiais,0.0,api
+6025,2024,Correios,0.0,api
+6025,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6025,2024,Viagens Oficiais - Diárias,0.0,api
+6025,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6025,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6025,2025,Consumo de Material - Outros materiais,0.0,api
+6025,2025,Correios,0.0,api
+6025,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6025,2025,Viagens Oficiais - Diárias,0.0,api
+6025,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6025,2026,Aquisição de passagens aéreas (ATC 2/2023),160711.28,api
+6025,2026,Consumo de Material - Outros materiais,3227.72,api
+6025,2026,Correios,0.0,api
+6025,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6025,2026,Viagens Oficiais - Diárias,17197.61,api
+6025,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6027,2023,(lido),0.0,pagina
+6027,2023,Aquisição de passagens aéreas (ATC 2/2023),150985.07,pagina
+6027,2023,Consumo de Material - Outros materiais,4191.83,pagina
+6027,2023,Correios,31657.82,pagina
+6027,2023,Cotas para Impulsionamento em Mídias Sociais,7309.62,pagina
+6027,2023,Viagens Oficiais - Diárias,12025.61,pagina
+6027,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6027,2024,(lido),0.0,pagina
+6027,2024,Aquisição de passagens aéreas (ATC 2/2023),143472.18,pagina
+6027,2024,Consumo de Material - Outros materiais,4086.38,pagina
+6027,2024,Correios,78867.15,pagina
+6027,2024,Cotas para Impulsionamento em Mídias Sociais,3159.66,pagina
+6027,2024,Viagens Oficiais - Diárias,26590.17,pagina
+6027,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6027,2025,(lido),0.0,pagina
+6027,2025,Aquisição de passagens aéreas (ATC 2/2023),231262.75,pagina
+6027,2025,Consumo de Material - Outros materiais,5399.76,pagina
+6027,2025,Correios,46442.87,pagina
+6027,2025,Cotas para Impulsionamento em Mídias Sociais,6636.85,pagina
+6027,2025,Viagens Oficiais - Diárias,0.0,pagina
+6027,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6027,2026,(lido),0.0,pagina
+6027,2026,Aquisição de passagens aéreas (ATC 2/2023),33722.36,pagina
+6027,2026,Consumo de Material - Outros materiais,1091.26,pagina
+6027,2026,Correios,22325.0,pagina
+6027,2026,Cotas para Impulsionamento em Mídias Sociais,2645.43,pagina
+6027,2026,Viagens Oficiais - Diárias,0.0,pagina
+6027,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6295,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6295,2023,Consumo de Material - Outros materiais,59.92,api
+6295,2023,Correios,0.0,api
+6295,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6295,2023,Viagens Oficiais - Diárias,0.0,api
+6295,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6295,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6295,2024,Consumo de Material - Outros materiais,0.0,api
+6295,2024,Correios,270.89,api
+6295,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6295,2024,Viagens Oficiais - Diárias,0.0,api
+6295,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6295,2025,Aquisição de passagens aéreas (ATC 2/2023),3869.82,api
+6295,2025,Consumo de Material - Outros materiais,0.0,api
+6295,2025,Correios,0.0,api
+6295,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6295,2025,Viagens Oficiais - Diárias,0.0,api
+6295,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6295,2026,Aquisição de passagens aéreas (ATC 2/2023),47287.29,api
+6295,2026,Consumo de Material - Outros materiais,2614.97,api
+6295,2026,Correios,44.88,api
+6295,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6295,2026,Viagens Oficiais - Diárias,0.0,api
+6295,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6304,2023,(lido),0.0,pagina
+6304,2023,Aquisição de passagens aéreas (ATC 2/2023),91667.02,pagina
+6304,2023,Consumo de Material - Outros materiais,3585.79,pagina
+6304,2023,Correios,94.99,pagina
+6304,2023,Cotas para Impulsionamento em Mídias Sociais,482.28,pagina
+6304,2023,Viagens Oficiais - Diárias,0.0,pagina
+6304,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6304,2024,(lido),0.0,pagina
+6304,2024,Aquisição de passagens aéreas (ATC 2/2023),66451.17,pagina
+6304,2024,Consumo de Material - Outros materiais,3037.06,pagina
+6304,2024,Correios,8211.67,pagina
+6304,2024,Cotas para Impulsionamento em Mídias Sociais,6464.87,pagina
+6304,2024,Viagens Oficiais - Diárias,0.0,pagina
+6304,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6304,2025,(lido),0.0,pagina
+6304,2025,Aquisição de passagens aéreas (ATC 2/2023),73878.0,pagina
+6304,2025,Consumo de Material - Outros materiais,4853.75,pagina
+6304,2025,Correios,12303.56,pagina
+6304,2025,Cotas para Impulsionamento em Mídias Sociais,11166.85,pagina
+6304,2025,Viagens Oficiais - Diárias,0.0,pagina
+6304,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6304,2026,(lido),0.0,pagina
+6304,2026,Aquisição de passagens aéreas (ATC 2/2023),28957.96,pagina
+6304,2026,Consumo de Material - Outros materiais,1164.35,pagina
+6304,2026,Correios,205.06,pagina
+6304,2026,Cotas para Impulsionamento em Mídias Sociais,1501.76,pagina
+6304,2026,Viagens Oficiais - Diárias,0.0,pagina
+6304,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6305,2025,(lido),0.0,pagina
+6305,2025,Aquisição de passagens aéreas (ATC 2/2023),65082.54,pagina
+6305,2025,Consumo de Material - Outros materiais,2666.56,pagina
+6305,2025,Correios,2796.45,pagina
+6305,2025,Cotas para Impulsionamento em Mídias Sociais,728.88,pagina
+6305,2025,Viagens Oficiais - Diárias,0.0,pagina
+6305,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6305,2026,(lido),0.0,pagina
+6305,2026,Aquisição de passagens aéreas (ATC 2/2023),9689.25,pagina
+6305,2026,Consumo de Material - Outros materiais,678.72,pagina
+6305,2026,Correios,0.0,pagina
+6305,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6305,2026,Viagens Oficiais - Diárias,0.0,pagina
+6305,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6331,2023,Aquisição de passagens aéreas (ATC 2/2023),66762.32,api
+6331,2023,Consumo de Material - Outros materiais,7012.25,api
+6331,2023,Correios,52.42,api
+6331,2023,Cotas para Impulsionamento em Mídias Sociais,199.96,api
+6331,2023,Viagens Oficiais - Diárias,9851.78,api
+6331,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6331,2024,Aquisição de passagens aéreas (ATC 2/2023),99313.41,api
+6331,2024,Consumo de Material - Outros materiais,5693.07,api
+6331,2024,Correios,253.62,api
+6331,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6331,2024,Viagens Oficiais - Diárias,17655.84,api
+6331,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6331,2025,Aquisição de passagens aéreas (ATC 2/2023),111617.47,api
+6331,2025,Consumo de Material - Outros materiais,8245.24,api
+6331,2025,Correios,78.36,api
+6331,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6331,2025,Viagens Oficiais - Diárias,78555.81,api
+6331,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6331,2026,Aquisição de passagens aéreas (ATC 2/2023),56008.37,api
+6331,2026,Consumo de Material - Outros materiais,6740.53,api
+6331,2026,Correios,55.89,api
+6331,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6331,2026,Viagens Oficiais - Diárias,0.0,api
+6331,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6335,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6335,2023,Consumo de Material - Outros materiais,11678.43,api
+6335,2023,Correios,16719.47,api
+6335,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6335,2023,Viagens Oficiais - Diárias,700.0,api
+6335,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6335,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6335,2024,Consumo de Material - Outros materiais,8953.06,api
+6335,2024,Correios,18005.23,api
+6335,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6335,2024,Viagens Oficiais - Diárias,2110.44,api
+6335,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6335,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6335,2025,Consumo de Material - Outros materiais,10003.5,api
+6335,2025,Correios,2766.2,api
+6335,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6335,2025,Viagens Oficiais - Diárias,44021.78,api
+6335,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6335,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6335,2026,Consumo de Material - Outros materiais,6880.35,api
+6335,2026,Correios,177.91,api
+6335,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6335,2026,Viagens Oficiais - Diárias,4014.1,api
+6335,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6336,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6336,2023,Consumo de Material - Outros materiais,0.0,api
+6336,2023,Correios,0.0,api
+6336,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6336,2023,Viagens Oficiais - Diárias,0.0,api
+6336,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6336,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6336,2024,Consumo de Material - Outros materiais,0.0,api
+6336,2024,Correios,0.0,api
+6336,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6336,2024,Viagens Oficiais - Diárias,0.0,api
+6336,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6336,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6336,2025,Consumo de Material - Outros materiais,0.0,api
+6336,2025,Correios,0.0,api
+6336,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6336,2025,Viagens Oficiais - Diárias,0.0,api
+6336,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6336,2026,Aquisição de passagens aéreas (ATC 2/2023),58383.58,api
+6336,2026,Consumo de Material - Outros materiais,6574.42,api
+6336,2026,Correios,4046.34,api
+6336,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6336,2026,Viagens Oficiais - Diárias,17066.32,api
+6336,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6337,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6337,2023,Consumo de Material - Outros materiais,5377.27,api
+6337,2023,Correios,520.24,api
+6337,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6337,2023,Viagens Oficiais - Diárias,0.0,api
+6337,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6337,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6337,2024,Consumo de Material - Outros materiais,3013.9,api
+6337,2024,Correios,80.23,api
+6337,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6337,2024,Viagens Oficiais - Diárias,0.0,api
+6337,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6337,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6337,2025,Consumo de Material - Outros materiais,3893.21,api
+6337,2025,Correios,249.54,api
+6337,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6337,2025,Viagens Oficiais - Diárias,0.0,api
+6337,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6337,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
+6337,2026,Consumo de Material - Outros materiais,2866.02,api
+6337,2026,Correios,200.39,api
+6337,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6337,2026,Viagens Oficiais - Diárias,0.0,api
+6337,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6338,2023,Aquisição de passagens aéreas (ATC 2/2023),54669.27,api
+6338,2023,Consumo de Material - Outros materiais,6631.64,api
+6338,2023,Correios,42017.94,api
+6338,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6338,2023,Viagens Oficiais - Diárias,14855.46,api
+6338,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6338,2024,Aquisição de passagens aéreas (ATC 2/2023),100798.63,api
+6338,2024,Consumo de Material - Outros materiais,5089.76,api
+6338,2024,Correios,46479.91,api
+6338,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6338,2024,Viagens Oficiais - Diárias,15600.33,api
+6338,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6338,2025,Aquisição de passagens aéreas (ATC 2/2023),152134.28,api
+6338,2025,Consumo de Material - Outros materiais,8733.88,api
+6338,2025,Correios,29093.9,api
+6338,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6338,2025,Viagens Oficiais - Diárias,21115.23,api
+6338,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6338,2026,Aquisição de passagens aéreas (ATC 2/2023),116873.1,api
+6338,2026,Consumo de Material - Outros materiais,5491.03,api
+6338,2026,Correios,47701.28,api
+6338,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6338,2026,Viagens Oficiais - Diárias,10141.32,api
+6338,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6340,2023,Aquisição de passagens aéreas (ATC 2/2023),112911.81,api
+6340,2023,Consumo de Material - Outros materiais,4929.0,api
+6340,2023,Correios,18071.11,api
+6340,2023,Cotas para Impulsionamento em Mídias Sociais,3000.0,api
+6340,2023,Viagens Oficiais - Diárias,2724.46,api
+6340,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6340,2024,Aquisição de passagens aéreas (ATC 2/2023),90566.68,api
+6340,2024,Consumo de Material - Outros materiais,2975.01,api
+6340,2024,Correios,5337.6,api
+6340,2024,Cotas para Impulsionamento em Mídias Sociais,1500.0,api
+6340,2024,Viagens Oficiais - Diárias,2833.72,api
+6340,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6340,2025,Aquisição de passagens aéreas (ATC 2/2023),200522.46,api
+6340,2025,Consumo de Material - Outros materiais,8291.66,api
+6340,2025,Correios,35943.96,api
+6340,2025,Cotas para Impulsionamento em Mídias Sociais,5500.0,api
+6340,2025,Viagens Oficiais - Diárias,9567.62,api
+6340,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6340,2026,Aquisição de passagens aéreas (ATC 2/2023),62362.01,api
+6340,2026,Consumo de Material - Outros materiais,5605.75,api
+6340,2026,Correios,20435.88,api
+6340,2026,Cotas para Impulsionamento em Mídias Sociais,4000.14,api
+6340,2026,Viagens Oficiais - Diárias,0.0,api
+6340,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6341,2023,Aquisição de passagens aéreas (ATC 2/2023),65881.08,api
+6341,2023,Consumo de Material - Outros materiais,9502.25,api
+6341,2023,Correios,24962.45,api
+6341,2023,Cotas para Impulsionamento em Mídias Sociais,3300.0,api
+6341,2023,Viagens Oficiais - Diárias,624.46,api
+6341,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6341,2024,Aquisição de passagens aéreas (ATC 2/2023),86677.95,api
+6341,2024,Consumo de Material - Outros materiais,6493.13,api
+6341,2024,Correios,28379.69,api
+6341,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6341,2024,Viagens Oficiais - Diárias,2528.76,api
+6341,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6341,2025,Aquisição de passagens aéreas (ATC 2/2023),51518.45,api
+6341,2025,Consumo de Material - Outros materiais,6908.89,api
+6341,2025,Correios,34378.31,api
+6341,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6341,2025,Viagens Oficiais - Diárias,20314.79,api
+6341,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6341,2026,Aquisição de passagens aéreas (ATC 2/2023),45840.72,api
+6341,2026,Consumo de Material - Outros materiais,6308.24,api
+6341,2026,Correios,33586.67,api
+6341,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6341,2026,Viagens Oficiais - Diárias,0.0,api
+6341,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6342,2023,Aquisição de passagens aéreas (ATC 2/2023),68317.45,api
+6342,2023,Consumo de Material - Outros materiais,8321.97,api
+6342,2023,Correios,8997.95,api
+6342,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6342,2023,Viagens Oficiais - Diárias,0.0,api
+6342,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6342,2024,Aquisição de passagens aéreas (ATC 2/2023),63572.99,api
+6342,2024,Consumo de Material - Outros materiais,3547.53,api
+6342,2024,Correios,2952.41,api
+6342,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6342,2024,Viagens Oficiais - Diárias,63302.18,api
+6342,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6342,2025,Aquisição de passagens aéreas (ATC 2/2023),111422.91,api
+6342,2025,Consumo de Material - Outros materiais,7223.48,api
+6342,2025,Correios,14199.81,api
+6342,2025,Cotas para Impulsionamento em Mídias Sociais,25477.39,api
+6342,2025,Viagens Oficiais - Diárias,188698.36,api
+6342,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6342,2026,Aquisição de passagens aéreas (ATC 2/2023),82097.77,api
+6342,2026,Consumo de Material - Outros materiais,4145.63,api
+6342,2026,Correios,1544.5,api
+6342,2026,Cotas para Impulsionamento em Mídias Sociais,7400.84,api
+6342,2026,Viagens Oficiais - Diárias,38990.11,api
+6342,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6345,2023,(lido),0.0,pagina
+6345,2023,Aquisição de passagens aéreas (ATC 2/2023),20767.29,pagina
+6345,2023,Consumo de Material - Outros materiais,6094.0,pagina
+6345,2023,Correios,0.0,pagina
+6345,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6345,2023,Viagens Oficiais - Diárias,7573.72,pagina
+6345,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6345,2024,(lido),0.0,pagina
+6345,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6345,2024,Consumo de Material - Outros materiais,7641.3,pagina
+6345,2024,Correios,210.45,pagina
+6345,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6345,2024,Viagens Oficiais - Diárias,0.0,pagina
+6345,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6345,2025,(lido),0.0,pagina
+6345,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6345,2025,Consumo de Material - Outros materiais,8911.11,pagina
+6345,2025,Correios,0.0,pagina
+6345,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6345,2025,Viagens Oficiais - Diárias,25251.45,pagina
+6345,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6345,2026,(lido),0.0,pagina
+6345,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6345,2026,Consumo de Material - Outros materiais,2864.88,pagina
+6345,2026,Correios,0.0,pagina
+6345,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6345,2026,Viagens Oficiais - Diárias,0.0,pagina
+6345,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6350,2023,(lido),0.0,pagina
+6350,2023,Aquisição de passagens aéreas (ATC 2/2023),41225.41,pagina
+6350,2023,Consumo de Material - Outros materiais,6701.55,pagina
+6350,2023,Correios,11067.18,pagina
+6350,2023,Cotas para Impulsionamento em Mídias Sociais,10773.09,pagina
+6350,2023,Viagens Oficiais - Diárias,55007.74,pagina
+6350,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6350,2024,(lido),0.0,pagina
+6350,2024,Aquisição de passagens aéreas (ATC 2/2023),67849.83,pagina
+6350,2024,Consumo de Material - Outros materiais,4121.32,pagina
+6350,2024,Correios,1373.63,pagina
+6350,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6350,2024,Viagens Oficiais - Diárias,0.0,pagina
+6350,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6350,2025,(lido),0.0,pagina
+6350,2025,Aquisição de passagens aéreas (ATC 2/2023),152377.72,pagina
+6350,2025,Consumo de Material - Outros materiais,10970.97,pagina
+6350,2025,Correios,38909.51,pagina
+6350,2025,Cotas para Impulsionamento em Mídias Sociais,3000.0,pagina
+6350,2025,Viagens Oficiais - Diárias,0.0,pagina
+6350,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6350,2026,(lido),0.0,pagina
+6350,2026,Aquisição de passagens aéreas (ATC 2/2023),39887.4,pagina
+6350,2026,Consumo de Material - Outros materiais,2257.61,pagina
+6350,2026,Correios,11679.86,pagina
+6350,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6350,2026,Viagens Oficiais - Diárias,0.0,pagina
+6350,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6351,2024,(lido),0.0,pagina
+6351,2024,Aquisição de passagens aéreas (ATC 2/2023),40299.41,pagina
+6351,2024,Consumo de Material - Outros materiais,3003.36,pagina
+6351,2024,Correios,194.41,pagina
+6351,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6351,2024,Viagens Oficiais - Diárias,0.0,pagina
+6351,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6358,2023,Aquisição de passagens aéreas (ATC 2/2023),41360.19,api
+6358,2023,Consumo de Material - Outros materiais,8458.65,api
+6358,2023,Correios,5540.7,api
+6358,2023,Cotas para Impulsionamento em Mídias Sociais,4175.38,api
+6358,2023,Viagens Oficiais - Diárias,31708.47,api
+6358,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6358,2024,Aquisição de passagens aéreas (ATC 2/2023),173762.02,api
+6358,2024,Consumo de Material - Outros materiais,2788.02,api
+6358,2024,Correios,18901.88,api
+6358,2024,Cotas para Impulsionamento em Mídias Sociais,12343.47,api
+6358,2024,Viagens Oficiais - Diárias,0.0,api
+6358,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6358,2025,Aquisição de passagens aéreas (ATC 2/2023),92128.85,api
+6358,2025,Consumo de Material - Outros materiais,7477.01,api
+6358,2025,Correios,83978.41,api
+6358,2025,Cotas para Impulsionamento em Mídias Sociais,12903.57,api
+6358,2025,Viagens Oficiais - Diárias,0.0,api
+6358,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6358,2026,Aquisição de passagens aéreas (ATC 2/2023),60834.21,api
+6358,2026,Consumo de Material - Outros materiais,5794.22,api
+6358,2026,Correios,23348.42,api
+6358,2026,Cotas para Impulsionamento em Mídias Sociais,8832.75,api
+6358,2026,Viagens Oficiais - Diárias,0.0,api
+6358,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6359,2026,(lido),0.0,pagina
+6359,2026,Aquisição de passagens aéreas (ATC 2/2023),16034.22,pagina
+6359,2026,Consumo de Material - Outros materiais,1079.06,pagina
+6359,2026,Correios,1390.46,pagina
+6359,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6359,2026,Viagens Oficiais - Diárias,0.0,pagina
+6359,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6362,2023,(lido),0.0,pagina
+6362,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6362,2023,Consumo de Material - Outros materiais,3073.3,pagina
+6362,2023,Correios,3952.13,pagina
+6362,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6362,2023,Viagens Oficiais - Diárias,0.0,pagina
+6362,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6363,2024,(lido),0.0,pagina
+6363,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6363,2024,Consumo de Material - Outros materiais,2765.17,pagina
+6363,2024,Correios,7109.79,pagina
+6363,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6363,2024,Viagens Oficiais - Diárias,30375.14,pagina
+6363,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6366,2024,(lido),0.0,pagina
+6366,2024,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6366,2024,Consumo de Material - Outros materiais,1248.77,pagina
+6366,2024,Correios,19503.45,pagina
+6366,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6366,2024,Viagens Oficiais - Diárias,14228.03,pagina
+6366,2024,Viagens Oficiais - Ressarcimento de Passagens,9395.51,pagina
+6369,2023,Aquisição de passagens aéreas (ATC 2/2023),80366.72,api
+6369,2023,Consumo de Material - Outros materiais,6192.45,api
+6369,2023,Correios,9273.01,api
+6369,2023,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6369,2023,Viagens Oficiais - Diárias,26411.27,api
+6369,2023,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6369,2024,Aquisição de passagens aéreas (ATC 2/2023),88387.33,api
+6369,2024,Consumo de Material - Outros materiais,6061.12,api
+6369,2024,Correios,11705.69,api
+6369,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6369,2024,Viagens Oficiais - Diárias,0.0,api
+6369,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6369,2025,Aquisição de passagens aéreas (ATC 2/2023),137891.71,api
+6369,2025,Consumo de Material - Outros materiais,8876.02,api
+6369,2025,Correios,23127.46,api
+6369,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6369,2025,Viagens Oficiais - Diárias,0.0,api
+6369,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6369,2026,Aquisição de passagens aéreas (ATC 2/2023),59966.38,api
+6369,2026,Consumo de Material - Outros materiais,7920.86,api
+6369,2026,Correios,20234.72,api
+6369,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
+6369,2026,Viagens Oficiais - Diárias,0.0,api
+6369,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
+6372,2025,(lido),0.0,pagina
+6372,2025,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
+6372,2025,Consumo de Material - Outros materiais,0.0,pagina
+6372,2025,Correios,0.0,pagina
+6372,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6372,2025,Viagens Oficiais - Diárias,0.0,pagina
+6372,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6372,2026,(lido),0.0,pagina
+6372,2026,Aquisição de passagens aéreas (ATC 2/2023),26058.94,pagina
+6372,2026,Consumo de Material - Outros materiais,1527.93,pagina
+6372,2026,Correios,11381.83,pagina
+6372,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6372,2026,Viagens Oficiais - Diárias,0.0,pagina
+6372,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6374,2024,(lido),0.0,pagina
+6374,2024,Aquisição de passagens aéreas (ATC 2/2023),35258.65,pagina
+6374,2024,Consumo de Material - Outros materiais,2114.46,pagina
+6374,2024,Correios,1453.48,pagina
+6374,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6374,2024,Viagens Oficiais - Diárias,0.0,pagina
+6374,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina
+6381,2026,(lido),0.0,pagina
+6381,2026,Aquisição de passagens aéreas (ATC 2/2023),66227.13,pagina
+6381,2026,Consumo de Material - Outros materiais,2879.84,pagina
+6381,2026,Correios,71.98,pagina
+6381,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,pagina
+6381,2026,Viagens Oficiais - Diárias,0.0,pagina
+6381,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,pagina

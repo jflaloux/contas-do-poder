@@ -26,3 +26,12 @@ Limite mensal da CEAP por estado em cada vigência, para o balanço do mandato (
 - Entre fev/2023 e fev/2026 não houve outra mudança da tabela (os Atos 113/2024 e 196/2025 mexem nas diárias e nos
   tipos de despesa, não nos limites).
 - Fevereiro de 2026: o balanço usa a média dos dois valores pelos dias (19 dias do antigo, 9 do novo).
+
+## teto_verba_gabinete_camara.csv
+
+Valor mensal disponível da verba de gabinete de cada deputado, por vigência (balanço do mandato: % do teto da equipe).
+A página de cada deputado (www.camara.leg.br/deputados/{id}?ano=) mostra, mês a mês, o gasto e o percentual do
+disponível; o valor aqui é a mediana de gasto ÷ percentual entre os deputados com 50% ou mais gasto no mês
+(`coleta/camara.py`, coluna `disponivel` de camara_verba_gabinete.csv), arredondado ao real, conferido em 10/11/2026
+com a cópia dos brutos de 30/09/2026. Fev/2026 (145.991) fica entre o valor anterior e o de mar/2026, provavelmente
+uma mudança no meio do mês. Não achamos o ato da Mesa com os valores; é estimativa pela própria página oficial.
