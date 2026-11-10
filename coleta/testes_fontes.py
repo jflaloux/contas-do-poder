@@ -154,7 +154,8 @@ def executar():
     caso("Balanço: meio mês no cargo conta 0,5", fr == {202406: 0.5, 202407: 1.0})
     vig = [(date(2023, 2, 1), 100.0), (date(2026, 2, 20), 128.0)]
     caso("Balanço: limite da cota no mês da mudança, pelos dias", abs(balanco.limite_do_mes(vig, 202602) - (100 * 19 + 128 * 9) / 28) < 1e-9
-         and balanco.limite_do_mes(vig, 202601) == 100.0 and balanco.limite_do_mes(vig, 202603) == 128.0)
+         # com tolerância: a soma dia a dia dá 100,00000000000001 sem a soma compensada do Python 3.12 (o GitHub usa outra versão)
+         and abs(balanco.limite_do_mes(vig, 202601) - 100.0) < 1e-9 and abs(balanco.limite_do_mes(vig, 202603) - 128.0) < 1e-9)
     # 03/11/2026: a folha de out/2026 de Salvador saiu com 1 dos 19 secretários (o portal publica aos poucos)
     from .prefeituras import salvador
     ant = pd.DataFrame([{"aaaamm": 202609, "tp": "pr" if i == 0 else "se"} for i in range(19)])
