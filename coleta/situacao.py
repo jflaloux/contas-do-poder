@@ -195,6 +195,8 @@ def executar():
                     "falhando" if falhando else "atrasada (fonte)" if atraso is not None and atraso >= 3 and ch in ATRASOS_CONHECIDOS
                     else "atrasada" if atraso is not None and atraso >= 3 else "ok")
         erro = next((c.get("ultimo_erro") for lugar, c in tent.items() if c.get("falhas", 0) > 0), None)
+        if not erro:  # aviso da última coleta (não é falha)
+            erro = next((f"Aviso: {c['aviso']}" for lugar, c in tent.items() if c.get("aviso")), None)
         if situacao == "congelada":
             cg = onde.CONGELADAS[ch]
             erro = cg["motivo"] + (f" (ATENÇÃO: a última coleta trouxe mês depois de {cg['ate']}: a fonte pode ter voltado; "

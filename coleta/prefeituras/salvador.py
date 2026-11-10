@@ -16,6 +16,7 @@ import pandas as pd
 
 from ..config import CACHE, DADOS
 from ..util import TempoEsgotado, _sessao, dormir, gravar_csv, log, normalizar_nome, verificar_prazo
+from .. import onde
 from . import comum
 
 COD = 2927408
@@ -142,6 +143,13 @@ def incompleto(novas, linhas, am):
     return len(novas) < n_antes / 2 or not any(x["tp"] == "pr" for x in novas)
 
 
+def confirmado(novas, linhas, am):
+    """O mês seguinte, já guardado, tem um número de pessoas parecido (até 20% a mais): a redução é real."""
+    seguinte = am + 1 if am % 100 < 12 else (am // 100 + 1) * 100 + 1
+    n = int((linhas.aaaamm.astype(int) == seguinte).sum()) if len(linhas) else 0
+    return 0 < n <= len(novas) * 1.2 and any(x["tp"] == "pr" for x in novas)
+
+
 def _meses():
     hoje = date.today()
     am, fim = INICIO, hoje.year * 100 + hoje.month
@@ -166,8 +174,11 @@ def coletar():
         if novas is None:
             log(f"  Prefeitura de Salvador: {am % 100:02d}/{am // 100} ainda sem folha")
             continue
-        if incompleto(novas, linhas, am):
-            log(f"  Prefeitura de Salvador: {am % 100:02d}/{am // 100} com a folha incompleta ({len(novas)} pessoas); fica para a próxima rodada")
+        if incompleto(novas, linhas, am) and not confirmado(novas, linhas, am):
+            texto = (f"a folha de {am % 100:02d}/{am // 100} veio com {len(novas)} pessoas, menos da metade do mês anterior "
+                     "(ou sem o prefeito); fica de fora até o mês seguinte confirmar")
+            log(f"  Prefeitura de Salvador: {texto}")
+            onde.avisar(texto)
             continue
         (C / f"{am}.json").write_text(json.dumps(novas, ensure_ascii=False), encoding="utf-8")
         linhas = pd.concat([linhas[linhas.aaaamm.astype(int) != am], pd.DataFrame(novas, columns=COLUNAS)], ignore_index=True)

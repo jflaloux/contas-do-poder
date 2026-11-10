@@ -330,7 +330,7 @@ def _salvar(texto, caso):
         base = {"dados/processados/conferencia.md": "antigo\n", "dados/processados/situacao.md": "s\n", "dados/camara/a.csv": "1\n",
                 "dados/portal_transparencia/.gitkeep": "", "dados/municipios/.gitkeep": "", "dados/municipios_tce/.gitkeep": "",
                 "dados/judiciario/.gitkeep": "", "dados/governadores/.gitkeep": "", "dados/atividade/.gitkeep": "", "dados/bens/.gitkeep": "",
-                "dados/assembleias/.gitkeep": "", "dados/referencia/renda_trabalho.json": "{}", "dados/referencia/camara_historico.json": "{}", "dados/indice/i.json": "{}", "LEIAME.md": "l\n", "site/dados/s.json": "{}", "site/fotos/f.txt": "f"}
+                "dados/assembleias/.gitkeep": "", "dados/senado/.gitkeep": "", "dados/referencia/renda_trabalho.json": "{}", "dados/referencia/camara_historico.json": "{}", "dados/indice/i.json": "{}", "LEIAME.md": "l\n", "site/dados/s.json": "{}", "site/fotos/f.txt": "f"}
 
         def cenario(nome, rejeitar_primeiro_push=False, outra_rodada=None, stub_rc=0, stub_montar=0, tambem_muda=None):
             origem = tmp / f"{nome}.git"

@@ -136,12 +136,18 @@ def _coletar_verba(meses):
     init, csrf = _campo("script_case_init", t), _campo("csrf_token", t)
     t = _pedir("POST", VERBA, data={"nmgp_opcao": "muda_qt_linhas", "nmgp_quant_linhas": str(POR_PAGINA), "script_case_init": init,
                                     "nm_grid_submit": "1", "csrf_token": csrf})
-    notas, rec = [], 1
+    notas, rec, chegou = [], 1, False
     while True:
         lidas = _notas(t)
         total = re.search(r"\[\s*\d+\s*a\s*(\d+)\s*de\s*([\d.]+)\s*\]", _texto(t))
         notas += lidas
-        if not lidas or min(n["ano"] * 100 + n["mes"] for n in lidas) < desde or not total or int(total.group(1)) >= int(total.group(2).replace(".", "")):
+        if lidas and min(n["ano"] * 100 + n["mes"] for n in lidas) < desde:
+            chegou = True  # passou do mês mais antigo pedido: os meses a partir dele estão completos
+            break
+        if total and int(total.group(1)) >= int(total.group(2).replace(".", "")):
+            chegou = True  # fim da lista
+            break
+        if not lidas or not total:
             break
         rec += POR_PAGINA
         t = _pedir("POST", VERBA, data={"nmgp_opcao": "rec", "rec": str(rec), "script_case_init": init, "nm_grid_submit": "1",
@@ -152,11 +158,15 @@ def _coletar_verba(meses):
     am = novos.ano * 100 + novos.mes
     if any(b > a for a, b in zip(list(am), list(am)[1:])):
         log("  Alepi: a consulta da verba não veio em ordem de competência; conferir")
-    # a leitura passou do mês mais antigo pedido (ou chegou ao fim): os meses a partir dele estão completos
-    novos = novos[am >= desde]
-    vb = pd.concat([vb[(vb.ano * 100 + vb.mes) < desde] if len(vb) else vb, novos])
+    # a leitura passou do mês mais antigo pedido (ou chegou ao fim): os meses a partir dele estão completos. Se parou antes
+    # (página vazia ou sem a contagem), só os meses depois do último mês alcançado são trocados; o resto fica como estava
+    corte = desde if chegou else int(am.min()) + 1
+    if not chegou:
+        log(f"  Alepi: a leitura da verba parou em {int(am.min())}, antes de {desde}; só os meses depois dele foram trocados")
+    novos = novos[am >= corte]
+    vb = pd.concat([vb[(vb.ano * 100 + vb.mes) < corte] if len(vb) else vb, novos])
     gravar_csv(vb.sort_values(["ano", "mes", "parlamentar", "subcota", "valor"]), arq)
-    log(f"  Alepi: verba, {len(novos)} notas desde {desde}")
+    log(f"  Alepi: verba, {len(novos)} notas desde {corte}")
 
 
 # ---------------------------------------------------------------- folha

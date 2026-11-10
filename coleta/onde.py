@@ -178,6 +178,16 @@ def _falhou(item, erro):
     item["ultima_falha"] = item["ultima_tentativa"]
 
 
+_avisos = {}  # fonte -> aviso da coleta em andamento (não é falha: o dado anterior fica e a situação mostra o aviso)
+
+
+def avisar(texto):
+    """Aviso da fonte em coleta (ex.: um mês recusado por vir incompleto). Aparece na situação, sem marcar falha."""
+    from . import util
+    if util._fonte_atual:
+        _avisos[util._fonte_atual] = texto[:300]
+
+
 @contextmanager
 def registrar(grupo, fonte):
     """Anota a tentativa e o resultado (o erro não sai daqui: quem chama decide se a falha para os outros). Uma gravação
@@ -202,6 +212,10 @@ def registrar(grupo, fonte):
         raise
     finally:
         util._fonte_atual = antes
+    if ch in _avisos:
+        item["aviso"] = _avisos.pop(ch)
+    else:
+        item.pop("aviso", None)
     recusas = util.recusas_desde(marca, ch)
     if recusas:
         _falhou(item, "Recusado por perda de cobertura (fica o arquivo anterior): "
