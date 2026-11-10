@@ -146,7 +146,7 @@ const BAL = (() => { try { return lerDados("balanco.json"); } catch (e) { return
 const BAL_FMT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
 const BAL_ULTIMO = BAL ? Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1]))) : 0;
 const BAL_ORDEM = (v) => (a, b) => v(b) - v(a) || a.n.localeCompare(b.n, "pt-BR");
-const BAL_ELEG = (b) => (b.t.ok !== undefined ? !!b.t.ok : ["r", "c", "o", "e"].every((c) => !(b[c].n > 0) || b[c].n >= 3)) && b.mc >= 3;
+const BAL_ELEG = (b) => (b.t.ok !== undefined ? !!b.t.ok : ["r", "c", "o", "e"].every((c) => !(b[c].n > 0) || b[c].n >= 3)) && b.mc >= 3 && b.t.m != null;
 const BAL_PRIMEIRO = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.m))[0] : null;
 const BAL_PRIMEIRO_TOTAL = BAL ? BAL.p.filter((b) => b.k === "d" && BAL_ELEG(b)).sort(BAL_ORDEM((b) => b.t.t))[0] : null;
 const BAL_PRIMEIRO_NOME = BAL ? BAL.p.filter((b) => b.k === "d").map((b) => b.n).sort((x, y) => x.localeCompare(y, "pt-BR"))[0] : "";
@@ -581,6 +581,13 @@ const PAGINAS = [
       const ult = poucos.lastIndexOf(false), prim = poucos.indexOf(true);
       if (linhas().length !== ${BAL ? BAL.p.filter((b) => b.k === "d").length : 0}) f.push("a lista da Câmara devia ter ${BAL ? BAL.p.filter((b) => b.k === "d").length : 0} pessoas e tem " + linhas().length);
       if (prim !== -1 && prim < ult) f.push("quem tem menos de 3 meses aparece antes de quem tem 3 meses ou mais (posição " + prim + " e " + ult + ")");
+      const nulos = linhas().map((tr) => tr.querySelector(".balanco-total strong").textContent === "—");
+      const ultNum = linhas().map((tr, i) => (!nulos[i] && !poucos[i] ? i : -1)).reduce((x, y) => Math.max(x, y), -1);
+      if (nulos.indexOf(true) !== -1 && nulos.indexOf(true) < ultNum) f.push("quem está sem média do total (—) aparece antes de quem tem média");
+      if (linhas().some((tr) => /NaN|R\$ 0 por mês/.test(tr.innerText))) f.push("a lista tem NaN");
+      sel.value = "ep"; sel.dispatchEvent(new Event("change", { bubbles: true })); await esp(300);
+      const pcts = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")].map((tr) => (/([0-9]+,[0-9])% do valor disponível/.exec(tr.innerText.replace(/\u00a0/g, " ")) || [])[1]).filter(Boolean).map((v) => Number(v.replace(",", ".")));
+      if (!pcts.length || pcts.some((v) => v > 100) || pcts.slice(0, 5).some((v, i, l) => i && v > l[i - 1])) f.push("a ordem pela % do valor disponível da verba devia vir do maior para o menor e nunca passar de 100%: " + pcts.slice(0, 6).join(","));
       return f; })()` },
   // o Senado à parte: equipe com o selo "estimativa", sem % do limite e sem ordenar pela equipe; o quadro da casa bate com o arquivo
   { nome: "balanco-senado", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {

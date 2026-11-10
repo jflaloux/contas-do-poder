@@ -4742,7 +4742,8 @@
   // total sem a equipe (o do Senado: a equipe é estimativa e fica à parte). Os campos novos do arquivo, se existirem (t.ms, t.ts, t.ok); senão, contas locais
   const balSemEq = (b) => (b.t && b.t.ms !== undefined ? b.t.ms : (b.r.m || 0) + (b.c.m || 0) + (b.o.m || 0));
   const balSemEqTotal = (b) => (b.t && b.t.ts !== undefined ? b.t.ts : b.r.t + b.c.t + b.o.t);
-  const balTotalM = (b) => (b.mc < 1 || b.r.n < 1 ? null : b.k === "s" ? balSemEq(b) : b.t.m); // divisor menor que 1 mês: sem média
+  const balTotalM = (b) => { const v = b.mc < 1 || b.r.n < 1 ? null : b.k === "s" ? balSemEq(b) : b.t.m; return v === undefined ? null : v; };
+  const balSemMedia = (b) => (b.mc < 1 ? "menos de 1 mês no cargo: sem média" : "falta a média de alguma parte: sem média do total"); // divisor menor que 1 mês: sem média
   const balTotalT = (b) => (b.k === "s" ? balSemEqTotal(b) : b.t.t);
   const balMedia = (parte) => (parte.m === null || parte.m === undefined || parte.n < 1 ? null : parte.m);
   // elegível para a ordem pelo total: nenhuma parte que forma o total com menos de 3 meses (no Senado, sem a equipe)
@@ -4774,6 +4775,7 @@
     ["p", "Cota, % do limite", (b) => (b.c.p === undefined ? null : b.c.p), (b) => b.c.n, "d"],
     ["o", "Outros gastos, por mês", (b) => balMedia(b.o), (b) => b.o.n, null],
     ["e", "Equipe, por mês", (b) => balMedia(b.e), (b) => b.e.n, "d"],
+    ["ep", "Equipe, % do valor disponível da verba", (b) => (b.e.p === undefined ? null : b.e.p), (b) => b.e.n, "d"],
     ["tt", "Total no período", balTotalT, null, null],
     ["mc", "Meses no cargo", (b) => b.mc, null, null],
     ["n", "Nome (A–Z)", null, null, null],
@@ -4804,7 +4806,7 @@
       const quem = BAL_CARGO[b.k], s = b.k === "s";
       return [
         `*${b.n}* (${quem}, ${b.uf}${b.pt ? `, ${b.pt}` : ""}), balanço do ${balPeriodo(B)} (${balMeses(b.mc)} no cargo):`,
-        balTotalM(b) === null ? `Total no período: *${reais(balTotalT(b))}* (menos de 1 mês no cargo: sem média por mês)`
+        balTotalM(b) === null ? `Total no período: *${reais(balTotalT(b))}* (${balSemMedia(b)})`
           : s ? `Em média, *${balReais(balTotalM(b))} por mês* (recebeu, cota e outros gastos; a equipe, estimada, fica à parte)` : `Em média, *${balReais(balTotalM(b))} por mês*, somando o que recebeu e o que o mandato usou`,
         `• Recebeu: ${balReais(balMedia(b.r))} por mês`,
         `• Cota parlamentar: ${balReais(balMedia(b.c))} por mês${b.c.p !== undefined ? ` (${num(b.c.p, 1)}% do limite)` : ""}`,
@@ -4952,7 +4954,7 @@
         parteCel("Outros gastos por mês", b.o),
         parteCel(`Equipe por mês${s ? " (estimativa)" : ""}`, b.e, b.e.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.e.p, 1)}% do valor disponível da verba`) : null),
         h("td", { "data-rotulo": s ? "Total por mês, sem a equipe" : "Total por mês", class: "balanco-num balanco-total" }, h("strong", { class: "num" }, balReais(balTotalM(b))),
-          h("small", { class: "tabela-gov__obs" }, `${reais(balTotalT(b))} no período${balTotalM(b) === null ? ": menos de 1 mês, sem média" : ""}`)));
+          h("small", { class: "tabela-gov__obs" }, `${reais(balTotalT(b))} no período${balTotalM(b) === null ? `: ${balSemMedia(b)}` : ""}`)));
     }
     function listaPessoas() {
       const spec = ORDENS_BAL.find((o) => o[0] === E.ordem), val = spec[2], nPartes = spec[3];
