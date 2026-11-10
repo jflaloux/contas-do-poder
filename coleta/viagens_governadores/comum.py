@@ -128,6 +128,20 @@ def ler(uf):
 
 
 # ------------------------------------------------------------------------------------------- ligação com as pessoas
+CURADO = DADOS / "governadores" / "governadores.json"
+
+
+def nome_no_cargo(uf, cargo, dia):
+    """Para as fontes que identificam a pessoa só pelo cargo (BA, RS): o nome curto de quem ocupava o cargo ("gov" ou
+    "vice") no dia `dia` (AAAA-MM-DD), pelo arquivo curado; "" se ninguém (a viagem fica fora, como em montar())."""
+    e = next(x for x in json.loads(CURADO.read_text(encoding="utf-8")) if x["uf"] == uf)
+    cargos = {"gov": ("gov", "exercicio"), "vice": ("vice",)}[cargo]
+    for o in e["ocupantes"]:
+        if o["cargo"] in cargos and o["de"] <= dia and (not o.get("ate") or dia <= o["ate"]):
+            return o["nome"]
+    return ""
+
+
 def _tokens(nome):
     return {w for w in normalizar_nome(nome or "").split() if len(w) > 2 and w not in ("DOS", "DAS", "DE", "DA", "DO")}
 

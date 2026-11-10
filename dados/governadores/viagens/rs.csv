@@ -1,0 +1,65 @@
+id,inicio,fim,nome,cargo,destino,diarias,passagens,outros,devolucoes,obs,fonte
+rs-gov-2025-01-23,2025-01-23,2025-01-24,Eduardo Leite,Governador,São Paulo,0.0,4203.44,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-02-06,2025-02-06,2025-02-06,Eduardo Leite,Governador,Rio de Janeiro,0.0,1735.0,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-02-07,2025-02-07,2025-02-09,Eduardo Leite,Governador,Rio de Janeiro,0.0,3091.84,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-02-11,2025-02-11,2025-02-12,Eduardo Leite,Governador,Brasília,0.0,3747.59,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-02-18,2025-02-18,2025-02-26,Eduardo Leite,Governador,Stockholm; Amsterdam,0.0,69431.44,694.8,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-03-12,2025-03-12,2025-03-13,Eduardo Leite,Governador,São Paulo,0.0,2544.26,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-03-24,2025-03-24,2025-03-25,Eduardo Leite,Governador,Brasília,0.0,5953.77,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-04-07,2025-04-07,2025-04-08,Eduardo Leite,Governador,Brasília,0.0,5896.69,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-04-14,2025-04-14,2025-04-14,Eduardo Leite,Governador,Rio de Janeiro,0.0,3119.14,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-04-22,2025-04-22,2025-04-24,Eduardo Leite,Governador,Brasília; São Paulo,0.0,4591.83,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-04-25,2025-04-25,2025-04-27,Eduardo Leite,Governador,São Paulo,0.0,1603.86,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-05-05,2025-05-05,2025-05-06,Eduardo Leite,Governador,São Paulo,0.0,2510.36,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-05-09,2025-05-09,2025-05-20,Eduardo Leite,Governador,New York; São Paulo; Brasília,0.0,45226.08,713.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-05-27,2025-05-27,2025-05-27,Eduardo Leite,Governador,,0.0,1226.83,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-06-10,2025-06-10,2025-06-11,Eduardo Leite,Governador,Brasília; Curitiba,0.0,5029.7,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-06-23,2025-06-23,2025-06-24,Eduardo Leite,Governador,São Paulo,0.0,5270.06,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-07-02,2025-07-02,2025-07-06,Eduardo Leite,Governador,"Lisbon; Paris (Orly, Val-de-Marne); São Paulo",0.0,57033.45,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-07-18,2025-07-18,2025-07-20,Eduardo Leite,Governador,Rio de Janeiro,0.0,6488.45,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-07-27,2025-07-27,2025-07-27,Eduardo Leite,Governador,Rio de Janeiro,0.0,2531.63,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-04,2025-08-04,2025-08-06,Eduardo Leite,Governador,São Paulo; Brasília,0.0,6759.32,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-12,2025-08-12,2025-08-13,Eduardo Leite,Governador,São Paulo,0.0,6019.86,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-17,2025-08-17,2025-08-20,Eduardo Leite,Governador,São Paulo; Curitiba,0.0,8212.02,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-21,2025-08-21,2025-08-22,Eduardo Leite,Governador,São Paulo,0.0,3568.73,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-24,2025-08-24,2025-08-24,Eduardo Leite,Governador,,0.0,1787.33,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-08-26,2025-08-26,2025-08-27,Eduardo Leite,Governador,Brasília,0.0,6123.92,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-09-11,2025-09-11,2025-09-11,Eduardo Leite,Governador,São Paulo,0.0,3001.93,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-09-16,2025-09-16,2025-09-17,Eduardo Leite,Governador,São Paulo,0.0,8634.26,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-09-25,2025-09-25,2025-09-29,Eduardo Leite,Governador,São Paulo; Brasília,0.0,12760.16,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-10-07,2025-10-07,2025-10-08,Eduardo Leite,Governador,Brasília,0.0,2974.35,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-10-12,2025-10-12,2025-10-12,Eduardo Leite,Governador,São Paulo,0.0,2223.92,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-10-13,2025-10-13,2025-10-14,Eduardo Leite,Governador,São Paulo,0.0,4673.84,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-10-19,2025-10-19,2025-10-21,Eduardo Leite,Governador,São Paulo,0.0,4245.4,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-10-27,2025-10-27,2025-10-28,Eduardo Leite,Governador,São Paulo,0.0,6333.4,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-11-02,2025-11-02,2025-11-07,Eduardo Leite,Governador,São Paulo; Rio de Janeiro; São Luís,0.0,13119.56,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-11-08,2025-11-08,2025-11-12,Eduardo Leite,Governador,São Paulo; Belém,0.0,13636.41,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-11-13,2025-11-13,2025-11-13,Eduardo Leite,Governador,,0.0,1404.38,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-11-19,2025-11-19,2025-11-25,Eduardo Leite,Governador,São Paulo,0.0,4287.4,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-11-28,2025-11-28,2025-11-30,Eduardo Leite,Governador,São Paulo; Rio de Janeiro,0.0,9273.17,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2025-12-03,2025-12-03,2025-12-09,Eduardo Leite,Governador,Brasília; Rio de Janeiro; São Paulo,0.0,21465.68,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-01-13,2026-01-13,2026-01-14,Eduardo Leite,Governador,São Paulo,0.0,3723.75,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-01-23,2026-01-23,2026-01-28,Eduardo Leite,Governador,São Paulo,0.0,3762.82,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-02-22,2026-02-22,2026-02-24,Eduardo Leite,Governador,São Paulo,0.0,4729.48,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-02-25,2026-02-25,2026-02-26,Eduardo Leite,Governador,São Paulo,0.0,2887.92,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-03-05,2026-03-05,2026-03-09,Eduardo Leite,Governador,São Paulo,0.0,4313.42,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-03-11,2026-03-11,2026-03-13,Eduardo Leite,Governador,Brasília; São Paulo,0.0,6976.6,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-03-25,2026-03-25,2026-03-26,Eduardo Leite,Governador,São Paulo,0.0,7542.02,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-04-06,2026-04-06,2026-04-06,Eduardo Leite,Governador,Brasília,0.0,3940.57,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-04-07,2026-04-07,2026-04-09,Eduardo Leite,Governador,Brasília; São Paulo,0.0,4748.93,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-05-06,2026-05-06,2026-05-06,Eduardo Leite,Governador,Brasília,0.0,2936.65,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-05-08,2026-05-08,2026-05-17,Eduardo Leite,Governador,Newark; São Paulo,0.0,74059.73,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-05-21,2026-05-21,2026-05-21,Eduardo Leite,Governador,São Paulo,0.0,3273.17,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-05-28,2026-05-28,2026-05-30,Eduardo Leite,Governador,São Paulo,0.0,4164.02,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-06-09,2026-06-09,2026-06-10,Eduardo Leite,Governador,São Paulo; Brasília,0.0,10900.87,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-vice-2026-06-16,2026-06-16,2026-06-17,Gabriel Souza,Vice-Governador,São Paulo,0.0,3503.55,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-06-29,2026-06-29,2026-06-29,Eduardo Leite,Governador,,0.0,4517.55,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-07-07,2026-07-07,2026-07-09,Eduardo Leite,Governador,São Paulo,0.0,5928.82,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-07-16,2026-07-16,2026-07-16,Eduardo Leite,Governador,São Paulo,0.0,4603.98,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-08-05,2026-08-05,2026-08-11,Eduardo Leite,Governador,São Paulo; Brasília,0.0,9776.1,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-08-24,2026-08-24,2026-08-24,Eduardo Leite,Governador,,0.0,3364.05,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-08-26,2026-08-26,2026-08-27,Eduardo Leite,Governador,São Paulo,0.0,6547.92,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-09-10,2026-09-10,2026-09-11,Eduardo Leite,Governador,São Francisco de Paula; Caxias do Sul; Portão,0.0,0.0,944.84,0.0,"despesas de viagem, sem passagem aérea",https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-09-17,2026-09-17,2026-09-18,Eduardo Leite,Governador,Santo Ângelo; Santa Rosa,0.0,0.0,1004.61,0.0,"despesas de viagem, sem passagem aérea",https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-09-21,2026-09-21,2026-09-25,Eduardo Leite,Governador,Santa Cruz do Sul; Santa Maria; Alegrete; Pelotas; Rio Grande,0.0,0.0,1795.99,0.0,"despesas de viagem, sem passagem aérea",https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/
+rs-gov-2026-09-26,2026-09-26,2026-09-28,Eduardo Leite,Governador,São Paulo,0.0,6555.62,0.0,0.0,,https://www.transparencia.rs.gov.br/viagens/viagens-do-governador/dados/

@@ -17,13 +17,15 @@ import sys
 from .. import onde
 from ..config import DADOS, RAIZ
 from ..util import TempoEsgotado, gravar_json, log, normalizar_nome
-from . import am, comum, mg, pb, se, sp
+from . import am, ba, comum, es, mg, pb, rs, se, sp
 
-ESTADOS = {"AM": am, "MG": mg, "PB": pb, "SE": se, "SP": sp}
+ESTADOS = {"AM": am, "BA": ba, "ES": es, "MG": mg, "PB": pb, "RS": rs, "SE": se, "SP": sp}
 CURADO = DADOS / "governadores" / "governadores.json"
 SITE = RAIZ / "site" / "dados" / "governadores.json"
-# nomes inteiros como a fonte escreve, quando o arquivo curado não os tem (governador e vice desde 2025)
+# nomes inteiros como a fonte escreve, quando o arquivo curado não os tem (governador e vice desde 2025); BA e RS
+# identificam a pessoa pelo cargo (comum.nome_no_cargo)
 NOMES_FONTE = {
+    "ES": ["JOSE RENATO CASAGRANDE", "RICARDO REZENDE FERRACO"],
     "MG": ["ROMEU ZEMA NETO", "MATEUS SIMOES DE ALMEIDA"],
     "PB": ["JOAO AZEVEDO LINS FILHO", "LUCAS RIBEIRO NOVAIS DE ARAUJO"],
     "SP": ["TARCISIO GOMES DE FREITAS", "FELICIO RAMUTH"],

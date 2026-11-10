@@ -1,6 +1,6 @@
 {
  "sobre": "O que fazer quando quebra cada fonte de risco alto do raio-X (dados/processados/raio-x-fontes.md). Regra geral: o robô que falha não apaga o último dado bom; conserto só se couber em cerca de 1 hora; passou disso, a fonte vai para onde.CONGELADAS (o site mostra 'dados até' e, onde houver, o valor da lei ou a reserva). Folha de governador: a lei é o número, a folha é complemento. O relatório de situação (dados/processados/situacao.md) mostra o plano ao lado de cada fonte que falhar.",
- "atualizado_em": "2026-10-08",
+ "atualizado_em": "2026-11-10",
  "fontes": [
   {
    "fonte": "judiciario/cnj",
@@ -109,6 +109,18 @@
   {
    "fonte": "vereadores/porto_velho",
    "se_quebrar": "robô comum portaltp (vereadores/portaltp.py): portal fora do ar ou com outro formato, fica o que foi gravado e o site até o último mês lido (a verba, até o último mês liquidado); SAPL fora do ar, ficam os mandatos gravados e o \"no cargo\" sai da folha; sem reserva no Tribunal de Contas; passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "viagens/BA",
+   "se_quebrar": "complemento: o site fica com as viagens já gravadas e o 'até' do último mês lido; se a chave anônima ou as tabelas do Painel de Diárias (Power BI) mudarem, conferir o modelo; se uma ordem bancária pagar diárias de mais de uma pessoa, a coleta falha de propósito (o valor não seria só do governador ou do vice); passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "viagens/ES",
+   "se_quebrar": "complemento: o site fica com as viagens já gravadas e o 'até' do último mês lido; arquivo do ano fora do conjunto ou com outras colunas: achar o novo na página do conjunto (dados.es.gov.br); histórico sem datas: a viagem entra com a data do empenho (marcada em obs); passou de 1 hora, congelar"
+  },
+  {
+   "fonte": "viagens/RS",
+   "se_quebrar": "complemento: o site fica com as viagens já gravadas e o 'até' do último mês lido; se a chave anônima ou as tabelas do painel Viagens do Governador (Power BI) mudarem, conferir o modelo; passou de 1 hora, congelar"
   }
  ]
 }

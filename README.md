@@ -974,8 +974,11 @@ favorecidos vier sem os nomes, a coleta falha e o arquivo e o mês lido ficam co
 | Estado | Fonte | O que entra |
 |---|---|---|
 | AM | Portal da Transparência, "Diárias e Passagens" (o serviço do SCDP que a página usa, por órgão e mês; só abre do Brasil) | Diárias e passagens por solicitação; voos da Casa Militar aparecem com valor zero (o custo do avião oficial não é publicado) |
+| BA | Portal da Transparência, Painel de Diárias (Power BI, com a chave anônima da página, como a folha) | Diárias por diária (destino, datas, valor da ordem bancária); a pessoa é achada pelo cargo ("Governador", "Vice Governador"), sem pedir as colunas de nome e CPF. Em 2025 não há diária com esses cargos; o painel não tem passagens |
+| ES | Dados abertos, "Portal da Transparência - Pessoal - Diárias" (CKAN; um CSV de ~290 MB por ano) | Diárias por empenho, valor pago; as datas saem do histórico do empenho (só as datas; sem data, vale a do empenho); destino vazio (as colunas de destino vêm vazias); sem passagens |
 | MG | Dados abertos, conjunto "viagens" (CKAN; trechos do SCDP, ~42 MB) | Diárias e passagens por documento de viagem, somando os trechos; trechos aéreos sem valor de passagem são, em geral, no avião oficial |
 | PB | API de dados abertos, `/remuneracao/diarias` (só do Brasil) | Diárias por empenho, valor pago; as passagens são empenhadas a agências, sem o nome do passageiro |
+| RS | Portal da Transparência, "Viagens do Governador" (Power BI, com a chave anônima da página) | Passagens aéreas e seguro-viagem bilhete por bilhete, pelo cargo ("Governador", "Vice-Governador"); juntados em viagens da saída até a volta a Porto Alegre (ou até 20 dias sem bilhete, ou um novo bilhete saindo de Porto Alegre); despesas de viagem do governador (alimentação, hospedagem, só desde set/2026) em "outros", na viagem de avião que cobre a data ou em viagens por terra de dias seguidos |
 | SE | Portal da Transparência, relatório de diárias (Casa Civil e Gabinete do Vice; só do Brasil) | Diárias por viagem, valor pago; as passagens não são publicadas por pessoa |
 | SP | Portal da Transparência, gastos individualizados com diárias e passagens aéreas | Diárias e passagens item por item; os itens da mesma pessoa no mesmo dia são uma viagem; seguro-viagem em "outros" |
 
@@ -988,6 +991,16 @@ favorecidos vier sem os nomes, a coleta falha e o arquivo e o mês lido ficam co
 - `python3 -m coleta.viagens_governadores [UF ...]` coleta e anexa ao `governadores.json`; `--so-anexar` só anexa ao
   arquivo que existe, sem refazer o resto. Na rodada semanal, `coletar.py governadores` (e a rodada do Brasil) coleta e
   monta junto com a folha.
+- BA e RS não trazem o nome: a pessoa é a que ocupava o cargo no dia, pelo arquivo curado (`comum.nome_no_cargo`). Na BA,
+  se uma ordem bancária de uma diária do governador ou do vice também pagou diárias de outra pessoa, a coleta falha (o
+  valor seria de mais de uma pessoa). No ES, o arquivo do ano é lido inteiro e dá lugar a um resumo só com as linhas do
+  governador e do vice (`dados/cache/viagens/es/<ano>.json`); depois de 6 dias, o pedido recomeça, mas para antes do
+  corpo se o arquivo não mudou (mesmo Last-Modified).
+- **Plano de queda** (desde 10/11/2026, também em `dados/referencia/plano-de-queda.json`): viagens são complemento; o
+  site sempre mostra o que já está gravado, com o "até" do último mês lido. BA e RS (Power BI): se a chave anônima ou o
+  nome das tabelas mudar, conferir o modelo do painel (`explore/conceptualschema`); passou de 1 hora, congelar. ES: se o
+  conjunto mudar de nome ou de colunas, achar o arquivo novo na página do conjunto; se o histórico deixar de trazer as
+  datas, as viagens entram com a data do empenho (marcadas em "obs"); passou de 1 hora, congelar.
 
 ## Índice de Transparência dos estados
 

@@ -260,6 +260,67 @@ def executar():
                  and all(x["v"] == 2 for x in r["p"] if x["cid"] == "2507507") and r["meta"]["cidades"]["2507507"]["v"] == 2)
         finally:
             util._arquivo_eventos, util._eventos = guardados
+    # viagens dos governadores de BA, ES e RS (10/11/2026): fontes sem o nome (cargo) ou com as datas só no histórico
+    from .viagens_governadores import ba as vba
+    from .viagens_governadores import es as ves
+    from .viagens_governadores import rs as vrs
+
+    def em_ms(dia):
+        import datetime
+        return int(datetime.datetime.fromisoformat(dia + "T00:00:00+00:00").timestamp() * 1000)
+    bil = [[1, "Governador", em_ms("2026-03-05"), em_ms("2026-02-24"), "AÉREO", "POA - CGH", "Porto Alegre", "São Paulo", 1000],
+           [2, "Governador", em_ms("2026-03-07"), em_ms("2026-02-24"), "AÉREO", "CGH - BSB", "São Paulo", "Brasília", 500],
+           [3, "Governador", em_ms("2026-03-09"), em_ms("2026-02-24"), "AÉREO", "BSB - POA", "Brasília", "Porto Alegre", 700],
+           [4, "Governador", em_ms("2026-03-09"), em_ms("2026-03-20"), "AÉREO", "BSB - POA", "Brasília", "Porto Alegre", 90],
+           [5, "Governador", em_ms("2026-04-01"), em_ms("2026-03-20"), "SEGURO", "", None, None, 300],
+           [6, "Governador", em_ms("2026-04-01"), em_ms("2026-03-20"), "AÉREO", "POA - GRU - JFK", "Porto Alegre", "New York", 20000],
+           [7, "Governador", em_ms("2026-04-10"), em_ms("2026-03-20"), "AÉREO", "POA - CGH", "Porto Alegre", "São Paulo", 800],
+           [8, "Vice-Governador", em_ms("2026-03-05"), em_ms("2026-03-01"), "AÉREO", "POA - CGH", "Porto Alegre", "São Paulo", 400],
+           [9, "Governador", em_ms("2024-12-30"), em_ms("2024-12-01"), "AÉREO", "POA - CGH", "Porto Alegre", "São Paulo", 999]]
+    desp = [["Governador", em_ms("2026-03-08"), em_ms("2026-03-08"), "Brasília", "Hospedagem", 200],
+            ["Governador", em_ms("2026-09-10"), em_ms("2026-09-10"), "Caxias do Sul", "Hospedagem", 300],
+            ["Governador", em_ms("2026-09-11"), em_ms("2026-09-11"), "Portão", "Alimentação", 50],
+            ["Governador", em_ms("2026-09-14"), em_ms("2026-09-14"), "Santa Rosa", "Alimentação", 0.0]]
+    rsv = {v["inicio"]: v for v in vrs.viagens(bil, desp) if v["cargo"] == "Governador"}
+    caso("RS viagens: ida, conexão e volta a Porto Alegre são uma viagem (com a remarcação do mesmo dia)",
+         rsv["2026-03-05"]["passagens"] == 2290 and rsv["2026-03-05"]["fim"] == "2026-03-09"
+         and rsv["2026-03-05"]["destino"] == "São Paulo; Brasília")
+    caso("RS viagens: despesa dentro de uma viagem de avião entra em outros dela", rsv["2026-03-05"]["outros"] == 200)
+    caso("RS viagens: seguro-viagem em outros, e bilhete novo saindo de Porto Alegre abre outra viagem",
+         rsv["2026-04-01"]["outros"] == 300 and rsv["2026-04-01"]["passagens"] == 20000 and "2026-04-10" in rsv)
+    caso("RS viagens: despesas de dias seguidos sem avião são uma viagem por terra; valor zero não conta",
+         rsv["2026-09-10"]["outros"] == 350 and rsv["2026-09-10"]["fim"] == "2026-09-11" and "2026-09-14" not in rsv)
+    caso("RS viagens: a pessoa sai do cargo e da data (vice à parte), e nada antes de 2025",
+         rsv["2026-03-05"]["nome"] == "Eduardo Leite" and any(v["cargo"] == "Vice-Governador" and v["nome"] == "Gabriel Souza"
+                                                              for v in vrs.viagens(bil, desp)) and "2024-12-30" not in rsv)
+    linhas_ba = [["Vice Governador", "s1", em_ms("2026-01-21"), em_ms("2026-01-25"), "ILHEUS", "BA", "nob1", em_ms("2026-02-27"), 1000.0],
+                 ["Vice Governador", "s1", em_ms("2026-01-21"), em_ms("2026-01-25"), "ILHEUS", "BA", "nob2", em_ms("2026-03-10"), 200.0],
+                 ["Vice Governador", "s2", em_ms("2924-08-26"), em_ms("2924-08-27"), "SALVADOR", "BA", "nob3", em_ms("2026-03-10"), 50.0],
+                 ["Assessor", "s3", em_ms("2026-01-21"), em_ms("2026-01-25"), "ILHEUS", "BA", "nob4", em_ms("2026-02-27"), 70.0]]
+    bav = vba.viagens(linhas_ba)
+    caso("BA viagens: a diária paga em duas ordens bancárias soma; data errada da fonte (2924) e outro cargo ficam fora",
+         len(bav) == 1 and bav[0]["diarias"] == 1200.0 and bav[0]["destino"] == "Ilheus/BA" and bav[0]["nome"] == "Geraldo Júnior")
+    caso("ES viagens: período do histórico ('no período de 04.03.2025 a 14.03.2025'), sem a data da cotação nem a do decreto",
+         ves.periodo_do_historico("viagem para o Vietnam, no período de 04.03.2025 a 14.03.2025. Decreto de 27.10.2023. Cotação do "
+                                  "dólar na data de 13.02.2025, processo 2025-LPGKV", 2025) == ("2025-03-04", "2025-03-14"))
+    caso("ES viagens: período do histórico ('nos dias 16 e 17/08/2026'; número de processo não vira data)",
+         ves.periodo_do_historico("nos dias 16 e 17/08/2026. Processo nº 2026-SMK72 e 12345678", 2026) == ("2026-08-16", "2026-08-17"))
+    caso("ES viagens: período do histórico ('no dia 08/07/2026, com retorno no mesmo dia'; sem período: None)",
+         ves.periodo_do_historico("SAINDO DE VITÓRIA, NO DIA 08/07/2026, COM RETORNO NO MESMO DIA", 2026) == ("2026-07-08", "2026-07-08")
+         and ves.periodo_do_historico("Reforço de empenho. RD-030/2025/SCM", 2025) is None)
+    es_l = [{"Ano": "2025", "Data": "10/02/2025 00:00:00", "ValorPago": "0,0000", "Favorecido": "RICARDO REZENDE FERRACO",
+             "HistoricoDocumento": "viagem no período de 04.03.2025 a 14.03.2025", "Documento": "2025NE00001", "DocumentoEmpenho": "2025NE00001",
+             "UnidadeGestora": "SECRETARIA DA CASA MILITAR", "CargoFuncaoDiaria": "|SCM/#VICE-GOVERNADOR DO ESTADO#"},
+            {"Ano": "2025", "Data": "19/02/2025 00:00:00", "ValorPago": "26.684,9900", "Favorecido": "RICARDO REZENDE FERRACO",
+             "HistoricoDocumento": " ", "Documento": "2025OB00002", "DocumentoEmpenho": "2025NE00001",
+             "UnidadeGestora": "SECRETARIA DA CASA MILITAR", "CargoFuncaoDiaria": ""},
+            {"Ano": "2025", "Data": "01/04/2025 00:00:00", "ValorPago": "0,0000", "Favorecido": "RICARDO REZENDE FERRACO",
+             "HistoricoDocumento": "sem pagamento", "Documento": "2025NE00009", "DocumentoEmpenho": "2025NE00009",
+             "UnidadeGestora": "SECRETARIA DA CASA MILITAR", "CargoFuncaoDiaria": ""}]
+    esv = ves.montar_viagens(es_l)
+    caso("ES viagens: um empenho é uma viagem (valor pago das ordens bancárias, datas do histórico); empenho sem pagamento fica fora",
+         len(esv) == 1 and esv[0]["diarias"] == 26684.99 and esv[0]["inicio"] == "2025-03-04" and esv[0]["fim"] == "2025-03-14"
+         and esv[0]["cargo"] == "VICE-GOVERNADOR DO ESTADO")
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
