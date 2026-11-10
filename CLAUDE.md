@@ -67,7 +67,10 @@ armadilhas que não estão escritas em outro lugar.
   (http://localhost:8000).
 - Testes do site: `node publicacao/gerar.mjs` e depois `node publicacao/testes/rodar.mjs` (README, "Testes do site").
   Nunca rode o build enquanto os testes rodam (o build limpa `publicar/`), nem com outro agente fazendo build ao
-  mesmo tempo. O Google Analytics só carrega em contasdopoder.com: testes e prévias não contam visitas.
+  mesmo tempo. O Google Analytics só carrega em contasdopoder.com: testes e prévias não contam visitas. Para esperar os
+  testes, use `wait` no PID ou o log: o laço `until ! ps aux | grep -q "...rodar.mjs"` se acha no próprio comando e não
+  termina (em 10/11/2026 ficaram 11 presos). Para parar o servidor de prévia, mate só o PID que você abriu, nunca
+  `pkill -f servir.mjs` (derruba o de outra rodada de testes).
 
 ## Git e publicação
 
