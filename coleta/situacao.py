@@ -33,6 +33,8 @@ ATRASOS_CONHECIDOS = {
                  "conferido em 10/11/2026)",
     "prefeituras/fortaleza": "o portal de dados abertos de Fortaleza publicou a relação de servidores só até jul/2026 (conferido em "
                              "10/11/2026); a reserva do TCE-CE cobre os meses seguintes",
+    "judiciario/stm_oficial": "a consulta oficial do STM só completa os meses que o DadosJusBr não tem (jan, mar e abr/2026 e, até o "
+                              "DadosJusBr publicar, o mês mais recente): o último mês dela não é o do STM (ver judiciario/stm)",
     "judiciario/stf": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/stm": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
     "judiciario/tse": "o DadosJusBr coleta cada mês por volta do dia 16 do mês seguinte",
