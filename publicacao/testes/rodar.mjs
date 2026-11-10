@@ -98,6 +98,8 @@ const verCom2025 = (cod) => { const p = lerDados("camaras.json").p.find((q) => q
 // o custo por mês de 2025 sem o pagamento único (o que a página tem de mostrar), pela conta feita aqui com os números de camaras.json
 const custoSemUnico = (id, k) => { const q = lerDados("camaras.json").p.find((x) => x.id === id), r = q && q.per[k]; return r ? Math.round((r.g - (r.cats.pagamento_unico || 0)) / r.mg + (r.mc ? r.c / r.mc : 0)) : null; };
 // STM: os meses que vêm da consulta oficial do tribunal (o link do mês não é do DadosJusBr) e um ministro no cargo; São Luís: um vereador com a página no site da Câmara
+const STM_ULT = ((lerDados("judiciario.json").meta.orgaos || {}).STM || {}).ultimo_mes || 0;
+const STM_ULT_TXT = `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(STM_ULT % 100) - 1]}/${Math.floor(STM_ULT / 100)}`;
 const STM_OFICIAIS = Object.entries(((lerDados("judiciario.json").meta.orgaos || {}).STM || {}).fonte_mes || {}).filter(([, u]) => !/dadosjusbr/i.test(u)).map(([m]) => Number(m)).sort((x, y) => x - y);
 const MIN_STM = (lerDados("judiciario.json").p.find((q) => q.org === "STM" && q.x && ENDERECOS[q.id]) || {}).id;
 const VER_SLZ = lerDados("camaras.json").p.find((q) => q.k === "v" && q.cid === 2111300 && q.x && /^https:\/\/www\.cmsaoluis\.ma\.gov\.br\/vereadores\//.test(q.o || "") && ENDERECOS[q.id]);
@@ -446,7 +448,7 @@ const PAGINAS = [
       if (valor !== ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))}) f.push("o custo por mês devia ser " + ${JSON.stringify(String(custoSemUnico("ver-5103403-110002008432", "2026")))} + " e é " + valor);
       return f; })()` },
   // STM (08/10/2026): jan, mar, abr e set/2026 pela consulta oficial (o link do mês é o da consulta), o resto pelo DadosJusBr; a lista do órgão e a imagem dizem as duas fontes
-  { nome: "judiciario-stm-meses-oficiais", url: "/judiciario", pagina: [new RegExp(`Superior Tribunal Militar \\(STM\\)\\s+\\d+ no cargo · dados até set/2026 · fonte: cópia da folha oficial no DadosJusBr e, em ${STM_OFICIAIS.length} meses, a consulta oficial`)] },
+  { nome: "judiciario-stm-meses-oficiais", url: "/judiciario", pagina: [new RegExp(`Superior Tribunal Militar \\(STM\\)\\s+\\d+ no cargo · dados até ${STM_ULT_TXT} · fonte: cópia da folha oficial no DadosJusBr e, em ${STM_OFICIAIS.length} meses, a consulta oficial`)] },
   { nome: "ministro-stm-meses-oficiais", acao: true, url: MIN_STM ? `/${ENDERECOS[MIN_STM]}?periodo=2026` : null, depois: `(() => {
       const f = [], t = document.querySelector("#meses-jud");
       if (!t) return ["sem o contracheque de cada mês"];

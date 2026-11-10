@@ -4963,7 +4963,7 @@
         h("td", { "data-rotulo": "Meses no cargo", class: "balanco-num" }, h("strong", { class: "num" }, balNum(b.mc)), h("small", { class: "tabela-gov__obs" }, `${fmtMes(b.de)} a ${fmtMes(b.ate)}`)),
         parteCel("Recebeu por mês", b.r, [balAjuda(b) ? h("small", { class: "tabela-gov__obs" }, balAjuda(b)) : null,
           b.r.lic > 0 ? h("small", { class: "tabela-gov__obs" }, `inclui ${balMeses(b.r.lic)} de licença com o salário do mandato`) : null,
-          b.r.sp ? h("small", { class: "tabela-gov__obs" }, `${b.r.sp} ${b.r.sp === 1 ? "mês no cargo" : "meses no cargo"} sem pagamento na fonte, fora da média`) : null]),
+          b.r.sp ? h("small", { class: "tabela-gov__obs" }, `${balMeses(b.r.sp)} no cargo sem pagamento na fonte, fora da média`) : null]),
         parteCel("Cota por mês", b.c, b.c.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.c.p, 1)}% do limite`) : null),
         parteCel("Outros gastos por mês", b.o),
         parteCel(`Equipe por mês${s ? " (estimativa)" : ""}`, b.e, b.e.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.e.p, 1)}% do valor disponível da verba`) : null),
