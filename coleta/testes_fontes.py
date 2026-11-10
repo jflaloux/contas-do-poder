@@ -161,6 +161,13 @@ def executar():
     caso("Salvador: mês com 1 de 19 pessoas é folha incompleta", salvador.incompleto([{"tp": "se"}], ant, 202610))
     caso("Salvador: mês completo passa", not salvador.incompleto([{"tp": "pr"}] + [{"tp": "se"}] * 17, ant, 202610))
     caso("Salvador: primeiro mês guardado não tem com o que comparar", not salvador.incompleto([{"tp": "se"}], ant.iloc[0:0], 202501))
+    # 04/11/2026: a Alepi recebe as notas da verba aos poucos; ago/2026 ficou com 2 deputados porque só os 2 últimos meses
+    # eram relidos
+    from .assembleias import pi
+    vb = pd.DataFrame([{"ano": 2026, "mes": m, "parlamentar": f"D{i}"} for m in range(1, 8) for i in range(30)]
+                      + [{"ano": 2026, "mes": 8, "parlamentar": f"D{i}"} for i in range(2)]
+                      + [{"ano": 2026, "mes": 9, "parlamentar": f"D{i}"} for i in range(20)])
+    caso("Alepi: meses com a verba pela metade são relidos", pi.incompletos(vb, [202600 + m for m in range(1, 11)]) == [202608, 202609, 202610])
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 

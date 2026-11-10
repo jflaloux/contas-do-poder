@@ -109,12 +109,26 @@ def _notas(t):
     return saida
 
 
+def incompletos(vb, meses, janela=6):
+    """Meses recentes com a verba de menos de 80% dos deputados de um mês típico: a Alepi recebe as notas aos poucos
+    (em 04/11/2026, ago/2026 tinha as notas de 2 deputados e set/2026, de 20), e o mês já lido precisa ser lido de novo.
+    Antes, só os 2 últimos meses eram relidos, e as notas que chegavam depois ficavam de fora."""
+    if not len(vb):
+        return []
+    am = vb.ano.astype(int) * 100 + vb.mes.astype(int)
+    por_mes = vb.assign(am=am).groupby("am").parlamentar.nunique()
+    tipico = por_mes.median()
+    return [m for m in meses[-janela:] if por_mes.get(m, 0) < 0.8 * tipico]
+
+
 def _coletar_verba(meses):
     arq = PASTA / "verba_notas.csv"
     vb = pd.read_csv(arq, dtype={"matricula": str, "documento": str}) if arq.exists() else pd.DataFrame(columns=["ano", "mes"])
     feitos = set(zip(vb.ano, vb.mes)) if len(vb) else set()
     rev = not arq.exists() or time.time() - arq.stat().st_mtime > 86400
     pedir = [am for am in meses if (am // 100, am % 100) not in feitos or (am >= meses[-2] and rev)]
+    if rev:
+        pedir += incompletos(vb, meses)
     if not pedir:
         return
     desde = min(pedir)
