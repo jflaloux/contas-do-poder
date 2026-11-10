@@ -502,12 +502,9 @@ def _ressalvas(faixas, lacunas, teto):
         "abertos da cota. Usamos o total mensal da consulta oficial da cota no site da Câmara e mostramos a diferença como "
         "\"passagens aéreas e itens sem detalhe\".",
         "Câmara: % do limite da cota = o que foi usado ÷ a soma dos limites do estado nos dias em exercício (Ato da Mesa nº "
-        "270/2023 até 19/2/2026; Ato da Mesa nº 244/2026 desde 20/2/2026). A % pode passar de 100: além da cota, o deputado "
-        "tem direito ao reembolso de até quatro trechos aéreos por mês entre o estado e Brasília (Ato da Mesa nº 43/2009, art. 2º, "
-        "§ 3º), e essas passagens aparecem no total da cota que a Câmara publica; líderes, vice-líderes, presidentes de "
-        "comissão e suplentes da Mesa têm um adicional mensal (art. 1º, § 1º) que não entra no limite que usamos; e notas "
-        "lançadas num mês sem exercício entram no gasto, sem limite. O saldo de um mês passa para o seguinte dentro do mesmo "
-        "ano (art. 13). A cota de quem entra ou sai no meio do mês é proporcional aos dias (art. 11), e o limite também.",
+        "270/2023 até 19/2/2026; Ato da Mesa nº 244/2026 desde 20/2/2026). O saldo de um mês passa para o seguinte dentro do "
+        "mesmo ano (Ato da Mesa nº 43/2009, art. 13). A cota de quem entra ou sai no meio do mês é proporcional aos dias "
+        "(art. 11), e o limite também.",
         "Câmara: % do valor da verba de gabinete = o que a equipe custou ÷ o valor mensal disponível nos meses no cargo. O "
         "valor disponível é estimado pela própria página de cada deputado (gasto do mês e percentual do disponível).",
         (f"Câmara: a página de cada deputado não traz a verba de gabinete de {falta_e}; esse mês fica fora da média da equipe."

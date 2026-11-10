@@ -3,6 +3,15 @@
   "c": [
     {
       "data": "2026-11-10",
+      "titulo": "Senadores: equipe estimada com valor negativo",
+      "texto": [
+        "O custo da equipe de cada senador é uma estimativa: a folha de pagamento do Senado ligada à lotação de cada servidor comissionado. Até 10 de novembro de 2026, em sete páginas, a estimativa de um mês somava só pagamentos negativos de quem já tinha saído do gabinete (nenhum assessor no mês), e a equipe do período ficava menor: Janaína Farias (R$ 3.400 a menos, ago/2024), Rodrigo Cunha (R$ 2.324, ago/2024), José Lacerda (R$ 1.976, fev/2026), Mauro Carvalho Junior (R$ 795, nov/2023), Eduardo Girão (R$ 681, jul/2026), Rodrigo Pacheco (R$ 586, jul/2026) e Dr. Samuel Araújo (R$ 205, fev/2023). O erro foi nosso.",
+        "Agora, mês da estimativa sem nenhum assessor não entra na equipe. O que cada um recebeu, a cota e os outros gastos não mudaram."
+      ],
+      "paginas": ["sen-5732", "sen-5905", "sen-5976", "sen-6021", "sen-6305", "sen-6351", "sen-6362"]
+    },
+    {
+      "data": "2026-11-10",
       "titulo": "Senadores: outros gastos do mandato de quem não estava em exercício",
       "texto": [
         "Os outros gastos do mandato dos senadores (passagens fora da cota, correios, impulsionamento em redes sociais e material) vêm, por ano, da API de dados abertos do Senado, que só responde para quem está em exercício. Até 10 de novembro de 2026, quem não estava em exercício no dia da coleta (porque saiu, era suplente que já tinha deixado o cargo ou estava de licença) ficava com esses gastos em zero no período todo: 25 senadores, em 27 páginas (as outras duas são as de Wellington Dias e de Flávio Dino que juntam o cargo de ministro e o de senador). Os maiores valores que faltavam: Mecias de Jesus (R$ 773.256), Rodrigo Cunha (R$ 454.401), Augusta Brito (R$ 402.195), Margareth Buzetti (R$ 314.026) e Eduardo Girão (R$ 216.543). O erro foi nosso.",
