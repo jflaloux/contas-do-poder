@@ -50,8 +50,9 @@ Cada número tem link para a fonte oficial.
 - [x] Câmara: contracheques lidos de fev/2023 a set/2026 (23.781; depois só os meses novos) — Claude
 - [x] Câmara: limites históricos da cota por estado, mês a mês (Atos da Mesa 270/2023 e 244/2026;
   `dados/referencia/limites_cota_camara_historico.csv`, 09/11/2026) — Agente de Dados
-- [ ] Balanço 2023–2026 (`/balanco`): dados prontos (adae3d0, 09/11/2026); página, revisão externa e e-mails à imprensa
-  para 24–26/11/2026 — Agentes de Dados, de Site e de Divulgação
+- [ ] Balanço 2023–2026 (`/balanco`): dados e página prontos, com três revisões independentes e as correções (09 e
+  10/11/2026); falta a revisão final da página, o push e a divulgação em 24–26/11/2026 — Agentes de Dados, de Site e de
+  Divulgação; Jean-François
 - [ ] Senado: validar a estimativa de custo dos assessores (ex.: pedir via LAI o custo por gabinete) — Você e Claude
 
 ## Fase 2 — Protótipo (em andamento)
@@ -141,7 +142,9 @@ Cada número tem link para a fonte oficial.
   Contas como reserva de Fortaleza, Câmara do Recife e Vitória — Agente de Dados
 - [x] Gravação segura em todos os robôs (04/10/2026): o arquivo novo só troca o anterior se não vier vazio nem perder
   cobertura ou conteúdo; a recusa aparece na situação — Agente de Dados
-- [ ] Primeira rodada de verdade com a gravação segura: rodou em 07/10/2026 (run 37653129237, 1h43, 0 falhando); conferir no conferencia.md se houve recusa falsa — Agente de Dados
+- [x] Recusas da gravação segura desde 07/10/2026 conferidas (10/11): 4 recusas, 2 certas e 2 que seguravam dado bom
+  (Alerj, corrigida; Salvador segurando o Recife); a recusa em `camaras.json` e `prefeituras.json` passou a ser por cidade
+  (d72f588) — Agente de Dados
 - [x] Rodada do GitHub (07/10/2026): cancelada aos 150 min na primeira (coleta a frio passa de 4 h) e derrubada pelo pandas 3 na segunda (`padronizar`); agora com tempo por etapa, disjuntor por site, conferência repetida sobre a árvore final, testes rápidos no início e trabalho guardado para retomar (revisão externa em andamento) — Agente de Dados
 - [ ] Refazer o raio-X das fontes no fim de novembro, com o histórico das rodadas — Agente de Dados
 - [x] Bens declarados ao TSE (2018, 2022, 2024), versão neutra: dados e página prontos, dormentes até 26/10/2026 — Agentes de Dados e de Site
