@@ -17,9 +17,9 @@ import sys
 from .. import onde
 from ..config import DADOS, RAIZ
 from ..util import TempoEsgotado, gravar_json, log, normalizar_nome
-from . import am, ba, comum, es, mg, pb, rs, se, sp
+from . import am, ba, comum, df, es, mg, pb, rs, se, sp
 
-ESTADOS = {"AM": am, "BA": ba, "ES": es, "MG": mg, "PB": pb, "RS": rs, "SE": se, "SP": sp}
+ESTADOS = {"AM": am, "BA": ba, "DF": df, "ES": es, "MG": mg, "PB": pb, "RS": rs, "SE": se, "SP": sp}
 CURADO = DADOS / "governadores" / "governadores.json"
 SITE = RAIZ / "site" / "dados" / "governadores.json"
 # nomes inteiros como a fonte escreve, quando o arquivo curado não os tem (governador e vice desde 2025); BA e RS

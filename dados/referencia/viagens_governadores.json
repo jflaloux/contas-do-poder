@@ -181,7 +181,7 @@
    "diarias": {
     "publica": true,
     "com_nome": true,
-    "granularidade": "processo (favorecido, UG, número do processo, subitem e valores empenhado, liquidado e pago no ano); sem destino nem datas (há detalhe por nota de empenho e ordem bancária)",
+    "granularidade": "empenho: a lista de empenhos por nome do credor (/api/despesa/nota-empenho) e a descrição de cada empenho (/api/despesa/descricao) trazem destino e período da viagem; o valor pago sai das ordens bancárias do empenho",
     "desde": "2009-01",
     "formato": "API JSON do portal (e exportação CSV)",
     "url": "https://www.transparencia.df.gov.br/#/despesas/diarias-passagens-locomocao",
@@ -201,9 +201,9 @@
    "barreiras": "A API pede um cabeçalho x-client-id com um identificador qualquer, que o site gera a cada visita (o robô df.py já manda um fixo).",
    "exterior": true,
    "robots": "Sem robots.txt (o endereço devolve a página do aplicativo).",
-   "robo_possivel": "sim",
-   "como_ler": "GET https://www.transparencia.df.gov.br/api/despesa/diarias-passagens?anoExercicio=AAAA&favorecido=<nome>&page=0&size=30 (ou listaCodigoUnidadeGestora=100101 Gabinete do Vice-Governador, 90101 Casa Civil) com x-client-id. Anos: /api/despesa/diarias-passagens/anos. Campos: favorecido, unidadeGestora, elemento, subItem, numeroProcesso, valorNeFinal, valorNlBruto, valorObFinal.",
-   "obs": "A resposta traz codigoCredor com 11 dígitos sem máscara (CPF) além de codigoCredorMascarado: o robô não pode guardar nenhum dos dois."
+   "robo_possivel": "feito (coleta/viagens_governadores/df.py, desde 11/11/2026)",
+   "como_ler": "O robô: GET /api/despesa/nota-empenho?anoNotaEmpenho=AAAA&nomeCredor=<nome>&page=0&size=50 (fica o elemento DIÁRIAS - CIVIL), depois /api/despesa/descricao e /api/despesa/nota-empenho/ordem-bancaria com numeroNotaEmpenho, codigoUnidadeGestora, anoNotaEmpenho e codigoGestao; tudo com x-client-id. O resumo por processo: GET https://www.transparencia.df.gov.br/api/despesa/diarias-passagens?anoExercicio=AAAA&favorecido=<nome>&page=0&size=30 (ou listaCodigoUnidadeGestora=100101 Gabinete do Vice-Governador, 90101 Casa Civil) com x-client-id. Anos: /api/despesa/diarias-passagens/anos. Campos: favorecido, unidadeGestora, elemento, subItem, numeroProcesso, valorNeFinal, valorNlBruto, valorObFinal.",
+   "obs": "A resposta traz codigoCredor com 11 dígitos sem máscara (CPF) além de codigoCredorMascarado: o robô não lê nenhum dos dois. A busca de empenhos pelo nome do credor (nomeCredor) não pede CPF; a tela do portal filtra também por codigoCredorCodificado (o CPF em base64), que o robô não usa. Exemplo (11/11/2026): 2025NE00364, Gabinete do Vice-Governador, Celina Leão Hizim Ferreira, destino São Paulo/SP, de 06/08/2025 a 10/08/2025, R$ 4.396,79 pagos (2025OB58709). Ibaneis Rocha: nenhum empenho de diárias em 2024, 2025 e 2026. O painel \"Detalhamento de Diárias\" (Power BI publicado na web, app.powerbi.com/view?r=..., com link no menu de despesas do portal) responde 403 ao robô identificado (e encerra a conexão de outros clientes) já no pedido do modelo: é bloqueio de robôs do serviço e não foi contornado."
   },
   {
    "uf": "ES",

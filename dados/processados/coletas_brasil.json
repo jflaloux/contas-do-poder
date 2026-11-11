@@ -450,6 +450,11 @@
   "falhas": 0,
   "ultimo_sucesso": "2026-11-10T04:23:12"
  },
+ "viagens/DF": {
+  "ultima_tentativa": "2026-11-11T01:19:20",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-11-11T01:19:20"
+ },
  "viagens/ES": {
   "ultima_tentativa": "2026-11-10T04:24:00",
   "falhas": 0,

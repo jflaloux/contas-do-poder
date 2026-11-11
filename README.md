@@ -975,6 +975,7 @@ favorecidos vier sem os nomes, a coleta falha e o arquivo e o mês lido ficam co
 |---|---|---|
 | AM | Portal da Transparência, "Diárias e Passagens" (o serviço do SCDP que a página usa, por órgão e mês; só abre do Brasil) | Diárias e passagens por solicitação; voos da Casa Militar aparecem com valor zero (o custo do avião oficial não é publicado) |
 | BA | Portal da Transparência, Painel de Diárias (Power BI, com a chave anônima da página, como a folha) | Diárias por diária (destino, datas, valor da ordem bancária); a pessoa é achada pelo cargo ("Governador", "Vice Governador"), sem pedir as colunas de nome e CPF. Em 2025 não há diária com esses cargos; o painel não tem passagens |
+| DF | Portal da Transparência, API do próprio portal (`/api/despesa/nota-empenho` pelo nome do credor, `/descricao` e `/nota-empenho/ordem-bancaria`) | Diárias por empenho, valor pago das ordens bancárias; destino e datas saem da descrição do empenho (só eles; sem data, vale a do empenho); as passagens são empenhadas a agências, sem o nome do passageiro. O painel "Detalhamento de Diárias" (Power BI publicado na web) responde 403 a robôs e não é usado |
 | ES | Dados abertos, "Portal da Transparência - Pessoal - Diárias" (CKAN; um CSV de ~290 MB por ano) | Diárias por empenho, valor pago; as datas saem do histórico do empenho (só as datas; sem data, vale a do empenho); destino vazio (as colunas de destino vêm vazias); sem passagens |
 | MG | Dados abertos, conjunto "viagens" (CKAN; trechos do SCDP, ~42 MB) | Diárias e passagens por documento de viagem, somando os trechos; trechos aéreos sem valor de passagem são, em geral, no avião oficial |
 | PB | API de dados abertos, `/remuneracao/diarias` (só do Brasil) | Diárias por empenho, valor pago; as passagens são empenhadas a agências, sem o nome do passageiro |
@@ -995,12 +996,15 @@ favorecidos vier sem os nomes, a coleta falha e o arquivo e o mês lido ficam co
   se uma ordem bancária de uma diária do governador ou do vice também pagou diárias de outra pessoa, a coleta falha (o
   valor seria de mais de uma pessoa). No ES, o arquivo do ano é lido inteiro e dá lugar a um resumo só com as linhas do
   governador e do vice (`dados/cache/viagens/es/<ano>.json`); depois de 6 dias, o pedido recomeça, mas para antes do
-  corpo se o arquivo não mudou (mesmo Last-Modified).
+  corpo se o arquivo não mudou (mesmo Last-Modified). No DF, se as ordens bancárias de um empenho somarem mais que o
+  empenho, a coleta falha (a ordem pagaria também outro empenho, talvez de outra pessoa).
 - **Plano de queda** (desde 10/11/2026, também em `dados/referencia/plano-de-queda.json`): viagens são complemento; o
   site sempre mostra o que já está gravado, com o "até" do último mês lido. BA e RS (Power BI): se a chave anônima ou o
   nome das tabelas mudar, conferir o modelo do painel (`explore/conceptualschema`); passou de 1 hora, congelar. ES: se o
   conjunto mudar de nome ou de colunas, achar o arquivo novo na página do conjunto; se o histórico deixar de trazer as
-  datas, as viagens entram com a data do empenho (marcadas em "obs"); passou de 1 hora, congelar.
+  datas, as viagens entram com a data do empenho (marcadas em "obs"); passou de 1 hora, congelar. DF (desde 11/11/2026):
+  se a API mudar os endereços ou os campos, conferir o `app.min.js` do portal (`DespesasService`); se a descrição deixar
+  de trazer as datas, as viagens entram com a data do empenho (marcadas em "obs"); passou de 1 hora, congelar.
 
 ## Índice de Transparência dos estados
 

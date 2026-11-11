@@ -331,6 +331,38 @@ def executar():
          and portaltp.fim_pela_demissao("2026-08-17", None, pd.Timestamp("2026-12-01"), "2026-11-11") is None
          and portaltp.fim_pela_demissao("2026-08-17", None, pd.Timestamp("2025-03-01"), "2026-11-11") is None
          and portaltp.fim_pela_demissao("2026-08-17", "2026-09-30", dem, "2026-11-11") == "2026-09-30")
+    # viagens do governador e da vice do DF (11/11/2026): destino e datas na descrição do empenho
+    from .viagens_governadores import df as vdf
+    caso("DF viagens: período e destino da descrição ('com destino à cidade de São Paulo/SP, no período de 06/08/2025 a 10/08/2025')",
+         vdf.periodo("CONCESSÃO DE DIÁRIAS DA VICE GOVERNADORA, MATRÍCULA Nº 1.710.686-9, COM DESTINO À CIDADE DE SÃO PAULO/SP, NO "
+                     "PERÍODO DE 06/08/2025 A 10/08/2025, CONFORME CONVITE (176979834)", 2025) == ("2025-08-06", "2025-08-10")
+         and vdf.destino("COM DESTINO A CIDADE DO RIO DE JANEIRO/RJ, NO PERÍODO") == "Rio de Janeiro/RJ")
+    caso("DF viagens: 'no dia 31/07/2026' vale, e não a data da publicação no DODF ('de 12 de agosto de 2026')",
+         vdf.periodo("VIAGEM À CIDADE DE SÃO PAULO/SP, REALIZADA NO DIA 31/07/2026, AUTORIZAÇÃO PUBLICADA NO DODF Nº 148, DE 12 DE "
+                     "AGOSTO DE 2026, PG. 22", 2026) == ("2026-07-31", "2026-07-31")
+         and vdf.periodo("PUBLICADA EM 20/08/2026, VIAGEM A SÃO PAULO (SP), NO DIA 18 DE AGOSTO DE 2026", 2026) == ("2026-08-18", "2026-08-18")
+         and vdf.destino("PARA CUSTEAR VIAGEM A SÃO PAULO (SP), NO DIA 18") == "São Paulo/SP")
+    caso("DF viagens: datas por extenso entre dois meses e mais de um destino; sem data nem UF: None e destino vazio",
+         vdf.periodo("NOS DIAS 30 DE JULHO A 2 DE AGOSTO DE 2026", 2026) == ("2026-07-30", "2026-08-02")
+         and vdf.destino("VIAGEM PARA BELO HORIZONTE/MG E À CIDADE DE SALVADOR/BA, NOS DIAS") == "Belo Horizonte/MG; Salvador/BA"
+         and vdf.periodo("REFORÇO DE EMPENHO", 2026) is None and vdf.destino("VIAGEM A LISBOA, PORTUGAL") == "")
+    ne_df = {"numeroNotaEmpenho": "2025NE00364", "codigoUnidadeGestora": 100101, "anoNotaEmpenho": 2025, "codigoGestao": 1,
+             "nomeCredor": "CELINA LEAO HIZIM FERREIRA", "nomeUnidadeGestora": "GABINETE DO VICE-GOVERNADOR DO DISTRITO FEDERAL",
+             "dataEmissao": "29/07/2025", "valorNeFinal": 4396.79}
+    dfv = vdf.montar_viagens([
+        {"ne": ne_df, "descricao": [{"descricao": "COM DESTINO À CIDADE DE SÃO PAULO/SP, NO PERÍODO DE 06/08/2025 A 10/08/2025"}],
+         "obs": [{"valorFinal": 0.0}, {"valorFinal": 4000.0}, {"valorFinal": 396.79}]},
+        {"ne": dict(ne_df, numeroNotaEmpenho="2025NE00400"), "descricao": [{"descricao": "COM DESTINO A GOIÂNIA/GO"}], "obs": [{"valorFinal": 0.0}]},
+        {"ne": dict(ne_df, numeroNotaEmpenho="2025NE00401", dataEmissao="2025-09-02"), "descricao": [{"descricao": "DIÁRIAS DA VICE"}],
+         "obs": [{"valorFinal": 100.0}]}])
+    caso("DF viagens: um empenho é uma viagem (soma das ordens bancárias); sem pagamento fica fora; sem período, data do empenho",
+         len(dfv) == 2 and abs(dfv[0]["diarias"] - 4396.79) < 0.005 and dfv[0]["inicio"] == "2025-08-06" and dfv[0]["destino"] == "São Paulo/SP"
+         and dfv[1]["inicio"] == "2025-09-02" and "data do empenho" in dfv[1]["obs"] and "Vice-Governador" in dfv[0]["obs"])
+    try:
+        vdf.montar_viagens([{"ne": ne_df, "descricao": [], "obs": [{"valorFinal": 9000.0}]}])
+        caso("DF viagens: ordem bancária maior que o empenho faz a coleta falhar", False)
+    except RuntimeError:
+        caso("DF viagens: ordem bancária maior que o empenho faz a coleta falhar", True)
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
