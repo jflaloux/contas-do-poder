@@ -25,7 +25,10 @@ armadilhas que não estão escritas em outro lugar.
   - a identificação (User-Agent "ContasDoPoder");
   - parar se o órgão pedir ou bloquear (e aí vale a regra do WAF acima: `BLOQUEADO_ROBOTS = True` no módulo ou o site
     em `SITES_PARADOS`, em `coleta/util.py`).
-  CAPTCHA, WAF, login e consulta que pede CPF continuam sendo barreiras que não se contornam. (Antes, de 30/09 a
+  CAPTCHA, WAF, login e consulta que pede CPF continuam sendo barreiras que não se contornam. Resposta 403 ou conexão
+  cortada ao robô identificado é bloqueio: registrar e seguir sem a fonte, nunca repetir o pedido com User-Agent ou
+  cabeçalhos de navegador, nem "só para testar" (em 11/11/2026 um agente mandou um curl com "Mozilla/5.0" ao Power BI
+  do DF depois do 403). (Antes, de 30/09 a
   08/10/2026: respeitar por padrão, com exceções só para dados que a LAI manda abrir, listadas no código e no README.)
 - Nunca desligar a verificação de TLS. Se a cadeia do certificado estiver incompleta, completar com o certificado
   intermediário certo (AIA) junto com o `certifi`.
