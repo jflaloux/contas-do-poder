@@ -186,6 +186,8 @@ def executar():
     linhas = []
     for ch in sorted(set(meses) | set(coletas["exterior"]) | set(coletas["brasil"]) | set(recusas)):
         tent = {lugar: coletas[lugar].get(ch) for lugar in onde.LUGARES if coletas[lugar].get(ch)}
+        if onde._so_brasil(ch):  # só do Brasil: a tentativa antiga de fora (de antes de entrar em SO_BRASIL) não conta
+            tent.pop("exterior", None)
         sucessos = [(c["ultimo_sucesso"], lugar) for lugar, c in tent.items() if c.get("ultimo_sucesso")]
         ultimo_ok = max(sucessos) if sucessos else None
         falhando = bool(tent) and all(c.get("falhas", 0) > 0 for c in tent.values())

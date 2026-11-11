@@ -1,18 +1,7 @@
 {
- "gerado_em": "2026-11-11T00:10:32",
+ "gerado_em": "2026-11-10T21:15:01",
  "ultimo_mes_fechado": 202610,
  "fontes": [
-  {
-   "fonte": "assembleias/mt",
-   "situacao": "falhando",
-   "ultimo_mes": 202610,
-   "meses_atras": 0,
-   "ultimo_sucesso": "2026-10-07T21:44:03",
-   "onde": "exterior",
-   "so_brasil": true,
-   "falha_desde": "2026-10-20T17:50:09",
-   "erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host='almt.eloweb.net', port=443) at 0x7ff9144a4150>, 'Connection to almt.eloweb.net timed out. (connect"
-  },
   {
    "fonte": "judiciario/tst",
    "situacao": "falhando",
@@ -245,6 +234,17 @@
    "erro": null
   },
   {
+   "fonte": "assembleias/mt",
+   "situacao": "ok",
+   "ultimo_mes": 202610,
+   "meses_atras": 0,
+   "ultimo_sucesso": "2026-11-10T21:14:57",
+   "onde": "brasil",
+   "so_brasil": true,
+   "falha_desde": null,
+   "erro": null
+  },
+  {
    "fonte": "assembleias/pa",
    "situacao": "ok",
    "ultimo_mes": 202608,
@@ -273,9 +273,9 @@
    "meses_atras": 0,
    "ultimo_sucesso": "2026-10-22T09:51:56",
    "onde": "brasil",
-   "so_brasil": false,
+   "so_brasil": true,
    "falha_desde": null,
-   "erro": "ConnectionError: o robots.txt de dadosabertos.alepe.pe.gov.br não abriu (site fora do ar ou bloqueado)"
+   "erro": null
   },
   {
    "fonte": "assembleias/pi",

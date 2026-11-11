@@ -1,18 +1,17 @@
-# Situação das fontes (11/11/2026 00:10, rodada: exterior)
+# Situação das fontes (10/11/2026 21:15, rodada: brasil)
 
-Último mês fechado: 10/2026. 107 fontes: 96 ok, 5 com o atraso da própria fonte, 0 atrasadas, 2 falhando, 4 congeladas.
+Último mês fechado: 10/2026. 107 fontes: 97 ok, 5 com o atraso da própria fonte, 0 atrasadas, 1 falhando, 4 congeladas.
 
 Desde a rodada anterior (semana de 03/11/2026):
 
 - Quebrou: judiciario/tst (falhando desde 10/11/2026).
-- Voltou: assembleias/pi (agora: ok), folhas/AC (agora: atrasada (fonte)), judiciario/stm_oficial (agora: ok), prefeituras/fortaleza (agora: atrasada (fonte)), prefeituras/salvador (agora: ok).
-- Continua com problema: assembleias/mt (falhando desde 20/10/2026).
+- Voltou: assembleias/mt (agora: ok), assembleias/pi (agora: ok), folhas/AC (agora: atrasada (fonte)), judiciario/stm_oficial (agora: ok), prefeituras/fortaleza (agora: atrasada (fonte)), prefeituras/salvador (agora: ok).
+- Continua com problema: nada.
 
 Reserva pelo Tribunal de Contas em uso: prefeituras/fortaleza (TCE-CE, o tribunal tem meses mais recentes que a fonte própria).
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
-| assembleias/mt (só do Brasil) | falhando | 10/2026 | 2026-10-07 | exterior | ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparenc |
 | judiciario/tst | falhando | 09/2026 | 2026-11-03 | exterior | HTTPError: 503 Server Error: Service Unavailable for url: https://transparencia-remuneracao.tst.jus.br/arquivos |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-10-22 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 06/2026 | 2026-10-29 | brasil | ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/con |
@@ -34,9 +33,10 @@ Reserva pelo Tribunal de Contas em uso: prefeituras/fortaleza (TCE-CE, o tribuna
 | assembleias/go (só do Brasil) | ok | 08/2026 | 2026-10-22 | brasil |  |
 | assembleias/mg | ok | 08/2026 | 2026-11-03 | exterior | ConnectionError: o robots.txt de dadosabertos.almg.gov.br não abriu (site fora do ar ou bloqueado) |
 | assembleias/ms | ok | 10/2026 | 2026-11-10 | exterior |  |
+| assembleias/mt (só do Brasil) | ok | 10/2026 | 2026-11-10 | brasil |  |
 | assembleias/pa | ok | 08/2026 | 2026-11-10 | exterior |  |
 | assembleias/pb | ok | 09/2026 | 2026-11-10 | exterior |  |
-| assembleias/pe | ok | 10/2026 | 2026-10-22 | brasil | ConnectionError: o robots.txt de dadosabertos.alepe.pe.gov.br não abriu (site fora do ar ou bloqueado) |
+| assembleias/pe (só do Brasil) | ok | 10/2026 | 2026-10-22 | brasil |  |
 | assembleias/pi | ok | 08/2026 | 2026-11-10 | exterior |  |
 | assembleias/pr | ok | 09/2026 | 2026-10-27 | exterior | HTTPError: 403 Client Error: Forbidden for url: https://transparencia.assembleia.pr.leg.br/api/remuneracao?t=deputado+es |
 | assembleias/rn | ok | 10/2026 | 2026-11-10 | exterior |  |

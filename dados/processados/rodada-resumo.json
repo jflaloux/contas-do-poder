@@ -1,8 +1,9 @@
 {
- "gerado_em": "2026-11-10T21:10:32-03:00",
+ "gerado_em": "2026-11-10T21:15:01-03:00",
  "semana": "2026-11-10",
  "anterior": "2026-11-03",
  "lugares": [
+  "brasil",
   "exterior"
  ],
  "quebrou": [
@@ -15,6 +16,11 @@
   }
  ],
  "voltou": [
+  {
+   "fonte": "assembleias/mt",
+   "antes": "falhando",
+   "situacao": "ok"
+  },
   {
    "fonte": "assembleias/pi",
    "antes": "atrasada",
@@ -41,21 +47,13 @@
    "situacao": "ok"
   }
  ],
- "continua": [
-  {
-   "fonte": "assembleias/mt",
-   "situacao": "falhando",
-   "desde": "2026-10-20T17:50:09",
-   "ultimo_mes": 202610,
-   "erro": "ConnectTimeout: HTTPSConnectionPool(host='almt.eloweb.net', port=443): Max retries exceeded with url: /portaltransparencia-api/api/servidores/49259 (Caused by ConnectTimeoutError(<HTTPSConnection(host"
-  }
- ],
+ "continua": [],
  "quebrou_e_voltou": [],
  "totais": {
-  "falhando": 2,
+  "falhando": 1,
   "atrasada (fonte)": 5,
   "congelada": 4,
-  "ok": 96
+  "ok": 97
  },
  "historico": [
   {
@@ -162,13 +160,13 @@
   },
   {
    "semana": "2026-11-10",
-   "atualizado_em": "2026-11-10T21:10:32-03:00",
+   "atualizado_em": "2026-11-10T21:15:01-03:00",
    "lugares": [
+    "brasil",
     "exterior"
    ],
    "fontes": 107,
    "problemas": {
-    "assembleias/mt": "falhando",
     "judiciario/tst": "falhando"
    },
    "teve_problema": [

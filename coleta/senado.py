@@ -317,7 +317,7 @@ def ceaps():
 def _recursos(tarefa):
     cod, ano = tarefa
     arq = C / "recursos" / f"{cod}_{ano}.json"
-    if cache_valido(arq, 3 if ano == HOJE.year else None):
+    if cache_valido(arq, 3 if ano == HOJE.year else 7 if ano == HOJE.year - 1 else None):  # o ano passado ainda muda (créditos e estornos)
         return
     try:
         d = baixar(f"{ADM}/senadores/{cod}/recursos-utilizados", params={"ano": ano}).json()

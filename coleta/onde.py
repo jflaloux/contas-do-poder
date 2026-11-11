@@ -44,7 +44,9 @@ SO_BRASIL = {
     # pr, rn, pi, pa, ac e rr abrem de fora; mt também abre, mas roda no Mac desde 10/11/2026: o servidor corta depois de
     # ~330 pedidos seguidos, e o cache da equipe (3,8 mil servidores de gabinete, dados/cache/assembleias/mt) só está
     # completo no Mac (no GitHub, o cache que fica 7 dias sem uso é apagado e a equipe nunca terminava)
-    "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs", "mt"},
+    # pe: de fora, o robots.txt de dadosabertos.alepe.pe.gov.br não abre desde 07/10/2026 (do Mac abre: 404, sem robots.txt,
+    # e o site responde); a rodada do Brasil leu certo em 22/10
+    "assembleias": {"al", "am", "ap", "df", "es", "go", "ma", "rs", "mt", "pe"},
     "folhas": {"AL", "AM", "CE", "MA", "PA", "PB", "PI", "RJ", "RN", "SE"},
     "tce": set(),
     "viagens": {"AM", "PB", "SE"},  # viagens dos governadores (coleta/viagens_governadores); MG e SP abrem de fora
