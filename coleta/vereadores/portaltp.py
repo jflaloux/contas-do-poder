@@ -301,6 +301,7 @@ def montar(cfg, tipos, baixar_fotos=False):
     base = base[base.valor >= 0.5]
     ultimo = int((base.ano * 100 + base.mes).max())
     ate = min(comum.ultimo_mes_fechado(), ultimo)
+    demissao = {c: pd.to_datetime(g.demissao, errors="coerce").max() for c, g in fol.groupby("codigo")}
     ver, mandatos, fotos = [], [], []
     for c in sorted(set(fol.codigo)):
         v, sp = info[c], sapl_info.get(c)
@@ -313,6 +314,11 @@ def montar(cfg, tipos, baixar_fotos=False):
                     "pagina": f"{cfg['sapl']}/parlamentar/{sp['id']}" if sp else cfg["pagina"]})
         g = base[base.codigo == c]
         for i, f in comum.periodos_de_meses(g.ano * 100 + g.mes, ultimo):
+            s = demissao.get(c)
+            if not f and s is not None and not pd.isna(s) and i <= s.strftime("%Y-%m-%d") <= hoje:
+                # saiu no último mês: a folha traz a data de demissão (Porto Velho, out/2026: o suplente que saiu em 26/10
+                # ainda estava na folha do mês, com os acertos da saída, e o site mostrava 24 vereadores no cargo para 23 vagas)
+                f = s.strftime("%Y-%m-%d")
             if not f and com_mandato is not None and c not in com_mandato:  # está na folha do último mês, mas sem mandato hoje
                 a, m = divmod(ultimo, 100)
                 f = f"{a}-{m:02d}-{pd.Period(f'{a}-{m:02d}').days_in_month:02d}"
