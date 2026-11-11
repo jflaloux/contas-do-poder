@@ -2,6 +2,15 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-11-11",
+      "titulo": "Vereadores de Porto Velho: um suplente que já tinha saído aparecia no cargo",
+      "texto": [
+        "Na atualização de 11 de novembro de 2026, a página da Câmara de Porto Velho mostrava 24 vereadores no cargo, para 23 vagas: o suplente Claudio da Padaria, que saiu em 26 de outubro de 2026, ainda aparecia no cargo, porque estava na folha de pagamento de outubro (com os pagamentos da saída). O erro foi nosso.",
+        "Agora, quem tem a data de saída na folha do último mês sai do cargo nessa data. A página da cidade volta a mostrar 23 vereadores no cargo, e a de Claudio da Padaria mostra o período de 17/08 a 26/10/2026. Os valores não mudaram."
+      ],
+      "paginas": ["cidade/1100205", "ver-1100205-220001920545"]
+    },
+    {
       "data": "2026-11-10",
       "titulo": "Senadores: equipe estimada com valor negativo",
       "texto": [

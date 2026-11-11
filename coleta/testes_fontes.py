@@ -322,6 +322,15 @@ def executar():
     caso("ES viagens: um empenho é uma viagem (valor pago das ordens bancárias, datas do histórico); empenho sem pagamento fica fora",
          len(esv) == 1 and esv[0]["diarias"] == 26684.99 and esv[0]["inicio"] == "2025-03-04" and esv[0]["fim"] == "2025-03-14"
          and esv[0]["cargo"] == "VICE-GOVERNADOR DO ESTADO")
+    # 11/11/2026: em Porto Velho, o suplente que saiu em 26/10/2026 ainda estava na folha de outubro (24 no cargo para 23 vagas)
+    dem = pd.Timestamp("2026-10-26")
+    caso("portaltp: data de demissão no último mês fecha o período nessa data",
+         portaltp.fim_pela_demissao("2026-08-17", None, dem, "2026-11-11") == "2026-10-26")
+    caso("portaltp: sem demissão, o período segue aberto; demissão futura ou antes do início não conta",
+         portaltp.fim_pela_demissao("2026-08-17", None, pd.NaT, "2026-11-11") is None
+         and portaltp.fim_pela_demissao("2026-08-17", None, pd.Timestamp("2026-12-01"), "2026-11-11") is None
+         and portaltp.fim_pela_demissao("2026-08-17", None, pd.Timestamp("2025-03-01"), "2026-11-11") is None
+         and portaltp.fim_pela_demissao("2026-08-17", "2026-09-30", dem, "2026-11-11") == "2026-09-30")
     print(f"{total - len(falhas)}/{total} casos certos" + (f"; falharam: {falhas}" if falhas else ""))
     return 1 if falhas else 0
 
