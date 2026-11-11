@@ -40,6 +40,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300159,Aperibé,camara,202606,vereador,Agente Político,9.00,71679.15,,,,CAMARA APERIBE
 3300159,Aperibé,camara,202607,vereador,Agente Político,9.00,71679.15,,,,CAMARA APERIBE
 3300159,Aperibé,camara,202608,vereador,Agente Político,9.00,71679.15,,,,CAMARA APERIBE
+3300159,Aperibé,camara,202609,vereador,Agente Político,9.00,71679.15,,,,CAMARA APERIBE
 3300209,Araruama,camara,202501,vereador,Agente Político,20.00,274896.03,,,,CAMARA ARARUAMA
 3300209,Araruama,camara,202502,vereador,Agente Político,19.00,242616.52,,,,CAMARA ARARUAMA
 3300209,Araruama,camara,202503,vereador,Agente Político,18.00,258235.62,,,,CAMARA ARARUAMA
@@ -165,6 +166,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3300407,Barra Mansa,camara,202606,vereador,Agente Político,19.00,232705.00,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202607,vereador,Agente Político,19.00,232705.00,,,,CAMARA BARRA MANSA
 3300407,Barra Mansa,camara,202608,vereador,Agente Político,19.00,238305.00,,,,CAMARA BARRA MANSA
+3300407,Barra Mansa,camara,202609,vereador,Agente Político,19.00,232705.00,,,,CAMARA BARRA MANSA
 3300456,Belford Roxo,camara,202501,vereador,Agente Político,25.00,338800.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202502,vereador,Agente Político,26.00,483550.00,,,,CAMARA BELFORD ROXO
 3300456,Belford Roxo,camara,202503,vereador,Agente Político,25.00,446600.00,,,,CAMARA BELFORD ROXO
@@ -748,6 +750,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302304,Laje do Muriaé,camara,202606,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202607,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302304,Laje do Muriaé,camara,202608,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
+3302304,Laje do Muriaé,camara,202609,vereador,Agente Político,12.00,72430.38,,,,CAMARA LAJE DO MURIAE
 3302403,Macaé,camara,202501,vereador,Agente Político,17.00,193432.71,,,,CAMARA MACAE
 3302403,Macaé,camara,202502,vereador,Agente Político,17.00,173799.81,,,,CAMARA MACAE
 3302403,Macaé,camara,202503,vereador,Agente Político,17.00,153602.83,,,,CAMARA MACAE
@@ -890,6 +893,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3302858,Mesquita,camara,202606,vereador,Agente Político,12.00,120252.00,,,,CAMARA MESQUITA
 3302858,Mesquita,camara,202607,vereador,Agente Político,12.00,120252.00,,,,CAMARA MESQUITA
 3302858,Mesquita,camara,202608,vereador,Agente Político,12.00,120252.00,,,,CAMARA MESQUITA
+3302858,Mesquita,camara,202609,vereador,Agente Político,12.00,120252.00,,,,CAMARA MESQUITA
 3302908,Miguel Pereira,camara,202501,vereador,Agente Político,11.00,108921.12,,,,CAMARA MIGUEL PEREIRA
 3302908,Miguel Pereira,camara,202502,vereador,Agente Político,11.00,108921.12,,,,CAMARA MIGUEL PEREIRA
 3302908,Miguel Pereira,camara,202503,vereador,Agente Político,11.00,108921.12,,,,CAMARA MIGUEL PEREIRA
@@ -1516,7 +1520,6 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305000,São João da Barra,camara,202606,vereador,Agente Político,13.00,155335.44,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202607,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
 3305000,São João da Barra,camara,202608,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
-3305000,São João da Barra,camara,202609,vereador,Agente Político,13.00,154579.10,,,,CAMARA SAO JOAO DA BARRA
 3305109,São João de Meriti,camara,202501,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202502,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
 3305109,São João de Meriti,camara,202503,vereador,Agente Político,17.00,306000.00,,,,CAMARA SAO JOAO DE MERITI
@@ -1558,6 +1561,7 @@ cod_ibge,municipio,orgao,ano_mes,papel,cargo,quantidade,valor_total,indenizatori
 3305133,São José de Ubá,camara,202606,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
 3305133,São José de Ubá,camara,202607,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
 3305133,São José de Ubá,camara,202608,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
+3305133,São José de Ubá,camara,202609,vereador,Agente Político,9.00,59411.43,,,,CAMARA SAO JOSE DE UBA
 3305158,São José do Vale do Rio Preto,camara,202501,vereador,Agente Político,9.00,70200.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202502,vereador,Agente Político,9.00,70200.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO
 3305158,São José do Vale do Rio Preto,camara,202503,vereador,Agente Político,9.00,70200.00,,,,CAMARA SAO JOSE DO VALE DO RIO PRETO

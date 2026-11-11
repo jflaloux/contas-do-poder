@@ -40,7 +40,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3300159,camara,202606,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3300159,camara,202607,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3300159,camara,202608,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
-3300159,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3300159,camara,202609,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3300209,camara,202501,5,20,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3300209,camara,202502,5,19,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3300209,camara,202503,5,18,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
@@ -166,7 +166,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3300407,camara,202606,4,19,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3300407,camara,202607,4,19,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3300407,camara,202608,4,19,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-27T19:13
-3300407,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3300407,camara,202609,4,19,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3300456,camara,202501,3,25,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3300456,camara,202502,3,26,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3300456,camara,202503,3,25,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
@@ -754,7 +754,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3302304,camara,202606,4,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3302304,camara,202607,4,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3302304,camara,202608,4,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-27T19:13
-3302304,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3302304,camara,202609,4,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3302403,camara,202501,7,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3302403,camara,202502,7,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3302403,camara,202503,6,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
@@ -901,7 +901,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3302858,camara,202606,3,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3302858,camara,202607,3,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3302858,camara,202608,3,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
-3302858,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3302858,camara,202609,3,12,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3302908,camara,202501,4,11,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3302908,camara,202502,4,11,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3302908,camara,202503,4,11,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
@@ -1531,7 +1531,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3305000,camara,202606,3,13,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3305000,camara,202607,4,13,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3305000,camara,202608,4,13,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-07T18:15
-3305000,camara,202609,4,13,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3305000,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3305109,camara,202501,3,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3305109,camara,202502,3,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3305109,camara,202503,3,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
@@ -1573,7 +1573,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3305133,camara,202606,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3305133,camara,202607,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3305133,camara,202608,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
-3305133,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3305133,camara,202609,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-11T00:07
 3305158,camara,202501,3,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3305158,camara,202502,4,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3305158,camara,202503,3,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12

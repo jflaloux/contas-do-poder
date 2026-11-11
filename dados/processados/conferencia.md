@@ -1,4 +1,4 @@
-# Conferência dos dados — 04/11/2026 02:23
+# Conferência dos dados — 11/11/2026 00:10
 
 ## 1. Cobertura
 
@@ -28,8 +28,8 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Da Vitoria | 2025 | 536,573.96 | 536,573.96 | 0.00 |
 | Clarissa Tércio | 2024 | 345,146.46 | 345,146.46 | 0.00 |
 | Clarissa Tércio | 2025 | 535,644.97 | 535,644.97 | 0.00 |
-| Ricardo Salles | 2024 | 543,435.14 | 543,435.17 | -0.03 |
-| Ricardo Salles | 2025 | 522,678.85 | 522,678.85 | 0.00 |
+| Roberta Roma | 2024 | 475,811.52 | 475,811.52 | -0.00 |
+| Roberta Roma | 2025 | 541,587.42 | 541,587.42 | 0.00 |
 | Ana Pimentel | 2024 | 494,232.46 | 494,232.46 | 0.00 |
 | Ana Pimentel | 2025 | 496,300.75 | 496,300.75 | 0.00 |
 | Ana Paula Leão | 2024 | 517,524.92 | 517,524.92 | 0.00 |
@@ -42,7 +42,8 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 | Amanda Gentil | 2025 | 551,955.06 | 551,955.05 | 0.01 |
 | Gabriel Nunes | 2024 | 566,255.59 | 566,255.59 | 0.00 |
 | Gabriel Nunes | 2025 | 547,458.30 | 547,458.30 | -0.00 |
-| Ricardo Barros | 2025 | 429,306.33 | 429,306.33 | 0.00 |
+| Ricardo Guidi | 2024 | 78,161.98 | 78,161.98 | 0.00 |
+| Ricardo Guidi | 2025 | 548,121.83 | 548,121.83 | -0.00 |
 | Gutemberg Reis | 2024 | 436,168.36 | 436,168.36 | 0.00 |
 | Gutemberg Reis | 2025 | 489,891.19 | 489,891.19 | 0.00 |
 | Sargento Portugal | 2024 | 478,215.21 | 478,215.21 | 0.00 |
@@ -55,7 +56,15 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 ## 3. Cota parlamentar do Senado: nossa soma × total oficial por ano
 
 - Comparações senador × ano: 324
-- **Diferenças de R$ 1 ou mais: 0**
+- **Diferenças de R$ 1 ou mais: 8**
+  - Alan Rick 2025: nossa 431,231.16 × oficial 435,216.00
+  - Alessandro Vieira 2025: nossa 574,033.50 × oficial 579,363.35
+  - Ana Paula Lobato 2025: nossa 520,369.19 × oficial 522,790.21
+  - Fernando Dueire 2025: nossa 499,077.54 × oficial 499,123.90
+  - Humberto Costa 2025: nossa 544,192.30 × oficial 546,033.25
+  - Jayme Campos 2025: nossa 440,375.41 × oficial 468,985.07
+  - Plínio Valério 2025: nossa 674,290.87 × oficial 682,911.72
+  - Professora Dorinha Seabra 2025: nossa 493,305.09 × oficial 497,820.03
 
 ## 4. Auxílio-moradia da Câmara no ano (todos os deputados)
 
@@ -65,7 +74,7 @@ Amostra aleatória de 20 deputados em exercício, anos 2024 e 2025.
 
 ## 5. Salários mensais acima do subsídio (revisar à mão)
 
-Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
+Casos: 24. Podem ser acertos de meses anteriores; confira na página oficial.
 
 - Fernando Farias — 04/2024: R$ 121,402.81
 - Celso Sabino — 08/2025: R$ 71,112.19
@@ -75,18 +84,18 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 - Delegada Adriana Accorsi — 12/2025: R$ 57,022.65
 - Josenildo — 09/2025: R$ 56,559.03
 - Dorinaldo Malafaia — 06/2026: R$ 50,642.02
+- Waldez Góes — 09/2026: R$ 48,606.69
 - Waldez Góes — 08/2026: R$ 48,606.69
 - Renzo Braz — 10/2026: R$ 47,911.73
 - Delegado Éder Mauro — 01/2026: R$ 47,354.26
-- Fernanda Machiaveli — 04/2026: R$ 46,366.21
+- Fernanda Machiaveli — 06/2026: R$ 46,366.21
 - Fernanda Machiaveli — 05/2026: R$ 46,366.21
-- Esther Dweck — 04/2026: R$ 46,366.21
-- Fernanda Machiaveli — 08/2026: R$ 46,366.21
+- Fernanda Machiaveli — 04/2026: R$ 46,366.21
 
 ## 6. Senado: assessores encontrados na folha × quantidade informada pela API
 
 - Senadores comparados: 81
-- Diferença mediana: -4 pessoa(s); casos com diferença > 5: 33
+- Diferença mediana: -4 pessoa(s); casos com diferença > 5: 36
 - Lembrete: o custo dos assessores do Senado é uma ESTIMATIVA (ver metadados).
 
 ## 6b. Fornecedor pessoa física pelo nome no site
@@ -97,17 +106,17 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 
 | Checagem | Valor | Mínimo | |
 |---|---:|---:|---|
-| Governo federal: no cargo em 08/2026 | 40 | 30 | OK |
+| Governo federal: no cargo em 09/2026 | 40 | 30 | OK |
 | Câmaras municipais com custo no arquivo do site | 5452 | 5000 | OK |
 | Vereadores eleitos no arquivo do site | 58153 | 55000 | OK |
-| Vereadores de São Paulo no cargo (camaras.json) | 55 | 46 | OK |
+| Vereadores de São Paulo no cargo (camaras.json) | 54 | 46 | OK |
 | Vereadores de São Paulo com gastos do gabinete no mês retrasado | 55 | 33 | OK |
 | Vereadores de Rio de Janeiro no cargo (camaras.json) | 51 | 43 | OK |
 | Vereadores de Belo Horizonte no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Fortaleza no cargo (camaras.json) | 43 | 36 | OK |
 | Vereadores de Fortaleza com gastos do gabinete no mês retrasado | 45 | 25 | OK |
 | Vereadores de Goiânia no cargo (camaras.json) | 37 | 31 | OK |
-| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 34 | 22 | OK |
+| Vereadores de Goiânia com gastos do gabinete no mês retrasado | 35 | 22 | OK |
 | Vereadores de Maceió no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Manaus no cargo (camaras.json) | 41 | 34 | OK |
 | Vereadores de Manaus com gastos do gabinete no mês retrasado | 41 | 24 | OK |
@@ -117,25 +126,25 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Vereadores de Porto Alegre com gastos do gabinete no mês retrasado | 28 | 21 | OK |
 | Vereadores de Recife no cargo (camaras.json) | 41 | 33 | OK |
 | Vereadores de São Luís no cargo (camaras.json) | 32 | 26 | OK |
-| Vereadores de Aracaju no cargo (camaras.json) | 25 | 20 | OK |
+| Vereadores de Aracaju no cargo (camaras.json) | 27 | 20 | OK |
 | Vereadores de Boa Vista no cargo (camaras.json) | 23 | 19 | OK |
 | Vereadores de Boa Vista com gastos do gabinete no mês retrasado | 23 | 13 | OK |
 | Vereadores de João Pessoa no cargo (camaras.json) | 29 | 24 | OK |
-| Vereadores de João Pessoa com gastos do gabinete no mês retrasado | 28 | 17 | OK |
+| Vereadores de João Pessoa com gastos do gabinete no mês retrasado | 27 | 17 | OK |
 | Vereadores de Teresina no cargo (camaras.json) | 28 | 24 | OK |
 | Vereadores de Teresina com gastos do gabinete no mês retrasado | 29 | 17 | OK |
 | Vereadores de Vitória no cargo (camaras.json) | 21 | 17 | OK |
 | Vereadores de Cuiabá no cargo (camaras.json) | 27 | 22 | OK |
 | Vereadores de Cuiabá com gastos do gabinete no mês retrasado | 27 | 16 | OK |
 | Vereadores de Rio Branco no cargo (camaras.json) | 21 | 17 | OK |
-| Vereadores de Porto Velho no cargo (camaras.json) | 23 | 19 | OK |
-| Vereadores de Porto Velho com gastos do gabinete no mês retrasado | 22 | 13 | OK |
+| Vereadores de Porto Velho no cargo (camaras.json) | 24 | 19 | OK |
+| Vereadores de Porto Velho com gastos do gabinete no mês retrasado | 23 | 13 | OK |
 | Prefeitura de São Paulo: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de São Paulo: secretários na folha do último mês | 24 | 14 | OK |
 | Prefeitura do Rio de Janeiro: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura do Rio de Janeiro: secretários na folha do último mês | 0 | 0 | OK |
 | Prefeitura do Recife: prefeito na folha do último mês | 1 | 1 | OK |
-| Prefeitura do Recife: secretários na folha do último mês | 22 | 14 | OK |
+| Prefeitura do Recife: secretários na folha do último mês | 24 | 15 | OK |
 | Prefeitura de Fortaleza: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Fortaleza: secretários na folha do último mês | 49 | 29 | OK |
 | Prefeitura de Vitória: prefeito na folha do último mês | 1 | 1 | OK |
@@ -143,7 +152,7 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Prefeitura de Porto Alegre: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Porto Alegre: secretários na folha do último mês | 19 | 11 | OK |
 | Prefeitura de Salvador: prefeito na folha do último mês | 1 | 1 | OK |
-| Prefeitura de Salvador: secretários na folha do último mês | 17 | 11 | OK |
+| Prefeitura de Salvador: secretários na folha do último mês | 18 | 11 | OK |
 | Prefeitura de Curitiba: prefeito na folha do último mês | 1 | 1 | OK |
 | Prefeitura de Curitiba: secretários na folha do último mês | 11 | 7 | OK |
 | Prefeitura do Natal: prefeito na folha do último mês | 1 | 1 | OK |
@@ -171,7 +180,7 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Assembleia MA: deputados estaduais no cargo | 42 | 37 | OK |
 | Assembleia PR: deputados estaduais no cargo | 54 | 48 | OK |
 | Assembleia RN: deputados estaduais no cargo | 24 | 21 | OK |
-| Assembleia PI: deputados estaduais no cargo | 30 | 27 | OK |
+| Assembleia PI: deputados estaduais no cargo | 31 | 27 | OK |
 | Assembleia PA: deputados estaduais no cargo | 41 | 36 | OK |
 | Assembleia AC: deputados estaduais no cargo | 24 | 21 | OK |
 | Assembleia AL: deputados estaduais no cargo | 28 | 24 | OK |
@@ -180,7 +189,7 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Governadores no arquivo do site | 27 | 27 | OK |
 | Governadores com o valor da lei, da folha ou da tabela oficial | 27 | 18 | OK |
 | Estados com o mês a mês do governador pela folha | 24 | 20 | OK |
-| Governo federal: com salário em 08/2026 | 40 | 25 | OK |
+| Governo federal: com salário em 09/2026 | 39 | 25 | OK |
 | Deputados com salário em 09/2026 | 526 | 480 | OK |
 | Deputados com verba de gabinete em 07/2026 (último mês publicado) | 514 | 450 | OK |
 | Verba de gabinete da Câmara: meses até o limite de atraso (6); atraso de 4 mês(es) | 2 | 0 | OK |
@@ -192,4 +201,4 @@ Casos: 21. Podem ser acertos de meses anteriores; confira na página oficial.
 | Deputados com a equipe contada em 09/2026 | 514 | 450 | OK |
 
 ---
-**Total de alertas: 0**
+**Total de alertas: 8**

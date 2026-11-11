@@ -81,17 +81,8 @@
   "fonte": null
  },
  "site/dados/prefeituras.json": {
-  "estado": "recusado",
-  "quando": "2026-11-03T19:13:41",
-  "fonte": null,
-  "texto": "p/cid=2927408: 19 para 1 com \"x\" preenchido",
-  "perdas": [
-   [
-    "p/cid=2927408",
-    19,
-    1,
-    "com \"x\" preenchido"
-   ]
-  ]
+  "estado": "aceito",
+  "quando": "2026-11-10T22:26:51",
+  "fonte": null
  }
 }

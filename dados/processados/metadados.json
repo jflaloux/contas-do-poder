@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-04T02:22:05",
+ "gerado_em": "2026-11-11T00:09:24",
  "base_anterior": {},
  "camara_detalhe_desde": 202302,
  "legislatura": 57,
@@ -95,7 +95,7 @@
  },
  "pendencias": [
   "Senado: 'outros gastos do mandato' (passagens, correios, impulsionamento) só existem na API para quem está em exercício hoje.",
-  "Câmara: limites da cota por estado valem para o ano atual; faltam os valores históricos.",
+  "Câmara: o limite da cota por estado na página de cada deputado é o atual (Ato da Mesa nº 244/2026, desde 20/2/2026); o balanço do mandato usa o de cada mês (Ato da Mesa nº 270/2023 até 19/2/2026).",
   "Senado: custo dos assessores é ESTIMADO ligando a folha de pagamento à lotação atual (ou última) de cada servidor comissionado, pelo nome. É mais preciso para os meses recentes; homônimos são descartados.",
   "Cota parlamentar: os 3 últimos meses ainda podem receber notas (prazo de 90 dias).",
   "Auxílio-moradia (Câmara) e outros gastos do mandato (Senado) são informados por ano e divididos igualmente pelos meses com salário: o valor de cada mês é aproximado. Em 2023, o total do ano pode incluir janeiro, que ainda era da legislatura anterior.",

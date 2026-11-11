@@ -17,7 +17,7 @@ id_senador,ano,tipo,valor,origem
 22,2025,Cotas para Impulsionamento em Mídias Sociais,32581.84,api
 22,2025,Viagens Oficiais - Diárias,84086.49,api
 22,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-22,2026,Aquisição de passagens aéreas (ATC 2/2023),169408.54,api
+22,2026,Aquisição de passagens aéreas (ATC 2/2023),177338.51,api
 22,2026,Consumo de Material - Outros materiais,6632.18,api
 22,2026,Correios,38078.76,api
 22,2026,Cotas para Impulsionamento em Mídias Sociais,13139.68,api
@@ -67,7 +67,7 @@ id_senador,ano,tipo,valor,origem
 70,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 70,2026,Aquisição de passagens aéreas (ATC 2/2023),98652.84,api
 70,2026,Consumo de Material - Outros materiais,5598.83,api
-70,2026,Correios,24105.98,api
+70,2026,Correios,29954.66,api
 70,2026,Cotas para Impulsionamento em Mídias Sociais,1881.63,api
 70,2026,Viagens Oficiais - Diárias,0.0,api
 70,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -194,7 +194,7 @@ id_senador,ano,tipo,valor,origem
 581,2025,Viagens Oficiais - Ressarcimento de Passagens,33071.24,api
 581,2026,Aquisição de passagens aéreas (ATC 2/2023),55833.99,api
 581,2026,Consumo de Material - Outros materiais,5749.62,api
-581,2026,Correios,21498.49,api
+581,2026,Correios,21806.6,api
 581,2026,Cotas para Impulsionamento em Mídias Sociais,7584.84,api
 581,2026,Viagens Oficiais - Diárias,15034.74,api
 581,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -384,7 +384,7 @@ id_senador,ano,tipo,valor,origem
 3806,2025,Cotas para Impulsionamento em Mídias Sociais,35272.89,api
 3806,2025,Viagens Oficiais - Diárias,15727.43,api
 3806,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-3806,2026,Aquisição de passagens aéreas (ATC 2/2023),108871.84,api
+3806,2026,Aquisição de passagens aéreas (ATC 2/2023),124533.88,api
 3806,2026,Consumo de Material - Outros materiais,4552.2,api
 3806,2026,Correios,19987.94,api
 3806,2026,Cotas para Impulsionamento em Mídias Sociais,3023.13,api
@@ -410,7 +410,7 @@ id_senador,ano,tipo,valor,origem
 3830,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 3830,2026,Aquisição de passagens aéreas (ATC 2/2023),0.0,api
 3830,2026,Consumo de Material - Outros materiais,6542.84,api
-3830,2026,Correios,307.67,api
+3830,2026,Correios,419.65,api
 3830,2026,Cotas para Impulsionamento em Mídias Sociais,12394.6,api
 3830,2026,Viagens Oficiais - Diárias,0.0,api
 3830,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -501,7 +501,7 @@ id_senador,ano,tipo,valor,origem
 4639,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 4639,2025,Viagens Oficiais - Diárias,0.0,api
 4639,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-4639,2026,Aquisição de passagens aéreas (ATC 2/2023),232166.72,api
+4639,2026,Aquisição de passagens aéreas (ATC 2/2023),235641.91,api
 4639,2026,Consumo de Material - Outros materiais,5093.25,api
 4639,2026,Correios,24802.51,api
 4639,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
@@ -527,7 +527,7 @@ id_senador,ano,tipo,valor,origem
 4642,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 4642,2026,Aquisição de passagens aéreas (ATC 2/2023),69249.03,api
 4642,2026,Consumo de Material - Outros materiais,5417.26,api
-4642,2026,Correios,13903.39,api
+4642,2026,Correios,15365.05,api
 4642,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 4642,2026,Viagens Oficiais - Diárias,0.0,api
 4642,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -835,7 +835,7 @@ id_senador,ano,tipo,valor,origem
 5376,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 5376,2024,Viagens Oficiais - Diárias,83752.88,api
 5376,2024,Viagens Oficiais - Ressarcimento de Passagens,20735.17,api
-5376,2025,Aquisição de passagens aéreas (ATC 2/2023),26724.25,api
+5376,2025,Aquisição de passagens aéreas (ATC 2/2023),24807.97,api
 5376,2025,Consumo de Material - Outros materiais,6824.41,api
 5376,2025,Correios,36012.62,api
 5376,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
@@ -843,7 +843,7 @@ id_senador,ano,tipo,valor,origem
 5376,2025,Viagens Oficiais - Ressarcimento de Passagens,10903.75,api
 5376,2026,Aquisição de passagens aéreas (ATC 2/2023),5429.7,api
 5376,2026,Consumo de Material - Outros materiais,5204.07,api
-5376,2026,Correios,23660.39,api
+5376,2026,Correios,24539.76,api
 5376,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 5376,2026,Viagens Oficiais - Diárias,17131.96,api
 5376,2026,Viagens Oficiais - Ressarcimento de Passagens,14322.69,api
@@ -867,7 +867,7 @@ id_senador,ano,tipo,valor,origem
 5385,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5385,2026,Aquisição de passagens aéreas (ATC 2/2023),111327.15,api
 5385,2026,Consumo de Material - Outros materiais,7910.62,api
-5385,2026,Correios,101812.66,api
+5385,2026,Correios,102409.51,api
 5385,2026,Cotas para Impulsionamento em Mídias Sociais,28687.07,api
 5385,2026,Viagens Oficiais - Diárias,72682.25,api
 5385,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -913,7 +913,7 @@ id_senador,ano,tipo,valor,origem
 5411,2025,Cotas para Impulsionamento em Mídias Sociais,36000.0,api
 5411,2025,Viagens Oficiais - Diárias,97014.72,api
 5411,2025,Viagens Oficiais - Ressarcimento de Passagens,109719.57,api
-5411,2026,Aquisição de passagens aéreas (ATC 2/2023),98474.33,api
+5411,2026,Aquisição de passagens aéreas (ATC 2/2023),103642.06,api
 5411,2026,Consumo de Material - Outros materiais,6088.53,api
 5411,2026,Correios,16700.9,api
 5411,2026,Cotas para Impulsionamento em Mídias Sociais,10522.6,api
@@ -1051,7 +1051,7 @@ id_senador,ano,tipo,valor,origem
 5718,2024,Cotas para Impulsionamento em Mídias Sociais,652.0,api
 5718,2024,Viagens Oficiais - Diárias,32585.01,api
 5718,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-5718,2025,Aquisição de passagens aéreas (ATC 2/2023),141424.89,api
+5718,2025,Aquisição de passagens aéreas (ATC 2/2023),136730.04,api
 5718,2025,Consumo de Material - Outros materiais,7612.83,api
 5718,2025,Correios,15009.46,api
 5718,2025,Cotas para Impulsionamento em Mídias Sociais,23759.35,api
@@ -1059,7 +1059,7 @@ id_senador,ano,tipo,valor,origem
 5718,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5718,2026,Aquisição de passagens aéreas (ATC 2/2023),122751.19,api
 5718,2026,Consumo de Material - Outros materiais,777.54,api
-5718,2026,Correios,94765.9,api
+5718,2026,Correios,100354.21,api
 5718,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 5718,2026,Viagens Oficiais - Diárias,20952.23,api
 5718,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1135,9 +1135,9 @@ id_senador,ano,tipo,valor,origem
 5748,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5748,2026,Aquisição de passagens aéreas (ATC 2/2023),95527.46,api
 5748,2026,Consumo de Material - Outros materiais,6764.53,api
-5748,2026,Correios,20440.47,api
+5748,2026,Correios,20472.24,api
 5748,2026,Cotas para Impulsionamento em Mídias Sociais,5590.01,api
-5748,2026,Viagens Oficiais - Diárias,0.0,api
+5748,2026,Viagens Oficiais - Diárias,42315.41,api
 5748,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5783,2023,Aquisição de passagens aéreas (ATC 2/2023),107706.92,api
 5783,2023,Consumo de Material - Outros materiais,5290.01,api
@@ -1184,7 +1184,7 @@ id_senador,ano,tipo,valor,origem
 5793,2026,Aquisição de passagens aéreas (ATC 2/2023),86975.79,api
 5793,2026,Consumo de Material - Outros materiais,4688.22,api
 5793,2026,Correios,17650.69,api
-5793,2026,Cotas para Impulsionamento em Mídias Sociais,16422.75,api
+5793,2026,Cotas para Impulsionamento em Mídias Sociais,18133.63,api
 5793,2026,Viagens Oficiais - Diárias,0.0,api
 5793,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5894,2023,Aquisição de passagens aéreas (ATC 2/2023),45422.62,api
@@ -1317,7 +1317,7 @@ id_senador,ano,tipo,valor,origem
 5917,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5917,2026,Aquisição de passagens aéreas (ATC 2/2023),84254.5,api
 5917,2026,Consumo de Material - Outros materiais,6692.19,api
-5917,2026,Correios,33433.84,api
+5917,2026,Correios,33855.5,api
 5917,2026,Cotas para Impulsionamento em Mídias Sociais,9000.0,api
 5917,2026,Viagens Oficiais - Diárias,13521.76,api
 5917,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1389,7 +1389,7 @@ id_senador,ano,tipo,valor,origem
 5936,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5936,2026,Aquisição de passagens aéreas (ATC 2/2023),132816.35,api
 5936,2026,Consumo de Material - Outros materiais,4141.99,api
-5936,2026,Correios,46754.31,api
+5936,2026,Correios,46910.08,api
 5936,2026,Cotas para Impulsionamento em Mídias Sociais,8635.28,api
 5936,2026,Viagens Oficiais - Diárias,10161.02,api
 5936,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1439,7 +1439,7 @@ id_senador,ano,tipo,valor,origem
 5953,2026,Consumo de Material - Outros materiais,6806.35,api
 5953,2026,Correios,8089.18,api
 5953,2026,Cotas para Impulsionamento em Mídias Sociais,8862.93,api
-5953,2026,Viagens Oficiais - Diárias,44057.32,api
+5953,2026,Viagens Oficiais - Diárias,74832.16,api
 5953,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5959,2023,Aquisição de passagens aéreas (ATC 2/2023),77066.45,api
 5959,2023,Consumo de Material - Outros materiais,6432.92,api
@@ -1587,7 +1587,7 @@ id_senador,ano,tipo,valor,origem
 5977,2026,Consumo de Material - Outros materiais,174.77,api
 5977,2026,Correios,0.0,api
 5977,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
-5977,2026,Viagens Oficiais - Diárias,0.0,api
+5977,2026,Viagens Oficiais - Diárias,26927.99,api
 5977,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5979,2023,(lido),0.0,pagina
 5979,2023,Aquisição de passagens aéreas (ATC 2/2023),0.0,pagina
@@ -1661,7 +1661,7 @@ id_senador,ano,tipo,valor,origem
 5985,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 5985,2026,Aquisição de passagens aéreas (ATC 2/2023),134850.72,api
 5985,2026,Consumo de Material - Outros materiais,8280.09,api
-5985,2026,Correios,42913.0,api
+5985,2026,Correios,43553.73,api
 5985,2026,Cotas para Impulsionamento em Mídias Sociais,31258.68,api
 5985,2026,Viagens Oficiais - Diárias,58150.2,api
 5985,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1683,9 +1683,9 @@ id_senador,ano,tipo,valor,origem
 5988,2025,Cotas para Impulsionamento em Mídias Sociais,12801.51,api
 5988,2025,Viagens Oficiais - Diárias,25931.43,api
 5988,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-5988,2026,Aquisição de passagens aéreas (ATC 2/2023),113209.56,api
+5988,2026,Aquisição de passagens aéreas (ATC 2/2023),131763.07,api
 5988,2026,Consumo de Material - Outros materiais,6441.41,api
-5988,2026,Correios,14168.55,api
+5988,2026,Correios,14200.93,api
 5988,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 5988,2026,Viagens Oficiais - Diárias,0.0,api
 5988,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1788,7 +1788,7 @@ id_senador,ano,tipo,valor,origem
 6009,2025,Viagens Oficiais - Ressarcimento de Passagens,4521.0,api
 6009,2026,Aquisição de passagens aéreas (ATC 2/2023),55037.32,api
 6009,2026,Consumo de Material - Outros materiais,4676.05,api
-6009,2026,Correios,135681.56,api
+6009,2026,Correios,135705.28,api
 6009,2026,Cotas para Impulsionamento em Mídias Sociais,19125.12,api
 6009,2026,Viagens Oficiais - Diárias,208800.23,api
 6009,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -1804,7 +1804,7 @@ id_senador,ano,tipo,valor,origem
 6010,2024,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 6010,2024,Viagens Oficiais - Diárias,0.0,api
 6010,2024,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
-6010,2025,Aquisição de passagens aéreas (ATC 2/2023),83975.24,api
+6010,2025,Aquisição de passagens aéreas (ATC 2/2023),74541.48,api
 6010,2025,Consumo de Material - Outros materiais,8435.62,api
 6010,2025,Correios,23039.35,api
 6010,2025,Cotas para Impulsionamento em Mídias Sociais,0.0,api
@@ -2119,7 +2119,7 @@ id_senador,ano,tipo,valor,origem
 6341,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 6341,2026,Aquisição de passagens aéreas (ATC 2/2023),45840.72,api
 6341,2026,Consumo de Material - Outros materiais,6308.24,api
-6341,2026,Correios,33586.67,api
+6341,2026,Correios,35608.27,api
 6341,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 6341,2026,Viagens Oficiais - Diárias,0.0,api
 6341,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -2143,8 +2143,8 @@ id_senador,ano,tipo,valor,origem
 6342,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 6342,2026,Aquisição de passagens aéreas (ATC 2/2023),82097.77,api
 6342,2026,Consumo de Material - Outros materiais,4145.63,api
-6342,2026,Correios,1544.5,api
-6342,2026,Cotas para Impulsionamento em Mídias Sociais,7400.84,api
+6342,2026,Correios,13605.45,api
+6342,2026,Cotas para Impulsionamento em Mídias Sociais,10815.75,api
 6342,2026,Viagens Oficiais - Diárias,38990.11,api
 6342,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 6345,2023,(lido),0.0,pagina
@@ -2230,7 +2230,7 @@ id_senador,ano,tipo,valor,origem
 6358,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 6358,2026,Aquisição de passagens aéreas (ATC 2/2023),60834.21,api
 6358,2026,Consumo de Material - Outros materiais,5794.22,api
-6358,2026,Correios,23348.42,api
+6358,2026,Correios,44766.47,api
 6358,2026,Cotas para Impulsionamento em Mídias Sociais,8832.75,api
 6358,2026,Viagens Oficiais - Diárias,0.0,api
 6358,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
@@ -2282,7 +2282,7 @@ id_senador,ano,tipo,valor,origem
 6369,2025,Viagens Oficiais - Ressarcimento de Passagens,0.0,api
 6369,2026,Aquisição de passagens aéreas (ATC 2/2023),59966.38,api
 6369,2026,Consumo de Material - Outros materiais,7920.86,api
-6369,2026,Correios,20234.72,api
+6369,2026,Correios,21766.71,api
 6369,2026,Cotas para Impulsionamento em Mídias Sociais,0.0,api
 6369,2026,Viagens Oficiais - Diárias,0.0,api
 6369,2026,Viagens Oficiais - Ressarcimento de Passagens,0.0,api

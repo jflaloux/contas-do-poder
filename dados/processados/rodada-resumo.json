@@ -1,60 +1,42 @@
 {
- "gerado_em": "2026-11-03T23:23:02-03:00",
- "semana": "2026-11-03",
- "anterior": "2026-10-27",
+ "gerado_em": "2026-11-10T21:10:32-03:00",
+ "semana": "2026-11-10",
+ "anterior": "2026-11-03",
  "lugares": [
   "exterior"
  ],
  "quebrou": [
   {
-   "fonte": "assembleias/pi",
-   "situacao": "atrasada",
-   "desde": null,
-   "ultimo_mes": 202607,
-   "erro": null
-  },
-  {
-   "fonte": "folhas/AC",
-   "situacao": "atrasada",
-   "desde": null,
-   "ultimo_mes": 202607,
-   "erro": null
-  },
-  {
-   "fonte": "judiciario/stm_oficial",
-   "situacao": "atrasada",
-   "desde": null,
-   "ultimo_mes": 202604,
-   "erro": null
-  },
-  {
-   "fonte": "prefeituras/fortaleza",
-   "situacao": "atrasada",
-   "desde": null,
-   "ultimo_mes": 202607,
-   "erro": null
-  },
-  {
-   "fonte": "prefeituras/salvador",
+   "fonte": "judiciario/tst",
    "situacao": "falhando",
-   "desde": "2026-11-03T19:13:41",
+   "desde": "2026-11-10T21:59:50",
    "ultimo_mes": 202609,
-   "erro": "Recusado por perda de cobertura (fica o dado anterior): site/dados/prefeituras.json: p/cid=2927408: 19 para 1 com \"x\" preenchido (em 2026-11-03)"
+   "erro": "HTTPError: 503 Server Error: Service Unavailable for url: https://transparencia-remuneracao.tst.jus.br/arquivos"
   }
  ],
  "voltou": [
   {
-   "fonte": "judiciario/stf",
-   "antes": "falhando",
+   "fonte": "assembleias/pi",
+   "antes": "atrasada",
    "situacao": "ok"
   },
   {
-   "fonte": "judiciario/stm",
-   "antes": "falhando",
+   "fonte": "folhas/AC",
+   "antes": "atrasada",
+   "situacao": "atrasada (fonte)"
+  },
+  {
+   "fonte": "judiciario/stm_oficial",
+   "antes": "atrasada",
    "situacao": "ok"
   },
   {
-   "fonte": "judiciario/tse",
+   "fonte": "prefeituras/fortaleza",
+   "antes": "atrasada",
+   "situacao": "atrasada (fonte)"
+  },
+  {
+   "fonte": "prefeituras/salvador",
    "antes": "falhando",
    "situacao": "ok"
   }
@@ -71,10 +53,9 @@
  "quebrou_e_voltou": [],
  "totais": {
   "falhando": 2,
-  "atrasada": 4,
-  "atrasada (fonte)": 4,
+  "atrasada (fonte)": 5,
   "congelada": 4,
-  "ok": 90
+  "ok": 96
  },
  "historico": [
   {
@@ -177,6 +158,22 @@
     "judiciario/stm_oficial",
     "prefeituras/fortaleza",
     "prefeituras/salvador"
+   ]
+  },
+  {
+   "semana": "2026-11-10",
+   "atualizado_em": "2026-11-10T21:10:32-03:00",
+   "lugares": [
+    "exterior"
+   ],
+   "fontes": 107,
+   "problemas": {
+    "assembleias/mt": "falhando",
+    "judiciario/tst": "falhando"
+   },
+   "teve_problema": [
+    "assembleias/mt",
+    "judiciario/tst"
    ]
   }
  ]
