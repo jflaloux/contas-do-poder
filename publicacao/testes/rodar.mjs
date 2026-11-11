@@ -144,6 +144,11 @@ const SEM_JULGAMENTO_BENS = [/mais rico/i, /\brico\b/i, /patrimônio (cresceu|au
 // ---- dados do balanço (09/11/2026): o primeiro da fila, a pessoa do teste e os meses vêm do arquivo, nunca fixos
 const RES_FORT = (lerDados("situacao.json").reservas || {});
 const RES_FORT_CAMARA = !!(RES_FORT["vereadores/fortaleza"] || {}).ativa, RES_FORT_PREF = !!(RES_FORT["prefeituras/fortaleza"] || {}).ativa;
+// João Pessoa: a verba da Câmara sai depois da folha (meta.cidades["2507507"].verba_ate): o texto, os meses "ainda não publicados" e o CSV seguem o arquivo
+const JP_ATE = (() => { try { return Number(lerDados("camaras.json").meta.cidades["2507507"].verba_ate) || 0; } catch (e) { return 0; } })();
+const JP_MES = (m, n) => { let a = Math.floor(m / 100), mm = (m % 100) + n; while (mm > 12) { mm -= 12; a++; } return a * 100 + mm; };
+const JP_ROT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
+const JP_ISO = (m) => `${Math.floor(m / 100)}-${String(m % 100).padStart(2, "0")}`;
 const BAL = (() => { try { return lerDados("balanco.json"); } catch (e) { return null; } })();
 const BAL_FMT = (m) => `${["jan", "fev", "mar", "abr", "mai", "jun", "jul", "ago", "set", "out", "nov", "dez"][(m % 100) - 1]}/${Math.floor(m / 100)}`;
 const BAL_ULTIMO = BAL ? Math.max(...Object.values(BAL.meta.faixas).flatMap((f) => Object.values(f).map((x) => x[1]))) : 0;
@@ -314,7 +319,7 @@ const PAGINAS = [
       if (!/Os 29 vereadores no cargo, um a um/.test(tc)) f.push("a Câmara não lista os 29 vereadores um a um");
       if (!/pela folha de pagamento da Câmara/.test(tc)) f.push("o salário não vem da folha da Câmara");
       if (/Tribunal de Contas|TCE-PB|em média, por vereador|pessoas no cargo de vereador|valor típico/i.test(tc)) f.push("a parte da Câmara ainda traz o valor do Tribunal de Contas");
-      if (!/publicada até 06\\/2026/.test(tc)) f.push("sem a nota da verba publicada até 06/2026");
+      if (!new RegExp("publicada até ${String(JP_ATE % 100).padStart(2, "0")}\\\\/${Math.floor(JP_ATE / 100)}").test(tc)) f.push("sem a nota da verba publicada até ${JP_ROT(JP_ATE)}");
       if (!/TCE-PB/.test(tp)) f.push("a Prefeitura deixou de vir do TCE-PB");
       return f; })()` },
   { nome: "cidade-teresina", url: "/cidade/teresina-pi", ter: [["#cidade .pessoa-chip", 28]], texto: [/Os 28 vereadores no cargo, um a um/, /R\$\s24\.754,79/, /quem recebeu a cota daquele mês/], sem: [/em média, por vereador/i, /pessoas no cargo de vereador/i, /Tribunal de Contas/i], semPagina: [/Prefeitura de Teresina/i] },
@@ -322,11 +327,11 @@ const PAGINAS = [
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
       const de = (m) => linhas.find((l) => l[0] === m);
-      for (const m of ["jul/2026", "ago/2026"]) { const l = de(m);
+      for (const m of ${JSON.stringify([JP_ROT(JP_MES(JP_ATE, 1)), JP_ROT(JP_MES(JP_ATE, 2))])}) { const l = de(m);
         if (!l) { f.push("sem a linha de " + m); continue; }
         if (l[2] !== "ainda não publicados") f.push(m + ": os gastos dizem " + JSON.stringify(l[2]) + " e deviam dizer ainda não publicados");
         if (!/sem os gastos/.test(l[3])) f.push(m + ": o custo total não diz que está sem os gastos: " + l[3]); }
-      const jun = de("jun/2026"); if (!jun || !/^R\\$ [1-9]/.test(jun[2])) f.push("jun/2026 devia mostrar a verba em reais: " + JSON.stringify(jun));
+      const jun = de(${JSON.stringify(JP_ROT(JP_ATE))}); if (!jun || !/^R\\$ [1-9]/.test(jun[2])) f.push(${JSON.stringify(JP_ROT(JP_ATE))} + " devia mostrar a verba em reais: " + JSON.stringify(jun));
       if (linhas.some((l) => /^R\\$ 0$/.test(l[2]) && /2026/.test(l[0]))) f.push("algum mês de 2026 mostra R$ 0 de gastos");
       if (!/A média por mês não conta esses meses/.test(document.querySelector("#mes-a-mes").textContent)) f.push("sem a nota sobre a verba publicada com atraso");
       const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
@@ -334,8 +339,8 @@ const PAGINAS = [
       const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return f.concat(["sem o botão Mês a mês (CSV)"]);
       bt.click(); await esp(200);
       const csv = guardados.length ? await guardados[0].text() : "";
-      if (!/,2026-07,[\\d.]+,,/.test(csv) || !/,2026-08,[\\d.]+,,/.test(csv)) f.push("no CSV, a verba de jul e ago/2026 devia ficar em branco");
-      if (!/,2026-06,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de jun/2026 devia ter valor");
+      if (!/,${JP_ISO(JP_MES(JP_ATE, 1))},[\\d.]+,,/.test(csv) || !/,${JP_ISO(JP_MES(JP_ATE, 2))},[\\d.]+,,/.test(csv)) f.push("no CSV, a verba dos meses depois de ${JP_ROT(JP_ATE)} devia ficar em branco");
+      if (!/,${JP_ISO(JP_ATE)},[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de ${JP_ROT(JP_ATE)} devia ter valor");
       return f; })()` },
   // Teresina: a fonte do subsídio é o Portal da Transparência da Câmara (página inicial); as fontes só podem ser as duas desta lista
   { nome: "vereador-teresina-fontes", url: ENDERECOS["ver-2211001-180001926305"] ? `/${ENDERECOS["ver-2211001-180001926305"]}` : null, depois: `(() => {
