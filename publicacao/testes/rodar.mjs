@@ -583,8 +583,8 @@ const PAGINAS = [
   { nome: "indice", url: "/indice", ter: [["#indice", 1]] },
   { nome: "dados-abertos", url: "/dados-abertos", ter: [[".copias li", 5], ["#dados-abertos tbody tr", 10], ["#dados-abertos a[href='/dados/balanco.csv']", BAL ? 1 : 0]] },
   // /balanco (09/11/2026): a lista, o quadro de cada casa, as ressalvas e a ordem pela média por mês (com os de poucos meses no fim)
-  { nome: "balanco", url: BAL ? "/balanco" : null, ter: [["#balanco tbody tr", 40], ["#balanco .balanco-casa", 1], ["#balanco a[href='/dados/balanco.csv']", 1], ["#balanco .balanco-pontos li", 6]],
-    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Antes dos números/, /está prevista uma atualização em fev\/2027, com o fim do mandato dos deputados/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
+  { nome: "balanco", url: BAL ? "/balanco" : null, ter: [["#balanco tbody tr", 20], ["#balanco .balanco-casa", 1], ["#balanco a[href='/dados/balanco.csv']", 1], ["#balanco .balanco-pontos li", 6]],
+    pagina: BAL ? [new RegExp(`mandato 2023–2026, de fev/2023 a ${reEsc(BAL_FMT(BAL_ULTIMO))}`), /Ler as 6 ressalvas/, /Na mediana, um deputado federal recebeu e usou R\$\s[0-9.]+ por mês/, /está prevista uma atualização em fev\/2027, com o fim do mandato dos deputados/, /Como ler este balanço/, /o site não compara os totais das duas casas/,
       new RegExp(`equipe até ${reEsc(BAL_FMT(BAL.meta.faixas.d.e[1]))}`), /Os senadores eleitos em 2022 têm mandato até 2031/, /Sem agregados por partido/] : [],
     semPagina: [/termina em 31\/1\/2027/, /Tudo com dados abertos oficiais/, /em fev\/2027 há uma atualização/, /não há ato da Mesa/, /versão final/, /o link da fonte de cada número/, /vai para o bolso/i, /campe[ãa]o/i, /gastou demais/i, /gasta demais/i, /mais gastou/i] },
   { nome: "balanco-ordem-pela-media", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
@@ -606,7 +606,7 @@ const PAGINAS = [
       if (nulos.indexOf(true) !== -1 && nulos.indexOf(true) < ultNum) f.push("quem está sem média do total (—) aparece antes de quem tem média");
       if (linhas().some((tr) => /NaN|R\$ 0 por mês/.test(tr.innerText))) f.push("a lista tem NaN");
       sel.value = "ep"; sel.dispatchEvent(new Event("change", { bubbles: true })); await esp(300);
-      const pcts = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")].map((tr) => (/([0-9]+,[0-9])% do valor disponível/.exec(tr.innerText.replace(/\u00a0/g, " ")) || [])[1]).filter(Boolean).map((v) => Number(v.replace(",", ".")));
+      const pcts = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")].map((tr) => (/([0-9]+,[0-9])% do valor disponível/.exec(tr.textContent.replace(/\u00a0/g, " ")) || [])[1]).filter(Boolean).map((v) => Number(v.replace(",", ".")));
       if (!pcts.length || pcts.some((v) => v > 100) || pcts.slice(0, 5).some((v, i, l) => i && v > l[i - 1])) f.push("a ordem pela % do valor disponível da verba devia vir do maior para o menor e nunca passar de 100%: " + pcts.slice(0, 6).join(","));
       return f; })()` },
   // o Senado à parte: equipe com o selo "estimativa", sem % do limite e sem ordenar pela equipe; o quadro da casa bate com o arquivo
@@ -614,7 +614,7 @@ const PAGINAS = [
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       [...document.querySelectorAll("#balanco .balanco-barra button")].find((b) => /^Senado/.test(b.textContent)).click(); await esp(300);
       const t = document.querySelector("#balanco").innerText.replace(/\\s+/g, " "), linhas = document.querySelectorAll("#balanco .tabela-balanco tbody tr");
-      if (linhas.length < 40) f.push("a lista do Senado devia ter pelo menos 40 linhas: " + linhas.length);
+      if (linhas.length < 20) f.push("a lista do Senado devia ter pelo menos 20 linhas: " + linhas.length);
       if (document.querySelector("#bal-ordem").value !== "n" || location.search !== "?casa=s") f.push("o Senado devia abrir em ordem de nome (o total inclui a equipe estimada): " + document.querySelector("#bal-ordem").value + " " + location.search);
       if (linhas[0] && linhas[0].querySelector(".balanco-nome strong").textContent !== ${JSON.stringify(BAL ? BAL.p.filter((b) => b.k === "s").map((b) => b.n).sort((a, b) => a.localeCompare(b, "pt-BR"))[0] : "")}) f.push("o primeiro senador devia ser o primeiro do alfabeto: " + linhas[0].querySelector(".balanco-nome strong").textContent);
       if (![...document.querySelectorAll("#balanco thead th")].some((th) => /Equipe/.test(th.textContent) && th.querySelector(".etiqueta--estimativa"))) f.push("a coluna da equipe do Senado não tem o selo estimativa");
@@ -634,13 +634,13 @@ const PAGINAS = [
       const sp = linhas().find((tr) => /São Paulo \\(SP\\)/.test(tr.innerText));
       const num = (v) => "R$ " + Math.round(v).toLocaleString("pt-BR");
       if (!sp || !sp.innerText.includes(num(${BAL ? BAL.uf.d.SP.t.md : 0}))) f.push("SP: a mediana do total por mês devia ser " + num(${BAL ? BAL.uf.d.SP.t.md : 0}));
-      if (!sp || !/${BAL ? String(BAL.uf.d.SP.c.pmd.toFixed(1)).replace(".", ",") : ""}% do limite \\(mediana\\)/.test(sp.innerText)) f.push("SP: falta a % do limite (mediana)");
+      if (!sp || !/${BAL ? String(BAL.uf.d.SP.c.pmd.toFixed(1)).replace(".", ",") : ""}% do limite \\(mediana\\)/.test(sp.textContent)) f.push("SP: falta a % do limite (mediana)");
       bt("Soma no período").click(); await esp(300);
       const sp2 = linhas().find((tr) => /São Paulo \\(SP\\)/.test(tr.innerText));
       if (!sp2 || !sp2.innerText.includes(num(${BAL ? BAL.uf.d.SP.t.s : 0}))) f.push("SP: a soma do total devia ser " + num(${BAL ? BAL.uf.d.SP.t.s : 0}));
       if (!/vista=estados/.test(location.search) || !/modo=soma/.test(location.search)) f.push("o endereço não guardou a visão e o modo: " + location.search);
       if (/artido|PT\\b|PL\\b/.test(document.querySelector("#balanco .tabela-balanco--estados").innerText)) f.push("a visão por estado não pode trazer partido");
-      sp2.querySelector(".balanco-acoes button").click(); await esp(400);
+      [...sp2.querySelectorAll(".balanco-acoes button")].find((b) => /^Ver as pessoas/.test(b.textContent)).click(); await esp(400);
       if (!/uf=SP/.test(location.search) || document.querySelector("#balanco .tabela-balanco--estados")) f.push("'Ver as pessoas' devia filtrar por SP e voltar para a lista: " + location.search);
       const quem = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr .balanco-nome small")].filter((s) => /· /.test(s.textContent) && !/ · SP · /.test(s.textContent));
       if (quem.length) f.push("a lista de SP trouxe gente de outro estado: " + quem[0].textContent);
@@ -655,7 +655,7 @@ const PAGINAS = [
       for (const v of ${JSON.stringify(BAL_PESSOA ? [`R$ ${BAL_PESSOA.r.m}`, `R$ ${BAL_PESSOA.t.m}`] : [])}) { const n = num(Number(v.slice(3))); if (!tx.includes(n)) f.push("a linha não tem " + n); }
       if (!tx.includes("inclui " + num(${BAL_PESSOA ? BAL_PESSOA.u : 0}) + " de ajuda de custo, fora da média")) f.push("falta a ajuda de custo à parte");
       if (!/${BAL_PESSOA ? String(BAL_PESSOA.c.p.toFixed(1)).replace(".", ",") : ""}% do limite/.test(tx)) f.push("falta a % do limite");
-      linhas[0].querySelector(".link-botao").click(); await esp(3500);
+      [...linhas[0].querySelectorAll(".link-botao")].find((b) => /^Compartilhar/.test(b.textContent)).click(); await esp(3500);
       const j = document.querySelector("dialog.janela-img[open]"); if (!j) return f.concat(["a janela de compartilhar não abriu"]);
       if (!j.querySelector("img.compartilhar-img__previa[src^='blob:']")) f.push("a imagem do balanço não foi gerada");
       const zap = decodeURIComponent(j.querySelector("a.botao--zap").href.split("text=")[1] || "");
@@ -671,6 +671,41 @@ const PAGINAS = [
       const r = await fetch("/dados/balanco.csv"), c = await r.text();
       if (!r.ok) f.push("o CSV não abriu: " + r.status);
       if (c.split("\\n").filter(Boolean).length !== ${BAL ? BAL.p.length + 1 : 0}) f.push("o CSV devia ter ${BAL ? BAL.p.length + 1 : 0} linhas (cabeçalho e uma por pessoa): " + c.split("\\n").filter(Boolean).length);
+      return f; })()` },
+  // C-002 (16/11/2026): a frase com a mediana no topo, a busca logo abaixo, as ressalvas fechadas (o texto continua na página) e a lista em linhas compactas no celular
+  { nome: "balanco-topo", acao: true, url: BAL ? "/balanco" : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), y = (e) => Math.round(e.getBoundingClientRect().top + scrollY);
+      const abertasPelaSuite = [...document.querySelectorAll("details.balanco-ressalvas")].length; // o teste abre todas para ler o texto; aqui fecho para medir a página como a pessoa a vê
+      document.querySelectorAll("details.balanco-ressalvas").forEach((d) => { d.open = false; }); await esp(300);
+      const altura = document.documentElement.scrollHeight;
+      const html = await (await fetch("/balanco")).text(); if (/<details[^>]*balanco-[a-z]+[^>]*\\sopen/.test(html)) f.push("o HTML pronto traz as ressalvas abertas"); if (abertasPelaSuite < 2) f.push("faltam os dois blocos recolhidos (ressalvas e Como ler)");
+      const fr = document.querySelector("#balanco-frase"), busca = document.querySelector("#bal-busca"), pontos = document.querySelector("details.balanco-pontos");
+      if (!fr || !/^Na mediana, um deputado federal recebeu e usou R\\$ [0-9.]+ por mês no mandato 2023–2026, de fev\\/2023 a ${BAL_FMT(BAL_ULTIMO).replace("/", "\\/")}: R\\$ [0-9.]+ recebidos, R\\$ [0-9.]+ de cota parlamentar e R\\$ [0-9.]+ de equipe do gabinete\\.$/.test(fr.textContent)) f.push("a frase da mediana do topo está errada: " + (fr && fr.textContent));
+      if (fr && y(fr) > 500) f.push("a frase com o número devia estar nos primeiros 500 px: " + y(fr));
+      if (busca && y(busca) > 1000) f.push("a busca devia estar nos primeiros 1.000 px: " + y(busca));
+      if (!pontos || pontos.open) f.push("as ressalvas deviam começar fechadas");
+      if (pontos && pontos.querySelectorAll("li").length < 6) f.push("as 6 ressalvas continuam na página, só fechadas: " + pontos.querySelectorAll("li").length);
+      if (!/Dados públicos oficiais, parciais até ${BAL_FMT(BAL_ULTIMO).replace("/", "\\/")} · valores brutos · Câmara e Senado não se comparam/.test(document.querySelector(".balanco-resumo").textContent)) f.push("falta o resumo das ressalvas à vista");
+      if (document.querySelectorAll("#balanco .tabela-balanco tbody tr").length !== 20) f.push("a lista devia abrir com 20 pessoas");
+      const comoLer = document.querySelector("details#balanco-como"); if (!comoLer || comoLer.open) f.push("o 'Como ler' devia estar fechado");
+      document.querySelector("a[href='#balanco-como']").click(); await esp(300); if (!comoLer.open) f.push("o link das ressalvas devia abrir o Como ler");
+      const estreito = innerWidth <= 900, tr = document.querySelector("#balanco .tabela-balanco tbody tr"), cota = tr.querySelector("td[data-rotulo='Cota por mês']");
+      if (estreito) {
+        if (getComputedStyle(cota).display !== "none") f.push("no celular, a linha devia vir fechada (só nome e total)");
+        if (tr.getBoundingClientRect().height > 170) f.push("a linha compacta passou de 170 px: " + Math.round(tr.getBoundingClientRect().height));
+        const bt = tr.querySelector(".balanco-toggle"); bt.click(); await esp(200);
+        if (getComputedStyle(cota).display === "none" || bt.getAttribute("aria-expanded") !== "true") f.push("o botão 'Ver os números' devia abrir a linha");
+        if (!/^Ver os números de |^Ocultar os números de /.test(bt.getAttribute("aria-label"))) f.push("o botão da linha sem nome acessível: " + bt.getAttribute("aria-label"));
+        if (altura > 9000) f.push("a página no celular passou de 9.000 px: " + altura);
+      } else if (getComputedStyle(cota).display === "none") f.push("no computador, a tabela inteira devia estar à vista");
+      return f; })()` },
+  // os endereços dos e-mails: ?uf=XX&casa=s e ?casa=s abrem a frase e a lista certas
+  { nome: "balanco-enderecos-do-email", acao: true, url: BAL ? "/balanco?uf=SP&casa=s" : null, depois: `(async () => {
+      const f = [], linhas = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")];
+      if (!/^Na mediana, um senador recebeu e usou/.test(document.querySelector("#balanco-frase").textContent)) f.push("a frase devia ser a do Senado: " + document.querySelector("#balanco-frase").textContent);
+      if (linhas.length !== ${BAL ? BAL.p.filter((b) => b.k === "s" && b.uf === "SP").length : 0}) f.push("os senadores de SP devia ser ${BAL ? BAL.p.filter((b) => b.k === "s" && b.uf === "SP").length : 0}: " + linhas.length);
+      if (linhas.some((tr) => !/ · SP · /.test(tr.querySelector(".balanco-nome small").textContent))) f.push("apareceu gente de outro estado");
+      if (document.querySelector("#bal-uf").value !== "SP") f.push("o seletor de estado devia estar em SP");
       return f; })()` },
   // celular estreito: a página não pode passar da largura (a licença do CSV não quebrava e abria rolagem horizontal)
   { nome: "balanco-320", url: BAL ? "/balanco" : null, largura: 320, ter: [["#balanco .balanco-fim a[href*='creativecommons.org']", 1]] },
@@ -1019,7 +1054,7 @@ async function testar(nav, base, pg, perfil, axe, capturas) {
     for (const [arq, max] of Object.entries(pg.maxPedidos || {})) { const n = pedidosPorCaminho.get(arq) || 0; if (n > max) falhas.push(`${arq} foi pedido ${n} vezes (o limite é ${max}): ciclo de pedidos?`); }
     // blocos recolhidos no celular (details.recolher): abrem para o teste ler o texto; o pulo de layout de abrir não conta no CLS
     const cls0 = await avaliar(`window.__m.cls`);
-    await avaliar(`document.querySelectorAll("details.recolher").forEach((d) => { d.open = true; })`); await espera(500);
+    await avaliar(`document.querySelectorAll("details.recolher, details.balanco-ressalvas").forEach((d) => { d.open = true; })`); await espera(500);
     await avaliar(`window.__m.cls = ${Number(cls0) || 0}`);
     // pg.acao: o teste clica e digita (a pessoa teria dado um clique, o que não conta como pulo de layout); o CLS de antes fica
     const clsAntes = pg.acao ? Number(await avaliar(`window.__m.cls`)) || 0 : null;

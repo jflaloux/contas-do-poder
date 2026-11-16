@@ -827,12 +827,17 @@ if (BAL && (BAL.p || []).length) {
   ];
   const casa = (k, nome, plural) => { const a = BAL.casa[k], s = k === "s"; return `<li><strong>${nome}:</strong> ${a.n} ${plural} no período, ${a.x} no cargo hoje. Mediana da média por mês: recebeu ${reaisB(a.r.md)}, cota ${reaisB(a.c.md)}${a.c.pmd !== undefined ? ` (${String(a.c.pmd.toFixed(1)).replace(".", ",")}% do limite)` : ""}, outros gastos ${reaisB(a.o.md)}, equipe ${reaisB(a.e.md)}${s ? " (estimativa, fora do total)" : `, total ${reaisB(a.t.md)}`}.</li>`; };
   const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados públicos oficiais.`;
+  // a frase com o número vem primeiro (a mesma do app.js, para a Câmara); as ressalvas, recolhidas, com o resumo à vista
+  const dC = BAL.casa.d;
+  const frase = `Na mediana, um deputado federal recebeu e usou ${reaisB(dC.t.md)} por mês no ${periodo}: ${reaisB(dC.r.md)} recebidos, ${reaisB(dC.c.md)} de cota parlamentar e ${reaisB(dC.e.md)} de equipe do gabinete.`;
   const corpo = '<section class="bloco" id="balanco" aria-labelledby="t-balanco"><p class="rotulo">Deputados federais e senadores</p>'
     + '<h1 id="t-balanco" class="titulo-pagina">Balanço 2023–2026</h1>'
-    + `<p class="lide">${esc(lide)}</p>`
-    + `<div class="balanco-pontos caixa-nota"><h2 class="h3">Antes dos números</h2><ul class="lista">${pontos.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></div>`
+    + `<p class="lide balanco-frase">${esc(frase)}</p>`
+    + `<div class="balanco-ressalvas-caixa"><p class="discreto balanco-resumo">${esc(`Dados públicos oficiais, parciais até ${mes(ultimo)} · valores brutos · Câmara e Senado não se comparam · base de ${BAL.meta.atualizado}.`)}</p>`
+    + `<details class="balanco-ressalvas balanco-pontos"><summary>Ler as ${pontos.length} ressalvas</summary><ul class="lista">${pontos.map((t) => `<li>${esc(t)}</li>`).join("")}</ul></details></div>`
     + `<div class="balanco-casa"><h2 class="h3">Resumo de cada casa</h2><ul class="lista">${casa("d", "Câmara dos Deputados", "deputados")}${casa("s", "Senado Federal", "senadores")}</ul></div>`
-    + '<h2 class="h3">As fontes</h2><ul class="lista">' + (BAL.meta.fontes || []).map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nome)}&nbsp;↗</a></li>`).join("") + "</ul>"
+    + `<p class="nota">${esc(lide)}</p>`
+    + '<details class="balanco-ressalvas balanco-como"><summary>As fontes</summary><ul class="lista">' + (BAL.meta.fontes || []).map((x) => `<li><a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.nome)}&nbsp;↗</a></li>`).join("") + "</ul></details>"
     + '<p class="nota">Os dados, uma linha por pessoa: <a href="/dados/balanco.csv" download>balanco.csv</a> e <a href="/dados/balanco.json" download>balanco.json</a>. Os arquivos de dados e as cópias públicas estão em <a href="/dados-abertos">dados abertos</a>.</p></section>';
   const titulo = "Balanço 2023–2026: o que cada deputado federal e senador recebeu e usou | Contas do Poder";
   const texto = `${periodo[0].toUpperCase()}${periodo.slice(1)}: o que cada deputado federal e senador recebeu, a cota parlamentar, outros gastos e a equipe do gabinete, com a média por mês e a fonte de cada número.`;

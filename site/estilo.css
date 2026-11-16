@@ -1175,7 +1175,7 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
 .balanco-resultado, .balanco-fim { display: grid; gap: 16px; }
 .balanco-casa { display: grid; gap: 8px; padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--raio); background: var(--paper); }
 .balanco-casa .nota, .balanco-casa .discreto { margin: 0; }
-.balanco-itens { display: grid; gap: 10px 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); }
+.balanco-itens { display: grid; gap: 10px 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 128px), 1fr)); }
 .balanco-item { display: grid; gap: 2px; align-content: start; }
 .balanco-item .rotulo { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
 .balanco-item strong { font-family: var(--display); font-size: 1.45rem; font-weight: 600; line-height: 1.1; }
@@ -1194,15 +1194,28 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
 .tabela-balanco--estados .balanco-nome { width: 26%; }
 .balanco-casa-linha td { background: var(--accent-soft); }
 .tabela-balanco tr[aria-current="true"] td { background: var(--hi-soft); }
+.tabela-balanco .balanco-toggle { display: none; }
 @media (max-width: 900px) {
   .tabela-balanco, .tabela-balanco tbody { display: block; }
   .tabela-balanco thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
-  .tabela-balanco tr { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+  /* linha compacta: nome (e partido, estado, meses) à esquerda, total por mês à direita; os números abrem ao toque (tr.aberta) */
+  .tabela-balanco tr { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px 12px; padding: 12px 0; border-bottom: 1px solid var(--line); }
   .tabela-balanco td { display: block; padding: 0; border: 0; min-width: 0; }
-  .tabela-balanco .balanco-nome { grid-column: 1 / -1; width: auto; min-width: 0; }
-  .tabela-balanco .balanco-total { grid-column: 1 / -1; }
+  .tabela-balanco .balanco-nome { grid-column: 1 / 5; width: auto; min-width: 0; }
+  .tabela-balanco .balanco-total { grid-column: 5 / 7; grid-row: 1; text-align: right; }
+  .tabela-balanco td.balanco-det { grid-column: span 3; }
+  .tabela-balanco tr:not(.aberta) .balanco-det, .tabela-balanco tr:not(.aberta) .balanco-so-aberta { display: none; }
   .tabela-balanco td[data-rotulo]::before { content: attr(data-rotulo); display: block; color: var(--ink-2); font-size: .8rem; margin-bottom: 1px; }
+  .tabela-balanco .balanco-toggle { display: inline; min-height: 32px; }
+  .tabela-balanco .balanco-selos, .tabela-balanco .balanco-acoes { display: inline-flex; margin: 3px 8px 0 0; vertical-align: middle; }
 }
+.balanco-metrica { display: block; color: var(--ink); font-weight: 600; margin-top: 2px; }
+.balanco-frase { max-width: 38em; margin: 0; font-size: 1.2rem; line-height: 1.4; color: var(--ink); }
+.balanco-ressalvas-caixa { display: grid; gap: 2px; max-width: 52em; }
+.balanco-resumo { margin: 0; }
+.balanco-ressalvas > summary { cursor: pointer; font-weight: 600; color: var(--accent); min-height: 44px; display: flex; align-items: center; }
+.balanco-ressalvas[open] { padding: 10px 14px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); }
+.balanco-ressalvas[open] > summary { min-height: 32px; }
 @media (max-width: 640px) {
   .balanco-estat { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .balanco-estat .estatistica__valor { font-size: 1.3rem; }

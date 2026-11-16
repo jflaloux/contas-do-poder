@@ -4795,7 +4795,7 @@
     const q = new URLSearchParams(location.search), ufq = (q.get("uf") || "").toUpperCase();
     const E = { casa: q.get("casa") === "s" ? "s" : "d", uf: UFS.includes(ufq) ? ufq : "", cargo: q.get("cargo") === "1", vista: q.get("vista") === "estados" ? "e" : "p",
       ordem: ORDENS_BAL.some((o) => o[0] === q.get("ordem")) ? q.get("ordem") : "", asc: q.get("dir") === "asc", busca: q.get("q") || "", so: porId.has(q.get("pessoa")) ? q.get("pessoa") : "",
-      modo: q.get("modo") === "soma" ? "soma" : "mediana", n: 40 };
+      modo: q.get("modo") === "soma" ? "soma" : "mediana", n: 20 };
     if (E.so) E.casa = porId.get(E.so).k;
     // padrão: por nome nas duas casas. A média por mês favorece quem entrou tarde (os valores subiram no período), e o total do Senado inclui a equipe, que é estimativa
     const ordemPadrao = () => "n";
@@ -4910,9 +4910,9 @@
     const botaoDir = h("button", { type: "button", class: "botao botao--leve", id: "bal-dir", onclick: () => { E.asc = !E.asc; mudou("ordem"); } });
     const resultado = h("div", { class: "balanco-resultado" });
     const controlesPessoa = h("div", { class: "filtros balanco-filtros" },
+      h("div", { class: "campo campo--quem" }, h("label", { for: "bal-busca" }, "Buscar pelo nome"), entradaBusca),
       h("div", { class: "campo" }, h("label", { for: "bal-uf" }, "Estado"), selUF),
       h("div", { class: "campo" }, h("label", { for: "bal-ordem" }, "Ordenar por"), selOrdem),
-      h("div", { class: "campo campo--quem" }, h("label", { for: "bal-busca" }, "Buscar pelo nome"), entradaBusca),
       h("div", { class: "campo campo--quem balanco-linha" }, botaoDir,
         h("label", { class: "pequeno discreto", style: "display:inline-flex;gap:8px;align-items:center" }, caixaCargo, "Só quem está no cargo hoje")));
 
@@ -4930,7 +4930,7 @@
       trocarEndereco(`${location.pathname}${u.toString() ? `?${u}` : ""}${location.hash}`);
     }
     function mudou(o, digitando) {
-      E.n = 40;
+      E.n = 20;
       if (!digitando) evento("filtrar_balanco", { o, casa: E.casa, uf: E.uf || "todos", vista: E.vista, no_cargo: E.cargo ? "sim" : "nao", ordem: E.ordem });
       desenhar(digitando);
       sincronizar();
@@ -4943,24 +4943,40 @@
     // ---- uma pessoa: a linha da lista (vira um bloco no celular)
     const parteCel = (rotulo, parte, extra) => {
       const m = balMedia(parte), a1 = parte.a ? "≈\u00a0" : "";
-      return h("td", { "data-rotulo": rotulo, class: "balanco-num" },
+      return h("td", { "data-rotulo": rotulo, class: "balanco-num balanco-det" },
         m === null ? [h("strong", { class: "num" }, "—"), h("small", { class: "tabela-gov__obs" }, parte.m < 0 ? `${reais(parte.t)} em ${balMeses(parte.n)}: devolução lançada pela fonte` : parte.n < 1 && parte.n > 0 ? `${reais(parte.t)} em ${balMeses(parte.n)} (menos de 1 mês, sem média)` : "sem meses nesta parte")]
           : [h("strong", { class: "num" }, `${a1}${reais(m)}`), h("small", { class: "tabela-gov__obs" }, `${reais(parte.t)} em ${balMeses(parte.n)}`)],
         extra);
     };
+    // no celular a linha é compacta (nome, partido, estado, meses e o total por mês) e abre os números ao toque; no computador, a tabela inteira
+    const alternarLinha = (tr, rotulo) => {
+      const bt = h("button", { type: "button", class: "link-botao pequeno balanco-toggle", "aria-expanded": String(tr.classList.contains("aberta")) });
+      const pintar = () => { const o = tr.classList.contains("aberta"); bt.setAttribute("aria-expanded", String(o)); bt.textContent = o ? "Ocultar os números" : "Ver os números"; bt.setAttribute("aria-label", `${o ? "Ocultar os números" : "Ver os números"} de ${rotulo}`); };
+      bt.onclick = () => { tr.classList.toggle("aberta"); pintar(); };
+      pintar();
+      return bt;
+    };
+    const metricaOrdem = (b) => {
+      const f = { r: ["Recebeu", (x) => balMedia(x.r)], c: ["Cota", (x) => balMedia(x.c)], o: ["Outros gastos", (x) => balMedia(x.o)], e: ["Equipe", (x) => balMedia(x.e)], ep: ["Equipe, % do valor disponível", null], p: ["Cota, % do limite", null] }[E.ordem];
+      if (!f) return null;
+      const v = f[1] ? f[1](b) : E.ordem === "ep" ? b.e.p : b.c.p;
+      return h("small", { class: "balanco-metrica" }, `${f[0]}: ${v === null || v === undefined ? "—" : f[1] ? `${reais(v)} por mês` : `${num(v, 1)}%`}`);
+    };
     function linhaPessoa(b) {
       const s = b.k === "s", url = `/${b.url}?periodo=mandato`;
-      return h("tr", { id: `bal-${b.id}` },
+      const tr = h("tr", { id: `bal-${b.id}`, class: E.so ? "aberta" : null },
         h("td", { class: "balanco-nome" },
           h("a", { href: url, onclick: () => { S.origem = "balanco"; evento("abrir_perfil_balanco", { casa: BAL_CASA[b.k] }); } }, h("strong", null, b.n)),
-          h("small", { class: "tabela-gov__obs" }, `${balCargoDe(b)} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""}`),
+          h("small", { class: "tabela-gov__obs" }, `${balCargoDe(b)} · ${b.uf}${b.pt ? ` · ${b.pt}` : ""} · ${balMeses(b.mc)}`),
+          metricaOrdem(b),
           h("span", { class: "balanco-selos" },
             h("span", { class: b.x ? "etiqueta" : "etiqueta etiqueta--fora" }, b.x ? "no cargo hoje" : "fora do cargo hoje"),
             b.su ? h("span", { class: "etiqueta etiqueta--fora" }, "suplente") : null,
             b.mc < MIN || !balElegivel(b, MIN) ? h("span", { class: "etiqueta etiqueta--fora" }, b.mc < MIN ? `menos de ${MIN} meses` : `menos de ${MIN} meses em uma parte`) : null),
-          b.rel ? h("small", { class: "tabela-gov__obs" }, "Os meses como ministro ficam na ", h("a", { href: urlDe(b.rel), onclick: () => { S.origem = "balanco"; } }, "página de ministro"), ".") : null,
-          h("button", { type: "button", class: "link-botao pequeno", "aria-label": `Compartilhar o balanço de ${b.n}`, onclick: () => compartilharImagem(specPessoaBal(b), "balanco") }, "Compartilhar")),
-        h("td", { "data-rotulo": "Meses no cargo", class: "balanco-num" }, h("strong", { class: "num" }, balNum(b.mc)), h("small", { class: "tabela-gov__obs" }, `${fmtMes(b.de)} a ${fmtMes(b.ate)}`)),
+          b.rel ? h("small", { class: "tabela-gov__obs balanco-so-aberta" }, "Os meses como ministro ficam na ", h("a", { href: urlDe(b.rel), onclick: () => { S.origem = "balanco"; } }, "página de ministro"), ".") : null,
+          h("span", { class: "balanco-acoes" },
+            h("button", { type: "button", class: "link-botao pequeno balanco-so-aberta", "aria-label": `Compartilhar o balanço de ${b.n}`, onclick: () => compartilharImagem(specPessoaBal(b), "balanco") }, "Compartilhar"))),
+        h("td", { "data-rotulo": "Meses no cargo", class: "balanco-num balanco-det" }, h("strong", { class: "num" }, balNum(b.mc)), h("small", { class: "tabela-gov__obs" }, `${fmtMes(b.de)} a ${fmtMes(b.ate)}`)),
         parteCel("Recebeu por mês", b.r, [balAjuda(b) ? h("small", { class: "tabela-gov__obs" }, balAjuda(b)) : null,
           b.r.lic > 0 ? h("small", { class: "tabela-gov__obs" }, `inclui ${balMeses(b.r.lic)} de licença com o salário do mandato`) : null,
           b.r.sp ? h("small", { class: "tabela-gov__obs" }, `${balMeses(b.r.sp)} no cargo sem pagamento na fonte, fora da média`) : null]),
@@ -4969,6 +4985,8 @@
         parteCel(`Equipe por mês${s ? " (estimativa)" : ""}`, b.e, b.e.p !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(b.e.p, 1)}% do valor disponível da verba`) : null),
         h("td", { "data-rotulo": s ? "Total por mês, sem a equipe" : "Total por mês", class: "balanco-num balanco-total" }, h("strong", { class: "num" }, balReais(balTotalM(b))),
           h("small", { class: "tabela-gov__obs" }, `${reais(balTotalT(b))} no período${balTotalM(b) === null ? ` (${balSemMedia(b)})` : ""}`)));
+      tr.querySelector(".balanco-acoes").prepend(alternarLinha(tr, b.n));
+      return tr;
     }
     function listaPessoas() {
       const spec = ORDENS_BAL.find((o) => o[0] === E.ordem), val = spec[2], nPartes = spec[3];
@@ -4994,25 +5012,27 @@
           h("thead", null, h("tr", null, h("th", null, "Pessoa"), h("th", null, "Meses no cargo"), h("th", null, "Recebeu"), h("th", null, "Cota"), h("th", null, "Outros gastos"),
             h("th", null, "Equipe", s ? h("span", { class: "etiqueta etiqueta--estimativa" }, "estimativa") : null), h("th", null, s ? "Total, sem a equipe" : "Total"))),
           h("tbody", null, aparece.map(linhaPessoa))) : null,
-        total > aparece.length ? h("p", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { E.n += 60; evento("filtrar_balanco", { o: "mostrar_mais", casa: E.casa }); desenhar(); } }, `Mostrar mais ${Math.min(60, total - aparece.length)}`)) : null);
+        total > aparece.length ? h("p", null, h("button", { type: "button", class: "botao botao--leve", onclick: () => { E.n += 40; evento("filtrar_balanco", { o: "mostrar_mais", casa: E.casa }); desenhar(); } }, `Mostrar mais ${Math.min(40, total - aparece.length)}`)) : null);
     }
 
     // ---- a visão por estado
     function tabelaEstados() {
       const k = E.casa, s = k === "s", soma = E.modo === "soma";
       const val = (part) => (soma ? balReais(part.s) : balReais(part.md));
-      const linha = (rotulo, a, uf) => h("tr", { class: uf ? null : "balanco-casa-linha", "aria-current": uf && uf === E.uf ? "true" : null },
+      const linha = (rotulo, a, uf) => { const tr = h("tr", { class: uf ? null : "balanco-casa-linha aberta", "aria-current": uf && uf === E.uf ? "true" : null },
         h("td", { class: "balanco-nome" }, uf ? h("strong", null, `${ESTADOS[uf]} (${uf})`) : h("strong", null, rotulo),
           h("small", { class: "tabela-gov__obs" }, `${a.n} ${a.n === 1 ? "pessoa" : "pessoas"} no período · ${a.x} no cargo hoje`),
           uf ? h("span", { class: "balanco-acoes" },
-            h("button", { type: "button", class: "link-botao pequeno", onclick: () => { E.uf = uf; E.vista = "p"; E.so = ""; mudou("estado_pessoas"); selUF.value = uf; irPara("balanco-lista"); }, "aria-label": `Ver as pessoas de ${ESTADOS[uf]}` }, "Ver as pessoas"),
-            h("button", { type: "button", class: "link-botao pequeno", "aria-label": `Compartilhar o balanço de ${ESTADOS[uf]}`, onclick: () => compartilharImagem(specUFBal(k, uf), "balanco") }, "Compartilhar")) : null),
-        h("td", { "data-rotulo": soma ? "Recebeu, soma" : "Recebeu, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.r))),
-        h("td", { "data-rotulo": soma ? "Cota, soma" : "Cota, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.c)),
+            h("button", { type: "button", class: "link-botao pequeno balanco-so-aberta", onclick: () => { E.uf = uf; E.vista = "p"; E.so = ""; mudou("estado_pessoas"); selUF.value = uf; irPara("balanco-lista"); }, "aria-label": `Ver as pessoas de ${ESTADOS[uf]}` }, "Ver as pessoas"),
+            h("button", { type: "button", class: "link-botao pequeno balanco-so-aberta", "aria-label": `Compartilhar o balanço de ${ESTADOS[uf]}`, onclick: () => compartilharImagem(specUFBal(k, uf), "balanco") }, "Compartilhar")) : null),
+        h("td", { "data-rotulo": soma ? "Recebeu, soma" : "Recebeu, mediana por mês", class: "balanco-num balanco-det" }, h("strong", { class: "num" }, val(a.r))),
+        h("td", { "data-rotulo": soma ? "Cota, soma" : "Cota, mediana por mês", class: "balanco-num balanco-det" }, h("strong", { class: "num" }, val(a.c)),
           a.c.pct !== undefined ? h("small", { class: "tabela-gov__obs" }, soma ? `${num(a.c.pct, 1)}% do limite (soma ÷ soma)` : `${num(a.c.pmd, 1)}% do limite (mediana)`) : null),
-        h("td", { "data-rotulo": soma ? "Outros gastos, soma" : "Outros gastos, mediana por mês", class: "balanco-num" }, h("strong", { class: "num" }, val(a.o))),
-        h("td", { "data-rotulo": `${soma ? "Equipe, soma" : "Equipe, mediana por mês"}${s ? " (estimativa)" : ""}`, class: "balanco-num" }, h("strong", { class: "num" }, val(a.e)), !soma && a.e.pmd !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)`) : null),
+        h("td", { "data-rotulo": soma ? "Outros gastos, soma" : "Outros gastos, mediana por mês", class: "balanco-num balanco-det" }, h("strong", { class: "num" }, val(a.o))),
+        h("td", { "data-rotulo": `${soma ? "Equipe, soma" : "Equipe, mediana por mês"}${s ? " (estimativa)" : ""}`, class: "balanco-num balanco-det" }, h("strong", { class: "num" }, val(a.e)), !soma && a.e.pmd !== undefined ? h("small", { class: "tabela-gov__obs" }, `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)`) : null),
         h("td", { "data-rotulo": `${soma ? "Total, soma" : "Total, mediana por mês"}${s ? ", sem a equipe" : ""}`, class: "balanco-num balanco-total" }, h("strong", { class: "num" }, soma ? balReais(totalSoma(k, a)) : balReais(totalMd(k, a, uf)))));
+        if (uf) tr.querySelector(".balanco-acoes").prepend(alternarLinha(tr, ESTADOS[uf]));
+        return tr; };
       return h("div", null,
         h("div", { class: "balanco-modo" }, h("span", { class: "rotulo" }, "Valores:"), modoGrp.el),
         h("p", { class: "discreto" }, soma ? "Soma do que cada pessoa teve no período (os totais de cada parte, somados), com a % do limite da soma da cota ÷ soma dos limites."
@@ -5032,12 +5052,13 @@
         h("h2", { class: "h3" }, `${BAL_CASA[k]}: ${a.n} ${k === "d" ? "deputados" : "senadores"} no período, ${a.x} no cargo hoje`),
         h("p", { class: "discreto" }, "Mediana da média por mês de quem exerceu o mandato:"),
         h("div", { class: "balanco-itens" }, item("Recebeu", a.r.md), item("Cota", a.c.md, a.c.pmd !== undefined ? `${num(a.c.pmd, 1)}% do limite (mediana)` : "sem % do limite no Senado"),
-          item("Outros gastos", a.o.md), item("Equipe", a.e.md, a.e.pmd !== undefined ? `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)` : null, s), item(rotuloTotal(k), totalMd(k, a, ""), s ? "recebeu, cota e outros gastos" : null)),
-        k === "d" ? h("p", { class: "nota" }, `Cota: hoje, ${balAcima100(B)} deputados com ${MIN} meses ou mais passam de 100% do limite (a explicação está em “Antes dos números”). A equipe é a verba de gabinete, publicada até ${fmtMes(META.faixas.d.e[1])}.`)
+          !(a.o.md === 0 && k === "d") ? item("Outros gastos", a.o.md) : null, item("Equipe", a.e.md, a.e.pmd !== undefined ? `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)` : null, s), item(rotuloTotal(k), totalMd(k, a, ""), s ? "recebeu, cota e outros gastos" : null)),
+        k === "d" ? h("p", { class: "nota" }, `${a.o.md === 0 ? "Outros gastos (diárias de viagem): mediana de R$ 0 por mês. " : ""}Cota: hoje, ${balAcima100(B)} deputados com ${MIN} meses ou mais passam de 100% do limite (a explicação está nas ressalvas, acima). A equipe é a verba de gabinete, publicada até ${fmtMes(META.faixas.d.e[1])}.`)
           : h("p", { class: "nota" }, "Equipe: estimativa pela lotação atual dos servidores de cada gabinete, ligada à folha de pagamento pelo nome. O titular que foi ministro fica com a equipe do suplente, e quem assumiu agora herda a de quem saiu; por isso o site não ordena nem destaca o Senado pela equipe. Cota: o Senado não publica a tabela de limites por estado em formato aberto, e por isso não há % do limite. Os totais do Senado e os da Câmara não se comparam: a equipe da Câmara é o valor pago; a do Senado é uma estimativa."));
     }
 
     function desenhar(digitando) {
+      frase.textContent = fraseCasa();
       casaGrp.marcar(); vistaGrp.marcar(); modoGrp.marcar();
       if (!digitando) { opcoesOrdem(); selOrdem.value = E.ordem; selUF.value = E.uf; }
       botaoDir.textContent = E.ordem === "n" ? (E.asc ? "A–Z" : "Z–A") : E.asc ? "Menor primeiro" : "Maior primeiro";
@@ -5047,26 +5068,39 @@
       add(resultado, quadroCasa(), E.vista === "p" ? h("div", { id: "balanco-lista" }, listaPessoas()) : tabelaEstados());
     }
 
-    const roda = h("div", { class: "balanco-fim" },
-      h("h2", { class: "h3", id: "balanco-como" }, "Como ler este balanço"),
+    const fonteCasa = (prefixo) => (META.fontes || []).find((f) => f.nome.startsWith(prefixo));
+    const comoLer = h("details", { class: "balanco-ressalvas balanco-como", id: "balanco-como", ontoggle: (ev) => { if (ev.target.open) evento("abrir_ressalvas_balanco", { onde: "como_ler" }); } },
+      h("summary", null, "Como ler este balanço: todas as ressalvas e as fontes"),
       h("ul", { class: "lista" }, (META.ressalvas || []).map((t) => h("li", null, t))),
       h("h2", { class: "h3" }, "As fontes"),
-      h("ul", { class: "lista" }, (META.fontes || []).map((f) => h("li", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome} ↗`)))),
+      h("ul", { class: "lista" }, (META.fontes || []).map((f) => h("li", null, h("a", { href: f.url, target: "_blank", rel: "noopener" }, `${f.nome} ↗`)))));
+    const roda = h("div", { class: "balanco-fim" },
+      h("p", { class: "nota" }, "Fontes oficiais: ", fonteCasa("Câmara dos Deputados: dados abertos") ? h("a", { href: fonteCasa("Câmara dos Deputados: dados abertos").url, target: "_blank", rel: "noopener" }, "Câmara dos Deputados\u00a0↗") : "Câmara dos Deputados",
+        " · ", fonteCasa("Senado Federal: dados abertos") ? h("a", { href: fonteCasa("Senado Federal: dados abertos").url, target: "_blank", rel: "noopener" }, "Senado Federal\u00a0↗") : "Senado Federal", ". A lista completa, com cada parte do balanço, está em “Como ler este balanço”."),
+      comoLer,
       h("h2", { class: "h3" }, "Baixar os dados"),
       h("p", null, h("a", { class: "botao", href: "/dados/balanco.csv", download: "", onclick: () => evento("baixar_dados", { arquivo: "balanco.csv" }) }, "Baixar o CSV (planilha)"), " ",
         h("a", { class: "botao botao--leve", href: "/dados/balanco.json", download: "", onclick: () => evento("baixar_dados", { arquivo: "balanco.json" }) }, "Baixar o JSON")),
       h("p", { class: "nota" }, `Uma linha por pessoa, com o endereço da página dela. O CSV é conservador: as médias com menos de ${MIN} meses e o total de quem fica fora das comparações vêm em branco, com colunas de aviso; a página mostra esses valores com a etiqueta. Licença `, h("a", { href: "https://creativecommons.org/licenses/by/4.0/deed.pt-br", target: "_blank", rel: "noopener" }, "CC BY 4.0\u00a0↗"), ", citando “Contas do Poder” e as fontes originais. Todos os arquivos, com a impressão digital de cada um, estão em ", h("a", { href: "/dados-abertos" }, "dados abertos"), ". Quanto cada fonte já publicou e quando foi lida pela última vez: ", h("a", { href: "/atualizacao" }, "atualização dos dados"), "."));
 
+    // a frase com o número vem primeiro (muda com a casa); depois a busca e os filtros; as ressalvas ficam fechadas, com o resumo à vista
+    const frase = h("p", { class: "lide balanco-frase", id: "balanco-frase" });
+    const fraseCasa = () => {
+      const k = E.casa, a = B.casa[k];
+      return k === "d"
+        ? `Na mediana, um deputado federal recebeu e usou ${balReais(a.t.md)} por mês no ${balPeriodo(B)}: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.e.md)} de equipe do gabinete.`
+        : `Na mediana, um senador recebeu e usou ${balReais(totalMd(k, a, ""))} por mês, sem a equipe (que é estimativa), no ${balPeriodo(B)}: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.o.md)} de outros gastos. A equipe estimada, à parte: ${balReais(a.e.md)} por mês.`;
+    };
+    const pontos = balPontos(B);
     const sec = h("section", { class: "bloco", id: "balanco", "aria-labelledby": "t-balanco" },
       h("p", { class: "rotulo" }, "Deputados federais e senadores"),
       h("h1", { id: "t-balanco", class: "titulo-pagina" }, "Balanço 2023–2026"),
-      h("p", { class: "lide" }, `O ${balPeriodo(B)}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados públicos oficiais.`),
-      h("div", { class: "estatisticas balanco-estat" },
-        estatistica("Pessoas no balanço", num(P.length), `${B.casa.d.n} deputados e ${B.casa.s.n} senadores`),
-        estatistica("Dados até", fmtMes(balUltimoMes(B)), `equipe da Câmara até ${fmtMes(META.faixas.d.e[1])}`),
-        estatistica("Base de", META.atualizado, "refeita a cada atualização")),
-      h("div", { class: "balanco-pontos caixa-nota" }, h("h2", { class: "h3" }, "Antes dos números"),
-        h("ul", { class: "lista" }, balPontos(B).map((t) => h("li", null, t))), h("p", { class: "nota" }, "As ressalvas completas e as fontes estão em ", h("a", { href: "#balanco-como" }, "Como ler este balanço"), ".")),
+      frase,
+      h("div", { class: "balanco-ressalvas-caixa" },
+        h("p", { class: "discreto balanco-resumo" }, `Dados públicos oficiais, parciais até ${fmtMes(balUltimoMes(B))} · valores brutos · Câmara e Senado não se comparam · base de ${META.atualizado}.`),
+        h("details", { class: "balanco-ressalvas balanco-pontos", ontoggle: (ev) => { if (ev.target.open) evento("abrir_ressalvas_balanco", {}); } },
+          h("summary", null, `Ler as ${pontos.length} ressalvas`),
+          h("ul", { class: "lista" }, pontos.map((t) => h("li", null, t))), h("p", { class: "nota" }, "As ressalvas completas e as fontes estão em ", h("a", { href: "#balanco-como", onclick: (ev) => { ev.preventDefault(); comoLer.open = true; comoLer.scrollIntoView({ block: "start" }); } }, "Como ler este balanço"), "."))),
       h("div", { class: "balanco-barra" }, casaGrp.el, vistaGrp.el),
       controlesPessoa, resultado, roda);
     desenhar();
