@@ -13,3 +13,8 @@
 # as letras (arquivo com nome que não se repete): um ano, sem conferir de novo
 /fontes/*
   Cache-Control: public, max-age=31536000, immutable
+
+# o endereço do Cloudflare (contas-do-poder.pages.dev) responde com o site inteiro: fora do Google, para só contasdopoder.com aparecer
+# (endereço completo: a regra vale só para esse host; as prévias <hash>.contas-do-poder.pages.dev já levam o cabeçalho do próprio Cloudflare)
+https://contas-do-poder.pages.dev/*
+  X-Robots-Tag: noindex

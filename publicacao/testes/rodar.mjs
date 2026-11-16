@@ -1247,6 +1247,17 @@ async function principal() {
   console.log(`${paginas.length} páginas × ${PERFIS.length} perfis (${PERFIS.map((p) => p.nome).join(", ")}) · axe-core: ${axe ? AXE_VERSAO : "NÃO RODA (sem o arquivo; use --baixar-axe)"}\n`);
 
   const resultados = [];
+  // _headers (C-007): o noindex só para o endereço contas-do-poder.pages.dev; nunca para contasdopoder.com (regra com o endereço completo, e nenhum X-Robots-Tag nas regras sem host)
+  {
+    const linhasH = fs.readFileSync(path.join(PUBLICAR, "_headers"), "utf8").split("\n"), blocos = [];
+    for (const l of linhasH) { if (/^\S/.test(l) && !l.startsWith("#")) blocos.push({ alvo: l.trim(), cab: [] }); else if (/^\s+\S/.test(l) && blocos.length) blocos[blocos.length - 1].cab.push(l.trim()); }
+    const falhasH = [], comNoindex = blocos.filter((b) => b.cab.some((c) => /^X-Robots-Tag:/i.test(c)));
+    if (comNoindex.length !== 1 || comNoindex[0].alvo !== "https://contas-do-poder.pages.dev/*" || !comNoindex[0].cab.includes("X-Robots-Tag: noindex")) falhasH.push("o noindex devia estar só no bloco https://contas-do-poder.pages.dev/*: " + JSON.stringify(comNoindex.map((b) => b.alvo)));
+    if (blocos.filter((b) => b.alvo.includes("contasdopoder.com")).some((b) => b.cab.some((c) => /X-Robots-Tag/i.test(c)))) falhasH.push("contasdopoder.com não pode levar X-Robots-Tag");
+    if (!blocos.some((b) => b.alvo === "/*" && b.cab.some((c) => /^X-Content-Type-Options:/i.test(c)))) falhasH.push("a regra geral /* sumiu do _headers");
+    resultados.push({ pg: { nome: "headers-noindex-pages-dev" }, perfil: { nome: "-" }, falhas: falhasH, cls: null, lcp: null, axe: null, externos: [], ms: 0 });
+    console.log(`${falhasH.length ? "FALHOU" : "ok    "} _headers: noindex só em contas-do-poder.pages.dev`); falhasH.forEach((f) => console.log(`         - ${f}`));
+  }
   try {
     for (const pg of paginas) {
       for (const perfil of PERFIS) {
