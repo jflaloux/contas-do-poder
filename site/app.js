@@ -4085,7 +4085,7 @@
       h("span", { class: "tres-numero__nota" }, nota));
     for (const [casa, titulo] of [["d", "Deputado federal"], ["s", "Senador"]]) {
       const C = colegas(casa, "2025");
-      if (C && C.n) add(alvo, cartao("/#tipico", titulo, [[compacto(C.gm), "vai para o bolso, por mês"], [compacto(C.tm), "custo por mês"]], "mediana de 2025, valores brutos · ver a conta", casa === "d" ? "deputado" : "senador"));
+      if (C && C.n) add(alvo, cartao("/#tipico", titulo, [[compacto(C.gm), "vai para o bolso, por mês"], [compacto(C.tm), "custo por mês, sem a equipe do gabinete"]], "mediana de 2025, valores brutos · ver a conta", casa === "d" ? "deputado" : "senador"));
     }
     const vs = (GOV.e || []).map((e) => e.v && e.v[0]).filter((v) => v > 0);
     if (vs.length) add(alvo, cartao("/#governadores", "Governador", [[`${compacto(Math.min(...vs))} a ${compacto(Math.max(...vs))}`, "salário do cargo, por mês, nos estados"]], `${vs.length} estados · ver a lista`, "governador"));
@@ -4315,6 +4315,9 @@
   function converterAntigo() {
     const bruto = decodeURIComponent(location.hash.slice(1));
     if (!bruto) return false;
+    // as seções "O que é cada número" e "Fontes dos dados" viraram páginas (/#entenda, /#fontes, <pessoa>#entenda): os endereços antigos levam a elas
+    if (bruto === "entenda" || bruto === "fontes") { history.replaceState(null, "", `/${bruto}`); return true; }
+    if (bruto === "entenda-renda") { history.replaceState(null, "", "/entenda#entenda-renda"); return true; }
     const [base, per] = bruto.split("~");
     let url = null;
     if (/^gov-[a-z]{2}$/i.test(base) && GOV.porUF[base.slice(4).toUpperCase()]) url = urlGov(base.slice(4));
@@ -5082,7 +5085,7 @@
       const item = (rotulo, v, sub, selo) => h("div", { class: "balanco-item" }, h("span", { class: "rotulo" }, rotulo, selo ? h("span", { class: "etiqueta etiqueta--estimativa" }, "estimativa") : null), h("strong", { class: "num" }, balReais(v)), sub ? h("small", { class: "tabela-gov__obs" }, sub) : null);
       return h("div", { class: "balanco-casa" },
         h("h2", { class: "h3" }, `${BAL_CASA[k]}: ${a.n} ${k === "d" ? "deputados" : "senadores"} no período, ${a.x} no cargo hoje`),
-        h("p", { class: "discreto" }, "Mediana da média por mês de quem exerceu o mandato:"),
+        h("p", { class: "discreto" }, "Mediana da média por mês de quem exerceu o mandato. Cada mediana é calculada à parte; por isso as partes não somam o total:"),
         h("div", { class: "balanco-itens" }, item("Recebeu", a.r.md), item("Cota", a.c.md, a.c.pmd !== undefined ? `${num(a.c.pmd, 1)}% do limite (mediana)` : "sem % do limite no Senado"),
           !(a.o.md === 0 && k === "d") ? item("Outros gastos", a.o.md) : null, item("Equipe", a.e.md, a.e.pmd !== undefined ? `${num(a.e.pmd, 1)}% do valor disponível da verba (mediana)` : null, s), item(rotuloTotal(k), totalMd(k, a, ""), s ? "recebeu, cota e outros gastos" : null)),
         k === "d" ? h("p", { class: "nota" }, `${a.o.md === 0 ? "Outros gastos (diárias de viagem): mediana de R$ 0 por mês. " : ""}Cota: hoje, ${balAcima100(B)} deputados com ${MIN} meses ou mais passam de 100% do limite (a explicação está nas ressalvas, acima). A equipe é a verba de gabinete, publicada até ${fmtMes(META.faixas.d.e[1])}.`)
@@ -5118,10 +5121,13 @@
     // a frase com o número vem primeiro (muda com a casa); depois a busca e os filtros; as ressalvas ficam fechadas, com o resumo à vista
     const frase = h("p", { class: "lide balanco-frase", id: "balanco-frase" });
     const fraseCasa = () => {
-      const k = E.casa, a = B.casa[k];
+      const k = E.casa, a = B.casa[k], f = META.faixas[k], ult = balUltimoMes(B);
+      // cada parte é uma mediana à parte: não somam a mediana do total; a equipe pode ir até um mês anterior (a Câmara publica a verba com atraso)
+      const periodo = `no mandato 2023–2026 (fev/2023 a ${fmtMes(ult)}${f.e[1] < ult ? `; a equipe, até ${fmtMes(f.e[1])}` : ""})`;
+      const aviso = "Cada mediana é calculada à parte; por isso as partes não somam o total.";
       return k === "d"
-        ? `Na mediana, um deputado federal recebeu e usou ${balReais(a.t.md)} por mês no ${balPeriodo(B)}: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.e.md)} de equipe do gabinete.`
-        : `Na mediana, um senador recebeu e usou ${balReais(totalMd(k, a, ""))} por mês, sem a equipe (que é estimativa), no ${balPeriodo(B)}: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.o.md)} de outros gastos. A equipe estimada, à parte: ${balReais(a.e.md)} por mês.`;
+        ? `Na mediana, um deputado federal recebeu e usou ${balReais(a.t.md)} por mês ${periodo}. A mediana de cada parte: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.e.md)} de equipe do gabinete. ${aviso}`
+        : `Na mediana, um senador recebeu e usou ${balReais(totalMd(k, a, ""))} por mês, sem a equipe (que é estimativa), ${periodo}. A mediana de cada parte: ${balReais(a.r.md)} recebidos, ${balReais(a.c.md)} de cota parlamentar e ${balReais(a.o.md)} de outros gastos; a equipe estimada, à parte: ${balReais(a.e.md)} por mês. ${aviso}`;
     };
     const pontos = balPontos(B);
     const sec = h("section", { class: "bloco", id: "balanco", "aria-labelledby": "t-balanco" },

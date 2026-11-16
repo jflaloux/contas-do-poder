@@ -680,7 +680,7 @@ const PAGINAS = [
       const altura = document.documentElement.scrollHeight;
       const html = await (await fetch("/balanco")).text(); if (/<details[^>]*balanco-[a-z]+[^>]*\\sopen/.test(html)) f.push("o HTML pronto traz as ressalvas abertas"); if (abertasPelaSuite < 2) f.push("faltam os dois blocos recolhidos (ressalvas e Como ler)");
       const fr = document.querySelector("#balanco-frase"), busca = document.querySelector("#bal-busca"), pontos = document.querySelector("details.balanco-pontos");
-      if (!fr || !/^Na mediana, um deputado federal recebeu e usou R\\$ [0-9.]+ por mês no mandato 2023–2026, de fev\\/2023 a ${BAL_FMT(BAL_ULTIMO).replace("/", "\\/")}: R\\$ [0-9.]+ recebidos, R\\$ [0-9.]+ de cota parlamentar e R\\$ [0-9.]+ de equipe do gabinete\\.$/.test(fr.textContent)) f.push("a frase da mediana do topo está errada: " + (fr && fr.textContent));
+      if (!fr || !/^Na mediana, um deputado federal recebeu e usou R\\$ [0-9.]+ por mês no mandato 2023–2026 \\(fev\\/2023 a ${BAL_FMT(BAL_ULTIMO).replace("/", "\\/")}(; a equipe, até [a-z]{3}\\/[0-9]{4})?\\)\\. A mediana de cada parte: R\\$ [0-9.]+ recebidos, R\\$ [0-9.]+ de cota parlamentar e R\\$ [0-9.]+ de equipe do gabinete\\. Cada mediana é calculada à parte; por isso as partes não somam o total\\.$/.test(fr.textContent)) f.push("a frase da mediana do topo está errada: " + (fr && fr.textContent));
       if (fr && y(fr) > 500) f.push("a frase com o número devia estar nos primeiros 500 px: " + y(fr));
       if (busca && y(busca) > 1000) f.push("a busca devia estar nos primeiros 1.000 px: " + y(busca));
       if (!pontos || pontos.open) f.push("as ressalvas deviam começar fechadas");
@@ -702,7 +702,7 @@ const PAGINAS = [
   // os endereços dos e-mails: ?uf=XX&casa=s e ?casa=s abrem a frase e a lista certas
   { nome: "balanco-enderecos-do-email", acao: true, url: BAL ? "/balanco?uf=SP&casa=s" : null, depois: `(async () => {
       const f = [], linhas = [...document.querySelectorAll("#balanco .tabela-balanco tbody tr")];
-      if (!/^Na mediana, um senador recebeu e usou/.test(document.querySelector("#balanco-frase").textContent)) f.push("a frase devia ser a do Senado: " + document.querySelector("#balanco-frase").textContent);
+      if (!/^Na mediana, um senador recebeu e usou R\\$ [0-9.]+ por mês, sem a equipe \\(que é estimativa\\), no mandato 2023–2026 \\(fev\\/2023 a [a-z]{3}\\/[0-9]{4}\\)\\. A mediana de cada parte: .*a equipe estimada, à parte: R\\$ [0-9.]+ por mês\\. Cada mediana é calculada à parte; por isso as partes não somam o total\\.$/.test(document.querySelector("#balanco-frase").textContent)) f.push("a frase devia ser a do Senado: " + document.querySelector("#balanco-frase").textContent);
       if (linhas.length !== ${BAL ? BAL.p.filter((b) => b.k === "s" && b.uf === "SP").length : 0}) f.push("os senadores de SP devia ser ${BAL ? BAL.p.filter((b) => b.k === "s" && b.uf === "SP").length : 0}: " + linhas.length);
       if (linhas.some((tr) => !/ · SP · /.test(tr.querySelector(".balanco-nome small").textContent))) f.push("apareceu gente de outro estado");
       if (document.querySelector("#bal-uf").value !== "SP") f.push("o seletor de estado devia estar em SP");
@@ -710,7 +710,7 @@ const PAGINAS = [
   // C-006 (16/11/2026): "O que é cada número" e "Fontes dos dados" saem das páginas e ficam em /entenda e /fontes; cada página leva só a linha que aponta para elas
   { nome: "entenda-pagina", url: "/entenda", ter: [["#entenda h1", 1], ["#entenda .cartao", 2], ["#entenda details[data-para]", 8], ["#pendencias li", 3], ["#entenda-renda", 1]], pagina: [/O que é cada número/, /Deputado\(a\) federal/], semPagina: [/Fontes dos dados/],
     depois: `(() => /milhões de pessoas/.test(document.querySelector("#renda-numeros").textContent) ? [] : ["a renda (PNAD) não foi preenchida em /entenda"])()` },
-  { nome: "fontes-pagina", url: "/fontes", ter: [["#fontes h1", 1], ["#fontes .fonte", 4], ["#fontes details.fontes-lista", 1], ["#fontes details.fontes-lista a[href^='http']", 30]], pagina: [/Fontes dos dados/], semPagina: [/O que é cada número/] },
+  { nome: "fontes-pagina", url: "/fontes", ter: [["#fontes h1", 1], ["#fontes .fonte", 4], ["#fontes details.fontes-lista[open]", 1], ["#fontes details.fontes-lista a[href^='http']", 30]], pagina: [/Fontes dos dados/], semPagina: [/O que é cada número/] },
   { nome: "pagina-sem-glossario", acao: true, url: BAL_PESSOA ? `/${ENDERECOS[BAL_PESSOA.id]}` : null, depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       if (document.querySelector("#entenda, #fontes")) f.push("a página de pessoa ainda traz O que é cada número ou Fontes dos dados");
@@ -735,7 +735,7 @@ const PAGINAS = [
       if (cartoes.length !== 3) f.push("devia ter 3 números na primeira tela: " + cartoes.length);
       else {
         const txt = cartoes.map((c) => c.innerText.replace(/\\s+/g, " "));
-        if (!/^Deputado federal R\\$ [0-9,.]+ (mil|mi) vai para o bolso, por mês R\\$ [0-9,.]+ (mil|mi) custo por mês mediana de 2025, valores brutos/.test(txt[0])) f.push("o 1º número (deputado) está errado: " + txt[0]);
+        if (!/^Deputado federal R\\$ [0-9,.]+ (mil|mi) vai para o bolso, por mês R\\$ [0-9,.]+ (mil|mi) custo por mês, sem a equipe do gabinete mediana de 2025, valores brutos/.test(txt[0])) f.push("o 1º número (deputado) está errado: " + txt[0]);
         if (!/^Senador R\\$/.test(txt[1]) || !/^Governador R\\$ [0-9,.]+ (mil|mi) a R\\$ [0-9,.]+ (mil|mi) salário do cargo/.test(txt[2])) f.push("o senador ou o governador está errado: " + txt[1] + " | " + txt[2]);
         if (cel && cartoes[0].getBoundingClientRect().top > innerHeight - 80) f.push("o primeiro número devia aparecer na primeira tela do celular: " + Math.round(cartoes[0].getBoundingClientRect().top));
         if (cartoes[0].getAttribute("href") !== "/#tipico" || cartoes[2].getAttribute("href") !== "/#governadores") f.push("os números levam à conta: " + cartoes.map((c) => c.getAttribute("href")).join(","));
@@ -748,6 +748,16 @@ const PAGINAS = [
       if (cel && altura > 6500) f.push("a inicial no celular, com as seções fechadas, passou de 6.500 px: " + altura);
       cartoes[0] && cartoes[0].click(); await esp(1200); if (location.hash !== "#tipico") f.push("o primeiro número devia levar a #tipico: " + location.hash);
       return f; })()` },
+  // os endereços antigos das duas seções que viraram páginas: /#entenda, /#fontes e <pessoa>#entenda levam a /entenda e /fontes
+  { nome: "endereco-antigo-entenda", acao: true, url: "/#entenda", depois: `(async () => { const f = []; await new Promise((r) => setTimeout(r, 800));
+      if (location.pathname !== "/entenda" || location.hash) f.push("/#entenda devia levar a /entenda: " + location.pathname + location.hash);
+      if (!document.querySelector("#entenda h1")) f.push("a página /entenda não abriu"); return f; })()` },
+  { nome: "endereco-antigo-fontes", acao: true, url: "/#fontes", depois: `(async () => { const f = []; await new Promise((r) => setTimeout(r, 800));
+      if (location.pathname !== "/fontes" || location.hash) f.push("/#fontes devia levar a /fontes: " + location.pathname + location.hash);
+      if (!document.querySelector("#fontes h1")) f.push("a página /fontes não abriu"); return f; })()` },
+  { nome: "endereco-antigo-pessoa-entenda", acao: true, url: BAL_PESSOA ? `/${ENDERECOS[BAL_PESSOA.id]}#entenda` : null, depois: `(async () => { const f = []; await new Promise((r) => setTimeout(r, 1500));
+      if (location.pathname !== "/entenda") f.push("<pessoa>#entenda devia levar a /entenda: " + location.pathname + location.hash);
+      if (!document.querySelector("#entenda h1")) f.push("a página /entenda não abriu"); return f; })()` },
   // celular estreito: a página não pode passar da largura (a licença do CSV não quebrava e abria rolagem horizontal)
   { nome: "balanco-320", url: BAL ? "/balanco" : null, largura: 320, ter: [["#balanco .balanco-fim a[href*='creativecommons.org']", 1]] },
   { nome: "balanco-320-estados", url: BAL ? "/balanco?vista=estados" : null, largura: 320, ter: [["#balanco .tabela-balanco--estados tbody tr", 28]] },

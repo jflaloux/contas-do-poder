@@ -44,6 +44,7 @@
 <link rel="stylesheet" href="/estilo.css">
 </head>
 <body>
+<script>/* endereços antigos das seções que viraram páginas (/#entenda, /#fontes, <pessoa>#entenda): o endereço já vira o novo e a página abre como interna, sem desenhar a inicial por baixo */ if (location.hash === "#entenda" || location.hash === "#fontes") { history.replaceState(null, "", location.hash.slice(1) === "entenda" ? "/entenda" : "/fontes"); document.body.className += " interna"; }</script>
 <!--INICIO-CORPO-->
 <a class="pular" href="#app" id="pular">Pular para o conteúdo</a>
 <header class="cabecalho" id="cabecalho">

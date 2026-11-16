@@ -671,7 +671,8 @@ for (const [id, titulo, descricao, secao] of [
   ["entenda", "O que é cada número: o que quer dizer cada termo do contracheque | Contas do Poder", "O que quer dizer cada termo do Contas do Poder: salário bruto, cota parlamentar, equipe do gabinete, verba, o custo total e a comparação com a renda de quem trabalha.", SEC_ENTENDA],
   ["fontes", "Fontes dos dados: de onde vem cada número | Contas do Poder", "As fontes oficiais de todos os números do Contas do Poder, com os links: Câmara, Senado, governo federal, estados, municípios e tribunais.", SEC_FONTES],
 ]) {
-  const corpo = secao.replace(/<h2 id="t-(entenda|fontes)">/, '<h1 id="t-$1" class="titulo-pagina">').replace("</h2>", "</h1>")
+  const corpo = secao.replace('<details class="fontes-lista">', '<details class="fontes-lista" open>') // a lista das fontes com os links abre aberta
+    .replace(/<h2 id="t-(entenda|fontes)">/, '<h1 id="t-$1" class="titulo-pagina">').replace("</h2>", "</h1>")
     .replace(/<h3>/g, '<h2 class="h3">').replace(/<\/h3>/g, "</h2>"); // sem pular de nível: h1, depois h2
   paginas.push([id, pagina(id, titulo, descricao, corpo, { carregando: false, leve: true })]);
 }
@@ -845,7 +846,8 @@ if (BAL && (BAL.p || []).length) {
   const lide = `O ${periodo}: o que cada deputado federal e senador recebeu e o que o mandato usou (a cota parlamentar, outros gastos e a equipe do gabinete), com a média por mês e as fontes oficiais de cada parte. Tudo com dados públicos oficiais.`;
   // a frase com o número vem primeiro (a mesma do app.js, para a Câmara); as ressalvas, recolhidas, com o resumo à vista
   const dC = BAL.casa.d;
-  const frase = `Na mediana, um deputado federal recebeu e usou ${reaisB(dC.t.md)} por mês no ${periodo}: ${reaisB(dC.r.md)} recebidos, ${reaisB(dC.c.md)} de cota parlamentar e ${reaisB(dC.e.md)} de equipe do gabinete.`;
+  const fe = BAL.meta.faixas.d.e[1];
+  const frase = `Na mediana, um deputado federal recebeu e usou ${reaisB(dC.t.md)} por mês no mandato 2023–2026 (fev/2023 a ${mes(ultimo)}${fe < ultimo ? `; a equipe, até ${mes(fe)}` : ""}). A mediana de cada parte: ${reaisB(dC.r.md)} recebidos, ${reaisB(dC.c.md)} de cota parlamentar e ${reaisB(dC.e.md)} de equipe do gabinete. Cada mediana é calculada à parte; por isso as partes não somam o total.`;
   const corpo = '<section class="bloco" id="balanco" aria-labelledby="t-balanco"><p class="rotulo">Deputados federais e senadores</p>'
     + '<h1 id="t-balanco" class="titulo-pagina">Balanço 2023–2026</h1>'
     + `<p class="lide balanco-frase">${esc(frase)}</p>`
