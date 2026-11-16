@@ -216,26 +216,30 @@ p { margin: 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { font-size: .85rem; color: var(--ink-2); background: var(--paper); border: 1px solid var(--line); border-radius: 14px; padding: 4px 11px; }
 .chip strong { color: var(--ink); font-weight: 600; }
-/* números da abertura: blocos sobre a faixa */
-.numeros { display: grid; gap: 8px; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 860px; }
-@media (min-width: 761px) {
-  .numeros { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-  /* com os deputados estaduais, são 6 números: uma linha só, um pouco mais larga */
-  .numeros:has(> .numero:nth-child(6)) { grid-template-columns: repeat(6, minmax(0, 1fr)); max-width: 1000px; }
-}
-.numero { background: var(--banda-2); border-radius: 12px; padding: 12px 14px; display: grid; gap: 2px; align-content: start; color: inherit; text-decoration: none; border: 1px solid transparent; }
-.numero strong { font-family: var(--display); font-weight: 600; font-size: 2.1rem; line-height: 1; color: var(--banda-ink); }
-.numero span { font-size: .88rem; line-height: 1.3; color: var(--banda-ink-2); }
+/* números da abertura (C-003): uma linha de texto com links, abaixo dos três números */
+.numeros { display: flex; flex-wrap: wrap; gap: 2px 16px; max-width: 60em; font-size: .88rem; }
+.numero { display: inline; color: var(--banda-ink-2); text-decoration: none; border-bottom: 1px solid transparent; }
+.numero strong { font-family: var(--body); font-weight: 700; font-size: 1rem; color: var(--banda-ink); }
+.numero span { color: var(--banda-ink-2); }
+.numero span::before { content: "\00a0"; }
 /* cada número leva ao grupo dele: a seta diz que dá para tocar */
 .numero span::after { content: "\00a0→"; color: var(--banda-ganha); }
-a.numero:hover { border-color: var(--banda-ganha); }
+a.numero:hover { border-bottom-color: var(--banda-ganha); }
 a.numero:focus-visible { outline: 2px solid var(--banda-ganha); outline-offset: 2px; }
-/* 8 quadros (o 8º é o último mês dos dados e leva à atualização): 2 por linha no celular, 4 por linha daí em diante: as
-   linhas sempre fecham */
-.numeros:has(> .numero:nth-child(8)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-@media (min-width: 561px) {
-  .numeros:has(> .numero:nth-child(8)) { grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 1000px; }
-}
+.escolha__linha--topo { max-width: 640px; }
+/* os três números da primeira tela: deputado, senador e governador, com o link para a conta */
+.tres-numeros { display: grid; gap: 10px; grid-template-columns: minmax(0, 1fr); min-height: 368px; max-width: 1000px; }
+@media (min-width: 761px) { .tres-numeros { grid-template-columns: repeat(3, minmax(0, 1fr)); min-height: 150px; } }
+.tres-numero { background: var(--banda-2); border-radius: 12px; padding: 10px 14px; display: grid; gap: 3px; align-content: start; color: inherit; text-decoration: none; border: 1px solid transparent; }
+a.tres-numero:hover { border-color: var(--banda-ganha); }
+a.tres-numero:focus-visible { outline: 2px solid var(--banda-ganha); outline-offset: 2px; }
+.tres-numero__cargo { font-weight: 600; color: var(--banda-ink-2); font-size: .95rem; }
+.tres-numero__valores { display: flex; flex-wrap: wrap; gap: 2px 22px; }
+.tres-numero__valores div { display: grid; gap: 0; }
+.tres-numero__valores strong { font-family: var(--display); font-weight: 600; font-size: 1.6rem; line-height: 1.05; color: var(--banda-ink); }
+.tres-numero__valores span { font-size: .8rem; color: var(--banda-ink-2); }
+.tres-numero__nota { font-size: .8rem; color: var(--banda-ink-2); }
+.tres-numero__nota::after { content: "\00a0→"; color: var(--banda-ganha); }
 
 /* escolha */
 .escolha { display: grid; gap: 12px; }
@@ -1237,3 +1241,4 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
   .cabecalho__buscar { padding: 8px 9px; }
 }
 .como-renda { display: block; margin-top: 4px; font-size: .85rem; color: var(--ink-2); max-width: 36em; }
+@media (max-width: 560px) { .escolha__linha--topo > div:nth-child(2) { display: none; } .abertura { gap: 14px; } }

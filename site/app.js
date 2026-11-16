@@ -552,6 +552,7 @@
     sec.append(d);
     return sec;
   }
+  const rankingInicio = () => recolherNoCelular(secRanking(null, null), "ranking", "Ver o ranking: quem custa mais e quem custa menos");
   const irPara = (id, deUmaVez) => {
     const e = document.getElementById(id);
     if (!e) return;
@@ -3174,8 +3175,8 @@
       h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
       h("p", { class: "discreto" }, "As ", nCamaras, ` câmaras municipais, com dados do Tesouro Nacional e do TSE. O salário de cada vereador ainda não tem fonte nacional: mostramos o custo da Câmara e o teto do salário${cidadesCamara().length ? `. Em ${listaE(cidadesCamara().map((c) => c.n))}, já dá para ver cada vereador` : ""}.`),
       h("div", { class: "busca-caixa", style: "max-width:520px" }, h("label", { class: "visualmente-oculto", for: "busca-cidade" }, "Procurar cidade"), input, sug),
-      destaqueCapitais(atual),
-      corpo);
+      atual ? [destaqueCapitais(atual), corpo]
+        : h("details", { class: "recolher", open: !!(window.matchMedia && matchMedia("(min-width: 761px)").matches) }, h("summary", null, "Ver as cidades do estado e as capitais"), destaqueCapitais(atual), corpo));
     return sec;
   }
 
@@ -4026,7 +4027,7 @@
       if (grupo === "p" && prefeituraDe(SP)) R.cid = SP;
     }
     const sec = $("#ranking");
-    if (sec) sec.replaceWith(secRanking(null, null));
+    if (sec) sec.replaceWith(rankingInicio());
     irPara("ranking");
   }
   // os números da abertura, em blocos sobre a faixa escura (refeitos quando os outros grupos chegam: ver garantirTudo)
@@ -4072,9 +4073,27 @@
     }, true);
     if (location.hash === "#entenda-renda") { const d = document.getElementById("entenda-renda"); if (d) d.open = true; }
   }
+  // Os três números da primeira tela da página inicial (C-003): o que vai para o bolso e o custo por mês de um deputado federal e de um senador
+  // (mediana de 2025, a mesma conta de "Um parlamentar e um ministro típicos") e o menor e o maior salário de governador; cada um leva à conta.
+  function montarTresNumeros() {
+    const alvo = $("#tres-numeros");
+    if (!alvo) return;
+    alvo.textContent = "";
+    const cartao = (href, cargo, valores, nota, quem) => h("a", { class: "tres-numero", href, onclick: () => { S.origem = "inicio"; evento("clicar_numero_topo", { cargo: quem }); } },
+      h("span", { class: "tres-numero__cargo" }, cargo),
+      h("div", { class: "tres-numero__valores" }, valores.map(([v, r]) => h("div", null, h("strong", null, v), h("span", null, r)))),
+      h("span", { class: "tres-numero__nota" }, nota));
+    for (const [casa, titulo] of [["d", "Deputado federal"], ["s", "Senador"]]) {
+      const C = colegas(casa, "2025");
+      if (C && C.n) add(alvo, cartao("/#tipico", titulo, [[compacto(C.gm), "vai para o bolso, por mês"], [compacto(C.tm), "custo por mês"]], "mediana de 2025, valores brutos · ver a conta", casa === "d" ? "deputado" : "senador"));
+    }
+    const vs = (GOV.e || []).map((e) => e.v && e.v[0]).filter((v) => v > 0);
+    if (vs.length) add(alvo, cartao("/#governadores", "Governador", [[`${compacto(Math.min(...vs))} a ${compacto(Math.max(...vs))}`, "salário do cargo, por mês, nos estados"]], `${vs.length} estados · ver a lista`, "governador"));
+  }
   function montarCabecalho() {
     const D = S.D;
     montarChips();
+    montarTresNumeros();
     const sel = $("#estado");
     sel.replaceWith(seletorUF("estado", S.ufLista, (v) => { S.ufLista = v; if (v) evento("ver_estado", { uf: v }); listaEstado(); }, "Ver por estado"));
     ligarBusca($("#busca"), $("#sugestoes"), (p) => { S.origem = "busca"; escolher(p.id); }, null, true);
@@ -5546,7 +5565,9 @@
     } else {
       document.title = "Contas do Poder";
       if (S.naoAchada) app.append(h("p", { class: "aviso" }, "Não achamos esta página. Procure pelo nome acima ou veja os destaques abaixo."));
-      app.append(...[chamadaBalanco(), secTipicos(), secGoverno(), secGovernadores(null), secJudiciarioInicio(), secCamaras(null), secRanking(null, null), secResumoGeral()].filter(Boolean));
+      // no celular, as seções longas da inicial ficam com o título e um "Ver ..." (no computador, abertas); a busca de cidade e os três números ficam à vista
+      app.append(...[chamadaBalanco(), secTipicos(), recolherNoCelular(secGoverno(), "governo", "Ver o presidente, o vice e os ministros"), recolherNoCelular(secGovernadores(null), "governadores", "Ver os governadores"),
+        recolherNoCelular(secJudiciarioInicio(), "judiciario-inicio", "Ver os tribunais superiores"), secCamaras(null), rankingInicio(), recolherNoCelular(secResumoGeral(), "resumo", "Ver o resumo para compartilhar")].filter(Boolean));
       navSecoes(["tipico", "governo", "governadores", "judiciario-inicio", "cidades", "ranking", "resumo", "entenda", "fontes"]);
     }
     rolarPendente();

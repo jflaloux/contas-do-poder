@@ -1738,6 +1738,31 @@ arquivo HTML (e o CSV, +1) no limite do Cloudflare. Carrega só o essencial (`<m
   total; poucos meses no fim), `balanco-senado`, `balanco-estados`, `balanco-pessoa`, `balanco-entradas` (perfil, cabeçalho, CSV) e
   `balanco-chamada-inicial`; os números esperados saem do próprio `balanco.json`.
 
+## Páginas mais curtas (16/11/2026)
+
+Medidas a 375 px (altura da página; primeiro número): `/balanco` 31.540 px para ~6.800 (a frase com a mediana a 227 px), `/` 15.603 px para ~4.800
+(busca, botão e os três números na primeira tela), página de deputado 9.853 px para ~8.970 e o HTML pronto de uma pessoa, de ~57.000 para ~23.000
+caracteres. Para medir de novo: abrir a página com `publicacao/testes/cdp.mjs` a 375 px (celular) e ler `document.documentElement.scrollHeight`.
+
+- **`/balanco`**: a frase com a mediana da casa vem logo abaixo do título (muda com a Câmara/Senado), depois o resumo das ressalvas em uma linha
+  e o `<details class="balanco-ressalvas">` "Ler as 6 ressalvas"; "Como ler este balanço" (as 15 ressalvas do arquivo e as fontes) também fica fechado;
+  a lista abre com 20 pessoas (mais 40 por clique) e, no celular, cada pessoa é uma linha (nome, partido, estado, meses, total por mês) que abre os
+  números ao toque (`tr.aberta`, botão "Ver os números"); no computador, a tabela inteira. Os endereços dos e-mails seguem iguais. O teste abre todo
+  `details.balanco-ressalvas` e `details.recolher` para ler o texto: testes de altura fecham antes de medir.
+- **`_headers`**: `X-Robots-Tag: noindex` só no bloco `https://contas-do-poder.pages.dev/*`. O teste (`headers-noindex-pages-dev`, no começo da
+  suíte) confere que o noindex está só nesse bloco e nunca em `contasdopoder.com`. Depois do push: `curl -sI https://contas-do-poder.pages.dev/ | grep -i x-robots`.
+- **`/entenda` e `/fontes`**: o `gerar.mjs` tira as seções `#entenda` e `#fontes` do modelo (o `index.html` continua sendo a fonte do texto) e faz as
+  duas páginas (h1, e os h3 viram h2 com a classe `h3`). As outras páginas levam só a linha "Como os números são feitos" no fim, junto das fontes
+  principais da página (`blocoErro`), e o rodapé aponta para as duas. O app busca a página (`/entenda`) quando se chega por dentro do site
+  (`preencherEntenda` põe as pendências e os números da renda). O "(como?)" da comparação com a renda abre a explicação no lugar. O número de
+  cidades que o app lia dali vai em `<meta name="dado-n-cidades">`. "entenda" e "fontes" já estavam em RESERVADOS.
+- **Página inicial**: o título, uma linha, a busca (e o botão "Escolher pelo meu estado"), os três números (`montarTresNumeros`: deputado e senador,
+  mediana de 2025 do que vai para o bolso e do custo; governador, menor e maior salário do cargo; cada um leva a `#tipico` ou `#governadores`) e a linha
+  de contagens em texto (os 8 quadros viraram links numa linha). No celular, o seletor de estado do topo some (o botão faz o mesmo) e as seções longas
+  (governo, governadores, tribunais, câmaras, ranking, resumo) ficam com o título e um "Ver ..." (`recolherNoCelular`; abertas no computador; `irPara`
+  abre a seção ao seguir um link para ela). Testes: `inicio-primeira-tela`, `entenda-pagina`, `fontes-pagina`, `pagina-sem-glossario`, `balanco-topo`,
+  `balanco-enderecos-do-email`.
+
 ## Conforto, dados estruturados, baixar dados e carga sob demanda (07/10/2026)
 
 - **404 de verdade**: o `gerar.mjs` faz `publicar/404.html` (a página do app com `noindex`); o Cloudflare Pages a serve, com o código 404, para todo

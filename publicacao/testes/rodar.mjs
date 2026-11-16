@@ -725,6 +725,29 @@ const PAGINAS = [
       erro.querySelector("a[href='/entenda']").click(); await esp(1500);
       if (location.pathname !== "/entenda" || !document.querySelector("#entenda h1") || !/milhões de pessoas/.test(document.querySelector("#renda-numeros").textContent) || document.querySelectorAll("#pendencias li").length < 3) f.push("o link da página de pessoa não abriu /entenda por dentro do site, com a renda e as pendências preenchidas");
       return f; })()` },
+  // C-003 (16/11/2026): a busca e três números na primeira tela do celular; as seções longas recolhidas no celular; a linha de contagens em texto
+  { nome: "inicio-primeira-tela", acao: true, url: "/", depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms)), cel = innerWidth < 761;
+      const busca = document.querySelector("#busca"), cartoes = [...document.querySelectorAll("#tres-numeros .tres-numero")], guia = document.querySelector("#abrir-guia");
+      if (!busca || busca.getBoundingClientRect().bottom > innerHeight) f.push("a busca devia estar na primeira tela");
+      if (busca && busca.placeholder !== "Nome do político, estado ou cidade") f.push("o texto da busca: " + (busca && busca.placeholder));
+      if (!guia || guia.textContent.trim() !== "Escolher pelo meu estado") f.push("o botão devia dizer 'Escolher pelo meu estado': " + (guia && guia.textContent));
+      if (cartoes.length !== 3) f.push("devia ter 3 números na primeira tela: " + cartoes.length);
+      else {
+        const txt = cartoes.map((c) => c.innerText.replace(/\\s+/g, " "));
+        if (!/^Deputado federal R\\$ [0-9,.]+ (mil|mi) vai para o bolso, por mês R\\$ [0-9,.]+ (mil|mi) custo por mês mediana de 2025, valores brutos/.test(txt[0])) f.push("o 1º número (deputado) está errado: " + txt[0]);
+        if (!/^Senador R\\$/.test(txt[1]) || !/^Governador R\\$ [0-9,.]+ (mil|mi) a R\\$ [0-9,.]+ (mil|mi) salário do cargo/.test(txt[2])) f.push("o senador ou o governador está errado: " + txt[1] + " | " + txt[2]);
+        if (cel && cartoes[0].getBoundingClientRect().top > innerHeight - 80) f.push("o primeiro número devia aparecer na primeira tela do celular: " + Math.round(cartoes[0].getBoundingClientRect().top));
+        if (cartoes[0].getAttribute("href") !== "/#tipico" || cartoes[2].getAttribute("href") !== "/#governadores") f.push("os números levam à conta: " + cartoes.map((c) => c.getAttribute("href")).join(","));
+      }
+      const chips = document.querySelectorAll("#chips-info a.numero"); if (chips.length < 6) f.push("a linha de contagens devia ter pelo menos 6 links: " + chips.length);
+      if (document.querySelector("#chips-info").getBoundingClientRect().height > 260) f.push("a linha de contagens ocupa demais: " + Math.round(document.querySelector("#chips-info").getBoundingClientRect().height));
+      const dobras = [...document.querySelectorAll("#app > section > details.recolher")]; // o teste abre todas para ler o texto: fecho para medir como a pessoa vê no celular
+      dobras.forEach((d) => { d.open = false; }); await esp(300); const altura = document.documentElement.scrollHeight;
+      if (dobras.length < 5) f.push("faltam as seções recolhidas da inicial: " + dobras.length);
+      if (cel && altura > 6500) f.push("a inicial no celular, com as seções fechadas, passou de 6.500 px: " + altura);
+      cartoes[0] && cartoes[0].click(); await esp(1200); if (location.hash !== "#tipico") f.push("o primeiro número devia levar a #tipico: " + location.hash);
+      return f; })()` },
   // celular estreito: a página não pode passar da largura (a licença do CSV não quebrava e abria rolagem horizontal)
   { nome: "balanco-320", url: BAL ? "/balanco" : null, largura: 320, ter: [["#balanco .balanco-fim a[href*='creativecommons.org']", 1]] },
   { nome: "balanco-320-estados", url: BAL ? "/balanco?vista=estados" : null, largura: 320, ter: [["#balanco .tabela-balanco--estados tbody tr", 28]] },
