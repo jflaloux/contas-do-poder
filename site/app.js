@@ -92,7 +92,7 @@
     const caminho = location.pathname.replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     const v = {
       pagina: !caminho ? "inicio" : /^(cidade\/|cid-\d+$)/.test(caminho) ? "cidade" : /^governador\//.test(caminho) ? "governador"
-        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "balanco" || caminho === "sobre" || caminho === "imprensa" ? caminho : caminho === "como-calculamos" ? "como_calculamos" : caminho === "dados-abertos" ? "dados_abertos" : "politico",
+        : caminho === "indice" || caminho === "correcoes" || caminho === "judiciario" || caminho === "atualizacao" || caminho === "balanco" || caminho === "entenda" || caminho === "fontes" || caminho === "sobre" || caminho === "imprensa" ? caminho : caminho === "como-calculamos" ? "como_calculamos" : caminho === "dados-abertos" ? "dados_abertos" : "politico",
       lcp: null, cls: 0, janela: 0, ini: 0, fim: 0, congelado: false, interacoes: new Map(), enviado: false,
     };
     const ver = (tipo, f, extra) => {
@@ -316,7 +316,11 @@
   const frasePop = (xsm, antes) => { const v = acimaDeQuemTrabalha(xsm); return v === null ? "" : `${antes}${pctPop(v)} ${TXT_POP}`; };
   function estatisticaPop(xsm, depois) {
     const v = acimaDeQuemTrabalha(xsm);
-    return v === null ? null : estatistica("Ganha mais que", pctPop(v), h("span", null, `${TXT_POP}${depois ? `, ${depois}` : ""} `, h("a", { href: "#entenda", class: "pequeno", onclick: (ev) => { ev.preventDefault(); evento("como_renda"); const d = document.getElementById("entenda-renda"); if (d) { d.open = true; d.scrollIntoView({ block: "center" }); } } }, "(como?)")));
+    if (v === null) return null;
+    // "(como?)" abre a explicação no lugar (a lista completa do que cada termo quer dizer está em /entenda)
+    const como = h("span", { class: "como-renda", hidden: true }, "Compara o valor mensal bruto com o rendimento habitual de todos os trabalhos de quem trabalha e tem renda, pela PNAD Contínua do IBGE (os quatro trimestres mais recentes), em salários mínimos do ano. Como a pesquisa capta mal as rendas altas, o percentual real deve ser um pouco menor; arredondamos sempre para baixo. ", h("a", { href: "/entenda#entenda-renda" }, "Mais sobre a conta"), ".");
+    const botao = h("button", { type: "button", class: "link-botao pequeno", "aria-expanded": "false", onclick: () => { como.hidden = !como.hidden; botao.setAttribute("aria-expanded", String(!como.hidden)); if (!como.hidden) evento("como_renda"); } }, "(como?)");
+    return estatistica("Ganha mais que", pctPop(v), h("span", null, `${TXT_POP}${depois ? `, ${depois}` : ""} `, botao, " ", como));
   }
   // em salários mínimos de cada ano (o salário mínimo muda todo ano)
   function emSalariosMinimos(p, k, campo) {
@@ -3164,7 +3168,7 @@
         })());
     };
     // o número de câmaras vem do arquivo das cidades (o gerar.mjs põe o mesmo número no HTML pronto); até ele chegar, fica o do HTML
-    const nCamaras = h("span", null, ((document.querySelector('[data-dado="n-cidades"]') || {}).textContent || "").trim() || "5.569");
+    const nCamaras = h("span", null, (((document.querySelector('meta[name="dado-n-cidades"]') || {}).content || "").trim() || "5.569"));
     carregarCidades().then(() => { if (CID.m && CID.m.length) nCamaras.textContent = num(CID.m.length, 0); desenhar(); }, () => { corpo.textContent = "Não foi possível carregar as câmaras."; });
     add(sec, h("p", { class: "rotulo" }, "Vereadores"),
       h("h2", null, atual ? "Outras câmaras" : "Quanto custa a Câmara da sua cidade"),
@@ -4047,6 +4051,27 @@
       cidadesPrefeitura().length ? numero(nPref, cidadesPrefeitura().length === 1 ? "na Prefeitura" : `nas prefeituras de ${cidadesPrefeitura().length} capitais`, "p") : null,
       numero(`${MESES[mesAtual() - 1]}/${anoAtual()}`, `último mês dos dados · atualizado em ${atualizadoEm().slice(0, 5)}`, "x")); // o mesmo texto do gerar.mjs
   }
+  // "O que é cada número" (/entenda): o que ainda falta (D.meta.pendencias) e os números da renda (PNAD); também mede os temas abertos. Roda quando a
+  // página de /entenda está na tela (da primeira visita ou buscada por dentro do site); sem a página, não faz nada.
+  function preencherEntenda() {
+    const D = S.D, ent = document.getElementById("entenda");
+    if (!D || !ent || ent.dataset.pronto) return;
+    ent.dataset.pronto = "1";
+    const pend = $("#pendencias");
+    if (pend && !pend.dataset.lido) { pend.dataset.lido = "1"; (D.meta.pendencias || []).forEach((t) => pend.append(h("li", null, t))); }
+    const rn = $("#renda-numeros"), R = D.meta.renda;
+    if (rn && R && !rn.textContent) {
+      const tri = (t) => t.replace("/", " trimestre de ");
+      add(rn, `São cerca de ${num(R.pessoas / 1e6, 0)} milhões de pessoas (do ${tri(R.trimestres[R.trimestres.length - 1])} ao ${tri(R.trimestres[0])}). `,
+        `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
+        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte:\u00a0IBGE\u00a0↗"));
+    }
+    ent.addEventListener("toggle", (ev) => {
+      const s = ev.target.open && ev.target.querySelector("summary");
+      if (s) evento("abrir_entenda", { tema: s.textContent.trim().slice(0, 60) });
+    }, true);
+    if (location.hash === "#entenda-renda") { const d = document.getElementById("entenda-renda"); if (d) d.open = true; }
+  }
   function montarCabecalho() {
     const D = S.D;
     montarChips();
@@ -4056,8 +4081,7 @@
     ligarBuscaTopo();
     $("#abrir-guia").addEventListener("click", abrirGuia);
     document.querySelectorAll("[data-ir]").forEach((b) => b.addEventListener("click", () => irPara(b.dataset.ir)));
-    const pend = $("#pendencias");
-    D.meta.pendencias.forEach((t) => pend.append(h("li", null, t)));
+    preencherEntenda();
     // cliques em links para fora (fontes oficiais, GitHub, e-mail de contato) e temas do "Entenda" abertos
     document.addEventListener("click", (ev) => {
       const a = ev.target.closest && ev.target.closest("a[href]");
@@ -4069,18 +4093,6 @@
       if (dominio === "wa.me") return; // já medido como "compartilhar"
       evento(dominio === "github.com" ? "abrir_github" : "abrir_fonte", { dominio, onde });
     });
-    const ent = $("#entenda");
-    if (ent) ent.addEventListener("toggle", (ev) => {
-      const s = ev.target.open && ev.target.querySelector("summary");
-      if (s) evento("abrir_entenda", { tema: s.textContent.trim().slice(0, 60) });
-    }, true);
-    const rn = $("#renda-numeros"), R = D.meta.renda;
-    if (rn && R) {
-      const tri = (t) => t.replace("/", " trimestre de ");
-      add(rn, `São cerca de ${num(R.pessoas / 1e6, 0)} milhões de pessoas (do ${tri(R.trimestres[R.trimestres.length - 1])} ao ${tri(R.trimestres[0])}). `,
-        `Metade ganha até ${num(R.mediana_sm, 1)} salário mínimo por mês, e só 1% ganha mais que ${num(R.p99_sm, 1)} salários mínimos. `,
-        h("a", { href: R.url, target: "_blank", rel: "noopener" }, "Fonte:\u00a0IBGE\u00a0↗"));
-    }
     $("#gerado-em").textContent = `Gerado em ${atualizadoEm()}.`;
   }
   function listaEstado() {
@@ -4355,7 +4367,7 @@
     }
     S.cidadeVista = null;
     // páginas do site que não são de um político: /correcoes, /indice, /dados-abertos, /atualizacao, /sobre, /imprensa e /judiciario
-    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "balanco" || caminho === "sobre" || caminho === "imprensa" || caminho === "como-calculamos" || caminho === "judiciario") {
+    if (caminho === "correcoes" || caminho === "indice" || caminho === "dados-abertos" || caminho === "atualizacao" || caminho === "balanco" || caminho === "entenda" || caminho === "fontes" || caminho === "sobre" || caminho === "imprensa" || caminho === "como-calculamos" || caminho === "judiciario") {
       if (extraAntes !== caminho) evento(`ver_${caminho.replace(/-/g, "_")}`, { origem: S.origem || (S.carregado ? "navegacao" : "link") });
       S.origem = null; S.sel = null; S.cidade = null; S.gov = null; S.extra = caminho;
       return;
@@ -4489,6 +4501,7 @@
         h("p", null, h("strong", null, "Primeiro, confira na fonte. "),
           "Os números desta página vêm de fontes oficiais, com o link ao lado de cada bloco", links.length ? ". As principais:" : "."),
         links.length ? h("ul", { class: "erro-aviso__fontes" }, links.map(([t, u]) => h("li", null, h("a", { href: u, target: "_blank", rel: "noopener" }, `${t}\u00a0↗`)))) : null,
+        h("p", { class: "discreto" }, "Como os números são feitos: ", h("a", { href: "/entenda" }, "o que é cada número"), " · ", h("a", { href: "/fontes" }, "todas as fontes"), " · ", h("a", { href: "/como-calculamos" }, "como calculamos"), "."),
         h("p", { class: "discreto" }, h("strong", null, "A fonte mostra o mesmo valor? "),
           "Então é o que o órgão publicou, e quem pode corrigir é ele: fale com a ouvidoria do órgão ou faça um pedido pela Lei de Acesso à Informação."),
         h("details", { class: "erro-aviso__email", ontoggle: (ev) => { if (ev.target.open) evento("abrir_reportar_erro", { pagina: nome }); } },
@@ -5445,6 +5458,22 @@
       }, () => falhou(espera, "Não foi possível carregar o balanço. Os dados e o código estão em github.com/jflaloux/contas-do-poder."));
       return;
     }
+    if (S.extra === "entenda" || S.extra === "fontes") {
+      // as duas páginas de texto (O que é cada número, Fontes dos dados): na primeira visita, a página pronta do HTML; por dentro do site, busca a página
+      const id = S.extra;
+      document.title = id === "entenda" ? "O que é cada número: o que quer dizer cada termo do contracheque | Contas do Poder" : "Fontes dos dados: de onde vem cada número | Contas do Poder";
+      navSecoes([]);
+      if (document.getElementById(id)) { preencherEntenda(); rolarPendente(); return; }
+      const espera = esperar("Carregando…");
+      fetch(`/${id}`).then((r) => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.text(); }).then((html) => {
+        const sec = new DOMParser().parseFromString(html, "text/html").getElementById(id);
+        if (!sec) throw new Error("sem a seção");
+        if (!espera.isConnected) return; // já foi para outra página
+        trocar(espera, document.importNode(sec, true));
+        preencherEntenda(); rolarPendente();
+      }, () => falhou(espera, "Não foi possível carregar a página. Escreva para contato@contasdopoder.com."));
+      return;
+    }
     if (S.extra === "atualizacao") {
       document.title = "Atualização dos dados: até que mês vai cada fonte | Contas do Poder";
       const espera = esperar("Carregando a situação das fontes…");
@@ -5636,7 +5665,7 @@
   function rotaLeve() {
     const caminho = decodeURIComponent(location.pathname).replace(/^\/+|\/+$/g, "").replace(/\.html$/, "").toLowerCase();
     if (!caminho) return false;
-    if (caminho === "balanco") return true; // só precisa da lista de deputados e senadores (fotos) e do balanco.json
+    if (caminho === "balanco" || caminho === "entenda" || caminho === "fontes") return true; // só precisa da lista de deputados e senadores (fotos) e do balanco.json
     const id = END.porCaminho.get(caminho) || (S.porId.has(caminho) ? caminho : null) || END.antigos[caminho];
     const p = id && S.porId.get(id);
     return !!p && /^(dep|sen|exe)-/.test(p.id) && (!p.rel || S.porId.has(p.rel));

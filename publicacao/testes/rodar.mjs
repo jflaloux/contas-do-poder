@@ -707,6 +707,24 @@ const PAGINAS = [
       if (linhas.some((tr) => !/ · SP · /.test(tr.querySelector(".balanco-nome small").textContent))) f.push("apareceu gente de outro estado");
       if (document.querySelector("#bal-uf").value !== "SP") f.push("o seletor de estado devia estar em SP");
       return f; })()` },
+  // C-006 (16/11/2026): "O que é cada número" e "Fontes dos dados" saem das páginas e ficam em /entenda e /fontes; cada página leva só a linha que aponta para elas
+  { nome: "entenda-pagina", url: "/entenda", ter: [["#entenda h1", 1], ["#entenda .cartao", 2], ["#entenda details[data-para]", 8], ["#pendencias li", 3], ["#entenda-renda", 1]], pagina: [/O que é cada número/, /Deputado\(a\) federal/], semPagina: [/Fontes dos dados/],
+    depois: `(() => /milhões de pessoas/.test(document.querySelector("#renda-numeros").textContent) ? [] : ["a renda (PNAD) não foi preenchida em /entenda"])()` },
+  { nome: "fontes-pagina", url: "/fontes", ter: [["#fontes h1", 1], ["#fontes .fonte", 4], ["#fontes details.fontes-lista", 1], ["#fontes details.fontes-lista a[href^='http']", 30]], pagina: [/Fontes dos dados/], semPagina: [/O que é cada número/] },
+  { nome: "pagina-sem-glossario", acao: true, url: BAL_PESSOA ? `/${ENDERECOS[BAL_PESSOA.id]}` : null, depois: `(async () => {
+      const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
+      if (document.querySelector("#entenda, #fontes")) f.push("a página de pessoa ainda traz O que é cada número ou Fontes dos dados");
+      if (/O que é cada número|Fontes dos dados/.test(document.querySelector("#app").innerText)) f.push("o texto das duas seções continua na página");
+      const html = await (await fetch(location.pathname)).text();
+      if (/id="entenda"|id="fontes"|Salário \\(subsídio\\)/.test(html)) f.push("o HTML pronto ainda leva o glossário ou a lista de fontes: " + html.length);
+      if (html.length > 40000) f.push("o HTML pronto da página de pessoa passou de 40.000 caracteres: " + html.length);
+      const erro = document.querySelector("#erro"); if (!erro || !erro.querySelector("a[href='/entenda']") || !erro.querySelector("a[href='/fontes']") || !erro.querySelector("a[href='/como-calculamos']")) f.push("falta a linha 'Como os números são feitos' com os links de /entenda, /fontes e /como-calculamos");
+      if (!document.querySelector(".erro-aviso__fontes a[href^='http']")) f.push("as fontes principais da página sumiram");
+      const como = [...document.querySelectorAll("button")].find((b) => b.textContent === "(como?)");
+      if (como) { const txt = como.parentElement.querySelector(".como-renda"); if (!txt || !txt.hidden) f.push("a explicação do (como?) devia começar fechada"); como.click(); await esp(100); if (txt.hidden || !/PNAD Contínua do IBGE/.test(txt.textContent)) f.push("o (como?) não abriu a explicação no lugar"); }
+      erro.querySelector("a[href='/entenda']").click(); await esp(1500);
+      if (location.pathname !== "/entenda" || !document.querySelector("#entenda h1") || !/milhões de pessoas/.test(document.querySelector("#renda-numeros").textContent) || document.querySelectorAll("#pendencias li").length < 3) f.push("o link da página de pessoa não abriu /entenda por dentro do site, com a renda e as pendências preenchidas");
+      return f; })()` },
   // celular estreito: a página não pode passar da largura (a licença do CSV não quebrava e abria rolagem horizontal)
   { nome: "balanco-320", url: BAL ? "/balanco" : null, largura: 320, ter: [["#balanco .balanco-fim a[href*='creativecommons.org']", 1]] },
   { nome: "balanco-320-estados", url: BAL ? "/balanco?vista=estados" : null, largura: 320, ter: [["#balanco .tabela-balanco--estados tbody tr", 28]] },

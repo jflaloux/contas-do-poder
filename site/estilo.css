@@ -692,7 +692,7 @@ input[type="search"] { line-height: 1.5; }
 .fontes-lista summary { cursor: pointer; font-weight: 600; color: var(--accent); }
 .fontes-lista[open] summary { margin-bottom: 4px; }
 .fontes-lista__corpo { columns: 2 22rem; column-gap: 28px; }
-.fontes-lista__corpo h3 { font-size: .95rem; margin: 12px 0 4px; break-after: avoid; }
+.fontes-lista__corpo h3, .fontes-lista__corpo h2.h3 { font-size: .95rem; margin: 12px 0 4px; break-after: avoid; }
 .fontes-lista__corpo .lista { margin: 0; font-size: .88rem; }
 .fontes-lista__corpo li { break-inside: avoid; }
 /* "Encontrou um erro?" no fim de cada página e a lista de correções (/correcoes) */
@@ -715,7 +715,6 @@ input[type="search"] { line-height: 1.5; }
 .interna .escolha { gap: 0; margin-block: -12px -18px; }
 /* a lista das seções já tem a altura dos botões antes de o app.js preenchê-la (a página não desce quando eles aparecem) */
 .interna .secoes { min-height: 44px; } /* 36 do botão + 8 do respiro (as margens negativas devolvem o espaço) */
-.interna #entenda .grade-cartoes, .interna #fontes .grade-cartoes { display: none; }
 .titulo-pagina { font-size: clamp(2.3rem, 7vw, 3.4rem); max-width: 10.87em; }
 /* resumo pronto (HTML do gerar.mjs) e prévia enquanto o detalhe carrega */
 .conta__texto { padding: 14px 22px 0; color: var(--ink-2); font-size: .92rem; max-width: 42.4em; }
@@ -1237,3 +1236,4 @@ p > a:only-child, li > a:only-child:not(.pessoa-linha):not(.rank) { display: inl
   .cabecalho__link { padding: 0 6px; font-size: .92rem; }
   .cabecalho__buscar { padding: 8px 9px; }
 }
+.como-renda { display: block; margin-top: 4px; font-size: .85rem; color: var(--ink-2); max-width: 36em; }

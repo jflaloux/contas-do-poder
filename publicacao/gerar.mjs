@@ -123,6 +123,12 @@ const VALORES_DADO = (() => {
 })();
 if (VALORES_DADO["verba-fora"] === "") MODELO = MODELO.replace(/\s*<li id="pendencia-verba">[\s\S]*?<\/li>/, ""); // nenhuma Câmara com verba de fora: sem a pendência
 MODELO = MODELO.replace(/<span data-dado="([a-z0-9-]+)">([^<]*)<\/span>/g, (todo, chave, reserva) => `<span data-dado="${chave}">${VALORES_DADO[chave] !== undefined ? String(VALORES_DADO[chave]).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") : reserva}</span>`);
+// C-006 (16/11/2026): "O que é cada número" e "Fontes dos dados" saem de todas as páginas (eram ~35.000 caracteres iguais em cada uma das 8.900) e
+// ficam em /entenda e /fontes, feitas aqui com o mesmo HTML do index.html (os valores de data-dado já estão postos). O número de cidades, que o
+// app lia de lá, vai numa <meta>.
+const tiraSecao = (id) => { const m = MODELO.match(new RegExp(`\\s*<section class="bloco" id="${id}"[\\s\\S]*?</section>`)); if (!m) throw new Error(`index.html mudou: não achei a seção #${id}`); MODELO = MODELO.replace(m[0], ""); return m[0].trim(); };
+const SEC_ENTENDA = tiraSecao("entenda"), SEC_FONTES = tiraSecao("fontes");
+MODELO = MODELO.replace(/<\/head>/, `<meta name="dado-n-cidades" content="${String(VALORES_DADO["n-cidades"] || "")}">\n</head>`);
 const semAcento = (t) => String(t || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 const slugTxt = (t) => semAcento(t).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 const fmt = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
@@ -658,6 +664,16 @@ if (judiciario.length) {
   const corpo = '<section class="bloco" id="judiciario" aria-labelledby="t-judiciario"><p class="rotulo">Justiça</p><h1 id="t-judiciario" class="titulo-pagina">Judiciário</h1>'
     + `<p class="lide">${esc(lide)}</p>${Object.entries(ORGAOS_J).map(bloco).join("")}</section>`;
   paginas.push(["judiciario", pagina("judiciario", "Judiciário: quanto recebem os ministros dos tribunais superiores, o CNJ e a PGR | Contas do Poder", lide, corpo, { extras: ["/dados/judiciario.json"] })]);
+}
+
+// ------------------------------------------------------------------ O que é cada número (/entenda) e Fontes dos dados (/fontes)
+for (const [id, titulo, descricao, secao] of [
+  ["entenda", "O que é cada número: o que quer dizer cada termo do contracheque | Contas do Poder", "O que quer dizer cada termo do Contas do Poder: salário bruto, cota parlamentar, equipe do gabinete, verba, o custo total e a comparação com a renda de quem trabalha.", SEC_ENTENDA],
+  ["fontes", "Fontes dos dados: de onde vem cada número | Contas do Poder", "As fontes oficiais de todos os números do Contas do Poder, com os links: Câmara, Senado, governo federal, estados, municípios e tribunais.", SEC_FONTES],
+]) {
+  const corpo = secao.replace(/<h2 id="t-(entenda|fontes)">/, '<h1 id="t-$1" class="titulo-pagina">').replace("</h2>", "</h1>")
+    .replace(/<h3>/g, '<h2 class="h3">').replace(/<\/h3>/g, "</h2>"); // sem pular de nível: h1, depois h2
+  paginas.push([id, pagina(id, titulo, descricao, corpo, { carregando: false, leve: true })]);
 }
 
 // ------------------------------------------------------------------ dados abertos (/dados-abertos)
