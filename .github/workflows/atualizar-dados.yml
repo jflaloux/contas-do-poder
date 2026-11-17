@@ -325,7 +325,11 @@ jobs:
               d = json.load(open("dados/processados/coletas_exterior.json"))
           except (OSError, ValueError):
               sys.exit(0)
-          f = {k: v for k, v in d.items() if v.get("falhas")}
+          # fonte só do Brasil (coleta/onde.py, SO_BRASIL) não é tentada daqui: o contador de fora fica parado na última
+          # tentativa, de antes de ela entrar na lista, e não é falha desta rodada (em 17/11/2026, a Alepe, assembleias/pe,
+          # com as 3 falhas de até 10/11, quando passou a rodar só no Mac). A situação dela é a da rodada do Brasil.
+          from coleta.onde import _so_brasil
+          f = {k: v for k, v in d.items() if v.get("falhas") and not _so_brasil(k)}
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as r:
               r.write("### Fontes com falha desta rodada\n" + "".join(f"- {k}: {v['falhas']} seguida(s): {v.get('ultimo_erro', '')[:120]}\n" for k, v in sorted(f.items())))
           graves = [k for k, v in f.items() if v["falhas"] >= 3]

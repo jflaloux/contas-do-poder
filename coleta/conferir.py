@@ -20,6 +20,14 @@ SUBSIDIOS = {39293.32, 41650.92, 44008.52, 46366.19}
 # 03/11/2026, quatro meses de atraso). A checagem vale para o último mês que a Câmara publicou, e o atraso tem limite.
 ATRASO_MAXIMO_VERBA = 6
 PUBLICADO_VERBA = 50  # deputados com verba no mês para ele contar como publicado (mês com poucos casos é falha, não mês novo)
+# Mês em que a própria Câmara Municipal publicou despesa da verba de poucos gabinetes (não é falha do robô): a checagem dos
+# "gastos do gabinete no mês retrasado" passa para o mês anterior, e o relatório diz por quê. Chave: (código IBGE, AAAAMM).
+# Só com o motivo conferido na fonte (o total do mês que ela mesma informa), nunca para fazer a conferência passar.
+POUCO_GASTO_NA_FONTE = {
+    ("4314902", 202609): "Porto Alegre, set/2026: a QBM da Câmara tem despesa de só 17 dos 34 gabinetes; o total de gastos "
+                         "do mês que a própria API informa (R$ 36.978,07) é igual à soma dos lançamentos lidos, e as cópias "
+                         "coloridas caem de ~70 lançamentos por mês para 3 (baixado de novo e conferido em 17/11/2026)",
+}
 
 
 def ultimo_mes_da_verba(lanc, ultimo_mes):
@@ -90,8 +98,9 @@ def _fornecedores_pessoa_no_site():
     return sorted(achados)
 
 
-def _vereadores_capitais():
-    """Por cidade do site/dados/camaras.json: (nome, cadeiras, no cargo, com gastos do gabinete no mês retrasado)."""
+def _vereadores_capitais(notas=None):
+    """Por cidade do site/dados/camaras.json: (nome, cadeiras, no cargo, com gastos do gabinete no mês retrasado, mês
+    conferido AAAAMM). O motivo de cada mês pulado (POUCO_GASTO_NA_FONTE) vai para a lista `notas`."""
     arq = RAIZ / "site" / "dados" / "camaras.json"
     if not arq.exists():
         return []
@@ -102,7 +111,10 @@ def _vereadores_capitais():
         retrasado = ult - 1 if ult % 100 > 1 else ult - 89
         if c.get("verba_ate"):  # a verba sai depois da folha (João Pessoa): confere o último mês com a verba publicada
             retrasado = min(retrasado, int(c["verba_ate"]))
-        while retrasado in set(c.get("verba_sem") or []):  # mês sem a verba publicada (Cuiabá): o anterior
+        while retrasado in set(c.get("verba_sem") or []) or (cod, retrasado) in POUCO_GASTO_NA_FONTE:
+            # mês sem a verba publicada (Cuiabá) ou com despesa de poucos gabinetes na própria fonte: o anterior
+            if (cod, retrasado) in POUCO_GASTO_NA_FONTE and notas is not None:
+                notas.append(POUCO_GASTO_NA_FONTE[(cod, retrasado)])
             retrasado = retrasado - 1 if retrasado % 100 > 1 else retrasado - 89
         ps =[p for p in d["p"] if str(p.get("cid")) == cod]
         com_gasto = sum(1 for p in ps for t in p["t"] if t[0] == retrasado and t[2] > 0)
@@ -110,7 +122,7 @@ def _vereadores_capitais():
             # a verba desse ano ficou de fora de propósito (o site da Câmara está com erro, e o site avisa), ou a cidade
             # tem gasto miúdo e irregular (Belo Horizonte) ou publicado com atraso de meses (combustível no Rio)
             com_gasto = None
-        saida.append((c["n"], c.get("vagas") or 0, sum(p["x"] for p in ps), com_gasto))
+        saida.append((c["n"], c.get("vagas") or 0, sum(p["x"] for p in ps), com_gasto, retrasado))
     return saida
 
 
@@ -347,14 +359,16 @@ def executar():
     exe = [p for p in politicos if p["casa"] == "executivo"]
     ult_e = max((p.get("ultimo_mes_publicado") or 0) for p in exe) if exe else 0
     no_cargo_e = [p["id"] for p in exe if ult_e in p.get("meses_no_cargo", [])]
+    notas_capitais = []  # meses pulados na checagem dos gastos das capitais (POUCO_GASTO_NA_FONTE), com o motivo
     com_salario_e = lanc[(lanc.casa == "exe") & (lanc.grupo == "ganha") & (lanc.ano * 100 + lanc.mes == ult_e)].id_politico.nunique()
     checagens = [
         (f"Governo federal: no cargo em {ult_e % 100:02d}/{ult_e // 100}", len(no_cargo_e), 30),
         ("Câmaras municipais com custo no arquivo do site", _cidades_com_custo(), 5000),
         ("Vereadores eleitos no arquivo do site", _vereadores_no_site(), 55000),
-        *[c for n, vagas, no_cargo, com_gasto in _vereadores_capitais() for c in (
+        *[c for n, vagas, no_cargo, com_gasto, mes_g in _vereadores_capitais(notas_capitais) for c in (
             (f"Vereadores de {n} no cargo (camaras.json)", no_cargo, int(vagas * 0.85)),
-            *([(f"Vereadores de {n} com gastos do gabinete no mês retrasado", com_gasto, int(vagas * 0.6))] if com_gasto is not None else []))],
+            *([(f"Vereadores de {n} com gastos do gabinete no mês retrasado ({mes_g % 100:02d}/{mes_g // 100})", com_gasto,
+                int(vagas * 0.6))] if com_gasto is not None else []))],
         *[c for n, pr, se, maximo in _prefeituras() for c in (
             (f"Prefeitura {n}: prefeito na folha do último mês", pr, 1),
             (f"Prefeitura {n}: secretários na folha do último mês", se, int(maximo * 0.6)))],
@@ -387,6 +401,9 @@ def executar():
         problemas += 0 if ok else 10
         rel.append(f"| {nome} | {valor} | {minimo} | {'OK' if ok else 'FALHOU'} |")
     rel.append("")
+    if notas_capitais:
+        rel += ["Mês com despesa de poucos gabinetes na própria fonte (a checagem dos gastos usa o mês anterior):", "",
+                *[f"- {n}" for n in notas_capitais], ""]
 
     rel += ["---", f"**Total de alertas: {problemas}**"]
     (PROCESSADOS / "conferencia.md").write_text("\n".join(rel), encoding="utf-8")
