@@ -5140,34 +5140,305 @@ ano,mes,gabinete,deputado,nome_civil,partido_hoje,rubrica,quantidade,valor,total
 2026,8,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Locação de licença de uso de software,0,0.0,0.0
 2026,8,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
 2026,8,412,Toninho da Emater,,,,,0.0,
-2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,,,0.0,
-2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,,,0.0,
-2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,,,0.0,
-2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,,,0.0,
-2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,,,0.0,
-2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,,,0.0,
-2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,,,0.0,
-2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,,,0.0,
-2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,,,0.0,
-2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,,,0.0,
-2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,,,0.0,
-2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,,,0.0,
-2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,,,0.0,
-2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,,,0.0,
-2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,,,0.0,
-2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,,,0.0,
-2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,,,0.0,
-2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,,,0.0,
-2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,,,0.0,
-2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,,,0.0,
-2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,,,0.0,
-2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,,,0.0,
-2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,,,0.0,
-2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,,,0.0,
-2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,,,0.0,
-2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,,,0.0,
-2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,,,0.0,
-2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,,,0.0,
-2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,,,0.0,
-2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,,,0.0,
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Devolução de diária,-,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Locação de imóvel,0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Locação de licença de uso de software,0,0.0,0.0
+2026,9,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Devolução de diária,-,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Locação de imóvel,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Locação de licença de uso de software,0,0.0,0.0
+2026,9,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Devolução de diária,-,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Locação de imóvel,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Locação de licença de uso de software,0,0.0,0.0
+2026,9,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Devolução de diária,-,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Locação de imóvel,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Locação de licença de uso de software,0,0.0,0.0
+2026,9,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Devolução de diária,-,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Divulgação da atividade parlamentar,0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Diárias solicitadas pelo Gabinete,0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Locação de imóvel,1,1765.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Locação de licença de uso de software,0,0.0,1765.0
+2026,9,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,Passagens aéreas solicitadas pelo Gabinete,0,0.0,1765.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",1,14000.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Devolução de diária,-,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Divulgação da atividade parlamentar,0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Diárias solicitadas pelo Gabinete,0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Locação de imóvel,0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Locação de licença de uso de software,0,0.0,14000.0
+2026,9,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,Passagens aéreas solicitadas pelo Gabinete,0,0.0,14000.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Devolução de diária,-,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Locação de imóvel,0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Locação de licença de uso de software,0,0.0,0.0
+2026,9,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Devolução de diária,-,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Locação de imóvel,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Locação de licença de uso de software,0,0.0,0.0
+2026,9,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Devolução de diária,-,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Locação de imóvel,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Locação de licença de uso de software,0,0.0,0.0
+2026,9,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Devolução de diária,-,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Locação de imóvel,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Locação de licença de uso de software,0,0.0,0.0
+2026,9,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Devolução de diária,-,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Divulgação da atividade parlamentar,0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Diárias solicitadas pelo Gabinete,0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Locação de imóvel,1,1360.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Locação de licença de uso de software,0,0.0,1360.0
+2026,9,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,Passagens aéreas solicitadas pelo Gabinete,0,0.0,1360.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Devolução de diária,-,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Locação de imóvel,0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Locação de licença de uso de software,0,0.0,0.0
+2026,9,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Devolução de diária,-,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Divulgação da atividade parlamentar,0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Diárias solicitadas pelo Gabinete,1,450.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Locação de imóvel,0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Locação de licença de uso de software,0,0.0,450.0
+2026,9,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,Passagens aéreas solicitadas pelo Gabinete,0,0.0,450.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Devolução de diária,-,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Divulgação da atividade parlamentar,0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Diárias solicitadas pelo Gabinete,2,2700.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Locação de imóvel,0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Locação de licença de uso de software,0,0.0,2700.0
+2026,9,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,2700.0
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",1,11000.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Devolução de diária,-,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Divulgação da atividade parlamentar,0,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Diárias solicitadas pelo Gabinete,0,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Locação de imóvel,2,2708.55,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Locação de licença de uso de software,0,0.0,13708.55
+2026,9,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,Passagens aéreas solicitadas pelo Gabinete,0,0.0,13708.55
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",1,13500.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Devolução de diária,-,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Divulgação da atividade parlamentar,0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Diárias solicitadas pelo Gabinete,0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Locação de imóvel,0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Locação de licença de uso de software,0,0.0,13500.0
+2026,9,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,13500.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Devolução de diária,-,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Divulgação da atividade parlamentar,0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Diárias solicitadas pelo Gabinete,0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Locação de imóvel,1,1524.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Locação de licença de uso de software,0,0.0,1524.0
+2026,9,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,1524.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Devolução de diária,-,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Locação de imóvel,0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Locação de licença de uso de software,0,0.0,0.0
+2026,9,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Devolução de diária,-,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Divulgação da atividade parlamentar,0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Diárias solicitadas pelo Gabinete,0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Locação de imóvel,1,2100.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Locação de licença de uso de software,0,0.0,2100.0
+2026,9,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,2100.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Devolução de diária,-,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Locação de imóvel,0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Locação de licença de uso de software,0,0.0,0.0
+2026,9,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Devolução de diária,-,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Locação de imóvel,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Locação de licença de uso de software,0,0.0,0.0
+2026,9,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Devolução de diária,-,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Locação de imóvel,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Locação de licença de uso de software,0,0.0,0.0
+2026,9,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Devolução de diária,-,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Locação de imóvel,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Locação de licença de uso de software,0,0.0,0.0
+2026,9,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Devolução de diária,-,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Locação de imóvel,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Locação de licença de uso de software,0,0.0,0.0
+2026,9,351,Callegari,Wellington Callegari,DC - Democracia Cristã,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Devolução de diária,-,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Locação de imóvel,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Locação de licença de uso de software,0,0.0,0.0
+2026,9,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Devolução de diária,-,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Divulgação da atividade parlamentar,0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Diárias solicitadas pelo Gabinete,5,2550.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Locação de imóvel,0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Locação de licença de uso de software,0,0.0,2550.0
+2026,9,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,Passagens aéreas solicitadas pelo Gabinete,0,0.0,2550.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Devolução de diária,-,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Divulgação da atividade parlamentar,0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Diárias solicitadas pelo Gabinete,1,150.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Locação de imóvel,0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Locação de licença de uso de software,0,0.0,150.0
+2026,9,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,Passagens aéreas solicitadas pelo Gabinete,0,0.0,150.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Devolução de diária,-,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Locação de imóvel,0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Locação de licença de uso de software,0,0.0,0.0
+2026,9,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Devolução de diária,-,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Locação de imóvel,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Locação de licença de uso de software,0,0.0,0.0
+2026,9,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,"Consultorias, trabalhos técnicos e pesquisas socioeconômicas",0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Devolução de diária,-,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Divulgação da atividade parlamentar,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Diárias Internacionais solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Diárias solicitadas pelo Gabinete,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,"Locação de equipamentos de áudio, vídeo e fotos",0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Locação de imóvel,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Locação de licença de uso de software,0,0.0,0.0
+2026,9,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,Passagens aéreas solicitadas pelo Gabinete,0,0.0,0.0
 2026,9,412,Toninho da Emater,,,,,0.0,
+2026,10,42,José Esmeraldo,Jose Esmeraldo De Freitas,União - União Brasil,,,0.0,
+2026,10,109,Marcelo Santos,Alexandre Marcelo Coutinho Santos,União - União Brasil,,,0.0,
+2026,10,112,Janete Sá,Janete Santos De Sa,PSB - Partido Socialista Brasileiro,,,0.0,
+2026,10,201,Vandinho Leite,Vanderson Alonso Leite,MDB - Movimento Democrático Brasileiro,,,0.0,
+2026,10,221,Dary Pagung,Dary Alves Pagung,PSB - Partido Socialista Brasileiro,,,0.0,
+2026,10,271,Hudson Leal,Hudson Soares Leal,Agir - Agir,,,0.0,
+2026,10,275,Raquel Lessa,Raquel Ferreira Mageste Lessa,PP - Partido Progressista,,,0.0,
+2026,10,319,Adilson Espindula,Adilson Espindula,PP - Partido Progressista,,,0.0,
+2026,10,320,Alexandre Xambinho,Alexandre Araujo Marçal,Podemos - Podemos,,,0.0,
+2026,10,321,Capitão Assumção,Lucinio Castelo De Assumção,PL - Partido Liberal,,,0.0,
+2026,10,324,Danilo Bahiense,Danilo Bahiense Moreira,PL - Partido Liberal,,,0.0,
+2026,10,327,Fabrício Gandini,Fabricio Gandine Aquino,Podemos - Podemos,,,0.0,
+2026,10,328,Iriny Lopes,Iriny Nicolau Corres Lopes,PT - Partido dos Trabalhadores,,,0.0,
+2026,10,335,Marcos Madureira,Marcos Miranda Madureira,Podemos - Podemos,,,0.0,
+2026,10,342,Tyago Hoffmann,Tyago Ribeiro Hoffmann,PSB - Partido Socialista Brasileiro,,,0.0,
+2026,10,343,Pablo Muribeca,Pablo Aurino Ramos Araujo,Republicanos - Republicanos,,,0.0,
+2026,10,344,Allan Ferreira,Allan Albert Lourenco Ferreira,Podemos - Podemos,,,0.0,
+2026,10,345,Bispo Alves,Benedito Alves Costa,Republicanos - Republicanos,,,0.0,
+2026,10,346,Alcântaro Filho,Alcantaro Victor Lazzarini Campos,Republicanos - Republicanos,,,0.0,
+2026,10,347,Dr. Bruno Resende,Bruno Da Costa Resende,União - União Brasil,,,0.0,
+2026,10,348,Mazinho dos Anjos,Edmar Lorencini Dos Anjos,MDB - Movimento Democrático Brasileiro,,,0.0,
+2026,10,349,Camila Valadão,Camila Costa Valadao,PSOL - Partido Socialismo e Liberdade,,,0.0,
+2026,10,350,Denninho Silva,Denner Januario Da Silva,União - União Brasil,,,0.0,
+2026,10,351,Callegari,Wellington Callegari,DC - Democracia Cristã,,,0.0,
+2026,10,353,Zé Preto,Ademir Jose Gomes Pereira,Podemos - Podemos,,,0.0,
+2026,10,354,Coronel Weliton,Weliton Virgilio Pereira,DC - Democracia Cristã,,,0.0,
+2026,10,355,João Coser,Joao Carlos Coser,PT - Partido dos Trabalhadores,,,0.0,
+2026,10,356,Sérgio Meneguelli,Sergio Meneguelli,PSD - Partido Social Democrata,,,0.0,
+2026,10,357,Lucas Polese,Lucas Da Re Polese,PL - Partido Liberal,,,0.0,
+2026,10,411,Fábio Duarte,Fabio Duarte De Almeida,PDT - Partido Democrático Trabalhista,,,0.0,
+2026,10,412,Toninho da Emater,,,,,0.0,

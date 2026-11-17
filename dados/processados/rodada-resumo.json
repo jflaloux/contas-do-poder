@@ -1,48 +1,50 @@
 {
- "gerado_em": "2026-11-10T21:15:01-03:00",
- "semana": "2026-11-10",
- "anterior": "2026-11-03",
+ "gerado_em": "2026-11-17T14:05:24-03:00",
+ "semana": "2026-11-17",
+ "anterior": "2026-11-10",
  "lugares": [
-  "brasil",
-  "exterior"
+  "brasil"
  ],
  "quebrou": [
   {
-   "fonte": "judiciario/tst",
+   "fonte": "assembleias/am",
    "situacao": "falhando",
-   "desde": "2026-11-10T21:59:50",
+   "desde": "2026-11-17T13:42:04",
+   "ultimo_mes": 202608,
+   "erro": "HTTPError: 400 Client Error: Bad Request for url: https://www.aleam.gov.br/transparencia/wp-content/themes/transparencia/createCeap.php?parlamentar=1&parlamentarJaneiro=&mes=Setembro&ano=2026&formato="
+  },
+  {
+   "fonte": "assembleias/pr",
+   "situacao": "falhando",
+   "desde": "2026-11-03T19:31:32",
    "ultimo_mes": 202609,
-   "erro": "HTTPError: 503 Server Error: Service Unavailable for url: https://transparencia-remuneracao.tst.jus.br/arquivos"
+   "erro": "HTTPError: 403 Client Error: Forbidden for url: https://transparencia.assembleia.pr.leg.br/api/remuneracao?t=deputado+estadual&mes=10&ano=2026&page=1&search=&searchType=nome"
+  },
+  {
+   "fonte": "folhas/SC",
+   "situacao": "falhando",
+   "desde": "2026-11-03T19:23:19",
+   "ultimo_mes": 202609,
+   "erro": "HTTPError: 404 Client Error: Not Found for url: https://dados.sc.gov.br/dataset/remuneracaoservidores"
+  },
+  {
+   "fonte": "vereadores/manaus",
+   "situacao": "falhando",
+   "desde": "2026-11-17T13:15:11",
+   "ultimo_mes": 202609,
+   "erro": "ConnectionError: o robots.txt de sapl.cmm.am.gov.br não abriu (site fora do ar ou bloqueado)"
+  },
+  {
+   "fonte": "vereadores/recife",
+   "situacao": "falhando",
+   "desde": "2026-10-27T17:06:25",
+   "ultimo_mes": 202609,
+   "erro": "ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)"
   }
  ],
  "voltou": [
   {
-   "fonte": "assembleias/mt",
-   "antes": "falhando",
-   "situacao": "ok"
-  },
-  {
-   "fonte": "assembleias/pi",
-   "antes": "atrasada",
-   "situacao": "ok"
-  },
-  {
-   "fonte": "folhas/AC",
-   "antes": "atrasada",
-   "situacao": "atrasada (fonte)"
-  },
-  {
-   "fonte": "judiciario/stm_oficial",
-   "antes": "atrasada",
-   "situacao": "ok"
-  },
-  {
-   "fonte": "prefeituras/fortaleza",
-   "antes": "atrasada",
-   "situacao": "atrasada (fonte)"
-  },
-  {
-   "fonte": "prefeituras/salvador",
+   "fonte": "judiciario/tst",
    "antes": "falhando",
    "situacao": "ok"
   }
@@ -50,10 +52,10 @@
  "continua": [],
  "quebrou_e_voltou": [],
  "totais": {
-  "falhando": 1,
+  "falhando": 5,
   "atrasada (fonte)": 5,
-  "congelada": 4,
-  "ok": 97
+  "congelada": 3,
+  "ok": 95
  },
  "historico": [
   {
@@ -172,6 +174,28 @@
    "teve_problema": [
     "assembleias/mt",
     "judiciario/tst"
+   ]
+  },
+  {
+   "semana": "2026-11-17",
+   "atualizado_em": "2026-11-17T14:05:24-03:00",
+   "lugares": [
+    "brasil"
+   ],
+   "fontes": 108,
+   "problemas": {
+    "assembleias/am": "falhando",
+    "assembleias/pr": "falhando",
+    "folhas/SC": "falhando",
+    "vereadores/manaus": "falhando",
+    "vereadores/recife": "falhando"
+   },
+   "teve_problema": [
+    "assembleias/am",
+    "assembleias/pr",
+    "folhas/SC",
+    "vereadores/manaus",
+    "vereadores/recife"
    ]
   }
  ]

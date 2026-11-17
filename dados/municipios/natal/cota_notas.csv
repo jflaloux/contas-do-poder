@@ -3691,6 +3691,7 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,8,73,João Batista Torres,02/09/2026,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,60480625000120,30,5700.0
 2026,8,73,João Batista Torres,01/09/2026,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,58986595000186,5,8000.0
 2026,8,15,Kleber Fernandes,06/08/2026,"Provedores de internet, telefonia fixa ou celular",ALARES,05.054.341/0001-90,446488901-1/1-26,122.54
+2026,8,15,Kleber Fernandes,01/09/2026,Consultoria e Assessoria Jurídica,PAULO CESAR FERREIRA DA COSTA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,27.412.0009/0001-66,13,13200.0
 2026,8,15,Kleber Fernandes,01/09/2026,Material para a Divulgação da Atividade Parlamentar,ELIABE E VICTOR LTDA,26.684.366/0001-10,91,6000.0
 2026,8,15,Kleber Fernandes,31/08/2026,Combustível,JVC COMERCIAL LTDA,35.259.330/0001-90,2565,620.0
 2026,8,15,Kleber Fernandes,31/08/2026,Locação de Equipamentos de Informática,FRANCISCO DE ASSIS FERREIRA DE SOUZA JUNIOR,20.349.683/0001-02,15,2000.0
@@ -3767,3 +3768,161 @@ ano,mes,id_cota,nome,data,item,fornecedor,cnpj_cpf,documento,valor
 2026,8,80,Tony Henrique,03/09/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02.952.192/0001-61,446999681-1/1-26,120.91
 2026,8,80,Tony Henrique,03/09/2026,"Provedores de internet, telefonia fixa ou celular",TELEFONICA BRASIL S.A.,02.558.157/0001-62,00001089012264,130.1
 2026,8,80,Tony Henrique,01/09/2026,Locação de Equipamentos de Informática,JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0065,1000.0
+2026,9,55,Aldo Clemente,28/09/2026,Locação de Veículo Automotor,Santos e Fernandes Ltda,02.909.308/0001-80,10641,5000.0
+2026,9,55,Aldo Clemente,30/09/2026,Combustível,Migra Combustíveis Ltda,35.751.096/0001-04,8382,819.3
+2026,9,55,Aldo Clemente,15/09/2026,"Provedores de internet, telefonia fixa ou celular",Cabo Serviços de Telecomunicações,02.952.192/0001-61,011048,110.48
+2026,9,55,Aldo Clemente,28/09/2026,Consultoria e Assessoria Jurídica,André Castro Advocacia,54.313.658/0001-82,0013,5000.0
+2026,9,55,Aldo Clemente,29/09/2026,Consultoria e Assessoria Contábil,Intellectus Contadores Associados Ltda,14.673.894/0001-95,0015,4000.0
+2026,9,55,Aldo Clemente,30/09/2026,Consultoria e Assessoria na Área de Comunicação,Meu Link Comunicação,43.167.369/0001-04,0105,4500.0
+2026,9,55,Aldo Clemente,25/09/2026,Suprimentos de Informática,AM Serviços e Loc. de Eq. de Informática,04.999.366/0001-77,N03491,1326.67
+2026,9,55,Aldo Clemente,28/09/2026,Extração de Cópias Reprográficas e Digitais,AM Serviços e Loc. de Eq. de Informática,04.999.366/0001-77,N03527,350.0
+2026,9,67,Anne Lagartixa,01/10/2026,Consultoria e Assessoria Jurídica,VANUTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,65.359.742/0001-53,7,13000.0
+2026,9,67,Anne Lagartixa,01/10/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1980,921.4
+2026,9,67,Anne Lagartixa,29/09/2006,Locação de Veículo Automotor,JV RENT A CAR,17.104.197/0001-01,001727,5500.0
+2026,9,57,Brisa Bracchi,07/10/2026,Consultoria e Assessoria Jurídica,CERQUEIRA E MIRANDA ADVOGADOS,51.995.600/0001-78,7,10000.0
+2026,9,57,Brisa Bracchi,24/09/2026,Locação de Veículo Automotor,JV FERREIRA ME,JV FERREIRA ME17.104.197/0001-,001743,4500.0
+2026,9,57,Brisa Bracchi,28/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV,04065360000203,001735164,100.0
+2026,9,57,Brisa Bracchi,14/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001720166,313.43
+2026,9,57,Brisa Bracchi,11/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001717802,232.68
+2026,9,57,Brisa Bracchi,02/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,001709934,295.18
+2026,9,57,Brisa Bracchi,06/10/2026,"Provedores de internet, telefonia fixa ou celular",CLARO NXT TELECOMUNICAÇÃO S.A,40.432.544/0001-47,095003329632,157.97
+2026,9,57,Brisa Bracchi,28/09/2026,"Provedores de internet, telefonia fixa ou celular",STARLINK BRAZIL SERVICOS DE INTERNET LTDA,40.154.884/0001/53,207858296160652,339.0
+2026,9,53,Camila Araújo,30/09/2026,Licença de Software,JM DESENVOLVIMENTO EM TECNOLOGIA LTDA ME,49.941.949/0001-85,95,600.0
+2026,9,53,Camila Araújo,01/10/2026,Consultoria e Assessoria Jurídica,RODRIGO OLIVEIRA MARTINS SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.303.259/0001-99,10,12000.0
+2026,9,53,Camila Araújo,01/10/2026,Material para a Divulgação da Atividade Parlamentar,MOISES PEREIRA DE ARAUJO LTDA,40.671.215/0001-59,22,3900.0
+2026,9,53,Camila Araújo,01/09/2026,Locação de Veículo Automotor,PAVEL RENT A CAR,42.908.733/0001-79,000280904,5500.0
+2026,9,68,Claudio Custódio,01/09/2026,Locação de Veículo Automotor,Jair Rodrigo Silva Eventos,15.214.591/0001-77,0015,5000.0
+2026,9,68,Claudio Custódio,08/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1352,396.47
+2026,9,68,Claudio Custódio,05/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1317,322.95
+2026,9,68,Claudio Custódio,03/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1767,365.0
+2026,9,68,Claudio Custódio,23/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1640,408.01
+2026,9,68,Claudio Custódio,19/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1583,279.24
+2026,9,68,Claudio Custódio,18/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1554,387.27
+2026,9,68,Claudio Custódio,16/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1521,337.91
+2026,9,68,Claudio Custódio,16/09/2026,Combustível,Flor e Oliveira II,12.689.295/0002-15,1520,50.0
+2026,9,68,Claudio Custódio,07/10/2026,Material de Expediente,Casa Norte LTDA,08.713.513/0001-51,2191228,559.72
+2026,9,68,Claudio Custódio,12/09/2026,"Provedores de internet, telefonia fixa ou celular",Brisanet,04.601.397/0001-28,33534370,122.52
+2026,9,68,Claudio Custódio,25/09/2026,"Provedores de internet, telefonia fixa ou celular",Brisanet,04.601.397/0001-28,33534380,119.0
+2026,9,68,Claudio Custódio,06/10/2026,Consultoria e Assessoria na Área de Comunicação,VOX AUDIO E MIDIAS LTDA,43737211000114,19,4300.0
+2026,9,68,Claudio Custódio,24/09/2026,Consultoria e Assessoria na Área de Comunicação,Glacia Marillac Azevedo de Medeiros Rondon,40.924.768/0001-76,100,4500.0
+2026,9,83,Cleiton da Policlinica,06/10/2026,Consultoria e Assessoria Jurídica,DILERMANDO MOTA SOCIEDADE INDIVIDUAL DE ADVPCACIA,22.217.934/0001-12,00008,12500.0
+2026,9,83,Cleiton da Policlinica,30/09/2026,Locação de Veículo Automotor,MALIVE VEÍCULOS LTDA,19.586.253/0001-17,00046,5500.0
+2026,9,83,Cleiton da Policlinica,30/09/2026,Combustível,MIGRA COMBUSTÍVEIS LTDA,35.751.096/0001-14,008388,807.8
+2026,9,83,Cleiton da Policlinica,28/09/2026,Locação de Equipamentos de Informática,A M SERVIÇOS E LOCAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA,04.999.366/0001-77,NO3535,2823.8
+2026,9,70,Daniel Santiago,30/09/2026,Consultoria e Assessoria Jurídica - Advocacia,BILA AGUIAR SOCIEDADE INDIVIDUAL DE ADVOCACIA,59.193.764/0001-93,9,10800.0
+2026,9,70,Daniel Santiago,05/10/2026,"Consultoria e Assessoria na Área de Comunicação - Gerenciamento de Redes Sociais (Facebook, Instagram , Twitter), com a Criação de 6 conteúdos para redes sociais, incluindo vídeos e artes, para prestação de contas do mandato do vereador Daniel Santiago referenteao mês de Setembro de 2026.",ELIABE E VICTOR LTDA,26.684.366/0001-10,107,4000.0
+2026,9,70,Daniel Santiago,30/09/2026,"Consultoria e Assessoria Contábil - Contabilidade, inclusive serviços técnicos e auxiliares.",CAPITAL ASSESSORIA LTDA,16.204.528/0001-12,29,2400.0
+2026,9,70,Daniel Santiago,30/09/2026,"Material para a Divulgação da Atividade Parlamentar - REVISTAS EDUCATIVAS EM POLICROMIA, 4X4 CORES, PAPEL COUCHE 150G COM UMA DOBRA, TAMANHO A3 - CAMPANHA VAMOS ABRACAR O AUTISMO (REIMPRESSAO).",L S Comercio e servicos Ltda - ME,03.637.347/0001-38,000.003.117,990.0
+2026,9,70,Daniel Santiago,30/09/2026,Consultoria e Assessoria na Área de Comunicação - Agenciamento de notícias.,MULT! AGENCVIA DE COMUNICACAO LTDA,33.753.537/0001-81,19,3800.0
+2026,9,63,Daniel Valença,29/09/2026,Material de Expediente,MANHATTAN COM. E SERVIÇOS LTDA,57.122.678/0001-64,371,556.5
+2026,9,63,Daniel Valença,29/09/2026,Consultoria e Assessoria Jurídica,LUCAS ARIEH MEDINA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,49.957.171/0001-00,07,11000.0
+2026,9,63,Daniel Valença,30/09/2026,Combustível,QUIRINO E SOUZA COMERCIO DE PETROLEO E SERVIÇOS LTDA,04.065.360/0002-03,6851,634.05
+2026,9,63,Daniel Valença,28/09/2026,Água mineral,DANIEL DOMINGOS DE ARAUJO,22.869.913/0001-81,2086,28.0
+2026,9,63,Daniel Valença,23/09/2026,Locação de Equipamentos de Informática,SGM COPIADORAS COMERCIO E SERVIÇO LTDA,06.224.460/0001-80,65404,2070.0
+2026,9,63,Daniel Valença,14/09/2026,"Provedores de internet, telefonia fixa ou celular",VIVO TELEFONICA BRASIL S.A.,02.558.157/0001-62,1045767392,332.0
+2026,9,63,Daniel Valença,14/09/2026,"Provedores de internet, telefonia fixa ou celular",TIM S.A.,02.421.421/0001-11,5866920470,81.99
+2026,9,63,Daniel Valença,14/09/2026,"Provedores de internet, telefonia fixa ou celular",TIM S.A.,02.421.421/0001-11,5866920441,70.99
+2026,9,63,Daniel Valença,09/09/2026,Locação de Veículo Automotor,LOCALIZA RENT A CAR S/A,16.670.085/0003-17,559843,4584.72
+2026,9,69,Daniell Rendall,01/10/2026,Consultoria e Assessoria Jurídica,MATHEUS NASCIMENTO SOCIEDADE INDIVIDUAL DE ADVOCACIA,60.663.186/0001-90,2600000000018,12869.17
+2026,9,69,Daniell Rendall,30/09/2026,Consultoria e Assessoria na Área de Comunicação,GERA COMUNICAÇÃO INTEGRADA LTDA,27.555.117/0001-98,2600000000024,4246.46
+2026,9,69,Daniell Rendall,23/09/2026,"Provedores de internet, telefonia fixa ou celular",ALARES S.A,02.952.192/0001-61,FATURA,116.39
+2026,9,69,Daniell Rendall,10/09/2026,"Provedores de internet, telefonia fixa ou celular",TIM S.A,02.421.421/0001-11,FATURA,367.98
+2026,9,69,Daniell Rendall,25/09/2026,"Locação de Equipamentos de Informática - FATURA N03494 - R$ 2.340,00 FATURA N03564 - R$ 1.178,30",AM SERVIÇOS E LOC. DE EQ. DE INFORMÁTICA,04.999.366/0001-77,DISPENSA NF,3200.0
+2026,9,69,Daniell Rendall,23/09/2026,Licença de Software,GR8 SERVIÇOS DE LOC. DE EQ. DE INFORMATICA EIRELI,35.143.471/0001-33,102,1200.0
+2026,9,56,Eribaldo Medeiros,01/10/2026,"Consultoria e Assessoria Jurídica - Elaboração de 06 PL e 03 PR, sendo: 01 PL institui o programa municipal “Natal Sombra”, destinado à promoção do sombreamento sustentável de estacionamentos e áreas de concentração de veículos no Município de Natal, e dá outras providências, 01 PL institui o selo ""Empresa Amiga do Esporte Amador"" no Município de Natal, destinado ao reconhecimento público de pessoas jurídicas que apoiem voluntariamente o esporte amador, e dá outras providências, 01 PL institui a política municipal de valorização da memória esportiva de Natal, mediante incentivo à preservação da história dos atletas, clubes e competições locais, por ações de divulgação e reconhecimento institucional, e dá outras providências, 01 PL , institui o dia municipal do fair play (jogo limpo) no esporte no calendário oficial do Município de Natal, destinado à promoção de valores éticos, respeito às regras e combate à violência nas competições esportivas, e dá outras providências, 01 PL institui o selo ""Empresa amiga da causa animal"" no Município de Natal, destinado ao reconhecimento público de pessoas jurídicas que apoiem voluntariamente a proteção, castração e bem-estar animal, e dá outras providências, 01 PL institui a política municipal de incentivo à adoção responsável e de combate ao abandono de animais domésticos no Município de Natal, e dá outras providências, 01 Parecer sobre o Projeto de Lei n.º 654/2025 do Vereador Subtenente Eliabe, 01 Parecer sobre o Projeto de Lei n.º 540/2026 do Vereador Pedro Henrique, 01 Parecer sobre o Projeto de Lei n.º 311/2026 do Vereador Claudio Custódio.",SIDERLEY CARDOSO SOCIEDADE INDIVIDUAL DE ADVOCACIA,64.201.454/0001-03,0007,11900.0
+2026,9,56,Eribaldo Medeiros,28/09/2026,"Locação de Veículo Automotor - STRADA 1.3 MPI FIRE 8V 67CV CE - RQG-4E73 - LOCAÇÃO DE VEÍCULO, SEM MOTORISTA, NO PERÍODO DE: 01/09/2026 A 30/09/2026",SANTOS & FERNANDES LTDA.,02.909.308/0001-80,10639,5500.0
+2026,9,56,Eribaldo Medeiros,28/09/2026,"Locação de Equipamentos de Informática - Sendo: 03 computadores completos(CPU Miranda CORE I5-4590, monitores AOC e Teclado e mouse intelbras), 01 Notebook Lenovo i5 e 01 Impressora multifuncional EPSON M2120.",JOÃO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,0068,1000.0
+2026,9,56,Eribaldo Medeiros,30/09/2026,Consultoria e Assessoria na Área de Comunicação - Criação de conteúdo jornalístico de redes sociais para divulgação de ações do mandato do vereador Eribaldo Medeiros e assessoria de imprensa durante o mês de setembro/2026,LUCAS TAVARES DE OLIVEIRA,31.912.059/0001-80,0118,3600.0
+2026,9,29,Eriko Jácome,06/10/2026,Consultoria e Assessoria Jurídica,TAUMATURGO SILVEIRA - SOCIEDADE INDIVIDUAL DE ADVOCACIA,35.813.228/0001-85,0000000009,9200.0
+2026,9,29,Eriko Jácome,30/09/2026,Consultoria e Assessoria Contábil,CAPITAL ASSESSORIA LTDA,16.204.528/0001-12,0000000030,3300.0
+2026,9,29,Eriko Jácome,01/10/2026,Locação de Veículo Automotor,O N LOCAÇÕES LTDA,35.905.812/0001-60,0000000300,5500.0
+2026,9,29,Eriko Jácome,20/09/2026,"Provedores de internet, telefonia fixa ou celular",TIM S A,02.421.421/0001-11,5864222901,574.99
+2026,9,29,Eriko Jácome,07/10/2026,Material de Expediente,CASA NORTE LTDA,08.713.513/0001-51,0002191406,3425.01
+2026,9,71,Fúlvio Saulo,05/10/2026,Consultoria e Assessoria na Área de Comunicação,BRANCA COMUNICAÇÃO LTDA,40246535000161,8,4000.0
+2026,9,71,Fúlvio Saulo,30/09/2026,Combustível,POSTO RAISSA 2 LTDA,40645873000176,124,2568.29
+2026,9,71,Fúlvio Saulo,04/10/2026,Consultoria e Assessoria Jurídica,TATIANE VIRGILIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,49083565000179,5,10000.0
+2026,9,71,Fúlvio Saulo,01/10/2026,Locação de Veículo Automotor,3A LOCAÇÕES LTDA,06291731000110,112,4500.0
+2026,9,71,Fúlvio Saulo,30/09/2026,Locação de Equipamentos de Informática,TSI SERVICE,20210924000120,09-12/26,720.0
+2026,9,58,Herberth Sena,29/09/2026,Consultoria e Assessoria na Área de Comunicação,BIANCA RIBEIRO E SILVA,41.180.891/0001-92,044,2600.0
+2026,9,58,Herberth Sena,30/09/2026,Consultoria e Assessoria Jurídica,ADRISON VILELA SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.720.750/0001-15,07,7200.0
+2026,9,58,Herberth Sena,01/10/2026,Consultoria e Assessoria Contábil,KLEBER OLIVEIRA DE SOUZA,55.945.143/0001-68,05,2800.0
+2026,9,58,Herberth Sena,30/09/2026,Combustível,POSTO RAISSA 2 LTDA,40.645.873/0001-76,0125,3300.0
+2026,9,58,Herberth Sena,21/09/2026,Material de Expediente,CIRNE IRMAOS E CIA LTDA,08.326.720/0001-53,1374133,447.78
+2026,9,58,Herberth Sena,30/09/2026,Locação de Veículo Automotor,GADELHA RENT A CAR UNIPESSOAL LTDA,02.728.914/0001-07,005,5500.0
+2026,9,72,Irapoã Nóbrega,13/10/2026,Consultoria e Assessoria na Área de Comunicação - NF em substituição a NF 52,Facil Comunicação LTDA,05.842.732/0001-42,58,7500.0
+2026,9,72,Irapoã Nóbrega,05/09/2026,"Provedores de internet, telefonia fixa ou celular",Claro S/A,40.432.544/0078-26,183548242,492.4
+2026,9,72,Irapoã Nóbrega,09/09/2026,"Provedores de internet, telefonia fixa ou celular",Alares Internet S/A,02.952.192/0001-61,455713961-1/1-26,186.61
+2026,9,72,Irapoã Nóbrega,06/10/2026,Consultoria e Assessoria Jurídica,Paulo Barra Sociedade de Advocacia,24.110.232/0001-60,20,9202.5
+2026,9,72,Irapoã Nóbrega,28/09/2026,Locação de Equipamentos de Informática,AM Serviços e Loc. de Eq. de Informatica,04.999.366/0001-77,N03542,176.0
+2026,9,72,Irapoã Nóbrega,25/09/2026,Locação de Equipamentos de Informática,AM Serviços e Loc. de Eq. de Informatica LTDA,04.999.366/0001-77,N03497,1860.0
+2026,9,72,Irapoã Nóbrega,09/09/2026,Licença de Software,Pratic Tecnologia LTDA,30.106.988/0001-39,1012,2364.0
+2026,9,73,João Batista Torres,30/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,6854,1800.0
+2026,9,73,João Batista Torres,28/09/2026,Locação de Veículo Automotor,SANTOS & FERNANDES LTDA,02909308000180,10640,5500.0
+2026,9,73,João Batista Torres,28/09/2026,Locação de Equipamentos de Informática,JOAO VICTOR CAMPOS DE LIMA,35028065000120,69,1000.0
+2026,9,73,João Batista Torres,02/10/2026,Consultoria e Assessoria Jurídica,MAURO CELIO SOCIEDADE INDIVIDUAL DE ADVOCACIA,58986595000186,6,8000.0
+2026,9,73,João Batista Torres,05/10/2026,Consultoria e Assessoria na Área de Comunicação,JOERBESSON DE SOUZA SILVA,60480625000120,32,5700.0
+2026,9,15,Kleber Fernandes,08/09/2026,"Provedores de internet, telefonia fixa ou celular",ALARES,05.054.341/0001-90,455218381-1/1-26,122.54
+2026,9,15,Kleber Fernandes,30/09/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0001-90,2639,629.6
+2026,9,15,Kleber Fernandes,30/09/2026,Locação de Equipamentos de Informática,FRANCISCO DE ASSIS FERREIRA DE SOUZA JUNIOR,20.349.683/0001-02,102,2000.0
+2026,9,15,Kleber Fernandes,06/10/2026,Material para a Divulgação da Atividade Parlamentar,ELIABE E VICTOR LTDA,26.684.366/0001-10,110,6000.0
+2026,9,15,Kleber Fernandes,06/10/2026,Consultoria e Assessoria Jurídica,PAULO CESAR FERREIRA DA COSTA- SOCIEDADE INDIVIDUAL DE ADVOCACIA,27.412.009/0001-66,23,13200.0
+2026,9,82,Leo Souza,07/10/2026,Consultoria e Assessoria Jurídica,Raphael Targino Sociedade Individual de Advocacia,42.074.546/0001-37,26,13200.0
+2026,9,82,Leo Souza,30/09/2026,Licença de Software,I9AI Tecnologia e Inteligência LTDA,40.641.253/0001-69,006,4000.0
+2026,9,82,Leo Souza,10/09/2026,"Provedores de internet, telefonia fixa ou celular - Internet",CABO SERV TELEC LTDA,02.952.192/0001-61,455712801-1/1,109.01
+2026,9,82,Leo Souza,30/09/2026,Material de Expediente - Suprimentos de informática,FRANCISCO DE ASSIS FERREIRA DE SOUZA,20.349.683/0001-02,103,400.0
+2026,9,51,Luciano Nascimento,07/10/2026,Consultoria e Assessoria Jurídica,VIRGILIO DE PAIVA SOCIEDADE INDIVIDUAL ADVOCACIA,58148061000180,29,9300.0
+2026,9,51,Luciano Nascimento,07/10/2026,Combustível,F P COMBUSTIVEIS,14878644000272,1651,2694.96
+2026,9,51,Luciano Nascimento,07/10/2026,Locação de Veículo Automotor,PAVEL RENT A CAR,42908733000179,150906,5500.0
+2026,9,51,Luciano Nascimento,07/10/2026,Consultoria e Assessoria na Área de Comunicação,KLMJ PRODUÇÕES,38325875000136,2636,4500.0
+2026,9,75,Matheus Faustino,15/09/2026,Material de Expediente - Licença de Software,"Mango Technologies, Inc. DBA ClickUp",PF,T90171112985-091526,221.7
+2026,9,75,Matheus Faustino,31/08/2026,"Provedores de internet, telefonia fixa ou celular - Provedor de Internet.",Alares Internet S/A,02.952.192/0001-61,455730181-1/1-26,138.93
+2026,9,32,Nina Souza,23/09/2026,"Provedores de internet, telefonia fixa ou celular",TELEFONICA BRASILS.A,02.558.157/0001-62,155385066,135.52
+2026,9,32,Nina Souza,23/09/2026,"Provedores de internet, telefonia fixa ou celular","TIM S.A,",02.421.421/0028-31,1335329380,69.99
+2026,9,32,Nina Souza,25/09/2026,Locação de Equipamentos de Informática,AM SERVICOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,3506,440.0
+2026,9,32,Nina Souza,28/09/2026,Locação de Veículo Automotor,LAS LOCAÇÃO DE VEÍCULOS LTDA,50.278.163/0001-09,106,4000.0
+2026,9,32,Nina Souza,30/09/2026,Consultoria e Assessoria Jurídica,ALEXANDRE REGO SOCIEDADE INDIVIDUAL ADVOCACIA,19.944.604/0001-14,2600000000108,13200.0
+2026,9,76,Pedro Henrique,08/10/2026,"Provedores de internet, telefonia fixa ou celular",Telefonica Brasil S.A.,02.558.157/0001-62,00001039992010,100.0
+2026,9,76,Pedro Henrique,05/10/2026,Consultoria e Assessoria na Área de Comunicação,MULT AGÊNCIA DE COMUNICACAO LTDA,33.753.537/0001-81,20,3300.0
+2026,9,76,Pedro Henrique,06/10/2026,Consultoria e Assessoria Jurídica,RAFAEL MARIZ SOCIEDADE INDIVIDUAL DE ADVOCACIA,36057083/0001-00,12,11200.0
+2026,9,76,Pedro Henrique,30/09/2026,Locação de Veículo Automotor,TLL EMPREENDIMENTOS LTDA,47566086000188,020,4500.0
+2026,9,76,Pedro Henrique,28/09/2026,Locação de Equipamentos de Informática,AM SERVIÇOS E LOCAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA,04999366000177,N03541,220.0
+2026,9,76,Pedro Henrique,25/09/2026,Locação de Equipamentos de Informática,AM SERVIÇOS E LOCAÇÃO DE EQUIPAMENTOS DE INFORMÁTICA,04999366000177,N03502,1405.0
+2026,9,76,Pedro Henrique,28/09/2026,Combustível,QUIRINO E SOUZA COMÉRCIO DE PETRÓLEO E SERVIÇOS LTDA,04065360000203,001734709,307.01
+2026,9,76,Pedro Henrique,18/09/2026,Combustível,QUIRINO E SOUZA COMÉRCIO DE PETRÓLEO E SERVIÇOS LTDA,04065360000203,001724768,296.41
+2026,9,21,Preto Aquino,07/10/2026,Consultoria e Assessoria Jurídica,joao claudio fernandes dantas sociedade individual de advocacia,26954329000185,09,12973.2
+2026,9,21,Preto Aquino,06/10/2026,Consultoria e Assessoria na Área de Comunicação,francisco ivanaldo confessor,16822176000169,99,4000.0
+2026,9,21,Preto Aquino,06/10/2026,Combustível,Sm Comercial e derivados de petroleo LTDA,03459547000148,3911,1726.8
+2026,9,21,Preto Aquino,24/09/2026,Locação de Veículo Automotor,J V Ferreira ME,17104197000101,1725,3300.0
+2026,9,30,Robson Carvalho,05/10/2026,Consultoria e Assessoria Jurídica,ADOLFO CAVALCANTI SOCIEDADE INDIVIDUAL DE ADVOCACIA,43.807.410/0001-51,18,11100.0
+2026,9,30,Robson Carvalho,02/10/2026,Combustível,JVC COMERCIAL LTDA,35.298.330/0005-13,1984,2511.57
+2026,9,30,Robson Carvalho,01/10/2026,Consultoria e Assessoria Contábil,IN LOCO ASSESSORIA E SERVIÇOS LTDA,26.917.355/0001-33,7,2100.0
+2026,9,30,Robson Carvalho,28/09/2026,Locação de Veículo Automotor,PAVEL RENT CAR LTDA,42.908.733/0001-79,FATURA 280901,5500.0
+2026,9,77,Samanda Alves,07/10/2026,Consultoria e Assessoria Jurídica,"AZEVEDO, OLIVEIRA E SANTOS ADVOGADOS",68.913.421/0001-47,240810222689134210001470000000,8020.0
+2026,9,77,Samanda Alves,06/10/2026,Locação de Equipamentos de Informática,S G M COPIADORAS COMERCIO E SERVICOS LTDA,06.224.460/0001-80,FL 65526,1500.0
+2026,9,78,Subtenente Eliabe,06/10/2026,Material de Expediente,J R DA CRUZ FELINTO - ME,12965469000144,799,1500.0
+2026,9,78,Subtenente Eliabe,30/09/2026,Consultoria e Assessoria na Área de Comunicação,CALANGO MARKETING DIGITAL LTDA,26843328000163,2600000000120,2000.0
+2026,9,78,Subtenente Eliabe,05/10/2026,Locação de Equipamentos de Informática,VALDETE DE SOUSA,50032577000153,76,2340.0
+2026,9,78,Subtenente Eliabe,30/09/2026,Combustível,QUIRINO E SOUZA COM DE PET E SERV LTDA,04065360000203,000006852,2917.92
+2026,9,78,Subtenente Eliabe,23/09/2026,"Provedores de internet, telefonia fixa ou celular",CABO SERVIÇOS DE TELECOMUNICAÇÕES LTDA (ALARES),02952192000161,455711781-1/1-26,202.92
+2026,9,78,Subtenente Eliabe,24/09/2026,Locação de Veículo Automotor,J V FERREIRA ME,17104197000101,001726,5500.0
+2026,9,79,Tarcio de Eudiane,07/10/2026,Consultoria e Assessoria na Área de Comunicação,TACIO DE ANDRADE BEZERRA CAVALCANTI,60.526.839/0001-90,118,4365.0
+2026,9,79,Tarcio de Eudiane,28/09/2026,Locação de Equipamentos de Informática,LOCAINFO,04.999.366/0001-77,03533,487.45
+2026,9,79,Tarcio de Eudiane,25/09/2026,Locação de Equipamentos de Informática,LOCAINFO,04.999.366/0001-77,03503,1480.0
+2026,9,79,Tarcio de Eudiane,05/10/2026,"Provedores de internet, telefonia fixa ou celular",ALARES,02.952.192./0001-61,464281631-1/1-26,169.99
+2026,9,79,Tarcio de Eudiane,02/10/2026,Material para a Divulgação da Atividade Parlamentar,RB GRAFICA,17.340.447/0001-02,7.559,4250.0
+2026,9,49,Tércio Tinoco,30/09/2026,Consultoria e Assessoria Jurídica,VICTOR HUGO SOARES SOCIEDADE INDIVIDUAL DE ADVOCACIA,33.649.833/0001-37,00019,13000.0
+2026,9,49,Tércio Tinoco,06/09/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02.952.192/0001-61,455284251-1/1-26,159.99
+2026,9,49,Tércio Tinoco,30/09/2026,Locação de Veículo Automotor,GADELHA RENT A CAR UNIPESSOAL LTDA,02.728.914/0001-07,009/2026,5500.0
+2026,9,81,Thabatta Pimenta,23/09/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A,02.952.192/0001-61,455712791-1/1-26,178.22
+2026,9,81,Thabatta Pimenta,25/09/2026,"Provedores de internet, telefonia fixa ou celular",CLARO S.A,40.432.544/0001-47,0,319.9
+2026,9,81,Thabatta Pimenta,25/09/2026,Locação de Equipamentos de Informática,AM SERVIÇOS E LOC. DE EQ. DE INFORMATICA,04.999.366/0001-77,N03505,1430.0
+2026,9,81,Thabatta Pimenta,28/09/2026,Locação de Veículo Automotor,PAVEL RENT A CAR LTDA,42.908.733/0001-79,00280905,5500.0
+2026,9,81,Thabatta Pimenta,01/10/2026,Consultoria e Assessoria Jurídica,QUEIROZ E MELO SOCIEDADE DE ADVOCACIA,67.817.688/0001-78,4,10000.0
+2026,9,81,Thabatta Pimenta,28/09/2026,Água mineral,D D ARAUJO COMERCIO,22.869.913/0001-81,2087,30.0
+2026,9,80,Tony Henrique,06/10/2026,Consultoria e Assessoria Jurídica,MATHEUS FILIPPE SOCIEDADE INDIVIDUAL DE ADVOCACIA,50.974.250/0001-09,08/2026,12000.0
+2026,9,80,Tony Henrique,06/10/2026,"Provedores de internet, telefonia fixa ou celular",TELEFONICA BRASIL S.A.,02.558.157/0001-62,00001113880190,130.1
+2026,9,80,Tony Henrique,06/10/2026,Combustível,MAFRA E MAFRA COM VAR COMBUSTIVEL LTDA,09.317.359/0001-61,0941,1881.62
+2026,9,80,Tony Henrique,06/10/2026,Locação de Veículo Automotor,L N RODRIGUES DA SILVA LTDA,42.090.206/0001-08,0022/2026,5500.0
+2026,9,80,Tony Henrique,01/10/2026,"Provedores de internet, telefonia fixa ou celular",ALARES INTERNET S/A.,02.952.192/0001-61,455712591-1/1-26,120.91
+2026,9,80,Tony Henrique,01/10/2026,Material de Limpeza,ML DISTRIBUIDORA LTDA,59.834.373/0001-00,000.007.439,248.0
+2026,9,80,Tony Henrique,01/10/2026,Locação de Equipamentos de Informática,JOAO VICTOR CAMPOS DE LIMA,35.028.065/0001-20,067/2026,1000.0

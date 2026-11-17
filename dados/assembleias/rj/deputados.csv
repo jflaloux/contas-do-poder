@@ -31,7 +31,7 @@ id,nome,nome_completo,partido,com_mandato,id_alerj,em_exercicio
 103,Eduardo Cavaliere,Eduardo Cavaliere,PSD,0,,0
 104,Elika Takimoto,Elika Takimoto,PT,1,481,1
 83,Elton Cristo,Elton Cristo,PATRI,1,,0
-139,Fabiani Vasconcellos,Fabiani Vasconcellos,AGIR,1,518,1
+139,Fabiani Vasconcellos,Fabiani Vasconcellos,,1,,0
 105,Felipinho Ravis,Felipinho Ravis,PP,1,490,1
 25,Filipe Soares,Filipe Soares,PSDB,1,384,1
 26,Filippe Poubel,Filippe Medeiros Poubel,PL,1,429,1
@@ -48,7 +48,7 @@ id,nome,nome_completo,partido,com_mandato,id_alerj,em_exercicio
 33,Jair Bittencourt,Jair Bittencourt,PL,1,385,1
 91,Jari Oliveira,Jari Oliveira,PSB,1,476,1
 35,Jorge Felippe Neto,Jorge Felippe Neto,PL,1,389,1
-111,Julio Rocha,Julio Rocha,AGIR,1,,0
+111,Julio Rocha,Julio Rocha,AGIR,1,500,1
 36,Leo Vieira,Leo Vieira,PRTB,0,,0
 135,Lilian Prates Belem Behring,Lilian Prates Belem Behring,PC do B,1,514,1
 37,Lucinha,Lucinha,PSD,1,326,1

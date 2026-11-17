@@ -5812,6 +5812,7 @@ ano,mes,codigo,rubrica,valor
 2026,9,2111,Telefones,187.0
 2026,9,2112,Acertos de Debitos,226.96
 2026,9,2112,Impressoras - serviços de impressão local,250.6
+2026,9,2112,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2112,Passagens Aereas,759.68
 2026,9,2112,Publicações,608.1
 2026,9,2112,Telefones,887.98
@@ -5824,6 +5825,7 @@ ano,mes,codigo,rubrica,valor
 2026,9,2123,Publicações,458.4
 2026,9,2123,Telefones,317.0
 2026,9,2125,Impressoras - serviços de impressão local,72.04
+2026,9,2125,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2125,Publicações,1000.95
 2026,9,2125,Telefones,967.0
 2026,9,2130,Impressoras - serviços de impressão local,8.64
@@ -5836,13 +5838,16 @@ ano,mes,codigo,rubrica,valor
 2026,9,2136,Telefones,447.0
 2026,9,2137,Acertos de Debitos,61.9
 2026,9,2137,Impressoras - serviços de impressão local,49.33
+2026,9,2137,Indenização por Uso de Veículo Particular em Serviço,16972.5
 2026,9,2137,Publicações,836.98
 2026,9,2137,Telefones,577.0
 2026,9,2142,Impressoras - serviços de impressão local,178.51
 2026,9,2144,Impressoras - serviços de impressão local,47.95
+2026,9,2144,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2144,Publicações,663.98
 2026,9,2144,Telefones,1097.0
 2026,9,2145,Impressoras - serviços de impressão local,116.33
+2026,9,2145,Indenização por Uso de Veículo Particular em Serviço,18575.0
 2026,9,2145,Materiais Expediente,144.1
 2026,9,2145,Telefones,657.0
 2026,9,2146,Impressoras - serviços de impressão local,206.89
@@ -5851,6 +5856,7 @@ ano,mes,codigo,rubrica,valor
 2026,9,2146,Telefones,1047.0
 2026,9,2147,,0.0
 2026,9,2148,Impressoras - serviços de impressão local,108.29
+2026,9,2148,Indenização por Uso de Veículo Particular em Serviço,5500.0
 2026,9,2148,Materiais Expediente,243.96
 2026,9,2148,Telefones,234.59
 2026,9,2149,Impressoras - serviços de impressão local,12.95
@@ -5862,14 +5868,18 @@ ano,mes,codigo,rubrica,valor
 2026,9,2152,Impressoras - serviços de impressão local,65.74
 2026,9,2152,Telefones,267.0
 2026,9,2153,Impressoras - serviços de impressão local,78.4
+2026,9,2153,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2153,Publicações,107.75
 2026,9,2153,Telefones,766.98
 2026,9,2154,Impressoras - serviços de impressão local,296.71
+2026,9,2154,Indenização por Uso de Veículo Particular em Serviço,1131.75
 2026,9,2154,Publicações,547.58
 2026,9,2154,Telefones,216.99
 2026,9,2155,Impressoras - serviços de impressão local,57.07
+2026,9,2155,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2155,Telefones,137.0
 2026,9,2156,Impressoras - serviços de impressão local,357.31
+2026,9,2156,Indenização por Uso de Veículo Particular em Serviço,9970.0
 2026,9,2156,Passagens Aereas,4341.38
 2026,9,2156,Publicações,335.4
 2026,9,2156,Telefones,757.98
@@ -5883,17 +5893,233 @@ ano,mes,codigo,rubrica,valor
 2026,9,2159,Publicações,995.74
 2026,9,2159,Telefones,627.0
 2026,9,2160,Impressoras - serviços de impressão local,77.11
+2026,9,2160,Indenização por Uso de Veículo Particular em Serviço,40.0
 2026,9,2160,Publicações,960.35
 2026,9,2160,Telefones,837.0
 2026,9,2161,Impressoras - serviços de impressão local,141.23
+2026,9,2161,Indenização por Uso de Veículo Particular em Serviço,1195.0
 2026,9,2161,Publicações,941.18
 2026,9,2161,Telefones,967.0
 2026,9,2162,Impressoras - serviços de impressão local,434.32
 2026,9,2162,Publicações,982.0
 2026,9,2162,Telefones,346.99
 2026,9,2164,Impressoras - serviços de impressão local,170.16
+2026,9,2164,Indenização por Uso de Veículo Particular em Serviço,0.0
 2026,9,2164,Materiais Expediente,74.17
 2026,9,2164,Telefones,50.0
 2026,9,2168,Impressoras - serviços de impressão local,37.16
+2026,9,2168,Indenização por Uso de Veículo Particular em Serviço,1600.0
 2026,9,2168,Publicações,986.33
 2026,9,2168,Telefones,1097.0
+2026,10,13,Impressoras - serviços de impressão local,180.41
+2026,10,13,Indenização por Uso de Veículo Particular em Serviço,1685.0
+2026,10,13,Publicações,392.4
+2026,10,13,Sedex,20.72
+2026,10,13,Telefones,319.29
+2026,10,28,Impressoras - serviços de impressão local,125.66
+2026,10,28,Indenização por Uso de Veículo Particular em Serviço,18745.75
+2026,10,28,Publicações,242.7
+2026,10,28,Telefones,319.29
+2026,10,58,Impressoras - serviços de impressão local,212.67
+2026,10,58,Indenização por Uso de Veículo Particular em Serviço,15419.75
+2026,10,58,Publicações,846.68
+2026,10,58,Telefones,378.0
+2026,10,65,Impressoras - serviços de impressão local,89.42
+2026,10,65,Indenização por Uso de Veículo Particular em Serviço,1380.0
+2026,10,65,Materiais Expediente,140.47
+2026,10,65,Passagens Aéreas Internacionais,39262.51
+2026,10,65,Publicações,786.98
+2026,10,65,Telefones,297.15
+2026,10,93,Impressoras - serviços de impressão local,46.02
+2026,10,93,Materiais Expediente,33.48
+2026,10,93,Publicações,1169.05
+2026,10,93,Telefones,378.0
+2026,10,93,Veiculos -Solicitadas no Mês - Deb no mês Posterior,878.48
+2026,10,134,Copias,98.24
+2026,10,134,Encardenações,9.18
+2026,10,134,Impressoras - serviços de impressão local,63.02
+2026,10,134,Indenização por Uso de Veículo Particular em Serviço,19255.0
+2026,10,134,Outros Materiais e Serviços,226.01
+2026,10,134,Publicações,881.48
+2026,10,134,Telefones,436.71
+2026,10,194,Impressoras - serviços de impressão local,4.7
+2026,10,194,Indenização por Uso de Veículo Particular em Serviço,8405.0
+2026,10,194,Passagens Aéreas Internacionais,19704.7
+2026,10,194,Publicações,931.48
+2026,10,194,Telefones,215.41
+2026,10,1500,Impressoras - serviços de impressão local,40.35
+2026,10,1500,Indenização por Uso de Veículo Particular em Serviço,8910.0
+2026,10,1500,Materiais Expediente,27.15
+2026,10,1500,Passagens Aéreas Internacionais,3022.98
+2026,10,1500,Publicações,786.98
+2026,10,1500,Telefones,296.71
+2026,10,1504,Impressoras - serviços de impressão local,145.92
+2026,10,1504,Publicações,458.4
+2026,10,1504,Telefones,215.41
+2026,10,1509,Impressoras - serviços de impressão local,39.27
+2026,10,1509,Indenização por Uso de Veículo Particular em Serviço,20050.0
+2026,10,1509,Outros Materiais e Serviços,10.0
+2026,10,1509,Publicações,424.58
+2026,10,1509,Telefones,436.71
+2026,10,1510,,0.0
+2026,10,1511,Impressoras - serviços de impressão local,8.41
+2026,10,1511,Indenização por Uso de Veículo Particular em Serviço,3205.0
+2026,10,1511,Publicações,574.8
+2026,10,1511,Telefones,328.77
+2026,10,2032,Impressoras - serviços de impressão local,47.92
+2026,10,2032,Indenização por Uso de Veículo Particular em Serviço,18342.5
+2026,10,2032,Materiais Expediente,32.45
+2026,10,2032,Passagens Aereas,4432.88
+2026,10,2032,Publicações,663.98
+2026,10,2032,Telefones,306.19
+2026,10,2036,Impressoras - serviços de impressão local,12.44
+2026,10,2036,Indenização por Uso de Veículo Particular em Serviço,19359.5
+2026,10,2036,Publicações,731.78
+2026,10,2036,Telefones,436.71
+2026,10,2086,Impressoras - serviços de impressão local,33.71
+2026,10,2086,Indenização por Uso de Veículo Particular em Serviço,10240.0
+2026,10,2086,Publicações,566.15
+2026,10,2086,Telefones,238.0
+2026,10,2095,Impressoras - serviços de impressão local,14.65
+2026,10,2095,Indenização por Uso de Veículo Particular em Serviço,8962.5
+2026,10,2095,Publicações,802.13
+2026,10,2095,Telefones,436.71
+2026,10,2100,Impressoras - serviços de impressão local,38.15
+2026,10,2100,Materiais Expediente,140.17
+2026,10,2100,Passagens Aereas,17778.41
+2026,10,2100,Publicações,665.78
+2026,10,2100,Telefones,495.42
+2026,10,2110,Impressoras - serviços de impressão local,60.65
+2026,10,2110,Indenização por Uso de Veículo Particular em Serviço,10025.0
+2026,10,2110,Publicações,637.15
+2026,10,2110,Telefones,179.29
+2026,10,2111,Impressoras - serviços de impressão local,37.05
+2026,10,2111,Indenização por Uso de Veículo Particular em Serviço,18672.5
+2026,10,2111,Publicações,922.4
+2026,10,2111,Telefones,84.45
+2026,10,2112,Acertos de Debitos,327.33
+2026,10,2112,Impressoras - serviços de impressão local,536.7
+2026,10,2112,Materiais Expediente,251.04
+2026,10,2112,Passagens Aéreas Internacionais,13869.24
+2026,10,2112,Publicações,608.1
+2026,10,2112,Telefones,401.02
+2026,10,2122,Impressoras - serviços de impressão local,47.07
+2026,10,2122,Publicações,508.4
+2026,10,2122,Telefones,495.42
+2026,10,2123,Impressoras - serviços de impressão local,235.86
+2026,10,2123,Indenização por Uso de Veículo Particular em Serviço,9680.0
+2026,10,2123,Materiais Expediente,183.92
+2026,10,2123,Publicações,458.4
+2026,10,2123,Telefones,143.16
+2026,10,2125,Impressoras - serviços de impressão local,545.15
+2026,10,2125,Publicações,1000.95
+2026,10,2125,Telefones,436.71
+2026,10,2130,Acertos de Debitos,206.33
+2026,10,2130,Impressoras - serviços de impressão local,7.51
+2026,10,2130,Indenização por Uso de Veículo Particular em Serviço,1500.0
+2026,10,2130,Publicações,482.1
+2026,10,2130,Telefones,436.71
+2026,10,2136,Impressoras - serviços de impressão local,15.05
+2026,10,2136,Indenização por Uso de Veículo Particular em Serviço,5487.5
+2026,10,2136,Passagens Aereas,6075.52
+2026,10,2136,Publicações,167.45
+2026,10,2136,Telefones,201.87
+2026,10,2137,Impressoras - serviços de impressão local,11.03
+2026,10,2137,Publicações,836.98
+2026,10,2137,Telefones,260.58
+2026,10,2142,Impressoras - serviços de impressão local,38.85
+2026,10,2142,Telefones,84.45
+2026,10,2144,Impressoras - serviços de impressão local,100.31
+2026,10,2144,Indenização por Uso de Veículo Particular em Serviço,19742.5
+2026,10,2144,Materiais Expediente,113.64
+2026,10,2144,Publicações,663.98
+2026,10,2144,Telefones,495.42
+2026,10,2145,Impressoras - serviços de impressão local,91.21
+2026,10,2145,Indenização por Uso de Veículo Particular em Serviço,19835.0
+2026,10,2145,Telefones,296.71
+2026,10,2146,Impressoras - serviços de impressão local,208.51
+2026,10,2146,Indenização por Uso de Veículo Particular em Serviço,4230.0
+2026,10,2146,Materiais Expediente,55.82
+2026,10,2146,Publicações,1158.7
+2026,10,2146,Telefones,472.84
+2026,10,2147,,0.0
+2026,10,2148,Impressoras - serviços de impressão local,91.76
+2026,10,2148,Indenização por Uso de Veículo Particular em Serviço,15557.25
+2026,10,2148,Materiais Expediente,98.45
+2026,10,2148,Passagens Aereas,8976.12
+2026,10,2148,Requisições Impressos,7500.0
+2026,10,2148,Telefones,98.0
+2026,10,2149,Copias,170.0
+2026,10,2149,Impressoras - serviços de impressão local,18.68
+2026,10,2149,Indenização por Uso de Veículo Particular em Serviço,10000.0
+2026,10,2149,Passagens Aereas,15679.73
+2026,10,2149,Passagens Aéreas Internacionais,12309.02
+2026,10,2149,Publicações,881.48
+2026,10,2149,Telefones,378.0
+2026,10,2151,Impressoras - serviços de impressão local,35.56
+2026,10,2151,Indenização por Uso de Veículo Particular em Serviço,300.0
+2026,10,2151,Passagens Aereas,13595.12
+2026,10,2151,Publicações,335.4
+2026,10,2151,Telefones,450.25
+2026,10,2152,Impressoras - serviços de impressão local,32.31
+2026,10,2152,Indenização por Uso de Veículo Particular em Serviço,800.0
+2026,10,2152,Passagens Aereas,2948.09
+2026,10,2152,Telefones,120.58
+2026,10,2153,Impressoras - serviços de impressão local,35.22
+2026,10,2153,Indenização por Uso de Veículo Particular em Serviço,5105.0
+2026,10,2153,Publicações,107.75
+2026,10,2153,Requisições Impressos,5200.0
+2026,10,2153,Telefones,335.74
+2026,10,2154,Copias,481.0
+2026,10,2154,Impressoras - serviços de impressão local,150.8
+2026,10,2154,Indenização por Uso de Veículo Particular em Serviço,1027.5
+2026,10,2154,Materiais Expediente,129.51
+2026,10,2154,Passagens Aereas,10023.8
+2026,10,2154,Publicações,547.58
+2026,10,2154,Telefones,98.0
+2026,10,2155,Impressoras - serviços de impressão local,37.27
+2026,10,2155,Indenização por Uso de Veículo Particular em Serviço,9982.5
+2026,10,2155,Telefones,61.87
+2026,10,2156,Impressoras - serviços de impressão local,63.49
+2026,10,2156,Materiais Expediente,59.09
+2026,10,2156,Publicações,335.4
+2026,10,2156,Telefones,363.28
+2026,10,2157,Impressoras - serviços de impressão local,2.07
+2026,10,2157,Indenização por Uso de Veículo Particular em Serviço,13105.0
+2026,10,2157,Passagens Aéreas Internacionais,22849.28
+2026,10,2157,Publicações,817.27
+2026,10,2157,Telefones,495.42
+2026,10,2158,Impressoras - serviços de impressão local,95.76
+2026,10,2158,Materiais Expediente,108.53
+2026,10,2158,Outros Materiais e Serviços,78.44
+2026,10,2158,Passagens Aereas,6100.45
+2026,10,2158,Publicações,786.98
+2026,10,2158,Telefones,401.02
+2026,10,2159,Impressoras - serviços de impressão local,0.84
+2026,10,2159,Indenização por Uso de Veículo Particular em Serviço,7962.5
+2026,10,2159,Materiais Expediente,40.15
+2026,10,2159,Outros Materiais e Serviços,33.0
+2026,10,2159,Publicações,881.48
+2026,10,2159,Telefones,283.16
+2026,10,2160,Impressoras - serviços de impressão local,9.24
+2026,10,2160,Indenização por Uso de Veículo Particular em Serviço,260.0
+2026,10,2160,Publicações,896.75
+2026,10,2160,Telefones,378.0
+2026,10,2161,Impressoras - serviços de impressão local,25.88
+2026,10,2161,Indenização por Uso de Veículo Particular em Serviço,2862.5
+2026,10,2161,Materiais Expediente,167.81
+2026,10,2161,Publicações,941.18
+2026,10,2161,Telefones,436.71
+2026,10,2162,Acertos de Debitos,371.4
+2026,10,2162,Impressoras - serviços de impressão local,215.56
+2026,10,2162,Materiais Expediente,77.81
+2026,10,2162,Publicações,982.0
+2026,10,2162,Telefones,156.71
+2026,10,2164,Impressoras - serviços de impressão local,19.83
+2026,10,2164,Indenização por Uso de Veículo Particular em Serviço,560.0
+2026,10,2164,Telefones,22.58
+2026,10,2168,Impressoras - serviços de impressão local,6.87
+2026,10,2168,Indenização por Uso de Veículo Particular em Serviço,9427.5
+2026,10,2168,Materiais Expediente,143.83
+2026,10,2168,Publicações,986.33
+2026,10,2168,Telefones,495.42

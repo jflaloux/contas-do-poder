@@ -692,7 +692,7 @@ ano,mes,setor_id,gabinete,tipo
 2026,8,1176,Gab. Ver(a). Giovani e Coletivo,GAB
 2026,8,1213,Gab. Ver(a). Erick Dênil,GAB
 2026,8,1221,Gab. Ver(a). Mariana Lescano,GAB
-2026,8,1240,Gab. Ver(a). Atena Roveda,GAB
+2026,8,1240,Gab. Ver(a). Atena,GAB
 2026,8,1250,Gab. Ver(a). Tiago Albrecht,GAB
 2026,8,1258,Gab. Ver(a). Professor Vitorino,GAB
 2026,8,1295,Gab. Ver(a). Vera Armando,GAB
@@ -726,7 +726,7 @@ ano,mes,setor_id,gabinete,tipo
 2026,9,1170,Gab. Ver(a). Natasha Ferreira,GAB
 2026,9,1213,Gab. Ver(a). Erick Dênil,GAB
 2026,9,1221,Gab. Ver(a). Mariana Lescano,GAB
-2026,9,1240,Gab. Ver(a). Atena Roveda,GAB
+2026,9,1240,Gab. Ver(a). Atena,GAB
 2026,9,1250,Gab. Ver(a). Tiago Albrecht,GAB
 2026,9,1258,Gab. Ver(a). Professor Vitorino,GAB
 2026,9,1295,Gab. Ver(a). Vera Armando,GAB
@@ -737,3 +737,37 @@ ano,mes,setor_id,gabinete,tipo
 2026,9,1300,Gab. Ver(a). Carlo Carotenuto,GAB
 2026,9,1302,Gab. Ver(a). Juliana de Souza,GAB
 2026,9,1305,Gab. Ver(a). Professor Tovi,GAB
+2026,10,23,Gab. Ver(a). Aldacir Oliboni,GAB
+2026,10,229,Gab. Ver(a). Márcio Bins Ely,GAB
+2026,10,232,Gab. Ver(a). Mauro Pinheiro,GAB
+2026,10,1058,Gab. Ver(a). Idenir Cecchim,GAB
+2026,10,1067,Gab. Ver(a). José Freitas,GAB
+2026,10,1110,Gab. Ver(a). Comandante Nádia,GAB
+2026,10,1113,Gab. Ver(a). Ramiro Rosário,GAB
+2026,10,1115,Gab. Ver(a). Roberto Robaina,GAB
+2026,10,1117,Gab. Ver(a). Moisés Barboza,GAB
+2026,10,1127,Gab. Ver(a). Karen Santos,GAB
+2026,10,1128,Gab. Ver(a). Hamilton Sossmeier,GAB
+2026,10,1130,Gab. Ver(a). Cláudia Araújo,GAB
+2026,10,1141,Gab. Ver(a). Pedro Ruas,GAB
+2026,10,1144,Gab. Ver(a). Jessé Sangalli,GAB
+2026,10,1145,Gab. Ver(a). Giovane Byl,GAB
+2026,10,1149,Gab. Ver(a). Fernanda Barth,GAB
+2026,10,1153,Gab. Ver(a). Jonas Reis,GAB
+2026,10,1155,Gab. Ver(a). Gilson Padeiro,GAB
+2026,10,1157,Gab. Ver(a). Psicóloga Tanise Sabino,GAB
+2026,10,1170,Gab. Ver(a). Natasha Ferreira,GAB
+2026,10,1176,Gab. Ver(a). Giovani e Coletivo,GAB
+2026,10,1213,Gab. Ver(a). Erick Dênil,GAB
+2026,10,1221,Gab. Ver(a). Mariana Lescano,GAB
+2026,10,1240,Gab. Ver(a). Atena,GAB
+2026,10,1250,Gab. Ver(a). Tiago Albrecht,GAB
+2026,10,1258,Gab. Ver(a). Professor Vitorino,GAB
+2026,10,1295,Gab. Ver(a). Vera Armando,GAB
+2026,10,1296,Gab. Ver(a). Coronel Ustra,GAB
+2026,10,1297,Gab. Ver(a). Grazi Oliveira,GAB
+2026,10,1298,Gab. Ver(a). Marcos Felipi,GAB
+2026,10,1299,Gab. Ver(a). Alexandre Bublitz,GAB
+2026,10,1300,Gab. Ver(a). Carlo Carotenuto,GAB
+2026,10,1302,Gab. Ver(a). Juliana de Souza,GAB
+2026,10,1305,Gab. Ver(a). Professor Tovi,GAB

@@ -5,19 +5,22 @@
   "ultimo_sucesso": "2026-10-02T15:35:56"
  },
  "assembleias/al": {
-  "ultima_tentativa": "2026-10-02T15:36:01",
+  "ultima_tentativa": "2026-11-17T13:46:43",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:36:01"
+  "ultimo_sucesso": "2026-11-17T13:46:43"
  },
  "assembleias/am": {
-  "ultima_tentativa": "2026-10-22T09:56:41",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:56:41"
+  "ultima_tentativa": "2026-11-17T13:42:04",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-22T09:56:41",
+  "primeira_falha": "2026-11-17T13:42:04",
+  "ultimo_erro": "HTTPError: 400 Client Error: Bad Request for url: https://www.aleam.gov.br/transparencia/wp-content/themes/transparencia/createCeap.php?parlamentar=1&parlamentarJaneiro=&mes=Setembro&ano=2026&formato=csv",
+  "ultima_falha": "2026-11-17T13:42:04"
  },
  "assembleias/ap": {
-  "ultima_tentativa": "2026-10-22T09:55:03",
+  "ultima_tentativa": "2026-11-17T13:39:41",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:55:03"
+  "ultimo_sucesso": "2026-11-17T13:39:41"
  },
  "assembleias/ba": {
   "ultima_tentativa": "2026-10-02T15:31:25",
@@ -30,31 +33,31 @@
   "ultimo_sucesso": "2026-10-02T15:31:36"
  },
  "assembleias/df": {
-  "ultima_tentativa": "2026-10-27T11:09:05",
+  "ultima_tentativa": "2026-11-17T13:41:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-27T11:09:05",
+  "ultimo_sucesso": "2026-11-17T13:41:13",
   "ultimo_erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
   "ultima_falha": "2026-10-27T11:08:37"
  },
  "assembleias/es": {
-  "ultima_tentativa": "2026-10-22T09:53:39",
+  "ultima_tentativa": "2026-11-17T13:36:15",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:53:39"
+  "ultimo_sucesso": "2026-11-17T13:36:15"
  },
  "assembleias/go": {
-  "ultima_tentativa": "2026-10-22T09:52:42",
+  "ultima_tentativa": "2026-11-17T13:35:18",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:52:42"
+  "ultimo_sucesso": "2026-11-17T13:35:18"
  },
  "assembleias/ma": {
-  "ultima_tentativa": "2026-10-22T09:57:29",
+  "ultima_tentativa": "2026-11-17T13:43:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:57:29"
+  "ultimo_sucesso": "2026-11-17T13:43:13"
  },
  "assembleias/mg": {
-  "ultima_tentativa": "2026-10-02T15:31:19",
+  "ultima_tentativa": "2026-11-17T13:26:38",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:31:19"
+  "ultimo_sucesso": "2026-11-17T13:26:38"
  },
  "assembleias/ms": {
   "ultima_tentativa": "2026-10-02T15:31:40",
@@ -91,14 +94,17 @@
   "ultimo_sucesso": "2026-10-02T15:35:46"
  },
  "assembleias/pr": {
-  "ultima_tentativa": "2026-10-02T15:35:44",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:35:44"
+  "ultima_tentativa": "2026-11-17T13:46:11",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:35:44",
+  "primeira_falha": "2026-11-17T13:46:11",
+  "ultimo_erro": "HTTPError: 403 Client Error: Forbidden for url: https://transparencia.assembleia.pr.leg.br/api/remuneracao?t=deputado+estadual&mes=9&ano=2026&page=1&search=&searchType=nome",
+  "ultima_falha": "2026-11-17T13:46:11"
  },
  "assembleias/rj": {
-  "ultima_tentativa": "2026-10-29T19:25:58",
+  "ultima_tentativa": "2026-11-17T13:30:59",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-29T19:25:58"
+  "ultimo_sucesso": "2026-11-17T13:30:59"
  },
  "assembleias/rn": {
   "ultima_tentativa": "2026-10-02T15:35:46",
@@ -116,9 +122,9 @@
   "ultimo_sucesso": "2026-10-02T15:36:01"
  },
  "assembleias/rs": {
-  "ultima_tentativa": "2026-10-22T09:55:01",
+  "ultima_tentativa": "2026-11-17T13:37:41",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:55:01"
+  "ultimo_sucesso": "2026-11-17T13:37:41"
  },
  "assembleias/sc": {
   "ultima_tentativa": "2026-10-02T15:31:39",
@@ -146,14 +152,14 @@
   "ultimo_sucesso": "2026-10-02T15:42:03"
  },
  "folhas/AL": {
-  "ultima_tentativa": "2026-10-22T09:58:26",
+  "ultima_tentativa": "2026-11-17T13:50:45",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:58:26"
+  "ultimo_sucesso": "2026-11-17T13:50:45"
  },
  "folhas/AM": {
-  "ultima_tentativa": "2026-10-22T09:58:33",
+  "ultima_tentativa": "2026-11-17T13:50:48",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:58:33"
+  "ultimo_sucesso": "2026-11-17T13:50:48"
  },
  "folhas/BA": {
   "ultima_tentativa": "2026-10-02T15:42:15",
@@ -161,9 +167,9 @@
   "ultimo_sucesso": "2026-10-02T15:42:15"
  },
  "folhas/CE": {
-  "ultima_tentativa": "2026-10-22T09:58:35",
+  "ultima_tentativa": "2026-11-17T13:50:51",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:58:35"
+  "ultimo_sucesso": "2026-11-17T13:50:51"
  },
  "folhas/DF": {
   "ultima_tentativa": "2026-10-02T15:43:50",
@@ -181,9 +187,9 @@
   "ultimo_sucesso": "2026-10-02T15:45:08"
  },
  "folhas/MA": {
-  "ultima_tentativa": "2026-10-22T09:58:58",
+  "ultima_tentativa": "2026-11-17T13:51:13",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:58:58"
+  "ultimo_sucesso": "2026-11-17T13:51:13"
  },
  "folhas/MG": {
   "ultima_tentativa": "2026-10-02T15:45:55",
@@ -201,9 +207,9 @@
   "ultimo_sucesso": "2026-10-02T15:46:57"
  },
  "folhas/PB": {
-  "ultima_tentativa": "2026-10-22T09:59:10",
+  "ultima_tentativa": "2026-11-17T13:51:24",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:59:10"
+  "ultimo_sucesso": "2026-11-17T13:51:24"
  },
  "folhas/PE": {
   "ultima_tentativa": "2026-10-02T15:47:41",
@@ -211,9 +217,9 @@
   "ultimo_sucesso": "2026-10-02T15:47:41"
  },
  "folhas/PI": {
-  "ultima_tentativa": "2026-10-22T09:59:28",
+  "ultima_tentativa": "2026-11-17T13:51:43",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:59:28"
+  "ultimo_sucesso": "2026-11-17T13:51:43"
  },
  "folhas/PR": {
   "ultima_tentativa": "2026-10-02T15:48:33",
@@ -226,9 +232,9 @@
   "ultimo_sucesso": "2026-10-02T15:48:47"
  },
  "folhas/RN": {
-  "ultima_tentativa": "2026-10-02T15:48:48",
+  "ultima_tentativa": "2026-11-17T13:51:48",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:48:48"
+  "ultimo_sucesso": "2026-11-17T13:51:48"
  },
  "folhas/RO": {
   "ultima_tentativa": "2026-10-02T19:14:20",
@@ -250,14 +256,17 @@
   "ultimo_sucesso": "2026-10-02T15:57:05"
  },
  "folhas/SC": {
-  "ultima_tentativa": "2026-10-02T15:57:10",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:57:10"
+  "ultima_tentativa": "2026-11-17T13:52:45",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:57:10",
+  "primeira_falha": "2026-11-17T13:52:45",
+  "ultimo_erro": "HTTPError: 404 Client Error: Not Found for url: https://dados.sc.gov.br/dataset/remuneracaoservidores",
+  "ultima_falha": "2026-11-17T13:52:45"
  },
  "folhas/SE": {
-  "ultima_tentativa": "2026-10-02T15:57:48",
+  "ultima_tentativa": "2026-11-17T13:52:45",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:57:48"
+  "ultimo_sucesso": "2026-11-17T13:52:45"
  },
  "folhas/SP": {
   "ultima_tentativa": "2026-10-02T15:58:24",
@@ -268,6 +277,11 @@
   "ultima_tentativa": "2026-10-08T15:48:40",
   "falhas": 0,
   "ultimo_sucesso": "2026-10-08T15:48:40"
+ },
+ "judiciario/tst": {
+  "ultima_tentativa": "2026-11-17T14:05:19",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-11-17T14:05:19"
  },
  "prefeituras/campo_grande": {
   "ultima_tentativa": "2026-10-02T15:30:28",
@@ -285,9 +299,9 @@
   "ultimo_sucesso": "2026-10-02T15:26:55"
  },
  "prefeituras/natal": {
-  "ultima_tentativa": "2026-10-02T15:30:18",
+  "ultima_tentativa": "2026-11-17T13:23:33",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:30:18"
+  "ultimo_sucesso": "2026-11-17T13:23:33"
  },
  "prefeituras/porto_alegre": {
   "ultima_tentativa": "2026-10-02T15:28:21",
@@ -360,14 +374,14 @@
   "ultimo_sucesso": "2026-10-02T15:25:51"
  },
  "vereadores/cuiaba": {
-  "ultima_tentativa": "2026-10-08T14:43:27",
+  "ultima_tentativa": "2026-11-17T13:23:01",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-08T14:43:27"
+  "ultimo_sucesso": "2026-11-17T13:23:01"
  },
  "vereadores/fortaleza": {
-  "ultima_tentativa": "2026-10-22T09:39:25",
+  "ultima_tentativa": "2026-11-17T13:07:10",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:39:25"
+  "ultimo_sucesso": "2026-11-17T13:07:10"
  },
  "vereadores/goiania": {
   "ultima_tentativa": "2026-10-02T15:06:13",
@@ -380,24 +394,27 @@
   "ultimo_sucesso": "2026-10-22T09:49:55"
  },
  "vereadores/maceio": {
-  "ultima_tentativa": "2026-10-02T15:09:02",
+  "ultima_tentativa": "2026-11-17T13:13:58",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:09:02"
+  "ultimo_sucesso": "2026-11-17T13:13:58"
  },
  "vereadores/manaus": {
-  "ultima_tentativa": "2026-10-02T15:10:13",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:10:13"
+  "ultima_tentativa": "2026-11-17T13:15:11",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:10:13",
+  "primeira_falha": "2026-11-17T13:15:11",
+  "ultimo_erro": "ConnectionError: o robots.txt de sapl.cmm.am.gov.br não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-11-17T13:15:11"
  },
  "vereadores/natal": {
-  "ultima_tentativa": "2026-10-22T09:45:58",
+  "ultima_tentativa": "2026-11-17T13:15:30",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:45:58"
+  "ultimo_sucesso": "2026-11-17T13:15:30"
  },
  "vereadores/porto_alegre": {
-  "ultima_tentativa": "2026-10-02T15:18:59",
+  "ultima_tentativa": "2026-11-17T13:19:49",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:18:59"
+  "ultimo_sucesso": "2026-11-17T13:19:49"
  },
  "vereadores/porto_velho": {
   "ultima_tentativa": "2026-10-08T16:29:55",
@@ -405,9 +422,12 @@
   "ultimo_sucesso": "2026-10-08T16:29:55"
  },
  "vereadores/recife": {
-  "ultima_tentativa": "2026-10-02T15:19:35",
-  "falhas": 0,
-  "ultimo_sucesso": "2026-10-02T15:19:35"
+  "ultima_tentativa": "2026-11-17T13:21:43",
+  "falhas": 1,
+  "ultimo_sucesso": "2026-10-02T15:19:35",
+  "primeira_falha": "2026-11-17T13:21:43",
+  "ultimo_erro": "ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)",
+  "ultima_falha": "2026-11-17T13:21:43"
  },
  "vereadores/rio_branco": {
   "ultima_tentativa": "2026-10-08T16:26:53",
@@ -421,9 +441,9 @@
   "ultimo_sucesso": "2026-10-02T14:45:19"
  },
  "vereadores/sao_luis": {
-  "ultima_tentativa": "2026-10-22T09:49:48",
+  "ultima_tentativa": "2026-11-17T13:22:53",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-22T09:49:48"
+  "ultimo_sucesso": "2026-11-17T13:22:53"
  },
  "vereadores/sp": {
   "ultima_tentativa": "2026-10-02T14:45:06",
@@ -436,14 +456,14 @@
   "ultimo_sucesso": "2026-10-22T09:50:11"
  },
  "vereadores/vitoria": {
-  "ultima_tentativa": "2026-10-08T14:43:27",
+  "ultima_tentativa": "2026-11-17T13:23:00",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-08T14:43:27"
+  "ultimo_sucesso": "2026-11-17T13:23:00"
  },
  "viagens/AM": {
-  "ultima_tentativa": "2026-10-03T15:09:49",
+  "ultima_tentativa": "2026-11-17T13:52:52",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-03T15:09:49"
+  "ultimo_sucesso": "2026-11-17T13:52:52"
  },
  "viagens/BA": {
   "ultima_tentativa": "2026-11-10T04:23:12",
@@ -466,9 +486,9 @@
   "ultimo_sucesso": "2026-10-03T15:09:49"
  },
  "viagens/PB": {
-  "ultima_tentativa": "2026-10-03T15:09:52",
+  "ultima_tentativa": "2026-11-17T13:53:30",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-03T15:09:52"
+  "ultimo_sucesso": "2026-11-17T13:53:30"
  },
  "viagens/RS": {
   "ultima_tentativa": "2026-11-10T04:23:17",
@@ -476,9 +496,9 @@
   "ultimo_sucesso": "2026-11-10T04:23:17"
  },
  "viagens/SE": {
-  "ultima_tentativa": "2026-10-03T15:09:52",
+  "ultima_tentativa": "2026-11-17T13:53:38",
   "falhas": 0,
-  "ultimo_sucesso": "2026-10-03T15:09:52"
+  "ultimo_sucesso": "2026-11-17T13:53:38"
  },
  "viagens/SP": {
   "ultima_tentativa": "2026-10-03T15:09:52",
