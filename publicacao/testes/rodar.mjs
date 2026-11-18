@@ -355,22 +355,21 @@ const PAGINAS = [
       if (!/Verba de gabinete\\s+não há/.test(t)) f.push("a lista de gastos não diz que não há verba de gabinete");
       if (!/não instituiu cota parlamentar/.test(t)) f.push("sem o texto da Câmara sobre a cota parlamentar");
       return f; })()` },
-  { nome: "cidade-cuiaba", url: "/cidade/cuiaba-mt", ter: [["#cidade .pessoa-chip", 27]], texto: [/Os 27 vereadores no cargo, um a um/, /não publicou a verba indenizatória de 02\/2026 e 04\/2026/, /pela folha de pagamento da Câmara/], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
+  { nome: "cidade-cuiaba", url: "/cidade/cuiaba-mt", ter: [["#cidade .pessoa-chip", 27]], texto: [/Os 27 vereadores no cargo, um a um/, /pela folha de pagamento da Câmara/], sem: [/em média, por vereador/i, /total pago ao cargo/i, /não publicou a verba indenizatória/i] },
   { nome: "vereador-cuiaba-verba-sem", acao: true, url: ENDERECOS["ver-5103403-110002017762"] ? `/${ENDERECOS["ver-5103403-110002017762"]}?periodo=2026` : null, depois: `(async () => {
       const f = [], esp = (ms) => new Promise((r) => setTimeout(r, ms));
       const linhas = [...document.querySelectorAll("#mes-a-mes tbody tr")].map((tr) => [...tr.cells].map((c) => c.textContent));
       const de = (m) => linhas.find((l) => l[0] === m);
-      for (const m of ["fev/2026", "abr/2026"]) { const l = de(m); if (!l || l[2] !== "não publicados") f.push(m + ": os gastos dizem " + JSON.stringify(l && l[2]) + " e deviam dizer não publicados"); }
-      const set = de("set/2026"); if (!set || set[2] !== "ainda não publicados") f.push("set/2026 devia dizer ainda não publicados: " + JSON.stringify(set));
-      for (const m of ["jan/2026", "mar/2026", "ago/2026"]) { const l = de(m); if (!l || !/^R\\$ [1-9]/.test(l[2])) f.push(m + " devia mostrar a verba em reais: " + JSON.stringify(l)); }
+      // a Câmara publicou a verba de fev e abr/2026 (rodada de 18/11/2026): nenhum mês fica em "não publicados" e as notas de falta somem
+      for (const m of ["jan/2026", "fev/2026", "mar/2026", "abr/2026", "ago/2026", "set/2026"]) { const l = de(m); if (!l || !/^R\\$ [1-9]/.test(l[2])) f.push(m + " devia mostrar a verba em reais: " + JSON.stringify(l)); }
       const txt = document.querySelector("#mes-a-mes").textContent;
-      if (!/não publicou a verba de fev\\/2026 e abr\\/2026/.test(txt) || !/publica a verba com atraso/.test(txt)) f.push("faltam as duas notas sobre a verba (mês que faltou e atraso)");
+      if (/não publicados/.test(txt) || /não publicou a verba de/.test(txt)) f.push("a página ainda diz que a verba não foi publicada");
       const guardados = []; URL.createObjectURL = (bl) => { guardados.push(bl); return "blob:teste"; };
       HTMLAnchorElement.prototype.click = function () { if (this.hasAttribute("download")) this.dataset.baixou = "1"; };
       const bt = [...document.querySelectorAll("#baixar button")].find((x) => /Mês a mês/.test(x.textContent)); if (!bt) return f.concat(["sem o botão Mês a mês (CSV)"]);
       bt.click(); await esp(200);
       const csv = guardados.length ? await guardados[0].text() : "";
-      for (const m of ["2026-02", "2026-04", "2026-09"]) if (!new RegExp("," + m + ",[\\\\d.]+,,").test(csv)) f.push("no CSV, a verba de " + m + " devia ficar em branco");
+      for (const m of ["2026-02", "2026-04", "2026-09"]) if (!new RegExp("," + m + ",[\\\\d.]+,[1-9][\\\\d.]*,").test(csv)) f.push("no CSV, a verba de " + m + " devia ter valor");
       if (!/,2026-03,[\\d.]+,[1-9][\\d.]*,/.test(csv)) f.push("no CSV, a verba de 2026-03 devia ter valor");
       return f; })()` },
   // Câmara sem a verba na fonte que lemos (São Luís e Aracaju: verba_nome nulo, sem sem_verba): "não publicados" no lugar de R$ 0 no topo, na lista, na tabela mês a mês e no CSV
