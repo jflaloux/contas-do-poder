@@ -324,6 +324,10 @@ def calcular(lanc, politicos, historicos, hoje=None):
         for c in ("r", "c", "e"):
             n = g[g[c].abs() > 0.5].groupby("am").id_politico.nunique()
             pub[c] = {int(m) for m, q in n.items() if q >= max(1, int(n.max() / 2))} if len(n) else set()
+        # cota só até o último mês da folha: os dias no cargo (limite e divisor) param nele, e o mês em curso, com as
+        # primeiras notas, ficava no gasto sem limite nem meses (em 18/11/2026, nov/2026 da cota da Câmara)
+        if pub["r"]:
+            pub["c"] = {m for m in pub["c"] if m <= max(pub["r"])}
         pub["o"] = pub["r"]
         publicados[k] = pub
         faixas[k] = {c: [min(v), max(v)] if v else None for c, v in pub.items()}

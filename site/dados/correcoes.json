@@ -2,6 +2,17 @@
   "intro": "Quando um número do site está errado por falha nossa (uma conta errada, uma leitura errada da fonte, um valor desatualizado), corrigimos e registramos aqui o que estava errado, o que mudou e quais páginas foram afetadas. A lista começa no lançamento do site, em 29 de setembro de 2026.",
   "c": [
     {
+      "data": "2026-11-18",
+      "titulo": "Balanço do mandato: notas da cota de novembro contadas sem os dias no cargo",
+      "texto": [
+        "Na atualização de 18 de novembro de 2026, o Balanço do mandato mostrava a cota da Câmara até nov/2026. As notas de novembro já publicadas (R$ 982 mil, de 302 deputados) entravam na média da cota por mês e na % do limite da cota, mas os dias no cargo, que fazem o limite e o número de meses, iam só até outubro, o último mês da folha. A % do limite de Marcelo Nilo aparecia como 130,6%, e a mediana da cota por mês dos deputados, como R$ 41.822. O erro foi nosso.",
+        "Agora, a cota só conta até o último mês da folha (out/2026). As notas de novembro ficam no total do período e entram na média quando a folha de novembro for publicada. A % do limite de Marcelo Nilo passa a 117,6%; a mediana da cota por mês, a R$ 41.723; a do total por mês, de R$ 214.329 a R$ 214.157. A mediana da % do limite (91,6%), o número de deputados acima de 100% do limite (55) e os totais do período não mudaram."
+      ],
+      "paginas": [
+        "balanco"
+      ]
+    },
+    {
       "data": "2026-11-11",
       "titulo": "Vereadores de Porto Velho: um suplente que já tinha saído aparecia no cargo",
       "texto": [

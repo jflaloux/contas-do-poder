@@ -206,6 +206,13 @@ def executar():
     caso("Balanço: outros gastos do Senado (valor anual repartido) contam só os meses no cargo", abs(df.loc["sen-9", "o_n"] - 3) < 0.01)
     caso("Balanço: convocação e suplência no mesmo dia, sem pagamento, não contam como mês no cargo", "dep-3" not in df.index)
     caso("Balanço: equipe estimada negativa do Senado conta zero", df.loc["sen-9", "e"] == 0)
+    # 18/11/2026: nov/2026 (mês em curso, folha até out) entrava no gasto da cota sem limite nem meses no divisor
+    L2 = L + [lin(pid, 202506, "custa", "cota_parlamentar", 9000) for pid in ("dep-1", "dep-2")]
+    df2, faixas2 = balanco.calcular(pd.DataFrame(L2), pol, hist, hoje=date(2025, 6, 30))[:2]
+    df2 = df2.set_index("id")
+    caso("Balanço: cota só até o último mês da folha (o mês em curso fica fora da % do limite e da média)",
+         faixas2["d"]["c"][1] == 202505 and abs(df2.loc["dep-1", "c_pct"] - df.loc["dep-1", "c_pct"]) < 1e-9
+         and df2.loc["dep-1", "c"] == df.loc["dep-1", "c"] + 9000)
     caso("Balanço: meses sem pagamento e de licença com subsídio em fração, sem passar dos meses no cargo",
          (df.r_sem_pagamento <= df.mc + 1e-9).all() and (df.r_n <= df.mc + df.r_licenca + 1e-6).all())
     from .site import _salario_repetido
