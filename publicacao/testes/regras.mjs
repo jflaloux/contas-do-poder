@@ -64,7 +64,8 @@ if (!fs.existsSync(path.join(PUBLICAR, "index.html"))) { console.log("publicar/ 
 // ------------------------------------------------------------------ 1b) textos do index.html que dependem dos dados
 console.log("\n-- Textos com contagens e coberturas: o que está escrito é o que os dados dizem");
 {
-  const html = fs.readFileSync(path.join(PUBLICAR, "index.html"), "utf8");
+  // os textos com contagens saíram da página inicial: ficam em /entenda e /fontes (desde a separação dessas páginas)
+  const html = ["index", "entenda", "fontes"].map((n) => { try { return fs.readFileSync(path.join(PUBLICAR, `${n}.html`), "utf8"); } catch { return ""; } }).join("\n");
   const spans = [...html.matchAll(/<span data-dado="([a-z0-9-]+)">([^<]*)<\/span>/g)].map((m) => [m[1], m[2].replace(/&amp;/g, "&")]);
   const valor = (k) => (spans.find(([c]) => c === k) || [])[1];
   const nomes = (t) => String(t || "").split(/, | e /).filter(Boolean);

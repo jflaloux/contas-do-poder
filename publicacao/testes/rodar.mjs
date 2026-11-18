@@ -488,7 +488,7 @@ const PAGINAS = [
   // a legenda das fontes congeladas não promete nova tentativa (a verba da Câmara do Recife está parada por decisão, e não tenta de novo)
   { nome: "atualizacao-congelada-sem-promessa", url: "/atualizacao", pagina: [/Congelada:\s*a fonte parou de publicar[\s\S]{0,200}?o motivo e o que vale para aquela fonte estão ao lado/, /Verba congelada: dados até 12\/2025[\s\S]{0,400}?a coleta da verba não tenta de novo/],
     semPagina: [/a coleta tenta de novo a cada três meses\.\s*Atrasada/, /é tentada de novo a cada três meses/] },
-  { nome: "atualizacao-stm-set-2026", url: "/atualizacao", pagina: [/Superior Tribunal Militar[\s\S]{0,200}?set\/2026/, /consulta oficial, meses que faltam no DadosJusBr\)[\s\S]{0,200}?set\/2026/] },
+  { nome: "atualizacao-stm-set-2026", url: "/atualizacao", pagina: [/Superior Tribunal Militar[\s\S]{0,200}?set\/2026/, /consulta oficial, meses que faltam no DadosJusBr\)[\s\S]{0,200}?out\/2026/] },
   // reserva ligada (simulada): o tribunal no lugar da fonte própria, com o aviso; sem misturar valor por pessoa e por cargo
   { nome: "reserva-fortaleza-pessoa", url: "/cidade/fortaleza-ce", simular: simularReservas(["vereadores/fortaleza", "prefeituras/fortaleza"]),
     pagina: [/dados do tce-ce\./i, /pessoa por pessoa/i, /valor típico de um vereador/i], semPagina: [/total pago ao cargo/i, /em média, por vereador/i] },
@@ -519,8 +519,8 @@ const PAGINAS = [
   // ES, PE e RJ: o Tribunal de Contas só publica o total pago ao cargo (e quantas pessoas): sempre "em média", nunca o salário
   // de alguém, sem "passa do teto" nem "ganha mais que X%"
   // Vitória (08/10/2026): a Câmara vem de camaras.json (vereador por vereador; sem cota parlamentar desde 2023, com o texto da Câmara); o valor por cargo do TCE-ES só entra se a reserva estiver ativa
-  { nome: "cidade-es-vitoria", url: "/cidade/vitoria-es", ter: [["#cidade .pessoa-chip", 21]], texto: [/Os 21 vereadores no cargo, um a um/, /não instituiu cota parlamentar/i, /só o salário, a Câmara não tem verba de gabinete/i], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
-  { nome: "cidade-es-cariacica", url: "/cidade/cariacica-es", ter: [["#cidade .pessoa-chip--fixo", 15], ["#prefeitura .folha-linha", 2]], texto: [/23 pessoas no cargo de vereador/i, /não representa um vereador/i], sem: [/em média, por vereador/i, /passa do teto/i, /ganha mais que/i] },
+  { nome: "cidade-es-vitoria", url: "/cidade/vitoria-es", ter: [["#cidade .pessoa-chip", 21]], texto: [/Os 20 vereadores no cargo, um a um/, /não instituiu cota parlamentar/i, /só o salário, a Câmara não tem verba de gabinete/i], sem: [/em média, por vereador/i, /total pago ao cargo/i] },
+  { nome: "cidade-es-cariacica", url: "/cidade/cariacica-es", ter: [["#cidade .pessoa-chip--fixo", 15], ["#prefeitura .folha-linha", 2]], texto: [/23 pessoas na lista, sem o valor de cada uma/i, /não publica quanto recebe cada vereador/i], sem: [/em média, por vereador/i, /passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-pe-abreu-e-lima", url: "/cidade/abreu-e-lima-pe", ter: [["#cidade .pessoa-chip--fixo", 10], ["#prefeitura .folha-linha", 2]], texto: [/em média, por vereador/i, /13 pessoas no cargo de vereador/i, /R\$ 26\.000/], sem: [/passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-pe-aguas-belas", url: "/cidade/aguas-belas-pe", ter: [["#cidade .pessoa-chip--fixo", 10]], texto: [/presidente da Câmara/i, /13 pessoas/i], sem: [/passa do teto/i, /ganha mais que/i] },
   { nome: "cidade-rj-laje-do-muriae", url: "/cidade/laje-do-muriae-rj", ter: [["#cidade .pessoa-chip--fixo", 5]], texto: [/12 pessoas como agente político/i, /a fonte não tem os nomes/i], sem: [/em média, por/i, /passa do teto/i, /ganha mais que/i] },
