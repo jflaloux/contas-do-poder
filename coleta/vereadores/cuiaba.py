@@ -15,7 +15,8 @@ Fontes (sem cadastro; abrem de fora do Brasil, conferido em 08/10/2026; o robots
 - Regra da verba: Lei 6.910/2023 (com a redação da Lei 6.919/2023): 75% da remuneração mensal, pago a cada vereador em
   efetivo exercício, com prestação de contas por relatório de atividades.
 - Quem está no cargo em cada mês: quem tem na folha do mês a linha mensal (ou de suplente) ou a verba indenizatória; a
-  linha "SUBSIDIO VEREADORES AFASTADOS" é de quem está afastado (continua recebendo, mas não conta como no cargo).
+  linha "SUBSIDIO VEREADORES AFASTADOS" é de quem está afastado (continua recebendo, mas não conta como no cargo), e a
+  folha complementar ("COMPLEMENTAR...") paga diferenças de outros meses e também não conta.
 - Nome parlamentar, partido e foto: a lista de vereadores do sistema legislativo da Câmara,
   https://legislativo.camaracuiaba.mt.gov.br/api/Vereador/?v=2&qtd=100 (página
   https://legislativo.camaracuiaba.mt.gov.br/parlamentares.aspx). Ela marca 28 "ativos" para 27 cadeiras: não é usada
@@ -375,8 +376,11 @@ def montar(tipos):
     ultimo = int(base_por_mes[base_por_mes >= 0.8 * VAGAS].index.max())
     ate = min(comum.ultimo_mes_fechado(), ultimo)
 
-    # no cargo no mês: folha mensal (não de afastado) ou verba indenizatória (paga só a quem está em exercício)
-    ativo = fol[((fol.tipo == "base") & ~fol.descricao.str.upper().str.contains("AFASTAD")) | (fol.tipo == "verba")]
+    # no cargo no mês: folha mensal (não de afastado nem complementar) ou verba indenizatória (paga só a quem está em
+    # exercício). A folha complementar paga diferenças de meses passados: em out/2026, "COMPLEMENTAR VER SUPLENTE" de um
+    # suplente que saiu em jun/2025 o punha no cargo (28 para 27 cadeiras)
+    desc = fol.descricao.str.upper()
+    ativo = fol[((fol.tipo == "base") & ~desc.str.contains("AFASTAD") & ~desc.str.contains("COMPLEMENT")) | (fol.tipo == "verba")]
     meses_no_cargo = {c: set(g.am) for c, g in ativo.groupby("codigo")}
     for c, g in vb.groupby("codigo"):
         meses_no_cargo.setdefault(int(c), set()).update(g.ano * 100 + g.mes)

@@ -3,6 +3,19 @@
   "c": [
     {
       "data": "2026-11-18",
+      "titulo": "Vereadores de Cuiabá: um suplente que já tinha saído aparecia no cargo",
+      "texto": [
+        "Na atualização de 17 de novembro de 2026, a página da Câmara de Cuiabá mostrava 28 vereadores no cargo, para 27 cadeiras: o suplente Fred Gahyva, que esteve no cargo de abril a junho de 2025, aparecia de novo no cargo desde outubro de 2026, porque a folha de outubro traz para ele um pagamento complementar de suplente (R$ 9.563,03). Pelo mesmo motivo, a página de Fellipe Corrêa contava maio de 2025 como mês no cargo, por um pagamento complementar de R$ 869,37. O erro foi nosso.",
+        "Agora, a folha complementar, que paga diferenças de outros meses, não conta como sinal de que o vereador está no cargo. A página da cidade volta a mostrar 27 vereadores no cargo; a de Fred Gahyva mostra o período de abril a junho de 2025, e a de Fellipe Corrêa, julho e agosto de 2025 e fevereiro e março de 2026. Os valores pagos não mudaram; nas duas páginas, a média por mês passa a contar só os meses no cargo."
+      ],
+      "paginas": [
+        "cidade/5103403",
+        "ver-5103403-110002120646",
+        "ver-5103403-110002182542"
+      ]
+    },
+    {
+      "data": "2026-11-18",
       "titulo": "Balanço do mandato: notas da cota de novembro contadas sem os dias no cargo",
       "texto": [
         "Na atualização de 18 de novembro de 2026, o Balanço do mandato mostrava a cota da Câmara até nov/2026. As notas de novembro já publicadas (R$ 982 mil, de 302 deputados) entravam na média da cota por mês e na % do limite da cota, mas os dias no cargo, que fazem o limite e o número de meses, iam só até outubro, o último mês da folha. A % do limite de Marcelo Nilo aparecia como 130,6%, e a mediana da cota por mês dos deputados, como R$ 41.822. O erro foi nosso.",
