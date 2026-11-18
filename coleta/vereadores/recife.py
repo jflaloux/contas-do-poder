@@ -7,6 +7,9 @@ Fontes (dados abertos da Câmara, sem cadastro):
   https://transparenciacamara.recife.pe.gov.br/codigos/web/camara/remuneracaoServidores_csv.php?ano=&mes=
   Guardamos só o bruto de cada vereador e, dos gabinetes, o número de pessoas, o custo bruto e os cargos.
   O CPF vem mascarado e não é guardado; os descontos também não.
+  O servidor desse endereço não manda o certificado intermediário (cadeia incompleta; visto em 18/11/2026, a coleta
+  falhava desde 27/10/2026 com "o robots.txt não abriu"): a sessão da folha completa a cadeia com
+  util.ca_com_intermediario, sem desligar a verificação.
 - Verba Indenizatória (a "CEAP" do Recife): por tipo de despesa e por mês, sem fornecedor:
   https://transparencia.recife.pe.leg.br/++api++/legislativo/verba-indenizatoria/<ano>/formdata?codVereador=
 - Nome completo e gênero: TSE (eleição de 2024).
@@ -20,7 +23,7 @@ import pandas as pd
 
 from .. import onde
 from ..config import CACHE, DADOS
-from ..util import TempoEsgotado, _sessao, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
+from ..util import SessaoEducada, TempoEsgotado, USER_AGENT, _sessao, ca_com_intermediario, cache_valido, gravar_csv, log, normalizar_nome, verificar_prazo
 from . import comum
 
 COD = 2611606
@@ -28,7 +31,8 @@ INICIO = 202501
 VERBA_ATE = onde.CONGELADAS["vereadores/recife"]["ate"]  # a verba congelada: último mês mostrado (dez/2025)
 EPROC = "https://e-processo.recife.pe.leg.br"
 TRANSP = "https://transparencia.recife.pe.leg.br/++api++/legislativo"
-FOLHA = "https://transparenciacamara.recife.pe.gov.br/codigos/web/camara/remuneracaoServidores_csv.php"
+FOLHA_HOST = "https://transparenciacamara.recife.pe.gov.br"
+FOLHA = f"{FOLHA_HOST}/codigos/web/camara/remuneracaoServidores_csv.php"
 PASTA = DADOS / "municipios" / "recife"
 C = CACHE / "cmrecife"
 REBAIXAR = 3
@@ -52,6 +56,21 @@ CFG = {
 }
 
 
+_s_folha = None
+
+
+def _sessao_de(url):
+    """A sessão do projeto; para o servidor da folha (cadeia incompleta), uma com o intermediário (ver o começo)."""
+    global _s_folha
+    if not url.startswith(FOLHA_HOST):
+        return _sessao()
+    if _s_folha is None:
+        _s_folha = SessaoEducada()
+        _s_folha.headers["User-Agent"] = USER_AGENT
+        _s_folha.verify = ca_com_intermediario(FOLHA_HOST.split("//")[1], "camara-recife")
+    return _s_folha
+
+
 def _pedir(url, arquivo=None, dias=None, params=None, texto=False):
     if arquivo is not None and cache_valido(arquivo, dias):
         t = arquivo.read_text(encoding="utf-8")
@@ -59,7 +78,7 @@ def _pedir(url, arquivo=None, dias=None, params=None, texto=False):
     verificar_prazo()
     for tentativa in range(6):
         try:
-            r = _sessao().get(url, params=params, timeout=120)
+            r = _sessao_de(url).get(url, params=params, timeout=120)
             if r.status_code >= 500 and tentativa >= 1:
                 r.raise_for_status()  # erro do próprio sistema da Câmara: não adianta insistir
             r.raise_for_status()

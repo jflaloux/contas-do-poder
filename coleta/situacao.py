@@ -206,6 +206,9 @@ def executar():
             cg = onde.CONGELADAS[ch]
             erro = cg["motivo"] + (f" (ATENÇÃO: a última coleta trouxe mês depois de {cg['ate']}: a fonte pode ter voltado; "
                                    "tirar de onde.CONGELADAS)" if um and um > cg["ate"] and not cg.get("so_a_verba") else "")
+        so_verba = onde.CONGELADAS.get(ch, {}).get("so_a_verba")
+        if situacao == "falhando" and so_verba:  # a folha ou a lista falhou de verdade: a falha aparece, e a verba segue congelada
+            erro = (f"{erro}. " if erro else "") + f"Verba congelada desde {_dia(onde.CONGELADAS[ch]['desde'])}: {onde.CONGELADAS[ch]['motivo']}"
         if fora_do_site and not erro:
             erro = "não entrou no arquivo do site (a montagem falhou: ver o log da rodada)"
         ba = base_anterior.get(ch.split("/", 1)[1]) if ch.startswith("federal/") else None
@@ -455,6 +458,9 @@ def publicar(linhas, fechado, resumo=None):
         if s == "falhando":
             sit, texto = "falhou", (f"A coleta falhou desde {fmt_dia(l['falha_desde'])}" if l.get("falha_desde") else "A última coleta falhou") + \
                 ": o site mostra os últimos dados obtidos."
+            cg = onde.CONGELADAS.get(l["fonte"], {})
+            if cg.get("so_a_verba"):  # a falha é da folha ou da lista; a verba continua congelada, e o aviso não some
+                texto += f" A verba está congelada: dados até {fmt_mes(cg['ate'])}; a coleta da verba não tenta de novo."
         elif s == "atrasada (fonte)":
             motivo = ATRASOS_CONHECIDOS[l["fonte"]]
             sit, texto = "atraso_fonte", f"Atraso da própria fonte: {motivo[0].lower() + motivo[1:]}."

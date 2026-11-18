@@ -1,12 +1,13 @@
-# Situação das fontes (18/11/2026 19:42, rodada: exterior)
+# Situação das fontes (18/11/2026 18:44, rodada: brasil)
 
-Último mês fechado: 10/2026. 108 fontes: 96 ok, 4 com o atraso da própria fonte, 0 atrasadas, 5 falhando, 3 congeladas.
+Último mês fechado: 10/2026. 108 fontes: 96 ok, 4 com o atraso da própria fonte, 0 atrasadas, 4 falhando, 4 congeladas.
 
 Desde a rodada anterior (semana de 10/11/2026):
 
-- Quebrou: assembleias/am (falhando desde 17/11/2026), assembleias/pr (falhando desde 03/11/2026), folhas/SC (falhando desde 03/11/2026), vereadores/manaus (falhando desde 17/11/2026), vereadores/recife (falhando desde 27/10/2026).
+- Quebrou: assembleias/am (falhando desde 17/11/2026), assembleias/pr (falhando desde 03/11/2026), folhas/SC (falhando desde 03/11/2026), vereadores/manaus (falhando desde 17/11/2026).
 - Voltou: judiciario/tst (agora: ok).
 - Continua com problema: nada.
+- Quebrou e voltou nesta semana: vereadores/recife.
 
 | Fonte | Situação | Último mês no site | Última coleta certa | Onde | Último erro ou motivo |
 |---|---|---|---|---|---|
@@ -14,7 +15,6 @@ Desde a rodada anterior (semana de 10/11/2026):
 | assembleias/pr | falhando | 09/2026 | 2026-10-27 | exterior | HTTPError: 403 Client Error: Forbidden for url: https://transparencia.assembleia.pr.leg.br/api/remuneracao?t=deputado+es |
 | folhas/SC | falhando | 09/2026 | 2026-10-27 | exterior | HTTPError: 404 Client Error: Not Found for url: https://dados.sc.gov.br/dataset/remuneracaoservidores |
 | vereadores/manaus (só do Brasil) | falhando | 09/2026 | 2026-10-02 | brasil | ConnectionError: o robots.txt de sapl.cmm.am.gov.br não abriu (site fora do ar ou bloqueado) |
-| vereadores/recife | falhando | 09/2026 | 2026-10-20 | exterior | ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado) Plano de queda: sem reserva no TCE-PE (ensaio de 07/10/2026: a folha da Câmara do Recife no TCE-PE vem sem nenhum vereador em todos os meses desde jan/2025; a reserva automática da situação só vale com dados do órgão no arquivo do tribunal); a folha e a verba ficam até o último mês lido; passou de 1 hora, congelar |
 | assembleias/ma (só do Brasil) | atrasada (fonte) | 05/2026 | 2026-11-17 | brasil | a Alema publica a prestação de contas de cada deputado com meses de atraso; o site vai até o último mês com 80% dos depu |
 | assembleias/rj | atrasada (fonte) | 07/2026 | 2026-11-17 | brasil | ConnectTimeout: HTTPSConnectionPool(host='docigp.alerj.rj.gov.br', port=443): Max retries exceeded with url: /api/v1/con |
 | folhas/AC | atrasada (fonte) | 07/2026 | 2026-11-17 | exterior | o Portal da Transparência do Acre não tem a folha de ago/2026 em diante (a busca de qualquer nome volta vazia; conferido |
@@ -22,6 +22,7 @@ Desde a rodada anterior (semana de 10/11/2026):
 | folhas/PA (só do Brasil) | congelada | 03/2026 | 2026-10-02 | brasil | desde abr/2026 a consulta pública da folha do Estado não mostra quem tem mandato eletivo |
 | folhas/RJ (só do Brasil) | congelada | 03/2026 | 2026-10-02 | brasil | desde mar/2026 o governador em exercício é o presidente do Tribunal de Justiça, pago pelo Tribunal, e o cargo de vice es |
 | prefeituras/campo_grande | congelada | 02/2026 | 2026-10-02 | brasil | a consulta da Prefeitura não traz a folha depois de fev/2026 |
+| vereadores/recife | congelada | 09/2026 | 2026-11-18 | brasil | a consulta da verba indenizatória no servidor da Câmara do Recife retorna erro HTTP 500 desde 20/10/2026; a coleta da ve |
 | assembleias/ac | ok | 10/2026 | 2026-11-17 | exterior |  |
 | assembleias/al (só do Brasil) | ok | 10/2026 | 2026-11-17 | brasil |  |
 | assembleias/ap (só do Brasil) | ok | 09/2026 | 2026-11-17 | brasil |  |

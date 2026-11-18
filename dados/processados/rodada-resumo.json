@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-18T16:42:20-03:00",
+ "gerado_em": "2026-11-18T18:44:33-03:00",
  "semana": "2026-11-17",
  "anterior": "2026-11-10",
  "lugares": [
@@ -34,13 +34,6 @@
    "desde": "2026-11-17T13:15:11",
    "ultimo_mes": 202609,
    "erro": "ConnectionError: o robots.txt de sapl.cmm.am.gov.br não abriu (site fora do ar ou bloqueado)"
-  },
-  {
-   "fonte": "vereadores/recife",
-   "situacao": "falhando",
-   "desde": "2026-10-27T17:06:25",
-   "ultimo_mes": 202609,
-   "erro": "ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)"
   }
  ],
  "voltou": [
@@ -51,11 +44,13 @@
   }
  ],
  "continua": [],
- "quebrou_e_voltou": [],
+ "quebrou_e_voltou": [
+  "vereadores/recife"
+ ],
  "totais": {
-  "falhando": 5,
+  "falhando": 4,
   "atrasada (fonte)": 4,
-  "congelada": 3,
+  "congelada": 4,
   "ok": 96
  },
  "historico": [
@@ -179,7 +174,7 @@
   },
   {
    "semana": "2026-11-17",
-   "atualizado_em": "2026-11-18T16:42:20-03:00",
+   "atualizado_em": "2026-11-18T18:44:33-03:00",
    "lugares": [
     "brasil",
     "exterior"
@@ -189,8 +184,7 @@
     "assembleias/am": "falhando",
     "assembleias/pr": "falhando",
     "folhas/SC": "falhando",
-    "vereadores/manaus": "falhando",
-    "vereadores/recife": "falhando"
+    "vereadores/manaus": "falhando"
    },
    "teve_problema": [
     "assembleias/am",

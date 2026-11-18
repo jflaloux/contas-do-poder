@@ -422,10 +422,9 @@
   "ultimo_sucesso": "2026-10-08T16:29:55"
  },
  "vereadores/recife": {
-  "ultima_tentativa": "2026-11-17T13:21:43",
-  "falhas": 1,
-  "ultimo_sucesso": "2026-10-02T15:19:35",
-  "primeira_falha": "2026-11-17T13:21:43",
+  "ultima_tentativa": "2026-11-18T18:43:41",
+  "falhas": 0,
+  "ultimo_sucesso": "2026-11-18T18:43:41",
   "ultimo_erro": "ConnectionError: o robots.txt de transparenciacamara.recife.pe.gov.br não abriu (site fora do ar ou bloqueado)",
   "ultima_falha": "2026-11-17T13:21:43"
  },
