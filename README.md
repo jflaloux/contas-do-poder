@@ -1480,6 +1480,8 @@ do deputado não cabe. Se acrescentar uma seção ou alongar um rótulo, conferi
   `app.js` baixa o arquivo (nas outras páginas não há pedido nem aviso). Se o arquivo não carrega, o aviso some sem
   erro. Testes: `correcoes`, `cidade-com-correcao`, `senador-com-correcao` e `cidade-sem-correcao` no `rodar.mjs`; os
   três tipos de página e o código inexistente, num build à parte, no `regras.mjs`.
+  A página `/balanco` também entra (id `"balanco"` em `paginas`): link "Balanço 2023–2026" na `/correcoes` e o mesmo aviso,
+  em seção própria no fim da página.
 
 ## O que já foi conferido
 

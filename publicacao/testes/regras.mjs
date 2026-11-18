@@ -258,7 +258,8 @@ fs.writeFileSync(path.join(DADOS_T, "dados.json"), JSON.stringify({ ...D, p: [..
 fs.writeFileSync(path.join(DADOS_T, "correcoes.json"), JSON.stringify({ intro: "Correções de teste.", c: [
   { data: "2026-10-04", titulo: "Correção de cidade válida", texto: ["Texto da cidade."], paginas: ["cidade/3550308"] },
   { data: "2026-10-03", titulo: "Código de cidade que não existe", texto: ["Texto do código inexistente."], paginas: ["cidade/9999999", "cidade/abc", "governador/sp"] },
-  { data: "2026-10-02", titulo: "Caso inventado do deputado", texto: ["Texto do deputado."], paginas: ["dep-9990003"] }] }));
+  { data: "2026-10-02", titulo: "Caso inventado do deputado", texto: ["Texto do deputado."], paginas: ["dep-9990003"] },
+  { data: "2026-10-01", titulo: "Correção do balanço inventada", texto: ["Texto do balanço."], paginas: ["balanco"] }] }));
 fs.writeFileSync(path.join(DADOS_T, "enderecos.json"), JSON.stringify({ ...END, p: { ...END.p, ...slugs } }));
 const build = spawnSync(process.execPath, [path.join(RAIZ, "publicacao", "gerar.mjs")], { env: { ...process.env, GERAR_SAIDA: SAIDA_T, GERAR_DADOS: DADOS_T }, encoding: "utf8", cwd: RAIZ });
 confere("o build à parte com os dados inventados termina sem erro", build.status === 0 && fs.existsSync(path.join(SAIDA_T, "zzcaso-unico-sem-mes.html")), `${build.status} ${(build.stderr || build.stdout || "").slice(-300)}`);
@@ -339,18 +340,19 @@ try {
     confere("/correcoes (HTML pronto): a correção da cidade 3550308 leva à página da cidade, com o nome", /<a href="\/cidade\/sao-paulo-sp">Câmara Municipal de São Paulo \(SP\)<\/a>/.test(htmlCor), htmlCor.slice(htmlCor.indexOf("Correção de cidade"), htmlCor.indexOf("Correção de cidade") + 400));
     const blocoInex = (/Código de cidade que não existe[\s\S]*?<\/li>/.exec(htmlCor) || [""])[0];
     confere("código de cidade que não existe (9999999) e malformado (abc): sem link, sem erro; o governador e o político da mesma lista têm link", !/cidade\/9999999|cidade\/abc/.test(blocoInex) && /href="\/governador\/sp">Governo de São Paulo</.test(blocoInex) && /href="\/zzcaso-unico-sem-mes">Zzcaso Unico Sem Mes</.test(htmlCor), blocoInex.slice(0, 400));
-    confere("a <meta name=\"correcoes-paginas\"> lista as páginas com correção (o app só baixa o correcoes.json nelas)", /<meta name="correcoes-paginas" content="cidade\/3550308 cidade\/9999999 cidade\/abc governador\/sp dep-9990003">/.test(idxT), (/<meta name="correcoes-paginas"[^>]*>/.exec(idxT) || [])[0]);
+    confere("a <meta name=\"correcoes-paginas\"> lista as páginas com correção (o app só baixa o correcoes.json nelas)", /<meta name="correcoes-paginas" content="cidade\/3550308 cidade\/9999999 cidade\/abc governador\/sp dep-9990003 balanco">/.test(idxT), (/<meta name="correcoes-paginas"[^>]*>/.exec(idxT) || [])[0]);
     let pg = await abrir("/correcoes", "ol.correcoes li");
     const t = await pg.avaliar(`[...document.querySelectorAll("ol.correcoes li")].map((li) => ({ titulo: li.querySelector("h2").textContent, links: [...li.querySelectorAll(".correcao__paginas a")].map((a) => a.getAttribute("href") + "|" + a.textContent) }))`);
     confere("/correcoes (o app): o mesmo — a cidade tem link com o nome; o código inexistente e o malformado não têm; sem exceção", JSON.stringify(t.find((x) => /cidade válida/.test(x.titulo)).links) === JSON.stringify(["/cidade/sao-paulo-sp|Câmara Municipal de São Paulo (SP)"]) && t.find((x) => /não existe/.test(x.titulo)).links.length === 1 && /^\/governador\/sp\|/.test(t.find((x) => /não existe/.test(x.titulo)).links[0]), JSON.stringify(t));
     await pg.fechar();
-    for (const [caminho, titulo, rotulo] of [["/cidade/sao-paulo-sp", "Correção de cidade válida", "cidade (código IBGE)"], ["/governador/sp", "Código de cidade que não existe", "governador (uf)"], [`/${slugs["dep-9990003"]}`, "Caso inventado do deputado", "político (id)"]]) {
+    for (const [caminho, titulo, rotulo] of [["/cidade/sao-paulo-sp", "Correção de cidade válida", "cidade (código IBGE)"], ["/governador/sp", "Código de cidade que não existe", "governador (uf)"], [`/${slugs["dep-9990003"]}`, "Caso inventado do deputado", "político (id)"], ["/balanco", "Correção do balanço inventada", "balanço (id balanco)"]]) {
       pg = await abrir(caminho, "#erro");
       await espera(800);
       const av = await pg.avaliar(`(() => { const c = document.querySelector("#correcoes-desta-pagina"); return c ? { visivel: !c.hidden, texto: c.textContent.replace(/\\s+/g, " ") } : null; })()`);
       confere(`página de ${rotulo}: o aviso "esta página já foi corrigida" aparece, com a data e o título`, !!av && av.visivel && /Esta página já foi corrigida\./.test(av.texto) && av.texto.includes(titulo) && /\d{2}\/\d{2}\/2026/.test(av.texto), JSON.stringify(av));
       await pg.fechar();
     }
+    confere("/correcoes (HTML pronto e app): a correção do balanço leva a /balanco", /<a href="\/balanco">Balanço 2023–2026<\/a>/.test(htmlCor) && JSON.stringify(t.find((x) => /balanço inventada/.test(x.titulo)).links) === JSON.stringify(["/balanco|Balanço 2023–2026"]), JSON.stringify(t));
     pg = await abrir("/cidade/fortaleza-ce", "#erro");
     await espera(500);
     confere("página sem correção (Fortaleza): sem aviso", await pg.avaliar(`!document.querySelector("#correcoes-desta-pagina")`));

@@ -4540,12 +4540,13 @@
     }
     return correcoes;
   }
-  // cada página corrigida: o id de um político ("dep-204558") ou um endereço ("governador/al", "cidade/3550308": o código IBGE da cidade)
+  // cada página corrigida: o id de um político ("dep-204558"), um endereço ("governador/al", "cidade/3550308": o código IBGE da cidade) ou "balanco"
   function linkCorrigido(ref) {
     const g = /^governador\/([a-z]{2})$/.exec(ref);
     if (g) return GOV.porUF[g[1].toUpperCase()] ? h("a", { href: urlGov(g[1]) }, `Governo ${deUF(g[1].toUpperCase())}`) : null;
     const cid = /^cidade\/(\d+)$/.exec(ref); // a lista das cidades só é baixada quando a /correcoes tem uma (ver o carregamento); código que não existe: sem link
     if (cid) { const c = (CID.m || []).find((x) => String(x.cod) === cid[1]); return c ? h("a", { href: urlCidade(c) }, `Câmara Municipal ${deCidade(c)} (${c.uf})`) : null; }
+    if (ref === "balanco") return h("a", { href: "/balanco" }, "Balanço 2023–2026");
     const p = S.porId.get(ref);
     return p ? h("a", { href: urlDe(ref) }, p.n) : null;
   }
@@ -5477,7 +5478,7 @@
       navSecoes(["entenda", "fontes"]);
       carregarBalanco().then((B) => {
         if (!espera.isConnected) return; // já foi para outra página
-        trocar(espera, secBalanco(B));
+        trocar(espera, secBalanco(B), h("section", { class: "bloco", id: "erro" }, avisoCorrecoes("balanco"))); // o aviso "esta página já foi corrigida" (correcoes.json, ref "balanco")
         navSecoes(["balanco", "entenda", "fontes"]);
         rolarPendente();
       }, () => falhou(espera, "Não foi possível carregar o balanço. Os dados e o código estão em github.com/jflaloux/contas-do-poder."));

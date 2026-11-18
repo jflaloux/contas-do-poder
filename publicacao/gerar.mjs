@@ -580,6 +580,7 @@ if (COR) {
     if (g) return `<a href="/${ref}">${esc(`Governo ${deUF(g[1].toUpperCase())}`)}</a>`;
     const cid = /^cidade\/(\d+)$/.exec(ref); // a página da cidade, pelo código IBGE; código que não existe: sem link (e sem derrubar o build)
     if (cid) { const c = CIDADE_POR_COD.get(cid[1]); return c ? `<a href="/${esc(c.caminho)}">${esc(`Câmara Municipal ${deCidade(c.cod, c.n)} (${c.uf})`)}</a>` : null; }
+    if (ref === "balanco") return ler("balanco.json", null) ? '<a href="/balanco">Balanço 2023–2026</a>' : null;
     const p = porId.get(ref);
     return p && END.p[ref] ? `<a href="/${esc(END.p[ref])}">${esc(p.n)}</a>` : null;
   };
