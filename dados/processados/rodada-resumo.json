@@ -1,9 +1,10 @@
 {
- "gerado_em": "2026-11-17T14:05:24-03:00",
+ "gerado_em": "2026-11-18T16:42:20-03:00",
  "semana": "2026-11-17",
  "anterior": "2026-11-10",
  "lugares": [
-  "brasil"
+  "brasil",
+  "exterior"
  ],
  "quebrou": [
   {
@@ -53,9 +54,9 @@
  "quebrou_e_voltou": [],
  "totais": {
   "falhando": 5,
-  "atrasada (fonte)": 5,
+  "atrasada (fonte)": 4,
   "congelada": 3,
-  "ok": 95
+  "ok": 96
  },
  "historico": [
   {
@@ -178,9 +179,10 @@
   },
   {
    "semana": "2026-11-17",
-   "atualizado_em": "2026-11-17T14:05:24-03:00",
+   "atualizado_em": "2026-11-18T16:42:20-03:00",
    "lugares": [
-    "brasil"
+    "brasil",
+    "exterior"
    ],
    "fontes": 108,
    "problemas": {

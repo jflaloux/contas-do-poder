@@ -583,6 +583,10 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2500403,Alagoa Nova,prefeitura,202609,ALINE PAULO RICARDO DA SILVA,SECRETARIO(A) DE FINANÇAS/COM,secretario,8000.00,,,,,Prefeitura Municipal de Alagoa Nova
 2500403,Alagoa Nova,prefeitura,202609,JEFFERSON BARBOSA LIRA,SECRETARIO DE CULTURA TUR. E JUVENTUDE,secretario,8000.00,,,,,Prefeitura Municipal de Alagoa Nova
 2500403,Alagoa Nova,prefeitura,202609,WALFREDO LEAL COSTA JUNIOR,VICE-PREFEITO /ELETIVO,vice,12000.00,,,,,Prefeitura Municipal de Alagoa Nova
+2500403,Alagoa Nova,prefeitura,202610,FRANCINILDO PIMENTEL DA SILVA,PREFEITO /ELETIVO,prefeito,24000.00,,,,,Prefeitura Municipal de Alagoa Nova
+2500403,Alagoa Nova,prefeitura,202610,ALINE PAULO RICARDO DA SILVA,SECRETARIO(A) DE FINANÇAS/COM,secretario,8000.00,,,,,Prefeitura Municipal de Alagoa Nova
+2500403,Alagoa Nova,prefeitura,202610,JEFFERSON BARBOSA LIRA,SECRETARIO DE CULTURA TUR. E JUVENTUDE,secretario,8000.00,,,,,Prefeitura Municipal de Alagoa Nova
+2500403,Alagoa Nova,prefeitura,202610,WALFREDO LEAL COSTA JUNIOR,VICE-PREFEITO /ELETIVO,vice,12000.00,,,,,Prefeitura Municipal de Alagoa Nova
 2500502,Alagoinha,camara,202601,ADELSON BATISTA DE MELO,VEREADOR PRESIDENTE,vereador,9904.70,,,,,
 2500502,Alagoinha,camara,202601,ASSIS SALVIANO BERNARDO,VEREADORES,vereador,7819.50,,,,,
 2500502,Alagoinha,camara,202601,DAVI OLIVEIRA E SILVA,VEREADORES,vereador,7819.50,,,,,
@@ -961,6 +965,14 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2500536,Alcantil,prefeitura,202609,PAULO BARBOSA SILVA,SECRETÁRIO MUNICIPAL DE EDUCAÇÃO,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
 2500536,Alcantil,prefeitura,202609,VANESSA MENDES DA SILVA,SECRETARIO DE ASSISTENCIA SOCIAL CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
 2500536,Alcantil,prefeitura,202609,ROMONOVAL ALVES DA COSTA,VICE-PREFEITO,vice,8500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,CICERO JOSE FERNANDES DO CARMO,PREFEITO MUNICIPAL,prefeito,17000.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,DANIELLA BEZERRA DA SILVA,SECRETARIO DE SAUDE CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,JONAS AURELIANO DO CARMO FIGUEIRÔA,SECRETARIO DE ADMINISTRACAO CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,JOSÉ PAULO NORMANDO DA SILVA,SECRETARIO DE FINANCAS CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,JUNIOR ANDRADE DOS SANTOS,SECRETARIO DE INFRA ESTRUTURA CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,PAULO BARBOSA SILVA,SECRETÁRIO MUNICIPAL DE EDUCAÇÃO,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,VANESSA MENDES DA SILVA,SECRETARIO DE ASSISTENCIA SOCIAL CCS1,secretario,4500.00,,,,,Prefeitura Municipal de Alcantil
+2500536,Alcantil,prefeitura,202610,ROMONOVAL ALVES DA COSTA,VICE-PREFEITO,vice,8500.00,,,,,Prefeitura Municipal de Alcantil
 2500577,Algodão de Jandaíra,camara,202601,ADAO BATISTA DA SILVA,VEREADOR(A),vereador,8040.00,,,,,
 2500577,Algodão de Jandaíra,camara,202601,IRAILDO SANTOS DE OLIVEIRA,VEREADOR(A),vereador,6700.00,,,,,
 2500577,Algodão de Jandaíra,camara,202601,JORGE ERIVALDO DE OLIIVEIRA COSTA JUNIOR,VEREADOR(A),vereador,6700.00,,,,,
@@ -1069,6 +1081,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2500577,Algodão de Jandaíra,prefeitura,202608,JOSE CICERO MOUZINHO DA SILVA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Algodão de Jandaíra
 2500577,Algodão de Jandaíra,prefeitura,202609,HUMBERTO DOS SANTOS,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Algodão de Jandaíra
 2500577,Algodão de Jandaíra,prefeitura,202609,JOSE CICERO MOUZINHO DA SILVA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Algodão de Jandaíra
+2500577,Algodão de Jandaíra,prefeitura,202610,HUMBERTO DOS SANTOS,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Algodão de Jandaíra
+2500577,Algodão de Jandaíra,prefeitura,202610,JOSE CICERO MOUZINHO DA SILVA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Algodão de Jandaíra
 2500601,Alhandra,camara,202601,DANIEL MIGUEL DA SILVA,VEREADORES,vereador,10200.00,,,,,
 2500601,Alhandra,camara,202601,EDILEUDO DA SILVA SALVINO,VEREADORES,vereador,10200.00,,,,,
 2500601,Alhandra,camara,202601,EDILSON PEREIRA DA SILVA,VEREADORES,vereador,10200.00,,,,,
@@ -2466,6 +2480,18 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2501104,Areia,camara,202609,OZIEL EVARISTO DA SILVA,VEREADORA,vereador,9300.00,,,,,
 2501104,Areia,camara,202609,SEVERINO PEREIRA FRANQLIM DA SILVA,VEREADORA,vereador,9300.00,,,,,
 2501104,Areia,camara,202609,VANILDA HONORIO DA SILVA,VEREADOR PRESIDENTE,vereador,13950.00,,,,,
+2501104,Areia,camara,202610,CLAUDIO GOMES DE LIMA,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,EDGLEY DE BRITO SANTOS,VEREADOR PRESIDENTE,vereador,10850.00,,,,,
+2501104,Areia,camara,202610,JOAO PAULO DE SOUZA MACEDO,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,JOSIVALDO GONCALVES DA SILVA,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,LUANA RAYCE DE LIMA MOREIRA,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,MARCELO DOS SANTOS MELO,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,MARIA DA PENHA LUCIANO SOARES,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,NELMA CARNEIRO CAVALCANTE,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,OZIEL EVARISTO DA SILVA,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,RAFAEL THOME DE SOUZA,VEREADORA,vereador,1240.00,,,,,
+2501104,Areia,camara,202610,SEVERINO PEREIRA FRANQLIM DA SILVA,VEREADORA,vereador,9300.00,,,,,
+2501104,Areia,camara,202610,VANILDA HONORIO DA SILVA,VEREADOR PRESIDENTE,vereador,9300.00,,,,,
 2501104,Areia,prefeitura,202601,ALCIDES PEREIRA DE MELO FILHO,SECRETARIO DE FINANCAS,secretario,7000.00,,,,,Prefeitura Municipal de Areia
 2501104,Areia,prefeitura,202601,ELYSSON DE SOUZA CRUZ,SECRETARIO DE MEIO AMBIENTE,secretario,14000.00,,,,,Prefeitura Municipal de Areia
 2501104,Areia,prefeitura,202601,EVERSON DANILO DE VASCONCELOS SANTOS,SECRETARIO DE SAUDE,secretario,7000.00,,,,,Fundo Municipal de Saúde de Areia
@@ -2557,6 +2583,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2501104,Areia,prefeitura,202609,RINALDO BANDEIRA DA SILVA COSTA,SECRETARIO DE CULTURA,secretario,7000.00,,,,,Prefeitura Municipal de Areia
 2501104,Areia,prefeitura,202609,VALMIRA SANTOS PERAZZO,SECRETARIO DE ASSISTENCIA SOCIAL,secretario,7000.00,,,,,Prefeitura Municipal de Areia
 2501104,Areia,prefeitura,202609,LUIZ FRANCISCO DOS SANTOS NETO,VICEPREFEITO,vice,10000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,VANILDA HONORIO DA SILVA,PREFEITO INTERINO,prefeito,7096.77,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,ALCIDES PEREIRA DE MELO FILHO,SECRETARIO DE FINANCAS,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,ELYSSON DE SOUZA CRUZ,SECRETARIO DE MEIO AMBIENTE,secretario,6096.77,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,EVERSON DANILO DE VASCONCELOS SANTOS,SECRETARIO DE SAUDE,secretario,7000.00,,,,,Fundo Municipal de Saúde de Areia
+2501104,Areia,prefeitura,202610,FABIANNA PERAZZO DE MELO CABRAL,SECRETARIO DE INFRAESTRUTURA,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,FRANKLIN FELIZARDO DA SILVA BARBOZA,SECRETARIO DE ESPORTES,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,NEYTON OSEAS RIBEIRO,SECRETARIO DE TRANSPORTES,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,NIELSON SANDRO VASCONCELOS DE ALBUQUERQUE,SECRETARIO DE EDUCACAO,secretario,10599.29,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,RINALDO BANDEIRA DA SILVA COSTA,SECRETARIO DE CULTURA,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,VALMIRA SANTOS PERAZZO,SECRETARIO DE ASSISTENCIA SOCIAL,secretario,7000.00,,,,,Prefeitura Municipal de Areia
+2501104,Areia,prefeitura,202610,LUIZ FRANCISCO DOS SANTOS NETO,VICEPREFEITO,vice,6451.61,,,,,Prefeitura Municipal de Areia
 2501153,Areia de Baraúnas,camara,202601,ALIDIANO GABRIEL DE ANDRADE,VEREADOR,vereador,6000.00,,,,,
 2501153,Areia de Baraúnas,camara,202601,DAMIAO BRITO DE ARAUJO,VEREADOR,vereador,6000.00,,,,,
 2501153,Areia de Baraúnas,camara,202601,DJEAN FARIAS DE ANDRADE,VEREADOR,vereador,6000.00,,,,,
@@ -3111,6 +3148,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2501351,Assunção,camara,202609,MARCIO OLIVEIRA DE ASSIS MELO,VEREADOR,vereador,6000.00,,,,,
 2501351,Assunção,camara,202609,PAULO VITOR BRITO DA SILVA,VEREADOR,vereador,6000.00,,,,,
 2501351,Assunção,camara,202609,VALDECIO DE OLIVEIRA SANTOS,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,ANAZILDA QUEIROZ CORREIA,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
+2501351,Assunção,camara,202610,COSME INACIO MACIEL,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,DENISE GONÇALVES DOS SANTOS,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,DOGIVAL MOTA SIMOES,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,FRANCISCO LEANDRO ALVES COELHO,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,IVONALDO LEAL AMARO,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,MARCIO OLIVEIRA DE ASSIS MELO,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,PAULO VITOR BRITO DA SILVA,VEREADOR,vereador,6000.00,,,,,
+2501351,Assunção,camara,202610,VALDECIO DE OLIVEIRA SANTOS,VEREADOR,vereador,6000.00,,,,,
 2501351,Assunção,prefeitura,202601,WAGNER FELIPE DE OLIVEIRA VILAR,PREFEITO,prefeito,15000.00,,,,,Prefeitura Municipal de Assunção
 2501351,Assunção,prefeitura,202601,FRANKLIN BALDUINO GUEDES,SECRETARIO DE AGRICULTURA IRRI,secretario,5000.00,,,,,Prefeitura Municipal de Assunção
 2501351,Assunção,prefeitura,202601,GILVAN LOPES DE SALES,SECRETARIO MUNICIPAL,secretario,5000.00,,,,,Prefeitura Municipal de Assunção
@@ -6900,6 +6946,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2503407,Cacimba de Areia,camara,202609,TEOMAR GONCALVES DA SILVA,VEREADOR,vereador,4900.00,,,,,
 2503407,Cacimba de Areia,camara,202609,VALERIA NOBREGA DE FRANCA,VEREADOR,vereador,4900.00,,,,,
 2503407,Cacimba de Areia,camara,202609,VANDENILTON DA SILVA RODRIGUES,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,ANTONIO PAULINO DOS SANTOS,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,BERNARDO PAIVA DA SILVA,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,DAMIAO PEREIRA DE FARIAS,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,FERNANDO JUNIOR ALVES FERREIRA,VEREADOR PRESIDENTE,vereador,7350.00,,,,,
+2503407,Cacimba de Areia,camara,202610,MARIA IMACULADA AMARO DE OLIVEIRA VIANA,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,RAFAEL XAVIER CEZAR DA NOBREGA,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,TEOMAR GONCALVES DA SILVA,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,VALERIA NOBREGA DE FRANCA,VEREADOR,vereador,4900.00,,,,,
+2503407,Cacimba de Areia,camara,202610,VANDENILTON DA SILVA RODRIGUES,VEREADOR,vereador,4900.00,,,,,
 2503407,Cacimba de Areia,prefeitura,202601,HEITOR CARNEIRO CAMPOS,PREFEITO,prefeito,15000.00,,,,,Prefeitura Municipal de Cacimba de Areia
 2503407,Cacimba de Areia,prefeitura,202601,ANTONIO LEITE DE ARAUJO NETO,SECRETARIO DE SAUDE,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
 2503407,Cacimba de Areia,prefeitura,202601,BRENO DE LIRA CAMPOS BARDUINO,SECRETARIO DE FINANCAS,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
@@ -7018,6 +7073,19 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2503407,Cacimba de Areia,prefeitura,202609,RENALDO FERREIRA DA SILVA,SECRETARIO MUNICIPAL DE CULTURA,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
 2503407,Cacimba de Areia,prefeitura,202609,WYDGLAN DA NOBREGA ARAUJO,SECRETARIO DE ESPORTES,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
 2503407,Cacimba de Areia,prefeitura,202609,CAMILA MARIA CARNEIRO CAMPOS,VICE PREFEITO,vice,7500.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,HEITOR CARNEIRO CAMPOS,PREFEITO,prefeito,15000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,ANTONIO LEITE DE ARAUJO NETO,SECRETARIO DE SAUDE,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,BRENO DE LIRA CAMPOS BARDUINO,SECRETARIO DE FINANCAS,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,FABIOLA ALVES FERREIRA,SECRETARIO DE MEIO AMBIENTE,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,IZIDRO MARTINS DE OLIVEIRA,SECRETARIO DE AGRICULTURA E ABASTECIMENTO,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,JOAO PAULO SILVINO DE ARAUJO,SECRETARIO DE INFRA ESTRUTURA,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,JONAS HENRIQUE DE SOUZA SANTOS,SECRETARIO DE EDUCACAO E CULTURA,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,JOSE KLEMER CRISPIM DE SOUZA,SECRETARIO DE ADMINISTRACAO,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,JOSE VANIO DE SOUZA ALMEIDA,SECRETARIO DE TRANSPORTES,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,PALLOMA FERREIRA DOS SANTOS SOUSA,SECRETARIO DE ASSISTENCIA SOCIAL,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,RENALDO FERREIRA DA SILVA,SECRETARIO MUNICIPAL DE CULTURA,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,WYDGLAN DA NOBREGA ARAUJO,SECRETARIO DE ESPORTES,secretario,4000.00,,,,,Prefeitura Municipal de Cacimba de Areia
+2503407,Cacimba de Areia,prefeitura,202610,CAMILA MARIA CARNEIRO CAMPOS,VICE PREFEITO,vice,7500.00,,,,,Prefeitura Municipal de Cacimba de Areia
 2503506,Cacimba de Dentro,camara,202601,ALEXANDRE MARCIO RAMOS ROCHA FILHO,VEREADOR,vereador,9180.00,,,,,
 2503506,Cacimba de Dentro,camara,202601,ANTONIO FRANCISCO DA SILVA NETO,VEREADOR,vereador,9180.00,,,,,
 2503506,Cacimba de Dentro,camara,202601,ARNOBIO CARVALHO DA SILVA JUNIOR,PRESIDENTE DA CAMARA,vereador,12250.00,,,,,
@@ -8128,6 +8196,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2503803,Caldas Brandão,prefeitura,202609,SEVERINA DOS RAMOS BARBOSA RODRIGUES,SECRETARIO DE EDUCACAO,secretario,6025.81,,,,,Prefeitura Municipal de Caldas Brandão
 2503803,Caldas Brandão,prefeitura,202609,SEVERINO JUNIOR MARTINS DA SILVA,SECRETARIO DE ESPORTES,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
 2503803,Caldas Brandão,prefeitura,202609,SAULO ROLIM SOARES FILHO,VICE PREFEITO,vice,8000.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,AMANDA LARISSA SOARES ROLIM,"SECRETARIO DE CULTURA, TUR. INOV. E DES.",secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,AMILTON HENRIQUE DE ALCANTARA,SECRETARIO DE ADMINISTRACAO,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,ANA MARIA STHEFFANIE FERREIRA DE PAIVA,SECRETARIO DE AGRICULTURA/MEIO AMBIENTE,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,EDILSON CARNEIRO DE AGUIAR,SECRETARIO DE FINANCAS,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,HILQUIAS SANTOS DA HORA,SECRETARIO DE INFRA ESTRUTURA,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,SABRINA DE MOURA ROLIM,SECRETARIO DE SAUDE,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,SEVERINA DOS RAMOS BARBOSA RODRIGUES,SECRETARIO DE EDUCACAO,secretario,6025.81,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,SEVERINO JUNIOR MARTINS DA SILVA,SECRETARIO DE ESPORTES,secretario,4280.00,,,,,Prefeitura Municipal de Caldas Brandão
+2503803,Caldas Brandão,prefeitura,202610,SAULO ROLIM SOARES FILHO,VICE PREFEITO,vice,8000.00,,,,,Prefeitura Municipal de Caldas Brandão
 2503902,Camalaú,camara,202601,ALUISIO LUCAS JUNIOR,VEREADOR(a) 2.SECRETARIO,vereador,6900.00,,,,,
 2503902,Camalaú,camara,202601,ANTONIO BEZERRA DA SILVA,VEREADOR(a),vereador,6900.00,,,,,
 2503902,Camalaú,camara,202601,AUDENICE CHAVES SOUSA,VEREADOR(a) 1.SECRETARIO,vereador,6900.00,,,,,
@@ -8903,6 +8980,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2504074,Caraúbas,camara,202609,MARIA ADRIANA PEREIRA DO NASCIMENTO,VEREADOR,vereador,6000.00,,,,,
 2504074,Caraúbas,camara,202609,MAURICIO JOSE DA COSTA,VEREADOR,vereador,6000.00,,,,,
 2504074,Caraúbas,camara,202609,PEDRO DA SILVA NEVES,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
+2504074,Caraúbas,camara,202610,CLEONEIDE AMARA DE ASSIS FERNANDES,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,FRANCISCO VANDERLAN SANTOS DE MELO,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,JANICLEIA SILVA DE ALMEIDA BEZERRA,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,JOSE AGENOR DE LIMA SOUZA,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,JOSE FRANCONERO SILVA DE SOUSA,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,MANOEL CLEMENTE DO NASCIMENTO,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,MARIA ADRIANA PEREIRA DO NASCIMENTO,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,MAURICIO JOSE DA COSTA,VEREADOR,vereador,6000.00,,,,,
+2504074,Caraúbas,camara,202610,PEDRO DA SILVA NEVES,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
 2504074,Caraúbas,prefeitura,202601,NERIVAN ALVARES DE LIMA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Caraúbas
 2504074,Caraúbas,prefeitura,202601,TOMAZ ARQUINO ALVES BEZERRA,VICE PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Caraúbas
 2504074,Caraúbas,prefeitura,202602,NERIVAN ALVARES DE LIMA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Caraúbas
@@ -8921,6 +9007,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2504074,Caraúbas,prefeitura,202608,TOMAZ ARQUINO ALVES BEZERRA,VICE PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Caraúbas
 2504074,Caraúbas,prefeitura,202609,NERIVAN ALVARES DE LIMA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Caraúbas
 2504074,Caraúbas,prefeitura,202609,TOMAZ ARQUINO ALVES BEZERRA,VICE PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Caraúbas
+2504074,Caraúbas,prefeitura,202610,NERIVAN ALVARES DE LIMA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Caraúbas
+2504074,Caraúbas,prefeitura,202610,TOMAZ ARQUINO ALVES BEZERRA,VICE PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Caraúbas
 2504108,Carrapateira,camara,202601,FRANCISCO DE ASSIS FERREIRA DOS RAMOS,VEREADOR,vereador,6600.00,,,,,
 2504108,Carrapateira,camara,202601,GHEMESSON BATISTA BEZERRA,VEREADOR,vereador,6600.00,,,,,
 2504108,Carrapateira,camara,202601,JOAO BATISTA,VEREADOR,vereador,6600.00,,,,,
@@ -10967,6 +11055,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2504850,Coxixola,prefeitura,202609,LUCAS NEVES HONORATO GOMES,SECRETARIO DE ASSISTENCIA SOCIAL,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
 2504850,Coxixola,prefeitura,202609,NELSON HONORATO DA SILVA,SECRETARIO DE ADMINISTRAÇAO,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
 2504850,Coxixola,prefeitura,202609,PALOMA KELLE NEVES DE FARIAS,VICE PREFEITO,vice,11500.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,NELSON JOSE NEVES HONORATO,PREFEITO,prefeito,23000.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,DAYANNA AZEVEDO APOLINARIO,SECRETARIA DE FINANÇAS E ADMINISTRAÇAO TRIBUTARIA,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,ENEDITE PAULA BEZERRA DE BRITO,"SECRETARIA DE TURISMO, CULTURA E DES. ECONOMICO",secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,GENILSON BEZERRA DE BRITO,SECRETARIA DE MEIO AMBIENTE,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,GENILSON MANOEL DOS SANTOS,SECRETARIO DE ESPORTES,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,GISCAR NEVES BRITO DE OLIVEIRA,SECRETARIO DE INFRA ESTRUTURA E SERVIÇOS URBANOS,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,JERRI ADRIANO CORREIA DE BRITO,"SECRETARIA DE AGROPECUARIA, PESCA, MEIO AMBIENTE",secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,JORGE HONORIO DE SOUSA FILHO,SECRETARIO DE TRANSPORTES,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,LUCAS NEVES HONORATO GOMES,SECRETARIO DE ASSISTENCIA SOCIAL,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,NELSON HONORATO DA SILVA,SECRETARIO DE ADMINISTRAÇAO,secretario,5700.00,,,,,Prefeitura Municipal de Coxixola
+2504850,Coxixola,prefeitura,202610,PALOMA KELLE NEVES DE FARIAS,VICE PREFEITO,vice,11500.00,,,,,Prefeitura Municipal de Coxixola
 2504900,Cruz do Espírito Santo,camara,202601,AELTON VICTOR DE LIMA,VEREADOR,vereador,7500.00,,,,,
 2504900,Cruz do Espírito Santo,camara,202601,BARTOLOMEU CRUZ DE MEIRELES FILHO,VEREADOR,vereador,7500.00,,,,,
 2504900,Cruz do Espírito Santo,camara,202601,EDILSON CEZAR DE OLIVEIRA,VEREADOR,vereador,7500.00,,,,,
@@ -13479,6 +13578,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2506004,Esperança,prefeitura,202608,EDMILSON LOPES DE MORAIS,VICE-PREFEITO,vice,13589.04,,,,,Prefeitura Municipal de Esperança
 2506004,Esperança,prefeitura,202609,THIAGO DE ASSIS MORAES,PREFEITO,prefeito,27178.07,,,,,Prefeitura Municipal de Esperança
 2506004,Esperança,prefeitura,202609,EDMILSON LOPES DE MORAIS,VICE-PREFEITO,vice,13589.04,,,,,Prefeitura Municipal de Esperança
+2506004,Esperança,prefeitura,202610,THIAGO DE ASSIS MORAES,PREFEITO,prefeito,27178.07,,,,,Prefeitura Municipal de Esperança
+2506004,Esperança,prefeitura,202610,EDMILSON LOPES DE MORAIS,VICE-PREFEITO,vice,13589.04,,,,,Prefeitura Municipal de Esperança
 2506103,Fagundes,camara,202601,ANA PAULA EMILIANO MARTINS,VEREADOR,vereador,5500.00,,,,,
 2506103,Fagundes,camara,202601,ARNALDO FRANCISCO DE MEDEIROS,VEREADOR,vereador,5500.00,,,,,
 2506103,Fagundes,camara,202601,EDUARDA DE FATIMA DANTAS VIDAL,VEREADOR,vereador,5500.00,,,,,
@@ -13848,6 +13949,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2506251,Gado Bravo,camara,202609,KAMILLO EVERTON DOS SANTOS NOGUEIRA,VEREADOR,vereador,6000.00,,,,,
 2506251,Gado Bravo,camara,202609,LUAN YTALO BARBOSA ARAUJO,VEREADOR,vereador,6000.00,,,,,
 2506251,Gado Bravo,camara,202609,VANESSA NASCIMENTO DA SILVA,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,ALMERY ALVES DE FARIAS,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,ANGELA MARICEA DA SILVA,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
+2506251,Gado Bravo,camara,202610,GIAN MATHEUS SILVA AGUIAR,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,HELIO RORIGUES DE MORAES,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,JOSE EDNALDO BARBOSA,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,JOSE ROMULO AURELIANO DA SILVA,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,KAMILLO EVERTON DOS SANTOS NOGUEIRA,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,LUAN YTALO BARBOSA ARAUJO,VEREADOR,vereador,6000.00,,,,,
+2506251,Gado Bravo,camara,202610,VANESSA NASCIMENTO DA SILVA,VEREADOR,vereador,6000.00,,,,,
 2506251,Gado Bravo,prefeitura,202601,MARCELO PAULINO DA SILVA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Gado Bravo
 2506251,Gado Bravo,prefeitura,202601,WALESKA KETULY GOMES SOARES,SECRETÁRIO DE ADMINISTRAÇÃO,secretario,6000.00,,,,,Prefeitura Municipal de Gado Bravo
 2506251,Gado Bravo,prefeitura,202601,JOSE RICARDO CAMPOS FILHO,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Gado Bravo
@@ -13883,6 +13993,10 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2506251,Gado Bravo,prefeitura,202609,FERNANDO BARBOSA DE MORAES,"SECRETARIO DE CULTURA, TURISMO E JUVENTUDE",secretario,6000.00,,,,,Prefeitura Municipal de Gado Bravo
 2506251,Gado Bravo,prefeitura,202609,WALESKA KETULY GOMES SOARES,SECRETÁRIO DE ADMINISTRAÇÃO,secretario,6000.00,,,,,Prefeitura Municipal de Gado Bravo
 2506251,Gado Bravo,prefeitura,202609,JOSE RICARDO CAMPOS FILHO,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Gado Bravo
+2506251,Gado Bravo,prefeitura,202610,MARCELO PAULINO DA SILVA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Gado Bravo
+2506251,Gado Bravo,prefeitura,202610,FERNANDO BARBOSA DE MORAES,"SECRETARIO DE CULTURA, TURISMO E JUVENTUDE",secretario,6000.00,,,,,Prefeitura Municipal de Gado Bravo
+2506251,Gado Bravo,prefeitura,202610,WALESKA KETULY GOMES SOARES,SECRETÁRIO DE ADMINISTRAÇÃO,secretario,6000.00,,,,,Prefeitura Municipal de Gado Bravo
+2506251,Gado Bravo,prefeitura,202610,JOSE RICARDO CAMPOS FILHO,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Gado Bravo
 2506301,Guarabira,camara,202601,ALCIDES CAMILO DE MOURA SOBRINHO,VEREADOR(A),vereador,13000.00,,,,,
 2506301,Guarabira,camara,202601,ARMANDO SANTOS DE MELO,VEREADOR(A),vereador,13000.00,,,,,
 2506301,Guarabira,camara,202601,GERSON CANDIDO DE FARIAS,VEREADOR(A),vereador,13000.00,,,,,
@@ -15409,6 +15523,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2507101,Itapororoca,camara,202609,RODRIGO SANTOS DE CARVALHO,VEREADOR,vereador,9500.00,,,,,
 2507101,Itapororoca,camara,202609,SKALLYTEOHARA KADYDJA SOUZA RODRIGUES,VEREADOR,vereador,9500.00,,,,,
 2507101,Itapororoca,camara,202609,WALISON DIONISIO DA SILVA,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,ANTONIO JAILSON SILVA DE OLIVEIRA,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,BRUNO LOPES SOUZA DE BRITO,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,ERINALDO SILVA DO NASCIMENTO,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,HUGO GOMES DE OLIVEIRA,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,LUIZ GONCALVES DA COSTA,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,MARIA DO SOCORRO SILVA DO NASCIMENTO,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,NEUZA FERNANDES MADRUGA DE FRANCA,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,RISEUDA VIEIRA NUNES,VEREADOR PRESIDENTE,vereador,14250.00,,,,,
+2507101,Itapororoca,camara,202610,RODRIGO SANTOS DE CARVALHO,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,SKALLYTEOHARA KADYDJA SOUZA RODRIGUES,VEREADOR,vereador,9500.00,,,,,
+2507101,Itapororoca,camara,202610,WALISON DIONISIO DA SILVA,VEREADOR,vereador,9500.00,,,,,
 2507101,Itapororoca,prefeitura,202601,JOAO BATISTA SANTOS DA SILVA,PREFEITO,prefeito,27000.00,,,,,Prefeitura Municipal de Itapororoca
 2507101,Itapororoca,prefeitura,202601,JACQUELINE CORREIA CAVALCANTI DE MORAIS PESSOA,SECRETARIO MUNICIPAL DE ASSISTENCIA SOCIAL,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
 2507101,Itapororoca,prefeitura,202601,JESSICA DE LIMA SILVA,SECRETARIO MUNICIPAL DE EDUCACAO,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
@@ -15499,6 +15624,16 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2507101,Itapororoca,prefeitura,202609,THIAGO MADRUGA DE FRANCA,SECRETÁRIO MUNICIPAL DE OBRAS,secretario,10000.00,,,,,Prefeitura Municipal de Itapororoca
 2507101,Itapororoca,prefeitura,202609,VALDECI JOAO DA SILVA,SECRETARIO MUNICIPAL DE FINANCAS,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
 2507101,Itapororoca,prefeitura,202609,CELSO DE MORAIS ANDRADE NETO,VICE-PREFEITO,vice,13500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,JOAO BATISTA SANTOS DA SILVA,PREFEITO,prefeito,27000.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,JACQUELINE CORREIA CAVALCANTI DE MORAIS PESSOA,SECRETARIO MUNICIPAL DE ASSISTENCIA SOCIAL,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,JESSICA DE LIMA SILVA,SECRETARIO MUNICIPAL DE EDUCACAO,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,JOSE BATISTA SERAFIM DA SILVA FILHO,SECRETARIO MUNICIPAL DE AGRICULTURA,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,LUCIANA FERNANDES MADRUGA SOUTO,SECRETARIO MUNICIPAL DE ADMINISTRACAO,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,RUY SOUSA DA SILVEIRA,SECRETARIO MUNICIPAL DA RECEITA,secretario,10000.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,SERGIO JOSE DA SILVA,SECRETARIO MUNICIPAL DE TRANSPORTES,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,THIAGO MADRUGA DE FRANCA,SECRETÁRIO MUNICIPAL DE OBRAS,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,VALDECI JOAO DA SILVA,SECRETARIO MUNICIPAL DE FINANCAS,secretario,7500.00,,,,,Prefeitura Municipal de Itapororoca
+2507101,Itapororoca,prefeitura,202610,CELSO DE MORAIS ANDRADE NETO,VICE-PREFEITO,vice,13500.00,,,,,Prefeitura Municipal de Itapororoca
 2507200,Itatuba,camara,202601,ACACIO GUSTAVO LOURENÇO SIMPLICIO,VEREADOR,vereador,8000.00,,,,,
 2507200,Itatuba,camara,202601,ANTONIO MARCONE BORBA GUERRA,VEREADOR,vereador,8000.00,,,,,
 2507200,Itatuba,camara,202601,CARLOS EDUARDO MARTINS VALENTE DA SILVA,VEREADOR,vereador,8000.00,,,,,
@@ -17480,6 +17615,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2508406,Lastro,camara,202609,JOSE JUNIO DE ABRANTES,VEREADOR,vereador,6000.00,,,,,
 2508406,Lastro,camara,202609,PEDRO MARCELINO DE ALMEIDA,VEREADOR,vereador,6000.00,,,,,
 2508406,Lastro,camara,202609,WALISON MENDES SARMENTO,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,DAMIAO GOMES SOARES,VEREADOR,vereador,9000.00,,,,,
+2508406,Lastro,camara,202610,EDUARDO GOMES SARMENTO,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,FRANCISCO ANCELIO TRIGUEIRO DE LIMA,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,FRANCISCO AURELIO DE OLIVEIRA,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,HELIO LOURENCO ABRANTES,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,JARISMAR LIMA DE OLIVEIRA,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,JOSE JUNIO DE ABRANTES,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,PEDRO MARCELINO DE ALMEIDA,VEREADOR,vereador,6000.00,,,,,
+2508406,Lastro,camara,202610,WALISON MENDES SARMENTO,VEREADOR,vereador,6000.00,,,,,
 2508406,Lastro,prefeitura,202601,RONALDO GONCALVES SOARES SOBRINHO,PREFEITO,prefeito,20000.00,,,,,Prefeitura Municipal de Lastro
 2508406,Lastro,prefeitura,202601,ANDREA GONCALVES DINIZ,SECRETARIO MUNICIPAL DE ADMINISTRACAO,secretario,4200.00,,,,,Prefeitura Municipal de Lastro
 2508406,Lastro,prefeitura,202601,ANTONIO FILHO RODRIGUES DE ABRANTES,SECRETARIO DE INFRAESTRUTURA,secretario,4200.00,,,,,Prefeitura Municipal de Lastro
@@ -17737,6 +17881,12 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2508505,Livramento,prefeitura,202609,JOAO PAULO MARQUES DE SOUSA,SECRETARIO(A) DE SAUDE,secretario,6000.00,,,,,Prefeitura Municipal de Livramento
 2508505,Livramento,prefeitura,202609,NEUMANY CRISTINA SOARES DE ARAUJO,SECRETARIO(A) DE EDUCACAO,secretario,7216.08,,,,,Prefeitura Municipal de Livramento
 2508505,Livramento,prefeitura,202609,MANOEL ADEILSON FILHO,VICE PREFEITO(A),vice,10000.00,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,ERNANDES BARBOZA NOBREGA,PREFEITO(A),prefeito,20000.00,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,ENOCH ALVES SOBRINHO,SECRETARIO(A) DE SERVICOS URBANOS,secretario,6000.00,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,JANAINA MICHELLY DE ALCANTARA LIMEIRA,SECRETARIO(A) DE ACAO SOCIAL,secretario,6000.00,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,JOAO PAULO MARQUES DE SOUSA,SECRETARIO(A) DE SAUDE,secretario,6000.00,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,NEUMANY CRISTINA SOARES DE ARAUJO,SECRETARIO(A) DE EDUCACAO,secretario,7216.08,,,,,Prefeitura Municipal de Livramento
+2508505,Livramento,prefeitura,202610,MANOEL ADEILSON FILHO,VICE PREFEITO(A),vice,10000.00,,,,,Prefeitura Municipal de Livramento
 2508554,Logradouro,camara,202601,AMILTON DA COSTA FRAZÃO,VEREADOR(A),vereador,6666.67,,,,,
 2508554,Logradouro,camara,202601,ANTÔNIO ISILDO DA SILVA,VEREADOR(A),vereador,5000.00,,,,,
 2508554,Logradouro,camara,202601,GEORGE MENDES BARBOSA,VEREADOR(A),vereador,5000.00,,,,,
@@ -17894,6 +18044,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2508554,Logradouro,prefeitura,202609,LUCAS FRANCOIS CRUZ DOS SANTOS,SECRETARIO DE FINANÇAS,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
 2508554,Logradouro,prefeitura,202609,RIAN LOURENÇO DOS SANTOS,SECRETÁRIO(A) DE ESPORTE E TURISMO,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
 2508554,Logradouro,prefeitura,202609,SEVERINO BONDADE SOBRINHO,VICE PREFEITO,vice,8746.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,JOSE MARINALDO DA CRUZ,PREFEITO,prefeito,17493.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,ANIELE KARINE CRUZ DOS SANTOS,SECRETARIO (A) DE EDUCAÇÃO,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,GERSICA INGRIDY AMARANTE DA SILVA,SECRETARIA DE GOVERNO,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,GILVANY LUIZ DOS SANTOS,SECRETARIO DE AGRICULTURA,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,JOSE EDMILSON BARBOSA VIEIRA,SECRETARIO DE TRANSPORTES,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,JOÃO VITOR DAS NEVES,"SECRETARIO DE OBRAS E SERV,URB",secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,LUCAS FRANCOIS CRUZ DOS SANTOS,SECRETARIO DE FINANÇAS,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,RIAN LOURENÇO DOS SANTOS,SECRETÁRIO(A) DE ESPORTE E TURISMO,secretario,5000.00,,,,,Prefeitura Municipal de Logradouro
+2508554,Logradouro,prefeitura,202610,SEVERINO BONDADE SOBRINHO,VICE PREFEITO,vice,8746.00,,,,,Prefeitura Municipal de Logradouro
 2508604,Lucena,camara,202601,ALECSANDRO TARGINO DE BRITO,VEREADOR,vereador,9500.00,,,,,
 2508604,Lucena,camara,202601,DEBORA SILVA SANTANA,VEREADOR,vereador,9500.00,,,,,
 2508604,Lucena,camara,202601,ELTON GOMES DA SILVA,VEREADOR,vereador,9500.00,,,,,
@@ -19331,6 +19490,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2509206,Massaranduba,camara,202609,SANDREYLSON PEREIRA MEDEIROS,VEREADOR(A),vereador,8000.00,,,,,
 2509206,Massaranduba,camara,202609,SUENILDA NUNES DE LIMA RODRIGUES,VEREADOR(A),vereador,8000.00,,,,,
 2509206,Massaranduba,camara,202609,TAMIRES DIAS DOS SANTOS ROGERIO,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,ADIELSON GOMES DA FONSECA,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,ALEX SANDRO DA SILVA GUEDES,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,JEFFERSON PEREIRA DE MELO,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,LEONARDO DE SOUSA,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,REGINALDO SILVA,VEREADOR PRESIDENTE,vereador,13800.00,,,,,
+2509206,Massaranduba,camara,202610,REJANE PESSOA TAVARES,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,SANDREYLSON PEREIRA MEDEIROS,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,SUENILDA NUNES DE LIMA RODRIGUES,VEREADOR(A),vereador,8000.00,,,,,
+2509206,Massaranduba,camara,202610,TAMIRES DIAS DOS SANTOS ROGERIO,VEREADOR(A),vereador,8000.00,,,,,
 2509206,Massaranduba,prefeitura,202601,JOAO COSTA DE SOUSA,PREFEITO,prefeito,20000.00,,,,,Prefeitura Municipal de Massaranduba
 2509206,Massaranduba,prefeitura,202601,ALCIVAN DE SOUZA SALES,SECRETARIO DE OBRAS,secretario,7000.00,,,,,Prefeitura Municipal de Massaranduba
 2509206,Massaranduba,prefeitura,202601,ALEXSANDRO VASCONCELOS SILVA,SECRETARIO(A) DE ESPORTES E LAZER,secretario,7000.00,,,,,Prefeitura Municipal de Massaranduba
@@ -19572,6 +19740,10 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2509305,Mataraca,prefeitura,202609,JURANDI CALACIANO DANTAS,SECRETÁRIO DE TRANSPORTES,secretario,5500.00,,,,,Prefeitura Municipal de Mataraca
 2509305,Mataraca,prefeitura,202609,MAUTO FIRMINO DE SOUSA,SECRETARIO DE OBRAS,secretario,5500.00,,,,,Prefeitura Municipal de Mataraca
 2509305,Mataraca,prefeitura,202609,ANTONIO IZAIAS BESSA FILHO,VICE-PREFEITO,vice,11000.00,,,,,Prefeitura Municipal de Mataraca
+2509305,Mataraca,prefeitura,202610,EYMARD DE ARAUJO PEDROSA,PREFEITO,prefeito,22000.00,,,,,Prefeitura Municipal de Mataraca
+2509305,Mataraca,prefeitura,202610,JURANDI CALACIANO DANTAS,SECRETÁRIO DE TRANSPORTES,secretario,5500.00,,,,,Prefeitura Municipal de Mataraca
+2509305,Mataraca,prefeitura,202610,MAUTO FIRMINO DE SOUSA,SECRETARIO DE OBRAS,secretario,5500.00,,,,,Prefeitura Municipal de Mataraca
+2509305,Mataraca,prefeitura,202610,ANTONIO IZAIAS BESSA FILHO,VICE-PREFEITO,vice,11000.00,,,,,Prefeitura Municipal de Mataraca
 2509339,Matinhas,camara,202601,FERNANDO ANTONIO DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
 2509339,Matinhas,camara,202601,GILVANDO BARBOSA LUCENA,VEREADOR (A),vereador,6000.00,,,,,
 2509339,Matinhas,camara,202601,ITAMAR JOSE FREITAS DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
@@ -19653,6 +19825,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2509339,Matinhas,camara,202609,MARIA DE FATIMA QUEIROZ FEITOSA,VEREADOR (A),vereador,6000.00,,,,,
 2509339,Matinhas,camara,202609,SUZETE DE ASSIS SANTOS,VEREADOR (A),vereador,6000.00,,,,,
 2509339,Matinhas,camara,202609,VALDEMIR GOMES DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,FERNANDO ANTONIO DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,GILVANDO BARBOSA LUCENA,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,ITAMAR JOSE FREITAS DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,JEFFERSON CASSIO CUNHA SANTOS,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,JOSENILDO BERNARDO DA SILVA,VEREADOR (PRESIDENTE),vereador,9000.00,,,,,
+2509339,Matinhas,camara,202610,MARCOS ANTONIO PEREIRA CALIXTO,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,MARIA DE FATIMA QUEIROZ FEITOSA,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,SUZETE DE ASSIS SANTOS,VEREADOR (A),vereador,6000.00,,,,,
+2509339,Matinhas,camara,202610,VALDEMIR GOMES DA SILVA,VEREADOR (A),vereador,6000.00,,,,,
 2509339,Matinhas,prefeitura,202601,BENEDITO BRAZ DA SILVA,PREFEITO,prefeito,19900.00,,,,,Prefeitura Municipal de Matinhas
 2509339,Matinhas,prefeitura,202601,ADNEY GALDINO DA SILVA,SECRETARIO MUNICIPAL DE ADMINISTRAÇAO,secretario,6000.00,,,,,Prefeitura Municipal de Matinhas
 2509339,Matinhas,prefeitura,202601,ALEXSANDRO VIEIRA DA SILVA,SECRETARIO MUNICIPAL DE TRANSPORTES,secretario,6000.00,,,,,Prefeitura Municipal de Matinhas
@@ -20197,6 +20378,12 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2509404,Mogeiro,prefeitura,202609,KALINA LIGIA ALMEIDA DE MELO,SECRETARIA DE ACAO SOCIAL,secretario,6000.00,,,,,Prefeitura Municipal de Mogeiro
 2509404,Mogeiro,prefeitura,202609,RENATA CRISTINA SILVEIRA NEVES VASCONCELOS,SECRETARIA MUNICIPAL DE SAUDE,secretario,8000.00,,,,,Prefeitura Municipal de Mogeiro
 2509404,Mogeiro,prefeitura,202609,JOSE COSME DA SILVA NETO,VICE-PREFEITO,vice,12500.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,ANTONIO JOSE FERREIRA,PREFEITO,prefeito,25000.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,FELISBERTO FERREIRA FILHO,SECRETARIO DE FINANCAS,secretario,6000.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,JOSE AVELINO DA SILVA IRMAO,SECRETARIO DE ESPORTES E LAZER,secretario,6000.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,KALINA LIGIA ALMEIDA DE MELO,SECRETARIA DE ACAO SOCIAL,secretario,6000.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,RENATA CRISTINA SILVEIRA NEVES VASCONCELOS,SECRETARIA MUNICIPAL DE SAUDE,secretario,6000.00,,,,,Prefeitura Municipal de Mogeiro
+2509404,Mogeiro,prefeitura,202610,JOSE COSME DA SILVA NETO,VICE-PREFEITO,vice,12500.00,,,,,Prefeitura Municipal de Mogeiro
 2509503,Montadas,camara,202601,DAMIAO PAULO DA SILVA,VEREADOR,vereador,6800.00,,,,,
 2509503,Montadas,camara,202601,ELIANE COSTA DOMINGOS,VEREADOR PRESIDENTE,vereador,8000.00,,,,,
 2509503,Montadas,camara,202601,FAGNER JUNIOR DA SILVA,VEREADOR,vereador,6800.00,,,,,
@@ -20822,6 +21009,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2509909,Natuba,camara,202609,MARIA CELIA GOMES DE AGUIAR CUNHA,VEREADOR(A),vereador,6950.00,,,,,
 2509909,Natuba,camara,202609,PAULO MENDES DE LIMA,VEREADOR(A),vereador,6950.00,,,,,
 2509909,Natuba,camara,202609,SEVERINO FELICIANO DE BARROS,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,ANCELMO BELARMINO DA SILVA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,ARNALDO DE ARRUDA LIRA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,AYLTON CESAR AURELIANO DE SOUZA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,JANETE SANTOS SOUSA DA SILVA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,JOSINALVA GUERRA LINS SILVA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,LUIZ GUILHERME VIANA DA SILVA,VEREADOR(A) PRESIDENTE,vereador,8687.50,,,,,
+2509909,Natuba,camara,202610,MARIA CELIA GOMES DE AGUIAR CUNHA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,PAULO MENDES DE LIMA,VEREADOR(A),vereador,6950.00,,,,,
+2509909,Natuba,camara,202610,SEVERINO FELICIANO DE BARROS,VEREADOR(A),vereador,6950.00,,,,,
 2509909,Natuba,prefeitura,202601,JOSE LINS DA SILVA FILHO,PREFEITO (A) CONSTITUCIONAL,prefeito,18000.00,,,,,Prefeitura Municipal de Natuba
 2509909,Natuba,prefeitura,202601,ANASTO CABRAL DE LIRA,SECRETARIO DE ADMINISTRACAO,secretario,5500.00,,,,,Prefeitura Municipal de Natuba
 2509909,Natuba,prefeitura,202601,ANDREA ELINNE CAVALCANTE BATISTA,SECRETARIO DE FINANCAS,secretario,5500.00,,,,,Prefeitura Municipal de Natuba
@@ -21449,6 +21645,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2510303,Nova Palmeira,camara,202609,MARCIO BURGUE CIPRIANO DE CASTRO,VEREADOR(A),vereador,5500.00,,,,,
 2510303,Nova Palmeira,camara,202609,MARIA EDILMA ALVES FERREIRA DE MEDEIROS,VEREADOR(A),vereador,5500.00,,,,,
 2510303,Nova Palmeira,camara,202609,ORTILIO SILVAN DA SILVA,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,GIBANILSON DOS SANTOS OLIVEIRA,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,GILVAN DANTAS DE MENDONCA,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,IVANALDO DANTAS DE LIMA,VEREADOR(A) PRESIDENTE,vereador,8250.00,,,,,
+2510303,Nova Palmeira,camara,202610,IZALMARA ARAUJO DE SOUZA,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,JURANILDO JURANDIR DANTAS,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,JUSCELINO CASSIANO DA COSTA,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,MARCIO BURGUE CIPRIANO DE CASTRO,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,MARIA EDILMA ALVES FERREIRA DE MEDEIROS,VEREADOR(A),vereador,5500.00,,,,,
+2510303,Nova Palmeira,camara,202610,ORTILIO SILVAN DA SILVA,VEREADOR(A),vereador,5500.00,,,,,
 2510303,Nova Palmeira,prefeitura,202601,ANTONIO ORLANDO PEREIRA DE ARAUJO,PREFEITO,prefeito,14000.00,,,,,Prefeitura Municipal de Nova Palmeira
 2510303,Nova Palmeira,prefeitura,202601,CICERO ELIZEU LIMA,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
 2510303,Nova Palmeira,prefeitura,202601,DIEGO DENO DE AGUIAR TEIXEIRA,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
@@ -21539,6 +21744,16 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2510303,Nova Palmeira,prefeitura,202609,PIERRY ANGELO DA SILVA ARAUJO,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
 2510303,Nova Palmeira,prefeitura,202609,THIAGO JOSE DOS SANTOS,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
 2510303,Nova Palmeira,prefeitura,202609,JANAINA MEDEIROS DE LIMA,VICE-PREFEITO,vice,7000.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,ANTONIO ORLANDO PEREIRA DE ARAUJO,PREFEITO,prefeito,14000.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,CICERO ELIZEU LIMA,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,DIEGO DENO DE AGUIAR TEIXEIRA,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,FRANCEILMA MACEDO DOS SANTOS,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,JERFERSON JOYLY DOS SANTOS MEDEIROS,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,LORENA DA SILVA COSTA,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,MARIA CRISTHIANE DA COSTA SANTOS,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,PIERRY ANGELO DA SILVA ARAUJO,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,THIAGO JOSE DOS SANTOS,SECRETARIO(A)MUNICIPAL,secretario,5500.00,,,,,Prefeitura Municipal de Nova Palmeira
+2510303,Nova Palmeira,prefeitura,202610,JANAINA MEDEIROS DE LIMA,VICE-PREFEITO,vice,7000.00,,,,,Prefeitura Municipal de Nova Palmeira
 2510402,Olho d'Água,camara,202601,FERNANDO LEITE DE ALMEIDA,VEREADOR,vereador,6950.00,,,,,
 2510402,Olho d'Água,camara,202601,FRANCINILCIO LEITE MELO,VEREADOR,vereador,6950.00,,,,,
 2510402,Olho d'Água,camara,202601,FRANCISCO FURTADO DE ARAUJO,VEREADOR,vereador,6950.00,,,,,
@@ -22156,6 +22371,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2510659,Parari,prefeitura,202609,LUANA FLAVIA AIRES DE FARIAS,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
 2510659,Parari,prefeitura,202609,SANDRA AYRES MEDEIROS DE QUEIROZ,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
 2510659,Parari,prefeitura,202609,JOSE ARISTEU DE OLIVEIRA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,GENIVAL AIRES DE QUEIROZ FILHO,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,ALEXANDRINO AIRES CAVALCANTE,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,ANA MARIA AYRES NAVARRO,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,ANDRE LUIS DA SILVA ARAUJO,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,ARTUR ALVES PEQUENO NETO,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,CARLOS DRUMMON DE ANDRADE VIEIRA,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,CRISTIANO MOURA DE QUEIROZ,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,LAVOSIER ENEAS CAVALCANTE,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,LUANA FLAVIA AIRES DE FARIAS,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,SANDRA AYRES MEDEIROS DE QUEIROZ,SECRETARIO(A) MUNICIPAL,secretario,4500.00,,,,,Prefeitura Municipal de Parari
+2510659,Parari,prefeitura,202610,JOSE ARISTEU DE OLIVEIRA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Parari
 2510709,Passagem,camara,202601,CIZEANDO DA SILVA,VEREADOR,vereador,6900.00,,,,,
 2510709,Passagem,camara,202601,EUGENIO VICENTE DE OLIVEIRA,VEREADOR,vereador,6900.00,,,,,
 2510709,Passagem,camara,202601,GILVANDRO ANDRADE DINIZ BASILIO,VEREADOR,vereador,6900.00,,,,,
@@ -23250,6 +23476,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2511202,Pedras de Fogo,camara,202609,LUAN RAMOS RODRIGUES,VEREADOR (A),vereador,10300.00,,,,,
 2511202,Pedras de Fogo,camara,202609,LUCAS PEREIRA DA SILVA,VEREADOR (A),vereador,10300.00,,,,,
 2511202,Pedras de Fogo,camara,202609,LUCIENE PEREIRA DA ROCHA SILVA,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,CLAUDIANA DA SILVA,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,CLAUDIO QUEIROZ DE SOUZA,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,EVALDO ROMAO DOS SANTOS,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,GILVANDO DA SILVA PONTES,VEREADOR (A) PRESIDENTE,vereador,13000.00,,,,,
+2511202,Pedras de Fogo,camara,202610,JACKSON ANDRADE DE BULHOES,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,JOSSANIA BATISTA DE SOUZA,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,JURANDIR RODRIGUES CHAVES JUNIOR,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,LEONARDO FERREIRA BARROS,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,LUAN RAMOS RODRIGUES,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,LUCAS PEREIRA DA SILVA,VEREADOR (A),vereador,10300.00,,,,,
+2511202,Pedras de Fogo,camara,202610,LUCIENE PEREIRA DA ROCHA SILVA,VEREADOR (A),vereador,10300.00,,,,,
 2511202,Pedras de Fogo,prefeitura,202601,JOSE CARLOS FERREIRA BARROS,PREFEITO,prefeito,26000.00,,,,,Prefeitura Municipal de Pedras de Fogo
 2511202,Pedras de Fogo,prefeitura,202601,AILTON FERREIRA DA SILVA FILHO,SECRETARIO MUNICIPAL DE GOVERNO,secretario,26366.66,,,,,Prefeitura Municipal de Pedras de Fogo
 2511202,Pedras de Fogo,prefeitura,202601,MARCOS ANDERSON SILVA CAVALCANTE,SECRETARIO MUNICIPAL DE INFRAESTRUTURA,secretario,11300.00,,,,,Prefeitura Municipal de Pedras de Fogo
@@ -24391,6 +24628,17 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2511905,Pitimbu,camara,202609,JOSENILDO PEDRO DA SILVA,VEREADOR,vereador,10350.00,,,,,
 2511905,Pitimbu,camara,202609,MAXIEL PESSOA DE OLIVEIRA,VEREADOR,vereador,10350.00,,,,,
 2511905,Pitimbu,camara,202609,SANDRA MARQUES DE SOUZA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,ALEXANDRE FELISMINO DE SANTANA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,ANTONIO SOARES DA SILVA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,CARLOS ANTONIO DE FRANÇA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,CLECIO FERREIRA DOS SANTOS,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,ELCIAS DE AZEVEDO SILVA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,EMERSON DOS SANTOS SILVA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,JARDEL GUEDES BARROS DOS SANTOS,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,JOSE FERNANDO DE SOUZA,PRESIDENTE,vereador,13455.00,,,,,
+2511905,Pitimbu,camara,202610,JOSENILDO PEDRO DA SILVA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,MAXIEL PESSOA DE OLIVEIRA,VEREADOR,vereador,10350.00,,,,,
+2511905,Pitimbu,camara,202610,SANDRA MARQUES DE SOUZA,VEREADOR,vereador,10350.00,,,,,
 2511905,Pitimbu,prefeitura,202601,ADELMA CRISTOVAM DOS PASSOS,PREFEITO,prefeito,20000.00,,,,,Prefeitura Municipal de Pitimbu
 2511905,Pitimbu,prefeitura,202601,ADELSON JOSE DOS SANTOS CORDEIRO,SECRETARIO DE FINANCAS,secretario,7000.00,,,,,Prefeitura Municipal de Pitimbu
 2511905,Pitimbu,prefeitura,202601,ALEX CRISTOVAM DOS PASSOS,SECRETÁRIO DE MEIO AMBIENTE,secretario,7000.00,,,,,Prefeitura Municipal de Pitimbu
@@ -24628,6 +24876,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2512002,Pocinhos,prefeitura,202608,SOSTENES MURILO MELO DE OLIVEIRA,VICE-PREFEITO,vice,16000.00,,,,,Prefeitura Municipal de Pocinhos
 2512002,Pocinhos,prefeitura,202609,ELIANE MOURA DOS SANTOS GALDINO,PREFEITA,prefeito,25000.00,,,,,Prefeitura Municipal de Pocinhos
 2512002,Pocinhos,prefeitura,202609,SOSTENES MURILO MELO DE OLIVEIRA,VICE-PREFEITO,vice,16000.00,,,,,Prefeitura Municipal de Pocinhos
+2512002,Pocinhos,prefeitura,202610,ELIANE MOURA DOS SANTOS GALDINO,PREFEITA,prefeito,25000.00,,,,,Prefeitura Municipal de Pocinhos
+2512002,Pocinhos,prefeitura,202610,SOSTENES MURILO MELO DE OLIVEIRA,VICE-PREFEITO,vice,16000.00,,,,,Prefeitura Municipal de Pocinhos
 2512036,Poço Dantas,camara,202601,ANTONIO CANDIDO SOBRINHO,VEREADOR,vereador,6600.00,,,,,
 2512036,Poço Dantas,camara,202601,ANTONIO CORREIA DE ARAUJO SOBRINHO,VEREADOR,vereador,8580.00,,,,,
 2512036,Poço Dantas,camara,202601,DAMIANA MARIA RODRIGUES DANTAS,VEREADOR,vereador,6600.00,,,,,
@@ -26506,6 +26756,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2512754,Riachão do Bacamarte,camara,202609,RONDINNELLY QUINTINO DE VASCONCELOS,VEREADOR,vereador,4500.00,,,,,
 2512754,Riachão do Bacamarte,camara,202609,WALTER SERGIO DE LIMA,VEREADOR,vereador,4500.00,,,,,
 2512754,Riachão do Bacamarte,camara,202609,ZULANIA CABRAL VITA MATOS,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,ANSELMO DA SILVA CRISTOVAO,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,JOSE ADRIANO DA SILVA,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,JOSE AILSON CABRAL DE VASCONCELOS,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,JOSÉ KELVEN CABRAL DA SILVA,VEREADOR PRESIDENTE,vereador,5000.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,MARCO AURELIO DE LIMA,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,ROBERLAN MARTINS DA SILVA,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,RONDINNELLY QUINTINO DE VASCONCELOS,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,WALTER SERGIO DE LIMA,VEREADOR,vereador,4500.00,,,,,
+2512754,Riachão do Bacamarte,camara,202610,ZULANIA CABRAL VITA MATOS,VEREADOR,vereador,4500.00,,,,,
 2512754,Riachão do Bacamarte,prefeitura,202601,JOSE DE ARIMATEA DA SILVA,PREFEITO,prefeito,16000.00,,,,,Prefeitura Municipal de Riachão do Bacamarte
 2512754,Riachão do Bacamarte,prefeitura,202601,CESAR FERREIRA DA SILVA,SECRETARIO MUNICIPAL,secretario,4000.00,,,,,Fundo Municipal de Saúde de Riachão do Bacamarte
 2512754,Riachão do Bacamarte,prefeitura,202601,IZABELA SKALABRINA V CABRAL,SECRETARIO MUNICIPAL,secretario,4000.00,,,,,Prefeitura Municipal de Riachão do Bacamarte
@@ -27655,6 +27914,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2513158,Santa Cecília,camara,202609,JOSE DIMAS DE ANDRADE,VEREADOR,vereador,6954.00,,,,,
 2513158,Santa Cecília,camara,202609,JOSE ROBERTO VENTURA BARBOSA,VEREADOR,vereador,6954.00,,,,,
 2513158,Santa Cecília,camara,202609,MARIA FLAVIA DA SILVA,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,AILTON ANTONIO DA SILVA,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,ALMIR BARBOSA SILVA,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,ANDRE PINTO XAVIER,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,ANTONIO DIOGO PESSOA,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,DANILO PEREIRA LINS,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,FRANCISCO DE ASSIS FILHO,VEREADOR PRESIDENTE,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,JOSE DIMAS DE ANDRADE,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,JOSE ROBERTO VENTURA BARBOSA,VEREADOR,vereador,6954.00,,,,,
+2513158,Santa Cecília,camara,202610,MARIA FLAVIA DA SILVA,VEREADOR,vereador,6954.00,,,,,
 2513158,Santa Cecília,prefeitura,202601,JOSE MARCILIO FARIAS DA SILVA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santa Cecília
 2513158,Santa Cecília,prefeitura,202601,DJALMA BRITO DE LIMA,SECRETARIA DE AGRICULTURA,secretario,10000.00,,,,,Prefeitura Municipal de Santa Cecília
 2513158,Santa Cecília,prefeitura,202601,FELIPE VINICIO LIMA DA SILVA,SECRETARIO DE SAUDE,secretario,6000.00,,,,,Prefeitura Municipal de Santa Cecília
@@ -28494,6 +28762,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2513604,Santana dos Garrotes,camara,202609,JOSE WIDMARK BATISTA COSTA,VEREADOR,vereador,6000.00,,,,,
 2513604,Santana dos Garrotes,camara,202609,MARCIEL VIRGULINO DA SILVA,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
 2513604,Santana dos Garrotes,camara,202609,MARIA DO SOCORRO ALVES FEITOZA ALMEIDA,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,ANTONIO CARLOS CHAVES BEZERRA,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,FRANCIMARIO ARAUJO DINIZ,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,FRANCISCO PINTO NETO,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,JOSE LINDOMAR FERREIRA DE ARAUJO,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,JOSE NACIONILDO ROQUE LEMOS,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,JOSE PASSOS JUNIOR,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,JOSE WIDMARK BATISTA COSTA,VEREADOR,vereador,6000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,MARCIEL VIRGULINO DA SILVA,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
+2513604,Santana dos Garrotes,camara,202610,MARIA DO SOCORRO ALVES FEITOZA ALMEIDA,VEREADOR,vereador,6000.00,,,,,
 2513604,Santana dos Garrotes,prefeitura,202601,PALOMA KENNED LEITE DA SILVA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santana dos Garrotes
 2513604,Santana dos Garrotes,prefeitura,202601,CARLOS ALBERTO ALENCAR,SECRETARIO MUNICIPAL DE ADMINISTRACAO,secretario,5000.00,,,,,Prefeitura Municipal de Santana dos Garrotes
 2513604,Santana dos Garrotes,prefeitura,202601,CLERIDA VIRGINIA DE OLIVEIRA,SECRETARIA MUNICIPAL DA MULHER E DA DIVERSIDADE H,secretario,5000.00,,,,,Prefeitura Municipal de Santana dos Garrotes
@@ -29250,6 +29527,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2513851,Santo André,camara,202609,MARIA DO SOCORRO SOUTO MESSIAS,VEREADOR,vereador,5500.00,,,,,
 2513851,Santo André,camara,202609,ROSENILDO ALVES LOPES,VEREADOR,vereador,5500.00,,,,,
 2513851,Santo André,camara,202609,ZENALDO FERNANDES MARINHO,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,FILIPE SILVA MOREIRA,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,FRANCISCO DE ASSIS BEJAMIM SALUSTRIANO,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,FRANCISCO EDIGLEI CORREIA JUNIOR,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,JOAO BATISTA SALES NOBERTO,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,JOSE DENYS CAVALCANTE DE OLIVEIRA,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,LEANDRO PEDRO DOS SANTOS,VEREADOR PRESIDENTE,vereador,8250.00,,,,,
+2513851,Santo André,camara,202610,MARIA DO SOCORRO SOUTO MESSIAS,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,ROSENILDO ALVES LOPES,VEREADOR,vereador,5500.00,,,,,
+2513851,Santo André,camara,202610,ZENALDO FERNANDES MARINHO,VEREADOR,vereador,5500.00,,,,,
 2513851,Santo André,prefeitura,202601,EDGLEI AMORIM DO NASCIMENTO,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santo André
 2513851,Santo André,prefeitura,202601,RODRIGO CAMILO DA COSTA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Santo André
 2513851,Santo André,prefeitura,202602,EDGLEI AMORIM DO NASCIMENTO,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santo André
@@ -29268,6 +29554,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2513851,Santo André,prefeitura,202608,RODRIGO CAMILO DA COSTA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Santo André
 2513851,Santo André,prefeitura,202609,EDGLEI AMORIM DO NASCIMENTO,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santo André
 2513851,Santo André,prefeitura,202609,RODRIGO CAMILO DA COSTA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Santo André
+2513851,Santo André,prefeitura,202610,EDGLEI AMORIM DO NASCIMENTO,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de Santo André
+2513851,Santo André,prefeitura,202610,RODRIGO CAMILO DA COSTA,VICE-PREFEITO,vice,9000.00,,,,,Prefeitura Municipal de Santo André
 2513901,São Bento,camara,202601,ALEXCIANDRO DANTAS,VEREADOR,vereador,10432.00,,,,,
 2513901,São Bento,camara,202601,DIEGO PEREIRA DE SOUZA,VEREADOR,vereador,10432.00,,,,,
 2513901,São Bento,camara,202601,ELIZEU MARQUES DOS SANTOS,VEREADOR,vereador,10432.00,,,,,
@@ -30732,6 +31020,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2514305,São José de Caiana,camara,202609,LUZIA TEREZA DE ANDRADE FERREIRA,VEREADOR,vereador,6000.00,,,,,
 2514305,São José de Caiana,camara,202609,MARLENO GALDINO DE SOUSA,VEREADOR,vereador,6000.00,,,,,
 2514305,São José de Caiana,camara,202609,RONILDO SILVA DE MOURA,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,DAMIAO BATISTA DOS SANTOS,VEREADOR PRESIDENTE,vereador,9000.00,,,,,
+2514305,São José de Caiana,camara,202610,HELIO DAEL ARAUJO GUILHERMINO,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,JANDUI RODRIGUES DE ALMEIDA,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,JOSE JUNIOR LOPES,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,JOSE PEREIRA EUFRAUZINO,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,JUDIVAN RODRIGUES DA SILVA,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,LUZIA TEREZA DE ANDRADE FERREIRA,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,MARLENO GALDINO DE SOUSA,VEREADOR,vereador,6000.00,,,,,
+2514305,São José de Caiana,camara,202610,RONILDO SILVA DE MOURA,VEREADOR,vereador,6000.00,,,,,
 2514305,São José de Caiana,prefeitura,202601,MANOEL PEREIRA DE SOUZA,PREFEITO,prefeito,18000.00,,,,,Prefeitura Municipal de São José de Caiana
 2514305,São José de Caiana,prefeitura,202601,ALEX CARNAUBA RODRIGUES,SECRETARIO DE TRANSPORTE,secretario,4000.00,,,,,Prefeitura Municipal de São José de Caiana
 2514305,São José de Caiana,prefeitura,202601,DUCIMARIA RODRIGUES DA SILVA,SECRETARIA DE ASSISTENCIA SOCIAL,secretario,4000.00,,,,,Prefeitura Municipal de São José de Caiana
@@ -31568,6 +31865,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2514651,São José do Brejo do Cruz,camara,202609,LUCIA DA SILVA BRITO DOS SANTOS,VEREADOR(A),vereador,5500.00,,,,,
 2514651,São José do Brejo do Cruz,camara,202609,RIVARDIER DE OLIVEIRA SARAIVA,VEREADOR(A),vereador,5500.00,,,,,
 2514651,São José do Brejo do Cruz,camara,202609,RONALDO DANTAS SARAIVA,VEREADOR(A) - PRESIDENTE,vereador,6550.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,CARLA TATIJANE SARAIVA DA SILVA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,ELANE SARAIVA CARDOSO,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,FRANCISCO FLAVIO SARAIVA MAIA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,GUTEMBERG MAIA GADELHA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,HERCULES CARLOS DE ALMEIDA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,JOAQUIM DE OLIVEIRA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,LUCIA DA SILVA BRITO DOS SANTOS,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,RIVARDIER DE OLIVEIRA SARAIVA,VEREADOR(A),vereador,5500.00,,,,,
+2514651,São José do Brejo do Cruz,camara,202610,RONALDO DANTAS SARAIVA,VEREADOR(A) - PRESIDENTE,vereador,6550.00,,,,,
 2514651,São José do Brejo do Cruz,prefeitura,202601,KLEDYANNE CRISTINA DA SILVA GOMES,PREFEITO A,prefeito,21333.33,,,,,Prefeitura Municipal de São José do Brejo do Cruz
 2514651,São José do Brejo do Cruz,prefeitura,202601,HUDSON SARAIVA DE BRITO,SECRETARIO MUNICIPAL DE PLANEJAMENTO,secretario,6666.67,,,,,Prefeitura Municipal de São José do Brejo do Cruz
 2514651,São José do Brejo do Cruz,prefeitura,202601,ERIVALDO BERNARDINO CARDOSO,VICE PREFEITO,vice,10666.67,,,,,Prefeitura Municipal de São José do Brejo do Cruz
@@ -31919,6 +32225,13 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2514800,São José dos Cordeiros,prefeitura,202609,JEFFERSON ROBERTO DO NASCIMENTO PINTO DA SILVA,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
 2514800,São José dos Cordeiros,prefeitura,202609,JOSELENE ARAUJO DO NASCIMENTO COSTA,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
 2514800,São José dos Cordeiros,prefeitura,202609,ROSANGELA KTIUSSA LEITE DE MOURA SANTOS,VICE PREFEITO (A),vice,9611.10,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,FELICIO KELMO ALMEIDA QUEIROZ,PREFEITO MUNICIPAL,prefeito,20824.05,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,ALCIONE MARIA ALMEIDA ARAUJO DA SILVA,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,EDSON JOSE DE ARAUJO,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,FERNANDO MARCOS DE QUEIROZ,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,JEFFERSON ROBERTO DO NASCIMENTO PINTO DA SILVA,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,JOSELENE ARAUJO DO NASCIMENTO COSTA,SECRETARIO(A) MUNICIPAL,secretario,5339.50,,,,,Prefeitura Municipal de São José dos Cordeiros
+2514800,São José dos Cordeiros,prefeitura,202610,ROSANGELA KTIUSSA LEITE DE MOURA SANTOS,VICE PREFEITO (A),vice,9611.10,,,,,Prefeitura Municipal de São José dos Cordeiros
 2514909,São Mamede,camara,202601,EVA BEZERRA ARAUJO DE LUCENA,VEREADORES,vereador,6000.00,,,,,
 2514909,São Mamede,camara,202601,EWERTON IRAN TORRES DE ANDRADE,VEREADORES,vereador,6000.00,,,,,
 2514909,São Mamede,camara,202601,FRANCISCO DE ASSIS DA SILVA ROCHA,VEREADORES,vereador,6000.00,,,,,
@@ -32358,6 +32671,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2515104,São Sebastião de Lagoa de Roça,camara,202609,ROSINALDO CARDOSO DE BRUCE,VEREADOR,vereador,9000.00,,,,,
 2515104,São Sebastião de Lagoa de Roça,camara,202609,VANESSA SILVA DE ANDRADE FELIX,VEREADOR,vereador,9000.00,,,,,
 2515104,São Sebastião de Lagoa de Roça,camara,202609,VITORIA KELLE DOS SANTOS ALVES,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,ERIVANIA PEREIRA DOS SANTOS XAVIER,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,FABIANA SANTOS ALMEIDA,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,FABIO SANTOS ALMEIDA,VEREADOR PRESIDENTE,vereador,13500.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,GERLANIA FERREIRA SIMPLICIO,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,JOSÉ VENÂNCIO,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,PAULA DA COSTA SILVA,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,ROSINALDO CARDOSO DE BRUCE,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,VANESSA SILVA DE ANDRADE FELIX,VEREADOR,vereador,9000.00,,,,,
+2515104,São Sebastião de Lagoa de Roça,camara,202610,VITORIA KELLE DOS SANTOS ALVES,VEREADOR,vereador,9000.00,,,,,
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202601,PEDRO JUNIOR QUARESMA DE ARAUJO,PREFEITO-ELE,prefeito,20000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202601,CARLOS ANTONIO DA COSTA,VICE-PREFEITO-ELE,vice,10000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202602,PEDRO JUNIOR QUARESMA DE ARAUJO,PREFEITO-ELE,prefeito,20000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
@@ -32376,6 +32698,8 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202608,CARLOS ANTONIO DA COSTA,VICE-PREFEITO-ELE,vice,10000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202609,PEDRO JUNIOR QUARESMA DE ARAUJO,PREFEITO-ELE,prefeito,20000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
 2515104,São Sebastião de Lagoa de Roça,prefeitura,202609,CARLOS ANTONIO DA COSTA,VICE-PREFEITO-ELE,vice,10000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
+2515104,São Sebastião de Lagoa de Roça,prefeitura,202610,PEDRO JUNIOR QUARESMA DE ARAUJO,PREFEITO-ELE,prefeito,20000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
+2515104,São Sebastião de Lagoa de Roça,prefeitura,202610,CARLOS ANTONIO DA COSTA,VICE-PREFEITO-ELE,vice,10000.00,,,,,Prefeitura Municipal de São Sebastião de Lagoa de Roça
 2515203,São Sebastião do Umbuzeiro,camara,202601,AGENOR CORREIA DE LIMA JUNIOR,VEREADOR,vereador,6000.00,,,,,
 2515203,São Sebastião do Umbuzeiro,camara,202601,ALEXANDRE DOMINGOS BEZERRA,VEREADOR,vereador,6000.00,,,,,
 2515203,São Sebastião do Umbuzeiro,camara,202601,AUCELIA DA SILVA FEITOSA,VEREADOR,vereador,6000.00,,,,,
@@ -32811,6 +33135,7 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2515302,Sapé,prefeitura,202609,ODETE INGLITH TARGINO TAVEIRA DE PAIVA,SECRETARIA DE DESENVOLVIMENTO SOCIAL,secretario,9000.00,,,,,Fundo Municipal de Assistência Social de Sapé
 2515302,Sapé,prefeitura,202609,TAYNA CONCEICAO TEIXEIRA DE MELO,SECRETARIO MUNICIPAL DE EDUCACAO CULTURA ESPORTE E,secretario,3221.00,,,,,Prefeitura Municipal de Sapé
 2515302,Sapé,prefeitura,202609,LENILDA ADOLFO LEONCIO COSTA,VICE PREFEITO,vice,14000.00,,,,,Prefeitura Municipal de Sapé
+2515302,Sapé,prefeitura,202610,ODETE INGLITH TARGINO TAVEIRA DE PAIVA,SECRETARIA DE DESENVOLVIMENTO SOCIAL,secretario,9000.00,,,,,Fundo Municipal de Assistência Social de Sapé
 2515401,São Vicente do Seridó,camara,202601,ADEILTON PEREIRA DE MEDEIROS,VEREADOR,vereador,7500.00,,,,,
 2515401,São Vicente do Seridó,camara,202601,ANA CLAUDIA DA SILVA CORDEIRO,VEREADOR PRESIDENTE,vereador,10500.00,,,,,
 2515401,São Vicente do Seridó,camara,202601,EDINALDO NORBERTO DOS SANTOS,VEREADOR,vereador,7500.00,,,,,
@@ -35266,6 +35591,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2516508,Taperoá,prefeitura,202609,JOSE AERSON FARIAS DE SOUZA,SECRETARIO(A) DE FINANCAS,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
 2516508,Taperoá,prefeitura,202609,LAIS ELIAS DA COSTA,SECRETARIA DE TURISMO,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
 2516508,Taperoá,prefeitura,202609,JOSE CARLOS GOUVEIA DA SILVA,VICE PREFEITO,vice,11500.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,GEORGE CIRO MONTEIRO DE FARIAS,PREFEITO,prefeito,23000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,ALDECI RAMOS,SECRETARIA DE ASSISTENCIA SOCIAL,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,CLARISSA MARIA CARDOSO GUIMARAES,SECRETARIO DE SAUDE,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,CLEBER GILENO PEREIRA DE LIMA,SECRETARIO DE ADMINISTRACAO,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,HORACIO SILVA DOS SANTOS,SECRETARIO(A) DE AGRICULTURA,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,JOAO VALENTIM DA SILVA,SECRETARIO DE INFRAESTRUTURA,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,JOSE AERSON FARIAS DE SOUZA,SECRETARIO(A) DE FINANCAS,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,LAIS ELIAS DA COSTA,SECRETARIA DE TURISMO,secretario,5000.00,,,,,Prefeitura Municipal de Taperoá
+2516508,Taperoá,prefeitura,202610,JOSE CARLOS GOUVEIA DA SILVA,VICE PREFEITO,vice,11500.00,,,,,Prefeitura Municipal de Taperoá
 2516607,Tavares,camara,202601,ADAILTON BARBOSA DANTAS,VEREADOR (A),vereador,10400.00,,,,,
 2516607,Tavares,camara,202601,ADAO LUIZ DE ALMEIDA,VEREADOR (A),vereador,10400.00,,,,,
 2516607,Tavares,camara,202601,EDSON LEITE DE LIMA,VEREADOR (A),vereador,10400.00,,,,,
@@ -37020,6 +37354,15 @@ cod_ibge,municipio,orgao,ano_mes,nome,cargo,papel,valor_bruto,salario,decimo,fer
 2517407,Zabelê,camara,202609,JOSE JOAO DE LIMA FILHO,VEREADOR(A),vereador,6500.00,,,,,
 2517407,Zabelê,camara,202609,VAGNER DANTAS DA SILVA,VEREADOR PRESIDENTE,vereador,9270.00,,,,,
 2517407,Zabelê,camara,202609,VANDERLANDIO SILVA MONTEIRO,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,ANDRE BEZERRA MEDEIROS,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,ECLEZIANO BEZERRA DA SILVA,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,ELLYS FERNANDA BEZERRA BATISTA,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,JAILSON PEDRO ALVES DE ALMEIDA JUNIOR,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,JOAO BATISTA SATURNINO GOMES,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,JOSE CLAUDIO DE SOUZA,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,JOSE JOAO DE LIMA FILHO,VEREADOR(A),vereador,6500.00,,,,,
+2517407,Zabelê,camara,202610,VAGNER DANTAS DA SILVA,VEREADOR PRESIDENTE,vereador,9270.00,,,,,
+2517407,Zabelê,camara,202610,VANDERLANDIO SILVA MONTEIRO,VEREADOR(A),vereador,6500.00,,,,,
 2517407,Zabelê,prefeitura,202601,JORSAMARA BEZERRA NEVES DA SILVA,PREFEITO,prefeito,20000.00,,,,,Prefeitura Municipal de Zabelê
 2517407,Zabelê,prefeitura,202601,ADAMASTOR NEVES,SECRETARIO DE TRANSPORTES,secretario,6666.66,,,,,Prefeitura Municipal de Zabelê
 2517407,Zabelê,prefeitura,202601,FABIANA MARCIA SILVA MONTEIRO,SECRETARIO DE CULTURA E TURISMO,secretario,6666.66,,,,,Prefeitura Municipal de Zabelê

@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-11",
+ "gerado_em": "2026-11-17",
  "fonte": [
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2018",
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2022",
@@ -7,11 +7,11 @@
  ],
  "grupos": {
   "deputados estaduais": {
-   "no cargo": 1059,
+   "no cargo": 1056,
    "sem: nenhum candidato com o mesmo nome": 3,
    "sem: homônimo (mais de um candidato com o mesmo nome)": 2,
-   "com declaração": 988,
-   "candidatura sem bens no arquivo do TSE": 66
+   "com declaração": 986,
+   "candidatura sem bens no arquivo do TSE": 65
   },
   "deputados federais": {
    "no cargo": 513,
@@ -29,11 +29,11 @@
    "candidatura sem bens no arquivo do TSE": 1
   },
   "prefeitos e vices do interior": {
-   "no cargo": 1266,
+   "no cargo": 1265,
    "sem: nenhum candidato com o mesmo nome": 38,
    "sem: homônimo (mais de um candidato com o mesmo nome)": 1,
    "sem: duas pessoas com o mesmo nome no site": 8,
-   "com declaração": 1068,
+   "com declaração": 1067,
    "candidatura sem bens no arquivo do TSE": 151
   },
   "senadores": {
@@ -43,16 +43,16 @@
    "candidatura sem bens no arquivo do TSE": 1
   },
   "vereadores das capitais": {
-   "no cargo": 630,
-   "com declaração": 533,
-   "candidatura sem bens no arquivo do TSE": 97
+   "no cargo": 637,
+   "com declaração": 539,
+   "candidatura sem bens no arquivo do TSE": 98
   },
   "vereadores do interior": {
-   "no cargo": 7468,
+   "no cargo": 7469,
    "sem: nenhum candidato com o mesmo nome": 178,
    "sem: homônimo (mais de um candidato com o mesmo nome)": 6,
    "candidatura sem bens no arquivo do TSE": 2062,
-   "com declaração": 5222
+   "com declaração": 5223
   }
  }
 }

@@ -15127,6 +15127,10 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,9,27,Luizinho Goebel,Principal,Tecnologia da informação,GABZAP TECNOLOGIA LTDA,59.108.240/0001-57,30/09/2025,3200.0
 2026,9,27,Luizinho Goebel,Principal,Consultorias,SCHRAMM ADVOCACIA,15.340.752/0001-79,30/09/2026,16000.0
 2026,9,27,Luizinho Goebel,Principal,Despesas do escritório de apoio,JOEL DE SOUZA E SILVA JUNIOR,PF,30/09/2026,5300.0
+2026,9,28,Marcelo Cruz,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,03/06/2026,2126.94
+2026,9,28,Marcelo Cruz,Principal,Consultorias,DANILO ALENCAR SOCIEDADE INDIVIDUAL DE ADVOCACIA,49.979.934/0001-06,05/11/2024,15000.0
+2026,9,28,Marcelo Cruz,Principal,Consultorias,VITÓRIA CONTABILIDADE EIRELI,28.951.019/0001-32,07/10/2026,7000.0
+2026,9,28,Marcelo Cruz,Principal,Despesas do escritório de apoio,REALIZE NEGOCIOS IMOBILIARIO E SERVIÇOS,07.003.278/0001-61,10/09/2026,5090.0
 2026,9,29,Rosângela Donadon,Principal,Veículos,VERONESE E XINAIDER AUTO POSTO LTDA,53.388.025/0001-70,02/09/2026,333.37
 2026,9,29,Rosângela Donadon,Principal,Veículos,VERONESE E XINAIDER AUTO POSTO LTDA,53.388.025/0001-70,07/09/2026,301.89
 2026,9,29,Rosângela Donadon,Principal,Veículos,PODIUM AUTO POSTO LTDA,49.243.111/0001-18,08/09/2026,280.01
@@ -15280,17 +15284,47 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,9,9,Alex Redano,Principal,Despesas do escritório de apoio,JOEL DE SALES LTDA,46.310.681/0001-95,30/09/2006,140.0
 2026,9,9,Alex Redano,Principal,Consultorias,PAULO PEDRO DE CARLI SOCIEDADE INDIVIDUAL DE ADVOCACIA,58.521.051/0001-09,30/09/2026,6000.0
 2026,9,9,Alex Redano,Principal,Despesas do escritório de apoio,JOEL DE SALES LTDA,46.310.681/0001-95,30/09/2026,312.0
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,CLICK PRODUTOS E SERVIÇOS LTDA-EPP,09.443.451/0001-78,03/11/2026,330.0
+2026,10,14,Cirone Deiró,Principal,Locação de bens móveis,MARCELO MATIAS DA SILVA,18.662.147/0001-02,03/11/2026,250.0
+2026,10,14,Cirone Deiró,Principal,Divulgação de atividades parl,CERPEL ARTES GRAFICA LTDA,06.119.280/0001-38,04/11/2026,65250.0
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,05/10/2026,0.0
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,MARILENE TEREZINHA SCHARFF,PF,07/10/2026,5383.33
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,RUBENS JOSÉ DA SILVA,PF,07/10/2026,2272.42
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,MARGARETE RAIMUNDO DA SILVA,PF,08/10/2026,1300.0
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE CACOAL,43.950.670/0001-23,08/10/2026,28.13
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,08/10/2026,0.0
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,08/10/2026,0.0
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,R. T. B. COMERCIO REPRESENTAÇÕES LTDA,34.477.133/0001-75,09/10/2026,3115.93
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,09/10/2026,563.52
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,13/10/2026,51.36
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,CLARO S.A,40.432.544/0446-08,15/10/2026,554.71
+2026,10,14,Cirone Deiró,Principal,Despesas do escritório de apoio,SERVIÇO AUTÔNOMO DE ÁGUA E ESGOTO DE CACOAL,43.950.670/0001-23,15/10/2026,215.18
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,15/10/2026,0.0
 2026,10,14,Cirone Deiró,Principal,Reembolso de despesas de saúde,,,16/10/2026,53513.7
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,18/10/2026,332.97
+2026,10,14,Cirone Deiró,Principal,Tecnologia da informação,TECNEGÓCIOS SOLUÇÕES EM INFORMATICA EIRELI,11.521.613/0001-90,21/10/2026,399.0
+2026,10,14,Cirone Deiró,Principal,Veículos,AUTO POSTO ALTERNATIVO EIRELI EPP,20.080.454/0001-27,23/10/2026,580.0
+2026,10,14,Cirone Deiró,Principal,Veículos,SEBASTIAO ERAMIL SPIGUEL EIRELI,05.790.860/0001-90,26/10/2026,340.74
 2026,10,14,Cirone Deiró,Principal,Reembolso de despesas de saúde,,,26/10/2026,10000.0
 2026,10,14,Cirone Deiró,Principal,Reembolso de despesas de saúde,,,26/10/2026,1063.84
 2026,10,14,Cirone Deiró,Principal,Reembolso de despesas de saúde,,,26/10/2026,1000.0
+2026,10,14,Cirone Deiró,Principal,Veículos,VIOLATO & CIA LTDA,04.903.852/0002-20,27/10/2026,254.07
+2026,10,14,Cirone Deiró,Principal,Serviços gráficos e informacionais,ROOSEVELT ANTONIO ROSA DE OLIVEIRA,45.989.052/0001-70,28/10/2026,24750.0
+2026,10,14,Cirone Deiró,Principal,Produção de videos ou documentários,EXTRA MÍDIA COM. E SERVIÇOS LTDA - ME,84.555.325/0001-20,29/10/2026,4700.0
+2026,10,14,Cirone Deiró,Principal,Veículos,J L DA COSTA E CIA LTDA,63.755.987/0001-74,29/10/2026,533.73
+2026,10,14,Cirone Deiró,Principal,Divulgação de atividades parl,PRADO E BRASILEIRO LTDA,53.123.699/0001-43,30/10/2026,10724.0
+2026,10,14,Cirone Deiró,Principal,Divulgação de atividades parl,INFORMA NA HORA SERVIÇOS DE PUBLICIDADE E PROPAGANDA,26.320.603/0001-64,30/10/2026,1500.0
+2026,10,14,Cirone Deiró,Principal,Consultorias,ALLAN ALMEIDA COSTA SOCIEDADE INDIVIDUAL DE ADVOCACIA,41.563.064/0001-88,31/10/2026,10000.0
+2026,10,14,Cirone Deiró,Principal,Consultorias,ANTONIO MARCOS CAVALCANTE,PF,31/10/2026,4000.0
+2026,10,14,Cirone Deiró,Principal,Divulgação de atividades parl,VALDECI FERNANDO NUNES,568756140000171,31/10/2026,1000.0
+2026,10,17,Eyder Brasil,Complementar,Consultorias,ALMEIDA E GARCIA ADVOCACIA,30.208.349/0001-84,03/11/2026,15000.0
+2026,10,17,Eyder Brasil,Complementar,Consultorias,LUIZ FERNANDO FLORES DUARTE,60.581.657/0001-11,05/11/2026,25000.0
 2026,10,17,Eyder Brasil,Principal,Divulgação de atividades parl,IONE CABRAL GRANJEIRO,51.910.523/0001-06,04/11/2026,4000.0
 2026,10,17,Eyder Brasil,Principal,Serviços gráficos e informacionais,CLAUDIO BATISTA DA COSTA,37.470.137/0001-10,19/10/2026,150000.0
 2026,10,17,Eyder Brasil,Principal,Divulgação de atividades parl,R. X. BARBOSA,36.649.730/0001-65,26/10/2026,15000.0
 2026,10,17,Eyder Brasil,Principal,Despesas do escritório de apoio,WILSON LUIZ MADRUGA,PF,27/10/2026,7000.0
 2026,10,17,Eyder Brasil,Principal,Despesas do escritório de apoio,LEONARDO ALENCAR MOREIRA,PF,27/10/2026,6000.0
 2026,10,17,Eyder Brasil,Principal,Divulgação de atividades parl,CAPITAL BRASIL NOTICIAS LTDA,53.889.505/0001-15,30/10/2026,6000.0
-2026,10,17,Eyder Brasil,Principal,Divulgação de atividades parl,JOAO PAULO PRUDENCIO DOS SANTOS,53.129.543/0001-70,30/10/2026,0.0
 2026,10,17,Eyder Brasil,Principal,Consultorias,"SOUZA, PACIFICO & MORELLY SOCIEDADE DE ADVOGADOS",46.888.173/0001-99,31/10/2026,18000.0
 2026,10,17,Eyder Brasil,Principal,Consultorias,COMPLIANCE ASSESSORIA & CONSULTORIA LTDA,52.369.466/0001-62,31/10/2026,12000.0
 2026,10,17,Eyder Brasil,Principal,Divulgação de atividades parl,ESTADAO RONDONIA,58.186.621/0001-91,31/10/2026,4000.0
@@ -15330,6 +15364,42 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,10,18,Ezequiel Neiva,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA TRIBUNA POPULAR LTDA ME,3718553000172,29/10/2026,800.0
 2026,10,18,Ezequiel Neiva,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA TRIBUNA POPULAR LTDA ME,3718553000172,29/10/2026,0.0
 2026,10,18,Ezequiel Neiva,Principal,Consultorias,M R S CONSULTORIA LTDA,03.888.030/0001-74,30/10/2026,9000.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ANTONIO LINS ARAUJO,PF,01/10/2026,1621.0
+2026,10,20,Ismael Crispin,Principal,Consultorias,BHP SOLUCOES TECNICAS LTDA,67.245.599/0001-02,02/11/2026,9000.0
+2026,10,20,Ismael Crispin,Principal,Consultorias,KELVER SILVEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,45.734.713/0001-17,03/11/2026,20000.0
+2026,10,20,Ismael Crispin,Principal,Locação de bens móveis,ADRYEL TOLENTINO PRUDENCIO,51.863.934/0001-41,03/11/2026,1265.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ARNALDO GUIMARAES NETO RUA BELEM 460 - Porto Velho - RO,,04/11/2026,4500.0
+2026,10,20,Ismael Crispin,Principal,Veículos,O SAPEKA COMÉRCIO DE COMBUSTIVEIS E LUBRIFICANTES LTDA,11.602.493/0001-56,04/11/2026,0.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ROCHA & SOUSA NEGÓCIOS IMOBILIÁRIOS LTDA,12.677.271/0001-65,05/10/2026,231.63
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,09/09/2026,695.33
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,11/09/2026,86.08
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,13/08/2026,524.09
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,14/09/2026,443.51
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,ENERGISA - CENTRAIS ELETRICAS DE RONDONIA,5914650000166,21/09/2026,185.5
+2026,10,20,Ismael Crispin,Principal,Serviço de segurança,IZACC DE SOUZA LEITE,19.804.712/0001-91,28/10/2026,1700.0
+2026,10,20,Ismael Crispin,Principal,Tecnologia da informação,GABZAP TECNOLOGIA LTDA,59.108.240/0001-57,29/10/2026,2800.0
+2026,10,20,Ismael Crispin,Principal,Divulgação de atividades parl,R S COMERCIO E SERVIÇOS LTDA ME,11.851.652/0001-56,29/10/2026,1296.0
+2026,10,20,Ismael Crispin,Principal,Divulgação de atividades parl,R S COMERCIO E SERVIÇOS LTDA ME,11.851.652/0001-56,29/10/2026,1296.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,GM SCOLARO COMERCIO VAREJISTA,30.359.468/0001-38,29/10/2026,230.72
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,IMPERIUM COMERCIO E SERVICOS EIRELI ME,17.297.963/0001-00,30/09/2026,88.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,JAIME DIAS DE ASSIS,PF,30/10/2026,500.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,VALMIR FERNANDES,PF,31/10/2026,4600.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,MAURO PEREIRA,PF,31/10/2026,1160.0
+2026,10,20,Ismael Crispin,Principal,Despesas do escritório de apoio,DORVAL NATALLI,PF,31/10/2026,1000.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,PAULO SERGIO MENDES,57.069.231/0001-79,03/11/2026,1200.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,CN EDITODA DE JORNAIS E REVISTAS LTDA - ME,8379006000123,04/11/2026,1500.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,GRAPHITE GRAFICA E EDITORA LTDA ME,05.155.654/0001-08,05/11/2026,2500.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,MARIANE CANEDO GABRIEL,52.304.929/0001-08,05/11/2026,1000.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,ZELINDA RACKI,61.106.645/0001-06,05/11/2026,1000.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,INFORMA NA HORA SERVIÇOS DE PUBLICIDADE E PROPAGANDA,26.320.603/0001-64,05/11/2026,1000.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,CARLOS SEBASTIAO DIAS CALDEIRA,64.313.118/0001-52,05/11/2026,800.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,ELIZEU FANCISCO SILVA,21.067.429/0001-76,05/11/2026,800.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,ANTONIO CARLOS DA SILVA SANTOS ROTA POLICIAL,64.638.972/0001-99,05/11/2026,500.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,R S TRAJANO PEREIRA,49.158.456/0001-73,05/11/2026,500.0
+2026,10,27,Luizinho Goebel,Complementar,Consultorias,ELIZEU E SGUISSARDI ASSESSORIA LTDA,49.795.603/0001-16,11/11/2026,11000.0
+2026,10,27,Luizinho Goebel,Complementar,Despesas do escritório de apoio,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,40.154.884/0001-53,18/10/2026,619.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,RUBENS COUTINHO DOS SANTOS,30.637.754/0001-18,29/10/2026,3000.0
+2026,10,27,Luizinho Goebel,Complementar,Divulgação de atividades parl,PLAN SERVIÇOS DE COMUNICAÇÕES E PROPAGANDA,38.281.573/0001-03,31/10/2026,2100.0
 2026,10,27,Luizinho Goebel,Principal,Divulgação de atividades parl,GEMELLI RADIODIFUSÃO LTDA,02.384.613/0001-03,03/11/2026,1500.0
 2026,10,27,Luizinho Goebel,Principal,Divulgação de atividades parl,ZELINDA RACKI,61.106.645/0001-06,03/11/2026,0.0
 2026,10,27,Luizinho Goebel,Principal,Despesas do escritório de apoio,CLARO NXT TELECOMUNICAÇÕES S.A,66.970.229/0159-46,05/10/2026,125.9
@@ -15362,6 +15432,27 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,10,27,Luizinho Goebel,Principal,Despesas do escritório de apoio,LUCIA DAL BOSCO,PF,31/10/2026,2500.0
 2026,10,27,Luizinho Goebel,Principal,Divulgação de atividades parl,TIAGO SANTOS DE OLIVEIRA,50.332.539/0001-16,31/10/2026,900.0
 2026,10,27,Luizinho Goebel,Principal,Divulgação de atividades parl,ANTONIO CARLOS DA SILVA SANTOS ROTA POLICIAL,64.638.972/0001-99,31/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,ASSOCIACAO DE DIFUSAO COMUNITARIA CIDADE FM,34.408.900/0014-00,03/11/2026,1700.0
+2026,10,29,Rosângela Donadon,Principal,Despesas do escritório de apoio,AIRTON FRANCISCO PACOLA,PF,05/10/2026,1000.0
+2026,10,29,Rosângela Donadon,Principal,Veículos,PODIUM AUTO POSTO LTDA,49.243.111/0001-18,10/10/2026,403.75
+2026,10,29,Rosângela Donadon,Principal,Veículos,VERONESE E XINAIDER AUTO POSTO LTDA,53.388.025/0001-70,13/10/2026,306.36
+2026,10,29,Rosângela Donadon,Principal,Veículos,PODIUM AUTO POSTO LTDA,49.243.111/0001-18,13/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Veículos,VERONESE E XINAIDER AUTO POSTO LTDA,53.388.025/0001-70,19/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Produção de videos ou documentários,ANILSON PUBLICIDADES,25.696.082/0001-81,26/10/2026,3000.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA FOLHA DA CAPITAL,03.903.724/0001-33,26/10/2026,1562.5
+2026,10,29,Rosângela Donadon,Principal,Consultorias,ESTEBAN VERA LABAJOS SOCIEDADE INDIVIDUAL DE ADVOCACIA,47.675.386/0001-03,27/10/2026,10000.0
+2026,10,29,Rosângela Donadon,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,27/10/2026,241.03
+2026,10,29,Rosângela Donadon,Principal,Produção de videos ou documentários,JAMILLE BATISTA FERREIRA DA SILVA,54.688.019/0001-00,27/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,MULTI GRAFICA SERVIÇOS GRAFICOS LTDA,14.655.103/0001-02,28/10/2026,149000.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA EXTRA DE RONDONIA LTDA,5248037000157,28/10/2026,2500.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,GRAPHITE GRAFICA E EDITORA LTDA ME,5155654000108,29/10/2026,2000.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,BRUNA DOS SANTOS VARGAS - RONDONIA EM PAUTA,46.938.291/0001-64,29/10/2026,2000.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,ANTONIO CARLOS DA SILVA SANTOS ROTA POLICIAL,64.638.972/0001-99,29/10/2026,1000.0
+2026,10,29,Rosângela Donadon,Principal,Produção de videos ou documentários,JOSE ALEXANDRE BASTOS DE BARRO LIMA,41.762.474/0001-58,29/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,RONDONIA GRAFICA E COMUNICAÇÃO VISUAL LTDA,28.645.439/0001-90,29/10/2026,0.0
+2026,10,29,Rosângela Donadon,Principal,Produção de videos ou documentários,LUCAS PITONDO ANELLI,17.981.091/0001-96,30/10/2026,2500.0
+2026,10,29,Rosângela Donadon,Principal,Divulgação de atividades parl,TIAGO SANTOS DE OLIVEIRA,50.332.539/0001-16,30/10/2026,1500.0
+2026,10,30,Alan Queiroz,Complementar,Divulgação de atividades parl,NOBRE SERVIÇOS DIGITAIS LTDA,20.433.203/0001-89,09/11/2026,21000.0
 2026,10,30,Alan Queiroz,Principal,Divulgação de atividades parl,R S TRAJANO PEREIRA,49.158.456/0001-73,02/11/2026,300.0
 2026,10,30,Alan Queiroz,Principal,Despesas do escritório de apoio,JS SERVIÇOS IMOBILIARIOS LTDA,35.691.649/0001-80,03/11/2026,1678.79
 2026,10,30,Alan Queiroz,Principal,Divulgação de atividades parl,ZELINDA RACKI,61.106.645/0001-06,03/11/2026,500.0
@@ -15409,6 +15500,109 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,10,33,Jean Mendonça,Principal,Serviço de segurança,PROVISA VIGILANCIA E SEGURANÇA LTDA,26.156.245/0001-04,30/10/2026,14000.0
 2026,10,33,Jean Mendonça,Principal,Consultorias,JANIO TEODORO VILELA CONTABILIDADE LTDA,64.599.564/0001-75,30/10/2026,12000.0
 2026,10,33,Jean Mendonça,Principal,Veículos,AUTO POSTO PIMENTA BUENO LTDA,04.380.678/0001-06,31/10/2026,193.32
+2026,10,40,Cássio Gois,Complementar,Consultorias,SILVARES ASSESSORIA CONTABIL LTDA,35.314.289/0001-06,03/11/2026,7000.0
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,ZELINDA RACKI,61.106.645/0001-06,03/11/2026,400.0
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,FERNANDO DIAS SOARES,21.641.106/0001-44,04/11/2026,500.0
+2026,10,40,Cássio Gois,Complementar,Veículos,COMERCIO DE DERIVADOS DE PETROLEO ESTRELA LTDA ME,05.152.588/0001-12,28/10/2026,333.3
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,JORNAL RONDONIENSE LTDA,58.210.403/0001-45,28/10/2026,300.0
+2026,10,40,Cássio Gois,Complementar,Produção de videos ou documentários,HIGOR JACOBSEN VERGILATO,55.739.695/0001-10,29/10/2026,15900.0
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,KTV RADIO E TELEVISÃO,03.776.336/0001-39,30/10/2026,4000.0
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,OSEA - O SENHOR ESTA AQUI LTDA - ME,08.444.217/0001-00,30/10/2026,2000.0
+2026,10,40,Cássio Gois,Complementar,Veículos,VIOLATO & CIA LTDA,04.903.852/0002-20,30/10/2026,545.41
+2026,10,40,Cássio Gois,Complementar,Divulgação de atividades parl,GRAFICA FUTURA,09.328.732/0001-80,31/10/2026,150000.0
+2026,10,40,Cássio Gois,Principal,Veículos,CCI COMERCIO DE COMB ITAPORANGA LTDA,01.282.343/0001-59,06/10/2026,576.1
+2026,10,40,Cássio Gois,Principal,Veículos,AUTO POSTO SOBERANO LTDA,07.219.464/0001-32,12/10/2026,582.16
+2026,10,40,Cássio Gois,Principal,Veículos,RODOVIA AUTO POSTO LTDA,26.324.372/0001-67,15/10/2026,509.8
+2026,10,40,Cássio Gois,Principal,Despesas do escritório de apoio,CLICK PRODUTOS E SERVIÇOS LTDA-EPP,09.443.451/0001-78,17/07/2026,250.0
+2026,10,40,Cássio Gois,Principal,Veículos,P A TESTONI COMERCIO VAREJISTA E ATACADISTA DE COMBUSTIVEIS LTDA,08.164.322/0001-88,18/10/2026,549.88
+2026,10,40,Cássio Gois,Principal,Veículos,AUTO POSTO SOBRENA LTDA,08.970.868/0001-26,26/10/2026,542.04
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,R S TRAJANO PEREIRA,49.158.456/0001-73,26/10/2026,300.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,RONDONIA DINAMICA COM. E SERV. DE INFORMATICA LTDA,08.941.827/0001-01,27/10/2026,700.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,RONDONIA AGENCIA DE PUBLICIDADE LTDA,40.812.897/0001-72,27/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Veículos,MIRIAN CANDEIAS AUTO POSTO LTDA,20.981.640/0001-37,27/10/2026,487.04
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,CMP COMUNICACAO E ASSESSORIA LTDA - ME,08.742.048/0001-87,28/10/2026,1500.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,R DE FREITAS COMUNICAÇÃO LTDA,45.452.999/0001-48,28/10/2026,800.0
+2026,10,40,Cássio Gois,Principal,Produção de videos ou documentários,AGINORTE INTERMEDIAÇÕES DE NEGOCIOS DO NORTE LTDA,10.550.175/0001-26,29/10/2026,56000.0
+2026,10,40,Cássio Gois,Principal,Consultorias,ALINE SILVA SOCIEDADE INDIVIDUAL DE ADVOCACIA,38.083.775/0001-40,29/10/2026,40000.0
+2026,10,40,Cássio Gois,Principal,Despesas do escritório de apoio,MARCOS CONSULTORIA E SERVIÇOS IMOBILIARIOS LTDA,18.809.041/0001-99,29/10/2026,4938.12
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,IDEAL COMUNICAÇÃO LTDA,46.937.240/0001-18,29/10/2026,1000.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,CARLOS SEBASTIAO DIAS CALDEIRA,64.313.118/0001-52,29/10/2026,800.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,ANTHONY GABRIEL DOS SANTOS CARVALHO,61.474.253/0001-91,29/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,FABIANO DA SILVA COUTINHO - ME,13.226.805/0001-08,29/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA TRIBUNA POPULAR LTDA ME,3718553000172,29/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Consultorias,CASTRO CHAVES ADVOGADOS ME,18.253.151/0001-17,30/10/2026,15000.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,ECOAR COMUNICACAO E PUBLICIDADE LTDA,44.302.590/0001-82,30/10/2026,5000.0
+2026,10,40,Cássio Gois,Principal,Locação de bens móveis,NATÃ DE OLIVEIRA,16.608.921/0001-71,30/10/2026,3500.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,EMPRESA JORNALISTICA EXTRA DE RONDONIA LTDA,05.248.037/0001-57,30/10/2026,1000.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,B. K. H. DE OLIVEIRA LTDA,29.161.139/0002-80,30/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,JH COMUNICAÇÃO E ASSESSORIA LTDA,28.209.256/0001-22,30/10/2026,500.0
+2026,10,40,Cássio Gois,Principal,Alimentação,L R COMERCIO DE GAS LTDA,28.873.375/0001-85,30/10/2026,312.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,OSEA - O SENHOR ESTA AQUI LTDA - ME,08.444.217/0001-00,30/10/2026,0.0
+2026,10,40,Cássio Gois,Principal,Divulgação de atividades parl,GS LEITE PUBLICIDADES,40.223.817/0001-43,31/10/2026,1000.0
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,TELEFONICA BRASIL S.A,02.558.157/0001-62,01/08/2026,211.23
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,01/10/2026,251.68
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,07/10/2026,112.4
+2026,10,41,Cláudia de Jesus,Principal,Veículos,PETROBRASIL LTDA,03.604.591/0001-02,08/10/2026,554.01
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,09/10/2026,317.89
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,11/10/2026,310.29
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,13/10/2026,327.2
+2026,10,41,Cláudia de Jesus,Principal,Veículos,PETROBRASIL LTDA,03.604.591/0001-02,14/10/2026,566.07
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,ATACADAO S. A.,75.315.333/0201-34,15/10/2026,1408.68
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,GUAPORÉ TINTAS,19.916.756/0001-03,15/10/2026,145.0
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,16/10/2026,190.47
+2026,10,41,Cláudia de Jesus,Principal,Veículos,PETROBRASIL LTDA,03.604.591/0001-02,18/10/2026,525.32
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,RAI FONSECA PEREIRA DE ANDRADE,60.457.103/0001-07,19/10/2026,800.0
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,GUAPORÉ TINTAS,19.916.756/0001-03,19/10/2026,175.0
+2026,10,41,Cláudia de Jesus,Principal,Veículos,AMAZON COMBUSTÍVEIS PARA VEÍCULOS E CONSTRUÇÕES LTDA,10.988.014/0006-23,21/09/2026,149.8
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,ELEGIS GESTÃO ESTRATEGICA CONSULTORIA E TECNOLOGIA LTDA,2806741000179,21/10/2026,649.0
+2026,10,41,Cláudia de Jesus,Principal,Veículos,PETROBRASIL LTDA,03.604.591/0001-02,22/10/2026,264.24
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,PAULO NUNES RIBEIRO,PF,27/10/2026,10000.0
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,ESCRITORIO CONTABIL ORGANIZA,28.375.692/0001-71,27/10/2026,5000.0
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,SEGISMUNDO ADVOGADOS,06.053.777/0001-09,28/10/2026,5000.0
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,A B C COMERCIO E REPRESENTACOES LTDA EPP,34.749.515/0001-00,28/10/2026,336.55
+2026,10,41,Cláudia de Jesus,Principal,Veículos,PETROBRASIL LTDA,03.604.591/0001-02,30/09/2026,390.0
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,CAERD COMPANHIA DE AGUAS E ESGOTOS DE RONDONIA,05.914.254/0001-39,30/09/2026,34.86
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,DANIEL MATIAS SOCIEDADE INDIVIDUAL DE ADVOCACIA,56.922.778/0001-02,30/10/2026,15000.0
+2026,10,41,Cláudia de Jesus,Principal,Consultorias,JEFFERSON J. DE OLIVEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,68.099.087/0001-30,30/10/2026,5000.0
+2026,10,41,Cláudia de Jesus,Principal,Despesas do escritório de apoio,SERGIO ANDRE FERREIRA CAVALCANTE,PF,31/10/2026,4500.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,M2 PUBLICIDADE LTDA,34.330.987/0001-24,03/11/2026,36500.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,IMAGEM ADESIVOS LTDA ME,10.140.657/0001-08,03/11/2026,28000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,RONDONIA DINAMICA COM. E SERV. DE INFORMATICA LTDA,08.941.827/0001-01,03/11/2026,2000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,G B COSTA COMUNICAÇOES ME,23.588.281/0001-40,03/11/2026,2000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,ROGERIO FERREIRA DA SILVA,56.889.301/0001-72,03/11/2026,1000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,VIVA COMUNICAÇÃO E SERVIÇOS DE PUBLICIDADE LTDA,31.107.148/0001-53,04/11/2026,2500.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,JOSÉ JUNIOR MARIM SEBIM,19.421.125/0001-13,04/11/2026,2000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,MARLENE APARECIDA MARTINS,69.936.199/0001-60,04/11/2026,1200.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,ANA PAULA MACHADO,32.893.140/0001-22,04/11/2026,1000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,CN COMUNICACAO,08.379.006/0001-23,04/11/2026,800.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,MARCOS ANTONIO PEREIRA GONÇALVES,36.368.070/0001-44,05/11/2026,2500.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,GABRIELA DE CASSIA FAGUNDES MOURA,41.709.425/0001-51,05/11/2026,1200.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,YALLE CRISTINA SILVA DANTAS LTDA,42.381.980/0001-60,05/11/2026,1000.0
+2026,10,42,Luis do Hospital,Principal,Veículos,AUTO POSTO BOM SAMARITANO,31.593.632/0001-30,06/11/2026,5041.16
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,GLEIDOSN RODRIGUES ALVES,60.582.154/0001-60,06/11/2026,400.0
+2026,10,42,Luis do Hospital,Principal,Serviço de segurança,AGILE TECNOLOGIA EM SEGURANÇA LTDA,19.966.273/0001-13,19/10/2026,315.0
+2026,10,42,Luis do Hospital,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,22/09/2026,283.61
+2026,10,42,Luis do Hospital,Principal,Despesas do escritório de apoio,UNI TELECOM LTDA,49.271.108/0001-08,23/10/2026,119.8
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,LELIS COMUNICAÇÕES E PRODUÇÕES EIRELI,27.548.623/0001-50,26/10/2026,4000.0
+2026,10,42,Luis do Hospital,Principal,Consultorias,ALMEIDA SOCIEDADE INDIVIDUAL DE ADVOCACIA,14.624.362/0001-68,27/10/2026,48000.0
+2026,10,42,Luis do Hospital,Principal,Consultorias,FRANCIELY CAMOS FRANÇA,PF,27/10/2026,4000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,MARCOS AURELIO CANDIDO,43.205.730/0001-31,27/10/2026,400.0
+2026,10,42,Luis do Hospital,Principal,Despesas do escritório de apoio,PUROGAS EIRELI ME,22.817.303/0001-34,27/10/2026,120.0
+2026,10,42,Luis do Hospital,Principal,Despesas do escritório de apoio,AGUAS DE JARU SPE S.A,53.461.126/0001-20,28/09/2026,54.94
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,R DE FREITAS COMUNICAÇÃO LTDA,45.452.999/0001-48,28/10/2026,9000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,PORTAL DE NOTICIAS COMUNICAÇÃO E PUBLICIDADE LTDA,15.706.075/0001-60,29/10/2026,1200.0
+2026,10,42,Luis do Hospital,Principal,Consultorias,RAZAO ASSESSORIA CONTABIL LTDA,07.908.642/0001-32,30/10/2026,5000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,PERISVALDO LIMA DO NASCIMENTO,44.716.318/0001-49,30/10/2026,2000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,CMP COMUNICACAO E ASSESSORIA LTDA - ME,08.742.048/0001-87,30/10/2026,1600.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,BRITO& BRITO SERVIÇOS DE MIDIA COMUNICAÇOES LTDA,21.969.486/0001-40,30/10/2026,1500.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,ASSOCIAÇÃO DE RADIO E DIFUSÃO EDUCATIVA INTERATIVA JARUENSE,02.795.569/0001-16,30/10/2026,1400.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,A NOTICIA JORNALISMO E PUBLICIDADE LTDA ME,03.125.295/0001-10,30/10/2026,1000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,JEAN CARLOS LEMOS CIRINO,53.178.004/0001-20,30/10/2026,800.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,BRENER ROSA DE ANDRADE,53.840.304/0001-23,31/10/2026,10000.0
+2026,10,42,Luis do Hospital,Principal,Despesas do escritório de apoio,KENNEDY LOPES DA SILVA,PF,31/10/2026,5000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,MG DO CARMO LTDA,42.084.474/0001-36,31/10/2026,3400.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,MARCOS A COSTA ASSESSORIA ME,24.260.492/0001-12,31/10/2026,1000.0
+2026,10,42,Luis do Hospital,Principal,Divulgação de atividades parl,JH COMUNICAÇÃO E ASSESSORIA LTDA,28.209.256/0001-22,31/10/2026,800.0
 2026,10,43,Ieda Chaves,Principal,Consultorias,SEVEN SERVICE LTDA,55.531.343/0001-74,03/11/2026,11000.0
 2026,10,43,Ieda Chaves,Principal,Divulgação de atividades parl,A M DOS SANTOS FARIA PUBLICIDADE,37.353.864/0001-05,04/11/2026,85800.0
 2026,10,43,Ieda Chaves,Principal,Despesas do escritório de apoio,VALDENIZIA DOS SANTOS VIEIRA TINOCO,PF,05/10/2026,6250.0
@@ -15418,8 +15612,77 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,10,43,Ieda Chaves,Principal,Veículos,WJJ COMERCIO DE DERIVADOS DE PETROLEO LTDA,05.886.460/0001-82,14/10/2026,0.0
 2026,10,43,Ieda Chaves,Principal,Consultorias,ALMEIDA SOCIEDADE INDIVIDUAL DE ADVOCACIA,14.624.362/0001-68,27/10/2026,25000.0
 2026,10,43,Ieda Chaves,Principal,Consultorias,NOBRE SERVIÇOS DIGITAIS LTDA,20.433.203/0001-89,28/10/2026,48000.0
+2026,10,44,Gislaine Lebrinha,Principal,Veículos,AUTO POSTO SURUBIM COMERCIO DE COMBUSTIVEIS LDTA,33.693.304/0001-30,07/10/2026,250.0
 2026,10,44,Gislaine Lebrinha,Principal,Reembolso de despesas de saúde,,,09/10/2026,700.0
 2026,10,44,Gislaine Lebrinha,Principal,Reembolso de despesas de saúde,,,13/10/2026,10000.0
+2026,10,44,Gislaine Lebrinha,Principal,Veículos,AUTO POSTO CALAMA LTDA,10.976.424/0007-35,16/10/2026,389.97
+2026,10,44,Gislaine Lebrinha,Principal,Veículos,VJJ COMERCIO DE DERIVADOS DE PETROLEO LTDA,05.886.460/0001-82,18/10/2026,259.63
+2026,10,44,Gislaine Lebrinha,Principal,Veículos,SCHONS & SCHONS LTDA,03.147.414/0001-36,18/10/2026,200.0
+2026,10,44,Gislaine Lebrinha,Principal,Tecnologia da informação,ELEGES GESTAO ESTRATEGICA CONSULTORIA E TECNOLOGIA LTDA,28.067.410/0001-79,26/10/2026,0.0
+2026,10,44,Gislaine Lebrinha,Principal,Consultorias,CLEBER JAIR AMARAL SOCIEDADE INDIVIDUAL DEADVOCAC,10.870.207/0001-70,27/10/2026,20000.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,ROSE MARIA LOPES SILVA,61.406.164/0001-08,27/10/2026,1000.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,RONDONIA DINAMICA COM. E SERV. DE INFORMATICA LTDA,08.941.827/0001-01,27/10/2026,0.0
+2026,10,44,Gislaine Lebrinha,Principal,Consultorias,ELEN CAROLINE MENEZES BARROSO,PF,28/10/2026,23000.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,W.O. DOS SANTOS-ME,13.875.801/0001-42,28/10/2026,15000.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,REMA REDE DE TELEVISÃO LTDA,13.477.792/0001-31,28/10/2026,10000.0
+2026,10,44,Gislaine Lebrinha,Principal,Consultorias,EDILEUSA CARDOSO CRUZ,PF,28/10/2026,9000.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,RADIO CANDELARIA FM LTDA,04.485.882/0001-83,28/10/2026,1200.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,M. R. GRABRIEL & CIA LTDA,02.770.020/0001-77,29/10/2026,40590.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,B. K. H. DE OLIVEIRA LTDA,29.161.139/0002-80,29/10/2026,500.0
+2026,10,44,Gislaine Lebrinha,Principal,Serviços gráficos e informacionais,LJ PRINT COMERCIO E SERVICOS GRAFICOS LTDA,45.289.698/0001-45,30/10/2026,94500.0
+2026,10,44,Gislaine Lebrinha,Principal,Divulgação de atividades parl,VERSÁTIL INDÚSTRIA GRÁFICA LTDA,33.267.567/0001-88,30/10/2026,72200.0
+2026,10,44,Gislaine Lebrinha,Principal,Produção de videos ou documentários,HELENA DE SOUZA PENHA LOPES,55.428.065/0001-24,30/10/2026,15000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,58.736.686EDUARDOSILVEIRAFIGUEIREDO,58.736.686/0001-63,02/11/2026,4000.0
+2026,10,45,Pedro Fernandes,Principal,Consultorias,MICHEL MADELLA E ADVOGADOS ASSOCIADOS,31.255.845/0001-51,04/11/2026,20000.0
+2026,10,45,Pedro Fernandes,Principal,Despesas do escritório de apoio,VAGNER LOPES DOS SANTOS,PF,19/10/2026,2600.0
+2026,10,45,Pedro Fernandes,Principal,Consultorias,RENAN DE ARRUDA REGINATO SOCIEDADE INDIVIDUAL DE,54.387.937/0001-90,20/10/2026,20000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,B. K. H. DE OLIVEIRA LTDA,29.161.139/0002-80,22/10/2026,500.0
+2026,10,45,Pedro Fernandes,Principal,Tecnologia da informação,STRATEGIA SERVICOS E CONSULTORIA LTDA,62.242.759/0001-38,23/10/2026,699.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,MARCOS AURELIO CANDIDO,43.205.730/0001-31,27/10/2026,300.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,AR ALERTA RONDONIA LTDA - ME,18.132.816/0001-34,28/10/2026,600.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,CEU ASSESSORIA E PUBLICACOES EIRELI - ME,18.777.220/0001-91,29/10/2026,49000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,FABIANO DA SILVA COUTINHO - ME,13.226.805/0001-08,29/10/2026,600.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,IFP BRASIL SOLUCOES LTDA,57.718.174/0001-01,30/10/2026,60000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,IFP BRASIL SOLUCOES LTDA,57.718.174/0001-01,30/10/2026,24000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,IFP BRASIL SOLUCOES LTDA,57.718.174/0001-01,30/10/2026,20280.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,JOTTA MARKETING LTDA,55.540.324/0001-04,30/10/2026,20000.0
+2026,10,45,Pedro Fernandes,Principal,Divulgação de atividades parl,GABRIELA DE CASSIA FAGUNDES MOURA,41.709.425/0001-51,30/10/2026,600.0
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,FUNDACAO DOM REY,01.108.101/0001-43,03/11/2026,600.0
+2026,10,46,Doutora Taíssa,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,05/10/2026,242.63
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,SIDUS PERFORMANCE DIGITAL LTDA,67.257.583/0001-01,09/11/2026,3000.0
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,11/10/2026,442.81
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO MM KURIYAMA COMERCIO DE DERIVADOS DE PETROLEO LTDA,36.447.682/0001-22,13/10/2026,281.66
+2026,10,46,Doutora Taíssa,Principal,Despesas do escritório de apoio,RAIMUNDO NONATO DA COSTA CAVALCANTE,PF,15/10/2026,3000.0
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,17/10/2026,413.56
+2026,10,46,Doutora Taíssa,Principal,Despesas do escritório de apoio,W F SANTOS LTDA,12.878.243/0001-06,18/08/2026,179.9
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,19/10/2026,413.56
+2026,10,46,Doutora Taíssa,Principal,Serviço de segurança,GUAJARA-MIRIM MONITORAMENTO E SERVICOS DE SISTEMAS DE SEGURANCA LTDA,17.214.433/0001-42,20/10/2026,567.0
+2026,10,46,Doutora Taíssa,Principal,Despesas do escritório de apoio,IRMAOS GONÇALVES COMERCIO E INDUSTRIA,04.082.624/0043-05,21/10/2026,332.47
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,26/10/2026,364.82
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,26/10/2026,0.0
+2026,10,46,Doutora Taíssa,Principal,Consultorias,BARROZO ELHAGE SOCIEDADE INDIVIDUAL DE ADVOCACIA,63.068.732/0001-33,27/10/2026,15000.0
+2026,10,46,Doutora Taíssa,Principal,Veículos,EMPORIO AUTO POSTO COM. DE COMBUSTIVEIS LTDA,36.713.973/0001-15,27/10/2026,336.22
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,CMP COMUNICACAO E ASSESSORIA LTDA - ME,08.742.048/0001-87,28/10/2026,2000.0
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,RAFAEL GUILHERME ROSAS DA SILVA,32.836.697/0001-21,28/10/2026,900.0
+2026,10,46,Doutora Taíssa,Principal,Veículos,POSTO REBOUCAS 03,26.317.031/0003-26,28/10/2026,281.06
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,RADIO RONDONIA,05.897.392/0001-57,30/10/2026,4050.0
+2026,10,46,Doutora Taíssa,Principal,Divulgação de atividades parl,IDEAL COMUNICAÇÃO LTDA,46.937.240/0001-18,30/10/2026,700.0
+2026,10,47,Ribeiro do Sinpol,Principal,Consultorias,LAILANE PINHEIRO DE OLIVEIRA SOCIEDADE INDIVIDUAL DE ADVOCACIA,53.752.125/0001-34,01/11/2026,20000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Consultorias,R DA S MOREIRA CONSULTORIA LTDA,530580420001400,02/11/2026,11000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Consultorias,POPE SOCIEDADE INDIVIDUAL DE ADVOCACIA,6553263800119,03/11/2026,27000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Despesas do escritório de apoio,Uiliam Eugênio de Souza,PF,03/11/2026,9000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,B. K. H. DE OLIVEIRA LTDA,29.161.139/0002-80,03/11/2026,5000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,N S VIEIRA SERVICO DE CONSULTORIA LTDA,43.884.905/0001-84,03/11/2026,0.0
+2026,10,47,Ribeiro do Sinpol,Principal,Consultorias,VALDEIR COSTA SOCIEDADE INDIVIDUAL DE ADVOCACIA,53.648.936/0001-90,04/11/2026,15000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,IMPACT COMUNICAÇÃO VISUAL LTDA,41.676.221/0001-61,04/11/2026,10500.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,O PLENARIO- AGENCIA DE NOTICIAS LTDA,66.665.801/0001-84,04/11/2026,7000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,IDEAL COMUNICAÇÃO LTDA,46.937.240/0001-18,28/10/2026,4000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,CMP COMUNICACAO E ASSESSORIA LTDA - ME,08.742.048/0001-87,28/10/2026,1500.0
+2026,10,47,Ribeiro do Sinpol,Principal,Despesas do escritório de apoio,"FELIPPE ROBERTO PESTAf [A Avenida Sete de Setembro, n9 2140, bairro Nossa Senhora das Granas - Porto Velho - RO",,29/10/2026,10500.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,JOAO PAULO PRUDENCIO DOS SANTOS,53.129.543/0001-70,29/10/2026,6000.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,YALLE CRISTINA SILVA DANTAS LTDA,42.381.980/0001-60,30/10/2026,10500.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,VICTORENZO CONSULTORIA E COMUNICAÇÃO LTDA,52.545.154/0001-62,30/10/2026,9500.0
+2026,10,47,Ribeiro do Sinpol,Principal,Divulgação de atividades parl,GAZETA RONDONIENSE,58.210.403/0001-45,31/10/2026,4200.0
 2026,10,48,Delegado Camargo,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,06/10/2026,1943.25
 2026,10,48,Delegado Camargo,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,08/10/2026,1611.68
 2026,10,48,Delegado Camargo,Principal,Despesas do escritório de apoio,ENERGISA RONDONIA - DISTRIBUIDORA DE ENERGIA S.A,05.914.650/0001-66,08/10/2026,1115.48
@@ -15504,6 +15767,7 @@ ano,mes,gabinete,deputado,lote,tipo,fornecedor,cnpj_cpf,data,valor
 2026,10,49,Delegado Lucas,Principal,Veículos,APP COMERCIO DE COMB DERIV,84.713.262/0001-93,30/10/2026,437.62
 2026,10,49,Delegado Lucas,Principal,Veículos,APP COMERCIO DE COMB DERIV,84.713.262/0001-93,30/10/2026,372.45
 2026,10,49,Delegado Lucas,Principal,Veículos,POSTO M M KURIYAMA DE COMERCIO DE DERIVADOS,36.447.682/0002-03,30/10/2026,321.25
+2026,10,50,Nim Barroso,Complementar,Locação de bens móveis,CLEMILSON SILVA DA CUNHA JUNIOR,41.383.870/0001-74,09/11/2026,10000.0
 2026,10,50,Nim Barroso,Principal,Divulgação de atividades parl,SUPERAVIT ASSESSORIA E SERVICOS LTDA,64.010.686/0001-84,03/11/2026,35000.0
 2026,10,50,Nim Barroso,Principal,Consultorias,CAMILO DE SOUZA PIMENTEL,20.006.618/0001-76,03/11/2026,12000.0
 2026,10,50,Nim Barroso,Principal,Divulgação de atividades parl,ARAUJO REPRESENTAÇÕES E EVENTOS LTDA,50.218.625/0001-00,03/11/2026,3300.0
