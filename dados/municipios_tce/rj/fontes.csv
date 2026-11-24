@@ -1321,7 +1321,7 @@ cod_ibge,orgao,ano_mes,linhas_fonte,pessoas,url,lido_em
 3304201,camara,202606,6,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3304201,camara,202607,6,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
 3304201,camara,202608,6,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-10-03T15:12
-3304201,camara,202609,0,0,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-03T20:59
+3304201,camara,202609,6,17,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2026&jsonfull=true,2026-11-24T23:43
 3304300,camara,202501,3,20,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3304300,camara,202502,3,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12
 3304300,camara,202503,3,9,https://dados.tcerj.tc.br/api/v1/situacao_funcional?ano=2025&jsonfull=true,2026-10-03T15:12

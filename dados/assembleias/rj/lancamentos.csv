@@ -14090,6 +14090,18 @@ orcamento,deputado,data,centro_custo,codigo_centro,objeto,fornecedor,cnpj_cpf,do
 6364,123.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,104.99
 6364,123.0,31/05/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,124.98
 6364,123.0,31/05/2026,Material de expediente e suprimentos de informática,IV.b,Aquisição de Software,KALUNGA COMÉRCIO E INDÚSTRIA GRÁFICA LTDA,43283811000150,,499.0
+6446,123.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Locação Veicular Tcross,LM TRANSPORTES INTERESTADUAIS SERVICOS E COM,00389481000179,,1801.43
+6446,123.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Locação Veicular,LM TRANSPORTES INTERESTADUAIS SERVICOS E COM,00389481000179,,3249.0
+6446,123.0,30/06/2026,Acesso à internet,IV.c,Internet Gabinete,Telefonica Brasil S.A.,02558157000162,,142.0
+6446,123.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Locação de Vagas,Terminal Garagem Menezes Côrtes S.A,02664042000152,,1300.0
+6446,123.0,30/06/2026,Locação ou fretamento de veículos automotores,VI.a,Locação veicular,GLOBAL RENT A CAR LTDA - ME,01187093000178,,11500.0
+6446,123.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,156.49
+6446,123.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,123.98
+6446,123.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,103.98
+6446,123.0,30/06/2026,"Serviços de táxi, STIP, transportes públicos, pedágio e estacionamento",VI.b,Uber Yves,UBER DO BRASIL TECNOLOGIA LTDA,17895646000187,,186.99
+6446,123.0,30/06/2026,Devolução de saldo,4,Devolução Verba Alerj,Assembleia Legislativa do Estado do Rio de Janeiro,30449862000167,,35255.89
+6446,123.0,30/06/2026,Combustíveis e lubrificantes,VII,Combustível,POSTO BIG RIO - SONAP SOCIEDADE NACIONAL DE PETRÓLEO LTDA,30757298000492,,322.36
+6446,123.0,30/06/2026,Combustíveis e lubrificantes,VII,Combustível,POSTO PARADA ANGELICA LTDA,30545109000175,,4691.2
 5267,124.0,06/02/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO,A.P ITAIPU COMBUSTIVEL LTDA,32250422000101,,244.14
 5267,124.0,10/02/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO,A.P ITAIPU COMBUSTIVEL LTDA,32250422000101,,206.97
 5267,124.0,14/02/2025,Combustíveis e lubrificantes,VII,ABASTECIMENTO,A.P ITAIPU COMBUSTIVEL LTDA,32250422000101,,125.16

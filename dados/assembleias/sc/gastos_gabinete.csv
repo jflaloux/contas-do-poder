@@ -18313,6 +18313,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,3,Lucas Neves,VEÍCULOS,Indenização por utilização de veículo próprio,,1008.24
 2026,3,Luciane Carminatti,ALMOXARIFADO,Material de Expediente,,1860.86
 2026,3,Luciane Carminatti,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Jaime Henrique Spagnol,2823.12
+2026,3,Luciane Carminatti,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Jaime Henrique Spagnol,2823.12
 2026,3,Luciane Carminatti,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,103.26
 2026,3,Luciane Carminatti,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,50.97
 2026,3,Luciane Carminatti,DIÁRIAS,Devolução Diária Funcionário,,-668.0
@@ -20854,6 +20855,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,5,Ana Paula da Silva (Paulinha),TELEFONE,Telefone Móvel,,33.9
 2026,5,Ana Paula da Silva (Paulinha),VEÍCULOS,Indenização por utilização de veículo próprio,,1722.52
 2026,5,Antídio Lunelli,ALMOXARIFADO,Material de Expediente,,2121.92
+2026,5,Antídio Lunelli,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Imóveis Planeta Ltda,3659.6
 2026,5,Antídio Lunelli,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,154.89
 2026,5,Antídio Lunelli,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,5,Antídio Lunelli,DIÁRIAS,Diárias - Deputado,,2156.0
@@ -25304,6 +25306,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,8,Carolline Sardá,TELEFONE,Telefone Fixo,,21.87
 2026,8,Carolline Sardá,TELEFONE,Telefone Móvel,,5.51
 2026,8,Carolline Sardá,VEÍCULOS,Locação de Veículo (Contrato),,2164.9
+2026,8,Fabiano da Luz,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Sindicato dos Trabalhadores na Agricultura Familiar de Pinhalsinho e Região,1487.44
 2026,8,Fabiano da Luz,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,103.26
 2026,8,Fabiano da Luz,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,8,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,334.0
@@ -25939,6 +25942,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,9,Lucas Neves,REEMBOLSOS,Escritório de Apoio - Internet,Vivo Telefonica Brasil S.A,150.0
 2026,9,Lucas Neves,REEMBOLSOS,Escritório de Apoio - Locação de móveis e equipamentos,PRO COPIA,155.0
 2026,9,Luciane Carminatti,ALMOXARIFADO,Material de Expediente,,193.87
+2026,9,Luciane Carminatti,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Jaime Henrique Spagnol,2823.12
 2026,9,Luciane Carminatti,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,103.26
 2026,9,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,875.51
 2026,9,Luciane Carminatti,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
@@ -26367,6 +26371,9 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,10,Carlos Henrique Lima,TELEFONE,Telefone Móvel,,679.58
 2026,10,Carlos Henrique Lima,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
 2026,10,Carlos Humberto Metzner Silva,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,103.26
+2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Despesas gerais - Hospedagem,WK ADMINISTRADORA HOTELEIRA LTDA,1091.45
+2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Despesas gerais - Hospedagem,WK ADMINISTRADORA HOTELEIRA LTDA,2029.5
+2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Despesas gerais - Hospedagem,WK ADMINISTRADORA HOTELEIRA LTDA,938.03
 2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Condomínio,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,507.95
 2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - IPTU,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,39.65
 2026,10,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,2976.2
@@ -26726,6 +26733,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,10,Marcos Luiz Vieira,ALMOXARIFADO,Material de Expediente,,1473.13
 2026,10,Marcos Luiz Vieira,ALUGUEL,Escritório de Apoio - Aluguel (Contrato ALESC) RPP,Thereza Krauspenhar Breda,3000.0
 2026,10,Marcos Luiz Vieira,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,206.52
+2026,10,Marcos Luiz Vieira,DIÁRIAS,Devolução Diária Deputado,,-682.0
 2026,10,Marcos Luiz Vieira,DIÁRIAS,Diárias - Deputado,,2156.0
 2026,10,Marcos Luiz Vieira,DIÁRIAS,Diárias - Deputado,,2728.0
 2026,10,Marcos Luiz Vieira,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -26750,9 +26758,14 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,10,Marcos da Rosa,ASSINATURA DE TV A CABO,Assinatura de TV a Cabo,,51.63
 2026,10,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,10,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Condomínio Imóvel Capital,JULIANA DOS SANTOS BITENCOURT,812.83
+2026,10,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Condomínio Imóvel Capital,JULIANA DOS SANTOS BITENCOURT,812.83
 2026,10,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,JULIANA DOS SANTOS BITENCOURT,3900.0
 2026,10,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
 2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distrbuicao S.A,186.59
+2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - IPTU,ARDELINO OLAVIO BATISTA,104.2
+2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Internet,Unifique Telecomunicações S.A,164.31
+2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,Serviço Autônomo Municipal de Água e Esgoto,68.31
+2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,Serviço Autônomo Municipal de Água e Esgoto,151.92
 2026,10,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,Serviço Autônomo Municipal de Água e Esgoto,151.92
 2026,10,Marcos da Rosa,TELEFONE,Telefone Fixo,,28.82
 2026,10,Marcos da Rosa,TELEFONE,Telefone Móvel,,1380.65
@@ -26942,7 +26955,6 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,10,Neodi Saretta,PASSAGENS,Passagens Aéreas - Deputado,,1483.88
 2026,10,Neodi Saretta,PASSAGENS,Passagens Aéreas - Funcionários,,1418.33
 2026,10,Neodi Saretta,PASSAGENS,Passagens Aéreas - Funcionários,,1418.34
-2026,10,Neodi Saretta,PASSAGENS,Passagens Aéreas - Funcionários,,74.81
 2026,10,Neodi Saretta,TELEFONE,Telefone Fixo,,10.0
 2026,10,Neodi Saretta,TELEFONE,Telefone Móvel,,5.51
 2026,10,Neodi Saretta,VEÍCULOS,Indenização por utilização de veículo próprio,,10335.11
@@ -26991,6 +27003,8 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,10,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,10,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,10,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,10,Pepê Collaço,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,Joares Carlos Ponticelli,4700.0
+2026,10,Pepê Collaço,REEMBOLSOS,Despesas gerais - Telefonia móvel,Telefonica Brasil S.A,220.49
 2026,10,Pepê Collaço,REEMBOLSOS,Escritório de Apoio - Condomínio,Prime Business Center,230.3
 2026,10,Pepê Collaço,TELEFONE,Telefone Fixo,,8.95
 2026,10,Pepê Collaço,TELEFONE,Telefone Móvel,,1019.82
@@ -27134,12 +27148,21 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Altair Silva,DIÁRIAS,Diárias - Funcionários,,2478.0
 2026,11,Altair Silva,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Altair Silva,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Altair Silva,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,342.86
 2026,11,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,777.51
+2026,11,Altair Silva,PASSAGENS,Passagens Aéreas - Deputado,,3016.0
+2026,11,Altair Silva,PASSAGENS,Passagens Aéreas - Funcionários,,321.86
+2026,11,Altair Silva,PASSAGENS,Passagens Aéreas - Funcionários,,322.51
+2026,11,Altair Silva,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,Andreia Cardoso Com.de Imóveis  Ltda,4465.86
+2026,11,Altair Silva,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,Santa Maria Imóveis Ltda,4048.38
+2026,11,Ana Caroline Campagnolo,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,19.84
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,1670.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,3006.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,1670.0
@@ -27150,6 +27173,12 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,1002.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,1652.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ana Caroline Campagnolo,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Ana Caroline Campagnolo,PASSAGENS,Passagens Aéreas - Funcionários,,2162.29
+2026,11,Ana Caroline Campagnolo,PASSAGENS,Passagens Aéreas - Funcionários,,2162.3
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Deputado,,2046.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Deputado,,1364.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,2004.0
@@ -27159,12 +27188,16 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,1239.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,2478.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ana Paula da Silva (Paulinha),DIÁRIAS,Diárias - Funcionários,,2891.0
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,1840.0
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,1840.0
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,2187.89
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,2187.89
+2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,2427.58
+2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Deputado,,1077.04
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,2050.1
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,3527.27
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,3263.95
@@ -27174,6 +27207,8 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,3263.95
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,2028.86
 2026,11,Ana Paula da Silva (Paulinha),PASSAGENS,Passagens Aéreas - Funcionários,,1875.02
+2026,11,Antídio Lunelli,DIÁRIAS,Devolução Diária Funcionário,,-668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Devolução Diária Funcionário,,-1336.0
 2026,11,Antídio Lunelli,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27188,12 +27223,21 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Antídio Lunelli,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Antídio Lunelli,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,619.0
+2026,11,Berlanda,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,44.8
 2026,11,Berlanda,DIÁRIAS,Diárias - Deputado,,1078.0
 2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Berlanda,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Berlanda,PASSAGENS,Passagens Aéreas - Deputado,,315.0
 2026,11,Camilo Martins,DIÁRIAS,Diárias - Deputado,,539.0
 2026,11,Camilo Martins,DIÁRIAS,Diárias - Deputado,,539.0
@@ -27215,7 +27259,12 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Camilo Martins,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Deputado,,4092.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Deputado,,1078.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Deputado,,1364.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,1336.0
@@ -27228,19 +27277,33 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Carlos Henrique Lima,DIÁRIAS,Diárias - Funcionários,,2478.0
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,1854.94
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,902.95
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Deputado,,902.95
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1854.94
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,902.95
 2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,902.95
+2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,3090.3
+2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1090.42
+2026,11,Carlos Henrique Lima,PASSAGENS,Passagens Aéreas - Funcionários,,1090.43
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Deputado,,1078.0
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Carlos Humberto Metzner Silva,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Carlos Humberto Metzner Silva,PASSAGENS,Passagens Aéreas - Funcionários,,2659.28
+2026,11,Carlos Humberto Metzner Silva,PASSAGENS,Passagens Aéreas - Funcionários,,2209.0
 2026,11,Carlos Humberto Metzner Silva,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,ILHABELA ADMINISTRAÇÃO DE BENS LTDA,2976.2
+2026,11,Carolline Sardá,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,31.27
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Deputado,,2156.0
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Deputado,,539.0
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Deputado,,539.0
@@ -27265,7 +27328,9 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Carolline Sardá,DIÁRIAS,Diárias - Funcionários,,334.0
+2026,11,Carolline Sardá,VEÍCULOS,Locação de Veículo (Contrato),,4329.8
 2026,11,Fabiano da Luz,DIÁRIAS,Devolução Diária Funcionário,,-1336.0
+2026,11,Fabiano da Luz,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Deputado,,1617.0
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Deputado,,2728.0
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Deputado,,1617.0
@@ -27284,6 +27349,13 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Fabiano da Luz,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1329.18
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1329.19
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1911.94
@@ -27292,7 +27364,13 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,2126.68
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,2126.69
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,980.0
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,450.0
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,3576.0
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1615.68
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Aéreas - Deputado,,1615.69
 2026,11,Fabiano da Luz,PASSAGENS,Passagens Terrestres,,49.26
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Terrestres,,49.26
+2026,11,Fabiano da Luz,PASSAGENS,Passagens Terrestres,,54.68
 2026,11,Ivan Naatz,DIÁRIAS,Diária Internacional Funcionários,,34536.42
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Deputado,,3410.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27303,6 +27381,8 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,2672.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,2672.0
+2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Ivan Naatz,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27326,6 +27406,12 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,1670.0
 2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Jair Antonio Miotto,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Jair Antonio Miotto,PASSAGENS,Passagens Aéreas - Funcionários,,2908.86
 2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Deputado,,6468.0
 2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Deputado,,1078.0
@@ -27335,11 +27421,13 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Funcionários,,4008.0
 2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Funcionários,,3340.0
 2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Jerry Edson Comper,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Jerry Edson Comper,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,SIMOVEIS LTDA,2600.0
 2026,11,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Condomínio,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,397.86
 2026,11,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuição S/A,74.55
 2026,11,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Internet,ENGEPLUS TELECOM LTDA,99.99
 2026,11,Jessé de Faria Lopes,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,LOCATIVA EMPREENDIMENTOS IMOBILIÁRIOS LTDA,950.0
+2026,11,José Milton Scheffer,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,45.2
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27351,8 +27439,13 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,José Milton Scheffer,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Julio Garcia,DIÁRIAS,Diárias - Deputado,,1617.0
 2026,11,Julio Garcia,DIÁRIAS,Diárias - Deputado,,2156.0
+2026,11,Julio Garcia,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Julio Garcia,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Julio Garcia,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Julio Garcia,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Julio Garcia,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27378,6 +27471,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Junior Cardoso,PASSAGENS,Passagens Aéreas Internacionais,,1655.53
 2026,11,Junior Cardoso,PASSAGENS,Passagens Aéreas Internacionais,,1655.53
 2026,11,Junior Cardoso,PASSAGENS,Seguro Viagem Internacional,,268.41
+2026,11,Junior Cardoso,VEÍCULOS,Locação de Veículo (Contrato),,4329.8
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,334.0
@@ -27386,6 +27480,12 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Lucas Neves,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Lucas Neves,PASSAGENS,Passagens Aéreas - Funcionários,,593.43
 2026,11,Lucas Neves,PASSAGENS,Passagens Aéreas - Funcionários,,593.43
 2026,11,Lucas Neves,REEMBOLSOS,Despesas gerais - Divulgação de atividade parlamentar,JULIANO FERREIRA SCHEMES - EDS Media,7500.0
@@ -27393,6 +27493,7 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Lucas Neves,REEMBOLSOS,Escritório de Apoio - Internet,Vivo Telefonica Brasil S.A,179.99
 2026,11,Lucas Neves,REEMBOLSOS,Escritório de Apoio - Taxa de Coleta de Resíduos Sólidos,Secretaria Municipal de Água e Saneamento - SEMASA LAGES,47.06
 2026,11,Lucas Neves,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,Secretaria Municipal de Água e Saneamento - SEMASA LAGES,79.2
+2026,11,Luciane Carminatti,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,198.44
 2026,11,Luciane Carminatti,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Deputado,,1078.0
 2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Deputado,,1078.0
@@ -27424,20 +27525,36 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,334.0
+2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Luciane Carminatti,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,1292.89
 2026,11,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,2542.86
 2026,11,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,391.51
+2026,11,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,1957.89
+2026,11,Luciane Carminatti,PASSAGENS,Passagens Aéreas - Deputado,,1667.39
+2026,11,Luciane Carminatti,PASSAGENS,Passagens Terrestres,,64.48
+2026,11,Luciane Carminatti,PASSAGENS,Passagens Terrestres,,63.68
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Marcius da Silva Machado,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Marcius da Silva Machado,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVIÇOS DE INTERNET LTDA,619.0
+2026,11,Marcos Luiz Vieira,DIÁRIAS,Devolução Diária Funcionário,,-2338.0
+2026,11,Marcos Luiz Vieira,DIÁRIAS,Devolução Diária Funcionário,,-2338.0
+2026,11,Marcos Luiz Vieira,DIÁRIAS,Diárias - Funcionários,,2338.0
+2026,11,Marcos Luiz Vieira,DIÁRIAS,Diárias - Funcionários,,2338.0
 2026,11,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Deputado,,2466.82
 2026,11,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Deputado,,1562.86
+2026,11,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Deputado,,909.16
 2026,11,Marcos Luiz Vieira,PASSAGENS,Passagens Aéreas - Funcionários,,2274.82
 2026,11,Marcos Luiz Vieira,REEMBOLSOS,Despesas Gerais - Locação de licença de uso de software,Inteligência Digital Tecnologia LTDA,1975.0
+2026,11,Marcos Luiz Vieira,VEÍCULOS,Locação de Veículo (Contrato),,4329.8
 2026,11,Marcos da Rosa,DIÁRIAS,Devolução Diária Funcionário,,-334.0
 2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27470,39 +27587,100 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Locação de imóvel na capital do estado,JULIANA DOS SANTOS BITENCOURT,3900.0
+2026,11,Marcos da Rosa,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,339.0
+2026,11,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distrbuicao S.A,194.37
+2026,11,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,IRACEMA VIEIRA PIRES,3677.0
+2026,11,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Locação de móveis e equipamentos,5R / Reinkjet Toners e Inf. Ltda - EPP,220.0
+2026,11,Marcos da Rosa,REEMBOLSOS,Escritório de Apoio - Telefonia fixa,Unifique Telecomunicações S.A,32.47
 2026,11,Mario Motta,DIÁRIAS,Diárias - Deputado,,3410.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Deputado,,2156.0
+2026,11,Mario Motta,DIÁRIAS,Diárias - Deputado,,2046.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,2065.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,1002.0
+2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,2065.0
+2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,1239.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,1002.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,334.0
 2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,334.0
+2026,11,Mario Motta,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,607.86
 2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,659.85
 2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,607.86
 2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,659.85
+2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,338.18
+2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,338.19
+2026,11,Mario Motta,PASSAGENS,Passagens Aéreas - Funcionários,,450.0
 2026,11,Mario Motta,PASSAGENS,Passagens Terrestres,,51.03
 2026,11,Mario Motta,PASSAGENS,Passagens Terrestres,,275.68
 2026,11,Mario Motta,PASSAGENS,Passagens Terrestres,,49.32
 2026,11,Marquito,DIÁRIAS,Diárias - Deputado,,1364.0
+2026,11,Marquito,DIÁRIAS,Diárias - Deputado,,539.0
+2026,11,Marquito,DIÁRIAS,Diárias - Deputado,,1364.0
 2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,1670.0
 2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,826.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,334.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,334.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Marquito,DIÁRIAS,Diárias - Funcionários,,1652.0
+2026,11,Marquito,PASSAGENS,Passagens Aéreas - Deputado,,1847.21
+2026,11,Marquito,PASSAGENS,Passagens Aéreas - Deputado,,2730.63
+2026,11,Marquito,PASSAGENS,Passagens Aéreas - Funcionários,,1847.21
+2026,11,Marquito,PASSAGENS,Passagens Aéreas - Funcionários,,3455.84
+2026,11,Marquito,PASSAGENS,Passagens Terrestres,,279.28
+2026,11,Marquito,PASSAGENS,Passagens Terrestres,,283.49
+2026,11,Marquito,PASSAGENS,Passagens Terrestres,,350.69
+2026,11,Marquito,PASSAGENS,Passagens Terrestres,,283.49
+2026,11,Marquito,PASSAGENS,Passagens Terrestres,,254.99
 2026,11,Matheus Cadorin,REEMBOLSOS,Despesas Gerais - Locação de licença de uso de software,YOULICS LTDA,1300.0
+2026,11,Matheus Cadorin,REEMBOLSOS,Despesas gerais - Contratação de espaço compartilhado de trabalho (Coworking),Anexo X Coworking LTDA,4869.59
+2026,11,Matheus Cadorin,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTOS E ADM DE IMÓVEIS,410.0
+2026,11,Matheus Cadorin,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTOS E ADM DE,410.0
 2026,11,Matheus Cadorin,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA.,339.0
 2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,1002.0
 2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Mauricio Peixer,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,47.12
 2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Deputado,,4312.0
 2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Deputado,,2156.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Deputado,,2156.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1670.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1670.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1670.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Mauro de Nadal,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,1637.86
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,1387.51
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,509.86
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,510.51
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,2661.86
 2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,3259.51
+2026,11,Mauro de Nadal,PASSAGENS,Passagens Aéreas - Deputado,,3258.86
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Deputado,,2156.0
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27524,6 +27702,19 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Maurício José Eskudlark,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Maurício José Eskudlark,PASSAGENS,Passagens Terrestres,,329.89
+2026,11,Maurício José Eskudlark,PASSAGENS,Passagens Terrestres,,326.82
 2026,11,Napoleão Bernardes,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Deputado,,1364.0
 2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,1670.0
@@ -27540,20 +27731,35 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Napoleão Bernardes,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,"Despesas gerais - Contratação de Consultoria, Trabalhos Técnicos e Pesquisas Sócioeconômicas",CAROLINA VALLE SCHRUBBE,30000.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTOS E ADM DE IMÓVEIS LTDA,410.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTOS E ADM DE IMÓVEIS LTDA,820.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTO E ADM DE IMOVEIS LTDA,820.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,Despesas gerais - Hospedagem,INVESTCITY INVESTIMENTO E ADM DE IMOVEIS LTDA,410.0
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Condomínio,Condomínio Taruma Office,406.67
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Energia Elétrica,Celesc Distribuicao S.A,95.17
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Internet,VIVO TELEFÔNICA BRASIL S.A,136.0
 2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,TARUMA EMPREENDIMENTOS  IMOBILIARIOS  LTDA,4100.0
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Locação de móveis e equipamentos,Work Reciclos Ltda,578.0
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Locação de móveis e equipamentos,Work Impressoras,226.15
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Telefonia fixa,VIVO TELEFÔNICA BRASIL S.A,41.0
+2026,11,Napoleão Bernardes,REEMBOLSOS,Escritório de Apoio - Água e Esgoto,Condomínio Taruma Office,186.39
 2026,11,Neodi Saretta,DIÁRIAS,Diárias - Deputado,,4092.0
 2026,11,Neodi Saretta,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Oscar Gutz,DIÁRIAS,Devolução Diária Funcionário,,-668.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Deputado,,3234.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Deputado,,4312.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Funcionários,,2672.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Oscar Gutz,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Oscar Gutz,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Pedro Baldissera,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,1300.97
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27569,6 +27775,10 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,2004.0
+2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,1670.0
+2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,1652.0
+2026,11,Pedro Baldissera,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Pedro Baldissera,REEMBOLSOS,Despesas gerais - Serviço de internet veicular via satélite,STARLINK BRAZIL SERVICOS DE INTERNET LTDA,619.0
 2026,11,Pedro Baldissera,REEMBOLSOS,Escritório de Apoio - Locação de imóvel,HABITETO S/A,1200.0
 2026,11,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,2004.0
@@ -27579,7 +27789,10 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Pepê Collaço,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Pepê Collaço,PASSAGENS,Passagens Terrestres,,50.56
+2026,11,Rodrigo Minotto,CORRESPONDÊNCIA / TELEGRAMA,Correspondência / Telegrama,,43.77
 2026,11,Rodrigo Minotto,DIÁRIAS,Diárias - Deputado,,2728.0
+2026,11,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
 2026,11,Rodrigo Minotto,DIÁRIAS,Diárias - Funcionários,,2004.0
@@ -27616,6 +27829,9 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Vicente Caropreso,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Vicente Caropreso,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Vicente Caropreso,DIÁRIAS,Diárias - Funcionários,,1670.0
+2026,11,Vicente Caropreso,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Vicente Caropreso,VEÍCULOS,Locação de Veículo (Contrato),,4329.8
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Deputado,,1078.0
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
@@ -27626,6 +27842,21 @@ ano,mes,deputado,verba,descricao,fornecedor,valor
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,1336.0
 2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,1336.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,2478.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
+2026,11,Volnei Weber,DIÁRIAS,Diárias - Funcionários,,668.0
 2026,11,Volnei Weber,PASSAGENS,Passagens Aéreas - Funcionários,,3098.71
 2026,11,Volnei Weber,PASSAGENS,Passagens Aéreas - Funcionários,,3614.45
 2026,11,Volnei Weber,PASSAGENS,Passagens Aéreas - Funcionários,,3098.71

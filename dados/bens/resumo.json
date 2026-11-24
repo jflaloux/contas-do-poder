@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-17",
+ "gerado_em": "2026-11-24",
  "fonte": [
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2018",
   "https://dadosabertos.tse.jus.br/dataset/candidatos-2022",
@@ -43,9 +43,9 @@
    "candidatura sem bens no arquivo do TSE": 1
   },
   "vereadores das capitais": {
-   "no cargo": 637,
-   "com declaração": 539,
-   "candidatura sem bens no arquivo do TSE": 98
+   "no cargo": 634,
+   "com declaração": 538,
+   "candidatura sem bens no arquivo do TSE": 96
   },
   "vereadores do interior": {
    "no cargo": 7469,

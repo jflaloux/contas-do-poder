@@ -1,12 +1,21 @@
 {
- "gerado_em": "2026-11-18T18:44:33-03:00",
- "semana": "2026-11-17",
- "anterior": "2026-11-10",
+ "gerado_em": "2026-11-24T20:46:24-03:00",
+ "semana": "2026-11-24",
+ "anterior": "2026-11-17",
  "lugares": [
-  "brasil",
   "exterior"
  ],
  "quebrou": [
+  {
+   "fonte": "federal/renda",
+   "situacao": "falhando",
+   "desde": "2026-11-24T21:35:54",
+   "ultimo_mes": null,
+   "erro": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
+  }
+ ],
+ "voltou": [],
+ "continua": [
   {
    "fonte": "assembleias/am",
    "situacao": "falhando",
@@ -36,22 +45,12 @@
    "erro": "ConnectionError: o robots.txt de sapl.cmm.am.gov.br não abriu (site fora do ar ou bloqueado)"
   }
  ],
- "voltou": [
-  {
-   "fonte": "judiciario/tst",
-   "antes": "falhando",
-   "situacao": "ok"
-  }
- ],
- "continua": [],
- "quebrou_e_voltou": [
-  "vereadores/recife"
- ],
+ "quebrou_e_voltou": [],
  "totais": {
-  "falhando": 4,
+  "falhando": 5,
   "atrasada (fonte)": 4,
   "congelada": 4,
-  "ok": 96
+  "ok": 95
  },
  "historico": [
   {
@@ -192,6 +191,28 @@
     "folhas/SC",
     "vereadores/manaus",
     "vereadores/recife"
+   ]
+  },
+  {
+   "semana": "2026-11-24",
+   "atualizado_em": "2026-11-24T20:46:24-03:00",
+   "lugares": [
+    "exterior"
+   ],
+   "fontes": 108,
+   "problemas": {
+    "assembleias/am": "falhando",
+    "assembleias/pr": "falhando",
+    "federal/renda": "falhando",
+    "folhas/SC": "falhando",
+    "vereadores/manaus": "falhando"
+   },
+   "teve_problema": [
+    "assembleias/am",
+    "assembleias/pr",
+    "federal/renda",
+    "folhas/SC",
+    "vereadores/manaus"
    ]
   }
  ]
